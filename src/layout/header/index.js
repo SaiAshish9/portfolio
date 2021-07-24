@@ -1,6 +1,17 @@
 import React from "react";
 
-import { Container, Label, Moon, Sun } from "./styles";
+import { Tooltip } from "antd";
+
+import {
+  Container,
+  Label,
+  Moon,
+  Sun,
+  Row,
+  Eye,
+  ViewCountContainer,
+  ContainerLabel,
+} from "./styles";
 
 import { useStore } from "store";
 
@@ -24,8 +35,18 @@ const Header = () => {
 
   return (
     <Container>
-      <Label>Sai Ashish</Label>
-      {iconContent}
+      <Tooltip placement="bottomLeft" title="D. D. V. Sai Ashish">
+        <Label>Sai Ashish</Label>
+      </Tooltip>
+      <Row>
+        {iconContent}
+        <Tooltip placement="bottomRight" title="Viewer's Count">
+          <ViewCountContainer>
+            <Eye />
+            <ContainerLabel>1</ContainerLabel>
+          </ViewCountContainer>
+        </Tooltip>
+      </Row>
     </Container>
   );
 };
