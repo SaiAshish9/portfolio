@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Tooltip } from "antd";
 
@@ -9,6 +9,8 @@ import {
   Sun,
   Row,
   Eye,
+  Mute,
+  UnMute,
   ViewCountContainer,
   ContainerLabel,
 } from "./styles";
@@ -16,6 +18,8 @@ import {
 import { useStore } from "store";
 
 import { Theme } from "constants/index";
+
+import Dropdown from "./components/dropdown";
 
 const Header = () => {
   const {
@@ -27,10 +31,22 @@ const Header = () => {
     setTheme(theme === Theme.dark ? Theme.light : Theme.dark);
   }
 
-  let iconContent = <Sun onClick={handleIconClick} />;
+  const [isMuted, setIsMuted] = useState(false);
+
+  let iconContent = <Sun onClick={handleIconClick} isMuted={isMuted} />;
 
   if (theme === Theme.dark) {
-    iconContent = <Moon onClick={handleIconClick} />;
+    iconContent = <Moon onClick={handleIconClick} isMuted={isMuted} />;
+  }
+
+  function handleMuteIconClick() {
+    setIsMuted((muted) => setIsMuted(!muted));
+  }
+
+  let muteIconContent = <Mute onClick={handleMuteIconClick} />;
+
+  if (isMuted) {
+    muteIconContent = <UnMute onClick={handleMuteIconClick} />;
   }
 
   return (
@@ -39,6 +55,8 @@ const Header = () => {
         <Label>Sai Ashish</Label>
       </Tooltip>
       <Row>
+        {muteIconContent}
+        {isMuted && <Dropdown title="Despacito" />}
         {iconContent}
         <Tooltip placement="bottomRight" title="Viewer's Count">
           <ViewCountContainer>
@@ -46,6 +64,7 @@ const Header = () => {
             <ContainerLabel>1</ContainerLabel>
           </ViewCountContainer>
         </Tooltip>
+        <Dropdown title="English" />
       </Row>
     </Container>
   );

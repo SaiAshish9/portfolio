@@ -1,6 +1,6 @@
 import { Header } from "layout";
 
-import { Intro } from "screens/home/components";
+import { Intro, Skills } from "screens/home/components";
 
 import Container from "./styles";
 
@@ -9,6 +9,7 @@ function App() {
     <Container>
       <Header />
       <Intro />
+      <Skills />
     </Container>
   );
 }
