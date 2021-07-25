@@ -39,7 +39,7 @@ const Intro = () => {
 
   const { veryDarkGray, white } = Colors;
 
-  const ICON_SIZE = 18;
+  const ICON_SIZE = 16;
 
   const ICON_COLOR = theme !== Theme.dark ? veryDarkGray : white;
 
@@ -99,12 +99,18 @@ const Intro = () => {
       </ImgContainer>
       <InfoContainer>
         {DATA.map((i, k) => (
-          <InfoItem key={k}>
+          <InfoItem style={{ left: k == 6 ? "0.4rem" : "0px" }} key={k}>
             <InfoImg>{i.icon}</InfoImg>
             {i.text ? (
               <InfoLabel>{i.label}</InfoLabel>
             ) : (
-              <InfoLink href={i.label} target="_blank" rel="noopener noreferrer">{i.label}</InfoLink>
+              <InfoLink
+                href={i.label}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {i.label}
+              </InfoLink>
             )}
           </InfoItem>
         ))}

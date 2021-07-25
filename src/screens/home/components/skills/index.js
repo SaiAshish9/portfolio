@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Img } from "./styles";
+import { Container, Img, LargeSlider, SmallSlider } from "./styles";
 
 import Slider from "react-slick";
 
@@ -30,12 +30,17 @@ import GCPImg from "assets/home/gcp.png";
 const settings = {
   dots: false,
   infinite: true,
-  slidesToShow: 10,
+  slidesToShow: 9,
   slidesToScroll: 1,
   autoplay: true,
   speed: 2000,
   autoplaySpeed: 2000,
   cssEase: "linear",
+};
+
+const lgSettings = {
+  ...settings,
+  slidesToShow: 5,
 };
 
 const images = [
@@ -54,23 +59,32 @@ const images = [
   FlutterImg,
   DockerImg,
   KubernetesImg,
+  NextImg,
   AWSImg,
   NestImg,
-  NextImg,
   NuxtImg,
   DigitalOceanImg,
   IonicImg,
-  GCPImg
+  GCPImg,
 ];
 
 const Skills = () => {
   return (
     <Container>
-      <Slider {...settings}>
-        {images.map((i, k) => (
-          <Img key={k} src={i} alt="img" />
-        ))}
-      </Slider>
+      <LargeSlider>
+        <Slider {...settings}>
+          {images.map((i, k) => (
+            <Img key={k} src={i} alt="img" />
+          ))}
+        </Slider>
+      </LargeSlider>
+      <SmallSlider>
+        <Slider {...lgSettings}>
+          {images.map((i, k) => (
+            <Img key={k} src={i} alt="img" />
+          ))}
+        </Slider>
+      </SmallSlider>
     </Container>
   );
 };

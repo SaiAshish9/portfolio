@@ -1,16 +1,23 @@
 import styled from "styled-components";
 
-import { Theme, Colors, FontWeight, Styles } from "constants/index";
+import {
+  Theme,
+  Colors,
+  FontWeight,
+  Styles,
+  BREAKPOINTS,
+} from "constants/index";
 
 import { IoIosArrowDown } from "react-icons/io";
-
-import { GoMute, GoUnmute } from "react-icons/go";
 
 const { veryDarkGray, white } = Colors;
 
 export const Container = styled.div`
   cursor: pointer;
   ${Styles.RBC}
+  @media only screen and (max-width:${BREAKPOINTS.sm}) {
+    display: none;
+  }
 `;
 
 export const Label = styled.p`

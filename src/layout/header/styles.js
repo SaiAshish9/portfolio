@@ -1,6 +1,12 @@
 import styled, { css } from "styled-components";
 
-import { Styles, FontWeight, Colors, Theme } from "constants/index";
+import {
+  Styles,
+  FontWeight,
+  Colors,
+  Theme,
+  BREAKPOINTS,
+} from "constants/index";
 
 import { RiMoonClearFill } from "react-icons/ri";
 
@@ -33,11 +39,17 @@ const IconStyle = css`
   font-size: 1rem;
   cursor: pointer;
   color: ${white};
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const Moon = styled(RiMoonClearFill)`
   ${IconStyle}
-  margin-left:${({ ismuted }) => (ismuted ? "1rem" : 0)}
+  margin-left:${({ ismuted }) => (ismuted ? "1rem" : 0)};
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    margin-left: 0;
+  }
 `;
 
 export const Sun = styled(IoMdSunny)`
@@ -45,6 +57,9 @@ export const Sun = styled(IoMdSunny)`
   font-size: 1.2rem;
   color: ${Colors.orange};
   margin-left: ${({ ismuted }) => (ismuted ? "1rem" : 0)};
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    margin-left: 0;
+  }
 `;
 
 export const Eye = styled(FaEye)`
@@ -59,6 +74,10 @@ export const Mute = styled(GoMute)`
   font-size: 1.2rem;
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    font-size: 0.95rem;
+    margin-right: 1rem;
+  }
 `;
 
 export const UnMute = styled(GoUnmute)`
@@ -67,6 +86,10 @@ export const UnMute = styled(GoUnmute)`
   font-size: 1.2rem;
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    font-size: 0.95rem;
+    margin-right: 1rem;
+  }
 `;
 
 export const Row = styled.div`
@@ -77,6 +100,10 @@ export const ViewCountContainer = styled.div`
   ${Styles.RBC}
   margin: 0 1.5rem;
   cursor: pointer;
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    margin-right: 0;
+    margin-left: 1rem;
+  }
 `;
 
 export const ContainerLabel = styled.p`
