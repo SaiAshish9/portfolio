@@ -37,14 +37,14 @@ const IconStyle = css`
 
 export const Moon = styled(RiMoonClearFill)`
   ${IconStyle}
-  margin-left:${({ isMuted }) => (isMuted ? "1rem" : 0)}
+  margin-left:${({ ismuted }) => (ismuted ? "1rem" : 0)}
 `;
 
 export const Sun = styled(IoMdSunny)`
   ${IconStyle}
   font-size: 1.2rem;
   color: ${Colors.orange};
-  margin-left: ${({ isMuted }) => (isMuted ? "1rem" : 0)};
+  margin-left: ${({ ismuted }) => (ismuted ? "1rem" : 0)};
 `;
 
 export const Eye = styled(FaEye)`
@@ -85,4 +85,9 @@ export const ContainerLabel = styled.p`
     current !== Theme.dark ? veryDarkGray : white};
   font-weight: ${FontWeight.semiBold};
   margin-left: 0.5rem;
+`;
+
+export const Player = styled.div`
+  position: absolute;
+  z-index: -1;
 `;
