@@ -10,6 +10,8 @@ import AcademicsImg from "assets/home/academics.png";
 import GithubImg from "assets/home/github.png";
 import LinkedInImg from "assets/home/linkedIn.png";
 
+import Slider from "react-slick";
+
 const data = [
   {
     title: "Cover Letter",
@@ -40,12 +42,22 @@ const data = [
   },
 ];
 
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 5,
+  slidesToScroll: 1,
+};
+
 const Info = () => {
   return (
     <Container>
-      {data.map((i, k) => (
-        <Card key={k} data={i} />
-      ))}
+      <Slider {...settings}>
+        {data.map((i, k) => (
+          <Card key={k} data={i} />
+        ))}
+      </Slider>
     </Container>
   );
 };
