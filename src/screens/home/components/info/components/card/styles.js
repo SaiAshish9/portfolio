@@ -10,7 +10,7 @@ const { darkGrey, lightBluishGrey, white, veryDarkGray } = Colors;
 export const Container = styled.div`
   height: 24rem;
   width: 18rem;
-  margin: 0 1rem;
+  margin: 1rem 0;
   overflow: hidden;
   background-color: ${({ theme: { current } }) =>
     current === Theme.dark ? darkGrey : lightBluishGrey};
