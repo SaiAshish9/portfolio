@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import { Header } from "layout";
 
-import { Intro, Skills } from "screens/home/components";
+import { Intro, Skills, Info } from "screens/home/components";
 
 import Container from "./styles";
 
@@ -36,6 +36,7 @@ function App() {
       <Header />
       <Intro />
       <Skills />
+      <Info />
     </Container>
   );
 }
