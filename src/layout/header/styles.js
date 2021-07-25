@@ -16,7 +16,7 @@ import { FaEye } from "react-icons/fa";
 
 import { GoMute, GoUnmute } from "react-icons/go";
 
-const { veryDarkGray, white } = Colors;
+const { veryDarkGray, white, darkGrey, lightBluishGrey } = Colors;
 
 export const Container = styled.div`
   ${Styles.RBC}
@@ -28,6 +28,19 @@ export const Container = styled.div`
   position: fixed;
   top: 0;
   z-index: 3;
+  ${({ scrolled }) =>
+    scrolled &&
+    css`
+      -webkit-box-shadow: 0 3px 5px
+        ${({ theme: { current } }) =>
+          current === Theme.dark ? darkGrey : lightBluishGrey};
+      -moz-box-shadow: 0 3px 5px
+        ${({ theme: { current } }) =>
+          current === Theme.dark ? darkGrey : lightBluishGrey};
+      box-shadow: 0 3px 5px
+        ${({ theme: { current } }) =>
+          current === Theme.dark ? darkGrey : lightBluishGrey};
+    `}
 `;
 
 export const Label = styled.p`

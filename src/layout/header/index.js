@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Tooltip } from "antd";
 
@@ -55,8 +55,26 @@ const Header = () => {
     muteIconContent = <UnMute onClick={handleMuteIconClick} />;
   }
 
+  const [scrolled, isScrolled] = useState(null);
+
+  useEffect(() => {
+    window.addEventListener("scroll", checkHeader);
+    var checkHeader = setInterval(() => {
+      let scrollPosition = Math.round(window.scrollY);
+      if (scrollPosition > 10) {
+        isScrolled("scrolled");
+      } else {
+        isScrolled(null);
+      }
+    }, 300);
+    () => {
+      window.removeEventListener("scroll");
+      clearInterval(checkHeader);
+    };
+  }, []);
+
   return (
-    <Container>
+    <Container scrolled={scrolled}>
       <Tooltip placement="bottomLeft" title="D. D. V. Sai Ashish">
         <Label>Sai Ashish</Label>
         <SmallLabel>Sai</SmallLabel>
