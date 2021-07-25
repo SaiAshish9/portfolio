@@ -25,6 +25,9 @@ export const Container = styled.div`
   background-color: ${({ theme: { current } }) =>
     current === Theme.dark ? veryDarkGray : white};
   padding: 0 2rem;
+  position: fixed;
+  top: 0;
+  z-index: 3;
 `;
 
 export const Label = styled.p`

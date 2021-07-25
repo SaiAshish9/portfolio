@@ -12,16 +12,16 @@ const { veryDarkGray, white } = Colors;
 
 export const Container = styled.div`
   ${Styles.RBC}
-  padding:6rem 24rem;
+  padding:10.5rem 24rem 6rem;
   @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
-    padding: 6rem 15rem;
+    padding: 10.6rem 15rem 6rem;
   }
   @media only screen and (max-width: ${BREAKPOINTS.xl}) {
-    padding: 6rem 8rem;
+    padding: 10.5rem 8rem 6rem;
   }
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     ${Styles.CBC}
-    padding: 1rem 0px !important;
+    padding: 5.5rem 0px 1rem !important;
   }
 `;
 
