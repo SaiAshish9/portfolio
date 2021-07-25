@@ -33,6 +33,20 @@ export const Label = styled.p`
     current !== Theme.dark ? veryDarkGray : white};
   font-weight: ${FontWeight.semiBold};
   cursor: pointer;
+  @media only screen and (max-width: ${BREAKPOINTS.xs}) {
+    display: none;
+  }
+`;
+
+export const SmallLabel = styled.p`
+  font-size: 1rem;
+  color: ${({ theme: { current } }) =>
+    current !== Theme.dark ? veryDarkGray : white};
+  font-weight: ${FontWeight.semiBold};
+  cursor: pointer;
+  @media only screen and (min-width: ${BREAKPOINTS.xs}) {
+    display: none;
+  }
 `;
 
 const IconStyle = css`

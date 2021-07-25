@@ -13,7 +13,8 @@ import {
   UnMute,
   ViewCountContainer,
   ContainerLabel,
-  Player
+  Player,
+  SmallLabel,
 } from "./styles";
 
 import { useStore } from "store";
@@ -58,6 +59,7 @@ const Header = () => {
     <Container>
       <Tooltip placement="bottomLeft" title="D. D. V. Sai Ashish">
         <Label>Sai Ashish</Label>
+        <SmallLabel>Sai</SmallLabel>
       </Tooltip>
 
       <Row>
