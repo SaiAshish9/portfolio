@@ -1,5 +1,11 @@
 import styled from "styled-components";
-import { Colors, Theme, FontWeight, Styles } from "constants/index";
+import {
+  Colors,
+  Theme,
+  FontWeight,
+  Styles,
+  BREAKPOINTS,
+} from "constants/index";
 
 import { AiFillEye } from "react-icons/ai";
 
@@ -23,12 +29,26 @@ export const Container = styled.div`
       ${({ theme: { current } }) =>
         current !== Theme.dark ? darkGrey : lightBluishGrey};
   }
+  @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
+    width: 16rem;
+  }
+  @media only screen and (max-width: ${BREAKPOINTS.xl}) {
+    width: 14.5rem;
+    height: 18rem;
+  }
+  @media only screen and (max-width: ${BREAKPOINTS.md}) {
+    width: 11.5rem;
+    height: 16rem;
+  }
 `;
 
 export const CardImg = styled.img`
   height: 80%;
   width: 100%;
   object-fit: cover;
+  @media only screen and (max-width: ${BREAKPOINTS.xl}) {
+    height: 70%;
+  }
 `;
 
 export const Title = styled.p`

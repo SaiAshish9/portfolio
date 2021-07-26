@@ -1,6 +1,13 @@
 import React from "react";
 
-import { Container, NextIconContainer, PrevIconContainer } from "./styles";
+import {
+  Container,
+  NextIconContainer,
+  PrevIconContainer,
+  StyledSlider,
+  MediumStyledSlider,
+  SmallStyledSlider,
+} from "./styles";
 
 import Card from "./components/card";
 
@@ -9,8 +16,8 @@ import ResumeImg from "assets/home/resume.png";
 import AcademicsImg from "assets/home/academics.png";
 import GithubImg from "assets/home/github.png";
 import LinkedInImg from "assets/home/linkedIn.png";
-
-import Slider from "react-slick";
+import MediumImg from "assets/home/medium.png";
+import YoutubeImg from "assets/home/youtube.png";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
@@ -44,8 +51,8 @@ const data = [
   },
   {
     title: "Medium Profile",
-    subTitle: "😉",
-    img: AcademicsImg,
+    subTitle: "🎓 ",
+    img: MediumImg,
   },
   // {
   //   title: "Leetcode Profile",
@@ -54,21 +61,16 @@ const data = [
   // },
   {
     title: "Youtube Channel",
-    subTitle: "😉",
-    img: LinkedInImg,
-  },
-  {
-    title: "Insta Profile",
-    subTitle: "😉",
-    img: LinkedInImg,
+    subTitle: "🔥",
+    img: YoutubeImg,
   },
 ];
 
 const NextArrow = (props) => {
-  const { onClick, currentSlide } = props;
+  const { onClick, currentSlide, curr } = props;
 
   return (
-    <NextIconContainer hide={currentSlide === 4} onClick={onClick}>
+    <NextIconContainer hide={currentSlide === curr} onClick={onClick}>
       <FiChevronRight />
     </NextIconContainer>
   );
@@ -91,18 +93,40 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 1,
   swipeToSlide: true,
-  nextArrow: <NextArrow />,
+  nextArrow: <NextArrow curr={3} />,
   prevArrow: <PrevArrow />,
+};
+
+const mSettings = {
+  ...settings,
+  slidesToShow: 3,
+  nextArrow: <NextArrow curr={4} />,
+};
+
+const sSettings = {
+  ...settings,
+  slidesToShow: 2,
+  nextArrow: <NextArrow curr={5} />,
 };
 
 const Info = () => {
   return (
     <Container>
-      <Slider {...settings} style={{ width: "72vw", margin: "auto" }}>
+      <StyledSlider {...settings}>
         {data.map((i, k) => (
           <Card key={k} data={i} />
         ))}
-      </Slider>
+      </StyledSlider>
+      <MediumStyledSlider {...mSettings}>
+        {data.map((i, k) => (
+          <Card key={k} data={i} />
+        ))}
+      </MediumStyledSlider>
+      <SmallStyledSlider {...sSettings}>
+        {data.map((i, k) => (
+          <Card key={k} data={i} />
+        ))}
+      </SmallStyledSlider>
     </Container>
   );
 };
