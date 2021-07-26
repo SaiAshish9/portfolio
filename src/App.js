@@ -2,7 +2,13 @@ import React, { useEffect } from "react";
 
 import { Header } from "layout";
 
-import { Intro, Skills, Info, Languages } from "screens/home/components";
+import {
+  Intro,
+  Skills,
+  Info,
+  Languages,
+  Achievements,
+} from "screens/home/components";
 
 import Container from "./styles";
 
@@ -38,6 +44,7 @@ function App() {
       <Skills />
       <Info />
       <Languages />
+      <Achievements />
     </Container>
   );
 }

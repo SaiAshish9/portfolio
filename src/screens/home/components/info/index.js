@@ -9,7 +9,7 @@ import {
   SmallStyledSlider,
 } from "./styles";
 
-import Card from "./components/card";
+import Card from "common/card";
 
 import CoverLetterImg from "assets/home/cover-letter.png";
 import ResumeImg from "assets/home/resume.png";
