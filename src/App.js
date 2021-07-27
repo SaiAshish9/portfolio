@@ -8,6 +8,7 @@ import {
   Info,
   Languages,
   Achievements,
+  Experience,
 } from "screens/home/components";
 
 import { Container, FabButton } from "./styles";
@@ -54,7 +55,7 @@ function App() {
   }
 
   function handleFabClick() {
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   useEffect(() => {
@@ -69,6 +70,7 @@ function App() {
       <Info />
       <Languages />
       <Achievements />
+      <Experience />
       <Footer />
       {scrolled && (
         <FabButton onClick={handleFabClick}>
