@@ -27,7 +27,7 @@ export const Container = styled.div`
   padding: 0 2rem;
   position: fixed;
   top: 0;
-  z-index: 3;
+  z-index: 100;
   ${({ scrolled }) =>
     scrolled &&
     css`

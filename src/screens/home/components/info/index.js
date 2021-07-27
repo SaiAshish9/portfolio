@@ -18,6 +18,7 @@ import GithubImg from "assets/home/github.png";
 import LinkedInImg from "assets/home/linkedIn.png";
 import MediumImg from "assets/home/medium.png";
 import YoutubeImg from "assets/home/youtube.png";
+import NightCodingSetupImg from "assets/home/nightCodingSetup.jpeg";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
@@ -64,6 +65,11 @@ const data = [
     subTitle: "🔥",
     img: YoutubeImg,
   },
+  {
+    title: "Night Coding Setup",
+    subTitle: "😎",
+    img: NightCodingSetupImg,
+  },
 ];
 
 const NextArrow = (props) => {
@@ -93,20 +99,20 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 1,
   swipeToSlide: true,
-  nextArrow: <NextArrow curr={3} />,
+  nextArrow: <NextArrow curr={4} />,
   prevArrow: <PrevArrow />,
 };
 
 const mSettings = {
   ...settings,
   slidesToShow: 3,
-  nextArrow: <NextArrow curr={4} />,
+  nextArrow: <NextArrow curr={5} />,
 };
 
 const sSettings = {
   ...settings,
   slidesToShow: 2,
-  nextArrow: <NextArrow curr={5} />,
+  nextArrow: <NextArrow curr={6} />,
 };
 
 const Info = () => {
