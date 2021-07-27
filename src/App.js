@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-import { Header } from "layout";
+import { Header, Footer } from "layout";
 
 import {
   Intro,
@@ -10,16 +10,36 @@ import {
   Achievements,
 } from "screens/home/components";
 
-import Container from "./styles";
+import { Container, FabButton } from "./styles";
 
 import { useStore } from "store";
 
 import axios from "axios";
 
+import { IoIosArrowUp } from "react-icons/io";
+
 function App() {
   const {
     actions: { setCount },
   } = useStore();
+
+  const [scrolled, isScrolled] = useState(null);
+
+  useEffect(() => {
+    window.addEventListener("scroll", checkHeader);
+    var checkHeader = setInterval(() => {
+      let scrollPosition = Math.round(window.scrollY);
+      if (scrollPosition > 10) {
+        isScrolled("scrolled");
+      } else {
+        isScrolled(null);
+      }
+    }, 300);
+    () => {
+      window.removeEventListener("scroll");
+      clearInterval(checkHeader);
+    };
+  }, []);
 
   async function checkCount() {
     if (!localStorage.getItem("first")) {
@@ -33,18 +53,28 @@ function App() {
     }
   }
 
+  function handleFabClick() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
   useEffect(() => {
     checkCount();
   }, []);
 
   return (
     <Container>
-      <Header />
+      <Header scrolled={scrolled} />
       <Intro />
       <Skills />
       <Info />
       <Languages />
       <Achievements />
+      <Footer />
+      {scrolled && (
+        <FabButton onClick={handleFabClick}>
+          <IoIosArrowUp />
+        </FabButton>
+      )}
     </Container>
   );
 }

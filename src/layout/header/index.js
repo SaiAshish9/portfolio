@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { Tooltip } from "antd";
 
@@ -25,7 +25,7 @@ import Dropdown from "./components/dropdown";
 
 import ReactPlayer from "react-player";
 
-const Header = () => {
+const Header = ({ scrolled }) => {
   const {
     state: { theme, count },
     actions: { setTheme },
@@ -54,24 +54,6 @@ const Header = () => {
   if (isMuted) {
     muteIconContent = <UnMute onClick={handleMuteIconClick} />;
   }
-
-  const [scrolled, isScrolled] = useState(null);
-
-  useEffect(() => {
-    window.addEventListener("scroll", checkHeader);
-    var checkHeader = setInterval(() => {
-      let scrollPosition = Math.round(window.scrollY);
-      if (scrollPosition > 10) {
-        isScrolled("scrolled");
-      } else {
-        isScrolled(null);
-      }
-    }, 300);
-    () => {
-      window.removeEventListener("scroll");
-      clearInterval(checkHeader);
-    };
-  }, []);
 
   return (
     <Container scrolled={scrolled}>

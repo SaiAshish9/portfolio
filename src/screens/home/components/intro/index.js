@@ -11,6 +11,7 @@ import {
   InfoLabel,
   InfoImg,
   InfoLink,
+  FabButton,
 } from "./styles";
 
 import LightAvatar from "assets/home/lightAvatar.png";
