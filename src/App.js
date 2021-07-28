@@ -9,7 +9,7 @@ import {
   Languages,
   Achievements,
   Experience,
-  Projects
+  Projects,
 } from "screens/home/components";
 
 import { Container, FabButton } from "./styles";

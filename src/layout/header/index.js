@@ -27,6 +27,10 @@ import ReactPlayer from "react-player";
 
 import NeverSayNeverImg from "assets/home/neverSayNever.jpg";
 
+import { useHistory } from "react-router-dom";
+
+import I18n from "common/I18n";
+
 const Header = ({ scrolled }) => {
   const {
     state: { theme, count },
@@ -38,6 +42,8 @@ const Header = ({ scrolled }) => {
     setTheme(t);
     localStorage.setItem("theme", t);
   }
+
+  const history = useHistory();
 
   const [isMuted, setIsMuted] = useState(false);
 
@@ -135,34 +141,42 @@ const Header = ({ scrolled }) => {
     {
       id: 0,
       title: "🇬🇧 English",
+      code: "en",
     },
     {
       id: 1,
-      title: "🇮🇳 Hindi",
+      title: "🇮🇳 हिंदी",
+      code: "hi",
     },
     {
       id: 2,
-      title: "🇮🇳 Telugu",
+      title: "🇮🇳 తెలుగు",
+      code: "te",
     },
     {
       id: 3,
-      title: "🇩🇪 German",
+      title: "🇩🇪 Deutsche",
+      code: "de",
     },
     {
       id: 4,
-      title: "🇷🇺 Russian",
+      title: "🇷🇺 русский",
+      code: "ru",
     },
     {
       id: 5,
-      title: "🇫🇷 French",
+      title: "🇫🇷 français",
+      code: "FR",
     },
     {
       id: 6,
-      title: "🇵🇹 Portuguese",
+      title: "🇵🇹 Português",
+      code: "pt",
     },
     {
       id: 7,
-      title: "🇨🇳 Chinese",
+      title: "🇨🇳 中國人",
+      code: "zh",
     },
   ];
 
@@ -170,10 +184,14 @@ const Header = ({ scrolled }) => {
 
   const [selectedLanguage, setSelectedLanguage] = useState(0);
 
+  console.log(history);
+
   return (
     <Container scrolled={scrolled}>
       <Tooltip placement="bottomLeft" title="D. D. V. Sai Ashish">
-        <Label>Sai Ashish</Label>
+        <Label>
+          <I18n t="Sai Ashish" />
+        </Label>
         <SmallLabel>Sai</SmallLabel>
       </Tooltip>
 

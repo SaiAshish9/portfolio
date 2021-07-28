@@ -5,11 +5,13 @@ import AppInit from "./App";
 import { ThemeProvider } from "styled-components";
 
 import "antd/dist/antd.css";
-import 'global/main.css';
+import "global/main.css";
 
 import GlobalStyles from "global/styles";
 
 import { StoreProvider, useStore } from "store";
+
+import { BrowserRouter } from "react-router-dom";
 
 // https://api.countapi.xyz/create?namespace=saiashish9&key=portfolio&value=0
 // https://api.countapi.xyz/get/saiashish9/portfolio
@@ -30,8 +32,12 @@ function App() {
 ReactDOM.render(
   <React.StrictMode>
     <StoreProvider>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </StoreProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+// https://www.npmjs.com/package/react-router-i18n

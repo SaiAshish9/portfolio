@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Dropdown } from "antd";
+
+import { useHistory } from "react-router-dom";
 
 import {
   Container,
@@ -16,7 +18,6 @@ import {
 } from "./styles";
 
 const DropdownContainer = ({
-  title,
   language,
   songs,
   selected,
@@ -25,12 +26,14 @@ const DropdownContainer = ({
   selectedLanguage,
   setSelectedLanguage,
 }) => {
+  const history = useHistory();
+
   const menu = (
     <StyledMenu>
       {songs
         ?.filter((x) => x.id === selected)
         .map((i, k) => (
-          <StyledMenuItem active key={k}>
+          <StyledMenuItem active key={i.id}>
             <MenuContent>
               <MenuAvatar src={i.img} alt="img" />
               <Content>
@@ -43,7 +46,7 @@ const DropdownContainer = ({
       {songs
         ?.filter((x) => x.id !== selected)
         .map((i, k) => (
-          <StyledMenuItem onClick={() => setSelected(i.id)} key={k}>
+          <StyledMenuItem onClick={() => setSelected(i.id)} key={i.id}>
             <MenuContent>
               <MenuAvatar src={i.img} alt="img" />
               <Content>
@@ -56,7 +59,7 @@ const DropdownContainer = ({
       {languages
         ?.filter((x) => x.id === selectedLanguage)
         .map((i, k) => (
-          <StyledMenuItem active key={k}>
+          <StyledMenuItem active key={i.id}>
             <MenuContent>
               <Content>
                 <Title>{i.title}</Title>
@@ -67,7 +70,13 @@ const DropdownContainer = ({
       {languages
         ?.filter((x) => x.id !== selectedLanguage)
         .map((i, k) => (
-          <StyledMenuItem onClick={() => setSelectedLanguage(i.id)} key={k}>
+          <StyledMenuItem
+            onClick={() => {
+              setSelectedLanguage(i.id);
+              history.push(i.code);
+            }}
+            key={i.id}
+          >
             <MenuContent>
               <Content>
                 <Title>{i.title}</Title>

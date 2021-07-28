@@ -1,4 +1,4 @@
-import { SET_THEME, SET_COUNT } from "./types";
+import { SET_THEME, SET_COUNT, SET_TEXTS, SET_CODE } from "./types";
 
 export const initialState = {
   theme: localStorage.getItem("theme") ?? "dark",
