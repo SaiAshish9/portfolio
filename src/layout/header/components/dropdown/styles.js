@@ -8,9 +8,11 @@ import {
   BREAKPOINTS,
 } from "constants/index";
 
+import { Menu } from "antd";
+
 import { IoIosArrowDown } from "react-icons/io";
 
-const { veryDarkGray, white } = Colors;
+const { veryDarkGray, white, darkGrey, lightBluishGrey } = Colors;
 
 export const Container = styled.div`
   cursor: pointer;
@@ -31,4 +33,48 @@ export const Icon = styled(IoIosArrowDown)`
     current !== Theme.dark ? veryDarkGray : white};
   font-size: 1rem;
   margin-left: 0.5rem;
+`;
+
+export const StyledMenuItem = styled(Menu.Item)`
+  background: ${({ theme: { current }, active }) =>
+    current === Theme.dark ? (active ? darkGrey : veryDarkGray) : (
+      active ? lightBluishGrey: white)};
+  padding: 1rem !important;
+  :hover {
+    background: ${({ theme: { current } }) =>
+      current === Theme.dark ? darkGrey : lightBluishGrey};
+  }
+`;
+
+export const StyledMenu = styled(Menu)`
+  background: ${({ theme: { current } }) =>
+    current === Theme.dark ? veryDarkGray : white};
+  max-height: 50vh;
+  overflow-y: scroll;
+`;
+
+export const MenuAvatar = styled.img`
+  height: 4rem;
+  width: 4rem;
+  border-radius: 10px;
+  margin-right: 1rem;
+`;
+
+export const Title = styled.p`
+  color: ${({ theme: { current } }) =>
+    current !== Theme.dark ? veryDarkGray : white};
+  font-weight: ${FontWeight.medium};
+`;
+
+export const MenuContent = styled.div`
+  ${Styles.RBC}
+  margin-right: 1.8rem;
+  justify-content: flex-start;
+`;
+
+export const Content = styled.div``;
+
+export const SubTitle = styled.p`
+  color: ${({ theme: { current } }) =>
+    current !== Theme.dark ? veryDarkGray : white};
 `;
