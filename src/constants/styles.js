@@ -26,8 +26,8 @@ const CCC = css`
 
 const CBC = css`
   display: flex;
-  justify-content: center;
-  align-items: space-between;
+  justify-content: space-between;
+  align-items: center;
   flex-direction: column;
 `;
 

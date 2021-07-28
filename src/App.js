@@ -9,6 +9,7 @@ import {
   Languages,
   Achievements,
   Experience,
+  Projects
 } from "screens/home/components";
 
 import { Container, FabButton } from "./styles";
@@ -71,6 +72,7 @@ function App() {
       <Languages />
       <Achievements />
       <Experience />
+      <Projects />
       <Footer />
       {scrolled && (
         <FabButton onClick={handleFabClick}>
