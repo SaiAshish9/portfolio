@@ -2,9 +2,15 @@ import styled from "styled-components";
 
 import { Tabs } from "antd";
 
-import { Colors, Styles, BREAKPOINTS, Theme } from "constants/index";
+import {
+  Colors,
+  Styles,
+  BREAKPOINTS,
+  Theme,
+  FontWeight,
+} from "constants/index";
 
-const { veryDarkGray, white } = Colors;
+const { veryDarkGray, white, lightBluishGrey, darkGrey } = Colors;
 
 export const Container = styled.div`
   width: 70vw;
@@ -25,10 +31,30 @@ export const Container = styled.div`
   }
 `;
 
+export const PlayPauseBtn = styled.div`
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  background: ${({ theme: { current } }) =>
+    current === Theme.dark ? darkGrey : lightBluishGrey};
+  color: ${({ theme: { current } }) =>
+    current !== Theme.dark ? darkGrey : lightBluishGrey};
+  position: absolute;
+  top: 51%;
+  opacity: 0.7;
+  font-size: 1.6rem;
+  ${Styles.RCC};
+  :hover {
+    opacity: 0.4;
+  }
+`;
+
 export const PlayerContainer = styled.div`
   width: 32vw;
   height: 21rem;
   padding-top: 3rem;
+  cursor: pointer;
+  position: relative;
   ${Styles.CBC}
   margin: auto;
   @media only screen and (max-width: ${BREAKPOINTS.xl}) {
@@ -115,4 +141,20 @@ export const StreamsTab = styled(Tabs)`
       width: 10vw;
     }
   }
+`;
+
+export const Label = styled.a`
+  text-align: center;
+  margin-top: 1.5rem;
+  text-decoration: underline;
+  font-size: 1rem;
+  padding: 0px;
+  font-weight: ${FontWeight.medium};
+  color: ${({ theme: { current } }) =>
+    current !== Theme.dark ? darkGrey : lightBluishGrey};
+`;
+
+export const Content = styled.div`
+  width: 100%;
+  ${Styles.CBC}
 `;

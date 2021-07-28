@@ -60,7 +60,7 @@ export const SContainer = styled.div`
 export const Content = styled.div`
   cursor: pointer;
   margin-bottom: 1rem;
-  ${Styles.CBB}
+  ${Styles.CBC}
 `;
 
 export const ParentContainer = styled.div`
@@ -75,7 +75,7 @@ export const Img = styled.img`
   min-height: 7rem;
 `;
 
-export const Label = styled.p`
+export const Label = styled.a`
   text-align: center;
   margin-top: 1.5rem;
   font-size: 1rem;
