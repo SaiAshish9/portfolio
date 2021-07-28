@@ -1,6 +1,14 @@
 import React from "react";
 
-import { Container, Img, Label, Content } from "./styles";
+import {
+  Container,
+  Img,
+  Label,
+  Content,
+  MContainer,
+  SContainer,
+  ParentContainer,
+} from "./styles";
 
 import AppTownImg from "assets/home/appTown.png";
 import PracifyImg from "assets/home/pracify.png";
@@ -20,14 +28,60 @@ const data = [
 
 const Experience = () => {
   return (
-    <Container>
-      {data.map((i, k) => (
-        <Content key={k}>
-          <Img src={i} alt="img" />
-          <Label>Intern</Label>
-        </Content>
-      ))}
-    </Container>
+    <>
+      <Container>
+        {data.map((i, k) => (
+          <Content key={k}>
+            <Img src={i} alt="img" />
+            <Label>Intern</Label>
+          </Content>
+        ))}
+      </Container>
+      <MContainer>
+        <ParentContainer>
+          {data.slice(0, 3).map((i, k) => (
+            <Content key={k}>
+              <Img src={i} alt="img" />
+              <Label>Intern</Label>
+            </Content>
+          ))}
+        </ParentContainer>
+        <ParentContainer>
+          {data.slice(3).map((i, k) => (
+            <Content key={k}>
+              <Img src={i} alt="img" />
+              <Label>Intern</Label>
+            </Content>
+          ))}
+        </ParentContainer>
+      </MContainer>
+      <SContainer>
+        <ParentContainer>
+          {data.slice(0, 2).map((i, k) => (
+            <Content key={k}>
+              <Img src={i} alt="img" />
+              <Label>Intern</Label>
+            </Content>
+          ))}
+        </ParentContainer>
+        <ParentContainer>
+          {data.slice(2, 4).map((i, k) => (
+            <Content key={k}>
+              <Img src={i} alt="img" />
+              <Label>Intern</Label>
+            </Content>
+          ))}
+        </ParentContainer>
+        <ParentContainer>
+          {data.slice(4).map((i, k) => (
+            <Content key={k}>
+              <Img src={i} alt="img" />
+              <Label>Intern</Label>
+            </Content>
+          ))}
+        </ParentContainer>
+      </SContainer>
+    </>
   );
 };
 

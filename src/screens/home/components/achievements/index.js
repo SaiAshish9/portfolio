@@ -37,7 +37,7 @@ const data = [
   },
   {
     title: "Class 11th",
-    subTitle: "Topper 🥇-",
+    subTitle: "Topper 🥇",
     img: CollegeImg,
   },
   {

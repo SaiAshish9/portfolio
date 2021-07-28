@@ -31,10 +31,9 @@ const CBC = css`
   flex-direction: column;
 `;
 
-const CCB = css`
+const CBB = css`
   display: flex;
-  justify-content: center;
-  align-items: space-around;
+  justify-content: space-between;
   flex-direction: column;
 `;
 
@@ -50,7 +49,7 @@ const Styles = {
   RAC,
   CCC,
   CBC,
-  CCB,
+  CBB,
   HideBorder,
 };
 
