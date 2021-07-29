@@ -15,6 +15,7 @@ import {
   ContainerLabel,
   Player,
   SmallLabel,
+  SLanguageIcon,
 } from "./styles";
 
 import { useStore } from "store";
@@ -23,11 +24,11 @@ import { Theme } from "constants/index";
 
 import Dropdown from "./components/dropdown";
 
+import Drawer from "./components/drawer";
+
 import ReactPlayer from "react-player";
 
 import NeverSayNeverImg from "assets/home/neverSayNever.jpg";
-
-import { useHistory } from "react-router-dom";
 
 import I18n from "common/I18n";
 
@@ -42,8 +43,6 @@ const Header = ({ scrolled }) => {
     setTheme(t);
     localStorage.setItem("theme", t);
   }
-
-  const history = useHistory();
 
   const [isMuted, setIsMuted] = useState(false);
 
@@ -193,6 +192,8 @@ const Header = ({ scrolled }) => {
 
   const [selectedLanguage, setSelectedLanguage] = useState(0);
 
+  const [visible, setVisible] = useState(false);
+
   return (
     <Container scrolled={scrolled}>
       <Tooltip placement="bottomLeft" title={<I18n t="Full Name" />}>
@@ -220,6 +221,12 @@ const Header = ({ scrolled }) => {
             <ContainerLabel>{count}</ContainerLabel>
           </ViewCountContainer>
         </Tooltip>
+
+        <SLanguageIcon onClick={() => setVisible(!visible)}>
+          {languages[selectedLanguage].icon}
+        </SLanguageIcon>
+        <Drawer visible={visible} setVisible={setVisible} />
+
         <Dropdown
           selectedLanguage={selectedLanguage}
           setSelectedLanguage={setSelectedLanguage}

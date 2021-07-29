@@ -148,3 +148,11 @@ export const Player = styled.div`
   position: absolute;
   z-index: -1;
 `;
+
+export const SLanguageIcon = styled.span`
+  margin-right: 0rem;
+  margin-left: 0.7rem;
+  @media only screen and (mix-width: ${BREAKPOINTS.sm}) {
+    display: none;
+  }
+`;
