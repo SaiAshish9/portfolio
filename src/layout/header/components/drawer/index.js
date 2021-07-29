@@ -13,6 +13,8 @@ import {
 
 import { useHistory } from "react-router-dom";
 
+import I18n from "common/I18n";
+
 const Modal = ({ visible, setVisible, languages, selected, setSelected }) => {
   const history = useHistory();
 
@@ -25,13 +27,16 @@ const Modal = ({ visible, setVisible, languages, selected, setSelected }) => {
     >
       <Container>
         <CloseIcon onClick={() => setVisible(false)} />
-        <Label>Select Language</Label>
+        <Label>
+          <I18n t="selectLanguage" />
+        </Label>
         <LanguageContainer>
           {languages.map((i, k) => (
             <Content
               onClick={() => {
                 setSelected(i.id);
                 history.push(i.code);
+                setVisible(false)
               }}
               key={k}
               active={selected === i.id ? 1 : 0}

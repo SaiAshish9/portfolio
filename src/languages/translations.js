@@ -626,4 +626,15 @@ export const translations = [
     fr: "IEMIS",
     ru: "ИЭМИС",
   },
+  {
+    text: "selectLanguage",
+    en: "Select Language",
+    pt: "Selecione o idioma",
+    hi: "भाषा का चयन करें",
+    te: "భాషను ఎంచుకోండి",
+    de: "Sprache auswählen",
+    zh: "選擇語言",
+    fr: "Choisir la langue",
+    ru: "Выберите язык",
+  },
 ];
