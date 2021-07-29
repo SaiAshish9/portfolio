@@ -9,15 +9,12 @@ import {
   LanguageContainer,
   Icon,
   Title,
+  Img,
 } from "./styles";
-
-import { useHistory } from "react-router-dom";
 
 import I18n from "common/I18n";
 
-const Modal = ({ visible, setVisible, languages, selected, setSelected }) => {
-  const history = useHistory();
-
+const Modal = ({ label, visible, setVisible, data, selected, onClick }) => {
   return (
     <StyledDrawer
       placement="bottom"
@@ -28,19 +25,16 @@ const Modal = ({ visible, setVisible, languages, selected, setSelected }) => {
       <Container>
         <CloseIcon onClick={() => setVisible(false)} />
         <Label>
-          <I18n t="selectLanguage" />
+          <I18n t={label} />
         </Label>
         <LanguageContainer>
-          {languages.map((i, k) => (
+          {data.map((i, k) => (
             <Content
-              onClick={() => {
-                setSelected(i.id);
-                history.push(i.code);
-                setVisible(false)
-              }}
+              onClick={() => onClick(i)}
               key={k}
               active={selected === i.id ? 1 : 0}
             >
+              {i.img && <Img src={i.img} alt="img" />}
               <Icon>{i.icon}</Icon>
               <Title>{i.title}</Title>
             </Content>

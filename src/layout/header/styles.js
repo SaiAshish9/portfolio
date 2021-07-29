@@ -107,6 +107,7 @@ export const Mute = styled(GoMute)`
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     font-size: 0.95rem;
     margin-right: 1rem;
+    display: none;
   }
 `;
 
@@ -119,6 +120,31 @@ export const UnMute = styled(GoUnmute)`
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     font-size: 0.95rem;
     margin-right: 1rem;
+    display: none;
+  }
+`;
+
+export const SMute = styled(GoMute)`
+  ${IconStyle}
+  margin-right:1.5rem;
+  color: ${({ theme: { current } }) =>
+    current !== Theme.dark ? veryDarkGray : white};
+  font-size: 0.95rem !important;
+  margin-right: 1rem;
+  @media only screen and (min-width: ${BREAKPOINTS.sm}) {
+    display: none;
+  }
+`;
+
+export const SUnMute = styled(GoUnmute)`
+  ${IconStyle}
+  margin-right:1.5rem;
+  font-size: 0.95rem !important;
+  color: ${({ theme: { current } }) =>
+    current !== Theme.dark ? veryDarkGray : white};
+  margin-right: 1rem;
+  @media only screen and (min-width: ${BREAKPOINTS.sm}) {
+    display: none;
   }
 `;
 
@@ -152,7 +178,7 @@ export const Player = styled.div`
 export const SLanguageIcon = styled.span`
   margin-right: 0rem;
   margin-left: 0.7rem;
-  @media only screen and (mix-width: ${BREAKPOINTS.sm}) {
+  @media only screen and (min-width: ${BREAKPOINTS.sm}) {
     display: none;
   }
 `;

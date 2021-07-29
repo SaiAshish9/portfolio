@@ -637,4 +637,15 @@ export const translations = [
     fr: "Choisir la langue",
     ru: "Выберите язык",
   },
+  {
+    text: "selectSong",
+    en: "Select Song",
+    pt: "Selecione a música",
+    hi: "गीत चुनें",
+    te: "పాటను ఎంచుకోండి",
+    de: "Lied auswählen",
+    zh: "選擇歌曲",
+    fr: "Sélectionnez la chanson",
+    ru: "Выбрать композицию",
+  },
 ];

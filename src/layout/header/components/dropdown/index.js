@@ -79,6 +79,7 @@ const DropdownContainer = ({
             onClick={() => {
               setSelectedLanguage(i.id);
               history.push(i.code);
+              localStorage.setItem("code", i.id);
             }}
             key={i.id}
           >

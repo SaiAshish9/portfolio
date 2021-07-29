@@ -59,9 +59,16 @@ export const Icon = styled.p`
   font-size: 2.1rem;
 `;
 
+export const Img = styled.img`
+  width: 3rem;
+  height: 3rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+`;
+
 export const Title = styled.p`
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: ${FontWeight.medium};
 `;

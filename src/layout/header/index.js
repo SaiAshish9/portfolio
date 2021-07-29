@@ -11,6 +11,8 @@ import {
   Eye,
   Mute,
   UnMute,
+  SMute,
+  SUnMute,
   ViewCountContainer,
   ContainerLabel,
   Player,
@@ -32,6 +34,8 @@ import NeverSayNeverImg from "assets/home/neverSayNever.jpg";
 
 import I18n from "common/I18n";
 
+import { useHistory } from "react-router-dom";
+
 const Header = ({ scrolled }) => {
   const {
     state: { theme, count },
@@ -43,6 +47,17 @@ const Header = ({ scrolled }) => {
     setTheme(t);
     localStorage.setItem("theme", t);
   }
+  const history = useHistory();
+
+  const [selected, setSelected] = useState(0);
+
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    localStorage.getItem("code") ? parseInt(localStorage.getItem("code")) : 0
+  );
+
+  const [visible, setVisible] = useState(false);
+
+  const [songsVisible, setSongsVisible] = useState(false);
 
   const [isMuted, setIsMuted] = useState(false);
 
@@ -56,10 +71,21 @@ const Header = ({ scrolled }) => {
     setIsMuted((muted) => setIsMuted(!muted));
   }
 
+  function handleSMuteIconClick() {
+    setIsMuted((muted) => setIsMuted(!muted));
+    setSongsVisible(true);
+  }
+
   let muteIconContent = <Mute onClick={handleMuteIconClick} />;
 
   if (isMuted) {
     muteIconContent = <UnMute onClick={handleMuteIconClick} />;
+  }
+
+  let sMuteIconContent = <SMute onClick={handleSMuteIconClick} />;
+
+  if (isMuted) {
+    sMuteIconContent = <SUnMute onClick={handleSMuteIconClick} />;
   }
 
   const songs = [
@@ -188,12 +214,6 @@ const Header = ({ scrolled }) => {
     },
   ];
 
-  const [selected, setSelected] = useState(0);
-
-  const [selectedLanguage, setSelectedLanguage] = useState(0);
-
-  const [visible, setVisible] = useState(false);
-
   return (
     <Container scrolled={scrolled}>
       <Tooltip placement="bottomLeft" title={<I18n t="Full Name" />}>
@@ -207,6 +227,7 @@ const Header = ({ scrolled }) => {
 
       <Row>
         {muteIconContent}
+        {sMuteIconContent}
         {isMuted && (
           <Dropdown
             songs={songs}
@@ -225,13 +246,36 @@ const Header = ({ scrolled }) => {
         <SLanguageIcon onClick={() => setVisible(!visible)}>
           {languages[selectedLanguage].icon}
         </SLanguageIcon>
-        <Drawer
-          languages={languages}
-          selected={selectedLanguage}
-          setSelected={setSelectedLanguage}
-          visible={visible}
-          setVisible={setVisible}
-        />
+        {visible && (
+          <Drawer
+            data={languages}
+            selected={selectedLanguage}
+            visible={visible}
+            setVisible={setVisible}
+            label="selectLanguage"
+            onClick={(i) => {
+              setSelectedLanguage(i.id);
+              history.push(i.code);
+              setVisible(false);
+              localStorage.setItem("code", i.id);
+            }}
+          />
+        )}
+
+        {songsVisible && (
+          <Drawer
+            data={songs}
+            selected={selected}
+            visible={songsVisible}
+            setVisible={setSongsVisible}
+            label="selectSong"
+            onClick={(i) => {
+              setSelected(i.id);
+              setSongsVisible(false);
+              setIsMuted(true);
+            }}
+          />
+        )}
 
         <Dropdown
           selectedLanguage={selectedLanguage}
