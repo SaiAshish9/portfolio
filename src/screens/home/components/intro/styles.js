@@ -21,7 +21,7 @@ export const Container = styled.div`
   }
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     ${Styles.CBC}
-    padding: 5.5rem 0px 1rem !important;
+    padding: 3.6rem 0px 1rem !important;
   }
 `;
 
