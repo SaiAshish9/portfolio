@@ -50,7 +50,7 @@ const Intro = () => {
 
   const DATA = [
     {
-      label: "+91 8920125544",
+      label: <I18n t="tel" />,
       icon: <IoCall size={ICON_SIZE} color={ICON_COLOR} />,
       text: true,
     },
