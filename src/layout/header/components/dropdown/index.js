@@ -16,6 +16,7 @@ import {
   Content,
   SubTitle,
   LangugageIcon,
+  LanguageContent
 } from "./styles";
 
 const DropdownContainer = ({
@@ -101,7 +102,11 @@ const DropdownContainer = ({
           <LangugageIcon>
             {language ? languages[selectedLanguage].icon : null}
           </LangugageIcon>
-          {language ? languages[selectedLanguage].title : songs[selected].title}
+          <LanguageContent>
+            {language
+              ? languages[selectedLanguage].title
+              : songs[selected].title}
+          </LanguageContent>
         </Label>
         <Icon />
       </Container>

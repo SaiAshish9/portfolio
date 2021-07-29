@@ -17,9 +17,6 @@ const { veryDarkGray, white, darkGrey, lightBluishGrey } = Colors;
 export const Container = styled.div`
   cursor: pointer;
   ${Styles.RBC}
-  @media only screen and (max-width:${BREAKPOINTS.sm}) {
-    display: none;
-  }
 `;
 
 export const Label = styled.p`
@@ -86,4 +83,14 @@ export const SubTitle = styled.p`
 
 export const LangugageIcon = styled.span`
   margin-right: 0.5rem;
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    margin-right: 0rem;
+    margin-left: 0.7rem;
+  }
+`;
+
+export const LanguageContent = styled.span`
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    display: none;
+  }
 `;
