@@ -22,36 +22,38 @@ import NightCodingSetupImg from "assets/home/nightCodingSetup.jpeg";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
+import I18n from "common/I18n";
+
 const data = [
   {
-    title: "Cover Letter",
+    title: <I18n t="coverLetter" />,
     subTitle: "😊",
     img: CoverLetterImg,
     download: true,
   },
   {
-    title: "Resume",
+    title: <I18n t="resume" />,
     subTitle: "❤️",
     img: ResumeImg,
     download: true,
   },
   {
-    title: "BTech Performance",
-    subTitle: "CGPA: 9.401",
+    title: <I18n t="bTech" />,
+    subTitle: <I18n t="cgpa" />,
     img: AcademicsImg,
   },
   {
-    title: "Github Profile",
-    subTitle: "350+ repo's",
+    title: <I18n t="github" />,
+    subTitle: <I18n t="repos" />,
     img: GithubImg,
   },
   {
-    title: "LinkedIn Profile",
+    title: <I18n t="linkedIn" />,
     subTitle: "😉",
     img: LinkedInImg,
   },
   {
-    title: "Medium Profile",
+    title: <I18n t="medium" />,
     subTitle: "🎓 ",
     img: MediumImg,
   },
@@ -61,12 +63,12 @@ const data = [
   //   img: GithubImg,
   // },
   {
-    title: "Youtube Channel",
+    title: <I18n t="youtube" />,
     subTitle: "🔥",
     img: YoutubeImg,
   },
   {
-    title: "Night Coding Setup",
+    title: <I18n t="nightCodingSetup" />,
     subTitle: "😎",
     img: NightCodingSetupImg,
   },

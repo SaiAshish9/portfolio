@@ -11,7 +11,6 @@ import {
   InfoLabel,
   InfoImg,
   InfoLink,
-  FabButton,
 } from "./styles";
 
 import LightAvatar from "assets/home/lightAvatar.png";
@@ -32,6 +31,8 @@ import {
 } from "react-icons/ai";
 
 import { SiGmail } from "react-icons/si";
+
+import I18n from "common/I18n";
 
 const Intro = () => {
   const {
@@ -66,7 +67,7 @@ const Intro = () => {
       icon: <SiGmail size={ICON_SIZE - 1} color={ICON_COLOR} />,
     },
     {
-      label: "New Delhi, India",
+      label: <I18n t="location" />,
       icon: <FiMapPin size={ICON_SIZE} color={ICON_COLOR} />,
       text: true,
     },
@@ -93,10 +94,10 @@ const Intro = () => {
       <ImgContainer>
         <AvatarImg src={theme === Theme.dark ? DarkAvatar : LightAvatar} />
         <Label>
-          Full stack web, native / cross-platform <br />
-          mobile app developer
+          <I18n t="introDesc1" /> <br />
+          <I18n t="introDesc2" />
         </Label>
-        <SubTitle>Final year computer science student (20 yrs)</SubTitle>
+        <SubTitle><I18n t="introDesc3" /></SubTitle>
       </ImgContainer>
       <InfoContainer>
         {DATA.map((i, k) => (

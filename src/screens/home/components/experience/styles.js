@@ -24,6 +24,7 @@ const ContainerStyles = css`
   @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
     width: 90vw;
     padding: 3rem;
+    margin-top: 2rem;
   }
 `;
 
