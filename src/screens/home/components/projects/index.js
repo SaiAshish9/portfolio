@@ -27,6 +27,8 @@ import { BsPlayFill } from "react-icons/bs";
 
 import ReactPlayer from "react-player";
 
+import I18n from "common/I18n";
+
 const { TabPane } = Tabs;
 
 const { veryDarkGray, white } = Colors;
@@ -45,26 +47,26 @@ const Projects = () => {
   const links = [
     {
       key: "instagram",
-      label: "Instagram Clone",
+      label: <I18n t="instaClone" />,
       tab: <AiFillInstagram size={ICON_SIZE + 5} color={ICON_COLOR} />,
       // url: "https://www.youtube.com/watch?v=gO_1CeJ2vT8",
       url: "https://res.cloudinary.com/saiashish/video/upload/v1627472940/Instagram_Clone_Using_React_Native_Postgres_Docker_And_Golang_bqznpc.mp4",
     },
     {
       key: "amazon",
-      label: "Amazon Clone",
+      label: <I18n t="amazonClone" />,
       tab: <AiOutlineAmazon size={ICON_SIZE + 5} color={ICON_COLOR} />,
       url: "https://www.youtube.com/watch?v=MKw83UXMtCQ",
     },
     {
       key: "linkedIn",
-      label: "LinkedIn Clone",
+      label: <I18n t="linkedInClone" />,
       tab: <AiFillLinkedin size={ICON_SIZE + 5} color={ICON_COLOR} />,
       url: "https://www.youtube.com/watch?v=HzqnOGj3qmc",
     },
     {
       key: "feelAtHome",
-      label: "FeelAtHome Clone",
+      label: <I18n t="feelAtHome" />,
       tab: <FaUserShield size={ICON_SIZE + 5} color={ICON_COLOR} />,
       url: "https://www.youtube.com/watch?v=sU1mwLUPT34",
     },
