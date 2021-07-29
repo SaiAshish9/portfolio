@@ -34,4 +34,5 @@ export const Label = styled.p`
     current !== Theme.dark ? veryDarkGray : white};
   font-size: 1rem;
   font-weight: ${FontWeight.medium};
+  margin: 1rem 0;
 `;

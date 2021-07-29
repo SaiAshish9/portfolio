@@ -225,7 +225,13 @@ const Header = ({ scrolled }) => {
         <SLanguageIcon onClick={() => setVisible(!visible)}>
           {languages[selectedLanguage].icon}
         </SLanguageIcon>
-        <Drawer visible={visible} setVisible={setVisible} />
+        <Drawer
+          languages={languages}
+          selected={selectedLanguage}
+          setSelected={setSelectedLanguage}
+          visible={visible}
+          setVisible={setVisible}
+        />
 
         <Dropdown
           selectedLanguage={selectedLanguage}
