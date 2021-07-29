@@ -1,15 +1,20 @@
 import React from "react";
 
-import { Drawer } from "antd";
+import { StyledDrawer, Container, CloseIcon, Label } from "./styles";
 
-const Modal = ({ visible }) => {
+const Modal = ({ visible, setVisible }) => {
   return (
-    <Drawer
+    <StyledDrawer
       placement="bottom"
       closable={false}
       // onClose={onClose}
       visible={visible}
-    ></Drawer>
+    >
+      <Container>
+        <CloseIcon onClick={() => setVisible(false)} />
+        <Label>Select Language</Label>
+      </Container>
+    </StyledDrawer>
   );
 };
 
