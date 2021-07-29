@@ -17,30 +17,32 @@ import Nex2MeImg from "assets/home/nex2me.png";
 import UVRobotsImg from "assets/home/uvrobots.png";
 import VelvetImg from "assets/home/velvet.svg";
 
+import I18n from "common/I18n";
+
 const data = [
   {
     img: AppTownImg,
-    label: "App Town Technologies",
+    label: <I18n t="appTown" />,
   },
   {
     img: PracifyImg,
-    label: "Pracify",
+    label: <I18n t="pracify" />,
   },
   {
     img: InuvestImg,
-    label: "Inuvest Technologies",
+    label: <I18n t="inuvest" />,
   },
   {
     img: VelvetImg,
-    label: "Velvet Video",
+    label: <I18n t="velvet" />,
   },
   {
     img: Nex2MeImg,
-    label: "Nex2Me",
+    label: <I18n t="nex2Me" />,
   },
   {
     img: UVRobotsImg,
-    label: "UV Robots",
+    label: <I18n t="uvrobots" />,
   },
 ];
 

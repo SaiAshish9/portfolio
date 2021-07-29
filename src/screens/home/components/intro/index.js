@@ -13,8 +13,8 @@ import {
   InfoLink,
 } from "./styles";
 
-import LightAvatar from "assets/home/lightAvatar.png";
-import DarkAvatar from "assets/home/darkAvatar.png";
+import LightAvatar from "assets/home/avatar.png";
+import DarkAvatar from "assets/home/avatar.png";
 
 import { useStore } from "store";
 
@@ -47,6 +47,8 @@ const Intro = () => {
 
   //  phone no. , linked in , github , email , location , medium ,
   // youtube , instagram , leetcode
+
+  // https://www.remove.bg/upload
 
   const DATA = [
     {

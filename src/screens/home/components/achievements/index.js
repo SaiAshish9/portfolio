@@ -19,30 +19,32 @@ import IEMISImg from "assets/home/iemis.jpeg";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
+import I18n from "common/I18n";
+
 const data = [
   {
-    title: "Girlscript Hackathon'19",
-    subTitle: "Winner 🏆",
+    title: <I18n t="girlscript" />,
+    subTitle: <I18n t="winner" />,
     img: DoritosImg,
   },
   {
-    title: "Avensis, HackMSIT'19",
-    subTitle: "Winner 🏆",
+    title: <I18n t="avensis" />,
+    subTitle: <I18n t="winner" />,
     img: MSITImg,
   },
   {
-    title: "HackVSIT",
-    subTitle: "Award Winner 🏆",
+    title: <I18n t="hackVSIT" />,
+    subTitle: <I18n t="awardWinner" />,
     img: VSITImg,
   },
   {
-    title: "Class 11th",
-    subTitle: "Topper 🥇",
+    title: <I18n t="class11" />,
+    subTitle: <I18n t="topper" />,
     img: CollegeImg,
   },
   {
-    title: "IEMIS",
-    subTitle: "Publication 😎",
+    title: <I18n t="iemis" />,
+    subTitle: <I18n t="publication" />,
     img: IEMISImg,
   },
 ];
