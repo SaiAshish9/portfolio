@@ -37,8 +37,13 @@ export const Icon = styled(IoIosArrowDown)`
 
 export const StyledMenuItem = styled(Menu.Item)`
   background: ${({ theme: { current }, active }) =>
-    current === Theme.dark ? (active ? darkGrey : veryDarkGray) : (
-      active ? lightBluishGrey: white)};
+    current === Theme.dark
+      ? active
+        ? darkGrey
+        : veryDarkGray
+      : active
+      ? lightBluishGrey
+      : white};
   padding: 1rem !important;
   :hover {
     background: ${({ theme: { current } }) =>
@@ -77,4 +82,8 @@ export const Content = styled.div``;
 export const SubTitle = styled.p`
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
+`;
+
+export const LangugageIcon = styled.span`
+  margin-right: 0.5rem;
 `;

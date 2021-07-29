@@ -12,7 +12,7 @@ const translation = {
   te: {},
   ru: {},
   zh: {},
-  FR: {},
+  fr: {},
 };
 translations.forEach((e) => {
   translation["en"][`${e.text}`] = e.en;
@@ -21,7 +21,7 @@ translations.forEach((e) => {
   translation["te"][`${e.text}`] = e.te;
   translation["de"][`${e.text}`] = e.de;
   translation["zh"][`${e.text}`] = e.zh;
-  translation["FR"][`${e.text}`] = e.FR;
+  translation["fr"][`${e.text}`] = e.fr;
   translation["ru"][`${e.text}`] = e.ru;
 });
 

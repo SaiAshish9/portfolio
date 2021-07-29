@@ -66,7 +66,7 @@ const Header = ({ scrolled }) => {
   const songs = [
     {
       img: NeverSayNeverImg,
-      title: "Never Say Never",
+      title: <I18n t="neverSayNever" />,
       subTitle: "3:50",
       id: 0,
       songUrl:
@@ -74,7 +74,7 @@ const Header = ({ scrolled }) => {
     },
     {
       img: "https://a10.gaanacdn.com/images/albums/57/64957/crop_480x480_64957.jpg",
-      title: "Deva Shree Ganesha",
+      title: <I18n t="devaShreeGanesha" />,
       subTitle: "5:57",
       id: 1,
       songUrl:
@@ -82,7 +82,7 @@ const Header = ({ scrolled }) => {
     },
     {
       img: "http://a10.gaanacdn.com/images/albums/50/1893750/crop_480x480_1893750.jpg",
-      title: "Despacito",
+      title: <I18n t="Despacito" />,
       subTitle: "3:30",
       id: 2,
       songUrl:
@@ -90,7 +90,7 @@ const Header = ({ scrolled }) => {
     },
     {
       img: "https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/01/shirdi-temple-1579414291.jpg",
-      title: "Shirdi Sai",
+      title: <I18n t="Shirdi Sai" />,
       subTitle: "5:58",
       id: 3,
       songUrl:
@@ -98,7 +98,7 @@ const Header = ({ scrolled }) => {
     },
     {
       img: "https://a10.gaanacdn.com/gn_img/albums/qa4WEkqKP1/a4WE0QJg3P/size_xxl_1554294067.webp",
-      title: "Achyutam Keshavam",
+      title: <I18n t="Achyutam Keshavam" />,
       subTitle: "10:20",
       id: 4,
       songUrl:
@@ -106,7 +106,7 @@ const Header = ({ scrolled }) => {
     },
     {
       img: "http://a10.gaanacdn.com/images/albums/55/3354355/crop_480x480_3354355.jpg",
-      title: "Satisfya",
+      title: <I18n t="Satisfya" />,
       subTitle: "3:00",
       id: 5,
       songUrl:
@@ -114,7 +114,7 @@ const Header = ({ scrolled }) => {
     },
     {
       img: "https://a10.gaanacdn.com/images/albums/6/58306/crop_480x480_58306.jpg",
-      title: "Why This Kolavari Di ?",
+      title: <I18n t="Why This Kolavari Di ?" />,
       subTitle: "4:10",
       id: 6,
       songUrl:
@@ -122,14 +122,15 @@ const Header = ({ scrolled }) => {
     },
     {
       img: "http://a10.gaanacdn.com/images/albums/27/2207027/crop_480x480_2207027.jpg",
-      title: "Baby",
+      title: <I18n t="Baby" />,
       subTitle: "3:50",
       id: 7,
-      songUrl: "3:38",
+      songUrl:
+        "https://res.cloudinary.com/saiashish/video/upload/v1627543596/Justin_Bieber_-_Baby_Official_Music_Video_ft._Ludacris_128_kbps_qx2cls.mp3",
     },
     {
       img: "https://a10.gaanacdn.com/gn_img/albums/XzVWRyL3dq/zVWRam8L3d/size_l.jpg",
-      title: "Enna Sona",
+      title: <I18n t="Enna Sona" />,
       subTitle: "3:52",
       id: 8,
       songUrl:
@@ -140,42 +141,50 @@ const Header = ({ scrolled }) => {
   const languages = [
     {
       id: 0,
-      title: "🇬🇧 English",
+      title: <I18n t="English" />,
       code: "en",
+      icon: "🇬🇧",
     },
     {
       id: 1,
-      title: "🇮🇳 हिंदी",
+      title: <I18n t="Hindi" />,
+      icon: "🇮🇳",
       code: "hi",
     },
     {
       id: 2,
-      title: "🇮🇳 తెలుగు",
+      title: <I18n t="Telugu" />,
+      icon: "🇮🇳",
       code: "te",
     },
     {
       id: 3,
-      title: "🇩🇪 Deutsche",
+      title: <I18n t="German" />,
+      icon: "🇩🇪",
       code: "de",
     },
     {
       id: 4,
-      title: "🇷🇺 русский",
+      title: <I18n t="Russian" />,
+      icon: "🇷🇺",
       code: "ru",
     },
     {
       id: 5,
-      title: "🇫🇷 français",
-      code: "FR",
+      title: <I18n t="French" />,
+      icon: "🇫🇷",
+      code: "fr",
     },
     {
       id: 6,
-      title: "🇵🇹 Português",
+      title: <I18n t="Portuguese" />,
+      icon: "🇵🇹",
       code: "pt",
     },
     {
       id: 7,
-      title: "🇨🇳 中國人",
+      title: <I18n t="Chinese" />,
+      icon: "🇨🇳",
       code: "zh",
     },
   ];
@@ -184,15 +193,15 @@ const Header = ({ scrolled }) => {
 
   const [selectedLanguage, setSelectedLanguage] = useState(0);
 
-  console.log(history);
-
   return (
     <Container scrolled={scrolled}>
-      <Tooltip placement="bottomLeft" title="D. D. V. Sai Ashish">
+      <Tooltip placement="bottomLeft" title={<I18n t="Full Name" />}>
         <Label>
-          <I18n t="Sai Ashish" />
+          <I18n t="Name" />
         </Label>
-        <SmallLabel>Sai</SmallLabel>
+        <SmallLabel>
+          <I18n t="Short Name" />
+        </SmallLabel>
       </Tooltip>
 
       <Row>
@@ -205,7 +214,7 @@ const Header = ({ scrolled }) => {
           />
         )}
         {iconContent}
-        <Tooltip placement="bottomRight" title="Viewer's Count">
+        <Tooltip placement="bottomRight" title={<I18n t="viewersCount" />}>
           <ViewCountContainer>
             <Eye />
             <ContainerLabel>{count}</ContainerLabel>

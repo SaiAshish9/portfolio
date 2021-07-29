@@ -15,6 +15,7 @@ import {
   MenuContent,
   Content,
   SubTitle,
+  LangugageIcon,
 } from "./styles";
 
 const DropdownContainer = ({
@@ -33,7 +34,7 @@ const DropdownContainer = ({
       {songs
         ?.filter((x) => x.id === selected)
         .map((i, k) => (
-          <StyledMenuItem active key={i.id}>
+          <StyledMenuItem active={1} key={i.id}>
             <MenuContent>
               <MenuAvatar src={i.img} alt="img" />
               <Content>
@@ -59,10 +60,13 @@ const DropdownContainer = ({
       {languages
         ?.filter((x) => x.id === selectedLanguage)
         .map((i, k) => (
-          <StyledMenuItem active key={i.id}>
+          <StyledMenuItem active={1} key={i.id}>
             <MenuContent>
               <Content>
-                <Title>{i.title}</Title>
+                <Title>
+                  <LangugageIcon>{i.icon}</LangugageIcon>
+                  {i.title}
+                </Title>
               </Content>
             </MenuContent>
           </StyledMenuItem>
@@ -79,7 +83,10 @@ const DropdownContainer = ({
           >
             <MenuContent>
               <Content>
-                <Title>{i.title}</Title>
+                <Title>
+                  <LangugageIcon>{i.icon}</LangugageIcon>
+                  {i.title}
+                </Title>
               </Content>
             </MenuContent>
           </StyledMenuItem>
@@ -91,6 +98,9 @@ const DropdownContainer = ({
     <Dropdown overlay={menu} trigger={["click"]} placement="bottomRight" arrow>
       <Container>
         <Label>
+          <LangugageIcon>
+            {language ? languages[selectedLanguage].icon : null}
+          </LangugageIcon>
           {language ? languages[selectedLanguage].title : songs[selected].title}
         </Label>
         <Icon />
