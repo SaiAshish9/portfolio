@@ -119,3 +119,12 @@ export const Row = styled.div`
 export const StyledSlider = styled(Slider)`
   width: 100%;
 `;
+
+export const SubTitle = styled.a`
+  color: ${({ theme: { current } }) =>
+    current !== Theme.dark ? veryDarkGray : white};
+  text-align: start;
+  font-weight: ${FontWeight.semiBold};
+  margin: 1rem 0 !important;
+  text-decoration: underline;
+`;

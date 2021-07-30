@@ -8,6 +8,7 @@ import {
   Download,
   Row,
   StyledSlider,
+  SubTitle,
 } from "./styles";
 
 const settings = {
@@ -16,13 +17,12 @@ const settings = {
   autoplay: true,
   slidesToShow: 1,
   slidesToScroll: 1,
-  speed: 2700,
-  cssEase: "linear",
+  speed: 500,
   nextArrow: <></>,
   prevArrow: <></>,
 };
 
-const Overlay = ({ data, visible, setVisible }) => {
+const Overlay = ({ data, visible, setVisible, label, site }) => {
   return (
     <StyledModal visible={visible} footer={null} closable={false}>
       <CloseIcon
@@ -33,6 +33,7 @@ const Overlay = ({ data, visible, setVisible }) => {
       <Title>
         {data?.title} {data?.subTitle}{" "}
       </Title>
+      <Title>{label}</Title>
       {data.images ? (
         <StyledSlider {...settings}>
           {data.images.map((i, k) => (
@@ -47,6 +48,11 @@ const Overlay = ({ data, visible, setVisible }) => {
           <Download />
           <Title>Download</Title>
         </Row>
+      )}
+      {site && (
+        <SubTitle href={data.link} target="_blank" rel="noopener noreferrer">
+          Visit Site
+        </SubTitle>
       )}
     </StyledModal>
   );
