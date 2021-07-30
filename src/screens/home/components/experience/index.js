@@ -91,7 +91,10 @@ const data = [
     exp: 5,
     id: 2,
     link: "https://inuvest.tech",
-    images: [],
+    images: [
+      "https://res.cloudinary.com/saiashish/image/upload/v1627679809/inuvest2_yqyqv0.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627679808/inuvest1_kch4vg.png",
+    ],
   },
   {
     img: VelvetImg,
