@@ -11,7 +11,7 @@ import {
   Row,
 } from "./styles";
 
-const Card = ({ data }) => {
+const Card = ({ data, onClick }) => {
   return (
     <Container>
       <CardImg src={data.img} alt="img" />
@@ -20,7 +20,7 @@ const Card = ({ data }) => {
         <Row>
           <SubTitle>{data.subTitle}</SubTitle>
           <Row>
-            <Eye />
+            <Eye onClick={onClick} />
             {data.download && <Download />}
           </Row>
         </Row>

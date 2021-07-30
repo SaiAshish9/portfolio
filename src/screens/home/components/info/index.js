@@ -24,6 +24,10 @@ import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
 import I18n from "common/I18n";
 
+import Overlay from "common/modal";
+
+import { useStore } from "store";
+
 const data = [
   {
     title: <I18n t="coverLetter" />,
@@ -118,23 +122,33 @@ const sSettings = {
 };
 
 const Info = () => {
+  const {
+    state: { visible },
+    actions: { setVisible },
+  } = useStore();
+
+  function onClick() {
+    setVisible(true);
+  }
+
   return (
     <Container>
       <StyledSlider {...settings}>
         {data.map((i, k) => (
-          <Card key={k} data={i} />
+          <Card key={k} data={i} onClick={onClick} />
         ))}
       </StyledSlider>
       <MediumStyledSlider {...mSettings}>
         {data.map((i, k) => (
-          <Card key={k} data={i} />
+          <Card key={k} data={i} onClick={onClick} />
         ))}
       </MediumStyledSlider>
       <SmallStyledSlider {...sSettings}>
         {data.map((i, k) => (
-          <Card key={k} data={i} />
+          <Card key={k} data={i} onClick={onClick} />
         ))}
       </SmallStyledSlider>
+      {visible && <Overlay />}
     </Container>
   );
 };

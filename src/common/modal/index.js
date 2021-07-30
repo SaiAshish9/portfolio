@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { StyledModal, CloseIcon } from "./styles";
 
+import { useStore } from "store";
+
 const Overlay = () => {
-  const [visible, setVisible] = useState(true);
+  const {
+    state: { visible },
+    actions: { setVisible },
+  } = useStore();
 
   return (
     <StyledModal visible={visible} footer={null} closable={false}>

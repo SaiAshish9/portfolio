@@ -20,8 +20,6 @@ import axios from "axios";
 
 import { IoIosArrowUp } from "react-icons/io";
 
-import Overlay from "common/modal";
-
 function App() {
   const {
     actions: { setCount },
@@ -81,7 +79,6 @@ function App() {
           <IoIosArrowUp />
         </FabButton>
       )}
-      <Overlay />
     </Container>
   );
 }

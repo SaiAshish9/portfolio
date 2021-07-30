@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { Modal } from "antd";
 
-import { Colors, Theme, Styles } from "constants/index";
+import { Colors, Theme, Styles, BREAKPOINTS } from "constants/index";
 
 import { MdClose } from "react-icons/md";
 
@@ -28,6 +28,28 @@ export const StyledModal = styled(Modal)`
   }
   width: unset !important;
   top: 5vh !important;
+
+  @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
+    .ant-modal-content {
+      width: 70vw;
+    }
+  }
+
+  @media only screen and (max-width: ${BREAKPOINTS.xl}) {
+    .ant-modal-content {
+      width: 80vw !important;
+    }
+  }
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    .ant-modal-content {
+      width: 90vw !important;
+    }
+    .ant-modal-body {
+      height: 90vh;
+      width: 100%;
+      ${Styles.CBC}
+    }
+  }
 `;
 
 export const CloseIcon = styled(MdClose)`

@@ -1,8 +1,9 @@
-import { SET_THEME, SET_COUNT, SET_TEXTS, SET_CODE } from "./types";
+import { SET_THEME, SET_COUNT, SET_VISIBLE } from "./types";
 
 export const initialState = {
   theme: localStorage.getItem("theme") ?? "dark",
   count: 1,
+  visible: false,
 };
 
 export default function reducer(state, action) {
@@ -17,6 +18,12 @@ export default function reducer(state, action) {
       return {
         ...state,
         count: action.payload,
+      };
+    }
+    case SET_VISIBLE: {
+      return {
+        ...state,
+        visible: action.payload,
       };
     }
     default:
