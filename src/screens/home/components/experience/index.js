@@ -8,6 +8,7 @@ import {
   MContainer,
   SContainer,
   ParentContainer,
+  Title,
 } from "./styles";
 
 import AppTownImg from "assets/home/appTown.png";
@@ -23,26 +24,38 @@ const data = [
   {
     img: AppTownImg,
     label: <I18n t="appTown" />,
+    position: <I18n t="reactIntern" />,
+    exp: 8,
   },
   {
     img: PracifyImg,
     label: <I18n t="pracify" />,
+    position: <I18n t="mernIntern" />,
+    exp: 3,
   },
   {
     img: InuvestImg,
     label: <I18n t="inuvest" />,
+    position: <I18n t="fullStackPyIntern" />,
+    exp: 5,
   },
   {
     img: VelvetImg,
     label: <I18n t="velvet" />,
+    position: <I18n t="applicationDevIntern" />,
+    exp: 5,
   },
   {
     img: Nex2MeImg,
     label: <I18n t="nex2Me" />,
+    position: <I18n t="javaIntern" />,
+    exp: 1,
   },
   {
     img: UVRobotsImg,
     label: <I18n t="uvrobots" />,
+    position: <I18n t="applicationDevIntern" />,
+    exp: 5,
   },
 ];
 
@@ -54,6 +67,8 @@ const Experience = () => {
           <Content key={k}>
             <Img src={i.img} alt="img" />
             <Label>{i.label}</Label>
+            <Title>{i.position}</Title>
+            <Title>{i.exp} {i.exp > 1 ? <I18n t="month's" /> : <I18n t="month" />}</Title>
           </Content>
         ))}
       </Container>
@@ -63,6 +78,8 @@ const Experience = () => {
             <Content key={k}>
               <Img src={i.img} alt="img" />
               <Label>{i.label}</Label>
+              <Title>{i.position}</Title>
+              <Title>{i.exp} {i.exp > 1 ? <I18n t="month's" /> : <I18n t="month" />}</Title>
             </Content>
           ))}
         </ParentContainer>
@@ -71,6 +88,8 @@ const Experience = () => {
             <Content key={k}>
               <Img src={i.img} alt="img" />
               <Label>{i.label}</Label>
+              <Title>{i.position}</Title>
+              <Title>{i.exp} {i.exp > 1 ? <I18n t="month's" /> : <I18n t="month" />}</Title>
             </Content>
           ))}
         </ParentContainer>
@@ -81,6 +100,8 @@ const Experience = () => {
             <Content key={k}>
               <Img src={i.img} alt="img" />
               <Label>{i.label}</Label>
+              <Title>{i.position}</Title>
+              <Title>{i.exp} {i.exp > 1 ? <I18n t="month's" /> : <I18n t="month" />}</Title>
             </Content>
           ))}
         </ParentContainer>
@@ -89,6 +110,8 @@ const Experience = () => {
             <Content key={k}>
               <Img src={i.img} alt="img" />
               <Label>{i.label}</Label>
+              <Title>{i.position}</Title>
+              <Title>{i.exp} {i.exp > 1 ? <I18n t="month's" /> : <I18n t="month" />}</Title>
             </Content>
           ))}
         </ParentContainer>
@@ -97,6 +120,8 @@ const Experience = () => {
             <Content key={k}>
               <Img src={i.img} alt="img" />
               <Label>{i.label}</Label>
+              <Title>{i.position}</Title>
+              <Title>{i.exp} {i.exp > 1 ? <I18n t="month's" /> : <I18n t="month" />}</Title>
             </Content>
           ))}
         </ParentContainer>

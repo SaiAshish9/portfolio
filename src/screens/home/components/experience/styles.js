@@ -12,6 +12,7 @@ const { darkGrey, lightBluishGrey } = Colors;
 
 const ContainerStyles = css`
   width: 70vw;
+  cursor: pointer;
   margin: auto;
   border-radius: 2.3rem;
   margin-bottom: 2rem;
@@ -20,7 +21,7 @@ const ContainerStyles = css`
     current === Theme.dark ? darkGrey : lightBluishGrey};
   box-shadow: 0 2px 1px -1px rgb(0 0 0 / 32%), 0 1px 1px 0 rgb(0 0 0 / 34%),
     0 1px 3px 0 rgb(0 0 0 / 32%);
-  padding: 5rem;
+  padding: 5rem 3.6rem;
   @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
     width: 90vw;
     padding: 3rem;
@@ -74,15 +75,34 @@ export const Img = styled.img`
   width: 7rem;
   border-radius: 6px;
   min-height: 7rem;
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    width: 5.4rem;
+    min-height: 5rem;
+  }
 `;
 
-export const Label = styled.a`
+export const Label = styled.p`
   text-align: center;
   margin-top: 1.5rem;
   font-size: 1rem;
   padding: 0px;
   line-height: 0px;
+  margin-bottom: 0.8rem;
   font-weight: ${FontWeight.medium};
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? darkGrey : lightBluishGrey};
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    font-size: 0.7rem;
+  }
+`;
+
+export const Title = styled.p`
+  text-align: center;
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  line-height: 0px;
+  padding: 0.3rem 0;
+  color: ${({ theme: { current } }) =>
+    current !== Theme.dark ? darkGrey : lightBluishGrey};
+  opacity: 0.8;
 `;
