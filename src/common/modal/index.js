@@ -1,10 +1,10 @@
 import React from "react";
 
-import { StyledModal, CloseIcon } from "./styles";
+import { StyledModal, CloseIcon, Title, Img, Download, Row } from "./styles";
 
 import { useStore } from "store";
 
-const Overlay = () => {
+const Overlay = ({ title, img, download }) => {
   const {
     state: { visible },
     actions: { setVisible },
@@ -13,6 +13,14 @@ const Overlay = () => {
   return (
     <StyledModal visible={visible} footer={null} closable={false}>
       <CloseIcon onClick={() => setVisible(false)} />
+      <Title>{title}</Title>
+      <Img alt="img" src={img} />
+      {download && (
+        <Row>
+          <Download />
+          <Title>Download</Title>
+        </Row>
+      )}
     </StyledModal>
   );
 };

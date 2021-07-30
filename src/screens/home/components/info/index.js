@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Container,
@@ -45,21 +45,25 @@ const data = [
     title: <I18n t="bTech" />,
     subTitle: <I18n t="cgpa" />,
     img: AcademicsImg,
+    link: "https://ipuranklist.com/student/09315002718",
   },
   {
     title: <I18n t="github" />,
     subTitle: <I18n t="repos" />,
     img: GithubImg,
+    link: "https://github.com/SaiAshish9",
   },
   {
     title: <I18n t="linkedIn" />,
     subTitle: "😉",
     img: LinkedInImg,
+    link: "https://www.linkedin.com/in/sai-ashish-237784188/",
   },
   {
     title: <I18n t="medium" />,
     subTitle: "🎓 ",
     img: MediumImg,
+    link: "https://medium.com/@saiashish3760",
   },
   // {
   //   title: "Leetcode Profile",
@@ -70,6 +74,7 @@ const data = [
     title: <I18n t="youtube" />,
     subTitle: "🔥",
     img: YoutubeImg,
+    link: "https://www.youtube.com/channel/UCRrkV11YNkirkWEQSBTEtvg",
   },
   {
     title: <I18n t="nightCodingSetup" />,
@@ -127,28 +132,42 @@ const Info = () => {
     actions: { setVisible },
   } = useStore();
 
-  function onClick() {
-    setVisible(true);
+  const [selected, setSelected] = useState(0);
+
+  function onClick(k) {
+    if (k < 2 || k === data.length - 1) {
+      setVisible(true);
+      setSelected(k);
+    } else {
+      const win = window.open(data[k].link, "_blank");
+      win.focus();
+    }
   }
 
   return (
     <Container>
       <StyledSlider {...settings}>
         {data.map((i, k) => (
-          <Card key={k} data={i} onClick={onClick} />
+          <Card key={k} data={i} onClick={() => onClick(k)} />
         ))}
       </StyledSlider>
       <MediumStyledSlider {...mSettings}>
         {data.map((i, k) => (
-          <Card key={k} data={i} onClick={onClick} />
+          <Card key={k} data={i} onClick={() => onClick(k)} />
         ))}
       </MediumStyledSlider>
       <SmallStyledSlider {...sSettings}>
         {data.map((i, k) => (
-          <Card key={k} data={i} onClick={onClick} />
+          <Card key={k} data={i} onClick={() => onClick(k)} />
         ))}
       </SmallStyledSlider>
-      {visible && <Overlay />}
+      {visible && (
+        <Overlay
+          title={data[selected].title}
+          img={data[selected].img}
+          download={selected === 0 || selected === 1}
+        />
+      )}
     </Container>
   );
 };
