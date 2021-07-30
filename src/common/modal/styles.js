@@ -83,12 +83,14 @@ export const Title = styled.p`
 
 export const Img = styled.img`
   height: 81%;
+  min-width: 80%;
   border-radius: 5px;
   margin-bottom: 1rem;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     margin: 0 7rem;
     height: 55%;
   }
+  object-fit: contain;
 `;
 
 export const Download = styled(BsDownload)`

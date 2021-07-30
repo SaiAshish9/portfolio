@@ -26,8 +26,6 @@ import I18n from "common/I18n";
 
 import Overlay from "common/modal";
 
-import { useStore } from "store";
-
 const data = [
   {
     title: <I18n t="coverLetter" />,
@@ -127,17 +125,16 @@ const sSettings = {
 };
 
 const Info = () => {
-  const {
-    state: { visible },
-    actions: { setVisible },
-  } = useStore();
+  const [selectedInfo, setSelectedInfo] = useState(0);
+  const [visible, setVisible] = useState(false);
 
-  const [selected, setSelected] = useState(0);
-
-  function onClick(k) {
+  function onClick(e, k) {
+    e.stopPropagation();
+    e.preventDefault();
+    e.nativeEvent.stopImmediatePropagation();
+    setSelectedInfo(k);
     if (k < 2 || k === data.length - 1) {
       setVisible(true);
-      setSelected(k);
     } else {
       const win = window.open(data[k].link, "_blank");
       win.focus();
@@ -148,26 +145,24 @@ const Info = () => {
     <Container>
       <StyledSlider {...settings}>
         {data.map((i, k) => (
-          <Card key={k} data={i} onClick={() => onClick(k)} />
+          <Card key={k} data={i} onClick={(e) => onClick(e, k)} />
         ))}
       </StyledSlider>
       <MediumStyledSlider {...mSettings}>
         {data.map((i, k) => (
-          <Card key={k} data={i} onClick={() => onClick(k)} />
+          <Card key={k} data={i} onClick={(e) => onClick(e, k)} />
         ))}
       </MediumStyledSlider>
       <SmallStyledSlider {...sSettings}>
         {data.map((i, k) => (
-          <Card key={k} data={i} onClick={() => onClick(k)} />
+          <Card key={k} data={i} onClick={(e) => onClick(e, k)} />
         ))}
       </SmallStyledSlider>
-      {visible && (
-        <Overlay
-          title={data[selected].title}
-          img={data[selected].img}
-          download={selected === 0 || selected === 1}
-        />
-      )}
+      <Overlay
+        data={data[selectedInfo]}
+        visible={visible}
+        setVisible={setVisible}
+      />
     </Container>
   );
 };
