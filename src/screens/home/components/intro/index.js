@@ -14,7 +14,6 @@ import {
 } from "./styles";
 
 import LightAvatar from "assets/home/avatar.png";
-import DarkAvatar from "assets/home/avatar.png";
 
 import { useStore } from "store";
 
@@ -94,12 +93,14 @@ const Intro = () => {
   return (
     <Container>
       <ImgContainer>
-        <AvatarImg src={theme === Theme.dark ? DarkAvatar : LightAvatar} />
+        <AvatarImg src={LightAvatar} />
         <Label>
           <I18n t="introDesc1" /> <br />
           <I18n t="introDesc2" />
         </Label>
-        <SubTitle><I18n t="introDesc3" /></SubTitle>
+        <SubTitle>
+          <I18n t="introDesc3" />
+        </SubTitle>
       </ImgContainer>
       <InfoContainer>
         {DATA.map((i, k) => (
