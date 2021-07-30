@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { StyledModal } from "./styles";
+import { StyledModal, CloseIcon } from "./styles";
 
 const Overlay = () => {
+  const [visible, setVisible] = useState(true);
+
   return (
-    <StyledModal visible>
-      <p>Modal</p>
+    <StyledModal visible={visible} footer={null} closable={false}>
+      <CloseIcon onClick={() => setVisible(false)} />
     </StyledModal>
   );
 };

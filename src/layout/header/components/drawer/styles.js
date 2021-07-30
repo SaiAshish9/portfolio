@@ -27,6 +27,7 @@ export const CloseIcon = styled(MdClose)`
   align-self: flex-end;
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
+  cursor: pointer;
 `;
 
 export const Label = styled.p`
