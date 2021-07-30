@@ -1,8 +1,28 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React from "react";
 
-import { StyledModal, CloseIcon, Title, Img, Download, Row } from "./styles";
+import {
+  StyledModal,
+  CloseIcon,
+  Title,
+  Img,
+  Download,
+  Row,
+  StyledSlider,
+} from "./styles";
 
-const Overlay = ({ data: internalData, visible, setVisible }) => {
+const settings = {
+  dots: false,
+  infinite: true,
+  autoplay: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  speed: 2700,
+  cssEase: "linear",
+  nextArrow: <></>,
+  prevArrow: <></>,
+};
+
+const Overlay = ({ data, visible, setVisible }) => {
   return (
     <StyledModal visible={visible} footer={null} closable={false}>
       <CloseIcon
@@ -11,10 +31,18 @@ const Overlay = ({ data: internalData, visible, setVisible }) => {
         }}
       />
       <Title>
-        {internalData?.title} {internalData?.subTitle}{" "}
+        {data?.title} {data?.subTitle}{" "}
       </Title>
-      <Img alt="img" src={internalData?.img} />
-      {internalData?.download && (
+      {data.images ? (
+        <StyledSlider {...settings}>
+          {data.images.map((i, k) => (
+            <Img alt="img" src={i} slider />
+          ))}
+        </StyledSlider>
+      ) : (
+        <Img alt="img" src={data?.img} />
+      )}
+      {data?.download && (
         <Row>
           <Download />
           <Title>Download</Title>

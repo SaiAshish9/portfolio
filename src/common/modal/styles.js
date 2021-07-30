@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { Modal } from "antd";
 
@@ -13,6 +13,8 @@ import {
 import { MdClose } from "react-icons/md";
 
 import { BsDownload } from "react-icons/bs";
+
+import Slider from "react-slick";
 
 const { darkGrey, lightBluishGrey, veryDarkGray, white } = Colors;
 
@@ -69,7 +71,7 @@ export const CloseIcon = styled(MdClose)`
     current !== Theme.dark ? veryDarkGray : white};
   cursor: pointer;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
-    margin-bottom: 25% !important;
+    margin-bottom: 15% !important;
   }
 `;
 
@@ -91,6 +93,15 @@ export const Img = styled.img`
     height: 55%;
   }
   object-fit: contain;
+  ${({ slider }) =>
+    slider &&
+    css`
+      height: 45vh !important;
+      width: 80vw;
+      object-fit: contain;
+      margin-top: 3rem !important;
+      padding-right: 1rem;
+    `}
 `;
 
 export const Download = styled(BsDownload)`
@@ -103,4 +114,8 @@ export const Download = styled(BsDownload)`
 
 export const Row = styled.div`
   ${Styles.RBC}
+`;
+
+export const StyledSlider = styled(Slider)`
+  width: 100%;
 `;
