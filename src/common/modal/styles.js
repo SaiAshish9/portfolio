@@ -128,3 +128,50 @@ export const SubTitle = styled.a`
   margin: 1rem 0 !important;
   text-decoration: underline;
 `;
+
+export const IconContainer = css`
+  ${Styles.RCC}
+  height: 2.4rem;
+  width: 2.4rem;
+  border-radius: 1.2rem;
+  ${({ hide }) =>
+    hide &&
+    css`
+      display: none;
+    `}
+  font-size: 1.2rem;
+  color: ${({ theme: { current } }) =>
+    current !== Theme.dark ? darkGrey : lightBluishGrey};
+  cursor: pointer;
+  background: ${({ theme: { current } }) =>
+    current === Theme.dark ? darkGrey : lightBluishGrey};
+  -webkit-box-shadow: 0 0 5px
+    ${({ theme: { current } }) =>
+      current !== Theme.dark ? darkGrey : lightBluishGrey};
+  box-shadow: 0 0 5px
+    ${({ theme: { current } }) =>
+      current !== Theme.dark ? darkGrey : lightBluishGrey};
+  position: absolute;
+  top: 43%;
+  z-index: 10;
+`;
+
+export const NextIconContainer = styled.div`
+  ${IconContainer}
+  right: -0.8rem;
+  @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
+    height: 1.8rem;
+    width: 1.8rem;
+    border-radius: 0.9rem;
+  }
+`;
+
+export const PrevIconContainer = styled.div`
+  ${IconContainer}
+  left: -0.8rem;
+  @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
+    height: 1.8rem;
+    width: 1.8rem;
+    border-radius: 0.9rem;
+  }
+`;

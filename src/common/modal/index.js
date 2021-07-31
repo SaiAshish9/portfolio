@@ -9,7 +9,32 @@ import {
   Row,
   StyledSlider,
   SubTitle,
+  IconContainer,
+  NextIconContainer,
+  PrevIconContainer,
 } from "./styles";
+
+import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+
+const NextArrow = (props) => {
+  const { onClick, currentSlide, curr } = props;
+
+  return (
+    <NextIconContainer hide={currentSlide === curr} onClick={onClick}>
+      <FiChevronRight />
+    </NextIconContainer>
+  );
+};
+
+const PrevArrow = (props) => {
+  const { onClick, currentSlide } = props;
+
+  return (
+    <PrevIconContainer onClick={onClick} hide={currentSlide === 0}>
+      <FiChevronLeft />
+    </PrevIconContainer>
+  );
+};
 
 const settings = {
   dots: false,
@@ -18,8 +43,8 @@ const settings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   speed: 500,
-  nextArrow: <></>,
-  prevArrow: <></>,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
 };
 
 const Overlay = ({ data, visible, setVisible, label, site }) => {
