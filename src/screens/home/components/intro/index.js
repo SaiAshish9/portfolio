@@ -66,6 +66,7 @@ const Intro = () => {
     {
       label: "saiashish7777@gmail.com",
       icon: <SiGmail size={ICON_SIZE - 1} color={ICON_COLOR} />,
+      text: true,
     },
     {
       label: <I18n t="location" />,
