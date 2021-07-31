@@ -2,7 +2,7 @@ import { SET_THEME, SET_COUNT, SET_VISIBLE } from "./types";
 
 export const initialState = {
   theme: localStorage.getItem("theme") ?? "dark",
-  count: 1,
+  count: null,
   visible: false,
 };
 
