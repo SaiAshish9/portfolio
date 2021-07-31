@@ -56,11 +56,12 @@ export const StyledModal = styled(Modal)`
       width: 90vw !important;
     }
     .ant-modal-body {
-      height: 90vh;
+      height: 80vh;
       width: 100%;
       ${Styles.CBC}
       justify-content: flex-start;
     }
+    top: 10vh !important;
   }
 `;
 
@@ -71,7 +72,7 @@ export const CloseIcon = styled(MdClose)`
     current !== Theme.dark ? veryDarkGray : white};
   cursor: pointer;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
-    margin-bottom: 15% !important;
+    margin-bottom: 6% !important;
   }
 `;
 
