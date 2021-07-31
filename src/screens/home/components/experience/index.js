@@ -59,7 +59,7 @@ const data = [
     position: <I18n t="mernIntern" />,
     exp: 3,
     id: 1,
-    link: "https://pracify.tech",
+    link: "https://pracify.com",
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1627678325/pracify1_amuf2g.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1627678325/pracify2_qlqqe1.png",
