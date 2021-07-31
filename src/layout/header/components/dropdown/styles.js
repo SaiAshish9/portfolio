@@ -26,6 +26,7 @@ export const Label = styled.p`
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
   font-weight: ${FontWeight.medium};
+  ${Styles.RBC}
 `;
 
 export const Icon = styled(IoIosArrowDown)`
@@ -98,4 +99,13 @@ export const LanguageContent = styled.span`
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     display: none;
   }
+`;
+
+export const Img = styled.img`
+  width: 1.6rem;
+  height: 2.5rem;
+`;
+
+export const Row = styled.div`
+  ${Styles.RBC}
 `;

@@ -10,11 +10,24 @@ import {
   Icon,
   Title,
   Img,
+  MusicImg,
+  Row,
 } from "./styles";
 
 import I18n from "common/I18n";
 
+import LightPulse from "assets/home/lightPulse.gif";
+import DarkPulse from "assets/home/darkPulse.gif";
+
+import { Theme } from "constants/index";
+
+import { useStore } from "store";
+
 const Modal = ({ label, visible, setVisible, data, selected, onClick }) => {
+  const {
+    state: { theme },
+  } = useStore();
+
   return (
     <StyledDrawer
       placement="bottom"
@@ -36,7 +49,16 @@ const Modal = ({ label, visible, setVisible, data, selected, onClick }) => {
             >
               {i.img && <Img src={i.img} alt="img" />}
               <Icon>{i.icon}</Icon>
-              <Title>{i.title}</Title>
+              <Row>
+                {i.id === selected && i.img && (
+                  <MusicImg
+                    src={theme === Theme.dark ? LightPulse : DarkPulse}
+                    alt="img"
+                  />
+                )}
+
+                <Title>{i.title}</Title>
+              </Row>
             </Content>
           ))}
         </LanguageContainer>

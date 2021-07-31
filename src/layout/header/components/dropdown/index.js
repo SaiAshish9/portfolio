@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Dropdown } from "antd";
 
@@ -16,8 +16,17 @@ import {
   Content,
   SubTitle,
   LangugageIcon,
+  Img,
   LanguageContent,
+  Row,
 } from "./styles";
+
+import LightPulse from "assets/home/lightPulse.gif";
+import DarkPulse from "assets/home/darkPulse.gif";
+
+import { useStore } from "store";
+
+import { Theme } from "constants/index";
 
 const DropdownContainer = ({
   language,
@@ -30,6 +39,10 @@ const DropdownContainer = ({
 }) => {
   const history = useHistory();
 
+  const {
+    state: { theme },
+  } = useStore();
+
   const menu = (
     <StyledMenu>
       {songs
@@ -39,7 +52,13 @@ const DropdownContainer = ({
             <MenuContent>
               <MenuAvatar src={i.img} alt="img" />
               <Content>
-                <Title>{i.title}</Title>
+                <Row>
+                  <Img
+                    src={theme === Theme.dark ? LightPulse : DarkPulse}
+                    alt="img"
+                  />
+                  <Title>{i.title}</Title>
+                </Row>
                 <SubTitle>{i.subTitle}</SubTitle>
               </Content>
             </MenuContent>
@@ -104,10 +123,19 @@ const DropdownContainer = ({
             {language ? languages[selectedLanguage].icon : null}
           </LangugageIcon>
           <LanguageContent>
-            {language
-              ? languages[selectedLanguage].title
-              : songs[selected].title}
+            {language && languages[selectedLanguage].title}
           </LanguageContent>
+          {songs && (
+            <Row>
+              {songs && (
+                <Img
+                  src={theme === Theme.dark ? LightPulse : DarkPulse}
+                  alt="img"
+                />
+              )}
+              {songs[selected].title}
+            </Row>
+          )}
         </Label>
         <Icon />
       </Container>

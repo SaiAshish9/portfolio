@@ -6,7 +6,7 @@ import { MdClose } from "react-icons/md";
 
 import { Styles, Theme, Colors, FontWeight } from "constants/index";
 
-const { veryDarkGray, white, darkGrey } = Colors;
+const { veryDarkGray, white, darkGrey, lightBluishGrey } = Colors;
 
 export const StyledDrawer = styled(Drawer)`
   .ant-drawer-content-wrapper {
@@ -46,7 +46,9 @@ export const Content = styled.div`
   ${({ active }) =>
     active &&
     css`
-      border: 2px solid #fff;
+      border: 2px solid
+        ${({ theme: { current } }) =>
+          current !== Theme.dark ? darkGrey : white};
       border-radius: 5px;
     `}
 `;
@@ -72,4 +74,13 @@ export const Title = styled.p`
     current !== Theme.dark ? veryDarkGray : white};
   font-size: 0.75rem;
   font-weight: ${FontWeight.medium};
+`;
+
+export const MusicImg = styled.img`
+  width: 1.6rem;
+  height: 2.5rem;
+`;
+
+export const Row = styled.div`
+  ${Styles.RBC}
 `;
