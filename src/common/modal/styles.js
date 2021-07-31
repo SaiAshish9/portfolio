@@ -39,10 +39,11 @@ export const StyledModal = styled(Modal)`
   }
   width: unset !important;
   top: 5vh !important;
+  overflow-y: scroll;
 
   @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
     .ant-modal-content {
-      width: 70vw;
+      width: 45vw;
     }
   }
 
@@ -81,7 +82,7 @@ export const Title = styled.p`
     current !== Theme.dark ? veryDarkGray : white};
   text-align: start;
   font-weight: ${FontWeight.semiBold};
-  margin: 1rem 0 !important;
+  margin: 0.5rem 0 !important;
 `;
 
 export const Img = styled.img`
@@ -89,6 +90,10 @@ export const Img = styled.img`
   min-width: 80%;
   border-radius: 5px;
   margin-bottom: 1rem;
+  @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
+    margin: 0 7rem;
+    height: 75%;
+  }
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     margin: 0 7rem;
     height: 55%;
