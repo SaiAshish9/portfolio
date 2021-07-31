@@ -77,7 +77,7 @@ export const Img = styled.img`
   min-height: 7rem;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     width: 5.4rem;
-    min-height: 5rem;
+    min-height: 5.4rem;
   }
 `;
 
@@ -105,4 +105,7 @@ export const Title = styled.p`
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? darkGrey : lightBluishGrey};
   opacity: 0.8;
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    font-size: 0.7rem;
+  }
 `;

@@ -47,6 +47,9 @@ export const PlayPauseBtn = styled.div`
   :hover {
     opacity: 0.4;
   }
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    top: 45%;
+  }
 `;
 
 export const PlayerContainer = styled.div`

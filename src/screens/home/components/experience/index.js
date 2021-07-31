@@ -183,9 +183,8 @@ const data = [
     exp: 1,
     id: 5,
     link: "https://www.linkedin.com/company/nex2me-introtuce/",
-    images: [
+    image:
       "https://res.cloudinary.com/saiashish/image/upload/v1627679349/nex2Me_hy2jr9.png",
-    ],
   },
 ];
 

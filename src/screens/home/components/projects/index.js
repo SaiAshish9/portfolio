@@ -47,6 +47,7 @@ const Projects = () => {
   const links = [
     {
       key: "instagram",
+      link: "https://bit.ly/3aDgCI8",
       label: <I18n t="instaClone" />,
       tab: <AiFillInstagram size={ICON_SIZE + 5} color={ICON_COLOR} />,
       // url: "https://www.youtube.com/watch?v=gO_1CeJ2vT8",
@@ -54,18 +55,21 @@ const Projects = () => {
     },
     {
       key: "amazon",
+      link: "https://bit.ly/3o4HzsX",
       label: <I18n t="amazonClone" />,
       tab: <AiOutlineAmazon size={ICON_SIZE + 5} color={ICON_COLOR} />,
       url: "https://www.youtube.com/watch?v=MKw83UXMtCQ",
     },
     {
       key: "linkedIn",
+      link: "https://bit.ly/3dVFzlk",
       label: <I18n t="linkedInClone" />,
       tab: <AiFillLinkedin size={ICON_SIZE + 5} color={ICON_COLOR} />,
       url: "https://www.youtube.com/watch?v=HzqnOGj3qmc",
     },
     {
       key: "feelAtHome",
+      link: "https://bit.ly/2Y3MQGx",
       label: <I18n t="feelAtHome" />,
       tab: <FaUserShield size={ICON_SIZE + 5} color={ICON_COLOR} />,
       url: "https://www.youtube.com/watch?v=sU1mwLUPT34",
@@ -77,6 +81,11 @@ const Projects = () => {
 
   function handleClick() {
     isPlaying((p) => isPlaying(!p));
+  }
+
+  function onLableClick(link) {
+    const win = window.open(link, "_blank");
+    win.focus();
   }
 
   return (
@@ -104,7 +113,9 @@ const Projects = () => {
                 </PlayPauseBtn>
               )}
             </PlayerContainer>
-            <Label>{links[0].label}</Label>
+            <Label onClick={() => onLableClick(links[0].link)}>
+              {links[0].label}
+            </Label>
           </Content>
         </TabPane>
         {links.slice(1).map((i) => (
@@ -113,7 +124,7 @@ const Projects = () => {
               <PlayerContainer>
                 <ReactPlayer height="100%" width="100%" url={i.url} />
               </PlayerContainer>
-              <Label>{i.label}</Label>
+              <Label onClick={() => onLableClick(i.link)}>{i.label}</Label>
             </Content>
           </TabPane>
         ))}
