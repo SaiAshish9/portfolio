@@ -32,12 +32,14 @@ const data = [
     subTitle: "😊",
     img: CoverLetterImg,
     download: true,
+    downloadableLink: "https://www.linkedin.com/in/sai-ashish-237784188",
   },
   {
     title: <I18n t="resume" />,
     subTitle: "❤️",
     img: ResumeImg,
     download: true,
+    downloadableLink: "https://www.linkedin.com/in/sai-ashish-237784188",
   },
   {
     title: <I18n t="bTech" />,

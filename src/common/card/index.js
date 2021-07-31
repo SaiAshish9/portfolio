@@ -21,7 +21,14 @@ const Card = ({ data, onClick }) => {
           <SubTitle>{data.subTitle}</SubTitle>
           <Row>
             <Eye onClick={onClick} />
-            {data.download && <Download />}
+            {data.download && (
+              <Download
+                onClick={() => {
+                  const win = window.open(data.downloadableLink, "_blank");
+                  win.focus();
+                }}
+              />
+            )}
           </Row>
         </Row>
       </Content>
