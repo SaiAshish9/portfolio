@@ -105,7 +105,12 @@ const Intro = () => {
       </ImgContainer>
       <InfoContainer className="animate__animated animate__pulse">
         {DATA.map((i, k) => (
-          <InfoItem style={{ left: k == 6 ? "0.4rem" : "0px" }} key={k}>
+          <InfoItem
+            style={{
+              left: k == 6 ? "0.4rem" : "0px",
+            }}
+            key={k}
+          >
             <InfoImg>{i.icon}</InfoImg>
             {i.text ? (
               <InfoLabel>{i.label}</InfoLabel>
@@ -114,6 +119,10 @@ const Intro = () => {
                 href={i.label}
                 target="_blank"
                 rel="noopener noreferrer"
+                style={{
+                  position: "relative",
+                  left: k == 6 ? "0.28rem" : "0px",
+                }}
               >
                 {i.label}
               </InfoLink>
