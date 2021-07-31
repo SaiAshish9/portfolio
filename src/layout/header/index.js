@@ -32,7 +32,6 @@ import ReactPlayer from "react-player";
 
 import NeverSayNeverImg from "assets/home/neverSayNever.jpg";
 
-
 import I18n from "common/I18n";
 
 import { useHistory } from "react-router-dom";
@@ -218,7 +217,7 @@ const Header = ({ scrolled }) => {
   return (
     <Container scrolled={scrolled}>
       <Tooltip placement="bottomLeft" title={<I18n t="Full Name" />}>
-        <Label>
+        <Label className="animate__animated animate__fadeInLeft">
           <I18n t="Name" />
         </Label>
         <SmallLabel>
@@ -226,7 +225,7 @@ const Header = ({ scrolled }) => {
         </SmallLabel>
       </Tooltip>
 
-      <Row>
+      <Row className="animate__animated animate__fadeInRight">
         {muteIconContent}
         {sMuteIconContent}
         {isMuted && (

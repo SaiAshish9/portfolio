@@ -92,7 +92,7 @@ const Intro = () => {
 
   return (
     <Container>
-      <ImgContainer>
+      <ImgContainer className="animate__animated animate__pulse">
         <AvatarImg src={LightAvatar} />
         <Label>
           <I18n t="introDesc1" /> <br />
@@ -102,7 +102,7 @@ const Intro = () => {
           <I18n t="introDesc3" />
         </SubTitle>
       </ImgContainer>
-      <InfoContainer>
+      <InfoContainer className="animate__animated animate__pulse">
         {DATA.map((i, k) => (
           <InfoItem style={{ left: k == 6 ? "0.4rem" : "0px" }} key={k}>
             <InfoImg>{i.icon}</InfoImg>
