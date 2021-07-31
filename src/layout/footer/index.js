@@ -9,14 +9,27 @@ const Footer = () => {
     <Container>
       <Label
         onClick={() => {
-          const win = window.open("https://www.linkedin.com/in/sai-ashish-237784188/", "_blank");
+          const win = window.open(
+            "https://www.linkedin.com/in/sai-ashish-237784188/",
+            "_blank"
+          );
           win.focus();
         }}
       >
         <I18n t="about" />
       </Label>
-      <MailIcon />
-      <GithunIcon />
+      <MailIcon
+        onClick={() => {
+          const win = window.open("mailto:saiashish7777@gmail.com", "_blank");
+          win.focus();
+        }}
+      />
+      <GithunIcon
+        onClick={() => {
+          const win = window.open("https://github.com/", "_blank");
+          win.focus();
+        }}
+      />
     </Container>
   );
 };
