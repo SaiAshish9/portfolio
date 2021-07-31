@@ -137,7 +137,7 @@ const Achievements = () => {
   }
 
   return (
-    <Container>
+    <Container data-aos="fade-left">
       <StyledSlider {...settings}>
         {data.map((i, k) => (
           <Card key={k} data={i} onClick={(e) => onClick(e, k)} />

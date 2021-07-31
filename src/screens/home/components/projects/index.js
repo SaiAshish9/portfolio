@@ -89,7 +89,7 @@ const Projects = () => {
   }
 
   return (
-    <Container>
+    <Container data-aos="flip-up">
       <StreamsTab defaultActiveKey="instagram" centered animated>
         <TabPane tab={links[0].tab} key={links[0].key}>
           <Content>

@@ -198,7 +198,7 @@ const Experience = () => {
   }
 
   return (
-    <>
+    <div data-aos="zoom-in">
       <Container>
         {data.map((i, k) => (
           <Content key={k} onClick={() => handleClick(i.id)}>
@@ -282,7 +282,7 @@ const Experience = () => {
         label={<I18n t="images" />}
         site
       />
-    </>
+    </div>
   );
 };
 

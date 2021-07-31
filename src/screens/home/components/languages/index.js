@@ -41,7 +41,7 @@ const images = [
 const Languages = () => {
   return (
     <>
-      <Container>
+      <Container data-aos="flip-left">
         <Row>
           {images.slice(0, 8).map((i, k) => (
             <Img alt="img" src={i} key={k} />
