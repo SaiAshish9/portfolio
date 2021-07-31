@@ -46,9 +46,16 @@ function App() {
   async function checkCount() {
     if (!localStorage.getItem("first")) {
       localStorage.setItem("first", true);
+      axios("https://api.countapi.xyz/update/saiashish9/portfolio/?amount=1")
+        .then(({ data: { value } }) => setCount(value > 1 ? value : 1))
+        .catch((e) => {
+          setCount(1);
+        });
     } else {
-      axios("https://api.countapi.xyz/get/saiashish9/portfolio/?update=1")
-        .then(({ value }) => setCount(value > 1 ? value : 1))
+      axios("https://api.countapi.xyz/get/saiashish9/portfolio")
+        .then(({ data: { value } }) => {
+          setCount(value);
+        })
         .catch((e) => {
           setCount(1);
         });
