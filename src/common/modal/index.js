@@ -71,7 +71,17 @@ const Overlay = ({ data, visible, setVisible, label, site }) => {
       {data?.download && (
         <Row>
           <Download />
-          <Title>Download</Title>
+          <Title
+            onClick={() => {
+              const win = window.open(
+                "https://www.linkedin.com/in/sai-ashish-237784188/",
+                "_blank"
+              );
+              win.focus();
+            }}
+          >
+            Download
+          </Title>
         </Row>
       )}
       {site && (
