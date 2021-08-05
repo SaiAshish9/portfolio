@@ -15,8 +15,9 @@ const { veryDarkGray, white, lightBluishGrey, darkGrey } = Colors;
 export const Container = styled.div`
   width: 70vw;
   margin: 4rem auto;
-  ${Styles.RCC}
-  @media only screen and (max-width: ${BREAKPOINTS.lg}) {
+  min-height: 24rem;
+  ${Styles.RCC} @media only screen and
+    (max-width: ${BREAKPOINTS.lg}) {
     width: 100vw;
   }
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
@@ -54,7 +55,7 @@ export const PlayPauseBtn = styled.div`
 
 export const PlayerContainer = styled.div`
   width: 32vw;
-  height: 21rem;
+  min-height: 21rem;
   padding-top: 3rem;
   cursor: pointer;
   position: relative;
