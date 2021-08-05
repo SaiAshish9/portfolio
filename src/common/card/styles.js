@@ -57,6 +57,8 @@ export const Title = styled.p`
   font-weight: ${FontWeight.semiBold};
   text-overflow: ellipsis !important;
   white-space: no-wrap;
+  width: 100%;
+  height: 1.5rem;
   display: block;
   overflow: hidden;
 `;
