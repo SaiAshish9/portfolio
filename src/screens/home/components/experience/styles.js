@@ -98,14 +98,16 @@ export const Label = styled.p`
 
 export const Title = styled.p`
   text-align: center;
-  margin-top: 0.8rem;
+  margin-top: 0.1rem;
   font-size: 0.8rem;
-  line-height: 0px;
-  padding: 0.3rem 0;
+  // line-height: 0px;
+  padding: 0rem 0.4rem;
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? darkGrey : lightBluishGrey};
   opacity: 0.8;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     font-size: 0.7rem;
+    word-wrap: break-word;
+    word-break: break-all;
   }
 `;
