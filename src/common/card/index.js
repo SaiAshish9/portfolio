@@ -16,7 +16,7 @@ const Card = ({ data, onClick }) => {
     <Container>
       <CardImg src={data.img} alt="img" />
       <Content>
-        <Title>{data.title.length < 15 ? data.title.length : data.title.substring(0,12) + '...'}</Title>
+        <Title>{data.title}</Title>
         <Row>
           <SubTitle>{data.subTitle}</SubTitle>
           <Row>
