@@ -55,6 +55,10 @@ export const Title = styled.p`
   color: ${({ theme: { current } }) =>
     current === Theme.dark ? white : veryDarkGray};
   font-weight: ${FontWeight.semiBold};
+  text-overflow: ellipsis !important;
+  white-space: no-wrap;
+  display: block;
+  overflow: hidden;
 `;
 
 export const SubTitle = styled.p`
