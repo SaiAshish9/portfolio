@@ -25,6 +25,11 @@ export const Container = styled.div`
   }
 `;
 
+export const AvatarImgContainer = styled.div`
+  min-height: 30vh;
+  width: 100%;
+`;
+
 export const AvatarImg = styled.img`
   height: 21rem;
   width: 24rem;

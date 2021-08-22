@@ -16,7 +16,6 @@ const ContainerStyles = css`
   margin: auto;
   border-radius: 2.3rem;
   margin-bottom: 2rem;
-  ${Styles.RBC}
   background: ${({ theme: { current } }) =>
     current === Theme.dark ? darkGrey : lightBluishGrey};
   box-shadow: 0 2px 1px -1px rgb(0 0 0 / 32%), 0 1px 1px 0 rgb(0 0 0 / 34%),
@@ -32,47 +31,30 @@ const ContainerStyles = css`
 export const Container = styled.div`
   ${ContainerStyles}
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
-    display: none;
+    padding: 3rem 3rem 2rem !important;
   }
-`;
-
-export const MContainer = styled.div`
-  ${ContainerStyles}
-  flex-direction:column;
-  padding: 3rem 3rem 2rem !important;
-  @media only screen and (min-width: ${BREAKPOINTS.lg}) {
-    display: none;
-  }
-  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
-    display: none;
-  }
-`;
-
-export const SContainer = styled.div`
-  ${ContainerStyles}
-  flex-direction:column;
-  padding: 3rem 1rem 1rem !important;
-  width: 100vw !important;
-  margin-top: 1.5rem;
-  @media only screen and (min-width: ${BREAKPOINTS.sm}) {
-    display: none;
-  }
+  ${Styles.RBC}
+  flex-wrap:wrap;
 `;
 
 export const Content = styled.div`
   cursor: pointer;
   margin-bottom: 1rem;
   ${Styles.CBC}
-`;
-
-export const ParentContainer = styled.div`
-  ${Styles.RAC}
-  width: 100%;
-  margin-bottom: 1rem;
+  width:25%;
+  @media only screen and (max-width: ${BREAKPOINTS.lg}) {
+    width: 50%;
+  }
+  padding-bottom: 1rem;
 `;
 
 export const Img = styled.img`
   width: 7rem;
+  ${({ svImg }) =>
+    svImg === 1 &&
+    css`
+  object-fit:contain;̦  
+  `}
   border-radius: 6px;
   min-height: 7rem;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {

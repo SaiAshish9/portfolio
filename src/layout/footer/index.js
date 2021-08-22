@@ -26,7 +26,7 @@ const Footer = () => {
       />
       <GithunIcon
         onClick={() => {
-          const win = window.open("https://github.com/", "_blank");
+          const win = window.open("https://github.com/SaiAshish9", "_blank");
           win.focus();
         }}
       />

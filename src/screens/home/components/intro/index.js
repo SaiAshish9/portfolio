@@ -11,6 +11,7 @@ import {
   InfoLabel,
   InfoImg,
   InfoLink,
+  AvatarImgContainer,
 } from "./styles";
 
 import LightAvatar from "assets/home/avatar.png";
@@ -94,7 +95,9 @@ const Intro = () => {
   return (
     <Container>
       <ImgContainer className="animate__animated animate__pulse">
-        <AvatarImg src={LightAvatar} />
+        <AvatarImgContainer>
+          <AvatarImg src={LightAvatar} />
+        </AvatarImgContainer>
         <Label>
           <I18n t="introDesc1" /> <br />
           <I18n t="introDesc2" />

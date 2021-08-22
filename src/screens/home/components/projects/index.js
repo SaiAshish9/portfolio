@@ -122,7 +122,7 @@ const Projects = () => {
           <TabPane tab={i.tab} key={i.key}>
             <Content>
               <PlayerContainer>
-                <ReactPlayer height="100%" width="100%" url={i.url} />
+                <ReactPlayer height="16rem" width="100%" url={i.url} />
               </PlayerContainer>
               <Label onClick={() => onLableClick(i.link)}>{i.label}</Label>
             </Content>
