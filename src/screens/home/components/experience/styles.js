@@ -74,7 +74,7 @@ export const Label = styled.p`
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? darkGrey : lightBluishGrey};
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
-    font-size: 0.7rem;
+    font-size: 0.54rem;
   }
 `;
 
@@ -88,7 +88,8 @@ export const Title = styled.p`
     current !== Theme.dark ? darkGrey : lightBluishGrey};
   opacity: 0.8;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
-    font-size: 0.7rem;
+    font-size: 0.5rem;
+    overflow: hidden;
     word-wrap: break-word;
     word-break: break-all;
   }

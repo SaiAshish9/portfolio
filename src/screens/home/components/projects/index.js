@@ -6,6 +6,7 @@ import {
   PlayerContainer,
   Label,
   Content,
+  Img,
   PlayPauseBtn,
 } from "./styles";
 
@@ -28,6 +29,8 @@ import { BsPlayFill } from "react-icons/bs";
 import ReactPlayer from "react-player";
 
 import I18n from "common/I18n";
+
+import InstaThumbnailImg from "assets/home/insta-thumbnail.png";
 
 const { TabPane } = Tabs;
 
@@ -77,10 +80,16 @@ const Projects = () => {
   ];
 
   const [playing, isPlaying] = useState(false);
+  const [clicked, isClicked] = useState(false);
   const playerRef = useRef();
 
   function handleClick() {
     isPlaying((p) => isPlaying(!p));
+  }
+
+  function handleImgClicked() {
+    isPlaying((p) => isPlaying(!p));
+    isClicked((c) => isClicked(!c));
   }
 
   function onLableClick(link) {
@@ -99,15 +108,19 @@ const Projects = () => {
               tabIndex={-1}
               role="button"
             >
-              <ReactPlayer
-                ref={playerRef}
-                height="100%"
-                width="100%"
-                loop
-                url={links[0].url}
-                playing={playing}
-              />
-              {!playing && (
+              {!clicked ? (
+                <Img src={InstaThumbnailImg} alt="img" onClick={handleImgClicked} />
+              ) : (
+                <ReactPlayer
+                  ref={playerRef}
+                  height="100%"
+                  width="100%"
+                  loop
+                  url={links[0].url}
+                  playing={playing}
+                />
+              )}
+              {!playing && clicked && (
                 <PlayPauseBtn>
                   <BsPlayFill />
                 </PlayPauseBtn>

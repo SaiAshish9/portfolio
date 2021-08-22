@@ -12,6 +12,8 @@ import {
 
 const { veryDarkGray, white, lightBluishGrey, darkGrey } = Colors;
 
+export const Img = styled.img``;
+
 export const Container = styled.div`
   width: 70vw;
   margin: 4rem auto;
