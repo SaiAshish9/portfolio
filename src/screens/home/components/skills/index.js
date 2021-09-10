@@ -31,10 +31,10 @@ const settings = {
   dots: false,
   infinite: true,
   slidesToShow: 9,
-  slidesToScroll: 1,
+  slidesToScroll: 9,
   autoplay: true,
-  speed: 2000,
-  autoplaySpeed: 2000,
+  speed: 6000,
+  autoplaySpeed: 6000,
   cssEase: "linear",
 };
 
