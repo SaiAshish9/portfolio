@@ -79,7 +79,7 @@ const Projects = () => {
     },
   ];
 
-  const [playing, isPlaying] = useState(false);
+  const [playing, isPlaying] = useState(true);
   const [clicked, isClicked] = useState(false);
   const playerRef = useRef();
 
@@ -109,7 +109,11 @@ const Projects = () => {
               role="button"
             >
               {!clicked ? (
-                <Img src={InstaThumbnailImg} alt="img" onClick={handleImgClicked} />
+                <Img
+                  src={InstaThumbnailImg}
+                  alt="img"
+                  onClick={handleImgClicked}
+                />
               ) : (
                 <ReactPlayer
                   ref={playerRef}
