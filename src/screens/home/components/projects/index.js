@@ -117,7 +117,7 @@ const Projects = () => {
               ) : (
                 <ReactPlayer
                   ref={playerRef}
-                  height="100%"
+                  height="16rem"
                   width="100%"
                   loop
                   url={links[0].url}

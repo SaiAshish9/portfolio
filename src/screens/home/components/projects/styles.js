@@ -43,7 +43,7 @@ export const PlayPauseBtn = styled.div`
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? darkGrey : lightBluishGrey};
   position: absolute;
-  top: 45%;
+  top: 47%;
   opacity: 0.7;
   font-size: 1.6rem;
   ${Styles.RCC};
@@ -51,7 +51,7 @@ export const PlayPauseBtn = styled.div`
     opacity: 0.4;
   }
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
-    top: 45%;
+    top: 36%;
   }
 `;
 
@@ -73,7 +73,6 @@ export const PlayerContainer = styled.div`
   }
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     width: 100vw;
-    padding-top: 1rem;
     height: 18rem;
   }
 `;
