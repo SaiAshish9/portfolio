@@ -36,17 +36,6 @@ const data = [
     ],
   },
   {
-    title: <I18n t="avensis" />,
-    subTitle: <I18n t="winner" />,
-    img: MSITImg,
-    images:[
-      MSITImg,
-      "https://res.cloudinary.com/saiashish/image/upload/v1627665640/hackMSIT2_uppjdp.jpg",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627665639/hackMSIT1_ahyfje.jpg",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627665639/hackMSIT3_u3wkli.jpg"
-    ]
-  },
-  {
     title: <I18n t="hackVSIT" />,
     subTitle: <I18n t="awardWinner" />,
     img: VSITImg,
@@ -59,6 +48,17 @@ const data = [
     ],
   },
   {
+    title: <I18n t="avensis" />,
+    subTitle: <I18n t="winner" />,
+    img: MSITImg,
+    images: [
+      MSITImg,
+      "https://res.cloudinary.com/saiashish/image/upload/v1627665640/hackMSIT2_uppjdp.jpg",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627665639/hackMSIT1_ahyfje.jpg",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627665639/hackMSIT3_u3wkli.jpg",
+    ],
+  },
+  {
     title: <I18n t="class11" />,
     subTitle: <I18n t="topper" />,
     img: CollegeImg,
@@ -67,11 +67,11 @@ const data = [
     title: <I18n t="hackBVP" />,
     subTitle: <I18n t="memories" />,
     img: BvpImg,
-    images:[
+    images: [
       BvpImg,
       "https://res.cloudinary.com/saiashish/image/upload/v1627665900/bvp1_y5uqqu.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1627665900/bvp2_xewa4f.jpg",
-    ]
+    ],
   },
   {
     title: <I18n t="iemis" />,
