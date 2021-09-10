@@ -154,9 +154,13 @@ export const Label = styled.a`
   text-decoration: underline;
   font-size: 1rem;
   padding: 0px;
+  position: relative;
   font-weight: ${FontWeight.medium};
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? darkGrey : lightBluishGrey};
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    bottom: 3.5rem !important;
+  }
 `;
 
 export const Content = styled.div`
