@@ -87,7 +87,8 @@ export const Title = styled.p`
 
 export const Img = styled.img`
   height: 81%;
-  min-width: 80%;
+  min-width: 100%;
+  margin: auto;
   border-radius: 5px;
   margin-bottom: 1rem;
   @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
@@ -104,6 +105,7 @@ export const Img = styled.img`
     css`
       height: 45vh !important;
       width: 80vw;
+      margin: auto;
       object-fit: contain;
       margin-top: 3rem !important;
       padding-right: 1rem;

@@ -22,7 +22,11 @@ const data = [
     position: <I18n t="intern" />,
     exp: 3,
     id: 0,
-    images: [],
+    images: [
+      "https://res.cloudinary.com/saiashish/image/upload/v1633857822/WhatsApp_Image_2021-10-10_at_14.53.29_jlnfcb.jpg",
+      "https://res.cloudinary.com/saiashish/image/upload/v1633857709/WhatsApp_Image_2021-10-10_at_14.48.57_1_meqy86.jpg",
+      "https://res.cloudinary.com/saiashish/image/upload/v1633857709/WhatsApp_Image_2021-10-10_at_14.48.57_fefetd.jpg",
+    ],
     link: "https://paytm.com",
   },
   {
@@ -204,7 +208,7 @@ const Experience = () => {
   const [selectedExp, setSelectedExp] = useState(0);
 
   function handleClick(k) {
-    if (k === 0 || k === 4) {
+    if (k === 4) {
       const win = window.open(data[k]["link"], "_blank");
       win.focus();
     } else {

@@ -8,6 +8,7 @@ import {
   Content,
   Img,
   PlayPauseBtn,
+  Span,
 } from "./styles";
 
 import { Tabs } from "antd";
@@ -20,11 +21,15 @@ import {
   AiFillInstagram,
   AiFillLinkedin,
   AiOutlineAmazon,
+  AiFillGithub,
+  AiOutlineLink,
 } from "react-icons/ai";
 
 import { FaUserShield } from "react-icons/fa";
 
 import { BsPlayFill } from "react-icons/bs";
+
+import { SiMicrosoftteams } from "react-icons/si";
 
 import ReactPlayer from "react-player";
 
@@ -76,6 +81,20 @@ const Projects = () => {
       label: <I18n t="feelAtHome" />,
       tab: <FaUserShield size={ICON_SIZE + 5} color={ICON_COLOR} />,
       url: "https://www.youtube.com/watch?v=sU1mwLUPT34",
+    },
+    {
+      key: "teams",
+      link: "https://www.youtube.com/watch?v=sU1mwLUPT34",
+      label: <I18n t="teams" />,
+      tab: <SiMicrosoftteams size={ICON_SIZE + 5} color={ICON_COLOR} />,
+      url: "https://www.youtube.com/watch?v=hztkTJnqWdI",
+    },
+    {
+      key: "github",
+      link: "https://github.com/saiashish9",
+      label: <I18n t="github" />,
+      tab: <AiFillGithub size={ICON_SIZE + 5} color={ICON_COLOR} />,
+      url: "https://youtu.be/LeUUn7BJQ2I",
     },
   ];
 
@@ -131,7 +150,7 @@ const Projects = () => {
               )}
             </PlayerContainer>
             <Label onClick={() => onLableClick(links[0].link)}>
-              {links[0].label}
+              <AiOutlineLink /> <Span>{links[0].label}</Span>
             </Label>
           </Content>
         </TabPane>
@@ -141,7 +160,9 @@ const Projects = () => {
               <PlayerContainer>
                 <ReactPlayer height="16rem" width="100%" url={i.url} />
               </PlayerContainer>
-              <Label onClick={() => onLableClick(i.link)}>{i.label}</Label>
+              <Label onClick={() => onLableClick(i.link)}>
+                <AiOutlineLink /> <Span>{i.label}</Span>
+              </Label>
             </Content>
           </TabPane>
         ))}

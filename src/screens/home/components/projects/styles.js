@@ -57,8 +57,8 @@ export const PlayPauseBtn = styled.div`
 
 export const PlayerContainer = styled.div`
   width: 32vw;
-  min-height: 21rem;
-  padding-top: 3rem;
+  min-height: 19rem;
+  padding-top: 1rem;
   cursor: pointer;
   position: relative;
   ${Styles.CBC}
@@ -73,7 +73,7 @@ export const PlayerContainer = styled.div`
   }
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     width: 100vw;
-    height: 18rem;
+    height: 20rem;
   }
 `;
 
@@ -150,9 +150,10 @@ export const StreamsTab = styled(Tabs)`
 
 export const Label = styled.a`
   text-align: center;
-  margin-top: 1.5rem;
+  margin-top: 0.1rem;
   text-decoration: underline;
   font-size: 1rem;
+  ${Styles.RBC}
   padding: 0px;
   position: relative;
   font-weight: ${FontWeight.medium};
@@ -166,4 +167,8 @@ export const Label = styled.a`
 export const Content = styled.div`
   width: 100%;
   ${Styles.CBC}
+`;
+
+export const Span = styled.span`
+  margin-left: 0.36rem;
 `;

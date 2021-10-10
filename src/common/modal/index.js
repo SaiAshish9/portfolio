@@ -62,7 +62,7 @@ const Overlay = ({ data, visible, setVisible, label, site }) => {
       {data.images ? (
         <StyledSlider {...settings}>
           {data.images.map((i, k) => (
-            <Img key={k} alt="img" src={i} slider />
+            <Img alt="img" src={i} key={k} slider />
           ))}
         </StyledSlider>
       ) : (
