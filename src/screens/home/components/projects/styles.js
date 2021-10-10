@@ -150,7 +150,7 @@ export const StreamsTab = styled(Tabs)`
 
 export const Label = styled.a`
   text-align: center;
-  margin-top: 0.54rem;
+  margin-top: 0.63rem;
   text-decoration: underline;
   font-size: 1rem;
   ${Styles.RBC}
