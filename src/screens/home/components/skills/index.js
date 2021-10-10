@@ -34,8 +34,7 @@ const settings = {
   slidesToScroll: 9,
   autoplay: true,
   speed: 6000,
-  autoplaySpeed: 6000,
-  cssEase: "linear",
+  autoplaySpeed: 0,
 };
 
 const lgSettings = {
