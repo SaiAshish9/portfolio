@@ -35,6 +35,7 @@ const settings = {
   autoplay: true,
   speed: 3000,
   autoplaySpeed: 0,
+  swipeToSlide: true,
 };
 
 const lgSettings = {
