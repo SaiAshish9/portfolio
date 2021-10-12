@@ -33,7 +33,7 @@ const settings = {
   slidesToShow: 9,
   slidesToScroll: 9,
   autoplay: true,
-  speed: 3600,
+  speed: 6300,
   autoplaySpeed: 0,
   swipeToSlide: true,
 };
