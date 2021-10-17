@@ -26,6 +26,7 @@ const data = [
       "https://res.cloudinary.com/saiashish/image/upload/v1633857822/WhatsApp_Image_2021-10-10_at_14.53.29_jlnfcb.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1633857709/WhatsApp_Image_2021-10-10_at_14.48.57_1_meqy86.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1633857709/WhatsApp_Image_2021-10-10_at_14.48.57_fefetd.jpg",
+      "https://res.cloudinary.com/saiashish/image/upload/v1634480128/WhatsApp_Image_2021-10-15_at_19.55.26_yyocec.jpg"
     ],
     link: "https://paytm.com",
   },
