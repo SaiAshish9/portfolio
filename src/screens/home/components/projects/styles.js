@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { Tabs } from "antd";
 
@@ -161,6 +161,13 @@ export const Label = styled.a`
     current !== Theme.dark ? darkGrey : lightBluishGrey};
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     bottom: 3.5rem !important;
+  }
+  @media only screen and (max-width: ${BREAKPOINTS.xs}) {
+    ${({ addMarginTop }) =>
+      addMarginTop &&
+      css`
+        margin-top: 1.8rem !important;
+      `}
   }
 `;
 

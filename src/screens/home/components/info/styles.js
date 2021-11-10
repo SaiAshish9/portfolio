@@ -38,7 +38,7 @@ export const SmallStyledSlider = styled(Slider)`
 
 export const Container = styled.div`
   width: 100vw;
-  padding: 7rem 0 5rem;
+  padding: 3.6rem 0;
   overflow: hidden !important;
   position: relative;
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {

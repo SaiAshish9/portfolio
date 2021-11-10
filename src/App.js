@@ -10,6 +10,7 @@ import {
   Achievements,
   Experience,
   Projects,
+  OffersComponent,
 } from "screens/home/components";
 
 import { Container, FabButton } from "./styles";
@@ -75,6 +76,7 @@ function App() {
       <Header scrolled={scrolled} />
       <Intro />
       <Skills />
+      <OffersComponent />
       <Info />
       <Languages />
       <Achievements />

@@ -160,7 +160,10 @@ const Projects = () => {
               <PlayerContainer>
                 <ReactPlayer height="16rem" width="100%" url={i.url} />
               </PlayerContainer>
-              <Label onClick={() => onLableClick(i.link)}>
+              <Label
+                addMarginTop={1}
+                onClick={() => onLableClick(i.link)}
+              >
                 <AiOutlineLink /> <Span>{i.label}</Span>
               </Label>
             </Content>
