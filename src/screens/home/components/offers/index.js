@@ -97,7 +97,7 @@ const OffersComponent = () => {
         ))}
       </MediumImgContainer>
       <SmallImgContainer>
-        {images.slice(0, 2).map((i, k) => (
+        {images.slice(0, 3).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -107,7 +107,7 @@ const OffersComponent = () => {
         ))}
       </SmallImgContainer>
       <SmallImgContainer>
-        {images.slice(2, 4).map((i, k) => (
+        {images.slice(3, 6).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -117,27 +117,7 @@ const OffersComponent = () => {
         ))}
       </SmallImgContainer>
       <SmallImgContainer>
-        {images.slice(4, 6).map((i, k) => (
-          <Img
-            key={k}
-            alt="img"
-            src={i.img}
-            onClick={() => handleClick(i.link)}
-          />
-        ))}
-      </SmallImgContainer>
-      <SmallImgContainer>
-        {images.slice(6, 8).map((i, k) => (
-          <Img
-            key={k}
-            alt="img"
-            src={i.img}
-            onClick={() => handleClick(i.link)}
-          />
-        ))}
-      </SmallImgContainer>
-      <SmallImgContainer>
-        {images.slice(8).map((i, k) => (
+        {images.slice(6).map((i, k) => (
           <Img
             key={k}
             alt="img"
