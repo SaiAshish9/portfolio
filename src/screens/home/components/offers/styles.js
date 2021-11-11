@@ -33,7 +33,7 @@ export const ImgContainer = styled.div`
   margin: 2.7rem auto 0;
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     display: none;
-  } ;
+  };
 `;
 
 export const MediumImgContainer = styled.div`
@@ -44,7 +44,7 @@ export const MediumImgContainer = styled.div`
   }
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     display: none;
-  } ;
+  };
 `;
 
 export const SmallImgContainer = styled.div`
