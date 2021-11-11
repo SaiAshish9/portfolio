@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Styles, BREAKPOINTS } from "constants/index";
 
 export const Container = styled.div`
-  padding: 2rem 0;
+  padding: 2rem 0 1rem;
   @media only screen and (max-width: ${BREAKPOINTS.xs}) {
     display: none;
   }

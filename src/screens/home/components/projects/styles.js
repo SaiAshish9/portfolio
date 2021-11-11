@@ -43,7 +43,7 @@ export const PlayPauseBtn = styled.div`
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? darkGrey : lightBluishGrey};
   position: absolute;
-  top: 47%;
+  top: 41%;
   opacity: 0.7;
   font-size: 1.6rem;
   ${Styles.RCC};
