@@ -69,7 +69,7 @@ const images = [
 
 const OffersComponent = () => {
   return (
-    <Container>
+    <Container data-aos="zoom-in">
       <Label>
         <I18n t="messages" />
       </Label>

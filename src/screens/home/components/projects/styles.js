@@ -24,7 +24,7 @@ export const Container = styled.div`
   }
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     width: 100vw;
-    margin: 2rem 0;
+    margin: 0rem 0;
     .ant-tabs-nav -list {
       width: 100vw !important;
     }
