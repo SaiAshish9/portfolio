@@ -7,6 +7,12 @@ export const Container = styled.div`
   min-width: 100vw;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     padding: 0rem;
+  };
+  @media only screen and (max-width: ${BREAKPOINTS.xl}) {
+    padding: 0rem;
+  }
+  @media only screen and (max-width: ${BREAKPOINTS.md}) {
+    padding: 1rem 0rem 0rem;
   }
 `;
 

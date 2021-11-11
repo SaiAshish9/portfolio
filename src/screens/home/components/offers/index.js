@@ -70,10 +70,10 @@ const images = [
 const OffersComponent = () => {
   return (
     <Container>
-      {/* <Label>
+      <Label>
         <I18n t="messages" />
-      </Label> */}
-      {/* <ImgContainer>
+      </Label>
+      <ImgContainer>
         {images.map((i, k) => (
           <Img
             key={k}
@@ -82,8 +82,8 @@ const OffersComponent = () => {
             onClick={() => handleClick(i.link)}
           />
         ))}
-      </ImgContainer> */}
-      {/* <MediumImgContainer>
+      </ImgContainer>
+      <MediumImgContainer>
         {images.slice(0, 5).map((i, k) => (
           <Img
             key={k}
@@ -102,8 +102,8 @@ const OffersComponent = () => {
             onClick={() => handleClick(i.link)}
           />
         ))}
-      </MediumImgContainer> */}
-      {/* <SmallImgContainer>
+      </MediumImgContainer>
+      <SmallImgContainer>
         {images.slice(0, 2).map((i, k) => (
           <Img
             key={k}
@@ -152,7 +152,7 @@ const OffersComponent = () => {
             onClick={() => handleClick(i.link)}
           />
         ))}
-      </SmallImgContainer> */}
+      </SmallImgContainer>
     </Container>
   );
 };

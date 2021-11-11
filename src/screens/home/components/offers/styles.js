@@ -51,7 +51,7 @@ export const SmallImgContainer = styled.div`
   ${Styles.RAC};
   margin: 2.7rem auto 0;
   padding: 0 3rem;
-  @media only screen and (min-width: ${BREAKPOINTS.lg}) {
+  @media only screen and (min-width: ${BREAKPOINTS.sm}) {
     display: none;
   }
   @media only screen and (max-width: ${BREAKPOINTS.xs}) {
