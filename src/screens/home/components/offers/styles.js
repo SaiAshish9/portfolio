@@ -62,8 +62,8 @@ export const Img = styled.img`
   border-radius: 0.2rem;
   cursor: pointer;
   @media only screen and (max-width: ${BREAKPOINTS.xs}) {
-    height: 3.6rem;
-    width: 3.6rem;
+    height: 3.2rem;
+    width: 3.2rem;
     margin: 0 0.2rem;
   }
 `;
