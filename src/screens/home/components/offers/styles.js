@@ -8,6 +8,8 @@ import {
   BREAKPOINTS,
 } from "constants/index";
 
+import { AiFillHeart } from "react-icons/ai";
+
 const { veryDarkGray, white } = Colors;
 
 export const Container = styled.div`
@@ -90,4 +92,9 @@ export const HeartSubImage = styled.img`
   height: 5.4rem;
   width: 5.4rem;
   position: absolute;
+`;
+
+export const HeartIcon = styled(AiFillHeart)`
+  position: absolute;
+  z-index: 3;
 `;
