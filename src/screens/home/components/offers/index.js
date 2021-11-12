@@ -17,6 +17,14 @@ import PaytmImage from "assets/home/paytm.jpeg";
 import UnluImage from "assets/home/unlu.png";
 import GrowwImage from "assets/home/groww.jpeg";
 import OpenHouseImage from "assets/home/openhouse.png";
+import TuringImage from "assets/home/turing.png";
+import ZeeveImg from "assets/home/zeeve.png";
+import NetSkopeImg from "assets/home/netskope.png";
+import MoonshotImg from "assets/home/moonshot.png";
+import AvisoImg from "assets/home/aviso.png";
+import MindbowserImg from "assets/home/minbowser.png";
+import VerizonImg from "assets/home/verizon.jpeg";
+import IntuitImg from "assets/home/intuit.jpeg";
 import I18n from "common/I18n";
 
 function handleClick(link) {
@@ -54,6 +62,10 @@ const images = [
     link: "https://www.amazon.com/",
   },
   {
+    img: IntuitImg,
+    link: "https://intuit.com",
+  },
+  {
     img: TcsImage,
     link: "https://www.tcs.com/",
   },
@@ -65,6 +77,34 @@ const images = [
     img: OpenHouseImage,
     link: "https://openhouse.study/",
   },
+  {
+    img: TuringImage,
+    link: "https://turing.com/",
+  },
+  {
+    img: NetSkopeImg,
+    link: "https://netskope.com",
+  },
+  {
+    img: ZeeveImg,
+    link: "https://zeeve.io",
+  },
+  {
+    img: MoonshotImg,
+    link: "https://moonshotjr.com",
+  },
+  {
+    img: AvisoImg,
+    link: "https://aviso.com",
+  },
+  {
+    img: MindbowserImg,
+    link: "https://mindbowser.com",
+  },
+  {
+    img: VerizonImg,
+    link: "https://verizon.com",
+  },
 ];
 
 const OffersComponent = () => {
@@ -74,7 +114,7 @@ const OffersComponent = () => {
         <I18n t="messages" />
       </Label>
       <ImgContainer>
-        {images.map((i, k) => (
+        {images.slice(0, 9).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -83,6 +123,86 @@ const OffersComponent = () => {
           />
         ))}
       </ImgContainer>
+      <ImgContainer>
+        {images.slice(9).map((i, k) => (
+          <Img
+            key={k}
+            alt="img"
+            src={i.img}
+            onClick={() => handleClick(i.link)}
+          />
+        ))}
+      </ImgContainer>
+      <MediumImgContainer>
+        {images.slice(0, 5).map((i, k) => (
+          <Img
+            key={k}
+            alt="img"
+            src={i.img}
+            onClick={() => handleClick(i.link)}
+          />
+        ))}
+      </MediumImgContainer>
+      <MediumImgContainer>
+        {images.slice(5).map((i, k) => (
+          <Img
+            key={k}
+            alt="img"
+            src={i.img}
+            onClick={() => handleClick(i.link)}
+          />
+        ))}
+      </MediumImgContainer>
+      <SmallImgContainer>
+        {images.slice(0, 2).map((i, k) => (
+          <Img
+            key={k}
+            alt="img"
+            src={i.img}
+            onClick={() => handleClick(i.link)}
+          />
+        ))}
+      </SmallImgContainer>
+      <SmallImgContainer>
+        {images.slice(2, 4).map((i, k) => (
+          <Img
+            key={k}
+            alt="img"
+            src={i.img}
+            onClick={() => handleClick(i.link)}
+          />
+        ))}
+      </SmallImgContainer>
+      <SmallImgContainer>
+        {images.slice(4, 6).map((i, k) => (
+          <Img
+            key={k}
+            alt="img"
+            src={i.img}
+            onClick={() => handleClick(i.link)}
+          />
+        ))}
+      </SmallImgContainer>
+      <SmallImgContainer>
+        {images.slice(6, 8).map((i, k) => (
+          <Img
+            key={k}
+            alt="img"
+            src={i.img}
+            onClick={() => handleClick(i.link)}
+          />
+        ))}
+      </SmallImgContainer>
+      <SmallImgContainer>
+        {images.slice(8).map((i, k) => (
+          <Img
+            key={k}
+            alt="img"
+            src={i.img}
+            onClick={() => handleClick(i.link)}
+          />
+        ))}
+      </SmallImgContainer>
       <MediumImgContainer>
         {images.slice(0, 5).map((i, k) => (
           <Img
