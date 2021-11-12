@@ -824,4 +824,15 @@ export const translations = [
     fr: "J'ai reçu des messages de l'équipe de talent et d'acquisition de :",
     ru: "Получил сообщения от команды специалистов и специалистов по привлечению:",
   },
+  {
+    text: "invite",
+    en: "Waiting for the call from talent team of:",
+    pt: "Recebi mensagens da equipe de talentos e aquisição de:",
+    hi: "की प्रतिभा और अधिग्रहण टीम से संदेश मिला:",
+    te: "ప్రతిభ మరియు సముపార్జన బృందం నుండి సందేశాలు వచ్చాయి:",
+    de: "Erhaltene Nachrichten vom Talent- und Akquisitionsteam von:",
+    zh: "收到來自人才和採購團隊的消息：",
+    fr: "J'ai reçu des messages de l'équipe de talent et d'acquisition de :",
+    ru: "Получил сообщения от команды специалистов и специалистов по привлечению:",
+  },
 ];

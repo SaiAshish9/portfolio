@@ -72,7 +72,7 @@ export const MenuAvatar = styled.img`
 export const Title = styled.p`
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
-  font-weight: ${FontWeight.medium};
+  font-weight: ${FontWeight.light};
 `;
 
 export const MenuContent = styled.div`
@@ -96,6 +96,7 @@ export const LangugageIcon = styled.span`
 `;
 
 export const LanguageContent = styled.span`
+  font-weight: ${FontWeight.regular};
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     display: none;
   }

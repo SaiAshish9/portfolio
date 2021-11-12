@@ -45,7 +45,7 @@ export const AvatarImg = styled.img`
 export const Label = styled.p`
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
-  font-weight: ${FontWeight.semiBold};
+  // font-weight: ${FontWeight.semiBold};
   margin-bottom: 0.5rem;
   font-size: 1rem;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
@@ -58,7 +58,7 @@ export const SubTitle = styled.p`
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
   opacity: 0.7;
-  font-weight: ${FontWeight.medium};
+  font-weight: ${FontWeight.light};
   font-size: 0.8rem;
 `;
 

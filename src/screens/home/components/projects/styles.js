@@ -178,4 +178,5 @@ export const Content = styled.div`
 
 export const Span = styled.span`
   margin-left: 0.36rem;
+  font-weight: ${FontWeight.regular};
 `;

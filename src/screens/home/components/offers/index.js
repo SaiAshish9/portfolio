@@ -4,8 +4,11 @@ import {
   Img,
   Label,
   ImgContainer,
+  Center,
   MediumImgContainer,
   SmallImgContainer,
+  HeartImage,
+  HeartSubImage,
 } from "./styles";
 import CREDImage from "assets/home/cred.png";
 import RazorpayImage from "assets/home/razorpay.png";
@@ -25,7 +28,10 @@ import AvisoImg from "assets/home/aviso.png";
 import MindbowserImg from "assets/home/minbowser.png";
 import VerizonImg from "assets/home/verizon.jpeg";
 import IntuitImg from "assets/home/intuit.jpeg";
+import GoogleImg from "assets/home/google.png";
+import HeartImg from "assets/home/heart.svg";
 import I18n from "common/I18n";
+import { AiFillHeart } from "react-icons/ai";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -110,6 +116,14 @@ const images = [
 const OffersComponent = () => {
   return (
     <Container data-aos="zoom-in">
+      <Label>
+        <I18n t="invite" />
+      </Label>
+      <Center>
+        <HeartImage src={HeartImg} />
+        <HeartSubImage alt="img" src={GoogleImg} />
+        {/* <AiFillHeart /> */}
+      </Center>
       <Label>
         <I18n t="messages" />
       </Label>

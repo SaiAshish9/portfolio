@@ -20,7 +20,7 @@ export const Label = styled.p`
   text-align: center;
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
-  font-weight: ${FontWeight.semiBold};
+  // font-weight: ${FontWeight.semiBold};
   @media only screen and (max-width: ${BREAKPOINTS.xs}) {
     font-size: 0.9rem;
     margin-bottom: 1.8rem;
@@ -33,7 +33,7 @@ export const ImgContainer = styled.div`
   margin: 2.7rem auto 0;
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     display: none;
-  };
+  } ;
 `;
 
 export const MediumImgContainer = styled.div`
@@ -44,7 +44,7 @@ export const MediumImgContainer = styled.div`
   }
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     display: none;
-  };
+  } ;
 `;
 
 export const SmallImgContainer = styled.div`
@@ -69,4 +69,25 @@ export const Img = styled.img`
     height: 5.4rem;
     width: 5.4rem;
   }
+`;
+
+export const Center = styled.div`
+  margin: 2.7rem auto;
+  ${Styles.RCC};
+  position: relative;
+  height: 14rem;
+  width: 14rem;
+`;
+
+export const HeartImage = styled.img`
+  height: 14rem;
+  width: 14rem;
+  position: relative;
+  top: 0.6rem;
+`;
+
+export const HeartSubImage = styled.img`
+  height: 5.4rem;
+  width: 5.4rem;
+  position: absolute;
 `;

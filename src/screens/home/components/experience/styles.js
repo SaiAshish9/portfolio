@@ -70,7 +70,7 @@ export const Label = styled.p`
   padding: 0px;
   line-height: 0px;
   margin-bottom: 0.8rem;
-  font-weight: ${FontWeight.medium};
+  font-weight: ${FontWeight.regular};
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? darkGrey : lightBluishGrey};
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
@@ -84,6 +84,7 @@ export const Title = styled.p`
   font-size: 0.8rem;
   // line-height: 0px;
   padding: 0rem 0.4rem;
+  font-weight: ${FontWeight.light};
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? darkGrey : lightBluishGrey};
   opacity: 0.8;

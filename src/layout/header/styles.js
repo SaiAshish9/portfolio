@@ -47,7 +47,7 @@ export const Label = styled.p`
   font-size: 1.2rem;
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
-  font-weight: ${FontWeight.semiBold};
+  // font-weight: ${FontWeight.medium};
   cursor: pointer;
   @media only screen and (max-width: ${BREAKPOINTS.xs}) {
     display: none;
@@ -58,7 +58,7 @@ export const SmallLabel = styled.p`
   font-size: 1rem;
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
-  font-weight: ${FontWeight.semiBold};
+  font-weight: ${FontWeight.regular};
   cursor: pointer;
   @media only screen and (min-width: ${BREAKPOINTS.xs}) {
     display: none;
@@ -166,7 +166,7 @@ export const ContainerLabel = styled.p`
   font-size: 0.8rem;
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
-  font-weight: ${FontWeight.semiBold};
+  font-weight: ${FontWeight.regular};
   margin-left: 0.5rem;
 `;
 

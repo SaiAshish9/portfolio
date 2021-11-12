@@ -54,7 +54,7 @@ export const CardImg = styled.img`
 export const Title = styled.p`
   color: ${({ theme: { current } }) =>
     current === Theme.dark ? white : veryDarkGray};
-  font-weight: ${FontWeight.semiBold};
+  // font-weight: ${FontWeight.semiBold};
   text-overflow: ellipsis !important;
   white-space: no-wrap;
   width: 100%;
@@ -68,6 +68,7 @@ export const SubTitle = styled.p`
   color: ${({ theme: { current } }) =>
     current === Theme.dark ? lightBluishGrey : veryDarkGray};
   font-size: 0.8rem;
+  font-weight: 300;
 `;
 
 export const Content = styled.div`

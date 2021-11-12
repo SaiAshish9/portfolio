@@ -25,7 +25,7 @@ export const fontStyle = css`
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
   font-size: 1rem;
-  font-weight: ${FontWeight.medium};
+  font-weight: ${FontWeight.regular};
   cursor: pointer;
 `;
 
