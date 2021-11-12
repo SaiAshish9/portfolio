@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
-import {
-  Colors,
-  FontWeight,
-  Theme,
-  Styles,
-  BREAKPOINTS,
-} from "constants/index";
+import { Colors, Theme, Styles, BREAKPOINTS } from "constants/index";
 
 import { AiFillHeart } from "react-icons/ai";
 
@@ -15,6 +9,7 @@ const { veryDarkGray, white } = Colors;
 export const Container = styled.div`
   width: 100%;
   margin-top: 4.5rem;
+  cursor: pointer;
 `;
 
 export const Label = styled.p`
@@ -22,7 +17,6 @@ export const Label = styled.p`
   text-align: center;
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
-  // font-weight: ${FontWeight.semiBold};
   @media only screen and (max-width: ${BREAKPOINTS.xs}) {
     font-size: 0.9rem;
     margin-bottom: 1.8rem;
@@ -68,13 +62,14 @@ export const Img = styled.img`
   border-radius: 0.2rem;
   cursor: pointer;
   @media only screen and (max-width: ${BREAKPOINTS.xs}) {
-    height: 5.4rem;
-    width: 5.4rem;
+    height: 4.5rem;
+    width: 4.5rem;
+    margin: 0 0.5rem;
   }
 `;
 
 export const Center = styled.div`
-  margin: 2.7rem auto;
+  margin: 5.4rem auto 4.5rem;
   ${Styles.RCC};
   position: relative;
   height: 14rem;
