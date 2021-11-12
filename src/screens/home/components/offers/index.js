@@ -110,7 +110,7 @@ const images = [
 
 const OffersComponent = () => {
   return (
-    <Container data-aos="zoom-in">
+    <Container data-aos="fade-up">
       <Label>
         <I18n t="invite" />
       </Label>

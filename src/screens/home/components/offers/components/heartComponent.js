@@ -71,7 +71,7 @@ const HeartComponent = () => {
   }, 18);
 
   return (
-    <Center>
+    <Center data-aos="zoom-in">
       <HeartSubImage alt="img" src={GoogleImg} />
       {styles.map((i, k) => (
         <AiFillHeart
