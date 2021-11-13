@@ -26,7 +26,7 @@ export const Container = styled.div`
 `;
 
 export const AvatarImgContainer = styled.div`
-  min-height: 30vh;
+  min-height: 27vh;
   width: 100%;
 `;
 
@@ -65,6 +65,7 @@ export const SubTitle = styled.p`
 export const ImgContainer = styled.div`
   text-align: center;
   width: 24rem;
+  margin-top: -2.7rem;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     margin-top: -2.7rem;
   }
