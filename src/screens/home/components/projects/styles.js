@@ -150,7 +150,6 @@ export const StreamsTab = styled(Tabs)`
 
 export const Label = styled.a`
   text-align: center;
-  margin-top: 0.63rem;
   text-decoration: underline;
   font-size: 1rem;
   ${Styles.RBC}
@@ -162,13 +161,18 @@ export const Label = styled.a`
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     bottom: 3.5rem !important;
   }
-  @media only screen and (max-width: ${BREAKPOINTS.xs}) {
-    ${({ addMarginTop }) =>
-      addMarginTop &&
-      css`
-        margin-top: 1.8rem !important;
-      `}
-  }
+  ${({ addMarginTop }) =>
+    addMarginTop &&
+    css`
+      @media only screen and (max-width: ${BREAKPOINTS.xs}) {
+        margin-top: 1.2rem !important;
+      }
+    `}
+  ${({ addMarginTop }) =>
+    !addMarginTop &&
+    css`
+      margin-top: 1.8rem;
+    `};
 `;
 
 export const Content = styled.div`
