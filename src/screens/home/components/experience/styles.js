@@ -82,7 +82,6 @@ export const Title = styled.p`
   text-align: center;
   margin-top: 0.1rem;
   font-size: 0.8rem;
-  // line-height: 0px;
   padding: 0rem 0.4rem;
   font-weight: ${FontWeight.light};
   color: ${({ theme: { current } }) =>
