@@ -69,7 +69,10 @@ const Overlay = ({ data, visible, setVisible, label, site }) => {
         </StyledSlider>
       ) : (
         <Img
-          style={{ position: "relative", bottom: "5%" }}
+          style={{
+            position: "relative",
+            alignSelf: "flex-start",
+          }}
           alt="img"
           src={data?.image ?? data?.img}
         />

@@ -92,11 +92,13 @@ export const Title = styled.p`
 `;
 
 export const Img = styled.img`
-  margin: auto;
+  margin: 0 auto;
   max-height: 80%;
   border-radius: 5px;
   margin-bottom: 1rem;
   object-fit: contain;
+  align-self: flex-start;
+
   ${({ slider }) =>
     slider &&
     css`
