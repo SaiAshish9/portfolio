@@ -92,7 +92,6 @@ export const Title = styled.p`
 `;
 
 export const Img = styled.img`
-  height: 72%;
   margin: auto;
   border-radius: 5px;
   margin-bottom: 1rem;
