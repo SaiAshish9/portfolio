@@ -93,7 +93,7 @@ export const Title = styled.p`
 
 export const Img = styled.img`
   margin: 0 auto;
-  max-height: 80%;
+  max-height: 72%;
   border-radius: 5px;
   margin-bottom: 1rem;
   object-fit: contain;
