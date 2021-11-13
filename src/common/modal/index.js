@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   StyledModal,
@@ -47,21 +47,24 @@ const settings = {
   prevArrow: <PrevArrow />,
 };
 
-const Overlay = ({ data, visible, setVisible, label, site }) => {
+const Overlay = ({ data: selectedData, visible, setVisible, label, site }) => {
+  const [data, setData] = useState(selectedData);
+
   return (
     <StyledModal visible={visible} footer={null} closable={false}>
       <CloseIcon
         onClick={() => {
           setVisible(false);
+          setData(null);
         }}
       />
       <Title>
         {data?.title} {data?.subTitle}{" "}
       </Title>
       <Title>{label}</Title>
-      {data.images ? (
+      {data?.images ? (
         <StyledSlider {...settings}>
-          {data.images.map((i, k) => (
+          {data?.images.map((i, k) => (
             <ImgContainer key={k}>
               <Img alt="img" src={i} slider />
             </ImgContainer>
@@ -94,7 +97,7 @@ const Overlay = ({ data, visible, setVisible, label, site }) => {
         </Row>
       )}
       {site && (
-        <SubTitle href={data.link} target="_blank" rel="noopener noreferrer">
+        <SubTitle href={data?.link} target="_blank" rel="noopener noreferrer">
           Visit Site
         </SubTitle>
       )}

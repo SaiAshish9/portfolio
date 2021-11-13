@@ -160,11 +160,13 @@ const Info = () => {
           <Card key={k} data={i} onClick={(e) => onClick(e, k)} />
         ))}
       </SmallStyledSlider>
-      <Overlay
-        data={data[selectedInfo]}
-        visible={visible}
-        setVisible={setVisible}
-      />
+      {visible && (
+        <Overlay
+          data={data[selectedInfo]}
+          visible={visible}
+          setVisible={setVisible}
+        />
+      )}
     </Container>
   );
 };

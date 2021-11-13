@@ -164,12 +164,14 @@ const Achievements = () => {
           <Card key={k} data={i} onClick={(e) => onClick(e, k)} />
         ))}
       </SmallStyledSlider>
-      <Overlay
-        data={data[selectedAchievement]}
-        visible={visible}
-        setVisible={setVisible}
-        slider
-      />
+      {visible && (
+        <Overlay
+          data={data[selectedAchievement]}
+          visible={visible}
+          setVisible={setVisible}
+          slider
+        />
+      )}
     </Container>
   );
 };

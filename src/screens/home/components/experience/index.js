@@ -231,14 +231,15 @@ const Experience = () => {
           </Content>
         ))}
       </Container>
-
-      <Overlay
-        data={data[selectedExp]}
-        visible={visible}
-        setVisible={setVisible}
-        label={<I18n t="images" />}
-        site
-      />
+      {visible && (
+        <Overlay
+          data={data[selectedExp]}
+          visible={visible}
+          setVisible={setVisible}
+          label={<I18n t="images" />}
+          site
+        />
+      )}
     </div>
   );
 };
