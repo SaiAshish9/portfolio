@@ -846,4 +846,15 @@ export const translations = [
     fr: "Classe 12e",
     ru: "12 класс",
   },
+  {
+    text: "class8",
+    en: "Class 8th",
+    pt: "8ª classe",
+    hi: "कक्षा 8वीं",
+    te: "8 వ తరగతి",
+    de: "12. Klasse",
+    zh: "8年級",
+    fr: "Classe 8e",
+    ru: "8 класс",
+  },
 ];

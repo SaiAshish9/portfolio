@@ -83,6 +83,11 @@ const data = [
     subTitle: <I18n t="awardWinner" />,
     img: "https://res.cloudinary.com/saiashish/image/upload/v1636813139/class_12th_dz9j9q.jpg",
   },
+  {
+    title: <I18n t="class8" />,
+    subTitle: <I18n t="topper" />,
+    img: "https://res.cloudinary.com/saiashish/image/upload/v1636813139/class_12th_dz9j9q.jpg",
+  },
 ];
 
 const NextArrow = (props) => {
@@ -112,20 +117,20 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 1,
   swipeToSlide: true,
-  nextArrow: <NextArrow curr={3} />,
+  nextArrow: <NextArrow curr={4} />,
   prevArrow: <PrevArrow />,
 };
 
 const mSettings = {
   ...settings,
   slidesToShow: 3,
-  nextArrow: <NextArrow curr={4} />,
+  nextArrow: <NextArrow curr={5} />,
 };
 
 const sSettings = {
   ...settings,
   slidesToShow: 2,
-  nextArrow: <NextArrow curr={5} />,
+  nextArrow: <NextArrow curr={6} />,
 };
 
 const Achievements = () => {
