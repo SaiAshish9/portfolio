@@ -68,7 +68,11 @@ const Overlay = ({ data, visible, setVisible, label, site }) => {
           ))}
         </StyledSlider>
       ) : (
-        <Img alt="img" src={data?.image ?? data?.img} />
+        <Img
+          style={{ position: "relative", bottom: "5%" }}
+          alt="img"
+          src={data?.image ?? data?.img}
+        />
       )}
       {data?.download && (
         <Row>
