@@ -26,7 +26,7 @@ const data = [
       "https://res.cloudinary.com/saiashish/image/upload/v1633857822/WhatsApp_Image_2021-10-10_at_14.53.29_jlnfcb.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1633857709/WhatsApp_Image_2021-10-10_at_14.48.57_1_meqy86.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1633857709/WhatsApp_Image_2021-10-10_at_14.48.57_fefetd.jpg",
-      "https://res.cloudinary.com/saiashish/image/upload/v1634480128/WhatsApp_Image_2021-10-15_at_19.55.26_yyocec.jpg"
+      "https://res.cloudinary.com/saiashish/image/upload/v1634480128/WhatsApp_Image_2021-10-15_at_19.55.26_yyocec.jpg",
     ],
     link: "https://paytm.com",
   },
@@ -61,32 +61,6 @@ const data = [
     exp: 5,
     id: 2,
     link: "https://uvrobots.io",
-    images: [
-      "https://res.cloudinary.com/saiashish/image/upload/v1627709820/stewards1_kptfk4.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710554/Screenshot_from_2021-03-08_18-33-06_bhju4m.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710543/Screenshot_from_2021-03-07_22-31-37_gqshgw.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710517/Screenshot_from_2021-03-28_02-10-52_amzlcf.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710508/Screenshot_from_2021-03-29_01-09-13_nqeicp.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710500/Screenshot_from_2021-03-26_17-49-25_lymv9i.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710490/Screenshot_from_2021-03-25_15-29-22_nph597.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710481/Screenshot_from_2021-03-23_18-04-45_xizs1h.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710476/Screenshot_from_2021-03-23_22-06-40_ulo0zk.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710469/Screenshot_from_2021-03-23_17-54-26_kupjwh.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710454/Screenshot_from_2021-03-20_23-33-20_kug3qw.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710427/Screenshot_from_2021-03-18_17-19-23_mo1xio.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710420/Screenshot_from_2021-03-17_00-49-16_b9erdc.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710409/Screenshot_from_2021-03-16_15-45-31_ibzhan.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710403/Screenshot_from_2021-03-16_00-32-00_eczapi.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710394/Screenshot_from_2021-03-12_22-31-14_lsmge3.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710385/Screenshot_from_2021-03-10_20-38-26_kmlmwn.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710384/Screenshot_from_2021-03-10_00-07-04_mw2yz5.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710361/Screenshot_from_2021-03-09_19-59-13_lle5th.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710352/Screenshot_from_2021-03-08_22-08-08_xciupk.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710344/Screenshot_from_2021-03-08_22-12-37_p5rzh7.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710326/Screenshot_from_2021-03-08_17-48-54_oh6z8x.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627710303/Screenshot_from_2021-03-08_17-03-17_a7hh03.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1627711876/Screenshot_from_2021-04-02_02-25-02_gwyoti.png",
-    ],
   },
   {
     img: InuvestImg,
@@ -128,7 +102,32 @@ const data = [
     exp: 2,
     id: 4,
     searchVaccinesImg: true,
-    images: [],
+    images: [
+      "https://res.cloudinary.com/saiashish/image/upload/v1627709820/stewards1_kptfk4.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710554/Screenshot_from_2021-03-08_18-33-06_bhju4m.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710543/Screenshot_from_2021-03-07_22-31-37_gqshgw.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710517/Screenshot_from_2021-03-28_02-10-52_amzlcf.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710508/Screenshot_from_2021-03-29_01-09-13_nqeicp.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710500/Screenshot_from_2021-03-26_17-49-25_lymv9i.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710490/Screenshot_from_2021-03-25_15-29-22_nph597.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710481/Screenshot_from_2021-03-23_18-04-45_xizs1h.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710476/Screenshot_from_2021-03-23_22-06-40_ulo0zk.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710469/Screenshot_from_2021-03-23_17-54-26_kupjwh.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710454/Screenshot_from_2021-03-20_23-33-20_kug3qw.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710427/Screenshot_from_2021-03-18_17-19-23_mo1xio.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710420/Screenshot_from_2021-03-17_00-49-16_b9erdc.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710409/Screenshot_from_2021-03-16_15-45-31_ibzhan.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710403/Screenshot_from_2021-03-16_00-32-00_eczapi.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710394/Screenshot_from_2021-03-12_22-31-14_lsmge3.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710385/Screenshot_from_2021-03-10_20-38-26_kmlmwn.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710384/Screenshot_from_2021-03-10_00-07-04_mw2yz5.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710361/Screenshot_from_2021-03-09_19-59-13_lle5th.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710352/Screenshot_from_2021-03-08_22-08-08_xciupk.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710344/Screenshot_from_2021-03-08_22-12-37_p5rzh7.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710326/Screenshot_from_2021-03-08_17-48-54_oh6z8x.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627710303/Screenshot_from_2021-03-08_17-03-17_a7hh03.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1627711876/Screenshot_from_2021-04-02_02-25-02_gwyoti.png",
+    ],
     link: "https://searchvaccines.com",
   },
   {
@@ -209,7 +208,7 @@ const Experience = () => {
   const [selectedExp, setSelectedExp] = useState(0);
 
   function handleClick(k) {
-    if (k === 4) {
+    if (k === 2) {
       const win = window.open(data[k]["link"], "_blank");
       win.focus();
     } else {
