@@ -24,11 +24,11 @@ export const StyledModal = styled(Modal)`
     border-radius: 20px !important;
   }
   .ant-modal-body {
-    height: 90vh;
+    height: 80vh;
     margin: auto;
     width: 100%;
-    ${Styles.CBC}
-    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
   }
   .ant-modal-content {
     border-radius: 10px;
@@ -38,7 +38,7 @@ export const StyledModal = styled(Modal)`
       current === Theme.dark ? darkGrey : lightBluishGrey};
   }
   width: unset !important;
-  top: 5vh !important;
+  top: 10vh !important;
   overflow-y: scroll;
 
   @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
@@ -59,17 +59,11 @@ export const StyledModal = styled(Modal)`
     .ant-modal-body {
       height: 80vh;
       width: 100%;
-      ${Styles.CBC}
-      justify-content: flex-start;
+      displat: flex;
+      flex-direction: column;
     }
     top: 10vh !important;
   }
-`;
-
-export const ImgContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
 `;
 
 export const CloseIcon = styled(MdClose)`
@@ -83,25 +77,25 @@ export const CloseIcon = styled(MdClose)`
   }
 `;
 
+export const ImgContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
 export const Title = styled.p`
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
-  text-align: start;
+  text-align: center;
   font-weight: ${FontWeight.semiBold};
   margin: 0.5rem 0 !important;
 `;
 
 export const Img = styled.img`
-  height: 81%;
+  height: 72%;
   margin: auto;
   border-radius: 5px;
   margin-bottom: 1rem;
-  @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
-    height: 75%;
-  }
-  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
-    height: 55%;
-  }
   object-fit: contain;
   ${({ slider }) =>
     slider &&
@@ -134,7 +128,7 @@ export const StyledSlider = styled(Slider)`
 export const SubTitle = styled.a`
   color: ${({ theme: { current } }) =>
     current !== Theme.dark ? veryDarkGray : white};
-  text-align: start;
+  text-align: center;
   font-weight: ${FontWeight.semiBold};
   margin: 1rem 0 !important;
   text-decoration: underline;
