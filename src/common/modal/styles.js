@@ -66,6 +66,12 @@ export const StyledModal = styled(Modal)`
   }
 `;
 
+export const ImgContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
 export const CloseIcon = styled(MdClose)`
   font-size: 1.26rem;
   align-self: flex-end;
@@ -87,16 +93,13 @@ export const Title = styled.p`
 
 export const Img = styled.img`
   height: 81%;
-  min-width: 100%;
   margin: auto;
   border-radius: 5px;
   margin-bottom: 1rem;
   @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
-    margin: 0 7rem;
     height: 75%;
   }
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
-    margin: 0 7rem;
     height: 55%;
   }
   object-fit: contain;

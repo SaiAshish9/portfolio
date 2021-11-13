@@ -11,6 +11,7 @@ import {
   SubTitle,
   NextIconContainer,
   PrevIconContainer,
+  ImgContainer,
 } from "./styles";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
@@ -61,7 +62,9 @@ const Overlay = ({ data, visible, setVisible, label, site }) => {
       {data.images ? (
         <StyledSlider {...settings}>
           {data.images.map((i, k) => (
-            <Img alt="img" src={i} key={k} slider />
+            <ImgContainer key={k}>
+              <Img alt="img" src={i} slider />
+            </ImgContainer>
           ))}
         </StyledSlider>
       ) : (
