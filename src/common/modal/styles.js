@@ -62,7 +62,7 @@ export const StyledModal = styled(Modal)`
       displat: flex;
       flex-direction: column;
     }
-    top: 10vh !important;
+    top: 5vh !important;
   }
 `;
 
@@ -93,6 +93,7 @@ export const Title = styled.p`
 
 export const Img = styled.img`
   margin: auto;
+  max-height: 80%;
   border-radius: 5px;
   margin-bottom: 1rem;
   object-fit: contain;
@@ -117,7 +118,7 @@ export const Download = styled(BsDownload)`
 `;
 
 export const Row = styled.div`
-  ${Styles.RBC}
+  ${Styles.RCC}
 `;
 
 export const StyledSlider = styled(Slider)`
