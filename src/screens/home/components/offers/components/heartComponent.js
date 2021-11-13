@@ -6,7 +6,6 @@ import shuffle from "shuffle-array";
 import {
   // HeartImage,
   HeartSubImage,
-  HeartIcon,
   Center,
 } from "../styles";
 import { AiFillHeart } from "react-icons/ai";
@@ -70,8 +69,20 @@ const HeartComponent = () => {
     setSeconds(seconds + 1);
   }, 18);
 
+  function onLableClick(link) {
+    const win = window.open(link, "_blank");
+    win.focus();
+  }
+
   return (
-    <Center data-aos="zoom-in">
+    <Center
+      data-aos="zoom-in"
+      onClick={() =>
+        onLableClick(
+          "https://www.linkedin.com/feed/update/urn:li:activity:6865016711754715136/"
+        )
+      }
+    >
       <HeartSubImage alt="img" src={GoogleImg} />
       {styles.map((i, k) => (
         <AiFillHeart
