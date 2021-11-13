@@ -78,6 +78,11 @@ const data = [
     subTitle: <I18n t="publication" />,
     img: IEMISImg,
   },
+  {
+    title: <I18n t="class12" />,
+    subTitle: <I18n t="awardWinner" />,
+    img: "https://res.cloudinary.com/saiashish/image/upload/v1636813139/class_12th_dz9j9q.jpg",
+  },
 ];
 
 const NextArrow = (props) => {
@@ -107,20 +112,20 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 1,
   swipeToSlide: true,
-  nextArrow: <NextArrow curr={2} />,
+  nextArrow: <NextArrow curr={3} />,
   prevArrow: <PrevArrow />,
 };
 
 const mSettings = {
   ...settings,
   slidesToShow: 3,
-  nextArrow: <NextArrow curr={3} />,
+  nextArrow: <NextArrow curr={4} />,
 };
 
 const sSettings = {
   ...settings,
   slidesToShow: 2,
-  nextArrow: <NextArrow curr={4} />,
+  nextArrow: <NextArrow curr={5} />,
 };
 
 const Achievements = () => {

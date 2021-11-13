@@ -835,4 +835,15 @@ export const translations = [
     fr: "En attente de l'appel de l'équipe de talent de :",
     ru: "В ожидании звонка от талантливой команды:",
   },
+  {
+    text: "class12",
+    en: "Class 12th",
+    pt: "12ª classe",
+    hi: "कक्षा 12वीं",
+    te: "12 వ తరగతి",
+    de: "12. Klasse",
+    zh: "11年級",
+    fr: "Classe 12e",
+    ru: "12 класс",
+  },
 ];
