@@ -72,7 +72,7 @@ export const PlayerContainer = styled.div`
     height: 21rem;
   }
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
-    width: 100vw;
+    width: 10011w;
     height: 20rem;
   }
 `;
@@ -171,7 +171,7 @@ export const Label = styled.a`
   ${({ addMarginTop }) =>
     !addMarginTop &&
     css`
-      margin-top: 1.8rem;
+      margin-top: 0.2rem;
     `};
 `;
 
