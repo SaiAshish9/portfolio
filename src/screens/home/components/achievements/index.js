@@ -17,6 +17,7 @@ import VSITImg from "assets/home/vsit.jpeg";
 import CollegeImg from "assets/home/college.jpeg";
 import IEMISImg from "assets/home/iemis.jpeg";
 import BvpImg from "assets/home/bvp_pic.jpeg";
+import Class8AwardImg from "assets/home/school.jpeg";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
@@ -86,7 +87,7 @@ const data = [
   {
     title: <I18n t="class8" />,
     subTitle: <I18n t="topper" />,
-    img: "https://res.cloudinary.com/saiashish/image/upload/v1636813139/class_12th_dz9j9q.jpg",
+    img: Class8AwardImg,
   },
 ];
 
