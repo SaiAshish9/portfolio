@@ -9,7 +9,6 @@ import {
   Row,
   StyledSlider,
   SubTitle,
-  IconContainer,
   NextIconContainer,
   PrevIconContainer,
 } from "./styles";
