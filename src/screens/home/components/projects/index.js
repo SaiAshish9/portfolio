@@ -13,10 +13,6 @@ import {
 
 import { Tabs } from "antd";
 
-import { Colors, Theme } from "constants/index";
-
-import { useStore } from "store";
-
 import {
   AiFillInstagram,
   AiFillLinkedin,
@@ -39,25 +35,17 @@ import InstaThumbnailImg from "assets/home/insta-thumbnail.png";
 
 const { TabPane } = Tabs;
 
-const { veryDarkGray, white } = Colors;
-
 const ICON_SIZE = 16;
 
 // https://devfolio.co/submissions/feel-at-home
 
 const Projects = () => {
-  const {
-    state: { theme },
-  } = useStore();
-
-  const ICON_COLOR = theme !== Theme.dark ? veryDarkGray : white;
-
   const links = [
     {
       key: "instagram",
       link: "https://bit.ly/3aDgCI8",
       label: <I18n t="instaClone" />,
-      tab: <AiFillInstagram size={ICON_SIZE + 5} color={ICON_COLOR} />,
+      tab: <AiFillInstagram size={ICON_SIZE + 5} />,
       // url: "https://www.youtube.com/watch?v=gO_1CeJ2vT8",
       url: "https://res.cloudinary.com/saiashish/video/upload/v1627472940/Instagram_Clone_Using_React_Native_Postgres_Docker_And_Golang_bqznpc.mp4",
     },
@@ -65,35 +53,35 @@ const Projects = () => {
       key: "amazon",
       link: "https://bit.ly/3o4HzsX",
       label: <I18n t="amazonClone" />,
-      tab: <AiOutlineAmazon size={ICON_SIZE + 5} color={ICON_COLOR} />,
+      tab: <AiOutlineAmazon size={ICON_SIZE + 5} />,
       url: "https://www.youtube.com/watch?v=MKw83UXMtCQ",
     },
     {
       key: "linkedIn",
       link: "https://bit.ly/3dVFzlk",
       label: <I18n t="linkedInClone" />,
-      tab: <AiFillLinkedin size={ICON_SIZE + 5} color={ICON_COLOR} />,
+      tab: <AiFillLinkedin size={ICON_SIZE + 5} />,
       url: "https://www.youtube.com/watch?v=HzqnOGj3qmc",
     },
     {
       key: "feelAtHome",
       link: "https://bit.ly/2Y3MQGx",
       label: <I18n t="feelAtHome" />,
-      tab: <FaUserShield size={ICON_SIZE + 5} color={ICON_COLOR} />,
+      tab: <FaUserShield size={ICON_SIZE + 5} />,
       url: "https://www.youtube.com/watch?v=sU1mwLUPT34",
     },
     {
       key: "teams",
       link: "https://www.youtube.com/watch?v=sU1mwLUPT34",
       label: <I18n t="teams" />,
-      tab: <SiMicrosoftteams size={ICON_SIZE + 5} color={ICON_COLOR} />,
+      tab: <SiMicrosoftteams size={ICON_SIZE + 5} />,
       url: "https://www.youtube.com/watch?v=hztkTJnqWdI",
     },
     {
       key: "github",
       link: "https://github.com/saiashish9",
       label: <I18n t="github" />,
-      tab: <AiFillGithub size={ICON_SIZE + 5} color={ICON_COLOR} />,
+      tab: <AiFillGithub size={ICON_SIZE + 5} />,
       url: "https://youtu.be/LeUUn7BJQ2I",
     },
   ];
@@ -160,10 +148,7 @@ const Projects = () => {
               <PlayerContainer>
                 <ReactPlayer height="16rem" width="100%" url={i.url} />
               </PlayerContainer>
-              <Label
-                addMarginTop={1}
-                onClick={() => onLableClick(i.link)}
-              >
+              <Label addMarginTop={1} onClick={() => onLableClick(i.link)}>
                 <AiOutlineLink /> <Span>{i.label}</Span>
               </Label>
             </Content>

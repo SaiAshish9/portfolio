@@ -57,11 +57,23 @@ export const IconContainer = css`
       display: none;
     `}
   font-size: 1.2rem;
-  color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? darkGrey : lightBluishGrey};
   cursor: pointer;
   background: ${({ theme: { current } }) =>
-    current === Theme.dark ? darkGrey : lightBluishGrey};
+    current === Theme.dark
+      ? darkGrey
+      : current === Theme.highContrast
+      ? "#18ebff"
+      : current === Theme.love
+      ? "#eb4031"
+      : current=== Theme.fire
+      ? "#FF7600"
+      : lightBluishGrey};
+  color: ${({ theme: { current } }) =>
+    current === Theme.highContrast
+      ? "#000"
+      : current !== Theme.light
+      ? "#fff"
+      : lightBluishGrey};
   -webkit-box-shadow: 0 0 5px
     ${({ theme: { current } }) =>
       current !== Theme.dark ? darkGrey : lightBluishGrey};

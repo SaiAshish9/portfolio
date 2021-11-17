@@ -17,9 +17,21 @@ export const FabButton = styled.div`
   cursor: pointer;
   border-radius: 50%;
   background-color: ${({ theme: { current } }) =>
-    current === Theme.dark ? darkGrey : lightBluishGrey};
+    current === Theme.dark
+      ? darkGrey
+      : current === Theme.love
+      ? "#eb4031"
+      : current === Theme.highContrast
+      ? "#18ebff"
+      : current=== Theme.fire
+      ? "#FF7600"
+      : lightBluishGrey};
   color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? veryDarkGray : white};
+    current === Theme.light
+      ? veryDarkGray
+      : current === Theme.highContrast
+      ? "#000"
+      : white};
   box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
     0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
   position: fixed;

@@ -43,8 +43,6 @@ const Intro = () => {
 
   const ICON_SIZE = 16;
 
-  const ICON_COLOR = theme !== Theme.dark ? veryDarkGray : white;
-
   //  phone no. , linked in , github , email , location , medium ,
   // youtube , instagram , leetcode
 
@@ -53,42 +51,42 @@ const Intro = () => {
   const DATA = [
     {
       label: <I18n t="tel" />,
-      icon: <IoCall size={ICON_SIZE} color={ICON_COLOR} />,
+      icon: <IoCall size={ICON_SIZE} />,
       text: true,
     },
     {
       label: "https://www.linkedin.com/in/sai-ashish-237784188/",
-      icon: <AiFillLinkedin size={ICON_SIZE + 5} color={ICON_COLOR} />,
+      icon: <AiFillLinkedin size={ICON_SIZE + 5} />,
     },
     {
       label: "https://github.com/SaiAshish9",
-      icon: <AiFillGithub size={ICON_SIZE + 5} color={ICON_COLOR} />,
+      icon: <AiFillGithub size={ICON_SIZE + 5} />,
     },
     {
       label: "saiashish7777@gmail.com",
-      icon: <SiGmail size={ICON_SIZE - 1} color={ICON_COLOR} />,
+      icon: <SiGmail size={ICON_SIZE - 1} />,
       text: true,
     },
     {
       label: <I18n t="location" />,
-      icon: <FiMapPin size={ICON_SIZE} color={ICON_COLOR} />,
+      icon: <FiMapPin size={ICON_SIZE} />,
       text: true,
     },
     {
       label: "https://medium.com/@saiashish3760",
-      icon: <AiFillMediumSquare size={ICON_SIZE + 5} color={ICON_COLOR} />,
+      icon: <AiFillMediumSquare size={ICON_SIZE + 5} />,
     },
     {
       label: "https://www.youtube.com/channel/UCRrkV11YNkirkWEQSBTEtvg",
-      icon: <AiFillYoutube size={ICON_SIZE + 5} color={ICON_COLOR} />,
+      icon: <AiFillYoutube size={ICON_SIZE + 5} />,
     },
     {
       label: "https://www.instagram.com/saiashish99/",
-      icon: <AiFillInstagram size={ICON_SIZE + 5} color={ICON_COLOR} />,
+      icon: <AiFillInstagram size={ICON_SIZE + 5} />,
     },
     // {
     //   label: "https://leetcode.com/SaiAshish/",
-    //   icon: <IoCall size={ICON_SIZE} color={ICON_COLOR} />,
+    //   icon: <IoCall size={ICON_SIZE} />,
     // },
   ];
 

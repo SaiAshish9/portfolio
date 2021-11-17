@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import GoogleImg from "assets/home/google.png";
 // import HeartImg from "assets/home/heart.svg";
 import shuffle from "shuffle-array";
@@ -8,7 +8,10 @@ import {
   HeartSubImage,
   Center,
 } from "../styles";
-import { AiFillHeart } from "react-icons/ai";
+import { AiFillHeart, AiFillFire } from "react-icons/ai";
+
+import { useStore } from "store";
+import { Theme } from "constants/index";
 
 const styles = [
   { top: "1.6rem" },
@@ -60,10 +63,20 @@ const useInterval = (callback, delay) => {
   }, [delay]);
 };
 
-const colors = ["#eb4031", "#4085f5", "#fbbd00", "#30a952"];
+let colors = {
+  light: ["#eb4031", "#4085f5", "#fbbd00", "#30a952"],
+  dark: ["#eb4031", "#4085f5", "#fbbd00", "#30a952"],
+  love: ["#eb4031", "#FF75A0", "#eb4031", "#eb4031"],
+  highContrast: ["yellow", "yellow", "yellow", "white"],
+  fire: ["#FF7600", "#FF7600", "orange", "#FF7600", "orange"],
+};
 
 const HeartComponent = () => {
   const [seconds, setSeconds] = React.useState(0);
+
+  const {
+    state: { theme },
+  } = useStore();
 
   useInterval(() => {
     setSeconds(seconds + 1);
@@ -84,19 +97,34 @@ const HeartComponent = () => {
       }
     >
       <HeartSubImage alt="img" src={GoogleImg} />
-      {styles.map((i, k) => (
-        <AiFillHeart
-          style={{
-            position: "absolute",
-            zIndex: 3,
-            ...i,
-            color: shuffle.pick(colors),
-          }}
-          className="animate__animated animate__pulse animate_infinite"
-          key={k}
-          size={18}
-        />
-      ))}
+      {theme !== Theme.fire &&
+        styles.map((i, k) => (
+          <AiFillHeart
+            style={{
+              position: "absolute",
+              zIndex: 3,
+              ...i,
+              color: shuffle.pick(colors[theme]),
+            }}
+            className="animate__animated animate__pulse animate_infinite"
+            key={k}
+            size={18}
+          />
+        ))}
+      {theme === Theme.fire &&
+        styles.map((i, k) => (
+          <AiFillFire
+            style={{
+              position: "absolute",
+              zIndex: 3,
+              ...i,
+              color: shuffle.pick(colors[theme]),
+            }}
+            className="animate__animated animate__pulse animate_infinite"
+            key={k}
+            size={18}
+          />
+        ))}
     </Center>
   );
 };

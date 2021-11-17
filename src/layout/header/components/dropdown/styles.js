@@ -23,15 +23,11 @@ export const Container = styled.div`
 `;
 
 export const Label = styled.p`
-  color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? veryDarkGray : white};
   font-weight: ${FontWeight.medium};
   ${Styles.RBC}
 `;
 
 export const Icon = styled(IoIosArrowDown)`
-  color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? veryDarkGray : white};
   font-size: 1rem;
   margin-left: 0.5rem;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
@@ -70,8 +66,6 @@ export const MenuAvatar = styled.img`
 `;
 
 export const Title = styled.p`
-  color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? veryDarkGray : white};
   font-weight: ${FontWeight.light};
 `;
 
@@ -83,10 +77,7 @@ export const MenuContent = styled.div`
 
 export const Content = styled.div``;
 
-export const SubTitle = styled.p`
-  color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? veryDarkGray : white};
-`;
+export const SubTitle = styled.p``;
 
 export const LangugageIcon = styled.span`
   margin-right: 0.5rem;

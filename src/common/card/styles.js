@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   Colors,
   Theme,
@@ -11,7 +11,7 @@ import { AiFillEye } from "react-icons/ai";
 
 import { BsDownload } from "react-icons/bs";
 
-const { darkGrey, lightBluishGrey, white, veryDarkGray } = Colors;
+const { darkGrey, lightBluishGrey } = Colors;
 
 export const Container = styled.div`
   height: 24rem;
@@ -19,8 +19,19 @@ export const Container = styled.div`
   margin: 1rem 0;
   overflow: hidden;
   background-color: ${({ theme: { current } }) =>
-    current === Theme.dark ? darkGrey : lightBluishGrey};
+    current === Theme.dark
+      ? darkGrey
+      : current === Theme.highContrast
+      ? "yellow"
+      : current=== Theme.fire
+      ? "#fff"
+      : lightBluishGrey};
   border-radius: 6px;
+  ${({ theme: { current } }) =>
+    current === Theme.highContrast &&
+    css`
+      color: #000;
+    `}
   &:hover {
     -webkit-box-shadow: 0 0 5px
       ${({ theme: { current } }) =>
@@ -52,8 +63,6 @@ export const CardImg = styled.img`
 `;
 
 export const Title = styled.p`
-  color: ${({ theme: { current } }) =>
-    current === Theme.dark ? white : veryDarkGray};
   // font-weight: ${FontWeight.semiBold};
   text-overflow: ellipsis !important;
   white-space: no-wrap;
@@ -65,8 +74,6 @@ export const Title = styled.p`
 
 export const SubTitle = styled.p`
   margin-top: 0.5rem;
-  color: ${({ theme: { current } }) =>
-    current === Theme.dark ? lightBluishGrey : veryDarkGray};
   font-size: 0.8rem;
   font-weight: 300;
 `;
@@ -76,15 +83,11 @@ export const Content = styled.div`
 `;
 
 export const Eye = styled(AiFillEye)`
-  color: ${({ theme: { current } }) =>
-    current === Theme.dark ? lightBluishGrey : veryDarkGray};
   font-size: 1.2rem;
   cursor: pointer;
 `;
 
 export const Download = styled(BsDownload)`
-  color: ${({ theme: { current } }) =>
-    current === Theme.dark ? lightBluishGrey : veryDarkGray};
   font-size: 1.2rem;
   cursor: pointer;
   margin-left: 1rem;

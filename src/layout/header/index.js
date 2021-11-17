@@ -18,6 +18,9 @@ import {
   Player,
   SmallLabel,
   SLanguageIcon,
+  Heart,
+  ColorPalette,
+  Fire,
 } from "./styles";
 
 import { useStore } from "store";
@@ -43,7 +46,8 @@ const Header = ({ scrolled }) => {
   } = useStore();
 
   function handleIconClick() {
-    const t = theme === Theme.dark ? Theme.light : Theme.dark;
+    const themes = ["dark", "light", "love", "highContrast", "fire"];
+    const t = themes[(themes.indexOf(theme) + 1) % 5];
     setTheme(t);
     localStorage.setItem("theme", t);
   }
@@ -65,6 +69,16 @@ const Header = ({ scrolled }) => {
 
   if (theme === Theme.dark) {
     iconContent = <Moon onClick={handleIconClick} ismuted={isMuted ? 1 : 0} />;
+  } else if (theme === Theme.love) {
+    iconContent = <Heart onClick={handleIconClick} ismuted={isMuted ? 1 : 0} />;
+  } else if (theme === Theme.highContrast) {
+    iconContent = (
+      <ColorPalette onClick={handleIconClick} ismuted={isMuted ? 1 : 0} />
+    );
+  } else if (theme === Theme.fire) {
+    iconContent = (
+      <Fire onClick={handleIconClick} ismuted={isMuted ? 1 : 0} />
+    );
   }
 
   function handleMuteIconClick() {

@@ -40,8 +40,6 @@ export const PlayPauseBtn = styled.div`
   border-radius: 50%;
   background: ${({ theme: { current } }) =>
     current === Theme.dark ? darkGrey : lightBluishGrey};
-  color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? darkGrey : lightBluishGrey};
   position: absolute;
   top: 41%;
   opacity: 0.7;
@@ -93,7 +91,15 @@ export const StreamsTab = styled(Tabs)`
 
   .ant-tabs-tab {
     color: ${({ theme: { current } }) =>
-      current !== Theme.dark ? veryDarkGray : white};
+      current === Theme.light
+        ? veryDarkGray
+        : current === Theme.love
+        ? "#eb4031"
+        : current === Theme.highContrast
+        ? "yellow"
+        : current=== Theme.fire
+        ? "#FF7600"
+        : white};
     font-size: 1rem;
     width: 27vw;
     text-align: center;
@@ -104,7 +110,13 @@ export const StreamsTab = styled(Tabs)`
 
   .ant-tabs-nav::before {
     border-color: ${({ theme: { current } }) =>
-      current === Theme.dark ? veryDarkGray : white} !important;
+      current === Theme.dark
+        ? veryDarkGray
+        : current === Theme.highContrast
+        ? "yellow"
+        : current === Theme.love || current === Theme.fire
+        ? "transparent"
+        : white} !important;
   }
 
   .ant-tabs-tab:hover,
@@ -112,12 +124,28 @@ export const StreamsTab = styled(Tabs)`
   .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn,
   .ant-tabs-tab-btn:focus {
     color: ${({ theme: { current } }) =>
-      current !== Theme.dark ? veryDarkGray : white};
+      current === Theme.light
+        ? veryDarkGray
+        : current === Theme.love
+        ? "red"
+        : current === Theme.highContrast
+        ? "#18ebff"
+        : current=== Theme.fire
+        ? "#FF7600"
+        : white};
   }
 
   .ant-tabs-ink-bar {
     background-color: ${({ theme: { current } }) =>
-      current !== Theme.dark ? veryDarkGray : white};
+      current === Theme.light
+        ? veryDarkGray
+        : current === Theme.love
+        ? "#eb4031"
+        : current === Theme.highContrast
+        ? "yellow"
+        : current=== Theme.fire
+        ? "#FF7600"
+        : white};
     height: 3px !important;
   }
 
@@ -157,7 +185,15 @@ export const Label = styled.a`
   position: relative;
   font-weight: ${FontWeight.medium};
   color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? darkGrey : lightBluishGrey};
+    current === Theme.light
+      ? veryDarkGray
+      : current === Theme.love
+      ? "#eb4031"
+      : current === Theme.highContrast
+      ? "yellow"
+      : current=== Theme.fire
+      ? "#FF7600"
+      : white};
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     bottom: 3.5rem !important;
   }

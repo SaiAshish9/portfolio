@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
-import { Colors, Theme, Styles, BREAKPOINTS } from "constants/index";
+import { Styles, BREAKPOINTS } from "constants/index";
 
 import { AiFillHeart } from "react-icons/ai";
-
-const { veryDarkGray, white } = Colors;
 
 export const Container = styled.div`
   width: 100%;
@@ -15,8 +13,6 @@ export const Container = styled.div`
 export const Label = styled.p`
   font-size: 1.08rem;
   text-align: center;
-  color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? veryDarkGray : white};
   @media only screen and (max-width: ${BREAKPOINTS.xs}) {
     font-size: 0.9rem;
     margin-bottom: 1.8rem;

@@ -17,7 +17,18 @@ const ContainerStyles = css`
   border-radius: 2.3rem;
   margin-bottom: 2rem;
   background: ${({ theme: { current } }) =>
-    current === Theme.dark ? darkGrey : lightBluishGrey};
+    current === Theme.dark
+      ? darkGrey
+      : current === Theme.highContrast
+      ? "yellow"
+      : current=== Theme.fire
+      ? "#FFF"
+      : lightBluishGrey};
+  ${({ theme: { current } }) =>
+    current === Theme.highContrast &&
+    css`
+      color: #000;
+    `}
   box-shadow: 0 2px 1px -1px rgb(0 0 0 / 32%), 0 1px 1px 0 rgb(0 0 0 / 34%),
     0 1px 3px 0 rgb(0 0 0 / 32%);
   padding: 5rem 3.6rem;
@@ -71,8 +82,6 @@ export const Label = styled.p`
   line-height: 0px;
   margin-bottom: 0.8rem;
   font-weight: ${FontWeight.regular};
-  color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? darkGrey : lightBluishGrey};
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     font-size: 0.54rem;
   }
@@ -84,8 +93,6 @@ export const Title = styled.p`
   font-size: 0.8rem;
   padding: 0rem 0.4rem;
   font-weight: ${FontWeight.light};
-  color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? darkGrey : lightBluishGrey};
   opacity: 0.8;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     font-size: 0.5rem;
