@@ -16,7 +16,16 @@ import { BsDownload } from "react-icons/bs";
 
 import Slider from "react-slick";
 
-const { darkGrey, lightBluishGrey, veryDarkGray, white } = Colors;
+const {
+  darkGrey,
+  lightBluishGrey,
+  veryDarkGray,
+  white,
+  blue,
+
+  red,
+  orange,
+} = Colors;
 
 export const StyledModal = styled(Modal)`
   .ant-modal-mask {
@@ -35,7 +44,15 @@ export const StyledModal = styled(Modal)`
     width: 32vw;
     margin: auto;
     background: ${({ theme: { current } }) =>
-      current === Theme.dark ? darkGrey : lightBluishGrey};
+      current === Theme.dark
+        ? darkGrey
+        : current === Theme.love
+        ? red
+        : current === Theme.fire
+        ? orange
+        : current === Theme.highContrast
+        ? blue
+        : lightBluishGrey};
   }
   width: unset !important;
   top: 10vh !important;
@@ -70,7 +87,9 @@ export const CloseIcon = styled(MdClose)`
   font-size: 1.26rem;
   align-self: flex-end;
   color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? veryDarkGray : white};
+    current === Theme.light || current === Theme.highContrast
+      ? veryDarkGray
+      : white};
   cursor: pointer;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     margin-bottom: 6% !important;
@@ -85,7 +104,9 @@ export const ImgContainer = styled.div`
 
 export const Title = styled.p`
   color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? veryDarkGray : white};
+    current === Theme.light || current === Theme.highContrast
+      ? veryDarkGray
+      : white};
   text-align: center;
   font-weight: ${FontWeight.semiBold};
   margin: 0.5rem 0 !important;
@@ -113,7 +134,9 @@ export const Img = styled.img`
 
 export const Download = styled(BsDownload)`
   color: ${({ theme: { current } }) =>
-    current === Theme.dark ? lightBluishGrey : veryDarkGray};
+    current === Theme.light || current === Theme.highContrast
+      ? veryDarkGray
+      : lightBluishGrey};
   font-size: 1.2rem;
   cursor: pointer;
   margin-right: 1rem;
