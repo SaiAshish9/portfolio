@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import {
   Theme,
@@ -12,7 +12,18 @@ import { Menu } from "antd";
 
 import { IoIosArrowDown } from "react-icons/io";
 
-const { veryDarkGray, white, darkGrey, lightBluishGrey } = Colors;
+const {
+  veryDarkGray,
+  white,
+  darkGrey,
+  lightBluishGrey,
+  lightOrange,
+  orange,
+  yellow,
+  blue,
+  lightPink,
+  red,
+} = Colors;
 
 export const Container = styled.div`
   cursor: pointer;
@@ -41,13 +52,48 @@ export const StyledMenuItem = styled(Menu.Item)`
       ? active
         ? darkGrey
         : veryDarkGray
-      : active
-      ? lightBluishGrey
-      : white};
+      : current === Theme.light
+      ? active
+        ? lightBluishGrey
+        : white
+      : current === Theme.highContrast
+      ? active
+        ? blue
+        : yellow
+      : current === Theme.fire
+      ? active
+        ? orange
+        : lightOrange
+      : current === Theme.love && active
+      ? red
+      : lightPink};
   padding: 1rem !important;
+  ${({ theme: { current }, active }) =>
+    current === Theme.fire ||
+    (current === Theme.love &&
+      active &&
+      css`
+        color: #fff;
+      `)}
   :hover {
     background: ${({ theme: { current } }) =>
-      current === Theme.dark ? darkGrey : lightBluishGrey};
+      current === Theme.dark
+        ? darkGrey
+        : current === Theme.highContrast
+        ? blue
+        : lightBluishGrey};
+    ${({ theme: { current } }) =>
+      current === Theme.fire &&
+      css`
+        background: ${orange};
+        color: #fff;
+      `}
+    ${({ theme: { current } }) =>
+      current === Theme.love &&
+      css`
+        background: ${red};
+        color: #fff;
+      `}
   }
 `;
 
