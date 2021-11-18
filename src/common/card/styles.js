@@ -35,11 +35,10 @@ export const Container = styled.div`
       color: #000;
     `}
   ${({ theme: { current } }) =>
-    current === Theme.love ||
-    (current === Theme.fire &&
-      css`
-        color: #fff;
-      `)}
+    (current === Theme.love || current === Theme.fire) &&
+    css`
+      color: #fff;
+    `}
   &:hover {
     -webkit-box-shadow: 0 0 5px
       ${({ theme: { current } }) =>

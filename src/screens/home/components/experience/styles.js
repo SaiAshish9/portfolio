@@ -8,7 +8,7 @@ import {
   BREAKPOINTS,
 } from "constants/index";
 
-const { darkGrey, lightBluishGrey } = Colors;
+const { darkGrey, lightBluishGrey, orange, red } = Colors;
 
 const ContainerStyles = css`
   width: 70vw;
@@ -21,13 +21,20 @@ const ContainerStyles = css`
       ? darkGrey
       : current === Theme.highContrast
       ? "yellow"
-      : current=== Theme.fire
-      ? "#FFF"
+      : current === Theme.fire
+      ? orange
+      : current === Theme.love
+      ? red
       : lightBluishGrey};
   ${({ theme: { current } }) =>
     current === Theme.highContrast &&
     css`
       color: #000;
+    `}
+  ${({ theme: { current } }) =>
+    (current === Theme.fire || current === Theme.love) &&
+    css`
+      color: #fff;
     `}
   box-shadow: 0 2px 1px -1px rgb(0 0 0 / 32%), 0 1px 1px 0 rgb(0 0 0 / 34%),
     0 1px 3px 0 rgb(0 0 0 / 32%);
