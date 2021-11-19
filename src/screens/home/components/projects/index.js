@@ -146,7 +146,7 @@ const Projects = () => {
           <TabPane tab={i.tab} key={i.key}>
             <Content>
               <PlayerContainer>
-                <ReactPlayer height="16rem" width="100%" url={i.url} />
+                <ReactPlayer height="16rem" width="80%" url={i.url} />
               </PlayerContainer>
               <Label addMarginTop={1} onClick={() => onLableClick(i.link)}>
                 <AiOutlineLink /> <Span>{i.label}</Span>

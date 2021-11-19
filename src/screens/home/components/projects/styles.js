@@ -10,9 +10,22 @@ import {
   FontWeight,
 } from "constants/index";
 
-const { veryDarkGray, white, lightBluishGrey, darkGrey } = Colors;
+const {
+  veryDarkGray,
+  white,
+  blue,
+  black,
+  lightBluishGrey,
+  darkGrey,
+  red,
+  lightPink,
+  orange,
+  lightOrange,
+} = Colors;
 
-export const Img = styled.img``;
+export const Img = styled.img`
+  height: 16rem;
+`;
 
 export const Container = styled.div`
   width: 70vw;
@@ -39,7 +52,25 @@ export const PlayPauseBtn = styled.div`
   width: 3rem;
   border-radius: 50%;
   background: ${({ theme: { current } }) =>
-    current === Theme.dark ? darkGrey : lightBluishGrey};
+    current === Theme.dark
+      ? darkGrey
+      : current === Theme.love
+      ? red
+      : current === Theme.highContrast
+      ? blue
+      : current === Theme.fire
+      ? orange
+      : lightBluishGrey};
+  color: ${({ theme: { current } }) =>
+    current === Theme.dark
+      ? lightBluishGrey
+      : current === Theme.love
+      ? lightPink
+      : current === Theme.highContrast
+      ? black
+      : current === Theme.fire
+      ? lightOrange
+      : darkGrey};
   position: absolute;
   top: 41%;
   opacity: 0.7;
@@ -55,8 +86,8 @@ export const PlayPauseBtn = styled.div`
 
 export const PlayerContainer = styled.div`
   width: 32vw;
-  min-height: 19rem;
-  padding-top: 1rem;
+  min-height: 16rem;
+  padding: 1rem 0;
   cursor: pointer;
   position: relative;
   ${Styles.CBC}
@@ -67,10 +98,11 @@ export const PlayerContainer = styled.div`
   @media only screen and (max-width: ${BREAKPOINTS.md}) {
     width: 100%;
     padding-top: 1rem;
-    height: 21rem;
+    height: 14rem;
   }
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
-    width: 10011w;
+    width: 100vw;
+    padding: 1rem 0 2rem;
     height: 20rem;
   }
 `;
@@ -97,7 +129,7 @@ export const StreamsTab = styled(Tabs)`
         ? "#eb4031"
         : current === Theme.highContrast
         ? "yellow"
-        : current=== Theme.fire
+        : current === Theme.fire
         ? "#FF7600"
         : white};
     font-size: 1rem;
@@ -130,7 +162,7 @@ export const StreamsTab = styled(Tabs)`
         ? "red"
         : current === Theme.highContrast
         ? "#18ebff"
-        : current=== Theme.fire
+        : current === Theme.fire
         ? "#FF7600"
         : white};
   }
@@ -143,7 +175,7 @@ export const StreamsTab = styled(Tabs)`
         ? "#eb4031"
         : current === Theme.highContrast
         ? "yellow"
-        : current=== Theme.fire
+        : current === Theme.fire
         ? "#FF7600"
         : white};
     height: 3px !important;
@@ -191,11 +223,12 @@ export const Label = styled.a`
       ? "#eb4031"
       : current === Theme.highContrast
       ? "yellow"
-      : current=== Theme.fire
+      : current === Theme.fire
       ? "#FF7600"
       : white};
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     bottom: 3.5rem !important;
+    margin-top: 1.2rem !important;
   }
   ${({ addMarginTop }) =>
     addMarginTop &&
