@@ -1,10 +1,6 @@
 import styled, { css } from "styled-components";
 
-import {
-  Styles,
-  FontWeight,
-  BREAKPOINTS,
-} from "constants/index";
+import { Styles, FontWeight, BREAKPOINTS } from "constants/index";
 
 export const Container = styled.div`
   ${Styles.RBC}
@@ -95,6 +91,9 @@ export const InfoLabel = styled.p`
 export const InfoLink = styled.a`
   ${InfoText}
   text-decoration: underline;
+  &:hover {
+    color: inherit;
+  }
 `;
 
 export const InfoItem = styled.div`
