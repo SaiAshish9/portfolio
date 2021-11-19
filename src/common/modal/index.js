@@ -81,7 +81,7 @@ const Overlay = ({ data: selectedData, visible, setVisible, label, site }) => {
         />
       )}
       {data?.download && (
-        <Row>
+        <Row style={{ cursor: "pointer" }}>
           <Download />
           <Title
             onClick={() => {
