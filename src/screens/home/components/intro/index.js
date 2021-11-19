@@ -55,7 +55,7 @@ const Intro = () => {
       text: true,
     },
     {
-      label: "https://www.linkedin.com/in/sai-ashish-237784188/",
+      label: "https://www.linkedin.com/in/%F0%9F%9A%80-sai-ashish-237784188/",
       icon: <AiFillLinkedin size={ICON_SIZE + 5} />,
     },
     {

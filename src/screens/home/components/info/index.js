@@ -57,7 +57,7 @@ const data = [
     title: <I18n t="linkedIn" />,
     subTitle: "😉",
     img: LinkedInImg,
-    link: "https://www.linkedin.com/in/sai-ashish-237784188/",
+    link: "https://www.linkedin.com/in/%F0%9F%9A%80-sai-ashish-237784188/",
   },
   {
     title: <I18n t="medium" />,

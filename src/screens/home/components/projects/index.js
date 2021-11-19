@@ -43,7 +43,7 @@ const Projects = () => {
   const links = [
     {
       key: "instagram",
-      link: "https://bit.ly/3aDgCI8",
+      link: "https://www.linkedin.com/feed/update/urn:li:activity:6763008828448620544/",
       label: <I18n t="instaClone" />,
       tab: <AiFillInstagram size={ICON_SIZE + 5} />,
       // url: "https://www.youtube.com/watch?v=gO_1CeJ2vT8",
@@ -51,14 +51,14 @@ const Projects = () => {
     },
     {
       key: "amazon",
-      link: "https://bit.ly/3o4HzsX",
+      link: "https://www.linkedin.com/feed/update/urn:li:activity:6754409526407114752/",
       label: <I18n t="amazonClone" />,
       tab: <AiOutlineAmazon size={ICON_SIZE + 5} />,
       url: "https://www.youtube.com/watch?v=MKw83UXMtCQ",
     },
     {
       key: "linkedIn",
-      link: "https://bit.ly/3dVFzlk",
+      link: "https://www.linkedin.com/feed/update/urn:li:activity:6772044678335463424/",
       label: <I18n t="linkedInClone" />,
       tab: <AiFillLinkedin size={ICON_SIZE + 5} />,
       url: "https://www.youtube.com/watch?v=HzqnOGj3qmc",

@@ -86,7 +86,7 @@ const Overlay = ({ data: selectedData, visible, setVisible, label, site }) => {
           <Title
             onClick={() => {
               const win = window.open(
-                "https://www.linkedin.com/in/sai-ashish-237784188/",
+                "https://www.linkedin.com/in/%F0%9F%9A%80-sai-ashish-237784188/",
                 "_blank"
               );
               win.focus();
