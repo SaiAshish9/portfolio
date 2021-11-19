@@ -51,14 +51,14 @@ const Projects = () => {
     },
     {
       key: "amazon",
-      link: "https://www.linkedin.com/feed/update/urn:li:activity:6754409526407114752/",
+      link: "https://bit.ly/3HATZ70",
       label: <I18n t="amazonClone" />,
       tab: <AiOutlineAmazon size={ICON_SIZE + 5} />,
       url: "https://www.youtube.com/watch?v=MKw83UXMtCQ",
     },
     {
       key: "linkedIn",
-      link: "https://www.linkedin.com/feed/update/urn:li:activity:6772044678335463424/",
+      link: "https://bit.ly/30HSWAY",
       label: <I18n t="linkedInClone" />,
       tab: <AiFillLinkedin size={ICON_SIZE + 5} />,
       url: "https://www.youtube.com/watch?v=HzqnOGj3qmc",
