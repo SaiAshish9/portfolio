@@ -74,7 +74,7 @@ export const IconContainer = css`
       ? "#000"
       : current !== Theme.light
       ? "#fff"
-      : lightBluishGrey};
+      : "000"};
   -webkit-box-shadow: 0 0 5px
     ${({ theme: { current } }) =>
       current !== Theme.dark ? darkGrey : lightBluishGrey};
