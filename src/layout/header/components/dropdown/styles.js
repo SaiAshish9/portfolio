@@ -69,12 +69,18 @@ export const StyledMenuItem = styled(Menu.Item)`
       : lightPink};
   padding: 1rem !important;
   ${({ theme: { current }, active }) =>
-    current === Theme.fire ||
-    (current === Theme.love &&
-      active &&
-      css`
-        color: #fff;
-      `)}
+    (current === Theme.fire ||
+      current === Theme.love ||
+      current === Theme.dark) &&
+    active &&
+    css`
+      color: #fff;
+    `}
+  ${({ theme: { current } }) =>
+    current === Theme.dark &&
+    css`
+      color: #fff;
+    `}
   :hover {
     background: ${({ theme: { current } }) =>
       current === Theme.dark
@@ -92,6 +98,11 @@ export const StyledMenuItem = styled(Menu.Item)`
       current === Theme.love &&
       css`
         background: ${red};
+        color: #fff;
+      `}
+      ${({ theme: { current } }) =>
+      current === Theme.dark &&
+      css`
         color: #fff;
       `}
   }
