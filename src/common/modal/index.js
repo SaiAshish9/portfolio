@@ -81,19 +81,18 @@ const Overlay = ({ data: selectedData, visible, setVisible, label, site }) => {
         />
       )}
       {data?.download && (
-        <Row style={{ cursor: "pointer" }}>
+        <Row
+          onClick={() => {
+            const win = window.open(
+              data?.downloadableLink,
+              "_blank"
+            );
+            win.focus();
+          }}
+          style={{ cursor: "pointer" }}
+        >
           <Download />
-          <Title
-            onClick={() => {
-              const win = window.open(
-                "https://www.linkedin.com/in/%F0%9F%9A%80-sai-ashish-237784188/",
-                "_blank"
-              );
-              win.focus();
-            }}
-          >
-            Download
-          </Title>
+          <Title>Download</Title>
         </Row>
       )}
       {site && (

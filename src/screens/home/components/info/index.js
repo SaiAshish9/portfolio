@@ -15,7 +15,7 @@ import CoverLetterImg from "assets/home/cover-letter.png";
 import ResumeImg from "assets/home/resume.png";
 import AcademicsImg from "assets/home/academics.png";
 import GithubImg from "assets/home/github.png";
-import LinkedInImg from "assets/home/linkedIn.png";
+import LinkedInImg from "assets/home/linkedin.png";
 import MediumImg from "assets/home/medium.png";
 import YoutubeImg from "assets/home/youtube.png";
 import NightCodingSetupImg from "assets/home/nightCodingSetup.jpeg";
@@ -32,14 +32,14 @@ const data = [
     subTitle: "😊",
     img: CoverLetterImg,
     download: true,
-    downloadableLink: "https://www.linkedin.com/in/sai-ashish-237784188",
+    downloadableLink: "https://drive.google.com/file/d/1L98zTiG-66aEHfk8BUocVWwRMWwaj3gO/view",
   },
   {
     title: <I18n t="resume" />,
     subTitle: "❤️",
     img: ResumeImg,
     download: true,
-    downloadableLink: "https://www.linkedin.com/in/sai-ashish-237784188",
+    downloadableLink: "https://drive.google.com/file/d/1n-awU1e1cUFOk0UWenlJ5IUwVEMwUHmx/view?usp=sharing",
   },
   {
     title: <I18n t="bTech" />,
