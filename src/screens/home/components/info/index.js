@@ -39,7 +39,7 @@ const data = [
     subTitle: "❤️",
     img: ResumeImg,
     download: true,
-    downloadableLink: "https://drive.google.com/file/d/1n-awU1e1cUFOk0UWenlJ5IUwVEMwUHmx/view?usp=sharing",
+    downloadableLink: "https://drive.google.com/file/d/1_wuKjo9wgMjJNZLNal053IAQcWcPtryb/view?usp=sharing",
   },
   {
     title: <I18n t="bTech" />,
