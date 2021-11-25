@@ -24,7 +24,11 @@ const {
 } = Colors;
 
 export const Img = styled.img`
-  height: 16rem;
+  height: 15rem;
+  width: 90%;
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    height: 14rem;
+  }
 `;
 
 export const Container = styled.div`
