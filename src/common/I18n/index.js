@@ -2,7 +2,7 @@ import { createI18n } from "react-router-i18n";
 
 import { translations } from "languages/translations";
 
-const locales = ["en", "pt", "hi", "de", "te", "ru", "zh", "fR"];
+export const locales = ["en", "pt", "hi", "de", "te", "ru", "zh", "fR"];
 
 const translation = {
   en: {},

@@ -1,31 +1,19 @@
 import React, { useEffect, useState } from "react";
 
-import { Header, Footer } from "layout";
+import { Switch, Route } from "react-router-dom";
 
-import {
-  Intro,
-  Skills,
-  Info,
-  Languages,
-  Achievements,
-  Experience,
-  Projects,
-  OffersComponent,
-} from "screens/home/components";
+import { Home, DSA } from "screens";
 
-import { Container, FabButton } from "./styles";
+import { Container } from "./styles";
 
 import { useStore } from "store";
 
 import axios from "axios";
 
-import { IoIosArrowUp } from "react-icons/io";
+import { Header, Footer } from "layout";
+import { locales } from "common/I18n";
 
-function App() {
-  const {
-    actions: { setCount },
-  } = useStore();
-
+const App = () => {
   const [scrolled, isScrolled] = useState(null);
 
   useEffect(() => {
@@ -43,6 +31,10 @@ function App() {
       clearInterval(checkHeader);
     };
   }, []);
+
+  const {
+    actions: { setCount },
+  } = useStore();
 
   async function checkCount() {
     if (!localStorage.getItem("first")) {
@@ -63,33 +55,22 @@ function App() {
     }
   }
 
-  function handleFabClick() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
   useEffect(() => {
     checkCount();
   }, []);
 
+  const base = `/:locale(${locales.join("|")})?`;
+
   return (
     <Container>
       <Header scrolled={scrolled} />
-      <Intro />
-      <Skills />
-      <OffersComponent />
-      <Info />
-      <Languages />
-      <Achievements />
-      <Experience />
-      <Projects />
-      <Footer />
-      {scrolled && (
-        <FabButton onClick={handleFabClick}>
-          <IoIosArrowUp />
-        </FabButton>
-      )}
+      <Switch>
+        <Route exact path={base} component={Home} />
+        <Route path={`${base}/dsa`} component={DSA} />
+      </Switch>
+      <Footer scrolled={scrolled} />
     </Container>
   );
-}
+};
 
 export default App;

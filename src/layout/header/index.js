@@ -13,6 +13,7 @@ import {
   UnMute,
   SMute,
   SUnMute,
+  DsaIcon,
   ViewCountContainer,
   ContainerLabel,
   Player,
@@ -76,9 +77,7 @@ const Header = ({ scrolled }) => {
       <ColorPalette onClick={handleIconClick} ismuted={isMuted ? 1 : 0} />
     );
   } else if (theme === Theme.fire) {
-    iconContent = (
-      <Fire onClick={handleIconClick} ismuted={isMuted ? 1 : 0} />
-    );
+    iconContent = <Fire onClick={handleIconClick} ismuted={isMuted ? 1 : 0} />;
   }
 
   function handleMuteIconClick() {
@@ -230,7 +229,11 @@ const Header = ({ scrolled }) => {
 
   return (
     <Container scrolled={scrolled}>
-      <Tooltip placement="bottomLeft" title={<I18n t="Full Name" />}>
+      <Tooltip
+        onClick={() => history.push(`/${languages[selectedLanguage].code}`)}
+        placement="bottomLeft"
+        title={<I18n t="Full Name" />}
+      >
         <Label className="animate__animated animate__fadeInLeft">
           <I18n t="Name" />
         </Label>
@@ -240,6 +243,14 @@ const Header = ({ scrolled }) => {
       </Tooltip>
 
       <Row className="animate__animated animate__fadeInRight">
+        <Tooltip placement="bottomLeft" title={<I18n t="dsa" />}>
+          <DsaIcon
+            onClick={() =>
+              history.push(`/${languages[selectedLanguage].code}/dsa`)
+            }
+          />
+        </Tooltip>
+
         {muteIconContent}
         {sMuteIconContent}
         {isMuted && (
@@ -269,7 +280,12 @@ const Header = ({ scrolled }) => {
             label="selectLanguage"
             onClick={(i) => {
               setSelectedLanguage(i.id);
-              history.push(i.code);
+              if (history.location.pathname.split("/").includes("dsa")) {
+                history.push(`/${i.code ?? "en"}/dsa`);
+              } else {
+                history.push(i.code);
+              }
+              localStorage.setItem("code", i.id);
               setVisible(false);
               localStorage.setItem("code", i.id);
             }}

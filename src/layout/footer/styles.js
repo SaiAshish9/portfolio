@@ -11,6 +11,7 @@ export const Container = styled.div`
   justify-content: flex-start;
   width: 100%;
   padding: 2rem;
+  height: 5rem;
 `;
 
 export const fontStyle = css`

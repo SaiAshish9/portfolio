@@ -20,6 +20,8 @@ import { GoMute, GoUnmute } from "react-icons/go";
 
 import { AiFillFire, AiFillHeart } from "react-icons/ai";
 
+import { SiVisualstudiocode } from "react-icons/si";
+
 const { veryDarkGray, white, darkGrey, lightBluishGrey } = Colors;
 
 export const Container = styled.div`
@@ -215,5 +217,15 @@ export const SLanguageIcon = styled.span`
   margin-left: 0.7rem;
   @media only screen and (min-width: ${BREAKPOINTS.sm}) {
     display: none;
+  }
+`;
+
+export const DsaIcon = styled(SiVisualstudiocode)`
+  margin-right: 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    margin-right: 1rem;
+    font-size: 0.81rem;
   }
 `;

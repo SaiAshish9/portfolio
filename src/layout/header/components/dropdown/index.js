@@ -97,7 +97,11 @@ const DropdownContainer = ({
           <StyledMenuItem
             onClick={() => {
               setSelectedLanguage(i.id);
-              history.push(i.code);
+              if (history.location.pathname.split("/").includes("dsa")) {
+                history.push(`/${i.code ?? "en"}/dsa`);
+              } else {
+                history.push(i.code);
+              }
               localStorage.setItem("code", i.id);
             }}
             key={i.id}
