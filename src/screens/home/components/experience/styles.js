@@ -57,13 +57,16 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   cursor: pointer;
-  margin-bottom: 1rem;
+  ${({ id }) =>
+    id < 4 &&
+    css`
+      margin-bottom: 1rem;
+    `};
   ${Styles.CBC}
   width:25%;
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     width: 50%;
   }
-  padding-bottom: 1rem;
 `;
 
 export const Img = styled.img`

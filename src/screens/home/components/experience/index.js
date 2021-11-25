@@ -221,7 +221,7 @@ const Experience = () => {
     <div data-aos="zoom-in">
       <Container>
         {data.map((i, k) => (
-          <Content key={k} onClick={() => handleClick(i.id)}>
+          <Content id={k} key={k} onClick={() => handleClick(i.id)}>
             <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
             <Label>{i.label}</Label>
             <Title>{i.position}</Title>
