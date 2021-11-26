@@ -232,20 +232,14 @@ export const Label = styled.a`
       : white};
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     bottom: 3.5rem !important;
-    margin-top: 1.2rem !important;
   }
   ${({ addMarginTop }) =>
     addMarginTop &&
     css`
       @media only screen and (max-width: ${BREAKPOINTS.xs}) {
-        margin-top: 1.2rem !important;
+        margin-top: 1.4rem !important;
       }
     `}
-  ${({ addMarginTop }) =>
-    !addMarginTop &&
-    css`
-      margin-top: 0.2rem;
-    `};
 `;
 
 export const Content = styled.div`

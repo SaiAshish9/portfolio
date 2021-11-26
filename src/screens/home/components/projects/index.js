@@ -86,17 +86,11 @@ const Projects = () => {
     },
   ];
 
-  const [playing, isPlaying] = useState(true);
-  const [clicked, isClicked] = useState(false);
+  const [playing, isPlaying] = useState(false);
   const playerRef = useRef();
 
   function handleClick() {
     isPlaying((p) => isPlaying(!p));
-  }
-
-  function handleImgClicked() {
-    isPlaying((p) => isPlaying(!p));
-    isClicked((c) => isClicked(!c));
   }
 
   function onLableClick(link) {
@@ -115,23 +109,16 @@ const Projects = () => {
               tabIndex={-1}
               role="button"
             >
-              {!clicked ? (
-                <Img
-                  src={InstaThumbnailImg}
-                  alt="img"
-                  onClick={handleImgClicked}
-                />
-              ) : (
-                <ReactPlayer
-                  ref={playerRef}
-                  height="16rem"
-                  width="90%"
-                  loop
-                  url={links[0].url}
-                  playing={playing}
-                />
-              )}
-              {!playing && clicked && (
+              <ReactPlayer
+                ref={playerRef}
+                height="16rem"
+                width="90%"
+                loop
+                muted
+                url={links[0].url}
+                playing={playing}
+              />
+              {!playing && (
                 <PlayPauseBtn>
                   <BsPlayFill />
                 </PlayPauseBtn>
