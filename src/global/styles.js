@@ -58,14 +58,14 @@ const genericStyles = css`
   .ant-tooltip-arrow-content {
     background-color: ${({ theme: { current } }) =>
       current === Theme.light
-        ? veryDarkGray
+        ? "#fff"
         : current === Theme.love
         ? "#eb4031"
         : current === Theme.highContrast
-        ? "yellow"
+        ? "blue"
         : current === Theme.fire
         ? "#FF7600"
-        : white};
+        : veryDarkGray};
   }
 
   ::-webkit-scrollbar {
