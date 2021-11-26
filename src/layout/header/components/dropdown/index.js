@@ -20,12 +20,10 @@ import {
   StyledDropdown,
 } from "./styles";
 
-import LightPulse from "assets/home/lightPulse.gif";
-import DarkPulse from "assets/home/darkPulse.gif";
-
 import { useStore } from "store";
 
 import { Theme } from "constants/index";
+import { StyledMusicIcon } from "../drawer/styles";
 
 const DropdownContainer = ({
   language,
@@ -52,10 +50,7 @@ const DropdownContainer = ({
               <MenuAvatar src={i.img} alt="img" />
               <Content>
                 <Row>
-                  <Img
-                    src={theme === Theme.dark ? LightPulse : DarkPulse}
-                    alt="img"
-                  />
+                  <StyledMusicIcon />
                   <Title>{i.title}</Title>
                 </Row>
                 <SubTitle>{i.subTitle}</SubTitle>
@@ -135,12 +130,7 @@ const DropdownContainer = ({
           </LanguageContent>
           {songs && (
             <Row>
-              {songs && (
-                <Img
-                  src={theme === Theme.dark ? LightPulse : DarkPulse}
-                  alt="img"
-                />
-              )}
+              {songs && <StyledMusicIcon />}
               {songs[selected].title}
             </Row>
           )}

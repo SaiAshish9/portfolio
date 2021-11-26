@@ -117,7 +117,6 @@ export const Sun = styled(IoMdSunny)`
 export const Heart = styled(AiFillHeart)`
   ${IconStyle}
   font-size: 1.2rem;
-  margin-left: ${({ ismuted }) => (ismuted ? "1rem" : 0)};
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     margin-left: 0;
   }
@@ -147,7 +146,7 @@ export const Eye = styled(FaEye)`
 
 export const Mute = styled(GoMute)`
   ${IconStyle}
-  margin-right:1.5rem;
+  margin-right:1rem;
   font-size: 1.2rem;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     font-size: 0.95rem;
@@ -158,7 +157,7 @@ export const Mute = styled(GoMute)`
 
 export const UnMute = styled(GoUnmute)`
   ${IconStyle}
-  margin-right:1.5rem;
+  margin-right:1rem;
   font-size: 1.2rem;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     font-size: 0.95rem;
@@ -193,7 +192,7 @@ export const Row = styled.div`
 
 export const ViewCountContainer = styled.div`
   ${Styles.RBC}
-  margin: 0 1.5rem;
+  margin: 0 1rem;
   cursor: pointer;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     margin-right: 0;

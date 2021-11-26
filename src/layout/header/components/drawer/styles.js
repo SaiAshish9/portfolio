@@ -4,6 +4,8 @@ import { Drawer } from "antd";
 
 import { MdClose } from "react-icons/md";
 
+import { IoMusicalNotesSharp } from "react-icons/io5";
+
 import { Styles, Theme, Colors, FontWeight } from "constants/index";
 
 const { veryDarkGray, white, blue } = Colors;
@@ -85,6 +87,7 @@ export const Label = styled.p`
   font-size: 1rem;
   font-weight: ${FontWeight.medium};
   margin: 1rem 0;
+  display: flex;
 `;
 
 export const Content = styled.div`
@@ -128,6 +131,7 @@ export const Img = styled.img`
 
 export const Title = styled.p`
   font-size: 0.75rem;
+  ${Styles.RBC};
   font-weight: ${FontWeight.medium};
 `;
 
@@ -138,4 +142,10 @@ export const MusicImg = styled.img`
 
 export const Row = styled.div`
   ${Styles.RBC}
+`;
+
+export const StyledMusicIcon = styled(IoMusicalNotesSharp)`
+  position: relative;
+  bottom: 0.027rem;
+  margin-right: 0.5rem;
 `;
