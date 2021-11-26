@@ -6,15 +6,68 @@ import { MdClose } from "react-icons/md";
 
 import { Styles, Theme, Colors, FontWeight } from "constants/index";
 
-const { veryDarkGray, white, darkGrey, lightBluishGrey } = Colors;
+const { veryDarkGray, white, blue } = Colors;
 
 export const StyledDrawer = styled(Drawer)`
   .ant-drawer-content-wrapper {
     height: 72vh !important;
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: ${({ theme: { current } }) =>
+        current === Theme.light
+          ? veryDarkGray
+          : current === Theme.love
+          ? "#eb0431"
+          : current === Theme.highContrast
+          ? "#18ebff"
+          : current === Theme.fire
+          ? "#FF7600"
+          : white};
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: ${({ theme: { current } }) =>
+        current === Theme.light
+          ? veryDarkGray
+          : current === Theme.love
+          ? "#eb0431"
+          : current === Theme.highContrast
+          ? "#18ebff"
+          : current === Theme.fire
+          ? "#FF7600"
+          : white};
+      cursor: pointer;
+    }
   }
   .ant-drawer-content {
     background: ${({ theme: { current } }) =>
-      current === Theme.dark ? darkGrey : white} !important;
+      current === Theme.dark
+        ? veryDarkGray
+        : current === Theme.love
+        ? "#F3D1F4"
+        : current === Theme.highContrast
+        ? "#000"
+        : current === Theme.fire
+        ? "#FFED99"
+        : white};
+    color: ${({ theme: { current } }) =>
+      current === Theme.light
+        ? veryDarkGray
+        : current === Theme.love
+        ? "#eb4031"
+        : current === Theme.highContrast
+        ? "yellow"
+        : current === Theme.fire
+        ? "#FF7600"
+        : white};
   }
 `;
 
@@ -25,14 +78,10 @@ export const Container = styled.div`
 export const CloseIcon = styled(MdClose)`
   font-size: 1.26rem;
   align-self: flex-end;
-  color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? veryDarkGray : white};
   cursor: pointer;
 `;
 
 export const Label = styled.p`
-  color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? veryDarkGray : white};
   font-size: 1rem;
   font-weight: ${FontWeight.medium};
   margin: 1rem 0;
@@ -48,7 +97,15 @@ export const Content = styled.div`
     css`
       border: 2px solid
         ${({ theme: { current } }) =>
-          current !== Theme.dark ? darkGrey : white};
+          current === Theme.light
+            ? veryDarkGray
+            : current === Theme.love
+            ? "#eb4031"
+            : current === Theme.highContrast
+            ? blue
+            : current === Theme.fire
+            ? "#FF7600"
+            : white};
       border-radius: 5px;
     `}
 `;
@@ -70,8 +127,6 @@ export const Img = styled.img`
 `;
 
 export const Title = styled.p`
-  color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? veryDarkGray : white};
   font-size: 0.75rem;
   font-weight: ${FontWeight.medium};
 `;

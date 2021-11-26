@@ -32,11 +32,11 @@ const genericStyles = css`
   }
   ::-webkit-scrollbar {
     width: 5px;
-  }
+  };
 
   ::-webkit-scrollbar-track {
     border-radius: 3px;
-  }
+  };
 
   ::-webkit-scrollbar-thumb {
     background: ${({ theme: { current } }) =>
@@ -50,7 +50,7 @@ const genericStyles = css`
         ? "#FF7600"
         : white};
     border-radius: 10px;
-  }
+  };
 
   ::-webkit-scrollbar-thumb:hover {
     background: ${({ theme: { current } }) =>
@@ -64,7 +64,7 @@ const genericStyles = css`
         ? "#FF7600"
         : white};
     cursor: pointer;
-  }
+  };
 `;
 
 const GlobalStyles = createGlobalStyle`

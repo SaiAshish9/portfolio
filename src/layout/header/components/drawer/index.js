@@ -52,7 +52,11 @@ const Modal = ({ label, visible, setVisible, data, selected, onClick }) => {
               <Row>
                 {i.id === selected && i.img && (
                   <MusicImg
-                    src={theme === Theme.dark ? LightPulse : DarkPulse}
+                    src={
+                      theme === Theme.dark || theme === Theme.highContrast
+                        ? LightPulse
+                        : DarkPulse
+                    }
                     alt="img"
                   />
                 )}
