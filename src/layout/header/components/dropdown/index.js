@@ -1,7 +1,5 @@
 import React from "react";
 
-import { Dropdown } from "antd";
-
 import { useHistory } from "react-router-dom";
 
 import {
@@ -19,6 +17,7 @@ import {
   Img,
   LanguageContent,
   Row,
+  StyledDropdown,
 } from "./styles";
 
 import LightPulse from "assets/home/lightPulse.gif";
@@ -120,7 +119,12 @@ const DropdownContainer = ({
   );
 
   return (
-    <Dropdown overlay={menu} trigger={["click"]} placement="bottomRight" arrow>
+    <StyledDropdown
+      overlay={menu}
+      trigger={["click"]}
+      placement="bottomRight"
+      arrow
+    >
       <Container>
         <Label>
           <LangugageIcon>
@@ -143,7 +147,7 @@ const DropdownContainer = ({
         </Label>
         <Icon />
       </Container>
-    </Dropdown>
+    </StyledDropdown>
   );
 };
 

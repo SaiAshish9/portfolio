@@ -8,7 +8,7 @@ import {
   BREAKPOINTS,
 } from "constants/index";
 
-import { Menu } from "antd";
+import { Dropdown, Menu } from "antd";
 
 import { IoIosArrowDown } from "react-icons/io";
 
@@ -24,6 +24,8 @@ const {
   lightPink,
   red,
 } = Colors;
+
+export const StyledDropdown = styled(Dropdown)``;
 
 export const Container = styled.div`
   cursor: pointer;
