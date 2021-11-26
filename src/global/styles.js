@@ -30,6 +30,44 @@ const genericStyles = css`
         ? "#FF7600"
         : white};
   }
+
+  .ant-tooltip-inner {
+    background: ${({ theme: { current } }) =>
+      current === Theme.dark
+        ? veryDarkGray
+        : current === Theme.love
+        ? "#F3D1F4"
+        : current === Theme.highContrast
+        ? "#000"
+        : current === Theme.fire
+        ? "#FFED99"
+        : white};
+
+    color: ${({ theme: { current } }) =>
+      current === Theme.light
+        ? veryDarkGray
+        : current === Theme.love
+        ? "#eb4031"
+        : current === Theme.highContrast
+        ? "yellow"
+        : current === Theme.fire
+        ? "#FF7600"
+        : white};
+  }
+
+  .ant-tooltip-arrow-content {
+    background-color: ${({ theme: { current } }) =>
+      current === Theme.light
+        ? veryDarkGray
+        : current === Theme.love
+        ? "#eb4031"
+        : current === Theme.highContrast
+        ? "yellow"
+        : current === Theme.fire
+        ? "#FF7600"
+        : white};
+  }
+
   ::-webkit-scrollbar {
     width: 5px;
   }
@@ -119,7 +157,7 @@ const genericStyles = css`
         : current === Theme.fire
         ? "#FFED99"
         : white} !important;
-    padding: 0px !imporatnt;
+    padding: 0 0px !important;
   }
 `;
 
