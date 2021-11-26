@@ -66,7 +66,7 @@ export const IconContainer = css`
       ? "#18ebff"
       : current === Theme.love
       ? "#eb4031"
-      : current=== Theme.fire
+      : current === Theme.fire
       ? "#FF7600"
       : lightBluishGrey};
   color: ${({ theme: { current } }) =>
@@ -75,12 +75,8 @@ export const IconContainer = css`
       : current !== Theme.light
       ? "#fff"
       : "000"};
-  -webkit-box-shadow: 0 0 5px
-    ${({ theme: { current } }) =>
-      current !== Theme.dark ? darkGrey : lightBluishGrey};
-  box-shadow: 0 0 5px
-    ${({ theme: { current } }) =>
-      current !== Theme.dark ? darkGrey : lightBluishGrey};
+  box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
+    0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
   position: absolute;
   top: 43%;
   z-index: 10;
