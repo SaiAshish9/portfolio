@@ -11,7 +11,8 @@ import { AiFillEye } from "react-icons/ai";
 
 import { BsDownload } from "react-icons/bs";
 
-const { darkGrey, lightBluishGrey, orange, red } = Colors;
+const { darkGrey, lightBluishGrey, orange, red, white, veryDarkGray, blue } =
+  Colors;
 
 export const Container = styled.div`
   height: 24rem;
@@ -42,10 +43,26 @@ export const Container = styled.div`
   &:hover {
     -webkit-box-shadow: 0 0 5px
       ${({ theme: { current } }) =>
-        current !== Theme.dark ? darkGrey : lightBluishGrey};
+        current === Theme.light
+          ? veryDarkGray
+          : current === Theme.love
+          ? "#eb4031"
+          : current === Theme.highContrast
+          ? blue
+          : current === Theme.fire
+          ? "#FF7600"
+          : white};
     box-shadow: 0 0 5px
       ${({ theme: { current } }) =>
-        current !== Theme.dark ? darkGrey : lightBluishGrey};
+        current === Theme.light
+          ? veryDarkGray
+          : current === Theme.love
+          ? "#eb4031"
+          : current === Theme.highContrast
+          ? blue
+          : current === Theme.fire
+          ? "#FF7600"
+          : white};
   }
   @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
     width: 16rem;
