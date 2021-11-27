@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { Styles, Theme, Colors, BREAKPOINTS } from "constants/index";
 
-const { veryDarkGray, white } = Colors;
+const { veryDarkGray, white, blue } = Colors;
 
 export const Container = styled.div`
   padding-top: 4.5rem;
@@ -22,7 +22,7 @@ export const Button = styled.div`
   overflow: hidden;
   // white-space: nowrap;
   // text-overflow: ellipsis;
-  
+
   cursor: pointer;
   margin-right: 1rem;
   margin-bottom: 0.8rem;
@@ -50,13 +50,24 @@ export const Button = styled.div`
   ${({ active }) =>
     active === 1 &&
     css`
+      border: 1px solid
+        ${({ theme: { current } }) =>
+          current === Theme.light
+            ? veryDarkGray
+            : current === Theme.love
+            ? "#eb4031"
+            : current === Theme.highContrast
+            ? blue
+            : current === Theme.fire
+            ? "#FF7600"
+            : white};
       background: ${({ theme: { current } }) =>
         current === Theme.light
           ? veryDarkGray
           : current === Theme.love
           ? "#eb4031"
           : current === Theme.highContrast
-          ? "yellow"
+          ? blue
           : current === Theme.fire
           ? "#FF7600"
           : white};
@@ -77,7 +88,7 @@ export const BtnContainer = styled.div`
   margin-top: 1rem;
   ${Styles.RCC};
   flex-wrap: wrap;
-  margin: 2rem auto;
+  margin: 1.5rem auto;
 `;
 
 export const Img = styled.img`
@@ -86,4 +97,9 @@ export const Img = styled.img`
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     margin: 2.7rem auto;
   }
+`;
+
+export const Desc = styled.p`
+  text-align: start;
+  margin: auto;
 `;
