@@ -1,4 +1,4 @@
-import React, { useSelected, useState } from "react";
+import React, { useState } from "react";
 import { Container, Content, Button, BtnContainer, Img } from "./styles";
 
 import { Header } from "./components";
@@ -46,8 +46,8 @@ const DSA = () => {
                   active={+(selectedSubOption === key)}
                   key={key}
                 >
-                  {entry[1].length > 45
-                    ? entry[1].substr(0, 45) + "..."
+                  {entry[1].length > 35
+                    ? entry[1].substr(0, 36) + "..."
                     : entry[1]}
                 </Button>
               )
