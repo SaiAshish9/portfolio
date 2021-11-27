@@ -34,7 +34,7 @@ export const DATA = {
       stewards: "Stewards",
       inuvest: "Inuvest",
       nex2Me: "Nex2Me",
-      pracify: "Pracify",
+      pracify: "Pracify ( Mauka )",
       appTown: "App Town",
     },
     note: "Atmost there will be four rounds , the second round will be based on your development skills , experience, projects and code quality. Last two will be based upon hr and they will be similar to the second round.",
