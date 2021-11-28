@@ -101,7 +101,58 @@ export const DATA = {
       },
       "non-primitive": {
         title: "Non Primitive",
-        types: [],
+        types: [
+          {
+            title: "Linear",
+            content: (
+              <>
+                In <b>linear data structure</b>, elements are arranged in a
+                linear or sequential way such that all of them can be traversed
+                in a single run and each element is connected to previous and
+                next adjacent.
+                <br />
+                <br />
+                e.g. : Array, Linked List, Stack, Queue, etc.
+              </>
+            ),
+          },
+          {
+            title: "Non Linear",
+          },
+        ],
+        content: (
+          <>
+            Non-primitive data structure can store the data of more than one
+            type whose size is not fixed.
+            <br />
+            <br />
+            <b>Physical Data Structure</b>
+            <br />
+            <br />
+            A physical data structure refers to the actual organization of data
+            on a storage device.
+            <br />
+            <br />
+            <b>e.g. : </b> Arrays and Linked List
+            <br />
+            <br />
+            <b>Logical Data Structure</b>
+            <br />
+            <br />
+            The logical data structure refers to how the information appears to
+            a program or user. For example, a data file is a collection of
+            information stored together. This is its logical structure.
+            <br />
+            <br />
+            <b>e.g. :</b> Stack, Queue, Graph. Tree , Trie , Hash Table
+            <br />
+            <br />
+            <b>Hash Table</b>
+            <br />
+            <br />
+            It can be linear as well as non linear.
+          </>
+        ),
       },
     },
   },
