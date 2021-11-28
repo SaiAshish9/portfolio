@@ -82,6 +82,39 @@ export const Button = styled.div`
           ? "#FFED99"
           : white};
     `};
+  &:hover {
+    border: 1px solid
+      ${({ theme: { current } }) =>
+        current === Theme.light
+          ? veryDarkGray
+          : current === Theme.love
+          ? "#eb4031"
+          : current === Theme.highContrast
+          ? blue
+          : current === Theme.fire
+          ? "#FF7600"
+          : white};
+    background: ${({ theme: { current } }) =>
+      current === Theme.light
+        ? veryDarkGray
+        : current === Theme.love
+        ? "#eb4031"
+        : current === Theme.highContrast
+        ? blue
+        : current === Theme.fire
+        ? "#FF7600"
+        : white};
+    color: ${({ theme: { current } }) =>
+      current === Theme.dark
+        ? veryDarkGray
+        : current === Theme.love
+        ? "#F3D1F4"
+        : current === Theme.highContrast
+        ? "#000"
+        : current === Theme.fire
+        ? "#FFED99"
+        : white};
+  };
 `;
 
 export const BtnContainer = styled.div`

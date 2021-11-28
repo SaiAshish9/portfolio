@@ -7,28 +7,39 @@ import GaneshaImg from "assets/home/ganesha.png";
 
 import { DATA } from "./data";
 
+import { useHistory, useLocation } from "react-router-dom";
+
 import { AiOutlineAudio } from "react-icons/ai";
 // AiFillAudio,
 
+import qs from "query-string";
+
 const DSA = () => {
-  const [selectedOption, setSelectedOption] = useState(-1);
-  const [selectedSubOption, setSelectedSubOption] = useState(-1);
+  const history = useHistory();
+  const location = useLocation();
+  const params = qs.parse(location.search);
+
+  const [selectedOption, setSelectedOption] = useState(
+    params?.category ? parseInt(params.category) : -1
+  );
   const [selectedLanguage, setSelectedLanguage] = useState(-1);
 
   const entries = Object.entries(DATA);
 
-  return (
-    <Container>
-      <Content>
-        <Header />
+  function InitialStep() {
+    return (
+      <>
         <BtnContainer>
           {entries.map((entry, key) => (
             <Button
               onClick={() => {
-                selectedOption === key
-                  ? setSelectedOption(-1)
-                  : setSelectedOption(key);
-                setSelectedSubOption(-1);
+                if (selectedOption === key) {
+                  setSelectedOption(-1);
+                  history.push(location.pathname);
+                } else {
+                  setSelectedOption(key);
+                  history.push("?category=" + key);
+                }
                 setSelectedLanguage(-1);
               }}
               active={+(selectedOption === key)}
@@ -43,12 +54,11 @@ const DSA = () => {
             {Object.entries(entries[selectedOption][1].types)?.map(
               (entry, key) => (
                 <Button
-                  onClick={() =>
-                    selectedSubOption === key
-                      ? setSelectedSubOption(-1)
-                      : setSelectedSubOption(key)
-                  }
-                  active={+(selectedSubOption === key)}
+                  onClick={() => {
+                    history.push(
+                      `?category=${selectedOption}&&subCategory=${key}`
+                    );
+                  }}
                   key={key}
                 >
                   {entry[1].length > 35
@@ -81,6 +91,15 @@ const DSA = () => {
 
         {selectedOption === -1 && <Img src={GaneshaImg} alt="img" />}
         {selectedOption === 0 && <Ds />}
+      </>
+    );
+  }
+
+  return (
+    <Container>
+      <Content>
+        <Header />
+        {!params?.subCategory && <InitialStep />}
       </Content>
     </Container>
   );
