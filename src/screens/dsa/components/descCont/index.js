@@ -11,6 +11,8 @@ const DescCont = ({ data }) => {
   const params = qs.parse(location.search);
   const [selected, setSelected] = useState(-1);
 
+  console.log({ data });
+
   return (
     <Container>
       <BtnContainer style={{ justifyContent: "flex-start" }}>

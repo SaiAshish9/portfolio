@@ -2,7 +2,15 @@ import React, { useState } from "react";
 import qs from "query-string";
 import GaneshaImg from "assets/home/ganesha.png";
 
-import { Container, Content, Button, BtnContainer, Img } from "./styles";
+import {
+  Container,
+  Content,
+  Button,
+  BtnContainer,
+  Img,
+  InitialStepContainer,
+  Desc,
+} from "./styles";
 
 import { Ds, Header, DescCont } from "./components";
 
@@ -89,7 +97,12 @@ const DSA = () => {
         )}
 
         {selectedOption === -1 && <Img src={GaneshaImg} alt="img" />}
-        {selectedOption === 0 && <Ds />}
+
+        {selectedOption > -1 && selectedOption < 4 && (
+          <InitialStepContainer>
+            <Desc>{entries[selectedOption][1].content}</Desc>
+          </InitialStepContainer>
+        )}
       </>
     );
   }
@@ -102,9 +115,9 @@ const DSA = () => {
         {params.subCategory && params.category && (
           <DescCont
             data={
-              Object.entries(
-                Object.entries(entries[parseInt(params.category)][1])?.[1]?.[1]
-              )[params.subCategory][1]
+              Object.values(entries[parseInt(params.category)][1].types)[
+                params.subCategory
+              ]
             }
           />
         )}

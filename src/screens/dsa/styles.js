@@ -140,3 +140,13 @@ export const Desc = styled.p`
   text-align: start;
   margin: auto;
 `;
+
+export const InitialStepContainer = styled.div`
+  margin: auto;
+  ${Styles.CCC};
+  width: 80%;
+  padding-bottom: 1.8rem;
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    width: 94%;
+  }
+`;
