@@ -113,6 +113,80 @@ export const DATA = {
                 <br />
                 <br />
                 e.g. : Array, Linked List, Stack, Queue, etc.
+                <br />
+                <br />
+                <b>Array (Homogeneous) :</b>
+                <br />
+                <br />
+                Java
+                <br />
+                <br />
+                Kotlin
+                <br />
+                <br />
+                Javascript
+                <br />
+                <br />
+                Python
+                <br />
+                <br />
+                C++
+                <br />
+                <br />
+                <b>Linked List (Heterogeneous) :</b>
+                <br />
+                <br />
+                Java
+                <br />
+                <br />
+                Kotlin
+                <br />
+                <br />
+                Javascript
+                <br />
+                <br />
+                Python
+                <br />
+                <br />
+                C++
+                <br />
+                <br />
+                <b>Stack (LIFO) :</b>
+                <br />
+                <br />
+                Java
+                <br />
+                <br />
+                Kotlin
+                <br />
+                <br />
+                Javascript
+                <br />
+                <br />
+                Python
+                <br />
+                <br />
+                C++
+                <br />
+                <br />
+                <b>Queue (FIFO) :</b>
+                <br />
+                <br />
+                Java
+                <br />
+                <br />
+                Kotlin
+                <br />
+                <br />
+                Javascript
+                <br />
+                <br />
+                Python
+                <br />
+                <br />
+                C++
+                <br />
+                <br />
               </>
             ),
           },
