@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import qs from "query-string";
+import GaneshaImg from "assets/home/ganesha.png";
+
 import { Container, Content, Button, BtnContainer, Img } from "./styles";
 
-import { Ds, Header } from "./components";
-
-import GaneshaImg from "assets/home/ganesha.png";
+import { Ds, Header, DescCont } from "./components";
 
 import { DATA } from "./data";
 
@@ -11,8 +12,6 @@ import { useHistory, useLocation } from "react-router-dom";
 
 import { AiOutlineAudio } from "react-icons/ai";
 // AiFillAudio,
-
-import qs from "query-string";
 
 const DSA = () => {
   const history = useHistory();
@@ -32,6 +31,7 @@ const DSA = () => {
         <BtnContainer>
           {entries.map((entry, key) => (
             <Button
+              hover={0}
               onClick={() => {
                 if (selectedOption === key) {
                   setSelectedOption(-1);
@@ -51,8 +51,9 @@ const DSA = () => {
         </BtnContainer>
         {selectedOption > -1 && (
           <BtnContainer>
-            {Object.entries(entries[selectedOption][1].types)?.map(
-              (entry, key) => (
+            {Object.entries(entries[selectedOption][1].types)
+              .map((x) => x[1].title)
+              ?.map((i, key) => (
                 <Button
                   onClick={() => {
                     history.push(
@@ -61,12 +62,9 @@ const DSA = () => {
                   }}
                   key={key}
                 >
-                  {entry[1].length > 35
-                    ? entry[1].substr(0, 36) + "..."
-                    : entry[1]}
+                  {i.length > 35 ? i.substr(0, 36) + "..." : i}
                 </Button>
-              )
-            )}
+              ))}
           </BtnContainer>
         )}
 
@@ -74,6 +72,7 @@ const DSA = () => {
           <BtnContainer>
             {["Hindi", "English"].map((i, key) => (
               <Button
+                hover={0}
                 onClick={() =>
                   selectedLanguage === key
                     ? setSelectedLanguage(-1)
@@ -100,6 +99,15 @@ const DSA = () => {
       <Content>
         <Header />
         {!params?.subCategory && <InitialStep />}
+        {params.subCategory && params.category && (
+          <DescCont
+            data={
+              Object.entries(
+                Object.entries(entries[parseInt(params.category)][1])?.[1]?.[1]
+              )[params.subCategory][1]
+            }
+          />
+        )}
       </Content>
     </Container>
   );

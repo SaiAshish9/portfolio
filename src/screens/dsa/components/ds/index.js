@@ -8,10 +8,18 @@ const DSA = () => {
     <Container>
       <Desc>
         A <b>data structure</b> is a way of organising data so that it can be
-        used efficiently from temporary or main memory of the computer. <br />{" "}
-        <br />
+        used efficiently from temporary or main memory of the computer and
+        various operations can be performed on it. It is a collection of data
+        types <br /> <br />
         There are two types of data structures: <b>primitive</b> and{" "}
         <b>non-primitive.</b>
+        <br />
+        <br />
+        <b>Data Type:</b>
+        <br />
+        <br />
+        Data types are used to identify the type of data a memory location can
+        hold and the associated operations of handling it. Types: primitive and non-primitive
         <br />
         <br />
         <b>Database:</b>
@@ -29,8 +37,8 @@ const DSA = () => {
         <br />
         It's the collection of data from various data sources which forms the
         main component of business.It makes use of sql queries and application
-        log files.It is also used to perform queries on large amounts of data. It
-        involves the process of extraction, loading, and transformation for
+        log files.It is also used to perform queries on large amounts of data.
+        It involves the process of extraction, loading, and transformation for
         providing the data for analysis. #collection
         <br />
         <br />
@@ -49,7 +57,7 @@ const DSA = () => {
         cannot be processed by traditional data processing software and
         databases. Various operations like analysis, manipulation, changes, etc
         are performed on data and then it is used by companies for intelligent
-        decision making. e.g.Apache Hadoop
+        decision making. e.g.Apache Hadoop.
       </Desc>
     </Container>
   );
