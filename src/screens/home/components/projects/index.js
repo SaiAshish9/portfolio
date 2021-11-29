@@ -6,7 +6,6 @@ import {
   PlayerContainer,
   Label,
   Content,
-  Img,
   PlayPauseBtn,
   Span,
 } from "./styles";
@@ -30,8 +29,6 @@ import { SiMicrosoftteams } from "react-icons/si";
 import ReactPlayer from "react-player";
 
 import I18n from "common/I18n";
-
-import InstaThumbnailImg from "assets/home/insta-thumbnail.png";
 
 const { TabPane } = Tabs;
 

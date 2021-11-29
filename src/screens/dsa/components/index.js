@@ -1,8 +1,6 @@
 import Header from "./header";
-import Ds from "./ds";
-import Algo from "./algo";
-import Interview from "./interview";
-import Leetcode from "./leetcode";
+import Span from "./span";
 import DescCont from "./descCont";
+import CodeEditor from "./codeEditor";
 
-export { Header, Ds, Algo, Interview, Leetcode, DescCont };
+export { Header, Span, DescCont, CodeEditor };

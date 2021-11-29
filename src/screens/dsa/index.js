@@ -12,7 +12,7 @@ import {
   Desc,
 } from "./styles";
 
-import { Ds, Header, DescCont } from "./components";
+import { Header, DescCont } from "./components";
 
 import { DATA } from "./data";
 

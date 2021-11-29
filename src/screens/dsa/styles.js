@@ -126,6 +126,11 @@ export const BtnContainer = styled.div`
   ${Styles.RCC};
   flex-wrap: wrap;
   margin: 1.5rem auto;
+  ${({ start }) =>
+    start === 1 &&
+    css`
+      justify-content: flex-start;
+    `}
 `;
 
 export const Img = styled.img`

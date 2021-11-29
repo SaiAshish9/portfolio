@@ -9,7 +9,7 @@ import {
 
 import { AiFillEye } from "react-icons/ai";
 
-import { BsDownload } from "react-icons/bs";
+import { HiDownload } from "react-icons/hi";
 
 const { darkGrey, lightBluishGrey, orange, red, white, veryDarkGray, blue } =
   Colors;
@@ -111,7 +111,7 @@ export const Eye = styled(AiFillEye)`
   cursor: pointer;
 `;
 
-export const Download = styled(BsDownload)`
+export const Download = styled(HiDownload)`
   font-size: 1.2rem;
   cursor: pointer;
   margin-left: 1rem;

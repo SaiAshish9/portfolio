@@ -13,6 +13,14 @@ import axios from "axios";
 import { Header, Footer } from "layout";
 import { locales } from "common/I18n";
 
+require('codemirror/lib/codemirror.css');
+require('codemirror/theme/material.css');
+require('codemirror/theme/xq-light.css');
+require('codemirror/theme/neat.css');
+require('codemirror/mode/javascript/javascript.js');
+require('codemirror/mode/clike/clike.js');
+require('codemirror/mode/python/python.js');
+
 const App = () => {
   const [scrolled, isScrolled] = useState(null);
 

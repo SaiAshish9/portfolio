@@ -9,9 +9,9 @@ const DescCont = ({ data }) => {
   const history = useHistory();
   const location = useLocation();
   const params = qs.parse(location.search);
-  const [selected, setSelected] = useState(-1);
-
-  console.log({ data });
+  const [selected, setSelected] = useState(
+    params.option?.length <= data.types?.length ? parseInt(params.option) : -1
+  );
 
   return (
     <Container>
@@ -27,8 +27,17 @@ const DescCont = ({ data }) => {
             .map((i, k) => (
               <Button
                 onClick={() => {
-                  if (selected === k) setSelected(-1);
-                  else setSelected(k);
+                  if (selected === k) {
+                    history.push(
+                      `?category=${params?.category}&&subCategory=${params?.subCategory}`
+                    );
+                    setSelected(-1);
+                  } else {
+                    history.push(
+                      `?category=${params?.category}&&subCategory=${params?.subCategory}&&option=${k}`
+                    );
+                    setSelected(k);
+                  }
                 }}
                 key={k}
                 hover={0}

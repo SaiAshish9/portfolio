@@ -12,7 +12,9 @@ import {
 
 import { MdClose } from "react-icons/md";
 
-import { BsDownload } from "react-icons/bs";
+// import { BsDownload } from "react-icons/bs";
+
+import { HiDownload } from "react-icons/hi";
 
 import Slider from "react-slick";
 
@@ -132,7 +134,7 @@ export const Img = styled.img`
     `}
 `;
 
-export const Download = styled(BsDownload)`
+export const Download = styled(HiDownload)`
   color: ${({ theme: { current } }) =>
     current === Theme.light || current === Theme.highContrast
       ? veryDarkGray

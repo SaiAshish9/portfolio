@@ -87,7 +87,7 @@ const genericStyles = css`
         : current === Theme.fire
         ? "#FF7600"
         : white};
-    border-radius: 10px;
+    // border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
