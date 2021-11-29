@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { UnControlled as CodeMirror } from "react-codemirror2";
 
 import { Colors, Theme, BREAKPOINTS, Styles } from "constants/index";
+import { BtnContainer } from "screens/dsa/styles";
 
 const { darkGrey, orange, red, lightBluishGrey } = Colors;
 
@@ -94,9 +95,6 @@ const CommonStyles = css`
 
 export const Container = styled.div`
   width: 100%;
-  @media only screen and (max-width: ${BREAKPOINTS.md}) {
-    width: 100%;
-  }
 `;
 
 export const Output = styled(CodeMirror)`
@@ -105,11 +103,25 @@ export const Output = styled(CodeMirror)`
   .CodeMirror-cursor {
     border: none;
   }
+  @media only screen and (max-width: ${BREAKPOINTS.md}) {
+    display: none;
+  }
+`;
+
+export const ButtonContainer = styled(BtnContainer)`
+  width: 63%;
+  margin-left: 0px;
+  @media only screen and (max-width: ${BREAKPOINTS.md}) {
+    width: 100%;
+  }
 `;
 
 export const Editor = styled(CodeMirror)`
   width: 63%;
   ${CommonStyles}
+  @media only screen and (max-width: ${BREAKPOINTS.md}) {
+    width: 100%;
+  }
 `;
 
 export const TagsContainer = styled.div`
@@ -119,4 +131,7 @@ export const TagsContainer = styled.div`
 
 export const OptionsContainer = styled.div`
   width: 35%;
+  @media only screen and (max-width: ${BREAKPOINTS.md}) {
+    display: none;
+  }
 `;

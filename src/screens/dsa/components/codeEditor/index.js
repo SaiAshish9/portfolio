@@ -8,11 +8,12 @@ import {
   Output,
   TagsContainer,
   OptionsContainer,
+  ButtonContainer,
 } from "./styles";
 
 import { useStore } from "store";
 import { Theme } from "constants/index";
-import { BtnContainer, Button } from "screens/dsa/styles";
+import { Button } from "screens/dsa/styles";
 import { AiOutlineAudio } from "react-icons/ai";
 import { IoCopyOutline } from "react-icons/io5";
 import { BsPlayFill } from "react-icons/bs";
@@ -37,7 +38,7 @@ const CodeEditor = ({ options }) => {
       {options && (
         <Container>
           <TagsContainer>
-            <BtnContainer start={1} style={{ width: "63%", marginLeft: 0 }}>
+            <ButtonContainer start={1}>
               {[...keys, "Copy", "Download", "Hindi", "English", "Execute"].map(
                 (i, k) => (
                   <Button
@@ -62,7 +63,7 @@ const CodeEditor = ({ options }) => {
                   </Button>
                 )
               )}
-            </BtnContainer>
+            </ButtonContainer>
 
             <OptionsContainer>Output</OptionsContainer>
           </TagsContainer>
