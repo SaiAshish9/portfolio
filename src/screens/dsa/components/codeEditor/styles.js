@@ -92,10 +92,14 @@ const CommonStyles = css`
       }
     }
 
-    @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    @media only screen and (max-width: ${BREAKPOINTS.xs}) {
       .CodeMirror-gutter-wrapper {
         position: sticky;
-        margin-left: -29px;
+        left: 0px;
+        margin-left: 0px;
+      }
+      .CodeMirror-line {
+        margin-left: 29px;
       }
       .CodeMirror-gutter {
         width: 0px !important;
