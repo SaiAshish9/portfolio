@@ -27,7 +27,7 @@ const CodeEditor = ({ options }) => {
     state: { theme },
   } = useStore();
 
-  const keys = Object.keys(options ?? []);
+  const keys = Object.keys(options ? options.codes : []);
 
   const [selected, setSelected] = useState(keys ? keys[0] : null);
 
@@ -74,8 +74,8 @@ const CodeEditor = ({ options }) => {
             <Editor
               value={
                 selected !== "Python"
-                  ? beautify.js_beautify(options[selected])
-                  : options["Python"]
+                  ? beautify.js_beautify(options.codes[selected].code)
+                  : options.codes["Python"].code
               }
               options={{
                 mode: ["Java", "Kotlin", "C++"].includes(selected)
@@ -96,9 +96,7 @@ const CodeEditor = ({ options }) => {
             <OutputEditorContainer>
               <OutputLabel>Output</OutputLabel>
               <Output
-                value={beautify.html_beautify(`
-                  Answer A -> 1 
-                  Answer B -> 8`)}
+                value={beautify.html_beautify(options.codes[selected].output ?? options.output)}
                 options={{
                   mode: "html",
                   readOnly: true,
