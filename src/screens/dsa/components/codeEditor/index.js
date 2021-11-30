@@ -9,6 +9,9 @@ import {
   TagsContainer,
   OptionsContainer,
   ButtonContainer,
+  StyledRow,
+  OutputEditorContainer,
+  OutputLabel,
 } from "./styles";
 
 import { useStore } from "store";
@@ -18,7 +21,6 @@ import { AiOutlineAudio } from "react-icons/ai";
 import { IoCopyOutline } from "react-icons/io5";
 import { BsPlayFill } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
-import { Row } from "common/card/styles";
 
 const CodeEditor = ({ options }) => {
   const {
@@ -68,7 +70,7 @@ const CodeEditor = ({ options }) => {
             <OptionsContainer>Output</OptionsContainer>
           </TagsContainer>
 
-          <Row>
+          <StyledRow>
             <Editor
               value={
                 selected !== "Python"
@@ -91,23 +93,26 @@ const CodeEditor = ({ options }) => {
                 json: true,
               }}
             />
-            <Output
-              value={beautify.html_beautify(`
+            <OutputEditorContainer>
+              <OutputLabel>Output</OutputLabel>
+              <Output
+                value={beautify.html_beautify(`
                   Answer A -> 1 
                   Answer B -> 8`)}
-              options={{
-                mode: "html",
-                readOnly: true,
-                lineNumbers: true,
-                theme:
-                  theme === Theme.dark
-                    ? "material"
-                    : [Theme.light, Theme.highContrast].includes(theme)
-                    ? "neat"
-                    : "light",
-              }}
-            />
-          </Row>
+                options={{
+                  mode: "html",
+                  readOnly: true,
+                  lineNumbers: true,
+                  theme:
+                    theme === Theme.dark
+                      ? "material"
+                      : [Theme.light, Theme.highContrast].includes(theme)
+                      ? "neat"
+                      : "light",
+                }}
+              />
+            </OutputEditorContainer>
+          </StyledRow>
         </Container>
       )}
     </Span>

@@ -3,6 +3,7 @@ import { UnControlled as CodeMirror } from "react-codemirror2";
 
 import { Colors, Theme, BREAKPOINTS, Styles } from "constants/index";
 import { BtnContainer } from "screens/dsa/styles";
+import { Row } from "common/card/styles";
 
 const { darkGrey, orange, red, lightBluishGrey } = Colors;
 
@@ -94,7 +95,6 @@ const CommonStyles = css`
     @media only screen and (max-width: ${BREAKPOINTS.sm}) {
       .CodeMirror-gutter-wrapper {
         position: sticky;
-        left: 0px;
         margin-left: -29px;
       }
       .CodeMirror-gutter {
@@ -108,13 +108,30 @@ export const Container = styled.div`
   width: 100%;
 `;
 
-export const Output = styled(CodeMirror)`
+export const OutputEditorContainer = styled.div`
   width: 35%;
+  @media only screen and (max-width: ${BREAKPOINTS.md}) {
+    margin-top: 2.7rem;
+    width: 100%;
+  }
+`;
+
+export const Output = styled(CodeMirror)`
   ${CommonStyles}
+  width: 100%;
   .CodeMirror-cursor {
     border: none;
   }
   @media only screen and (max-width: ${BREAKPOINTS.md}) {
+    margin-top: 0.9rem;
+    .CodeMirror {
+      height: 12.6rem;
+    }
+  }
+`;
+
+export const OutputLabel = styled.p`
+  @media only screen and (min-width: ${BREAKPOINTS.md}) {
     display: none;
   }
 `;
@@ -144,5 +161,11 @@ export const OptionsContainer = styled.div`
   width: 35%;
   @media only screen and (max-width: ${BREAKPOINTS.md}) {
     display: none;
+  }
+`;
+
+export const StyledRow = styled(Row)`
+  @media only screen and (max-width: ${BREAKPOINTS.md}) {
+    flex-direction: column;
   }
 `;
