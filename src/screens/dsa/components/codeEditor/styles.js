@@ -90,6 +90,17 @@ const CommonStyles = css`
         display: none;
       }
     }
+
+    @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+      .CodeMirror-gutter-wrapper {
+        position: sticky;
+        left: 0px;
+        margin-left: -29px;
+      }
+      .CodeMirror-gutter {
+        width: 0px !important;
+      }
+    }
   }
 `;
 
