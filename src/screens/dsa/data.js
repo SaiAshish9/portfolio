@@ -982,7 +982,21 @@ C++ Array Operations:
                                     return length
                                 }
                             }
-                        }`
+                        }`,
+                        output: `
+                        Custom Array Operations:
+                        Push: 
+                        {0=9, 1=8, 2=7}
+                        Length: 3
+                        Get (index: 1): 8
+                        Pop: {0=9, 1=8}
+                        Delete: {0=9}
+                        Insert: 2
+                        {0=9, 1=9}
+                        Enqueue: 3
+                        {0=10, 1=9, 2=9}
+                        Dequeue: {0=9, 1=9}
+                                                `,
                       },
                     },
                   }}
