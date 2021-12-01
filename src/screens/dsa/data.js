@@ -560,83 +560,193 @@ export const DATA = {
                         }`,
                       },
                       Python: {
+                        output: `Custom Array Operations:
+                        Append:
+                        {0: 1, 1: 9}
+                        Length: 2
+                        Get (index: 1): 9
+                        Pop:
+                        {0: 1}
+                        Delete: None
+                        {}
+                        please enter appropriate index..
+                        Insert: None
+                        {}
+                        Enqueue: None
+                        {0: 9}
+                        Dequeue: None
+                        {}
+                        
+                        List operations:
+                        p_arr = [9, 8, 1]
+                        1. reverse: [1, 8, 9]
+                        2. sort: None
+                        3. sorted: [9, 8, 1]
+                        4. min: 1
+                        5. max: 9
+                        6. sum: 18
+                        7. index: 0
+                        8. map: [2, 16, 18]
+                        9. filter: [1]
+                        10. extend: [1, 8, 9, 9, 8]
+                        11. pop: [1, 8, 9, 9]
+                        12. dequeue: [8, 9, 9]
+                        13. enqueue: [8, 8, 9, 9]
+                        14. append: [8, 8, 9, 9, 8]
+                        15. insert: [8, 9, 8, 9, 9, 8]
+                        16. faltten using list comprehension[1, 2, 2, 4]
+                        p_arr = [9, 8, 9]
+                        17a. reduce:26
+                        17b. reduce:26
+                        18. slice:[9, 8]
+                        19. find:False
+                        20. all(js-> every):False
+                        21. any(js -> some):True
+                        `,
                         code: `import ctypes
-class DynamicArray(object):
-def __init__(self):
-  self.n = 0
-  self.capacity = 1 
-  self.A = self.make_array(self.capacity)
-  
-def __len__(self):
-  return self.n
+class CustomArray():
+  def __init__(self):
+    self.length = 0
+    self.capacity = 1 
+    self.data = {}
+    # self.A = self.make_array(self.capacity)
+    # creates object of specified capacity
+    
+  def __len__(self):
+    return self.length
 
-def __getitem__(self, k):
-  if not 0 <= k <self.n:
-    return IndexError('K is out of bounds !')
-  
-  return self.A[k]
-  
-def append(self, ele):
-  if self.n == self.capacity:
-    self._resize(1 + self.capacity)
-  
-  self.A[self.n] = ele
-  self.n += 1
-  def insertAt(self,item,inde
-  if index<0 or index>self.n:
-    print("please enter appropriate index..")
-    return
-  
-  if self.n==self.capacity:
-    self._resize(2*self.capacity)
+  def __repr__(self):
+    return str(self.data)
+  # or __str__
+  # __str__() is more human friendly whereas __repr__() is more information rich and machine friendly and can be used to reconstruct the object. In fact, we can use repr() function with eval() to construct the object.
+  # x == eval(repr(x))
+
+  def __getitem__(self, k):
+    if not 0 <= k <self.length:
+      return IndexError('K is out of bounds !')
+    return self.data[k]
     
+  def append(self, ele):
+    self.data[self.length] = ele
+    self.length += 1
+
+  def pop(self):
+    if self.length==0:
+      print("Array is empty deletion not Possible")
+      return
+    del self.data[self.length-1]
+    self.length-=1
+    return self.data
   
-  for i in range(self.n-1,index-1,-1):
-    self.A[i+1]=self.A[i]
+  def enqueue(self,element):
+    self.insert(element,0)
+
+  def dequeue(self):
+    self.delete(0)    
+
+  def delete(self,index):
+    if self.length==0:
+      print("Array is empty deletion not Possible")
+      return
+    if index<0 or index>=self.length:
+      return IndexError("Index out of bound....deletion not possible")		
+    if index==self.length-1:
+      del self.data[index]
+      self.length-=1
+      return		
+    for i in range(index,self.length-1):
+      self.data[i]=self.data[i+1]			
+    del self.data[self.length-1]
+    self.length-=1
+    return self.data
+
+  def insert(self,item,index):
+    if index < 0 or index > self.length:
+      print("please enter appropriate index..")
+      return
+    for i in range(self.length-1,index-1,-1):
+      self.data[i+1]=self.data[i]
+    self.data[index]=item
+    self.length+=1
+    return self.data
     
-  
-  self.A[index]=item
-  self.n+=1
-  def delete(self):
-  if self.n==0:
-    print("Array is empty deletion not Possible")
-    return
-  
-  self.A[self.n-1]=0
-  self.n-=1
+  # def _resize(self, new_cap):
+  #   B = self.make_array(new_cap) 
+  #   for k in range(self.length): 
+  #     B[k] = self.data[k]
+  #   self.data = B 
+  #   self.capacity = new_cap 
     
-def removeAt(self,index):
-  if self.n==0:
-    print("Array is empty deletion not Possible")
-    return
-      
-  if index<0 or index>=self.n:
-    return IndexError("Index out of bound....deletion not possible")		
-  
-  if index==self.n-1:
-    self.A[index]=0
-    self.n-=1
-    return		
-  
-  for i in range(index,self.n-1):
-    self.A[i]=self.A[i+1]			
-    
-  self.A[self.n-1]=0
-  self.n-=1
-    
-def _resize(self, new_cap):
-  B = self.make_array(new_cap) 
-  
-  for k in range(self.n): 
-    B[k] = self.A[k]
-    
-  self.A = B 
-  self.capacity = new_cap 
-  
-def make_array(self, new_cap):
-  return (new_cap * ctypes.py_object)()
-arr = DynamicArray()
-len(arr)
+  # def make_array(self, new_cap):
+  #   return (new_cap * ctypes.py_object)()
+
+arr = CustomArray()
+print('Custom Array Operations:')
+print('Append:')
+arr.append(1)
+arr.append(9)
+print(arr)
+print(f'Length: {len(arr)}')
+# print(arr.__dict__)
+print(f'Get (index: 1): {arr[1]}')
+print(f'Pop:')
+arr.pop()
+print(arr)
+print(f'Delete: {arr.delete(0)}')
+print(arr)
+print(f'Insert: {arr.insert(1,1)}')
+print(arr)
+print(f'Enqueue: {arr.enqueue(9)}')
+print(arr)
+print(f'Dequeue: {arr.dequeue()}')
+print(arr)
+print('')
+print('List operations:')
+p_arr = [9,8,1]
+print(f'p_arr = {p_arr}')
+print('1. reverse: ' + str(p_arr[::-1]))
+print('2. sort: ' + str(p_arr.sort()))
+print('3. sorted: ' + str(sorted(p_arr,reverse=True)))
+print('4. min: ' + str(min(p_arr)))
+print('5. max: ' + str(max(p_arr)))
+print('6. sum: ' + str(sum(p_arr)))
+print('7. index: ' + str(p_arr.index(1)))
+print('8. map: ' + str(list(map(lambda x:x*2,p_arr))))
+print('9. filter: ' + str(list(filter(lambda x:x==1,p_arr))))
+p_arr.extend([9,8])
+print('10. extend: ' + str(p_arr))
+p_arr.pop()
+print('11. pop: ' + str(p_arr))
+p_arr.pop(0)
+print('12. dequeue: ' + str(p_arr))
+p_arr.insert(0,8)
+print('13. enqueue: ' + str(p_arr))
+p_arr.append(8)
+print('14. append: ' + str(p_arr))
+p_arr.insert(1,9)
+print('15. insert: ' + str(p_arr))
+p_arr = [[1,2],[2,4]]
+print('16. faltten using list comprehension'+ str([y for x in p_arr for y in x ]))
+import functools
+import operator
+p_arr = [*[9,8],9] # unpacking
+print(f'p_arr = {p_arr}')
+print('17a. reduce:' + str(functools.reduce(operator.add,p_arr)))
+print('17b. reduce:' + str(functools.reduce(lambda acc,curr: acc+curr,p_arr)))
+print('18. slice:' + str(p_arr[:2]))
+print('19. find:' + str(2 in  p_arr))
+print('20. all(js-> every):' + str(all([True,False])))
+print('21. any(js -> some):' + str(any([True,False])))
+
+# def names_tuple(*args):
+#     return args
+# names_tuple('Michael', 'John', 'Nancy')
+# # ('Michael', 'John', 'Nancy')
+
+# def names_dict(**kwargs):
+#     return kwargs
+# names_dict(Jane = 'Doe')
+# {'Jane': 'Doe'}                        
                         `,
                       },
                       "C++": { code: "" },
@@ -669,7 +779,6 @@ len(arr)
                     output: null,
                     codes: {
                       Javascript: { code: "" },
-                      Java: { code: "" },
                     },
                   }}
                 />
@@ -682,7 +791,6 @@ len(arr)
                     output: null,
                     codes: {
                       Javascript: { code: "" },
-                      Java: { code: "" },
                     },
                   }}
                 />
