@@ -443,121 +443,103 @@ export const DATA = {
                       },
                       Java: {
                         code: `import java.util.*;
-                        class ArrayClass {
-                          private int arr[];
-                          private int capacity;
-                          private int current;
-                
-                          public ArrayListClass()
-                          {
-                            arr = new int[1];
-                            capacity = 1;
-                            current = 0;
-                          }
-                
-                          public void push(int data)
-                          {
-                            if (current == capacity) {
-                              int temp[] = new int[1 + capacity];
-                              for (int i = 0; i < capacity; i++)
-                                temp[i] = arr[i];
-                
-                              capacity += 1;
-                              arr = temp;
+                        import java.io.*;
+                        
+                        class Main {
+                        
+                          static PrintStream ps = System.out;
+                        
+                          static class CustomArray {
+                        
+                            private HashMap<Integer,Integer> data;
+                            private int capacity;
+                            private int length;
+                        
+                            CustomArray() {
+                                data = new HashMap<Integer,Integer>();
+                                capacity = 1;
+                                length = 0;
                             }
-                            arr[current] = data;
-                            current++;
-                          }
-                
-                          void push(int data, int index)
-                          {
-                            if (index == capacity)
-                              push(data);
-                            else
-                              arr[index] = data;
-                          }
-                
-                          int get(int index)
-                          {
-                
-                            if (index < current)
-                              return arr[index];
-                
-                            return -1;
-                          }
-                
-                          void pop()
-                          {
-                            current--;
-                          }
-                
-                          int size()
-                          {
-                            return current;
-                          }
-                
-                          int getcapacity()
-                          {
-                            return capacity;
-                          }
-                
-                          void print()
-                          {
-                            for (int i = 0; i < current; i++) {
-                              System.out.print(arr[i] + " ");
+                            int len(){
+                              return length;
                             }
-                            System.out.println();
+                        
+                            @Override
+                            public String toString(){
+                              return data.toString();
+                            }
+                            int get(int index) {
+                                // return data.get(index).intValue();
+                                return Integer.valueOf(data.get(index));
+                            }
+                            int push(int element) {
+                                data.put(this.length, element);
+                                length++;
+                                return length;
+                            }
+                            HashMap<Integer,Integer> pop() {
+                                int item = data.get(this.length - 1).intValue();
+                                data.remove(length-1);
+                                length--;
+                                return data;
+                            }
+                            int enqueue(int element) {
+                                return insert(element, 0);
+                            }
+                            HashMap<Integer,Integer> dequeue() {
+                                return delete(0);
+                            }
+                            HashMap<Integer,Integer> delete(int index) {
+                                for (int i = index; i < this.length - 1; i++) {
+                                    data.put(i,data.get(i + 1));
+                                }
+                                data.remove(length-1);
+                                this.length--;
+                                return this.data;
+                            }
+                            int insert(int item, int index) {
+                                for (int i = this.length; i >= index; i--) {
+                                    data.put(i, data.get(i - 1));
+                                }
+                                data.put(index, item);
+                                length++;
+                                return length;
+                            }
+                            }
+                            public static void main(String args[]) {
+                              CustomArray arr = new CustomArray();
+                              ps.println("Custom Array Operations:");
+                              ps.println("Push: ");
+                              arr.push(9);
+                              arr.push(8);
+                              arr.push(7);
+                              ps.println(arr);
+                              ps.println("Length: " + arr.len());
+                              ps.println("Get (index: 1): "+ arr.get(1));
+                              ps.println("Pop: " + arr.pop());
+                              ps.println("Delete: " + arr.delete(1));
+                              ps.println("Insert: " + arr.insert(9,1));
+                              ps.println(arr);
+                              ps.println("Enqueue: " + arr.enqueue(10));
+                              ps.println(arr);
+                              ps.println("Dequeue: " + arr.dequeue());
+                            }
                           }
-                
-                          public static void main(String args[])
-                          {
-                            ArrayListClass v
-                              = new ArrayListClass();
-                            v.push(10);
-                            v.push(20);
-                            v.push(30);
-                            v.push(40);
-                            v.push(50);
-                
-                            System.out.println("ArrayList size: "
-                                    + v.size());
-                            System.out.println(
-                              "ArrayList capacity: "
-                              + v.getcapacity());
-                            System.out.println(
-                              "ArrayList elements: ");
-                            v.print();
-                
-                            v.push(100, 1);
-                
-                            System.out.println(
-                              "\nAfter updating 1st index");
-                
-                            System.out.println(
-                              "ArrayList elements: ");
-                            v.print();
-                            System.out.println(
-                              "Element at 1st index: "
-                              + v.get(1));
-                
-                            v.pop();
-                
-                            System.out.println(
-                              "\nAfter deleting the"
-                              + " last element");
-                
-                            System.out.println(
-                              "ArrayList size: "
-                              + v.size());
-                            System.out.println(
-                              "ArrayList capacity: "
-                              + v.getcapacity());
-                
-                            System.out.println(
-                              "ArrayList elements: ");
-                            v.print();
-                          }
-                        }`,
+                          `,
+                        output: `
+Custom Array Operations:
+Push: 
+{0=9, 1=8, 2=7}
+Length: 3
+Get (index: 1): 8
+Pop: {0=9, 1=8}
+Delete: {0=9}
+Insert: 2
+{0=9, 1=9}
+Enqueue: 3
+{0=10, 1=9, 2=9}
+Dequeue: {0=9, 1=9}
+                        `,
                       },
                       Python: {
                         output: `Custom Array Operations:
