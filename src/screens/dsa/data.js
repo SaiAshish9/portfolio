@@ -896,7 +896,94 @@ C++ Array Operations:
 7. fill: 9
                       `,
                       },
-                      Kotlin: "",
+                      Kotlin: {
+                        code:`import java.io.PrintStream
+
+                        internal object Main {
+                            var ps: PrintStream = System.out
+                            @JvmStatic
+                            fun main(args: Array<String>) {
+                                val arr = CustomArray()
+                                ps.println("Custom Array Operations:")
+                                ps.println("Push: ")
+                                arr.push(9)
+                                arr.push(8)
+                                arr.push(7)
+                                ps.println(arr)
+                                ps.println("Length: " + arr.len())
+                                ps.println("Get (index: 1): " + arr[1])
+                                ps.println("Pop: " + arr.pop())
+                                ps.println("Delete: " + arr.delete(1))
+                                ps.println("Insert: " + arr.insert(9, 1))
+                                ps.println(arr)
+                                ps.println("Enqueue: " + arr.enqueue(10))
+                                ps.println(arr)
+                                ps.println("Dequeue: " + arr.dequeue())
+                            }
+                        
+                            internal class CustomArray {
+                                private val data: HashMap<Int, Int?> = HashMap()
+                                private val capacity: Int = 1
+                                private var length: Int = 0
+                        
+                        //        init {
+                        //            length = 0
+                        //        }
+                        
+                                fun len(): Int {
+                                    return length
+                                }
+                        
+                                override fun toString(): String {
+                                    return data.toString()
+                                }
+                        
+                                operator fun get(index: Int): Int {
+                                    // return data.get(index).intValue();
+                                    return Integer.valueOf(data[index]!!)
+                                }
+                        
+                                fun push(element: Int): Int {
+                                    data[length] = element
+                                    length++
+                                    return length
+                                }
+                        
+                                fun pop(): HashMap<Int, Int?> {
+                                    val item = data[length - 1]!!.toInt()
+                                    data.remove(length - 1)
+                                    length--
+                                    return data
+                                }
+                        
+                                fun enqueue(element: Int): Int {
+                                    return insert(element, 0)
+                                }
+                        
+                                fun dequeue(): HashMap<Int, Int?> {
+                                    return delete(0)
+                                }
+                        
+                                fun delete(index: Int): HashMap<Int, Int?> {
+                                    for (i in index until length - 1) {
+                                        data[i] = data[i + 1]
+                                    }
+                                    data.remove(length - 1)
+                                    length--
+                                    return data
+                                }
+                        
+                                fun insert(item: Int, index: Int): Int {
+                                    for (i in length downTo index) {
+                                        data[i] = data[i - 1]
+                                    }
+                                    data[index] = item
+                                    length++
+                                    return length
+                                }
+                            }
+                        }`
+                      },
                     },
                   }}
                 />
