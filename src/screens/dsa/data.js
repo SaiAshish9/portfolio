@@ -523,6 +523,15 @@ export const DATA = {
                               ps.println("Enqueue: " + arr.enqueue(10));
                               ps.println(arr);
                               ps.println("Dequeue: " + arr.dequeue());
+                              ps.println("");
+                              ps.println("Java Array Operations:");
+                              int j_arr[];
+                              j_arr = new int[3];
+                              ps.println(j_arr.getClass().getSuperclass());
+                              j_arr[0] = 1;
+                              int j_arr1[] = j_arr.clone(); 
+                              ps.println(j_arr==j_arr1);
+                              ps.println(Arrays.toString(j_arr1));
                             }
                           }
                           `,
@@ -539,6 +548,11 @@ Insert: 2
 Enqueue: 3
 {0=10, 1=9, 2=9}
 Dequeue: {0=9, 1=9}
+
+Java Array Operations:
+class java.lang.Object
+false
+[1, 0, 0]
                         `,
                       },
                       Python: {
