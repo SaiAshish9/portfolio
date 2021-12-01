@@ -749,7 +749,171 @@ print('21. any(js -> some):' + str(any([True,False])))
 # {'Jane': 'Doe'}                        
                         `,
                       },
-                      "C++": { code: "" },
+                      "C++": {
+                        code: `#include <iostream>
+                      #include <bits/stdc++.h>
+                      #include <array>
+                      
+                      using namespace std;
+                      
+                      class CustomArray{
+                        private:
+                        int length;
+                        map<int,int> data;
+                      
+                        public:
+                        int len(){
+                          return this->length;
+                        }
+                      
+                        void print(){
+                          string s;
+                          for(auto i=data.begin();i != data.end();i++){
+                            s+= to_string(i -> second) + " ";
+                           }
+                          cout<< s << endl;
+                        }
+                      
+                        int get(int index){
+                         return this -> data[index];
+                        }
+                      
+                        int push(int element) {
+                          this -> data[this -> length] = element;
+                          this -> length+=1;
+                          return this -> length;
+                        }
+                        
+                        map<int,int> pop() {
+                          int item = data[length - 1];
+                          auto it = data.end();
+                          it--;
+                          data.erase(it);
+                          length-=1;
+                          return data;
+                        }
+                      
+                        int insert(int ele,int index) {
+                          if(ele==length-1){
+                            push(ele);
+                          }else{
+                          for(auto i = length-1; i > index; i--) {
+                            data[i+1] = data[i];
+                          }
+                          data[index] = ele;
+                          length+=1;
+                          }
+                          return length;
+                        }
+                      
+                        map<int,int> remove(int index) {
+                          for(auto i = index; i < length-1; i++) {
+                            data[i] = data[i + 1];
+                          }
+                          auto it = data.end();
+                          it--;
+                          data.erase(it);    length-=1;
+                          return data;
+                        }
+                      
+                        map<int,int> dequeue() {
+                           return this -> remove(0);
+                        }
+                      
+                        int enqueue(int ele) {
+                          return insert(ele,0);
+                        }
+                      
+                        CustomArray(){
+                          length = 0;
+                          data = {}; 
+                        };
+                      
+                      };
+                      
+                      int main(){
+                        CustomArray arr;
+                        cout << "Custom Array Operations:" << endl;
+                      
+                        cout << "Push: " << endl;
+                        arr.push(9);
+                        arr.push(8);
+                        arr.push(1);
+                        arr.push(7);
+                        arr.print();
+                        cout << "Length: " << arr.len() << endl;
+                        cout << "Get (index: 1 ): " << arr.get(1) << endl;
+                        cout << "Pop: " << endl;
+                        arr.pop();
+                        arr.print();
+                        cout << "Length: " << arr.len() << endl;
+                        cout << "Delete: " << endl;
+                        arr.remove(1);
+                        arr.print();
+                        cout << "Length: " << arr.len() << endl;
+                        cout << "Insert: " << endl;
+                        arr.insert(7,0);
+                        arr.print();
+                        cout << "Length: " << arr.len() << endl;
+                        cout << "Enqueue: " << endl;
+                        arr.enqueue(10);
+                        arr.print();
+                        cout << "Length: " << arr.len() << endl;
+                        cout << "Dequeue: " << endl;
+                        arr.dequeue();
+                        arr.print();
+                        cout << "Length: " << arr.len() << endl;
+                      
+                        cout << "C++ Array Operations: "<< endl;
+                      
+                        array<int,6> ar = {1, 2, 3, 4, 5, 6};
+                      
+                        cout << "1. get: " << get<0>(ar) << " , " << ar[0] << endl;
+                        cout << "2. size: " << ar.size() << endl;
+                        cout << "3. maxsize: " << ar.max_size() << endl;
+                        cout << "4. size: " << ar.size() << endl;
+                        cout << "5. front: " << ar.front() << endl;
+                        cout << "6. back: " << ar.back() << endl;
+                        ar.fill(9);
+                        cout << "7. fill: " << ar[0] << endl;
+                      
+                        // stl -> algorithms , functions , containers , iterators
+                        // https://www.geeksforgeeks.org/the-c-standard-template-library-stl/
+                      
+                        return 0;
+                      }
+                      `,
+                        output: `
+                      Custom Array Operations:
+Push: 
+9 8 1 7 
+Length: 4
+Get (index: 1 ): 8
+Pop: 
+9 8 1 
+Length: 3
+Delete: 
+9 1 
+Length: 2
+Insert: 
+7 1 1 
+Length: 3
+Enqueue: 
+10 1 1 1 
+Length: 4
+Dequeue: 
+1 1 1 
+Length: 3
+C++ Array Operations: 
+1. get: 1 , 1
+2. size: 6
+3. maxsize: 6
+4. size: 6
+5. front: 1
+6. back: 6
+7. fill: 9
+                      `,
+                      },
                       Kotlin: "",
                     },
                   }}
