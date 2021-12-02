@@ -442,8 +442,9 @@ export const DATA = {
                         2 2`,
                       },
                       Java: {
-                        code: `import java.util.*;
+                        code: `iimport java.util.*;
                         import java.io.*;
+                        import java.util.stream.*;
                         
                         class Main {
                         
@@ -525,6 +526,7 @@ export const DATA = {
                               ps.println("Dequeue: " + arr.dequeue());
                               ps.println("");
                               ps.println("Java Array Operations:");
+                        
                               int j_arr[];
                               j_arr = new int[3];
                               ps.println(j_arr.getClass().getSuperclass());
@@ -532,27 +534,53 @@ export const DATA = {
                               int j_arr1[] = j_arr.clone(); 
                               ps.println(j_arr==j_arr1);
                               ps.println(Arrays.toString(j_arr1));
+                              
+                         // Collections API: https://www.geeksforgeeks.org/collections-in-java-2/
+                             
+                            List<Integer> al = Arrays.stream(j_arr1).boxed().collect(Collectors.toList());
+                            //  List al = Arrays.asList(j_arr1);
+                            //  Collections.addAll(al,j_arr1);
+                            ps.println(Arrays.toString(al.stream().mapToInt(i -> i).toArray()));
+                            //  non synchronized dynamic array
+                            al.add(10);
+                            ps.println(Arrays.toString(al.stream().mapToInt(i -> i).toArray()));
+                            al.remove(2);
+                            ps.println(al.get(0));
+                        
+                        //  synchronized dynamic array
+                            Vector<Integer> v = new Vector();
+                            v.addElement(9);
+                            ps.println(v.toString());
+                            Enumeration enu = v.elements();
+                            while (enu.hasMoreElements()) {
+                              ps.println(enu.nextElement());
                             }
-                          }
+                            }
+                        }
                           `,
                         output: `
-Custom Array Operations:
-Push: 
-{0=9, 1=8, 2=7}
-Length: 3
-Get (index: 1): 8
-Pop: {0=9, 1=8}
-Delete: {0=9}
-Insert: 2
-{0=9, 1=9}
-Enqueue: 3
-{0=10, 1=9, 2=9}
-Dequeue: {0=9, 1=9}
-
-Java Array Operations:
-class java.lang.Object
-false
-[1, 0, 0]
+                        Custom Array Operations:
+                        Push: 
+                        {0=9, 1=8, 2=7}
+                        Length: 3
+                        Get (index: 1): 8
+                        Pop: {0=9, 1=8}
+                        Delete: {0=9}
+                        Insert: 2
+                        {0=9, 1=9}
+                        Enqueue: 3
+                        {0=10, 1=9, 2=9}
+                        Dequeue: {0=9, 1=9}
+                        
+                        Java Array Operations:
+                        class java.lang.Object
+                        false
+                        [1, 0, 0]
+                        [1, 0, 0]
+                        [1, 0, 0, 10]
+                        1
+                        [9]
+                        9
                         `,
                       },
                       Python: {
