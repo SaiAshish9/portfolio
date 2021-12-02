@@ -66,6 +66,11 @@ export const Content = styled.div`
   width:25%;
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     width: 50%;
+    ${({ id }) =>
+    id < 6 &&
+    css`
+      margin-bottom: 1rem;
+    `};
   }
 `;
 
@@ -75,7 +80,7 @@ export const Img = styled.img`
     svImg === 1 &&
     css`
   object-fit:contain;̦  
-  `}
+  `};
   border-radius: 6px;
   min-height: 7rem;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
