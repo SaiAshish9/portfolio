@@ -442,7 +442,7 @@ export const DATA = {
                         2 2`,
                       },
                       Java: {
-                        code: `iimport java.util.*;
+                        code: `import java.util.*;
                         import java.io.*;
                         import java.util.stream.*;
                         
@@ -939,7 +939,7 @@ C++ Array Operations:
                       `,
                       },
                       Kotlin: {
-                        code:`import java.io.PrintStream
+                        code: `import java.io.PrintStream
 
                         internal object Main {
                             var ps: PrintStream = System.out
@@ -1047,11 +1047,72 @@ C++ Array Operations:
                   <b>Linked List:</b>
                 </Span>
                 <b>Implementation</b>
+                <Span>
+                  It consists of nodes which are stored in non contiguos memory
+                  locations. It's size is dynamic. Node consists of a data field
+                  and links to adjacent neighbours. These links are also known
+                  as self referential pointers as they are referring to other
+                  nodes of same type.
+                </Span>
+                Types : Singly Linked List, Circular Linked List, Doubly Linked
+                List And Misc
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
-                      Javascript: { code: "" },
+                      Javascript: {
+                        code: `
+                      class Node{
+                        constructor(data){
+                        this.data = data
+                        this.next=null
+                        }
+                        }
+                        class LinkedList{
+                        constructor(){
+                        this.head = null
+                        }
+                        add(data){
+                        let node = new Node(data)
+                        if(this.head == null){
+                        this.head = node
+                        }else{
+                        let temp= this.head
+                        while(temp.next){
+                        temp=temp.next
+                        }
+                        temp.next=node
+                        }
+                        }
+                        Count(){
+                        var count=0
+                        let node = this.head;
+                        while(node!=null){
+                        count+=1
+                        node = node.next
+                        }
+                        return count
+                        }
+                        sum(count){
+                        let x=0;
+                        let temp = this.head;
+                        for(let i=count-1;i>=0;i — ){
+                        x += temp.data * Math.pow(10,i)
+                        temp=temp.next
+                        }
+                        return x
+                        }
+                        display(){
+                        let temp = this.head
+                        while(temp != null){
+                        console.log(temp.data)
+                        temp = temp.next
+                        }
+                        }
+                        }
+                      `,
+                        output: ``,
+                      },
                       Java: { code: "" },
                       Python: { code: "" },
                       "C++": { code: "" },
@@ -1080,6 +1141,38 @@ C++ Array Operations:
                     output: null,
                     codes: {
                       Javascript: { code: "" },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Priority Queue:</b>
+                </Span>
+                <b>Utilization:</b>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: { code: "" },
+                      Java: { code: "" },
+                      Python: { code: "" },
+                      "C++": { code: "" },
+                      Kotlin: { code: "" },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Deque:</b>
+                </Span>
+                <b>Utilization:</b>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: { code: "" },
+                      Java: { code: "" },
+                      Python: { code: "" },
+                      "C++": { code: "" },
+                      Kotlin: { code: "" },
                     },
                   }}
                 />

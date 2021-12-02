@@ -95,6 +95,7 @@ const CodeEditor = ({ options }) => {
             />
             <OutputEditorContainer>
               <OutputLabel>Output</OutputLabel>
+              {/* playground */}
               <Output
                 value={beautify.html_beautify(options.codes[selected].output ?? options.output)}
                 options={{
