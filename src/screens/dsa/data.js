@@ -1046,7 +1046,6 @@ C++ Array Operations:
                 <Span>
                   <b>Linked List:</b>
                 </Span>
-                <b>Implementation</b>
                 <Span>
                   It consists of nodes which are stored in non contiguos memory
                   locations. It's size is dynamic. Node consists of a data field
@@ -1054,8 +1053,11 @@ C++ Array Operations:
                   as self referential pointers as they are referring to other
                   nodes of same type.
                 </Span>
-                Types : Singly Linked List, Circular Linked List, Doubly Linked
-                List And Misc
+                <Span>
+                  Types : Singly Linked List, Circular Linked List, Doubly
+                  Linked List And Misc
+                </Span>
+                <b>Implementation</b>
                 <CodeEditor
                   options={{
                     output: null,
@@ -1905,9 +1907,33 @@ Dequeue:
                   }}
                 />
                 <Span>
-                  <b>Stack (LIFO) :</b>
+                  <b>Stack (LIFO/FILO) :</b>
+                </Span>
+                <Span>
+                  Various operations are performed in the order of Last In Fisrt
+                  Out (LIFO). It's used in depth first search which is used for
+                  backtracking algorithm.
+                </Span>
+                <Span>
+                  Example: Combination of plates placed on top of each other
                 </Span>
                 <b>Implementation</b>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                      
+                      `,
+                        output: `
+                      
+                      `,
+                      },
+                    },
+                  }}
+                />
+                <b>Utilization:</b>
                 <CodeEditor
                   options={{
                     output: null,
@@ -1920,6 +1946,15 @@ Dequeue:
                   <b>Queue (FIFO) :</b>
                 </Span>
                 <b>Implementation</b>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: { code: "" },
+                    },
+                  }}
+                />
+                <b>Utilization:</b>
                 <CodeEditor
                   options={{
                     output: null,
@@ -1941,6 +1976,18 @@ Dequeue:
                       Python: { code: "" },
                       "C++": { code: "" },
                       Kotlin: { code: "" },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Circular Queue:</b>
+                </Span>
+                <b>Implementation</b>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: { code: "" },
                     },
                   }}
                 />
