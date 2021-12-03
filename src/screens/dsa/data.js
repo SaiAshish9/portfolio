@@ -1919,6 +1919,7 @@ Dequeue:
                 </Span>
                 <b>Implementation</b>
                 <CodeEditor
+                  // https://www.geeksforgeeks.org/implement-a-stack-using-singly-linked-list/
                   options={{
                     output: null,
                     codes: {
