@@ -1404,7 +1404,172 @@ Dequeue:
                       },
                       Python: { code: "" },
                       "C++": { code: "" },
-                      Kotlin: { code: "" },
+                      Kotlin: { code: `
+                      internal class Node(var data: Int) {
+                        var next: Node? = null
+                    }
+                    
+                    internal class Main {
+                        var head: Node? = null
+                        fun push(data: Int) {
+                            val node = Node(data)
+                            if (head == null) {
+                                head = node
+                            } else {
+                                var q = head
+                                while (q!!.next != null) {
+                                    q = q.next
+                                }
+                                q.next = node
+                            }
+                        }
+                    
+                        fun pop() {
+                            if (head == null) {
+                                return
+                            } else if (head!!.next == null) {
+                                head = null
+                                return
+                            } else {
+                                var temp = head
+                                while (temp!!.next!!.next != null) {
+                                    temp = temp.next
+                                }
+                                val last = temp.next
+                                temp.next = null
+                            }
+                        }
+                    
+                        fun count(): Int {
+                            var count = 0
+                            var p = head
+                            while (p != null) {
+                                count++
+                                p = p.next
+                            }
+                            return count
+                        }
+                    
+                        operator fun get(index: Int): Int {
+                            return if (head == null) -1 else if (index >= count()) -1 else {
+                                var i = 0
+                                var temp = head
+                                while (i < index) {
+                                    temp = temp!!.next
+                                    i++
+                                }
+                                temp!!.data
+                            }
+                        }
+                    
+                        fun insert(ele: Int, index: Int): Int {
+                            if (head == null || index > this.count()) return -1
+                            val node = Node(ele)
+                            if (index == 0) {
+                                node.next = head
+                                head = node
+                            } else {
+                                var curr: Node?
+                                var prev: Node?
+                                curr = head
+                                prev = curr
+                                var it = 0
+                                while (it < index) {
+                                    it++
+                                    prev = curr
+                                    curr = curr!!.next
+                                }
+                                node.next = curr
+                                prev!!.next = node
+                            }
+                            return this.count()
+                        }
+                    
+                        fun delete(index: Int): Int {
+                            return if (head == null || index >= this.count()) -1 else {
+                                var curr: Node?
+                                var prev: Node?
+                                var it = 0
+                                curr = head
+                                prev = curr
+                                if (index == 0) {
+                                    head = curr!!.next
+                                } else {
+                                    while (it < index) {
+                                        it++
+                                        prev = curr
+                                        curr = curr!!.next
+                                    }
+                                    prev!!.next = curr!!.next
+                                }
+                                curr.data
+                            }
+                        }
+                    
+                        fun enqueue(ele: Int): Int {
+                            return insert(ele, 0)
+                        }
+                    
+                        fun dequeue(): Int {
+                            return delete(0)
+                        }
+                    
+                        fun print() {
+                            var temp = head
+                            val sb = StringBuilder()
+                            while (temp != null) {
+                                sb.append(temp.data.toString() + " ")
+                                temp = temp.next
+                            }
+                            ps.println(sb.toString())
+                        }
+                    
+                        companion object {
+                            var ps = System.out
+                            @JvmStatic
+                            fun main(args: Array<String>) {
+                                val l = Main()
+                                l.push(2)
+                                l.push(4)
+                                l.push(3)
+                                l.push(5)
+                                l.push(6)
+                                ps.println("Singly Linked List Operations:")
+                                ps.println("Push:")
+                                l.push(4)
+                                l.print()
+                                ps.println("Pop: ")
+                                l.pop()
+                                l.print()
+                                ps.println("Count: " + l.count())
+                                ps.println("Get (Index 1): " + l[1])
+                                ps.println("Delete: ")
+                                l.delete(2)
+                                l.print()
+                                ps.println("Enqueue: ")
+                                l.enqueue(7)
+                                l.print()
+                                ps.println("Dequeue: ")
+                                l.dequeue()
+                                l.print()
+                            }
+                        }
+                    }
+                      `, output: `
+                      Singly Linked List Operations:
+                      Push:
+                      2 4 3 5 6 4 
+                      Pop: 
+                      2 4 3 5 6 
+                      Count: 5
+                      Get (Index 1): 4
+                      Delete: 
+                      2 4 5 6 
+                      Enqueue: 
+                      7 2 4 5 6 
+                      Dequeue: 
+                      2 4 5 6 
+                      ` },
                     },
                   }}
                 />
