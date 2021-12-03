@@ -1062,56 +1062,166 @@ C++ Array Operations:
                     codes: {
                       Javascript: {
                         code: `
-                      class Node{
-                        constructor(data){
-                        this.data = data
-                        this.next=null
-                        }
-                        }
-                        class LinkedList{
-                        constructor(){
-                        this.head = null
-                        }
-                        add(data){
-                        let node = new Node(data)
-                        if(this.head == null){
-                        this.head = node
-                        }else{
-                        let temp= this.head
-                        while(temp.next){
-                        temp=temp.next
-                        }
-                        temp.next=node
-                        }
-                        }
-                        Count(){
-                        var count=0
-                        let node = this.head;
-                        while(node!=null){
-                        count+=1
-                        node = node.next
-                        }
-                        return count
-                        }
-                        sum(count){
-                        let x=0;
-                        let temp = this.head;
-                        for(let i=count-1;i>=0;i — ){
-                        x += temp.data * Math.pow(10,i)
-                        temp=temp.next
-                        }
-                        return x
-                        }
-                        display(){
-                        let temp = this.head
-                        while(temp != null){
-                        console.log(temp.data)
-                        temp = temp.next
-                        }
-                        }
-                        }
+                        class Node {
+                          constructor(data) {
+                              this.data = data
+                              this.next = null
+                          }
+                      }
+                      class LinkedList {
+                          constructor() {
+                              this.head = null
+                          }
+                          push(data) {
+                              let node = new Node(data)
+                              if (this.head == null) {
+                                  this.head = node
+                              } else {
+                                  let temp = this.head
+                                  while (temp.next) {
+                                      temp = temp.next
+                                  }
+                                  temp.next = node
+                              }
+                          }
+                          pop(){
+                            if (this.head == null) {
+                                return
+                            }else if(this.head.next==null){
+                              this.head=null
+                              return
+                            } 
+                            else {
+                                let temp = this.head
+                                while (temp.next.next) {
+                                  temp = temp.next
+                                }
+                                const last = temp.next 
+                                temp.next = null
+                      // delete temp doesn't work , we can delete object attributes but
+                      //  not object itself in javascript
+                              }
+                          }
+                          count() {
+                              var count = 0
+                              let node = this.head;
+                              while (node != null) {
+                                  count += 1
+                                  node = node.next
+                              }
+                              return count
+                          }
+                          get(index){
+                            if(this.head == null) return
+                            else if(index>=this.count()) return
+                            else {
+                               let i=0
+                               let temp = this.head
+                               while(i < index){
+                                  temp=temp.next
+                                  i++
+                               }
+                               return temp.data
+                            }
+                          }
+                          print() {
+                              let temp = this.head
+                              let output = ""
+                              while (temp != null) {
+                                  output+=temp.data + " "
+                                  temp = temp.next
+                              }
+                              console.log(output)
+                          }
+                          insert(ele,index){
+                            if(this.head==null || index > this.count()) return
+                            let node = new Node(ele)
+                              if (index == 0) {
+                              node.next = this.head;
+                              this.head = node;
+                              } else {
+                                  let it = 0,prev,curr;
+                                  curr = this.head;
+                                  while (it < index) {
+                                      it++;
+                                      prev = curr;
+                                      curr = curr.next;
+                                  }
+                                  node.next = curr;
+                                  prev.next = node;
+                              }
+                            return this.count()
+                          }
+                          delete(index){
+                            if(this.head==null || index >= this.count()) return
+                            else {
+                              let curr,prev,it = 0
+                              curr = this.head
+                              prev = curr
+                              if(index===0){
+                                this.head = curr.next
+                              }else{
+                                while(it<index){
+                                  it++
+                                  prev = curr
+                                  curr = curr.next
+                                }  
+                                prev.next = curr.next
+                              }
+                              return curr.data
+                            }
+                          }
+                          enqueue(ele){
+                             this.insert(ele,0)
+                          }
+                          dequeue(){
+                             this.delete(0)
+                          }
+                      }
+                      
+                      const l = new LinkedList();
+                      
+                      console.log("Singly Linked List Operations:")
+                      console.log("Push:")
+                      l.push(9);
+                      l.push(8);
+                      l.push(10);
+                      l.print()
+                      console.log("Pop:")
+                      l.pop()
+                      l.print()
+                      console.log("Count: " + l.count())
+                      console.log("Get (Index 1): " + l.get(1))
+                      console.log("Insert:")
+                      l.insert(7,1)
+                      l.print()
+                      console.log("Delete:")
+                      l.delete(1)
+                      l.print()
+                      console.log("Enqueue:")
+                      l.enqueue(5)
+                      l.print()
+                      console.log("Dequeue:")
+                      l.dequeue()
+                      l.print()
                       `,
-                        output: ``,
+                        output: `
+                        Singly Linked List Operations:
+                        Push:
+                        9 8 10 
+                        Pop:
+                        9 8 
+                        Count: 2
+                        Get (Index 1): 8
+                        Insert:
+                        9 7 8 
+                        Delete:
+                        9 8 
+                        Enqueue:
+                        5 9 8 
+                        Dequeue:
+                        9 8 
+                        `,
                       },
                       Java: { code: "" },
                       Python: { code: "" },
