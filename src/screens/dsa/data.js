@@ -230,7 +230,7 @@ export const DATA = {
                         console.log(j_arr)
                         console.log("4. unshift (enqueue): " + j_arr.unshift(7,8))
                         console.log(j_arr)
-                        console.log("5. unshift (dequeue): " + j_arr.shift(2))
+                        console.log("5. shift (dequeue): " + j_arr.shift(2))
                         console.log(j_arr)
                         let j = j_arr.reduce((acc,curr)=>{
                         acc[curr] = (acc[curr] || 0) +1
@@ -1402,9 +1402,338 @@ Dequeue:
 2 4 5 6 
                       `,
                       },
-                      Python: { code: "" },
-                      "C++": { code: "" },
-                      Kotlin: { code: `
+                      Python: {
+                        code: `class Node:
+def __init__(self,data):
+  self.data=data
+  self.next=None
+
+class LinkedList:
+
+def __init__(self):
+  self.head = None
+
+def append(self,data): 
+  node = Node(data)
+  if self.head is None:
+    self.head = node
+  else:
+    temp = self.head
+    while temp.next is not None:
+      temp= temp.next
+    temp.next = node
+
+def pop(self):
+  if self.head is None:
+      return
+  elif self.head.next is None:
+      self.head = None
+      return
+  else:
+    temp = self.head
+  while temp.next.next is not None:
+    temp = temp.next
+  last = temp.next
+  temp.next = None
+
+def display(self):
+  temp = self.head
+  while temp is not None:
+    print(temp.data,end =' ')
+    temp = temp.next
+  print('')
+
+def get(self,index):
+  if self.head is None:
+    return
+  elif index >= self.count():              return
+  else:
+    i = 0
+    temp = self.head
+    while i < index:
+      temp = temp.next
+      i+=1
+  return temp.data
+          
+def count(self):
+  x=0
+  temp=self.head
+  while temp is not None:
+    x+=1
+    temp=temp.next
+  return x
+
+def insert(self,ele,index):
+  if self.head is None or index > self.count(): 
+    return
+  node = Node(ele)
+  if index == 0:
+    node.next = self.head;
+    self.head = node;
+  else:
+    it = 0
+    prev = curr = None
+    curr = self.head;
+    prev = curr
+    while it < index:
+      it+=1
+      prev = curr
+      curr = curr.next
+    node.next = curr
+    prev.next = node
+  return self.count()
+
+def delete(self,index):
+  if self.head is None or index >= self.count():
+    return
+  else:
+    curr = prev = it = 0
+    curr = self.head
+    prev = curr
+    if index == 0:
+      self.head = curr.next
+    else:
+      while it < index:
+        it+=1
+        prev = curr
+        curr = curr.next
+      prev.next = curr.next
+    return curr.data
+
+def enqueue(self,ele):
+  return self.insert(ele,0)
+
+def dequeue(self):
+  return self.delete(0)
+
+l = LinkedList()
+print("Singly Linked List Operations:")
+print("Append:")
+l.append(2)
+l.append(4)
+l.append(3)
+l.display()
+print("Pop:")
+l.display()
+print("Count: " + str(l.count()))
+print("Get (Index 1): " + str(l.get(2)))
+print("Insert: ")
+l.insert(7,1)
+l.display()
+print("Enqueue: ")
+l.enqueue(9)
+l.display()
+print("Delete: ")
+l.delete(1)
+l.display()
+print("Dequeue: ")
+l.dequeue()
+l.display()
+                      `,
+                        output: `
+                      Singly Linked List Operations:
+                      Append:
+                      2 4 3 
+                      Pop:
+                      2 4 3 
+                      Count: 3
+                      Get (Index 1): 3
+                      Insert: 
+                      2 7 4 3 
+                      Enqueue: 
+                      9 2 7 4 3 
+                      Delete: 
+                      9 7 4 3 
+                      Dequeue: 
+                      7 4 3   
+                      `,
+                      },
+                      "C++": {
+                        code: `
+                      #include<iostream>
+using namespace std;
+
+struct Node {
+int data;
+Node *next; // self referential pointer
+Node() : data(0), next(nullptr) {}
+Node(int x) : data(x), next(nullptr) {}
+Node(int x, Node *next) : data(x), next(next) {}
+};
+
+// class Node {
+// public:
+//     int data;
+//     Node* next;
+// };
+
+class LinkedList {
+ 
+private:
+Node* head;
+
+public:
+
+LinkedList(){
+  this -> head = NULL;
+}
+
+void push(int data){
+  Node* node = new Node(data);
+  if (this -> head == nullptr) {
+    this -> head = node;
+  } else {
+    Node* temp = this->head;
+    while (temp -> next) {
+      temp = temp -> next;
+    }
+    temp->next = node;
+  }
+}
+
+void pop(){
+  
+}
+
+int count(){
+  int len = 0;
+  Node* node = this -> head;
+  while (node != nullptr) {
+    len += 1;
+    node = node -> next;
+  }
+  return len;
+}
+
+void display(){
+   Node* temp = head;
+   string output;
+   while(temp != nullptr){
+    output += to_string(temp->data) + " ";
+    temp = temp -> next;
+   } 
+   cout << output << endl;
+}
+
+int get(int index){
+   if(this->head == nullptr) return -1;
+   else if(index >= this->count()){
+     return -1;
+   }else{
+     int i = 0;
+     Node* temp = this -> head;
+     while(i < index){
+       temp = temp -> next;
+       i++;
+     } 
+     return temp->data;
+   }
+}
+
+int insert(int ele,int index){
+  if(this->head == nullptr || index > this->count()) return -1;
+    Node* node = new Node(ele);
+    if (index == 0) {
+      node->next = this->head;
+      this->head = node;
+    } else {
+      int it = 0;
+      Node *prev, *curr;
+      curr = this->head;
+      prev = curr;
+      while (it < index) {
+        it++;
+        prev = curr;
+        curr = curr->next;
+      }
+      node->next = curr;
+      prev->next = node;
+    }
+    return this->count();
+}
+
+int remove(int index){
+  if (this->head == nullptr || index >= this->count()) 
+  return -1;
+  else {
+    Node *curr, *prev;
+    int it = 0;
+    curr = this->head;
+    prev = curr;
+    if (index == 0) {
+      this->head = curr->next;
+    } else {
+    while (it < index) {
+      it++;
+      prev = curr;
+      curr = curr->next;
+    }
+    prev->next = curr->next;
+    }
+    return curr->data;
+  }
+  return -1;
+}
+
+int enqueue(int data){
+   return this->insert(data,0);
+}
+
+int dequeue(){
+  return this -> remove(0);
+}
+
+};
+
+int main(){
+  LinkedList l;
+  cout << "Singly Linked List Operations:" << endl;
+  cout << "Push:" << endl;
+  l.push(9);
+  l.push(8);
+  l.push(10);
+  l.display();
+  cout << "Pop:" << endl;
+  l.pop();
+  l.display();
+  cout << "Count: " << l.count() << endl;
+  cout << "Get (Index 1): " <<
+  l.get(1) << endl;
+  cout << "Insert: " << endl;
+  l.insert(9,2);
+  l.display();
+  cout << "Delete: " << endl;
+  l.remove(2);
+  l.display();
+  cout << "Enqueue: " << endl;
+  l.enqueue(8);
+  l.display();
+  cout << "Dequeue: " << endl;
+  l.dequeue();
+  l.display();
+  return 0;
+}
+                      `,
+                        output: `
+                      Singly Linked List Operations:
+Push:
+9 8 10 
+Pop:
+9 8 10 
+Count: 3
+Get (Index 1): 8
+Insert: 
+9 8 9 10 
+Delete: 
+9 8 10 
+Enqueue: 
+8 9 8 10 
+Dequeue: 
+9 8 10 
+                      `,
+                      },
+                      Kotlin: {
+                        code: `
                       internal class Node(var data: Int) {
                         var next: Node? = null
                     }
@@ -1555,7 +1884,8 @@ Dequeue:
                             }
                         }
                     }
-                      `, output: `
+                      `,
+                        output: `
                       Singly Linked List Operations:
                       Push:
                       2 4 3 5 6 4 
@@ -1569,7 +1899,8 @@ Dequeue:
                       7 2 4 5 6 
                       Dequeue: 
                       2 4 5 6 
-                      ` },
+                      `,
+                      },
                     },
                   }}
                 />
