@@ -1142,6 +1142,7 @@ C++ Array Operations:
                               } else {
                                   let it = 0,prev,curr;
                                   curr = this.head;
+                                  prev = curr;
                                   while (it < index) {
                                       it++;
                                       prev = curr;
@@ -1223,7 +1224,184 @@ C++ Array Operations:
                         9 8 
                         `,
                       },
-                      Java: { code: "" },
+                      Java: {
+                        code: `
+                      import java.io.*;
+
+class Node{
+int data;
+Node next;
+Node(int d){
+data = d;
+next = null;
+}
+}
+
+class Main {
+
+static PrintStream ps = System.out;
+
+Node head;
+
+public void push(int data){
+Node node = new Node(data);
+if(head==null){
+head = node;
+}else{
+Node q = head;
+while(q.next != null){
+q=q.next;
+}
+q.next = node;
+}
+}
+
+void pop(){
+  if (head == null) {
+      return;
+  } else if (head.next == null) {
+      head = null;
+      return;
+   } else {
+      Node temp = head;
+      while (temp.next.next != null) {
+        temp = temp.next;
+      }
+      Node last = temp.next;
+      temp.next = null;
+  }
+}
+
+public int count(){
+int count = 0;
+Node p = head;
+while(p!=null){
+count++;
+p = p.next;
+}
+return count;
+}
+
+int get(int index) {
+  if (head == null) return -1;
+  else if (index >= count()) return -1;
+  else {
+    int i = 0;
+    Node temp = head;
+    while (i < index) {
+      temp = temp.next;
+      i++;
+    }
+  return temp.data;
+  }
+  }
+  
+  int insert(int ele,int index){
+    if (this.head == null || index >  this.count()) return -1;
+    Node node = new Node(ele);
+    if (index == 0) {
+      node.next = this.head;
+      this.head = node;
+    } else {
+      Node curr,prev;
+      curr = this.head;
+      prev = curr; 
+      int it = 0;
+      while (it < index) {
+        it++;
+        prev = curr;
+        curr = curr.next;
+      }
+      node.next = curr;
+      prev.next = node;
+    }
+    return this.count();
+  }
+
+  int delete(int index){
+     if (this.head == null || index >= this.count()) return -1;
+        else {
+            Node curr, prev;
+            int it = 0;
+            curr = this.head;
+            prev = curr;
+            if (index == 0) {
+                this.head = curr.next;
+            } else {
+                while (it < index) {
+                    it++;
+                    prev = curr;
+                    curr = curr.next;
+                }
+                prev.next = curr.next;
+            }
+            return curr.data;
+        }
+  }
+
+  int enqueue(int ele)
+  {
+    return this.insert(ele,0);
+  } 
+
+  int dequeue(){
+    return this.delete(0);
+  }
+
+public void print(){
+Node temp = head;
+StringBuilder sb = new StringBuilder();
+while(temp!=null){
+sb.append(temp.data + " ");
+temp=temp.next;
+}
+ps.println(sb.toString());
+}
+
+public static void main(String[] args) {
+Main l = new Main();
+l.push(2);
+l.push(4);
+l.push(3);
+l.push(5);
+l.push(6);
+ps.println("Singly Linked List Operations:");
+ps.println("Push:");
+l.push(4);
+l.print();
+ps.println("Pop: ");
+l.pop();
+l.print();
+ps.println("Count: "+ l.count());
+ps.println("Get (Index 1): "+ l.get(1));
+ps.println("Delete: ");
+l.delete(2);
+l.print();
+ps.println("Enqueue: ");
+l.enqueue(7);
+l.print();
+ps.println("Dequeue: ");
+l.dequeue();
+l.print();
+}
+}
+                      `,
+                        output: `
+                      Singly Linked List Operations:
+Push:
+2 4 3 5 6 4 
+Pop: 
+2 4 3 5 6 
+Count: 5
+Get (Index 1): 4
+Delete: 
+2 4 5 6 
+Enqueue: 
+7 2 4 5 6 
+Dequeue: 
+2 4 5 6 
+                      `,
+                      },
                       Python: { code: "" },
                       "C++": { code: "" },
                       Kotlin: { code: "" },
