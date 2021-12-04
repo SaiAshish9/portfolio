@@ -1925,10 +1925,87 @@ Dequeue:
                     codes: {
                       Javascript: {
                         code: `
-                      
+                        class Node{
+                          constructor(data){
+                            this.data = data
+                            this.next = null
+                          }
+                        }
+                        
+                        class CustomStack{
+                          
+                          constructor(){
+                            this.top = null
+                          } 
+                        
+                          isEmpty(){
+                            return this.top === null
+                          }
+                        
+                          push(element){
+                          let temp = new Node(element)
+                          if(temp == null){
+                            console.log("Stack Overflow")
+                            return
+                          }
+                          temp.next = this.top
+                          this.top = temp
+                          }
+                        
+                          peek(){
+                            if(this.isEmpty()){
+                              console.log("Stack Underflow");
+                             return -1
+                            }else{
+                              return this.top.data       
+                            }
+                          }
+                        
+                          pop(){
+                            if(this.isEmpty()){
+                              console.log("Stack Underflow");
+                              return;
+                            }
+                            this.top = this.top.next;
+                          }
+                        
+                          display(){
+                             if(this.isEmpty()){
+                               console.log("Stack Underflow")
+                             }else{
+                               let temp = this.top
+                               let output = ""
+                               while(temp !== null){
+                                 output += temp.data + " "
+                                 temp = temp.next
+                               }
+                               console.log(output)
+                             }
+                          }
+                        
+                        }
+                        
+                        const cs = new CustomStack()
+                        console.log("Custom Stack Operations:")
+                        
+                        console.log("1. Push: ")
+                        cs.push(10)
+                        cs.push(9)
+                        cs.display()
+                        console.log("2. Pop: ")
+                        cs.pop()
+                        cs.display()
+                        console.log("3. Peek: " + cs.peek())
+                        console.log("4. IsEmpty: " + cs.isEmpty())                        
                       `,
                         output: `
-                      
+                        Custom Stack Operations:
+                        1. Push: 
+                        9 10 
+                        2. Pop: 
+                        10 
+                        3. Peek: 10
+                        4. IsEmpty: false
                       `,
                       },
                     },
@@ -1939,7 +2016,11 @@ Dequeue:
                   options={{
                     output: null,
                     codes: {
-                      Javascript: { code: "" },
+                      Javascript: { code: ``, output: `` },
+                      Java: { code: ``, output: `` },
+                      Python: { code: ``, output: `` },
+                      "C++": { code: ``, output: `` },
+                      Kotlin: { code: ``, output: `` },
                     },
                   }}
                 />
@@ -1960,8 +2041,11 @@ Dequeue:
                   options={{
                     output: null,
                     codes: {
-                      Javascript: { code: "" },
-                    },
+                      Javascript: { code: ``, output: `` },
+                      Java: { code: ``, output: `` },
+                      Python: { code: ``, output: `` },
+                      "C++": { code: ``, output: `` },
+                      Kotlin: { code: ``, output: `` },                    },
                   }}
                 />
                 <Span>
@@ -1972,11 +2056,11 @@ Dequeue:
                   options={{
                     output: null,
                     codes: {
-                      Javascript: { code: "" },
-                      Java: { code: "" },
-                      Python: { code: "" },
-                      "C++": { code: "" },
-                      Kotlin: { code: "" },
+                      Javascript: { code: ``, output: `` },
+                      Java: { code: ``, output: `` },
+                      Python: { code: ``, output: `` },
+                      "C++": { code: ``, output: `` },
+                      Kotlin: { code: ``, output: `` },
                     },
                   }}
                 />
@@ -2000,11 +2084,11 @@ Dequeue:
                   options={{
                     output: null,
                     codes: {
-                      Javascript: { code: "" },
-                      Java: { code: "" },
-                      Python: { code: "" },
-                      "C++": { code: "" },
-                      Kotlin: { code: "" },
+                      Javascript: { code: ``, output: `` },
+                      Java: { code: ``, output: `` },
+                      Python: { code: ``, output: `` },
+                      "C++": { code: ``, output: `` },
+                      Kotlin: { code: ``, output: `` },
                     },
                   }}
                 />
