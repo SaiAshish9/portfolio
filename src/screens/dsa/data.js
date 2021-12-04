@@ -2049,7 +2049,95 @@ int main(){
                   options={{
                     output: null,
                     codes: {
-                      Javascript: { code: "" },
+                      Javascript: {
+                        code: `
+                      class Node{
+                        constructor(data){
+                          this.data = data
+                          this.next = null
+                        }
+                      }
+                      
+                      // const MAX_SIZE = 1000
+                      // SIZE === MAX_SIZE - 1
+                      // -> stack overflow 
+                      
+                      class CustomQueue{
+                        
+                        constructor(){
+                          this.front = null
+                          this.rear = null
+                        } 
+                      
+                        isEmpty(){
+                          return this.front === null
+                        }
+                      
+                        enqueue(data){
+                          let temp = new Node(data);
+                            
+                          if(temp === null){
+                            console.log("Stack Overflow")
+                            return
+                          }
+                      
+                          if (this.isEmpty()) {
+                            this.front = this.rear = temp;
+                            return;
+                          }
+                          this.rear.next = temp;
+                          this.rear = temp;
+                        }
+                      
+                       dequeue(){
+                           if(this.isEmpty()){
+                             console.log("Stack Underflow")
+                             return
+                           }
+                           let temp = new Node()
+                           temp = this.front;
+                           this.front = this.front.next;
+                           if (this.front == null)
+                            this.rear = null;
+                       }
+                      
+                       display(){
+                        let temp = this.front
+                        let output = ""
+                        if(this.isEmpty()){
+                             console.log("Stack Underflow")
+                             return
+                        }
+                        while(temp !== null){
+                         output += temp.data + " "
+                         temp = temp.next
+                        }
+                        console.log(output)
+                       }
+                      
+                      }
+                      
+                      const cq = new CustomQueue()
+                      console.log("Custom Queue Operations:")
+                      
+                      console.log("1. Enqueue: ")
+                      cq.enqueue(9)
+                      cq.enqueue(7)
+                      cq.display()
+                      console.log("2. Dequeue: ")
+                      cq.dequeue()
+                      cq.display()
+                      console.log("3. IsEmpty: " + cq.isEmpty())                      
+                      `,
+                        output: `
+                      Custom Queue Operations:
+1. Enqueue: 
+9 7 
+2. Dequeue: 
+7 
+3. IsEmpty: false
+                      `,
+                      },
                     },
                   }}
                 />
@@ -2062,7 +2150,8 @@ int main(){
                       Java: { code: ``, output: `` },
                       Python: { code: ``, output: `` },
                       "C++": { code: ``, output: `` },
-                      Kotlin: { code: ``, output: `` },                    },
+                      Kotlin: { code: ``, output: `` },
+                    },
                   }}
                 />
                 <Span>
@@ -2084,12 +2173,207 @@ int main(){
                 <Span>
                   <b>Circular Queue:</b>
                 </Span>
-                <b>Implementation</b>
+                <Span>
+                  <b>Implementation</b>
+                </Span>
+                <span>(a) Without using mod operator:</span>
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
-                      Javascript: { code: "" },
+                      Javascript: {
+                        code: `
+                        class Node {
+                          constructor(data) {
+                              this.data = data
+                              this.next = null
+                          }
+                      }
+                      
+                      class CircularQueue {
+                      
+                          constructor() {
+                              this.front = null
+                              this.rear = null
+                          }
+                      
+                          isEmpty() {
+                              return this.front === null
+                          }
+                      
+                          enqueue(data) {
+                              let temp = new Node(data);
+                      
+                              if (temp === null) {
+                                  console.log("Stack Overflow")
+                                  return
+                              }
+                      
+                              if (this.isEmpty()) {
+                                  this.front = temp;
+                              } else {
+                                  this.rear.next = temp
+                              }
+                              this.rear = temp;
+                              this.rear.next = this.front;
+                          }
+                      
+                          dequeue() {
+                              if (this.isEmpty()) {
+                                  console.log("Stack Underflow")
+                                  return
+                              }
+                              let value = null
+                              if (this.front === this.rear) {
+                                  value = this.front.data
+                                  this.front = null
+                                  this.rear = null
+                              } else {
+                                  let temp = this.front
+                                  value = temp.data
+                                  this.front = this.front.next
+                                  this.rear.next = this.front
+                              }
+                              return value
+                          }
+                      
+                          display() {
+                              let temp = this.front
+                              let output = ""
+                              if (this.isEmpty()) {
+                                  console.log("Stack Underflow")
+                                  return
+                              }
+                              if (temp.next == temp) {
+                                  output = temp.data
+                              } else {
+                                  while (temp.next != this.front) {
+                                      output += temp.data + " "
+                                      temp = temp.next
+                                  }
+                                  output += temp.data
+                              }
+                              console.log(output)
+                          }
+                      
+                      }
+                      
+                      const cq = new CircularQueue()
+                      console.log("Circular Queue Operations:")
+                      
+                      console.log("1. Enqueue: ")
+                      cq.enqueue(9)
+                      cq.enqueue(7)
+                      cq.display()
+                      console.log("2. Dequeue: ")
+                      cq.dequeue()
+                      cq.display()
+                      console.log("3. IsEmpty: " + cq.isEmpty())                    
+                      `,
+                        output: `
+                        Circular Queue Operations:
+                        1. Enqueue: 
+                        9 7 
+                        2. Dequeue: 
+                        7 
+                        3. IsEmpty: false
+                      `,
+                      },
+                    },
+                  }}
+                />
+                <span>(b) Using mod operator:</span>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        class CustomQueue{
+    
+                          constructor(max_size){
+                             this.max_size = max_size
+                             this.queue = new Array(max_size).fill(null)
+                             this.front = this.rear = -1       
+                          }
+                        
+                          isEmpty(){
+                            return this.front === -1
+                          }
+                        
+                          enqueue(data){
+                            if ((this.rear + 1) % this.max_size === this.front){
+                              console.log("The circular queue is full\n")
+                            }else if(this.isEmpty()){
+                              this.front = 0
+                              this.rear = 0
+                              this.queue[this.rear] = data
+                            }else{
+                              this.rear = (this.rear + 1) % this.max_size
+                              this.queue[this.rear] = data
+                            }
+                          }
+                        
+                        
+                          dequeue(){
+                            let temp = null
+                            if (this.isEmpty()){
+                              console.log("The circular queue is empty")
+                            }
+                            else if(this.front === this.rear){
+                              temp = this.queue[this.front]
+                              this.front = -1
+                              this.rear = -1
+                              return temp
+                            }
+                            else{
+                              temp = this.queue[this.front]
+                              this.front = (this.front + 1) % this.max_size
+                              return temp
+                            }
+                          }
+                        
+                          display(){
+                             let output = ""
+                             if(this.isEmpty()){
+                              console.log("No element in the circular queue")
+                             }else if(this.rear >= this.front){
+                              for(let i=this.front;i<=this.rear;i++){
+                                 output += this.queue[i] + " "
+                              }
+                             }else{
+                              for(let i=this.front;i<this.max_size;i++){
+                                 output += this.queue[i] + " "
+                              }   
+                              for(let i=0;i<=this.rear;i++){
+                                 output += this.queue[i] + " "
+                              }   
+                             }
+                             console.log(output)
+                          }
+                        
+                        }
+                        
+                        const cq = new CustomQueue(5); 
+                        console.log("Circular Queue Operations:")
+                        console.log("1. Enqueue: ")
+                        cq.enqueue(9)
+                        cq.enqueue(7)
+                        cq.display()
+                        console.log("2. Dequeue: ")
+                        cq.dequeue()
+                        cq.display()
+                        console.log("3. IsEmpty: " + cq.isEmpty())  
+                        `,
+                        output: `
+                        Circular Queue Operations:
+                        1. Enqueue: 
+                        9 7 
+                        2. Dequeue: 
+                        7 
+                        3. IsEmpty: false
+                      `,
+                      },
                     },
                   }}
                 />
