@@ -1406,107 +1406,109 @@ Dequeue:
                       },
                       Python: {
                         code: `class Node:
-def __init__(self,data):
-  self.data=data
-  self.next=None
+  def __init__(self,data):
+    self.data=data
+    self.next=None
 
 class LinkedList:
 
-def __init__(self):
-  self.head = None
+  def __init__(self):
+    self.head = None
 
-def append(self,data): 
-  node = Node(data)
-  if self.head is None:
-    self.head = node
-  else:
-    temp = self.head
-    while temp.next is not None:
-      temp= temp.next
-    temp.next = node
-
-def pop(self):
-  if self.head is None:
-      return
-  elif self.head.next is None:
-      self.head = None
-      return
-  else:
-    temp = self.head
-  while temp.next.next is not None:
-    temp = temp.next
-  last = temp.next
-  temp.next = None
-
-def display(self):
-  temp = self.head
-  while temp is not None:
-    print(temp.data,end =' ')
-    temp = temp.next
-  print('')
-
-def get(self,index):
-  if self.head is None:
-    return
-  elif index >= self.count():              return
-  else:
-    i = 0
-    temp = self.head
-    while i < index:
-      temp = temp.next
-      i+=1
-  return temp.data
-          
-def count(self):
-  x=0
-  temp=self.head
-  while temp is not None:
-    x+=1
-    temp=temp.next
-  return x
-
-def insert(self,ele,index):
-  if self.head is None or index > self.count(): 
-    return
-  node = Node(ele)
-  if index == 0:
-    node.next = self.head;
-    self.head = node;
-  else:
-    it = 0
-    prev = curr = None
-    curr = self.head;
-    prev = curr
-    while it < index:
-      it+=1
-      prev = curr
-      curr = curr.next
-    node.next = curr
-    prev.next = node
-  return self.count()
-
-def delete(self,index):
-  if self.head is None or index >= self.count():
-    return
-  else:
-    curr = prev = it = 0
-    curr = self.head
-    prev = curr
-    if index == 0:
-      self.head = curr.next
+  def append(self,data): 
+    node = Node(data)
+    if self.head is None:
+      self.head = node
     else:
+      temp = self.head
+      while temp.next is not None:
+        temp= temp.next
+      temp.next = node
+
+  def pop(self):
+    if self.head is None:
+      return
+    elif self.head.next is None:
+      self.head = None
+      del self.head
+      return
+    else:
+      temp = self.head
+      while temp.next.next is not None:
+        temp = temp.next
+      last = temp.next
+      temp.next = None
+      del last
+
+  def display(self):
+    temp = self.head
+    while temp is not None:
+      print(temp.data,end =' ')
+      temp = temp.next
+    print('')
+
+  def get(self,index):
+    if self.head is None:
+      return
+    elif index >= self.count():                    return
+    else:
+      i = 0
+      temp = self.head
+      while i < index:
+        temp = temp.next
+        i+=1
+    return temp.data
+            
+  def count(self):
+    x=0
+    temp=self.head
+    while temp is not None:
+      x+=1
+      temp=temp.next
+    return x
+
+  def insert(self,ele,index):
+    if self.head is None or index > self.count  (): 
+      return
+    node = Node(ele)
+    if index == 0:
+      node.next = self.head;
+      self.head = node;
+    else:
+      it = 0
+      prev = curr = None
+      curr = self.head;
+      prev = curr
       while it < index:
         it+=1
         prev = curr
         curr = curr.next
-      prev.next = curr.next
+      node.next = curr
+      prev.next = node
+    return self.count()
+
+  def delete(self,index):
+    if self.head is None or index >= self.count():
+      return
+    else:
+      curr = prev = it = 0
+      curr = self.head
+      prev = curr
+      if index == 0:
+        self.head = curr.next
+      else:
+        while it < index:
+          it+=1
+          prev = curr
+          curr = curr.next
+        prev.next = curr.next
     return curr.data
 
-def enqueue(self,ele):
-  return self.insert(ele,0)
+  def enqueue(self,ele):
+    return self.insert(ele,0)
 
-def dequeue(self):
-  return self.delete(0)
+  def dequeue(self):
+    return self.delete(0)
 
 l = LinkedList()
 print("Singly Linked List Operations:")
@@ -1516,6 +1518,7 @@ l.append(4)
 l.append(3)
 l.display()
 print("Pop:")
+l.pop()
 l.display()
 print("Count: " + str(l.count()))
 print("Get (Index 1): " + str(l.get(2)))
@@ -1530,24 +1533,24 @@ l.delete(1)
 l.display()
 print("Dequeue: ")
 l.dequeue()
-l.display()
-                      `,
+l.display()                      
+                        `,
                         output: `
-                      Singly Linked List Operations:
-                      Append:
-                      2 4 3 
-                      Pop:
-                      2 4 3 
-                      Count: 3
-                      Get (Index 1): 3
-                      Insert: 
-                      2 7 4 3 
-                      Enqueue: 
-                      9 2 7 4 3 
-                      Delete: 
-                      9 7 4 3 
-                      Dequeue: 
-                      7 4 3   
+                        Singly Linked List Operations:
+                        Append:
+                        2 4 3 
+                        Pop:
+                        2 4 
+                        Count: 2
+                        Get (Index 1): None
+                        Insert: 
+                        2 7 4 
+                        Enqueue: 
+                        9 2 7 4 
+                        Delete: 
+                        9 7 4 
+                        Dequeue: 
+                        7 4  
                       `,
                       },
                       "C++": {
@@ -1594,7 +1597,20 @@ void push(int data){
 }
 
 void pop(){
-  
+  if (this->head == nullptr) {
+    return;
+   } else if(this->head->next == nullptr){
+    this->head = nullptr;
+    return;
+   } else {
+    Node* temp = this->head;
+    while (temp->next->next) {
+      temp = temp->next;
+    }
+    Node* last = temp->next;
+    temp->next = nullptr;
+    delete last;
+  }
 }
 
 int count(){
@@ -1717,21 +1733,21 @@ int main(){
 }
                       `,
                         output: `
-                      Singly Linked List Operations:
-Push:
-9 8 10 
-Pop:
-9 8 10 
-Count: 3
-Get (Index 1): 8
-Insert: 
-9 8 9 10 
-Delete: 
-9 8 10 
-Enqueue: 
-8 9 8 10 
-Dequeue: 
-9 8 10 
+                        Singly Linked List Operations:
+                        Push:
+                        9 8 10 
+                        Pop:
+                        9 8 
+                        Count: 2
+                        Get (Index 1): 8
+                        Insert: 
+                        9 8 9 
+                        Delete: 
+                        9 8 
+                        Enqueue: 
+                        8 9 8 
+                        Dequeue: 
+                        9 8 
                       `,
                       },
                       Kotlin: {
