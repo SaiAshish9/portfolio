@@ -2166,14 +2166,125 @@ int main(){
                 <Span>
                   <b>Priority Queue:</b>
                 </Span>
+                <Span>
+                  In this type of queue, every item has a associated priority and an element with
+                  high priority will be dequeued first. If they both have the same priority then order
+                  will be considered. 
+                  *Priority will be considered during insertion which helps to easily remove a element from the queue.
+                </Span>
+                <Span> 
+                  Applications: Dijkstra, Prim's, etc.
+                </Span>
                 <b>Utilization:</b>
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
-                      Javascript: { code: ``, output: `` },
+                      Javascript: { code: `
+                      class Element{
+                        constructor(ele,priority){
+                          this.data = ele
+                          this.priority = priority
+                        }
+                      }
+                      
+                      class PriorityQueue{
+                         constructor()
+                          {
+                              this.items = [];
+                          }
+                      
+                          enqueue(ele,priority){
+                          var qe = new Element(ele, priority);
+                          var contain = false;
+                          for (var i = 0; i < this.items.length; i++) {
+                              if (this.items[i].priority > qe.priority) {
+                                  this.items.splice(i, 0, qe);
+                                  // insertion
+                                  contain = true;
+                                  break;
+                              }
+                          }
+                          if (!contain) {
+                              this.items.push(qe);
+                          }
+                          }
+                      
+                          dequeue(){
+                          if (this.isEmpty())
+                              return "Underflow";
+                          // deletion from front
+                          return this.items.shift();
+                          }
+                           
+                          display(){
+                          var str = "";
+                          for (var i = 0; i < this.items.length; i++)
+                              str += this.items[i].data + " ";
+                          // reduce 
+                          console.log(str);
+                          }
+                      
+                          isEmpty(){
+                          return this.items.length == 0;
+                          }
+                      
+                          front(){
+                          if (this.isEmpty())
+                              return "No elements in Queue";
+                          return JSON.stringify(this.items[0]);
+                          }
+                      
+                          rear(){
+                          if (this.isEmpty())
+                              return "No elements in Queue";
+                          return JSON.stringify(this.items[this.items.length - 1]);
+                          }
+                      
+                      }
+                      
+                      const pq = new PriorityQueue()
+                      console.log("Priority Queue Operations: ")
+                      console.log("Enqueue: ")
+                      pq.enqueue(9)
+                      pq.enqueue(8)
+                      pq.display()
+                      console.log("Dequeue: ")
+                      pq.dequeue()
+                      pq.display()
+                      console.log("Front: " + pq.front())
+                      console.log("Rear: " + pq.rear())
+                      console.log("isEmpty: " + pq.isEmpty())                      
+                      `, output: `
+                      Priority Queue Operations: 
+Enqueue: 
+9 8 
+Dequeue: 
+8 
+Front: {"data":8}
+Rear: {"data":8}
+isEmpty: false
+                      ` },
+                      // https://stackoverflow.com/questions/11003155/change-priorityqueue-to-max-priorityqueue
+                      // https://www.geeksforgeeks.org/priority-queue-class-in-java/
+                      // https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/
                       Java: { code: ``, output: `` },
-                      Python: { code: ``, output: `` },
+                      Python: { code: `from queue import PriorityQueue
+pq = PriorityQueue()
+pq.put((2, "A"))
+pq.put((3, "B"))
+pq.put((1, "C"))
+pq.put((4, "D"))
+while pq:
+     print(pq.get())
+pq.pop()
+
+                      `, output: `
+(1, 'C')
+(2, 'A')
+(3, 'B')
+(4, 'D')
+                      ` },
                       "C++": { code: ``, output: `` },
                       Kotlin: { code: ``, output: `` },
                     },
