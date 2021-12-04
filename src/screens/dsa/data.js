@@ -2394,16 +2394,203 @@ int main(){
                 <Span>
                   <b>Deque:</b>
                 </Span>
+                <Span>
+                  It allows insertion and deletion at both ends of the data
+                  structure.
+                </Span>
                 <b>Utilization:</b>
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
-                      Javascript: { code: ``, output: `` },
-                      Java: { code: ``, output: `` },
-                      Python: { code: ``, output: `` },
-                      "C++": { code: ``, output: `` },
-                      Kotlin: { code: ``, output: `` },
+                      Javascript: {
+                        code: `
+                      function Deque()
+{
+ this.stack=new Array();
+ this.popback=function(){
+  return this.stack.pop();
+ }
+ this.pushback=function(item){
+  this.stack.push(item);
+ }
+ this.popfront=function(){
+  return this.stack.shift();
+ }
+ this.pushfront=function(item){
+  this.stack.unshift(item);
+ }
+ this.display=function(){
+   console.log(this.stack)
+ }
+}
+
+var deque= new Deque();
+
+deque.pushfront("A");
+deque.pushfront("B");
+deque.display()
+deque.pushback("C");
+deque.display()
+deque.popfront();
+deque.display()
+deque.popback();
+deque.display()
+                      `,
+                        output: `
+                      [ 'B', 'A' ]
+[ 'B', 'A', 'C' ]
+[ 'A', 'C' ]
+[ 'A' ]
+                      `,
+                      },
+                      Java: { code: `
+                      import java.util.*;
+public class Main {
+	public static void main(String[] args)
+	{
+		Deque<String> dq
+			= new ArrayDeque<String>();
+// new LinkedList<String>()
+
+		dq.add("A");
+		dq.addFirst("B");
+		dq.addLast("C");
+    for (Iterator it = dq.iterator();
+         it.hasNext();) {
+        System.out.print(it.next() + " ");
+    }
+    System.out.println();
+    for (Iterator it = dq.descendingIterator();
+         it.hasNext();) {
+        System.out.print(it.next() + " ");
+    }
+    System.out.println();
+    System.out.println(dq);
+    System.out.println(dq.pop());
+    System.out.println(dq.poll());
+    System.out.println(dq);
+    System.out.println(dq.pollFirst());
+    System.out.println(dq.pollLast());
+    dq.clear();
+	  System.out.println(dq);
+// Those methods retrieve the first element 
+// and remove it from the list. The difference 
+// between poll() and pop() is that pop will
+// throw NoSuchElementException() on empty list, 
+// whereas poll returns null.
+
+	}
+}
+                      `, output: `
+                      B A C 
+C A B 
+[B, A, C]
+B
+A
+[C]
+C
+null
+[]
+                      ` },
+                      Python: { code: `import collections
+de = collections.deque([9,7,8,4])
+de.append(4)
+print(de)
+de.appendleft(6)
+print(de)
+de.pop()
+print(de)
+de.popleft()
+print(de)
+print(de.index(4,2,5))
+de.insert(4,3)
+print (de)
+print (de.count(3))
+de.remove(3)
+de.extend([4,5,6])
+print(de)
+de.extendleft([7,8,9])
+print(de)
+de.rotate(-3)
+print(de)
+de.reverse()
+print (de)
+                      `, output: `
+                      deque([9, 7, 8, 4, 4])
+deque([6, 9, 7, 8, 4, 4])
+deque([6, 9, 7, 8, 4])
+deque([9, 7, 8, 4])
+3
+deque([9, 7, 8, 4, 3])
+1
+deque([9, 7, 8, 4, 4, 5, 6])
+deque([9, 8, 7, 9, 7, 8, 4, 4, 5, 6])
+deque([9, 7, 8, 4, 4, 5, 6, 9, 8, 7])
+deque([7, 8, 9, 6, 5, 4, 4, 8, 7, 9])
+                      ` },
+                      "C++": { code: `
+                      #include <iostream>
+#include <deque>
+
+using namespace std;
+
+void display(deque <int> q)
+{
+	deque <int> :: iterator it;
+	for (it = q.begin(); it != q.end(); ++it)
+		cout << *it << '\t';
+	cout << '\n';
+}
+
+int main()
+{
+	deque <int> dq;
+	dq.push_back(9);
+	dq.push_front(8);
+	dq.push_back(6);
+	dq.push_front(7);
+	display(dq);
+
+  cout << "Deque Operations: " << endl;
+	cout << "size() : " << dq.size()<< endl;
+	cout << "max_size() : " << dq.max_size()<< endl;
+	cout << "at(2) : " << dq.at(2)<< endl;
+	cout << "front() : " << dq.front()<< endl;
+	cout << "back() : " << dq.back()<< endl;
+	cout << "pop_front() : "<< endl;
+	dq.pop_front();
+	display(dq);
+	cout << "pop_back() : "<< endl;
+	dq.pop_back();
+	display(dq);
+
+	return 0;
+}
+                      `, output: `
+                      7   8   9   6
+Deque Operations: 
+size() : 4
+max_size() : 4611686018427387903
+at(2) : 9
+front() : 7
+back() : 6
+pop_front() : 
+8   9   6
+pop_back() : 
+8   9
+                      ` },
+                      Kotlin: { code: ``, output: `
+                      B A C 
+                      C A B 
+                      [B, A, C]
+                      B
+                      A
+                      [C]
+                      C
+                      null
+                      []
+                      ` },
                     },
                   }}
                 />
