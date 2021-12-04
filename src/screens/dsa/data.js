@@ -2044,6 +2044,15 @@ int main(){
                 <Span>
                   <b>Queue (FIFO) :</b>
                 </Span>
+                <Span>
+                  Various operations are performed in the order of First In
+                  Fisrt Out (FIFO). It's used in breadth first search which is
+                  used for branch and bound algorithm.
+                </Span>
+                <Span>
+                  Example: people organised in the form of line for passport
+                  verification.
+                </Span>
                 <b>Implementation</b>
                 <CodeEditor
                   options={{
@@ -2172,6 +2181,11 @@ int main(){
                 />
                 <Span>
                   <b>Circular Queue:</b>
+                </Span>
+                <Span>
+                  It's similar to a circular linked list which is used to avoid
+                  memory wastage. We make of two pointers: front and rear
+                  instead of one which is used at circular singly linked list
                 </Span>
                 <Span>
                   <b>Implementation</b>
