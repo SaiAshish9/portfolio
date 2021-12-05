@@ -121,7 +121,10 @@ export const DATA = {
                   traversed in a single run and each element is connected to
                   previous and next adjacent.
                 </Span>
-                <Span>e.g. : Array, Linked List, Stack, Queue, etc.</Span>
+                <Span>
+                  e.g. : Array (static), Linked List (dynamic), Stack (dynamic),
+                  Queue (dynamic), etc.
+                </Span>
                 <Span>
                   <b>Array (Homogeneous): </b>
                 </Span>
@@ -2033,7 +2036,8 @@ int main(){
                   options={{
                     output: null,
                     codes: {
-                      Java: { code: `
+                      Java: {
+                        code: `
                       import java.util.*;
 import java.io.*;
  
@@ -2057,12 +2061,15 @@ public class Main {
                            + stack);
     }
 }                     
-                      `, output: `Initial Stack: [10, 15, 30, 20, 5]
+                      `,
+                        output: `Initial Stack: [10, 15, 30, 20, 5]
                       Pop: 5
                       Peek: 20
                       Search: 2
-                      Stack after pop operation [10, 15, 30, 20]` },
-                      Python: { code: `from queue import LifoQueue
+                      Stack after pop operation [10, 15, 30, 20]`,
+                      },
+                      Python: {
+                        code: `from queue import LifoQueue
 
 stack = LifoQueue(maxsize=3)
 print(stack.qsize())
@@ -2076,7 +2083,8 @@ print(stack.get())
 print(stack.get())
 print(stack.get())
 print("Empty: ", stack.empty())
-                      `, output: `
+                      `,
+                        output: `
                       0
 Full:  True
 Size:  3
@@ -2085,8 +2093,10 @@ c
 b
 a
 Empty:  True
-                      ` },
-                      "C++": { code: `
+                      `,
+                      },
+                      "C++": {
+                        code: `
                       #include <iostream>
 #include <stack>
 using namespace std;
@@ -2106,12 +2116,17 @@ int main() {
     }
     cout << endl;
     return 0;
-}                      `, output: `22 21` },
-                      Kotlin: { code: ``, output: `Initial Stack: [10, 15, 30, 20, 5]
+}                      `,
+                        output: `22 21`,
+                      },
+                      Kotlin: {
+                        code: ``,
+                        output: `Initial Stack: [10, 15, 30, 20, 5]
                       Pop: 5
                       Peek: 20
                       Search: 2
-                      Stack after pop operation [10, 15, 30, 20]` },
+                      Stack after pop operation [10, 15, 30, 20]`,
+                      },
                     },
                   }}
                 />
@@ -2229,7 +2244,8 @@ int main() {
                   options={{
                     output: null,
                     codes: {
-                      Java: { code: `
+                      Java: {
+                        code: `
                       import java.util.*;
  
 public class Main {
@@ -2261,14 +2277,17 @@ public class Main {
                            + size);
     }
 }
-                      `, output: `
+                      `,
+                        output: `
                       Elements of queue [0, 1, 2, 3, 4]
 removed element-0
 [1, 2, 3, 4]
 head of queue-1
 Size of queue-4
-                      ` },
-                      Python: { code: `from collections import deque
+                      `,
+                      },
+                      Python: {
+                        code: `from collections import deque
  
 q = deque()
  
@@ -2282,14 +2301,17 @@ print(q.popleft())
 print(q.popleft())
  
 print(q)
-                      `, output: `
+                      `,
+                        output: `
                       deque(['a', 'b', 'c'])
 a
 b
 c
 deque([])
-                      ` },
-                      "C++": { code: `
+                      `,
+                      },
+                      "C++": {
+                        code: `
                       #include <iostream>
 #include <queue>
   
@@ -2325,21 +2347,26 @@ int main()
   
     return 0;
 }
-                     `, output: `
+                     `,
+                        output: `
                      The queue gquiz is : 10 20 30 
 size() : 3
 front() : 10
 back() : 30
 pop()
 20 30 
-                     ` },
-                      Kotlin: { code: ``, output: `
+                     `,
+                      },
+                      Kotlin: {
+                        code: ``,
+                        output: `
                       Elements of queue [0, 1, 2, 3, 4]
 removed element-0
 [1, 2, 3, 4]
 head of queue-1
 Size of queue-4
-                      ` },
+                      `,
+                      },
                     },
                   }}
                 />
@@ -2512,7 +2539,8 @@ pq.pop()
 (4, 'D')
                       `,
                       },
-                      "C++": { code: `
+                      "C++": {
+                        code: `
                       #include <iostream>
 #include <queue>
 #include <bits/stdc++.h>
@@ -2559,7 +2587,8 @@ int main()
   display(pq2);
 	return 0;
 }
-                      `, output: `
+                      `,
+                        output: `
                       size() : 3
 top() : 30
 pop() : 
@@ -2569,9 +2598,13 @@ pop() :
 5
 9
 8
-                      ` },
-                      Kotlin: { code: ``, output: `10 10 15 15 
-                      30 20` },
+                      `,
+                      },
+                      Kotlin: {
+                        code: ``,
+                        output: `10 10 15 15 
+                      30 20`,
+                      },
                     },
                   }}
                 />
@@ -3007,6 +3040,9 @@ pop_back() :
           },
           {
             title: "Non Linear",
+          },
+          {
+            title: "Tabular",
           },
         ],
         content: (
