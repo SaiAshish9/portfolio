@@ -2167,20 +2167,20 @@ int main(){
                   <b>Priority Queue:</b>
                 </Span>
                 <Span>
-                  In this type of queue, every item has a associated priority and an element with
-                  high priority will be dequeued first. If they both have the same priority then order
-                  will be considered. 
-                  *Priority will be considered during insertion which helps to easily remove a element from the queue.
+                  In this type of queue, every item has a associated priority
+                  and an element with high priority will be dequeued first. If
+                  they both have the same priority then order will be
+                  considered. *Priority will be considered during insertion
+                  which helps to easily remove a element from the queue.
                 </Span>
-                <Span> 
-                  Applications: Dijkstra, Prim's, etc.
-                </Span>
+                <Span>Applications: Dijkstra, Prim's, etc.</Span>
                 <b>Utilization:</b>
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
-                      Javascript: { code: `
+                      Javascript: {
+                        code: `
                       class Element{
                         constructor(ele,priority){
                           this.data = ele
@@ -2255,7 +2255,8 @@ int main(){
                       console.log("Front: " + pq.front())
                       console.log("Rear: " + pq.rear())
                       console.log("isEmpty: " + pq.isEmpty())                      
-                      `, output: `
+                      `,
+                        output: `
                       Priority Queue Operations: 
 Enqueue: 
 9 8 
@@ -2264,12 +2265,56 @@ Dequeue:
 Front: {"data":8}
 Rear: {"data":8}
 isEmpty: false
-                      ` },
-                      // https://stackoverflow.com/questions/11003155/change-priorityqueue-to-max-priorityqueue
-                      // https://www.geeksforgeeks.org/priority-queue-class-in-java/
-                      // https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/
-                      Java: { code: ``, output: `` },
-                      Python: { code: `from queue import PriorityQueue
+                      `,
+                      },
+                      Java: {
+                        code: `
+                      import java.util.*;
+                      public class Main {
+                        public static void main(String[] args)
+                        {
+                              PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+                              pq.add(10);
+                              pq.add(20);
+                              pq.add(15);
+                              System.out.print(pq.peek() + " ");
+                              System.out.print(pq.poll() + " ");
+                              System.out.print(pq.peek()+ " ");
+                              pq.remove(20);
+                              Iterator it = pq.iterator();
+                        
+                              while (it.hasNext()) {
+                                  System.out.print(it.next() + " ");
+                              }
+                      
+                              PriorityQueue<Integer> maxPQ = new PriorityQueue<>(Collections.reverseOrder()); 
+                              PriorityQueue<Integer> maxPQ1 = new PriorityQueue<>((a,b) -> b - a); 
+                              PriorityQueue<Integer> maxPQ2 = new PriorityQueue<>((a,b) -> b.compareTo(a)); 
+                      
+                              PriorityQueue<Integer> pq1 = new PriorityQueue<Integer> (
+                              new Comparator<Integer> () {
+                              public int compare(Integer a, Integer b) {
+                             return b - a;
+                             }
+                        }
+                      ); 
+                            pq1.add(20);
+                            pq1.add(30);
+                            Iterator it1 = pq1.iterator();
+                                System.out.println();
+                              while (it1.hasNext()) {
+                                  System.out.print(it1.next() + " ");
+                              }
+                        }
+                      }                      
+                      `,
+                        output: `
+                      10 10 15 15 
+30 20
+                      `,
+                      },
+                      Python: {
+                        code: `from queue import PriorityQueue
 pq = PriorityQueue()
 pq.put((2, "A"))
 pq.put((3, "B"))
@@ -2279,13 +2324,72 @@ while pq:
      print(pq.get())
 pq.pop()
 
-                      `, output: `
+                      `,
+                        output: `
 (1, 'C')
 (2, 'A')
 (3, 'B')
 (4, 'D')
+                      `,
+                      },
+                      "C++": { code: `
+                      #include <iostream>
+#include <queue>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+template<class T>
+void display(T& q)
+{
+    while (!q.empty())
+    {
+        cout << q.top() << endl;
+        q.pop();
+    }
+}
+ 
+struct CustomCompare
+{
+    bool operator()(const int& lhs, const int& rhs)
+    {
+        return lhs < rhs;
+    }
+};
+
+int main()
+{
+	priority_queue<int> pq;
+  priority_queue<int,vector<int>,greater<int>> pq1;                      
+  priority_queue<int,vector<int>, CustomCompare> pq2;
+
+	pq.push(10);
+	pq.push(30);
+	pq.push(20);
+	pq1.push(5);
+	pq1.push(1);
+	cout << "size() : " << pq.size() << endl;
+	cout << "top() : " << pq.top() << endl;
+	cout << "pop() : " << endl;
+  pq.pop();
+  display(pq);
+  display(pq1);
+  pq2.push(9);
+  pq2.push(8);
+  display(pq2);
+	return 0;
+}
+                      `, output: `
+                      size() : 3
+top() : 30
+pop() : 
+20
+10
+1
+5
+9
+8
                       ` },
-                      "C++": { code: ``, output: `` },
                       Kotlin: { code: ``, output: `` },
                     },
                   }}
@@ -2555,7 +2659,8 @@ deque.display()
 [ 'A' ]
                       `,
                       },
-                      Java: { code: `
+                      Java: {
+                        code: `
                       import java.util.*;
 public class Main {
 	public static void main(String[] args)
@@ -2593,7 +2698,8 @@ public class Main {
 
 	}
 }
-                      `, output: `
+                      `,
+                        output: `
                       B A C 
 C A B 
 [B, A, C]
@@ -2603,8 +2709,10 @@ A
 C
 null
 []
-                      ` },
-                      Python: { code: `import collections
+                      `,
+                      },
+                      Python: {
+                        code: `import collections
 de = collections.deque([9,7,8,4])
 de.append(4)
 print(de)
@@ -2627,7 +2735,8 @@ de.rotate(-3)
 print(de)
 de.reverse()
 print (de)
-                      `, output: `
+                      `,
+                        output: `
                       deque([9, 7, 8, 4, 4])
 deque([6, 9, 7, 8, 4, 4])
 deque([6, 9, 7, 8, 4])
@@ -2639,8 +2748,10 @@ deque([9, 7, 8, 4, 4, 5, 6])
 deque([9, 8, 7, 9, 7, 8, 4, 4, 5, 6])
 deque([9, 7, 8, 4, 4, 5, 6, 9, 8, 7])
 deque([7, 8, 9, 6, 5, 4, 4, 8, 7, 9])
-                      ` },
-                      "C++": { code: `
+                      `,
+                      },
+                      "C++": {
+                        code: `
                       #include <iostream>
 #include <deque>
 
@@ -2678,7 +2789,8 @@ int main()
 
 	return 0;
 }
-                      `, output: `
+                      `,
+                        output: `
                       7   8   9   6
 Deque Operations: 
 size() : 4
@@ -2690,8 +2802,11 @@ pop_front() :
 8   9   6
 pop_back() : 
 8   9
-                      ` },
-                      Kotlin: { code: ``, output: `
+                      `,
+                      },
+                      Kotlin: {
+                        code: ``,
+                        output: `
                       B A C 
                       C A B 
                       [B, A, C]
@@ -2701,7 +2816,8 @@ pop_back() :
                       C
                       null
                       []
-                      ` },
+                      `,
+                      },
                     },
                   }}
                 />
