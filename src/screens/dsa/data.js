@@ -3158,6 +3158,93 @@ pop_back() :
           },
           {
             title: "Non Linear",
+            content: (
+              <>
+                <Span>
+                  In <b>non linear data structure</b>, elements are not arranged
+                  in a sequential way hence they cannot be traveresed in a
+                  single run as multiple levels are involved.
+                </Span>
+                <Span>Applications: ML, AI , etc.</Span>
+                <Span>e.g. Trees, Graph and Tries etc.</Span>
+                <Span>
+                  <b>Tree</b>
+                </Span>
+                <Span>
+                  It consists of elements organised in a hierarchical way such
+                  that there can be only one connection in between two elements.
+                </Span>
+                <Span>Let n => number of nodes</Span>
+                <Span>
+                  <b>Catalian Number:</b> 2nCn/(n+1) or (2n)!/(n+1)
+                </Span>
+                <Span>
+                  <b>Terminology:</b>
+                </Span>
+                <Span>
+                  <b>Root </b>: The first single node from where the tree
+                  originates.
+                </Span>
+                <Span>
+                  <b>Edge </b>: The connecting link between any two nodes is
+                  called as an edge. NUmber of edges = n-1
+                </Span>
+                <Span>
+                  <b>Parent </b>: The node which has a branch from it to any
+                  other node
+                </Span>
+                <Span>
+                  <b>Child </b>: The node which is a descendant of some node
+                </Span>
+                <Span>
+                  <b>Siblings: </b>Nodes which belong to the same parent
+                </Span>
+                <Span>
+                  <b>Degree of a node: </b>total number of children of that
+                  node.
+                </Span>
+                <Span>
+                  <b>Degree of a tree: </b>highest degree of a node among all
+                  the nodes in the tree.
+                </Span>
+                <Span>
+                  <b>Internal (non-terminal / non-leaf) node: </b>node which has
+                  at least one child.
+                </Span>
+                <Span>
+                  <b>External (terminal / leaf) node: </b>the node which does
+                  not have any child
+                </Span>
+                <Span>
+                  <b>Level: </b>each step from top to bottom ( 0 to height of
+                  tree )
+                </Span>
+                <Span>
+                  <b>Height of a node: </b>Total number of edges that lies on
+                  the longest path from any leaf node to a particular node
+                </Span>
+                <Span>
+                  <b>Height of a tree: </b>height of root node.
+                </Span>
+                <Span>
+                  <b>Depth of a tree: </b> It's same as level of the tree
+                </Span>
+                <Span>
+                  <b>Subtree: </b>each child from a node forms another tree
+                  recursively.
+                </Span>
+                <Span>
+                  <b>Forest: </b>collection of trees obtained from omitting the
+                  root.
+                </Span>
+                <Span>
+                  <b>Graph</b>
+                </Span>
+                <Span>
+                  <b>Trie</b>
+                </Span>
+              </>
+            ),
           },
           {
             title: "Tabular",
