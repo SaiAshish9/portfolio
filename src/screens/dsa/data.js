@@ -2120,7 +2120,38 @@ int main() {
                         output: `22 21`,
                       },
                       Kotlin: {
-                        code: ``,
+                        code: `
+                        import java.util.*
+
+object Main {
+    @JvmStatic
+    fun main(args: Array<String>) {
+        val stack = Stack<Int>()
+        stack.push(10)
+        stack.push(15)
+        stack.push(30)
+        stack.push(20)
+        stack.push(5)
+        println("Initial Stack: $stack")
+        println(
+            "Pop: " +
+                    stack.pop()
+        )
+        println(
+            "Peek: " +
+                    stack.peek()
+        )
+        println(
+            "Search: " +
+                    stack.search(30)
+        )
+        println(
+            "Stack after pop operation " +
+                    stack
+        )
+    }
+}
+                        `,
                         output: `Initial Stack: [10, 15, 30, 20, 5]
                       Pop: 5
                       Peek: 20
@@ -2358,7 +2389,36 @@ pop()
                      `,
                       },
                       Kotlin: {
-                        code: ``,
+                        code: `import java.util.*
+
+                        object Main {
+                            @JvmStatic
+                            fun main(args: Array<String>) {
+                                val q: Queue<Int> = LinkedList()
+                                val q1: Queue<Int> = PriorityQueue()
+                                for (i in 0..4) q.add(i)
+                                println(
+                                    "Elements of queue " +
+                                            q
+                                )
+                                val removedele = q.remove()
+                                println(
+                                    "removed element-" +
+                                            removedele
+                                )
+                                println(q)
+                                val head = q.peek()
+                                println(
+                                    "head of queue-" +
+                                            head
+                                )
+                                val size = q.size
+                                println(
+                                    "Size of queue-" +
+                                            size
+                                )
+                            }
+                        }`,
                         output: `
                       Elements of queue [0, 1, 2, 3, 4]
 removed element-0
@@ -2601,9 +2661,30 @@ pop() :
                       `,
                       },
                       Kotlin: {
-                        code: ``,
-                        output: `10 10 15 15 
-                      30 20`,
+                        code: `import java.util.PriorityQueue
+
+                        fun main(args: Array<String>) {
+                            val nums: PriorityQueue<Int> = PriorityQueue<Int>()
+                        
+                            // Add items (enqueue)
+                            nums.add(800)
+                            nums.add(50)
+                            nums.add(200)
+                            nums.add(550)
+                        
+                            println("peek: " + nums.peek())
+                        
+                            // Remove items (dequeue)
+                            while (!nums.isEmpty()) {
+                                println(nums.remove())
+                            }
+                        }`,
+                        output: `peek: 50
+                        50
+                        200
+                        550
+                        800
+                        `,
                       },
                     },
                   }}
@@ -3019,7 +3100,43 @@ pop_back() :
                       `,
                       },
                       Kotlin: {
-                        code: ``,
+                        code: `import java.util.*
+
+                        object Main {
+                            @JvmStatic
+                            fun main(args: Array<String>) {
+                                val dq: Deque<String> = ArrayDeque()
+                                // new LinkedList<String>()
+                                dq.add("A")
+                                dq.addFirst("B")
+                                dq.addLast("C")
+                                run {
+                                    val it: Iterator<*> = dq.iterator()
+                                    while (it.hasNext()) {
+                                        print(it.next().toString() + " ")
+                                    }
+                                }
+                                println()
+                                val it: Iterator<*> = dq.descendingIterator()
+                                while (it.hasNext()) {
+                                    print(it.next().toString() + " ")
+                                }
+                                println()
+                                println(dq)
+                                println(dq.pop())
+                                println(dq.poll())
+                                println(dq)
+                                println(dq.pollFirst())
+                                println(dq.pollLast())
+                                dq.clear()
+                                println(dq)
+                                // Those methods retrieve the first element 
+                                // and remove it from the list. The difference 
+                                // between poll() and pop() is that pop will
+                                // throw NoSuchElementException() on empty list, 
+                                // whereas poll returns null.
+                            }
+                        }`,
                         output: `
                       B A C 
                       C A B 
