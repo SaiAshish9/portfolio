@@ -2057,7 +2057,11 @@ public class Main {
                            + stack);
     }
 }                     
-                      `, output: `` },
+                      `, output: `Initial Stack: [10, 15, 30, 20, 5]
+                      Pop: 5
+                      Peek: 20
+                      Search: 2
+                      Stack after pop operation [10, 15, 30, 20]` },
                       Python: { code: `from queue import LifoQueue
 
 stack = LifoQueue(maxsize=3)
@@ -2103,7 +2107,11 @@ int main() {
     cout << endl;
     return 0;
 }                      `, output: `22 21` },
-                      Kotlin: { code: ``, output: `` },
+                      Kotlin: { code: ``, output: `Initial Stack: [10, 15, 30, 20, 5]
+                      Pop: 5
+                      Peek: 20
+                      Search: 2
+                      Stack after pop operation [10, 15, 30, 20]` },
                     },
                   }}
                 />
@@ -2221,10 +2229,117 @@ int main() {
                   options={{
                     output: null,
                     codes: {
-                      Java: { code: ``, output: `` },
-                      Python: { code: ``, output: `` },
-                      "C++": { code: ``, output: `` },
-                      Kotlin: { code: ``, output: `` },
+                      Java: { code: `
+                      import java.util.*;
+ 
+public class Main {
+ 
+    public static void main(String[] args)
+    {
+        Queue<Integer> q
+            = new LinkedList<>();
+
+        Queue<Integer> q1
+            = new PriorityQueue<>();
+        
+        for (int i = 0; i < 5; i++)
+            q.add(i);
+ 
+        System.out.println("Elements of queue "
+                           + q);
+        int removedele = q.remove();
+        System.out.println("removed element-"
+                           + removedele);
+ 
+        System.out.println(q);
+        int head = q.peek();
+        System.out.println("head of queue-"
+                           + head);
+
+        int size = q.size();
+        System.out.println("Size of queue-"
+                           + size);
+    }
+}
+                      `, output: `
+                      Elements of queue [0, 1, 2, 3, 4]
+removed element-0
+[1, 2, 3, 4]
+head of queue-1
+Size of queue-4
+                      ` },
+                      Python: { code: `from collections import deque
+ 
+q = deque()
+ 
+q.append('a')
+q.append('b')
+q.append('c')
+ 
+print(q)
+print(q.popleft())
+print(q.popleft())
+print(q.popleft())
+ 
+print(q)
+                      `, output: `
+                      deque(['a', 'b', 'c'])
+a
+b
+c
+deque([])
+                      ` },
+                      "C++": { code: `
+                      #include <iostream>
+#include <queue>
+  
+using namespace std;
+  
+void display(queue<int> q)
+{
+    queue<int> g = q;
+    while (!g.empty()) {
+        cout << g.front() << ' ';
+        g.pop();
+    }
+    cout << endl;
+}
+  
+int main()
+{
+    queue<int> q;
+    q.push(10);
+    q.push(20);
+    q.push(30);
+  
+    cout << "The queue gquiz is : ";
+    display(q);
+  
+    cout << "size() : " << q.size() << endl;
+    cout << "front() : " << q.front() << endl;
+    cout << "back() : " << q.back() << endl;
+    cout << "pop()";
+    q.pop();
+    cout << endl;
+    display(q);
+  
+    return 0;
+}
+                     `, output: `
+                     The queue gquiz is : 10 20 30 
+size() : 3
+front() : 10
+back() : 30
+pop()
+20 30 
+                     ` },
+                      Kotlin: { code: ``, output: `
+                      Elements of queue [0, 1, 2, 3, 4]
+removed element-0
+[1, 2, 3, 4]
+head of queue-1
+Size of queue-4
+                      ` },
                     },
                   }}
                 />
@@ -2455,7 +2570,8 @@ pop() :
 9
 8
                       ` },
-                      Kotlin: { code: ``, output: `` },
+                      Kotlin: { code: ``, output: `10 10 15 15 
+                      30 20` },
                     },
                   }}
                 />
