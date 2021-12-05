@@ -3238,6 +3238,134 @@ pop_back() :
                   root.
                 </Span>
                 <Span>
+                  <b>Types:</b>
+                </Span>
+                {/* https://www.educba.com/types-of-trees-in-data-structure/ */}
+                <Span>
+                  <b>1. General Tree</b>
+                </Span>
+                <Span>
+                  If no constraint is placed on the tree’s hierarchy, a tree is
+                  called a general tree
+                </Span>
+                <Span>
+                  <b>2. Binary Tree</b>
+                </Span>
+                <Span>
+                  The binary tree is the kind of tree in which most two children
+                  can be found for each parent and no constraints are applied at
+                  simple binary tree.
+                </Span>
+                <Span>
+                  <b>Types:</b>
+                </Span>
+                <Span>a. Extended Binary Tree</Span>
+                <Span>
+                  Extended binary tree is a type of binary tree in which all the
+                  null sub tree of the original tree are replaced with special
+                  nodes called external nodes whereas other nodes are called
+                  internal nodes
+                </Span>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `class Node
+                        {
+                            constructor()
+                            {
+                                this.key = 0;
+                                this.left = null;
+                                this.right = null;
+                            }
+                        };
+                         
+                        function createNode(key)
+                        {
+                            var temp = new Node();
+                            temp.key = key;
+                            temp.left = temp.right = null;
+                            return (temp);
+                        }
+                        
+                        function inorder(root){
+                          traverse(root.left);
+                          console.log(root.key + " ");
+                          traverse(root.right);
+                        }
+                         
+                        function traverse(root)
+                        {
+                            if (root != null)
+                              inorder(root)
+                            else
+                            {
+                                root = createNode(-1);
+                                console.log(root.key + " ");
+                            }
+                        }
+                         
+                        const root = createNode(1);
+                        root.left = createNode(2);
+                        root.right = createNode(3);
+                        root.left.left = createNode(5);
+                        root.right.right = createNode(4);
+                        traverse(root);`,
+                        output: `-1 
+                        5 
+                        -1 
+                        2 
+                        -1 
+                        1 
+                        -1 
+                        3 
+                        -1 
+                        4 
+                        -1 `,
+                      },
+                    },
+                  }}
+                />
+                <Span>b. Full Binary Tree</Span>
+                <Span>
+                  In this type of tree, all internal nodes will have two
+                  children
+                </Span>
+                <Span>c. Complete Binary Tree</Span>
+                <Span>
+                  Binary Tree is a Complete Binary Tree if all the levels are
+                  completely filled except possibly the last level and the last
+                  level has all keys as left as possible{" "}
+                </Span>
+                <Span>d. Perfect Binary Tree</Span>
+                <Span>
+                  A Binary tree is a Perfect Binary Tree in which all the
+                  internal nodes have two children and all leaf nodes are at the
+                  same level.{" "}
+                </Span>
+                <Span>No. of leaf nodes = No. of internal nodes + 1</Span>
+                <Span>e. Balanced Binary Tree</Span>
+                <Span>
+                  A binary tree is balanced if the height of the tree is O(Log
+                  n) where n is the number of nodes. Height of left and right
+                  subtree should't differ by 1. e.g. AVL, Red black.They provide O(log n) for insert,search and delete.
+                </Span>
+                <Span>f. Degenerate(Pathological) Binary Tree</Span>
+                <Span>A Tree where every internal node has one child. Such trees are performance-wise same as linked list.</Span>
+                <Span>
+                  <b>3. Binary Search Tree</b>
+                </Span>
+                <Span>
+                  <b>4. AVL (Adelson Velsky and Landis) Tree</b>
+                </Span>
+                <Span>
+                  <b>5. Red-Black Tree</b>
+                </Span>
+                <Span>
+                  <b>6. N-ary (M-way) Tree</b>
+                </Span>
+                <Span>
                   <b>Graph</b>
                 </Span>
                 <Span>
