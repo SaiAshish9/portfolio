@@ -261,6 +261,7 @@ export const DATA = {
                         // splice() adds and/or removes array elements.
                         console.log(j_arr)
                         console.log("13. sort: " + j_arr.sort())
+                        // sort((a,b)=>a-b)
                         console.log(j_arr)
                         console.log("14. reverse: " + j_arr.reverse())
                         console.log(j_arr)
