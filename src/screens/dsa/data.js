@@ -2033,10 +2033,76 @@ int main(){
                   options={{
                     output: null,
                     codes: {
-                      Javascript: { code: ``, output: `` },
-                      Java: { code: ``, output: `` },
-                      Python: { code: ``, output: `` },
-                      "C++": { code: ``, output: `` },
+                      Java: { code: `
+                      import java.util.*;
+import java.io.*;
+ 
+public class Main {
+    public static void main(String args[])
+    {
+        Stack<Integer> stack = new Stack<Integer>();
+        stack.push(10);
+        stack.push(15);
+        stack.push(30);
+        stack.push(20);
+        stack.push(5);
+        System.out.println("Initial Stack: " + stack);
+        System.out.println("Pop: "
+                           + stack.pop());
+        System.out.println("Peek: "
+                           + stack.peek());
+        System.out.println("Search: "
+                           + stack.search(30));
+        System.out.println("Stack after pop operation "
+                           + stack);
+    }
+}                     
+                      `, output: `` },
+                      Python: { code: `from queue import LifoQueue
+
+stack = LifoQueue(maxsize=3)
+print(stack.qsize())
+stack.put('a')
+stack.put('b')
+stack.put('c')
+print("Full: ", stack.full())
+print("Size: ", stack.qsize())
+print('Elements popped from the stack')
+print(stack.get())
+print(stack.get())
+print(stack.get())
+print("Empty: ", stack.empty())
+                      `, output: `
+                      0
+Full:  True
+Size:  3
+Elements popped from the stack
+c
+b
+a
+Empty:  True
+                      ` },
+                      "C++": { code: `
+                      #include <iostream>
+#include <stack>
+using namespace std;
+int main() {
+    stack<int> stack;
+    stack.push(21);
+    stack.push(22);
+    stack.push(24);
+    stack.push(25);
+     
+    stack.pop();
+    stack.pop();
+
+    while (!stack.empty()) {
+        cout << stack.top() << " ";
+        stack.pop();
+    }
+    cout << endl;
+    return 0;
+}                      `, output: `22 21` },
                       Kotlin: { code: ``, output: `` },
                     },
                   }}
@@ -2155,7 +2221,6 @@ int main(){
                   options={{
                     output: null,
                     codes: {
-                      Javascript: { code: ``, output: `` },
                       Java: { code: ``, output: `` },
                       Python: { code: ``, output: `` },
                       "C++": { code: ``, output: `` },
