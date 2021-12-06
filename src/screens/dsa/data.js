@@ -3248,6 +3248,49 @@ pop_back() :
                   If no constraint is placed on the tree’s hierarchy, a tree is
                   called a general tree
                 </Span>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        class Node {
+                          constructor(val) {
+                            this.data = val;
+                            this.left = null;
+                            this.right = null;
+                            // left1 
+                            // right1
+                            // we can add more links as
+                            // well in case of general tree
+                          }
+                        }
+                      
+                      function inorder(root){
+                        if(root!=null){
+                          inorder(root.left)
+                          console.log(root.data)
+                          inorder(root.right)
+                        }
+                      }
+                      
+                      let root = null;
+                      root = new Node(1);
+                      root.left = new Node(2);
+                      root.right = new Node(3);
+                      root.left.left = new Node(4);
+                      inorder(root)                      
+                        `,
+                        output: `
+                        4
+2
+1
+3
+                        `,
+                      },
+                    },
+                  }}
+                />
                 <Span>
                   <b>2. Binary Tree</b>
                 </Span>
@@ -3349,22 +3392,198 @@ pop_back() :
                 <Span>
                   A binary tree is balanced if the height of the tree is O(Log
                   n) where n is the number of nodes. Height of left and right
-                  subtree should't differ by 1. e.g. AVL, Red black.They provide O(log n) for insert,search and delete.
+                  subtree should't differ by 1. e.g. AVL, Red black.They provide
+                  O(log n) for insert,search and delete.
                 </Span>
                 <Span>f. Degenerate(Pathological) Binary Tree</Span>
-                <Span>A Tree where every internal node has one child. Such trees are performance-wise same as linked list.</Span>
+                <Span>
+                  A Tree where every internal node has one child. Such trees are
+                  performance-wise same as linked list.
+                </Span>
+                {/* https://www.educba.com/types-of-trees-in-data-structure/ */}
+                {/* https://www.geeksforgeeks.org/binary-tree-set-3-types-of-binary-tree/ */}
                 <Span>
                   <b>3. Binary Search Tree</b>
                 </Span>
                 <Span>
+                  Complexity for insertion, deletion and search : O(h) , h :
+                  height of bst
+                </Span>
+                <Span>
+                  It's basically a binary tree (degree : 2) with certain
+                  constraints. There should be no duplicate nodes present in the
+                  tree and also left subtree should always be smaller than right
+                  subtree or we can say left child of any parent should be
+                  lesser than it and the right child should be greater than it.
+                </Span>
+                <Span>
+                  <b>Implementation:</b>
+                </Span>
+                <Span>(a) using recursion:</Span>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        class Node {
+                          constructor(val) {
+                            this.key = val;
+                            this.left = null;
+                            this.right = null;
+                          }
+                      }
+                      
+                      class BinarySearchTree {
+                        constructor(){
+                          this.root = null
+                        }
+                      
+                        search(key,temp=this.root)
+                        {
+                          if (temp === null || temp.key === key)
+                              return temp;
+                          if (temp.key < key)
+                             return this.search(key,temp.right);
+                          return this.search(key,temp.left);
+                        }
+                      
+                        insert(key)
+                        {
+                          this.root = this.insertRec(this.root, key);
+                        }
+                        
+                        insertRec(temp, key)
+                        {
+                          if (temp == null)
+                          {
+                            temp = new Node(key);
+                            return temp;
+                          }
+                          if (key < temp.key)
+                            temp.left = this.insertRec(temp.left, key);
+                          else if (key > temp.key)
+                            temp.right = this.insertRec(temp.right, key);
+                          return temp;
+                        }
+                        
+                        inorder()
+                        {
+                          this.inorderRec(this.root);
+                        }
+                      
+                        inorderRec(temp)
+                        {
+                          if (temp != null) {
+                            this.inorderRec(temp.left);
+                            console.log(temp.key);
+                            this.inorderRec(temp.right);
+                          }
+                        }
+                      
+                      }
+                      
+                      const tree = new BinarySearchTree();
+                      
+                      console.log("Binary Search Tree Operations:")
+                      
+                      console.log("Insertion: 6, 5, 4, 3, 9, 8, 7")
+                      tree.insert(6);
+                      tree.insert(5);
+                      tree.insert(4);
+                      tree.insert(3);
+                      tree.insert(9);
+                      tree.insert(8);
+                      tree.insert(7);
+                      console.log("Level Order Traversal:")
+                      
+                      console.log("|____6____|")
+                      console.log("|__4___8__|")
+                      console.log("|_3_5_7_9_|")
+                      
+                      
+                      console.log("In-Order Traversal:")
+                      tree.inorder();
+                      console.log("Search (8): ")
+                      console.log(tree.search(8))
+                                          
+                        `,
+                        output: `
+                        Binary Search Tree Operations:
+                        Insertion: 6, 5, 4, 3, 9, 8, 7
+                        Level Order Traversal:
+                        |____6____|
+                        |__4___8__|
+                        |_3_5_7_9_|
+                        In-Order Traversal:
+                        3
+                        4
+                        5
+                        6
+                        7
+                        8
+                        9
+                        Search (8): 
+                        Node {
+                          key: 8,
+                          left: Node { key: 7, left: null, right: null },
+                          right: null
+                        }
+                        `,
+                      },
+                    },
+                  }}
+                />
+                <Span>(b) using for loop:</Span>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                      },
+                    },
+                  }}
+                />
+                <Span>
                   <b>4. AVL (Adelson Velsky and Landis) Tree</b>
                 </Span>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                      },
+                    },
+                  }}
+                />
                 <Span>
                   <b>5. Red-Black Tree</b>
                 </Span>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                      },
+                    },
+                  }}
+                />
                 <Span>
                   <b>6. N-ary (M-way) Tree</b>
                 </Span>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                      },
+                    },
+                  }}
+                />
                 <Span>
                   <b>Graph</b>
                 </Span>
