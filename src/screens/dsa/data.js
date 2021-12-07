@@ -3221,7 +3221,7 @@ pop_back() :
                 </Span>
                 <Span>
                   <b>Height of a node: </b>Total number of edges that lies on
-                  the longest path from any leaf node to a particular node
+                  the longest path from deepest leaf node to a particular node
                 </Span>
                 <Span>
                   <b>Height of a tree: </b>height of root node.
@@ -3244,10 +3244,10 @@ pop_back() :
                 <Span>
                   <b>1. General Tree</b>
                 </Span>
-                <Span>
+                <p>
                   If no constraint is placed on the tree’s hierarchy, a tree is
                   called a general tree
-                </Span>
+                </p>
                 <CodeEditor
                   options={{
                     output: null,
@@ -3303,12 +3303,12 @@ pop_back() :
                   <b>Types:</b>
                 </Span>
                 <Span>a. Extended Binary Tree</Span>
-                <Span>
+                <p>
                   Extended binary tree is a type of binary tree in which all the
                   null sub tree of the original tree are replaced with special
                   nodes called external nodes whereas other nodes are called
                   internal nodes
-                </Span>
+                </p>
                 <CodeEditor
                   options={{
                     output: null,
@@ -3417,9 +3417,20 @@ pop_back() :
                   lesser than it and the right child should be greater than it.
                 </Span>
                 <Span>
+                  inorder, preorder, postorder => depth first traversal
+                  <br />
+                  level order => breadth first traversal
+                  <br />
+                  Min height => n-1 <br />
+                  Max height => ceil(log2(n)) <br />
+                  Min nodes -> h+1 <br />
+                  Max nodes -> 2^h + 1 <br />
+                  Insert, delete, search -> complexity : O(1)
+                </Span>
+                <Span>
                   <b>Implementation:</b>
                 </Span>
-                <Span>(a) using recursion:</Span>
+                <p>(a) using recursion:</p>
                 <CodeEditor
                   options={{
                     output: null,
@@ -3433,11 +3444,18 @@ pop_back() :
                             this.right = null;
                           }
                       }
-                      
+                                            
                       class BinarySearchTree {
                         constructor(){
                           this.root = null
                         }
+                      
+                      // we'll make use of binary search till that
+                      // desired element is found . After every
+                      // iteration, n/2 nodes will be reduced from
+                      // search space due to the elimination of desired
+                      // subtree ( left or right ). That's why its
+                      // called binary search tree.
                       
                         search(key,temp=this.root)
                         {
@@ -3448,6 +3466,8 @@ pop_back() :
                           return this.search(key,temp.left);
                         }
                       
+                      // we'll find the desired leaf node for 
+                      // insertion
                         insert(key)
                         {
                           this.root = this.insertRec(this.root, key);
@@ -3481,6 +3501,103 @@ pop_back() :
                           }
                         }
                       
+                        remove(key){
+                          this.root = this.removeRec(this.root,key)
+                        }
+                      
+                      // Deletion can be classified into 3 types depending upon
+                      // whether node is present at:
+                      // 1. leaf -> simply delete the node
+                      // 2. parent with 1 child -> delete & replace it with the child
+                      // 3. parent with 2 child -> delete & replace it with inorder 
+                      // successor or predecessor
+                      
+                        removeRec(temp,key)
+                        {
+                        
+                        if (temp == null)
+                            return temp;
+                      
+                        if (key < temp.key)
+                            temp.left = this.removeRec(temp.left, key);
+                        else if (key > temp.key)
+                            temp.right = this.removeRec(temp.right, key);
+                        else {
+                          if (temp.left == null)
+                            return temp.right;
+                          else if (temp.right == null)
+                            return temp.left;
+                          temp.key = this.minValue(temp.right);
+                          // inorder successor
+                          temp.right = this.removeRec(temp.right, temp.key);
+                        }
+                        return temp;
+                        }
+                       
+                        minValue(root)
+                        {
+                          let minv = root.key;
+                              while (root.left != null)
+                              {
+                                  minv = root.left.key;
+                                  root = root.left;
+                              }
+                              return minv;
+                        }
+                      
+                        maxDepth(node=this.root)
+                          {
+                              if (node == null)
+                                  return -1;
+                              else
+                              {
+                                  var lDepth = this.maxDepth(node.left);
+                                  var rDepth = this.maxDepth(node.right);
+                                  if (lDepth > rDepth)
+                                      return (lDepth + 1);
+                                   else
+                                      return (rDepth + 1);
+                              }
+                              // O(n^2)
+                        }
+                        
+                        // using recursion, level order 
+                        // traversal occupies O(n*n) . That's
+                        // why let's solve it ib O(n) using 
+                        // queue
+                      
+                        levelOrderAndMaxDepth(root = this.root)
+                        {
+                          if(root == null)
+                            return;
+                          
+                          let q = [];
+                          let height = -1;
+                          q.push(root);
+                          while(true)
+                          {
+                            let nodeCount = q.length;
+                            if(nodeCount == 0){
+                              console.log({height})
+                              break;
+                            }
+                            height++;
+                            let output = ""
+                            while(nodeCount > 0)
+                            {
+                              let node = q[0];
+                              output += node.key + " ";
+                              q.shift();
+                              if(node.left != null)
+                                q.push(node.left);
+                              if(node.right != null)
+                                q.push(node.right);
+                              nodeCount--;
+                            }
+                            console.log(output)
+                          }
+                        }
+                      
                       }
                       
                       const tree = new BinarySearchTree();
@@ -3495,27 +3612,56 @@ pop_back() :
                       tree.insert(9);
                       tree.insert(8);
                       tree.insert(7);
-                      console.log("Level Order Traversal:")
-                      
-                      console.log("|____6____|")
-                      console.log("|__4___8__|")
-                      console.log("|_3_5_7_9_|")
-                      
-                      
-                      console.log("In-Order Traversal:")
+                      console.log("Level Order Traversal (Breadth First Traversal):")
+                      tree.levelOrderAndMaxDepth()
+                      console.log("Maximum Depth: " + tree.maxDepth())
+                      console.log("In-Order Traversal (Depth First Traversal):")
                       tree.inorder();
-                      console.log("Search (8): ")
+                      console.log("Search (8):")
                       console.log(tree.search(8))
-                                          
+                      tree.levelOrderAndMaxDepth()
+                      console.log("Delete (8): ")
+                      tree.remove(8)
+                      tree.levelOrderAndMaxDepth()
+                      console.log("Maximum Depth: " + tree.maxDepth())
+                      tree.inorder();                          
                         `,
                         output: `
                         Binary Search Tree Operations:
                         Insertion: 6, 5, 4, 3, 9, 8, 7
                         Level Order Traversal:
-                        |____6____|
-                        |__4___8__|
-                        |_3_5_7_9_|
+                        6 
+                        5 9 
+                        4 8 
+                        3 7 
+                        { height: 3 }
+                        Maximum Depth: 3
                         In-Order Traversal:
+                        3
+                        Binary Search Tree Operations:
+                        Insertion: 6, 5, 4, 3, 9, 8, 7
+                        Level Order Traversal:
+                        6 
+                        5 9 
+                        4 8 
+                        3 7 
+                        { height: 3 }
+                        Maximum Depth: 3
+                        In-Order Traversal:
+                        3
+                        4
+                        Binary Search Tree Operations:
+                        Insertion: 6, 5, 4, 3, 9, 8, 7
+                        Binary Search Tree Operations:
+                        Insertion: 6, 5, 4, 3, 9, 8, 7
+                        Level Order Traversal (Breadth First Traversal):
+                        6 
+                        5 9 
+                        4 8 
+                        3 7 
+                        { height: 3 }
+                        Maximum Depth: 3
+                        In-Order Traversal (Depth First Traversal):
                         3
                         4
                         5
@@ -3523,18 +3669,117 @@ pop_back() :
                         7
                         8
                         9
-                        Search (8): 
+                        Search (8):
                         Node {
                           key: 8,
                           left: Node { key: 7, left: null, right: null },
                           right: null
                         }
+                        6 
+                        5 9 
+                        4 8 
+                        3 7 
+                        { height: 3 }
+                        Delete (8): 
+                        6 
+                        5 9 
+                        4 7 
+                        3 
+                        { height: 3 }
+                        Maximum Depth: 3
+                        3
+                        4
+                        5
+                        6
+                        7
+                        9
                         `,
                       },
                     },
                   }}
                 />
-                <Span>(b) using for loop:</Span>
+                <p>(b) inorder traversal using stack and loop:</p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        class Node {
+                          constructor(val) {
+                            this.val = val;
+                            this.left = null;
+                            this.right = null;
+                          }
+                      }
+                      
+                      class BinarySearchTree {
+                        constructor(){
+                          this.root = null
+                        }
+                        
+                        insert(key)
+                        {
+                          const node = new Node(key);
+                          if(this.root === null){
+                            this.root = node;
+                            return;
+                          }
+                          let prev=null;
+                          let temp=this.root;
+                          while (temp!=null){
+                            if(temp.val > key){
+                              prev=temp;
+                              temp=temp.left;
+                            }
+                            else if(temp.val < key){
+                              prev=temp;
+                              temp=temp.right;
+                            }
+                          }
+                          if(prev.val>key)
+                            prev.left=node;
+                          else prev.right=node;
+                        }
+                      
+                        // depth first traversal
+                        
+                        inorder(){
+                          let temp=this.root;
+                          let stack=[];
+                          while (temp!=null||stack.length!==0){
+                            if(temp!=null){
+                              stack.push(temp);
+                              temp=temp.left;
+                            }
+                          else {
+                              temp = stack.pop();
+                              console.log(temp.val+" ");
+                              temp = temp.right;
+                          }
+                          }
+                        }
+                      
+                      }
+                      
+                      const tree = new BinarySearchTree();
+                      console.log("Binary Search Tree Operations:")
+                      tree.insert(9)
+                      tree.insert(8)
+                      tree.insert(7)
+                      tree.inorder()                      
+                        `,
+                        output: `
+                        Binary Search Tree Operations:
+7 
+8 
+9
+                        `,
+                      },
+                    },
+                  }}
+                />
+                <b>4. AVL (Adelson Velsky and Landis) Tree</b>
                 <CodeEditor
                   options={{
                     output: null,
@@ -3545,9 +3790,7 @@ pop_back() :
                     },
                   }}
                 />
-                <Span>
-                  <b>4. AVL (Adelson Velsky and Landis) Tree</b>
-                </Span>
+                <b>5. Red-Black Tree</b>
                 <CodeEditor
                   options={{
                     output: null,
@@ -3558,22 +3801,7 @@ pop_back() :
                     },
                   }}
                 />
-                <Span>
-                  <b>5. Red-Black Tree</b>
-                </Span>
-                <CodeEditor
-                  options={{
-                    output: null,
-                    codes: {
-                      Javascript: {
-                        code: ``,
-                      },
-                    },
-                  }}
-                />
-                <Span>
-                  <b>6. N-ary (M-way) Tree</b>
-                </Span>
+                <b>6. N-ary (M-way) Tree</b>
                 <CodeEditor
                   options={{
                     output: null,
