@@ -3779,13 +3779,163 @@ pop_back() :
                     },
                   }}
                 />
-                <b>4. AVL (Adelson Velsky and Landis) Tree</b>
+                <Span>
+                  <b>4. AVL (Adelson Velsky and Landis) Tree</b>
+                </Span>
+                <Span>
+                  It's a self balancing binary search tree where difference b/w
+                  left and right subtress for every node cannot be more than 1.
+                  They are used to improve the cost of operations of skewed bst
+                  from O(n) to O(logn)
+                </Span>
+                <Span>The height of an AVL tree is always O(Logn)</Span>
+                Balance factor of a node: (height of left subtree) - (height
+                of right tree). It should be between -1 and 1. If it's greater
+                than 1 then we should consider LL (Left Left) or LR case. Otherwise RR or RL
+                case.
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
                       Javascript: {
-                        code: ``,
+                        code: `
+                        class Node {
+                          constructor(d) {
+                          this.key = d;
+                          this.height = 1;
+                          this.left = null;
+                          this.right = null;
+                          }
+                        }
+                      
+                        // Insertion->
+                        // 
+                        // 
+                        // 
+                      
+                        // Deletion ->
+                        // L1 -> LL        
+                        // L0 -> LL or LR 
+                        // L-1 -> LR 
+                      
+                        // R1 -> RL
+                        // R0 -> RR or RL
+                        // R-1 -> RR
+                      
+                        class AVLTree {
+                          constructor() {
+                          this.root = null;
+                          }
+                      
+                          height(N) {
+                          if (N == null) return 0;
+                      
+                          return N.height;
+                          }
+                      
+                          max(a, b) {
+                          return a > b ? a : b;
+                          }
+                      
+                          rightRotate(y) {
+                          var x = y.left;
+                          var T2 = x.right;
+                      
+                          x.right = y;
+                          y.left = T2;
+                      
+                          y.height = this.max(this.height(y.left),
+                          this.height(y.right)) + 1;
+                          x.height = this.max(this.height(x.left),
+                          this.height(x.right)) + 1;
+                      
+                          return x;
+                          }
+                          leftRotate(x) {
+                          var y = x.right;
+                          var T2 = y.left;
+                      
+                          y.left = x;
+                          x.right = T2;
+                      
+                          x.height = this.max(this.height(x.left),
+                          this.height(x.right)) + 1;
+                          y.height = this.max(this.height(y.left),
+                          this.height(y.right)) + 1;
+                      
+                          return y;
+                          }
+                      
+                          getBalance(N) {
+                          if (N == null) return 0;
+                      
+                          return this.height(N.left) - this.height(N.right);
+                          }
+                      
+                          insert(node, key) {
+                          if (node == null) return new Node(key);
+                      
+                          if (key < node.key)
+                          node.left = this.insert(node.left, key);
+                          else if (key > node.key)
+                          node.right = this.insert(node.right, key);
+                          else return node;
+                      
+                          node.height =
+                            1 + this.max(this.height(node.left),
+                              this.height(node.right));
+                          var balance = this.getBalance(node);
+                      
+                      // LL
+                          if (balance > 1 && key < node.left.key)
+                          return this.rightRotate(node);
+                      
+                      // RR
+                          if (balance < -1 && key > node.right.key)
+                            return this.leftRotate(node);
+                      
+                      // LR
+                          if (balance > 1 && key > node.left.key) {
+                            node.left = this.leftRotate(node.left);
+                            return this.rightRotate(node);
+                          }
+                      
+                      // RL
+                          if (balance < -1 && key < node.right.key) {
+                            node.right = this.rightRotate(node.right);
+                            return this.leftRotate(node);
+                          }
+                      
+                          return node;
+                          }
+                      
+                          preOrder(node) {
+                          if (node != null) {
+                            console.log(node.key + " ");
+                            this.preOrder(node.left);
+                            this.preOrder(node.right);
+                          }
+                          }
+                        }
+                      
+                      var tree = new AVLTree();
+                       
+                      tree.root = tree.insert(tree.root, 10);
+                      tree.root = tree.insert(tree.root, 20);
+                      tree.root = tree.insert(tree.root, 30);
+                      tree.root = tree.insert(tree.root, 40);
+                      tree.root = tree.insert(tree.root, 50);
+                      tree.root = tree.insert(tree.root, 25);
+                      tree.preOrder(tree.root)
+                        `,
+                        output:`
+                        30 
+20 
+10 
+25 
+40 
+50 
+                        `
                       },
                     },
                   }}
