@@ -4355,8 +4355,8 @@ pop_back() :
                     codes: {
                       Javascript: {
                         code: `
-                        // [w.i.p]
-                        
+                        // [W.I.P]
+
                         let ALPHABET_SIZE = 26;
 
 class TrieNode
