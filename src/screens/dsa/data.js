@@ -4096,7 +4096,8 @@ pop_back() :
                 <Span>
                   In the insert operation, we check the color of the uncle to
                   decide the appropriate case. In the delete operation, we check
-                  the color of the sibling to decide the appropriate case after bst deletion.
+                  the color of the sibling to decide the appropriate case after
+                  bst deletion.
                 </Span>
                 <p>
                   Red-Black Tree of height h has black-height greater than or
@@ -4340,6 +4341,19 @@ pop_back() :
                 <Span>
                   <b>Trie</b>
                 </Span>
+                <p>
+                  Trie is a tree which stores strings that can be used for efficient information re<b>trie</b>val.
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                      },
+                    },
+                  }}
+                />
               </>
             ),
           },
