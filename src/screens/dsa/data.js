@@ -4342,14 +4342,164 @@ pop_back() :
                   <b>Trie</b>
                 </Span>
                 <p>
-                  Trie is a tree which stores strings that can be used for efficient information re<b>trie</b>val.
+                  Trie is a tree which stores strings that can be used for
+                  efficient information re<b>trie</b>val. Using well balanced
+                  bst we can perform insert, delete and search operations in M *
+                  O(log n) where M is max length of string and n is number of
+                  keys , but we can implement same set of operations in O(M) in
+                  trie.
                 </p>
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
                       Javascript: {
-                        code: ``,
+                        code: `
+                        let ALPHABET_SIZE = 26;
+
+class TrieNode
+{
+	constructor()
+	{
+		this.children=new Array(ALPHABET_SIZE);
+		this.isEndOfWord=false;
+	}
+}
+
+class Trie(){
+  constructor(){
+    this.root = null
+  }
+
+  insert(key)
+  {
+   
+	let pCrawl = this.root;
+
+		for (let i = 0; i < key.length; i++) {
+			let index = key[i].charCodeAt(0) - 'a'.charCodeAt(0);
+			if (pCrawl.children[index] == null)
+				pCrawl.children[index] = new TrieNode();
+
+			pCrawl = pCrawl.children[index];
+		}
+	pCrawl.isEndOfWord = true;
+  }
+
+search(key)
+{
+	let pCrawl = this.root;
+
+		for (let i = 0; i < key.length; i++) {
+			let index = key[i].charCodeAt(0) - 'a'.charCodeAt(0);
+			if (pCrawl.children[index] == null)
+				return false;
+
+			pCrawl = pCrawl.children[index];
+		}
+
+		return (pCrawl != null && pCrawl.isEndOfWord);
+}
+
+isEmpty(root)
+{
+	for (let i = 0; i < ALPHABET_SIZE; i++)
+			if (root.children[i] != null)
+				return false;
+		return true;
+}
+
+ remove(root,key,depth)
+{
+		if (root == null)
+			return null;
+
+		if (depth == key.length) {
+
+			if (root.isEndOfWord)
+				root.isEndOfWord = false;
+
+			if (isEmpty(root)) {
+				root = null;
+			}
+
+			return root;
+		}
+
+		let index = key[depth].charCodeAt(0) - 'a'.charCodeAt(0);
+		root.children[index] =
+			remove(root.children[index], key, depth + 1);
+
+		if (isEmpty(root) && root.isEndOfWord == false){
+			root = null;
+		}
+
+		return root;
+}
+
+}
+
+// void display(struct TrieNode* root, char str[], int level)
+// {
+//     // If node is leaf node, it indicates end
+//     // of string, so a null character is added
+//     // and string is displayed
+//     if (isLeafNode(root)) 
+//     {
+//         str[level] = '\0';
+//         cout << str << endl;
+//     }
+  
+//     int i;
+//     for (i = 0; i < alpha_size; i++) 
+//     {
+//         // if NON NULL child is found
+//         // add parent key to str and
+//         // call the display function recursively
+//         // for child node
+//         if (root->children[i]) 
+//         {
+//             str[level] = i + 'a';
+//             display(root->children[i], str, level + 1);
+//         }
+//     }
+// }
+// https://www.geeksforgeeks.org/trie-delete/
+
+
+
+let keys = [ "the", "a", "there",
+				"answer", "any", "by",
+				"bye", "their", "hero", "heroplane" ];
+let n = keys.length;
+
+let root = new TrieNode();
+
+for (let i = 0; i < n; i++)
+	insert(root, keys[i]);
+
+if(search(root, "the"))
+	console.log("Yes");
+else
+	console.log("No");
+
+if(search(root, "these"))
+	console.log("Yes");
+else
+	console.log("No");
+
+remove(root, "heroplane", 0);
+
+if(search(root, "hero"))
+	console.log("Yes");
+else
+	console.log("No");
+                        `,
+                        output: `
+                        Yes 
+                        No 
+                        Yes
+                        `,
                       },
                     },
                   }}
