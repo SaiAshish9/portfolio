@@ -3809,9 +3809,70 @@ pop_back() :
                         }
                       
                         // Insertion->
-                        // 
-                        // 
-                        // 
+                      
+                        // level order traversals
+                      
+                        // let T1,T2,T3 and T4 be subtrees 
+                      
+                        // LL case -> right rotate z
+                      
+                        // before rotation:
+                        // z (2)
+                        // y--------T4 
+                        // x T3
+                        // T1 T2 
+                      
+                        // after rotating z clockwise (right)
+                        // y
+                        // x--------z
+                        // T1 T2  T3 T4
+                      
+                        // RR case -> left rotate z
+                        
+                        // before rotation
+                        // z (-2)
+                        // T1 y
+                        // ---T2 x
+                        // ---T3 T4
+                      
+                        // after rotating z anti-clockwise (left)
+                        // y 
+                        // z      x
+                        // T1 T2. T3 T4
+                      
+                        // LR case -> Left rotate y then right rotate z
+                        
+                        // before rotation
+                        // z
+                        // y T4
+                        // T1 x
+                        // -- T2 T3
+                      
+                        // after rotating y anti-clockwise (left)
+                        // z
+                        // x ----T4
+                        // y T3
+                        // T1 T2
+                        // after rotating z clockwise (right)
+                        // x
+                        // y z
+                        // T1 T2 T3 T4
+                        
+                        // RL case -> Right rotate y then left rotate z
+                        // z
+                        // T1 -- y
+                        //      x T4
+                        //      T2 t3
+                      
+                        // after rotating y clockwise (right)
+                        // z
+                        // T1 ----x
+                        // T2 y
+                        // T3 T4
+                        // after rotating z anti-clockwise (left)
+                        // x
+                        // y z
+                        // T1 T2 T3 T4
                       
                         // Deletion ->
                         // L1 -> LL        
@@ -3829,7 +3890,6 @@ pop_back() :
                       
                           height(N) {
                           if (N == null) return 0;
-                      
                           return N.height;
                           }
                       
@@ -3840,24 +3900,20 @@ pop_back() :
                           rightRotate(y) {
                           var x = y.left;
                           var T2 = x.right;
-                      
                           x.right = y;
                           y.left = T2;
-                      
                           y.height = this.max(this.height(y.left),
                           this.height(y.right)) + 1;
                           x.height = this.max(this.height(x.left),
                           this.height(x.right)) + 1;
-                      
                           return x;
                           }
+                      
                           leftRotate(x) {
                           var y = x.right;
                           var T2 = y.left;
-                      
                           y.left = x;
                           x.right = T2;
-                      
                           x.height = this.max(this.height(x.left),
                           this.height(x.right)) + 1;
                           y.height = this.max(this.height(y.left),
@@ -3872,13 +3928,17 @@ pop_back() :
                           return this.height(N.left) - this.height(N.right);
                           }
                       
-                          insert(node, key) {
+                          insert(key){
+                           this.root = this.insertNode(this.root,key);
+                          }
+                      
+                          insertNode(node, key) {
                           if (node == null) return new Node(key);
                       
                           if (key < node.key)
-                          node.left = this.insert(node.left, key);
+                          node.left = this.insertNode(node.left, key);
                           else if (key > node.key)
-                          node.right = this.insert(node.right, key);
+                          node.right = this.insertNode(node.right, key);
                           else return node;
                       
                           node.height =
@@ -3909,32 +3969,105 @@ pop_back() :
                           return node;
                           }
                       
-                          preOrder(node) {
+                          preOrder(node=this.root) {
                           if (node != null) {
                             console.log(node.key + " ");
                             this.preOrder(node.left);
                             this.preOrder(node.right);
                           }
                           }
+                      
+                      // for deletion simple perform bst deletion and perform 
+                      // rotation accordingly
+                      
+                        remove(key){
+                         this.root = this.removeNode(this.root,key)
                         }
                       
+                        removeNode(head, key)
+                          {
+                              if (head == null)
+                                  return head;
+                              if (key < head.key)
+                                  head.left = this.removeNode(head.left, key);
+                              else if (key > head.key)
+                                  head.right = this.removeNode(head.right, key);
+                              else
+                              {
+                                  if ((head.left == null) || (head.right == null))
+                                  {
+                                      let temp = null;
+                                      if (temp == head.left)
+                                          temp = head.right;
+                                      else
+                                          temp = head.left;
+                                      if (temp == null)
+                                      {
+                                          temp = head;
+                                          head = null;
+                                      }
+                                      else 
+                                          head = temp; 
+                                  }
+                                  else
+                                  {
+                                      let temp = this.minValueNode(head.right);
+                                      head.key = temp.key;
+                                      // inorder successor
+                                      head.right = this.removeNode(head.right, temp.key);
+                                  }
+                              }
+                              if (head == null)
+                                  return head;
+                              head.height = Math.max(this.height(head.left), this.height(head.right)) + 1;
+                              let balance = this.getBalance(head);
+                              // LL
+                              if (balance > 1 && this.getBalance(head.left) >= 0)
+                                  return this.rightRotate(head);
+                              // LR
+                              if (balance > 1 && this.getBalance(head.left) < 0)
+                              {
+                                  head.left = this.leftRotate(head.left);
+                                  return this.rightRotate(head);
+                              }
+                              // RR
+                              if (balance < -1 && this.getBalance(head.right) <= 0)
+                                  return this.leftRotate(head);
+                              // RL
+                              if (balance < -1 && this.getBalance(head.right) > 0)
+                              {
+                                  head.right = this.rightRotate(head.right);
+                                  return this.leftRotate(head);
+                              }
+                              return head;
+                          }
+                      }
+                      
                       var tree = new AVLTree();
-                       
-                      tree.root = tree.insert(tree.root, 10);
-                      tree.root = tree.insert(tree.root, 20);
-                      tree.root = tree.insert(tree.root, 30);
-                      tree.root = tree.insert(tree.root, 40);
-                      tree.root = tree.insert(tree.root, 50);
-                      tree.root = tree.insert(tree.root, 25);
-                      tree.preOrder(tree.root)
+                      tree.insert(10);
+                      tree.insert(20);
+                      tree.insert(30);
+                      tree.insert(40);
+                      tree.insert(50);
+                      tree.insert(25);
+                      tree.preOrder()
+                      console.log("#####")
+                      tree.remove(40)
+                      tree.preOrder()                      
                         `,
                         output:`
                         30 
-20 
-10 
-25 
-40 
-50 
+                        20 
+                        10 
+                        25 
+                        40 
+                        50 
+                        #####
+                        30 
+                        20 
+                        10 
+                        25 
+                        50 
                         `
                       },
                     },
