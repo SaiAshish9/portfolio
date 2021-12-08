@@ -4355,6 +4355,8 @@ pop_back() :
                     codes: {
                       Javascript: {
                         code: `
+                        // [w.i.p]
+                        
                         let ALPHABET_SIZE = 26;
 
 class TrieNode
@@ -4366,7 +4368,7 @@ class TrieNode
 	}
 }
 
-class Trie(){
+class Trie{
   constructor(){
     this.root = null
   }
@@ -4374,7 +4376,7 @@ class Trie(){
   insert(key)
   {
    
-	let pCrawl = this.root;
+	let pCrawl = this.root ?? new TrieNode();
 
 		for (let i = 0; i < key.length; i++) {
 			let index = key[i].charCodeAt(0) - 'a'.charCodeAt(0);
@@ -4384,6 +4386,7 @@ class Trie(){
 			pCrawl = pCrawl.children[index];
 		}
 	pCrawl.isEndOfWord = true;
+  this.root = pCrawl
   }
 
 search(key)
