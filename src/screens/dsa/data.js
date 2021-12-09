@@ -4393,8 +4393,8 @@ def searchnode(val, n, pos):
                   Most of the tree operations require O(h) disk accesses , with
                   the help of fat b tree we can perform these operations with
                   O(log n). The height of B-Trees is kept low by putting maximum
-                  possible keys in a B-Tree node. <br/>
-                  Minimum degree = t<br/>
+                  possible keys in a B-Tree node. <br />
+                  Minimum degree = t<br />
                   Nodes = 2*t -1
                 </Span>
                 <p>Basic Structure (Without Driver Code) :</p>
@@ -4481,13 +4481,269 @@ class BTreeNode
                 <Span>
                   <b>B+ Tree</b>
                 </Span>
+                <Span>
+                  This tree eliminates the indexing problem of B tree by storing
+                  data pointers only at the leaf nodes whereas data pointers are
+                  present at both internal and leaf nodes in case of b tree
+                </Span>
+                <Span>
+                  Leaf nodes are present as structural linked list which makes
+                  it easier for search and other operations
+                </Span>
+                <p>
+                  Duplicates nodes may present in this tree unlike b tree , as
+                  copy of desired node will be used during certain operations.
+                </p>
                 <p>Basic Structure (Without Driver Code) :</p>
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
-                      Javascript: {
-                        code: ``,
+                      python: {
+                        code: `MAX = 3
+                        
+class Node :
+  def __init__(self):
+    self.IS_LEAF=False
+    self.key, self.size=[None]*MAX,0
+    self.ptr=[None]*(MAX+1)
+
+
+class BPTree :
+
+  def __init__(self):
+    self.root = None
+
+  def search(self,x):
+
+    if (self.root == None) :
+      cout << "Tree is empty\n"
+        else :
+
+      cursor = self.root
+
+      while (not cursor.IS_LEAF) :
+
+        for i in range(cursor.size) :
+          if (x < cursor.key[i]) :
+            cursor = cursor.ptr[i]
+            break
+          if (i == cursor.size - 1) :
+            cursor = cursor.ptr[i + 1]
+            break
+      for i in range(cursor.size):
+        if (cursor.key[i] == x) :
+          print("Found")
+          return				
+      print("Not found")
+  
+  def insert(self, x):
+
+    if (self.root == None) :
+      self.root = Node()
+      self.root.key[0] = x
+      self.root.IS_LEAF = True
+      self.root.size = 1
+    
+    else :
+      cursor = self.root
+      parent=None
+      while (not cursor.IS_LEAF) :
+
+        parent = cursor
+
+        for i in range(cursor.size) :
+          if (x < cursor.key[i]) :
+            cursor = cursor.ptr[i]
+            break
+          if (i == cursor.size - 1) :
+            cursor = cursor.ptr[i + 1]
+            break
+          
+        
+      if (cursor.size < MAX) :
+        i = 0
+        while (i < cursor.size and x > cursor.key[i]):
+          i+=1
+        
+
+        for j in range(cursor.size,i,-1):
+          cursor.key[j] = cursor.key[j - 1]
+        
+
+        cursor.key[i] = x
+        cursor.size+=1
+
+        cursor.ptr[cursor.size] = cursor.ptr[cursor.size - 1]
+        cursor.ptr[cursor.size - 1] = None
+      
+
+      else :
+
+        newLeaf = Node()
+
+        virtualNode=[None]*(MAX + 1)
+
+        for i in range(MAX):
+          virtualNode[i] = cursor.key[i]
+        
+        i = 0
+
+
+        while (i < MAX and x > virtualNode[i]) :
+          i+=1
+
+        for j in range(MAX,i,-1) :
+          virtualNode[j] = virtualNode[j - 1]
+        
+
+        virtualNode[i] = x
+        newLeaf.IS_LEAF = True
+
+        cursor.size = int((MAX + 1) / 2)
+        newLeaf.size = int(MAX + 1 - (MAX + 1) / 2)
+
+        cursor.ptr[cursor.size] = newLeaf
+
+        newLeaf.ptr[newLeaf.size] = cursor.ptr[MAX]
+
+        cursor.ptr[MAX] = None
+
+        for i in range(cursor.size):
+          cursor.key[i] = virtualNode[i]
+      
+        j=cursor.size
+        for i in range(newLeaf.size):
+          newLeaf.key[i] = virtualNode[j]
+          j+=1
+        if (cursor == self.root) :
+
+          newRoot = Node()
+          newRoot.key[0] = newLeaf.key[0]
+          newRoot.ptr[0] = cursor
+          newRoot.ptr[1] = newLeaf
+          newRoot.IS_LEAF = False
+          newRoot.size = 1
+          root = newRoot
+        
+        else :
+
+
+          insertInternal(newLeaf.key[0],
+                parent,
+                newLeaf)
+      
+    
+
+def insertInternal(x, cursor, child):
+
+  if (cursor.size < MAX) :
+    i = 0
+
+    while (x > cursor.key[i] and i < cursor.size) :
+      i+=1
+    for j in range(cursor.size,i,-1) :
+
+      cursor.key[j] = cursor.key[j - 1]
+
+    for j in range(cursor.size + 1, i + 1,-1):
+      cursor.ptr[j] = cursor.ptr[j - 1]
+    
+
+    cursor.key[i] = x
+    cursor.size+=1
+    cursor.ptr[i + 1] = child
+  
+  else :
+
+    newInternal = Node()
+    virtualKey=[None]*(MAX + 1)
+    virtualPtr=[None]*(MAX + 2)
+    for i in range(MAX) :
+      virtualKey[i] = cursor.key[i]
+    
+
+    for i in range(MAX + 1):
+      virtualPtr[i] = cursor.ptr[i]
+    i = 0
+
+    while (x > virtualKey[i] and i < MAX) :
+      i+=1
+    for j in range(MAX + 1,i,-1):
+
+      virtualKey[j] = virtualKey[j - 1]
+    
+
+    virtualKey[i] = x
+    for j in range(MAX + 2, i + 1,-1) :
+      virtualPtr[j] = virtualPtr[j - 1]
+    
+
+    virtualPtr[i + 1] = child
+    newInternal.IS_LEAF = false
+
+    cursor.size = (MAX + 1) / 2
+
+    newInternal.size = MAX - (MAX + 1) / 2
+    j = cursor.size + 1
+    for i in range(newInternal.size):
+      newInternal.key[i] = virtualKey[j]
+      j+=1
+    
+
+    j = cursor.size + 1
+    for i in range(newInternal.size):
+      newInternal.ptr[i] = virtualKey[j]
+      j+=1
+    
+
+    if (cursor == self.root) :
+
+      newRoot = self.root
+      newRoot.key[0] = cursor.key[cursor.size]
+      newRoot.ptr[0] = cursor
+      newRoot.ptr[1] = newInternal
+      newRoot.IS_LEAF = false
+      newRoot.size = 1
+      root = newRoot
+    else :
+      insertInternal(cursor.key[cursor.size],
+            findParent(root,
+                  cursor),
+            newInternal)
+
+  def findParent(self, cursor, child):
+
+    if (cursor.IS_LEAF or (cursor.ptr[0]).IS_LEAF) :
+      return None
+    
+    for i in range(cursor.size + 1) :
+
+      if (cursor.ptr[i] == child) :
+        parent = cursor
+        return parent
+      else :
+        parent = findParent(cursor.ptr[i], child)
+
+        if (parent != None):
+          return parent
+    return parent
+
+
+  def getRoot(self):
+    return self.root
+
+
+if __name__=='__main__':
+  node=BPTree()
+  node.insert(6)
+  node.insert(16)
+  node.insert(26)
+  node.insert(36)
+  node.insert(46)
+  node.search(16)
+                        `,
+                        output: `Found`,
                       },
                     },
                   }}
