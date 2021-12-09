@@ -4384,13 +4384,96 @@ def searchnode(val, n, pos):
                 <Span>
                   <b>B Tree</b>
                 </Span>
+                <Span>
+                  They are perfectly balanced m way search trees where every
+                  leaf node is at the same depth.Every node except root is
+                  atleast half full (m/2).
+                </Span>
+                <Span>
+                  Most of the tree operations require O(h) disk accesses , with
+                  the help of fat b tree we can perform these operations with
+                  O(log n). The height of B-Trees is kept low by putting maximum
+                  possible keys in a B-Tree node. <br/>
+                  Minimum degree = t<br/>
+                  Nodes = 2*t -1
+                </Span>
                 <p>Basic Structure (Without Driver Code) :</p>
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
                       Javascript: {
-                        code: ``,
+                        code: `
+                        
+class Btree
+{
+
+	constructor(t)
+	{
+		this.root = null; 
+    // BTreeNode
+		this.t = t;
+	}
+	
+	traverse()
+	{
+		if (this.root != null)
+			this.root.traverse();
+	}
+
+	search(k)
+	{
+		if (this.root == null)
+			return null;
+		else
+			return this.root.search(k);
+	}
+	
+}
+
+class BTreeNode
+{
+	constructor(t,leaf)
+	{
+		this.t = t;
+    // degree
+		this.leaf = leaf;
+		this.keys = new Array(2 * t - 1);
+		this.C = new Array(2 * t);
+		this.n = 0;
+	}
+
+	traverse()
+	{
+
+		let i = 0;
+		for (i = 0; i < this.n; i++) {
+
+			if (this.leaf == false) {
+				C[i].traverse();
+			}
+			console.log(keys[i] + " ");
+		}
+
+		if (leaf == false)
+			C[i].traverse();
+	}
+	
+	search(k) 
+	{
+		let i = 0;
+		while (i < n && k > keys[i])
+			i++;
+
+		if (keys[i] == k)
+			return this;
+
+		if (leaf == true)
+			return null;
+		return C[i].search(k);
+	}
+}
+                        `,
                       },
                     },
                   }}
@@ -4412,7 +4495,17 @@ def searchnode(val, n, pos):
                 <Span>
                   <b>Graph</b>
                 </Span>
-                <p>It consists of finite number of nodes and edges which connect two nodes.</p>
+                <Span>
+                  It consists of finite number of nodes and edges which connect
+                  two nodes.
+                </Span>
+                <p>
+                  BFS
+                  <br />
+                  DFS
+                  <br />
+                  Backtracking
+                </p>
                 <CodeEditor
                   options={{
                     output: null,
