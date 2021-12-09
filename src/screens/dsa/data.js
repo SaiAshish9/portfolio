@@ -4355,153 +4355,160 @@ pop_back() :
                     codes: {
                       Javascript: {
                         code: `
-                        // [W.I.P]
-
                         let ALPHABET_SIZE = 26;
 
-class TrieNode
-{
-	constructor()
-	{
-		this.children=new Array(ALPHABET_SIZE);
-		this.isEndOfWord=false;
-	}
-}
-
-class Trie{
-  constructor(){
-    this.root = null
-  }
-
-  insert(key)
-  {
-   
-	let pCrawl = this.root ?? new TrieNode();
-
-		for (let i = 0; i < key.length; i++) {
-			let index = key[i].charCodeAt(0) - 'a'.charCodeAt(0);
-			if (pCrawl.children[index] == null)
-				pCrawl.children[index] = new TrieNode();
-
-			pCrawl = pCrawl.children[index];
-		}
-	pCrawl.isEndOfWord = true;
-  this.root = pCrawl
-  }
-
-search(key)
-{
-	let pCrawl = this.root;
-
-		for (let i = 0; i < key.length; i++) {
-			let index = key[i].charCodeAt(0) - 'a'.charCodeAt(0);
-			if (pCrawl.children[index] == null)
-				return false;
-
-			pCrawl = pCrawl.children[index];
-		}
-
-		return (pCrawl != null && pCrawl.isEndOfWord);
-}
-
-isEmpty(root)
-{
-	for (let i = 0; i < ALPHABET_SIZE; i++)
-			if (root.children[i] != null)
-				return false;
-		return true;
-}
-
- remove(root,key,depth)
-{
-		if (root == null)
-			return null;
-
-		if (depth == key.length) {
-
-			if (root.isEndOfWord)
-				root.isEndOfWord = false;
-
-			if (isEmpty(root)) {
-				root = null;
-			}
-
-			return root;
-		}
-
-		let index = key[depth].charCodeAt(0) - 'a'.charCodeAt(0);
-		root.children[index] =
-			remove(root.children[index], key, depth + 1);
-
-		if (isEmpty(root) && root.isEndOfWord == false){
-			root = null;
-		}
-
-		return root;
-}
-
-}
-
-// void display(struct TrieNode* root, char str[], int level)
-// {
-//     // If node is leaf node, it indicates end
-//     // of string, so a null character is added
-//     // and string is displayed
-//     if (isLeafNode(root)) 
-//     {
-//         str[level] = '\0';
-//         cout << str << endl;
-//     }
-  
-//     int i;
-//     for (i = 0; i < alpha_size; i++) 
-//     {
-//         // if NON NULL child is found
-//         // add parent key to str and
-//         // call the display function recursively
-//         // for child node
-//         if (root->children[i]) 
-//         {
-//             str[level] = i + 'a';
-//             display(root->children[i], str, level + 1);
-//         }
-//     }
-// }
-// https://www.geeksforgeeks.org/trie-delete/
-
-
-
-let keys = [ "the", "a", "there",
-				"answer", "any", "by",
-				"bye", "their", "hero", "heroplane" ];
-let n = keys.length;
-
-let root = new TrieNode();
-
-for (let i = 0; i < n; i++)
-	insert(root, keys[i]);
-
-if(search(root, "the"))
-	console.log("Yes");
-else
-	console.log("No");
-
-if(search(root, "these"))
-	console.log("Yes");
-else
-	console.log("No");
-
-remove(root, "heroplane", 0);
-
-if(search(root, "hero"))
-	console.log("Yes");
-else
-	console.log("No");
+                        class TrieNode {
+                            constructor() {
+                                this.children = new Array(ALPHABET_SIZE);
+                                this.isEndOfWord = false;
+                            }
+                        }
+                        
+                        let keys = ["the", "a", "there", "answer",
+                                               "any", "by", "bye", "their" 
+                        ];
+                        
+                        let n = keys.length;
+                        
+                        class Trie {
+                            constructor() {
+                                this.root = new TrieNode()
+                            }
+                        
+                            insert(key) {
+                                let level;
+                                let length = key.length;
+                                let index;
+                               
+                                let pCrawl = this.root;
+                                // pointer pCrawl == this.root pCrawl === this.root
+                        
+                                for (level = 0; level < length; level++)
+                                {
+                                    index = key[level].charCodeAt(0) - 97;
+                                    if (pCrawl.children[index] == null)
+                                        pCrawl.children[index] = new TrieNode();
+                               
+                                    pCrawl = pCrawl.children[index];
+                                }
+                                pCrawl.isEndOfWord = true;
+                            }
+                        
+                            search(key) {
+                                let level;
+                                let length = key.length;
+                                let index;
+                                let pCrawl = this.root;
+                               
+                                for (level = 0; level < length; level++)
+                                {
+                                    index = key[level].charCodeAt(0) - 'a'.charCodeAt(0);
+                               
+                                    if (!pCrawl.children[index])
+                                        return false;
+                               
+                                    pCrawl = pCrawl.children[index];
+                                }
+                               
+                                return (pCrawl.isEndOfWord);
+                            }
+                        
+                            isEmpty(root=this.root) {
+                                for (let i = 0; i < ALPHABET_SIZE; i++)
+                                    if (root.children[i] != null)
+                                        return false;
+                                return true;
+                            }
+                        
+                            remove(key,depth){
+                             this.removeHelper(key,depth,this.root)
+                            }
+                        
+                            removeHelper(key, depth,root) {
+                                if (root == null)
+                                    return null;
+                                if (depth == key.length) {
+                                    if (root.isEndOfWord)
+                                        root.isEndOfWord = false;
+                                    if (this.isEmpty(root)) {
+                                        root = null;
+                                    }
+                                    return root;
+                            }
+                        
+                            let index = key[depth].charCodeAt(0) - 'a'.charCodeAt(0);
+                            root.children[index] =
+                            this.removeHelper(key, depth + 1,root.children[index]);
+                        
+                            if (this.isEmpty(root) && root.isEndOfWord == false) {
+                                    root = null;
+                            }
+                            return root
+                            }
+                        
+                            isLeafNode(root)
+                            {
+                            return root.isEndOfWord !== false;
+                            }
+                          
+                            print(){
+                             this.printHelper(this.root,[],0)
+                            }
+                        
+                            printHelper(root,str,level){
+                        
+                        
+                            if (this.isLeafNode(root)) 
+                            {
+                                str[level] = '';
+                                console.log(str.join('').substring(0,str.indexOf('')))
+                            }
+                            let i;
+                            for (i = 0; i < ALPHABET_SIZE; i++) 
+                            {
+                        
+                                if (root.children[i] !== undefined) 
+                                {
+                                    str[level] = String.fromCharCode(i+97);
+                                    this.printHelper(root.children[i], str, level + 1);
+                                }
+                            }
+                            }
+                        
+                        }
+                        
+                        const trie = new Trie();
+                        
+                        for (let i = 0; i < n; i++)
+                            trie.insert(keys[i]);
+                        
+                        console.log(trie.search("the")) // true
+                        console.log(trie.search("anyer")) // false
+                        trie.print()
+                        trie.remove("the", 0);
+                        console.log(trie.search("the")) // false
+                        trie.print()
+                        
                         `,
                         output: `
-                        Yes 
-                        No 
-                        Yes
+                        true
+                        false
+                        a
+                        answer
+                        any
+                        by
+                        bye
+                        the
+                        their
+                        there
+                        false
+                        a
+                        answer
+                        any
+                        by
+                        bye
+                        their
+                        there
                         `,
                       },
                     },
