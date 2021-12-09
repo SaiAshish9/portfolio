@@ -4412,6 +4412,17 @@ def searchnode(val, n, pos):
                 <Span>
                   <b>Graph</b>
                 </Span>
+                <p>It consists of finite number of nodes and edges which connect two nodes.</p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                      },
+                    },
+                  }}
+                />
                 <Span>
                   <b>Trie</b>
                 </Span>
