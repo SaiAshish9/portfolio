@@ -4324,7 +4324,81 @@ pop_back() :
                     },
                   }}
                 />
-                <b>6. N-ary (M-way) Tree</b>
+                <Span>
+                  <b>6. N-ary (M-way) Tree</b>
+                </Span>
+                <Span>
+                  Multi way trees are used to generate trees with order m, i.e.
+                  each tree can contain nodes with maximum m-1 keys and m
+                  children.
+                </Span>
+                <Span>
+                  Number of elements = h to (m^h)-1 <br />
+                  Height: log_m(n+1) to n
+                </Span>
+                <b>Basic Structure (Without Driver Code) :</b>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Python: {
+                        code: `class node:
+    def __init__(self):
+        self.count = -1
+        self.value = [-1]*(MAX)
+        self.child = [None]*(MAX + 1)
+
+def search(val, root, pos):
+
+	if (root == None):
+		return None
+	else :
+		if (searchnode(val, root, pos)):
+			return root
+		else:
+			return search(val, root.child[pos], pos)
+	
+
+def searchnode(val, n, pos):
+	if (val < n.value[1]):
+		pos = 0
+		return 0
+	
+  else :
+		pos = n.count
+
+		while ((val < n.value[pos]) and pos > 1):
+			pos-=1
+		if (val == n.value[pos]):
+			return 1
+		else:
+			return 0
+	
+
+                        `,
+                      },
+                    },
+                  }}
+                />
+                <Span>Examples: B Tree and B+ Tree</Span>
+                <Span>
+                  <b>B Tree</b>
+                </Span>
+                <p>Basic Structure (Without Driver Code) :</p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>B+ Tree</b>
+                </Span>
+                <p>Basic Structure (Without Driver Code) :</p>
                 <CodeEditor
                   options={{
                     output: null,
