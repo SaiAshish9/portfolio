@@ -4756,7 +4756,188 @@ if __name__=='__main__':
                   which connect two nodes.
                 </Span>
                 <Span>In facebook, each person is represented by a node.</Span>
+                <Span>
+                  <b>BFS & DFS</b>
+                </Span>
+                <Span>
+                  BFS (level order traversal)(queue) &
+                  DFS(preorder,postorder,inorder tree trvaersal)(stack) for
+                  graph is similar to that of a graph, but unlike trees it may
+                  contain cycles as well. A node may be visited twice that's why we make 
+                  use of boolean array.
+                </Span>
                 <Span>Representations:</Span>
+                <Span>
+                  <b>Adjacency List</b>
+                </Span>
+                <p>
+                  It's a array (array[]) of lists where earch vertex each
+                  element array[i] represents all the vertices adjacent to ith
+                  vertex.
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        Map.prototype.inspect = function() {
+                          return 'Map('+ mapEntriesToString(this.entries()) +')'
+                        }
+                                                
+                        function mapEntriesToString(entries) {
+                          return Array
+                          .from(entries, ([k, v]) => k+':'+ v)
+                          .join("");
+                        }                       
+                                                
+                        class Graph {
+                          constructor(noOfVertices)
+                          {
+                                this.noOfVertices = noOfVertices;
+                                this.adjList = new Map();
+                          }
+                                                  
+                          addVertex(v){
+                            this.adjList.set(v, [])
+                          }
+                         
+                          addEdge(v, w)
+                          {
+                            this.adjList.get(v).push(w);
+                            this.adjList.get(w).push(v);
+                          }
+                           
+                          printAdjList(){
+                            console.log(this.adjList)
+                            // because of custom prototype
+                            var get_keys = this.adjList.keys();
+                            for (var i of get_keys)
+                            {
+                                var get_values = this.adjList.get(i);
+                                var conc = "";
+                                for (var j of get_values)
+                                    conc += j + " ";
+                                console.log(i + " -> " + conc);
+                            }
+                        }
+                        
+                        bfs(startingNode)
+                        {
+                            var visited = {};
+                            var q = [];
+                            visited[startingNode] = true;
+                            q.push(startingNode);
+                            while (q.length!=0) {
+                                var getQueueElement = q.shift();
+                                console.log(getQueueElement);
+                                var get_List = this.adjList.get(getQueueElement);
+                                for (var i in get_List) {
+                                    var neighbour = get_List[i];
+                                    if (!visited[neighbour]) {
+                                        visited[neighbour] = true;
+                                        q.push(neighbour);
+                                    }
+                                }
+                            }
+                        }
+                        
+                        dfs(start){
+                          this.dfsHelper(start,{})
+                        }
+                        
+                        dfsHelper(vert,visited){
+                          visited[vert] = true;
+                          console.log(vert);
+                          var get_neighbours = this.adjList.get(vert);
+                          for (let neighbour of get_neighbours) {
+                            if (!visited[neighbour])
+                              this.dfsHelper(neighbour, visited);
+                          }
+                        }
+                        }
+                         
+                          
+                        const g = new Graph(6)
+                        const v = ['A','B','C','D','E','F']
+                        for(let x of v){
+                          g.addVertex(x)
+                        }
+                        
+                        g.addEdge('A', 'B');
+                        g.addEdge('A', 'D');
+                        g.addEdge('A', 'E');
+                        g.addEdge('B', 'C');
+                        g.addEdge('D', 'E');
+                        g.addEdge('E', 'F');
+                        g.addEdge('E', 'C');
+                        g.addEdge('C', 'F');
+                        g.printAdjList();
+                        console.log("BFS");
+                        g.bfs(v[0]);        
+                        console.log("DFS");
+                        g.dfs(v[0]);    
+                        
+                        // function addEdge(adj,u,v)
+                        // {
+                        //     adj[u].push(v);
+                        //     adj[v].push(u);
+                        // }
+                        // function printGraph(adj)
+                        // {
+                        //     for (let i = 0; i < adj.length; i++) {
+                        //     console.log("Adjacency list of vertex" + i);
+                        //     console.log("head");
+                        //     for (let j = 0; j < adj[i].length; j++) {
+                        //      console.log(" -> "+adj[i][j]);
+                        //     }
+                        //    }
+                        // }
+                        // let V = 5;
+                        // let adj= [];        
+                        // for (let i = 0; i < V; i++)
+                        //     adj.push([]);
+                        //  addEdge(adj, 0, 1);
+                        //  addEdge(adj, 0, 4);
+                        //  addEdge(adj, 1, 2);
+                        //  addEdge(adj, 1, 3);
+                        //  addEdge(adj, 1, 4);
+                        //  addEdge(adj, 2, 3);
+                        //  addEdge(adj, 3, 4);                    
+                        `,
+                      },
+                    },
+                    output: `
+                    Map {
+                      'A' => [ 'B', 'D', 'E' ],
+                      'B' => [ 'A', 'C' ],
+                      'C' => [ 'B', 'E', 'F' ],
+                      'D' => [ 'A', 'E' ],
+                      'E' => [ 'A', 'D', 'F', 'C' ],
+                      'F' => [ 'E', 'C' ]
+                    }
+                    A -> B D E 
+                    B -> A C 
+                    C -> B E F 
+                    D -> A E 
+                    E -> A D F C 
+                    F -> E C 
+                    BFS
+                    A
+                    B
+                    D
+                    E
+                    C
+                    F
+                    DFS
+                    A
+                    B
+                    C
+                    E
+                    D
+                    F`,
+                  }}
+                />
                 <Span>
                   <b>Adjacency Matrix</b>
                 </Span>
@@ -4895,7 +5076,6 @@ if __name__=='__main__':
                         obj.displayAdjacencyMatrix();                                              
                         `,
                       },
-                      // geeksforgeeks.org/implementation-graph-javascript/
                     },
                     output: `
                     Adjacency Matrix:
@@ -4917,134 +5097,6 @@ if __name__=='__main__':
                     `,
                   }}
                 />
-                <Span>
-                  <b>Adjacency List</b>
-                </Span>
-                <p>
-                  It's a array (array[]) of lists where earch vertex each
-                  element array[i] represents all the vertices adjacent to ith
-                  vertex.
-                </p>
-                <CodeEditor
-                  options={{
-                    output: null,
-                    codes: {
-                      Javascript: {
-                        code: `
-                        Map.prototype.inspect = function() {
-                          return 'Map('+ mapEntriesToString(this.entries()) +')'
-                        }
-                        
-                        function mapEntriesToString(entries) {
-                          return Array
-                            .from(entries, ([k, v]) => k+':'+ v)
-                            .join("");
-                        }
-                        
-                        class Graph {
-                          constructor(noOfVertices)
-                          {
-                                this.noOfVertices = noOfVertices;
-                                this.adjList = new Map();
-                          }
-                          
-                          addVertex(v){
-                            this.adjList.set(v, [])
-                          }
-                        
-                          addEdge(v, w)
-                          {
-                            this.adjList.get(v).push(w);
-                            this.adjList.get(w).push(v);
-                          }
-                           
-                          printAdjList(){
-                            console.log(this.adjList)
-                            // because of custom prototype
-                            var get_keys = this.adjList.keys();
-                            for (var i of get_keys)
-                            {
-                                var get_values = this.adjList.get(i);
-                                var conc = "";
-                                for (var j of get_values)
-                                    conc += j + " ";
-                                console.log(i + " -> " + conc);
-                            }
-                        }
-                        }
-                        
-                          
-                        const g = new Graph(6)
-                        const v = ['A','B','C','D','E','F']
-                        for(let x of v){
-                          g.addVertex(x)
-                        }
-                        
-                        g.addEdge('A', 'B');
-                        g.addEdge('A', 'D');
-                        g.addEdge('A', 'E');
-                        g.addEdge('B', 'C');
-                        g.addEdge('D', 'E');
-                        g.addEdge('E', 'F');
-                        g.addEdge('E', 'C');
-                        g.addEdge('C', 'F');
-                        g.printAdjList();
-                        
-                        // function addEdge(adj,u,v)
-                        // {
-                        //     adj[u].push(v);
-                        //     adj[v].push(u);
-                        // }
-                        
-                        // function printGraph(adj)
-                        // {
-                        //     for (let i = 0; i < adj.length; i++) {
-                        //     console.log("Adjacency list of vertex" + i);
-                        //     console.log("head");
-                        //     for (let j = 0; j < adj[i].length; j++) {
-                        //      console.log(" -> "+adj[i][j]);
-                        //     }
-                        //    }
-                        // }
-                          
-                        // let V = 5;
-                        // let adj= [];        
-                        // for (let i = 0; i < V; i++)
-                        //     adj.push([]);
-                        //  addEdge(adj, 0, 1);
-                        //  addEdge(adj, 0, 4);
-                        //  addEdge(adj, 1, 2);
-                        //  addEdge(adj, 1, 3);
-                        //  addEdge(adj, 1, 4);
-                        //  addEdge(adj, 2, 3);
-                        //  addEdge(adj, 3, 4);
-                        //  printGraph(adj);                        
-                        `,
-                      },
-                    },
-                    output: `
-                    Map {
-                      'A' => [ 'B', 'D', 'E' ],
-                      'B' => [ 'A', 'C' ],
-                      'C' => [ 'B', 'E', 'F' ],
-                      'D' => [ 'A', 'E' ],
-                      'E' => [ 'A', 'D', 'F', 'C' ],
-                      'F' => [ 'E', 'C' ]
-                    }
-                    A -> B D E 
-                    B -> A C 
-                    C -> B E F 
-                    D -> A E 
-                    E -> A D F C 
-                    F -> E C `,
-                  }}
-                />
-                <Span>
-                  <b>BFS & DFS</b>
-                </Span>
-                <Span>
-                  <b>Backtracking</b>
-                </Span>
                 <Span>
                   <b>Trie</b>
                 </Span>
