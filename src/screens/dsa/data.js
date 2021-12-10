@@ -4752,9 +4752,161 @@ if __name__=='__main__':
                   <b>Graph</b>
                 </Span>
                 <Span>
-                  It consists of finite number of nodes and edges which connect
-                  two nodes.
+                  It consists of finite number of nodes (vertices) and edges
+                  which connect two nodes.
                 </Span>
+                <Span>In facebook, each person is represented by a node.</Span>
+                <Span>Representations:</Span>
+                <Span>
+                  <b>Adjacency Matrix</b>
+                </Span>
+                <Span>
+                  It's a 2D array(adj[][]) of size V * V, where V is the number
+                  of vertices in the graph. adj[u][v]= 1 for unweighted graph
+                  means there is a edge between u and v.
+                </Span>
+                <p>
+                  In case of weighted graphs , if adj[i][j] = w, then w will be
+                  the weight of the edge between vertices u and v.
+                  <br />
+                  Adding a vertex: O(V^2)
+                  <br />
+                  Removing a vertex: O(1)
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        
+                        `,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Adjacency List</b>
+                </Span>
+                <p>
+                  It's a array (array[]) of lists where earch vertex each
+                  element array[i] represents all the vertices adjacent to ith
+                  vertex.
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        Map.prototype.inspect = function() {
+                          return 'Map('+ mapEntriesToString(this.entries()) +')'
+                        }
+                        
+                        function mapEntriesToString(entries) {
+                          return Array
+                            .from(entries, ([k, v]) => k+':'+ v)
+                            .join("");
+                        }
+                        
+                        class Graph {
+                          constructor(noOfVertices)
+                          {
+                                this.noOfVertices = noOfVertices;
+                                this.adjList = new Map();
+                          }
+                          
+                          addVertex(v){
+                            this.adjList.set(v, [])
+                          }
+                        
+                          addEdge(v, w)
+                          {
+                            this.adjList.get(v).push(w);
+                            this.adjList.get(w).push(v);
+                          }
+                           
+                          printAdjList(){
+                            console.log(this.adjList)
+                            // because of custom prototype
+                            var get_keys = this.adjList.keys();
+                            for (var i of get_keys)
+                            {
+                                var get_values = this.adjList.get(i);
+                                var conc = "";
+                                for (var j of get_values)
+                                    conc += j + " ";
+                                console.log(i + " -> " + conc);
+                            }
+                        }
+                        }
+                        
+                          
+                        const g = new Graph(6)
+                        const v = ['A','B','C','D','E','F']
+                        for(let x of v){
+                          g.addVertex(x)
+                        }
+                        
+                        g.addEdge('A', 'B');
+                        g.addEdge('A', 'D');
+                        g.addEdge('A', 'E');
+                        g.addEdge('B', 'C');
+                        g.addEdge('D', 'E');
+                        g.addEdge('E', 'F');
+                        g.addEdge('E', 'C');
+                        g.addEdge('C', 'F');
+                        g.printAdjList();
+                        
+                        // function addEdge(adj,u,v)
+                        // {
+                        //     adj[u].push(v);
+                        //     adj[v].push(u);
+                        // }
+                        
+                        // function printGraph(adj)
+                        // {
+                        //     for (let i = 0; i < adj.length; i++) {
+                        //     console.log("Adjacency list of vertex" + i);
+                        //     console.log("head");
+                        //     for (let j = 0; j < adj[i].length; j++) {
+                        //      console.log(" -> "+adj[i][j]);
+                        //     }
+                        //    }
+                        // }
+                          
+                        // let V = 5;
+                        // let adj= [];        
+                        // for (let i = 0; i < V; i++)
+                        //     adj.push([]);
+                        //  addEdge(adj, 0, 1);
+                        //  addEdge(adj, 0, 4);
+                        //  addEdge(adj, 1, 2);
+                        //  addEdge(adj, 1, 3);
+                        //  addEdge(adj, 1, 4);
+                        //  addEdge(adj, 2, 3);
+                        //  addEdge(adj, 3, 4);
+                        //  printGraph(adj);                        
+                        `,
+                      },
+                    },
+                    output: `
+                    Map {
+                      'A' => [ 'B', 'D', 'E' ],
+                      'B' => [ 'A', 'C' ],
+                      'C' => [ 'B', 'E', 'F' ],
+                      'D' => [ 'A', 'E' ],
+                      'E' => [ 'A', 'D', 'F', 'C' ],
+                      'F' => [ 'E', 'C' ]
+                    }
+                    A -> B D E 
+                    B -> A C 
+                    C -> B E F 
+                    D -> A E 
+                    E -> A D F C 
+                    F -> E C `,
+                  }}
+                />
                 <p>
                   BFS
                   <br />
@@ -4762,16 +4914,6 @@ if __name__=='__main__':
                   <br />
                   Backtracking
                 </p>
-                <CodeEditor
-                  options={{
-                    output: null,
-                    codes: {
-                      Javascript: {
-                        code: ``,
-                      },
-                    },
-                  }}
-                />
                 <Span>
                   <b>Trie</b>
                 </Span>
