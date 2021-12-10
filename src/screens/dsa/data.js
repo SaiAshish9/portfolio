@@ -5039,13 +5039,12 @@ if __name__=='__main__':
                     F -> E C `,
                   }}
                 />
-                <p>
-                  BFS
-                  <br />
-                  DFS
-                  <br />
-                  Backtracking
-                </p>
+                <Span>
+                  <b>BFS & DFS</b>
+                </Span>
+                <Span>
+                  <b>Backtracking</b>
+                </Span>
                 <Span>
                   <b>Trie</b>
                 </Span>
