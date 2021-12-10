@@ -35,6 +35,8 @@ const CodeEditor = ({ options }) => {
     if (keys.includes(i)) setSelected(i);
   }
 
+  const outputCheck = options.codes[selected].output || options.output;
+
   return (
     <Span>
       {options && (
@@ -67,7 +69,7 @@ const CodeEditor = ({ options }) => {
               )}
             </ButtonContainer>
 
-            <OptionsContainer>Output</OptionsContainer>
+            {outputCheck && <OptionsContainer>Output</OptionsContainer>}
           </TagsContainer>
 
           <StyledRow>
@@ -93,24 +95,28 @@ const CodeEditor = ({ options }) => {
                 json: true,
               }}
             />
-            <OutputEditorContainer>
-              <OutputLabel>Output</OutputLabel>
-              {/* playground */}
-              <Output
-                value={beautify.html_beautify(options.codes[selected].output ?? options.output)}
-                options={{
-                  mode: "html",
-                  readOnly: true,
-                  lineNumbers: true,
-                  theme:
-                    theme === Theme.dark
-                      ? "material"
-                      : [Theme.light, Theme.highContrast].includes(theme)
-                      ? "neat"
-                      : "light",
-                }}
-              />
-            </OutputEditorContainer>
+            {outputCheck && (
+              <OutputEditorContainer>
+                <OutputLabel>Output</OutputLabel>
+                {/* playground */}
+                <Output
+                  value={beautify.html_beautify(
+                    options.codes[selected].output ?? options.output
+                  )}
+                  options={{
+                    mode: "html",
+                    readOnly: true,
+                    lineNumbers: true,
+                    theme:
+                      theme === Theme.dark
+                        ? "material"
+                        : [Theme.light, Theme.highContrast].includes(theme)
+                        ? "neat"
+                        : "light",
+                  }}
+                />
+              </OutputEditorContainer>
+            )}
           </StyledRow>
         </Container>
       )}
