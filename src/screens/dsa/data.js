@@ -4779,10 +4779,142 @@ if __name__=='__main__':
                     codes: {
                       Javascript: {
                         code: `
+                        class Graph
+                        {
+                          constructor(x)
+                          {
+                            this.n=x;
+                            // numOfVertices
+                            // this.g = new Array(10);
+                            
+                            // this.g = Array(10).fill(null).map(()=>Array(10).fill(0));
+                            // ineffient and Array(10).fill(Array(10)) is bad as rows will be copied by reference
+                            // var arr = Array(2).fill(Array(4))  
+                            // arr[0][0] =1
+                            // arr , arr[0][0] , arr1[0][1]
+                            
+                            this.g = Array.from(Array(10),()=>Array(10).fill(0))
+                            // more efficient
+                            
+                            
                         
+                            // for(let i=0;i<10;i++)
+                            // {
+                            // 	this.g[i]=new Array(10);
+                            // 	for(let j=0;j<10;j++)
+                            // 	{
+                            // 		this.g[i][j]=0;
+                            // 	}
+                            // }
+                            // adjMatrix
+                          }
+                          
+                          displayAdjacencyMatrix()
+                          {
+                            console.log("Adjacency Matrix:");
+                            for (let i = 0; i < this.n; ++i)
+                            {
+                              let output=""
+                              for (let j = 0; j < this.n; ++j)
+                              {
+                                output += " " + this.g[i][j];
+                              }
+                              console.log(output)
+                            }
+                          }
+                          
+                          addEdge(x,y)
+                          {
+                            if ((x >= this.n) || (y > this.n))
+                            {
+                              console.log("Vertex does not exists!");
+                            }
+                        
+                            if (x == y)
+                            {
+                              console.log("Same Vertex!");
+                            }
+                            else
+                            {
+                              this.g[y][x] = 1;
+                              this.g[x][y] = 1;
+                            }
+                          }
+                          
+                          addVertex()
+                          {
+                            this.n++;
+                            for (let i = 0; i < this.n; ++i)
+                            {
+                              this.g[i][this.n - 1] = 0;
+                              this.g[this.n - 1][i] = 0;
+                            }
+                          }
+                          
+                          removeVertex(x)
+                          {
+                            if (x > this.n)
+                            {
+                              console.log("Vertex not present!");
+                              return;
+                            }
+                            else
+                            {
+                              let i;
+                              while (x < this.n)
+                              {
+                                for (i = 0; i < this.n; ++i)
+                                {
+                                  this.g[i][x] = this.g[i][x + 1];
+                                }
+                        
+                                for (i = 0; i < this.n; ++i)
+                                {
+                                  this.g[x][i] = this.g[x + 1][i];
+                                }
+                                x++;
+                              }
+                              this.n--;
+                            }
+                          }
+                          
+                        }
+                        
+                        let obj = new Graph(4);
+                        // 0 1 2 3 4 -> vertices
+                        obj.addEdge(0, 1);
+                        obj.addEdge(0, 2);
+                        obj.addEdge(1, 2);
+                        obj.addEdge(2, 3);
+                        obj.displayAdjacencyMatrix();
+                        obj.addVertex();
+                        obj.addEdge(4, 1);
+                        obj.addEdge(4, 3);
+                        obj.displayAdjacencyMatrix();
+                        obj.removeVertex(1);
+                        obj.displayAdjacencyMatrix();                                              
                         `,
                       },
+                      // geeksforgeeks.org/implementation-graph-javascript/
                     },
+                    output: `
+                    Adjacency Matrix:
+                    0 1 1 0
+                    1 0 1 0
+                    1 1 0 1
+                    0 0 1 0
+                   Adjacency Matrix:
+                    0 1 1 0 0
+                    1 0 1 0 1
+                    1 1 0 1 0
+                    0 0 1 0 1
+                    0 1 0 1 0
+                   Adjacency Matrix:
+                    0 1 0 0
+                    1 0 1 0
+                    0 1 0 1
+                    0 0 1 0
+                    `,
                   }}
                 />
                 <Span>
