@@ -5488,8 +5488,62 @@ true
                         `,
                       },
                       Kotlin: {
-                        code: ``,
-                        output: `o`,
+                        code: `import java.util.*
+                        import java.util.function.Consumer
+                        
+                        internal object Main {
+                            private var ps = System.out
+                            @JvmStatic
+                            fun main(s: Array<String>) {
+                                
+                                val map = HashMap<Int, String>()
+                                map[9] = "b"
+                                map[8] = "a"
+                                ps.println(map[9])
+                                ps.println(map.containsKey(8))
+                                ps.println(map.containsValue("b"))
+                                ps.println(map.keys)
+                                map.entries.forEach(Consumer<Map.Entry<Int, String>> { x: Map.Entry<Int, String>? ->
+                                    ps.println(
+                                        x
+                                    )
+                                })
+                                val map1: MutableMap<Int, String> = LinkedHashMap()
+                                map1[8] = "a"
+                                map1[9] = "b"
+                                map1.entries.forEach(Consumer<Map.Entry<Int, String>> { x: Map.Entry<Int, String>? ->
+                                    ps.println(
+                                        x
+                                    )
+                                })
+                                val map2: MutableMap<Int, String> = TreeMap()
+                                map2[9] = "a"
+                                map2[8] = "b"
+                                map2.entries.forEach(Consumer<Map.Entry<Int, String>> { x: Map.Entry<Int, String>? ->
+                                    ps.println(
+                                        x
+                                    )
+                                })
+                                val ht = Hashtable<Int, String>(4)
+                                ht[1] = "one"
+                                ht[2] = "two"
+                                ht[3] = "three"
+                                ps.println(ht)
+                            }
+                        }`,
+                        output: `
+                        b
+                        true
+                        true
+                        [8, 9]
+                        8=a
+                        9=b
+                        8=a
+                        9=b
+                        8=b
+                        9=a
+                        {3=three, 2=two, 1=one}
+                        `,
                       },
                       Python: {
                         code: `# Python Maps also called ChainMap is a type of data
@@ -5745,8 +5799,45 @@ true
                         `,
                       },
                       Kotlin: {
-                        code: ``,
-                        output: `o`,
+                        code: `import java.io.PrintStream
+                        import java.util.*
+                        
+                        internal class Helper : Comparator<String> {
+                            override fun compare(str1: String, str2: String): Int {
+                                val str1: String = str1
+                                return str2.compareTo(str1)
+                            }
+                        }
+                        
+                        internal object Main {
+                            private var ps: PrintStream = System.out
+                            @JvmStatic
+                            fun main(s: Array<String>) {
+                                val set1 = LinkedHashSet<String>()
+                                val set2 = TreeSet<String>()
+                                val set3 = HashSet<String>()
+                                val set4 = TreeSet(Helper())
+                                for (str in listOf("A", "B", "C", "D")) {
+                                    set1.add(str)
+                                    set2.add(str)
+                                    set3.add(str)
+                                    set4.add(str)
+                                }
+                                set1.remove("D")
+                                ps.println(set1)
+                                ps.println(set2)
+                                ps.println(set3)
+                                ps.println(set4)
+                                ps.println(set1.contains("A"))
+                            }
+                        }`,
+                        output: `
+                        [A, B, C]
+                        [A, B, C, D]
+                        [A, B, C, D]
+                        [D, C, B, A]
+                        true
+                        `,
                       },
                       Python: {
                         code: `days=set(["Mon","Tue","Wed","Thu","Fri","Sat","Sun",1])
