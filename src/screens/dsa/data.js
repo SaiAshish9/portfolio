@@ -3227,8 +3227,9 @@ pop_back() :
                   <b>Height of a tree: </b>height of root node.
                 </Span>
                 <Span>
-                  <b>Depth of a tree: </b> It's same as level of the tree and is computed with the help of edges that lie between 
-                  root node to that particular node.
+                  <b>Depth of a tree: </b> It's same as level of the tree and is
+                  computed with the help of edges that lie between root node to
+                  that particular node.
                 </Span>
                 <Span>
                   The root node has depth zero, leaf nodes have height zero, and
@@ -5314,9 +5315,89 @@ if __name__=='__main__':
               <b>e.g. :</b> Stack, Queue, Graph. Tree , Trie , Hash Table
             </Span>
             <Span>
-              <b>Hash Table</b>
+              <b>Tabular Data Structure (Hash Tables)</b>
             </Span>
-            <Span>It can be linear as well as non linear.</Span>
+            <Span>
+              It stores data in an associative manner. It can be linear as well
+              as non linear. Access of data becomes really easy if its unique
+              index is known.
+            </Span>
+            <Span>
+              <b>Hashing</b>
+            </Span>
+            <Span>
+              It's a technique to convert a range of keys into range of indexes
+              of an array.
+            </Span>
+            <Span>array index h(x) = key % constant</Span>
+            <Span>
+              <b>Collision Resolution:</b>
+            </Span>
+            <Span>
+              It may happen that hashing technique results into a index which
+              already exists.This is known as collision. We make use of
+              collision resolution to assign indexes to keys in such kind of
+              scenarios.
+            </Span>
+            <Span>
+              <b>Types:</b>
+            </Span>
+            <Span>
+              <b>Open Hashing (Separate Chaining) </b>
+            </Span>
+            <Span>
+              We make each cell of point table point to a linked list of
+              records.
+            </Span>
+            <Span>
+              <b>Closed Hashing ( Open Addressing )</b>
+            </Span>
+            <Span>
+              In Open Addressing, all elements are stored in the hash table
+              itself. So at any point, the size of the table must be greater
+              than or equal to the total number of keys
+            </Span>
+            <Span>
+              <b>Types:</b>
+            </Span>
+            <Span>
+              <b>Linear Probing</b>
+            </Span>
+            <Span>
+              In this type, we simply make use of next slot in case of
+              collision.
+            </Span>
+            <Span>h(x) = (h(x) + i)% constant , i= 0,1,2,3</Span>
+            <Span>
+              Primary clustering and secondary clustering are two challenges for
+              linear probing.
+              <br /> In primary clusetring, many consecutive elements form
+              groups and it starts taking time to find a free slot or to search
+              for an element.
+              <br />
+              Two records only have the same collision chain (Probe Sequence) if
+              their initial position is the same. It's less severe.
+            </Span>
+            <Span>
+              <b>Quadratic Probing</b>
+            </Span>
+            <Span>We look for i*ith slot in ith iteration.</Span>
+            <Span>h(x) = (h(x) + i*2) % constant ,and i= 0,1,2,3</Span>
+            <Span>
+              <b>Double hashing</b>
+            </Span>
+            <Span>
+              We use another hash function g(x) and look for i*g(x) slot in ith
+              rotation.{" "}
+            </Span>
+            <Span>h(x) = (h(x) + i*g(x))% constant</Span>
+            <Span>
+              <b>Hash functions:</b>
+            </Span>
+            <Span>
+              Mod ( h(x) = x % size + 1 ) , Mid Square ( h(x) = |x*x| ) and
+              Folding ( add all elements and ignore carry's )
+            </Span>
           </>
         ),
       },
