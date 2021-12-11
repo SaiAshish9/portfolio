@@ -5365,8 +5365,50 @@ if __name__=='__main__':
                     output: null,
                     codes: {
                       Javascript: {
-                        code: ``,
-                        output: `o`,
+                        code: `
+                        const map = new Map();
+
+map.set('a', 1);
+map.set('b', 2);
+map.set('c', 3);
+console.log(map.get('a'));
+map.set('a', 97);
+console.log(map.get('a'));
+console.log(map.size);
+map.delete('b');
+console.log(map.size);
+console.log(map.has('a'))
+for (const [key, value] of map) {
+  console.log(key + ' = ' + value)
+}
+map.forEach(function(value, key) {
+  console.log(key + ' = ' + value)
+})
+console.log([...map])
+console.log(Array.from(map))
+const original = new Map([
+  [1, 'one']
+])
+const clonedMap = new Map(original)
+console.log(Array.from(original))
+console.log(map.entries())
+
+                        `,
+                        output: `
+                        1
+97
+3
+2
+true
+a = 97
+c = 3
+a = 97
+c = 3
+[ [ 'a', 97 ], [ 'c', 3 ] ]
+[ [ 'a', 97 ], [ 'c', 3 ] ]
+[ [ 1, 'one' ] ]
+[Map Entries] { [ 'a', 97 ], [ 'c', 3 ] }
+                        `,
                       },
                       Java: {
                         code: ``,
@@ -5377,8 +5419,53 @@ if __name__=='__main__':
                         output: `o`,
                       },
                       Python: {
-                        code: ``,
-                        output: `o`,
+                        code: `# Python Maps also called ChainMap is a type of data
+# structure to manage multiple dictionaries together 
+# as one unit. The combined dictionary contains the key
+# and value pairs in a specific sequence eliminating 
+# any duplicate keys. 
+
+import collections
+
+dict1 = {'day1': 'Mon', 'day2': 'Tue'}
+dict2 = {'day3': 'Wed', 'day1': 'Thu'}
+
+res = collections.ChainMap(dict1, dict2)
+
+print(res.maps)
+
+print('Keys = {}'.format(list(res.keys())))
+print('Values = {}'.format(list(res.values())))
+print()
+
+print('elements:')
+for key, val in res.items():
+   print('{} = {}'.format(key, val))
+print()
+
+print('day3 in res: {}'.format(('day1' in res)))
+print('day4 in res: {}'.format(('day4' in res)))
+
+res2 = collections.ChainMap(dict2, dict1)
+print(res2.maps)
+
+dict2['day4'] = 'Fri'
+print(res.maps)`,
+                        output: `
+                        [{'day1': 'Mon', 'day2': 'Tue'}, {'day3': 'Wed', 'day1': 'Thu'}]
+Keys = ['day3', 'day1', 'day2']
+Values = ['Wed', 'Mon', 'Tue']
+
+elements:
+day3 = Wed
+day1 = Mon
+day2 = Tue
+
+day3 in res: True
+day4 in res: False
+[{'day3': 'Wed', 'day1': 'Thu'}, {'day1': 'Mon', 'day2': 'Tue'}]
+[{'day1': 'Mon', 'day2': 'Tue'}, {'day3': 'Wed', 'day1': 'Thu', 'day4': 'Fri'}]
+                        `,
                       },
                       "C++": {
                         code: ``,
@@ -5391,14 +5478,52 @@ if __name__=='__main__':
                 <Span>
                   A set is an abstract data type that can store unique values,
                   without any particular order.
+                  {/* https://www.tutorialspoint.com/python_data_structure/python_maps.htm */}
                 </Span>
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
                       Javascript: {
-                        code: ``,
-                        output: `o`,
+                        code: `
+                        const customSet = new Set()
+
+                        customSet.add(1)          
+                        customSet.add(5)           
+                        customSet.add(5)    
+                        customSet.add(true)           
+                        customSet.add('abc') 
+                        const o = {a: 1, b: 2}
+                        customSet.add(o)
+                        customSet.delete(1)
+                        console.log(customSet)
+                        console.log(customSet.has(o))
+                        console.log(customSet.size)
+                        const mySet1 = customSet
+                        console.log(Array.from(new Set([1,2,3,3])))
+                        for (let item of mySet1) console.log(item)
+                        for (let item of mySet1.keys()) console.log(item)
+                        for (let [key, value] of mySet1.entries()) console.log(key)
+                        
+                        `,
+                        output: `
+                        Set { 5, true, 'abc', { a: 1, b: 2 } }
+                        true
+                        4
+                        [ 1, 2, 3 ]
+                        5
+                        true
+                        abc
+                        { a: 1, b: 2 }
+                        5
+                        true
+                        abc
+                        { a: 1, b: 2 }
+                        5
+                        true
+                        abc
+                        { a: 1, b: 2 }
+                        `,
                       },
                       Java: {
                         code: ``,
@@ -5409,8 +5534,27 @@ if __name__=='__main__':
                         output: `o`,
                       },
                       Python: {
-                        code: ``,
-                        output: `o`,
+                        code: `days=set(["Mon","Tue","Wed","Thu","Fri","Sat","Sun",1])
+
+months={"Jan","Feb","Mar"}
+
+dates={21,22,17}
+
+days.add("Sun")
+
+days.discard(1)
+
+# set1 - set2 set1 & set2 
+
+print(days)
+print(months)
+print(dates)
+                        `,
+                        output: `
+                        {'Sat', 'Tue', 'Mon', 'Fri', 'Sun', 'Wed', 'Thu'}
+{'Feb', 'Jan', 'Mar'}
+{17, 21, 22}
+                        `,
                       },
                       "C++": {
                         code: ``,
