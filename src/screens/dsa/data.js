@@ -5356,10 +5356,10 @@ if __name__=='__main__':
                   }}
                 />
                 <Span>Map</Span>
-                <Span>
+                <p>
                   A map stores a collection of (key,value) pairs, such that each
                   possible key appears at most once in the collection.
-                </Span>
+                </p>
                 <CodeEditor
                   options={{
                     output: null,
@@ -5411,8 +5411,81 @@ c = 3
                         `,
                       },
                       Java: {
-                        code: ``,
-                        output: `o`,
+                        code: `
+                        // All three classes HashMap, TreeMap and LinkedHashMap
+// implements java.util.Map interface, and represents
+// mapping from unique key to values.
+
+import java.util.*;
+import java.io.*;
+
+class Main{
+
+  static PrintStream ps = System.out;
+
+  public static void main(String ...s){
+  
+  // HashMap is implemented by array of linked lists. It contains 
+  // unique elements. It may have one null key and multiple null
+  // values.
+  // It maintains no order.
+  // HashMap extends AbstractMap
+
+  HashMap<Integer, String> map = new HashMap<Integer, String>();
+  map.put(9,"b");
+  map.put(8,"a");
+  ps.println(map.get(9));
+  ps.println(map.containsKey(8));
+  ps.println(map.containsValue("b"));
+  ps.println(map.keySet());
+  map.entrySet().forEach(ps::println);
+  
+  // LinkedHashMap is same as hahmap but maintains insertion
+  // order and is implemeted by doubly linked buckets.
+
+  Map<Integer, String> map1 = new LinkedHashMap<Integer, String>();
+  map1.put(8,"a");
+  map1.put(9,"b");
+  map1.entrySet().forEach(ps::println);
+
+  // A TreeMap contains values based on the key
+  // It is same as HashMap instead maintains ascending 
+  // order(Sorted using the natural order of its key). 
+
+  Map<Integer, String> map2 = new TreeMap<Integer, String>();
+  map2.put(9,"a");
+  map2.put(8,"b");
+  map2.entrySet().forEach(ps::println);
+
+  // A HashTable is an array of list (bucket). Position of
+  // bucket is identified by calling hashcode()
+
+
+  Hashtable<Integer, String> ht = new Hashtable<>(4);
+  ht.put(1, "one");
+  ht.put(2, "two");
+  ht.put(3, "three");
+  ps.println(ht);
+  // It contains only unique elements . It is synchronized
+  // and a legacy class.
+
+  }
+
+}
+                        `,
+                        output: `
+                        b
+true
+true
+[8, 9]
+8=a
+9=b
+8=a
+9=b
+8=b
+9=a
+{3=three, 2=two, 1=one}
+                        `,
                       },
                       Kotlin: {
                         code: ``,
@@ -5547,11 +5620,11 @@ Not found
                   }}
                 />
                 <Span>Set</Span>
-                <Span>
+                <p>
                   A set is an abstract data type that can store unique values,
                   without any particular order.
                   {/* https://www.tutorialspoint.com/python_data_structure/python_maps.htm */}
-                </Span>
+                </p>
                 <CodeEditor
                   options={{
                     output: null,
