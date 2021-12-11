@@ -1021,7 +1021,7 @@ C++ Array Operations:
                         
                                 fun insert(item: Int, index: Int): Int {
                                     for (i in length downTo index) {
-                                        data[i] = data[i - 1]
+                                        data[i] = data[i - 1]F
                                     }
                                     data[index] = item
                                     length++
@@ -3227,7 +3227,13 @@ pop_back() :
                   <b>Height of a tree: </b>height of root node.
                 </Span>
                 <Span>
-                  <b>Depth of a tree: </b> It's same as level of the tree
+                  <b>Depth of a tree: </b> It's same as level of the tree and is computed with the help of edges that lie between 
+                  root node to that particular node.
+                </Span>
+                <Span>
+                  The root node has depth zero, leaf nodes have height zero, and
+                  a tree with only a single node (hence both a root and leaf)
+                  has depth and height zero.
                 </Span>
                 <Span>
                   <b>Subtree: </b>each child from a node forms another tree
@@ -4763,8 +4769,8 @@ if __name__=='__main__':
                   BFS (level order traversal)(queue) &
                   DFS(preorder,postorder,inorder tree trvaersal)(stack) for
                   graph is similar to that of a graph, but unlike trees it may
-                  contain cycles as well. A node may be visited twice that's why we make 
-                  use of boolean array.
+                  contain cycles as well. A node may be visited twice that's why
+                  we make use of boolean array.
                 </Span>
                 <Span>Representations:</Span>
                 <Span>
