@@ -5671,8 +5671,78 @@ Not found
                         `,
                       },
                       Java: {
-                        code: ``,
-                        output: `o`,
+                        code: `
+                        // All three classes HashSet, TreeSet and LinkedHashSet
+// implements java.util.Set interface, and represents
+// mapping from unique key to values.
+
+import java.util.*;
+import java.io.*;
+
+// HashSet: If you don’t want to maintain insertion order but want  
+// to store unique objects. (thread -safe)
+// LinkedHashSet: If you want to maintain the insertion order of 
+// elements then you can use LinkedHashSet. (not thread -safe)
+// TreeSet: If you want to sort the elements according to some 
+// Comparator then use TreeSet. (not thread -safe)
+
+// Order of execution forinsertion and deletion operations:
+// TreeSet > LinkedHashSet > HashSet
+
+class Helper implements Comparator<String> {
+  
+    public int compare(String str1, String str2)
+    {
+  
+        String first_Str;
+        String second_Str;
+  
+        first_Str = str1;
+        second_Str = str2;
+  
+        return second_Str.compareTo(first_Str);
+    }
+}
+
+
+class Main{
+
+  static PrintStream ps = System.out;
+
+  public static void main(String ...s){
+
+    LinkedHashSet<String> set1
+            = new LinkedHashSet<>();
+    TreeSet<String> set2 = new TreeSet<>();
+    HashSet<String> set3 = new HashSet<String>();
+    TreeSet<String> set4 = new TreeSet<String>(new Helper());
+
+    for (String str : Arrays.asList("A", "B","C", "D")) {
+      set1.add(str);
+      set2.add(str);
+      set3.add(str);
+      set4.add(str);
+    }
+
+    set1.remove("D");
+
+    ps.println(set1);
+    ps.println(set2);
+    ps.println(set3);
+    ps.println(set4);
+    ps.println(set1.contains("A"));
+
+  }
+
+}
+                        `,
+                        output: `
+                        [A, B, C]
+[A, B, C, D]
+[A, B, C, D]
+[D, C, B, A]
+true
+                        `,
                       },
                       Kotlin: {
                         code: ``,
