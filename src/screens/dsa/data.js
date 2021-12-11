@@ -5468,8 +5468,80 @@ day4 in res: False
                         `,
                       },
                       "C++": {
-                        code: ``,
-                        output: `o`,
+                        code: `
+                        // #include <iostream>
+// #include <iterator>
+// #include <map>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// map vs unordered_map
+
+// order is maintained in map and we need predecessor/successor 
+// of elements whereas no order is required in case of
+// unordered map, single element can be accessed w/o any 
+// traversal and we need to keep count of some data.
+
+int main()
+{
+
+	map<int, int> m;
+  m[0] = 60;
+	m.insert(pair<int, int>(1, 40));
+	m.insert(pair<int, int>(2, 30));
+	m.insert(pair<int, int>(3, 60));
+	m.insert(pair<int, int>(4, 20));
+	m.insert(pair<int, int>(5, 50));
+	m.insert(pair<int, int>(6, 50));
+	m.insert(pair<int, int>(7, 10));
+	// m.erase(m.begin(), m.find(3));
+  m.erase(m.find(3));
+	map<int, int>::iterator itr;
+	cout << "The map m is : "<< endl;
+	for (itr = m.begin(); itr != m.end(); ++itr) {
+		cout << itr->first << ':' << itr->second<< endl;
+	}
+	cout << endl;
+
+  unordered_map<int, int> umap;
+
+	umap[5] = 10;
+	umap[3] = 5;
+	umap[20] = 100;
+	umap[1] = 1;
+  umap.erase(1);
+
+	for (auto i = umap.begin();
+		i != umap.end(); i++)
+	{
+		cout << i->first
+				<< " : "
+				<< i->second << endl;
+	}
+
+  if(umap.find(9)==umap.end()){
+    cout << "Not found"  << endl;
+  }
+
+	return 0;
+}
+                        `,
+                        output: `
+                        The map m is : 
+0:60
+1:40
+2:30
+4:20
+5:50
+6:50
+7:10
+
+20 : 100
+5 : 10
+3 : 5
+Not found
+                        `,
                       },
                     },
                   }}
@@ -5557,8 +5629,93 @@ print(dates)
                         `,
                       },
                       "C++": {
-                        code: ``,
-                        output: `o`,
+                        code: `
+                        #include <bits/stdc++.h>
+using namespace std;
+
+set<int> s;
+
+void inorderSuccessor(int key) {
+	if (s.find(key) == s.end()) {
+		cout << "Key doesn't exist"<<endl;
+		return;
+	}
+	set<int>::iterator it;
+	it = s.find(key);
+	++it;
+	if (it == s.end()) {
+		cout << "No successor"<<endl;
+		return;
+	}
+	cout << "successor of " << key << " is=";
+	cout << *(it) << endl;
+}
+
+void inorderPredecessor(int key) {
+	if (s.find(key) == s.end()) {
+		cout << "Key doesn't exist"<<endl;
+		return;
+	}
+
+	set<int>::iterator it;
+	it = s.find(key);
+	if (it == s.begin()) {
+		cout << "No predecessor"<<endl;
+		return;
+	}
+	--it;
+	cout << "predecessor of " << key << " is=";
+	cout << *(it) << endl;
+}
+
+int main() {
+	s.insert(5);
+	s.insert(1);
+	s.insert(6);
+	s.insert(3);
+	s.insert(7);
+	s.insert(2);
+	s.erase(7);
+	unordered_set<int> s1;
+	s1.insert(5);
+	s1.insert(1);
+	s1.insert(6);
+	s1.insert(3);
+	s1.insert(7);
+	s1.insert(2);
+	s1.erase(7);
+
+	cout << "Elements of set in sorted order:" << endl;
+	for (auto it : s)
+		cout << it << " ";
+	cout << endl;
+
+	cout << "Elements of unordered_set:" << endl;
+	for (auto it1 : s1)
+		cout << it1 << " ";
+	cout << endl;
+	inorderPredecessor(5);
+	inorderPredecessor(1);
+	inorderPredecessor(8);
+	inorderSuccessor(5);
+	inorderSuccessor(2);
+	inorderSuccessor(9);
+
+	return 0;
+}
+                        `,
+                        output: `
+                        Elements of set in sorted order:
+1 2 3 5 6 
+Elements of unordered_set:
+2 3 6 5 1 
+predecessor of 5 is=3
+No predecessor
+Key doesn't exist
+successor of 5 is=6
+successor of 2 is=3
+Key doesn't exist
+                        `,
                       },
                     },
                   }}
