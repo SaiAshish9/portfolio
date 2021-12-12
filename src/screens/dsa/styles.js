@@ -144,6 +144,7 @@ export const Img = styled.img`
 export const Desc = styled.p`
   text-align: start;
   margin: auto;
+  min-width: 100%;
 `;
 
 export const InitialStepContainer = styled.div`

@@ -6136,6 +6136,7 @@ Key doesn't exist
       sort: {
         title: "Sorting",
         types: [],
+        content: ``,
       },
       search: {
         title: "Searching",
