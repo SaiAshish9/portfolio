@@ -6352,11 +6352,11 @@ console.log(arr)
                   to be sorted, it needs no additional memory space to work
                 </Span>
                 <Span>
-                    Best TC: O(nlogn)
-                    <br />
-                    Average TC: O(nlogn) <br />
-                    Worst TC: O(nlogn) <br />
-                    Space Complexity: O(n) 
+                  Best TC: O(nlogn)
+                  <br />
+                  Average TC: O(nlogn) <br />
+                  Worst TC: O(nlogn) <br />
+                  Space Complexity: O(n)
                 </Span>
                 <Span>
                   <b>Array representation for binary heap:</b>
@@ -6464,11 +6464,11 @@ console.log(arr)
                   linear time to merge two halves.
                 </Span>
                 <Span>
-                    Best TC: O(nlogn)
-                    <br />
-                    Average TC: O(nlogn) <br />
-                    Worst TC: O(nlogn) <br />
-                    Space Complexity: O(n)
+                  Best TC: O(nlogn)
+                  <br />
+                  Average TC: O(nlogn) <br />
+                  Worst TC: O(nlogn) <br />
+                  Space Complexity: O(n)
                 </Span>
                 <Span>
                   <b>Merge vs heap sort:</b>
@@ -6550,18 +6550,76 @@ console.log(arr, arr_size);
                 <Span>
                   <b>Quick Sort (Partition/Selection exchange sort)</b>
                 </Span>
+                <Span>
+                  It's also a divide and conquer algorithm. It picks an element
+                  as pivot and partitions the given array around the picked
+                  pivot. There are many different versions of quickSort that
+                  pick pivot in different ways.
+                </Span>
+                <Span>
+                  The key process in quickSort is partition(). Target of
+                  partitions is, given an array and an element x of array as
+                  pivot, put x at its correct position in sorted array and put
+                  all smaller elements (smaller than x) before x, and put all
+                  greater elements (greater than x) after x. All this should be
+                  done in linear time
+                </Span>
+                <Span>
+                  Best TC: O(nlogn)
+                  <br />
+                  Average TC: O(nlogn) <br />
+                  Worst TC: O(n*n) <br />
+                  Space Complexity: O(logn)
+                </Span>
+                <Span>
+                  Quick Sort is preferred over MergeSort for sorting Arrays. For
+                  arrays, merge sort loses due to the use of extra O(N) storage
+                  space. Quick Sort is also a cache friendly sorting algorithm
+                  as it has good locality of reference when used for arrays.
+                  Quick Sort is also tail recursive, therefore tail call
+                  optimizations is done.
+                </Span>
+                <p>
+                  Quick sort is not stable and merge sort is preferred over
+                  quick sort for linked lists.
+                </p>
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
-                      Javascript: {
-                        code: ``,
+                      Python: {
+                        code: `def partition(start, end, array):
+	
+    pivot_index = start
+    pivot = array[pivot_index]
+    while start < end:
+      while start < len(array) and array[start] <= pivot:
+        start += 1
+      while array[end] > pivot:
+        end -= 1
+      if(start < end):
+        array[start], array[end] = array[end], array[start]
+    array[end], array[pivot_index] = array[pivot_index], array[end]
+    return end
+    
+def quick_sort(start, end, array):
+    
+    if (start < end):
+      p = partition(start, end, array)
+      quick_sort(start, p - 1, array)
+      quick_sort(p + 1, end, array)
+      
+array = [ 10, 7, 8, 9, 1, 5 ]
+quick_sort(0, len(array) - 1, array)  
+print(f'Sorted array: {array}')
+                        `,
+                        output: `Sorted array: [1, 5, 7, 8, 9, 10]`,
                       },
                     },
                   }}
                 />
                 <Span>
-                  <b>Tree Sort</b>
+                  <b>Shell Sort</b>
                 </Span>
                 <CodeEditor
                   options={{
@@ -6574,7 +6632,7 @@ console.log(arr, arr_size);
                   }}
                 />
                 <Span>
-                  <b>Shell Sort</b>
+                  <b>Tree Sort</b>
                 </Span>
                 <CodeEditor
                   options={{
