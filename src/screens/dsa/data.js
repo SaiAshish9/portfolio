@@ -6713,12 +6713,11 @@ console.log(arr);
                   for the tree, as opposed to in-place algorithms such as
                   quicksort or heapsort. On most common platforms, this means
                   that heap memory has to be used, which is a significant
-                  performance hit when compared to quicksort and
-                  heapsort. When using a splay tree as the
-                  binary search tree, the resulting algorithm (called splaysort)
-                  has the additional property that it is an adaptive sort,
-                  meaning that its running time is faster than O(n log n) for
-                  inputs that are nearly sorted.
+                  performance hit when compared to quicksort and heapsort. When
+                  using a splay tree as the binary search tree, the resulting
+                  algorithm (called splaysort) has the additional property that
+                  it is an adaptive sort, meaning that its running time is
+                  faster than O(n log n) for inputs that are nearly sorted.
                 </Span>
                 <Span>
                   Best TC: O(nlogn)
@@ -6732,6 +6731,233 @@ console.log(arr);
           },
           {
             title: "Index ( Non Comparison ) Based",
+            content: (
+              <>
+                <Span>
+                  <b>Count Sort</b>
+                </Span>
+                <Span>
+                  Counting sort is a sorting technique based on keys between a
+                  specific range. It works by counting the number of objects
+                  having distinct key values (kind of hashing). Then doing some
+                  arithmetic to calculate the position of each object in the
+                  output sequence.
+                </Span>
+                <p>
+                  Best TC: O(n+k) k is size of count array
+                  <br />
+                  TC: O(n+k) <br />
+                  Worst TC: O(n+k) <br />
+                  Space Complexity: O(n+k)
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        function sort(arr)
+{
+	var n = arr.length;
+
+	var output = Array(n).fill(0)
+
+	var count = Array.from({length: 256}, (_, i) => 0);
+
+	for (var i = 0; i < n; ++i)
+		++count[arr[i].charCodeAt(0)];
+
+	for (var i = 1; i <= 255; ++i)
+		count[i] += count[i - 1];
+
+	for (var i = n - 1; i >= 0; i--) {
+		output[count[arr[i].charCodeAt(0)] - 1] = arr[i];
+		--count[arr[i].charCodeAt(0)];
+	}
+	for (var i = 0; i < n; ++i)
+		arr[i] = output[i];
+	return arr;
+}
+
+	var arr = ['s','a','i','a','s','h','i','s','h'];
+
+	arr = sort(arr);
+	for (var i = 0; i < arr.length; ++i)
+		console.log(arr[i]);
+
+                        `,
+                        output: `
+                        a
+a
+h
+h
+i
+i
+s
+s
+s
+                        `,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Bin / Bucket Sort</b>
+                </Span>
+                <Span>
+                  Bucket sort is mainly useful when input is uniformly
+                  distributed over a range. Counting sort can by used here
+                  because of floating numbers
+                </Span>
+                <p>
+                  Best TC: O(n+k) k is number of buckets
+                  <br />
+                  TC: O(n+k) <br />
+                  Worst TC: O(n^2) <br />
+                  Space Complexity: O(n+k)
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `function bucketSort(arr,n)
+                        {
+                          if (n <= 0)
+                              return;
+                            let buckets = new Array(n);
+                        
+                            for (let i = 0; i < n; i++)
+                            {
+                              buckets[i] = [];
+                            }
+                            for (let i = 0; i < n; i++) {
+                              let idx = arr[i] * n;
+                              buckets[Math.floor(idx)].push(arr[i]);
+                            }
+                            for (let i = 0; i < n; i++) {
+                              buckets[i].sort(function(a,b){return a-b;});
+                            }
+                            let index = 0;
+                            for (let i = 0; i < n; i++) {
+                              for (let j = 0; j < buckets[i].length; j++) {
+                                arr[index++] = buckets[i][j];
+                              }
+                            }
+                        }
+                        
+                        let arr = [0.897, 0.565,
+                            0.656, 0.1234,
+                            0.665, 0.3434];
+                        let n = arr.length;
+                        bucketSort(arr, n);
+                        
+                        for (let el of arr.values()) {
+                          console.log(el + " ");
+                        }
+                        `,
+                        output: `
+                        .1234 
+0.3434 
+0.565 
+0.656 
+0.665 
+0.897 
+                        `,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Radix Sort</b>
+                </Span>
+                <Span>
+                  We can't use counting sort when elements are range of 1 to n*n
+                  because counting sort will take O(n^2) which is worse than
+                  comparison-based sorting algorithms.
+                </Span>
+                <Span>
+                  After every iteration, we make of corresponding number at
+                  digit's place using % operator.
+                </Span>
+                <Span>
+                  Radix Sort takes O(d*(n+b)) time where b is the base for
+                  representing numbers, for example, for the decimal system, b
+                  is 10. What is the value of d? If k is the maximum possible
+                  value, then d would be O(logb(k)). So overall time complexity
+                  is O((n+b) * logb(k))
+                </Span>
+                <p>
+                  Best TC: O(d*(n+b))
+                  <br />
+                  TC: O(d*(n+b)) <br />
+                  Worst TC: O(d*(n+b)) <br />
+                  Space Complexity: O(n+2^d).
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `function getMax(arr,n)
+                        {
+                          let mx = arr[0];
+                            for (let i = 1; i < n; i++)
+                              if (arr[i] > mx)
+                                mx = arr[i];
+                            return mx;
+                        }
+                        
+                        // can be solved using linked list as well
+                        
+                        function countSort(arr,n,exp)
+                        {
+                          let output = new Array(n); 
+                            let i;
+                            let count = new Array(10);
+                            for(let i=0;i<10;i++)
+                              count[i]=0;
+                        
+                            for (i = 0; i < n; i++)
+                              count[Math.floor(arr[i] / exp) % 10]++;
+                        
+                            for (i = 1; i < 10; i++)
+                              count[i] += count[i - 1];
+                        
+                            for (i = n - 1; i >= 0; i--) {
+                              output[count[Math.floor(arr[i] / exp) % 10] - 1] = arr[i];
+                              count[Math.floor(arr[i] / exp) % 10]--;
+                            }
+                        
+                            for (i = 0; i < n; i++)
+                              arr[i] = output[i];
+                        }
+                        
+                        function radixsort(arr,n)
+                        {
+                            let m = getMax(arr, n);
+                            for (let exp = 1; Math.floor(m / exp) > 0; exp *= 10)
+                              countSort(arr, n, exp);
+                        }
+                        
+                        
+                        let arr=[170, 45, 75, 90, 802, 24, 2, 66];
+                        let n = arr.length;
+                        radixsort(arr, n);
+                        console.log(arr)
+                        `,
+                        output: `
+                        [
+                          2, 24,  45,  66,
+                         75, 90, 170, 802
+                       ]
+                        `,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
         ],
         content: (
