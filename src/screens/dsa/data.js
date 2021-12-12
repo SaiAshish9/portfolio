@@ -6149,8 +6149,9 @@ Key doesn't exist
                   We can visualize this sort with the help of act of throwing
                   stones into the sea. More heavier stone will settle at tha
                   bottom compared to lighter ones. It's adaptive as well as
-                  stable. We can't perform this sort at linked list. Each of k
-                  passes, provides us the kth largest element.
+                  stable. We can't perform this sort at linked list due to time
+                  consumption. Each of k passes, provides us the kth largest
+                  element.
                 </Span>
                 <p>
                   Best TC: O(n) ( already sorted ) <br />
@@ -6209,16 +6210,70 @@ console.log(arr)
                 <Span>
                   <b>Insertion Sort</b>
                 </Span>
-                <p>
+                <Span>
                   It works similar to the way we sort playing cards after each
-                  iteration. We split original array into two parts
+                  iteration. We split original array virtually into two parts:
+                  sorted and unsorted. Values from the unsorted part are picked
+                  and placed at the correct position in the sorted part. It's
+                  adaptive (by nature) and stable. And can be used to sort the
+                  linked list.
+                </Span>
+                <Span>
+                  We can use binary search to reduce the number of comparisons
+                  in normal insertion sort. Binary Insertion Sort uses binary
+                  search to find the proper location to insert the selected item
+                  at each iteration. In normal insertion, sorting takes O(i) (at
+                  ith iteration) in worst case. We can reduce it to O(logi) by
+                  using binary search. It makes use of incremental approach.
+                </Span>
+                <Span>
+                  Insertion sort is used when number of elements is small. It
+                  can also be useful when input array is almost sorted, only few
+                  elements are misplaced in complete big array.
+                </Span>
+                <Span>
+                  For very small n, Insertion Sort is faster than more efficient
+                  algorithms such as Quicksort or Merge Sort.
+                </Span>
+                <p>
+                  Best TC: O(n) ( already sorted ) <br />
+                  Average TC: O(n^2) <br />
+                  Worst TC: O(n^2) <br />
+                  Worst Space Complexity: O(1) <br />
+                  Number of passes: n-1 <br />
+                  Number of comparisons : n(n-1)/2 <br />
+                  Max. Number of swaps: n(n-1)/2 O(n*n)
                 </p>
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
                       Javascript: {
-                        code: ``,
+                        code: `
+                        function insertionSort(arr, n)
+{
+	let i, key, j;
+	for (i = 1; i < n; i++)
+	{
+		key = arr[i];
+		j = i - 1;
+		while (j >= 0 && arr[j] > key)
+		{
+			arr[j + 1] = arr[j];
+			j = j - 1;
+		}
+		arr[j + 1] = key;
+	}
+}
+
+let arr = [12, 11, 13, 5, 6 ]; 
+let n = arr.length; 
+insertionSort(arr, n); 
+console.log(arr)
+                        `,
+                        output: `
+                        [ 5, 6, 11, 12, 13 ]
+                        `,
                       },
                     },
                   }}
