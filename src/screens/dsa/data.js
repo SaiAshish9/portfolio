@@ -6281,12 +6281,57 @@ console.log(arr)
                 <Span>
                   <b>Selection Sort</b>
                 </Span>
+                <Span>
+                  This is used to place smallest element at the start after each
+                  iteration. It's neither adaptive nor stable.Each of k passes,
+                  provides us the kth smallest element. It can be made stable.
+                  It's used when no. of swaps are limited.
+                </Span>
+                <Span>
+                  Selection sort performs a smaller number of swaps compared to
+                  bubble sort; therefore, even though both sorting methods are
+                  of O(N2), selection sort performs faster and more efficiently!
+                </Span>
+                <p>
+                  Best TC: O(n^2)
+                  <br />
+                  Average TC: O(n^2) <br />
+                  Worst TC: O(n^2) <br />
+                  Worst Space Complexity: O(1) <br />
+                  Number of swap: n-1 ( minimum among all kinds of sorts ){" "}
+                  <br />
+                  No. of comparisons: n(n-1)/2, O(n*n)
+                </p>
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
                       Javascript: {
-                        code: ``,
+                        code: `
+                        function selectionSort(arr, n)
+{
+	let i, j, min, temp;
+	for (i = 0; i < n-1; i++)
+	{
+    min = i;
+    for(j = i+1; j<n; j++)
+    if(arr[j]<arr[min]){
+      min = j;
+    }
+    temp = arr[i]
+    arr[i] = arr[min]
+    arr[min] = temp
+	}
+}
+
+let arr = [12, 11, 13, 5, 6 ]; 
+let n = arr.length; 
+selectionSort(arr, n); 
+console.log(arr)
+                        `,
+                        output: `
+                        [ 5, 6, 11, 12, 13 ]
+                        `,
                       },
                     },
                   }}
