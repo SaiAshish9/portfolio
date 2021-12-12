@@ -6548,7 +6548,7 @@ console.log(arr, arr_size);
                   }}
                 />
                 <Span>
-                  <b>Quick Sort</b>
+                  <b>Quick Sort (Partition/Selection exchange sort)</b>
                 </Span>
                 <CodeEditor
                   options={{
