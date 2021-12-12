@@ -6339,12 +6339,87 @@ console.log(arr)
                 <Span>
                   <b>Heap Sort</b>
                 </Span>
+                <Span>
+                  It is based on binary heap. It's similar to selection sort
+                  where place the minimum element at start after each iteration.
+                </Span>
+                <Span>
+                  The time required to perform Heap sort increases
+                  logarithmically while other algorithms may grow exponentially
+                  slower as the number of items to sort increases. This sorting
+                  algorithm is very efficient. Memory usage is minimal because
+                  apart from what is necessary to hold the initial list of items
+                  to be sorted, it needs no additional memory space to work
+                </Span>
+                <Span>
+                    Best TC: O(nlogn)
+                    <br />
+                    Average TC: O(nlogn) <br />
+                    Worst TC: O(nlogn) <br />
+                    Space Complexity: O(n) 
+                </Span>
+                <Span>
+                  <b>Array representation for binary heap:</b>
+                </Span>
+                <Span>
+                  Since , binary heap is a complete binary tree , if the parent
+                  node is stored at index i, then left child can be calculated
+                  using 2*i + 1 and right can be defined using 2*i +2
+                </Span>
+                <Span>
+                  <b>Heapify</b>
+                </Span>
+                <p>
+                  The process of reshaping a binary tree into a Heap data
+                  structure is known as "heapify".{" "}
+                </p>
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
                       Javascript: {
-                        code: ``,
+                        code: `
+                        function sort(arr)
+                        {
+                          var n = arr.length;
+                      
+                          for (var i = Math.floor(n / 2) - 1; i >= 0; i--) // O(n)
+                            heapify(arr, n, i); // O(log n)
+                            // O(nlogn)
+                      
+                          for (var i = n - 1; i > 0; i--) {
+                            var temp = arr[0];
+                            arr[0] = arr[i];
+                            arr[i] = temp;
+                            heapify(arr, i, 0);
+                          }
+                        }
+                      
+                          function heapify(arr, n, i)
+                          {
+                              var largest = i; 
+                              var l = 2 * i + 1; 
+                              var r = 2 * i + 2; 
+                      
+                              if (l < n && arr[l] > arr[largest])
+                                  largest = l;
+                      
+                               if (r < n && arr[r] > arr[largest])
+                                  largest = r;
+                      
+                              if (largest != i) {
+                                  var swap = arr[i];
+                                  arr[i] = arr[largest];
+                                  arr[largest] = swap;
+                                  heapify(arr, n, largest);
+                              }
+                          }
+                      
+                      const arr = [9,2,7,1,0]
+                      sort(arr)
+                      console.log(arr)                      
+                        `,
+                        output: `[ 0, 1, 2, 7, 9 ]`,
                       },
                     },
                   }}
@@ -6352,12 +6427,122 @@ console.log(arr)
                 <Span>
                   <b>Merge Sort</b>
                 </Span>
+                <Span>
+                  It is a divide and conquer algorithm. It divides the array
+                  into two parts, calls itself for each half and merges two
+                  halves.It's stable.
+                </Span>
+                <Span>
+                  Merge Sort is a recursive algorithm and time complexity can be
+                  expressed as following recurrence relation.
+                  <br /> T(n) = 2T(n/2) + θ(n)
+                </Span>
+                <Span>
+                  It's used for sorting linked list in nlog(n) time.And it's
+                  used in external sorting. It's slower than other algorithms
+                  for smaller tasks. Merge sort algorithm requires an additional
+                  memory space of 0(n) for the temporary array. It goes through
+                  the whole process even if the array is sorted.
+                </Span>
+                <Span>
+                  <b>External sorting</b>
+                </Span>
+                <Span>
+                  External sorting is a class of sorting algorithms that can
+                  handle massive amounts of data. External sorting is required
+                  when the data being sorted do not fit into the main memory of
+                  a computing device (usually RAM) and instead they must reside
+                  in the slower external memory, usually a hard disk drive.
+                  Thus, external sorting algorithms are external memory
+                  algorithms and thus applicable in the external memory model of
+                  computation. External sorting algorithms generally fall into
+                  two types, distribution sorting, which resembles quicksort,
+                  and external merge sort, which resembles merge sort.
+                </Span>
+                <Span>
+                  merge sort always divides the array into two halves and takes
+                  linear time to merge two halves.
+                </Span>
+                <Span>
+                    Best TC: O(nlogn)
+                    <br />
+                    Average TC: O(nlogn) <br />
+                    Worst TC: O(nlogn) <br />
+                    Space Complexity: O(n)
+                </Span>
+                <Span>
+                  <b>Merge vs heap sort:</b>
+                </Span>
+                <p>
+                  HeapSort is the slowest of the sorting algorithms but unlike
+                  merge and quick sort it does not require massive recursion or
+                  multiple arrays to work. The merge sort is slightly faster
+                  than the heap sort for larger sets, but it requires twice the
+                  memory of the heap sort because of the second array.
+                </p>
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
                       Javascript: {
-                        code: ``,
+                        code: `
+                        function merge(arr, l, m, r)
+{
+    var n1 = m - l + 1;
+    var n2 = r - m;
+    var L = Array(n1); 
+    var R = Array(n2);
+    for (var i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (var j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+    var i = 0;
+    var j = 0;
+    var k = l;
+
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        }
+        else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+function mergeSort(arr,l, r){
+    if(l>=r){
+        return;
+    }
+    var m =l+ parseInt((r-l)/2);
+    mergeSort(arr,l,m);
+    mergeSort(arr,m+1,r);
+    merge(arr,l,m,r);
+}
+
+
+var arr = [ 12, 11, 13, 5, 6, 7 ];
+var arr_size = arr.length;
+mergeSort(arr, 0, arr_size - 1);
+console.log(arr, arr_size);
+                        `,
+                        output: `
+                        [ 5, 6, 7, 11, 12, 13 ] 6
+                        `,
                       },
                     },
                   }}
