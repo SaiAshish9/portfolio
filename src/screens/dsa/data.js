@@ -5733,7 +5733,7 @@ Not found
 import java.util.*;
 import java.io.*;
 
-// HashSet: If you don’t want to maintain insertion order but want  
+// HashSet: If you don't want to maintain insertion order but want  
 // to store unique objects. (thread -safe)
 // LinkedHashSet: If you want to maintain the insertion order of 
 // elements then you can use LinkedHashSet. (not thread -safe)
@@ -6136,8 +6136,218 @@ Key doesn't exist
     types: {
       sort: {
         title: "Sorting",
-        types: [],
-        content: ``,
+        types: [
+          {
+            title: "Comparison Based",
+            content: (
+              <>
+                <Span>Let n be number of elements.</Span>
+                <Span>
+                  <b>Bubble Sort</b>
+                </Span>
+                <Span>
+                  We can visualize this sort with the help of act of throwing
+                  stones into the sea. More heavier stone will settle at tha
+                  bottom compared to lighter ones. It's adaptive as well as
+                  stable. We can't perform this sort at linked list. Each of k
+                  passes, provides us the kth largest element.
+                </Span>
+                <p>
+                  Best TC: O(n) ( already sorted ) <br />
+                  Average TC: O(n^2) <br />
+                  Worst TC: O(n^2) <br />
+                  Worst Space Complexity: O(1) <br />
+                  Number of passes: n-1 <br />
+                  Number of comparisons : n(n-1)/2 <br />
+                  Max. Number of swaps: n(n-1)/2
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        function bubbleSort(arr, n)
+{
+	  let i, j, temp;
+		let flag;
+		for (i = 0; i < n - 1; i++)
+		{
+			flag = false;
+			for (j = 0; j < n - i - 1; j++)
+			{
+				if (arr[j] > arr[j + 1])
+				{
+					temp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = temp;
+					flag = true;
+				}
+			}
+      // optimized way to brak outer loop in b/w
+      // if provided i/p is already sorted.
+			if (flag == false)
+				break;
+		}
+}
+
+var arr = [ 64, 34, 25, 12, 22, 11, 90 ];
+var n = arr.length;
+bubbleSort(arr, n);
+console.log(arr)
+                        `,
+                        output: `
+                        [
+                          11, 12, 22, 25,
+                          34, 64, 90
+                        ]
+                        `,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Insertion Sort</b>
+                </Span>
+                <p>
+                  It works similar to the way we sort playing cards after each
+                  iteration. We split original array into two parts
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Selection Sort</b>
+                </Span>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Heap Sort</b>
+                </Span>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Merge Sort</b>
+                </Span>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Quick Sort</b>
+                </Span>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Tree Sort</b>
+                </Span>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Shell Sort</b>
+                </Span>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
+          },
+          {
+            title: "Index ( Non Comparison ) Based",
+          },
+        ],
+        content: (
+          <>
+            <Span>
+              This algorithm is basically used to reorder elements in the
+              respective data structure based on a comparison operator.
+            </Span>
+            <Span>
+              <b>Criteria of analysis:</b>
+            </Span>
+            <p>
+              1. No. of comparisons <br />
+              2. No. of swaps <br />
+              3. Adaptive ( we can detect already sorted lists using this
+              feature ) <br />
+              4. Stable ( order of duplicate elements should be maintained ){" "}
+              <br />
+              5. Extra Memory <br />
+              <br />
+            </p>
+            <Span>Types of sorting:</Span>
+            <Span>(a) Comparison based:</Span>
+            <Span>
+              Elements are compared with each other to get sorted array.
+            </Span>
+            <Span>Examples:</Span>
+            <Span>
+              Avg. Complexity (O(n*n)) : Bubble, Insertion and Selection. <br />
+              Avg. Complexity (O(n*(log n))) : Heap, Merge, Quick, and Tree{" "}
+              <br />
+              Avg. Complexity (O(n^1.5)) : Shell{" "}
+            </Span>
+            <Span>(b) Index based:</Span>
+            <Span>
+              This method makes use of hashing and sort elements by creating
+              index recursively.
+            </Span>
+            <Span>Examples:</Span>
+            <p>Avg. Complexity (O(n)): Count, Bucket( Bin ) and Radix</p>
+          </>
+        ),
       },
       search: {
         title: "Searching",
