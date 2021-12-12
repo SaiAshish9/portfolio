@@ -6116,13 +6116,14 @@ Key doesn't exist
         <Span>
           <b>Charactersitic's of algorithm:</b>
         </Span>
-        <Span>
+        <p>
           <p>1. Input: 0 or more</p>
           <p>2. Output: atleast 1</p>
           <p>3. Definiteness: every stmt. should be clear</p>
           <p>4. Finiteness: algorithm should have finite steps</p>
           <p>5. Effectiveness: every step must be used</p>
-        </Span>
+        </p>
+        <br />
         <Span>
           <b>Algorithms can be analysed using following parameters:</b>
         </Span>
