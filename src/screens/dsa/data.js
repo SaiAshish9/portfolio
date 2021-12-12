@@ -6709,6 +6709,18 @@ console.log(arr);
                   case.
                 </Span>
                 <Span>
+                  tree sort algorithms require separate memory to be allocated
+                  for the tree, as opposed to in-place algorithms such as
+                  quicksort or heapsort. On most common platforms, this means
+                  that heap memory has to be used, which is a significant
+                  performance hit when compared to quicksort and
+                  heapsort. When using a splay tree as the
+                  binary search tree, the resulting algorithm (called splaysort)
+                  has the additional property that it is an adaptive sort,
+                  meaning that its running time is faster than O(n log n) for
+                  inputs that are nearly sorted.
+                </Span>
+                <Span>
                   Best TC: O(nlogn)
                   <br />
                   TC: O(nlogn) <br />
