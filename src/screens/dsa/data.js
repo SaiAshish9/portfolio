@@ -6468,7 +6468,7 @@ console.log(arr)
                   <br />
                   Average TC: O(nlogn) <br />
                   Worst TC: O(nlogn) <br />
-                  Space Complexity: O(n)
+                  Space Complexity: O(n) //depends
                 </Span>
                 <Span>
                   <b>Merge vs heap sort:</b>
@@ -6551,10 +6551,11 @@ console.log(arr, arr_size);
                   <b>Quick Sort (Partition/Selection exchange sort)</b>
                 </Span>
                 <Span>
-                  It's also a divide and conquer algorithm. It picks an element
-                  as pivot and partitions the given array around the picked
-                  pivot. There are many different versions of quickSort that
-                  pick pivot in different ways.
+                  It's also a divide and conquer algorithm. It's a internal
+                  sorting algorithm. It picks an element as pivot and partitions
+                  the given array around the picked pivot. There are many
+                  different versions of quickSort that pick pivot in different
+                  ways.
                 </Span>
                 <Span>
                   The key process in quickSort is partition(). Target of
@@ -6569,7 +6570,7 @@ console.log(arr, arr_size);
                   <br />
                   Average TC: O(nlogn) <br />
                   Worst TC: O(n*n) <br />
-                  Space Complexity: O(logn)
+                  Space Complexity: O(n)
                 </Span>
                 <Span>
                   Quick Sort is preferred over MergeSort for sorting Arrays. For
@@ -6578,6 +6579,13 @@ console.log(arr, arr_size);
                   as it has good locality of reference when used for arrays.
                   Quick Sort is also tail recursive, therefore tail call
                   optimizations is done.
+                </Span>
+                <Span>
+                  The time complexity of Quicksort is O(n log n) in the best
+                  case, O(n log n) in the average case, and O(n^2) in the worst
+                  case. But because it has the best performance in the average
+                  case for most inputs, Quicksort is generally considered the
+                  “fastest” sorting algorithm.
                 </Span>
                 <p>
                   Quick sort is not stable and merge sort is preferred over
@@ -6621,12 +6629,59 @@ print(f'Sorted array: {array}')
                 <Span>
                   <b>Shell Sort</b>
                 </Span>
+                <Span>
+                  ShellSort is mainly a variation of Insertion Sort. In
+                  insertion sort, we move elements only one position ahead. When
+                  an element has to be moved far ahead, many movements are
+                  involved.
+                </Span>
+                <Span>
+                  Best TC: O(nlogn) // already sorted
+                  <br />
+                  For other cases it depends on gap sequence. Generally, Average
+                  TC: O(nlogn) <br />
+                  Worst TC: O(nlog^2n) <br />
+                  Space Complexity: O(1)
+                </Span>
+                <Span>
+                  Shell Sort improves its time complexity by taking the
+                  advantage of the fact that using Insertion Sort on a partially
+                  sorted array results in less number of moves.
+                </Span>
+                <p>
+                  Time complexity of below implementation of shellsort is
+                  O(n^2).
+                </p>
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
                       Javascript: {
-                        code: ``,
+                        code: `
+                        function sort(arr)
+{
+	let n = arr.length;
+
+		for (let gap = Math.floor(n/2); gap > 0; gap = Math.floor(gap/2))
+		{
+			for (let i = gap; i < n; i += 1)
+			{
+				let temp = arr[i];
+				let j;
+				for (j = i; j >= gap && arr[j - gap] > temp; j -= gap)
+					arr[j] = arr[j - gap];
+				arr[j] = temp;
+			}
+		}
+		return arr;
+}
+
+let arr = [12, 34, 54, 2, 3];
+arr = sort(arr);
+console.log(arr);
+
+                        `,
+                        output: `[ 2, 3, 12, 34, 54 ]`,
                       },
                     },
                   }}
@@ -6634,16 +6689,32 @@ print(f'Sorted array: {array}')
                 <Span>
                   <b>Tree Sort</b>
                 </Span>
-                <CodeEditor
-                  options={{
-                    output: null,
-                    codes: {
-                      Javascript: {
-                        code: ``,
-                      },
-                    },
-                  }}
-                />
+                <Span>
+                  Tree sort is a sorting algorithm that is based on Binary
+                  Search Tree data structure. It first creates a binary search
+                  tree from the elements of the input list or array and then
+                  performs an in-order traversal on the created binary search
+                  tree to get the elements in sorted order.
+                </Span>
+                <Span>
+                  For implementation please refer to non linear data structures.
+                </Span>
+                <Span>
+                  O(n log n) Adding one item to a Binary Search tree on average
+                  takes O(log n) time. Therefore, adding n items will take O(n
+                  log n) time.The worst case time complexity of Tree Sort can be
+                  improved by using a self-balancing binary search tree like Red
+                  Black Tree, AVL Tree. Using self-balancing binary tree Tree
+                  Sort will take O(n log n) time to sort the array in worst
+                  case.
+                </Span>
+                <Span>
+                  Best TC: O(nlogn)
+                  <br />
+                  TC: O(nlogn) <br />
+                  Worst TC: O(n^2) <br />
+                  Space Complexity: O(n)
+                </Span>
               </>
             ),
           },
