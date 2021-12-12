@@ -6076,6 +6076,58 @@ Key doesn't exist
   },
   algo: {
     title: "Algorithms",
+    content: (
+      <>
+        <Span>
+          It's a step by step procedure to solve computational problem.
+        </Span>
+        <Span>
+          <b>Algorithm:</b>
+        </Span>
+        <Span>
+          1. It's written at design time.
+          <br />
+          2. Author should have domain knowledge.
+          <br />
+          3. It can written in any language.
+          <br />
+          4. It should be machine independent.
+          <br />
+          5. It can be analyzed for space/time complexity.
+          <br />
+          6. Priori analysis is associated with algorithm.
+        </Span>
+        <Span>
+          <b>Program:</b>
+        </Span>
+        <Span>
+          1. It's written at implementation time.
+          <br />
+          2. Should be written by programmer.
+          <br />
+          3. It can written in a programming language.
+          <br />
+          4. It should be machine dependent ( hardware and operating system ).
+          <br />
+          5. It can be tested (watch time and bytes).
+          <br />
+          6. Posteriori analysis is associated with program.
+        </Span>
+        <Span>Charactersitic's of algorithm:</Span>
+        <Span>
+          <p>1. Input</p>
+          <p>2. Output</p>
+          
+        </Span>
+        <Span>
+          <b>Algorithms can be analysed using following parameters:</b>
+        </Span>
+        <Span>
+          1. Time <br /> 2. Space <br /> 3. N/W Consumption <br /> 4. Power
+          Consumption <br /> 5. CPU Registers Consumption
+        </Span>
+      </>
+    ),
     types: {
       sort: {
         title: "Sorting",
