@@ -6113,11 +6113,15 @@ Key doesn't exist
           <br />
           6. Posteriori analysis is associated with program.
         </Span>
-        <Span>Charactersitic's of algorithm:</Span>
         <Span>
-          <p>1. Input</p>
-          <p>2. Output</p>
-          
+          <b>Charactersitic's of algorithm:</b>
+        </Span>
+        <Span>
+          <p>1. Input: 0 or more</p>
+          <p>2. Output: atleast 1</p>
+          <p>3. Definiteness: every stmt. should be clear</p>
+          <p>4. Finiteness: algorithm should have finite steps</p>
+          <p>5. Effectiveness: every step must be used</p>
         </Span>
         <Span>
           <b>Algorithms can be analysed using following parameters:</b>
