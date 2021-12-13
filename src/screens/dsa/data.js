@@ -7275,7 +7275,127 @@ console.log(isPairSum(arr, arrSize, val));
       },
       randomized: {
         title: "Randomized",
-        types: [],
+        content: (
+          <>
+            <Span>
+              An algorithm that uses random numbers to decide what to do next
+              anywhere in its logic is called Randomized Algorithm. For example,
+              in Randomized Quick Sort, we use random number to pick the next
+              pivot (or we randomly shuffle the array). Typically, this
+              randomness is used to reduce time complexity or space complexity
+              in other standard algorithms.,
+            </Span>
+            <Span>
+              Example: Generate integer from 1 to 7 with equal probability
+            </Span>
+            <Span>Formula R: 5*( random() -1 ) + random() </Span>
+            <p>
+              Suppose the specified function is random(), which generates random
+              numbers from 1 to 5 with equal probability. The idea is to use the
+              expression 5 × (random() - 1) + random() which uniformly produces
+              random numbers in the range [1–25]. So if we exclude the
+              possibility of the random number being one among [8–25] by
+              repeating the procedure, we are left with numbers between 1 and 7
+              having equivalent probability.
+            </p>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  C: {
+                    code: `
+                    #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+ 
+int random1() {
+    return (rand() % 5) + 1;
+}
+int generate()
+{
+    int r;
+    do {
+        r = 5 * (random1() - 1) + random1();
+    } while (r > 7);
+ 
+    return r;
+}
+
+// To minimize the total number of calls to the random() function, stop the while loop at r <= 21 and use the modulo operator, as shown below:
+
+int generate1()
+{
+    int r;
+    do {
+        r = 5 * (random1() - 1) + random1();
+    } while (r > 21);
+ 
+    return (r % 7) + 1;
+}
+ 
+int main(void)
+{
+    srand(time(NULL));
+ 
+    int count[8];
+    memset(count, 0, sizeof count);
+    for (int i = 1; i <= 1000000; i++)
+    {
+        int val = generate();
+        count[val]++;
+    }
+ 
+    for (int i = 1; i <= 7; i++) {
+        printf("%d ~ %0.2f\n", i, count[i]/10000.0);
+    }
+ 
+    return 0;
+}`,
+                    output: `
+                    1 ~ 14.23
+2 ~ 14.34
+3 ~ 14.27
+4 ~ 14.28
+5 ~ 14.32
+6 ~ 14.28
+7 ~ 14.28
+                    `,
+                  },
+                  Python: {
+                    code: `from random import randint
+def generate():
+    while True:
+        x = randint(1, 5)
+        y = randint(1, 5)
+        r = 5 * (x - 1) + y
+        if r <= 7:
+            break
+    return r
+  
+if __name__ == '__main__':
+    count = [0] * 8
+    for i in range(1000000):
+        val = generate()
+        count[val] = count[val] + 1
+    for i in range(1, 8):
+        print(f'{i}~{count[i]/10000}%')
+                     `,
+                    output: `
+                    1~14.2294%
+2~14.3086%
+3~14.2761%
+4~14.2849%
+5~14.3211%
+6~14.3153%
+7~14.2646%
+                    `,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
     },
   },

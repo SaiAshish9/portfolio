@@ -80,7 +80,7 @@ const CodeEditor = ({ options }) => {
                   : options.codes["Python"].code
               }
               options={{
-                mode: ["Java", "Kotlin", "C++"].includes(selected)
+                mode: ["Java", "Kotlin", "C++","C"].includes(selected)
                   ? "clike"
                   : selected === "Javascript"
                   ? "javascript"
