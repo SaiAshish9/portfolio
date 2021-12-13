@@ -7371,6 +7371,9 @@ console.log(isPairSum(arr, arrSize, val));
               thing decreases. More time-efficient algorithms will be less space
               efficient and vice versa.
             </Span>
+            <Span>
+              <b>Asynmptotic Notations</b>
+            </Span>
           </>
         ),
       },
