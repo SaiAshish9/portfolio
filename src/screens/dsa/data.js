@@ -7138,8 +7138,8 @@ Element found in array at 5th position with 1 attempt
               mid = (low + high)/2;
             </Span>
             <Span>
-              If we calculate the middle index using (low + high)/2 means our code
-              is not 100% correct, it contains bugs. That is, it fails for
+              If we calculate the middle index using (low + high)/2 means our
+              code is not 100% correct, it contains bugs. That is, it fails for
               larger values of int variables low and high. Specifically, it
               fails if the sum of low and high is greater than the maximum
               positive int value(2^31 - 1 ). The sum overflows to a negative
@@ -7253,11 +7253,129 @@ console.log(isPairSum(arr, arrSize, val));
         ),
       },
       Complexity: {
-        title: "Complexity",
-        types: [],
+        title: "Algorithmic Analysis",
+        content: (
+          <>
+            <Span>
+              <b>Analysis of algorithms:</b>
+            </Span>
+            <Span>
+              Similar to other factors such as user friendliness, modularity,
+              security, maintainability, performance of algorithms is also
+              important.The answer to this is simple, we can have all the above
+              things only if we have performance. So performance is like
+              currency through which we can buy all the above things. Another
+              reason for studying performance is – speed is fun! To summarize,
+              performance == scale. Imagine a text editor that can load 1000
+              pages, but can spell check 1 page per minute OR an image editor
+              that takes 1 hour to rotate your image 90 degrees left OR … you
+              get it. If a software feature can not cope with the scale of tasks
+              users need to perform – it is as good as dead.
+            </Span>
+            <Span>
+              <b>Asymptotic Analysis:</b>
+            </Span>
+            <Span>
+              In Asymptotic Analysis, we evaluate the performance of an
+              algorithm in terms of input size (we don’t measure the actual
+              running time). We calculate, how the time (or space) taken by an
+              algorithm increases with the input size.
+            </Span>
+            <Span>
+              Linear Search on a fast computer A and Binary Search on a slow
+              computer B and we pick the constant values for the two computers
+              so that it tells us exactly how long it takes for the given
+              machine to perform the search in seconds. Let’s say the constant
+              for A is 0.2 and the constant for B is 1000 which means that A is
+              5000 times more powerful than B. For small values of input array
+              size n, the fast computer may take less time. But, after a certain
+              value of input array size, the Binary Search will definitely start
+              taking less time compared to the Linear Search even though the
+              Binary Search is being run on a slow machine. The reason is the
+              order of growth of Binary Search with respect to input size is
+              logarithmic while the order of growth of Linear Search is linear.
+              So the machine dependent constants can always be ignored after a
+              certain value of input size. Here are some running times for this
+              example: Linear Search running time in seconds on A: 0.2 * n
+              Binary Search running time in seconds on B: 1000*log(n)
+            </Span>
+            <Span>
+              <b>Complexity</b>
+            </Span>
+            <Span>
+              The complexity of an algorithm is a function describing the
+              efficiency of the algorithm in terms of the amount of data the
+              algorithm must process.
+            </Span>
+            <Span>
+              <b>Time Complexity</b>
+            </Span>
+            <Span>
+              Time Complexity of algorithm/code is not equal to the actual time
+              required to execute a particular code but the number of times a
+              statement executes. We can prove this by using time command.
+            </Span>
+            <Span>
+              O(n^2): You go and ask the first person of the class, if he has
+              the pen. Also, you ask this person about other 99 people in the
+              classroom if they have that pen and so on, This is what we call
+              O(n^2). O(n): Going and asking each student individually is O(N).
+              O(log n): Now I divide the class into two groups, then ask: “Is it
+              on the left side, or the right side of the classroom?” Then I take
+              that group and divide it into two and ask again, and so on. Repeat
+              the process till you are left with one student who has your pen.
+              This is what you mean by O(log n).
+            </Span>
+            <Span>
+              <b>Space Complexity</b>
+            </Span>
+            <Span>
+              Space Complexity of an algorithm is the total space taken by the
+              algorithm with respect to the input size. Space complexity
+              includes both Auxiliary space and space used by input. If we want
+              to compare standard sorting algorithms on the basis of space, then
+              Auxiliary Space would be a better criterion than Space Complexity.
+              Merge Sort uses O(n) auxiliary space, Insertion sort, and Heap
+              Sort use O(1) auxiliary space. The space complexity of all these
+              sorting algorithms is O(n) though.
+            </Span>
+            <Span>
+              <b>Worst Case vs Average Case vs Best Case</b>
+            </Span>
+            <Span>
+              <b>Worst Case ( Upper bound ) Analysis</b>
+            </Span>
+            <Span>
+              This case computes maximum number of operations to be executed.
+            </Span>
+            <Span>
+              <b>Average Case Analysis</b>
+            </Span>
+            <Span>
+              In average case analysis, we take all possible inputs and
+              calculate computing time for all of the inputs. Sum all the
+              calculated values and divide the sum by the total number of
+              inputs. We sum all the cases and divide the sum by (n+1)
+            </Span>
+            <Span>
+              <b>Worst Case ( Lower bound ) Analysis</b>
+            </Span>
+            <Span>
+              This case computes minimum number of operations to be executed.
+            </Span>
+            <Span>
+              <b>Space Time Trade Off</b>
+            </Span>
+            <Span>
+              A tradeoff is a situation where one thing increases and another
+              thing decreases. More time-efficient algorithms will be less space
+              efficient and vice versa.
+            </Span>
+          </>
+        ),
       },
       tradeOf: {
-        title: "Space Time Trade Off",
+        title: "Master's Method",
         types: [],
       },
       recursive: {
