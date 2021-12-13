@@ -233,6 +233,9 @@ export const Label = styled.a`
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     bottom: 3.5rem !important;
   }
+  @media only screen and (max-width: ${BREAKPOINTS.md}) {
+    margin-top: 1.8rem;
+  }
   ${({ addMarginTop }) =>
     addMarginTop &&
     css`
