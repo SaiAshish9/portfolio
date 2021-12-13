@@ -7124,15 +7124,14 @@ Element found in array at 5th position with 1 attempt
               not able to do indexing which led traversing of each element in
               Linked list take O(n) time.
             </Span>
+            <Span>Complexities</Span>
             <Span>
-              Complexities
-            </Span>
-            <Span>
-              Best TC: O(1) //  central index would directly match the desired value. <br/>
-              Avg. TC: O(log n)  <br/>
-              Worst TC: O(log n)  <br/>
-              Space Complexity (Iteration): O(1)  <br/>
-              Space Complexity (Recursion): O(log n) 
+              Best TC: O(1) // central index would directly match the desired
+              value. <br />
+              Avg. TC: O(log n) <br />
+              Worst TC: O(log n) <br />
+              Space Complexity (Iteration): O(1) <br />
+              Space Complexity (Recursion): O(log n)
             </Span>
             <p>Implementation</p>
             <CodeEditor
@@ -7186,17 +7185,55 @@ Element found in array at 5th position with 1 attempt
             <Span>
               <b>Two pointers technique:</b>
             </Span>
+            <Span>
+              Two pointers is really an easy and effective technique that is
+              typically used for searching pairs in a sorted array.
+            </Span>
+            <p>
+              <b>Time complexity: </b> O(n)
+            </p>
             <CodeEditor
               options={{
                 output: null,
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `
+                    function isPairSum(A, N, X)
+{
+	var i = 0;
+	var j = N - 1;
+
+	while (i < j) {
+
+		if (A[i] + A[j] == X)
+			return true;
+		else if (A[i] + A[j] < X)
+			i++;
+		else
+			j--;
+	}
+	return false;
+}
+
+var arr = [ 3, 5, 9, 2, 8, 10, 11 ];
+var val = 17;
+var arrSize =7;
+
+console.log(isPairSum(arr, arrSize, val));
+
+                    `,
+                    output: `true`,
                   },
                 },
               }}
             />
+            <Span>
+              <b>BFS and DFS</b>
+            </Span>
+            <Span>
+              For their implementations at trees and graphs , please refer to
+              non-linear data structures.
+            </Span>
           </>
         ),
       },
