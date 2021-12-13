@@ -7003,7 +7003,202 @@ s
       },
       search: {
         title: "Searching",
-        types: [],
+        content: (
+          <>
+            <Span>
+              It's used to check for an element or retrieve an element from any
+              data structure where it is stored.
+            </Span>
+            <Span>
+              <b>Types:</b>
+            </Span>
+            <Span>
+              <b>1. Sequential Search:</b>
+            </Span>
+            <Span>
+              In this type, data structure is traversed sequentially and every
+              element is checked.
+            </Span>
+            <Span>
+              <b>Example:</b>
+            </Span>
+            <Span>
+              <b>Linear search:</b>
+            </Span>
+            <Span>
+              It's a basic algorithm to find a element in the data structure.
+            </Span>
+            <Span>
+              <b>Best case TC: </b> O(1) <br />
+              <b>Worst case TC: </b> O(n) <br />
+              <b>Space Complexity: </b> O(1)
+            </Span>
+            <p>
+              <b>Implemtation (basic + optimized):</b>
+            </p>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `function basicSearch(arr,ele){
+                      let flag = false;
+                      for(let index in arr){
+                        if(arr[index] === ele)
+                        {
+                          flag = true
+                          return Number(index) + 1 +"th"
+                        }
+                      }
+                      if(!flag) return "Not found"
+                    }
+                    
+                    function optimizedSearch(arr, ele)
+                    {
+                      let left = 0;
+                      let length = arr.length;
+                      let right = length - 1;
+                      let position = -1;
+                      for(left = 0; left <= right;)
+                      {
+                        if (arr[left] == ele)
+                        {
+                          position = left;
+                          console.log(
+                            "Element found in array at " +
+                            (position+1) + "th position with " +
+                              (left + 1) + " attempt");
+                          break;
+                        }
+                    
+                        if (arr[right] == ele)
+                        {
+                          position = right;
+                          console.log(
+                            "Element found in array at " +
+                            (position + 1) + "th position with " +
+                            (length - right) + " attempt");
+                          break;
+                        }
+                        left++;
+                        right--;
+                      }
+                    
+                      if (position == -1)
+                        console.log("Not found in Array with " +
+                              left + " Attempt");
+                    }
+                      
+                    let arr = [ 1, 2, 3, 4, 5 ];
+                    let search_element = 5;
+                    console.log(basicSearch(arr, search_element))
+                    optimizedSearch(arr, search_element);
+                    `,
+                    output: `
+                    5th
+Element found in array at 5th position with 1 attempt
+                    `,
+                  },
+                },
+              }}
+            />
+            <Span>
+              <b>2. Interval Search:</b>
+            </Span>
+            <Span>
+              These algorithms are specifically designed for sorted data
+              structures. These types of algorithms are much more efficient than
+              linear search as they repeatedly target the center of the search
+              structure and divide the search space in half.
+            </Span>
+            <Span>
+              <b>Binary search:</b>
+            </Span>
+            <Span>
+              The original Binary search algorithm can not be applied to linked
+              list because linked list by nature is dynamic and it is not known
+              where the middle element is actually allocated. So, some of the
+              efforts are required to apply binary search over a linked list to
+              obtain the advantages. The main problem that binary search takes
+              O(n) time in Linked List due to fact that in linked list we are
+              not able to do indexing which led traversing of each element in
+              Linked list take O(n) time.
+            </Span>
+            <Span>
+              Complexities
+            </Span>
+            <Span>
+              Best TC: O(1) //  central index would directly match the desired value. <br/>
+              Avg. TC: O(log n)  <br/>
+              Worst TC: O(log n)  <br/>
+              Space Complexity (Iteration): O(1)  <br/>
+              Space Complexity (Recursion): O(log n) 
+            </Span>
+            <p>Implementation</p>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `function recBinarySearch(arr, l, r, x){
+                      if (r >= l) {
+                          let mid = l + Math.floor((r - l) / 2);
+                          if (arr[mid] == x)
+                              return mid;
+                          if (arr[mid] > x)
+                              return binarySearch(arr, l, mid - 1, x);
+                          return binarySearch(arr, mid + 1, r, x);
+                      }
+                      return -1;
+                  }
+                  
+                  // every number can be represented as the sum of powers of 2.
+                  // Hence it can solved using bitwise approach
+                  
+                  function binarySearch(arr, x)
+                  {
+                    let l = 0;
+                    let r = arr.length - 1;
+                    let mid;
+                    while (r >= l) {
+                      mid = l + Math.floor((r - l) / 2);
+                      if (arr[mid] == x)
+                        return mid;
+                      if (arr[mid] > x)
+                        r = mid - 1;
+                      else
+                        l = mid + 1;
+                    }
+                    return -1;
+                  }
+                  
+                  const	arr =new Array(2, 3, 4, 10, 40);
+                  const	x = 10;
+                  const	n = arr.length;
+                  const	result = binarySearch(arr, x);
+                  console.log(result)
+                  `,
+                    output: `3`,
+                  },
+                },
+              }}
+            />
+            <Span>
+              <b>Two pointers technique:</b>
+            </Span>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: ``,
+                    output: ``,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       Complexity: {
         title: "Complexity",
