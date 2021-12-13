@@ -7374,6 +7374,56 @@ console.log(isPairSum(arr, arrSize, val));
             <Span>
               <b>Asynmptotic Notations</b>
             </Span>
+            <Span>
+              These are the mathematical tools used to compute eddiciency of the
+              algorithm which doesn't require algorithms to be implemented.
+            </Span>
+            <Span>
+              n refers to the size of the input, in your case it's the number of
+              items in your list. O(n) means that your algorithm will take on
+              the order of n operations to insert an item
+            </Span>
+            <Span>
+              <b>Types:</b>
+            </Span>
+            <Span>1. Theta notation:</Span>
+            <Span>
+              The theta notation bounds a function from above and below, so it
+              defines exact asymptotic behavior. A simple way to get the Theta
+              notation of an expression is to drop low-order terms and ignore
+              leading constants. For example, consider the following expression.
+              3n3 + 6n2 + 6000 = Θ(n3) Dropping lower order terms is always fine
+              because there will always be a number(n) after which Θ(n3) has
+              higher values than Θ(n2) irrespective of the constants involved.
+              For a given function g(n), we denote Θ(g(n)) is following set of
+              functions. Θ(g(n)) = [f(n): there exist positive constants c1, c2
+              and n0 such that 0 less than or equal to c1*g(n) less than or
+              equal to f(n) less than or equal to c2*g(n) for all n greater than
+              or equal to n0]
+            </Span>
+            <Span>2. Big O notation:</Span>
+            <Span>
+              The Big O notation defines an upper bound of an algorithm, it
+              bounds a function only from above. The Big O notation is useful
+              when we only have an upper bound on the time complexity of an
+              algorithm. Many times we easily find an upper bound by simply
+              looking at the algorithm.
+            </Span>
+            <Span>
+              O(g(n)) = [ f(n): there exist positive constants c and n0 such
+              that 0 less than or equal to f(n) less than or equal to c*g(n) for
+              all n greater than or equal to n0]
+            </Span>
+            <Span>3. Omega notation:</Span>
+            <Span>
+              Just as Big O notation provides an asymptotic upper bound on a
+              function, Ω notation provides an asymptotic lower bound.
+            </Span>
+            <Span>
+              Ω (g(n)) = [f(n): there exist positive constants c and n0 such
+              that 0 less than or equal to c*g(n) less than or equal to f(n) for
+              all n greater than or equal to n0].
+            </Span>
           </>
         ),
       },
