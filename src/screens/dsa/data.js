@@ -7133,6 +7133,21 @@ Element found in array at 5th position with 1 attempt
               Space Complexity (Iteration): O(1) <br />
               Space Complexity (Recursion): O(log n)
             </Span>
+            <Span>
+              Here we are using int mid = low + (high - low)/2; instead of int
+              mid = (low + high)/2;
+            </Span>
+            <Span>
+              But if we calculate the middle index like this means our code is
+              not 100% correct, it contains bugs. That is, it fails for larger
+              values of int variables low and high. Specifically, it fails if
+              the sum of low and high is greater than the maximum positive int
+              value(2^31 - 1 ). The sum overflows to a negative value and the
+              value stays negative when divided by 2. In java, it throws
+              ArrayIndexOutOfBoundException. int mid = low + (high - low)/2; So
+              it's better to use it like this. This bug applies equally to merge
+              sort and other divide and conquer algorithms.
+            </Span>
             <p>Implementation</p>
             <CodeEditor
               options={{
