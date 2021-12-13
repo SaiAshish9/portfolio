@@ -1,4 +1,5 @@
 import { CodeEditor, Span } from "./components";
+import BigOChart from "assets/home/complexity-chart.jpeg";
 
 export const DATA = {
   ds: {
@@ -7256,6 +7257,19 @@ console.log(isPairSum(arr, arrSize, val));
         title: "Algorithmic Analysis",
         content: (
           <>
+            <img
+              src={BigOChart}
+              alt="img"
+              style={{ width: "18rem", margin: "0 auto 2rem" }}
+            />
+            <Span>
+              O(1) ===  constant   <br/>
+              O(log n) ===  usually searching algorithms   <br/>
+              O(n) === linear , single loop <br/>
+              O(n^2) === nested loops <br/>
+              O(2^n) === exponential === recursion <br/>
+              O(n!) === loop for every element.
+            </Span>
             <Span>
               <b>Analysis of algorithms:</b>
             </Span>
@@ -7358,7 +7372,7 @@ console.log(isPairSum(arr, arrSize, val));
               inputs. We sum all the cases and divide the sum by (n+1)
             </Span>
             <Span>
-              <b>Worst Case ( Lower bound ) Analysis</b>
+              <b>Best Case ( Lower bound ) Analysis</b>
             </Span>
             <Span>
               This case computes minimum number of operations to be executed.
