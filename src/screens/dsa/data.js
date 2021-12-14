@@ -7486,7 +7486,7 @@ console.log(isPairSum(arr, arrSize, val));
 
             <Span>Examples:</Span>
             <Span>
-              1. T(n) = T(n-1) + 1 <br />
+              1. T(n) = T(n-1) + constant <br />
               O(n)
             </Span>
             <Span>
@@ -7494,6 +7494,16 @@ console.log(isPairSum(arr, arrSize, val));
             </Span>
             <Span>
               3. T(n) = T(n-1) + logn <br /> O(nlogn)
+            </Span>
+            <Span>
+              <pre>
+                void Test(int n){"{"} // T(n) <br />
+                if(n&gt;gt) // 1 <br />
+                for(int i=0;i&lt;n;i*=2) // log2 n <br />
+                printf("%d",i); // 1 <br />
+                Test(n-1); // T(n-1) <br />
+                {"}"}
+              </pre>
             </Span>
             <Span>
               4. T(n) = 2T(n-1) + 1 <br /> O(2^n)
@@ -7510,60 +7520,80 @@ console.log(isPairSum(arr, arrSize, val));
             </Span>
 
             <Span>
-              T(n) = aT(n/b) + f(n) , f(n) = O(n^k * logp n) , f(n) &lt;= c*g(n) ,
-              a&gt;=1 , b&gt;1
+              T(n) = aT(n/b) + f(n) , f(n) = O(n^k * logp n) , f(n) &lt;= c*g(n)
+              , a&gt;=1 , b&gt;1
             </Span>
             <Span>
-              Case 1: logb a &gt; k <br/>
+              Case 1: logb a &gt; k <br />
               O(n^logb a)
             </Span>
-            
+
+            <Span>Case 2: logb a = k</Span>
+            <Span>a. p &gt; -1</Span>
+            <Span>O(n^k * logp+1 n)</Span>
+            <Span>b. p = -1</Span>
+            <Span>O(n^k * log logn)</Span>
+            <Span>a. p &lt; -1</Span>
+            <Span>O(n^k)</Span>
+            <Span>Case 3: if logb a &lt; k</Span>
+            <Span>a. p &gt;= 0</Span>
+            <Span>O(n^k * logp n)</Span>
+            <Span>b. p &lt; 0</Span>
+            <Span>O(n^k)</Span>
+
+            <Span>There are following three cases:</Span>
             <Span>
-              Case 2: logb a = k 
+              1. If f(n) = O(n^k) where k &lt; logb a then T(n) = Θ(n^logb a)
             </Span>
             <Span>
-              a. p &gt; -1
+              2. If f(n) = Θ(n^k) where k = logb a then T(n) = Θ(n^k log n)
             </Span>
             <Span>
-              O(n^k * logp+1 n)
-            </Span>
-            <Span>
-              b. p = -1
-            </Span>
-            <Span>
-              O(n^k * log logn)
-            </Span>
-            <Span>
-              a. p &lt; -1
-            </Span>
-            <Span>
-              O(n^k)
-            </Span>
-            <Span>
-              Case 3: if logb a &lt; k 
-            </Span>
-            <Span>
-              a. p &gt;= 0
-            </Span>
-            <Span>
-              O(n^k * logp n)
-            </Span>
-            <Span>
-              b. p &lt; 0
-            </Span>
-            <Span>
-              O(n^k)
+              3.If f(n) = Ω(n^k) where k &gt; logb a then T(n) = Θ(f(n))
             </Span>
           </>
         ),
       },
       recursive: {
         title: "Recursion",
-        types: [],
+        content: (
+          <>
+            <Span>
+              It is a process in which a fn ( recursive fn ) calls itself.
+            </Span>
+            <Span>Types:</Span>
+            <Span>There are mainly three ways for solving recurrences.</Span>
+            <Span>
+              1) Substitution Method: We make a guess for the solution and then
+              we use mathematical induction to prove the guess is correct or
+              incorrect.
+            </Span>
+            <Span>
+              For example consider the recurrence T(n) = 2T(n/2) + n We guess
+              the solution as T(n) = O(nLogn). Now we use induction to prove our
+              guess. We need to prove that T(n) &lt;= cnLogn. We can assume that
+              it is true for values smaller than n.
+            </Span>
+            <pre>
+              T(n) = 2T(n/2) + n &lt;= 2cn/2Log(n/2) + n = cnLogn - cnLog2 + n =
+              cnLogn - cn + n &lt;= cnLogn
+            </pre>
+            <Span>
+              2) Recurrence Tree Method: In this method, we draw a recurrence
+              tree and calculate the time taken by every level of tree. Finally,
+              we sum the work done at all levels. To draw the recurrence tree,
+              we start from the given recurrence and keep drawing till we find a
+              pattern among levels. The pattern is typically a arithmetic or
+              geometric series.
+            </Span>
+            <Span>3. Master's method</Span>
+            <Span>I created separate section for this.</Span>
+            <Span>Recursion vs backtracking:</Span>
+          </>
+        ),
       },
       "divide&Conquer": {
         title: "Divide & Conquer",
-        types: [],
       },
       greedy: {
         title: "Greedy",
