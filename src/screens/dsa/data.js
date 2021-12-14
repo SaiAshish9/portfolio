@@ -5070,7 +5070,7 @@ if __name__=='__main__':
                         }
                         
                         let obj = new Graph(4);
-                        // 0 1 2 3 4 -> vertices
+                        // 0 1 2 3 -> vertices
                         obj.addEdge(0, 1);
                         obj.addEdge(0, 2);
                         obj.addEdge(1, 2);
@@ -7263,11 +7263,11 @@ console.log(isPairSum(arr, arrSize, val));
               style={{ width: "18rem", margin: "0 auto 2rem" }}
             />
             <Span>
-              O(1) ===  constant   <br/>
-              O(log n) ===  usually searching algorithms   <br/>
-              O(n) === linear , single loop <br/>
-              O(n^2) === nested loops <br/>
-              O(2^n) === exponential === recursion <br/>
+              O(1) === constant <br />
+              O(log n) === usually searching algorithms <br />
+              O(n) === linear , single loop <br />
+              O(n^2) === nested loops <br />
+              O(2^n) === exponential === recursion <br />
               O(n!) === loop for every element.
             </Span>
             <Span>
@@ -7442,8 +7442,120 @@ console.log(isPairSum(arr, arrSize, val));
         ),
       },
       tradeOf: {
-        title: "Master's Method",
-        types: [],
+        title: "Master's Theorem",
+        content: (
+          <>
+            <Span>
+              In the analysis of algorithms, the master theorem for
+              divide-and-conquer recurrences provides an asymptotic analysis
+              (using Big O notation) for recurrence relations of types that
+              occur in the analysis of many divide and conquer algorithms.
+            </Span>
+
+            <Span>
+              for(i=0; i&gt;n; i++) <br />
+              O(n) <br />
+            </Span>
+            <Span>
+              for(i=0; i&gt;n; i+=2) <br />
+              O(n/2) === O(n) <br />
+            </Span>
+
+            <Span>
+              for(i=0; i&gt;n; i/=2) <br />
+              O(log2 n) <br />
+            </Span>
+            <Span>
+              for(i=0; i&gt;n; i*/2) <br />
+              O(log2 n) <br />
+            </Span>
+
+            <Span>
+              for(i=0; i&gt;n; i*=3) <br />
+              O(log3 n) <br />
+            </Span>
+
+            <Span>
+              <b>Decreasing functions</b>
+            </Span>
+
+            <Span>
+              T(n) = aT(n-b) + f(n) , f(n) = O(n^k) , f(n) &lt;= c*g(n) ,
+              k&gt;=0 , a&gt;0 , b&gt;0
+            </Span>
+
+            <Span>Examples:</Span>
+            <Span>
+              1. T(n) = T(n-1) + 1 <br />
+              O(n)
+            </Span>
+            <Span>
+              2. T(n) = T(n-1) + n <br /> O(n^2)
+            </Span>
+            <Span>
+              3. T(n) = T(n-1) + logn <br /> O(nlogn)
+            </Span>
+            <Span>
+              4. T(n) = 2T(n-1) + 1 <br /> O(2^n)
+            </Span>
+            <Span>
+              5. T(n) = 3T(n-1) + 1 <br /> O(3^n)
+            </Span>
+            <Span>
+              6. T(n) = 2T(n-1) + n <br /> O(n2^n)
+            </Span>
+
+            <Span>
+              <b>Dividing functions</b>
+            </Span>
+
+            <Span>
+              T(n) = aT(n/b) + f(n) , f(n) = O(n^k * logp n) , f(n) &lt;= c*g(n) ,
+              a&gt;=1 , b&gt;1
+            </Span>
+            <Span>
+              Case 1: logb a &gt; k <br/>
+              O(n^logb a)
+            </Span>
+            
+            <Span>
+              Case 2: logb a = k 
+            </Span>
+            <Span>
+              a. p &gt; -1
+            </Span>
+            <Span>
+              O(n^k * logp+1 n)
+            </Span>
+            <Span>
+              b. p = -1
+            </Span>
+            <Span>
+              O(n^k * log logn)
+            </Span>
+            <Span>
+              a. p &lt; -1
+            </Span>
+            <Span>
+              O(n^k)
+            </Span>
+            <Span>
+              Case 3: if logb a &lt; k 
+            </Span>
+            <Span>
+              a. p &gt;= 0
+            </Span>
+            <Span>
+              O(n^k * logp n)
+            </Span>
+            <Span>
+              b. p &lt; 0
+            </Span>
+            <Span>
+              O(n^k)
+            </Span>
+          </>
+        ),
       },
       recursive: {
         title: "Recursion",
