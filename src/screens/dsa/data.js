@@ -7870,11 +7870,47 @@ console.log(isPairSum(arr, arrSize, val));
             </Span>
             <Span>3. Master's method</Span>
             <Span>I created separate section for this.</Span>
+            {/* Function to find the maximum no. */}
+            {/* https://www.geeksforgeeks.org/divide-and-conquer-algorithm-introduction/ */}
+            <CodeEditor
+              options={{
+                output: ``,
+                codes: {
+                  Javascript: {
+                    code: `#wip`,
+                    output: ``,
+                  },
+                },
+              }}
+            />
           </>
         ),
       },
       "divide&Conquer": {
         title: "Divide & Conquer",
+        content: (
+          <>
+            <Span>
+              This technique is used to solve the given problem by dividing it
+              into smaller sub problems , solving them recursively and combining
+              the solutions.
+            </Span>
+            <Span>Examples: Merge sort, quick sort and toh</Span>
+
+            <Span>
+              <b>DAC ( Divide And Conquer ) Vs DP (Dynamic Programming)</b>
+            </Span>
+            <Span>
+              Divide and Conquer should be used when the same subproblems are
+              not evaluated many times. Otherwise Dynamic Programming or
+              Memoization should be used. For example, Quicksort is a Divide and
+              Conquer algorithm, we never evaluate the same subproblems again.
+              On the other hand, for calculating the nth Fibonacci number,
+              Dynamic Programming should be preferred
+            </Span>
+            <p>Function to find the maximum no. in a given array.</p>
+          </>
+        ),
       },
       greedy: {
         title: "Greedy",
