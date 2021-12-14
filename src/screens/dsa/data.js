@@ -7870,19 +7870,6 @@ console.log(isPairSum(arr, arrSize, val));
             </Span>
             <Span>3. Master's method</Span>
             <Span>I created separate section for this.</Span>
-            {/* Function to find the maximum no. */}
-            {/* https://www.geeksforgeeks.org/divide-and-conquer-algorithm-introduction/ */}
-            <CodeEditor
-              options={{
-                output: ``,
-                codes: {
-                  Javascript: {
-                    code: `#wip`,
-                    output: ``,
-                  },
-                },
-              }}
-            />
           </>
         ),
       },
@@ -7909,6 +7896,19 @@ console.log(isPairSum(arr, arrSize, val));
               Dynamic Programming should be preferred
             </Span>
             <p>Function to find the maximum no. in a given array.</p>
+            {/* Function to find the maximum no. */}
+            {/* https://www.geeksforgeeks.org/divide-and-conquer-algorithm-introduction/ */}
+            <CodeEditor
+              options={{
+                output: ``,
+                codes: {
+                  Javascript: {
+                    code: `#wip`,
+                    output: ``,
+                  },
+                },
+              }}
+            />
           </>
         ),
       },
