@@ -1,4 +1,4 @@
-import { CodeEditor, Span } from "./components";
+import { CodeEditor, Span, Img } from "./components";
 import BigOChart from "assets/home/complexity-chart.jpeg";
 
 export const DATA = {
@@ -6434,6 +6434,13 @@ console.log(arr)
                   halves.It's stable.
                 </Span>
                 <Span>
+                  Unlike arrays, linked list nodes may not be adjacent in
+                  memory. Unlike array, in linked list, we can insert items in
+                  the middle in O(1) extra space and O(1) time. Therefore merge
+                  operation of merge sort can be implemented without extra space
+                  for linked lists.
+                </Span>
+                <Span>
                   Merge Sort is a recursive algorithm and time complexity can be
                   expressed as following recurrence relation.
                   <br /> T(n) = 2T(n/2) + θ(n)
@@ -7257,11 +7264,7 @@ console.log(isPairSum(arr, arrSize, val));
         title: "Algorithmic Analysis",
         content: (
           <>
-            <img
-              src={BigOChart}
-              alt="img"
-              style={{ width: "18rem", margin: "0 auto 2rem" }}
-            />
+            <Img src={BigOChart} />
             <Span>
               O(1) === constant <br />
               O(log n) === usually searching algorithms <br />
@@ -7551,6 +7554,11 @@ console.log(isPairSum(arr, arrSize, val));
             <Span>
               3.If f(n) = Ω(n^k) where k &gt; logb a then T(n) = Θ(f(n))
             </Span>
+
+            <Span>
+              Binary search: T(n) = T(n/2) + Θ(1). log2 1 == 0 O(n^k * logn)
+            </Span>
+            <Span>T(n) = 2T(n/2) + Θ(n). log2 2 === 1, n^1 * log2 n</Span>
           </>
         ),
       },
@@ -7561,7 +7569,280 @@ console.log(isPairSum(arr, arrSize, val));
             <Span>
               It is a process in which a fn ( recursive fn ) calls itself.
             </Span>
+            <Span>
+              Examples: TOH <br /> DFS Tree Traversals <br /> DFS of graph ,
+            </Span>
+            <Span>
+              When the program executes,the main memory gets divided into three
+              parts. One part for code section, the second one is heap memory
+              and another one is stack memory.
+            </Span>
+            <Span>
+              Heap memory is a Dynamic memory(its size changes as program run)
+              used to store arrays, global variables(with global
+              scope/accessible from any function) and any created class
+              instances(objects) at runtime in Java which are referred by the
+              reference variables from Stack memory.
+            </Span>
             <Span>Types:</Span>
+            <Span>
+              <b>Direct Recursion:</b>
+            </Span>
+            <Span>
+              <b>Types:</b>
+            </Span>
+            <Span>
+              <b>(a) Tail Recursion:</b>
+            </Span>
+            <Span>
+              If recursive call is the last statement in the fn then it's called
+              recursive fn.
+            </Span>
+            <Img src="https://media.geeksforgeeks.org/wp-content/uploads/20190621015455/tail1.jpg" />
+            <p>
+              It occurs when a function calls itself. This results in a one-step
+              recursive call: the function makes a recursive call inside its own
+              function body.
+            </p>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `
+                    function fun(n)
+                    {
+                      if (n > 0)
+                      {
+                        console.log(n + " ");
+                        fun(n - 1);
+                      }
+                    }
+                      var x = 3;
+                      fun(x);
+
+                // Time Complexity : O(n)
+                // Space Complexity: O(n) // n activation records are
+                // created in main menory
+
+                // Using simple for loop, SC will be O(1)
+                // as we're making use of only one activation record 
+
+                // Driver code
+                  var x = 3;
+                    fun(x);
+                    `,
+                    output: `3 2 1`,
+                  },
+                },
+              }}
+            />
+            <Span>
+              <b>(b) Head Recursion:</b>
+            </Span>
+            <Img src="https://media.geeksforgeeks.org/wp-content/uploads/20190621015721/head3.jpg" />
+            <p>
+              If recursive call is the first statement in the fn then it's
+              called recursive fn.
+            </p>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `
+                    function fun(n)
+                    {
+                      if (n > 0)
+                      {
+                        fun(n - 1);
+                        console.log(n + " ");
+                      }
+                    }
+                    // Time Complexity : O(n)
+                    // Space Complexity: O(n) 
+                      var x = 3;
+                      fun(x);
+                    `,
+                    output: `1 2 3`,
+                  },
+                },
+              }}
+            />
+            <Span>
+              Note: Time & Space Complexity is given for this specific example.
+              It may vary for another example. Note: Head recursion can’t easily
+              convert into loop as Tail Recursion but it can. Let’s convert the
+              above code into the loop.
+            </Span>
+            <Span>
+              <b>(c) Tree Recursion:</b>
+            </Span>
+            <Span>
+              If a recursive function calling itself for one time then it’s
+              known as Linear Recursion. Otherwise if a recursive function
+              calling itself for more than one time then it’s known as Tree
+              Recursion.
+            </Span>
+            <Img src="https://media.geeksforgeeks.org/wp-content/uploads/20190621015814/tree4.jpg" />
+            <p>tracing tree of recursive function.</p>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `
+                    function fun(n)
+                    {
+                        if (n > 0) {
+                            console.log(" "+ n);
+                    
+                            fun(n - 1);
+                     
+                            // Calling twice
+                            fun(n - 1);
+                        }
+                    }
+                        fun(3);                     
+                    `,
+                    output: `3 2 1 1 2 1 1`,
+                  },
+                },
+              }}
+            />
+            <Span>
+              <b>(d) Nested Recursion (recursion inside recursion):</b>
+            </Span>
+            <p>
+              a recursive function will pass the parameter as a recursive call
+            </p>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `
+                    function fun( n)
+                    {
+                        if (n > 100)
+                            return n - 10;
+                        return fun(fun(n + 11));
+                    }
+                    
+                    console.log(fun(95));                     
+                    `,
+                    output: `91`,
+                  },
+                },
+              }}
+            />
+
+            <Span>
+              <b>Indirect Recursion:</b>
+            </Span>
+            <Span>
+              In this recursion, there may be more than one functions and they
+              are calling one another in a circular manner.
+            </Span>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `
+                    function funA(n)
+                    {
+                        if (n > 0) {
+                            console.log(n.toFixed(0));
+                            funB(n - 1);
+                        }
+                    }
+                     
+                    function funB(n)
+                    {
+                        if (n > 1) {
+                            console.log(n.toFixed(0));
+                            funA(n / 2);
+                        }
+                    }
+                     
+                    funA(20);                     
+                    `,
+                    output: `20 19 9 8 4 3 1`,
+                  },
+                },
+              }}
+            />
+            <Span>
+              <b>Tower of hanoi problem</b>
+            </Span>
+            <p>
+              Tower of Hanoi is a mathematical puzzle where we have three rods
+              and n disks. The objective of the puzzle is to move the entire
+              stack to another rod, obeying the following simple rules:
+              <br />
+              1.Only one disk can be moved at a time.
+              <br />
+              2.Each move consists of taking the upper disk from one of the
+              stacks and placing it on top of another stack i.e. a disk can only
+              be moved if it is the uppermost disk on a stack.
+              <br />
+              3.No disk may be placed on top of a smaller disk.
+            </p>
+
+            <CodeEditor
+              options={{
+                output: ``,
+                codes: {
+                  Javascript: {
+                    code: `function towerOfHanoi(n, from_rod,  to_rod,  aux_rod)
+                  {
+                    const A = from_rod
+                    const B = to_rod
+                    const C = aux_rod
+                  
+                    if (n == 1){
+                    console.log("Move disk 1 from rod " + from_rod + " to rod " + to_rod);
+                              return;
+                    }
+                          towerOfHanoi(n - 1, A, C, B);
+                          // shift left
+                          console.log("Move disk " + n + " from rod " + from_rod +
+                          " to rod " + to_rod);
+                          towerOfHanoi(n - 1, C, B, A);
+                  }
+                   
+                  var n = 4; 
+                  towerOfHanoi(n, 'A', 'C', 'B');
+                  
+                  // 3 -> 1
+                  // T(n) = 2T(n-1) + 1 // 2^n`,
+                    output: `Move disk 1 from rod A to rod B
+                  Move disk 2 from rod A to rod C
+                  Move disk 1 from rod B to rod C
+                  Move disk 3 from rod A to rod B
+                  Move disk 1 from rod C to rod A
+                  Move disk 2 from rod C to rod B
+                  Move disk 1 from rod A to rod B
+                  Move disk 4 from rod A to rod C
+                  Move disk 1 from rod B to rod C
+                  Move disk 2 from rod B to rod A
+                  Move disk 1 from rod C to rod A
+                  Move disk 3 from rod B to rod C
+                  Move disk 1 from rod A to rod B
+                  Move disk 2 from rod A to rod C
+                  Move disk 1 from rod B to rod C`,
+                  },
+                },
+              }}
+            />
+
+            <Span>Recursion vs backtracking:</Span>
+            <Span>
+              In recursion, the function calls itself until it reaches a base
+              case. In backtracking, we use recursion to explore all the
+              possibilities until we get the best result for the problem.
+            </Span>
             <Span>There are mainly three ways for solving recurrences.</Span>
             <Span>
               1) Substitution Method: We make a guess for the solution and then
@@ -7575,9 +7856,10 @@ console.log(isPairSum(arr, arrSize, val));
               it is true for values smaller than n.
             </Span>
             <pre>
-              T(n) = 2T(n/2) + n &lt;= 2cn/2Log(n/2) + n = cnLogn - cnLog2 + n =
-              cnLogn - cn + n &lt;= cnLogn
+              T(n) = 2T(n/2) + n <br /> &lt;= 2cn/2Log(n/2) + n <br /> = cnLogn
+              - cnLog2 + n <br /> = cnLogn - cn + n <br /> &lt;= cnLogn <br />
             </pre>
+            <br />
             <Span>
               2) Recurrence Tree Method: In this method, we draw a recurrence
               tree and calculate the time taken by every level of tree. Finally,
@@ -7588,7 +7870,6 @@ console.log(isPairSum(arr, arrSize, val));
             </Span>
             <Span>3. Master's method</Span>
             <Span>I created separate section for this.</Span>
-            <Span>Recursion vs backtracking:</Span>
           </>
         ),
       },
@@ -7738,6 +8019,10 @@ if __name__ == '__main__':
             />
           </>
         ),
+      },
+      "np-hard-vs-np-complete": {
+        title: "Deterministic and Non Deterministic Algorithms",
+        // https://www.includehelp.com/algorithms/deterministic-and-non-deterministic.aspx
       },
     },
   },
