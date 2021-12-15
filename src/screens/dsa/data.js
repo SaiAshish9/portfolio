@@ -1059,8 +1059,8 @@ C++ Array Operations:
                   nodes of same type.
                 </Span>
                 <Span>
-                  Types : Singly Linked List, Circular Linked List, Doubly
-                  Linked List And Misc
+                  Types : Singly Linked List, Doubly
+                  Linked List , Circular Linked List ( Singly + Doubly ) And Header Linked List
                 </Span>
                 <b>Implementation</b>
                 <CodeEditor
