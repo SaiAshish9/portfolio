@@ -8862,7 +8862,291 @@ printMaxActivities(s,f)`,
           },
           {
             title: "Job Sequencing With Deadlines",
-            content: <></>,
+            content: (
+              <>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `function printJobScheduling(arr, t){
+                          let n = arr.length;
+                       
+                          for(let i=0;i<n;i++){
+                              for(let j = 0;j<(n - 1 - i);j++){
+                                  if(arr[j][2] < arr[j + 1][2]){
+                                      let temp = arr[j];
+                                      arr[j] = arr[j + 1];
+                                      arr[j + 1] = temp;
+                                  }
+                               }
+                           }
+                       
+                          let result = [];
+                       
+                          let job = [];
+                          for(let i = 0;i<t;i++){
+                              job[i] = '-1';
+                              result[i] = false;
+                          }
+                          
+                          for(let i= 0;i<arr.length;i++){
+                              for(let j = Math.min(t - 1, arr[i][1] - 1);j>=0;j--){
+                                  if(result[j] == false){
+                                      result[j] = true;
+                                      job[j] = arr[i][0];
+                                      break;
+                                  }
+                              }
+                          }
+                       
+                          console.log(job);
+                      }
+                       
+                      arr = [['a', 2, 100],  
+                             ['b', 1, 19],
+                             ['c', 2, 27],
+                             ['d', 1, 25],
+                             ['e', 3, 15]];
+                       
+                      printJobScheduling(arr, 3) ;`,
+                        output: `[ 'c', 'a', 'e' ]`,
+                      },
+                      Java: {
+                        code: `import java.util.*;
+ 
+                        class Main
+                        {
+                            char id;
+                            int deadline, profit;
+                         
+                            public Main() {}
+                         
+                            public Main(char id, int deadline, int profit)
+                            {
+                                this.id = id;
+                                this.deadline = deadline;
+                                this.profit = profit;
+                            }
+                         
+                            void printJobScheduling(ArrayList<Main> arr, int t)
+                            {
+                                int n = arr.size();
+                        
+                                Collections.sort(arr,
+                                                 (a, b) -> b.profit - a.profit);
+                         
+                        // sort jobs on the basis of deadlines
+                        
+                                boolean result[] = new boolean[t];
+                         
+                                char job[] = new char[t];
+                         
+                                for (int i = 0; i < n; i++)
+                                {
+                                    for (int j
+                                         = Math.min(t - 1, arr.get(i).deadline - 1);
+                                         j >= 0; j--) {
+                        
+                                          // iterate from max dealine to 0
+                                          // and choose appropriate jobs using their respective index
+                                          // as we already sorted them  
+                        
+                                        if (result[j] == false)
+                                        {
+                                            result[j] = true;
+                                            job[j] = arr.get(i).id;
+                                            break;
+                                        }
+                                    }
+                                }
+                         
+                                 for (char jb : job)
+                                {
+                                    System.out.print(jb + " ");
+                                }
+                                System.out.println();
+                            }
+                         
+                            public static void main(String args[])
+                            {
+                                ArrayList<Main> arr = new ArrayList<Main>();
+                         
+                                arr.add(new Main('a', 2, 100));
+                                arr.add(new Main('b', 1, 19));
+                                arr.add(new Main('c', 2, 27));
+                                arr.add(new Main('d', 1, 25));
+                                arr.add(new Main('e', 3, 15));
+                               
+                                System.out.println("Following is maximum "
+                                                   + "profit sequence of jobs");
+                         
+                                Main job = new Main();
+                         
+                                job.printJobScheduling(arr, 3);
+                            }
+                        }`,
+                        output: `Following is maximum profit sequence of jobs
+                        c a e `,
+                      },
+                      Python: {
+                        code: `def printJobScheduling(arr, t):
+
+  n = len(arr)
+
+  for i in range(n):
+    for j in range(n - 1 - i):
+      if arr[j][2] < arr[j + 1][2]:
+        arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+  result = [False] * t
+
+  job = ['-1'] * t
+
+  for i in range(len(arr)):
+    for j in range(min(t - 1, arr[i][1] - 1), -1, -1):
+      if result[j] is False:
+        result[j] = True
+        job[j] = arr[i][0]
+        break
+
+  print(job)
+
+arr = [['a', 2, 100], 
+  ['b', 1, 19],
+  ['c', 2, 27],
+  ['d', 1, 25],
+  ['e', 3, 15]]
+
+
+print("Following is maximum profit sequence of jobs")
+printJobScheduling(arr, 3)`,
+                        output: `['c', 'a', 'e']`,
+                      },
+                      "C++": {
+                        code: `#include<iostream>
+                        #include<algorithm>
+                        using namespace std;
+                         
+                        struct Job
+                        {
+                           char id;    
+                           int dead;    
+                           int profit;  
+                        };
+                         
+                        bool comparison(Job a, Job b)
+                        {
+                             return (a.profit > b.profit);
+                        }
+                         
+                        void printJobScheduling(Job arr[], int n)
+                        {
+                            sort(arr, arr+n, comparison);
+                         
+                            int result[n]; 
+                            bool slot[n];  
+                         
+                            for (int i=0; i<n; i++)
+                                slot[i] = false;
+                         
+                            for (int i=0; i<n; i++)
+                            {
+                               for (int j=min(n, arr[i].dead)-1; j>=0; j--)
+                               {
+                                  if (slot[j]==false)
+                                  {
+                                     result[j] = i; 
+                                     slot[j] = true; 
+                                     break;
+                                  }
+                               }
+                            }
+                             for (int i=0; i<n; i++)
+                               if (slot[i])
+                                 cout << arr[result[i]].id << " ";
+                        }
+                         
+                        int main()
+                        {
+                            Job arr[] = { {'a', 2, 100}, {'b', 1, 19}, {'c', 2, 27},
+                                           {'d', 1, 25}, {'e', 3, 15}};
+                            int n = sizeof(arr)/sizeof(arr[0]);
+                            cout << "Following is maximum profit sequence of jobs \n";
+                               printJobScheduling(arr, n);
+                            return 0;
+                        }`,
+                        output: `Following is maximum profit sequence of jobs 
+                        c a e`,
+                      },
+                      Kotlin: {
+                        code: `import java.util.*
+
+                        internal class Main {
+                            var id = 0.toChar()
+                            var deadline = 0
+                            var profit = 0
+                        
+                            constructor() {}
+                            constructor(id: Char, deadline: Int, profit: Int) {
+                                this.id = id
+                                this.deadline = deadline
+                                this.profit = profit
+                            }
+                        
+                            fun printJobScheduling(arr: ArrayList<Main?>, t: Int) {
+                                val n: Int = arr.size()
+                                Collections.sort(
+                                    arr
+                                ) { a, b -> b.profit - a.profit }
+                        
+                        // sort jobs on the basis of deadlines
+                                val result = BooleanArray(t)
+                                val job = CharArray(t)
+                                for (i in 0 until n) {
+                                    for (j in Math.min(t - 1, arr.get(i).deadline - 1) downTo 0) {
+                        
+                                        // iterate from max dealine to 0
+                                        // and choose appropriate jobs using their respective index
+                                        // as we already sorted them  
+                                        if (result[j] == false) {
+                                            result[j] = true
+                                            job[j] = arr.get(i).id
+                                            break
+                                        }
+                                    }
+                                }
+                                for (jb: Char in job) {
+                                    System.out.print("$jb ")
+                                }
+                                System.out.println()
+                            }
+                        
+                            companion object {
+                                fun main(args: Array<String?>?) {
+                                    val arr: ArrayList<Main?> = ArrayList<Main>()
+                                    arr.add(Main('a', 2, 100))
+                                    arr.add(Main('b', 1, 19))
+                                    arr.add(Main('c', 2, 27))
+                                    arr.add(Main('d', 1, 25))
+                                    arr.add(Main('e', 3, 15))
+                                    System.out.println(
+                                        "Following is maximum "
+                                                + "profit sequence of jobs"
+                                    )
+                                    val job = Main()
+                                    job.printJobScheduling(arr, 3)
+                                }
+                            }
+                        }`,
+                        output: `Following is maximum profit sequence of jobs
+                        c a e `,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Fractional Knapsack",
