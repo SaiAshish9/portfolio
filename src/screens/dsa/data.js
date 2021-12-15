@@ -1059,8 +1059,8 @@ C++ Array Operations:
                   nodes of same type.
                 </Span>
                 <Span>
-                  Types : Singly Linked List, Doubly
-                  Linked List , Circular Linked List ( Singly + Doubly ) And Header Linked List
+                  Types : Singly Linked List, Doubly Linked List , Circular
+                  Linked List ( Singly + Doubly ) And Header Linked List
                 </Span>
                 <b>Singly Linked List Implementation :</b>
                 <CodeEditor
@@ -1928,6 +1928,42 @@ int main(){
                     },
                   }}
                 />
+                <b>Doubly Linked List Implementation :</b>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
+                <b>Circular Doubly Linked List Implementation :</b>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
+                <b>Header Linked List Implementation :</b>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
                 <Span>
                   <b>Stack (LIFO/FILO) :</b>
                 </Span>
@@ -1941,7 +1977,6 @@ int main(){
                 </Span>
                 <b>Implementation</b>
                 <CodeEditor
-                  // https://www.geeksforgeeks.org/implement-a-stack-using-singly-linked-list/
                   options={{
                     output: null,
                     codes: {
