@@ -8875,12 +8875,24 @@ printMaxActivities(s,f)`,
                   the total profit if only one job can be scheduled at a time
                 </Span>
                 <Span>
+                  <b>Greedy Approach</b>
+                </Span>
+                <Span>
+                  Sort all the jobs in decreasing order of their profit. And
+                  then with the help of result boolean array , assign values to
+                  jobs array with the help of corresponding deadlines.
+                </Span>
+                <Span>
                   <b>Example</b>
                 </Span>
                 <p>
                   JobId: A , B , C , D , E <br />
                   Deadline (Units/time): 2 , 1 , 2 ,1 ,3 <br />
-                  Profit 100, 19, 27, 25, 15
+                  Profit 100, 19, 27, 25, 15 <br />
+                  answer (a to b units / time) will be : 0 C 1 A 2 E 3 <br />( E
+                  can be completed within 3 units of time and both A and C with
+                  comparatively larger profit than D and B can be completed
+                  within 2 units of time )
                 </p>
                 <CodeEditor
                   options={{
