@@ -1062,7 +1062,7 @@ C++ Array Operations:
                   Types : Singly Linked List, Doubly
                   Linked List , Circular Linked List ( Singly + Doubly ) And Header Linked List
                 </Span>
-                <b>Implementation</b>
+                <b>Singly Linked List Implementation :</b>
                 <CodeEditor
                   options={{
                     output: null,
