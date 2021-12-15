@@ -9600,7 +9600,7 @@ if __name__ == "__main__":
                         2
                         1`,
                       },
-                      Java:{
+                      Java: {
                         code: `
                        
 import java.util.Vector;
@@ -9643,8 +9643,8 @@ class Main
                         `,
                         output: `Following is minimal number of change for 93:  50 20 20 2 1`,
                       },
-                      Python:{
-  code:`def findMin(V):
+                      Python: {
+                        code: `def findMin(V):
   deno = [1, 2, 5, 10, 20, 50,
       100, 500, 1000]
   n = len(deno)
@@ -9667,10 +9667,10 @@ if __name__ == '__main__':
     "of change for", n, ": ", end = "")
   findMin(n)
                       `,
-                        output:`Following is minimal number of change for 93 : 50 20 20 2 1`
+                        output: `Following is minimal number of change for 93 : 50 20 20 2 1`,
                       },
-                      'C++':{
-                        code:`#include <bits/stdc++.h>
+                      "C++": {
+                        code: `#include <bits/stdc++.h>
                         using namespace std;
                          
                         int deno[] = { 1, 2, 5, 10, 20,
@@ -9703,12 +9703,12 @@ if __name__ == '__main__':
                             findMin(n);
                             return 0;
                         }`,
-                        output:`Following is minimal number of change for 93: 50 20 20 2 1` 
+                        output: `Following is minimal number of change for 93: 50 20 20 2 1`,
                       },
-                      Kotlin:{
-                        code:``,
-                        output:`Following is minimal number of change for 93:  50 20 20 2 1` 
-                      }
+                      Kotlin: {
+                        code: ``,
+                        output: `Following is minimal number of change for 93:  50 20 20 2 1`,
+                      },
                     },
                   }}
                 />
@@ -9717,7 +9717,299 @@ if __name__ == '__main__':
           },
           {
             title: "Maximum Equal Sum Possible With Three Stacks",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement:</b>
+                </Span>
+                <Span>
+                  Given three stacks of the positive numbers, the task is to
+                  find the possible equal maximum sum of the stacks with the
+                  removal of top elements allowed.
+                </Span>
+                <Span>
+                  <b>Greedy Approach</b>
+                </Span>
+                <Span>
+                  1. Find the sum of all elements of in individual stacks.
+                  <br />
+                  2. If the sum of all three stacks is the same, then this is
+                  the maximum sum. <br />
+                  3. Else remove the top element of the stack having the maximum
+                  sum among three of stacks. Repeat step 1 and step 2.
+                </Span>
+                <Span>
+                  <b>Example</b>
+                </Span>
+                <p>
+                  i/p :
+                  <br />
+                  stack1 [2,3]
+                  <br />
+                  stack 2 [4,10]
+                  <br />
+                  stack 3 [1,9]
+                  <br />
+                  o/p : 0
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `function maxSum(stack1, stack2,
+                          stack3, n1, n2, n3)
+                      {
+                      let sum1 = 0, sum2 = 0, sum3 = 0;
+                      
+                      for(let i = 0; i < n1; i++)
+                      sum1 += stack1[i];
+                      
+                      for(let i = 0; i < n2; i++)
+                      sum2 += stack2[i];
+                      
+                      for(let i = 0; i < n3; i++)
+                      sum3 += stack3[i];
+                      
+                      let top1 = 0, top2 = 0, top3 = 0;
+                      let ans = 0;
+                      
+                      while (true)
+                      {
+                      if (top1 == n1 || top2 == n2 ||
+                      top3 == n3)
+                      return 0;
+                       
+                      if (sum1 == sum2 && sum2 == sum3)
+                      return sum1;
+                      
+                      if (sum1 >= sum2 && sum1 >= sum3)
+                      sum1 -= stack1[top1++];
+                      else if (sum2 >= sum1 && sum2 >= sum3)
+                      sum2 -= stack2[top2++];
+                      else if (sum3 >= sum2 && sum3 >= sum1)
+                      sum3 -= stack3[top3++];
+                      }
+                      }
+                      
+                      let stack1 = [ 3, 2, 1, 1, 1 ];
+                      let stack2 = [ 4, 3, 2 ];
+                      let stack3 = [ 1, 1, 4, 1 ];
+                      
+                      let n1 = stack1.length;
+                      let n2 = stack2.length;
+                      let n3 = stack3.length;
+                      
+                      console.log(maxSum(stack1, stack2,
+                                stack3, n1, n2, n3));`,
+                        output: `5`,
+                      },
+                      Java: {
+                        code: `class Main {
+	
+                          public static int maxSum(int stack1[], int stack2[],
+                                      int stack3[], int n1, int n2,
+                                              int n3)
+                          {
+                          int sum1 = 0, sum2 = 0, sum3 = 0;
+                          
+                          for (int i=0; i < n1; i++)
+                            sum1 += stack1[i];
+                          
+                          for (int i=0; i < n2; i++)
+                            sum2 += stack2[i];
+                          
+                          for (int i=0; i < n3; i++)
+                            sum3 += stack3[i];
+                          
+                          int top1 =0, top2 = 0, top3 = 0;
+                          int ans = 0;
+                          while (true)
+                          {
+                            if (top1 == n1 || top2 == n2 || top3 == n3)
+                              return 0;
+                          
+                            if (sum1 == sum2 && sum2 == sum3)
+                              return sum1;
+                            
+                            if (sum1 >= sum2 && sum1 >= sum3)
+                              sum1 -= stack1[top1++];
+                            else if (sum2 >= sum1 && sum2 >= sum3)
+                              sum2 -= stack2[top2++];
+                            else if (sum3 >= sum2 && sum3 >= sum1)
+                              sum3 -= stack3[top3++];
+                          }
+                          }
+                          
+                          public static void main(String[] args)
+                          {
+                            int stack1[] = { 3, 2, 1, 1, 1 };
+                            int stack2[] = { 4, 3, 2 };
+                            int stack3[] = { 1, 1, 4, 1 };
+                            
+                            int n1 = stack1.length;
+                            int n2 = stack2.length;
+                            int n3 = stack3.length;
+                            
+                            System.out.println(maxSum(stack1, stack2,
+                                      stack3, n1, n2, n3));
+                          }
+                        }`,
+                        output: `5`
+                      },
+                      Python: {
+                        code: `def maxSum(stack1, stack2, stack3, n1, n2, n3):
+          sum1, sum2, sum3 = 0, 0, 0
+        
+          for i in range(n1):
+            sum1 += stack1[i]
+        
+          for i in range(n2):
+            sum2 += stack2[i]
+        
+          for i in range(n3):
+            sum3 += stack3[i]
+        
+          top1, top2, top3 = 0, 0, 0
+          ans = 0
+          while (1):
+            if (top1 == n1 or top2 == n2 or top3 == n3):
+              return 0
+        
+            if (sum1 == sum2 and sum2 == sum3):
+              return sum1
+          
+            if (sum1 >= sum2 and sum1 >= sum3):
+              sum1 -= stack1[top1]
+              top1=top1+1
+            elif (sum2 >= sum1 and sum2 >= sum3):
+              sum2 -= stack2[top2]
+              top2=top2+1
+            elif (sum3 >= sum2 and sum3 >= sum1):
+              sum3 -= stack3[top3]
+              top3=top3+1
+        
+        stack1 = [ 3, 2, 1, 1, 1 ]
+        stack2 = [ 4, 3, 2 ]
+        stack3 = [ 1, 1, 4, 1 ]
+        
+        n1 = len(stack1)
+        n2 = len(stack2)
+        n3 = len(stack3)
+        
+        print(maxSum(stack1, stack2, stack3, n1, n2, n3))`,
+                        output: `5`
+                      },
+                      'C++': {
+                        code: `#include <bits/stdc++.h>
+                        using namespace std;
+                        
+                        int maxSum(int stack1[], int stack2[], int stack3[], int n1,
+                            int n2, int n3)
+                        {
+                          int sum1 = 0, sum2 = 0, sum3 = 0;
+                        
+                          for (int i = 0; i < n1; i++)
+                            sum1 += stack1[i];
+                        
+                          for (int i = 0; i < n2; i++)
+                            sum2 += stack2[i];
+                        
+                          for (int i = 0; i < n3; i++)
+                            sum3 += stack3[i];
+                        
+                          int top1 = 0, top2 = 0, top3 = 0;
+                          while (1) {
+                            if (top1 == n1 || top2 == n2 || top3 == n3)
+                              return 0;
+                        
+                            if (sum1 == sum2 && sum2 == sum3)
+                              return sum1;
+                        
+                            if (sum1 >= sum2 && sum1 >= sum3)
+                              sum1 -= stack1[top1++];
+                            else if (sum2 >= sum1 && sum2 >= sum3)
+                              sum2 -= stack2[top2++];
+                            else if (sum3 >= sum2 && sum3 >= sum1)
+                              sum3 -= stack3[top3++];
+                          }
+                        }
+                        
+                        int main()
+                        {
+                          int stack1[] = { 3, 2, 1, 1, 1 };
+                          int stack2[] = { 4, 3, 2 };
+                          int stack3[] = { 1, 1, 4, 1 };
+                        
+                          int n1 = sizeof(stack1) / sizeof(stack1[0]);
+                          int n2 = sizeof(stack2) / sizeof(stack2[0]);
+                          int n3 = sizeof(stack3) / sizeof(stack3[0]);
+                        
+                          cout << maxSum(stack1, stack2, stack3, n1, n2, n3)
+                            << endl;
+                          return 0;
+                        }
+                        `,
+                        output: `5`
+                      },
+                      Kotlin: {
+                        code: `class M {
+
+                          public static int maxSum(int stack1[], int stack2[],
+                          int stack3[], int n1, int n2,
+                          int n3)
+                          {
+                              int sum1 = 0, sum2 = 0, sum3 = 0;
+                      
+                              for (int i=0; i < n1; i++)
+                              sum1 += stack1[i];
+                      
+                              for (int i=0; i < n2; i++)
+                              sum2 += stack2[i];
+                      
+                              for (int i=0; i < n3; i++)
+                              sum3 += stack3[i];
+                      
+                              int top1 =0, top2 = 0, top3 = 0;
+                              int ans = 0;
+                              while (true)
+                              {
+                                  if (top1 == n1 || top2 == n2 || top3 == n3)
+                                      return 0;
+                      
+                                  if (sum1 == sum2 && sum2 == sum3)
+                                      return sum1;
+                      
+                                  if (sum1 >= sum2 && sum1 >= sum3)
+                                      sum1 -= stack1[top1++];
+                                  else if (sum2 >= sum1 && sum2 >= sum3)
+                                      sum2 -= stack2[top2++];
+                                  else if (sum3 >= sum2 && sum3 >= sum1)
+                                      sum3 -= stack3[top3++];
+                              }
+                          }
+                      
+                          public static void main(String[] args)
+                          {
+                              int stack1[] = { 3, 2, 1, 1, 1 };
+                              int stack2[] = { 4, 3, 2 };
+                              int stack3[] = { 1, 1, 4, 1 };
+                      
+                              int n1 = stack1.length;
+                              int n2 = stack2.length;
+                              int n3 = stack3.length;
+                      
+                              System.out.println(maxSum(stack1, stack2,
+                                  stack3, n1, n2, n3));
+                          }
+                      }`,
+                        output: `5`
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
         ],
       },
