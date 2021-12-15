@@ -8698,6 +8698,18 @@ The maximum number in a given array is : 250
               <b>Optimal Substructure: </b> Acc. to this , an optimal solution
               to the problem contains optimal solution to subproblems.
             </Span>
+            <Span>
+              <b>Feasible Solution:</b>
+            </Span>
+            <Span>It satisfies given condition</Span>
+            <Span>
+              <b>Optimal Solution:</b>
+            </Span>
+            <Span>
+              <b>Optimization Problems</b>
+            </Span>
+            <Span>They require either min or max results</Span>
+            <Span>It's feasible and gives best result</Span>
             <Span>Various Applications are specified at the top section.</Span>
           </>
         ),
