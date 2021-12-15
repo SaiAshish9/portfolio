@@ -7903,8 +7903,55 @@ console.log(isPairSum(arr, arrSize, val));
                 output: ``,
                 codes: {
                   Javascript: {
-                    code: `#wip`,
-                    output: ``,
+                    code: `function DAC_Max(a,index,l)
+                    {
+                        let max;
+                        if (index >= l - 2)
+                        {
+                          // only two elements are left
+                            if (a[index] > a[index + 1])
+                                return a[index];
+                            else
+                                return a[index + 1];
+                        }
+                        max = DAC_Max(a, index + 1, l);
+                        // we need max here for comparison
+                        if (a[index] > max)
+                            return a[index];
+                        else
+                            return max;
+                    }
+                    
+                    function DAC_Min(a,index,l)
+                    {
+                        let min;
+                        if (index >= l - 2)
+                        {
+                            if (a[index] < a[index + 1])
+                                return a[index];
+                            else
+                                return a[index + 1];
+                        }
+                        min = DAC_Min(a, index + 1, l);
+                        if (a[index] < min)
+                            return a[index];
+                        else
+                            return min;
+                    }
+                    
+                    let min, max;
+                    let a=[70, 250, 50, 80, 140, 12, 14];
+                    max = DAC_Max(a, 0, 7);
+                    min = DAC_Min(a, 0, 7);
+                    console.log("The minimum number in " +
+                                      "a given array is : ", min);
+                    console.log("The maximum number in " +
+                                      "a given array is : "+ max);
+                     `,
+                    output: `
+                    The minimum number in a given array is :  12
+The maximum number in a given array is : 250
+                    `,
                   },
                 },
               }}
