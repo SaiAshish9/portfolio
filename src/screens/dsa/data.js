@@ -3788,7 +3788,112 @@ pop_back() :
                   }}
                 />
                 <Span>
-                  <b>4. AVL (Adelson Velsky and Landis) Tree</b>
+                  <b>3. Binary Heap</b>
+                </Span>
+                <Span>
+                  It is a complete binary tree. It can be either min heap or max
+                  heap. In min heap, key value of all parent nodes should be
+                  lesser than their children. And they should be greater then
+                  their children in case of max heap.
+                </Span>
+                <Span>
+                  The traversal method use to achieve Array representation is
+                  Level Order
+                </Span>
+                <Span>It's represented as an array( let's say Arr) where</Span>
+                <Span>
+                  Arr[(i-1)/2] Returns the parent node <br />
+                  Arr[(2*i)+1] Returns the left child node <br />
+                  Arr[(2*i)+2] Returns the right child node 
+                </Span>
+                <Span>
+                  <b>Heapify</b>
+                </Span>
+                <p>
+                  The process of reshaping a binary tree into a Heap data
+                  structure is known as "heapify".{" "}
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `class BH {
+                          constructor() {
+                            this.values = [];
+                          }
+                          add(element) {
+                            this.values.push(element);
+                            let index = this.values.length - 1;
+                            const current = this.values[index];
+                        
+                            while (index > 0) {
+                              let parentIndex = Math.floor((index - 1) / 2);
+                              let parent = this.values[parentIndex];
+                        
+                              if (parent <= current) {
+                                this.values[parentIndex] = current;
+                                this.values[index] = parent;
+                                index = parentIndex;
+                              } else break;
+                            }
+                          }
+                          extractMax() {
+                            const max = this.values[0];
+                            const end = this.values.pop();
+                            this.values[0] = end;
+                        
+                            let index = 0;
+                            const length = this.values.length;
+                            const current = this.values[0];
+                            while (true) {
+                              let leftChildIndex = 2 * index + 1;
+                              let rightChildIndex = 2 * index + 2;
+                              let leftChild, rightChild;
+                              let swap = null;
+                        
+                              if (leftChildIndex < length) {
+                                leftChild = this.values[leftChildIndex];
+                                if (leftChild > current) swap = leftChildIndex;
+                              }
+                              if (rightChildIndex < length) {
+                                rightChild = this.values[rightChildIndex];
+                                if (
+                                  (swap === null && rightChild > current) ||
+                                  (swap !== null && rightChild > leftChild)
+                                )
+                                  swap = rightChildIndex;
+                              }
+                        
+                              if (swap === null) break;
+                              this.values[index] = this.values[swap];
+                              this.values[swap] = current;
+                              index = swap;
+                            }
+                        
+                            return max;
+                          }
+                        }
+                        
+                        const tree = new BH();
+                        tree.add(3);
+                        tree.add(4);
+                        tree.add(31);
+                        tree.add(6);
+                        console.log(tree); 
+                        console.log(tree.extractMax()); 
+                        console.log(tree); 
+                        // max heap
+                        `,
+                        output:`BH { values: [ 31, 6, 4, 3 ] }
+                        31
+                        BH { values: [ 6, 3, 4 ] }`
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>5. AVL (Adelson Velsky and Landis) Tree</b>
                 </Span>
                 <Span>
                   It's a self balancing binary search tree where difference b/w
@@ -4082,7 +4187,7 @@ pop_back() :
                   }}
                 />
                 <Span>
-                  <b>5. Red-Black Tree</b>
+                  <b>6. Red-Black Tree</b>
                 </Span>
                 <Span>
                   It's a kind of self balancing binary search tree which uses
@@ -4333,7 +4438,7 @@ pop_back() :
                   }}
                 />
                 <Span>
-                  <b>6. N-ary (M-way) Tree</b>
+                  <b>7. N-ary (M-way) Tree</b>
                 </Span>
                 <Span>
                   Multi way trees are used to generate trees with order m, i.e.
