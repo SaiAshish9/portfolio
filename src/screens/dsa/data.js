@@ -9512,8 +9512,43 @@ if __name__ == "__main__":
             content: <></>,
           },
           {
-            title: "Minimum Spanning Trees",
-            content: <></>,
+            title: "Minimum Cost Spanning Trees",
+            content: (
+              <>
+                <Span>
+                  It is a subset of the edges of a connected , edgeweighted
+                  graph that connects all the vertices together, without any
+                  cycles and with the minimum possible totol edge weight. |E| =
+                  |V| -1
+                </Span>
+                <Span>
+                  Examples: Kruskal and Prims algorithms are used to find such trees.
+                </Span>
+                <Span>
+                  <b>Applications</b>
+                </Span>
+                <Span>
+                  Network Design: Telephone , Electrical , Hydraulic , TV Cable
+                  , Computer , Road
+                  <br />
+                  Approximation Algorithms: Travelling Salesman Problem , NP
+                  Hard
+                  <br /> List of cities and distance b/w each city
+                  <br /> shortest path which reach each city exactly once and
+                  return to the original city
+                  <br /> MST * 2
+                  <br /> Stiener Tree
+                  <br /> Used to connect vertices of subset (terminal vertices)
+                  (A,D)
+                  <br /> Indirect Use Of MST
+                  <br /> Max Bottleneck problem : here we find the path b/w two
+                  designated vertices in a weighted graph maximizing the weight
+                  of its minimum weight edge in the path ,
+                  <br /> LDPC low density parity check , Cluster Analysis ,
+                  groups based on some similarities
+                </Span>
+              </>
+            ),
           },
           {
             title: "Kruskal",
@@ -9855,7 +9890,7 @@ if __name__ == '__main__':
                                       stack3, n1, n2, n3));
                           }
                         }`,
-                        output: `5`
+                        output: `5`,
                       },
                       Python: {
                         code: `def maxSum(stack1, stack2, stack3, n1, n2, n3):
@@ -9898,9 +9933,9 @@ if __name__ == '__main__':
         n3 = len(stack3)
         
         print(maxSum(stack1, stack2, stack3, n1, n2, n3))`,
-                        output: `5`
+                        output: `5`,
                       },
-                      'C++': {
+                      "C++": {
                         code: `#include <bits/stdc++.h>
                         using namespace std;
                         
@@ -9950,7 +9985,7 @@ if __name__ == '__main__':
                           return 0;
                         }
                         `,
-                        output: `5`
+                        output: `5`,
                       },
                       Kotlin: {
                         code: `class M {
@@ -10003,7 +10038,7 @@ if __name__ == '__main__':
                                   stack3, n1, n2, n3));
                           }
                       }`,
-                        output: `5`
+                        output: `5`,
                       },
                     },
                   }}
