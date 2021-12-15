@@ -2308,8 +2308,9 @@ int main(){
                   A header node is a special node that is found at the beginning
                   of the list. A list that contains this type of node, is called
                   the header-linked list. This type of list is useful when
-                  information ( more oftenly length of list ) other than that found 
-                  in each node is needed. It's a modified version of singly linked list.
+                  information ( more oftenly length of list ) other than that
+                  found in each node is needed. It's a modified version of
+                  singly linked list.
                 </Span>
                 <Span>Types:</Span>
                 <Span>
@@ -3989,6 +3990,8 @@ pop_back() :
                   A Tree where every internal node has one child. Such trees are
                   performance-wise same as linked list.
                 </Span>
+                <Span>Mirror of binary tree</Span>
+                <Span>Flip binary tree</Span>
                 {/* https://www.educba.com/types-of-trees-in-data-structure/ */}
                 {/* https://www.geeksforgeeks.org/binary-tree-set-3-types-of-binary-tree/ */}
                 <Span>
@@ -8657,7 +8660,97 @@ The maximum number in a given array is : 250
       },
       greedy: {
         title: "Greedy",
-        types: [],
+        content: (
+          <>
+            <Span>
+              An algorithmic paradigm that follows the problem solving approach
+              of making the locally optimal choice at each stage with the hope
+              of finding a global optimum.
+            </Span>
+            <Span>
+              <b>Pros: </b>
+              simple,easy to implement, and runs fast
+            </Span>
+            <Span>
+              <b>Cons: </b>
+              very often they don't provide a globally optimim solution
+            </Span>
+            <Span>
+              consider the below min heap , and let's select the largest number
+              at each level starting from the root. <br /> 3 4 7 6 20 9 11
+            </Span>
+            <Span>
+              total sum will be 21 ( 3 + 7 + 11 )
+              <br />
+              but the maximum possible sum is 27 ( 3 + 4 + 20 )
+            </Span>
+            <Span>
+              <b>Properties:</b>
+            </Span>
+            <Span>
+              1 .<b>Greedy Choice Property: </b>
+              According to this property, a global optimum can be arrived by
+              selecting local optimum.
+            </Span>
+
+            <Span>
+              2.
+              <b>Optimal Substructure: </b> Acc. to this , an optimal solution
+              to the problem contains optimal solution to subproblems.
+            </Span>
+            <Span>Various Applications are specified at the top section.</Span>
+          </>
+        ),
+        types: [
+          {
+            title: "Activity Selection",
+            content: <></>,
+          },
+          {
+            title: "Job Sequencing With Deadlines",
+            content: <></>,
+          },
+          {
+            title: "Fractional Knapsack",
+            content: <></>,
+          },
+          {
+            title: "Graph Coloring",
+            content: <></>,
+          },
+          {
+            title: "Huffman Coding",
+            content: <></>,
+          },
+          {
+            title: "Minimum Spanning Trees",
+            content: <></>,
+          },
+          {
+            title: "Kruskal",
+            content: <></>,
+          },
+          {
+            title: "Prim's",
+            content: <></>,
+          },
+          {
+            title: "Dijkstra's",
+            content: <></>,
+          },
+          {
+            title: "Dial's",
+            content: <></>,
+          },
+          {
+            title: "Minimum Number Of Coins",
+            content: <></>,
+          },
+          {
+            title: "Maximum Equal Sum Possible With Three Stacks",
+            content: <></>,
+          },
+        ],
       },
       dp: {
         title: "Dynamic Programming",
