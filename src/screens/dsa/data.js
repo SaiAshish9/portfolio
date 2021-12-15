@@ -8851,7 +8851,8 @@ printMaxActivities(s,f)`,
                       },
                       Kotlin: {
                         code: ``,
-                        output: ``,
+                        output: `Following activities are selected 
+                        0 1 3`,
                       },
                     },
                   }}
