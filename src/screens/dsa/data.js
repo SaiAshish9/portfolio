@@ -8704,7 +8704,148 @@ The maximum number in a given array is : 250
         types: [
           {
             title: "Activity Selection",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Find out maximum number activities that a person can perform
+                  if starting and finishing time of each activity is provided.
+                </Span>
+                <Span>
+                  <b>Greedy approach:</b>
+                </Span>
+                1. Sort the activities according to their finishing time.
+                <br />
+                2. Select the first activity from the sorted array and print it
+                <br />
+                3. For the remaining activities , if the start time of this
+                activity is greater then or equal to the finish time of
+                previously selected activity then select this activity and print
+                it .<p>Implementation</p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `function printMaxActivities(s,f){
+                          let i,j;
+                          console.log("Following activities are selected")
+                          i=0;
+                          console.log(i)
+                          for (j = 1; j < f.length; j++)
+                          {
+                          if (s[j] >= f[i])
+                          {
+                          console.log(j);
+                          i = j;
+                          }}}
+                          const s = [1,3,0,5,8,5]
+                          const f = [9,4,1,7,9,9]
+                          f.sort()
+                          printMaxActivities(s,f)
+                          `,
+                        output: `Following activities are selected
+                          0
+                          1
+                          3`,
+                      },
+                      Java: {
+                        code: `import java.io.*;
+                        import java.util.Arrays;
+                        class Main{
+                        static PrintStream ps = System.out;
+                        static void printMaxActivities(int s[], int f[])
+                        {
+                        int i, j;
+                        ps.println("Following activities are selected ");
+                        i = 0;
+                        ps.print(" "+i);
+                        for (j = 1; j < f.length; j++)
+                        {
+                        if (s[j] >= f[i])
+                        {
+                        ps.print(" " + j);
+                        i = j;
+                        }
+                        }
+                        ps.println("");
+                        }
+                        public static void main(String ...st){
+                        int s[] = {1, 3, 0, 5, 8, 5};
+                        int f[] = {9, 4, 1, 7, 9, 9};
+                        Arrays.sort(f);
+                        printMaxActivities(s, f);
+                        }
+                        }`,
+                        output: `Following activities are selected 
+                        0 1 3`,
+                      },
+                      Python: {
+                        code: `def printMaxActivities(s,f):
+  print("Following activities are selected ")
+  i = 0
+  print(i)
+  for j in range(1,len(f)):
+    if s[j] >= f[i]:
+      print(j)
+      i=j
+
+
+s = [1,3,0,5,8,5]
+f = [9,4,1,7,9,9]
+f.sort()
+printMaxActivities(s,f)`,
+                        output: `Following activities are selected 
+                        0
+                        1
+                        3`,
+                      },
+                      "C++": {
+                        code: `#include <iostream>
+                        #include <bits/stdc++.h>
+                        using namespace std;
+                        void printMaxActivities(int s[], int f[], int n)
+                        {
+                        int i, j;
+                        cout <<"Following activities are selected "<< endl;
+                        i = 0;
+                        cout <<" "<< i;
+                        for (j = 1; j < n; j++)
+                        {
+                        if (s[j] >= f[i])
+                        {
+                        cout <<" " << j;
+                        i = j;
+                        }
+                        }
+                        cout << endl;
+                        }
+                        int main()
+                        {
+                        int s[] = {1, 3, 0, 5, 8, 5};
+                        int f[] = {9, 4, 1, 7, 9, 9};
+                        int len = sizeof(f)/sizeof(f[0]);
+                        sort(f,f+len);
+                        int n = sizeof(s)/sizeof(s[0]);
+                        printMaxActivities(s, f, n);
+                        return 0;
+                        }
+                        // 0 3 5 5 8 1
+                        // 1 4 7 9 9 9`,
+                        output: `Following activities are selected 
+                        0 1 3`,
+                      },
+                      Kotlin: {
+                        code: ``,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Job Sequencing With Deadlines",
