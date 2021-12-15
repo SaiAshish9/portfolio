@@ -9180,7 +9180,328 @@ printJobScheduling(arr, 3)`,
           },
           {
             title: "Fractional Knapsack",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Given weights and values of n items, we need to put these
+                  items in a knapsack of capacity W to get the maximum total
+                  value in the knapsack.
+                </Span>
+                <Span>
+                  <b> Greedy Approach</b>
+                </Span>
+                <Span>
+                  1. Calculate the ratio(value/weight) for each item
+                  <br /> 2. Sort the items based on this ratio (desc)
+                  <br /> 3. Take the item with highest ratio and add them until
+                  we can't add the next item as whole. <br /> 4. At the end add
+                  the next item as much(fraction) as we can.
+                </Span>
+                <Span>
+                  <b>Example</b>
+                </Span>
+                <Span>
+                  Label: A , B , C <br />
+                  Weight : 10 , 20 , 30 <br />
+                  Value: 60 , 100 , 120 <br />
+                  Total Capacity =&lt; 50 <br />
+                  0-1 Knapsack solution will be : B +C ( profit: 100 + 120 = 220
+                  ) (wt. : 20 + 30 = 50) <br />
+                  Fractional knapsack solution will be : A + B + (2/3) * C (
+                  profit: 60+ 100 + 2* 120 / 3 = 240 ) (wt. : 10 + 20 + 2 * 30 /
+                  3 = 50)
+                </Span>
+                <Span>
+                  <b>
+                    Drawbacks of using brute force approach for solving this
+                    problem:
+                  </b>
+                </Span>
+                <p>
+                  A brute-force solution would be to try all possible subset
+                  with all different fraction but that will be too much time
+                  taking.
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `class Item {
+                          constructor(value,weight){
+                            this.value = value
+                            this.weight = weight
+                          }
+                        }
+                        
+                        function fractionalKnapsack(W,arr,n){
+                        
+                        arr.sort((a,b) => (a.value,a.weight) - (b.value/b.weight))
+                        
+                        let curWeight = 0
+                        let finalvalue = 0.0
+                        
+                        for (let i = 0; i < n; i++) {
+                          if (curWeight + arr[i].weight <= W) {
+                            curWeight += arr[i].weight;
+                            finalvalue += arr[i].value;
+                          }
+                          else {
+                            let remain = W - curWeight;
+                            finalvalue += arr[i].value * (remain/ arr[i].weight);
+                            break;
+                          }
+                        }
+                        return finalvalue;
+                        }
+                        
+                        let W = 50; 
+                        let arr = []
+                        arr.push(new Item(60, 10 ), new Item(100, 20), new Item(120, 30))
+                         
+                        console.log(fractionalKnapsack(W, arr, arr.length))`,
+                        output: `240`,
+                      },
+                      Java: {
+                        code: `import java.util.Arrays;
+                        import java.util.Comparator;
+                        
+                        
+                        class Main {
+                            private static double getMaxValue(int[] wt, int[] val,
+                                                              int capacity)
+                            {
+                                ItemValue[] iVal = new ItemValue[wt.length];
+                         
+                                for (int i = 0; i < wt.length; i++) {
+                                    iVal[i] = new ItemValue(wt[i], val[i], i);
+                                }
+                         
+                                Arrays.sort(iVal, new Comparator<ItemValue>() {
+                                    @Override
+                                    public int compare(ItemValue o1, ItemValue o2)
+                                    {
+                                        return o2.cost.compareTo(o1.cost);
+                                    }
+                                });
+                         
+                                double totalValue = 0d;
+                         
+                                for (ItemValue i : iVal) {
+                         
+                                    int curWt = (int)i.wt;
+                                    int curVal = (int)i.val;
+                         
+                                    if (capacity - curWt >= 0) {
+                                        capacity = capacity - curWt;
+                                        totalValue += curVal;
+                                    }
+                                    else {
+                                        double fraction
+                                            = ((double)capacity / (double)curWt);
+                                        totalValue += (curVal * fraction);
+                                        capacity
+                                            = (int)(capacity - (curWt * fraction));
+                                        break;
+                                    }
+                                }
+                         
+                                return totalValue;
+                            }
+                         
+                            static class ItemValue {
+                                Double cost;
+                                double wt, val, ind;
+                         
+                                public ItemValue(int wt, int val, int ind)
+                                {
+                                    this.wt = wt;
+                                    this.val = val;
+                                    this.ind = ind;
+                                    cost = new Double((double)val / (double)wt);
+                                }
+                            }
+                         
+                            public static void main(String[] args)
+                            {
+                                int[] wt = { 10, 40, 20, 30 };
+                                int[] val = { 60, 40, 100, 120 };
+                                int capacity = 50;
+                         
+                                double maxValue = getMaxValue(wt, val, capacity);
+                                 System.out.println("Maximum value we can obtain = "
+                                                   + maxValue);
+                            }
+                        }`,
+                        output: `Maximum value we can obtain = 240.0`,
+                      },
+                      Python: {
+                        code: `class ItemValue:
+    def __init__(self, wt, val, ind):
+        self.wt = wt
+        self.val = val
+        self.ind = ind
+        self.cost = val // wt
+    def __lt__(self, other):
+        return self.cost < other.cost
+  
+class FractionalKnapSack:
+    @staticmethod
+    def getMaxValue(wt, val, capacity):
+        iVal = []
+        for i in range(len(wt)):
+            iVal.append(ItemValue(wt[i], val[i], i))
+        iVal.sort(reverse=True)
+        totalValue = 0
+        for i in iVal:
+            curWt = int(i.wt)
+            curVal = int(i.val)
+            if capacity - curWt >= 0:
+                capacity -= curWt
+                totalValue += curVal
+            else:
+                fraction = capacity / curWt
+                totalValue += curVal * fraction
+                capacity = int(capacity - (curWt * fraction))
+                break
+        return totalValue
+
+if __name__ == "__main__":
+    wt = [10, 40, 20, 30]
+    val = [60, 40, 100, 120]
+    capacity = 50
+    maxValue = FractionalKnapSack.getMaxValue(wt, val, capacity)
+    print("Maximum value in Knapsack =", maxValue)`,
+                        output: `Maximum value in Knapsack = 240.0`,
+                      },
+                      "C++": {
+                        code: `#include <bits/stdc++.h>
+ 
+                        using namespace std;
+                         
+                        struct Item {
+                            int value, weight;
+                             Item(int value, int weight)
+                            {
+                               this->value=value;
+                               this->weight=weight;
+                            }
+                        };
+                         
+                        bool cmp(struct Item a, struct Item b)
+                        {
+                            double r1 = (double)a.value / (double)a.weight;
+                            double r2 = (double)b.value / (double)b.weight;
+                            return r1 > r2;
+                        }
+                         
+                        double fractionalKnapsack(int W, struct Item arr[], int n)
+                        {
+                            sort(arr, arr + n, cmp);
+                         
+                            int curWeight = 0;
+                            double finalvalue = 0.0;
+                         
+                            for (int i = 0; i < n; i++) {
+                                if (curWeight + arr[i].weight <= W) {
+                                    curWeight += arr[i].weight;
+                                    finalvalue += arr[i].value;
+                                }
+                                else {
+                                    int remain = W - curWeight;
+                                    finalvalue += arr[i].value
+                                                  * ((double)remain
+                                                     / (double)arr[i].weight);
+                                    break;
+                                }
+                            }
+                             return finalvalue;
+                        }
+                         
+                        int main()
+                        {
+                            int W = 50; 
+                            Item arr[] = { { 60, 10 }, { 100, 20 }, { 120, 30 } };
+                         
+                            int n = sizeof(arr) / sizeof(arr[0]);
+                             cout << "Maximum value we can obtain = "
+                                 << fractionalKnapsack(W, arr, n) << endl;
+                            return 0;
+                        }`,
+                        output: `Maximum value we can obtain = 240`,
+                      },
+                      Kotlin: {
+                        code: `import java.util.Arrays
+                        import java.util.Comparator
+                        
+                        object Main {
+                            private fun getMaxValue(
+                                wt: IntArray, 'val': IntArray,
+                                capacity: Int
+                            ): Double {
+                                var capacity = capacity
+                                val iVal: Array<ItemValue> = arrayOfNulls(wt.size)
+                                for (i in wt.indices) {
+                                    iVal[i] = ItemValue(wt[i], 'val'[i], i)
+                                }
+                                Arrays.sort(iVal, object : Comparator<ItemValue?>() {
+                                    @Override
+                                    fun compare(o1: ItemValue, o2: ItemValue): Int {
+                                        return o2.cost.compareTo(o1.cost)
+                                    }
+                                })
+                                var totalValue = 0.0
+                                for (i: ItemValue in iVal) {
+                                    val curWt = i.wt.toInt()
+                                    val curVal = i.'val'.toInt()
+                                    if (capacity - curWt >= 0) {
+                                        capacity = capacity - curWt
+                                        totalValue += curVal.toDouble()
+                                    } else {
+                                        val fraction = capacity.toDouble() / curWt.toDouble()
+                                        totalValue += curVal * fraction
+                                        capacity = (capacity - curWt * fraction).toInt()
+                                        break
+                                    }
+                                }
+                                return totalValue
+                            }
+                        
+                            fun main(args: Array<String?>?) {
+                                val wt = intArrayOf(10, 40, 20, 30)
+                                val 'val' = intArrayOf(60, 40, 100, 120)
+                                val capacity = 50
+                                val maxValue = getMaxValue(wt, 'val', capacity)
+                                System.out.println(
+                                    "Maximum value we can obtain = "
+                                            + maxValue
+                                )
+                            }
+                        
+                            internal class ItemValue(wt: Int, 'val': Int, ind: Int) {
+                                var cost: Double
+                                var wt: Double
+                                var 'val': Double
+                                var ind: Double
+                        
+                                init {
+                                    this.wt = wt.toDouble()
+                                    this.'val' = 'val'.toDouble()
+                                    this.ind = ind.toDouble()
+                                    cost = Double('val'.toDouble() / wt.toDouble())
+                                }
+                            }
+                        }`,
+                        output: `Maximum value we can obtain = 240.0`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Graph Coloring",
@@ -9212,7 +9533,187 @@ printJobScheduling(arr, 3)`,
           },
           {
             title: "Minimum Number Of Coins",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statemnt</b>
+                </Span>
+                <Span>
+                  Calculate the minimum number of coins required , whose
+                  summation will be equal to the given input with the help of
+                  sorted array provided.
+                </Span>
+                <Span>
+                  <b> Example</b>
+                </Span>
+                <p>
+                  [1,2,5,10,20,50,100,500,1000]
+                  <br />
+                  Input Value: 70
+                  <br />
+                  Output: 2<br />
+                  (50 + 20)
+                  <br />
+                  Input value: 121
+                  <br />
+                  Output: 3<br />
+                  (100 + 20 + 1)
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `let deno=[1, 2, 5, 10, 20,
+                          50, 100, 500, 1000];
+                      let n = deno.length;
+                       
+                      function findMin(V)
+                      {
+                              let ans = [];
+                        
+                              for (let i = n - 1; i >= 0; i--)
+                              {
+                                  while (V >= deno[i])
+                                  {
+                                      V -= deno[i];
+                                      ans.push(deno[i]);
+                                  }
+                              }
+                        
+                              for (let i = 0; i < ans.length; i++)
+                              {
+                                  console.log(
+                                      " " + ans[i]);
+                              }
+                      }
+                       
+                      n = 93;
+                      console.log(
+                      "Following is minimal number "
+                      +"of change for " + n + ": ");
+                      findMin(n);`,
+                        output: `Following is minimal number of change for 93: 
+                        50
+                        20
+                        20
+                        2
+                        1`,
+                      },
+                      Java:{
+                        code: `
+                       
+import java.util.Vector;
+
+class Main
+{
+
+	static int deno[] = {1, 2, 5, 10, 20,
+	50, 100, 500, 1000};
+	static int n = deno.length;
+
+	static void findMin(int V)
+	{
+		Vector<Integer> ans = new Vector<>();
+
+		for (int i = n - 1; i >= 0; i--)
+		{
+			while (V >= deno[i])
+			{
+				V -= deno[i];
+				ans.add(deno[i]);
+			}
+		}
+
+		for (int i = 0; i < ans.size(); i++)
+		{
+			System.out.print(
+				" " + ans.elementAt(i));
+		}
+	}
+	public static void main(String[] args)
+	{
+		int n = 93;
+		System.out.print(
+			"Following is minimal number "
+			+"of change for " + n + ": ");
+		findMin(n);
+	}
+}
+                        `,
+                        output: `Following is minimal number of change for 93:  50 20 20 2 1`,
+                      },
+                      Python:{
+  code:`def findMin(V):
+  deno = [1, 2, 5, 10, 20, 50,
+      100, 500, 1000]
+  n = len(deno)
+  ans = []
+
+  i = n - 1
+  while(i >= 0):
+    while (V >= deno[i]):
+      V -= deno[i]
+      ans.append(deno[i])
+
+    i -= 1
+
+  for i in range(len(ans)):
+    print(ans[i], end = " ")
+
+if __name__ == '__main__':
+  n = 93
+  print("Following is minimal number",
+    "of change for", n, ": ", end = "")
+  findMin(n)
+                      `,
+                        output:`Following is minimal number of change for 93 : 50 20 20 2 1`
+                      },
+                      'C++':{
+                        code:`#include <bits/stdc++.h>
+                        using namespace std;
+                         
+                        int deno[] = { 1, 2, 5, 10, 20,
+                                       50, 100, 500, 1000 };
+                        int n = sizeof(deno) / sizeof(deno[0]);
+                         
+                        void findMin(int V)
+                        {
+                            sort(deno, deno + n);
+                         
+                            vector<int> ans;
+                         
+                            for (int i = n - 1; i >= 0; i--) {
+                                 while (V >= deno[i]) {
+                                    V -= deno[i];
+                                    ans.push_back(deno[i]);
+                                }
+                            }
+                         
+                            for (int i = 0; i < ans.size(); i++)
+                                cout << ans[i] << " ";
+                        }
+                         
+                        int main()
+                        {
+                            int n = 93;
+                            cout << "Following is minimal"
+                                 << " number of change for " << n
+                                 << ": ";
+                            findMin(n);
+                            return 0;
+                        }`,
+                        output:`Following is minimal number of change for 93: 50 20 20 2 1` 
+                      },
+                      Kotlin:{
+                        code:``,
+                        output:`Following is minimal number of change for 93:  50 20 20 2 1` 
+                      }
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Maximum Equal Sum Possible With Three Stacks",
