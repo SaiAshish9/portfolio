@@ -3788,7 +3788,7 @@ pop_back() :
                   }}
                 />
                 <Span>
-                  <b>3. Binary Heap</b>
+                  <b>4. Binary Heap</b>
                 </Span>
                 <Span>
                   It is a complete binary tree. It can be either min heap or max
@@ -3804,7 +3804,17 @@ pop_back() :
                 <Span>
                   Arr[(i-1)/2] Returns the parent node <br />
                   Arr[(2*i)+1] Returns the left child node <br />
-                  Arr[(2*i)+2] Returns the right child node 
+                  Arr[(2*i)+2] Returns the right child node
+                </Span>
+                <Span>Algorithim === Avg. Case === Worst case</Span>
+                <Span>
+                  Search === O(n) === O(n)
+                  <br />
+                  Insert === O(1) === O(log n)
+                  <br />
+                  Find-min === O(1) === O(1)
+                  <br />
+                  Delete-min === O(log n) === O(log n)
                 </Span>
                 <Span>
                   <b>Heapify</b>
@@ -3885,9 +3895,9 @@ pop_back() :
                         console.log(tree); 
                         // max heap
                         `,
-                        output:`BH { values: [ 31, 6, 4, 3 ] }
+                        output: `BH { values: [ 31, 6, 4, 3 ] }
                         31
-                        BH { values: [ 6, 3, 4 ] }`
+                        BH { values: [ 6, 3, 4 ] }`,
                       },
                     },
                   }}
