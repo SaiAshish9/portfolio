@@ -1934,18 +1934,6 @@ int main(){
                     output: null,
                     codes: {
                       Javascript: {
-                        code: ``,
-                        output: ``,
-                      },
-                    },
-                  }}
-                />
-                <b>Circular Doubly Linked List Implementation :</b>
-                <CodeEditor
-                  options={{
-                    output: null,
-                    codes: {
-                      Javascript: {
                         code: `
                         class Node {
                           constructor(data) {
@@ -2117,14 +2105,407 @@ int main(){
                     },
                   }}
                 />
-                <b>Header Linked List Implementation :</b>
+                <b>Circular Doubly Linked List Implementation :</b>
                 <CodeEditor
                   options={{
                     output: null,
                     codes: {
                       Javascript: {
-                        code: ``,
-                        output: ``,
+                        code: `class Node {
+                          constructor(data) {
+                              this.data = data
+                              this.next = null
+                              this.prev = null
+                          }
+                      }
+                      class LinkedList {
+                          constructor() {
+                              this.head = null
+                          }
+                          push(data) {
+                              let node = new Node(data)
+                              if (this.head == null) {
+                                  this.head = node
+                                  this.head.prev = this.head
+                                  this.head.next = this.head
+                              } else {
+                                  let temp = this.head
+                                  if(temp.next === this.head){
+                                    temp.next = node
+                                    node.prev = temp
+                                    node.next = this.head 
+                                  }else{
+                                  while (temp.next !== this.head) {
+                                      if(temp)
+                                      temp = temp.next
+                                  }
+                                  temp.next = node
+                                  node.prev = temp
+                                  node.next= this.head
+                                  }
+                      
+                              }
+                          }
+                          pop() {
+                              if (this.head == null) {
+                                  return
+                              } else if (this.head.next == null) {
+                                  this.head = null
+                                  return
+                              } else {
+                                  let temp = this.head
+                                  while (temp.next.next !== this.head) {
+                                      temp = temp.next
+                                  }
+                                  const last = temp.next
+                                  temp.next = this.head
+                                  // delete temp doesn't work , we can delete object attributes but
+                                  //  not object itself in javascript
+                              }
+                          }
+                          count() {
+                              var count = 0
+                              let node = this.head;
+                              if(this.head == null) return count
+                              count = 1
+                              while (node.next != this.head) {
+                                  count += 1
+                                  node = node.next
+                              }
+                              return count
+                          }
+                          get(index) {
+                              if (this.head == null) return
+                              else if (index >= this.count()) return
+                              else {
+                                  let i = 0
+                                  let temp = this.head
+                                  while (i < index) {
+                                      temp = temp.next
+                                      i++
+                                  }
+                                  return temp.data
+                              }
+                          }
+                          print() {
+                              let temp = this.head
+                              let output = ""
+                              while (temp.next != this.head) {
+                                  output += temp.data + " "
+                                  temp = temp.next
+                              }
+                              if(temp)
+                              output += temp.data + " "
+                              console.log(output)
+                          }
+                          insert(ele, index) {
+                              if (this.head == null || index > this.count()) return
+                              let node = new Node(ele)
+                              if (index == 0) {
+                                  node.next = this.head;
+                                  this.head.prev = node
+                                  let temp = this.head
+                                  while(temp.next !== this.head) temp = temp.next
+                                  temp.next = node
+                                  this.head= node
+                              } else {
+                                  let it = 0,
+                                      prev, curr;
+                                  curr = this.head;
+                                  prev = curr;
+                                  while (it < index) {
+                                      it++;
+                                      prev = curr;
+                                      curr = curr.next;
+                                  }
+                                  node.next = curr;
+                                  curr.prev = node;
+                                  prev.next = node;
+                                  node.prev = prev
+                              }
+                              return this.count()
+                          }
+                          delete(index) {
+                              if (this.head == null || index >= this.count()) return
+                              else {
+                                  let curr, prev, it = 0
+                                  curr = this.head
+                                  prev = curr
+                                  if (index === 0) {
+                                      let temp = this.head
+                                      while(temp.next !== this.head) temp = temp.next
+                                      temp.next = this.head.next
+                                      this.head = curr.next
+                                      curr.next.prev = this.head
+                                  } else {
+                                      while (it < index) {
+                                          it++
+                                          prev = curr
+                                          curr = curr.next
+                                      }
+                                      prev.next = curr.next
+                                      curr.next.prev = prev
+                                  }
+                                  return curr.data
+                              }
+                          }
+                          enqueue(ele) {
+                              this.insert(ele, 0)
+                          }
+                          dequeue() {
+                              this.delete(0)
+                          }
+                      }
+                      
+                      const l = new LinkedList();
+                      
+                      console.log("Circular Doubly Linked List Operations:")
+                      console.log("Push:")
+                      l.push(9);
+                      l.push(8);
+                      l.push(10);
+                      l.print()
+                      console.log("Pop:")
+                      l.pop()
+                      l.print()
+                      console.log("Count: " + l.count())
+                      console.log("Get (Index 1): " + l.get(1))
+                      console.log("Insert:")
+                      l.insert(7, 1)
+                      l.print()
+                      console.log("Delete:")
+                      l.delete(1)
+                      l.print()
+                      console.log("Enqueue:")
+                      l.enqueue(5)
+                      l.print()
+                      console.log("Dequeue:")
+                      l.dequeue()
+                      l.print()
+                      `,
+                        output: `Circular Doubly Linked List Operations:
+                        Push:
+                        9 8 10 
+                        Pop:
+                        9 8 
+                        Count: 2
+                        Get (Index 1): 8
+                        Insert:
+                        9 7 8 
+                        Delete:
+                        9 8 
+                        Enqueue:
+                        5 9 8 
+                        Dequeue:
+                        9 8 
+                        Count: 2`,
+                      },
+                    },
+                  }}
+                />
+                <Span>Header Linked List</Span>
+                <Span>
+                  A header node is a special node that is found at the beginning
+                  of the list. A list that contains this type of node, is called
+                  the header-linked list. This type of list is useful when
+                  information ( more oftenly length of list ) other than that found 
+                  in each node is needed. It's a modified version of singly linked list.
+                </Span>
+                <Span>Types:</Span>
+                <Span>
+                  <b>Grounded Header Linked List</b>
+                </Span>
+                <Span>
+                  It is a list whose last node contains the NULL pointer. In the
+                  header linked list the start pointer always points to the
+                  header node. start -&lt; next = NULL indicates that the
+                  grounded header linked list is empty.
+                </Span>
+                <Span>
+                  <b>Circular Header Linked List</b>
+                </Span>
+                <Span>
+                  A list in which last node points back to the header node is
+                  called circular linked list. The chains do not indicate first
+                  or last nodes. In this case, external pointers provide a frame
+                  of reference because last node of a circular linked list does
+                  not contain the NULL pointer.
+                </Span>
+                <b>Grounded Header Linked List Implementation :</b>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `class Node {
+                          constructor(data) {
+                              this.data = data
+                              this.next = null
+                          }
+                      }
+                      class LinkedList {
+                          constructor() {
+                              this.head = new Node(0)
+                          }
+                          push(data) {
+                              let node = new Node(data)
+                              if (this.head.next == null) {
+                                  this.head.next = node
+                              } else {
+                                  let temp = this.head.next
+                                  while (temp.next) {
+                                      temp = temp.next
+                                  }
+                                  temp.next = node
+                              }
+                              this.head.data = this.count()
+                          }
+                          pop() {
+                              if (this.head.next == null) {
+                                  return
+                              } else if (this.head.next.next == null) {
+                                  this.head.next = null
+                                  return
+                              } else {
+                                  let temp = this.head.next
+                                  while (temp.next.next) {
+                                      temp = temp.next
+                                  }
+                                  const last = temp.next
+                                  temp.next = null
+                                  this.head.data = this.count()
+                                  // delete temp doesn't work , we can delete object attributes but
+                                  //  not object itself in javascript
+                              }
+                          }
+                          count() {
+                              var count = 0
+                              let node = this.head.next;
+                              while (node != null) {
+                                  count += 1
+                                  node = node.next
+                              }
+                              return count
+                          }
+                          get(index) {
+                              if (this.head.next == null) return
+                              else if (index >= this.count()) return
+                              else {
+                                  let i = 0
+                                  let temp = this.head.next
+                                  while (i < index) {
+                                      temp = temp.next
+                                      i++
+                                  }
+                                  return temp.data
+                              }
+                          }
+                          print() {
+                              let temp = this.head.next
+                              let output = ""
+                              while (temp != null) {
+                                  output += temp.data + " "
+                                  temp = temp.next
+                              }
+                              console.log(output)
+                          }
+                          insert(ele, index) {
+                              if (this.head.next == null || index > this.count()) return
+                              let node = new Node(ele)
+                              if (index == 0) {
+                                  node.next = this.head.next;
+                                  this.head.next = node;
+                              } else {
+                                  let it = 0,
+                                      prev, curr;
+                                  curr = this.head.next;
+                                  prev = curr;
+                                  while (it < index) {
+                                      it++;
+                                      prev = curr;
+                                      curr = curr.next;
+                                  }
+                                  node.next = curr;
+                                  prev.next = node;
+                              }
+                              this.head.data = this.count()
+                              return this.count()
+                          }
+                          delete(index) {
+                              if (this.head.next == null || index >= this.count()) return
+                              else {
+                                  let curr, prev, it = 0
+                                  curr = this.head.next
+                                  prev = curr
+                                  if (index === 0) {
+                                      this.head.next = curr.next
+                                  } else {
+                                      while (it < index) {
+                                          it++
+                                          prev = curr
+                                          curr = curr.next
+                                      }
+                                      prev.next = curr.next
+                                  }
+                                  this.head.data = this.count()
+                                  return curr.data
+                              }
+                          }
+                          enqueue(ele) {
+                              this.insert(ele, 0)
+                          }
+                          dequeue() {
+                              this.delete(0)
+                          }
+                      }
+                      
+                      const l = new LinkedList();
+                      
+                      console.log("Grounded Header Linked List Operations:")
+                      console.log("Push:")
+                      l.push(9);
+                      l.push(8);
+                      l.push(10);
+                      l.print()
+                      console.log("Pop:")
+                      l.pop()
+                      l.print()
+                      console.log("Count: " + l.count())
+                      console.log("Get (Index 1): " + l.get(1))
+                      console.log("Insert:")
+                      l.insert(7, 1)
+                      l.print()
+                      console.log("Delete:")
+                      l.delete(1)
+                      l.print()
+                      console.log("Enqueue:")
+                      l.enqueue(5)
+                      l.print()
+                      console.log("Dequeue:")
+                      l.dequeue()
+                      l.print()
+                      console.log("Header Node:")
+                      console.log(l.head)`,
+                        output: `Grounded Header Linked List Operations:
+                        Push:
+                        9 8 10 
+                        Pop:
+                        9 8 
+                        Count: 2
+                        Get (Index 1): 8
+                        Insert:
+                        9 7 8 
+                        Delete:
+                        9 8 
+                        Enqueue:
+                        5 9 8 
+                        Dequeue:
+                        9 8 
+                        Header Node:
+                        Node {
+                          data: 2,
+                          next: Node { data: 9, next: Node { data: 8, next: null } }
+                        }`,
                       },
                     },
                   }}
