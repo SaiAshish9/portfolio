@@ -10206,7 +10206,7 @@ printNodes(nodes[0])
                       `,
                       },
                       "C++": {
-                        code:`#include <bits/stdc++.h>
+                        code: `#include <bits/stdc++.h>
                         using namespace std;
                          
                         struct MinHeapNode {
@@ -10285,10 +10285,10 @@ printNodes(nodes[0])
                          
                             return 0;
                         }
-                         `
+                         `,
                       },
                       Kotlin: {
-                        code:`import java.util.Arrays
+                        code: `import java.util.Arrays
 import java.util.Comparator
 
 object Main {
@@ -10348,7 +10348,7 @@ object Main {
             cost = Double('val'.toDouble() / wt.toDouble())
         }
     }
-}`
+}`,
                       },
                     },
                   }}
@@ -10398,7 +10398,525 @@ object Main {
           },
           {
             title: "Kruskal",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Construct an MST with the help of globally available edge with
+                  minimum weight which is not picked yet.
+                </Span>
+                <Span>
+                  <b>Note</b>
+                </Span>
+                <Span>
+                  <b>Note</b>
+                </Span>
+
+                <Span>Kruskal is slower tham prim's.</Span>
+                <Span>Time Complexity : O(ElogE) or (ElogV)</Span>
+                <Span>
+                  <b>Greedy Approach</b>
+                </Span>
+
+                <Span>
+                  Sort all the edges in non-decreasing order of their weight.{" "}
+                  <br />
+                  Pick the smallest edge. Check if it forms a cycle with the
+                  spanning tree formed so far. If cycle is not formed, include
+                  this edge. Else, discard it.
+                  <br />
+                  Repeat step#2 until there are (V-1) edges in the spanning
+                  tree. <br />
+                  Note : Basically , we make use of rank of a nodes in order to
+                  generate the tree. Node with higher rank will be closer to
+                  root. <br />
+                </Span>
+                <p>
+                  <b>Note :</b>
+                  Basically , we make use of rank of a nodes in order to
+                  generate the tree. Node with higher rank will be closer to
+                  root.
+                </p>
+                <CodeEditor
+                  options={{
+                    output: `Following are the edges in the constructed MST
+                    2 -- 3 == 4
+                    0 -- 3 == 5
+                    0 -- 1 == 10
+                    Minimum Cost Of Spanning Tree 19`,
+                    codes: {
+                      // Javascript: {
+                      //   code: ``,
+                      //   output: ``,
+                      // },
+                      Java: {
+                        code: `import java.util.*;
+
+                        class Graph {
+                          class Edge implements Comparable<Edge>
+                          {
+                            int src, dest, weight;
+                        
+                            public int compareTo(Edge compareEdge)
+                            {
+                              return this.weight - compareEdge.weight;
+                            }
+                          };
+                        
+                          class subset
+                          {
+                            int parent, rank;
+                          };
+                        
+                          int V, E; 
+                          Edge edge[]; 
+                        
+                          Graph(int v, int e)
+                          {
+                            V = v;
+                            E = e;
+                            edge = new Edge[E];
+                            for (int i = 0; i < e; ++i)
+                              edge[i] = new Edge();
+                          }
+                        
+                          int find(subset subsets[], int i)
+                          {
+                            if (subsets[i].parent != i)
+                              subsets[i].parent
+                                = find(subsets, subsets[i].parent);
+                        
+                            return subsets[i].parent;
+                          }
+                        
+                          void Union(subset subsets[], int x, int y)
+                          {
+                            int xroot = find(subsets, x);
+                            int yroot = find(subsets, y);
+                        
+                            if (subsets[xroot].rank
+                              < subsets[yroot].rank)
+                              subsets[xroot].parent = yroot;
+                            else if (subsets[xroot].rank
+                                > subsets[yroot].rank)
+                              subsets[yroot].parent = xroot;
+                        
+                            else {
+                              subsets[yroot].parent = xroot;
+                              subsets[xroot].rank++;
+                            }
+                          }
+                        
+                          void KruskalMST()
+                          {
+                            Edge result[] = new Edge[V];
+                          
+                            int e = 0;
+                          
+                            int i = 0;
+                            for (i = 0; i < V; ++i)
+                              result[i] = new Edge();
+                        
+                            Arrays.sort(edge);
+                        
+                            subset subsets[] = new subset[V];
+                            for (i = 0; i < V; ++i)
+                              subsets[i] = new subset();
+                        
+                            for (int v = 0; v < V; ++v)
+                            {
+                              subsets[v].parent = v;
+                              subsets[v].rank = 0;
+                            }
+                        
+                            i = 0; 
+                        
+                            while (e < V - 1)
+                            {
+                              Edge next_edge = edge[i++];
+                        
+                              int x = find(subsets, next_edge.src);
+                              int y = find(subsets, next_edge.dest);
+                        
+                              if (x != y) {
+                                result[e++] = next_edge;
+                                Union(subsets, x, y);
+                              }
+                            }
+                        
+                            System.out.println("Following are the edges in "
+                                    + "the constructed MST");
+                            int minimumCost = 0;
+                            for (i = 0; i < e; ++i)
+                            {
+                              System.out.println(result[i].src + " -- "
+                                      + result[i].dest
+                                      + " == " + result[i].weight);
+                              minimumCost += result[i].weight;
+                            }
+                            System.out.println("Minimum Cost Spanning Tree "
+                                    + minimumCost);
+                          }
+                        
+                          public static void main(String[] args)
+                          {
+                            int V = 4;
+                            int E = 5;
+                            Graph graph = new Graph(V, E);
+                            graph.edge[0].src = 0;
+                            graph.edge[0].dest = 1;
+                            graph.edge[0].weight = 10;
+                            graph.edge[1].src = 0;
+                            graph.edge[1].dest = 2;
+                            graph.edge[1].weight = 6;
+                            graph.edge[2].src = 0;
+                            graph.edge[2].dest = 3;
+                            graph.edge[2].weight = 5;
+                            graph.edge[3].src = 1;
+                            graph.edge[3].dest = 3;
+                            graph.edge[3].weight = 15;
+                            graph.edge[4].src = 2;
+                            graph.edge[4].dest = 3;
+                            graph.edge[4].weight = 4;
+                        
+                            graph.KruskalMST();
+                          }
+                        }
+                        `,
+                      },
+                      Python: {
+                        code: `from collections import defaultdict
+
+class Graph:
+
+  def __init__(self, vertices):
+    self.V = vertices 
+    self.graph = [] 
+
+  def addEdge(self, u, v, w):
+    self.graph.append([u, v, w])
+
+  def find(self, parent, i):
+    if parent[i] == i:
+      return i
+    return self.find(parent, parent[i])
+
+  def union(self, parent, rank, x, y):
+    xroot = self.find(parent, x)
+    yroot = self.find(parent, y)
+
+    if rank[xroot] < rank[yroot]:
+      parent[xroot] = yroot
+    elif rank[xroot] > rank[yroot]:
+      parent[yroot] = xroot
+
+    else:
+      parent[yroot] = xroot
+      rank[xroot] += 1
+
+  def KruskalMST(self):
+
+    result = []
+    
+    i = 0
+    
+    e = 0
+
+    self.graph = sorted(self.graph,
+              key=lambda item: item[2])
+
+    parent = []
+    rank = []
+
+    for node in range(self.V):
+      parent.append(node)
+      rank.append(0)
+
+    while e < self.V - 1:
+
+      u, v, w = self.graph[i]
+      i = i + 1
+      x = self.find(parent, u)
+      y = self.find(parent, v)
+
+      if x != y:
+        e = e + 1
+        result.append([u, v, w])
+        self.union(parent, rank, x, y)
+
+    minimumCost = 0
+    print ("Edges in the constructed MST")
+    for u, v, weight in result:
+      minimumCost += weight
+      print("%d -- %d == %d" % (u, v, weight))
+    print("Minimum Spanning Tree" , minimumCost)
+
+g = Graph(4)
+g.addEdge(0, 1, 10)
+g.addEdge(0, 2, 6)
+g.addEdge(0, 3, 5)
+g.addEdge(1, 3, 15)
+g.addEdge(2, 3, 4)
+
+g.KruskalMST()
+                        
+                        `,
+                      },
+                      "C++": {
+                        code: `#include <bits/stdc++.h>
+                        using namespace std;
+                        class Edge {
+                        public:
+                        int src, dest, weight;
+                        };
+                        class Graph {
+                        public:
+                        int V, E;
+                        Edge* edge;
+                        };
+                        Graph* createGraph(int V, int E)
+                        {
+                        Graph* graph = new Graph;
+                        graph->V = V;
+                        graph->E = E;
+                        graph->edge = new Edge[E];
+                        return graph;
+                        }
+                        class subset {
+                        public:
+                        int parent;
+                        int rank;
+                        };
+                        int find(subset subsets[], int i)
+                        {
+                        if (subsets[i].parent!= i)
+                        subsets[i].parent
+                        = find(subsets, subsets[i].parent);
+                        return subsets[i].parent;
+                        }
+                        void Union(subset subsets[], int x, int y)
+                        {
+                        int xroot = find(subsets, x);
+                        int yroot = find(subsets, y);
+                        if (subsets[xroot].rank < subsets[yroot].rank)
+                        subsets[xroot].parent = yroot;
+                        else if (subsets[xroot].rank > subsets[yroot].rank)
+                        subsets[yroot].parent = xroot;
+                        else {
+                        subsets[yroot].parent = xroot;
+                        subsets[xroot].rank++;
+                        }
+                        }
+                        int myComp(const void* a, const void* b)
+                        {
+                        Edge* a1 = (Edge*)a;
+                        Edge* b1 = (Edge*)b;
+                        return a1->weight > b1->weight;
+                        }
+                        void KruskalMST(Graph* graph)
+                        {
+                        int V = graph->V;
+                        Edge result[V];
+                        int e = 0;
+                        int i = 0;
+                        qsort(graph->edge, graph->E, sizeof(graph->edge[0]),
+                        myComp);
+                        subset* subsets = new subset[(V * sizeof(subset))];
+                        for (int v = 0; v < V; ++v)
+                        {
+                        subsets[v].parent = v;
+                        subsets[v].rank = 0;
+                        }
+                        while (e < V-1 && i < graph->E)
+                        {
+                        Edge next_edge = graph->edge[i++];
+                        int x = find(subsets, next_edge.src);
+                        int y = find(subsets, next_edge.dest);
+                        if (x!= y) {
+                        result[e++] = next_edge;
+                        Union(subsets, x, y);
+                        }
+                        }
+                        cout << "Following are the edges in the constructed "
+                        "MST\n";
+                        int minimumCost = 0;
+                        for (i = 0; i < e; ++i)
+                        {
+                        cout << result[i].src << "-" << result[i].dest
+                        << " == " << result[i].weight << endl;
+                        minimumCost = minimumCost + result[i].weight;
+                        }
+                        cout << "Minimum Cost Spanning Tree: " << minimumCost
+                        << endl;
+                        }
+                        int main()
+                        {
+                        int V = 4;
+                        int E = 5;
+                        Graph* graph = createGraph(V, E);
+                        graph->edge[0].src = 0;
+                        graph->edge[0].dest = 1;
+                        graph->edge[0].weight = 10;
+                        graph->edge[1].src = 0;
+                        graph->edge[1].dest = 2;
+                        graph->edge[1].weight = 6;
+                        graph->edge[2].src = 0;
+                        graph->edge[2].dest = 3;
+                        graph->edge[2].weight = 5;
+                        graph->edge[3].src = 1;
+                        graph->edge[3].dest = 3;
+                        graph->edge[3].weight = 15;
+                        graph->edge[4].src = 2;
+                        graph->edge[4].dest = 3;
+                        graph->edge[4].weight = 4;
+                        KruskalMST(graph);
+                        return 0;
+                        }`,
+                      },
+                      Kotlin: {
+                        code: `import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Graph {
+	class Edge implements Comparable<Edge>
+	{
+		int src, dest, weight;
+
+		public int compareTo(Edge compareEdge)
+		{
+			return this.weight - compareEdge.weight;
+		}
+	};
+
+	class subset
+	{
+		int parent, rank;
+	};
+
+	int V, E; 
+	Edge edge[]; 
+
+	Graph(int v, int e)
+	{
+		V = v;
+		E = e;
+		edge = new Edge[E];
+		for (int i = 0; i < e; ++i)
+			edge[i] = new Edge();
+	}
+
+	int find(subset subsets[], int i)
+	{
+		if (subsets[i].parent != i)
+			subsets[i].parent
+				= find(subsets, subsets[i].parent);
+
+		return subsets[i].parent;
+	}
+
+	void Union(subset subsets[], int x, int y)
+	{
+		int xroot = find(subsets, x);
+		int yroot = find(subsets, y);
+
+		if (subsets[xroot].rank
+			< subsets[yroot].rank)
+			subsets[xroot].parent = yroot;
+		else if (subsets[xroot].rank
+				> subsets[yroot].rank)
+			subsets[yroot].parent = xroot;
+
+		else {
+			subsets[yroot].parent = xroot;
+			subsets[xroot].rank++;
+		}
+	}
+
+	void KruskalMST()
+	{
+		Edge result[] = new Edge[V];
+	
+		int e = 0;
+	
+		int i = 0;
+		for (i = 0; i < V; ++i)
+			result[i] = new Edge();
+
+		Arrays.sort(edge);
+
+		subset subsets[] = new subset[V];
+		for (i = 0; i < V; ++i)
+			subsets[i] = new subset();
+
+		for (int v = 0; v < V; ++v)
+		{
+			subsets[v].parent = v;
+			subsets[v].rank = 0;
+		}
+
+		i = 0; 
+
+		while (e < V - 1)
+		{
+			Edge next_edge = edge[i++];
+
+			int x = find(subsets, next_edge.src);
+			int y = find(subsets, next_edge.dest);
+
+			if (x != y) {
+				result[e++] = next_edge;
+				Union(subsets, x, y);
+			}
+		}
+
+		System.out.println("Following are the edges in "
+						+ "the constructed MST");
+		int minimumCost = 0;
+		for (i = 0; i < e; ++i)
+		{
+			System.out.println(result[i].src + " -- "
+							+ result[i].dest
+							+ " == " + result[i].weight);
+			minimumCost += result[i].weight;
+		}
+		System.out.println("Minimum Cost Of Spanning Tree "
+						+ minimumCost);
+	}
+
+	public static void main(String[] args)
+	{
+		int V = 4;
+		int E = 5;
+		Graph graph = new Graph(V, E);
+		graph.edge[0].src = 0;
+		graph.edge[0].dest = 1;
+		graph.edge[0].weight = 10;
+		graph.edge[1].src = 0;
+		graph.edge[1].dest = 2;
+		graph.edge[1].weight = 6;
+		graph.edge[2].src = 0;
+		graph.edge[2].dest = 3;
+		graph.edge[2].weight = 5;
+		graph.edge[3].src = 1;
+		graph.edge[3].dest = 3;
+		graph.edge[3].weight = 15;
+		graph.edge[4].src = 2;
+		graph.edge[4].dest = 3;
+		graph.edge[4].weight = 4;
+
+		graph.KruskalMST();
+	}
+}
+`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Prim's",
