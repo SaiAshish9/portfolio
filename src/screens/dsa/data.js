@@ -10920,15 +10920,660 @@ class Graph {
           },
           {
             title: "Prim's",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b> Problem Statement :</b>
+                </Span>
+                <Span>
+                  Construct an MST with the help of edge with minimum weight
+                  among all adjacent edges which is not picked yet.
+                </Span>
+                <Span>
+                  <b>Note :</b>
+                  <br />
+                  Prim's is slower tham kruskal. <br />
+                  Time Complexity : O(ElogE) or (ElogV)
+                </Span>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      // Javascript:{code:``},
+                      Java: {
+                        code: `import java.util.*;
+                      import java.lang.*;
+                      import java.io.*;
+                      
+                      class Main {
+                      private static final int V = 5;
+                      int minKey(int key[], Boolean mstSet[])
+                      {
+                      int min = Integer.MAX_VALUE, min_index = -1;
+                      for (int v = 0; v < V; v++)
+                      if (mstSet[v] == false && key[v] < min) {
+                      min = key[v];
+                      min_index = v;
+                      }
+                      return min_index;
+                      }
+                      
+                      void printMST(int parent[], int graph[][])
+                      {
+                      System.out.println("Edge \tWeight");
+                      for (int i = 1; i < V; i++)
+                      System.out.println(parent[i] + " — " + i + "\t" + graph[i][parent[i]]);
+                      }
+                      
+                      void primMST(int graph[][])
+                      {
+                      int parent[] = new int[V];
+                      int key[] = new int[V];
+                      Boolean mstSet[] = new Boolean[V];
+                      for (int i = 0; i < V; i++) {
+                      key[i] = Integer.MAX_VALUE;
+                      mstSet[i] = false;
+                      }
+                      key[0] = 0;
+                      parent[0] = -1;
+                      for (int count = 0;count < V - 1;count++){
+                      int u = minKey(key, mstSet);
+                      mstSet[u] = true;
+                      for (int v = 0; v < V; v++)
+                      if (graph[u][v] != 0 && mstSet[v] == false && graph[u][v] < key[v]) {
+                      parent[v] = u;
+                      key[v] = graph[u][v];
+                      }
+                      
+                      }
+                      printMST(parent, graph);
+                      }
+                      public static void main(String[] args)
+                      {
+                      Main t = new Main();
+                      int graph[][] = new int[][] { { 0, 2, 0, 6, 0 },
+                      { 2, 0, 3, 8, 5 },
+                      { 0, 3, 0, 0, 7 },
+                      { 6, 8, 0, 0, 9 },
+                      { 0, 5, 7, 9, 0 } };
+                      t.primMST(graph);
+                      }
+                      }
+                      `,
+                      },
+                      Python: {
+                        code: `import sys 
+
+class Graph():
+
+  def __init__(self, vertices):
+    self.V = vertices
+    self.graph = [[0 for column in range(vertices)]
+          for row in range(vertices)]
+
+  def printMST(self, parent):
+    print("Edge \tWeight")
+    for i in range(1, self.V):
+      print(parent[i], "-", i, "\t", self.graph[i][ parent[i] ])
+
+  def minKey(self, key, mstSet):
+
+    min = sys.maxint
+
+    for v in range(self.V):
+      if key[v] < min and mstSet[v] == False:
+        min = key[v]
+        min_index = v
+
+    return min_index
+
+  def primMST(self):
+    key = [sys.maxint] * self.V
+    parent = [None] * self.V 
+    key[0] = 0
+    mstSet = [False] * self.V
+
+    parent[0] = -1 
+
+    for cout in range(self.V):
+
+      u = self.minKey(key, mstSet)
+      mstSet[u] = True
+      for v in range(self.V):
+        if self.graph[u][v] > 0 and mstSet[v] == False and key[v] > self.graph[u][v]:
+            key[v] = self.graph[u][v]
+            parent[v] = u
+
+    self.printMST(parent)
+
+g = Graph(5)
+g.graph = [ [0, 2, 0, 6, 0],
+      [2, 0, 3, 8, 5],
+      [0, 3, 0, 0, 7],
+      [6, 8, 0, 0, 9],
+      [0, 5, 7, 9, 0]]
+
+g.primMST()`,
+                      },
+                      "C++": {
+                        code: `#include <bits/stdc++.h>
+                      using namespace std;
+                      
+                      #define V 5
+                      
+                      int minKey(int key[], bool mstSet[])
+                      {
+                        int min = INT_MAX, min_index;
+                      
+                        for (int v = 0; v < V; v++)
+                          if (mstSet[v] == false && key[v] < min)
+                            min = key[v], min_index = v;
+                      
+                        return min_index;
+                      }
+                      
+                      void printMST(int parent[], int graph[V][V])
+                      {
+                        cout<<"Edge \tWeight\n";
+                        for (int i = 1; i < V; i++)
+                          cout<<parent[i]<<" - "<<i<<" \t"<<graph[i][parent[i]]<<" \n";
+                      }
+                      
+                      
+                      void primMST(int graph[V][V])
+                      {
+                        int parent[V];
+                        
+                        int key[V];
+                        
+                        bool mstSet[V];
+                      
+                        for (int i = 0; i < V; i++)
+                          key[i] = INT_MAX, mstSet[i] = false;
+                        key[0] = 0;
+                        parent[0] = -1;
+                      
+                        for (int count = 0; count < V - 1; count++)
+                        {
+                          int u = minKey(key, mstSet);
+                      
+                          mstSet[u] = true;
+                      
+                          for (int v = 0; v < V; v++)
+                      
+                            if (graph[u][v] && mstSet[v] == false && graph[u][v] < key[v])
+                              parent[v] = u, key[v] = graph[u][v];
+                        }
+                      
+                        printMST(parent, graph);
+                      }
+                      
+                      int main()
+                      {
+                        int graph[V][V] = { { 0, 2, 0, 6, 0 },
+                                  { 2, 0, 3, 8, 5 },
+                                  { 0, 3, 0, 0, 7 },
+                                  { 6, 8, 0, 0, 9 },
+                                  { 0, 5, 7, 9, 0 } };
+                      
+                        primMST(graph);
+                      
+                        return 0;
+                      }
+                      `,
+                      },
+                      Kotlin: {
+                        code: `import java.util.*
+                      import java.lang.*
+                      import java.io.*
+                      
+                      internal class MST {
+                      
+                          fun minKey(key: IntArray, mstSet: Array<Boolean>): Int {
+                              var min: Int = Integer.MAX_VALUE
+                              var min_index = -1
+                              for (v in 0 until V) if (mstSet[v] == false && key[v] < min) {
+                                  min = key[v]
+                                  min_index = v
+                              }
+                              return min_index
+                          }
+                      
+                          fun printMST(parent: IntArray, graph: Array<IntArray>) {
+                              System.out.println("Edge \tWeight")
+                              for (i in 1 until V) System.out.println(parent[i].toString() + " - " + i + "\t" + graph[i][parent[i]])
+                          }
+                          
+                          fun primMST(graph: Array<IntArray>) {
+                              val parent = IntArray(V)
+                      
+                              val key = IntArray(V)
+                      
+                              val mstSet: Array<Boolean> = arrayOfNulls(V)
+                      
+                              for (i in 0 until V) {
+                                  key[i] = Integer.MAX_VALUE
+                                  mstSet[i] = false
+                              }
+                      
+                              key[0] = 0 
+                              parent[0] = -1 
+                      
+                              for (count in 0 until V - 1) {
+                                  val u = minKey(key, mstSet)
+                      
+                                  mstSet[u] = true
+                      
+                                  for (v in 0 until V)  
+                                      if (graph[u][v] != 0 && mstSet[v] == false && graph[u][v] < key[v]) {
+                                          parent[v] = u
+                                          key[v] = graph[u][v]
+                                      }
+                              }
+                      
+                              printMST(parent, graph)
+                          }
+                      
+                          companion object {
+                              private const val V = 5
+                              fun main(args: Array<String?>?) {
+                                  val t = MST()
+                                  val graph = arrayOf(
+                                      intArrayOf(0, 2, 0, 6, 0),
+                                      intArrayOf(2, 0, 3, 8, 5),
+                                      intArrayOf(0, 3, 0, 0, 7),
+                                      intArrayOf(6, 8, 0, 0, 9),
+                                      intArrayOf(0, 5, 7, 9, 0)
+                                  )
+                      
+                                  t.primMST(graph)
+                              }
+                          }
+                      }`,
+                      },
+                    },
+                    output: `Edge    Weight
+                    0 — 1   2
+                    1 — 2   3
+                    0 — 3   6
+                    1 — 4   5`,
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Dijkstra's",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement:</b>
+                </Span>
+                <Span>
+                  Dijkstra's algorithm is very similar to prim's algorithm. Like
+                  Prim's MST, we generate a SPT (shortest path tree) with a
+                  given source as a root. We maintain two sets, one set contains
+                  vertices included in the shortest-path tree, other set
+                  includes vertices not yet included in the shortest-path tree.
+                  At every step of the algorithm, we find a vertex that is in
+                  the other set (set of not yet included) and has a minimum
+                  distance from the source.
+                </Span>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `function minDistance(dist,sptSet)
+                        {
+                          
+                            let min = Number.MAX_VALUE;
+                          let min_index = -1;
+                          
+                          for(let v = 0; v < V; v++)
+                          {
+                            if (sptSet[v] == false && dist[v] <= min)
+                            {
+                              min = dist[v];
+                              min_index = v;
+                            }
+                          }
+                          return min_index;
+                        }
+                        
+                        function printSolution(dist)
+                        {
+                          document.write("Vertex \t\t Distance from Source<br>");
+                          for(let i = 0; i < V; i++)
+                          {
+                            document.write(i + " \t\t " +
+                                dist[i] + "<br>");
+                          }
+                        }
+                        
+                        function dijkstra(graph, src)
+                        {
+                          let dist = new Array(V);
+                          let sptSet = new Array(V);
+                          
+                          for(let i = 0; i < V; i++)
+                          {
+                            dist[i] = Number.MAX_VALUE;
+                            sptSet[i] = false;
+                          }
+                          
+                          dist[src] = 0;
+                          
+                            for(let count = 0; count < V - 1; count++)
+                          {
+                            
+                            let u = minDistance(dist, sptSet);
+                            
+                            sptSet[u] = true;
+                            
+                            for(let v = 0; v < V; v++)
+                            {
+                              
+                              if (!sptSet[v] && graph[u][v] != 0 &&
+                                dist[u] != Number.MAX_VALUE &&
+                                dist[u] + graph[u][v] < dist[v])
+                              {
+                                dist[v] = dist[u] + graph[u][v];
+                              }
+                            }
+                          }
+                            printSolution(dist);
+                        }
+                        
+                        let graph = [ [ 0, 4, 0, 0, 0, 0, 0, 8, 0 ],
+                              [ 4, 0, 8, 0, 0, 0, 0, 11, 0 ],
+                              [ 0, 8, 0, 7, 0, 4, 0, 0, 2 ],
+                              [ 0, 0, 7, 0, 9, 14, 0, 0, 0],
+                              [ 0, 0, 0, 9, 0, 10, 0, 0, 0 ],
+                              [ 0, 0, 4, 14, 10, 0, 2, 0, 0],
+                              [ 0, 0, 0, 0, 0, 2, 0, 1, 6 ],
+                              [ 8, 11, 0, 0, 0, 0, 1, 0, 7 ],
+                              [ 0, 0, 2, 0, 0, 0, 6, 7, 0 ] ]
+                        dijkstra(graph, 0);
+                        `,
+                      },
+                      Java: {
+                        code: `import java.util.*;
+                        import java.lang.*;
+                        import java.io.*;
+                        
+                        class Main {
+                        static final int V = 9;
+                        int minDistance(int dist[], Boolean sptSet[])
+                        {
+                        int min = Integer.MAX_VALUE, min_index = -1;
+                        for (int v = 0; v < V; v++)
+                        if (sptSet[v] == false && dist[v] <= min) {
+                        min = dist[v];
+                        min_index = v;
+                        }
+                        return min_index;
+                        }
+                        void printSolution(int dist[])
+                        {
+                        System.out.println("Vertex \t\t Distance from Source");
+                        for (int i = 0; i < V; i++)
+                        System.out.println(i + " \t\t " + dist[i]);
+                        }
+                        void dijkstra(int graph[][], int src)
+                        {
+                        int dist[] = new int[V];
+                        Boolean sptSet[] = new Boolean[V];
+                        for (int i = 0; i < V; i++) {
+                        dist[i] = Integer.MAX_VALUE;
+                        sptSet[i] = false;
+                        }
+                        dist[src] = 0;
+                        for (int count = 0; count < V - 1; count++) {
+                        int u = minDistance(dist, sptSet);
+                        sptSet[u] = true;
+                        for (int v = 0; v < V; v++)
+                        if (!sptSet[v] && graph[u][v] != 0 && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v])
+                        dist[v] = dist[u] + graph[u][v];
+                        }
+                        printSolution(dist);
+                        }
+                        public static void main(String[] args)
+                        {
+                        int graph[][] = new int[][] { { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
+                        { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
+                        { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
+                        { 0, 0, 7, 0, 9, 14, 0, 0, 0 },
+                        { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
+                        { 0, 0, 4, 14, 10, 0, 2, 0, 0 },
+                        { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
+                        { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
+                        { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
+                        Main t = new Main();
+                        t.dijkstra(graph, 0);
+                        }
+                        }`,
+                      },
+                      Python: {
+                        code: `import sys
+
+class Graph():
+
+  def __init__(self, vertices):
+    self.V = vertices
+    self.graph = [[0 for column in range(vertices)]
+          for row in range(vertices)]
+
+  def printSolution(self, dist):
+    print("Vertex \tDistance from Source")
+    for node in range(self.V):
+      print(node+ "\t"+ dist[node])
+
+  def minDistance(self, dist, sptSet):
+
+    min = sys.maxint
+
+    for v in range(self.V):
+      if dist[v] < min and sptSet[v] == False:
+        min = dist[v]
+        min_index = v
+
+    return min_index
+
+  def dijkstra(self, src):
+
+    dist = [sys.maxint] * self.V
+    dist[src] = 0
+    sptSet = [False] * self.V
+
+    for cout in range(self.V):
+      u = self.minDistance(dist, sptSet)
+      sptSet[u] = True
+
+      for v in range(self.V):
+        if self.graph[u][v] > 0 and sptSet[v] == False and \
+        dist[v] > dist[u] + self.graph[u][v]:
+            dist[v] = dist[u] + self.graph[u][v]
+
+    self.printSolution(dist)
+
+g = Graph(9)
+g.graph = [[0, 4, 0, 0, 0, 0, 0, 8, 0],
+    [4, 0, 8, 0, 0, 0, 0, 11, 0],
+    [0, 8, 0, 7, 0, 4, 0, 0, 2],
+    [0, 0, 7, 0, 9, 14, 0, 0, 0],
+    [0, 0, 0, 9, 0, 10, 0, 0, 0],
+    [0, 0, 4, 14, 10, 0, 2, 0, 0],
+    [0, 0, 0, 0, 0, 2, 0, 1, 6],
+    [8, 11, 0, 0, 0, 0, 1, 0, 7],
+    [0, 0, 2, 0, 0, 0, 6, 7, 0]
+    ]
+
+g.dijkstra(0)`,
+                      },
+                      "C++": {
+                        code: `#include <iostream>
+                          using namespace std;
+                          #include <limits.h>
+                          #define V 9
+                          
+                          int minDistance(int dist[], bool sptSet[])
+                          {
+                            int min = INT_MAX, min_index;
+                          
+                            for (int v = 0; v < V; v++)
+                              if (sptSet[v] == false && dist[v] <= min)
+                                min = dist[v], min_index = v;
+                          
+                            return min_index;
+                          }
+                          
+                          void printSolution(int dist[])
+                          {
+                            cout <<"Vertex \t Distance from Source" << endl;
+                            for (int i = 0; i < V; i++)
+                              cout << i << " \t\t"<<dist[i]<< endl;
+                          }
+                          
+                          void dijkstra(int graph[V][V], int src)
+                          {
+                            int dist[V];
+                          
+                            bool sptSet[V]; 
+                            for (int i = 0; i < V; i++)
+                              dist[i] = INT_MAX, sptSet[i] = false;
+                          
+                            dist[src] = 0;
+                            for (int count = 0; count < V - 1; count++) {
+                              int u = minDistance(dist, sptSet);
+                          
+                              sptSet[u] = true;
+                          
+                              for (int v = 0; v < V; v++)
+                          
+                                if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX
+                                  && dist[u] + graph[u][v] < dist[v])
+                                  dist[v] = dist[u] + graph[u][v];
+                            }
+                          
+                            printSolution(dist);
+                          }
+                          
+                          int main()
+                          {
+                          
+                            int graph[V][V] = { { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
+                                      { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
+                                      { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
+                                      { 0, 0, 7, 0, 9, 14, 0, 0, 0 },
+                                      { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
+                                      { 0, 0, 4, 14, 10, 0, 2, 0, 0 },
+                                      { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
+                                      { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
+                                      { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
+                          
+                            dijkstra(graph, 0);
+                          
+                            return 0;
+                          }`,
+                      },
+                      Kotlin: {
+                        code: `import java.util.*
+                          import java.lang.*
+                          import java.io.*
+                          
+                          internal class ShortestPath {
+                              fun minDistance(dist: IntArray, sptSet: Array<Boolean>): Int {
+                                  var min: Int = Integer.MAX_VALUE
+                                  var min_index = -1
+                                  for (v in 0 until V) if (sptSet[v] == false && dist[v] <= min) {
+                                      min = dist[v]
+                                      min_index = v
+                                  }
+                                  return min_index
+                              }
+                          
+                              fun printSolution(dist: IntArray) {
+                                  System.out.println("Vertex \t\t Distance from Source")
+                                  for (i in 0 until V) System.out.println(i.toString() + " \t\t " + dist[i])
+                              }
+                          
+                              fun dijkstra(graph: Array<IntArray>, src: Int) {
+                                  val dist = IntArray(V)
+                                  val sptSet: Array<Boolean> = arrayOfNulls(V)
+                                  for (i in 0 until V) {
+                                      dist[i] = Integer.MAX_VALUE
+                                      sptSet[i] = false
+                                  }
+                                  dist[src] = 0
+                                  for (count in 0 until V - 1) {
+                                      val u = minDistance(dist, sptSet)
+                                      sptSet[u] = true
+                                      for (v in 0 until V) if (!sptSet[v] && graph[u][v] != 0 && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v]) dist[v] =
+                                          dist[u] + graph[u][v]
+                                  }
+                                  printSolution(dist)
+                              }
+                          
+                              companion object {
+                                  const val V = 9
+                                  fun main(args: Array<String?>?) {
+                                      val graph = arrayOf(
+                                          intArrayOf(0, 4, 0, 0, 0, 0, 0, 8, 0),
+                                          intArrayOf(4, 0, 8, 0, 0, 0, 0, 11, 0),
+                                          intArrayOf(0, 8, 0, 7, 0, 4, 0, 0, 2),
+                                          intArrayOf(0, 0, 7, 0, 9, 14, 0, 0, 0),
+                                          intArrayOf(0, 0, 0, 9, 0, 10, 0, 0, 0),
+                                          intArrayOf(0, 0, 4, 14, 10, 0, 2, 0, 0),
+                                          intArrayOf(0, 0, 0, 0, 0, 2, 0, 1, 6),
+                                          intArrayOf(8, 11, 0, 0, 0, 0, 1, 0, 7),
+                                          intArrayOf(0, 0, 2, 0, 0, 0, 6, 7, 0)
+                                      )
+                                      val t = ShortestPath()
+                                      t.dijkstra(graph, 0)
+                                  }
+                              }
+                          }`,
+                      },
+                    },
+                    output: `Vertex       Distance from Source
+                    0        0
+                    1        4
+                    2        12
+                    3        19
+                    4        21
+                    5        11
+                    6        9
+                    7        8
+                    8        14`,
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Dial's",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  Many a times the range of weights on edges in is in small
+                  range (i.e. all edge weight can be mapped to 0, 1, 2.. w where
+                  w is a small number).
+                </Span>
+                <Span>
+                  In that case, Dijkstra's algorithm can be modified by using
+                  different data structure, buckets, which is called dial
+                  implementation of dijkstra's algorithm. time complexity is O(E
+                  + WV) where W is maximum weight on any edge of graph, so we
+                  can see that, if W is small then this implementation runs much
+                  faster than traditional algorithm. Following are important
+                  observations. Maximum distance between any two node can be at
+                  max w(V — 1) (w is maximum edge weight and we can have at max
+                  V-1 edges between two vertices). In Dijkstra algorithm,
+                  distances are finalized in non-decreasing, i.e., distance of
+                  the closer (to given source) vertices is finalized before the
+                  distant vertices.
+                </Span>
+              </>
+            ),
           },
           {
             title: "Minimum Number Of Coins",
