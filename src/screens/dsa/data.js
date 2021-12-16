@@ -2578,10 +2578,80 @@ int main(){
                       l.reverse()
                       l.print()
                       `,
-                        output:`Push:
+                        output: `Push:
                         9 8 10 
                         Reverse
-                        10 8 9 `
+                        10 8 9 `,
+                      },
+                    },
+                  }}
+                />
+                <p>
+                  <b>Detect loop in a linked list:</b>
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `class Node {
+                          constructor(data) {
+                              this.data = data
+                              this.next = null
+                          }
+                      }
+                      class LinkedList {
+                          constructor() {
+                              this.head = null
+                          }
+                          push(data) {
+                              let node = new Node(data)
+                              if (this.head == null) {
+                                  this.head = node
+                              } else {
+                                  let temp = this.head
+                                  while (temp.next) {
+                                      temp = temp.next
+                                  }
+                                  temp.next = node
+                              }
+                          }
+                          print() {
+                              let temp = this.head
+                              let output = ""
+                              while (temp != null) {
+                                  output += temp.data + " "
+                                  temp = temp.next
+                              }
+                              console.log(output)
+                          }
+                      
+                          loop(){
+                           let temp = this.head
+                           let s = new Set()
+                           while(temp !== null){
+                             if(s.has(temp))
+                             return true
+                             s.add(temp)
+                             temp = temp.next
+                           }
+                           return false
+                          }
+                      
+                      }
+                      
+                      const l = new LinkedList();
+                      
+                      console.log("Push:")
+                      l.push(9);
+                      l.push(8);
+                      l.push(10);
+                      l.print()
+                      l.head.next = l.head
+                      console.log(l.loop())
+                      `,
+                        output: `Push:
+                        9 8 10 
+                        true`,
                       },
                     },
                   }}
