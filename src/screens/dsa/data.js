@@ -4135,10 +4135,179 @@ pop_back() :
                   A Tree where every internal node has one child. Such trees are
                   performance-wise same as linked list.
                 </Span>
-                <Span>Mirror of binary tree</Span>
-                <Span>Flip binary tree</Span>
-                {/* https://www.educba.com/types-of-trees-in-data-structure/ */}
-                {/* https://www.geeksforgeeks.org/binary-tree-set-3-types-of-binary-tree/ */}
+                <p>
+                  <b>Mirror (Invert) of binary tree</b>
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `class Node {
+                          constructor(val) {
+                              this.data = val;
+                              this.left = null;
+                              this.right = null;
+                          }
+                      }
+                      
+                      class BinaryTree {
+                        constructor(){
+                          this.root = null
+                        }
+                      
+                        inorder(root=this.root){
+                          if (root != null) {
+                              this.inorder(root.left)
+                              console.log(root.data)
+                              this.inorder(root.right)
+                          }
+                        }
+                      
+                        // while doing bfs keep swapping
+                        // left and right
+                      
+                        mirror(){
+                          let queue = []
+                          queue.push(this.root)
+                          while (queue.length > 0)
+                          {
+                          let curr = queue[0];
+                          queue.shift();
+                          let temp = curr.left;
+                          curr.left = curr.right;
+                          curr.right = temp;;
+                          if (curr.left != null)
+                            queue.push(curr.left);
+                          if (curr.right != null)
+                            queue.push(curr.right);
+                          }
+                        }
+                      
+                      }
+                      
+                      let tree = new BinaryTree();
+                      tree.root = new Node(1);
+                      tree.root.left = new Node(2);
+                      tree.root.right = new Node(3);
+                      tree.root.left.left = new Node(4);
+                      console.log("Inorder Traversals: ")
+                      console.log("Before Mirroring:")
+                      tree.inorder()
+                      console.log("After Mirroring:")
+                      tree.mirror()
+                      tree.inorder()
+                      `,
+                        output: `4
+                        2
+                        1
+                        3
+                        Mirror
+                        3
+                        1
+                        2
+                        4`,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Flip binary tree</b>
+                </Span>
+                <p>
+                  In the flip operation, the leftmost node becomes the root of
+                  the flipped tree and its parent becomes its right child and
+                  the right sibling becomes its left child and the same should
+                  be done for all left most nodes recursively.
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `class Node {
+                          constructor(val) {
+                              this.data = val;
+                              this.left = null;
+                              this.right = null;
+                          }
+                      }
+                      
+                      class BinaryTree {
+                        constructor(){
+                          this.root = null
+                        }
+                      
+                        flip(){
+                          this.root = this.flipBinaryTree(this.root)
+                        }
+                      
+                       flipBinaryTree(root)
+                          {
+                               if (root == null)
+                                  return root;
+                              if (root.left == null && root.right ==null)
+                                  return root;
+                                let flippedRoot=this.flipBinaryTree(root.left);
+                              root.left.left=root.right;
+                              root.left.right=root;
+                              root.left=root.right=null;
+                              return flippedRoot;
+                          }
+                      
+                      level(root = this.root) {
+                              if (root == null)
+                                  return;
+                      
+                              let q = [];
+                              q.push(root);
+                              while (true) {
+                                  let nodeCount = q.length;
+                                  if (nodeCount == 0) {
+                                      break;
+                                  }
+                                  let output = ""
+                                  while (nodeCount > 0) {
+                                      let node = q[0];
+                                      output += node.data + " ";
+                                      q.shift();
+                                      if (node.left != null)
+                                          q.push(node.left);
+                                      if (node.right != null)
+                                          q.push(node.right);
+                                      nodeCount--;
+                                  }
+                                  console.log(output)
+                              }
+                          }
+                      
+                      
+                      }
+                      
+                      let tree = new BinaryTree();
+                      tree.root = new Node(1);
+                      tree.root.left = new Node(2);
+                      tree.root.right = new Node(3);
+                      tree.root.right.left = new Node(4);
+                      tree.root.right.right = new Node(5);
+                      console.log("Level Order Traversals: ")
+                      console.log("Before Flip:")
+                      tree.level()
+                      console.log("After Flip:")
+                      tree.flip()
+                      tree.level()
+                      `,
+                        output: `Level Order Traversals: 
+                        Before Flip:
+                        1 
+                        2 3 
+                        4 5 
+                        After Flip:
+                        2 
+                        3 1 
+                        4 5 `,
+                      },
+                    },
+                  }}
+                />
                 <Span>
                   <b>3. Binary Search Tree</b>
                 </Span>
