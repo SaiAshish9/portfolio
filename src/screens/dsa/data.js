@@ -4213,6 +4213,10 @@ pop_back() :
                 <Span>
                   <b>Flip binary tree</b>
                 </Span>
+                <Img
+                  left
+                  src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/tree42-1024x381.png"
+                />
                 <p>
                   In the flip operation, the leftmost node becomes the root of
                   the flipped tree and its parent becomes its right child and
