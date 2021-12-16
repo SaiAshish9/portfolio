@@ -1,5 +1,6 @@
 import { CodeEditor, Span, Img } from "./components";
 import BigOChart from "assets/home/complexity-chart.jpeg";
+import GraphImg from "assets/home/graphColoring.png";
 
 export const DATA = {
   ds: {
@@ -9505,11 +9506,855 @@ if __name__ == "__main__":
           },
           {
             title: "Graph Coloring",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Color all the vertcies of the graph in such a way that no two
+                  connected vertices will have the same color.
+                </Span>
+                <Span>
+                  <b>Example</b>
+                </Span>
+                <Span>
+                  Sudoku is an example of graph coloring problem where every
+                  cell represents a vertex. There is an edge between two
+                  vertices if they are in same row or same column or same block.
+                </Span>
+                <Span>
+                  <b>Greedy Approach</b>
+                </Span>
+                <Img src={GraphImg} alt="img" />
+                <p>
+                  1. Color first vertex with first color.
+                  <br /> 2. For the remaining V-1 vertices. , consider the
+                  currently picked vertex and color it with the lowest numbered
+                  color that has not been used on any previously colored
+                  vertices adjacent to it. If all previously used colors appear
+                  on vertices adjacent to v, assign a new color to it.
+                </p>
+                <CodeEditor
+                  options={{
+                    output: `Coloring of graph 1 
+                    Vertex 0  ---> Color 0
+                    Vertex 1  ---> Color 1
+                    Vertex 2  ---> Color 2
+                    Vertex 3  ---> Color 0
+                    Vertex 4  ---> Color 1
+                    
+                    Coloring of graph 2
+                    Vertex 0  ---> Color 0
+                    Vertex 1  ---> Color 1
+                    Vertex 2  ---> Color 2
+                    Vertex 3  ---> Color 0
+                    Vertex 4  ---> Color 3`,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        class Graph {
+                          constructor(noOfVertices,colors) {
+                              this.noOfVertices = noOfVertices;
+                              this.adjList = new Map();
+                              this.colors = colors
+                          }
+                      
+                          addVertex(v) {
+                              this.adjList.set(v, [])
+                          }
+                      
+                          addEdge(v, w) {
+                              this.adjList.get(v).push(w);
+                              this.adjList.get(w).push(v);
+                          }
+                          
+                         graphColoring(){
+                          let result = {}  
+                          let available = {}
+                          const keys = Array.from(this.adjList.keys())
+                          for(let i in keys){  
+                            result[keys[i]] = i == 0 ? this.colors[0] : null
+                          }
+                          for(let c of this.colors){  
+                            available[c] = false
+                          }
+                           for(let u=1;u<keys.length;u++){
+                             for(let i of this.adjList.get(keys[u])){
+                               if(result[i]){
+                                   available[result[i]] = true
+                               }
+                             }
+                             let cr=0
+                             while(cr < this.noOfVertices){
+                                if(!available[this.colors[cr]])
+                                break;
+                                cr+=1
+                             }
+                             result[keys[u]] = this.colors[cr]
+                             for(let i of this.adjList.get(keys[u])){
+                               if(result[i]){
+                                   available[result[i]] = false
+                               }
+                             }
+                           }
+                          for(let i of keys){  
+                            console.log("Vertex : " + i + " ---> Color : " + result[i])
+                          }
+                          }
+                      
+                          printAdjList() {
+                              var get_keys = this.adjList.keys();
+                              for (var i of get_keys) {
+                                  var get_values = this.adjList.get(i);
+                                  var conc = "";
+                                  for (var j of get_values)
+                                      conc += j + " ";
+                                  console.log(i + " -> " + conc);
+                              }
+                          }
+                      }
+                      
+                      
+                      const g = new Graph(6,['red','green','yellow','blue','black','orange'])
+                      const v = ['A', 'B', 'C', 'D', 'E', 'F']
+                      for (let x of v) {
+                          g.addVertex(x)
+                      }
+                      
+                      g.addEdge('A', 'B');
+                      g.addEdge('A', 'D');
+                      g.addEdge('A', 'E');
+                      g.addEdge('B', 'C');
+                      g.addEdge('D', 'E');
+                      g.addEdge('E', 'F');
+                      g.addEdge('E', 'C');
+                      g.addEdge('C', 'F');
+                      g.printAdjList();
+                      console.log(Array.from(g.adjList.keys()))
+                      g.graphColoring();                      
+                        `,
+                        output: `A -> B D E 
+                        B -> A C 
+                        C -> B E F 
+                        D -> A E 
+                        E -> A D F C 
+                        F -> E C 
+                        [ 'A', 'B', 'C', 'D', 'E', 'F' ]
+                        Vertex : A ---> Color : red
+                        Vertex : B ---> Color : green
+                        Vertex : C ---> Color : red
+                        Vertex : D ---> Color : green
+                        Vertex : E ---> Color : yellow
+                        Vertex : F ---> Color : green`,
+                      },
+                      Java: {
+                        code: `import java.util.*;
+                       import java.util.LinkedList;
+                       
+                       class Graph
+                       {
+                         private int V; 
+                         private LinkedList<Integer> adj[]; 
+                       
+                         Graph(int v)
+                         {
+                           V = v;
+                           adj = new LinkedList[v];
+                           for (int i=0; i<v; ++i)
+                             adj[i] = new LinkedList();
+                         }
+                       
+                         void addEdge(int v,int w)
+                         {
+                           adj[v].add(w);
+                           adj[w].add(v);
+                         }
+                       
+                         void greedyColoring()
+                         {
+                           int result[] = new int[V];
+                           Arrays.fill(result, -1);
+                           result[0] = 0;
+                           boolean available[] = new boolean[V];
+                           Arrays.fill(available, true);
+                           for (int u = 1; u < V; u++)
+                           {
+                             Iterator<Integer> it = adj[u].iterator() ;
+                             while (it.hasNext())
+                             {
+                               int i = it.next();
+                               if (result[i] != -1)
+                                 available[result[i]] = false;
+                             }
+                             int cr;
+                             for (cr = 0; cr < V; cr++){
+                               if (available[cr])
+                                 break;
+                             }
+                             result[u] = cr; 
+                             Arrays.fill(available, true);
+                           }
+                           for (int u = 0; u < V; u++)
+                             System.out.println("Vertex " + u + " ---> Color "
+                                       + result[u]);
+                         }
+                       
+                         public static void main(String args[])
+                         {
+                           Graph g1 = new Graph(5);
+                           g1.addEdge(0, 1);
+                           // if 0 is connected to 1 , 1 is also connected to 0
+                           g1.addEdge(0, 2);
+                           g1.addEdge(1, 2);
+                           g1.addEdge(1, 3);
+                           g1.addEdge(2, 3);
+                           g1.addEdge(3, 4);
+                           System.out.println("Coloring of graph 1");
+                           g1.greedyColoring();
+                           System.out.println();
+                           Graph g2 = new Graph(5);
+                           g2.addEdge(0, 1);
+                           g2.addEdge(0, 2);
+                           g2.addEdge(1, 2);
+                           g2.addEdge(1, 4);
+                           g2.addEdge(2, 4);
+                           g2.addEdge(4, 3);
+                           System.out.println("Coloring of graph 2 ");
+                           g2.greedyColoring();
+                         }
+                       }`,
+                      },
+                      Python: {
+                        code: `def addEdge(adj, v, w):
+  adj[v].append(w)
+  adj[w].append(v)
+  return adj
+
+def graphColoring(adj, V):
+  
+  result = [-1] * V
+
+  result[0] = 0
+
+  available = [False] * V
+
+  for u in range(1, V):
+    
+    for i in adj[u]:
+      if (result[i] != -1):
+        available[result[i]] = True
+
+    cr = 0
+    while cr < V:
+      if (available[cr] == False):
+        break
+      
+      cr += 1
+      
+    result[u] = cr
+
+    for i in adj[u]:
+      if (result[i] != -1):
+        available[result[i]] = False
+
+  for u in range(V):
+    print("Vertex", u, " ---> Color", result[u])
+
+if __name__ == '__main__':
+  
+  g1 = [[] for i in range(5)]
+  g1 = addEdge(g1, 0, 1)
+  g1 = addEdge(g1, 0, 2)
+  g1 = addEdge(g1, 1, 2)
+  g1 = addEdge(g1, 1, 3)
+  g1 = addEdge(g1, 2, 3)
+  g1 = addEdge(g1, 3, 4)
+  print("Coloring of graph 1 ")
+  graphColoring(g1, 5)
+
+  g2 = [[] for i in range(5)]
+  g2 = addEdge(g2, 0, 1)
+  g2 = addEdge(g2, 0, 2)
+  g2 = addEdge(g2, 1, 2)
+  g2 = addEdge(g2, 1, 4)
+  g2 = addEdge(g2, 2, 4)
+  g2 = addEdge(g2, 4, 3)
+  print("\nColoring of graph 2")
+  graphColoring(g2, 5)
+                      `,
+                      },
+                      "C++": {
+                        code: `#include <iostream>
+                        #include <list>
+                        using namespace std;
+                        
+                        class Graph
+                        {
+                          int V; 
+                          list<int> *adj;
+                        public:
+                          Graph(int V) { this->V = V; adj = new list<int>[V]; }
+                          ~Graph()	 { delete [] adj; }
+                        
+                          void addEdge(int v, int w);
+                        
+                          void greedyColoring();
+                        };
+                        
+                        void Graph::addEdge(int v, int w)
+                        {
+                          adj[v].push_back(w);
+                          adj[w].push_back(v); 
+                        }
+                        
+                        void Graph::greedyColoring()
+                        {
+                          int result[V];
+                        
+                          result[0] = 0;
+                        
+                          for (int u = 1; u < V; u++)
+                            result[u] = -1; 
+                        
+                          bool available[V];
+                          for (int cr = 0; cr < V; cr++)
+                            available[cr] = false;
+                        
+                          for (int u = 1; u < V; u++)
+                          {
+                            list<int>::iterator i;
+                            for (i = adj[u].begin(); i != adj[u].end(); ++i)
+                              if (result[*i] != -1)
+                                available[result[*i]] = true;
+                        
+                            int cr;
+                            for (cr = 0; cr < V; cr++)
+                              if (available[cr] == false)
+                                break;
+                        
+                            result[u] = cr;
+                        
+                            for (i = adj[u].begin(); i != adj[u].end(); ++i)
+                              if (result[*i] != -1)
+                                available[result[*i]] = false;
+                          }
+                        
+                          for (int u = 0; u < V; u++)
+                            cout << "Vertex " << u << " ---> Color "
+                              << result[u] << endl;
+                        }
+                        
+                        int main()
+                        {
+                          Graph g1(5);
+                          g1.addEdge(0, 1);
+                          g1.addEdge(0, 2);
+                          g1.addEdge(1, 2);
+                          g1.addEdge(1, 3);
+                          g1.addEdge(2, 3);
+                          g1.addEdge(3, 4);
+                          cout << "Coloring of graph 1 \n";
+                          g1.greedyColoring();
+                        
+                          Graph g2(5);
+                          g2.addEdge(0, 1);
+                          g2.addEdge(0, 2);
+                          g2.addEdge(1, 2);
+                          g2.addEdge(1, 4);
+                          g2.addEdge(2, 4);
+                          g2.addEdge(4, 3);
+                          cout << "\nColoring of graph 2 \n";
+                          g2.greedyColoring();
+                        
+                          return 0;
+                        }
+                        `,
+                      },
+                      Kotlin: {
+                        code: `import java.io.*
+                        import java.util.*
+                        import java.util.LinkedList
+                        
+                        internal class Graph(private val V: Int) {
+                            private val adj: Array<LinkedList<Integer>>
+                            fun addEdge(v: Int, w: Int) {
+                                adj[v].add(w)
+                                adj[w].add(v)
+                            }
+                        
+                            fun greedyColoring() {
+                                val result = IntArray(V)
+                                Arrays.fill(result, -1)
+                                result[0] = 0
+                                val available = BooleanArray(V)
+                                Arrays.fill(available, true)
+                                for (u in 1 until V) {
+                                    val it: Iterator<Integer> = adj[u].iterator()
+                                    while (it.hasNext()) {
+                                        val i: Int = it.next()
+                                        if (result[i] != -1) available[result[i]] = false
+                                    }
+                                    var cr: Int
+                                    cr = 0
+                                    while (cr < V) {
+                                        if (available[cr]) break
+                                        cr++
+                                    }
+                                    result[u] = cr
+                                    Arrays.fill(available, true)
+                                }
+                                for (u in 0 until V) System.out.println(
+                                    "Vertex " + u + " ---> Color "
+                                            + result[u]
+                                )
+                            }
+                        
+                            companion object {
+                                fun main(args: Array<String?>?) {
+                                    val g1 = Graph(5)
+                                    g1.addEdge(0, 1)
+                                    g1.addEdge(0, 2)
+                                    g1.addEdge(1, 2)
+                                    g1.addEdge(1, 3)
+                                    g1.addEdge(2, 3)
+                                    g1.addEdge(3, 4)
+                                    System.out.println("Coloring of graph 1")
+                                    g1.greedyColoring()
+                                    System.out.println()
+                                    val g2 = Graph(5)
+                                    g2.addEdge(0, 1)
+                                    g2.addEdge(0, 2)
+                                    g2.addEdge(1, 2)
+                                    g2.addEdge(1, 4)
+                                    g2.addEdge(2, 4)
+                                    g2.addEdge(4, 3)
+                                    System.out.println("Coloring of graph 2 ")
+                                    g2.greedyColoring()
+                                }
+                            }
+                        
+                            init {
+                                adj = arrayOfNulls<LinkedList>(V)
+                                for (i in 0 until V) adj[i] = LinkedList()
+                            }
+                        }`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Huffman Coding",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Assign variable-length codes to input characters, lengths of
+                  the assigned codes are based on the frequencies of
+                  corresponding characters. The most frequent character gets the
+                  smallest code and the least frequent character gets the
+                  largest code.
+                </Span>
+                <Span>
+                  <b>Note : </b>
+                  Huffman coding is a lossless data compression algorithm.
+                </Span>
+                <Span>
+                  <b>Example :</b>
+                </Span>
+                <Span>Character : a , b , c , d , e , f</Span>
+                <Span>Frequency : 5 , 9 , 12 , 13 , 16 , 45</Span>
+                <Span>Solution :</Span>
+
+                <Span>Character : f , c , d , a , b , e</Span>
+
+                <Span>Code Word : 0 , 100 , 101 , 1100 , 1101 , 101</Span>
+
+                <Span>
+                  <b>Greedy Approach :</b>
+                </Span>
+                <Span>
+                  1 . Create a leaf node for each unique character and build a
+                  min heap of all leaf nodes (Min Heap is used as a priority
+                  queue. The value of frequency field is used to compare two
+                  nodes in min heap. Initially, the least frequent character is
+                  at root) <br />
+                  2 . Extract two nodes with the minimum frequency from the min
+                  heap. <br />
+                  3 . Create a new internal node with a frequency equal to the
+                  sum of the two nodes frequencies. Make the first extracted
+                  node as its left child and the other extracted node as its
+                  right child. Add this node to the min heap. <br />
+                  4 . Repeat steps#2 and #3 until the heap contains only one
+                  node. The remaining node is the root node and the tree is
+                  complete. <br />
+                </Span>
+                <p>
+                  As we can character with highest frequency i.e, f got smallest
+                  character code
+                </p>
+                <CodeEditor
+                  options={{
+                    output: `f -> 0
+                    c -> 100
+                    d -> 101
+                    a -> 1100
+                    b -> 1101
+                    e -> 111`,
+                    codes: {
+                      Javascript: {
+                        code: `class node{
+                          constructor(freq,symbol,left=null,right=null){
+                             this.freq = freq
+                             this.symbol = symbol
+                             this.left = left
+                             this.right= right
+                             this.huff = ''
+                          } 
+                       }
+                       
+                       function printNodes(node, val=''){
+                           const newVal = val + ""+ node.huff
+                           if(node.left)
+                               printNodes(node.left, newVal)
+                           if(node.right)
+                               printNodes(node.right, newVal)
+                           if(!node.left && !node.right)
+                               console.log(node.symbol + ' -> ' + newVal)
+                       }
+                       
+                       const chars = ['a', 'b', 'c', 'd', 'e', 'f']
+                       
+                       const freq = [ 5, 9, 12, 13, 16, 45]
+                       
+                       let nodes = []
+                       
+                       for(let c in chars){
+                         nodes.push(new node(freq[c],chars[c]))
+                       }
+                       
+                       
+                       try{
+                       while(nodes.length > 1){
+                           nodes = nodes.sort((a,b)=>a.freq-b.freq)
+                           let left = nodes[0]
+                           let right = nodes[1]
+                           left.huff = 0
+                           right.huff = 1
+                           let newNode = new node(left.freq+right.freq, left.symbol+right.symbol, left, right)
+                           nodes = nodes.filter(x=>x.symbol!==left.symbol)
+                           nodes = nodes.filter(x=>x.symbol!==right.symbol)
+                           nodes.push(newNode)
+                       }
+                       printNodes(nodes[0])
+                       }catch(e){
+                       console.log(e)
+                       }
+                       `,
+                      },
+                      Java: {
+                        code: `
+                       import java.util.PriorityQueue;
+                       import java.util.Scanner;
+                       import java.util.Comparator;
+                        
+                       class HuffmanNode {
+                        
+                           int data;
+                           char c;
+                        
+                           HuffmanNode left;
+                           HuffmanNode right;
+                       }
+                        
+                       
+                       class MyComparator implements Comparator<HuffmanNode> {
+                           public int compare(HuffmanNode x, HuffmanNode y)
+                           {
+                        
+                               return x.data - y.data;
+                           }
+                       }
+                        
+                       class Huffman {
+                        
+                           public static void printCode(HuffmanNode root, String s)
+                           {
+                        
+                               if (root.left
+                                       == null
+                                   && root.right
+                                          == null
+                                   && Character.isLetter(root.c)) {
+                        
+                                   System.out.println(root.c + ":" + s);
+                        
+                                   return;
+                               }
+                       
+                               printCode(root.left, s + "0");
+                               printCode(root.right, s + "1");
+                           }
+                        
+                           public static void main(String[] args)
+                           {
+                        
+                               Scanner s = new Scanner(System.in);
+                        
+                               int n = 6;
+                               char[] charArray = { 'a', 'b', 'c', 'd', 'e', 'f' };
+                               int[] charfreq = { 5, 9, 12, 13, 16, 45 };
+                        
+                               PriorityQueue<HuffmanNode> q
+                                   = new PriorityQueue<HuffmanNode>(n, new MyComparator());
+                        
+                               for (int i = 0; i < n; i++) {
+                       
+                                   HuffmanNode hn = new HuffmanNode();
+                        
+                                   hn.c = charArray[i];
+                                   hn.data = charfreq[i];
+                        
+                                   hn.left = null;
+                                   hn.right = null;
+                        
+                                   q.add(hn);
+                               }
+                        
+                               HuffmanNode root = null;
+                        
+                               while (q.size() > 1) {
+                       
+                                   HuffmanNode x = q.peek();
+                                   q.poll();
+                        
+                                   HuffmanNode y = q.peek();
+                                   q.poll();
+                       
+                                   HuffmanNode f = new HuffmanNode();
+                        
+                                   f.data = x.data + y.data;
+                                   f.c = '-';
+                        
+                                   f.left = x;
+                        
+                                   f.right = y;
+                        
+                                   root = f;
+                                   q.add(f);
+                               }
+                                printCode(root, "");
+                           }
+                       }`,
+                      },
+                      Python: {
+                        code: `class node:
+  def __init__(self, freq, symbol, left=None, right=None):
+    self.freq = freq
+
+    self.symbol = symbol
+
+    self.left = left
+
+    self.right = right
+
+    self.huff = ''
+
+
+def printNodes(node, val=''):
+  newVal = val + str(node.huff)
+
+  if(node.left):
+    printNodes(node.left, newVal)
+  if(node.right):
+    printNodes(node.right, newVal)
+
+  if(not node.left and not node.right):
+    print(f"{node.symbol} -> {newVal}")
+
+
+chars = ['a', 'b', 'c', 'd', 'e', 'f']
+
+freq = [ 5, 9, 12, 13, 16, 45]
+
+nodes = []
+
+for x in range(len(chars)):
+  nodes.append(node(freq[x], chars[x]))
+
+while len(nodes) > 1:
+  nodes = sorted(nodes, key=lambda x: x.freq)
+
+  left = nodes[0]
+  right = nodes[1]
+
+  left.huff = 0
+  right.huff = 1
+
+  newNode = node(left.freq+right.freq, left.symbol+right.symbol, left, right)
+
+  nodes.remove(left)
+  nodes.remove(right)
+  nodes.append(newNode)
+
+printNodes(nodes[0])
+                      `,
+                      },
+                      "C++": {
+                        code:`#include <bits/stdc++.h>
+                        using namespace std;
+                         
+                        struct MinHeapNode {
+                         
+                            char data;
+                            unsigned freq;
+                         
+                            MinHeapNode *left, *right;
+                         
+                            MinHeapNode(char data, unsigned freq)
+                         
+                            {
+                                left = right = NULL;
+                                this->data = data;
+                                this->freq = freq;
+                            }
+                        };
+                         
+                        struct compare {
+                         
+                            bool operator()(MinHeapNode* l, MinHeapNode* r)
+                         
+                            {
+                                return (l->freq > r->freq);
+                            }
+                        };
+                         
+                        void printCodes(struct MinHeapNode* root, string str)
+                        {
+                         
+                            if (!root)
+                                return;
+                         
+                            if (root->data != '$')
+                                cout << root->data << ": " << str << "\n";
+                         
+                            printCodes(root->left, str + "0");
+                            printCodes(root->right, str + "1");
+                        }
+                         
+                        void HuffmanCodes(char data[], int freq[], int size)
+                        {
+                            struct MinHeapNode *left, *right, *top;
+                         
+                            priority_queue<MinHeapNode*, vector<MinHeapNode*>, compare> minHeap;
+                         
+                            for (int i = 0; i < size; ++i)
+                                minHeap.push(new MinHeapNode(data[i], freq[i]));
+                         
+                            while (minHeap.size() != 1) {
+                        
+                                left = minHeap.top();
+                                minHeap.pop();
+                         
+                                right = minHeap.top();
+                                minHeap.pop();
+                         
+                                top = new MinHeapNode('$', left->freq + right->freq);
+                         
+                                top->left = left;
+                                top->right = right;
+                         
+                                minHeap.push(top);
+                            }
+                         
+                            printCodes(minHeap.top(), "");
+                        }
+                         
+                        int main()
+                        {
+                         
+                            char arr[] = { 'a', 'b', 'c', 'd', 'e', 'f' };
+                            int freq[] = { 5, 9, 12, 13, 16, 45 };
+                            int size = sizeof(arr) / sizeof(arr[0]); 
+                            HuffmanCodes(arr, freq, size);
+                         
+                            return 0;
+                        }
+                         `
+                      },
+                      Kotlin: {
+                        code:`import java.util.Arrays
+import java.util.Comparator
+
+object Main {
+    private fun getMaxValue(
+        wt: IntArray, 'val': IntArray,
+        capacity: Int
+    ): Double {
+        var capacity = capacity
+        val iVal: Array<ItemValue> = arrayOfNulls(wt.size)
+        for (i in wt.indices) {
+            iVal[i] = ItemValue(wt[i], 'val'[i], i)
+        }
+        Arrays.sort(iVal, object : Comparator<ItemValue?>() {
+            @Override
+            fun compare(o1: ItemValue, o2: ItemValue): Int {
+                return o2.cost.compareTo(o1.cost)
+            }
+        })
+        var totalValue = 0.0
+        for (i: ItemValue in iVal) {
+            val curWt = i.wt.toInt()
+            val curVal = i.'val'.toInt()
+            if (capacity - curWt >= 0) {
+                capacity = capacity - curWt
+                totalValue += curVal.toDouble()
+            } else {
+                val fraction = capacity.toDouble() / curWt.toDouble()
+                totalValue += curVal * fraction
+                capacity = (capacity - curWt * fraction).toInt()
+                break
+            }
+        }
+        return totalValue
+    }
+
+    fun main(args: Array<String?>?) {
+        val wt = intArrayOf(10, 40, 20, 30)
+        val 'val' = intArrayOf(60, 40, 100, 120)
+        val capacity = 50
+        val maxValue = getMaxValue(wt, 'val', capacity)
+        System.out.println(
+            "Maximum value we can obtain = "
+                    + maxValue
+        )
+    }
+
+    internal class ItemValue(wt: Int, 'val': Int, ind: Int) {
+        var cost: Double
+        var wt: Double
+        var 'val': Double
+        var ind: Double
+
+        init {
+            this.wt = wt.toDouble()
+            this.'val' = 'val'.toDouble()
+            this.ind = ind.toDouble()
+            cost = Double('val'.toDouble() / wt.toDouble())
+        }
+    }
+}`
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Minimum Cost Spanning Trees",
@@ -9522,7 +10367,8 @@ if __name__ == "__main__":
                   |V| -1
                 </Span>
                 <Span>
-                  Examples: Kruskal and Prims algorithms are used to find such trees.
+                  Examples: Kruskal and Prims algorithms are used to find such
+                  trees.
                 </Span>
                 <Span>
                   <b>Applications</b>
