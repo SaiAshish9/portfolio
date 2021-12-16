@@ -8274,6 +8274,12 @@ console.log(isPairSum(arr, arrSize, val));
               For their implementations at trees and graphs , please refer to
               non-linear data structures.
             </Span>
+            <Span>
+              <b>Practice Questions:</b>
+            </Span>
+            <Span>
+              https://medium.com/techie-delight/top-20-breadth-first-search-bfs-practice-problems-ac2812283ab1
+            </Span>
           </>
         ),
       },
