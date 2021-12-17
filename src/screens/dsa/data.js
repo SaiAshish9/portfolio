@@ -1,4 +1,6 @@
-import { CodeEditor, Span } from "./components";
+import { CodeEditor, Span, Img } from "./components";
+import BigOChart from "assets/home/complexity-chart.jpeg";
+import GraphImg from "assets/home/graphColoring.png";
 
 export const DATA = {
   ds: {
@@ -1058,10 +1060,10 @@ C++ Array Operations:
                   nodes of same type.
                 </Span>
                 <Span>
-                  Types : Singly Linked List, Circular Linked List, Doubly
-                  Linked List And Misc
+                  Types : Singly Linked List, Doubly Linked List , Circular
+                  Linked List ( Singly + Doubly ) And Header Linked List
                 </Span>
-                <b>Implementation</b>
+                <b>Singly Linked List Implementation :</b>
                 <CodeEditor
                   options={{
                     output: null,
@@ -1927,6 +1929,733 @@ int main(){
                     },
                   }}
                 />
+                <b>Doubly Linked List Implementation :</b>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        class Node {
+                          constructor(data) {
+                              this.data = data
+                              this.next = null
+                              this.prev = null
+                          }
+                      }
+                      class LinkedList {
+                          constructor() {
+                              this.head = null
+                          }
+                          push(data) {
+                              let node = new Node(data)
+                              if (this.head == null) {
+                                  this.head = node
+                              } else {
+                                  let temp = this.head
+                                  while (temp.next) {
+                                      temp = temp.next
+                                  }
+                                  temp.next = node
+                                  node.prev = temp
+                              }
+                          }
+                          pop() {
+                              if (this.head == null) {
+                                  return
+                              } else if (this.head.next == null) {
+                                  this.head = null
+                                  return
+                              } else {
+                                  let temp = this.head
+                                  while (temp.next.next) {
+                                      temp = temp.next
+                                  }
+                                  const last = temp.next
+                                  temp.next = null
+                                  // delete temp doesn't work , we can delete object attributes but
+                                  //  not object itself in javascript
+                              }
+                          }
+                          count() {
+                              var count = 0
+                              let node = this.head;
+                              while (node != null) {
+                                  count += 1
+                                  node = node.next
+                              }
+                              return count
+                          }
+                          get(index) {
+                              if (this.head == null) return
+                              else if (index >= this.count()) return
+                              else {
+                                  let i = 0
+                                  let temp = this.head
+                                  while (i < index) {
+                                      temp = temp.next
+                                      i++
+                                  }
+                                  return temp.data
+                              }
+                          }
+                          print() {
+                              let temp = this.head
+                              let output = ""
+                              while (temp != null) {
+                                  output += temp.data + " "
+                                  temp = temp.next
+                              }
+                              console.log(output)
+                          }
+                          insert(ele, index) {
+                              if (this.head == null || index > this.count()) return
+                              let node = new Node(ele)
+                              if (index == 0) {
+                                  node.next = this.head;
+                                  this.head.prev = node
+                                  this.head = node;
+                              } else {
+                                  let it = 0,
+                                      prev, curr;
+                                  curr = this.head;
+                                  prev = curr;
+                                  while (it < index) {
+                                      it++;
+                                      prev = curr;
+                                      curr = curr.next;
+                                  }
+                                  node.next = curr;
+                                  curr.prev = node;
+                                  prev.next = node;
+                                  node.prev = prev
+                              }
+                              return this.count()
+                          }
+                          delete(index) {
+                              if (this.head == null || index >= this.count()) return
+                              else {
+                                  let curr, prev, it = 0
+                                  curr = this.head
+                                  prev = curr
+                                  if (index === 0) {
+                                      this.head = curr.next
+                                      curr.next.prev = null
+                                  } else {
+                                      while (it < index) {
+                                          it++
+                                          prev = curr
+                                          curr = curr.next
+                                      }
+                                      prev.next = curr.next
+                                      curr.next.prev = prev
+                                  }
+                                  return curr.data
+                              }
+                          }
+                          enqueue(ele) {
+                              this.insert(ele, 0)
+                          }
+                          dequeue() {
+                              this.delete(0)
+                          }
+                      }
+                      
+                      const l = new LinkedList();
+                      
+                      console.log("Doubly Linked List Operations:")
+                      console.log("Push:")
+                      l.push(9);
+                      l.push(8);
+                      l.push(10);
+                      l.print()
+                      console.log("Pop:")
+                      l.pop()
+                      l.print()
+                      console.log("Count: " + l.count())
+                      console.log("Get (Index 1): " + l.get(1))
+                      console.log("Insert:")
+                      l.insert(7, 1)
+                      l.print()
+                      console.log("Delete:")
+                      l.delete(1)
+                      l.print()
+                      console.log("Enqueue:")
+                      l.enqueue(5)
+                      l.print()
+                      console.log("Dequeue:")
+                      l.dequeue()
+                      l.print()                      
+                        `,
+                        output: `Doubly Linked List Operations:
+                        Push:
+                        9 8 10 
+                        Pop:
+                        9 8 
+                        Count: 2
+                        Get (Index 1): 8
+                        Insert:
+                        9 7 8 
+                        Delete:
+                        9 8 
+                        Enqueue:
+                        5 9 8 
+                        Dequeue:
+                        9 8 `,
+                      },
+                    },
+                  }}
+                />
+                <b>Circular Doubly Linked List Implementation :</b>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `class Node {
+                          constructor(data) {
+                              this.data = data
+                              this.next = null
+                              this.prev = null
+                          }
+                      }
+                      class LinkedList {
+                          constructor() {
+                              this.head = null
+                          }
+                          push(data) {
+                              let node = new Node(data)
+                              if (this.head == null) {
+                                  this.head = node
+                                  this.head.prev = this.head
+                                  this.head.next = this.head
+                              } else {
+                                  let temp = this.head
+                                  if(temp.next === this.head){
+                                    temp.next = node
+                                    node.prev = temp
+                                    node.next = this.head 
+                                  }else{
+                                  while (temp.next !== this.head) {
+                                      if(temp)
+                                      temp = temp.next
+                                  }
+                                  temp.next = node
+                                  node.prev = temp
+                                  node.next= this.head
+                                  }
+                      
+                              }
+                          }
+                          pop() {
+                              if (this.head == null) {
+                                  return
+                              } else if (this.head.next == null) {
+                                  this.head = null
+                                  return
+                              } else {
+                                  let temp = this.head
+                                  while (temp.next.next !== this.head) {
+                                      temp = temp.next
+                                  }
+                                  const last = temp.next
+                                  temp.next = this.head
+                                  // delete temp doesn't work , we can delete object attributes but
+                                  //  not object itself in javascript
+                              }
+                          }
+                          count() {
+                              var count = 0
+                              let node = this.head;
+                              if(this.head == null) return count
+                              count = 1
+                              while (node.next != this.head) {
+                                  count += 1
+                                  node = node.next
+                              }
+                              return count
+                          }
+                          get(index) {
+                              if (this.head == null) return
+                              else if (index >= this.count()) return
+                              else {
+                                  let i = 0
+                                  let temp = this.head
+                                  while (i < index) {
+                                      temp = temp.next
+                                      i++
+                                  }
+                                  return temp.data
+                              }
+                          }
+                          print() {
+                              let temp = this.head
+                              let output = ""
+                              while (temp.next != this.head) {
+                                  output += temp.data + " "
+                                  temp = temp.next
+                              }
+                              if(temp)
+                              output += temp.data + " "
+                              console.log(output)
+                          }
+                          insert(ele, index) {
+                              if (this.head == null || index > this.count()) return
+                              let node = new Node(ele)
+                              if (index == 0) {
+                                  node.next = this.head;
+                                  this.head.prev = node
+                                  let temp = this.head
+                                  while(temp.next !== this.head) temp = temp.next
+                                  temp.next = node
+                                  this.head= node
+                              } else {
+                                  let it = 0,
+                                      prev, curr;
+                                  curr = this.head;
+                                  prev = curr;
+                                  while (it < index) {
+                                      it++;
+                                      prev = curr;
+                                      curr = curr.next;
+                                  }
+                                  node.next = curr;
+                                  curr.prev = node;
+                                  prev.next = node;
+                                  node.prev = prev
+                              }
+                              return this.count()
+                          }
+                          delete(index) {
+                              if (this.head == null || index >= this.count()) return
+                              else {
+                                  let curr, prev, it = 0
+                                  curr = this.head
+                                  prev = curr
+                                  if (index === 0) {
+                                      let temp = this.head
+                                      while(temp.next !== this.head) temp = temp.next
+                                      temp.next = this.head.next
+                                      this.head = curr.next
+                                      curr.next.prev = this.head
+                                  } else {
+                                      while (it < index) {
+                                          it++
+                                          prev = curr
+                                          curr = curr.next
+                                      }
+                                      prev.next = curr.next
+                                      curr.next.prev = prev
+                                  }
+                                  return curr.data
+                              }
+                          }
+                          enqueue(ele) {
+                              this.insert(ele, 0)
+                          }
+                          dequeue() {
+                              this.delete(0)
+                          }
+                      }
+                      
+                      const l = new LinkedList();
+                      
+                      console.log("Circular Doubly Linked List Operations:")
+                      console.log("Push:")
+                      l.push(9);
+                      l.push(8);
+                      l.push(10);
+                      l.print()
+                      console.log("Pop:")
+                      l.pop()
+                      l.print()
+                      console.log("Count: " + l.count())
+                      console.log("Get (Index 1): " + l.get(1))
+                      console.log("Insert:")
+                      l.insert(7, 1)
+                      l.print()
+                      console.log("Delete:")
+                      l.delete(1)
+                      l.print()
+                      console.log("Enqueue:")
+                      l.enqueue(5)
+                      l.print()
+                      console.log("Dequeue:")
+                      l.dequeue()
+                      l.print()
+                      `,
+                        output: `Circular Doubly Linked List Operations:
+                        Push:
+                        9 8 10 
+                        Pop:
+                        9 8 
+                        Count: 2
+                        Get (Index 1): 8
+                        Insert:
+                        9 7 8 
+                        Delete:
+                        9 8 
+                        Enqueue:
+                        5 9 8 
+                        Dequeue:
+                        9 8 
+                        Count: 2`,
+                      },
+                    },
+                  }}
+                />
+                <Span>Header Linked List</Span>
+                <Span>
+                  A header node is a special node that is found at the beginning
+                  of the list. A list that contains this type of node, is called
+                  the header-linked list. This type of list is useful when
+                  information ( more oftenly length of list ) other than that
+                  found in each node is needed. It's a modified version of
+                  singly linked list.
+                </Span>
+                <Span>Types:</Span>
+                <Span>
+                  <b>Grounded Header Linked List</b>
+                </Span>
+                <Span>
+                  It is a list whose last node contains the NULL pointer. In the
+                  header linked list the start pointer always points to the
+                  header node. start -&lt; next = NULL indicates that the
+                  grounded header linked list is empty.
+                </Span>
+                <Span>
+                  <b>Circular Header Linked List</b>
+                </Span>
+                <Span>
+                  A list in which last node points back to the header node is
+                  called circular linked list. The chains do not indicate first
+                  or last nodes. In this case, external pointers provide a frame
+                  of reference because last node of a circular linked list does
+                  not contain the NULL pointer.
+                </Span>
+                <b>Grounded Header Linked List Implementation :</b>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `class Node {
+                          constructor(data) {
+                              this.data = data
+                              this.next = null
+                          }
+                      }
+                      class LinkedList {
+                          constructor() {
+                              this.head = new Node(0)
+                          }
+                          push(data) {
+                              let node = new Node(data)
+                              if (this.head.next == null) {
+                                  this.head.next = node
+                              } else {
+                                  let temp = this.head.next
+                                  while (temp.next) {
+                                      temp = temp.next
+                                  }
+                                  temp.next = node
+                              }
+                              this.head.data = this.count()
+                          }
+                          pop() {
+                              if (this.head.next == null) {
+                                  return
+                              } else if (this.head.next.next == null) {
+                                  this.head.next = null
+                                  return
+                              } else {
+                                  let temp = this.head.next
+                                  while (temp.next.next) {
+                                      temp = temp.next
+                                  }
+                                  const last = temp.next
+                                  temp.next = null
+                                  this.head.data = this.count()
+                                  // delete temp doesn't work , we can delete object attributes but
+                                  //  not object itself in javascript
+                              }
+                          }
+                          count() {
+                              var count = 0
+                              let node = this.head.next;
+                              while (node != null) {
+                                  count += 1
+                                  node = node.next
+                              }
+                              return count
+                          }
+                          get(index) {
+                              if (this.head.next == null) return
+                              else if (index >= this.count()) return
+                              else {
+                                  let i = 0
+                                  let temp = this.head.next
+                                  while (i < index) {
+                                      temp = temp.next
+                                      i++
+                                  }
+                                  return temp.data
+                              }
+                          }
+                          print() {
+                              let temp = this.head.next
+                              let output = ""
+                              while (temp != null) {
+                                  output += temp.data + " "
+                                  temp = temp.next
+                              }
+                              console.log(output)
+                          }
+                          insert(ele, index) {
+                              if (this.head.next == null || index > this.count()) return
+                              let node = new Node(ele)
+                              if (index == 0) {
+                                  node.next = this.head.next;
+                                  this.head.next = node;
+                              } else {
+                                  let it = 0,
+                                      prev, curr;
+                                  curr = this.head.next;
+                                  prev = curr;
+                                  while (it < index) {
+                                      it++;
+                                      prev = curr;
+                                      curr = curr.next;
+                                  }
+                                  node.next = curr;
+                                  prev.next = node;
+                              }
+                              this.head.data = this.count()
+                              return this.count()
+                          }
+                          delete(index) {
+                              if (this.head.next == null || index >= this.count()) return
+                              else {
+                                  let curr, prev, it = 0
+                                  curr = this.head.next
+                                  prev = curr
+                                  if (index === 0) {
+                                      this.head.next = curr.next
+                                  } else {
+                                      while (it < index) {
+                                          it++
+                                          prev = curr
+                                          curr = curr.next
+                                      }
+                                      prev.next = curr.next
+                                  }
+                                  this.head.data = this.count()
+                                  return curr.data
+                              }
+                          }
+                          enqueue(ele) {
+                              this.insert(ele, 0)
+                          }
+                          dequeue() {
+                              this.delete(0)
+                          }
+                      }
+                      
+                      const l = new LinkedList();
+                      
+                      console.log("Grounded Header Linked List Operations:")
+                      console.log("Push:")
+                      l.push(9);
+                      l.push(8);
+                      l.push(10);
+                      l.print()
+                      console.log("Pop:")
+                      l.pop()
+                      l.print()
+                      console.log("Count: " + l.count())
+                      console.log("Get (Index 1): " + l.get(1))
+                      console.log("Insert:")
+                      l.insert(7, 1)
+                      l.print()
+                      console.log("Delete:")
+                      l.delete(1)
+                      l.print()
+                      console.log("Enqueue:")
+                      l.enqueue(5)
+                      l.print()
+                      console.log("Dequeue:")
+                      l.dequeue()
+                      l.print()
+                      console.log("Header Node:")
+                      console.log(l.head)`,
+                        output: `Grounded Header Linked List Operations:
+                        Push:
+                        9 8 10 
+                        Pop:
+                        9 8 
+                        Count: 2
+                        Get (Index 1): 8
+                        Insert:
+                        9 7 8 
+                        Delete:
+                        9 8 
+                        Enqueue:
+                        5 9 8 
+                        Dequeue:
+                        9 8 
+                        Header Node:
+                        Node {
+                          data: 2,
+                          next: Node { data: 9, next: Node { data: 8, next: null } }
+                        }`,
+                      },
+                    },
+                  }}
+                />
+                <p>
+                  <b>Reverse a linked list :</b>
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `class Node {
+                          constructor(data) {
+                              this.data = data
+                              this.next = null
+                          }
+                      }
+                      class LinkedList {
+                          constructor() {
+                              this.head = null
+                          }
+                          push(data) {
+                              let node = new Node(data)
+                              if (this.head == null) {
+                                  this.head = node
+                              } else {
+                                  let temp = this.head
+                                  while (temp.next) {
+                                      temp = temp.next
+                                  }
+                                  temp.next = node
+                              }
+                          }
+                          print() {
+                              let temp = this.head
+                              let output = ""
+                              while (temp != null) {
+                                  output += temp.data + " "
+                                  temp = temp.next
+                              }
+                              console.log(output)
+                          }
+                          reverse(){
+                          let prev = null;
+                          let current = this.head;
+                          let next = null;
+                          while (current != null) {
+                            next = current.next;
+                            current.next = prev;
+                            prev = current;
+                            current = next;
+                          }
+                          this.head = prev;
+                          }
+                          // TC: O(n)
+                          // SC: O(1)
+                      }
+                      
+                      const l = new LinkedList();
+                      
+                      console.log("Push:")
+                      l.push(9);
+                      l.push(8);
+                      l.push(10);
+                      l.print()
+                      console.log("Reverse")
+                      l.reverse()
+                      l.print()
+                      `,
+                        output: `Push:
+                        9 8 10 
+                        Reverse
+                        10 8 9 `,
+                      },
+                    },
+                  }}
+                />
+                <p>
+                  <b>Detect loop in a linked list:</b>
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `class Node {
+                          constructor(data) {
+                              this.data = data
+                              this.next = null
+                          }
+                      }
+                      class LinkedList {
+                          constructor() {
+                              this.head = null
+                          }
+                          push(data) {
+                              let node = new Node(data)
+                              if (this.head == null) {
+                                  this.head = node
+                              } else {
+                                  let temp = this.head
+                                  while (temp.next) {
+                                      temp = temp.next
+                                  }
+                                  temp.next = node
+                              }
+                          }
+                          print() {
+                              let temp = this.head
+                              let output = ""
+                              while (temp != null) {
+                                  output += temp.data + " "
+                                  temp = temp.next
+                              }
+                              console.log(output)
+                          }
+                      
+                          loop(){
+                           let temp = this.head
+                           let s = new Set()
+                           while(temp !== null){
+                             if(s.has(temp))
+                             return true
+                             s.add(temp)
+                             temp = temp.next
+                           }
+                           return false
+                          }
+                      
+                      }
+                      
+                      const l = new LinkedList();
+                      
+                      console.log("Push:")
+                      l.push(9);
+                      l.push(8);
+                      l.push(10);
+                      l.print()
+                      l.head.next = l.head
+                      console.log(l.loop())
+                      `,
+                        output: `Push:
+                        9 8 10 
+                        true`,
+                      },
+                    },
+                  }}
+                />
                 <Span>
                   <b>Stack (LIFO/FILO) :</b>
                 </Span>
@@ -1940,7 +2669,6 @@ int main(){
                 </Span>
                 <b>Implementation</b>
                 <CodeEditor
-                  // https://www.geeksforgeeks.org/implement-a-stack-using-singly-linked-list/
                   options={{
                     output: null,
                     codes: {
@@ -3407,8 +4135,183 @@ pop_back() :
                   A Tree where every internal node has one child. Such trees are
                   performance-wise same as linked list.
                 </Span>
-                {/* https://www.educba.com/types-of-trees-in-data-structure/ */}
-                {/* https://www.geeksforgeeks.org/binary-tree-set-3-types-of-binary-tree/ */}
+                <p>
+                  <b>Mirror (Invert) of binary tree</b>
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `class Node {
+                          constructor(val) {
+                              this.data = val;
+                              this.left = null;
+                              this.right = null;
+                          }
+                      }
+                      
+                      class BinaryTree {
+                        constructor(){
+                          this.root = null
+                        }
+                      
+                        inorder(root=this.root){
+                          if (root != null) {
+                              this.inorder(root.left)
+                              console.log(root.data)
+                              this.inorder(root.right)
+                          }
+                        }
+                      
+                        // while doing bfs keep swapping
+                        // left and right
+                      
+                        mirror(){
+                          let queue = []
+                          queue.push(this.root)
+                          while (queue.length > 0)
+                          {
+                          let curr = queue[0];
+                          queue.shift();
+                          let temp = curr.left;
+                          curr.left = curr.right;
+                          curr.right = temp;;
+                          if (curr.left != null)
+                            queue.push(curr.left);
+                          if (curr.right != null)
+                            queue.push(curr.right);
+                          }
+                        }
+                      
+                      }
+                      
+                      let tree = new BinaryTree();
+                      tree.root = new Node(1);
+                      tree.root.left = new Node(2);
+                      tree.root.right = new Node(3);
+                      tree.root.left.left = new Node(4);
+                      console.log("Inorder Traversals: ")
+                      console.log("Before Mirroring:")
+                      tree.inorder()
+                      console.log("After Mirroring:")
+                      tree.mirror()
+                      tree.inorder()
+                      `,
+                        output: `4
+                        2
+                        1
+                        3
+                        Mirror
+                        3
+                        1
+                        2
+                        4`,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Flip binary tree</b>
+                </Span>
+                <Img
+                  left
+                  src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/tree42-1024x381.png"
+                />
+                <p>
+                  In the flip operation, the leftmost node becomes the root of
+                  the flipped tree and its parent becomes its right child and
+                  the right sibling becomes its left child and the same should
+                  be done for all left most nodes recursively.
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `class Node {
+                          constructor(val) {
+                              this.data = val;
+                              this.left = null;
+                              this.right = null;
+                          }
+                      }
+                      
+                      class BinaryTree {
+                        constructor(){
+                          this.root = null
+                        }
+                      
+                        flip(){
+                          this.root = this.flipBinaryTree(this.root)
+                        }
+                      
+                       flipBinaryTree(root)
+                          {
+                               if (root == null)
+                                  return root;
+                              if (root.left == null && root.right ==null)
+                                  return root;
+                                let flippedRoot=this.flipBinaryTree(root.left);
+                              root.left.left=root.right;
+                              root.left.right=root;
+                              root.left=root.right=null;
+                              return flippedRoot;
+                          }
+                      
+                      level(root = this.root) {
+                              if (root == null)
+                                  return;
+                      
+                              let q = [];
+                              q.push(root);
+                              while (true) {
+                                  let nodeCount = q.length;
+                                  if (nodeCount == 0) {
+                                      break;
+                                  }
+                                  let output = ""
+                                  while (nodeCount > 0) {
+                                      let node = q[0];
+                                      output += node.data + " ";
+                                      q.shift();
+                                      if (node.left != null)
+                                          q.push(node.left);
+                                      if (node.right != null)
+                                          q.push(node.right);
+                                      nodeCount--;
+                                  }
+                                  console.log(output)
+                              }
+                          }
+                      
+                      
+                      }
+                      
+                      let tree = new BinaryTree();
+                      tree.root = new Node(1);
+                      tree.root.left = new Node(2);
+                      tree.root.right = new Node(3);
+                      tree.root.right.left = new Node(4);
+                      tree.root.right.right = new Node(5);
+                      console.log("Level Order Traversals: ")
+                      console.log("Before Flip:")
+                      tree.level()
+                      console.log("After Flip:")
+                      tree.flip()
+                      tree.level()
+                      `,
+                        output: `Level Order Traversals: 
+                        Before Flip:
+                        1 
+                        2 3 
+                        4 5 
+                        After Flip:
+                        2 
+                        3 1 
+                        4 5 `,
+                      },
+                    },
+                  }}
+                />
                 <Span>
                   <b>3. Binary Search Tree</b>
                 </Span>
@@ -3787,7 +4690,122 @@ pop_back() :
                   }}
                 />
                 <Span>
-                  <b>4. AVL (Adelson Velsky and Landis) Tree</b>
+                  <b>4. Binary Heap</b>
+                </Span>
+                <Span>
+                  It is a complete binary tree. It can be either min heap or max
+                  heap. In min heap, key value of all parent nodes should be
+                  lesser than their children. And they should be greater then
+                  their children in case of max heap.
+                </Span>
+                <Span>
+                  The traversal method use to achieve Array representation is
+                  Level Order
+                </Span>
+                <Span>It's represented as an array( let's say Arr) where</Span>
+                <Span>
+                  Arr[(i-1)/2] Returns the parent node <br />
+                  Arr[(2*i)+1] Returns the left child node <br />
+                  Arr[(2*i)+2] Returns the right child node
+                </Span>
+                <Span>Algorithim === Avg. Case === Worst case</Span>
+                <Span>
+                  Search === O(n) === O(n)
+                  <br />
+                  Insert === O(1) === O(log n)
+                  <br />
+                  Find-min === O(1) === O(1)
+                  <br />
+                  Delete-min === O(log n) === O(log n)
+                </Span>
+                <Span>
+                  <b>Heapify</b>
+                </Span>
+                <p>
+                  The process of reshaping a binary tree into a Heap data
+                  structure is known as "heapify".{" "}
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `class BH {
+                          constructor() {
+                            this.values = [];
+                          }
+                          add(element) {
+                            this.values.push(element);
+                            let index = this.values.length - 1;
+                            const current = this.values[index];
+                        
+                            while (index > 0) {
+                              let parentIndex = Math.floor((index - 1) / 2);
+                              let parent = this.values[parentIndex];
+                        
+                              if (parent <= current) {
+                                this.values[parentIndex] = current;
+                                this.values[index] = parent;
+                                index = parentIndex;
+                              } else break;
+                            }
+                          }
+                          extractMax() {
+                            const max = this.values[0];
+                            const end = this.values.pop();
+                            this.values[0] = end;
+                        
+                            let index = 0;
+                            const length = this.values.length;
+                            const current = this.values[0];
+                            while (true) {
+                              let leftChildIndex = 2 * index + 1;
+                              let rightChildIndex = 2 * index + 2;
+                              let leftChild, rightChild;
+                              let swap = null;
+                        
+                              if (leftChildIndex < length) {
+                                leftChild = this.values[leftChildIndex];
+                                if (leftChild > current) swap = leftChildIndex;
+                              }
+                              if (rightChildIndex < length) {
+                                rightChild = this.values[rightChildIndex];
+                                if (
+                                  (swap === null && rightChild > current) ||
+                                  (swap !== null && rightChild > leftChild)
+                                )
+                                  swap = rightChildIndex;
+                              }
+                        
+                              if (swap === null) break;
+                              this.values[index] = this.values[swap];
+                              this.values[swap] = current;
+                              index = swap;
+                            }
+                        
+                            return max;
+                          }
+                        }
+                        
+                        const tree = new BH();
+                        tree.add(3);
+                        tree.add(4);
+                        tree.add(31);
+                        tree.add(6);
+                        console.log(tree); 
+                        console.log(tree.extractMax()); 
+                        console.log(tree); 
+                        // max heap
+                        `,
+                        output: `BH { values: [ 31, 6, 4, 3 ] }
+                        31
+                        BH { values: [ 6, 3, 4 ] }`,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>5. AVL (Adelson Velsky and Landis) Tree</b>
                 </Span>
                 <Span>
                   It's a self balancing binary search tree where difference b/w
@@ -4081,7 +5099,7 @@ pop_back() :
                   }}
                 />
                 <Span>
-                  <b>5. Red-Black Tree</b>
+                  <b>6. Red-Black Tree</b>
                 </Span>
                 <Span>
                   It's a kind of self balancing binary search tree which uses
@@ -4332,7 +5350,7 @@ pop_back() :
                   }}
                 />
                 <Span>
-                  <b>6. N-ary (M-way) Tree</b>
+                  <b>7. N-ary (M-way) Tree</b>
                 </Span>
                 <Span>
                   Multi way trees are used to generate trees with order m, i.e.
@@ -5069,7 +6087,7 @@ if __name__=='__main__':
                         }
                         
                         let obj = new Graph(4);
-                        // 0 1 2 3 4 -> vertices
+                        // 0 1 2 3 -> vertices
                         obj.addEdge(0, 1);
                         obj.addEdge(0, 2);
                         obj.addEdge(1, 2);
@@ -5733,7 +6751,7 @@ Not found
 import java.util.*;
 import java.io.*;
 
-// HashSet: If you don’t want to maintain insertion order but want  
+// HashSet: If you don't want to maintain insertion order but want  
 // to store unique objects. (thread -safe)
 // LinkedHashSet: If you want to maintain the insertion order of 
 // elements then you can use LinkedHashSet. (not thread -safe)
@@ -6076,34 +7094,5291 @@ Key doesn't exist
   },
   algo: {
     title: "Algorithms",
+    content: (
+      <>
+        <Span>
+          It's a step by step procedure to solve computational problem.
+        </Span>
+        <Span>
+          <b>Algorithm:</b>
+        </Span>
+        <Span>
+          1. It's written at design time.
+          <br />
+          2. Author should have domain knowledge.
+          <br />
+          3. It can written in any language.
+          <br />
+          4. It should be machine independent.
+          <br />
+          5. It can be analyzed for space/time complexity.
+          <br />
+          6. Priori analysis is associated with algorithm.
+        </Span>
+        <Span>
+          <b>Program:</b>
+        </Span>
+        <Span>
+          1. It's written at implementation time.
+          <br />
+          2. Should be written by programmer.
+          <br />
+          3. It can written in a programming language.
+          <br />
+          4. It should be machine dependent ( hardware and operating system ).
+          <br />
+          5. It can be tested (watch time and bytes).
+          <br />
+          6. Posteriori analysis is associated with program.
+        </Span>
+        <Span>
+          <b>Charactersitic's of algorithm:</b>
+        </Span>
+        <p>
+          <p>1. Input: 0 or more</p>
+          <p>2. Output: atleast 1</p>
+          <p>3. Definiteness: every stmt. should be clear</p>
+          <p>4. Finiteness: algorithm should have finite steps</p>
+          <p>5. Effectiveness: every step must be used</p>
+        </p>
+        <br />
+        <Span>
+          <b>Algorithms can be analysed using following parameters:</b>
+        </Span>
+        <Span>
+          1. Time <br /> 2. Space <br /> 3. N/W Consumption <br /> 4. Power
+          Consumption <br /> 5. CPU Registers Consumption
+        </Span>
+      </>
+    ),
     types: {
       sort: {
         title: "Sorting",
-        types: [],
+        types: [
+          {
+            title: "Comparison Based",
+            content: (
+              <>
+                <Span>Let n be number of elements.</Span>
+                <Span>
+                  <b>Bubble Sort</b>
+                </Span>
+                <Span>
+                  We can visualize this sort with the help of act of throwing
+                  stones into the sea. More heavier stone will settle at tha
+                  bottom compared to lighter ones. It's adaptive as well as
+                  stable. We can't perform this sort at linked list due to time
+                  consumption. Each of k passes, provides us the kth largest
+                  element.
+                </Span>
+                <p>
+                  Best TC: O(n) ( already sorted ) <br />
+                  Average TC: O(n^2) <br />
+                  Worst TC: O(n^2) <br />
+                  Worst Space Complexity: O(1) <br />
+                  Number of passes: n-1 <br />
+                  Number of comparisons : n(n-1)/2 <br />
+                  Max. Number of swaps: n(n-1)/2
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        function bubbleSort(arr, n)
+{
+	  let i, j, temp;
+		let flag;
+		for (i = 0; i < n - 1; i++)
+		{
+			flag = false;
+			for (j = 0; j < n - i - 1; j++)
+			{
+				if (arr[j] > arr[j + 1])
+				{
+					temp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = temp;
+					flag = true;
+				}
+			}
+      // optimized way to brak outer loop in b/w
+      // if provided i/p is already sorted.
+			if (flag == false)
+				break;
+		}
+}
+
+var arr = [ 64, 34, 25, 12, 22, 11, 90 ];
+var n = arr.length;
+bubbleSort(arr, n);
+console.log(arr)
+                        `,
+                        output: `
+                        [
+                          11, 12, 22, 25,
+                          34, 64, 90
+                        ]
+                        `,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Insertion Sort</b>
+                </Span>
+                <Span>
+                  It works similar to the way we sort playing cards after each
+                  iteration. We split original array virtually into two parts:
+                  sorted and unsorted. Values from the unsorted part are picked
+                  and placed at the correct position in the sorted part. It's
+                  adaptive (by nature) and stable. And can be used to sort the
+                  linked list.
+                </Span>
+                <Span>
+                  We can use binary search to reduce the number of comparisons
+                  in normal insertion sort. Binary Insertion Sort uses binary
+                  search to find the proper location to insert the selected item
+                  at each iteration. In normal insertion, sorting takes O(i) (at
+                  ith iteration) in worst case. We can reduce it to O(logi) by
+                  using binary search. It makes use of incremental approach.
+                </Span>
+                <Span>
+                  Insertion sort is used when number of elements is small. It
+                  can also be useful when input array is almost sorted, only few
+                  elements are misplaced in complete big array.
+                </Span>
+                <Span>
+                  For very small n, Insertion Sort is faster than more efficient
+                  algorithms such as Quicksort or Merge Sort.
+                </Span>
+                <p>
+                  Best TC: O(n) ( already sorted ) <br />
+                  Average TC: O(n^2) <br />
+                  Worst TC: O(n^2) <br />
+                  Worst Space Complexity: O(1) <br />
+                  Number of passes: n-1 <br />
+                  Number of comparisons : n(n-1)/2 <br />
+                  Max. Number of swaps: n(n-1)/2 O(n*n)
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        function insertionSort(arr, n)
+{
+	let i, key, j;
+	for (i = 1; i < n; i++)
+	{
+		key = arr[i];
+		j = i - 1;
+		while (j >= 0 && arr[j] > key)
+		{
+			arr[j + 1] = arr[j];
+			j = j - 1;
+		}
+		arr[j + 1] = key;
+	}
+}
+
+let arr = [12, 11, 13, 5, 6 ]; 
+let n = arr.length; 
+insertionSort(arr, n); 
+console.log(arr)
+                        `,
+                        output: `
+                        [ 5, 6, 11, 12, 13 ]
+                        `,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Selection Sort</b>
+                </Span>
+                <Span>
+                  This is used to place smallest element at the start after each
+                  iteration. It's neither adaptive nor stable.Each of k passes,
+                  provides us the kth smallest element. It can be made stable.
+                  It's used when no. of swaps are limited.
+                </Span>
+                <Span>
+                  Selection sort performs a smaller number of swaps compared to
+                  bubble sort; therefore, even though both sorting methods are
+                  of O(N2), selection sort performs faster and more efficiently!
+                </Span>
+                <p>
+                  Best TC: O(n^2)
+                  <br />
+                  Average TC: O(n^2) <br />
+                  Worst TC: O(n^2) <br />
+                  Worst Space Complexity: O(1) <br />
+                  Number of swap: n-1 ( minimum among all kinds of sorts ){" "}
+                  <br />
+                  No. of comparisons: n(n-1)/2, O(n*n)
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        function selectionSort(arr, n)
+{
+	let i, j, min, temp;
+	for (i = 0; i < n-1; i++)
+	{
+    min = i;
+    for(j = i+1; j<n; j++)
+    if(arr[j]<arr[min]){
+      min = j;
+    }
+    temp = arr[i]
+    arr[i] = arr[min]
+    arr[min] = temp
+	}
+}
+
+let arr = [12, 11, 13, 5, 6 ]; 
+let n = arr.length; 
+selectionSort(arr, n); 
+console.log(arr)
+                        `,
+                        output: `
+                        [ 5, 6, 11, 12, 13 ]
+                        `,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Heap Sort</b>
+                </Span>
+                <Span>
+                  It is based on binary heap. It's similar to selection sort
+                  where place the minimum element at start after each iteration.
+                </Span>
+                <Span>
+                  The time required to perform Heap sort increases
+                  logarithmically while other algorithms may grow exponentially
+                  slower as the number of items to sort increases. This sorting
+                  algorithm is very efficient. Memory usage is minimal because
+                  apart from what is necessary to hold the initial list of items
+                  to be sorted, it needs no additional memory space to work
+                </Span>
+                <Span>
+                  Best TC: O(nlogn)
+                  <br />
+                  Average TC: O(nlogn) <br />
+                  Worst TC: O(nlogn) <br />
+                  Space Complexity: O(n)
+                </Span>
+                <Span>
+                  <b>Array representation for binary heap:</b>
+                </Span>
+                <Span>
+                  Since , binary heap is a complete binary tree , if the parent
+                  node is stored at index i, then left child can be calculated
+                  using 2*i + 1 and right can be defined using 2*i +2
+                </Span>
+                <Span>
+                  <b>Heapify</b>
+                </Span>
+                <p>
+                  The process of reshaping a binary tree into a Heap data
+                  structure is known as "heapify".{" "}
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        function sort(arr)
+                        {
+                          var n = arr.length;
+                      
+                          for (var i = Math.floor(n / 2) - 1; i >= 0; i--) // O(n)
+                            heapify(arr, n, i); // O(log n)
+                            // O(nlogn)
+                      
+                          for (var i = n - 1; i > 0; i--) {
+                            var temp = arr[0];
+                            arr[0] = arr[i];
+                            arr[i] = temp;
+                            heapify(arr, i, 0);
+                          }
+                        }
+                      
+                          function heapify(arr, n, i)
+                          {
+                              var largest = i; 
+                              var l = 2 * i + 1; 
+                              var r = 2 * i + 2; 
+                      
+                              if (l < n && arr[l] > arr[largest])
+                                  largest = l;
+                      
+                               if (r < n && arr[r] > arr[largest])
+                                  largest = r;
+                      
+                              if (largest != i) {
+                                  var swap = arr[i];
+                                  arr[i] = arr[largest];
+                                  arr[largest] = swap;
+                                  heapify(arr, n, largest);
+                              }
+                          }
+                      
+                      const arr = [9,2,7,1,0]
+                      sort(arr)
+                      console.log(arr)                      
+                        `,
+                        output: `[ 0, 1, 2, 7, 9 ]`,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Merge Sort</b>
+                </Span>
+                <Span>
+                  It is a divide and conquer algorithm. It divides the array
+                  into two parts, calls itself for each half and merges two
+                  halves.It's stable.
+                </Span>
+                <Span>
+                  Unlike arrays, linked list nodes may not be adjacent in
+                  memory. Unlike array, in linked list, we can insert items in
+                  the middle in O(1) extra space and O(1) time. Therefore merge
+                  operation of merge sort can be implemented without extra space
+                  for linked lists.
+                </Span>
+                <Span>
+                  Merge Sort is a recursive algorithm and time complexity can be
+                  expressed as following recurrence relation.
+                  <br /> T(n) = 2T(n/2) + θ(n)
+                </Span>
+                <Span>
+                  It's used for sorting linked list in nlog(n) time.And it's
+                  used in external sorting. It's slower than other algorithms
+                  for smaller tasks. Merge sort algorithm requires an additional
+                  memory space of 0(n) for the temporary array. It goes through
+                  the whole process even if the array is sorted.
+                </Span>
+                <Span>
+                  <b>External sorting</b>
+                </Span>
+                <Span>
+                  External sorting is a class of sorting algorithms that can
+                  handle massive amounts of data. External sorting is required
+                  when the data being sorted do not fit into the main memory of
+                  a computing device (usually RAM) and instead they must reside
+                  in the slower external memory, usually a hard disk drive.
+                  Thus, external sorting algorithms are external memory
+                  algorithms and thus applicable in the external memory model of
+                  computation. External sorting algorithms generally fall into
+                  two types, distribution sorting, which resembles quicksort,
+                  and external merge sort, which resembles merge sort.
+                </Span>
+                <Span>
+                  merge sort always divides the array into two halves and takes
+                  linear time to merge two halves.
+                </Span>
+                <Span>
+                  Best TC: O(nlogn)
+                  <br />
+                  Average TC: O(nlogn) <br />
+                  Worst TC: O(nlogn) <br />
+                  Space Complexity: O(n) //depends
+                </Span>
+                <Span>
+                  <b>Merge vs heap sort:</b>
+                </Span>
+                <p>
+                  HeapSort is the slowest of the sorting algorithms but unlike
+                  merge and quick sort it does not require massive recursion or
+                  multiple arrays to work. The merge sort is slightly faster
+                  than the heap sort for larger sets, but it requires twice the
+                  memory of the heap sort because of the second array.
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        function merge(arr, l, m, r)
+{
+    var n1 = m - l + 1;
+    var n2 = r - m;
+    var L = Array(n1); 
+    var R = Array(n2);
+    for (var i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (var j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+    var i = 0;
+    var j = 0;
+    var k = l;
+
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        }
+        else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+function mergeSort(arr,l, r){
+    if(l>=r){
+        return;
+    }
+    var m =l+ parseInt((r-l)/2);
+    mergeSort(arr,l,m);
+    mergeSort(arr,m+1,r);
+    merge(arr,l,m,r);
+}
+
+
+var arr = [ 12, 11, 13, 5, 6, 7 ];
+var arr_size = arr.length;
+mergeSort(arr, 0, arr_size - 1);
+console.log(arr, arr_size);
+                        `,
+                        output: `
+                        [ 5, 6, 7, 11, 12, 13 ] 6
+                        `,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Quick Sort (Partition/Selection exchange sort)</b>
+                </Span>
+                <Span>
+                  It's also a divide and conquer algorithm. It's a internal
+                  sorting algorithm. It picks an element as pivot and partitions
+                  the given array around the picked pivot. There are many
+                  different versions of quickSort that pick pivot in different
+                  ways.
+                </Span>
+                <Span>
+                  The key process in quickSort is partition(). Target of
+                  partitions is, given an array and an element x of array as
+                  pivot, put x at its correct position in sorted array and put
+                  all smaller elements (smaller than x) before x, and put all
+                  greater elements (greater than x) after x. All this should be
+                  done in linear time
+                </Span>
+                <Span>
+                  Best TC: O(nlogn)
+                  <br />
+                  Average TC: O(nlogn) <br />
+                  Worst TC: O(n*n) <br />
+                  Space Complexity: O(n)
+                </Span>
+                <Span>
+                  Quick Sort is preferred over MergeSort for sorting Arrays. For
+                  arrays, merge sort loses due to the use of extra O(N) storage
+                  space. Quick Sort is also a cache friendly sorting algorithm
+                  as it has good locality of reference when used for arrays.
+                  Quick Sort is also tail recursive, therefore tail call
+                  optimizations is done.
+                </Span>
+                <Span>
+                  The time complexity of Quicksort is O(n log n) in the best
+                  case, O(n log n) in the average case, and O(n^2) in the worst
+                  case. But because it has the best performance in the average
+                  case for most inputs, Quicksort is generally considered the
+                  “fastest” sorting algorithm.
+                </Span>
+                <p>
+                  Quick sort is not stable and merge sort is preferred over
+                  quick sort for linked lists.
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Python: {
+                        code: `def partition(start, end, array):
+	
+    pivot_index = start
+    pivot = array[pivot_index]
+    while start < end:
+      while start < len(array) and array[start] <= pivot:
+        start += 1
+      while array[end] > pivot:
+        end -= 1
+      if(start < end):
+        array[start], array[end] = array[end], array[start]
+    array[end], array[pivot_index] = array[pivot_index], array[end]
+    return end
+    
+def quick_sort(start, end, array):
+    
+    if (start < end):
+      p = partition(start, end, array)
+      quick_sort(start, p - 1, array)
+      quick_sort(p + 1, end, array)
+      
+array = [ 10, 7, 8, 9, 1, 5 ]
+quick_sort(0, len(array) - 1, array)  
+print(f'Sorted array: {array}')
+                        `,
+                        output: `Sorted array: [1, 5, 7, 8, 9, 10]`,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Shell Sort</b>
+                </Span>
+                <Span>
+                  ShellSort is mainly a variation of Insertion Sort. In
+                  insertion sort, we move elements only one position ahead. When
+                  an element has to be moved far ahead, many movements are
+                  involved.
+                </Span>
+                <Span>
+                  Best TC: O(nlogn) // already sorted
+                  <br />
+                  For other cases it depends on gap sequence. Generally, Average
+                  TC: O(nlogn) <br />
+                  Worst TC: O(nlog^2n) <br />
+                  Space Complexity: O(1)
+                </Span>
+                <Span>
+                  Shell Sort improves its time complexity by taking the
+                  advantage of the fact that using Insertion Sort on a partially
+                  sorted array results in less number of moves.
+                </Span>
+                <p>
+                  Time complexity of below implementation of shellsort is
+                  O(n^2).
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        function sort(arr)
+{
+	let n = arr.length;
+
+		for (let gap = Math.floor(n/2); gap > 0; gap = Math.floor(gap/2))
+		{
+			for (let i = gap; i < n; i += 1)
+			{
+				let temp = arr[i];
+				let j;
+				for (j = i; j >= gap && arr[j - gap] > temp; j -= gap)
+					arr[j] = arr[j - gap];
+				arr[j] = temp;
+			}
+		}
+		return arr;
+}
+
+let arr = [12, 34, 54, 2, 3];
+arr = sort(arr);
+console.log(arr);
+
+                        `,
+                        output: `[ 2, 3, 12, 34, 54 ]`,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Tree Sort</b>
+                </Span>
+                <Span>
+                  Tree sort is a sorting algorithm that is based on Binary
+                  Search Tree data structure. It first creates a binary search
+                  tree from the elements of the input list or array and then
+                  performs an in-order traversal on the created binary search
+                  tree to get the elements in sorted order.
+                </Span>
+                <Span>
+                  For implementation please refer to non linear data structures.
+                </Span>
+                <Span>
+                  O(n log n) Adding one item to a Binary Search tree on average
+                  takes O(log n) time. Therefore, adding n items will take O(n
+                  log n) time.The worst case time complexity of Tree Sort can be
+                  improved by using a self-balancing binary search tree like Red
+                  Black Tree, AVL Tree. Using self-balancing binary tree Tree
+                  Sort will take O(n log n) time to sort the array in worst
+                  case.
+                </Span>
+                <Span>
+                  tree sort algorithms require separate memory to be allocated
+                  for the tree, as opposed to in-place algorithms such as
+                  quicksort or heapsort. On most common platforms, this means
+                  that heap memory has to be used, which is a significant
+                  performance hit when compared to quicksort and heapsort. When
+                  using a splay tree as the binary search tree, the resulting
+                  algorithm (called splaysort) has the additional property that
+                  it is an adaptive sort, meaning that its running time is
+                  faster than O(n log n) for inputs that are nearly sorted.
+                </Span>
+                <Span>
+                  Best TC: O(nlogn)
+                  <br />
+                  TC: O(nlogn) <br />
+                  Worst TC: O(n^2) <br />
+                  Space Complexity: O(n)
+                </Span>
+              </>
+            ),
+          },
+          {
+            title: "Index ( Non Comparison ) Based",
+            content: (
+              <>
+                <Span>
+                  <b>Count Sort</b>
+                </Span>
+                <Span>
+                  Counting sort is a sorting technique based on keys between a
+                  specific range. It works by counting the number of objects
+                  having distinct key values (kind of hashing). Then doing some
+                  arithmetic to calculate the position of each object in the
+                  output sequence.
+                </Span>
+                <p>
+                  Best TC: O(n+k) k is size of count array
+                  <br />
+                  TC: O(n+k) <br />
+                  Worst TC: O(n+k) <br />
+                  Space Complexity: O(n+k)
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        function sort(arr)
+{
+	var n = arr.length;
+
+	var output = Array(n).fill(0)
+
+	var count = Array.from({length: 256}, (_, i) => 0);
+
+	for (var i = 0; i < n; ++i)
+		++count[arr[i].charCodeAt(0)];
+
+	for (var i = 1; i <= 255; ++i)
+		count[i] += count[i - 1];
+
+	for (var i = n - 1; i >= 0; i--) {
+		output[count[arr[i].charCodeAt(0)] - 1] = arr[i];
+		--count[arr[i].charCodeAt(0)];
+	}
+	for (var i = 0; i < n; ++i)
+		arr[i] = output[i];
+	return arr;
+}
+
+	var arr = ['s','a','i','a','s','h','i','s','h'];
+
+	arr = sort(arr);
+	for (var i = 0; i < arr.length; ++i)
+		console.log(arr[i]);
+
+                        `,
+                        output: `
+                        a
+a
+h
+h
+i
+i
+s
+s
+s
+                        `,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Bin / Bucket Sort</b>
+                </Span>
+                <Span>
+                  Bucket sort is mainly useful when input is uniformly
+                  distributed over a range. Counting sort can by used here
+                  because of floating numbers
+                </Span>
+                <p>
+                  Best TC: O(n+k) k is number of buckets
+                  <br />
+                  TC: O(n+k) <br />
+                  Worst TC: O(n^2) <br />
+                  Space Complexity: O(n+k)
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `function bucketSort(arr,n)
+                        {
+                          if (n <= 0)
+                              return;
+                            let buckets = new Array(n);
+                        
+                            for (let i = 0; i < n; i++)
+                            {
+                              buckets[i] = [];
+                            }
+                            for (let i = 0; i < n; i++) {
+                              let idx = arr[i] * n;
+                              buckets[Math.floor(idx)].push(arr[i]);
+                            }
+                            for (let i = 0; i < n; i++) {
+                              buckets[i].sort(function(a,b){return a-b;});
+                            }
+                            let index = 0;
+                            for (let i = 0; i < n; i++) {
+                              for (let j = 0; j < buckets[i].length; j++) {
+                                arr[index++] = buckets[i][j];
+                              }
+                            }
+                        }
+                        
+                        let arr = [0.897, 0.565,
+                            0.656, 0.1234,
+                            0.665, 0.3434];
+                        let n = arr.length;
+                        bucketSort(arr, n);
+                        
+                        for (let el of arr.values()) {
+                          console.log(el + " ");
+                        }
+                        `,
+                        output: `
+                        .1234 
+0.3434 
+0.565 
+0.656 
+0.665 
+0.897 
+                        `,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Radix Sort</b>
+                </Span>
+                <Span>
+                  We can't use counting sort when elements are range of 1 to n*n
+                  because counting sort will take O(n^2) which is worse than
+                  comparison-based sorting algorithms.
+                </Span>
+                <Span>
+                  After every iteration, we make of corresponding number at
+                  digit's place using % operator.
+                </Span>
+                <Span>
+                  Radix Sort takes O(d*(n+b)) time where b is the base for
+                  representing numbers, for example, for the decimal system, b
+                  is 10. What is the value of d? If k is the maximum possible
+                  value, then d would be O(logb(k)). So overall time complexity
+                  is O((n+b) * logb(k))
+                </Span>
+                <p>
+                  Best TC: O(d*(n+b))
+                  <br />
+                  TC: O(d*(n+b)) <br />
+                  Worst TC: O(d*(n+b)) <br />
+                  Space Complexity: O(n+2^d).
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `function getMax(arr,n)
+                        {
+                          let mx = arr[0];
+                            for (let i = 1; i < n; i++)
+                              if (arr[i] > mx)
+                                mx = arr[i];
+                            return mx;
+                        }
+                        
+                        // can be solved using linked list as well
+                        
+                        function countSort(arr,n,exp)
+                        {
+                          let output = new Array(n); 
+                            let i;
+                            let count = new Array(10);
+                            for(let i=0;i<10;i++)
+                              count[i]=0;
+                        
+                            for (i = 0; i < n; i++)
+                              count[Math.floor(arr[i] / exp) % 10]++;
+                        
+                            for (i = 1; i < 10; i++)
+                              count[i] += count[i - 1];
+                        
+                            for (i = n - 1; i >= 0; i--) {
+                              output[count[Math.floor(arr[i] / exp) % 10] - 1] = arr[i];
+                              count[Math.floor(arr[i] / exp) % 10]--;
+                            }
+                        
+                            for (i = 0; i < n; i++)
+                              arr[i] = output[i];
+                        }
+                        
+                        function radixsort(arr,n)
+                        {
+                            let m = getMax(arr, n);
+                            for (let exp = 1; Math.floor(m / exp) > 0; exp *= 10)
+                              countSort(arr, n, exp);
+                        }
+                        
+                        
+                        let arr=[170, 45, 75, 90, 802, 24, 2, 66];
+                        let n = arr.length;
+                        radixsort(arr, n);
+                        console.log(arr)
+                        `,
+                        output: `
+                        [
+                          2, 24,  45,  66,
+                         75, 90, 170, 802
+                       ]
+                        `,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
+          },
+        ],
+        content: (
+          <>
+            <Span>
+              This algorithm is basically used to reorder elements in the
+              respective data structure based on a comparison operator.
+            </Span>
+            <Span>
+              <b>Criteria of analysis:</b>
+            </Span>
+            <p>
+              1. No. of comparisons <br />
+              2. No. of swaps <br />
+              3. Adaptive ( we can detect already sorted lists using this
+              feature ) <br />
+              4. Stable ( order of duplicate elements should be maintained ){" "}
+              <br />
+              5. Extra Memory <br />
+              <br />
+            </p>
+            <Span>Types of sorting:</Span>
+            <Span>(a) Comparison based:</Span>
+            <Span>
+              Elements are compared with each other to get sorted array.
+            </Span>
+            <Span>Examples:</Span>
+            <Span>
+              Avg. Complexity (O(n*n)) : Bubble, Insertion and Selection. <br />
+              Avg. Complexity (O(n*(log n))) : Heap, Merge, Quick, and Tree{" "}
+              <br />
+              Avg. Complexity (O(n^1.5)) : Shell{" "}
+            </Span>
+            <Span>(b) Index based:</Span>
+            <Span>
+              This method makes use of hashing and sort elements by creating
+              index recursively.
+            </Span>
+            <Span>Examples:</Span>
+            <p>Avg. Complexity (O(n)): Count, Bucket( Bin ) and Radix</p>
+          </>
+        ),
       },
       search: {
         title: "Searching",
-        types: [],
+        content: (
+          <>
+            <Span>
+              It's used to check for an element or retrieve an element from any
+              data structure where it is stored.
+            </Span>
+            <Span>
+              <b>Types:</b>
+            </Span>
+            <Span>
+              <b>1. Sequential Search:</b>
+            </Span>
+            <Span>
+              In this type, data structure is traversed sequentially and every
+              element is checked.
+            </Span>
+            <Span>
+              <b>Example:</b>
+            </Span>
+            <Span>
+              <b>Linear search:</b>
+            </Span>
+            <Span>
+              It's a basic algorithm to find a element in the data structure.
+            </Span>
+            <Span>
+              <b>Best case TC: </b> O(1) <br />
+              <b>Worst case TC: </b> O(n) <br />
+              <b>Space Complexity: </b> O(1)
+            </Span>
+            <p>
+              <b>Implemtation (basic + optimized):</b>
+            </p>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `function basicSearch(arr,ele){
+                      let flag = false;
+                      for(let index in arr){
+                        if(arr[index] === ele)
+                        {
+                          flag = true
+                          return Number(index) + 1 +"th"
+                        }
+                      }
+                      if(!flag) return "Not found"
+                    }
+                    
+                    function optimizedSearch(arr, ele)
+                    {
+                      let left = 0;
+                      let length = arr.length;
+                      let right = length - 1;
+                      let position = -1;
+                      for(left = 0; left <= right;)
+                      {
+                        if (arr[left] == ele)
+                        {
+                          position = left;
+                          console.log(
+                            "Element found in array at " +
+                            (position+1) + "th position with " +
+                              (left + 1) + " attempt");
+                          break;
+                        }
+                    
+                        if (arr[right] == ele)
+                        {
+                          position = right;
+                          console.log(
+                            "Element found in array at " +
+                            (position + 1) + "th position with " +
+                            (length - right) + " attempt");
+                          break;
+                        }
+                        left++;
+                        right--;
+                      }
+                    
+                      if (position == -1)
+                        console.log("Not found in Array with " +
+                              left + " Attempt");
+                    }
+                      
+                    let arr = [ 1, 2, 3, 4, 5 ];
+                    let search_element = 5;
+                    console.log(basicSearch(arr, search_element))
+                    optimizedSearch(arr, search_element);
+                    `,
+                    output: `
+                    5th
+Element found in array at 5th position with 1 attempt
+                    `,
+                  },
+                },
+              }}
+            />
+            <Span>
+              <b>2. Interval Search:</b>
+            </Span>
+            <Span>
+              These algorithms are specifically designed for sorted data
+              structures. These types of algorithms are much more efficient than
+              linear search as they repeatedly target the center of the search
+              structure and divide the search space in half.
+            </Span>
+            <Span>
+              <b>Binary search:</b>
+            </Span>
+            <Span>
+              The original Binary search algorithm can not be applied to linked
+              list because linked list by nature is dynamic and it is not known
+              where the middle element is actually allocated. So, some of the
+              efforts are required to apply binary search over a linked list to
+              obtain the advantages. The main problem that binary search takes
+              O(n) time in Linked List due to fact that in linked list we are
+              not able to do indexing which led traversing of each element in
+              Linked list take O(n) time.
+            </Span>
+            <Span>Complexities</Span>
+            <Span>
+              Best TC: O(1) // central index would directly match the desired
+              value. <br />
+              Avg. TC: O(log n) <br />
+              Worst TC: O(log n) <br />
+              Space Complexity (Iteration): O(1) <br />
+              Space Complexity (Recursion): O(log n)
+            </Span>
+            <Span>
+              Here we are using int mid = low + (high - low)/2; instead of int
+              mid = (low + high)/2;
+            </Span>
+            <Span>
+              If we calculate the middle index using (low + high)/2 means our
+              code is not 100% correct, it contains bugs. That is, it fails for
+              larger values of int variables low and high. Specifically, it
+              fails if the sum of low and high is greater than the maximum
+              positive int value(2^31 - 1 ). The sum overflows to a negative
+              value and the value stays negative when divided by 2. In java, it
+              throws ArrayIndexOutOfBoundException. int mid = low + (high -
+              low)/2; So it's better to use it like this. This bug applies
+              equally to merge sort and other divide and conquer algorithms.
+            </Span>
+            <p>Implementation</p>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `function recBinarySearch(arr, l, r, x){
+                      if (r >= l) {
+                          let mid = l + Math.floor((r - l) / 2);
+                          if (arr[mid] == x)
+                              return mid;
+                          if (arr[mid] > x)
+                              return binarySearch(arr, l, mid - 1, x);
+                          return binarySearch(arr, mid + 1, r, x);
+                      }
+                      return -1;
+                  }
+                  
+                  // every number can be represented as the sum of powers of 2.
+                  // Hence it can solved using bitwise approach
+                  
+                  function binarySearch(arr, x)
+                  {
+                    let l = 0;
+                    let r = arr.length - 1;
+                    let mid;
+                    while (r >= l) {
+                      mid = l + Math.floor((r - l) / 2);
+                      if (arr[mid] == x)
+                        return mid;
+                      if (arr[mid] > x)
+                        r = mid - 1;
+                      else
+                        l = mid + 1;
+                    }
+                    return -1;
+                  }
+                  
+                  const	arr =new Array(2, 3, 4, 10, 40);
+                  const	x = 10;
+                  const	n = arr.length;
+                  const	result = binarySearch(arr, x);
+                  console.log(result)
+                  `,
+                    output: `3`,
+                  },
+                },
+              }}
+            />
+            <Span>
+              <b>Two pointers technique:</b>
+            </Span>
+            <Span>
+              Two pointers is really an easy and effective technique that is
+              typically used for searching pairs in a sorted array.
+            </Span>
+            <p>
+              <b>Time complexity: </b> O(n)
+            </p>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `
+                    function isPairSum(A, N, X)
+{
+	var i = 0;
+	var j = N - 1;
+
+	while (i < j) {
+
+		if (A[i] + A[j] == X)
+			return true;
+		else if (A[i] + A[j] < X)
+			i++;
+		else
+			j--;
+	}
+	return false;
+}
+
+var arr = [ 3, 5, 9, 2, 8, 10, 11 ];
+var val = 17;
+var arrSize =7;
+
+console.log(isPairSum(arr, arrSize, val));
+
+                    `,
+                    output: `true`,
+                  },
+                },
+              }}
+            />
+            <Span>
+              <b>BFS and DFS</b>
+            </Span>
+            <Span>
+              For their implementations at trees and graphs , please refer to
+              non-linear data structures.
+            </Span>
+            <Span>
+              <b>Practice Questions:</b>
+            </Span>
+            <Span>
+              https://medium.com/techie-delight/top-20-breadth-first-search-bfs-practice-problems-ac2812283ab1
+            </Span>
+          </>
+        ),
       },
       Complexity: {
-        title: "Complexity",
-        types: [],
+        title: "Algorithmic Analysis",
+        content: (
+          <>
+            <Img src={BigOChart} />
+            <Span>
+              O(1) === constant <br />
+              O(log n) === usually searching algorithms <br />
+              O(n) === linear , single loop <br />
+              O(n^2) === nested loops <br />
+              O(2^n) === exponential === recursion <br />
+              O(n!) === loop for every element.
+            </Span>
+            <Span>
+              <b>Analysis of algorithms:</b>
+            </Span>
+            <Span>
+              Similar to other factors such as user friendliness, modularity,
+              security, maintainability, performance of algorithms is also
+              important.The answer to this is simple, we can have all the above
+              things only if we have performance. So performance is like
+              currency through which we can buy all the above things. Another
+              reason for studying performance is – speed is fun! To summarize,
+              performance == scale. Imagine a text editor that can load 1000
+              pages, but can spell check 1 page per minute OR an image editor
+              that takes 1 hour to rotate your image 90 degrees left OR … you
+              get it. If a software feature can not cope with the scale of tasks
+              users need to perform – it is as good as dead.
+            </Span>
+            <Span>
+              <b>Asymptotic Analysis:</b>
+            </Span>
+            <Span>
+              In Asymptotic Analysis, we evaluate the performance of an
+              algorithm in terms of input size (we don’t measure the actual
+              running time). We calculate, how the time (or space) taken by an
+              algorithm increases with the input size.
+            </Span>
+            <Span>
+              Linear Search on a fast computer A and Binary Search on a slow
+              computer B and we pick the constant values for the two computers
+              so that it tells us exactly how long it takes for the given
+              machine to perform the search in seconds. Let’s say the constant
+              for A is 0.2 and the constant for B is 1000 which means that A is
+              5000 times more powerful than B. For small values of input array
+              size n, the fast computer may take less time. But, after a certain
+              value of input array size, the Binary Search will definitely start
+              taking less time compared to the Linear Search even though the
+              Binary Search is being run on a slow machine. The reason is the
+              order of growth of Binary Search with respect to input size is
+              logarithmic while the order of growth of Linear Search is linear.
+              So the machine dependent constants can always be ignored after a
+              certain value of input size. Here are some running times for this
+              example: Linear Search running time in seconds on A: 0.2 * n
+              Binary Search running time in seconds on B: 1000*log(n)
+            </Span>
+            <Span>
+              <b>Complexity</b>
+            </Span>
+            <Span>
+              The complexity of an algorithm is a function describing the
+              efficiency of the algorithm in terms of the amount of data the
+              algorithm must process.
+            </Span>
+            <Span>
+              <b>Time Complexity</b>
+            </Span>
+            <Span>
+              Time Complexity of algorithm/code is not equal to the actual time
+              required to execute a particular code but the number of times a
+              statement executes. We can prove this by using time command.
+            </Span>
+            <Span>
+              O(n^2): You go and ask the first person of the class, if he has
+              the pen. Also, you ask this person about other 99 people in the
+              classroom if they have that pen and so on, This is what we call
+              O(n^2). O(n): Going and asking each student individually is O(N).
+              O(log n): Now I divide the class into two groups, then ask: “Is it
+              on the left side, or the right side of the classroom?” Then I take
+              that group and divide it into two and ask again, and so on. Repeat
+              the process till you are left with one student who has your pen.
+              This is what you mean by O(log n).
+            </Span>
+            <Span>
+              <b>Space Complexity</b>
+            </Span>
+            <Span>
+              Space Complexity of an algorithm is the total space taken by the
+              algorithm with respect to the input size. Space complexity
+              includes both Auxiliary space and space used by input. If we want
+              to compare standard sorting algorithms on the basis of space, then
+              Auxiliary Space would be a better criterion than Space Complexity.
+              Merge Sort uses O(n) auxiliary space, Insertion sort, and Heap
+              Sort use O(1) auxiliary space. The space complexity of all these
+              sorting algorithms is O(n) though.
+            </Span>
+            <Span>
+              <b>Worst Case vs Average Case vs Best Case</b>
+            </Span>
+            <Span>
+              <b>Worst Case ( Upper bound ) Analysis</b>
+            </Span>
+            <Span>
+              This case computes maximum number of operations to be executed.
+            </Span>
+            <Span>
+              <b>Average Case Analysis</b>
+            </Span>
+            <Span>
+              In average case analysis, we take all possible inputs and
+              calculate computing time for all of the inputs. Sum all the
+              calculated values and divide the sum by the total number of
+              inputs. We sum all the cases and divide the sum by (n+1)
+            </Span>
+            <Span>
+              <b>Best Case ( Lower bound ) Analysis</b>
+            </Span>
+            <Span>
+              This case computes minimum number of operations to be executed.
+            </Span>
+            <Span>
+              <b>Space Time Trade Off</b>
+            </Span>
+            <Span>
+              A tradeoff is a situation where one thing increases and another
+              thing decreases. More time-efficient algorithms will be less space
+              efficient and vice versa.
+            </Span>
+            <Span>
+              <b>Asynmptotic Notations</b>
+            </Span>
+            <Span>
+              These are the mathematical tools used to compute eddiciency of the
+              algorithm which doesn't require algorithms to be implemented.
+            </Span>
+            <Span>
+              n refers to the size of the input, in your case it's the number of
+              items in your list. O(n) means that your algorithm will take on
+              the order of n operations to insert an item
+            </Span>
+            <Span>
+              <b>Types:</b>
+            </Span>
+            <Span>1. Theta notation:</Span>
+            <Span>
+              The theta notation bounds a function from above and below, so it
+              defines exact asymptotic behavior. A simple way to get the Theta
+              notation of an expression is to drop low-order terms and ignore
+              leading constants. For example, consider the following expression.
+              3n3 + 6n2 + 6000 = Θ(n3) Dropping lower order terms is always fine
+              because there will always be a number(n) after which Θ(n3) has
+              higher values than Θ(n2) irrespective of the constants involved.
+              For a given function g(n), we denote Θ(g(n)) is following set of
+              functions. Θ(g(n)) = [f(n): there exist positive constants c1, c2
+              and n0 such that 0 less than or equal to c1*g(n) less than or
+              equal to f(n) less than or equal to c2*g(n) for all n greater than
+              or equal to n0]
+            </Span>
+            <Span>2. Big O notation:</Span>
+            <Span>
+              The Big O notation defines an upper bound of an algorithm, it
+              bounds a function only from above. The Big O notation is useful
+              when we only have an upper bound on the time complexity of an
+              algorithm. Many times we easily find an upper bound by simply
+              looking at the algorithm.
+            </Span>
+            <Span>
+              O(g(n)) = [ f(n): there exist positive constants c and n0 such
+              that 0 less than or equal to f(n) less than or equal to c*g(n) for
+              all n greater than or equal to n0]
+            </Span>
+            <Span>3. Omega notation:</Span>
+            <Span>
+              Just as Big O notation provides an asymptotic upper bound on a
+              function, Ω notation provides an asymptotic lower bound.
+            </Span>
+            <Span>
+              Ω (g(n)) = [f(n): there exist positive constants c and n0 such
+              that 0 less than or equal to c*g(n) less than or equal to f(n) for
+              all n greater than or equal to n0].
+            </Span>
+          </>
+        ),
       },
       tradeOf: {
-        title: "Space Time Trade Off",
-        types: [],
+        title: "Master's Theorem",
+        content: (
+          <>
+            <Span>
+              In the analysis of algorithms, the master theorem for
+              divide-and-conquer recurrences provides an asymptotic analysis
+              (using Big O notation) for recurrence relations of types that
+              occur in the analysis of many divide and conquer algorithms.
+            </Span>
+
+            <Span>
+              for(i=0; i&gt;n; i++) <br />
+              O(n) <br />
+            </Span>
+            <Span>
+              for(i=0; i&gt;n; i+=2) <br />
+              O(n/2) === O(n) <br />
+            </Span>
+
+            <Span>
+              for(i=0; i&gt;n; i/=2) <br />
+              O(log2 n) <br />
+            </Span>
+            <Span>
+              for(i=0; i&gt;n; i*/2) <br />
+              O(log2 n) <br />
+            </Span>
+
+            <Span>
+              for(i=0; i&gt;n; i*=3) <br />
+              O(log3 n) <br />
+            </Span>
+
+            <Span>
+              <b>Decreasing functions</b>
+            </Span>
+
+            <Span>
+              T(n) = aT(n-b) + f(n) , f(n) = O(n^k) , f(n) &lt;= c*g(n) ,
+              k&gt;=0 , a&gt;0 , b&gt;0
+            </Span>
+
+            <Span>Examples:</Span>
+            <Span>
+              1. T(n) = T(n-1) + constant <br />
+              O(n)
+            </Span>
+            <Span>
+              2. T(n) = T(n-1) + n <br /> O(n^2)
+            </Span>
+            <Span>
+              3. T(n) = T(n-1) + logn <br /> O(nlogn)
+            </Span>
+            <Span>
+              <pre>
+                void Test(int n){"{"} // T(n) <br />
+                if(n&gt;gt) // 1 <br />
+                for(int i=0;i&lt;n;i*=2) // log2 n <br />
+                printf("%d",i); // 1 <br />
+                Test(n-1); // T(n-1) <br />
+                {"}"}
+              </pre>
+            </Span>
+            <Span>
+              4. T(n) = 2T(n-1) + 1 <br /> O(2^n)
+            </Span>
+            <Span>
+              5. T(n) = 3T(n-1) + 1 <br /> O(3^n)
+            </Span>
+            <Span>
+              6. T(n) = 2T(n-1) + n <br /> O(n2^n)
+            </Span>
+
+            <Span>
+              <b>Dividing functions</b>
+            </Span>
+
+            <Span>
+              T(n) = aT(n/b) + f(n) , f(n) = O(n^k * logp n) , f(n) &lt;= c*g(n)
+              , a&gt;=1 , b&gt;1
+            </Span>
+            <Span>
+              Case 1: logb a &gt; k <br />
+              O(n^logb a)
+            </Span>
+
+            <Span>Case 2: logb a = k</Span>
+            <Span>a. p &gt; -1</Span>
+            <Span>O(n^k * logp+1 n)</Span>
+            <Span>b. p = -1</Span>
+            <Span>O(n^k * log logn)</Span>
+            <Span>a. p &lt; -1</Span>
+            <Span>O(n^k)</Span>
+            <Span>Case 3: if logb a &lt; k</Span>
+            <Span>a. p &gt;= 0</Span>
+            <Span>O(n^k * logp n)</Span>
+            <Span>b. p &lt; 0</Span>
+            <Span>O(n^k)</Span>
+
+            <Span>There are following three cases:</Span>
+            <Span>
+              1. If f(n) = O(n^k) where k &lt; logb a then T(n) = Θ(n^logb a)
+            </Span>
+            <Span>
+              2. If f(n) = Θ(n^k) where k = logb a then T(n) = Θ(n^k log n)
+            </Span>
+            <Span>
+              3.If f(n) = Ω(n^k) where k &gt; logb a then T(n) = Θ(f(n))
+            </Span>
+
+            <Span>
+              Binary search: T(n) = T(n/2) + Θ(1). log2 1 == 0 O(n^k * logn)
+            </Span>
+            <Span>T(n) = 2T(n/2) + Θ(n). log2 2 === 1, n^1 * log2 n</Span>
+          </>
+        ),
       },
       recursive: {
         title: "Recursion",
-        types: [],
+        content: (
+          <>
+            <Span>
+              It is a process in which a fn ( recursive fn ) calls itself.
+            </Span>
+            <Span>
+              Examples: TOH <br /> DFS Tree Traversals <br /> DFS of graph ,
+            </Span>
+            <Span>
+              When the program executes,the main memory gets divided into three
+              parts. One part for code section, the second one is heap memory
+              and another one is stack memory.
+            </Span>
+            <Span>
+              Heap memory is a Dynamic memory(its size changes as program run)
+              used to store arrays, global variables(with global
+              scope/accessible from any function) and any created class
+              instances(objects) at runtime in Java which are referred by the
+              reference variables from Stack memory.
+            </Span>
+            <Span>Types:</Span>
+            <Span>
+              <b>Direct Recursion:</b>
+            </Span>
+            <Span>
+              <b>Types:</b>
+            </Span>
+            <Span>
+              <b>(a) Tail Recursion:</b>
+            </Span>
+            <Span>
+              If recursive call is the last statement in the fn then it's called
+              recursive fn.
+            </Span>
+            <Img src="https://media.geeksforgeeks.org/wp-content/uploads/20190621015455/tail1.jpg" />
+            <p>
+              It occurs when a function calls itself. This results in a one-step
+              recursive call: the function makes a recursive call inside its own
+              function body.
+            </p>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `
+                    function fun(n)
+                    {
+                      if (n > 0)
+                      {
+                        console.log(n + " ");
+                        fun(n - 1);
+                      }
+                    }
+                      var x = 3;
+                      fun(x);
+
+                // Time Complexity : O(n)
+                // Space Complexity: O(n) // n activation records are
+                // created in main menory
+
+                // Using simple for loop, SC will be O(1)
+                // as we're making use of only one activation record 
+
+                // Driver code
+                  var x = 3;
+                    fun(x);
+                    `,
+                    output: `3 2 1`,
+                  },
+                },
+              }}
+            />
+            <Span>
+              <b>(b) Head Recursion:</b>
+            </Span>
+            <Img src="https://media.geeksforgeeks.org/wp-content/uploads/20190621015721/head3.jpg" />
+            <p>
+              If recursive call is the first statement in the fn then it's
+              called recursive fn.
+            </p>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `
+                    function fun(n)
+                    {
+                      if (n > 0)
+                      {
+                        fun(n - 1);
+                        console.log(n + " ");
+                      }
+                    }
+                    // Time Complexity : O(n)
+                    // Space Complexity: O(n) 
+                      var x = 3;
+                      fun(x);
+                    `,
+                    output: `1 2 3`,
+                  },
+                },
+              }}
+            />
+            <Span>
+              Note: Time & Space Complexity is given for this specific example.
+              It may vary for another example. Note: Head recursion can’t easily
+              convert into loop as Tail Recursion but it can. Let’s convert the
+              above code into the loop.
+            </Span>
+            <Span>
+              <b>(c) Tree Recursion:</b>
+            </Span>
+            <Span>
+              If a recursive function calling itself for one time then it’s
+              known as Linear Recursion. Otherwise if a recursive function
+              calling itself for more than one time then it’s known as Tree
+              Recursion.
+            </Span>
+            <Img src="https://media.geeksforgeeks.org/wp-content/uploads/20190621015814/tree4.jpg" />
+            <p>tracing tree of recursive function.</p>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `
+                    function fun(n)
+                    {
+                        if (n > 0) {
+                            console.log(" "+ n);
+                    
+                            fun(n - 1);
+                     
+                            // Calling twice
+                            fun(n - 1);
+                        }
+                    }
+                        fun(3);                     
+                    `,
+                    output: `3 2 1 1 2 1 1`,
+                  },
+                },
+              }}
+            />
+            <Span>
+              <b>(d) Nested Recursion (recursion inside recursion):</b>
+            </Span>
+            <p>
+              a recursive function will pass the parameter as a recursive call
+            </p>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `
+                    function fun( n)
+                    {
+                        if (n > 100)
+                            return n - 10;
+                        return fun(fun(n + 11));
+                    }
+                    
+                    console.log(fun(95));                     
+                    `,
+                    output: `91`,
+                  },
+                },
+              }}
+            />
+
+            <Span>
+              <b>Indirect Recursion:</b>
+            </Span>
+            <Span>
+              In this recursion, there may be more than one functions and they
+              are calling one another in a circular manner.
+            </Span>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `
+                    function funA(n)
+                    {
+                        if (n > 0) {
+                            console.log(n.toFixed(0));
+                            funB(n - 1);
+                        }
+                    }
+                     
+                    function funB(n)
+                    {
+                        if (n > 1) {
+                            console.log(n.toFixed(0));
+                            funA(n / 2);
+                        }
+                    }
+                     
+                    funA(20);                     
+                    `,
+                    output: `20 19 9 8 4 3 1`,
+                  },
+                },
+              }}
+            />
+            <Span>
+              <b>Tower of hanoi problem</b>
+            </Span>
+            <p>
+              Tower of Hanoi is a mathematical puzzle where we have three rods
+              and n disks. The objective of the puzzle is to move the entire
+              stack to another rod, obeying the following simple rules:
+              <br />
+              1.Only one disk can be moved at a time.
+              <br />
+              2.Each move consists of taking the upper disk from one of the
+              stacks and placing it on top of another stack i.e. a disk can only
+              be moved if it is the uppermost disk on a stack.
+              <br />
+              3.No disk may be placed on top of a smaller disk.
+            </p>
+
+            <CodeEditor
+              options={{
+                output: ``,
+                codes: {
+                  Javascript: {
+                    code: `function towerOfHanoi(n, from_rod,  to_rod,  aux_rod)
+                  {
+                    const A = from_rod
+                    const B = to_rod
+                    const C = aux_rod
+                  
+                    if (n == 1){
+                    console.log("Move disk 1 from rod " + from_rod + " to rod " + to_rod);
+                              return;
+                    }
+                          towerOfHanoi(n - 1, A, C, B);
+                          // shift left
+                          console.log("Move disk " + n + " from rod " + from_rod +
+                          " to rod " + to_rod);
+                          towerOfHanoi(n - 1, C, B, A);
+                  }
+                   
+                  var n = 4; 
+                  towerOfHanoi(n, 'A', 'C', 'B');
+                  
+                  // 3 -> 1
+                  // T(n) = 2T(n-1) + 1 // 2^n`,
+                    output: `Move disk 1 from rod A to rod B
+                  Move disk 2 from rod A to rod C
+                  Move disk 1 from rod B to rod C
+                  Move disk 3 from rod A to rod B
+                  Move disk 1 from rod C to rod A
+                  Move disk 2 from rod C to rod B
+                  Move disk 1 from rod A to rod B
+                  Move disk 4 from rod A to rod C
+                  Move disk 1 from rod B to rod C
+                  Move disk 2 from rod B to rod A
+                  Move disk 1 from rod C to rod A
+                  Move disk 3 from rod B to rod C
+                  Move disk 1 from rod A to rod B
+                  Move disk 2 from rod A to rod C
+                  Move disk 1 from rod B to rod C`,
+                  },
+                },
+              }}
+            />
+
+            <Span>Recursion vs backtracking:</Span>
+            <Span>
+              In recursion, the function calls itself until it reaches a base
+              case. In backtracking, we use recursion to explore all the
+              possibilities until we get the best result for the problem.
+            </Span>
+            <Span>There are mainly three ways for solving recurrences.</Span>
+            <Span>
+              1) Substitution Method: We make a guess for the solution and then
+              we use mathematical induction to prove the guess is correct or
+              incorrect.
+            </Span>
+            <Span>
+              For example consider the recurrence T(n) = 2T(n/2) + n We guess
+              the solution as T(n) = O(nLogn). Now we use induction to prove our
+              guess. We need to prove that T(n) &lt;= cnLogn. We can assume that
+              it is true for values smaller than n.
+            </Span>
+            <pre>
+              T(n) = 2T(n/2) + n <br /> &lt;= 2cn/2Log(n/2) + n <br /> = cnLogn
+              - cnLog2 + n <br /> = cnLogn - cn + n <br /> &lt;= cnLogn <br />
+            </pre>
+            <br />
+            <Span>
+              2) Recurrence Tree Method: In this method, we draw a recurrence
+              tree and calculate the time taken by every level of tree. Finally,
+              we sum the work done at all levels. To draw the recurrence tree,
+              we start from the given recurrence and keep drawing till we find a
+              pattern among levels. The pattern is typically a arithmetic or
+              geometric series.
+            </Span>
+            <Span>3. Master's method</Span>
+            <Span>I created separate section for this.</Span>
+          </>
+        ),
       },
       "divide&Conquer": {
         title: "Divide & Conquer",
-        types: [],
+        content: (
+          <>
+            <Span>
+              This technique is used to solve the given problem by dividing it
+              into smaller sub problems , solving them recursively and combining
+              the solutions.
+            </Span>
+            <Span>Examples: Merge sort, quick sort and toh</Span>
+
+            <Span>
+              <b>DAC ( Divide And Conquer ) Vs DP (Dynamic Programming)</b>
+            </Span>
+            <Span>
+              Divide and Conquer should be used when the same subproblems are
+              not evaluated many times. Otherwise Dynamic Programming or
+              Memoization should be used. For example, Quicksort is a Divide and
+              Conquer algorithm, we never evaluate the same subproblems again.
+              On the other hand, for calculating the nth Fibonacci number,
+              Dynamic Programming should be preferred
+            </Span>
+            <p>Function to find the maximum no. in a given array.</p>
+            {/* Function to find the maximum no. */}
+            {/* https://www.geeksforgeeks.org/divide-and-conquer-algorithm-introduction/ */}
+            <CodeEditor
+              options={{
+                output: ``,
+                codes: {
+                  Javascript: {
+                    code: `function DAC_Max(a,index,l)
+                    {
+                        let max;
+                        if (index >= l - 2)
+                        {
+                          // only two elements are left
+                            if (a[index] > a[index + 1])
+                                return a[index];
+                            else
+                                return a[index + 1];
+                        }
+                        max = DAC_Max(a, index + 1, l);
+                        // we need max here for comparison
+                        if (a[index] > max)
+                            return a[index];
+                        else
+                            return max;
+                    }
+                    
+                    function DAC_Min(a,index,l)
+                    {
+                        let min;
+                        if (index >= l - 2)
+                        {
+                            if (a[index] < a[index + 1])
+                                return a[index];
+                            else
+                                return a[index + 1];
+                        }
+                        min = DAC_Min(a, index + 1, l);
+                        if (a[index] < min)
+                            return a[index];
+                        else
+                            return min;
+                    }
+                    
+                    let min, max;
+                    let a=[70, 250, 50, 80, 140, 12, 14];
+                    max = DAC_Max(a, 0, 7);
+                    min = DAC_Min(a, 0, 7);
+                    console.log("The minimum number in " +
+                                      "a given array is : ", min);
+                    console.log("The maximum number in " +
+                                      "a given array is : "+ max);
+                     `,
+                    output: `
+                    The minimum number in a given array is :  12
+The maximum number in a given array is : 250
+                    `,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       greedy: {
         title: "Greedy",
-        types: [],
+        content: (
+          <>
+            <Span>
+              An algorithmic paradigm that follows the problem solving approach
+              of making the locally optimal choice at each stage with the hope
+              of finding a global optimum.
+            </Span>
+            <Span>
+              <b>Pros: </b>
+              simple,easy to implement, and runs fast
+            </Span>
+            <Span>
+              <b>Cons: </b>
+              very often they don't provide a globally optimim solution
+            </Span>
+            <Span>
+              consider the below min heap , and let's select the largest number
+              at each level starting from the root. <br /> 3 4 7 6 20 9 11
+            </Span>
+            <Span>
+              total sum will be 21 ( 3 + 7 + 11 )
+              <br />
+              but the maximum possible sum is 27 ( 3 + 4 + 20 )
+            </Span>
+            <Span>
+              <b>Properties:</b>
+            </Span>
+            <Span>
+              1 .<b>Greedy Choice Property: </b>
+              According to this property, a global optimum can be arrived by
+              selecting local optimum.
+            </Span>
+
+            <Span>
+              2.
+              <b>Optimal Substructure: </b> Acc. to this , an optimal solution
+              to the problem contains optimal solution to subproblems.
+            </Span>
+            <Span>
+              <b>Feasible Solution:</b>
+            </Span>
+            <Span>It satisfies given condition</Span>
+            <Span>
+              <b>Optimal Solution:</b>
+            </Span>
+            <Span>
+              <b>Optimization Problems</b>
+            </Span>
+            <Span>They require either min or max results</Span>
+            <Span>It's feasible and gives best result</Span>
+            <Span>Various Applications are specified at the top section.</Span>
+          </>
+        ),
+        types: [
+          {
+            title: "Activity Selection",
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Find out maximum number activities that a person can perform
+                  if starting and finishing time of each activity is provided.
+                </Span>
+                <Span>
+                  <b>Greedy approach:</b>
+                </Span>
+                1. Sort the activities according to their finishing time.
+                <br />
+                2. Select the first activity from the sorted array and print it
+                <br />
+                3. For the remaining activities , if the start time of this
+                activity is greater then or equal to the finish time of
+                previously selected activity then select this activity and print
+                it .<p>Implementation</p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `function printMaxActivities(s,f){
+                          let i,j;
+                          console.log("Following activities are selected")
+                          i=0;
+                          console.log(i)
+                          for (j = 1; j < f.length; j++)
+                          {
+                          if (s[j] >= f[i])
+                          {
+                          console.log(j);
+                          i = j;
+                          }}}
+                          const s = [1,3,0,5,8,5]
+                          const f = [9,4,1,7,9,9]
+                          f.sort()
+                          printMaxActivities(s,f)
+                          `,
+                        output: `Following activities are selected
+                          0
+                          1
+                          3`,
+                      },
+                      Java: {
+                        code: `import java.io.*;
+                        import java.util.Arrays;
+                        class Main{
+                        static PrintStream ps = System.out;
+                        static void printMaxActivities(int s[], int f[])
+                        {
+                        int i, j;
+                        ps.println("Following activities are selected ");
+                        i = 0;
+                        ps.print(" "+i);
+                        for (j = 1; j < f.length; j++)
+                        {
+                        if (s[j] >= f[i])
+                        {
+                        ps.print(" " + j);
+                        i = j;
+                        }
+                        }
+                        ps.println("");
+                        }
+                        public static void main(String ...st){
+                        int s[] = {1, 3, 0, 5, 8, 5};
+                        int f[] = {9, 4, 1, 7, 9, 9};
+                        Arrays.sort(f);
+                        printMaxActivities(s, f);
+                        }
+                        }`,
+                        output: `Following activities are selected 
+                        0 1 3`,
+                      },
+                      Python: {
+                        code: `def printMaxActivities(s,f):
+  print("Following activities are selected ")
+  i = 0
+  print(i)
+  for j in range(1,len(f)):
+    if s[j] >= f[i]:
+      print(j)
+      i=j
+
+
+s = [1,3,0,5,8,5]
+f = [9,4,1,7,9,9]
+f.sort()
+printMaxActivities(s,f)`,
+                        output: `Following activities are selected 
+                        0
+                        1
+                        3`,
+                      },
+                      "C++": {
+                        code: `#include <iostream>
+                        #include <bits/stdc++.h>
+                        using namespace std;
+                        void printMaxActivities(int s[], int f[], int n)
+                        {
+                        int i, j;
+                        cout <<"Following activities are selected "<< endl;
+                        i = 0;
+                        cout <<" "<< i;
+                        for (j = 1; j < n; j++)
+                        {
+                        if (s[j] >= f[i])
+                        {
+                        cout <<" " << j;
+                        i = j;
+                        }
+                        }
+                        cout << endl;
+                        }
+                        int main()
+                        {
+                        int s[] = {1, 3, 0, 5, 8, 5};
+                        int f[] = {9, 4, 1, 7, 9, 9};
+                        int len = sizeof(f)/sizeof(f[0]);
+                        sort(f,f+len);
+                        int n = sizeof(s)/sizeof(s[0]);
+                        printMaxActivities(s, f, n);
+                        return 0;
+                        }
+                        // 0 3 5 5 8 1
+                        // 1 4 7 9 9 9`,
+                        output: `Following activities are selected 
+                        0 1 3`,
+                      },
+                      Kotlin: {
+                        code: ``,
+                        output: `Following activities are selected 
+                        0 1 3`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
+          },
+          {
+            title: "Job Sequencing With Deadlines",
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Given an array of jobs where every job has a deadline and
+                  associated profit if the job is finished before the deadline.
+                  It is also given that every job takes single unit of time, so
+                  the minimum possible deadline of any job is 1. How to maximize
+                  the total profit if only one job can be scheduled at a time
+                </Span>
+                <Span>
+                  <b>Greedy Approach</b>
+                </Span>
+                <Span>
+                  Sort all the jobs in decreasing order of their profit. And
+                  then with the help of result boolean array , assign values to
+                  jobs array with the help of corresponding deadlines.
+                </Span>
+                <Span>
+                  <b>Example</b>
+                </Span>
+                <p>
+                  JobId: A , B , C , D , E <br />
+                  Deadline (Units/time): 2 , 1 , 2 ,1 ,3 <br />
+                  Profit 100, 19, 27, 25, 15 <br />
+                  answer (a to b units / time) will be : 0 C 1 A 2 E 3 <br />( E
+                  can be completed within 3 units of time and both A and C with
+                  comparatively larger profit than D and B can be completed
+                  within 2 units of time )
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `function printJobScheduling(arr, t){
+                          let n = arr.length;
+                       
+                          for(let i=0;i<n;i++){
+                              for(let j = 0;j<(n - 1 - i);j++){
+                                  if(arr[j][2] < arr[j + 1][2]){
+                                      let temp = arr[j];
+                                      arr[j] = arr[j + 1];
+                                      arr[j + 1] = temp;
+                                  }
+                               }
+                           }
+                       
+                          let result = [];
+                       
+                          let job = [];
+                          for(let i = 0;i<t;i++){
+                              job[i] = '-1';
+                              result[i] = false;
+                          }
+                          
+                          for(let i= 0;i<arr.length;i++){
+                              for(let j = Math.min(t - 1, arr[i][1] - 1);j>=0;j--){
+                                  if(result[j] == false){
+                                      result[j] = true;
+                                      job[j] = arr[i][0];
+                                      break;
+                                  }
+                              }
+                          }
+                       
+                          console.log(job);
+                      }
+                       
+                      arr = [['a', 2, 100],  
+                             ['b', 1, 19],
+                             ['c', 2, 27],
+                             ['d', 1, 25],
+                             ['e', 3, 15]];
+                       
+                      printJobScheduling(arr, 3) ;`,
+                        output: `[ 'c', 'a', 'e' ]`,
+                      },
+                      Java: {
+                        code: `import java.util.*;
+ 
+                        class Main
+                        {
+                            char id;
+                            int deadline, profit;
+                         
+                            public Main() {}
+                         
+                            public Main(char id, int deadline, int profit)
+                            {
+                                this.id = id;
+                                this.deadline = deadline;
+                                this.profit = profit;
+                            }
+                         
+                            void printJobScheduling(ArrayList<Main> arr, int t)
+                            {
+                                int n = arr.size();
+                        
+                                Collections.sort(arr,
+                                                 (a, b) -> b.profit - a.profit);
+                         
+                        // sort jobs on the basis of deadlines
+                        
+                                boolean result[] = new boolean[t];
+                         
+                                char job[] = new char[t];
+                         
+                                for (int i = 0; i < n; i++)
+                                {
+                                    for (int j
+                                         = Math.min(t - 1, arr.get(i).deadline - 1);
+                                         j >= 0; j--) {
+                        
+                                          // iterate from max dealine to 0
+                                          // and choose appropriate jobs using their respective index
+                                          // as we already sorted them  
+                        
+                                        if (result[j] == false)
+                                        {
+                                            result[j] = true;
+                                            job[j] = arr.get(i).id;
+                                            break;
+                                        }
+                                    }
+                                }
+                         
+                                 for (char jb : job)
+                                {
+                                    System.out.print(jb + " ");
+                                }
+                                System.out.println();
+                            }
+                         
+                            public static void main(String args[])
+                            {
+                                ArrayList<Main> arr = new ArrayList<Main>();
+                         
+                                arr.add(new Main('a', 2, 100));
+                                arr.add(new Main('b', 1, 19));
+                                arr.add(new Main('c', 2, 27));
+                                arr.add(new Main('d', 1, 25));
+                                arr.add(new Main('e', 3, 15));
+                               
+                                System.out.println("Following is maximum "
+                                                   + "profit sequence of jobs");
+                         
+                                Main job = new Main();
+                         
+                                job.printJobScheduling(arr, 3);
+                            }
+                        }`,
+                        output: `Following is maximum profit sequence of jobs
+                        c a e `,
+                      },
+                      Python: {
+                        code: `def printJobScheduling(arr, t):
+
+  n = len(arr)
+
+  for i in range(n):
+    for j in range(n - 1 - i):
+      if arr[j][2] < arr[j + 1][2]:
+        arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+  result = [False] * t
+
+  job = ['-1'] * t
+
+  for i in range(len(arr)):
+    for j in range(min(t - 1, arr[i][1] - 1), -1, -1):
+      if result[j] is False:
+        result[j] = True
+        job[j] = arr[i][0]
+        break
+
+  print(job)
+
+arr = [['a', 2, 100], 
+  ['b', 1, 19],
+  ['c', 2, 27],
+  ['d', 1, 25],
+  ['e', 3, 15]]
+
+
+print("Following is maximum profit sequence of jobs")
+printJobScheduling(arr, 3)`,
+                        output: `['c', 'a', 'e']`,
+                      },
+                      "C++": {
+                        code: `#include<iostream>
+                        #include<algorithm>
+                        using namespace std;
+                         
+                        struct Job
+                        {
+                           char id;    
+                           int dead;    
+                           int profit;  
+                        };
+                         
+                        bool comparison(Job a, Job b)
+                        {
+                             return (a.profit > b.profit);
+                        }
+                         
+                        void printJobScheduling(Job arr[], int n)
+                        {
+                            sort(arr, arr+n, comparison);
+                         
+                            int result[n]; 
+                            bool slot[n];  
+                         
+                            for (int i=0; i<n; i++)
+                                slot[i] = false;
+                         
+                            for (int i=0; i<n; i++)
+                            {
+                               for (int j=min(n, arr[i].dead)-1; j>=0; j--)
+                               {
+                                  if (slot[j]==false)
+                                  {
+                                     result[j] = i; 
+                                     slot[j] = true; 
+                                     break;
+                                  }
+                               }
+                            }
+                             for (int i=0; i<n; i++)
+                               if (slot[i])
+                                 cout << arr[result[i]].id << " ";
+                        }
+                         
+                        int main()
+                        {
+                            Job arr[] = { {'a', 2, 100}, {'b', 1, 19}, {'c', 2, 27},
+                                           {'d', 1, 25}, {'e', 3, 15}};
+                            int n = sizeof(arr)/sizeof(arr[0]);
+                            cout << "Following is maximum profit sequence of jobs \n";
+                               printJobScheduling(arr, n);
+                            return 0;
+                        }`,
+                        output: `Following is maximum profit sequence of jobs 
+                        c a e`,
+                      },
+                      Kotlin: {
+                        code: `import java.util.*
+
+                        internal class Main {
+                            var id = 0.toChar()
+                            var deadline = 0
+                            var profit = 0
+                        
+                            constructor() {}
+                            constructor(id: Char, deadline: Int, profit: Int) {
+                                this.id = id
+                                this.deadline = deadline
+                                this.profit = profit
+                            }
+                        
+                            fun printJobScheduling(arr: ArrayList<Main?>, t: Int) {
+                                val n: Int = arr.size()
+                                Collections.sort(
+                                    arr
+                                ) { a, b -> b.profit - a.profit }
+                        
+                        // sort jobs on the basis of deadlines
+                                val result = BooleanArray(t)
+                                val job = CharArray(t)
+                                for (i in 0 until n) {
+                                    for (j in Math.min(t - 1, arr.get(i).deadline - 1) downTo 0) {
+                        
+                                        // iterate from max dealine to 0
+                                        // and choose appropriate jobs using their respective index
+                                        // as we already sorted them  
+                                        if (result[j] == false) {
+                                            result[j] = true
+                                            job[j] = arr.get(i).id
+                                            break
+                                        }
+                                    }
+                                }
+                                for (jb: Char in job) {
+                                    System.out.print("$jb ")
+                                }
+                                System.out.println()
+                            }
+                        
+                            companion object {
+                                fun main(args: Array<String?>?) {
+                                    val arr: ArrayList<Main?> = ArrayList<Main>()
+                                    arr.add(Main('a', 2, 100))
+                                    arr.add(Main('b', 1, 19))
+                                    arr.add(Main('c', 2, 27))
+                                    arr.add(Main('d', 1, 25))
+                                    arr.add(Main('e', 3, 15))
+                                    System.out.println(
+                                        "Following is maximum "
+                                                + "profit sequence of jobs"
+                                    )
+                                    val job = Main()
+                                    job.printJobScheduling(arr, 3)
+                                }
+                            }
+                        }`,
+                        output: `Following is maximum profit sequence of jobs
+                        c a e `,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
+          },
+          {
+            title: "Fractional Knapsack",
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Given weights and values of n items, we need to put these
+                  items in a knapsack of capacity W to get the maximum total
+                  value in the knapsack.
+                </Span>
+                <Span>
+                  <b> Greedy Approach</b>
+                </Span>
+                <Span>
+                  1. Calculate the ratio(value/weight) for each item
+                  <br /> 2. Sort the items based on this ratio (desc)
+                  <br /> 3. Take the item with highest ratio and add them until
+                  we can't add the next item as whole. <br /> 4. At the end add
+                  the next item as much(fraction) as we can.
+                </Span>
+                <Span>
+                  <b>Example</b>
+                </Span>
+                <Span>
+                  Label: A , B , C <br />
+                  Weight : 10 , 20 , 30 <br />
+                  Value: 60 , 100 , 120 <br />
+                  Total Capacity =&lt; 50 <br />
+                  0-1 Knapsack solution will be : B +C ( profit: 100 + 120 = 220
+                  ) (wt. : 20 + 30 = 50) <br />
+                  Fractional knapsack solution will be : A + B + (2/3) * C (
+                  profit: 60+ 100 + 2* 120 / 3 = 240 ) (wt. : 10 + 20 + 2 * 30 /
+                  3 = 50)
+                </Span>
+                <Span>
+                  <b>
+                    Drawbacks of using brute force approach for solving this
+                    problem:
+                  </b>
+                </Span>
+                <p>
+                  A brute-force solution would be to try all possible subset
+                  with all different fraction but that will be too much time
+                  taking.
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `class Item {
+                          constructor(value,weight){
+                            this.value = value
+                            this.weight = weight
+                          }
+                        }
+                        
+                        function fractionalKnapsack(W,arr,n){
+                        
+                        arr.sort((a,b) => (a.value,a.weight) - (b.value/b.weight))
+                        
+                        let curWeight = 0
+                        let finalvalue = 0.0
+                        
+                        for (let i = 0; i < n; i++) {
+                          if (curWeight + arr[i].weight <= W) {
+                            curWeight += arr[i].weight;
+                            finalvalue += arr[i].value;
+                          }
+                          else {
+                            let remain = W - curWeight;
+                            finalvalue += arr[i].value * (remain/ arr[i].weight);
+                            break;
+                          }
+                        }
+                        return finalvalue;
+                        }
+                        
+                        let W = 50; 
+                        let arr = []
+                        arr.push(new Item(60, 10 ), new Item(100, 20), new Item(120, 30))
+                         
+                        console.log(fractionalKnapsack(W, arr, arr.length))`,
+                        output: `240`,
+                      },
+                      Java: {
+                        code: `import java.util.Arrays;
+                        import java.util.Comparator;
+                        
+                        
+                        class Main {
+                            private static double getMaxValue(int[] wt, int[] val,
+                                                              int capacity)
+                            {
+                                ItemValue[] iVal = new ItemValue[wt.length];
+                         
+                                for (int i = 0; i < wt.length; i++) {
+                                    iVal[i] = new ItemValue(wt[i], val[i], i);
+                                }
+                         
+                                Arrays.sort(iVal, new Comparator<ItemValue>() {
+                                    @Override
+                                    public int compare(ItemValue o1, ItemValue o2)
+                                    {
+                                        return o2.cost.compareTo(o1.cost);
+                                    }
+                                });
+                         
+                                double totalValue = 0d;
+                         
+                                for (ItemValue i : iVal) {
+                         
+                                    int curWt = (int)i.wt;
+                                    int curVal = (int)i.val;
+                         
+                                    if (capacity - curWt >= 0) {
+                                        capacity = capacity - curWt;
+                                        totalValue += curVal;
+                                    }
+                                    else {
+                                        double fraction
+                                            = ((double)capacity / (double)curWt);
+                                        totalValue += (curVal * fraction);
+                                        capacity
+                                            = (int)(capacity - (curWt * fraction));
+                                        break;
+                                    }
+                                }
+                         
+                                return totalValue;
+                            }
+                         
+                            static class ItemValue {
+                                Double cost;
+                                double wt, val, ind;
+                         
+                                public ItemValue(int wt, int val, int ind)
+                                {
+                                    this.wt = wt;
+                                    this.val = val;
+                                    this.ind = ind;
+                                    cost = new Double((double)val / (double)wt);
+                                }
+                            }
+                         
+                            public static void main(String[] args)
+                            {
+                                int[] wt = { 10, 40, 20, 30 };
+                                int[] val = { 60, 40, 100, 120 };
+                                int capacity = 50;
+                         
+                                double maxValue = getMaxValue(wt, val, capacity);
+                                 System.out.println("Maximum value we can obtain = "
+                                                   + maxValue);
+                            }
+                        }`,
+                        output: `Maximum value we can obtain = 240.0`,
+                      },
+                      Python: {
+                        code: `class ItemValue:
+    def __init__(self, wt, val, ind):
+        self.wt = wt
+        self.val = val
+        self.ind = ind
+        self.cost = val // wt
+    def __lt__(self, other):
+        return self.cost < other.cost
+  
+class FractionalKnapSack:
+    @staticmethod
+    def getMaxValue(wt, val, capacity):
+        iVal = []
+        for i in range(len(wt)):
+            iVal.append(ItemValue(wt[i], val[i], i))
+        iVal.sort(reverse=True)
+        totalValue = 0
+        for i in iVal:
+            curWt = int(i.wt)
+            curVal = int(i.val)
+            if capacity - curWt >= 0:
+                capacity -= curWt
+                totalValue += curVal
+            else:
+                fraction = capacity / curWt
+                totalValue += curVal * fraction
+                capacity = int(capacity - (curWt * fraction))
+                break
+        return totalValue
+
+if __name__ == "__main__":
+    wt = [10, 40, 20, 30]
+    val = [60, 40, 100, 120]
+    capacity = 50
+    maxValue = FractionalKnapSack.getMaxValue(wt, val, capacity)
+    print("Maximum value in Knapsack =", maxValue)`,
+                        output: `Maximum value in Knapsack = 240.0`,
+                      },
+                      "C++": {
+                        code: `#include <bits/stdc++.h>
+ 
+                        using namespace std;
+                         
+                        struct Item {
+                            int value, weight;
+                             Item(int value, int weight)
+                            {
+                               this->value=value;
+                               this->weight=weight;
+                            }
+                        };
+                         
+                        bool cmp(struct Item a, struct Item b)
+                        {
+                            double r1 = (double)a.value / (double)a.weight;
+                            double r2 = (double)b.value / (double)b.weight;
+                            return r1 > r2;
+                        }
+                         
+                        double fractionalKnapsack(int W, struct Item arr[], int n)
+                        {
+                            sort(arr, arr + n, cmp);
+                         
+                            int curWeight = 0;
+                            double finalvalue = 0.0;
+                         
+                            for (int i = 0; i < n; i++) {
+                                if (curWeight + arr[i].weight <= W) {
+                                    curWeight += arr[i].weight;
+                                    finalvalue += arr[i].value;
+                                }
+                                else {
+                                    int remain = W - curWeight;
+                                    finalvalue += arr[i].value
+                                                  * ((double)remain
+                                                     / (double)arr[i].weight);
+                                    break;
+                                }
+                            }
+                             return finalvalue;
+                        }
+                         
+                        int main()
+                        {
+                            int W = 50; 
+                            Item arr[] = { { 60, 10 }, { 100, 20 }, { 120, 30 } };
+                         
+                            int n = sizeof(arr) / sizeof(arr[0]);
+                             cout << "Maximum value we can obtain = "
+                                 << fractionalKnapsack(W, arr, n) << endl;
+                            return 0;
+                        }`,
+                        output: `Maximum value we can obtain = 240`,
+                      },
+                      Kotlin: {
+                        code: `import java.util.Arrays
+                        import java.util.Comparator
+                        
+                        object Main {
+                            private fun getMaxValue(
+                                wt: IntArray, 'val': IntArray,
+                                capacity: Int
+                            ): Double {
+                                var capacity = capacity
+                                val iVal: Array<ItemValue> = arrayOfNulls(wt.size)
+                                for (i in wt.indices) {
+                                    iVal[i] = ItemValue(wt[i], 'val'[i], i)
+                                }
+                                Arrays.sort(iVal, object : Comparator<ItemValue?>() {
+                                    @Override
+                                    fun compare(o1: ItemValue, o2: ItemValue): Int {
+                                        return o2.cost.compareTo(o1.cost)
+                                    }
+                                })
+                                var totalValue = 0.0
+                                for (i: ItemValue in iVal) {
+                                    val curWt = i.wt.toInt()
+                                    val curVal = i.'val'.toInt()
+                                    if (capacity - curWt >= 0) {
+                                        capacity = capacity - curWt
+                                        totalValue += curVal.toDouble()
+                                    } else {
+                                        val fraction = capacity.toDouble() / curWt.toDouble()
+                                        totalValue += curVal * fraction
+                                        capacity = (capacity - curWt * fraction).toInt()
+                                        break
+                                    }
+                                }
+                                return totalValue
+                            }
+                        
+                            fun main(args: Array<String?>?) {
+                                val wt = intArrayOf(10, 40, 20, 30)
+                                val 'val' = intArrayOf(60, 40, 100, 120)
+                                val capacity = 50
+                                val maxValue = getMaxValue(wt, 'val', capacity)
+                                System.out.println(
+                                    "Maximum value we can obtain = "
+                                            + maxValue
+                                )
+                            }
+                        
+                            internal class ItemValue(wt: Int, 'val': Int, ind: Int) {
+                                var cost: Double
+                                var wt: Double
+                                var 'val': Double
+                                var ind: Double
+                        
+                                init {
+                                    this.wt = wt.toDouble()
+                                    this.'val' = 'val'.toDouble()
+                                    this.ind = ind.toDouble()
+                                    cost = Double('val'.toDouble() / wt.toDouble())
+                                }
+                            }
+                        }`,
+                        output: `Maximum value we can obtain = 240.0`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
+          },
+          {
+            title: "Graph Coloring",
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Color all the vertcies of the graph in such a way that no two
+                  connected vertices will have the same color.
+                </Span>
+                <Span>
+                  <b>Example</b>
+                </Span>
+                <Span>
+                  Sudoku is an example of graph coloring problem where every
+                  cell represents a vertex. There is an edge between two
+                  vertices if they are in same row or same column or same block.
+                </Span>
+                <Span>
+                  <b>Greedy Approach</b>
+                </Span>
+                <Img src={GraphImg} alt="img" />
+                <p>
+                  1. Color first vertex with first color.
+                  <br /> 2. For the remaining V-1 vertices. , consider the
+                  currently picked vertex and color it with the lowest numbered
+                  color that has not been used on any previously colored
+                  vertices adjacent to it. If all previously used colors appear
+                  on vertices adjacent to v, assign a new color to it.
+                </p>
+                <CodeEditor
+                  options={{
+                    output: `Coloring of graph 1 
+                    Vertex 0  ---> Color 0
+                    Vertex 1  ---> Color 1
+                    Vertex 2  ---> Color 2
+                    Vertex 3  ---> Color 0
+                    Vertex 4  ---> Color 1
+                    
+                    Coloring of graph 2
+                    Vertex 0  ---> Color 0
+                    Vertex 1  ---> Color 1
+                    Vertex 2  ---> Color 2
+                    Vertex 3  ---> Color 0
+                    Vertex 4  ---> Color 3`,
+                    codes: {
+                      Javascript: {
+                        code: `
+                        class Graph {
+                          constructor(noOfVertices,colors) {
+                              this.noOfVertices = noOfVertices;
+                              this.adjList = new Map();
+                              this.colors = colors
+                          }
+                      
+                          addVertex(v) {
+                              this.adjList.set(v, [])
+                          }
+                      
+                          addEdge(v, w) {
+                              this.adjList.get(v).push(w);
+                              this.adjList.get(w).push(v);
+                          }
+                          
+                         graphColoring(){
+                          let result = {}  
+                          let available = {}
+                          const keys = Array.from(this.adjList.keys())
+                          for(let i in keys){  
+                            result[keys[i]] = i == 0 ? this.colors[0] : null
+                          }
+                          for(let c of this.colors){  
+                            available[c] = false
+                          }
+                           for(let u=1;u<keys.length;u++){
+                             for(let i of this.adjList.get(keys[u])){
+                               if(result[i]){
+                                   available[result[i]] = true
+                               }
+                             }
+                             let cr=0
+                             while(cr < this.noOfVertices){
+                                if(!available[this.colors[cr]])
+                                break;
+                                cr+=1
+                             }
+                             result[keys[u]] = this.colors[cr]
+                             for(let i of this.adjList.get(keys[u])){
+                               if(result[i]){
+                                   available[result[i]] = false
+                               }
+                             }
+                           }
+                          for(let i of keys){  
+                            console.log("Vertex : " + i + " ---> Color : " + result[i])
+                          }
+                          }
+                      
+                          printAdjList() {
+                              var get_keys = this.adjList.keys();
+                              for (var i of get_keys) {
+                                  var get_values = this.adjList.get(i);
+                                  var conc = "";
+                                  for (var j of get_values)
+                                      conc += j + " ";
+                                  console.log(i + " -> " + conc);
+                              }
+                          }
+                      }
+                      
+                      
+                      const g = new Graph(6,['red','green','yellow','blue','black','orange'])
+                      const v = ['A', 'B', 'C', 'D', 'E', 'F']
+                      for (let x of v) {
+                          g.addVertex(x)
+                      }
+                      
+                      g.addEdge('A', 'B');
+                      g.addEdge('A', 'D');
+                      g.addEdge('A', 'E');
+                      g.addEdge('B', 'C');
+                      g.addEdge('D', 'E');
+                      g.addEdge('E', 'F');
+                      g.addEdge('E', 'C');
+                      g.addEdge('C', 'F');
+                      g.printAdjList();
+                      console.log(Array.from(g.adjList.keys()))
+                      g.graphColoring();                      
+                        `,
+                        output: `A -> B D E 
+                        B -> A C 
+                        C -> B E F 
+                        D -> A E 
+                        E -> A D F C 
+                        F -> E C 
+                        [ 'A', 'B', 'C', 'D', 'E', 'F' ]
+                        Vertex : A ---> Color : red
+                        Vertex : B ---> Color : green
+                        Vertex : C ---> Color : red
+                        Vertex : D ---> Color : green
+                        Vertex : E ---> Color : yellow
+                        Vertex : F ---> Color : green`,
+                      },
+                      Java: {
+                        code: `import java.util.*;
+                       import java.util.LinkedList;
+                       
+                       class Graph
+                       {
+                         private int V; 
+                         private LinkedList<Integer> adj[]; 
+                       
+                         Graph(int v)
+                         {
+                           V = v;
+                           adj = new LinkedList[v];
+                           for (int i=0; i<v; ++i)
+                             adj[i] = new LinkedList();
+                         }
+                       
+                         void addEdge(int v,int w)
+                         {
+                           adj[v].add(w);
+                           adj[w].add(v);
+                         }
+                       
+                         void greedyColoring()
+                         {
+                           int result[] = new int[V];
+                           Arrays.fill(result, -1);
+                           result[0] = 0;
+                           boolean available[] = new boolean[V];
+                           Arrays.fill(available, true);
+                           for (int u = 1; u < V; u++)
+                           {
+                             Iterator<Integer> it = adj[u].iterator() ;
+                             while (it.hasNext())
+                             {
+                               int i = it.next();
+                               if (result[i] != -1)
+                                 available[result[i]] = false;
+                             }
+                             int cr;
+                             for (cr = 0; cr < V; cr++){
+                               if (available[cr])
+                                 break;
+                             }
+                             result[u] = cr; 
+                             Arrays.fill(available, true);
+                           }
+                           for (int u = 0; u < V; u++)
+                             System.out.println("Vertex " + u + " ---> Color "
+                                       + result[u]);
+                         }
+                       
+                         public static void main(String args[])
+                         {
+                           Graph g1 = new Graph(5);
+                           g1.addEdge(0, 1);
+                           // if 0 is connected to 1 , 1 is also connected to 0
+                           g1.addEdge(0, 2);
+                           g1.addEdge(1, 2);
+                           g1.addEdge(1, 3);
+                           g1.addEdge(2, 3);
+                           g1.addEdge(3, 4);
+                           System.out.println("Coloring of graph 1");
+                           g1.greedyColoring();
+                           System.out.println();
+                           Graph g2 = new Graph(5);
+                           g2.addEdge(0, 1);
+                           g2.addEdge(0, 2);
+                           g2.addEdge(1, 2);
+                           g2.addEdge(1, 4);
+                           g2.addEdge(2, 4);
+                           g2.addEdge(4, 3);
+                           System.out.println("Coloring of graph 2 ");
+                           g2.greedyColoring();
+                         }
+                       }`,
+                      },
+                      Python: {
+                        code: `def addEdge(adj, v, w):
+  adj[v].append(w)
+  adj[w].append(v)
+  return adj
+
+def graphColoring(adj, V):
+  
+  result = [-1] * V
+
+  result[0] = 0
+
+  available = [False] * V
+
+  for u in range(1, V):
+    
+    for i in adj[u]:
+      if (result[i] != -1):
+        available[result[i]] = True
+
+    cr = 0
+    while cr < V:
+      if (available[cr] == False):
+        break
+      
+      cr += 1
+      
+    result[u] = cr
+
+    for i in adj[u]:
+      if (result[i] != -1):
+        available[result[i]] = False
+
+  for u in range(V):
+    print("Vertex", u, " ---> Color", result[u])
+
+if __name__ == '__main__':
+  
+  g1 = [[] for i in range(5)]
+  g1 = addEdge(g1, 0, 1)
+  g1 = addEdge(g1, 0, 2)
+  g1 = addEdge(g1, 1, 2)
+  g1 = addEdge(g1, 1, 3)
+  g1 = addEdge(g1, 2, 3)
+  g1 = addEdge(g1, 3, 4)
+  print("Coloring of graph 1 ")
+  graphColoring(g1, 5)
+
+  g2 = [[] for i in range(5)]
+  g2 = addEdge(g2, 0, 1)
+  g2 = addEdge(g2, 0, 2)
+  g2 = addEdge(g2, 1, 2)
+  g2 = addEdge(g2, 1, 4)
+  g2 = addEdge(g2, 2, 4)
+  g2 = addEdge(g2, 4, 3)
+  print("\nColoring of graph 2")
+  graphColoring(g2, 5)
+                      `,
+                      },
+                      "C++": {
+                        code: `#include <iostream>
+                        #include <list>
+                        using namespace std;
+                        
+                        class Graph
+                        {
+                          int V; 
+                          list<int> *adj;
+                        public:
+                          Graph(int V) { this->V = V; adj = new list<int>[V]; }
+                          ~Graph()	 { delete [] adj; }
+                        
+                          void addEdge(int v, int w);
+                        
+                          void greedyColoring();
+                        };
+                        
+                        void Graph::addEdge(int v, int w)
+                        {
+                          adj[v].push_back(w);
+                          adj[w].push_back(v); 
+                        }
+                        
+                        void Graph::greedyColoring()
+                        {
+                          int result[V];
+                        
+                          result[0] = 0;
+                        
+                          for (int u = 1; u < V; u++)
+                            result[u] = -1; 
+                        
+                          bool available[V];
+                          for (int cr = 0; cr < V; cr++)
+                            available[cr] = false;
+                        
+                          for (int u = 1; u < V; u++)
+                          {
+                            list<int>::iterator i;
+                            for (i = adj[u].begin(); i != adj[u].end(); ++i)
+                              if (result[*i] != -1)
+                                available[result[*i]] = true;
+                        
+                            int cr;
+                            for (cr = 0; cr < V; cr++)
+                              if (available[cr] == false)
+                                break;
+                        
+                            result[u] = cr;
+                        
+                            for (i = adj[u].begin(); i != adj[u].end(); ++i)
+                              if (result[*i] != -1)
+                                available[result[*i]] = false;
+                          }
+                        
+                          for (int u = 0; u < V; u++)
+                            cout << "Vertex " << u << " ---> Color "
+                              << result[u] << endl;
+                        }
+                        
+                        int main()
+                        {
+                          Graph g1(5);
+                          g1.addEdge(0, 1);
+                          g1.addEdge(0, 2);
+                          g1.addEdge(1, 2);
+                          g1.addEdge(1, 3);
+                          g1.addEdge(2, 3);
+                          g1.addEdge(3, 4);
+                          cout << "Coloring of graph 1 \n";
+                          g1.greedyColoring();
+                        
+                          Graph g2(5);
+                          g2.addEdge(0, 1);
+                          g2.addEdge(0, 2);
+                          g2.addEdge(1, 2);
+                          g2.addEdge(1, 4);
+                          g2.addEdge(2, 4);
+                          g2.addEdge(4, 3);
+                          cout << "\nColoring of graph 2 \n";
+                          g2.greedyColoring();
+                        
+                          return 0;
+                        }
+                        `,
+                      },
+                      Kotlin: {
+                        code: `import java.io.*
+                        import java.util.*
+                        import java.util.LinkedList
+                        
+                        internal class Graph(private val V: Int) {
+                            private val adj: Array<LinkedList<Integer>>
+                            fun addEdge(v: Int, w: Int) {
+                                adj[v].add(w)
+                                adj[w].add(v)
+                            }
+                        
+                            fun greedyColoring() {
+                                val result = IntArray(V)
+                                Arrays.fill(result, -1)
+                                result[0] = 0
+                                val available = BooleanArray(V)
+                                Arrays.fill(available, true)
+                                for (u in 1 until V) {
+                                    val it: Iterator<Integer> = adj[u].iterator()
+                                    while (it.hasNext()) {
+                                        val i: Int = it.next()
+                                        if (result[i] != -1) available[result[i]] = false
+                                    }
+                                    var cr: Int
+                                    cr = 0
+                                    while (cr < V) {
+                                        if (available[cr]) break
+                                        cr++
+                                    }
+                                    result[u] = cr
+                                    Arrays.fill(available, true)
+                                }
+                                for (u in 0 until V) System.out.println(
+                                    "Vertex " + u + " ---> Color "
+                                            + result[u]
+                                )
+                            }
+                        
+                            companion object {
+                                fun main(args: Array<String?>?) {
+                                    val g1 = Graph(5)
+                                    g1.addEdge(0, 1)
+                                    g1.addEdge(0, 2)
+                                    g1.addEdge(1, 2)
+                                    g1.addEdge(1, 3)
+                                    g1.addEdge(2, 3)
+                                    g1.addEdge(3, 4)
+                                    System.out.println("Coloring of graph 1")
+                                    g1.greedyColoring()
+                                    System.out.println()
+                                    val g2 = Graph(5)
+                                    g2.addEdge(0, 1)
+                                    g2.addEdge(0, 2)
+                                    g2.addEdge(1, 2)
+                                    g2.addEdge(1, 4)
+                                    g2.addEdge(2, 4)
+                                    g2.addEdge(4, 3)
+                                    System.out.println("Coloring of graph 2 ")
+                                    g2.greedyColoring()
+                                }
+                            }
+                        
+                            init {
+                                adj = arrayOfNulls<LinkedList>(V)
+                                for (i in 0 until V) adj[i] = LinkedList()
+                            }
+                        }`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
+          },
+          {
+            title: "Huffman Coding",
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Assign variable-length codes to input characters, lengths of
+                  the assigned codes are based on the frequencies of
+                  corresponding characters. The most frequent character gets the
+                  smallest code and the least frequent character gets the
+                  largest code.
+                </Span>
+                <Span>
+                  <b>Note : </b>
+                  Huffman coding is a lossless data compression algorithm.
+                </Span>
+                <Span>
+                  <b>Example :</b>
+                </Span>
+                <Span>Character : a , b , c , d , e , f</Span>
+                <Span>Frequency : 5 , 9 , 12 , 13 , 16 , 45</Span>
+                <Span>Solution :</Span>
+
+                <Span>Character : f , c , d , a , b , e</Span>
+
+                <Span>Code Word : 0 , 100 , 101 , 1100 , 1101 , 101</Span>
+
+                <Span>
+                  <b>Greedy Approach :</b>
+                </Span>
+                <Span>
+                  1 . Create a leaf node for each unique character and build a
+                  min heap of all leaf nodes (Min Heap is used as a priority
+                  queue. The value of frequency field is used to compare two
+                  nodes in min heap. Initially, the least frequent character is
+                  at root) <br />
+                  2 . Extract two nodes with the minimum frequency from the min
+                  heap. <br />
+                  3 . Create a new internal node with a frequency equal to the
+                  sum of the two nodes frequencies. Make the first extracted
+                  node as its left child and the other extracted node as its
+                  right child. Add this node to the min heap. <br />
+                  4 . Repeat steps#2 and #3 until the heap contains only one
+                  node. The remaining node is the root node and the tree is
+                  complete. <br />
+                </Span>
+                <p>
+                  As we can character with highest frequency i.e, f got smallest
+                  character code
+                </p>
+                <CodeEditor
+                  options={{
+                    output: `f -> 0
+                    c -> 100
+                    d -> 101
+                    a -> 1100
+                    b -> 1101
+                    e -> 111`,
+                    codes: {
+                      Javascript: {
+                        code: `class node{
+                          constructor(freq,symbol,left=null,right=null){
+                             this.freq = freq
+                             this.symbol = symbol
+                             this.left = left
+                             this.right= right
+                             this.huff = ''
+                          } 
+                       }
+                       
+                       function printNodes(node, val=''){
+                           const newVal = val + ""+ node.huff
+                           if(node.left)
+                               printNodes(node.left, newVal)
+                           if(node.right)
+                               printNodes(node.right, newVal)
+                           if(!node.left && !node.right)
+                               console.log(node.symbol + ' -> ' + newVal)
+                       }
+                       
+                       const chars = ['a', 'b', 'c', 'd', 'e', 'f']
+                       
+                       const freq = [ 5, 9, 12, 13, 16, 45]
+                       
+                       let nodes = []
+                       
+                       for(let c in chars){
+                         nodes.push(new node(freq[c],chars[c]))
+                       }
+                       
+                       
+                       try{
+                       while(nodes.length > 1){
+                           nodes = nodes.sort((a,b)=>a.freq-b.freq)
+                           let left = nodes[0]
+                           let right = nodes[1]
+                           left.huff = 0
+                           right.huff = 1
+                           let newNode = new node(left.freq+right.freq, left.symbol+right.symbol, left, right)
+                           nodes = nodes.filter(x=>x.symbol!==left.symbol)
+                           nodes = nodes.filter(x=>x.symbol!==right.symbol)
+                           nodes.push(newNode)
+                       }
+                       printNodes(nodes[0])
+                       }catch(e){
+                       console.log(e)
+                       }
+                       `,
+                      },
+                      Java: {
+                        code: `
+                       import java.util.PriorityQueue;
+                       import java.util.Scanner;
+                       import java.util.Comparator;
+                        
+                       class HuffmanNode {
+                        
+                           int data;
+                           char c;
+                        
+                           HuffmanNode left;
+                           HuffmanNode right;
+                       }
+                        
+                       
+                       class MyComparator implements Comparator<HuffmanNode> {
+                           public int compare(HuffmanNode x, HuffmanNode y)
+                           {
+                        
+                               return x.data - y.data;
+                           }
+                       }
+                        
+                       class Huffman {
+                        
+                           public static void printCode(HuffmanNode root, String s)
+                           {
+                        
+                               if (root.left
+                                       == null
+                                   && root.right
+                                          == null
+                                   && Character.isLetter(root.c)) {
+                        
+                                   System.out.println(root.c + ":" + s);
+                        
+                                   return;
+                               }
+                       
+                               printCode(root.left, s + "0");
+                               printCode(root.right, s + "1");
+                           }
+                        
+                           public static void main(String[] args)
+                           {
+                        
+                               Scanner s = new Scanner(System.in);
+                        
+                               int n = 6;
+                               char[] charArray = { 'a', 'b', 'c', 'd', 'e', 'f' };
+                               int[] charfreq = { 5, 9, 12, 13, 16, 45 };
+                        
+                               PriorityQueue<HuffmanNode> q
+                                   = new PriorityQueue<HuffmanNode>(n, new MyComparator());
+                        
+                               for (int i = 0; i < n; i++) {
+                       
+                                   HuffmanNode hn = new HuffmanNode();
+                        
+                                   hn.c = charArray[i];
+                                   hn.data = charfreq[i];
+                        
+                                   hn.left = null;
+                                   hn.right = null;
+                        
+                                   q.add(hn);
+                               }
+                        
+                               HuffmanNode root = null;
+                        
+                               while (q.size() > 1) {
+                       
+                                   HuffmanNode x = q.peek();
+                                   q.poll();
+                        
+                                   HuffmanNode y = q.peek();
+                                   q.poll();
+                       
+                                   HuffmanNode f = new HuffmanNode();
+                        
+                                   f.data = x.data + y.data;
+                                   f.c = '-';
+                        
+                                   f.left = x;
+                        
+                                   f.right = y;
+                        
+                                   root = f;
+                                   q.add(f);
+                               }
+                                printCode(root, "");
+                           }
+                       }`,
+                      },
+                      Python: {
+                        code: `class node:
+  def __init__(self, freq, symbol, left=None, right=None):
+    self.freq = freq
+
+    self.symbol = symbol
+
+    self.left = left
+
+    self.right = right
+
+    self.huff = ''
+
+
+def printNodes(node, val=''):
+  newVal = val + str(node.huff)
+
+  if(node.left):
+    printNodes(node.left, newVal)
+  if(node.right):
+    printNodes(node.right, newVal)
+
+  if(not node.left and not node.right):
+    print(f"{node.symbol} -> {newVal}")
+
+
+chars = ['a', 'b', 'c', 'd', 'e', 'f']
+
+freq = [ 5, 9, 12, 13, 16, 45]
+
+nodes = []
+
+for x in range(len(chars)):
+  nodes.append(node(freq[x], chars[x]))
+
+while len(nodes) > 1:
+  nodes = sorted(nodes, key=lambda x: x.freq)
+
+  left = nodes[0]
+  right = nodes[1]
+
+  left.huff = 0
+  right.huff = 1
+
+  newNode = node(left.freq+right.freq, left.symbol+right.symbol, left, right)
+
+  nodes.remove(left)
+  nodes.remove(right)
+  nodes.append(newNode)
+
+printNodes(nodes[0])
+                      `,
+                      },
+                      "C++": {
+                        code: `#include <bits/stdc++.h>
+                        using namespace std;
+                         
+                        struct MinHeapNode {
+                         
+                            char data;
+                            unsigned freq;
+                         
+                            MinHeapNode *left, *right;
+                         
+                            MinHeapNode(char data, unsigned freq)
+                         
+                            {
+                                left = right = NULL;
+                                this->data = data;
+                                this->freq = freq;
+                            }
+                        };
+                         
+                        struct compare {
+                         
+                            bool operator()(MinHeapNode* l, MinHeapNode* r)
+                         
+                            {
+                                return (l->freq > r->freq);
+                            }
+                        };
+                         
+                        void printCodes(struct MinHeapNode* root, string str)
+                        {
+                         
+                            if (!root)
+                                return;
+                         
+                            if (root->data != '$')
+                                cout << root->data << ": " << str << "\n";
+                         
+                            printCodes(root->left, str + "0");
+                            printCodes(root->right, str + "1");
+                        }
+                         
+                        void HuffmanCodes(char data[], int freq[], int size)
+                        {
+                            struct MinHeapNode *left, *right, *top;
+                         
+                            priority_queue<MinHeapNode*, vector<MinHeapNode*>, compare> minHeap;
+                         
+                            for (int i = 0; i < size; ++i)
+                                minHeap.push(new MinHeapNode(data[i], freq[i]));
+                         
+                            while (minHeap.size() != 1) {
+                        
+                                left = minHeap.top();
+                                minHeap.pop();
+                         
+                                right = minHeap.top();
+                                minHeap.pop();
+                         
+                                top = new MinHeapNode('$', left->freq + right->freq);
+                         
+                                top->left = left;
+                                top->right = right;
+                         
+                                minHeap.push(top);
+                            }
+                         
+                            printCodes(minHeap.top(), "");
+                        }
+                         
+                        int main()
+                        {
+                         
+                            char arr[] = { 'a', 'b', 'c', 'd', 'e', 'f' };
+                            int freq[] = { 5, 9, 12, 13, 16, 45 };
+                            int size = sizeof(arr) / sizeof(arr[0]); 
+                            HuffmanCodes(arr, freq, size);
+                         
+                            return 0;
+                        }
+                         `,
+                      },
+                      Kotlin: {
+                        code: `import java.util.Arrays
+import java.util.Comparator
+
+object Main {
+    private fun getMaxValue(
+        wt: IntArray, 'val': IntArray,
+        capacity: Int
+    ): Double {
+        var capacity = capacity
+        val iVal: Array<ItemValue> = arrayOfNulls(wt.size)
+        for (i in wt.indices) {
+            iVal[i] = ItemValue(wt[i], 'val'[i], i)
+        }
+        Arrays.sort(iVal, object : Comparator<ItemValue?>() {
+            @Override
+            fun compare(o1: ItemValue, o2: ItemValue): Int {
+                return o2.cost.compareTo(o1.cost)
+            }
+        })
+        var totalValue = 0.0
+        for (i: ItemValue in iVal) {
+            val curWt = i.wt.toInt()
+            val curVal = i.'val'.toInt()
+            if (capacity - curWt >= 0) {
+                capacity = capacity - curWt
+                totalValue += curVal.toDouble()
+            } else {
+                val fraction = capacity.toDouble() / curWt.toDouble()
+                totalValue += curVal * fraction
+                capacity = (capacity - curWt * fraction).toInt()
+                break
+            }
+        }
+        return totalValue
+    }
+
+    fun main(args: Array<String?>?) {
+        val wt = intArrayOf(10, 40, 20, 30)
+        val 'val' = intArrayOf(60, 40, 100, 120)
+        val capacity = 50
+        val maxValue = getMaxValue(wt, 'val', capacity)
+        System.out.println(
+            "Maximum value we can obtain = "
+                    + maxValue
+        )
+    }
+
+    internal class ItemValue(wt: Int, 'val': Int, ind: Int) {
+        var cost: Double
+        var wt: Double
+        var 'val': Double
+        var ind: Double
+
+        init {
+            this.wt = wt.toDouble()
+            this.'val' = 'val'.toDouble()
+            this.ind = ind.toDouble()
+            cost = Double('val'.toDouble() / wt.toDouble())
+        }
+    }
+}`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
+          },
+          {
+            title: "Minimum Cost Spanning Trees",
+            content: (
+              <>
+                <Span>
+                  It is a subset of the edges of a connected , edgeweighted
+                  graph that connects all the vertices together, without any
+                  cycles and with the minimum possible totol edge weight. |E| =
+                  |V| -1
+                </Span>
+                <Span>
+                  Examples: Kruskal and Prims algorithms are used to find such
+                  trees.
+                </Span>
+                <Span>
+                  <b>Applications</b>
+                </Span>
+                <Span>
+                  Network Design: Telephone , Electrical , Hydraulic , TV Cable
+                  , Computer , Road
+                  <br />
+                  Approximation Algorithms: Travelling Salesman Problem , NP
+                  Hard
+                  <br /> List of cities and distance b/w each city
+                  <br /> shortest path which reach each city exactly once and
+                  return to the original city
+                  <br /> MST * 2
+                  <br /> Stiener Tree
+                  <br /> Used to connect vertices of subset (terminal vertices)
+                  (A,D)
+                  <br /> Indirect Use Of MST
+                  <br /> Max Bottleneck problem : here we find the path b/w two
+                  designated vertices in a weighted graph maximizing the weight
+                  of its minimum weight edge in the path ,
+                  <br /> LDPC low density parity check , Cluster Analysis ,
+                  groups based on some similarities
+                </Span>
+              </>
+            ),
+          },
+          {
+            title: "Kruskal",
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Construct an MST with the help of globally available edge with
+                  minimum weight which is not picked yet.
+                </Span>
+                <Span>
+                  <b>Note</b>
+                </Span>
+                <Span>
+                  <b>Note</b>
+                </Span>
+
+                <Span>Kruskal is slower tham prim's.</Span>
+                <Span>Time Complexity : O(ElogE) or (ElogV)</Span>
+                <Span>
+                  <b>Greedy Approach</b>
+                </Span>
+
+                <Span>
+                  Sort all the edges in non-decreasing order of their weight.{" "}
+                  <br />
+                  Pick the smallest edge. Check if it forms a cycle with the
+                  spanning tree formed so far. If cycle is not formed, include
+                  this edge. Else, discard it.
+                  <br />
+                  Repeat step#2 until there are (V-1) edges in the spanning
+                  tree. <br />
+                  Note : Basically , we make use of rank of a nodes in order to
+                  generate the tree. Node with higher rank will be closer to
+                  root. <br />
+                </Span>
+                <p>
+                  <b>Note :</b>
+                  Basically , we make use of rank of a nodes in order to
+                  generate the tree. Node with higher rank will be closer to
+                  root.
+                </p>
+                <CodeEditor
+                  options={{
+                    output: `Following are the edges in the constructed MST
+                    2 -- 3 == 4
+                    0 -- 3 == 5
+                    0 -- 1 == 10
+                    Minimum Cost Of Spanning Tree 19`,
+                    codes: {
+                      // Javascript: {
+                      //   code: ``,
+                      //   output: ``,
+                      // },
+                      Java: {
+                        code: `import java.util.*;
+
+                        class Graph {
+                          class Edge implements Comparable<Edge>
+                          {
+                            int src, dest, weight;
+                        
+                            public int compareTo(Edge compareEdge)
+                            {
+                              return this.weight - compareEdge.weight;
+                            }
+                          };
+                        
+                          class subset
+                          {
+                            int parent, rank;
+                          };
+                        
+                          int V, E; 
+                          Edge edge[]; 
+                        
+                          Graph(int v, int e)
+                          {
+                            V = v;
+                            E = e;
+                            edge = new Edge[E];
+                            for (int i = 0; i < e; ++i)
+                              edge[i] = new Edge();
+                          }
+                        
+                          int find(subset subsets[], int i)
+                          {
+                            if (subsets[i].parent != i)
+                              subsets[i].parent
+                                = find(subsets, subsets[i].parent);
+                        
+                            return subsets[i].parent;
+                          }
+                        
+                          void Union(subset subsets[], int x, int y)
+                          {
+                            int xroot = find(subsets, x);
+                            int yroot = find(subsets, y);
+                        
+                            if (subsets[xroot].rank
+                              < subsets[yroot].rank)
+                              subsets[xroot].parent = yroot;
+                            else if (subsets[xroot].rank
+                                > subsets[yroot].rank)
+                              subsets[yroot].parent = xroot;
+                        
+                            else {
+                              subsets[yroot].parent = xroot;
+                              subsets[xroot].rank++;
+                            }
+                          }
+                        
+                          void KruskalMST()
+                          {
+                            Edge result[] = new Edge[V];
+                          
+                            int e = 0;
+                          
+                            int i = 0;
+                            for (i = 0; i < V; ++i)
+                              result[i] = new Edge();
+                        
+                            Arrays.sort(edge);
+                        
+                            subset subsets[] = new subset[V];
+                            for (i = 0; i < V; ++i)
+                              subsets[i] = new subset();
+                        
+                            for (int v = 0; v < V; ++v)
+                            {
+                              subsets[v].parent = v;
+                              subsets[v].rank = 0;
+                            }
+                        
+                            i = 0; 
+                        
+                            while (e < V - 1)
+                            {
+                              Edge next_edge = edge[i++];
+                        
+                              int x = find(subsets, next_edge.src);
+                              int y = find(subsets, next_edge.dest);
+                        
+                              if (x != y) {
+                                result[e++] = next_edge;
+                                Union(subsets, x, y);
+                              }
+                            }
+                        
+                            System.out.println("Following are the edges in "
+                                    + "the constructed MST");
+                            int minimumCost = 0;
+                            for (i = 0; i < e; ++i)
+                            {
+                              System.out.println(result[i].src + " -- "
+                                      + result[i].dest
+                                      + " == " + result[i].weight);
+                              minimumCost += result[i].weight;
+                            }
+                            System.out.println("Minimum Cost Spanning Tree "
+                                    + minimumCost);
+                          }
+                        
+                          public static void main(String[] args)
+                          {
+                            int V = 4;
+                            int E = 5;
+                            Graph graph = new Graph(V, E);
+                            graph.edge[0].src = 0;
+                            graph.edge[0].dest = 1;
+                            graph.edge[0].weight = 10;
+                            graph.edge[1].src = 0;
+                            graph.edge[1].dest = 2;
+                            graph.edge[1].weight = 6;
+                            graph.edge[2].src = 0;
+                            graph.edge[2].dest = 3;
+                            graph.edge[2].weight = 5;
+                            graph.edge[3].src = 1;
+                            graph.edge[3].dest = 3;
+                            graph.edge[3].weight = 15;
+                            graph.edge[4].src = 2;
+                            graph.edge[4].dest = 3;
+                            graph.edge[4].weight = 4;
+                        
+                            graph.KruskalMST();
+                          }
+                        }
+                        `,
+                      },
+                      Python: {
+                        code: `from collections import defaultdict
+
+class Graph:
+
+  def __init__(self, vertices):
+    self.V = vertices 
+    self.graph = [] 
+
+  def addEdge(self, u, v, w):
+    self.graph.append([u, v, w])
+
+  def find(self, parent, i):
+    if parent[i] == i:
+      return i
+    return self.find(parent, parent[i])
+
+  def union(self, parent, rank, x, y):
+    xroot = self.find(parent, x)
+    yroot = self.find(parent, y)
+
+    if rank[xroot] < rank[yroot]:
+      parent[xroot] = yroot
+    elif rank[xroot] > rank[yroot]:
+      parent[yroot] = xroot
+
+    else:
+      parent[yroot] = xroot
+      rank[xroot] += 1
+
+  def KruskalMST(self):
+
+    result = []
+    
+    i = 0
+    
+    e = 0
+
+    self.graph = sorted(self.graph,
+              key=lambda item: item[2])
+
+    parent = []
+    rank = []
+
+    for node in range(self.V):
+      parent.append(node)
+      rank.append(0)
+
+    while e < self.V - 1:
+
+      u, v, w = self.graph[i]
+      i = i + 1
+      x = self.find(parent, u)
+      y = self.find(parent, v)
+
+      if x != y:
+        e = e + 1
+        result.append([u, v, w])
+        self.union(parent, rank, x, y)
+
+    minimumCost = 0
+    print ("Edges in the constructed MST")
+    for u, v, weight in result:
+      minimumCost += weight
+      print("%d -- %d == %d" % (u, v, weight))
+    print("Minimum Spanning Tree" , minimumCost)
+
+g = Graph(4)
+g.addEdge(0, 1, 10)
+g.addEdge(0, 2, 6)
+g.addEdge(0, 3, 5)
+g.addEdge(1, 3, 15)
+g.addEdge(2, 3, 4)
+
+g.KruskalMST()
+                        
+                        `,
+                      },
+                      "C++": {
+                        code: `#include <bits/stdc++.h>
+                        using namespace std;
+                        class Edge {
+                        public:
+                        int src, dest, weight;
+                        };
+                        class Graph {
+                        public:
+                        int V, E;
+                        Edge* edge;
+                        };
+                        Graph* createGraph(int V, int E)
+                        {
+                        Graph* graph = new Graph;
+                        graph->V = V;
+                        graph->E = E;
+                        graph->edge = new Edge[E];
+                        return graph;
+                        }
+                        class subset {
+                        public:
+                        int parent;
+                        int rank;
+                        };
+                        int find(subset subsets[], int i)
+                        {
+                        if (subsets[i].parent!= i)
+                        subsets[i].parent
+                        = find(subsets, subsets[i].parent);
+                        return subsets[i].parent;
+                        }
+                        void Union(subset subsets[], int x, int y)
+                        {
+                        int xroot = find(subsets, x);
+                        int yroot = find(subsets, y);
+                        if (subsets[xroot].rank < subsets[yroot].rank)
+                        subsets[xroot].parent = yroot;
+                        else if (subsets[xroot].rank > subsets[yroot].rank)
+                        subsets[yroot].parent = xroot;
+                        else {
+                        subsets[yroot].parent = xroot;
+                        subsets[xroot].rank++;
+                        }
+                        }
+                        int myComp(const void* a, const void* b)
+                        {
+                        Edge* a1 = (Edge*)a;
+                        Edge* b1 = (Edge*)b;
+                        return a1->weight > b1->weight;
+                        }
+                        void KruskalMST(Graph* graph)
+                        {
+                        int V = graph->V;
+                        Edge result[V];
+                        int e = 0;
+                        int i = 0;
+                        qsort(graph->edge, graph->E, sizeof(graph->edge[0]),
+                        myComp);
+                        subset* subsets = new subset[(V * sizeof(subset))];
+                        for (int v = 0; v < V; ++v)
+                        {
+                        subsets[v].parent = v;
+                        subsets[v].rank = 0;
+                        }
+                        while (e < V-1 && i < graph->E)
+                        {
+                        Edge next_edge = graph->edge[i++];
+                        int x = find(subsets, next_edge.src);
+                        int y = find(subsets, next_edge.dest);
+                        if (x!= y) {
+                        result[e++] = next_edge;
+                        Union(subsets, x, y);
+                        }
+                        }
+                        cout << "Following are the edges in the constructed "
+                        "MST\n";
+                        int minimumCost = 0;
+                        for (i = 0; i < e; ++i)
+                        {
+                        cout << result[i].src << "-" << result[i].dest
+                        << " == " << result[i].weight << endl;
+                        minimumCost = minimumCost + result[i].weight;
+                        }
+                        cout << "Minimum Cost Spanning Tree: " << minimumCost
+                        << endl;
+                        }
+                        int main()
+                        {
+                        int V = 4;
+                        int E = 5;
+                        Graph* graph = createGraph(V, E);
+                        graph->edge[0].src = 0;
+                        graph->edge[0].dest = 1;
+                        graph->edge[0].weight = 10;
+                        graph->edge[1].src = 0;
+                        graph->edge[1].dest = 2;
+                        graph->edge[1].weight = 6;
+                        graph->edge[2].src = 0;
+                        graph->edge[2].dest = 3;
+                        graph->edge[2].weight = 5;
+                        graph->edge[3].src = 1;
+                        graph->edge[3].dest = 3;
+                        graph->edge[3].weight = 15;
+                        graph->edge[4].src = 2;
+                        graph->edge[4].dest = 3;
+                        graph->edge[4].weight = 4;
+                        KruskalMST(graph);
+                        return 0;
+                        }`,
+                      },
+                      Kotlin: {
+                        code: `import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Graph {
+	class Edge implements Comparable<Edge>
+	{
+		int src, dest, weight;
+
+		public int compareTo(Edge compareEdge)
+		{
+			return this.weight - compareEdge.weight;
+		}
+	};
+
+	class subset
+	{
+		int parent, rank;
+	};
+
+	int V, E; 
+	Edge edge[]; 
+
+	Graph(int v, int e)
+	{
+		V = v;
+		E = e;
+		edge = new Edge[E];
+		for (int i = 0; i < e; ++i)
+			edge[i] = new Edge();
+	}
+
+	int find(subset subsets[], int i)
+	{
+		if (subsets[i].parent != i)
+			subsets[i].parent
+				= find(subsets, subsets[i].parent);
+
+		return subsets[i].parent;
+	}
+
+	void Union(subset subsets[], int x, int y)
+	{
+		int xroot = find(subsets, x);
+		int yroot = find(subsets, y);
+
+		if (subsets[xroot].rank
+			< subsets[yroot].rank)
+			subsets[xroot].parent = yroot;
+		else if (subsets[xroot].rank
+				> subsets[yroot].rank)
+			subsets[yroot].parent = xroot;
+
+		else {
+			subsets[yroot].parent = xroot;
+			subsets[xroot].rank++;
+		}
+	}
+
+	void KruskalMST()
+	{
+		Edge result[] = new Edge[V];
+	
+		int e = 0;
+	
+		int i = 0;
+		for (i = 0; i < V; ++i)
+			result[i] = new Edge();
+
+		Arrays.sort(edge);
+
+		subset subsets[] = new subset[V];
+		for (i = 0; i < V; ++i)
+			subsets[i] = new subset();
+
+		for (int v = 0; v < V; ++v)
+		{
+			subsets[v].parent = v;
+			subsets[v].rank = 0;
+		}
+
+		i = 0; 
+
+		while (e < V - 1)
+		{
+			Edge next_edge = edge[i++];
+
+			int x = find(subsets, next_edge.src);
+			int y = find(subsets, next_edge.dest);
+
+			if (x != y) {
+				result[e++] = next_edge;
+				Union(subsets, x, y);
+			}
+		}
+
+		System.out.println("Following are the edges in "
+						+ "the constructed MST");
+		int minimumCost = 0;
+		for (i = 0; i < e; ++i)
+		{
+			System.out.println(result[i].src + " -- "
+							+ result[i].dest
+							+ " == " + result[i].weight);
+			minimumCost += result[i].weight;
+		}
+		System.out.println("Minimum Cost Of Spanning Tree "
+						+ minimumCost);
+	}
+
+	public static void main(String[] args)
+	{
+		int V = 4;
+		int E = 5;
+		Graph graph = new Graph(V, E);
+		graph.edge[0].src = 0;
+		graph.edge[0].dest = 1;
+		graph.edge[0].weight = 10;
+		graph.edge[1].src = 0;
+		graph.edge[1].dest = 2;
+		graph.edge[1].weight = 6;
+		graph.edge[2].src = 0;
+		graph.edge[2].dest = 3;
+		graph.edge[2].weight = 5;
+		graph.edge[3].src = 1;
+		graph.edge[3].dest = 3;
+		graph.edge[3].weight = 15;
+		graph.edge[4].src = 2;
+		graph.edge[4].dest = 3;
+		graph.edge[4].weight = 4;
+
+		graph.KruskalMST();
+	}
+}
+`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
+          },
+          {
+            title: "Prim's",
+            content: (
+              <>
+                <Span>
+                  <b> Problem Statement :</b>
+                </Span>
+                <Span>
+                  Construct an MST with the help of edge with minimum weight
+                  among all adjacent edges which is not picked yet.
+                </Span>
+                <Span>
+                  <b>Note :</b>
+                  <br />
+                  Prim's is slower tham kruskal. <br />
+                  Time Complexity : O(ElogE) or (ElogV)
+                </Span>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      // Javascript:{code:``},
+                      Java: {
+                        code: `import java.util.*;
+                      import java.lang.*;
+                      import java.io.*;
+                      
+                      class Main {
+                      private static final int V = 5;
+                      int minKey(int key[], Boolean mstSet[])
+                      {
+                      int min = Integer.MAX_VALUE, min_index = -1;
+                      for (int v = 0; v < V; v++)
+                      if (mstSet[v] == false && key[v] < min) {
+                      min = key[v];
+                      min_index = v;
+                      }
+                      return min_index;
+                      }
+                      
+                      void printMST(int parent[], int graph[][])
+                      {
+                      System.out.println("Edge \tWeight");
+                      for (int i = 1; i < V; i++)
+                      System.out.println(parent[i] + " — " + i + "\t" + graph[i][parent[i]]);
+                      }
+                      
+                      void primMST(int graph[][])
+                      {
+                      int parent[] = new int[V];
+                      int key[] = new int[V];
+                      Boolean mstSet[] = new Boolean[V];
+                      for (int i = 0; i < V; i++) {
+                      key[i] = Integer.MAX_VALUE;
+                      mstSet[i] = false;
+                      }
+                      key[0] = 0;
+                      parent[0] = -1;
+                      for (int count = 0;count < V - 1;count++){
+                      int u = minKey(key, mstSet);
+                      mstSet[u] = true;
+                      for (int v = 0; v < V; v++)
+                      if (graph[u][v] != 0 && mstSet[v] == false && graph[u][v] < key[v]) {
+                      parent[v] = u;
+                      key[v] = graph[u][v];
+                      }
+                      
+                      }
+                      printMST(parent, graph);
+                      }
+                      public static void main(String[] args)
+                      {
+                      Main t = new Main();
+                      int graph[][] = new int[][] { { 0, 2, 0, 6, 0 },
+                      { 2, 0, 3, 8, 5 },
+                      { 0, 3, 0, 0, 7 },
+                      { 6, 8, 0, 0, 9 },
+                      { 0, 5, 7, 9, 0 } };
+                      t.primMST(graph);
+                      }
+                      }
+                      `,
+                      },
+                      Python: {
+                        code: `import sys 
+
+class Graph():
+
+  def __init__(self, vertices):
+    self.V = vertices
+    self.graph = [[0 for column in range(vertices)]
+          for row in range(vertices)]
+
+  def printMST(self, parent):
+    print("Edge \tWeight")
+    for i in range(1, self.V):
+      print(parent[i], "-", i, "\t", self.graph[i][ parent[i] ])
+
+  def minKey(self, key, mstSet):
+
+    min = sys.maxint
+
+    for v in range(self.V):
+      if key[v] < min and mstSet[v] == False:
+        min = key[v]
+        min_index = v
+
+    return min_index
+
+  def primMST(self):
+    key = [sys.maxint] * self.V
+    parent = [None] * self.V 
+    key[0] = 0
+    mstSet = [False] * self.V
+
+    parent[0] = -1 
+
+    for cout in range(self.V):
+
+      u = self.minKey(key, mstSet)
+      mstSet[u] = True
+      for v in range(self.V):
+        if self.graph[u][v] > 0 and mstSet[v] == False and key[v] > self.graph[u][v]:
+            key[v] = self.graph[u][v]
+            parent[v] = u
+
+    self.printMST(parent)
+
+g = Graph(5)
+g.graph = [ [0, 2, 0, 6, 0],
+      [2, 0, 3, 8, 5],
+      [0, 3, 0, 0, 7],
+      [6, 8, 0, 0, 9],
+      [0, 5, 7, 9, 0]]
+
+g.primMST()`,
+                      },
+                      "C++": {
+                        code: `#include <bits/stdc++.h>
+                      using namespace std;
+                      
+                      #define V 5
+                      
+                      int minKey(int key[], bool mstSet[])
+                      {
+                        int min = INT_MAX, min_index;
+                      
+                        for (int v = 0; v < V; v++)
+                          if (mstSet[v] == false && key[v] < min)
+                            min = key[v], min_index = v;
+                      
+                        return min_index;
+                      }
+                      
+                      void printMST(int parent[], int graph[V][V])
+                      {
+                        cout<<"Edge \tWeight\n";
+                        for (int i = 1; i < V; i++)
+                          cout<<parent[i]<<" - "<<i<<" \t"<<graph[i][parent[i]]<<" \n";
+                      }
+                      
+                      
+                      void primMST(int graph[V][V])
+                      {
+                        int parent[V];
+                        
+                        int key[V];
+                        
+                        bool mstSet[V];
+                      
+                        for (int i = 0; i < V; i++)
+                          key[i] = INT_MAX, mstSet[i] = false;
+                        key[0] = 0;
+                        parent[0] = -1;
+                      
+                        for (int count = 0; count < V - 1; count++)
+                        {
+                          int u = minKey(key, mstSet);
+                      
+                          mstSet[u] = true;
+                      
+                          for (int v = 0; v < V; v++)
+                      
+                            if (graph[u][v] && mstSet[v] == false && graph[u][v] < key[v])
+                              parent[v] = u, key[v] = graph[u][v];
+                        }
+                      
+                        printMST(parent, graph);
+                      }
+                      
+                      int main()
+                      {
+                        int graph[V][V] = { { 0, 2, 0, 6, 0 },
+                                  { 2, 0, 3, 8, 5 },
+                                  { 0, 3, 0, 0, 7 },
+                                  { 6, 8, 0, 0, 9 },
+                                  { 0, 5, 7, 9, 0 } };
+                      
+                        primMST(graph);
+                      
+                        return 0;
+                      }
+                      `,
+                      },
+                      Kotlin: {
+                        code: `import java.util.*
+                      import java.lang.*
+                      import java.io.*
+                      
+                      internal class MST {
+                      
+                          fun minKey(key: IntArray, mstSet: Array<Boolean>): Int {
+                              var min: Int = Integer.MAX_VALUE
+                              var min_index = -1
+                              for (v in 0 until V) if (mstSet[v] == false && key[v] < min) {
+                                  min = key[v]
+                                  min_index = v
+                              }
+                              return min_index
+                          }
+                      
+                          fun printMST(parent: IntArray, graph: Array<IntArray>) {
+                              System.out.println("Edge \tWeight")
+                              for (i in 1 until V) System.out.println(parent[i].toString() + " - " + i + "\t" + graph[i][parent[i]])
+                          }
+                          
+                          fun primMST(graph: Array<IntArray>) {
+                              val parent = IntArray(V)
+                      
+                              val key = IntArray(V)
+                      
+                              val mstSet: Array<Boolean> = arrayOfNulls(V)
+                      
+                              for (i in 0 until V) {
+                                  key[i] = Integer.MAX_VALUE
+                                  mstSet[i] = false
+                              }
+                      
+                              key[0] = 0 
+                              parent[0] = -1 
+                      
+                              for (count in 0 until V - 1) {
+                                  val u = minKey(key, mstSet)
+                      
+                                  mstSet[u] = true
+                      
+                                  for (v in 0 until V)  
+                                      if (graph[u][v] != 0 && mstSet[v] == false && graph[u][v] < key[v]) {
+                                          parent[v] = u
+                                          key[v] = graph[u][v]
+                                      }
+                              }
+                      
+                              printMST(parent, graph)
+                          }
+                      
+                          companion object {
+                              private const val V = 5
+                              fun main(args: Array<String?>?) {
+                                  val t = MST()
+                                  val graph = arrayOf(
+                                      intArrayOf(0, 2, 0, 6, 0),
+                                      intArrayOf(2, 0, 3, 8, 5),
+                                      intArrayOf(0, 3, 0, 0, 7),
+                                      intArrayOf(6, 8, 0, 0, 9),
+                                      intArrayOf(0, 5, 7, 9, 0)
+                                  )
+                      
+                                  t.primMST(graph)
+                              }
+                          }
+                      }`,
+                      },
+                    },
+                    output: `Edge    Weight
+                    0 — 1   2
+                    1 — 2   3
+                    0 — 3   6
+                    1 — 4   5`,
+                  }}
+                />
+              </>
+            ),
+          },
+          {
+            title: "Dijkstra's",
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement:</b>
+                </Span>
+                <Span>
+                  Dijkstra's algorithm is very similar to prim's algorithm. Like
+                  Prim's MST, we generate a SPT (shortest path tree) with a
+                  given source as a root. We maintain two sets, one set contains
+                  vertices included in the shortest-path tree, other set
+                  includes vertices not yet included in the shortest-path tree.
+                  At every step of the algorithm, we find a vertex that is in
+                  the other set (set of not yet included) and has a minimum
+                  distance from the source.
+                </Span>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `function minDistance(dist,sptSet)
+                        {
+                          
+                            let min = Number.MAX_VALUE;
+                          let min_index = -1;
+                          
+                          for(let v = 0; v < V; v++)
+                          {
+                            if (sptSet[v] == false && dist[v] <= min)
+                            {
+                              min = dist[v];
+                              min_index = v;
+                            }
+                          }
+                          return min_index;
+                        }
+                        
+                        function printSolution(dist)
+                        {
+                          document.write("Vertex \t\t Distance from Source<br>");
+                          for(let i = 0; i < V; i++)
+                          {
+                            document.write(i + " \t\t " +
+                                dist[i] + "<br>");
+                          }
+                        }
+                        
+                        function dijkstra(graph, src)
+                        {
+                          let dist = new Array(V);
+                          let sptSet = new Array(V);
+                          
+                          for(let i = 0; i < V; i++)
+                          {
+                            dist[i] = Number.MAX_VALUE;
+                            sptSet[i] = false;
+                          }
+                          
+                          dist[src] = 0;
+                          
+                            for(let count = 0; count < V - 1; count++)
+                          {
+                            
+                            let u = minDistance(dist, sptSet);
+                            
+                            sptSet[u] = true;
+                            
+                            for(let v = 0; v < V; v++)
+                            {
+                              
+                              if (!sptSet[v] && graph[u][v] != 0 &&
+                                dist[u] != Number.MAX_VALUE &&
+                                dist[u] + graph[u][v] < dist[v])
+                              {
+                                dist[v] = dist[u] + graph[u][v];
+                              }
+                            }
+                          }
+                            printSolution(dist);
+                        }
+                        
+                        let graph = [ [ 0, 4, 0, 0, 0, 0, 0, 8, 0 ],
+                              [ 4, 0, 8, 0, 0, 0, 0, 11, 0 ],
+                              [ 0, 8, 0, 7, 0, 4, 0, 0, 2 ],
+                              [ 0, 0, 7, 0, 9, 14, 0, 0, 0],
+                              [ 0, 0, 0, 9, 0, 10, 0, 0, 0 ],
+                              [ 0, 0, 4, 14, 10, 0, 2, 0, 0],
+                              [ 0, 0, 0, 0, 0, 2, 0, 1, 6 ],
+                              [ 8, 11, 0, 0, 0, 0, 1, 0, 7 ],
+                              [ 0, 0, 2, 0, 0, 0, 6, 7, 0 ] ]
+                        dijkstra(graph, 0);
+                        `,
+                      },
+                      Java: {
+                        code: `import java.util.*;
+                        import java.lang.*;
+                        import java.io.*;
+                        
+                        class Main {
+                        static final int V = 9;
+                        int minDistance(int dist[], Boolean sptSet[])
+                        {
+                        int min = Integer.MAX_VALUE, min_index = -1;
+                        for (int v = 0; v < V; v++)
+                        if (sptSet[v] == false && dist[v] <= min) {
+                        min = dist[v];
+                        min_index = v;
+                        }
+                        return min_index;
+                        }
+                        void printSolution(int dist[])
+                        {
+                        System.out.println("Vertex \t\t Distance from Source");
+                        for (int i = 0; i < V; i++)
+                        System.out.println(i + " \t\t " + dist[i]);
+                        }
+                        void dijkstra(int graph[][], int src)
+                        {
+                        int dist[] = new int[V];
+                        Boolean sptSet[] = new Boolean[V];
+                        for (int i = 0; i < V; i++) {
+                        dist[i] = Integer.MAX_VALUE;
+                        sptSet[i] = false;
+                        }
+                        dist[src] = 0;
+                        for (int count = 0; count < V - 1; count++) {
+                        int u = minDistance(dist, sptSet);
+                        sptSet[u] = true;
+                        for (int v = 0; v < V; v++)
+                        if (!sptSet[v] && graph[u][v] != 0 && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v])
+                        dist[v] = dist[u] + graph[u][v];
+                        }
+                        printSolution(dist);
+                        }
+                        public static void main(String[] args)
+                        {
+                        int graph[][] = new int[][] { { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
+                        { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
+                        { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
+                        { 0, 0, 7, 0, 9, 14, 0, 0, 0 },
+                        { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
+                        { 0, 0, 4, 14, 10, 0, 2, 0, 0 },
+                        { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
+                        { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
+                        { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
+                        Main t = new Main();
+                        t.dijkstra(graph, 0);
+                        }
+                        }`,
+                      },
+                      Python: {
+                        code: `import sys
+
+class Graph():
+
+  def __init__(self, vertices):
+    self.V = vertices
+    self.graph = [[0 for column in range(vertices)]
+          for row in range(vertices)]
+
+  def printSolution(self, dist):
+    print("Vertex \tDistance from Source")
+    for node in range(self.V):
+      print(node+ "\t"+ dist[node])
+
+  def minDistance(self, dist, sptSet):
+
+    min = sys.maxint
+
+    for v in range(self.V):
+      if dist[v] < min and sptSet[v] == False:
+        min = dist[v]
+        min_index = v
+
+    return min_index
+
+  def dijkstra(self, src):
+
+    dist = [sys.maxint] * self.V
+    dist[src] = 0
+    sptSet = [False] * self.V
+
+    for cout in range(self.V):
+      u = self.minDistance(dist, sptSet)
+      sptSet[u] = True
+
+      for v in range(self.V):
+        if self.graph[u][v] > 0 and sptSet[v] == False and \
+        dist[v] > dist[u] + self.graph[u][v]:
+            dist[v] = dist[u] + self.graph[u][v]
+
+    self.printSolution(dist)
+
+g = Graph(9)
+g.graph = [[0, 4, 0, 0, 0, 0, 0, 8, 0],
+    [4, 0, 8, 0, 0, 0, 0, 11, 0],
+    [0, 8, 0, 7, 0, 4, 0, 0, 2],
+    [0, 0, 7, 0, 9, 14, 0, 0, 0],
+    [0, 0, 0, 9, 0, 10, 0, 0, 0],
+    [0, 0, 4, 14, 10, 0, 2, 0, 0],
+    [0, 0, 0, 0, 0, 2, 0, 1, 6],
+    [8, 11, 0, 0, 0, 0, 1, 0, 7],
+    [0, 0, 2, 0, 0, 0, 6, 7, 0]
+    ]
+
+g.dijkstra(0)`,
+                      },
+                      "C++": {
+                        code: `#include <iostream>
+                          using namespace std;
+                          #include <limits.h>
+                          #define V 9
+                          
+                          int minDistance(int dist[], bool sptSet[])
+                          {
+                            int min = INT_MAX, min_index;
+                          
+                            for (int v = 0; v < V; v++)
+                              if (sptSet[v] == false && dist[v] <= min)
+                                min = dist[v], min_index = v;
+                          
+                            return min_index;
+                          }
+                          
+                          void printSolution(int dist[])
+                          {
+                            cout <<"Vertex \t Distance from Source" << endl;
+                            for (int i = 0; i < V; i++)
+                              cout << i << " \t\t"<<dist[i]<< endl;
+                          }
+                          
+                          void dijkstra(int graph[V][V], int src)
+                          {
+                            int dist[V];
+                          
+                            bool sptSet[V]; 
+                            for (int i = 0; i < V; i++)
+                              dist[i] = INT_MAX, sptSet[i] = false;
+                          
+                            dist[src] = 0;
+                            for (int count = 0; count < V - 1; count++) {
+                              int u = minDistance(dist, sptSet);
+                          
+                              sptSet[u] = true;
+                          
+                              for (int v = 0; v < V; v++)
+                          
+                                if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX
+                                  && dist[u] + graph[u][v] < dist[v])
+                                  dist[v] = dist[u] + graph[u][v];
+                            }
+                          
+                            printSolution(dist);
+                          }
+                          
+                          int main()
+                          {
+                          
+                            int graph[V][V] = { { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
+                                      { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
+                                      { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
+                                      { 0, 0, 7, 0, 9, 14, 0, 0, 0 },
+                                      { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
+                                      { 0, 0, 4, 14, 10, 0, 2, 0, 0 },
+                                      { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
+                                      { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
+                                      { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
+                          
+                            dijkstra(graph, 0);
+                          
+                            return 0;
+                          }`,
+                      },
+                      Kotlin: {
+                        code: `import java.util.*
+                          import java.lang.*
+                          import java.io.*
+                          
+                          internal class ShortestPath {
+                              fun minDistance(dist: IntArray, sptSet: Array<Boolean>): Int {
+                                  var min: Int = Integer.MAX_VALUE
+                                  var min_index = -1
+                                  for (v in 0 until V) if (sptSet[v] == false && dist[v] <= min) {
+                                      min = dist[v]
+                                      min_index = v
+                                  }
+                                  return min_index
+                              }
+                          
+                              fun printSolution(dist: IntArray) {
+                                  System.out.println("Vertex \t\t Distance from Source")
+                                  for (i in 0 until V) System.out.println(i.toString() + " \t\t " + dist[i])
+                              }
+                          
+                              fun dijkstra(graph: Array<IntArray>, src: Int) {
+                                  val dist = IntArray(V)
+                                  val sptSet: Array<Boolean> = arrayOfNulls(V)
+                                  for (i in 0 until V) {
+                                      dist[i] = Integer.MAX_VALUE
+                                      sptSet[i] = false
+                                  }
+                                  dist[src] = 0
+                                  for (count in 0 until V - 1) {
+                                      val u = minDistance(dist, sptSet)
+                                      sptSet[u] = true
+                                      for (v in 0 until V) if (!sptSet[v] && graph[u][v] != 0 && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v]) dist[v] =
+                                          dist[u] + graph[u][v]
+                                  }
+                                  printSolution(dist)
+                              }
+                          
+                              companion object {
+                                  const val V = 9
+                                  fun main(args: Array<String?>?) {
+                                      val graph = arrayOf(
+                                          intArrayOf(0, 4, 0, 0, 0, 0, 0, 8, 0),
+                                          intArrayOf(4, 0, 8, 0, 0, 0, 0, 11, 0),
+                                          intArrayOf(0, 8, 0, 7, 0, 4, 0, 0, 2),
+                                          intArrayOf(0, 0, 7, 0, 9, 14, 0, 0, 0),
+                                          intArrayOf(0, 0, 0, 9, 0, 10, 0, 0, 0),
+                                          intArrayOf(0, 0, 4, 14, 10, 0, 2, 0, 0),
+                                          intArrayOf(0, 0, 0, 0, 0, 2, 0, 1, 6),
+                                          intArrayOf(8, 11, 0, 0, 0, 0, 1, 0, 7),
+                                          intArrayOf(0, 0, 2, 0, 0, 0, 6, 7, 0)
+                                      )
+                                      val t = ShortestPath()
+                                      t.dijkstra(graph, 0)
+                                  }
+                              }
+                          }`,
+                      },
+                    },
+                    output: `Vertex       Distance from Source
+                    0        0
+                    1        4
+                    2        12
+                    3        19
+                    4        21
+                    5        11
+                    6        9
+                    7        8
+                    8        14`,
+                  }}
+                />
+              </>
+            ),
+          },
+          {
+            title: "Dial's",
+            content: (
+              <>
+                <Span>
+                  Many a times the range of weights on edges in is in small
+                  range (i.e. all edge weight can be mapped to 0, 1, 2.. w where
+                  w is a small number).
+                </Span>
+                <Span>
+                  In that case, Dijkstra's algorithm can be modified by using
+                  different data structure, buckets, which is called dial
+                  implementation of dijkstra's algorithm. time complexity is O(E
+                  + WV) where W is maximum weight on any edge of graph, so we
+                  can see that, if W is small then this implementation runs much
+                  faster than traditional algorithm. Following are important
+                  observations. Maximum distance between any two node can be at
+                  max w(V — 1) (w is maximum edge weight and we can have at max
+                  V-1 edges between two vertices). In Dijkstra algorithm,
+                  distances are finalized in non-decreasing, i.e., distance of
+                  the closer (to given source) vertices is finalized before the
+                  distant vertices.
+                </Span>
+              </>
+            ),
+          },
+          {
+            title: "Minimum Number Of Coins",
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statemnt</b>
+                </Span>
+                <Span>
+                  Calculate the minimum number of coins required , whose
+                  summation will be equal to the given input with the help of
+                  sorted array provided.
+                </Span>
+                <Span>
+                  <b> Example</b>
+                </Span>
+                <p>
+                  [1,2,5,10,20,50,100,500,1000]
+                  <br />
+                  Input Value: 70
+                  <br />
+                  Output: 2<br />
+                  (50 + 20)
+                  <br />
+                  Input value: 121
+                  <br />
+                  Output: 3<br />
+                  (100 + 20 + 1)
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `let deno=[1, 2, 5, 10, 20,
+                          50, 100, 500, 1000];
+                      let n = deno.length;
+                       
+                      function findMin(V)
+                      {
+                              let ans = [];
+                        
+                              for (let i = n - 1; i >= 0; i--)
+                              {
+                                  while (V >= deno[i])
+                                  {
+                                      V -= deno[i];
+                                      ans.push(deno[i]);
+                                  }
+                              }
+                        
+                              for (let i = 0; i < ans.length; i++)
+                              {
+                                  console.log(
+                                      " " + ans[i]);
+                              }
+                      }
+                       
+                      n = 93;
+                      console.log(
+                      "Following is minimal number "
+                      +"of change for " + n + ": ");
+                      findMin(n);`,
+                        output: `Following is minimal number of change for 93: 
+                        50
+                        20
+                        20
+                        2
+                        1`,
+                      },
+                      Java: {
+                        code: `
+                       
+import java.util.Vector;
+
+class Main
+{
+
+	static int deno[] = {1, 2, 5, 10, 20,
+	50, 100, 500, 1000};
+	static int n = deno.length;
+
+	static void findMin(int V)
+	{
+		Vector<Integer> ans = new Vector<>();
+
+		for (int i = n - 1; i >= 0; i--)
+		{
+			while (V >= deno[i])
+			{
+				V -= deno[i];
+				ans.add(deno[i]);
+			}
+		}
+
+		for (int i = 0; i < ans.size(); i++)
+		{
+			System.out.print(
+				" " + ans.elementAt(i));
+		}
+	}
+	public static void main(String[] args)
+	{
+		int n = 93;
+		System.out.print(
+			"Following is minimal number "
+			+"of change for " + n + ": ");
+		findMin(n);
+	}
+}
+                        `,
+                        output: `Following is minimal number of change for 93:  50 20 20 2 1`,
+                      },
+                      Python: {
+                        code: `def findMin(V):
+  deno = [1, 2, 5, 10, 20, 50,
+      100, 500, 1000]
+  n = len(deno)
+  ans = []
+
+  i = n - 1
+  while(i >= 0):
+    while (V >= deno[i]):
+      V -= deno[i]
+      ans.append(deno[i])
+
+    i -= 1
+
+  for i in range(len(ans)):
+    print(ans[i], end = " ")
+
+if __name__ == '__main__':
+  n = 93
+  print("Following is minimal number",
+    "of change for", n, ": ", end = "")
+  findMin(n)
+                      `,
+                        output: `Following is minimal number of change for 93 : 50 20 20 2 1`,
+                      },
+                      "C++": {
+                        code: `#include <bits/stdc++.h>
+                        using namespace std;
+                         
+                        int deno[] = { 1, 2, 5, 10, 20,
+                                       50, 100, 500, 1000 };
+                        int n = sizeof(deno) / sizeof(deno[0]);
+                         
+                        void findMin(int V)
+                        {
+                            sort(deno, deno + n);
+                         
+                            vector<int> ans;
+                         
+                            for (int i = n - 1; i >= 0; i--) {
+                                 while (V >= deno[i]) {
+                                    V -= deno[i];
+                                    ans.push_back(deno[i]);
+                                }
+                            }
+                         
+                            for (int i = 0; i < ans.size(); i++)
+                                cout << ans[i] << " ";
+                        }
+                         
+                        int main()
+                        {
+                            int n = 93;
+                            cout << "Following is minimal"
+                                 << " number of change for " << n
+                                 << ": ";
+                            findMin(n);
+                            return 0;
+                        }`,
+                        output: `Following is minimal number of change for 93: 50 20 20 2 1`,
+                      },
+                      Kotlin: {
+                        code: ``,
+                        output: `Following is minimal number of change for 93:  50 20 20 2 1`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
+          },
+          {
+            title: "Maximum Equal Sum Possible With Three Stacks",
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement:</b>
+                </Span>
+                <Span>
+                  Given three stacks of the positive numbers, the task is to
+                  find the possible equal maximum sum of the stacks with the
+                  removal of top elements allowed.
+                </Span>
+                <Span>
+                  <b>Greedy Approach</b>
+                </Span>
+                <Span>
+                  1. Find the sum of all elements of in individual stacks.
+                  <br />
+                  2. If the sum of all three stacks is the same, then this is
+                  the maximum sum. <br />
+                  3. Else remove the top element of the stack having the maximum
+                  sum among three of stacks. Repeat step 1 and step 2.
+                </Span>
+                <Span>
+                  <b>Example</b>
+                </Span>
+                <p>
+                  i/p :
+                  <br />
+                  stack1 [2,3]
+                  <br />
+                  stack 2 [4,10]
+                  <br />
+                  stack 3 [1,9]
+                  <br />
+                  o/p : 0
+                </p>
+                <CodeEditor
+                  options={{
+                    output: null,
+                    codes: {
+                      Javascript: {
+                        code: `function maxSum(stack1, stack2,
+                          stack3, n1, n2, n3)
+                      {
+                      let sum1 = 0, sum2 = 0, sum3 = 0;
+                      
+                      for(let i = 0; i < n1; i++)
+                      sum1 += stack1[i];
+                      
+                      for(let i = 0; i < n2; i++)
+                      sum2 += stack2[i];
+                      
+                      for(let i = 0; i < n3; i++)
+                      sum3 += stack3[i];
+                      
+                      let top1 = 0, top2 = 0, top3 = 0;
+                      let ans = 0;
+                      
+                      while (true)
+                      {
+                      if (top1 == n1 || top2 == n2 ||
+                      top3 == n3)
+                      return 0;
+                       
+                      if (sum1 == sum2 && sum2 == sum3)
+                      return sum1;
+                      
+                      if (sum1 >= sum2 && sum1 >= sum3)
+                      sum1 -= stack1[top1++];
+                      else if (sum2 >= sum1 && sum2 >= sum3)
+                      sum2 -= stack2[top2++];
+                      else if (sum3 >= sum2 && sum3 >= sum1)
+                      sum3 -= stack3[top3++];
+                      }
+                      }
+                      
+                      let stack1 = [ 3, 2, 1, 1, 1 ];
+                      let stack2 = [ 4, 3, 2 ];
+                      let stack3 = [ 1, 1, 4, 1 ];
+                      
+                      let n1 = stack1.length;
+                      let n2 = stack2.length;
+                      let n3 = stack3.length;
+                      
+                      console.log(maxSum(stack1, stack2,
+                                stack3, n1, n2, n3));`,
+                        output: `5`,
+                      },
+                      Java: {
+                        code: `class Main {
+	
+                          public static int maxSum(int stack1[], int stack2[],
+                                      int stack3[], int n1, int n2,
+                                              int n3)
+                          {
+                          int sum1 = 0, sum2 = 0, sum3 = 0;
+                          
+                          for (int i=0; i < n1; i++)
+                            sum1 += stack1[i];
+                          
+                          for (int i=0; i < n2; i++)
+                            sum2 += stack2[i];
+                          
+                          for (int i=0; i < n3; i++)
+                            sum3 += stack3[i];
+                          
+                          int top1 =0, top2 = 0, top3 = 0;
+                          int ans = 0;
+                          while (true)
+                          {
+                            if (top1 == n1 || top2 == n2 || top3 == n3)
+                              return 0;
+                          
+                            if (sum1 == sum2 && sum2 == sum3)
+                              return sum1;
+                            
+                            if (sum1 >= sum2 && sum1 >= sum3)
+                              sum1 -= stack1[top1++];
+                            else if (sum2 >= sum1 && sum2 >= sum3)
+                              sum2 -= stack2[top2++];
+                            else if (sum3 >= sum2 && sum3 >= sum1)
+                              sum3 -= stack3[top3++];
+                          }
+                          }
+                          
+                          public static void main(String[] args)
+                          {
+                            int stack1[] = { 3, 2, 1, 1, 1 };
+                            int stack2[] = { 4, 3, 2 };
+                            int stack3[] = { 1, 1, 4, 1 };
+                            
+                            int n1 = stack1.length;
+                            int n2 = stack2.length;
+                            int n3 = stack3.length;
+                            
+                            System.out.println(maxSum(stack1, stack2,
+                                      stack3, n1, n2, n3));
+                          }
+                        }`,
+                        output: `5`,
+                      },
+                      Python: {
+                        code: `def maxSum(stack1, stack2, stack3, n1, n2, n3):
+          sum1, sum2, sum3 = 0, 0, 0
+        
+          for i in range(n1):
+            sum1 += stack1[i]
+        
+          for i in range(n2):
+            sum2 += stack2[i]
+        
+          for i in range(n3):
+            sum3 += stack3[i]
+        
+          top1, top2, top3 = 0, 0, 0
+          ans = 0
+          while (1):
+            if (top1 == n1 or top2 == n2 or top3 == n3):
+              return 0
+        
+            if (sum1 == sum2 and sum2 == sum3):
+              return sum1
+          
+            if (sum1 >= sum2 and sum1 >= sum3):
+              sum1 -= stack1[top1]
+              top1=top1+1
+            elif (sum2 >= sum1 and sum2 >= sum3):
+              sum2 -= stack2[top2]
+              top2=top2+1
+            elif (sum3 >= sum2 and sum3 >= sum1):
+              sum3 -= stack3[top3]
+              top3=top3+1
+        
+        stack1 = [ 3, 2, 1, 1, 1 ]
+        stack2 = [ 4, 3, 2 ]
+        stack3 = [ 1, 1, 4, 1 ]
+        
+        n1 = len(stack1)
+        n2 = len(stack2)
+        n3 = len(stack3)
+        
+        print(maxSum(stack1, stack2, stack3, n1, n2, n3))`,
+                        output: `5`,
+                      },
+                      "C++": {
+                        code: `#include <bits/stdc++.h>
+                        using namespace std;
+                        
+                        int maxSum(int stack1[], int stack2[], int stack3[], int n1,
+                            int n2, int n3)
+                        {
+                          int sum1 = 0, sum2 = 0, sum3 = 0;
+                        
+                          for (int i = 0; i < n1; i++)
+                            sum1 += stack1[i];
+                        
+                          for (int i = 0; i < n2; i++)
+                            sum2 += stack2[i];
+                        
+                          for (int i = 0; i < n3; i++)
+                            sum3 += stack3[i];
+                        
+                          int top1 = 0, top2 = 0, top3 = 0;
+                          while (1) {
+                            if (top1 == n1 || top2 == n2 || top3 == n3)
+                              return 0;
+                        
+                            if (sum1 == sum2 && sum2 == sum3)
+                              return sum1;
+                        
+                            if (sum1 >= sum2 && sum1 >= sum3)
+                              sum1 -= stack1[top1++];
+                            else if (sum2 >= sum1 && sum2 >= sum3)
+                              sum2 -= stack2[top2++];
+                            else if (sum3 >= sum2 && sum3 >= sum1)
+                              sum3 -= stack3[top3++];
+                          }
+                        }
+                        
+                        int main()
+                        {
+                          int stack1[] = { 3, 2, 1, 1, 1 };
+                          int stack2[] = { 4, 3, 2 };
+                          int stack3[] = { 1, 1, 4, 1 };
+                        
+                          int n1 = sizeof(stack1) / sizeof(stack1[0]);
+                          int n2 = sizeof(stack2) / sizeof(stack2[0]);
+                          int n3 = sizeof(stack3) / sizeof(stack3[0]);
+                        
+                          cout << maxSum(stack1, stack2, stack3, n1, n2, n3)
+                            << endl;
+                          return 0;
+                        }
+                        `,
+                        output: `5`,
+                      },
+                      Kotlin: {
+                        code: `class M {
+
+                          public static int maxSum(int stack1[], int stack2[],
+                          int stack3[], int n1, int n2,
+                          int n3)
+                          {
+                              int sum1 = 0, sum2 = 0, sum3 = 0;
+                      
+                              for (int i=0; i < n1; i++)
+                              sum1 += stack1[i];
+                      
+                              for (int i=0; i < n2; i++)
+                              sum2 += stack2[i];
+                      
+                              for (int i=0; i < n3; i++)
+                              sum3 += stack3[i];
+                      
+                              int top1 =0, top2 = 0, top3 = 0;
+                              int ans = 0;
+                              while (true)
+                              {
+                                  if (top1 == n1 || top2 == n2 || top3 == n3)
+                                      return 0;
+                      
+                                  if (sum1 == sum2 && sum2 == sum3)
+                                      return sum1;
+                      
+                                  if (sum1 >= sum2 && sum1 >= sum3)
+                                      sum1 -= stack1[top1++];
+                                  else if (sum2 >= sum1 && sum2 >= sum3)
+                                      sum2 -= stack2[top2++];
+                                  else if (sum3 >= sum2 && sum3 >= sum1)
+                                      sum3 -= stack3[top3++];
+                              }
+                          }
+                      
+                          public static void main(String[] args)
+                          {
+                              int stack1[] = { 3, 2, 1, 1, 1 };
+                              int stack2[] = { 4, 3, 2 };
+                              int stack3[] = { 1, 1, 4, 1 };
+                      
+                              int n1 = stack1.length;
+                              int n2 = stack2.length;
+                              int n3 = stack3.length;
+                      
+                              System.out.println(maxSum(stack1, stack2,
+                                  stack3, n1, n2, n3));
+                          }
+                      }`,
+                        output: `5`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
+          },
+        ],
       },
       dp: {
         title: "Dynamic Programming",
@@ -6123,7 +12398,131 @@ Key doesn't exist
       },
       randomized: {
         title: "Randomized",
-        types: [],
+        content: (
+          <>
+            <Span>
+              An algorithm that uses random numbers to decide what to do next
+              anywhere in its logic is called Randomized Algorithm. For example,
+              in Randomized Quick Sort, we use random number to pick the next
+              pivot (or we randomly shuffle the array). Typically, this
+              randomness is used to reduce time complexity or space complexity
+              in other standard algorithms.,
+            </Span>
+            <Span>
+              Example: Generate integer from 1 to 7 with equal probability
+            </Span>
+            <Span>Formula R: 5*( random() -1 ) + random() </Span>
+            <p>
+              Suppose the specified function is random(), which generates random
+              numbers from 1 to 5 with equal probability. The idea is to use the
+              expression 5 × (random() - 1) + random() which uniformly produces
+              random numbers in the range [1–25]. So if we exclude the
+              possibility of the random number being one among [8–25] by
+              repeating the procedure, we are left with numbers between 1 and 7
+              having equivalent probability.
+            </p>
+            <CodeEditor
+              options={{
+                output: null,
+                codes: {
+                  C: {
+                    code: `
+                    #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+ 
+int random1() {
+    return (rand() % 5) + 1;
+}
+int generate()
+{
+    int r;
+    do {
+        r = 5 * (random1() - 1) + random1();
+    } while (r > 7);
+ 
+    return r;
+}
+
+// To minimize the total number of calls to the random() function, stop the while loop at r <= 21 and use the modulo operator, as shown below:
+
+int generate1()
+{
+    int r;
+    do {
+        r = 5 * (random1() - 1) + random1();
+    } while (r > 21);
+ 
+    return (r % 7) + 1;
+}
+ 
+int main(void)
+{
+    srand(time(NULL));
+ 
+    int count[8];
+    memset(count, 0, sizeof count);
+    for (int i = 1; i <= 1000000; i++)
+    {
+        int val = generate();
+        count[val]++;
+    }
+ 
+    for (int i = 1; i <= 7; i++) {
+        printf("%d ~ %0.2f\n", i, count[i]/10000.0);
+    }
+ 
+    return 0;
+}`,
+                    output: `
+                    1 ~ 14.23
+2 ~ 14.34
+3 ~ 14.27
+4 ~ 14.28
+5 ~ 14.32
+6 ~ 14.28
+7 ~ 14.28
+                    `,
+                  },
+                  Python: {
+                    code: `from random import randint
+def generate():
+    while True:
+        x = randint(1, 5)
+        y = randint(1, 5)
+        r = 5 * (x - 1) + y
+        if r <= 7:
+            break
+    return r
+  
+if __name__ == '__main__':
+    count = [0] * 8
+    for i in range(1000000):
+        val = generate()
+        count[val] = count[val] + 1
+    for i in range(1, 8):
+        print(f'{i}~{count[i]/10000}%')
+                     `,
+                    output: `
+                    1~14.2294%
+2~14.3086%
+3~14.2761%
+4~14.2849%
+5~14.3211%
+6~14.3153%
+7~14.2646%
+                    `,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
+      },
+      "np-hard-vs-np-complete": {
+        title: "Deterministic and Non Deterministic Algorithms",
+        // https://www.includehelp.com/algorithms/deterministic-and-non-deterministic.aspx
       },
     },
   },
