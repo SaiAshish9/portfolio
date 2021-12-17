@@ -106,19 +106,19 @@ const data = [
   },
   {
     title: "Amazon SDE-2 Opportunities (thrice)",
-    subTitle: "Within a month (Age: 20).",
+    subTitle: "Within a month (Age: 20) ☺️",
     img: AmazonImg3,
     images: [AmazonImg1, AmazonImg2, AmazonImg3],
   },
   {
     title: "SRM Chennai MLSA",
-    subTitle: "Invitations (Age: 19).",
+    subTitle: "Invitations (Age: 19) 😇",
     img: MLSA1,
     images: [MLSA1, MLSA2],
   },
   {
     title: "Tier1 Students",
-    subTitle: "Work Appreciation",
+    subTitle: "Work Appreciation ☺️",
     img: Tier1Img,
   },
 ];
