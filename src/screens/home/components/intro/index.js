@@ -18,7 +18,7 @@ import LightAvatar from "assets/home/avatar.png";
 
 import { useStore } from "store";
 
-import { Theme, Colors } from "constants/index";
+import { Colors } from "constants/index";
 
 import { IoCall } from "react-icons/io5";
 import { FiMapPin } from "react-icons/fi";

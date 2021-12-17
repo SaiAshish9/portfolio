@@ -6,10 +6,10 @@ export const Container = styled.div`
   ${Styles.RBC}
   padding:10.5rem 24rem 6rem;
   @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
-    padding: 4.6rem 15rem 2rem;
+    padding: 4.6rem 13.5rem 2rem;
   }
   @media only screen and (max-width: ${BREAKPOINTS.xl}) {
-    padding: 6.5rem 8rem 6rem !important;
+    padding: 6.5rem 6rem 6rem !important;
   }
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     ${Styles.CBC}

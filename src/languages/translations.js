@@ -899,7 +899,7 @@ export const translations = [
     de: "Netskope",
     zh: "網絡視鏡",
     fr: "Netskope",
-    ru: "Netskope"
+    ru: "Netskope",
   },
   {
     text: "netskopeDesc",
@@ -910,29 +910,29 @@ export const translations = [
     de: "Anerkennung ❤️",
     zh: "認可❤️",
     fr: "Reconnaissance ❤️",
-    ru: "Признание ❤️"
+    ru: "Признание ❤️",
   },
   {
     text: "amazonSDE2",
-    en: "Amazon SDE-2 Opportunities (thrice)",
+    en: "Amazon SDE 2 Opportunities (thrice)",
     pt: "Oportunidades do Amazon SDE-2 (três vezes)",
-    hi: "अमेज़न एसडीई-2 अवसर (तीन बार)",
-    te: "Amazon SDE-2 అవకాశాలు (మూడుసార్లు)",
-    de: "Amazon SDE-2-Möglichkeiten (dreimal)",
-    zh: "Amazon SDE-2 機會（三次）",
-    fr: "Opportunités Amazon SDE-2 (trois fois)",
-    ru: "Возможности Amazon SDE-2 (трижды)"
+    hi: "अमेज़न एसडीई 2 अवसर (तीन बार)",
+    te: "Amazon SDE 2 అవకాశాలు (మూడుసార్లు)",
+    de: "Amazon SDE 2-Möglichkeiten (dreimal)",
+    zh: "Amazon SDE 2 機會（三次）",
+    fr: "Opportunités Amazon SDE 2 (trois fois)",
+    ru: "Возможности Amazon SDE 2 (трижды)",
   },
   {
     text: "amazonSDE2Desc",
-    en: "Within a month (Age: 20) ☺️",
-    pt: "Dentro de um mês (Idade: 20) ☺️",
-    hi: "एक महीने के भीतर (आयु: 20) ️",
-    te: "ఒక నెలలోపు (వయస్సు: 20) ☺️",
-    de: "Innerhalb eines Monats (Alter: 20) ☺️",
-    zh: "一個月內（年齡：20）☺️",
+    en: "In a month (Age: 20) ☺️",
+    pt: "Em um mês (Idade: 20) ☺️",
+    hi: "एक महीने में (आयु: 20) ☺️",
+    te: "ఒక నెలలో (వయస్సు: 20) ☺️",
+    de: "In einem Monat (Alter: 20) ☺️",
+    zh: "一個月後（年齡：20）☺️",
     fr: "Dans un mois (Âge : 20) ☺️",
-    ru: "В течение месяца (Возраст: 20) ☺️"
+    ru: "Через месяц (Возраст: 20) ☺️",
   },
   {
     text: "srm",
@@ -943,7 +943,7 @@ export const translations = [
     de: "SRM Chennai MLSA",
     zh: "SRM 欽奈 MLSA",
     fr: "SRM Chennai MLSA",
-    ru: "SRM Ченнаи MLSA"
+    ru: "SRM Ченнаи MLSA",
   },
   {
     text: "srmDesc",
@@ -954,7 +954,7 @@ export const translations = [
     de: "Einladungen (Alter: 19) 😇",
     zh: "邀請函 (年齡: 19) 😇",
     fr: "Invitations (Âge : 19) 😇",
-    ru: "Приглашения (Возраст: 19) 😇"
+    ru: "Приглашения (Возраст: 19) 😇",
   },
   {
     text: "tier1",
@@ -965,7 +965,7 @@ export const translations = [
     de: "Tier-1-Studenten",
     zh: "一級學生",
     fr: "Étudiants de niveau 1",
-    ru: "Студенты Tier1"
+    ru: "Студенты Tier1",
   },
   {
     text: "tier1Desc",
@@ -976,6 +976,6 @@ export const translations = [
     de: "Wertschätzung der Arbeit ☺️",
     zh: "工作欣賞☺️",
     fr: "Appréciation du travail ☺️",
-    ru: "Признательность за работу ☺️"
+    ru: "Признательность за работу ☺️",
   },
 ];

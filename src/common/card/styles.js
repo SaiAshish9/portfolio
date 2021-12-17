@@ -100,6 +100,10 @@ export const SubTitle = styled.p`
   margin-top: 0.5rem;
   font-size: 0.8rem;
   font-weight: 300;
+  text-overflow: hidden;
+  overflow: hidden;
+  width: 90%;
+  height: 1rem;
 `;
 
 export const Content = styled.div`
@@ -117,6 +121,8 @@ export const Download = styled(HiDownload)`
   font-size: 1.2rem;
   cursor: pointer;
   margin-left: 1rem;
+  position: relative;
+  top: 0.27rem;
 `;
 
 export const Row = styled.div`
