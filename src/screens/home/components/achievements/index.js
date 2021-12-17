@@ -105,14 +105,14 @@ const data = [
     img: NetskopeRecognitionImg,
   },
   {
-    title: "Amazon SDE-2 Opportunities",
-    subTitle: "Thrice within a month (Age: 20).",
+    title: "Amazon SDE-2 Opportunities (thrice)",
+    subTitle: "Within a month (Age: 20).",
     img: AmazonImg3,
     images: [AmazonImg1, AmazonImg2, AmazonImg3],
   },
   {
     title: "SRM Chennai MLSA",
-    subTitle: "Invitations as a mentor (Age: 19).",
+    subTitle: "Invitations (Age: 19).",
     img: MLSA1,
     images: [MLSA1, MLSA2],
   },
@@ -150,20 +150,20 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 1,
   swipeToSlide: true,
-  nextArrow: <NextArrow curr={4} />,
+  nextArrow: <NextArrow curr={8} />,
   prevArrow: <PrevArrow />,
 };
 
 const mSettings = {
   ...settings,
   slidesToShow: 3,
-  nextArrow: <NextArrow curr={5} />,
+  nextArrow: <NextArrow curr={9} />,
 };
 
 const sSettings = {
   ...settings,
   slidesToShow: 2,
-  nextArrow: <NextArrow curr={6} />,
+  nextArrow: <NextArrow curr={10} />,
 };
 
 const Achievements = () => {

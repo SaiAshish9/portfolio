@@ -109,6 +109,8 @@ export const Content = styled.div`
 export const Eye = styled(AiFillEye)`
   font-size: 1.2rem;
   cursor: pointer;
+  position: relative;
+  top: 0.27rem;
 `;
 
 export const Download = styled(HiDownload)`
