@@ -18,6 +18,16 @@ import CollegeImg from "assets/home/college.jpeg";
 import IEMISImg from "assets/home/iemis.jpeg";
 import BvpImg from "assets/home/bvp_pic.jpeg";
 import Class8AwardImg from "assets/home/school.jpeg";
+import NetskopeRecognitionImg from "assets/home/netskopeRecognition.jpeg";
+
+import AmazonImg1 from "assets/home/amazon1.jpeg";
+import AmazonImg2 from "assets/home/amazon2.jpeg";
+import AmazonImg3 from "assets/home/amazon3.jpeg";
+
+import MLSA1 from "assets/home/microsoft1.jpeg";
+import MLSA2 from "assets/home/microsoft2.jpeg";
+
+import Tier1Img from "assets/home/tier1.png"
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
@@ -88,6 +98,28 @@ const data = [
     title: <I18n t="class8" />,
     subTitle: <I18n t="topper" />,
     img: Class8AwardImg,
+  },
+  {
+    title: "Netskope",
+    subTitle: "Recognition ❤️",
+    img: NetskopeRecognitionImg,
+  },
+  {
+    title: "Amazon SDE-2 Opportunities",
+    subTitle: "Thrice within a month (Age: 20).",
+    img: AmazonImg3,
+    images: [AmazonImg1, AmazonImg2, AmazonImg3],
+  },
+  {
+    title: "SRM Chennai MLSA",
+    subTitle: "Invitations as a mentor (Age: 19).",
+    img: MLSA1,
+    images: [MLSA1, MLSA2],
+  },
+  {
+    title: "Tier1 Students",
+    subTitle: "Work Appreciation",
+    img: Tier1Img,
   },
 ];
 
