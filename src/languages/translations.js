@@ -889,5 +889,93 @@ export const translations = [
     zh: "1008 Leetcode題+筆記+面試題+音頻剪輯+動畫圖解",
     fr: "1008 Questions Leetcode + Notes + Questions d'entretien + Clips audio + Représentation graphique animée",
     ru: "1008 вопросов Leetcode + заметки + вопросы для интервью + аудиоклипы + анимированное графическое представление",
-  }
+  },
+  {
+    text: "netskope",
+    en: "Netskope",
+    pt: "",
+    hi: "",
+    te: "",
+    de: "",
+    zh: "",
+    fr: "",
+    ru: ""
+  },
+  {
+    text: "netskopeDesc",
+    en: "Recognition ❤️",
+    pt: "",
+    hi: "",
+    te: "",
+    de: "",
+    zh: "",
+    fr: "",
+    ru: ""
+  },
+  {
+    text: "amazonSDE2",
+    en: "Amazon SDE-2 Opportunities (thrice)",
+    pt: "",
+    hi: "",
+    te: "",
+    de: "",
+    zh: "",
+    fr: "",
+    ru: ""
+  },
+  {
+    text: "amazonSDE2Desc",
+    en: "Within a month (Age: 20) ☺️",
+    pt: "",
+    hi: "",
+    te: "",
+    de: "",
+    zh: "",
+    fr: "",
+    ru: ""
+  },
+  {
+    text: "srm",
+    en: "SRM Chennai MLSA",
+    pt: "",
+    hi: "",
+    te: "",
+    de: "",
+    zh: "",
+    fr: "",
+    ru: ""
+  },
+  {
+    text: "srmDesc",
+    en: "Invitations (Age: 19) 😇",
+    pt: "",
+    hi: "",
+    te: "",
+    de: "",
+    zh: "",
+    fr: "",
+    ru: ""
+  },
+  {
+    text: "tier1",
+    en: "Tier1 Students",
+    pt: "",
+    hi: "",
+    te: "",
+    de: "",
+    zh: "",
+    fr: "",
+    ru: ""
+  },
+  {
+    text: "tier1Desc",
+    en: "Work Appreciation ☺️",
+    pt: "",
+    hi: "",
+    te: "",
+    de: "",
+    zh: "",
+    fr: "",
+    ru: ""
+  },
 ];

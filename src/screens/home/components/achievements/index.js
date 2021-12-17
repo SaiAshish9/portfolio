@@ -27,7 +27,7 @@ import AmazonImg3 from "assets/home/amazon3.jpeg";
 import MLSA1 from "assets/home/microsoft1.jpeg";
 import MLSA2 from "assets/home/microsoft2.jpeg";
 
-import Tier1Img from "assets/home/tier1.png"
+import Tier1Img from "assets/home/tier1.png";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
@@ -100,25 +100,25 @@ const data = [
     img: Class8AwardImg,
   },
   {
-    title: "Netskope",
-    subTitle: "Recognition ❤️",
+    title: <I18n t="netskope" />,
+    subTitle: <I18n t="netskopeDesc" />,
     img: NetskopeRecognitionImg,
   },
   {
-    title: "Amazon SDE-2 Opportunities (thrice)",
-    subTitle: "Within a month (Age: 20) ☺️",
+    title: <I18n t="amazonSDE2" />,
+    subTitle: <I18n t="amazonSDE2Desc" />,
     img: AmazonImg3,
     images: [AmazonImg1, AmazonImg2, AmazonImg3],
   },
   {
-    title: "SRM Chennai MLSA",
-    subTitle: "Invitations (Age: 19) 😇",
+    title: <I18n t="srm" />,
+    subTitle: <I18n t="srmDesc" />,
     img: MLSA1,
     images: [MLSA1, MLSA2],
   },
   {
-    title: "Tier1 Students",
-    subTitle: "Work Appreciation ☺️",
+    title: <I18n t="tier1" />,
+    subTitle: <I18n t="tier1Desc" />,
     img: Tier1Img,
   },
 ];
