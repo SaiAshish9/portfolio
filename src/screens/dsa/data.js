@@ -12677,19 +12677,19 @@ SC O(N*W)
                         //   [ 1, 5, 10 ] 1+ 4 = 5 4+6 =10
                         // ]
                         
-                        function bc_dp(n,k){
-                          const lookupTab = Array.from(Array(n+1),()=>Array(k+1).fill(-1))
-                          // fill(null)
-                          for(let i=0;i<=n;i++){
-                            for(let j=0;j<= Math.min(i,k);j++){
-                              if(j== 0 || j==i)
-                              lookupTab[i][j] = 1
-                              else
-                              lookupTab[i][j] = lookupTab[i-1][j-1] + lookupTab[i-1][j]
+                        function bc_dp(n, k) {
+                            const lookupTab = Array.from(Array(n + 1), () => Array(k + 1).fill(-1))
+                            // fill(null)
+                            for (let i = 0; i <= n; i++) {
+                                for (let j = 0; j <= Math.min(i, k); j++) {
+                                    if (j == 0 || j == i)
+                                        lookupTab[i][j] = 1
+                                    else
+                                        lookupTab[i][j] = lookupTab[i - 1][j - 1] + lookupTab[i - 1][j]
+                                }
                             }
-                          }
-                          console.log(lookupTab)
-                          return lookupTab[n][k]
+                            console.log(lookupTab)
+                            return lookupTab[n][k]
                         }
                         
                         // TC : O(n*k)
@@ -12699,22 +12699,23 @@ SC O(N*W)
                         // pascal's triangle
                         // c[2] represents C[i][2]
                         
-                        function space_optimized_bc_dp(n,k){
-                          const lookupTab = Array(k+1).fill(-1)
-                          lookupTab[0] = 1
-                          for(let i=0;i<=n;i++){
-                            for(let j=Math.min(i,k);j>0;j--){  
-                              lookupTab[j] += lookupTab[j-1] 
+                        function space_optimized_bc_dp(n, k) {
+                            const lookupTab = Array(k + 1).fill(0)
+                            lookupTab[0] = 1
+                            for (let i = 0; i <= n; i++) {
+                                for (let j = Math.min(i, k); j > 0; j--) {
+                                    lookupTab[j] += lookupTab[j - 1]
+                                }
                             }
-                          }
-                          console.log(lookupTab)
-                          return lookupTab[k]
+                            console.log(lookupTab)
+                            return lookupTab[k]
                         }
                         
-                        const n = 5, k = 2;
-                        console.log(bc_dp(n,k))
+                        const n = 5,
+                            k = 2;
+                        console.log(bc_dp(n, k))
                         console.log("###############")
-                        console.log(space_optimized_bc_dp(n,k))`,
+                        console.log(space_optimized_bc_dp(n, k))`,
                         output: `[
                           [ 1, -1, -1 ],
                           [ 1, 1, -1 ],
@@ -12725,8 +12726,8 @@ SC O(N*W)
                         ]
                         10
                         ###############
-                        [ 1, 4, 5 ]
-                        5`,
+                        [ 1, 5, 10 ]
+                        10`,
                       },
                     },
                   }}
