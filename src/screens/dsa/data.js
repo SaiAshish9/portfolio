@@ -12561,7 +12561,39 @@ if __name__ == '__main__':
                 <CodeEditor
                   options={{
                     codes: {
-                      code: `function knapSack(val, wt, W) {
+                      Javascript: {
+                        code: `/*
+values = 10 , 15 , 40
+
+lookupTab[1][1] = 10
+lookupTab[2][2] = 15
+lookupTab[3][3] = 40
+
+elements = 1 , 2 , 3
+capacity = 6
+
+Tabulation lookup table[values.length+1][capacity+1] -> 
+
+   0   1   2   3   4   5   6    (index) w
+
+0  0   0   0   0   0   0   0
+
+1  0 [10] 10 [10] 10  10  10
+
+2  0  10 [15] 25  25  25  25   wt[1] < 3, 1 < 3 , Math.max(10,15 + lookupTab[1][3-2])
+
+3  0  10  15  40  50  55 [65] -> Answer       
+|
+(index) i
+
+Answer: 65
+
+TC O(N*W)
+SC O(N*W)
+
+*/
+                      
+                      function knapSack(val, wt, W) {
                         const n = val.length;
                         const lookupTab = Array.from(Array(n + 1), () => Array(W + 1).fill(-1));
                         // Tab stands for Tabulation
@@ -12571,7 +12603,7 @@ if __name__ == '__main__':
                               lookupTab[i][w] = 0;
                             } else if (wt[i - 1] <= w)
                               lookupTab[i][w] = Math.max(
-                                val[i - 1] + lookupTab[i - 1][w - wt[i - 1]],
+                                val[i - 1] + lookupTab[i - 1][w - wt[i - 1]], // trick to memorize: i-1 w - wt[i-1]
                                 lookupTab[i - 1][w]
                               );
                             else lookupTab[i][w] = lookupTab[i - 1][w];
@@ -12582,45 +12614,32 @@ if __name__ == '__main__':
                         return lookupTab[n][W];
                       }
                       
-                      const val = [60, 100, 120];
-                      const wt = [10, 20, 30];
-                      const W = 50;
-                      console.log(knapSack(val, wt, W));
+                      const val = [10, 15, 40];
+                      const wt = [1, 2, 3];
+                      const W = 6;
+                      console.log(knapSack(val, wt, W));                      
                       `,
-                      output: `lookup table:
-                      [
+                        output: `lookup table:
                         [
-                          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                          0, 0, 0, 0, 0, 0, 0
-                        ],
-                        [
-                           0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 60,
-                          60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
-                          60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
-                          60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
-                          60, 60, 60, 60, 60, 60, 60
-                        ],
-                        [
-                            0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
-                           60,  60,  60,  60,  60,  60,  60,  60,  60,  60,
-                          100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
-                          160, 160, 160, 160, 160, 160, 160, 160, 160, 160,
-                          160, 160, 160, 160, 160, 160, 160, 160, 160, 160,
-                          160
-                        ],
-                        [
-                            0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
-                           60,  60,  60,  60,  60,  60,  60,  60,  60,  60,
-                          100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
-                          160, 160, 160, 160, 160, 160, 160, 160, 160, 160,
-                          180, 180, 180, 180, 180, 180, 180, 180, 180, 180,
-                          220
+                          [
+                            0, 0, 0, 0,
+                            0, 0, 0
+                          ],
+                          [
+                             0, 10, 10, 10,
+                            10, 10, 10
+                          ],
+                          [
+                             0, 10, 15, 25,
+                            25, 25, 25
+                          ],
+                          [
+                             0, 10, 15, 40,
+                            50, 55, 65
+                          ]
                         ]
-                      ]
-                      220`,
+                        65`,
+                      },
                     },
                   }}
                 />
