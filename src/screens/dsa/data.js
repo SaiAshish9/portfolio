@@ -12436,6 +12436,11 @@ if __name__ == '__main__':
               solutions if they are not needed again.
             </Span>
             <Span>
+              It is guaranteed that Dynamic Programming will generate an optimal
+              solution as it generally considers all possible cases and then
+              choose the best.
+            </Span>
+            <Span>
               To avoid recomputations we simply recall results from memory
             </Span>
             <Span>
@@ -12462,87 +12467,223 @@ if __name__ == '__main__':
             <Span>
               <b>2. Tabulation (Bottom-Up)</b>
             </Span>
-            <Span>
+            <p>
               Built the lookup table in bottom up fashion <br />
               After the table is built, simply return table[n]
-            </Span>
+            </p>
             <CodeEditor
               options={{
-                code: `let MAX = 100
-
-
-              // using recursion,
-              // tc -> O(2^n)
-              // sc -> O(n * constant)
-              
-              // using dp
-              // tc -> O(n) we iterate through the 
-              // loop only once
-              // sc -> O(n)
-              
-              // memoization top-down
-              
-              // we compute the solution of the 
-              // subproblem if it's not present yet
-              // and store that at the look-up table 
-              // so that it can be re-used as and when 
-              // required
-              
-              const lookupMem = Array(MAX).fill(-1)
-              const lookupTab = Array(MAX).fill(-1)
-              
-              function fibMem(n){
-                 if(lookupMem[n]===-1){
-                   if(n <=1) lookupMem[n] =n
-                   else lookupMem[n] = fibMem(n-1) + fibMem(n-2)
-                 } 
-                 return lookupMem[n]
-              }
-              
-              // tabulation bottom-up
-              // after the lookup table is built 
-              // with the help of previous values
-              // we simply return lookup[n]
-              
-              function fibTab(n){
-                 lookupTab[0] = 0
-                 lookupTab[1] = 1
-                 for (let i = 2; i <= n; i++)
-                 lookupTab[i] = lookupTab[i-1] + lookupTab[i-2];
-                 return lookupTab[n]
-              }
-              
-              const n = 4
-              console.log("Memoization")
-              console.log(fibMem(n))
-              console.log("Max lookupMem length")
-              console.log(lookupMem.length)
-              console.log("Required lookupMem slice")
-              console.log(lookupMem.slice(0,n+1))
-              console.log("Tabulation")
-              console.log(fibTab(n))
-              console.log("Max lookupTab length")
-              console.log(lookupTab.length)
-              console.log("Required lookupTab slice")
-              console.log(lookupTab.slice(0,n+1))
-              `,
-                output: `Memoization
-                3
-                Max lookupMem length
-                100
-                Required lookupMem slice
-                [ 0, 1, 1, 2, 3 ]
-                Tabulation
-                3
-                Max lookupTab length
-                100
-                Required lookupTab slice
-                [ 0, 1, 1, 2, 3 ]`,
+                codes: {
+                  Javascript: {
+                    code: `let MAX = 100
+                // using recursion,
+                // tc -> O(2^n)
+                // sc -> O(n * constant)
+                // using dp
+                // tc -> O(n) we iterate through the 
+                // loop only once
+                // sc -> O(n)
+                // memoization top-down
+                // we compute the solution of the 
+                // subproblem if it's not present yet
+                // and store that at the look-up table 
+                // so that it can be re-used as and when 
+                // required
+                const lookupMem = Array(MAX).fill(-1)
+                const lookupTab = Array(MAX).fill(-1)
+                function fibMem(n){
+                   if(lookupMem[n]===-1){
+                     if(n <=1) lookupMem[n] =n
+                     else lookupMem[n] = fibMem(n-1) + fibMem(n-2)
+                   } 
+                   return lookupMem[n]
+                }
+                // tabulation bottom-up
+                // after the lookup table is built 
+                // with the help of previous values
+                // we simply return lookup[n]
+                function fibTab(n){
+                   lookupTab[0] = 0
+                   lookupTab[1] = 1
+                   for (let i = 2; i <= n; i++)
+                   lookupTab[i] = lookupTab[i-1] + lookupTab[i-2];
+                   return lookupTab[n]
+                }
+                const n = 4
+                console.log("Memoization")
+                console.log(fibMem(n))
+                console.log("Max lookupMem length")
+                console.log(lookupMem.length)
+                console.log("Required lookupMem slice")
+                console.log(lookupMem.slice(0,n+1))
+                console.log("Tabulation")
+                console.log(fibTab(n))
+                console.log("Max lookupTab length")
+                console.log(lookupTab.length)
+                console.log("Required lookupTab slice")
+                console.log(lookupTab.slice(0,n+1))
+                `,
+                    output: `Memoization
+                  3
+                  Max lookupMem length
+                  100
+                  Required lookupMem slice
+                  [ 0, 1, 1, 2, 3 ]
+                  Tabulation
+                  3
+                  Max lookupTab length
+                  100
+                  Required lookupTab slice
+                  [ 0, 1, 1, 2, 3 ]`,
+                  },
+                },
               }}
             />
           </>
         ),
-        types: [],
+        types: [
+          {
+            title: "0-1 Knapsack",
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Given a set of weights and values , pick the weights in such a
+                  way that their sum will be nearest or equal to the given total
+                  weight.
+                </Span>
+                <Span>
+                  <b>Note :</b>
+                </Span>
+                <p>Time Complexity : O(N*W)</p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      code: `function knapSack(val, wt, W) {
+                        const n = val.length;
+                        const lookupTab = Array.from(Array(n + 1), () => Array(W + 1).fill(-1));
+                        // Tab stands for Tabulation
+                        for (let i = 0; i <= n; i++) {
+                          for (let w = 0; w <= W; w++) {
+                            if (i == 0 || w == 0) {
+                              lookupTab[i][w] = 0;
+                            } else if (wt[i - 1] <= w)
+                              lookupTab[i][w] = Math.max(
+                                val[i - 1] + lookupTab[i - 1][w - wt[i - 1]],
+                                lookupTab[i - 1][w]
+                              );
+                            else lookupTab[i][w] = lookupTab[i - 1][w];
+                          }
+                        }
+                        console.log("lookup table:")
+                        console.log(lookupTab)
+                        return lookupTab[n][W];
+                      }
+                      
+                      const val = [60, 100, 120];
+                      const wt = [10, 20, 30];
+                      const W = 50;
+                      console.log(knapSack(val, wt, W));
+                      `,
+                      output: `lookup table:
+                      [
+                        [
+                          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                          0, 0, 0, 0, 0, 0, 0
+                        ],
+                        [
+                           0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 60,
+                          60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+                          60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+                          60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+                          60, 60, 60, 60, 60, 60, 60
+                        ],
+                        [
+                            0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+                           60,  60,  60,  60,  60,  60,  60,  60,  60,  60,
+                          100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+                          160, 160, 160, 160, 160, 160, 160, 160, 160, 160,
+                          160, 160, 160, 160, 160, 160, 160, 160, 160, 160,
+                          160
+                        ],
+                        [
+                            0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+                           60,  60,  60,  60,  60,  60,  60,  60,  60,  60,
+                          100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+                          160, 160, 160, 160, 160, 160, 160, 160, 160, 160,
+                          180, 180, 180, 180, 180, 180, 180, 180, 180, 180,
+                          220
+                        ]
+                      ]
+                      220`,
+                    },
+                  }}
+                />
+              </>
+            ),
+          },
+          {
+            title: "Binomial Coefficients",
+            content: <></>,
+          },
+          {
+            title: "Travelling Salesman",
+            content: <></>,
+          },
+          {
+            title: "LCS",
+            content: <></>,
+          },
+          {
+            title: "LIS",
+            content: <></>,
+          },
+          {
+            title: "LPS",
+            content: <></>,
+          },
+          {
+            title: "LBS",
+            content: <></>,
+          },
+          {
+            title: "Naive",
+            content: <></>,
+          },
+          {
+            title: "Knuth Morris",
+            content: <></>,
+          },
+          {
+            title: "Rabin Karp",
+            content: <></>,
+          },
+          {
+            title: "Edit Distance",
+            content: <></>,
+          },
+          {
+            title: "Egg Dropping Problem",
+            content: <></>,
+          },
+          {
+            title: "Friends Pairing Problem",
+            content: <></>,
+          },
+          {
+            title: "Maximum Size Square Sub Matrix With All 1s",
+            content: <></>,
+          },
+          {
+            title: "Maximum Length Chain Of Pairs",
+            content: <></>,
+          },
+        ],
       },
       bruteForce: {
         title: "Brute Force",
