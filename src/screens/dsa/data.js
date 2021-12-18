@@ -9008,6 +9008,20 @@ The maximum number in a given array is : 250
               <br />
               but the maximum possible sum is 27 ( 3 + 4 + 20 )
             </Span>
+
+            <Span>
+              <b>Naive vs Greedy vs Brute Force ( Enumeration ) </b>
+            </Span>
+            <Span>
+              Naive algorithm is simply used to find a basic solution to a
+              problem. Greedy algorithm at each step makes use of local optimum
+              in order to find the global optimum but it doesn't guarantee that
+              the last solution is an optimal solution. ( Example: Fractional
+              knapsack ). Brute force provides the optimal solution
+              everytime.The principle is simple, it is necessary to enumerate
+              all the possible solutions of the problem and to choose the best
+              solution.
+            </Span>
             <Span>
               <b>Properties:</b>
             </Span>
