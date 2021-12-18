@@ -12747,6 +12747,18 @@ SC O(N*W)
                   that visits every city exactly once and returns to the
                   starting point.
                 </Span>
+                <Span>
+                  Note the difference between Hamiltonian Cycle and TSP. The
+                  Hamiltonian cycle problem is to find if there exists a tour
+                  that visits every city exactly once. Here we know that
+                  Hamiltonian Tour exists (because the graph is complete) and in
+                  fact, many such tours exist, the problem is to find a minimum
+                  weight Hamiltonian Cycle.
+                </Span>
+                <Span>
+                  The problem is a famous NP-hard problem. There is no
+                  polynomial-time known solution for this problem.
+                </Span>
               </>
             ),
           },
