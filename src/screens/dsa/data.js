@@ -12648,7 +12648,91 @@ SC O(N*W)
           },
           {
             title: "Binomial Coefficients",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement:</b>
+                </Span>
+                <Span>Obtain C(n,r) using dp.</Span>
+                <p>
+                  Formula <br />
+                  (1+x)^n <br />
+                  C(n,k) = C(n-1,k-1) + C(n-1,k) <br />
+                  C(n,0) = C(n,n) = 1
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `// TC : O(n*k)
+                        // SC : O(n*k) 
+                        
+                        // -1 -> null
+                        // [
+                        //   [ 1, -1, -1 ],
+                        //   [ 1, 1, -1 ],
+                        //   [ *1, *2, 1 ], 1+1 =2
+                        //   [ 1, *3, 3 ], 1+2 =3 2+1 =3
+                        //   [ 1, 4, 6 ], 1+3 =4 3+3 =6
+                        //   [ 1, 5, 10 ] 1+ 4 = 5 4+6 =10
+                        // ]
+                        
+                        function bc_dp(n,k){
+                          const lookupTab = Array.from(Array(n+1),()=>Array(k+1).fill(-1))
+                          // fill(null)
+                          for(let i=0;i<=n;i++){
+                            for(let j=0;j<= Math.min(i,k);j++){
+                              if(j== 0 || j==i)
+                              lookupTab[i][j] = 1
+                              else
+                              lookupTab[i][j] = lookupTab[i-1][j-1] + lookupTab[i-1][j]
+                            }
+                          }
+                          console.log(lookupTab)
+                          return lookupTab[n][k]
+                        }
+                        
+                        // TC : O(n*k)
+                        // SC : O(n) 
+                        
+                        
+                        // pascal's triangle
+                        // c[2] represents C[i][2]
+                        
+                        function space_optimized_bc_dp(n,k){
+                          const lookupTab = Array(k+1).fill(-1)
+                          lookupTab[0] = 1
+                          for(let i=0;i<=n;i++){
+                            for(let j=Math.min(i,k);j>0;j--){  
+                              lookupTab[j] += lookupTab[j-1] 
+                            }
+                          }
+                          console.log(lookupTab)
+                          return lookupTab[k]
+                        }
+                        
+                        const n = 5, k = 2;
+                        console.log(bc_dp(n,k))
+                        console.log("###############")
+                        console.log(space_optimized_bc_dp(n,k))`,
+                        output: `[
+                          [ 1, -1, -1 ],
+                          [ 1, 1, -1 ],
+                          [ 1, 2, 1 ],
+                          [ 1, 3, 3 ],
+                          [ 1, 4, 6 ],
+                          [ 1, 5, 10 ]
+                        ]
+                        10
+                        ###############
+                        [ 1, 4, 5 ]
+                        5`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Travelling Salesman",
