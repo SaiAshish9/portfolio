@@ -12736,7 +12736,19 @@ SC O(N*W)
           },
           {
             title: "Travelling Salesman",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Given a set of cities and distance between every pair of
+                  cities, the problem is to find the shortest possible route
+                  that visits every city exactly once and returns to the
+                  starting point.
+                </Span>
+              </>
+            ),
           },
           {
             title: "LCS",
