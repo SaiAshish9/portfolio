@@ -12396,6 +12396,152 @@ if __name__ == '__main__':
       },
       dp: {
         title: "Dynamic Programming",
+        content: (
+          <>
+            <Span>
+              Dynamic Programming is an algorithmic paradigm that solves a given
+              complex problem by breaking it into subproblems and stores the
+              results of subproblems to avoid computing the same results again.
+              Following are the two main properties of a problem that suggests
+              that the given problem can be solved using Dynamic programming.
+            </Span>
+            <Span>
+              As compared to recursion, It increases both, it increases the
+              space complexity and decreases the time complexity.
+            </Span>
+            <Span>
+              f(n) = f(n-1) + f(n-2), n&gt;= 2 <br /> f(1) = 1 , f(0) = 0 <br />{" "}
+              f(n) = [0,1,1,2,3,5,8,13,21]
+            </Span>
+            <Span>
+              <b>Optimal Substructure</b>
+            </Span>
+            <Span>
+              It exists when optimal solution can be constructed from optimal
+              solutions of its subproblems. Problems should have recursive
+              definition.
+            </Span>
+            <Span>
+              <b>Overlapping Subproblems</b>
+            </Span>
+            <Span>
+              This property exists when solutions of subproblems are needed
+              again and again. Like Divide and Conquer, Dynamic Programming
+              combines solutions to sub-problems. Dynamic Programming is mainly
+              used when solutions of the same subproblems are needed again and
+              again. In dynamic programming, computed solutions to subproblems
+              are stored in a table so that these don’t have to be recomputed.
+              So Dynamic Programming is not useful when there are no common
+              (overlapping) subproblems because there is no point storing the
+              solutions if they are not needed again.
+            </Span>
+            <Span>
+              To avoid recomputations we simply recall results from memory
+            </Span>
+            <Span>
+              Time taken for calculating the 40th fibonacci number (102334155):{" "}
+              <br />
+              1. Recursive : 14s <br />
+              2. Memoization : 0.17s <br />
+              3. Tabulation: 0.30s
+            </Span>
+            <Span>Two methods of storing the results in memory:</Span>
+            <Span>
+              <b>1. Memoization (Top-Down)</b>
+            </Span>
+            <Span>
+              The memoized program for a problem is similar to the recursive
+              version ( tracing tree ) with a small modification that it looks
+              into a lookup table before computing solutions. We initialize a
+              lookup array with all initial values as NIL. Whenever we need the
+              solution to a subproblem, we first look into the lookup table. If
+              the precomputed value is there then we return that value,
+              otherwise, we calculate the value and put the result in the lookup
+              table so that it can be reused later.
+            </Span>
+            <Span>
+              <b>2. Tabulation (Bottom-Up)</b>
+            </Span>
+            <Span>
+              Built the lookup table in bottom up fashion <br />
+              After the table is built, simply return table[n]
+            </Span>
+            <CodeEditor
+              options={{
+                code: `let MAX = 100
+
+
+              // using recursion,
+              // tc -> O(2^n)
+              // sc -> O(n * constant)
+              
+              // using dp
+              // tc -> O(n) we iterate through the 
+              // loop only once
+              // sc -> O(n)
+              
+              // memoization top-down
+              
+              // we compute the solution of the 
+              // subproblem if it's not present yet
+              // and store that at the look-up table 
+              // so that it can be re-used as and when 
+              // required
+              
+              const lookupMem = Array(MAX).fill(-1)
+              const lookupTab = Array(MAX).fill(-1)
+              
+              function fibMem(n){
+                 if(lookupMem[n]===-1){
+                   if(n <=1) lookupMem[n] =n
+                   else lookupMem[n] = fibMem(n-1) + fibMem(n-2)
+                 } 
+                 return lookupMem[n]
+              }
+              
+              // tabulation bottom-up
+              // after the lookup table is built 
+              // with the help of previous values
+              // we simply return lookup[n]
+              
+              function fibTab(n){
+                 lookupTab[0] = 0
+                 lookupTab[1] = 1
+                 for (let i = 2; i <= n; i++)
+                 lookupTab[i] = lookupTab[i-1] + lookupTab[i-2];
+                 return lookupTab[n]
+              }
+              
+              const n = 4
+              console.log("Memoization")
+              console.log(fibMem(n))
+              console.log("Max lookupMem length")
+              console.log(lookupMem.length)
+              console.log("Required lookupMem slice")
+              console.log(lookupMem.slice(0,n+1))
+              console.log("Tabulation")
+              console.log(fibTab(n))
+              console.log("Max lookupTab length")
+              console.log(lookupTab.length)
+              console.log("Required lookupTab slice")
+              console.log(lookupTab.slice(0,n+1))
+              `,
+                output: `Memoization
+                3
+                Max lookupMem length
+                100
+                Required lookupMem slice
+                [ 0, 1, 1, 2, 3 ]
+                Tabulation
+                3
+                Max lookupTab length
+                100
+                Required lookupTab slice
+                [ 0, 1, 1, 2, 3 ]`,
+              }}
+            />
+          </>
+        ),
         types: [],
       },
       bruteForce: {
