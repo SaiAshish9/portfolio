@@ -1,6 +1,7 @@
 import { CodeEditor, Span, Img } from "./components";
 import BigOChart from "assets/home/complexity-chart.jpeg";
 import GraphImg from "assets/home/graphColoring.png";
+import TSPDPImg from "assets/home/tsp_dp.png";
 
 export const DATA = {
   ds: {
@@ -12748,6 +12749,7 @@ SC O(N*W)
                   that visits every city exactly once and returns to the
                   starting point.
                 </Span>
+                <Img left src={TSPDPImg} />
                 <Span>
                   Note the difference between Hamiltonian Cycle and TSP. The
                   Hamiltonian cycle problem is to find if there exists a tour
@@ -12760,6 +12762,133 @@ SC O(N*W)
                   The problem is a famous NP-hard problem. There is no
                   polynomial-time known solution for this problem.
                 </Span>
+                <p>
+                  In this type of problem, a salesman loves to travel and he
+                  should travel all destinations and return back to the arrival
+                  point
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `// TSP
+                        // Minimum weighted hamiltonian
+                        // cycle
+                        
+                        // cycling permutaions
+                        // A B C D
+                        // B C D A
+                        
+                        // using brute force 
+                        // complexity will be O(n!)
+                        // even after selecting the source
+                        // complexity will be O(n-1)!
+                        
+                        
+                        
+                        class Graph {
+                            constructor(noOfVertices) {
+                                this.noOfVertices = noOfVertices;
+                                this.adjMatrix = Array.from(Array(noOfVertices),()=>Array(noOfVertices).fill(0));
+                            }
+                        
+                            addEdge(u, v, wt) {
+                              if ((u >= this.noOfVertices) || (v > this.noOfVertices)) {
+                                console.log("Vertex does not exists!");
+                                return
+                              }
+                              if (u == v) {
+                                console.log("Same Vertex!");
+                                return
+                              }
+                              this.adjMatrix[u][v] = wt
+                              this.adjMatrix[v][u] = wt
+                            }
+                        
+                            printAdjList() {
+                                console.log(this.adjMatrix)
+                            }
+                        
+                            tsp(){
+                              let allVisited = (1 << this.noOfVertices) - 1;
+                              // we can make use of boolean array as well
+                              //. ( 1 << 4) -1  => 16 -1 = 15
+                              // or allVisited = Array(this.noOfVertices)
+                              // .fill(false)
+                              
+                              // mask 1 (0001) represents person is at first 
+                              // visits (obviously)
+                        
+                              // mask 15 (1111) represents person visits all cities 
+                        
+                              const lookupMem = Array.from(Array(1<<this.noOfVertices),()=> Array(this.noOfVertices).fill(-1))
+                              const res = this.tspHelper(1,0,allVisited,lookupMem)
+                              console.log("lookup")
+                              console.log(lookupMem)
+                              return res
+                            }
+                        
+                            // TC -> n^2 * 2^n
+                            // Each sub-problem (2^n) will take O (n) time to find a path to 
+                            // remaining (n-1) cities.
+                            // SC -> n2^n
+                        
+                            tspHelper(mask,pos,allVisited,dp){
+                        
+                              if(mask == allVisited){
+                               return this.adjMatrix[pos][0]
+                              }
+                              // dist[pos][0] distance b/w last and first pos
+                        
+                              if(dp[mask][pos]!=-1)
+                              return dp[mask][pos]
+                              // avoid overlapping subproblems
+                        
+                              let ans = Number.MAX_SAFE_INTEGER
+                              for(let city=0;city<this.noOfVertices;city++){
+                                // check for non visited neighbour
+                              if((mask&(1<<city))==0){
+                                  let newAns = this.adjMatrix[pos][city] + this.tspHelper((mask|(1<<city)),city,allVisited,dp)
+                                  // update city's bit from 0 to 1 for e.g. from 0001 to 0011
+                                  ans = Math.min(ans,newAns)   
+                                }
+                              }
+                              return dp[mask][pos] = ans
+                        }
+                        
+                        const g = new Graph(4)
+                        const v = ['A', 'B', 'C', 'D']
+                        g.addEdge(0, 1, 20);
+                        g.addEdge(0, 2, 42);
+                        g.addEdge(0, 3, 25);
+                        g.addEdge(1, 2, 30);
+                        g.addEdge(1, 3, 34);
+                        g.addEdge(3, 2, 10);
+                        g.printAdjList();
+                        console.log(g.tsp())
+                        `,
+                        output: `[
+                          [ 0, 20, 42, 25 ],
+                          [ 20, 0, 30, 34 ],
+                          [ 42, 30, 0, 10 ],
+                          [ 25, 34, 10, 0 ]
+                        ]
+                        lookup
+                        [
+                          [ -1, -1, -1, -1 ], [ 85, -1, -1, -1 ],
+                          [ -1, -1, -1, -1 ], [ -1, 65, -1, -1 ],
+                          [ -1, -1, -1, -1 ], [ -1, -1, 64, -1 ],
+                          [ -1, -1, -1, -1 ], [ -1, 59, 35, -1 ],
+                          [ -1, -1, -1, -1 ], [ -1, -1, -1, 60 ],
+                          [ -1, -1, -1, -1 ], [ -1, 72, -1, 52 ],
+                          [ -1, -1, -1, -1 ], [ -1, -1, 50, 54 ],
+                          [ -1, -1, -1, -1 ], [ -1, -1, -1, -1 ]
+                        ]
+                        85`,
+                      },
+                    },
+                  }}
+                />
               </>
             ),
           },
