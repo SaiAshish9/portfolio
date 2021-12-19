@@ -13110,6 +13110,78 @@ SC O(N*W)
                     },
                   }}
                 />
+                <p>Print All LCS</p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `function fillLookUpTable(str1, str2,lookupTab) {
+                  const m = str1.length
+                  const n = str2.length
+                  for (let i = 0; i <= m; i++) {
+                      for (let j = 0; j <= n; j++) {
+                          if (i === 0 || j === 0) lookupTab[i][j] = 0
+                          else if (str1[i - 1] === str2[j - 1])
+                              lookupTab[i][j] = lookupTab[i - 1][j - 1] + 1
+                          else
+                              lookupTab[i][j] = Math.max(lookupTab[i - 1][j], lookupTab[i][j - 1])
+                      }
+                  }
+                  console.log("[ Lookup Table ]")
+                  lookupTab.forEach(x => {
+                      console.log(x.join(" , "))
+                  })
+              }
+              
+              function printAllLcs(str1,str2,m,n,lookupTab){
+                if(m==0 || n==0)
+                return [""]
+                if(str1[m - 1] === str2[n - 1]){
+                  let lcs = printAllLcs(str1,str2,m-1,n-1,lookupTab)
+                  for(let i in lcs){
+                    lcs[i] += str1[m-1]
+                  }
+                  return lcs
+                }
+                // start moving in desired direction otherwise
+                if(lookupTab[m-1][n] > lookupTab[m][n-1])
+                  return printAllLcs(str1,str2,m-1,n,lookupTab)
+                else if(lookupTab[m-1][n] < lookupTab[m][n-1])
+                  return printAllLcs(str1,str2,m,n-1,lookupTab)
+                else {
+                let top = printAllLcs(str1, str2, m - 1, n, lookupTab)
+                let left = printAllLcs(str1, str2, m, n - 1, lookupTab)
+                top = [...top, ...left];
+                return top;
+                }
+              }
+              
+              const str1 = "ABCBDAB"
+              const str2 = "BDCABA"
+              const m = str1.length
+              const n = str2.length
+              const lookupTab = Array.from(Array(m + 1), () => Array(n + 1).fill(n + 1))
+              fillLookUpTable(str1,str2,lookupTab)
+              const res = printAllLcs(str1,str2,str1.length,str2.length,lookupTab)
+              console.log("M : " + str1)
+              console.log("N : " + str2)
+              console.log([...new Set(res)])`,
+                        output: `[ Lookup Table ]
+                0 , 0 , 0 , 0 , 0 , 0 , 0
+                0 , 0 , 0 , 0 , 1 , 1 , 1
+                0 , 1 , 1 , 1 , 1 , 2 , 2
+                0 , 1 , 1 , 2 , 2 , 2 , 2
+                0 , 1 , 1 , 2 , 2 , 3 , 3
+                0 , 1 , 2 , 2 , 2 , 3 , 3
+                0 , 1 , 2 , 2 , 3 , 3 , 4
+                0 , 1 , 2 , 2 , 3 , 4 , 4
+                M : ABCBDAB
+                N : BDCABA
+                [ 'BCBA', 'BCAB', 'BDAB' ]`,
+                      },
+                    },
+                  }}
+                />
               </>
             ),
           },
