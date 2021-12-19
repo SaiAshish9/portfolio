@@ -12894,7 +12894,224 @@ SC O(N*W)
           },
           {
             title: "LCS",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Longest Common Subsequence Problem Statement</b>
+                </Span>
+                <Span>
+                  Given two sequences , find the length of longest subsequence
+                  present in both of them
+                </Span>
+                <p>
+                  A subsequence is a sequence that appears in the same relative
+                  order, but not necessarily contiguous. Sequences = “abcdefg”,
+                  “abxdfg”
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `// A subsequence is a sequence that appears in the same 
+                        // relative order, but not necessarily contiguous.
+                        
+                        // tabulation
+                        
+                        /*
+                           
+                        str1 = abcdefg
+                        str2 = abxdfg
+                            
+                               a   b   x   d   f   g
+                           0 , 0 , 0 , 0 , 0 , 0 , 0
+                        a  0 , 1 , 1 , 1 , 1 , 1 , 1
+                        b  0 , 1 , 2 , 2 , 2 , 2 , 2
+                        c  0 , 1 , 2 , 2 , 2 , 2 , 2
+                        d  0 , 1 , 2 , 2 , 3 , 3 , 3
+                        e  0 , 1 , 2 , 2 , 3 , 3 , 3. e !== d, 3 > 2
+                        f  0 , 1 , 2 , 2 , 3 , 4 , 4   
+                        g  0 , 1 , 2 , 2 , 3 , 4 , 5
+                        
+                        */
+                        
+                        const lcs = function(str1,str2){
+                          
+                        const m = str1.length
+                        const n = str2.length
+                        
+                        const lookupTab = Array.from(Array(m+1),() => Array(n+1).fill(n+1))
+                        
+                        for(let i=0;i<=m;i++){
+                          for(let j=0;j<=n;j++){
+                             if(i===0 || j===0) lookupTab[i][j] = 0
+                             else if(str1[i-1]===str2[j-1]) 
+                             lookupTab[i][j] = lookupTab[i-1][j-1] + 1
+                             else
+                             lookupTab[i][j] = Math.max(lookupTab[i-1][j],lookupTab[i][j-1])
+                          }
+                        }
+                        
+                        const result = lookupTab[m][n]
+                        
+                        console.log("[ Lookup Table ]")
+                        lookupTab.forEach(x=>{
+                          console.log(x.join(" , "))
+                        })
+                        
+                        let subsequence = Array(result).fill(null)
+                        let len = result
+                        
+                        let i=m,j=n;
+                        while(i>0 && j>0){
+                          if(str1[i-1]==str2[j-1]){
+                            subsequence[len-1] = str1[i-1] 
+                            i-=1
+                            j-=1
+                            len-=1
+                          }
+                          // move in the direction of larger 
+                          // element
+                          else if(lookupTab[i-1][j]>lookupTab[i][j-1]){
+                            i-=1
+                          }else{
+                            j-=1
+                          }
+                        }
+                        console.log("M : " + str1)
+                        console.log("N : " + str2)
+                        console.log({subsequence: typeof str1 === 'string'? subsequence.join(""): subsequence})
+                        
+                        return result
+                        }
+                        
+                        lcs("abcdefg", "abxdfg")
+                        console.log("")
+                        lcs([1,2,0],[9,8,1,6,2])
+                        `,
+                        output: `[ Lookup Table ]
+                        0 , 0 , 0 , 0 , 0 , 0 , 0
+                        0 , 1 , 1 , 1 , 1 , 1 , 1
+                        0 , 1 , 2 , 2 , 2 , 2 , 2
+                        0 , 1 , 2 , 2 , 2 , 2 , 2
+                        0 , 1 , 2 , 2 , 3 , 3 , 3
+                        0 , 1 , 2 , 2 , 3 , 3 , 3
+                        0 , 1 , 2 , 2 , 3 , 4 , 4
+                        0 , 1 , 2 , 2 , 3 , 4 , 5
+                        M : abcdefg
+                        N : abxdfg
+                        { subsequence: 'abdfg' }
+                        
+                        [ Lookup Table ]
+                        0 , 0 , 0 , 0 , 0 , 0
+                        0 , 0 , 0 , 1 , 1 , 1
+                        0 , 0 , 0 , 1 , 1 , 2
+                        0 , 0 , 0 , 1 , 1 , 2
+                        M : 1,2,0
+                        N : 9,8,1,6,2
+                        { subsequence: [ 1, 2 ] }
+                        2`,
+                      },
+                    },
+                  }}
+                />
+                <p>
+                  <b>LCS of 0s</b>
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `// A subsequence is a sequence that appears in the same 
+                      // relative order, but not necessarily contiguous.
+                      
+                      // tabulation
+                      
+                      /*
+                         
+                      str1 = abcdefg
+                      str2 = abxdfg
+                          
+                             a   b   x   d   f   g
+                         0 , 0 , 0 , 0 , 0 , 0 , 0
+                      a  0 , 1 , 1 , 1 , 1 , 1 , 1
+                      b  0 , 1 , 2 , 2 , 2 , 2 , 2
+                      c  0 , 1 , 2 , 2 , 2 , 2 , 2
+                      d  0 , 1 , 2 , 2 , 3 , 3 , 3
+                      e  0 , 1 , 2 , 2 , 3 , 3 , 3. e !== d, 3 > 2
+                      f  0 , 1 , 2 , 2 , 3 , 4 , 4   
+                      g  0 , 1 , 2 , 2 , 3 , 4 , 5
+                      
+                      */
+                      
+                      const lcs = function(str1,str2,val){
+                        
+                      const m = str1.length
+                      const n = str2.length
+                      
+                      const lookupTab = Array.from(Array(m+1),() => Array(n+1).fill(n+1))
+                      
+                      for(let i=0;i<=m;i++){
+                        for(let j=0;j<=n;j++){
+                           if(i===0 || j===0) lookupTab[i][j] = 0
+                           else if(str1[i-1]===str2[j-1] && str2[j-1]===val) 
+                           lookupTab[i][j] = lookupTab[i-1][j-1] + 1
+                           else
+                           lookupTab[i][j] = Math.max(lookupTab[i-1][j],lookupTab[i][j-1])
+                        }
+                      }
+                      
+                      const result = lookupTab[m][n]
+                      
+                      console.log("[ Lookup Table ]")
+                      lookupTab.forEach(x=>{
+                        console.log(x.join(" , "))
+                      })
+                      
+                      let subsequence = Array(result).fill(null)
+                      let len = result
+                      
+                      let i=m,j=n;
+                      while(i>0 && j>0){
+                        if(str1[i-1]==str2[j-1] && str2[j-1]===val){
+                          subsequence[len-1] = str1[i-1] 
+                          i-=1
+                          j-=1
+                          len-=1
+                        }
+                        // move in the direction of larger 
+                        // element
+                        else if(lookupTab[i-1][j]>lookupTab[i][j-1]){
+                          i-=1
+                        }else{
+                          j-=1
+                        }
+                      }
+                      console.log("M : " + str1)
+                      console.log("N : " + str2)
+                      console.log({subsequence: typeof str1 === 'string'? subsequence.join(""): subsequence})
+                      
+                      return result
+                      }
+                      
+                      lcs([0,-1,0,0,-1],[0,-1,1,0,-1],0)
+                      `,
+                        output: `[ Lookup Table ]
+                      0 , 0 , 0 , 0 , 0 , 0
+                      0 , 1 , 1 , 1 , 1 , 1
+                      0 , 1 , 1 , 1 , 1 , 1
+                      0 , 1 , 1 , 1 , 2 , 2
+                      0 , 1 , 1 , 1 , 2 , 2
+                      0 , 1 , 1 , 1 , 2 , 2
+                      M : 0,-1,0,0,-1
+                      N : 0,-1,1,0,-1
+                      { subsequence: [ 0, 0 ] }
+                      2`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "LIS",
