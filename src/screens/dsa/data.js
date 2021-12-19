@@ -12771,9 +12771,9 @@ SC O(N*W)
                   options={{
                     codes: {
                       Javascript: {
-                        code: `// TSP
+                        code: `// TSP ->
                         // Minimum weighted hamiltonian
-                        // cycle
+                        // cycle(s)
                         
                         // cycling permutaions
                         // A B C D
@@ -12846,7 +12846,7 @@ SC O(N*W)
                         
                               let ans = Number.MAX_SAFE_INTEGER
                               for(let city=0;city<this.noOfVertices;city++){
-                                // check for non visited neighbour
+                                // check for non visited neighbor
                               if((mask&(1<<city))==0){
                                   let newAns = this.adjMatrix[pos][city] + this.tspHelper((mask|(1<<city)),city,allVisited,dp)
                                   // update city's bit from 0 to 1 for e.g. from 0001 to 0011
