@@ -12897,7 +12897,7 @@ SC O(N*W)
             content: (
               <>
                 <Span>
-                  <b>Longest Common Subsequence Problem Statement</b>
+                  <b>Longest Common Subsequence Problem Statement:</b>
                 </Span>
                 <Span>
                   Given two sequences , find the length of longest subsequence
@@ -13187,10 +13187,94 @@ SC O(N*W)
           },
           {
             title: "LIS",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Longest Increasing Subsequence Problem Statement:</b>
+                </Span>
+                <p>
+                  Find the length of the longest subsequence of a given sequence
+                  such that all elements of the subsequence are sorted in
+                  increasing order
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `/*
+                      arr[] 10 22 9 33 21 50 41 60
+                      lis    1  2 1  3  2  4  4  5  
+                      */
+                      
+                      function LIS(arr){
+                      
+                      const n = arr.length
+                      // 8
+                      
+                      let lookupTab = Array(n).fill(1)
+                      
+                      for (i = 1; i < n; i++)
+                      for (j = 0; j < i; j++)
+                      if (arr[i] > arr[j] && lookupTab[i] < lookupTab[j] + 1)
+                      lookupTab[i] = lookupTab[j] + 1
+                      
+                      const max = Math.max(...lookupTab)
+                      
+                      let index =[]
+                      let tmp = max
+                      
+                      for(let i=n-1;i>=0;i--){
+                      if(lookupTab[i]==tmp){
+                      index.push(i)
+                      tmp--
+                      }
+                      }
+                      index.reverse()
+                      index = index.map(x=>arr[x])
+                      console.log(index)
+                      
+                      return max
+                      }
+                      
+                      LIS([10, 22, 9, 33, 21, 50, 41, 60])`,
+                        output: `[ 10, 22, 33, 41, 60 ]
+                      5`,
+                      },
+                    },
+                  }}
+                />
+                <p>
+                  <b>Print All LIS</b>
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `// W.I.P.`,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "LPS",
+            content: (
+              <>
+                <Span>
+                  <b>Longest Palindromic Subsequence Problem Statement</b>
+                </Span>
+                <Span>
+                  Given a sequence, find the length of the longest palindromic
+                  subsequence on it
+                </Span>
+              </>
+            ),
+          },
+          {
+            title: "LCIS",
             content: <></>,
           },
           {
