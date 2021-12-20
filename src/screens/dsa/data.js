@@ -13278,10 +13278,111 @@ SC O(N*W)
                 <Span>
                   <b>Longest Palindromic Subsequence Problem Statement</b>
                 </Span>
-                <Span>
+                <p>
                   Given a sequence, find the length of the longest palindromic
                   subsequence on it
-                </Span>
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `function lps(subsequence){
+                        const len = subsequence.length
+                        // 9
+                        let lookupTab = Array.from(Array(len), () => Array(len).fill(1))
+                        
+                        for (let cl=2; cl<=len; cl++){
+                          for (let i=0; i<len-cl+1; i++)
+                          {
+                            let j = i+cl-1;
+                            if (subsequence[i] == subsequence[j] && cl == 2)
+                            lookupTab[i][j] = 2;
+                            else if (subsequence[i] == subsequence[j])
+                            lookupTab[i][j] = lookupTab[i+1][j-1] + 2;
+                            else
+                            lookupTab[i][j] = Math.max(lookupTab[i][j-1], lookupTab[i+1][j]);
+                          }
+                        }
+                        console.log("Lookup Table : ")
+                        lookupTab.forEach(x=>console.log(x.join(" , ")))
+                        return lookupTab[0][len-1]
+                        }
+                        
+                        console.log(lps("abs123abs"))
+                        `,
+                        output: `Lookup Table : 
+                      1 , 1 , 1 , 1 , 1 , 1 , 3 , 3 , 3
+                      1 , 1 , 1 , 1 , 1 , 1 , 1 , 3 , 3
+                      1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 3
+                      1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1
+                      1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1
+                      1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1
+                      1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1
+                      1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1
+                      1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1
+                      3`,
+                      },
+                    },
+                  }}
+                />
+                <p>
+                  <b>Program to print lps</b>
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `function lps(str){    
+
+                        let n = str.length;
+                        let table = Array.from(Array(n),()=>Array(n).fill(false));
+                        let maxLength = 1;
+                        
+                        // character's count : 1
+                        for(let i=0;i<n;i++) table[i][i] = true
+                        
+                        // character's count : 2
+                        let start = 0;
+                        for (let i = 0; i < n - 1; ++i){
+                          if (str[i] == str[i + 1]){
+                          table[i][i + 1] = true;
+                          start = i;
+                          maxLength = 2;
+                        }
+                        }
+                          
+                        // character's count > 2
+                        for (let cl = 3; cl <= n; ++cl) {  
+                        for (let i = 0; i < n - cl + 1; ++i){
+                        let j = i + cl - 1;
+                        if (table[i + 1][j - 1] && str[i] == str[j]) {
+                          table[i][j] = true;
+                          if (cl > maxLength) {
+                              start = i;
+                              maxLength = cl;
+                          }
+                          }
+                          }
+                        }
+                        table.forEach(x=>console.log(x.join(" , ")))
+                        console.log(str.substring(start, start + maxLength))  
+                        return maxLength;
+                        
+                        }
+                            
+                        let str = "8a99a";
+                        console.log("Length is: " + lps(str))`,
+                        output: `true , false , false , false , false
+                        false , true , false , false , true
+                        false , false , true , true , false
+                        false , false , false , true , false
+                        false , false , false , false , true
+                        a99a
+                        Length is: 4`,
+                      },
+                    },
+                  }}
+                />
               </>
             ),
           },
