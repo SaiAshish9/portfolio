@@ -12951,7 +12951,7 @@ SC O(N*W)
                         const m = str1.length
                         const n = str2.length
                         
-                        const lookupTab = Array.from(Array(m+1),() => Array(n+1).fill(n+1))
+                        const lookupTab = Array.from(Array(m+1),() => Array(n+1).fill(0))
                         
                         for(let i=0;i<=m;i++){
                           for(let j=0;j<=n;j++){
@@ -13060,7 +13060,7 @@ SC O(N*W)
                       const m = str1.length
                       const n = str2.length
                       
-                      const lookupTab = Array.from(Array(m+1),() => Array(n+1).fill(n+1))
+                      const lookupTab = Array.from(Array(m+1),() => Array(n+1).fill(0))
                       
                       for(let i=0;i<=m;i++){
                         for(let j=0;j<=n;j++){
@@ -13172,7 +13172,7 @@ SC O(N*W)
               const str2 = "BDCABA"
               const m = str1.length
               const n = str2.length
-              const lookupTab = Array.from(Array(m + 1), () => Array(n + 1).fill(n + 1))
+              const lookupTab = Array.from(Array(m + 1), () => Array(n + 1).fill(0))
               fillLookUpTable(str1,str2,lookupTab)
               const res = printAllLcs(str1,str2,str1.length,str2.length,lookupTab)
               console.log("M : " + str1)
@@ -13386,7 +13386,11 @@ SC O(N*W)
           },
           {
             title: "LCIS",
-            content: <></>,
+            content: <>
+            <Span>
+              <b>Longest Common Increasing Subsequence Problem Statement</b>
+            </Span>
+            </>,
           },
           {
             title: "LBS",
