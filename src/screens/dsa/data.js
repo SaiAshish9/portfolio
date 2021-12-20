@@ -13375,8 +13375,8 @@ SC O(N*W)
                         let str = "abs123abs";
                         console.log(lps(str));
                       `,
-                      output:`sbs
-                      3`
+                        output: `sbs
+                      3`,
                       },
                     },
                   }}
@@ -13386,11 +13386,93 @@ SC O(N*W)
           },
           {
             title: "LCIS",
-            content: <>
-            <Span>
-              <b>Longest Common Increasing Subsequence Problem Statement</b>
-            </Span>
-            </>,
+            content: (
+              <>
+                <Span>
+                  <b>
+                    Longest Common Increasing Subsequence Problem Statement (
+                    LCS + LIS )
+                  </b>
+                </Span>
+                <p>
+                  Given two arrays, find length of the longest common increasing
+                  subsequence [LCIS] and print one of such sequences (multiple
+                  sequences may exist) Suppose we consider two arrays – arr1[] ={" "}
+                  [3, 4, 9, 1] and arr2[] = [5, 3, 8, 9, 10, 2, 1] Our answer
+                  would be [3, 9] as this is the longest common subsequence
+                  which is increasing also.
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `function lcis(arr1,arr2){
+                          let m = arr1.length
+                          let n = arr2.length
+                          let lookupTab = Array(n).fill(0)
+                          // tab represents table
+                          let parent = Array(n).fill(0)
+                          
+                          for(let i=0;i<m;i++){
+                            let current = 0, last = -1
+                            for(let j=0;j<n;j++){
+                              // if both elements are same
+                              if (arr1[i] == arr2[j] && current + 1 > lookupTab[j]){
+                                  lookupTab[j] = current + 1; 
+                                  parent[j] = last
+                              }  
+                          
+                              // if first element is greater than second
+                              if (arr1[i] > arr2[j] && lookupTab[j] > current){
+                                  current = lookupTab[j];
+                                  last = j
+                              } 
+                            }
+                          }
+                          
+                          const max = Math.max(...lookupTab)
+                          let index = lookupTab.indexOf(max);
+                          let result=Array(max).fill(null),i=0;
+                          while(index!=-1){
+                            result[i] = arr2[index]; 
+                            index = parent[index]; 
+                            i+=1
+                          }
+                          console.log("lookup table")
+                          console.log(lookupTab)
+                          result = result.reverse()
+                          console.log(typeof arr1 !== "string" ? result : result.join(""))
+                          return max
+                          }
+                          
+                          const arr1 = [3, 4, 9, 1]
+                          const arr2 = [5, 3, 8, 9, 10, 2, 1]
+                          // 3, 9
+                          const arr3 = "b3sak"
+                          const arr4 = "baejkl"
+                          // bk
+                          console.log(lcis(arr1,arr2));
+                          console.log("##############")
+                          console.log(lcis(arr3,arr4));                                                                      
+                          `,
+                        output: `lookup table
+                        [
+                          0, 1, 0, 2,
+                          0, 0, 1
+                        ]
+                        [ 3, 9 ]
+                        2
+                        ##############
+                        lookup table
+                        [ 1, 1, 0, 0, 2, 0 ]
+                        bk
+                        2`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "LBS",
