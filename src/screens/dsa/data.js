@@ -12817,7 +12817,7 @@ SC O(N*W)
                               this.adjMatrix[v][u] = wt
                             }
                         
-                            printAdjList() {
+                            print() {
                                 console.log(this.adjMatrix)
                             }
                         
@@ -12876,7 +12876,7 @@ SC O(N*W)
                         g.addEdge(1, 2, 30);
                         g.addEdge(1, 3, 34);
                         g.addEdge(3, 2, 10);
-                        g.printAdjList();
+                        g.print();
                         console.log(g.tsp())
                         `,
                         output: `[
