@@ -13476,7 +13476,22 @@ SC O(N*W)
           },
           {
             title: "LBS",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Given an array[0..n-1] containing n positive integers, a
+                  subsequence of arr[] is called Bitonic if it is first
+                  increasing, then decreasing. <br />
+                  [1,11,2,10,4,5,2,1]
+                </Span>
+                <Span>
+                  Longest Bitonic Subsequence of length 6 : 1 , 2, 10 , 4 , 2 ,1
+                </Span>
+              </>
+            ),
           },
           {
             title: "Naive",
