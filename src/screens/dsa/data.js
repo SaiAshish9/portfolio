@@ -13367,13 +13367,13 @@ SC O(N*W)
                           return result
                       }
                       
-                        function longestPalSubseq(str) {
+                        function lps(str) {
                           return lcs(str, typeof str === "string"? str.split("").reverse().join(): str.reverse());
                         }
                       
                         
                         let str = "abs123abs";
-                        console.log(longestPalSubseq(str));
+                        console.log(lps(str));
                       `,
                       output:`sbs
                       3`
