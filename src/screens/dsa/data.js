@@ -8230,8 +8230,13 @@ Element found in array at 5th position with 1 attempt
               Two pointers is really an easy and effective technique that is
               typically used for searching pairs in a sorted array.
             </Span>
-            <p>
+
+            <Span>
               <b>Time complexity: </b> O(n)
+            </Span>
+            <p>
+              Pairs can also be searched in a sorted array in O(n) with the help
+              of map ( / dictionary / object )
             </p>
             <CodeEditor
               options={{
@@ -8247,7 +8252,14 @@ Element found in array at 5th position with 1 attempt
 	while (i < j) {
 
 		if (A[i] + A[j] == X)
+    {
+      console.log({
+        i,
+        j,
+        l: A[i],r:A[j] , X
+      })
 			return true;
+    }
 		else if (A[i] + A[j] < X)
 			i++;
 		else
@@ -8261,9 +8273,9 @@ var val = 17;
 var arrSize =7;
 
 console.log(isPairSum(arr, arrSize, val));
-
                     `,
-                    output: `true`,
+                    output: `{ i: 2, j: 4, l: 9, r: 8, X: 17 }
+                    true`,
                   },
                 },
               }}
