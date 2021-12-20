@@ -13332,53 +13332,51 @@ SC O(N*W)
                   options={{
                     codes: {
                       Javascript: {
-                        code: `function lps(str){    
-
-                        let n = str.length;
-                        let table = Array.from(Array(n),()=>Array(n).fill(false));
-                        let maxLength = 1;
-                        
-                        // character's count : 1
-                        for(let i=0;i<n;i++) table[i][i] = true
-                        
-                        // character's count : 2
-                        let start = 0;
-                        for (let i = 0; i < n - 1; ++i){
-                          if (str[i] == str[i + 1]){
-                          table[i][i + 1] = true;
-                          start = i;
-                          maxLength = 2;
-                        }
-                        }
-                          
-                        // character's count > 2
-                        for (let cl = 3; cl <= n; ++cl) {  
-                        for (let i = 0; i < n - cl + 1; ++i){
-                        let j = i + cl - 1;
-                        if (table[i + 1][j - 1] && str[i] == str[j]) {
-                          table[i][j] = true;
-                          if (cl > maxLength) {
-                              start = i;
-                              maxLength = cl;
+                        code: `const lcs = function(str1, str2) {
+                          const m = str1.length
+                          const n = str2.length
+                          const lookupTab = Array.from(Array(m + 1), () => Array(n + 1).fill(n + 1))
+                          for (let i = 0; i <= m; i++) {
+                              for (let j = 0; j <= n; j++) {
+                                  if (i === 0 || j === 0) lookupTab[i][j] = 0
+                                  else if (str1[i - 1] === str2[j - 1])
+                                      lookupTab[i][j] = lookupTab[i - 1][j - 1] + 1
+                                  else
+                                      lookupTab[i][j] = Math.max(lookupTab[i - 1][j], lookupTab[i][j - 1])
+                              }
                           }
+                          const result = lookupTab[m][n]
+                          let subsequence = Array(result).fill(null)
+                          let len = result
+                          let i = m,
+                              j = n;
+                          while (i > 0 && j > 0) {
+                              if (str1[i - 1] == str2[j - 1]) {
+                                  subsequence[len - 1] = str1[i - 1]
+                                  i -= 1
+                                  j -= 1
+                                  len -= 1
+                              }
+                              else if (lookupTab[i - 1][j] > lookupTab[i][j - 1]) {
+                                  i -= 1
+                              } else {
+                                  j -= 1
+                              }
                           }
-                          }
+                          console.log(typeof str === "string"? subsequence.join("") : subsequence )
+                          return result
+                      }
+                      
+                        function longestPalSubseq(str) {
+                          return lcs(str, typeof str === "string"? str.split("").reverse().join(): str.reverse());
                         }
-                        table.forEach(x=>console.log(x.join(" , ")))
-                        console.log(str.substring(start, start + maxLength))  
-                        return maxLength;
+                      
                         
-                        }
-                            
-                        let str = "8a99a";
-                        console.log("Length is: " + lps(str))`,
-                        output: `true , false , false , false , false
-                        false , true , false , false , true
-                        false , false , true , true , false
-                        false , false , false , true , false
-                        false , false , false , false , true
-                        a99a
-                        Length is: 4`,
+                        let str = "abs123abs";
+                        console.log(longestPalSubseq(str));
+                      `,
+                      output:`sbs
+                      3`
                       },
                     },
                   }}
