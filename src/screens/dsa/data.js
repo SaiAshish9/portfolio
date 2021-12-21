@@ -13729,8 +13729,84 @@ SC O(N*W)
                   options={{
                     codes: {
                       Javascript: {
-                        code: ``,
-                        output: ``,
+                        code: `/* 
+                        Degenerating property, means pattern having same 
+                        sub-problems appearing more than once in the pattern , 
+                        are considered
+                       
+                        kmp uses degenerating property to reduce worst case complexity to O(n)
+                       
+                        lps (longest proper prefix) indicates longest
+                        proper prefix which is also suffix.
+                       
+                        For e.g. proper prefixes of “ABC” are “”,”A”,”AB” and not “ABC”.
+                       */
+                       
+                       function generateLps(pat,lps){
+                       let j = 0
+                       // j represents length of proper prefix
+                       let i = 1
+                       lps[0] = 0
+                       const m = pat.length
+                       
+                       while(i<m){
+                       if(pat[i]===pat[j]){
+                         j++
+                         lps[i] = j
+                         i++
+                         // if both elements matches
+                         // increment i and j by 1 and update
+                         // lps of i
+                       }else {
+                       if(j != 0)
+                         j = lps[j-1]
+                       else{
+                         // if first two characters increment
+                         // i by 1
+                         lps[i] = j
+                         i++
+                       }
+                       }
+                       }
+                       }
+                       
+                       function kmp(pat,txt){
+                       
+                       const m = pat.length
+                       const n = txt.length
+                       
+                       let lps = Array(m).fill(0)
+                       generateLps(pat,lps)
+                       console.log("lps array:")
+                       console.log(lps)
+                       let i = j = 0
+                       while(i<n){
+                       if(pat[j]==txt[i]){
+                         i++
+                         j++
+                       }
+                       if(j==m){
+                         console.log("pattern found at index: " + (i-j))
+                         j = lps[j-1]
+                       }
+                       else if(i<n && pat[j]!=txt[i]){
+                         if(j!=0) j=lps[j-1]
+                         else i+=1
+                       }
+                       }
+                       }
+                       
+                       /*
+                       A B X A B
+                       0 0 0 1 2
+                       */
+                       
+                       kmp("ABXAB","ABXAB9ABXAB")
+                       `,
+                        output: `lps array:
+                        [ 0, 0, 0, 1, 2 ]
+                        pattern found at index: 0
+                        pattern found at index: 6`,
                       },
                     },
                   }}
