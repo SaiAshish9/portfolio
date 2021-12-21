@@ -13676,8 +13676,67 @@ SC O(N*W)
             ),
           },
           {
-            title: "Knuth Morris",
-            content: <></>,
+            title: "Knuth Morris Pratt [ Degenerating Property ]",
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Using the given pattern , find out all the indexes at which
+                  pattern is present at the given string.
+                </Span>
+                <Span>
+                  <b>Theory</b>
+                </Span>
+                <Span>
+                  Knuth Morris Pratt Searching algorithm uses degenerating
+                  property of the pattern and improves the worst case complexity
+                  to O(n).
+                </Span>
+                <Span>
+                  Degenerating property, means pattern having same sub-problems
+                  appearing more than once in the pattern , are considered
+                </Span>
+                <Span>
+                  Preprocessing involves constructing an lps array corresponding
+                  to the pattern string of same size as the pattern string
+                </Span>
+                <Span>
+                  lps indicates longest proper prefix which is also suffix.
+                </Span>
+                <Span>
+                  proper prefixes of “ABC” are “”,”A”,”AB” and not “ABC”.Same
+                  for suffix
+                </Span>
+                <Span>Examples</Span>
+                <>
+                  <p>1</p>
+                  <p>pat[] A B X A B</p>
+                  <p>lps[] 0 0 0 1 2</p>
+                </>
+                <>
+                  <p>2</p>
+                  <p>pat a b c d a b c a</p>
+                  <p>lps 0 0 0 0 1 2 3 1</p>
+                </>
+                <br />
+                <p>
+                  Start from i=0 and j=0. if character matches increment i and j
+                  , and update lps[j] by 1 else only update i by 1 .
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Rabin Karp",
