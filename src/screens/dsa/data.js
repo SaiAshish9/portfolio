@@ -13816,7 +13816,103 @@ SC O(N*W)
           },
           {
             title: "Rabin Karp",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Using the given pattern , find out all the indexes at which
+                  pattern is present at the given string
+                </Span>
+                <Span>
+                  Like the Naive Algorithm, Rabin-Karp algorithm also slides the
+                  pattern one by one. But unlike the Naive algorithm, Rabin Karp
+                  algorithm matches the hash value of the pattern with the hash
+                  value of current substring of text, and if the hash values
+                  match then only it starts matching individual characters.
+                </Span>
+                <p>
+                  The Rabin-Karp algorithm uses a rolling hash to detect the
+                  presence of a desired substring. Because it's a hash function,
+                  it maps many different strings to the same hash value If the
+                  rolling hash produces a candidate match due to this hash
+                  collision, which turns out not to be a string match, that is a
+                  “spurious hit.”
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javacript: {
+                        code: `//  The Rabin-Karp algorithm uses a rolling hash to
+                        //  detect the presence of a desired substring. 
+                        //  Because it's a hash function, it maps many different 
+                        //  strings to the same hash value. If the rolling 
+                        //  hash produces a candidate match due to this
+                        //  hash collision, which turns out not to be a string
+                        //  match, that is a “spurious hit.”
+                        
+                        function rk(pat, txt, q)
+                        {
+                          let m = pat.length;
+                          let n = txt.length;
+                          let i, j;
+                          
+                          let p = 0;
+                          let t = 0;
+                          let h = 1;
+                          let d = 256; 
+                        
+                          for(i = 0; i < m - 1; i++)
+                            h = (h * d) % q;
+                        
+                          for(i = 0; i < m; i++)
+                          {
+                            p = (d * p + pat[i].charCodeAt()) % q;
+                            t = (d * t + txt[i].charCodeAt()) % q;
+                          }
+                        
+                          // p represents hash value of pattern
+                          // t represents hash value of substring
+                        
+                          for(i = 0; i <= n - m; i++)
+                          {
+                            if (p == t)
+                            {
+                              for(j = 0; j < m; j++)
+                              {
+                                if (txt[i+j] != pat[j])
+                                  break;
+                              }
+                            console.log("Pattern found at index " + i);
+                            }
+                        
+                            // compute next hash
+                            if (i < n - m)
+                            {
+                              t = (d * (t - txt[i].charCodeAt() * h) +
+                                  txt[i + m].charCodeAt()) % q;
+                        
+                              if (t < 0)
+                                t = (t + q);
+                            }
+                          }
+                        }
+                        
+                        let txt = "ABC9ABC";
+                        let pat = "ABC";
+                        
+                        let q = 101;
+                        rk(pat, txt, q);
+                        `,
+                        output: `Pattern found at index 0
+                        Pattern found at index 4`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Edit Distance",
