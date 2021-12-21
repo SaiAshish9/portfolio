@@ -14119,11 +14119,153 @@ SC O(N*W)
           },
           {
             title: "Friends Pairing Problem",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Given n friends, each one can remain single or can be paired
+                  up with some other friend. <br />
+                  Note : Each can be paired only once
+                  <br />
+                  Find out the total number of ways in which friends can remain
+                  single or can be paired up
+                </Span>
+                <p>f(n) = f(n — 1) + (n — 1) * f(n — 2)</p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `// 1) n-th person remains single, we recur
+                      // for f(n — 1)
+                      // 2) n-th person pairs up with any of the
+                      // remaining n — 1 persons. We get (n — 1) 
+                      // * f(n — 2)
+                      // Therefore we can recursively write f(n) as:
+                      // f(n) = f(n — 1) + (n — 1) * f(n — 2)
+                      
+                      function Sol(n){
+                        let dp = Array(n+1).fill(null)
+                        for (let i = 0; i <= n; i++) {
+                        if (i <= 2)
+                        dp[i] = i;
+                        else
+                        dp[i] = dp[i - 1] + (i - 1) * dp[i - 2];
+                        }
+                        return dp[n];
+                      }
+                      
+                      console.log(Sol(4))`,
+                        output: `10`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Maximum Size Square Sub Matrix With All 1s",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <p>
+                  Given a binary matrix, find out the maximum size square
+                  sub-matrix with all 1s
+                  <br />
+                  0 1 1 0 1 <br />
+                  1 1 0 1 0 <br />
+                  0 1 1 1 0<br />
+                  1 1 1 1 0<br />
+                  1 1 1 1 1<br />
+                  0 0 0 0 0<br />
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `let R = 6;
+                      let C = 5;
+                      
+                      function printMaxSubSquare(M) {
+                        let i,j;
+                        let S = [];
+                      
+                      for ( var y = 0; y < R; y++ ) {
+                        S[ y ] = [];
+                        for ( var x = 0; x < C; x++ ) {
+                          S[ y ][ x ] = 0;
+                        }
+                      }
+                        let max_of_s, max_i, max_j;
+                        
+                        for(i = 0; i < R; i++)
+                          S[i][0] = M[i][0];
+                        
+                        for(j = 0; j < C; j++)
+                          S[0][j] = M[0][j];
+                          
+                        for(i = 1; i < R; i++)
+                        {
+                          for(j = 1; j < C; j++)
+                          {
+                            if(M[i][j] == 1)
+                              S[i][j] = Math.min(S[i][j-1],Math.min( S[i-1][j],
+                                      S[i-1][j-1])) + 1;
+                            else
+                              S[i][j] = 0;
+                          }
+                        }
+                      
+                        max_of_s = S[0][0]; max_i = 0; max_j = 0;
+                        for(i = 0; i < R; i++)
+                        {
+                          for(j = 0; j < C; j++)
+                          {
+                            if(max_of_s < S[i][j])
+                            {
+                              max_of_s = S[i][j];
+                              max_i = i;
+                              max_j = j;
+                            }
+                          }			
+                        }
+                      
+                        console.log("Maximum size sub-matrix is:");
+                        for(i = max_i; i > max_i - max_of_s; i--)
+                        { 
+                          let out = ""
+                          for(j = max_j; j > max_j - max_of_s; j--)
+                          {
+                            out += M[i][j] + " "
+                          }
+                          console.log(out)
+                        }
+                      }
+                      
+                      
+                      let M = [[0, 1, 1, 0, 1],
+                          [1, 1, 0, 1, 0],
+                          [0, 1, 1, 1, 0],
+                          [1, 1, 1, 1, 0],
+                          [1, 1, 1, 1, 1],
+                          [0, 0, 0, 0, 0]];
+                                
+                      printMaxSubSquare(M);
+                      `,
+                        output: `Maximum size sub-matrix is:
+                      1 1 1 
+                      1 1 1 
+                      1 1 1 `,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
         ],
       },
