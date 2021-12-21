@@ -13761,8 +13761,8 @@ SC O(N*W)
                        if(j != 0)
                          j = lps[j-1]
                        else{
-                         // if first two characters increment
-                         // i by 1
+                         // if first two characters doesn't match 
+                         // increment i by 1
                          lps[i] = j
                          i++
                        }
@@ -13831,6 +13831,16 @@ SC O(N*W)
                   algorithm matches the hash value of the pattern with the hash
                   value of current substring of text, and if the hash values
                   match then only it starts matching individual characters.
+                </Span>
+                <Span>
+                  <b>Time Complexity:</b>
+                  <br />
+                  The average and best-case running time of the Rabin-Karp
+                  algorithm is O(n+m), but its worst-case time is O(nm). Worst
+                  case of Rabin-Karp algorithm occurs when all characters of
+                  pattern and text are same as the hash values of all the
+                  substrings of txt[] match with hash value of pat[]. For
+                  example pat[] = “AAA” and txt[] = “AAAAAAA”.
                 </Span>
                 <p>
                   The Rabin-Karp algorithm uses a rolling hash to detect the
