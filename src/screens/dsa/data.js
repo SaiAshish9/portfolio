@@ -13607,6 +13607,10 @@ SC O(N*W)
             ),
           },
           {
+            title: "Maximum Length Chain Of Pairs",
+            content: <></>,
+          },
+          {
             title: "Naive",
             content: (
               <>
@@ -13926,7 +13930,57 @@ SC O(N*W)
           },
           {
             title: "Edit Distance",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Given two strings str1 and str2 and below operations that can
+                  performed on str1. Find minimum number of edits (operations)
+                  required to convert ‘str1’ into ‘str2’.
+                </Span>
+                <Span>Insert , Remove , Replace</Span>
+                <Span>All of the above operations are of equal cost.</Span>
+                <Span>Example</Span>
+                <Span>Input: str1 = “geek”, str2 = “gesek”</Span>
+                <Span>Output: 1</Span>
+                <Span>We can convert str1 into str2 by inserting a ‘s’.</Span>
+                <Span>Insert: Recur for m and n-1</Span>
+                <Span>Remove: Recur for m-1 and n</Span>
+                <p>Replace: Recur for m-1 and n-1</p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `function min(x, y, z) {
+                        if (x <= y && x <= z) return x;
+                        if (y <= x && y <= z) return y;
+                        else return z;
+                        }
+                        function editDist(str1, str2, m, n) {
+                        if (m == 0) return n;
+                        if (n == 0) return m;
+                        if (str1[m - 1] == str2[n - 1]) return editDist(str1, str2, m - 1, n - 1);
+                        return (
+                        1 +
+                        min(
+                        editDist(str1, str2, m, n - 1), // Insert
+                        editDist(str1, str2, m - 1, n), // Remove
+                        editDist(str1, str2, m - 1, n - 1) // Replace
+                        )
+                        ); 
+                        }
+                        let str1 = "sunday";
+                        let str2 = "saturday";
+                        editDist(str1, str2, str1.length, str2.length)`,
+                        output: `3`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Egg Dropping Problem",
@@ -13938,10 +13992,6 @@ SC O(N*W)
           },
           {
             title: "Maximum Size Square Sub Matrix With All 1s",
-            content: <></>,
-          },
-          {
-            title: "Maximum Length Chain Of Pairs",
             content: <></>,
           },
         ],
