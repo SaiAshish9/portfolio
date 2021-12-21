@@ -14046,7 +14046,76 @@ SC O(N*W)
           },
           {
             title: "Egg Dropping Problem",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Given n eggs and k floors, decide floors from which eggs
+                  should be dropped such that total number of attempts are
+                  minimized. Egg may or may not break at each attempt <br />
+                  Example(s)
+                  <br />
+                  Example 1 : Given 1 egg and 10 floors, what is min attempt?
+                  (worst case)
+                  <br />
+                  Ans 1 : 10
+                  <br />
+                  Example 2 : Given 10 eggs and 1 floor , what is min attempt?
+                  (worst case)
+                  <br />
+                  Ans 2 : 1
+                </Span>
+                <p>
+                  (1 + max( DP[i-1][j-1], DP[i][j-x] )) <br />
+                  i =&gt; Number of eggs <br />j =&gt; Number of floors
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `function eggDrop(n,k){
+                          const eggFloor = Array.from(Array(n+1),()=>Array(k+1)) 
+                          let res,i,j,x;
+                          // We need one trial for one floor and
+                          // 0 trials for 0 floors
+                          for (i = 1; i <= n; i++) {
+                           eggFloor[i][1] = 1;
+                           eggFloor[i][0] = 0;
+                          }
+                          // We always need j trials for one egg
+                          // and j floors.
+                          for (j = 1; j <= k; j++) 
+                           eggFloor[1][j] = j;
+                          for (i = 2; i <= n; i++) {
+                          for (j = 2; j <= k; j++) {
+                          eggFloor[i][j] = Number.MAX_SAFE_INTEGER;
+                          for (x = 1; x <= j; x++) {
+                          res = 1 + Math.max(eggFloor[i - 1][x - 1],eggFloor[i][j - x]);
+                          if (res < eggFloor[i][j])
+                          eggFloor[i][j] = res;
+                          }
+                          }
+                          }
+                           eggFloor.forEach(x=>console.log(x.join("  ")))
+                           return eggFloor[n][k];
+                         }
+                         
+                         let n = 2, k = 10;
+                         
+                         console.log("Minimum number of "  + "trials in worst case with "
+                         + n + " eggs and " + k
+                         + " floors is " + eggDrop(n, k));`,
+                        output: `0  1  2  3  4  5  6  7  8  9  10
+                        0  1  2  2  3  3  3  4  4  4  4
+                        Minimum number of trials in worst case with 2 eggs and 10 floors is 4`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Friends Pairing Problem",
