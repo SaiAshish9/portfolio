@@ -13608,7 +13608,72 @@ SC O(N*W)
           },
           {
             title: "Naive",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  String matching or searching algorithms try to find places
+                  where one or several strings (also called patterns) are found
+                  within a larger string (searched text):.
+                </Span>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Using the given pattern , find out all the indexes at which
+                  pattern is present at the given string.
+                </Span>
+                <Span>
+                  <b>
+                    Basically finding all the occurences of a particular string
+                    say ‘pat’ in another string say ‘txt’ is called pattern
+                    searching
+                  </b>
+                </Span>
+                <Span>
+                  The time complexity of Naïve Pattern Search method is O(m*n).
+                  The m is the size of pattern and n is the size of the main
+                  string.
+                </Span>
+                <p>
+                  Input: txt[] = “THIS IS A TEST TEXT”
+                  <br />
+                  pat[] = “TEST”
+                  <br />
+                  Output: Pattern found at index 10
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `function naive(txt,pat){
+                          const m = pat.length
+                          const n = txt.length
+                          // console.log(pat,txt,m,n)
+                          for(let i=0;i<=n-m;i++){
+                            let j
+                            for(j=0;j<m;j++){
+                              if(txt[i+j]!=pat[j])
+                              break;
+                            }
+                            if(j==m)
+                              console.log("pattern found at:" + i)
+                          }
+                          }
+                          
+                          const txt = "AABAACAADAABAAABAA"
+                          const pat = "AABA"
+                          naive(txt,pat)
+                          
+                          // O(m*n)`,
+                        output: `pattern found at:0
+                        pattern found at:9
+                        pattern found at:13`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Knuth Morris",
