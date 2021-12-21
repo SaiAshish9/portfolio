@@ -13607,8 +13607,70 @@ SC O(N*W)
             ),
           },
           {
-            title: "Maximum Length Chain Of Pairs",
-            content: <></>,
+            title: "(MCL (maxChainLength)) Maximum Length Chain Of Pairs",
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  You are given n pairs of numbers . In every pair, the first
+                  number is always smaller than the second number. A pair (a,b)
+                  is followed by another pair (c,d) if b &lt; c. Find the
+                  longest chain which can be formed from a given set of pairs
+                </Span>
+                <Span>Input [[5,24],[39,60],[15,28],[27,40],[50,90]]</Span>
+                <Span>Output 3</Span>
+                <p>Chain [[5,24],[27,40],[50,90]]</p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `// this problem is a variation of standard lis
+
+                      class Pair {
+                        constructor(a,b){
+                          this.a = a
+                          this.b = b
+                        }
+                      }
+                      
+                      function MCL(arr) {
+                          const n = arr.length
+                          let lookupTab = Array(n).fill(1)
+                          for (i = 1; i < n; i++)
+                              for (j = 0; j < i; j++)
+                                  if (arr[i].a > arr[j].b && lookupTab[i] < lookupTab[j] + 1)
+                                      lookupTab[i] = lookupTab[j] + 1
+                          const max = Math.max(...lookupTab)
+                          let index = []
+                          let tmp = max
+                          for (let i = n - 1; i >= 0; i--) {
+                              if (lookupTab[i] == tmp) {
+                                  index.push(i)
+                                  tmp--
+                              }
+                          }
+                          index.reverse()
+                          index = index.map(x => arr[x])
+                          console.log(index)
+                          return max
+                      }
+                      
+                      MCL([
+                        new Pair(5,24),
+                        new Pair(39, 60),
+                        new Pair (27, 40), 
+                        new Pair(50, 90)
+                      ])`,
+                        output: `[ Pair { a: 5, b: 24 }, Pair { a: 27, b: 40 }, Pair { a: 50, b: 90 } ]
+                      3`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Naive",
