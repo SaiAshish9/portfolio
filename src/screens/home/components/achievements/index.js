@@ -28,6 +28,7 @@ import MLSA1 from "assets/home/microsoft1.jpeg";
 import MLSA2 from "assets/home/microsoft2.jpeg";
 
 import Tier1Img from "assets/home/tier1.png";
+import IncImg from "assets/home/100xvc.png";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
@@ -120,6 +121,11 @@ const data = [
     title: <I18n t="tier1" />,
     subTitle: <I18n t="tier1Desc" />,
     img: Tier1Img,
+  },
+  {
+    title: "100x.VC + Inc42",
+    subTitle: "Collaboration",
+    img: IncImg,
   },
 ];
 
