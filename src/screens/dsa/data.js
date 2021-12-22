@@ -14333,35 +14333,139 @@ SC O(N*W)
           },
           {
             title: "Sudoku",
-            content: <></>,
+            content: (
+              <>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Knight Tour",
-            content: <></>,
+            content: (
+              <>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "N Queens",
-            content: <></>,
+            content: (
+              <>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "N Queens 2",
-            content: <></>,
+            content: (
+              <>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Rate in a maze",
-            content: <></>,
+            content: (
+              <>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "String Permutations",
-            content: <></>,
+            content: (
+              <>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Word Break",
-            content: <></>,
+            content: (
+              <>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Subsets of a set",
-            content: <></>,
+            content: (
+              <>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
         ],
         content: (
