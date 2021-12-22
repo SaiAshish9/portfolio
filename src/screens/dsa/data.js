@@ -14271,15 +14271,93 @@ SC O(N*W)
       },
       bruteForce: {
         title: "Brute Force",
-        types: [],
+        content: (
+          <>
+            <Span>
+              It's a direct method in which all possible methods are enumerated
+              and it's guaranteed way to find the correct solution by listing
+              all the possible candidate solutions for the problem.The brute
+              force approach is inefficient. For real-time problems, algorithm
+              analysis often goes above the O(N!) order of growth. It's
+              execution time can quickly exceed the limits of computer in some
+              cases.
+            </Span>
+            <Span>
+              For Example: If there is a lock of 4-digit PIN. The digits to be
+              chosen from 0-9 then the brute force will be trying all possible
+              combinations one by one like 0001, 0002, 0003, 0004, and so on
+              until we get the right PIN. In the worst case, it will take 10,000
+              (10^4) tries to find the right combination.
+            </Span>
+            <Span>
+              For Travelling salesman problem and Knapsack problem, there is no
+              polynomial time solution. Hence they are classified as NP hard
+              problem. But they can solved by using backtracking approach, that
+              will increase the efficiency of the algorithm.
+            </Span>
+            <Span>
+              Naive algorithm is simply a brute force aprroach but substring can
+              be found in more efficient way using kmp and rabin karp
+            </Span>
+          </>
+        ),
       },
       backtracking: {
         title: "Backtracking",
-        types: [],
+        content: (
+          <>
+            <Span>
+              It's simply used to solve problems recursively by trying to build
+              the solution incrementally, removing those solutions that fail to
+              solve the problem incrementally
+            </Span>
+            <Span>
+              By being greedy, the algorithm matches the longest possible part.
+              DP guarantees optimal solution but not the greedy problems
+            </Span>
+            <Span>It makes use of depth first search (stack)</Span>
+            <Span>
+              Backtracking algorithms, upon failure, keep exploring other
+              possibilities. Such algorithms begin afresh from where they had
+              originally started, hence they backtrack (go back to the starting
+              point).
+            </Span>
+            <Span>It's used to solve:</Span>
+            <Span>
+              Decision Problem — In this, we search for a feasible solution.
+            </Span>
+            <Span>
+              Optimization Problem — In this, we search for the best solution.
+            </Span>
+            <Span>
+              Enumeration Problem — In this, we find all feasible solutions.
+            </Span>
+            <Span>Examples:</Span>
+            <Span>
+              1. While solving sudoku, if we find that the current digit cannot
+              provide us the solution. We simply backtrack and try next digit.
+              This drops a set of permutations
+            </Span>
+            <Span>
+              2. To get to an address, we go to a well-known landmark, then try
+              the first lane, for example. If there is no success, we backtrack
+              to the landmark again and try another lane (we may ask a passerby
+              for help). We keep doing this until we get to the address or give
+              up the search altogether.
+            </Span>
+            <Span>
+              <b>Backtracking Vs Branch And Bound</b>
+            </Span>
+          </>
+        ),
       },
       branchAndBound: {
         title: "Branch And Bound",
-        types: [],
+        content: (
+          <>
+            <Span></Span>
+          </>
+        ),
       },
       randomized: {
         title: "Randomized",
