@@ -14307,7 +14307,29 @@ SC O(N*W)
         types: [
           {
             title: "TSP",
-            content: <></>,
+            content: (
+              <>
+                <Span>
+                  <b>Traveling Salesman Problem Statement</b>
+                </Span>
+                <p>
+                  Given a set of cities and distance between every pair of
+                  cities, the problem is to find the shortest possible route
+                  that visits every city exactly once and returns back to the
+                  starting point.
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
           },
           {
             title: "Sudoku",
