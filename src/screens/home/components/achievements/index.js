@@ -123,8 +123,8 @@ const data = [
     img: Tier1Img,
   },
   {
-    title: "100x.VC + Inc42",
-    subTitle: "Collaboration",
+    title: <I18n t="100xvc" />,
+    subTitle: <I18n t="collaboration" />,
     img: IncImg,
   },
 ];
