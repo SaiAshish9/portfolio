@@ -14304,6 +14304,44 @@ SC O(N*W)
       },
       backtracking: {
         title: "Backtracking",
+        types: [
+          {
+            title: "TSP",
+            content: <></>,
+          },
+          {
+            title: "Sudoku",
+            content: <></>,
+          },
+          {
+            title: "Knight Tour",
+            content: <></>,
+          },
+          {
+            title: "N Queens",
+            content: <></>,
+          },
+          {
+            title: "N Queens 2",
+            content: <></>,
+          },
+          {
+            title: "Rate in a maze",
+            content: <></>,
+          },
+          {
+            title: "String Permutations",
+            content: <></>,
+          },
+          {
+            title: "Word Break",
+            content: <></>,
+          },
+          {
+            title: "Subsets of a set",
+            content: <></>,
+          },
+        ],
         content: (
           <>
             <Span>
@@ -14347,6 +14385,29 @@ SC O(N*W)
             </Span>
             <Span>
               <b>Backtracking Vs Branch And Bound</b>
+            </Span>
+            <Span>
+              1. Backtracking is used to find all possible solutions available
+              to a problem.When it realises that it has made a bad choice, it
+              undoes the last choice by backing it up. It searches the state
+              space tree until it has found a solution for the
+              problem.Branch-and-Bound is used to solve optimisation problems.It
+              completely searches the state space tree to get optimal solution.
+              It abondones pre-solution if it has a better optimal solution.
+            </Span>
+            <Span>
+              2. Backtracking traverses the tree in dfs whereas branch and bound
+              traverses the tree in any manner dfs or bfs
+            </Span>
+            <Span>
+              3.Backtracking involves feasibility function. Branch-and-Bound
+              involves a bounding function.
+            </Span>
+            <Span>4. Backtracking is more efficient.</Span>
+            <Span>
+              5. Backtracking is used in solving N-Queen Problem, Sum of subset.
+              Branch and bound is used in solving Knapsack Problem, Travelling
+              Salesman Problem.
             </Span>
           </>
         ),
