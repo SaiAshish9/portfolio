@@ -156,20 +156,20 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 1,
   swipeToSlide: true,
-  nextArrow: <NextArrow curr={8} />,
+  nextArrow: <NextArrow curr={9} />,
   prevArrow: <PrevArrow />,
 };
 
 const mSettings = {
   ...settings,
   slidesToShow: 3,
-  nextArrow: <NextArrow curr={9} />,
+  nextArrow: <NextArrow curr={10} />,
 };
 
 const sSettings = {
   ...settings,
   slidesToShow: 2,
-  nextArrow: <NextArrow curr={10} />,
+  nextArrow: <NextArrow curr={11} />,
 };
 
 const Achievements = () => {
