@@ -3,6 +3,7 @@ import BigOChart from "assets/home/complexity-chart.jpeg";
 import GraphImg from "assets/home/graphColoring.png";
 import TSPDPImg from "assets/home/tsp_dp.png";
 import TSPBacktrack from "assets/home/tsp-backtrack.png";
+import SudokuImg from "assets/home/sudoku.png";
 
 export const DATA = {
   ds: {
@@ -14459,12 +14460,103 @@ SC O(N*W)
                   Solve the given sudoku by replacing all the 0’s with
                   appropriate values ranging from 1 to 9.
                 </Span>
+                <Img left src={SudokuImg} />
                 <CodeEditor
                   options={{
                     codes: {
                       Javascript: {
-                        code: ``,
-                        output: ``,
+                        code: `function isSafe(grid, row, col, num)
+                        {
+                          // check horizontally
+                          for(let j = 0; j < n; j++)
+                            if (grid[row][j] == num)
+                              return false;
+                        
+                          // check vertically
+                          for(let i = 0; i < n; i++)
+                            if (grid[i][col] == num)
+                              return false;
+                        
+                         
+                          let startRow = row - row % 3,  
+                             startCol = col - col % 3; 
+                        
+                          // check within the section (3 * 3) (n = 3)
+                          for(let i = 0; i < 3; i++)
+                            for(let j = 0; j < 3; j++)
+                              if (grid[i + startRow][j + startCol] == num)
+                                return false;
+                        
+                          return true;
+                        }
+                        
+                        
+                        function solve(grid, row, col, n)
+                        {
+                          // avoid further tracking if all cells are explored 8 9
+                          if (row == n - 1 && col == n)
+                            return true;
+                        
+                          // move to next row
+                          if (col == n){
+                            row++; 
+                            col = 0;
+                          }
+                        
+                          // check for next element horizontally if element // is already present 
+                          if (grid[row][col] != 0)
+                            return solve(grid, row, col + 1,n);
+                        
+                          // if present value is 0, replace it 
+                          // with values from 0-9
+                          for(let num = 1; num <  n + 1; num++)
+                          {
+                            if (isSafe(grid, row, col, num))
+                            {
+                              grid[row][col] = num;
+                              // check for next column
+                              if (solve(grid, row, col + 1,n))
+                                return true;
+                            }
+                            grid[row][col] = 0;
+                          }
+                          return false;
+                        }
+                        
+                        let n = 9;
+                        const sudoku = Array.from(Array(n),()=>Array(n).fill(0))
+                        sudoku.forEach(x=>console.log(x.join(" ")))
+                        const start = new Date().getTime();
+                        console.log("#################")
+                        solve(sudoku, 0, 0,n)
+                        const end = new Date().getTime();
+                        sudoku.forEach(x=>console.log(x.join(" ")))
+                        console.log("#################")
+                        console.log("Time required to solve sudoku: ")
+                        console.log((end - start)/1000 + " ms")
+                        `,
+                        output: `0 0 0 0 0 0 0 0 0
+                        0 0 0 0 0 0 0 0 0
+                        0 0 0 0 0 0 0 0 0
+                        0 0 0 0 0 0 0 0 0
+                        0 0 0 0 0 0 0 0 0
+                        0 0 0 0 0 0 0 0 0
+                        0 0 0 0 0 0 0 0 0
+                        0 0 0 0 0 0 0 0 0
+                        0 0 0 0 0 0 0 0 0
+                        #################
+                        1 2 3 4 5 6 7 8 9
+                        4 5 6 7 8 9 1 2 3
+                        7 8 9 1 2 3 4 5 6
+                        2 1 4 3 6 5 8 9 7
+                        3 6 5 8 9 7 2 1 4
+                        8 9 7 2 1 4 3 6 5
+                        5 3 1 6 4 2 9 7 8
+                        6 4 2 9 7 8 5 3 1
+                        9 7 8 5 3 1 6 4 2
+                        #################
+                        Time required to solve sudoku: 
+                        0.001 ms`,
                       },
                     },
                   }}
