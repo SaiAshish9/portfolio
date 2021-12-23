@@ -14533,7 +14533,7 @@ SC O(N*W)
                         sudoku.forEach(x=>console.log(x.join(" ")))
                         console.log("#################")
                         console.log("Time required to solve sudoku: ")
-                        console.log((end - start)/1000 + " ms")
+                        console.log((end - start)/1000 + " s")
                         `,
                         output: `0 0 0 0 0 0 0 0 0
                         0 0 0 0 0 0 0 0 0
@@ -14556,7 +14556,7 @@ SC O(N*W)
                         9 7 8 5 3 1 6 4 2
                         #################
                         Time required to solve sudoku: 
-                        0.001 ms`,
+                        0.001 s`,
                       },
                     },
                   }}
