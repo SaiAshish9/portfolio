@@ -4,6 +4,7 @@ import GraphImg from "assets/home/graphColoring.png";
 import TSPDPImg from "assets/home/tsp_dp.png";
 import TSPBacktrack from "assets/home/tsp-backtrack.png";
 import SudokuImg from "assets/home/sudoku.png";
+import KnightImg from "assets/home/knight-tour.png";
 
 export const DATA = {
   ds: {
@@ -14567,12 +14568,97 @@ SC O(N*W)
             title: "Knight Tour",
             content: (
               <>
+                <Span>
+                  <b> Problem Statement</b>
+                </Span>
+                <Span>
+                  Given a N*N board with the Knight placed on the first block of
+                  an empty board. Moving according to the rules of chess knight
+                  must visit each square exactly once. Print the order of each
+                  the cell in which they are visited. ( horse should visite all
+                  the cells exactly once )
+                </Span>
+                <Img left src={KnightImg} alt="img" />
                 <CodeEditor
                   options={{
                     codes: {
                       Javascript: {
-                        code: ``,
-                        output: ``,
+                        code: `const print = b => b.forEach(x=>console.log(x.join(" ")))
+
+                        function isSafe(x,y,board){
+                          // coordinate should lie within the board
+                           return x >=0 && x<n && y >= 0 && y<n && board[x][y] == -1
+                        }
+                        
+                        function knightTour(board,xMove,yMove,n){
+                          // place knight at (0,0) first
+                          board[0][0] = 0
+                          if(!knightTourGuide(0,0,1,board,xMove,yMove,n)){
+                             return false
+                          }
+                          return true
+                        }
+                        
+                        function knightTourGuide(x,y,move,board,xMove,yMove,n){
+                          let next_x, next_y;
+                          if(move == n*n) return true
+                          for(let k=0;k<n;k++){
+                            // find next move using array
+                            next_x = x + xMove[k];
+                            next_y = y + yMove[k];
+                            if(isSafe(next_x,next_y,board)){
+                              board[next_x][next_y] = move
+                            // check for next move
+                            if(knightTourGuide(next_x, next_y, move + 1, board, xMove, yMove,n)) 
+                              return true
+                            else
+                              board[next_x][next_y] = -1 // backtrack
+                          }
+                          }
+                          return false
+                        }
+                        
+                        
+                        const n = 8
+                        // A Knight can make maximum eight moves
+                        
+                        console.log("Initial Board")
+                        const board = Array.from(Array(n),()=>Array(n).fill(-1))
+                        
+                        // we need to memorize below two arrays:
+                        const xMove = [ 2, 1, -1, -2, -2, -1, 1, 2 ];
+                        // 2 -> move 2 cells right
+                        const yMove = [ 1, 2, 2, 1, -1, -2, -2, -1 ];
+                        // -1 -> move one cell downwards
+                        
+                        print(board)
+                        console.log("Total No. Of Cells : " + n*n)
+                        const start = new Date().getTime()
+                        knightTour(board,xMove,yMove,n)
+                        const end = new Date().getTime()
+                        console.log("Solved Board")
+                        print(board)
+                        console.log("Time Required For Execution: "+ (end-start)/1000 + "s")`,
+                        output: `Initial Board
+                        -1 -1 -1 -1 -1 -1 -1 -1
+                        -1 -1 -1 -1 -1 -1 -1 -1
+                        -1 -1 -1 -1 -1 -1 -1 -1
+                        -1 -1 -1 -1 -1 -1 -1 -1
+                        -1 -1 -1 -1 -1 -1 -1 -1
+                        -1 -1 -1 -1 -1 -1 -1 -1
+                        -1 -1 -1 -1 -1 -1 -1 -1
+                        -1 -1 -1 -1 -1 -1 -1 -1
+                        Total No. Of Cells : 64
+                        Solved Board
+                        0 59 38 33 30 17 8 63
+                        37 34 31 60 9 62 29 16
+                        58 1 36 39 32 27 18 7
+                        35 48 41 26 61 10 15 28
+                        42 57 2 49 40 23 6 19
+                        47 50 45 54 25 20 11 14
+                        56 43 52 3 22 13 24 5
+                        51 46 55 44 53 4 21 12
+                        Time Required For Execution: 23.616s`,
                       },
                     },
                   }}
