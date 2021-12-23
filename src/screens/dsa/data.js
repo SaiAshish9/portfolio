@@ -14578,6 +14578,7 @@ SC O(N*W)
                   the cell in which they are visited. ( horse should visite all
                   the cells exactly once )
                 </Span>
+                <Span>Note -> board[7][4] will be 53 at below pic.</Span>
                 <Img left src={KnightImg} alt="img" />
                 <CodeEditor
                   options={{
