@@ -2,6 +2,7 @@ import { CodeEditor, Span, Img } from "./components";
 import BigOChart from "assets/home/complexity-chart.jpeg";
 import GraphImg from "assets/home/graphColoring.png";
 import TSPDPImg from "assets/home/tsp_dp.png";
+import TSPBacktrack from "assets/home/tsp-backtrack.png";
 
 export const DATA = {
   ds: {
@@ -14312,6 +14313,7 @@ SC O(N*W)
                 <Span>
                   <b>Traveling Salesman Problem Statement</b>
                 </Span>
+                <Img left src={TSPBacktrack} />
                 <p>
                   Given a set of cities and distance between every pair of
                   cities, the problem is to find the shortest possible route
