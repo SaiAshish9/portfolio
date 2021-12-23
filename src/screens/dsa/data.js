@@ -14671,6 +14671,19 @@ SC O(N*W)
             title: "N Queens",
             content: (
               <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  The N Queen is the problem of placing N chess queens on an N×N
+                  chessboard so that no two queens attack each other
+                </Span>
+                <p>
+                  4 Queen’s Solution : <br />[ 0, 1, 0, 0]
+                  <br /> [ 0, 0, 0, 1]
+                  <br /> [ 1, 0, 0, 0]
+                  <br />[ 0, 0, 1, 0]
+                </p>
                 <CodeEditor
                   options={{
                     codes: {
