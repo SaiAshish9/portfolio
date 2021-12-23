@@ -14452,6 +14452,13 @@ SC O(N*W)
             title: "Sudoku",
             content: (
               <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Solve the given sudoku by replacing all the 0’s with
+                  appropriate values ranging from 1 to 9.
+                </Span>
                 <CodeEditor
                   options={{
                     codes: {
