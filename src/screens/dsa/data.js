@@ -14322,8 +14322,123 @@ SC O(N*W)
                   options={{
                     codes: {
                       Javascript: {
-                        code: ``,
-                        output: ``,
+                        code: `
+                        class Graph {
+                          constructor(noOfVertices) {
+                              this.noOfVertices = noOfVertices;
+                              this.adjMatrix = Array.from(Array(noOfVertices), () => Array(noOfVertices).fill(0));
+                              this.v = ['A', 'B', 'C', 'D']
+                          }
+                      
+                          addEdge(u, v, wt) {
+                              if ((u >= this.noOfVertices) || (v > this.noOfVertices)) {
+                                  console.log("Vertex does not exists!");
+                                  return
+                              }
+                              if (u == v) {
+                                  console.log("Same Vertex!");
+                                  return
+                              }
+                              this.adjMatrix[u][v] = wt
+                              this.adjMatrix[v][u] = wt
+                          }
+                      
+                          print() {
+                              console.log(this.adjMatrix)
+                          }
+                      
+                          bfs(start=this.adjMatrix[0][0]) {
+                              let visited = {};
+                              let q = [];
+                              let output = ""
+                              visited[start] = true;
+                              q.push(start);
+                              while (q.length != 0){
+                                  let ele = q[0]
+                                  q.shift();
+                                  output += this.v[ele] + " ";
+                                  for (let i=0;i<this.noOfVertices;i++) {
+                                  if (this.adjMatrix[ele][i]&&!visited[i]){
+                                    visited[i] = true;
+                                    q.push(i)
+                                  }
+                                }
+                              }
+                              console.log(output)
+                          }
+                      
+                          dfs(start=this.adjMatrix[0][0]) {
+                              let output = { res: "" }
+                              // strings are immutable in js and cannot be directly
+                              // passed by reference
+                              this.dfsHelper(start, {}, output)
+                              console.log(output.res)
+                          }
+                      
+                          dfsHelper(vert, visited, output) {
+                              visited[vert] = true;
+                              output.res += this.v[vert] + " "
+                              for (let i=0;i<this.noOfVertices;i++) {
+                                  // if some vertex is adjacent
+                                  if (this.adjMatrix[vert][i]&&!visited[i])
+                                      this.dfsHelper(i, visited, output);
+                              }
+                          }
+                      
+                          tsp(){
+                           let result = []
+                           let visited = Array(this.noOfVertices).fill(false)
+                           this.tspHelper(0,1,0,result,visited)
+                           console.log(Math.min(...result),result)
+                          }
+                      
+                          tspHelper(curr,count,cost,result,visited){
+                            // if exploration of all vertices is completed 
+                            // ,simply backtrack to the initial vertex
+                            if(count === this.noOfVertices && this.adjMatrix[curr][0]){
+                              result.push(cost+this.adjMatrix[curr][0]) 
+                              return
+                            }
+                            for(let i=0;i<this.noOfVertices;i++){
+                              let curr_cost = this.adjMatrix[curr][i]
+                              if(!visited[i]&&curr_cost){
+                                visited[i] = true
+                                this.tspHelper(i,count+1,cost+curr_cost,result,visited)
+                                visited[i] = false
+                              }
+                            }
+                          }
+                      }
+                      
+                      const g = new Graph(4)
+                      g.addEdge(0, 1, 20);
+                      g.addEdge(0, 2, 42);
+                      g.addEdge(0, 3, 25);
+                      g.addEdge(1, 2, 30);
+                      g.addEdge(1, 3, 34);
+                      g.addEdge(3, 2, 10);
+                      g.print();
+                      console.log("DFS");
+                      g.dfs();
+                      console.log("BFS");
+                      g.bfs();
+                      g.tsp()                      
+                      `,
+                        output: `[
+                          [ 0, 20, 42, 25 ],
+                          [ 20, 0, 30, 34 ],
+                          [ 42, 30, 0, 10 ],
+                          [ 25, 34, 10, 0 ]
+                        ]
+                        DFS
+                        A B C D 
+                        BFS
+                        A B C D 
+                        85 [
+                          124,  90,  85, 106, 124,
+                          134, 131, 106,  90, 134,
+                          131,  85
+                        ]`,
                       },
                     },
                   }}
