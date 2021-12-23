@@ -14503,12 +14503,11 @@ SC O(N*W)
                             col = 0;
                           }
                         
-                          // check for next element horizontally if element // is already present 
+                          // check for next element horizontally if element is already present 
                           if (grid[row][col] != 0)
                             return solve(grid, row, col + 1,n);
                         
-                          // if present value is 0, replace it 
-                          // with values from 0-9
+                          // if present value is 0, replace it with values from 0-9
                           for(let num = 1; num <  n + 1; num++)
                           {
                             if (isSafe(grid, row, col, num))
