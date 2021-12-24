@@ -14882,12 +14882,95 @@ SC O(N*W)
             title: "Rate in a maze",
             content: (
               <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <p>
+                  A Maze is given as N*N binary matrix of blocks where source
+                  block is the upper left most block i.e., maze[0][0] and
+                  destination block is lower rightmost block i.e.,
+                  maze[N-1][N-1]. A rat starts from source and has to reach the
+                  destination. The rat can move only in two directions: forward
+                  and down.In the maze matrix, 0 means the block is a dead end
+                  and 1 means the block can be used in the path from source to
+                  destination.
+                </p>
                 <CodeEditor
                   options={{
                     codes: {
                       Javascript: {
-                        code: ``,
-                        output: ``,
+                        code: `const print = b => b.forEach(x => console.log(x.join(" ")))
+
+                        function isSafe(maze,x,y,n)
+                        {
+                            // coordinate should lie within the matrix
+                            return (x >= 0 && x < n && y >= 0
+                                && y < n && maze[x][y] == 1);
+                        }
+                        
+                        function solve(maze,n,result)
+                        {
+                           return traverseMaze(maze, 0, 0, result,n)
+                        }
+                        
+                        function traverseMaze(maze,x,y,result,n)
+                        {
+                            // if rate is at the last cell return true
+                            if (x == n - 1 && y == n - 1
+                              && maze[x][y] == 1) {
+                              result[x][y] = 1;
+                              return true;
+                            }
+                            if (isSafe(maze, x, y,n)) {
+                              if (result[x][y] == 1)
+                                return false;
+                              result[x][y] = 1; 
+                              // move right
+                              if (traverseMaze(maze, x + 1, y, result,n))
+                                return true;
+                              // move down
+                              if (traverseMaze(maze, x, y + 1, result,n))
+                                return true;
+                              // move left
+                              if (traverseMaze(maze, x - 1, y, result,n))
+                                return true;
+                              // move upwards
+                              if (traverseMaze(maze, x, y - 1, result,n))
+                                return true;
+                              result[x][y] = 0; // backtrack
+                              return false;
+                            }
+                            return false;
+                        }
+                        
+                        console.log("Maze: ")
+                        const maze=[
+                          [ 1, 0, 0, 0 ],
+                          [ 1, 1, 0, 1 ],
+                          [ 0, 1, 0, 0 ],
+                          [ 1, 1, 1, 1 ] 
+                          ];
+                        print(maze)
+                        const n = maze.length;
+                        const result = Array.from(Array(n),()=>Array(n).fill(0))
+                        const start = new Date().getTime()
+                        solve(maze,n,result);
+                        const end = new Date().getTime()
+                        console.log("Result: ")
+                        print(result)
+                        console.log("Execution Time: " + (end - start)/1000 +"s")
+                        `,
+                        output: `Maze: 
+                        1 0 0 0
+                        1 1 0 1
+                        0 1 0 0
+                        1 1 1 1
+                        Result: 
+                        1 0 0 0
+                        1 1 0 0
+                        0 1 0 0
+                        0 1 1 1
+                        Execution Time: 0.001s`,
                       },
                     },
                   }}
