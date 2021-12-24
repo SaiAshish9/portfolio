@@ -14984,6 +14984,9 @@ SC O(N*W)
             title: "String Permutations",
             content: (
               <>
+                <p>
+                  <b>Naive Method</b>
+                </p>
                 <CodeEditor
                   options={{
                     codes: {
