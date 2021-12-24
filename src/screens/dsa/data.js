@@ -5,6 +5,8 @@ import TSPDPImg from "assets/home/tsp_dp.png";
 import TSPBacktrack from "assets/home/tsp-backtrack.png";
 import SudokuImg from "assets/home/sudoku.png";
 import KnightImg from "assets/home/knight-tour.png";
+import NQueensImg from "assets/home/nqueens.png";
+import NQueensImg2 from "assets/home/nqueens2.png";
 
 export const DATA = {
   ds: {
@@ -14678,6 +14680,7 @@ SC O(N*W)
                   The N Queen is the problem of placing N chess queens on an N×N
                   chessboard so that no two queens attack each other
                 </Span>
+                <Img left src={NQueensImg} />
                 <p>
                   4 Queen’s Solution : <br />[ 0, 1, 0, 0]
                   <br /> [ 0, 0, 0, 1]
@@ -14693,7 +14696,7 @@ SC O(N*W)
                         function isSafe(board,row,col,n){
                            let i,j
                           
-                           // right side
+                           // left side
                            for(let i=0;i<col;i++)
                             if(board[row][i]==1) return false
                         
@@ -14709,8 +14712,7 @@ SC O(N*W)
                         }
                         
                         function solve(board,n){
-                           if(placeQueens(board,0,n)) return true
-                           return false
+                           return placeQueens(board,0,n)
                         }
                         
                         function placeQueens(board,col,n){
@@ -14761,12 +14763,101 @@ SC O(N*W)
             title: "N Queens 2",
             content: (
               <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Img left src={NQueensImg2} />
+                <p>
+                  The n-queens puzzle is the problem of placing n queens on an n
+                  x n chessboard such that no two queens attack each other.
+                  Given an integer n, return the number of distinct solutions to
+                  the n-queens puzzle.
+                </p>
                 <CodeEditor
                   options={{
                     codes: {
                       Javascript: {
-                        code: ``,
-                        output: ``,
+                        code: `const print = b => b.forEach(x=>console.log(x.join(" ")))
+
+                        function isSafe(board,row,col,n){
+                           let i,j
+                          
+                           // right side
+                           for(let i=0;i<col;i++)
+                            if(board[row][i]==1) return false
+                        
+                          // upper diagonal
+                          for (let i = row, j = col; i >= 0 && j >= 0; i--, j--)
+                            if (board[i][j] == 1) return false;
+                          
+                          // lower diagnoal  
+                          for (i = row, j = col; j >= 0 && i < n; i++, j--)
+                            if (board[i][j] == 1) return false;
+                        
+                           return true
+                        }
+                        
+                        function solve(board,n,result){
+                           return placeQueens(board,0,n,result)
+                        }
+                        
+                        function placeQueens(board,col,n,result){
+                          // if all columns are explored, the board is solved
+                          if (col == n){
+                            result.push(board.map((cell,i)=>cell.indexOf(1)))
+                            return true
+                          };
+                          
+                          let res = false
+                          
+                          for (let i = 0; i < n; i++) {
+                            if (isSafe(board, i, col,n)) {
+                              board[i][col] = 1;
+                              // check for next col 
+                              res = placeQueens(board, col + 1,n,result) || res;
+                              board[i][col] = 0; // backtrack
+                              }
+                            }
+                          return res;
+                        }
+                        
+                        const n = 4
+                        
+                        console.log("Initial Board ( N = 4 )")
+                        const board = Array.from(Array(n),()=>Array(n).fill(0))
+                        print(board)
+                        const result = []
+                        const start = new Date().getTime()
+                        solve(board,n,result)
+                        const end = new Date().getTime()
+                        console.log("Solved Board(s) ( 4 * 4 )")
+                        result.forEach((r,k)=>{
+                          let temp = Array.from(Array(n),()=>Array(n).fill(0))
+                          for(let index in r) temp[index][r[index]] = 1
+                          console.log("Board " + (k+1)  + " :")
+                          print(temp)
+                        })
+                        console.log("Time Required For Execution: " + (end - start) / 1000 + "s")
+                        console.log("No. of distinct solutions : " + result.length)
+                        `,
+                        output: `Initial Board ( N = 4 )
+                        0 0 0 0
+                        0 0 0 0
+                        0 0 0 0
+                        0 0 0 0
+                        Solved Board(s) ( 4 * 4 )
+                        Board 1 :
+                        0 0 1 0
+                        1 0 0 0
+                        0 0 0 1
+                        0 1 0 0
+                        Board 2 :
+                        0 1 0 0
+                        0 0 0 1
+                        1 0 0 0
+                        0 0 1 0
+                        Time Required For Execution: 0.001s
+                        No. of distinct solutions : 2`,
                       },
                     },
                   }}
