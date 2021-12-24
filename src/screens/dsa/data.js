@@ -14578,8 +14578,8 @@ SC O(N*W)
                   the cell in which they are visited. ( horse should visite all
                   the cells exactly once )
                 </Span>
-                <Span>Note -> board[7][4] will be 53 at below pic.</Span>
                 <Img left src={KnightImg} alt="img" />
+                <p>Note -&lt; board[7][4] will be 53 at below pic.</p>
                 <CodeEditor
                   options={{
                     codes: {
@@ -14688,8 +14688,68 @@ SC O(N*W)
                   options={{
                     codes: {
                       Javascript: {
-                        code: ``,
-                        output: ``,
+                        code: `const print = b => b.forEach(x=>console.log(x.join(" ")))
+
+                        function isSafe(board,row,col,n){
+                           let i,j
+                          
+                           // right side
+                           for(let i=0;i<col;i++)
+                            if(board[row][i]==1) return false
+                        
+                          // upper diagonal
+                          for (let i = row, j = col; i >= 0 && j >= 0; i--, j--)
+                            if (board[i][j] == 1) return false;
+                          
+                          // lower diagnoal  
+                          for (i = row, j = col; j >= 0 && i < n; i++, j--)
+                            if (board[i][j] == 1) return false;
+                        
+                           return true
+                        }
+                        
+                        function solve(board,n){
+                           if(placeQueens(board,0,n)) return true
+                           return false
+                        }
+                        
+                        function placeQueens(board,col,n){
+                          // if all columns are explored, the board is solved
+                          if (col >= n) return true;
+                        
+                          for (let i = 0; i < n; i++) {
+                            if (isSafe(board, i, col)) {
+                              board[i][col] = 1;
+                              // check for next col 
+                              if (placeQueens(board, col + 1,n)) return true;
+                              board[i][col] = 0; // backtrack
+                              }
+                            }
+                          return false;
+                        }
+                        
+                        const n = 4
+                        
+                        console.log("Initial Board ( 4 Queen's )")
+                        const board = Array.from(Array(n),()=>Array(n).fill(0))
+                        print(board)
+                        const start = new Date().getTime()
+                        solve(board,n)
+                        const end = new Date().getTime()
+                        console.log("Solved Board ( 4 Queen's )")
+                        print(board)
+                        console.log("Time Required For Execution: " + (end - start) / 1000 + "s")`,
+                        output: `Initial Board ( 4 Queen's )
+                        0 0 0 0
+                        0 0 0 0
+                        0 0 0 0
+                        0 0 0 0
+                        Solved Board ( 4 Queen's )
+                        0 0 1 0
+                        1 0 0 0
+                        0 0 0 1
+                        0 1 0 0
+                        Time Required For Execution: 0s`,
                       },
                     },
                   }}
