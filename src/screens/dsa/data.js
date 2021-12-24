@@ -14991,8 +14991,61 @@ SC O(N*W)
                   options={{
                     codes: {
                       Javascript: {
-                        code: ``,
-                        output: ``,
+                        code: `function permuteNaive(str,l,r){  // T(n)
+                          if(l==r)
+                            console.log(str.map(x=>String.fromCharCode(x)).join(""))
+                          else{
+                            for(let i=l;i<=r;i++){ // n + 1
+                              if(str[l]) [str[l],str[i]] = [str[i],str[l]] // 1
+                              permuteNaive(str,l+1,r) // n * T(n-1) 
+                              if(str[l]) [str[l],str[i]] = [str[i],str[l]] // 1
+                            }
+                          }
+                        }
+                        
+                        function permuteBacktrack(str,answer){
+                          if(str.length === 0) {
+                            console.log(answer)
+                            return
+                          }
+                          
+                          for(let i = 0 ;i < str.length; i++){
+                            let ch = str[i];
+                            let left = str.substring(0, i);
+                            let right = str.substring(i + 1);
+                            let rest = left + right;
+                            permuteBacktrack(rest, answer + ch);
+                          }
+                        }
+                        
+                        // Recurrence Relation : T(n) = n * T(n-1) + O(1)
+                        // Time Complexity : n! * n
+                        // There are n! permutations and it requires O(n) time to print 
+                        // a permutation.
+                        
+                        const str = "abc"
+                        const n = str.length
+                        const strArr = str.split("").map(x=>x.charCodeAt(0)) 
+                        console.log("Naive")
+                        permuteNaive(strArr,0,n-1)
+                        // we can't pass string by reference as it's immutable in js
+                        console.log("Backtracking")
+                        permuteBacktrack(str,"")                        
+                        `,
+                        output: `Naive
+                        abc
+                        acb
+                        bac
+                        bca
+                        cba
+                        cab
+                        Backtracking
+                        abc
+                        acb
+                        bac
+                        bca
+                        cab
+                        cba`,
                       },
                     },
                   }}
@@ -15004,6 +15057,14 @@ SC O(N*W)
             title: "Word Break",
             content: (
               <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <p>
+                  Given a valid sentence without any spaces between the words
+                  and a dictionary of valid English words, find all possible
+                  ways to break the sentence in individual dictionary words.
+                </p>
                 <CodeEditor
                   options={{
                     codes: {
