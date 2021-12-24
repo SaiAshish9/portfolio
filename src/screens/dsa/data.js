@@ -7,6 +7,7 @@ import SudokuImg from "assets/home/sudoku.png";
 import KnightImg from "assets/home/knight-tour.png";
 import NQueensImg from "assets/home/nqueens.png";
 import NQueensImg2 from "assets/home/nqueens2.png";
+import MazeImg from "assets/home/maze.png";
 
 export const DATA = {
   ds: {
@@ -14885,6 +14886,7 @@ SC O(N*W)
                 <Span>
                   <b>Problem Statement</b>
                 </Span>
+                <Img left src={MazeImg} />
                 <p>
                   A Maze is given as N*N binary matrix of blocks where source
                   block is the upper left most block i.e., maze[0][0] and
