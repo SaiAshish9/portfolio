@@ -14862,6 +14862,19 @@ SC O(N*W)
                     },
                   }}
                 />
+                <p>
+                  <b>More Efficient Backtracking Solution</b>
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
               </>
             ),
           },
