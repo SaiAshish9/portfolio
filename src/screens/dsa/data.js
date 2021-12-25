@@ -8,6 +8,7 @@ import KnightImg from "assets/home/knight-tour.png";
 import NQueensImg from "assets/home/nqueens.png";
 import NQueensImg2 from "assets/home/nqueens2.png";
 import MazeImg from "assets/home/maze.png";
+import PermutationsImg from "assets/home/pnc.png";
 
 export const DATA = {
   ds: {
@@ -14987,6 +14988,7 @@ SC O(N*W)
                 <p>
                   <b>Naive Method</b>
                 </p>
+                <Img left src={PermutationsImg} />
                 <CodeEditor
                   options={{
                     codes: {
