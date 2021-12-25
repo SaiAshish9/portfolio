@@ -9,6 +9,8 @@ import NQueensImg from "assets/home/nqueens.png";
 import NQueensImg2 from "assets/home/nqueens2.png";
 import MazeImg from "assets/home/maze.png";
 import PermutationsImg from "assets/home/pnc.png";
+import WordBreakImg from "assets/home/wordbreak.png";
+import SubsetsImg from "assets/home/subsets.png";
 
 export const DATA = {
   ds: {
@@ -14985,10 +14987,14 @@ SC O(N*W)
             title: "String Permutations",
             content: (
               <>
-                <p>
+                <Span>
                   <b>Naive Method</b>
-                </p>
+                </Span>
                 <Img left src={PermutationsImg} />
+                <p>
+                  Note : I missed a link between root node and one of its child
+                  at below pic 😂
+                </p>
                 <CodeEditor
                   options={{
                     codes: {
@@ -15062,17 +15068,36 @@ SC O(N*W)
                 <Span>
                   <b>Problem Statement</b>
                 </Span>
-                <p>
+                <Span>
                   Given a valid sentence without any spaces between the words
                   and a dictionary of valid English words, find all possible
                   ways to break the sentence in individual dictionary words.
-                </p>
+                </Span>
+                <Img left src={WordBreakImg} reduceH />
                 <CodeEditor
                   options={{
                     codes: {
                       Javascript: {
-                        code: ``,
-                        output: ``,
+                        code: `function breakWords(n,str,words,res=""){
+                          for(let i=1;i<=n;i++){
+                            const prefix = str.substring(0,i)
+                            if(words.includes(prefix)){ // isSafe
+                                if(i==n){
+                                res += prefix
+                                console.log(res)
+                                return
+                                }
+                                breakWords(n-i,str.substring(i),words,res + prefix) // backtrack
+                            }
+                          }
+                        }
+                        
+                        const words = ['I','Love','❤️','My','India']
+                        const str = "I❤️India"
+                        const n = str.length
+                        breakWords(n,str,words)
+                        `,
+                        output: `I❤️India`,
                       },
                     },
                   }}
@@ -15084,12 +15109,50 @@ SC O(N*W)
             title: "Subsets of a set",
             content: (
               <>
+                <Span>
+                  <b> Problem Statement</b>
+                </Span>
+                <Span>Find all possible subsets of the given set</Span>
+                <Img left src={SubsetsImg} reduceH />
                 <CodeEditor
                   options={{
                     codes: {
                       Javascript: {
-                        code: ``,
-                        output: ``,
+                        code: `function subsets(i_set,result,subset=[],index=0){
+                          result.push(subset.slice()) // subset.slice() is necessary
+                          for(let i=index;i<i_set.length;i++){
+                             subset.push(i_set[i])
+                             subsets(i_set,result,subset,i+1)
+                             subset.pop() // backtrack
+                          }
+                          return
+                         }
+                         
+                         const i_set = [1,2,3]
+                         const result = []
+                         console.log("Initial Set : ")
+                         console.log(new Set(i_set))
+                         const start = new Date().getTime()
+                         subsets(i_set,result)
+                         const end = new Date().getTime()
+                         console.log("Resultant Subsets : ")
+                         console.log(new Set(result))
+                         console.log("Execution Time: " + (end-start)/1000 + "s")
+                         `,
+                        output: `Initial Set : 
+                        Set { 1, 2, 3 }
+                        Subsets : 
+                        Set {
+                          [],
+                          [ 1 ],
+                          [ 1, 2 ],
+                          [ 1, 2, 3 ],
+                          [ 1, 3 ],
+                          [ 2 ],
+                          [ 2, 3 ],
+                          [ 3 ]
+                        }
+                        Execution Time: 0s`,
                       },
                     },
                   }}
