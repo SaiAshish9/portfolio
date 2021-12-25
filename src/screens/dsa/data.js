@@ -4221,6 +4221,160 @@ pop_back() :
                   }}
                 />
                 <Span>
+                  <b>Left View Of Binary Tree</b>
+                </Span>
+                <p>
+                  Left view of a Binary Tree is set of nodes visible when tree
+                  is visited from left side.
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `class Node {
+                          constructor(val) {
+                              this.data = val;
+                              this.left = null;
+                              this.right = null;
+                          }
+                      }
+                      
+                      class BinaryTree {
+                          constructor() {
+                              this.root = null
+                          }
+                      
+                          inorder(root = this.root) {
+                              if (root != null) {
+                                  this.inorder(root.left)
+                                  console.log(root.data)
+                                  this.inorder(root.right)
+                              }
+                          }
+                      
+                          // keep track of left most node
+                          // at each level of bfs ( level order 
+                          // traversal with the help of a queue
+                      
+                          leftView() {
+                              let queue = []
+                              queue.push(this.root)
+                              while (queue.length > 0) {
+                                const n = queue.length
+                                for(let i=0;i<n;i++){
+                                  let curr = queue.shift();
+                                  if(i==0)
+                                  console.log(curr.data)
+                                  if (curr.left != null)
+                                    queue.push(curr.left);
+                                  if (curr.right != null)
+                                    queue.push(curr.right);
+                                 }
+                              }
+                          }
+                      
+                      }
+                      
+                      let tree = new BinaryTree();
+                      tree.root = new Node(1);
+                      tree.root.left = new Node(2);
+                      tree.root.right = new Node(3);
+                      tree.root.right.left = new Node(4);
+                      console.log("Inorder Traversal: ")
+                      tree.inorder()
+                      console.log("Left View Of Binary Tree:")
+                      tree.leftView()`,
+                        output: `Inorder Traversal: 
+                        2
+                        1
+                        4
+                        3
+                        Left View Of Binary Tree:
+                        1
+                        2
+                        4`,
+                      },
+                    },
+                  }}
+                />
+                <Span>
+                  <b>Right View Of Binary Tree</b>
+                </Span>
+                <p>
+                  Right view of a Binary Tree is set of nodes visible when tree
+                  is visited from Right side.
+                </p>
+                <CodeEditor
+                  options={{
+                    codes: {
+                      Javascript: {
+                        code: `class Node {
+                          constructor(val) {
+                              this.data = val;
+                              this.left = null;
+                              this.right = null;
+                          }
+                      }
+                      
+                      class BinaryTree {
+                          constructor() {
+                              this.root = null
+                          }
+                      
+                          inorder(root = this.root) {
+                              if (root != null) {
+                                  this.inorder(root.left)
+                                  console.log(root.data)
+                                  this.inorder(root.right)
+                              }
+                          }
+                      
+                          // keep track of right most node
+                          // at each level of bfs ( level order 
+                          // traversal with the help of a queue
+                      
+                          rightView() {
+                              let queue = []
+                              queue.push(this.root)
+                              while (queue.length > 0) {
+                                const n = queue.length
+                                for(let i=0;i<n;i++){
+                                  let curr = queue.shift();
+                                  if(i==n-1)
+                                  console.log(curr.data)
+                                  if (curr.left != null)
+                                    queue.push(curr.left);
+                                  if (curr.right != null)
+                                    queue.push(curr.right);
+                                 }
+                              }
+                          }
+                      
+                      }
+                      
+                      let tree = new BinaryTree();
+                      tree.root = new Node(1);
+                      tree.root.left = new Node(2);
+                      tree.root.right = new Node(3);
+                      tree.root.right.left = new Node(4);
+                      console.log("Inorder Traversal: ")
+                      tree.inorder()
+                      console.log("Right View Of Binary Tree:")
+                      tree.rightView()`,
+                        output: `Inorder Traversal: 
+                        2
+                        1
+                        4
+                        3
+                        Right View Of Binary Tree:
+                        1
+                        3
+                        4`,
+                      },
+                    },
+                  }}
+                />
+                <Span>
                   <b>Flip binary tree</b>
                 </Span>
                 <Img
