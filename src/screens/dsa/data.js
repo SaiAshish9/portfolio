@@ -4229,7 +4229,7 @@ pop_back() :
                   Left view of a Binary Tree is set of nodes visible when tree
                   is visited from left side.
                 </Span>
-                <Img src={LeftViewBT} reduceH />
+                <Img left src={LeftViewBT} reduceH />
                 <CodeEditor
                   options={{
                     codes: {
@@ -4307,7 +4307,7 @@ pop_back() :
                   Right view of a Binary Tree is set of nodes visible when tree
                   is visited from Right side.
                 </Span>
-                <Img src={RightViewBT} reduceH />
+                <Img left src={RightViewBT} reduceH />
                 <CodeEditor
                   options={{
                     codes: {
