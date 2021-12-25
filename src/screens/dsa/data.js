@@ -11,6 +11,8 @@ import MazeImg from "assets/home/maze.png";
 import PermutationsImg from "assets/home/pnc.png";
 import WordBreakImg from "assets/home/wordbreak.png";
 import SubsetsImg from "assets/home/subsets.png";
+import LeftViewBT from "assets/home/leftView.png";
+import RightViewBT from "assets/home/rightView.png";
 
 export const DATA = {
   ds: {
@@ -4223,10 +4225,11 @@ pop_back() :
                 <Span>
                   <b>Left View Of Binary Tree</b>
                 </Span>
-                <p>
+                <Span>
                   Left view of a Binary Tree is set of nodes visible when tree
                   is visited from left side.
-                </p>
+                </Span>
+                <Img src={LeftViewBT} reduceH />
                 <CodeEditor
                   options={{
                     codes: {
@@ -4254,7 +4257,7 @@ pop_back() :
                       
                           // keep track of left most node
                           // at each level of bfs ( level order 
-                          // traversal with the help of a queue
+                          // traversal ) with the help of a queue
                       
                           leftView() {
                               let queue = []
@@ -4300,10 +4303,11 @@ pop_back() :
                 <Span>
                   <b>Right View Of Binary Tree</b>
                 </Span>
-                <p>
+                <Span>
                   Right view of a Binary Tree is set of nodes visible when tree
                   is visited from Right side.
-                </p>
+                </Span>
+                <Img src={RightViewBT} reduceH />
                 <CodeEditor
                   options={{
                     codes: {
@@ -4331,7 +4335,7 @@ pop_back() :
                       
                           // keep track of right most node
                           // at each level of bfs ( level order 
-                          // traversal with the help of a queue
+                          // traversal ) with the help of a queue
                       
                           rightView() {
                               let queue = []
