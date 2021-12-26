@@ -30,18 +30,25 @@ export const ImgContainer = styled.div`
 
 export const MediumImgContainer = styled.div`
   ${Styles.RAC};
-  margin: 2.7rem auto 0;
+  margin: 0.9rem auto 0;
   @media only screen and (min-width: ${BREAKPOINTS.lg}) {
     display: none;
   }
+  @media only screen and (max-width: ${BREAKPOINTS.lg}) {
+    width: 72%;
+  }
+  @media only screen and (max-width: ${BREAKPOINTS.md}) {
+    width: 90%;
+  }
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     display: none;
+    width: 100%;
   } ;
 `;
 
 export const SmallImgContainer = styled.div`
   ${Styles.RAC};
-  margin: 2.7rem auto 0;
+  margin: 0.9rem auto 0;
   padding: 0 3rem;
   @media only screen and (min-width: ${BREAKPOINTS.sm}) {
     display: none;
@@ -58,9 +65,10 @@ export const Img = styled.img`
   width: 5.4rem;
   border-radius: 0.2rem;
   cursor: pointer;
+  margin: 0 0.2rem;
   @media only screen and (max-width: ${BREAKPOINTS.xs}) {
-    height: 3.2rem;
-    width: 3.2rem;
+    height: 4rem;
+    width: 4rem;
     margin: 0 0.2rem;
   }
 `;
