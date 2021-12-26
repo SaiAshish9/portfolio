@@ -15025,14 +15025,87 @@ SC O(N*W)
                   }}
                 />
                 <p>
-                  <b>More Efficient Backtracking Solution</b>
+                  <b>More Efficient Backtracking Solution ( Bit Masking )</b>
                 </p>
                 <CodeEditor
                   options={{
                     codes: {
                       Javascript: {
-                        code: ``,
-                        output: ``,
+                        code: `const print = b => b.forEach(x => console.log(x.join(" ")))
+
+                        function dec2bin(dec){
+                          // a >>> b shifts a to b places right and changes all right bits to 0
+                          return (dec >>> 0).toString(2);
+                        }
+                        
+                        function bin2dec(bin){
+                          return parseInt(bin, 2).toString(10);
+                        }
+                        
+                        function solve(board,row,row_mask,left_diag_mask,right_diag_mask,result,n){
+                          
+                          const all_rows_filled = (1<<n) - 1 // 2^4 - 1 = 16 - 1 = 15
+                          // 1 1 1 1 = 1 + 2 + 4 + 8 = 15 
+                          // 1111 & 0000 = 0000 all queens are places
+                        
+                          if (row_mask == all_rows_filled) {
+                            result.push(board.map((cell, i) => cell.indexOf(1)))
+                            return;
+                          }
+                        
+                          let safe = all_rows_filled & (~(row_mask | left_diag_mask | right_diag_mask)); 
+                          while(safe > 0){
+                        
+                            // extracts right-most set(1) bit 
+                            let p = safe & (-safe);
+                            let col = parseInt(Math.log(p) / Math.log(2));
+                            board[row][col] = 1;
+                            // move to next row
+                            solve(board, row + 1, row_mask | p,
+                                               (left_diag_mask | p) << 1,
+                                               (right_diag_mask | p) >> 1,result,n);
+                            // move to next col
+                            safe = safe & (safe - 1);
+                            board[row][col] = 0; // backtrack
+                          }
+                        }
+                        
+                        const n = 4
+                        console.log("Initial Board ( N = 4 )")
+                        const board = Array.from(Array(n), () => Array(n).fill(0))
+                        print(board)
+                        const row_mask = 0,left_diag_mask = 0,right_diag_mask =0,row =0 
+                        const result = []
+                        const start = new Date().getTime()
+                        solve(board,row,row_mask,left_diag_mask,right_diag_mask,result,n)
+                        const end = new Date().getTime()
+                        console.log("Solved Board(s) ( 4 * 4 )")
+                        result.forEach((r, k) => {
+                            let temp = Array.from(Array(n), () => Array(n).fill(0))
+                            for (let index in r) temp[index][r[index]] = 1
+                            console.log("Board " + (k + 1) + " :")
+                            print(temp)
+                        })
+                        console.log("Time Required For Execution: " + (end - start) / 1000 + "s")
+                        console.log("No. of distinct solutions : " + result.length)`,
+                        output: `Initial Board ( N = 4 )
+                        0 0 0 0
+                        0 0 0 0
+                        0 0 0 0
+                        0 0 0 0
+                        Solved Board(s) ( 4 * 4 )
+                        Board 1 :
+                        0 1 0 0
+                        0 0 0 1
+                        1 0 0 0
+                        0 0 1 0
+                        Board 2 :
+                        0 0 1 0
+                        1 0 0 0
+                        0 0 0 1
+                        0 1 0 0
+                        Time Required For Execution: 0.001s
+                        No. of distinct solutions : 2`,
                       },
                     },
                   }}
