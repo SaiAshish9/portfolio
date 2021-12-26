@@ -15499,7 +15499,7 @@ SC O(N*W)
             <CodeEditor
               options={{
                 codes: {
-                  'C++': {
+                  "C++": {
                     code: `#include <bits/stdc++.h>
                     using namespace std;
                     struct Item
@@ -15729,7 +15729,161 @@ if __name__ == '__main__':
       },
       "np-hard-vs-np-complete": {
         title: "Deterministic and Non Deterministic Algorithms",
-        // https://www.includehelp.com/algorithms/deterministic-and-non-deterministic.aspx
+        content: (
+          <>
+            <Span>
+              <b>Decidable Problems</b>
+            </Span>
+            <Span>
+              An undecidable problem is a problem for which there is no
+              algorithm that can solve it.
+            </Span>
+            <Span>
+              Example: The halting problem can be simply stated as follows -
+              Given an input and a Turing machine, there is no algorithm to
+              determine if the machine will eventually halt. (a suspension of
+              movement or activity, typically a temporary one. )
+            </Span>
+            <Span>
+              <b>Polynomial and Non - polynomial time algorithm</b>
+            </Span>
+            <Span>
+              If the complexity of an algorithm is expressed as O (p(n)) where
+              p(n) is some polynomial of n, then the algorithm is said to be a
+              polynomial time algorithm. Generally, polynomial time algorithms
+              are tractable. Any algorithm with a time complexity that cannot be
+              bounded by such bound then this is known as non - polynomial
+              algorithms
+            </Span>
+            <Span>
+              <b>Deterministic and Non deterministic algorithms:</b>
+            </Span>
+            <Span>
+              In deterministic algorithm, for a given particular input, the
+              computer will always produce the same output going through the
+              same states but in case of non-deterministic algorithm, for the
+              same input, the compiler may produce different output in different
+              runs. In fact non-deterministic algorithms can’t solve the problem
+              in polynomial time and can’t determine what is the next step. The
+              non-deterministic algorithms can show different behaviors for the
+              same input on different execution and there is a degree of
+              randomness to it and they cannot determine the next step of
+              execution due to more than one path the algorithm can take.
+            </Span>
+            <Span>
+              The algorithms in which the result of every algorithm is uniquely
+              defined are known as the deterministic algorithm. In the
+              theoretical framework, we can remove this restriction on the
+              outcome of every operation. We can allow algorithms to contain
+              operations whose outcomes are not uniquely defined but are limited
+              to specified sets of possibilities. The machine executing each
+              operation is allowed to choose any one of these outcomes subjects
+              to a determination condition to be defined later. This leads to
+              the concept of a Non-deterministic algorithm.
+            </Span>
+            <Span>
+              There are three new functions which specify such types of
+              algorithms are:
+              <br />
+              Choice(S) arbitrarily chooses one of the elements of the set S.
+              <br />
+              Failure() signals an unsuccessful completion.
+              <br />
+              Success() signals a successful completion.
+            </Span>
+            <Span>
+              The assignments statement x: Choice (1, n) could result in x being
+              assigned any one of the integers in the range [1, n]. There is no
+              rule specifying how this choice is to be made. The Failure() and
+              the Success() signals are used to define a computation of the
+              algorithm. These statements cannot be used to effect a return.
+              Whenever there is a set of the choices that lead to a successful
+              completion, then one such set of the choices is always made and
+              the algorithm terminates successfully. A non - deterministic
+              algorithm terminates unsuccessfully if and only if there exists no
+              set of the choices leading to a success signal. The computing
+              times for the Choices, the Success, and the Failure are taken to
+              be O (1). A machine capable of executing a non - deterministic
+              algorithm in this way is called a non – deterministic machine.
+            </Span>
+            <Span>
+              Problem Statement : Search an element x on A[1:n] where n&gt;=1,
+              on successful search return j if a[j] is equals to x otherwise
+              return 0.
+              <br />
+              Non-deterministic Algorithm for this problem :
+              <br />
+              j= choice(a, n)
+              <br /> if(A[j]==x) <br />
+              then [ write(j); success(); ]
+              <br />
+              write(0); failure();
+            </Span>
+            <Span>Deterministic vs Non Deterministic algorithms</Span>
+            <Span>
+              1. For a particular input the computer, deterministic algorithm
+              will give always same output whereas for a particular input the
+              computer, non deterministic algorithm will give different output
+              on different execution.
+            </Span>
+            <Span>
+              2. Deterministic algorithm can solve the problem in polynomial
+              time whereas non-deterministic algorithm can’t solve the problem
+              in polynomial time.
+            </Span>
+            <Span>
+              3. Deterministic algorithm can determine the next step of
+              execution whereas non-deterministic algorithm cannot determine the
+              next step of execution due to more than one path the algorithm can
+              take.
+            </Span>
+            <Span>
+              The NP problems are set of problems whose solutions are hard to
+              find but easy to verify and are solved by Non-Deterministic
+              Machine in polynomial time.
+            </Span>
+            <Span>
+              <b>NP-Hard Problem</b>
+            </Span>
+            <Span>
+              A Problem X is NP-Hard if there is an NP-Complete problem Y, such
+              that Y is reducible to X in polynomial time. NP-Hard problems are
+              as hard as NP-Complete problems. NP-Hard Problem need not be in NP
+              class.
+            </Span>
+            <Span>Example: Halting problem, Vertex cover problem, etc.</Span>
+            <Span>
+              <b>NP-Complete Problem</b>
+            </Span>
+            <Span>
+              A problem X is NP-Complete if there is an NP problem Y, such that
+              Y is reducible to X in polynomial time. NP-Complete problems are
+              as hard as NP problems. A problem is NP-Complete if it is a part
+              of both NP and NP-Hard Problem. A non-deterministic Turing machine
+              can solve NP-Complete problem in polynomial time.
+            </Span>
+            <Span>
+              Example: Determine whether a graph has a Hamiltonian cycle,
+              Determine whether a Boolean formula is satisfiable or not,
+              Circuit-satisfiability problem, etc.
+            </Span>
+            <Span>NP-Hard Vs NP-Complete Problem</Span>
+            <Span>
+              1. NP-Hard problems(say X) can be solved if and only if there is a
+              NP-Complete problem(say Y) that can be reducible into X in
+              polynomial time.NP-Complete problems can be solved by a
+              non-deterministic Algorithm/Turing Machine in polynomial time.
+            </Span>
+            <Span>
+              2. To solve NP-hard problem, it do not have to be in NP .To solve
+              NP-Complete problem, it must be both NP and NP-hard problems.
+            </Span>
+            <Span>
+              3.NP-Hard not have to be a Decision problem. problem. NP-Complete
+              is exclusively a Decision problem.
+            </Span>
+          </>
+        ),
       },
     },
   },
