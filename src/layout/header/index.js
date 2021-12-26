@@ -243,7 +243,11 @@ const Header = ({ scrolled }) => {
       </Tooltip>
 
       <Row className="animate__animated animate__fadeInRight">
-        <Tooltip placement="bottomLeft" title={<I18n t="dsa" />}>
+        <Tooltip
+          className="animate__animated animate__heartBeat animate__infinite"
+          placement="bottomLeft"
+          title={<I18n t="dsa" />}
+        >
           <DsaIcon
             onClick={() =>
               history.push(`/${languages[selectedLanguage].code}/dsa`)
