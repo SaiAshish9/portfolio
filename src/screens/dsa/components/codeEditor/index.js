@@ -33,8 +33,21 @@ const CodeEditor = ({ options }) => {
 
   const [selected, setSelected] = useState(keys ? keys[0] : null);
 
+  const [copied, setIsCopied] = useState(false);
+
   function handleClick(i) {
-    if (keys.includes(i)) setSelected(i);
+    if (keys.includes(i)) {
+      setIsCopied(false);
+      setSelected(i);
+    }
+    if (i === "Copy") {
+      if (!copied) setIsCopied(true);
+      navigator.clipboard.writeText(
+        selected !== "Python"
+          ? beautify.js_beautify(options.codes[selected].code)
+          : options.codes["Python"].code
+      );
+    }
   }
 
   const outputCheck = options.codes[selected].output || options.output;
@@ -45,30 +58,35 @@ const CodeEditor = ({ options }) => {
         <Container>
           <TagsContainer>
             <ButtonContainer start={1}>
-              {[...keys, "Copy", "Download", "Hindi", "English", "Execute"].map(
-                (i, k) => (
-                  <Button
-                    onClick={() => handleClick(i)}
-                    active={+(i === selected)}
-                    key={k}
-                  >
-                    {i === "Copy" && (
-                      <IoCopyOutline style={{ marginRight: "0.36rem" }} />
-                    )}
-                    {i === "Execute" && (
-                      <BsPlayFill style={{ marginRight: "0.18rem" }} />
-                    )}
-                    {i === "Download" && (
-                      <HiDownload style={{ marginRight: "0.18rem" }} />
-                    )}
-                    {["English", "Hindi"].includes(i) && (
-                      <AiOutlineAudio style={{ marginRight: "0.2rem" }} />
-                    )}
+              {[
+                ...keys,
+                copied ? "Copied" : "Copy",
+                "Download",
+                "Hindi",
+                "English",
+                "Execute",
+              ].map((i, k) => (
+                <Button
+                  onClick={() => handleClick(i)}
+                  active={+(i === selected)}
+                  key={k}
+                >
+                  {i === "Copy" && !copied && (
+                    <IoCopyOutline style={{ marginRight: "0.36rem" }} />
+                  )}
+                  {i === "Execute" && (
+                    <BsPlayFill style={{ marginRight: "0.18rem" }} />
+                  )}
+                  {i === "Download" && (
+                    <HiDownload style={{ marginRight: "0.18rem" }} />
+                  )}
+                  {["English", "Hindi"].includes(i) && (
+                    <AiOutlineAudio style={{ marginRight: "0.2rem" }} />
+                  )}
 
-                    {i}
-                  </Button>
-                )
-              )}
+                  {i}
+                </Button>
+              ))}
             </ButtonContainer>
 
             {outputCheck && <OptionsContainer>Output</OptionsContainer>}
