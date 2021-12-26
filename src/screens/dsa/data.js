@@ -15466,7 +15466,46 @@ SC O(N*W)
         title: "Branch And Bound",
         content: (
           <>
-            <Span></Span>
+            <Span>
+              Branch-and-Bound is used to solve optimisation problems.It
+              completely searches the state space tree to get optimal solution.
+              It abondones pre-solution if it has a better optimal solution..
+              These problems are typically exponential in terms of time
+              complexity and may require exploring all possible permutations in
+              worst case
+            </Span>
+            <Span>
+              The backtracking based solution works better than brute force by
+              ignoring infeasible solutions. We can do better (than
+              backtracking) if we know a bound on best possible solution subtree
+              rooted with every node. If the best in subtree is worse than
+              current best, we can simply ignore this node and its subtrees. So
+              we compute bound (best solution) for every node and compare the
+              bound with current best solution before exploring the node.
+            </Span>
+            <Span>
+              Backtracking is used to find all possible solutions available to a
+              problem.When it realises that it has made a bad choice, it undoes
+              the last choice by backing it up. It searches the state space tree
+              until it has found a solution for the problem.Branch-and-Bound is
+              used to solve optimisation problems.It completely searches the
+              state space tree to get optimal solution. It abondones
+              pre-solution if it has a better optimal solution.
+            </Span>
+            <Span>Example:</Span>
+            <p>
+              <b>0-1 Knapsack</b>
+            </p>
+            <CodeEditor
+              options={{
+                codes: {
+                  Javascript: {
+                    code: ``,
+                    output: ``,
+                  },
+                },
+              }}
+            />
           </>
         ),
       },
