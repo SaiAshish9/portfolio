@@ -99,7 +99,7 @@ const CommonStyles = css`
         margin-left: 0px;
       }
       .CodeMirror-line {
-        margin-left: 29px;
+        padding-left: 29px;
       }
       .CodeMirror-gutter {
         width: 0px !important;
@@ -112,11 +112,43 @@ export const Container = styled.div`
   width: 100%;
 `;
 
+export const Editor = styled(CodeMirror)`
+  width: 63%;
+  ${CommonStyles}
+  @media only screen and (max-width: ${BREAKPOINTS.md}) {
+    width: 100%;
+    display: none;
+  }
+`;
+
 export const OutputEditorContainer = styled.div`
   width: 35%;
   @media only screen and (max-width: ${BREAKPOINTS.md}) {
     margin-top: 2.7rem;
     width: 100%;
+    display: none;
+  }
+`;
+
+export const SEditor = styled(CodeMirror)`
+  width: 63%;
+  ${CommonStyles}
+  @media only screen and (max-width: ${BREAKPOINTS.md}) {
+    width: 100%;
+  }
+  @media only screen and (min-width: ${BREAKPOINTS.md}) {
+    display: none;
+  }
+`;
+
+export const SOutputEditorContainer = styled.div`
+  width: 35%;
+  @media only screen and (max-width: ${BREAKPOINTS.md}) {
+    margin-top: 2.7rem;
+    width: 100%;
+  }
+  @media only screen and (min-width: ${BREAKPOINTS.md}) {
+    display: none;
   }
 `;
 
@@ -143,14 +175,6 @@ export const OutputLabel = styled.p`
 export const ButtonContainer = styled(BtnContainer)`
   width: 63%;
   margin-left: 0px;
-  @media only screen and (max-width: ${BREAKPOINTS.md}) {
-    width: 100%;
-  }
-`;
-
-export const Editor = styled(CodeMirror)`
-  width: 63%;
-  ${CommonStyles}
   @media only screen and (max-width: ${BREAKPOINTS.md}) {
     width: 100%;
   }

@@ -12,6 +12,8 @@ import {
   StyledRow,
   OutputEditorContainer,
   OutputLabel,
+  SEditor,
+  SOutputEditorContainer,
 } from "./styles";
 
 import { useStore } from "store";
@@ -80,7 +82,29 @@ const CodeEditor = ({ options }) => {
                   : options.codes["Python"].code
               }
               options={{
-                mode: ["Java", "Kotlin", "C++","C"].includes(selected)
+                mode: ["Java", "Kotlin", "C++", "C"].includes(selected)
+                  ? "clike"
+                  : selected === "Javascript"
+                  ? "javascript"
+                  : "python",
+                theme:
+                  theme === Theme.dark
+                    ? "material"
+                    : [Theme.light, Theme.highContrast].includes(theme)
+                    ? "neat"
+                    : "light",
+                lineNumbers: true,
+                json: true,
+              }}
+            />
+            <SEditor
+              value={
+                selected !== "Python"
+                  ? beautify.js_beautify(options.codes[selected].code)
+                  : options.codes["Python"].code
+              }
+              options={{
+                mode: ["Java", "Kotlin", "C++", "C"].includes(selected)
                   ? "clike"
                   : selected === "Javascript"
                   ? "javascript"
@@ -96,26 +120,48 @@ const CodeEditor = ({ options }) => {
               }}
             />
             {outputCheck && (
-              <OutputEditorContainer>
-                <OutputLabel>Output</OutputLabel>
-                {/* playground */}
-                <Output
-                  value={beautify.html_beautify(
-                    options.codes[selected].output ?? options.output
-                  )}
-                  options={{
-                    mode: "html",
-                    readOnly: true,
-                    lineNumbers: true,
-                    theme:
-                      theme === Theme.dark
-                        ? "material"
-                        : [Theme.light, Theme.highContrast].includes(theme)
-                        ? "neat"
-                        : "light",
-                  }}
-                />
-              </OutputEditorContainer>
+              <>
+                <OutputEditorContainer>
+                  <OutputLabel>Output</OutputLabel>
+                  {/* playground */}
+                  <Output
+                    value={beautify.html_beautify(
+                      options.codes[selected].output ?? options.output
+                    )}
+                    options={{
+                      mode: "html",
+                      readOnly: true,
+                      lineNumbers: true,
+                      theme:
+                        theme === Theme.dark
+                          ? "material"
+                          : [Theme.light, Theme.highContrast].includes(theme)
+                          ? "neat"
+                          : "light",
+                    }}
+                  />
+                </OutputEditorContainer>
+                <SOutputEditorContainer>
+                  <OutputLabel>Output</OutputLabel>
+                  {/* playground */}
+                  <Output
+                    value={beautify.html_beautify(
+                      options.codes[selected].output ?? options.output
+                    )}
+                    options={{
+                      mode: "html",
+                      readOnly: true,
+                      lineNumbers: true,
+                      theme:
+                        theme === Theme.dark
+                          ? "material"
+                          : [Theme.light, Theme.highContrast].includes(theme)
+                          ? "neat"
+                          : "light",
+                    }}
+                  />
+                </SOutputEditorContainer>
+              </>
             )}
           </StyledRow>
         </Container>
