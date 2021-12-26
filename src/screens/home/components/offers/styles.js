@@ -79,6 +79,9 @@ export const Center = styled.div`
   position: relative;
   height: 14rem;
   width: 14rem;
+  @media only screen and (max-width: ${BREAKPOINTS.xs}) {
+    margin: 4.23rem auto 2.7rem;
+  }
 `;
 
 export const HeartImage = styled.img`
