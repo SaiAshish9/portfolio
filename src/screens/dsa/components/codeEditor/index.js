@@ -40,6 +40,8 @@ const CodeEditor = ({ options }) => {
 
   const [copied, setIsCopied] = useState(false);
 
+  const [copiedOutput, setIsCopiedOutput] = useState(false);
+
   var docDefinition = {
     pageSize: "A4",
     pageOrientation: "portrait",
@@ -85,22 +87,34 @@ const CodeEditor = ({ options }) => {
   };
 
   function downloadPDF() {
-    pdfMake.createPdf(docDefinition)
-    // .open()
-    .download(`${options.title}(${selected}).pdf`);
+    pdfMake
+      .createPdf(docDefinition)
+      // .open()
+      .download(`${options.title}(${selected}).pdf`);
   }
 
   function handleClick(i) {
     if (keys.includes(i)) {
-      if (i !== selected) setIsCopied(false);
+      if (i !== selected) {
+        setIsCopied(false);
+        setIsCopiedOutput(false);
+      }
       setSelected(i);
     }
-    if (i === "Copy") {
+    if (i === "Copy I/P") {
       if (!copied) setIsCopied(true);
+      if (copiedOutput) setIsCopiedOutput(false);
       navigator.clipboard.writeText(
         selected !== "Python"
           ? beautify.js_beautify(options.codes[selected].code)
           : options.codes["Python"].code
+      );
+    }
+    if (i === "Copy O/P") {
+      if (!copiedOutput) setIsCopiedOutput(true);
+      if (copied) setIsCopied(false);
+      navigator.clipboard.writeText(
+        beautify.html_beautify(options.codes[selected].output ?? options.output)
       );
     }
     if (i === "Download") downloadPDF();
@@ -116,7 +130,8 @@ const CodeEditor = ({ options }) => {
             <ButtonContainer start={1}>
               {[
                 ...keys,
-                copied ? "Copied" : "Copy",
+                copied ? "Copied I/P" : "Copy I/P",
+                !copiedOutput ? "Copy O/P" : "Copied O/P",
                 "Download",
                 "Hindi",
                 "English",
@@ -125,7 +140,11 @@ const CodeEditor = ({ options }) => {
                 <Button
                   onClick={() => handleClick(i)}
                   active={
-                    +([selected].includes(i) || (copied && i === "Copied"))
+                    +(
+                      [selected].includes(i) ||
+                      (copied && i === "Copied I/P" && !copiedOutput) ||
+                      (copiedOutput && i === "Copied O/P" && !copied)
+                    )
                   }
                   key={k}
                 >
