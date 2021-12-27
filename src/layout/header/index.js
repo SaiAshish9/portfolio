@@ -245,9 +245,10 @@ const Header = ({ scrolled, history }) => {
         {history.location.pathname.includes("dsa") ? (
           <Tooltip placement="bottomLeft" title={<I18n t="dsa" />}>
             <DsaIcon
-              onClick={() =>
-                history.push(`/${languages[selectedLanguage].code}/dsa`)
-              }
+              onClick={() => {
+                history.push(`/en/dsa`);
+                setSelectedLanguage(0);
+              }}
             />
           </Tooltip>
         ) : (
@@ -257,9 +258,10 @@ const Header = ({ scrolled, history }) => {
             title={<I18n t="dsa" />}
           >
             <DsaIcon
-              onClick={() =>
-                history.push(`/${languages[selectedLanguage].code}/dsa`)
-              }
+              onClick={() => {
+                history.push(`/en/dsa`);
+                setSelectedLanguage(0);
+              }}
             />
           </Tooltip>
         )}
