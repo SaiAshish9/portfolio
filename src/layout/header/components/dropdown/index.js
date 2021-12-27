@@ -1,7 +1,5 @@
 import React from "react";
 
-import { useHistory } from "react-router-dom";
-
 import {
   Container,
   Label,
@@ -22,11 +20,12 @@ import {
 
 import { useStore } from "store";
 
-import { Theme } from "constants/index";
 import { StyledMusicIcon } from "../drawer/styles";
+import { withRouter } from "react-router-dom";
 
 const DropdownContainer = ({
   language,
+  history,
   songs,
   selected,
   setSelected,
@@ -34,11 +33,11 @@ const DropdownContainer = ({
   selectedLanguage,
   setSelectedLanguage,
 }) => {
-  const history = useHistory();
-
   const {
     state: { theme },
   } = useStore();
+
+  const isPathDsa = history.location.pathname.includes("dsa");
 
   const menu = (
     <StyledMenu>
@@ -115,12 +114,12 @@ const DropdownContainer = ({
 
   return (
     <StyledDropdown
-      overlay={menu}
+      overlay={isPathDsa ? <></> : menu}
       trigger={["click"]}
       placement="bottomRight"
-      arrow
+      arrow={!isPathDsa}
     >
-      <Container>
+      <Container isPathDsa={isPathDsa}>
         <Label>
           <LangugageIcon>
             {language ? languages[selectedLanguage].icon : null}
@@ -135,10 +134,10 @@ const DropdownContainer = ({
             </Row>
           )}
         </Label>
-        <Icon />
+        {!isPathDsa && <Icon />}
       </Container>
     </StyledDropdown>
   );
 };
 
-export default DropdownContainer;
+export default withRouter(DropdownContainer);

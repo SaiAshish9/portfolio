@@ -27,13 +27,17 @@ const {
 
 export const StyledDropdown = styled(Dropdown)``;
 
-export const Container = styled.div`
-  cursor: pointer;
-  ${Styles.RBC}
-  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
-    display: none;
-  }
-`;
+export const Container = styled.div(
+  ({ isPathDsa }) => css`
+    ${!isPathDsa &&
+    `    cursor: pointer;
+    `};
+    ${Styles.RBC}
+    @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+      display: none;
+    }
+  `
+);
 
 export const Label = styled.p`
   font-weight: ${FontWeight.medium};
