@@ -10,6 +10,7 @@
     "axios": "^0.21.1",
     "codemirror": "^5.64.0",
     "js-beautify": "^1.14.0",
+    "pdfmake": "^0.2.4",
     "query-string": "^7.0.1",
     "react": "^17.0.2",
     "react-codemirror2": "^7.2.1",

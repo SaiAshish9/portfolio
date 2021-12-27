@@ -150,6 +150,7 @@ export const DATA = {
                 <b>Implementation</b>
                 <CodeEditor
                   options={{
+                    title: "Array (Homogeneous)",
                     output: "Output Test",
                     codes: {
                       Javascript: {
@@ -1078,6 +1079,7 @@ C++ Array Operations:
                 <b>Singly Linked List Implementation :</b>
                 <CodeEditor
                   options={{
+                    title: "Singly Linked List Implementation",
                     output: null,
                     codes: {
                       Javascript: {
@@ -1944,6 +1946,7 @@ int main(){
                 <b>Doubly Linked List Implementation :</b>
                 <CodeEditor
                   options={{
+                    title: "Doubly Linked List Implementation",
                     output: null,
                     codes: {
                       Javascript: {
@@ -2121,6 +2124,7 @@ int main(){
                 <b>Circular Doubly Linked List Implementation :</b>
                 <CodeEditor
                   options={{
+                    title: "Circular Doubly Linked List Implementation",
                     output: null,
                     codes: {
                       Javascript: {
@@ -2348,6 +2352,7 @@ int main(){
                 <b>Grounded Header Linked List Implementation :</b>
                 <CodeEditor
                   options={{
+                    title: "Grounded Header Linked List Implementation",
                     output: null,
                     codes: {
                       Javascript: {
@@ -2529,6 +2534,7 @@ int main(){
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Reverse a linked list",
                     output: null,
                     codes: {
                       Javascript: {
@@ -2603,6 +2609,7 @@ int main(){
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Detect loop in a linked list",
                     codes: {
                       Javascript: {
                         code: `class Node {
@@ -2682,6 +2689,7 @@ int main(){
                 <b>Implementation</b>
                 <CodeEditor
                   options={{
+                    title: "Stack (LIFO/FILO)",
                     output: null,
                     codes: {
                       Javascript: {
@@ -2775,6 +2783,7 @@ int main(){
                 <b>Utilization:</b>
                 <CodeEditor
                   options={{
+                    title: "Stack (LIFO/FILO)(Utilization)",
                     output: null,
                     codes: {
                       Java: {
@@ -2917,6 +2926,7 @@ object Main {
                 <b>Implementation</b>
                 <CodeEditor
                   options={{
+                    title: "Queue (FIFO)",
                     output: null,
                     codes: {
                       Javascript: {
@@ -3014,6 +3024,7 @@ object Main {
                 <b>Utilization:</b>
                 <CodeEditor
                   options={{
+                    title: "Queue (FIFO)(Utilization)",
                     output: null,
                     codes: {
                       Java: {
@@ -3185,6 +3196,7 @@ Size of queue-4
                 <b>Utilization:</b>
                 <CodeEditor
                   options={{
+                    title: "Priority Queue",
                     output: null,
                     codes: {
                       Javascript: {
@@ -3444,6 +3456,7 @@ pop() :
                 <span>(a) Without using mod operator:</span>
                 <CodeEditor
                   options={{
+                    title: "Circular Queue(Without using mod operator)",
                     output: null,
                     codes: {
                       Javascript: {
@@ -3550,6 +3563,7 @@ pop() :
                 <span>(b) Using mod operator:</span>
                 <CodeEditor
                   options={{
+                    title: "Circular Queue(Using mod operator)",
                     output: null,
                     codes: {
                       Javascript: {
@@ -3652,6 +3666,7 @@ pop() :
                 <b>Utilization:</b>
                 <CodeEditor
                   options={{
+                    title: "Deque",
                     output: null,
                     codes: {
                       Javascript: {
@@ -3997,6 +4012,7 @@ pop_back() :
                 </p>
                 <CodeEditor
                   options={{
+                    title: "General Tree",
                     output: null,
                     codes: {
                       Javascript: {
@@ -4058,6 +4074,7 @@ pop_back() :
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Extended Binary Tree",
                     output: null,
                     codes: {
                       Javascript: {
@@ -4152,6 +4169,7 @@ pop_back() :
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Mirror (Invert) of binary tree",
                     codes: {
                       Javascript: {
                         code: `class Node {
@@ -4232,6 +4250,7 @@ pop_back() :
                 <Img left src={LeftViewBT} reduceH />
                 <CodeEditor
                   options={{
+                    title: "Left View Of Binary Tree",
                     codes: {
                       Javascript: {
                         code: `class Node {
@@ -4310,6 +4329,7 @@ pop_back() :
                 <Img left src={RightViewBT} reduceH />
                 <CodeEditor
                   options={{
+                    title: "Right View Of Binary Tree",
                     codes: {
                       Javascript: {
                         code: `class Node {
@@ -4393,6 +4413,7 @@ pop_back() :
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Flip binary tree",
                     codes: {
                       Javascript: {
                         code: `class Node {
@@ -4511,6 +4532,7 @@ pop_back() :
                 <p>(a) using recursion:</p>
                 <CodeEditor
                   options={{
+                    title: "Binary Search Tree(Recursion)",
                     output: null,
                     codes: {
                       Javascript: {
@@ -4779,6 +4801,8 @@ pop_back() :
                 <p>(b) inorder traversal using stack and loop:</p>
                 <CodeEditor
                   options={{
+                    title:
+                      "Binary Search Tree(inorder traversal using stack and loop)",
                     output: null,
                     codes: {
                       Javascript: {
@@ -4895,6 +4919,7 @@ pop_back() :
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Heapify",
                     output: null,
                     codes: {
                       Javascript: {
@@ -4988,6 +5013,7 @@ pop_back() :
                 RR or RL case.
                 <CodeEditor
                   options={{
+                    title: "AVL (Adelson Velsky and Landis) Tree",
                     output: null,
                     codes: {
                       Javascript: {
@@ -5302,6 +5328,7 @@ pop_back() :
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Red-Black Tree",
                     output: null,
                     codes: {
                       Java: {
@@ -5532,6 +5559,7 @@ pop_back() :
                 <b>Basic Structure (Without Driver Code) :</b>
                 <CodeEditor
                   options={{
+                    title: "N-ary (M-way) Tree",
                     output: null,
                     codes: {
                       Python: {
@@ -5593,6 +5621,7 @@ def searchnode(val, n, pos):
                 <p>Basic Structure (Without Driver Code) :</p>
                 <CodeEditor
                   options={{
+                    title: "B Tree",
                     output: null,
                     codes: {
                       Javascript: {
@@ -5690,6 +5719,7 @@ class BTreeNode
                 <p>Basic Structure (Without Driver Code) :</p>
                 <CodeEditor
                   options={{
+                    title: "B+ Tree",
                     output: null,
                     codes: {
                       python: {
@@ -5970,6 +6000,7 @@ if __name__=='__main__':
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Adjacency List",
                     output: null,
                     codes: {
                       Javascript: {
@@ -6149,6 +6180,7 @@ if __name__=='__main__':
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Adjacency Matrix",
                     output: null,
                     codes: {
                       Javascript: {
@@ -6303,6 +6335,7 @@ if __name__=='__main__':
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Trie",
                     output: null,
                     codes: {
                       Javascript: {
@@ -6484,6 +6517,7 @@ if __name__=='__main__':
                 <b>Implementation</b>
                 <CodeEditor
                   options={{
+                    title: "Hash Table",
                     output: null,
                     codes: {
                       Javascript: {
@@ -6548,6 +6582,7 @@ if __name__=='__main__':
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Map",
                     output: null,
                     codes: {
                       Javascript: {
@@ -6867,6 +6902,7 @@ Not found
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Set",
                     output: null,
                     codes: {
                       Javascript: {
@@ -7350,6 +7386,7 @@ Key doesn't exist
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Bubble Sort",
                     output: null,
                     codes: {
                       Javascript: {
@@ -7432,6 +7469,7 @@ console.log(arr)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Insertion Sort",
                     output: null,
                     codes: {
                       Javascript: {
@@ -7490,6 +7528,7 @@ console.log(arr)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Selection Sort",
                     output: null,
                     codes: {
                       Javascript: {
@@ -7561,6 +7600,7 @@ console.log(arr)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Heap Sort",
                     output: null,
                     codes: {
                       Javascript: {
@@ -7675,6 +7715,7 @@ console.log(arr)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Merge Sort",
                     output: null,
                     codes: {
                       Javascript: {
@@ -7786,6 +7827,7 @@ console.log(arr, arr_size);
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Quick Sort",
                     output: null,
                     codes: {
                       Python: {
@@ -7847,6 +7889,7 @@ print(f'Sorted array: {array}')
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Shell Sort",
                     output: null,
                     codes: {
                       Javascript: {
@@ -7945,6 +7988,7 @@ console.log(arr);
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Count Sort",
                     output: null,
                     codes: {
                       Javascript: {
@@ -8011,6 +8055,7 @@ s
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Bin / Bucket Sort",
                     output: null,
                     codes: {
                       Javascript: {
@@ -8089,6 +8134,7 @@ s
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Radix Sort",
                     output: null,
                     codes: {
                       Javascript: {
@@ -8231,6 +8277,7 @@ s
             </p>
             <CodeEditor
               options={{
+                title: "Linear Search",
                 output: null,
                 codes: {
                   Javascript: {
@@ -8344,6 +8391,7 @@ Element found in array at 5th position with 1 attempt
             <p>Implementation</p>
             <CodeEditor
               options={{
+                title: "Binary Search",
                 output: null,
                 codes: {
                   Javascript: {
@@ -8407,6 +8455,7 @@ Element found in array at 5th position with 1 attempt
             </p>
             <CodeEditor
               options={{
+                title: "Two pointers technique",
                 output: null,
                 codes: {
                   Javascript: {
@@ -8809,6 +8858,7 @@ console.log(isPairSum(arr, arrSize, val));
             </p>
             <CodeEditor
               options={{
+                title: "Tail Recursion",
                 output: null,
                 codes: {
                   Javascript: {
@@ -8850,6 +8900,7 @@ console.log(isPairSum(arr, arrSize, val));
             </p>
             <CodeEditor
               options={{
+                title: "Head Recursion",
                 output: null,
                 codes: {
                   Javascript: {
@@ -8891,6 +8942,7 @@ console.log(isPairSum(arr, arrSize, val));
             <p>tracing tree of recursive function.</p>
             <CodeEditor
               options={{
+                title: "Tree Recursion",
                 output: null,
                 codes: {
                   Javascript: {
@@ -8921,6 +8973,7 @@ console.log(isPairSum(arr, arrSize, val));
             </p>
             <CodeEditor
               options={{
+                title: "Nested Recursion (recursion inside recursion)",
                 output: null,
                 codes: {
                   Javascript: {
@@ -8949,6 +9002,7 @@ console.log(isPairSum(arr, arrSize, val));
             </Span>
             <CodeEditor
               options={{
+                title: "Indirect Recursion",
                 output: null,
                 codes: {
                   Javascript: {
@@ -8995,6 +9049,7 @@ console.log(isPairSum(arr, arrSize, val));
 
             <CodeEditor
               options={{
+                title: "Tower of hanoi problem",
                 output: ``,
                 codes: {
                   Javascript: {
@@ -9104,6 +9159,7 @@ console.log(isPairSum(arr, arrSize, val));
             <CodeEditor
               options={{
                 output: ``,
+                title: "Divide & Conquer",
                 codes: {
                   Javascript: {
                     code: `function DAC_Max(a,index,l)
@@ -9256,6 +9312,7 @@ The maximum number in a given array is : 250
                 it .<p>Implementation</p>
                 <CodeEditor
                   options={{
+                    title: "Activity Selection",
                     output: null,
                     codes: {
                       Javascript: {
@@ -9414,6 +9471,7 @@ printMaxActivities(s,f)`,
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Job Sequencing With Deadlines",
                     output: null,
                     codes: {
                       Javascript: {
@@ -9451,7 +9509,7 @@ printMaxActivities(s,f)`,
                           console.log(job);
                       }
                        
-                      arr = [['a', 2, 100],  
+                      const arr = [['a', 2, 100],  
                              ['b', 1, 19],
                              ['c', 2, 27],
                              ['d', 1, 25],
@@ -9745,6 +9803,7 @@ printJobScheduling(arr, 3)`,
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Fractional Knapsack",
                     output: null,
                     codes: {
                       Javascript: {
@@ -10054,6 +10113,7 @@ if __name__ == "__main__":
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Graph Coloring",
                     output: `Coloring of graph 1 
                     Vertex 0  ---> Color 0
                     Vertex 1  ---> Color 1
@@ -10517,6 +10577,7 @@ if __name__ == '__main__':
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Huffman Coding",
                     output: `f -> 0
                     c -> 100
                     d -> 101
@@ -10958,6 +11019,7 @@ object Main {
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Kruskal",
                     output: `Following are the edges in the constructed MST
                     2 -- 3 == 4
                     0 -- 3 == 5
@@ -11454,6 +11516,7 @@ class Graph {
                 </Span>
                 <CodeEditor
                   options={{
+                    title: "Prim's",
                     codes: {
                       // Javascript:{code:``},
                       Java: {
@@ -11737,6 +11800,7 @@ g.primMST()`,
                 </Span>
                 <CodeEditor
                   options={{
+                    title: "Dijkstra's",
                     codes: {
                       Javascript: {
                         code: `function minDistance(dist,sptSet)
@@ -12122,6 +12186,7 @@ g.dijkstra(0)`,
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Minimum Number Of Coins",
                     output: null,
                     codes: {
                       Javascript: {
@@ -12315,6 +12380,7 @@ if __name__ == '__main__':
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Maximum Equal Sum Possible With Three Stacks",
                     output: null,
                     codes: {
                       Javascript: {
@@ -12653,6 +12719,7 @@ if __name__ == '__main__':
             </p>
             <CodeEditor
               options={{
+                title: "Dynamic Programming",
                 codes: {
                   Javascript: {
                     code: `let MAX = 100
@@ -12740,6 +12807,7 @@ if __name__ == '__main__':
                 <p>Time Complexity : O(N*W)</p>
                 <CodeEditor
                   options={{
+                    title: "0-1 Knapsack",
                     codes: {
                       Javascript: {
                         code: `/*
@@ -12842,6 +12910,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Binomial Coefficients",
                     codes: {
                       Javascript: {
                         code: `// TC : O(n*k)
@@ -12948,6 +13017,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Travelling Salesman",
                     codes: {
                       Javascript: {
                         code: `// TSP ->
@@ -13089,6 +13159,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "LCS",
                     codes: {
                       Javascript: {
                         code: `// A subsequence is a sequence that appears in the same 
@@ -13198,6 +13269,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "LCS of 0s",
                     codes: {
                       Javascript: {
                         code: `// A subsequence is a sequence that appears in the same 
@@ -13292,6 +13364,7 @@ SC O(N*W)
                 <p>Print All LCS</p>
                 <CodeEditor
                   options={{
+                    title: "Print All LCS",
                     codes: {
                       Javascript: {
                         code: `function fillLookUpTable(str1, str2,lookupTab) {
@@ -13378,6 +13451,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "LIS",
                     codes: {
                       Javascript: {
                         code: `/*
@@ -13427,6 +13501,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Print All LIS",
                     codes: {
                       Javascript: {
                         code: `// W.I.P.`,
@@ -13451,6 +13526,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "LPS",
                     codes: {
                       Javascript: {
                         code: `function lps(subsequence){
@@ -13497,6 +13573,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Program to print lps",
                     codes: {
                       Javascript: {
                         code: `const lcs = function(str1, str2) {
@@ -13571,6 +13648,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "LCIS",
                     codes: {
                       Javascript: {
                         code: `function lcis(arr1,arr2){
@@ -13659,6 +13737,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "LBS + LDS",
                     codes: {
                       Javascript: {
                         code: `function print(list,n,arr,rev){
@@ -13791,6 +13870,7 @@ SC O(N*W)
                 <p>Chain [[5,24],[27,40],[50,90]]</p>
                 <CodeEditor
                   options={{
+                    title: "MCL",
                     codes: {
                       Javascript: {
                         code: `// this problem is a variation of standard lis
@@ -13876,6 +13956,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Naive",
                     codes: {
                       Javascript: {
                         code: `function naive(txt,pat){
@@ -13960,6 +14041,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Knuth Morris Pratt [ Degenerating Property ]",
                     codes: {
                       Javascript: {
                         code: `/* 
@@ -14085,6 +14167,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Rabin Karp",
                     codes: {
                       Javacript: {
                         code: `//  The Rabin-Karp algorithm uses a rolling hash to
@@ -14180,6 +14263,7 @@ SC O(N*W)
                 <p>Replace: Recur for m-1 and n-1</p>
                 <CodeEditor
                   options={{
+                    title: "Edit Distance",
                     codes: {
                       Javascript: {
                         code: `function min(x, y, z) {
@@ -14240,6 +14324,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Egg Dropping Problem",
                     codes: {
                       Javascript: {
                         code: `function eggDrop(n,k){
@@ -14302,6 +14387,7 @@ SC O(N*W)
                 <p>f(n) = f(n — 1) + (n — 1) * f(n — 2)</p>
                 <CodeEditor
                   options={{
+                    title: "Friends Pairing Problem",
                     codes: {
                       Javascript: {
                         code: `// 1) n-th person remains single, we recur
@@ -14352,6 +14438,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Maximum Size Square Sub Matrix With All 1s",
                     codes: {
                       Javascript: {
                         code: `let R = 6;
@@ -14488,6 +14575,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "TSP",
                     codes: {
                       Javascript: {
                         code: `
@@ -14628,6 +14716,7 @@ SC O(N*W)
                 <Img left src={SudokuImg} />
                 <CodeEditor
                   options={{
+                    title: "Sudoku",
                     codes: {
                       Javascript: {
                         code: `function isSafe(grid, row, col, num)
@@ -14746,6 +14835,7 @@ SC O(N*W)
                 <p>Note -&lt; board[7][4] will be 53 at below pic.</p>
                 <CodeEditor
                   options={{
+                    title: "Knight Tour",
                     codes: {
                       Javascript: {
                         code: `const print = b => b.forEach(x=>console.log(x.join(" ")))
@@ -14851,6 +14941,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "N Queens",
                     codes: {
                       Javascript: {
                         code: `const print = b => b.forEach(x=>console.log(x.join(" ")))
@@ -14937,6 +15028,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "N Queens 2",
                     codes: {
                       Javascript: {
                         code: `const print = b => b.forEach(x=>console.log(x.join(" ")))
@@ -15029,6 +15121,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "N Queens 2 (Bit Masking)",
                     codes: {
                       Javascript: {
                         code: `const print = b => b.forEach(x => console.log(x.join(" ")))
@@ -15133,6 +15226,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "Rate in a maze",
                     codes: {
                       Javascript: {
                         code: `const print = b => b.forEach(x => console.log(x.join(" ")))
@@ -15228,6 +15322,7 @@ SC O(N*W)
                 </p>
                 <CodeEditor
                   options={{
+                    title: "String Permutations",
                     codes: {
                       Javascript: {
                         code: `function permuteNaive(str,l,r){  // T(n)
@@ -15307,6 +15402,7 @@ SC O(N*W)
                 <Img left src={WordBreakImg} reduceH />
                 <CodeEditor
                   options={{
+                    title: "Word Break",
                     codes: {
                       Javascript: {
                         code: `function breakWords(n,str,words,res=""){
@@ -15347,6 +15443,7 @@ SC O(N*W)
                 <Img left src={SubsetsImg} reduceH />
                 <CodeEditor
                   options={{
+                    title: "Subsets of a set",
                     codes: {
                       Javascript: {
                         code: `function subsets(i_set,result,subset=[],index=0){
@@ -15498,6 +15595,7 @@ SC O(N*W)
             </p>
             <CodeEditor
               options={{
+                title: "0-1 Knapsack",
                 codes: {
                   "C++": {
                     code: `#include <bits/stdc++.h>
@@ -15630,6 +15728,7 @@ SC O(N*W)
             </p>
             <CodeEditor
               options={{
+                title: "Randomized",
                 output: null,
                 codes: {
                   C: {

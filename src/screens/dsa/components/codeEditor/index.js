@@ -24,6 +24,11 @@ import { IoCopyOutline } from "react-icons/io5";
 import { BsPlayFill } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 const CodeEditor = ({ options }) => {
   const {
     state: { theme },
@@ -35,9 +40,58 @@ const CodeEditor = ({ options }) => {
 
   const [copied, setIsCopied] = useState(false);
 
+  var docDefinition = {
+    pageSize: "A4",
+    pageOrientation: "portrait",
+    style: {
+      align: {
+        lineHeight: 2,
+      },
+    },
+    content: [
+      {
+        text: "Factorial",
+        alignment: "center",
+        bold: true,
+        margin: [0, 9, 0, 18],
+      },
+      {
+        text: "Source Code",
+        bold: true,
+        alignment: "left",
+        margin: [0, 27, 0, 18],
+      },
+      {
+        text:
+          selected !== "Python"
+            ? beautify.js_beautify(options.codes[selected].code)
+            : options.codes["Python"].code,
+        alignment: "left",
+      },
+      {
+        text: "Output",
+        bold: true,
+        alignment: "left",
+        margin: [0, 27, 0, 9],
+      },
+      {
+        text: beautify.html_beautify(
+          options.codes[selected].output ?? options.output
+        ),
+        alignment: "left",
+      },
+      // { columnd: [] },
+    ],
+  };
+
+  function downloadPDF() {
+    pdfMake.createPdf(docDefinition).open();
+    // .download("Factorial(js).pdf");
+  }
+
   function handleClick(i) {
     if (keys.includes(i)) {
-      setIsCopied(false);
+      if (i !== selected) setIsCopied(false);
       setSelected(i);
     }
     if (i === "Copy") {
@@ -48,6 +102,7 @@ const CodeEditor = ({ options }) => {
           : options.codes["Python"].code
       );
     }
+    if (i === "Download") downloadPDF();
   }
 
   const outputCheck = options.codes[selected].output || options.output;
@@ -68,7 +123,9 @@ const CodeEditor = ({ options }) => {
               ].map((i, k) => (
                 <Button
                   onClick={() => handleClick(i)}
-                  active={+(i === selected)}
+                  active={
+                    +([selected].includes(i) || (copied && i === "Copied"))
+                  }
                   key={k}
                 >
                   {i === "Copy" && !copied && (
