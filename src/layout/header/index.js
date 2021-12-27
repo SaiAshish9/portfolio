@@ -38,9 +38,9 @@ import NeverSayNeverImg from "assets/home/neverSayNever.jpg";
 
 import I18n from "common/I18n";
 
-import { useHistory } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-const Header = ({ scrolled }) => {
+const Header = ({ scrolled, history }) => {
   const {
     state: { theme, count },
     actions: { setTheme },
@@ -52,7 +52,6 @@ const Header = ({ scrolled }) => {
     setTheme(t);
     localStorage.setItem("theme", t);
   }
-  const history = useHistory();
 
   const [selected, setSelected] = useState(0);
 
@@ -243,17 +242,27 @@ const Header = ({ scrolled }) => {
       </Tooltip>
 
       <Row className="animate__animated animate__fadeInRight">
-        <Tooltip
-          className="animate__animated animate__heartBeat animate__infinite"
-          placement="bottomLeft"
-          title={<I18n t="dsa" />}
-        >
-          <DsaIcon
-            onClick={() =>
-              history.push(`/${languages[selectedLanguage].code}/dsa`)
-            }
-          />
-        </Tooltip>
+        {history.location.pathname.includes("dsa") ? (
+          <Tooltip placement="bottomLeft" title={<I18n t="dsa" />}>
+            <DsaIcon
+              onClick={() =>
+                history.push(`/${languages[selectedLanguage].code}/dsa`)
+              }
+            />
+          </Tooltip>
+        ) : (
+          <Tooltip
+            className="animate__animated animate__heartBeat animate__infinite"
+            placement="bottomLeft"
+            title={<I18n t="dsa" />}
+          >
+            <DsaIcon
+              onClick={() =>
+                history.push(`/${languages[selectedLanguage].code}/dsa`)
+              }
+            />
+          </Tooltip>
+        )}
 
         {muteIconContent}
         {sMuteIconContent}
@@ -331,4 +340,4 @@ const Header = ({ scrolled }) => {
   );
 };
 
-export default Header;
+export default withRouter(Header);
