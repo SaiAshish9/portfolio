@@ -50,7 +50,7 @@ const CodeEditor = ({ options }) => {
     },
     content: [
       {
-        text: "Factorial",
+        text: options.title,
         alignment: "center",
         bold: true,
         margin: [0, 9, 0, 18],
@@ -85,8 +85,9 @@ const CodeEditor = ({ options }) => {
   };
 
   function downloadPDF() {
-    pdfMake.createPdf(docDefinition).open();
-    // .download("Factorial(js).pdf");
+    pdfMake.createPdf(docDefinition)
+    // .open()
+    .download(`${options.title}(${selected}).pdf`);
   }
 
   function handleClick(i) {
