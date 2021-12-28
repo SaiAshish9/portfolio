@@ -5307,7 +5307,7 @@ pop_back() :
                   Rules: Root will always be black.There are no two adjacent red
                   nodes. Number of black nodes from root to the leaf node will
                   always be the same through any path. Newly inserted node will
-                  always be given
+                  always be given red.
                 </Span>
                 <Span>
                   We need to perform rotation when the parent of current node is
