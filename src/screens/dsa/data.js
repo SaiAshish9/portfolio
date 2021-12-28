@@ -8888,7 +8888,7 @@ console.log(isPairSum(arr, arrSize, val));
               <b>Asynmptotic Notations</b>
             </Span>
             <Span>
-              These are the mathematical tools used to compute eddiciency of the
+              These are the mathematical tools used to compute efficiency of the
               algorithm which doesn't require algorithms to be implemented.
             </Span>
             <Span>
