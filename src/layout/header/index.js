@@ -286,7 +286,7 @@ const Header = ({ scrolled, history }) => {
         <SLanguageIcon onClick={() => setVisible(!visible)}>
           {languages[selectedLanguage].icon}
         </SLanguageIcon>
-        {visible && (
+        {visible && !history.location.pathname.includes("dsa") && (
           <Drawer
             data={languages}
             selected={selectedLanguage}
@@ -294,10 +294,10 @@ const Header = ({ scrolled, history }) => {
             setVisible={setVisible}
             label="selectLanguage"
             onClick={(i) => {
-              setSelectedLanguage(i.id);
               if (history.location.pathname.split("/").includes("dsa")) {
                 history.push(`/${i.code ?? "en"}/dsa`);
               } else {
+                setSelectedLanguage(i.id);
                 history.push(i.code);
               }
               localStorage.setItem("code", i.id);

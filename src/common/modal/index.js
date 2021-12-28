@@ -15,6 +15,7 @@ import {
 } from "./styles";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+import I18n from "common/I18n";
 
 const NextArrow = (props) => {
   const { onClick, currentSlide, curr } = props;
@@ -97,7 +98,7 @@ const Overlay = ({ data: selectedData, visible, setVisible, label, site }) => {
       )}
       {site && (
         <SubTitle href={data?.link} target="_blank" rel="noopener noreferrer">
-          Visit Site
+          <I18n t="visitSite" />
         </SubTitle>
       )}
     </StyledModal>
