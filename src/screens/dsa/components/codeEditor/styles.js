@@ -99,7 +99,7 @@ const CommonStyles = css`
         margin-left: 0px;
       }
       .CodeMirror-line {
-        padding-left: 29px;
+        padding-left: 36px;
       }
       .CodeMirror-gutter {
         width: 0px !important;
