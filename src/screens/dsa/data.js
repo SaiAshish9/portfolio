@@ -6179,6 +6179,115 @@ if __name__=='__main__':
                     F`,
                   }}
                 />
+                <p>
+                  <b>Practice</b>
+                </p>
+                <CodeEditor
+                  options={{
+                    title: "Adjacency List(Practice)",
+                    codes: {
+                      Javacript: {
+                        code: `class Graph{
+
+                          constructor(n,v){
+                            this.n = n
+                            this.g = {}
+                            this.v = v 
+                          }
+                          
+                          addVertex(i){
+                            this.g[i] = []
+                          }
+                        
+                          removeVertex(i){
+                            delete this.g[i]
+                            for(let k in this.g){
+                              this.g[k] = this.g[k].filter(x=>x!==i)
+                            }
+                          }
+                        
+                          addEdge(u,v){
+                           this.g[u].push(v)
+                           this.g[v].push(u)
+                          }
+                        
+                          print(){
+                            let res = {}
+                            Object.entries(this.g).forEach((i,k)=>{
+                              res[this.v[i[0]]] = i[1].map(x=>this.v[x])  
+                            })
+                            console.log(res)
+                          }
+                           
+                          bfs(v = 0){
+                            let q = []
+                            let visited = {}
+                            q.push(v)
+                            visited[v] = true
+                            while(q.length){
+                              const ele = q.shift()
+                              console.log(this.v[ele])
+                              const list = this.g[ele]
+                              for(let i of list){
+                                if(!visited[i]){
+                                  visited[i] = true
+                                  q.push(i)
+                                }
+                              } 
+                            }
+                          }
+                        
+                          dfs(v=0,visited={}){
+                            visited[v] = true
+                            console.log(this.v[v])
+                            const list = this.g[v]
+                            for(let i of list){
+                               if(!visited[i]) this.dfs(i,visited)
+                            }
+                          }
+                        
+                        }
+                        
+                        const v = ['A','B','C','D','E','F']
+                        const g = new Graph(6,v)
+                        for(let i in v)
+                        g.addVertex(i)
+                        g.addEdge(0, 1);
+                        g.addEdge(0, 3);
+                        g.addEdge(0, 4);
+                        g.addEdge(1, 2);
+                        g.addEdge(3, 4);
+                        g.addEdge(4, 5);
+                        g.addEdge(4, 2);
+                        g.addEdge(2, 5);
+                        // g.removeVertex(1)
+                        g.print()
+                        g.bfs()
+                        g.dfs()`,
+                        output: `{
+                          A: [ 'B', 'D', 'E' ],
+                          B: [ 'A', 'C' ],
+                          C: [ 'B', 'E', 'F' ],
+                          D: [ 'A', 'E' ],
+                          E: [ 'A', 'D', 'F', 'C' ],
+                          F: [ 'E', 'C' ]
+                        }
+                        A
+                        B
+                        D
+                        E
+                        C
+                        F
+                        A
+                        B
+                        C
+                        E
+                        D
+                        F`,
+                      },
+                    },
+                  }}
+                />
                 <Span>
                   <b>Adjacency Matrix</b>
                 </Span>
@@ -6337,6 +6446,124 @@ if __name__=='__main__':
                     0 1 0 1
                     0 0 1 0
                     `,
+                  }}
+                />
+                <p>
+                  <b>Practice:</b>
+                </p>
+                <CodeEditor
+                  options={{
+                    title: "Adjacency Matrix(Practice)",
+                    codes: {
+                      Javascript: {
+                        code: `class Graph{
+
+                          constructor(n,v){
+                            this.n = n
+                            this.g = Array.from(Array(n*2),()=>Array(n*2).fill(0))
+                            this.v = v 
+                          }
+                          
+                          addVertex() {
+                            this.n++;    
+                            for (let i = 0; i < this.n; ++i) {
+                              this.g[i][this.n - 1] = 0;
+                              this.g[this.n - 1][i] = 0;
+                            }
+                          }
+                        
+                            removeVertex(x) {
+                                if (x > this.n) {
+                                    console.log("Vertex not present!");
+                                    return;
+                                } else {
+                                    let i;
+                                    while (x < this.n) {
+                                        for (i = 0; i < this.n; ++i) {
+                                            this.g[i][x] = this.g[i][x + 1];
+                                        }
+                        
+                                        for (i = 0; i < this.n; ++i) {
+                                            this.g[x][i] = this.g[x + 1][i];
+                                        }
+                                        x++;
+                                    }
+                                    this.n--;
+                                }
+                            }
+                        
+                          addEdge(u,v){
+                           this.g[u][v] = 1
+                           this.g[v][u] = 1
+                          }
+                        
+                          print(){
+                            this.g.slice(0,this.n).forEach((x,i)=>console.log(x.slice(0,this.n)))
+                          }
+                           
+                          bfs(v = 0){
+                            let q = []
+                            let visited = {}
+                            q.push(v)
+                            visited[v] = true
+                            while(q.length){
+                              const ele = q.shift()
+                              console.log(this.v[ele])
+                              for(let i=0;i<this.n;i++){
+                                if(!visited[i] && this.g[ele][i]){
+                                  visited[i] = true
+                                  q.push(i)
+                                }
+                              }
+                            }
+                          }
+                        
+                          dfs(v=0,visited={}){
+                            visited[v] = true
+                            console.log(this.v[v])
+                            const list = this.g[v]
+                            for(let i =0;i<this.n;i++){
+                               if(!visited[i] && list[i]) this.dfs(i,visited)
+                            }
+                          }
+                        
+                        }
+                        
+                        const v = ['A','B','C','D','E','F']
+                        const g = new Graph(5,v)
+                        g.addEdge(0, 1);
+                        g.addEdge(0, 3);
+                        g.addEdge(0, 4);
+                        g.addEdge(1, 2);
+                        g.addEdge(3, 4);
+                        g.addEdge(4, 2);
+                        g.addVertex()
+                        g.addEdge(4, 5);
+                        g.addEdge(2, 5);
+                        // g.removeVertex(1)
+                        g.print()
+                        g.bfs()
+                        g.dfs()`,
+                        output: `[ 0, 1, 0, 1, 1, 0 ]
+                        [ 1, 0, 1, 0, 0, 0 ]
+                        [ 0, 1, 0, 0, 1, 1 ]
+                        [ 1, 0, 0, 0, 1, 0 ]
+                        [ 1, 0, 1, 1, 0, 1 ]
+                        [ 0, 0, 1, 0, 1, 0 ]
+                        A
+                        B
+                        D
+                        E
+                        C
+                        F
+                        A
+                        B
+                        C
+                        E
+                        D
+                        F`,
+                      },
+                    },
                   }}
                 />
                 <Span>
