@@ -4213,6 +4213,22 @@ pop_back() :
                             queue.push(curr.right);
                           }
                         }
+
+                        // mirror(){
+                        //   let queue = []
+                        //   let height = 0
+                        //   queue.push(this.root)
+                        //   while(queue.length){
+                        //     let curr = queue.shift()
+                        //     // console.log(curr.data)
+                        //     if(curr.left)
+                        //     [curr.left,curr.right] = [curr.right,curr.left]
+                        //     height++
+                        //     if(curr.left) queue.push(curr.left)
+                        //     if(curr.right) queue.push(curr.right)
+                        //   }
+                        //   console.log({ height })
+                        // }
                       
                       }
                       
