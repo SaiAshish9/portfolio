@@ -4533,15 +4533,15 @@ pop_back() :
                   lesser than it and the right child should be greater than it.
                 </Span>
                 <Span>
-                  inorder, preorder, postorder => depth first traversal
+                  inorder, preorder, postorder =&lt; depth first traversal
                   <br />
-                  level order => breadth first traversal
+                  level order =&lt; breadth first traversal
                   <br />
-                  Min height => n-1 <br />
-                  Max height => ceil(log2(n)) <br />
-                  Min nodes -> h+1 <br />
-                  Max nodes -> 2^h + 1 <br />
-                  Insert, delete, search -> complexity : O(1)
+                  Min height =&lt; n-1 <br />
+                  Max height =&lt; ceil(log2(n)) <br />
+                  Min nodes -&lt; h+1 <br />
+                  Max nodes -&lt; 2^h + 1 <br />
+                  Insert, delete, search -&lt; complexity : O(1)
                 </Span>
                 <Span>
                   <b>Implementation:</b>
