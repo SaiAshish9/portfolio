@@ -9024,8 +9024,8 @@ console.log(isPairSum(arr, arrSize, val));
             </Span>
 
             <Span>
-              T(n) = aT(n/b) + f(n) , f(n) = O(n^k * log^p n) , f(n) &lt;= c*g(n)
-              , a&gt;=1 , b&gt;1
+              T(n) = aT(n/b) + f(n) , f(n) = O(n^k * log^p n) , f(n) &lt;=
+              c*g(n) , a&gt;=1 , b&gt;1
             </Span>
             <Span>
               Case 1: logb a &gt; k <br />
@@ -10755,6 +10755,98 @@ if __name__ == '__main__':
                                 adj = arrayOfNulls<LinkedList>(V)
                                 for (i in 0 until V) adj[i] = LinkedList()
                             }
+                        }`,
+                      },
+                    },
+                  }}
+                />
+                <p>
+                  <b>Practice</b>
+                </p>
+                <CodeEditor
+                  options={{
+                    title: "Graph Coloring(BFS)",
+                    codes: {
+                      Javascript: {
+                        code: `class Graph {
+  
+                          constructor(n,v,c){
+                            this.n = n
+                            this.g = {}
+                            this.c = c
+                            this.v = v
+                          }
+                        
+                          addVertex(v){
+                            this.g[v] = {
+                              color:null,
+                              list: []
+                            }
+                          }
+                          
+                          addEdge(u,v){
+                           this.g[u].list.push(v)
+                           this.g[v].list.push(u)
+                          }
+                        
+                          print(){
+                            console.log(this.g)
+                          }
+                        
+                          bfs(){
+                            let q = []
+                            let visited = {}
+                            visited[0] = true
+                            q.push(0)
+                            this.g[0].color = this.c[0]
+                            while(q.length){
+                              const v = q.shift()
+                              const list = this.g[v].list
+                              let c = 0
+                              for(let i of list){
+                                if(!visited[i]){
+                                  visited[i] = true
+                                  q.push(i)
+                                }
+                                if(this.g[i].color===c) c++
+                              }
+                              this.g[v].color = c
+                              console.log(this.v[v] + " -> " + this.c[c])
+                            }
+                          }
+                        
+                        }
+                        
+                        const c = ['red', 'green', 'yellow', 'blue', 'black', 'orange']
+                        const v = ['A', 'B', 'C', 'D', 'E', 'F']
+                        const g = new Graph(6,v,c)
+                        for (let x in v) {
+                            g.addVertex(x)
+                        }
+                        g.addEdge(0, 1);
+                        g.addEdge(0, 3);
+                        g.addEdge(0, 4);
+                        g.addEdge(1, 2);
+                        g.addEdge(3, 4);
+                        g.addEdge(4, 5);
+                        g.addEdge(4, 2);
+                        g.addEdge(2, 5);
+                        g.bfs()
+                        g.print()
+                        `,
+                        output: `A -> red
+                        B -> green
+                        D -> green
+                        E -> yellow
+                        C -> red
+                        F -> green
+                        {
+                          '0': { color: 0, list: [ 1, 3, 4 ] },
+                          '1': { color: 1, list: [ 0, 2 ] },
+                          '2': { color: 0, list: [ 1, 4, 5 ] },
+                          '3': { color: 1, list: [ 0, 4 ] },
+                          '4': { color: 2, list: [ 0, 3, 5, 2 ] },
+                          '5': { color: 1, list: [ 4, 2 ] }
                         }`,
                       },
                     },
