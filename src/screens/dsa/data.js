@@ -10760,9 +10760,10 @@ if __name__ == '__main__':
                     },
                   }}
                 />
-                <p>
+                <Span>
                   <b>Practice</b>
-                </p>
+                </Span>
+                <Img src={GraphImg} alt="img" reduceH left />
                 <CodeEditor
                   options={{
                     title: "Graph Coloring(BFS)",
