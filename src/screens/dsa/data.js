@@ -9724,48 +9724,39 @@ printMaxActivities(s,f)`,
                     output: null,
                     codes: {
                       Javascript: {
-                        code: `function printJobScheduling(arr, t){
-                          let n = arr.length;
-                       
-                          for(let i=0;i<n;i++){
-                              for(let j = 0;j<(n - 1 - i);j++){
-                                  if(arr[j][2] < arr[j + 1][2]){
-                                      let temp = arr[j];
-                                      arr[j] = arr[j + 1];
-                                      arr[j + 1] = temp;
-                                  }
-                               }
-                           }
-                       
-                          let result = [];
-                       
-                          let job = [];
-                          for(let i = 0;i<t;i++){
-                              job[i] = '-1';
-                              result[i] = false;
+                        code: `class Job {
+                          constructor(j,d,p){
+                            this.job = j
+                            this.profit = p
+                            this.deadline = d
                           }
-                          
-                          for(let i= 0;i<arr.length;i++){
-                              for(let j = Math.min(t - 1, arr[i][1] - 1);j>=0;j--){
-                                  if(result[j] == false){
-                                      result[j] = true;
-                                      job[j] = arr[i][0];
-                                      break;
-                                  }
-                              }
+                        }
+                        
+                        function print(jobs,t){
+                        let result = Array(t).fill(false)
+                        let answer = Array(t).fill(null)
+                        jobs.sort((a,b)=>b.deadline-a.deadline)
+                        for(let i in jobs)
+                          for(let j=Math.min(t-1,jobs[i].deadline-1);j>=0;j--){
+                                if(!result[j]){
+                                  result[j] = true
+                                  answer[j] = jobs[i].job
+                                  break
+                                }
                           }
-                       
-                          console.log(job);
-                      }
-                       
-                      const arr = [['a', 2, 100],  
-                             ['b', 1, 19],
-                             ['c', 2, 27],
-                             ['d', 1, 25],
-                             ['e', 3, 15]];
-                       
-                      printJobScheduling(arr, 3) ;`,
-                        output: `[ 'c', 'a', 'e' ]`,
+                        console.log(answer)
+                        }
+                        
+                        const jobs = [
+                          new Job('A',2,100),
+                          new Job('B',1,19),
+                          new Job('C',2,27),
+                          new Job('D',1,25),
+                          new Job('E',3,15),
+                        ]
+                        
+                        print(jobs,3)`,
+                        output: `[ 'C', 'A', 'E' ]`,
                       },
                       Java: {
                         code: `import java.util.*;
