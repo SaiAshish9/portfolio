@@ -13472,6 +13472,81 @@ SC O(N*W)
                     },
                   }}
                 />
+                <p>
+                  <b>Practice</b>
+                </p>
+                <CodeEditor
+                  options={{
+                    title: "TSP Bitmasking",
+                    codes: {
+                      Javascript: {
+                        code: `function dec2bin(dec){                      
+                          return (dec >>> 0).toString(2);
+                        }
+                        
+                        class Graph {
+                            constructor(n) {
+                                this.n = n;
+                                this.g = Array.from(Array(n), () => Array(n).fill(0));
+                            }
+                        
+                            addEdge(u, v, wt) {
+                                this.g[u][v] = wt
+                                this.g[v][u] = wt
+                            }
+                        
+                            print() {
+                                console.log(this.g)
+                            }
+                        
+                        
+                            tsp(dp,mask=1, pos=0) {
+                              // 1 -> 0001
+                        
+                                if (mask == ((1<<this.n)-1)) {
+                                    return this.g[pos][0]
+                                }
+                        
+                                if (dp[mask][pos] != -1)
+                                    return dp[mask][pos]
+                        
+                                let ans = Number.MAX_SAFE_INTEGER
+                                // compute tsp using each vertex
+                                for (let i = 0; i < this.n; i++) {
+                                    // if not visited
+                                    if ((mask & (1 << i)) == 0) {
+                                        // mark as visited 
+                                        let newAns = this.g[pos][i] + this.tsp(dp,(mask | (1 << i)), i)
+                                        ans = Math.min(ans, newAns)
+                                    }
+                                }
+                                return dp[mask][pos] = ans
+                            }
+                        }
+                        
+                        const n = 4
+                        const g = new Graph(n)
+                        const v = ['A', 'B', 'C', 'D']
+                        const dp = Array.from(Array(1 << n), () => Array(n).fill(-1))
+                        g.addEdge(0, 1, 20);
+                        g.addEdge(0, 2, 42);
+                        g.addEdge(0, 3, 25);
+                        g.addEdge(1, 2, 30);
+                        g.addEdge(1, 3, 34);
+                        g.addEdge(3, 2, 10);
+                        g.print();
+                        console.log(g.tsp(dp))`,
+                        output: `[
+                          [ 0, 20, 42, 25 ],
+                          [ 20, 0, 30, 34 ],
+                          [ 42, 30, 0, 10 ],
+                          [ 25, 34, 10, 0 ]
+                        ]
+                        85`,
+                      },
+                    },
+                  }}
+                />
               </>
             ),
           },
@@ -13598,6 +13673,7 @@ SC O(N*W)
                     },
                   }}
                 />
+
                 <p>
                   <b>LCS of 0s</b>
                 </p>
