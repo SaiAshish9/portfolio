@@ -8982,7 +8982,12 @@ console.log(isPairSum(arr, arrSize, val));
               T(n) = aT(n-b) + f(n) , f(n) = O(n^k) , f(n) &lt;= c*g(n) ,
               k&gt;=0 , a&gt;0 , b&gt;0
             </Span>
-
+            <Span>if a = 1,</Span>
+            <Span>O(n^(k+1)) O(n*f(n))</Span>
+            <Span>if a &gt; 1,</Span>
+            <Span>O(a^(n/b) * n^k)</Span>
+            <Span>if a &lt; 1,</Span>
+            <Span>O(f(n))</Span>
             <Span>Examples:</Span>
             <Span>
               1. T(n) = T(n-1) + constant <br />
@@ -9019,7 +9024,7 @@ console.log(isPairSum(arr, arrSize, val));
             </Span>
 
             <Span>
-              T(n) = aT(n/b) + f(n) , f(n) = O(n^k * logp n) , f(n) &lt;= c*g(n)
+              T(n) = aT(n/b) + f(n) , f(n) = O(n^k * log^p n) , f(n) &lt;= c*g(n)
               , a&gt;=1 , b&gt;1
             </Span>
             <Span>
