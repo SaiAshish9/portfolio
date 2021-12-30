@@ -14326,6 +14326,261 @@ SC O(N*W)
                     },
                   }}
                 />
+                <p><b>Practice</b></p>
+                <CodeEditor
+                
+                options={{
+                  title:"lis+lcs+lps+mcl+lds+lbs+lcis",
+                  codes:{
+                    Javascript:{
+                      code:`function lcs(str1,str2){
+                        const m = str1.length
+                        const n = str2.length
+                        const dp = Array.from(Array(m+1),()=>Array(n+1).fill(0))
+                        for(let i=0;i<=m;i++){
+                          for(let j=0;j<=n;j++){
+                            if(i==0 || j==0) dp[i][j] = 0
+                            else if(str1[i-1]==str2[j-1]) dp[i][j] = 1 + dp[i-1][j-1]  
+                            else dp[i][j] = Math.max(dp[i][j-1],dp[i-1][j])
+                          }
+                        }
+                        let result = len = dp[m][n]
+                        const str = Array(result).fill(null)
+                        let i=m,j=n
+                        while(i>0&&j>0){
+                         if(str1[i-1]==str2[j-1]){
+                           str[len-1]= str1[i-1]
+                           i-=1
+                           j-=1
+                           len-=1
+                         }
+                         else if (dp[i - 1][j] > dp[i][j - 1])
+                            i -= 1
+                         else 
+                            j -= 1
+                        }
+                        return str.join("")
+                        }
+                        console.log(lcs("abcdef","pqadef"))
+                        
+                        function lps(str){
+                          return lcs(str,str.split("").reverse().join())
+                        }
+                        console.log(lps("abs123abs"))
+                        
+                        function lps1(str) {
+                            const m = str.length
+                            let dp = Array.from(Array(m), () => Array(m).fill(1))
+                            for (let cl = 2; cl <= m; cl++) {
+                                for (let i = 0; i < m - cl + 1; i++) {
+                                    let j = i + cl - 1;
+                                    if (str[i] == str[j] && cl == 2)
+                                        dp[i][j] = 2;
+                                    else if (str[i] == str[j])
+                                        dp[i][j] = dp[i + 1][j - 1] + 2;
+                                    else
+                                        dp[i][j] = Math.max(dp[i][j - 1], dp[i + 1][j]);
+                                }
+                            }
+                            return dp[0][m - 1]
+                        }
+                        console.log(lps1("abs123abs"))
+                        
+                        function lis(str){
+                          const n = str.length
+                          let i,j   
+                          const dp = Array(n).fill(1)
+                          for(i=1;i<n;i++){
+                            for(j=0;j<i;j++){
+                              if(str[i] > str[j] && dp[i]<dp[j]+1){
+                               dp[i] = dp[j] + 1
+                              }
+                            }
+                          }
+                          const max = Math.max(...dp)
+                          let tmp = max
+                          const index = []
+                          for(i=n-1;i>=0;i--){
+                            if(dp[i]==tmp){
+                              index.push(i)
+                              tmp--
+                            }
+                          }
+                          return index.map(x => str[x]).reverse()
+                        }
+                        
+                        console.log(lis([10, 22, 9, 33, 21, 50, 41, 60]))
+                        
+                        class Pair {
+                            constructor(a, b) {
+                                this.a = a
+                                this.b = b
+                            }
+                        }
+                        function mcl(arr){
+                        const n = arr.length
+                        const dp = Array(n).fill(1)
+                        let i,j
+                        for(i=1;i<n;i++){
+                          for(j=0;j<i;j++){
+                             if(arr[i].a > arr[j].b && dp[i]<dp[j]+1){
+                               dp[i] = dp[j] + 1
+                             }
+                          }
+                        }
+                        const max = Math.max(...dp)
+                        let tmp = max
+                        let index = []
+                        for(i=n-1;i>=0;i--){
+                          if(dp[i]==tmp){
+                            index.push(i)
+                            tmp--
+                          }
+                        }
+                        console.log(index.map(x=>arr[x].a + " " + arr[x].b).reverse().join(' '))
+                        }
+                        
+                        mcl([
+                            new Pair(5, 24),
+                            new Pair(39, 60),
+                            new Pair(27, 40),
+                            new Pair(50, 90)
+                        ])
+                        
+                        
+                        function lds(arr){
+                        const n = arr.length
+                        let dp = new Array(n).fill(1)
+                        let i,j
+                        for(i=n-1;i>=0;i--){
+                          for(j=n-1;j>i;j--){
+                            if(arr[i] > arr[j] && dp[i] < dp[j]+1){
+                              dp[i] = dp[j] + 1
+                            }
+                          }
+                        }
+                        const max = Math.max(...dp)
+                        console.log(max)
+                        let temp = max
+                        let index = []
+                        for(i=0;i<n;i++){
+                         if(dp[i]==temp){
+                           index.push(i)
+                           temp--
+                         }
+                        }
+                        console.log(index.map(x=>arr[x]))
+                        }
+                        lds([10, 22, 9, 33, 21, 50, 41, 60])
+                        
+                        function lbs(arr){
+                        const n = arr.length
+                        let i,j
+                        const lis = Array(n).fill(1)
+                        const lds = Array(n).fill(1)
+                        for(i=1;i<=n;i++){
+                          for(j=0;j<i;j++){
+                            if(arr[i]>arr[j] &&lis[i] < lis[j]+1)
+                            lis[i] = lis[j] + 1 
+                          }
+                        }
+                        for(i=n-1;i>-0;i--){
+                          for(j=n-1;j>i;j--){
+                            if(arr[i]>arr[j] && lds[i] < lds[j] +1)
+                              lds[i] = lds[j] + 1
+                          }
+                        }
+                        let max = arr[0], ind = 0
+                        for(i=0;i<n;i++){
+                          if(max<lis[i]+lds[i]-1){
+                            max = lis[i]+lds[i]-1 
+                            ind = i
+                          }
+                        }
+                        console.log(max)
+                        
+                        let lis_index = lis[ind] 
+                        let lds_index = lds[ind] - 1
+                        const result = []
+                        
+                        for(i=ind;i>=0 && lis_index > 0;i--){
+                          if(lis_index === lis[i]){
+                            result.push(arr[i])
+                            lis_index--
+                          }
+                        }
+                        result.reverse()
+                        for(i=ind;i<n && lds_index > 0;i++){
+                          if(lds_index === lds[i]){
+                            result.push(arr[i])
+                            lds_index--
+                          }
+                        }
+                        console.log(result)
+                        }
+                        
+                        lbs([1, 11, 2, 10, 4, 5, 2, 1])
+                        
+                        function lcis(str1,str2){
+                        let m = str1.length
+                        let n = str2.length
+                        let dp = Array(n).fill(0)
+                        let parent = Array(n).fill(0)
+                        for (let i = 0; i < m; i++) {
+                          let current = 0, last = -1
+                          for (let j = 0; j < n; j++) {
+                              if (str1[i] == str2[j] && current + 1 > dp[j]) {
+                                  dp[j] = current + 1;
+                                  parent[j] = last
+                              }
+                              if (str1[i] > str2[j] && dp[j] > current) {
+                                  current = dp[j];
+                                  last = j
+                              }
+                          }
+                        }
+                        const max = Math.max(...dp)
+                        console.log(max)
+                        const result = Array(max).fill(null)
+                        let index = dp.indexOf(max)
+                        let i=0
+                        while(index!=-1){
+                        result[i] = str2[index]
+                        index = parent[index]
+                        i+=1
+                        }
+                        console.log(result.reverse().join(""))
+                        }
+                        
+                        lcis("b3sak", "baejkl")
+                        `,
+                        output:`adef
+                        sbs
+                        3
+                        [ 10, 22, 33, 41, 60 ]
+                        5 24 27 40 50 90
+                        2
+                        adef
+                        sbs
+                        3
+                        [ 10, 22, 33, 41, 60 ]
+                        5 24 27 40 50 90
+                        2
+                        adef
+                        sbs
+                        3
+                        [ 10, 22, 33, 41, 60 ]
+                        5 24 27 40 50 90
+                        2
+                        [ 10, 9 ]
+                        6
+                        [ 1, 11, 10, 4, 2, 1 ]
+                        2
+                        bk`
+                    }
+                  }
+                }}
+                />
               </>
             ),
           },
@@ -15108,6 +15363,193 @@ SC O(N*W)
                       },
                     },
                   }}
+                />
+                <p>
+                  <b>Practice:</b>
+                </p>
+                <CodeEditor
+                options={{
+                  title:"TSP(Backtracking)",
+                  codes:{
+                    Javascript:{
+                      code:`class Graph {
+  
+                        constructor(n){
+                         this.n = n
+                         this.g = Array.from(Array(n),()=>Array(n).fill(0))
+                        }
+                        
+                        addEdge(u,v,w){
+                          this.g[u][v] = w
+                          this.g[v][u] = w
+                        }
+                      
+                        print(){
+                          console.log(this.g)
+                        }
+                        
+                        dfs(v=0,visited={}){
+                          visited[v] = true
+                          console.log(v)
+                          for(let i=0;i<this.n;i++){
+                            if(!visited[i] && this.g[v][i]){
+                              this.dfs(i,visited)
+                            }
+                          }
+                        }
+                        
+                        bfs(){
+                         let q = []
+                         let visited = []
+                         visited[0] = true
+                         q.push(0)
+                         while(q.length){
+                            const el = q.shift()
+                            console.log(el)
+                            for(let i=0;i<this.n;i++){
+                               if(!visited[i] && this.g[el][i]){
+                                 visited[i] = true
+                                 q.push(i)
+                               }
+                            }
+                         }
+                        }
+                        
+                        tsp(){
+                          let result = []
+                          this.tspH(0,1,0,result)
+                          console.log(Math.min(...result))
+                        }
+                      
+                        tspH(curr,count,cost,result,visited=[]){
+                          if (count === this.n && this.g[curr][0]) {
+                              result.push(cost + this.g[curr][0])
+                              return
+                          }
+                          for (let i = 0; i < this.n; i++) {
+                              let curr_cost = this.g[curr][i]
+                              if (!visited[i] && curr_cost) {
+                                  visited[i] = true
+                                  this.tspH(i, count + 1, cost + curr_cost, result, visited)
+                                  visited[i] = false
+                              }
+                          }     
+                        }
+                       
+                      }
+                      
+                      const g = new Graph(4)
+                      g.addEdge(0, 1, 20);
+                      g.addEdge(0, 2, 42);
+                      g.addEdge(0, 3, 25);
+                      g.addEdge(1, 2, 30);
+                      g.addEdge(1, 3, 34);
+                      g.addEdge(3, 2, 10);
+                      g.print();
+                      console.log("DFS");
+                      g.dfs();
+                      console.log("BFS");
+                      g.bfs();
+                      g.tsp()
+                      
+                      // class Graph {
+                      //     constructor(noOfVertices) {
+                      //         this.noOfVertices = noOfVertices;
+                      //         this.adjMatrix = Array.from(Array(noOfVertices), () => Array(noOfVertices).fill(0));
+                      //     }
+                      //     addEdge(u, v, wt) {
+                      //         if ((u >= this.noOfVertices) || (v > this.noOfVertices)) {
+                      //             console.log("Vertex does not exists!");
+                      //             return
+                      //         }
+                      //         if (u == v) {
+                      //             console.log("Same Vertex!");
+                      //             return
+                      //         }
+                      //         this.adjMatrix[u][v] = wt
+                      //         this.adjMatrix[v][u] = wt
+                      //     }
+                      //     print() {
+                      //         console.log(this.adjMatrix)
+                      //     }
+                      //     tsp() {
+                      //         let allVisited = (1 << this.noOfVertices) - 1;
+                      //         // we can make use of boolean array as well
+                      //         //. ( 1 << 4) -1  => 16 -1 = 15
+                      //         // or allVisited = Array(this.noOfVertices)
+                      //         // .fill(false)
+                      
+                      //         // mask 1 (0001) represents person is at first 
+                      //         // visits (obviously)
+                      
+                      //         // mask 15 (1111) represents person visits all cities 
+                      
+                      //         const lookupMem = Array.from(Array(1 << this.noOfVertices), () => Array(this.noOfVertices).fill(-1))
+                      //         const res = this.tspHelper(1, 0, allVisited, lookupMem)
+                      //         console.log("lookup")
+                      //         console.log(lookupMem)
+                      //         return res
+                      //     }
+                      
+                      //     // TC -> n^2 * 2^n
+                      //     // Each sub-problem (2^n) will take O (n) time to find a path to 
+                      //     // remaining (n-1) cities.
+                      //     // SC -> n2^n
+                      
+                      //     tspHelper(mask, pos, allVisited, dp) {
+                      
+                      //         if (mask == allVisited) {
+                      //             return this.adjMatrix[pos][0]
+                      //         }
+                      //         // dist[pos][0] distance b/w last and first pos
+                      
+                      //         if (dp[mask][pos] != -1)
+                      //             return dp[mask][pos]
+                      //         // avoid overlapping subproblems
+                      
+                      //         let ans = Number.MAX_SAFE_INTEGER
+                      //         for (let city = 0; city < this.noOfVertices; city++) {
+                      //             // check for non visited neighbor
+                      //             if ((mask & (1 << city)) == 0) {
+                      //                 let newAns = this.adjMatrix[pos][city] + this.tspHelper((mask | (1 << city)), city, allVisited, dp)
+                      //                 // update city's bit from 0 to 1 for e.g. from 0001 to 0011
+                      //                 ans = Math.min(ans, newAns)
+                      //             }
+                      //         }
+                      //         return dp[mask][pos] = ans
+                      //     }
+                      // }
+                      
+                      // const g = new Graph(4)
+                      // const v = ['A', 'B', 'C', 'D']
+                      // g.addEdge(0, 1, 20);
+                      // g.addEdge(0, 2, 42);
+                      // g.addEdge(0, 3, 25);
+                      // g.addEdge(1, 2, 30);
+                      // g.addEdge(1, 3, 34);
+                      // g.addEdge(3, 2, 10);
+                      // g.print();
+                      // console.log(g.tsp())`,
+                      output:`[
+                        [ 0, 20, 42, 25 ],
+                        [ 20, 0, 30, 34 ],
+                        [ 42, 30, 0, 10 ],
+                        [ 25, 34, 10, 0 ]
+                      ]
+                      DFS
+                      0
+                      1
+                      2
+                      3
+                      BFS
+                      0
+                      1
+                      2
+                      3
+                      85`
+                    }
+                  }
+                }}
                 />
               </>
             ),
