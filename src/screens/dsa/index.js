@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import qs from "query-string";
 import GaneshaImg from "assets/home/ganesha.png";
 
@@ -24,6 +24,72 @@ import { useHistory, useLocation } from "react-router-dom";
 import { AiOutlineAudio } from "react-icons/ai";
 // AiFillAudio,
 
+const LeetCodeQuestions = ({ entries, selectedOption, history }) => {
+  const inputRef = useRef();
+
+  const entriesData = Object.entries(entries[selectedOption][1].types).map(
+    (x) => x[1].title
+  );
+
+  const resultantEntriesData = [
+    ...entriesData,
+    ...Array(1008 - entriesData?.length).keys(),
+  ];
+
+  const [data, setData] = useState(resultantEntriesData);
+
+  function handleChange() {
+    const value = inputRef.current.value.toLowerCase();
+    if (value) {
+      setData((d) =>
+        resultantEntriesData.filter((x) => {
+          if (typeof x === "string") return x.toLowerCase().includes(value);
+          return false;
+        })
+      );
+    } else {
+      setData(resultantEntriesData);
+    }
+  }
+
+  return (
+    <>
+      <SearchContainer>
+        <StyledSearchIcon />
+        <Search
+          ref={inputRef}
+          onChange={handleChange}
+          placeholder="Search by title, question number"
+        />
+      </SearchContainer>
+      <BtnContainer scroll>
+        {data?.map((i, key) =>
+          key < entriesData.length ? (
+            <Button
+              onClick={() => {
+                history.push(`?category=${selectedOption}&&subCategory=${key}`);
+              }}
+              key={key}
+            >
+              {i.length > 35 ? i.substr(0, 36) + "..." : i}
+            </Button>
+          ) : (
+            <Button key={key} onClick={() => {}}>
+              Q
+              {i +
+                1 +
+                Object.entries(entries[selectedOption][1].types).map(
+                  (x) => x[1].title
+                )?.length}{" "}
+              . Work In Progress
+            </Button>
+          )
+        )}
+      </BtnContainer>
+    </>
+  );
+};
+
 const DSA = () => {
   const history = useHistory();
   const location = useLocation();
@@ -35,8 +101,6 @@ const DSA = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(-1);
 
   const entries = Object.entries(DATA);
-
-  const [value, setValue] = useState(null);
 
   function InitialStep() {
     return (
@@ -63,17 +127,8 @@ const DSA = () => {
           ))}
         </BtnContainer>
 
-        <SearchContainer>
-          <StyledSearchIcon />
-          <Search
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            placeholder="Search by title, question number"
-          />
-        </SearchContainer>
-
-        {selectedOption > -1 && (
-          <BtnContainer scroll>
+        {selectedOption > -1 && parseInt(params.category) != 3 && (
+          <BtnContainer>
             {Object.entries(entries[selectedOption][1].types)
               .map((x) => x[1].title)
               ?.map((i, key) => (
@@ -86,26 +141,6 @@ const DSA = () => {
                   key={key}
                 >
                   {i.length > 35 ? i.substr(0, 36) + "..." : i}
-                </Button>
-              ))}
-            {parseInt(params.category) === 3 &&
-              !parseInt(params.subCategory) &&
-              [
-                ...Array(
-                  1008 -
-                    Object.entries(entries[selectedOption][1].types).map(
-                      (x) => x[1].title
-                    )?.length
-                ).keys(),
-              ].map((i, k) => (
-                <Button key={k} onClick={() => {}}>
-                  Q
-                  {i +
-                    1 +
-                    Object.entries(entries[selectedOption][1].types).map(
-                      (x) => x[1].title
-                    )?.length}{" "}
-                  . Work In Progress
                 </Button>
               ))}
           </BtnContainer>
@@ -130,6 +165,16 @@ const DSA = () => {
             ))}
           </BtnContainer>
         )}
+
+        {selectedOption > -1 &&
+          parseInt(params.category) === 3 &&
+          !params.subCategory && (
+            <LeetCodeQuestions
+              entries={entries}
+              selectedOption={selectedOption}
+              history={history}
+            />
+          )}
 
         {selectedOption === -1 && <Img src={GaneshaImg} alt="img" />}
 

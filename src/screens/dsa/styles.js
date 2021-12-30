@@ -134,9 +134,9 @@ export const BtnContainer = styled.div(
   ({ scroll, start }) => css`
     ${Styles.RCC};
     flex-wrap: wrap;
-    margin: 1.5rem auto 0;
+    margin: 1.8rem auto 0;
     padding: 0px;
-    max-height: 45vh;
+    max-height: 41vh;
     ${scroll &&
     css`
       overflow-y: scroll;
@@ -235,7 +235,7 @@ export const Desc = styled.p`
 `;
 
 export const InitialStepContainer = styled.div`
-  margin: auto;
+  margin: 1.8rem auto 0;
   ${Styles.CCC};
   width: 80%;
   padding-bottom: 1.8rem;
