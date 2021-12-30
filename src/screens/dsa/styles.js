@@ -1,16 +1,25 @@
 import styled, { css } from "styled-components";
 import { Styles, Theme, Colors, BREAKPOINTS } from "constants/index";
+import { BiSearch } from "react-icons/bi";
 
-const { veryDarkGray, white, blue } = Colors;
+const { veryDarkGray, white, blue, darkGrey, lightBluishGrey, orange, red } =
+  Colors;
 
 export const Container = styled.div`
   padding-top: 4.5rem;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const Content = styled.div`
   min-height: calc(100vh - 9.5rem);
   padding: 0 2rem;
   padding-top: 1rem;
+  overflow: hidden;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const Button = styled.div`
@@ -121,16 +130,94 @@ export const Button = styled.div`
     `};
 `;
 
-export const BtnContainer = styled.div`
-  margin-top: 1rem;
-  ${Styles.RCC};
-  flex-wrap: wrap;
-  margin: 1.5rem auto;
-  ${({ start }) =>
-    start === 1 &&
+export const BtnContainer = styled.div(
+  ({ scroll, start }) => css`
+    ${Styles.RCC};
+    flex-wrap: wrap;
+    margin: 1.5rem auto 0;
+    padding: 0px;
+    max-height: 46vh;
+    ${scroll &&
+    css`
+      overflow-y: scroll;
+    `}
+    ${start === 1 &&
     css`
       justify-content: flex-start;
     `}
+  `
+);
+
+export const SearchContainer = styled.div`
+  ${Styles.RCC};
+  position: relative;
+  margin: 1.5rem auto;
+  width: fit-content;
+`;
+
+export const Search = styled.input`
+  ${Styles.HideBorder};
+  background: ${({ theme: { current } }) =>
+    current === Theme.dark
+      ? darkGrey
+      : current === Theme.highContrast
+      ? "yellow"
+      : current === Theme.fire
+      ? orange
+      : current === Theme.love
+      ? red
+      : lightBluishGrey};
+  ${({ theme: { current } }) =>
+    current === Theme.highContrast &&
+    css`
+      color: #000;
+    `}
+  ${({ theme: { current } }) =>
+    (current === Theme.fire || current === Theme.love) &&
+    css`
+      color: #fff;
+    `};
+  box-shadow: 0 2px 1px -1px rgb(0 0 0 / 32%), 0 1px 1px 0 rgb(0 0 0 / 34%),
+    0 1px 3px 0 rgb(0 0 0 / 32%);
+  border-radius: 0.27rem;
+  padding: 0.45rem 0.54rem;
+  font-size: 0.9rem;
+  width: 18rem;
+  &::placeholder {
+    color: #000;
+    ${({ theme: { current } }) =>
+      current === Theme.highContrast &&
+      css`
+        color: #000;
+      `}
+    ${({ theme: { current } }) =>
+      (current === Theme.fire ||
+        current === Theme.love ||
+        current === Theme.dark) &&
+      css`
+        color: #fff;
+      `};
+  }
+  padding-left: 2.1rem;
+`;
+
+export const StyledSearchIcon = styled(BiSearch)`
+  color: #000;
+  position: absolute;
+  left: 0.72rem;
+  font-size: 1rem;
+  ${({ theme: { current } }) =>
+    current === Theme.highContrast &&
+    css`
+      color: #000;
+    `}
+  ${({ theme: { current } }) =>
+    (current === Theme.fire ||
+      current === Theme.love ||
+      current === Theme.dark) &&
+    css`
+      color: #fff;
+    `};
 `;
 
 export const Img = styled.img`

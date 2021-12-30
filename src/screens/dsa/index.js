@@ -10,6 +10,9 @@ import {
   Img,
   InitialStepContainer,
   Desc,
+  Search,
+  SearchContainer,
+  StyledSearchIcon,
 } from "./styles";
 
 import { Header, DescCont } from "./components";
@@ -20,6 +23,8 @@ import { useHistory, useLocation } from "react-router-dom";
 
 import { AiOutlineAudio } from "react-icons/ai";
 // AiFillAudio,
+
+import { BiSearch } from "react-icons/bi";
 
 const DSA = () => {
   const history = useHistory();
@@ -57,8 +62,14 @@ const DSA = () => {
             </Button>
           ))}
         </BtnContainer>
+
+        <SearchContainer>
+          <StyledSearchIcon />
+          <Search placeholder="Search by title, question number" />
+        </SearchContainer>
+
         {selectedOption > -1 && (
-          <BtnContainer>
+          <BtnContainer scroll>
             {Object.entries(entries[selectedOption][1].types)
               .map((x) => x[1].title)
               ?.map((i, key) => (
@@ -73,10 +84,30 @@ const DSA = () => {
                   {i.length > 35 ? i.substr(0, 36) + "..." : i}
                 </Button>
               ))}
+            {parseInt(params.category) === 3 &&
+              !parseInt(params.subCategory) &&
+              [
+                ...Array(
+                  1008 -
+                    Object.entries(entries[selectedOption][1].types).map(
+                      (x) => x[1].title
+                    )?.length
+                ).keys(),
+              ].map((i, k) => (
+                <Button key={k} onClick={() => {}}>
+                  Q
+                  {i +
+                    1 +
+                    Object.entries(entries[selectedOption][1].types).map(
+                      (x) => x[1].title
+                    )?.length}{" "}
+                  . Work In Progress
+                </Button>
+              ))}
           </BtnContainer>
         )}
 
-        {selectedOption > -1 && (
+        {selectedOption > -1 && parseInt(params.category) != 3 && (
           <BtnContainer>
             {["Hindi", "English"].map((i, key) => (
               <Button
