@@ -136,7 +136,7 @@ export const BtnContainer = styled.div(
     flex-wrap: wrap;
     margin: 1.5rem auto 0;
     padding: 0px;
-    max-height: 46vh;
+    max-height: 45vh;
     ${scroll &&
     css`
       overflow-y: scroll;

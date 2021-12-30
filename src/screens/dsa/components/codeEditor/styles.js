@@ -175,6 +175,7 @@ export const OutputLabel = styled.p`
 export const ButtonContainer = styled(BtnContainer)`
   width: 63%;
   margin-left: 0px;
+  margin-bottom: 1rem;
   @media only screen and (max-width: ${BREAKPOINTS.md}) {
     width: 100%;
   }

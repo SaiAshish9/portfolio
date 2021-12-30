@@ -24,8 +24,6 @@ import { useHistory, useLocation } from "react-router-dom";
 import { AiOutlineAudio } from "react-icons/ai";
 // AiFillAudio,
 
-import { BiSearch } from "react-icons/bi";
-
 const DSA = () => {
   const history = useHistory();
   const location = useLocation();
@@ -37,6 +35,8 @@ const DSA = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(-1);
 
   const entries = Object.entries(DATA);
+
+  const [value, setValue] = useState(null);
 
   function InitialStep() {
     return (
@@ -65,7 +65,11 @@ const DSA = () => {
 
         <SearchContainer>
           <StyledSearchIcon />
-          <Search placeholder="Search by title, question number" />
+          <Search
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            placeholder="Search by title, question number"
+          />
         </SearchContainer>
 
         {selectedOption > -1 && (
