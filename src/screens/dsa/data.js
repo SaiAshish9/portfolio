@@ -17004,7 +17004,7 @@ if __name__ == '__main__':
         title: "Q41: Missing Positive",
       },
       q42: {
-        title: "Q42: Trapping Rain Water",
+        title: "Q42: Tapping Rain Water",
       },
       q43: {
         title: "Q43: Multiply Strings",
