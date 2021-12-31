@@ -16944,16 +16944,105 @@ if __name__ == '__main__':
                       `,
                   },
                   Java: {
-                    code: ``,
+                    code: `package com.programming;
+                    import java.util.*;
+                    
+                    public class TwoSum {
+                    
+                            private static int[] twoSum(int[] nums, int target) {
+                                Map<Integer, Integer> numMap = new HashMap<>();
+                                for (int i = 0; i < nums.length; i++) {
+                                    int complement = target - nums[i];
+                                    if (numMap.containsKey(complement)) {
+                                        return new int[] { numMap.get(complement), i };
+                                    } else {
+                                        numMap.put(nums[i], i);
+                                    }
+                                }
+                                return new int[] {};
+                            }
+                    
+                    
+                        public static void main(String[] args) {
+                            int ans[] = twoSum(new int[]{1,5,4}, 5);
+                            Arrays.stream(ans).forEach(System.out::println);
+                        }
+                    
+                    }
+                    `,
                   },
                   "C++": {
-                    code: ``,
+                    code: `#include <bits/stdc++.h>
+                    #include <iterator> 
+                    using namespace std;
+                    
+                    class Solution
+                    {
+                    // O(n)
+                    public:
+                      static void twoSum(vector<int>& nums,int target){
+                            unordered_map<int,int> m;
+                            int arr[]={};
+                            for(int i=0;i<nums.size();i++){
+                                int temp  = target - nums.at(i);
+                                if(m.find(temp) != m.end()){
+                                  cout << "[ " << m[temp] << " , " << i << " ]";
+                                }
+                                m[nums[i]] = i;
+                            }
+                      };
+                    };
+                    
+                    int main(int argc,char const *argv[]){
+                    
+                    #ifndef ONLINE_JUDGE
+                        freopen("ip.in","r",stdin);
+                        freopen("op.in","w",stdout);
+                    #endif 
+                       // string s;
+                       // getline(cin,s);
+                        std::vector<int> v {1,2,3};
+                        Solution::twoSum(v,5);
+                      return 0;
+                    }
+                    `,
                   },
                   Python: {
-                    code: ``,
+                    code: `def twoSum(a, b):
+                    x = {}
+                    i = 0
+                    while i < len(a):
+                        diff = b - a[i]
+                        if diff in x:
+                            return [x[diff],i]
+                        x[a[i]] = i
+                        i += 1
+                
+                
+                a = [3, 4, 5]
+                
+                if __name__ == '__main__':
+                    print(twoSum(a, 8))
+                
+                `,
                   },
                   Kotlin: {
-                    code: ``,
+                    code: `fun twoSum(a: IntArray, b:Int): List<Int?>? {
+                      var x = mutableMapOf<Int,Int>();
+                      for((i,v) in a.withIndex()){
+                          if(x.containsKey(b -a[i])){
+                              return listOf(x[b -a[i]],i)
+                          }
+                          x[v] = i
+                      }
+                      return null
+                  }
+                  
+                  fun main(){
+                      val arr = intArrayOf(3,4,1);
+                      val ans =twoSum(arr, 5)
+                      print(ans)
+                  }`,
                   },
                 },
               }}
