@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, memo } from "react";
 import qs from "query-string";
 import GaneshaImg from "assets/home/ganesha.png";
 
@@ -22,26 +22,14 @@ import { DATA } from "./data";
 import { useHistory, useLocation } from "react-router-dom";
 
 import { AiOutlineAudio } from "react-icons/ai";
-// AiFillAudio,
 
-const LeetCodeQuestions = ({ entries, selectedOption, history }) => {
+const SearchInput = ({ setData, resultantEntriesData }) => {
   const inputRef = useRef();
-
-  const entriesData = Object.entries(entries[selectedOption][1].types).map(
-    (x) => x[1].title
-  );
-
-  const resultantEntriesData = [
-    ...entriesData,
-    ...Array(1008 - entriesData?.length).keys(),
-  ];
-
-  const [data, setData] = useState(resultantEntriesData);
 
   function handleChange() {
     const value = inputRef.current.value.toLowerCase();
     if (value) {
-      setData((d) =>
+      setData((_) =>
         resultantEntriesData.filter((x) => {
           if (typeof x === "string") return x.toLowerCase().includes(value);
           return false;
@@ -53,13 +41,33 @@ const LeetCodeQuestions = ({ entries, selectedOption, history }) => {
   }
 
   return (
+    <Search
+      ref={inputRef}
+      onChange={handleChange}
+      placeholder="Search by title, question number"
+    />
+  );
+};
+
+const LeetCodeQuestions = memo(({ entries, selectedOption, history }) => {
+  const entriesData = Object.entries(entries[selectedOption][1].types).map(
+    (x) => x[1].title
+  );
+
+  const resultantEntriesData = [
+    ...entriesData,
+    ...Array(1008 - entriesData?.length).keys(),
+  ];
+
+  const [data, setData] = useState(resultantEntriesData);
+
+  return (
     <>
       <SearchContainer>
         <StyledSearchIcon />
-        <Search
-          ref={inputRef}
-          onChange={handleChange}
-          placeholder="Search by title, question number"
+        <SearchInput
+          setData={setData}
+          resultantEntriesData={resultantEntriesData}
         />
       </SearchContainer>
       <BtnContainer scroll>
@@ -88,7 +96,7 @@ const LeetCodeQuestions = ({ entries, selectedOption, history }) => {
       </BtnContainer>
     </>
   );
-};
+});
 
 const DSA = () => {
   const history = useHistory();

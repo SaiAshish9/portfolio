@@ -140,6 +140,9 @@ export const BtnContainer = styled.div(
     ${scroll &&
     css`
       overflow-y: scroll;
+      @media only screen and (max-width: ${BREAKPOINTS.xs}) {
+        max-height: 21vh;
+      };
     `}
     ${start === 1 &&
     css`
