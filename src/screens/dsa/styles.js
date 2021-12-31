@@ -142,7 +142,7 @@ export const BtnContainer = styled.div(
       overflow-y: scroll;
       @media only screen and (max-width: ${BREAKPOINTS.xs}) {
         max-height: 21vh;
-      };
+      } ;
     `}
     ${start === 1 &&
     css`
@@ -235,6 +235,7 @@ export const Desc = styled.p`
   text-align: start;
   margin: auto;
   min-width: 100%;
+  margin-top: 1.8rem;
 `;
 
 export const InitialStepContainer = styled.div`

@@ -14326,14 +14326,15 @@ SC O(N*W)
                     },
                   }}
                 />
-                <p><b>Practice</b></p>
+                <p>
+                  <b>Practice</b>
+                </p>
                 <CodeEditor
-                
-                options={{
-                  title:"lis+lcs+lps+mcl+lds+lbs+lcis",
-                  codes:{
-                    Javascript:{
-                      code:`function lcs(str1,str2){
+                  options={{
+                    title: "lis+lcs+lps+mcl+lds+lbs+lcis",
+                    codes: {
+                      Javascript: {
+                        code: `function lcs(str1,str2){
                         const m = str1.length
                         const n = str2.length
                         const dp = Array.from(Array(m+1),()=>Array(n+1).fill(0))
@@ -14554,7 +14555,7 @@ SC O(N*W)
                         
                         lcis("b3sak", "baejkl")
                         `,
-                        output:`adef
+                        output: `adef
                         sbs
                         3
                         [ 10, 22, 33, 41, 60 ]
@@ -14576,10 +14577,10 @@ SC O(N*W)
                         6
                         [ 1, 11, 10, 4, 2, 1 ]
                         2
-                        bk`
-                    }
-                  }
-                }}
+                        bk`,
+                      },
+                    },
+                  }}
                 />
               </>
             ),
@@ -15368,11 +15369,11 @@ SC O(N*W)
                   <b>Practice:</b>
                 </p>
                 <CodeEditor
-                options={{
-                  title:"TSP(Backtracking)",
-                  codes:{
-                    Javascript:{
-                      code:`class Graph {
+                  options={{
+                    title: "TSP(Backtracking)",
+                    codes: {
+                      Javascript: {
+                        code: `class Graph {
   
                         constructor(n){
                          this.n = n
@@ -15530,7 +15531,7 @@ SC O(N*W)
                       // g.addEdge(3, 2, 10);
                       // g.print();
                       // console.log(g.tsp())`,
-                      output:`[
+                        output: `[
                         [ 0, 20, 42, 25 ],
                         [ 20, 0, 30, 34 ],
                         [ 42, 30, 0, 10 ],
@@ -15546,10 +15547,10 @@ SC O(N*W)
                       1
                       2
                       3
-                      85`
-                    }
-                  }
-                }}
+                      85`,
+                      },
+                    },
+                  }}
                 />
               </>
             ),
@@ -16881,6 +16882,84 @@ if __name__ == '__main__':
     types: {
       q1: {
         title: "Q1. Two Sum",
+        content: (
+          <>
+            <Span>
+              <b>Q1. Two Sum</b>
+            </Span>
+            <Span>
+              <b>Problem Statement</b>
+            </Span>
+            <Span>
+              Given an array of integers nums and an integer target, return
+              indices of the two numbers such that they add up to target.
+              <br />
+              You may assume that each input would have exactly one solution,
+              and you may not use the same element twice.
+              <br />
+              You can return the answer in any order
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [2,7,11,15], target = 9 <br />
+              Output: [0,1] <br />
+              Output: Because nums[0] + nums[1] == 9, we return [0, 1].
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums = [3,2,4], target = 6 <br />
+              Output: [1,2]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <Span>
+              2 &lt;= nums.length &lt;= 104 <br />
+              -109 &lt;= nums[i] &lt;= 109 <br />
+              -109 &lt;= target &lt;= 109 <br />
+              Only one valid answer exists.
+            </Span>
+            <b>Solution</b>
+            <CodeEditor
+              options={{
+                title: "Q1. Two Sum(HashMap)",
+                output: `[ 0, 1 ]`,
+                codes: {
+                  Javascript: {
+                    code: `var twoSum = function(nums, target){
+                      const map = {}
+                      for(let i in nums){
+                        let diff = target - nums[i]
+                        if(map[diff])
+                        return [+map[diff],+i]
+                        else
+                        map[nums[i]] = i
+                      }
+                      }
+                      twoSum([3,3],6)
+                      `,
+                  },
+                  Java: {
+                    code: ``,
+                  },
+                  "C++": {
+                    code: ``,
+                  },
+                  Python: {
+                    code: ``,
+                  },
+                  Kotlin: {
+                    code: ``,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q2: {
         title: "Q2. Add Two Numbers",
