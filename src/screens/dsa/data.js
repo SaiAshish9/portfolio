@@ -22052,14 +22052,408 @@ print(sol.generateParenthesis(3))`,
             <Span>
               <b>Constraints</b>
             </Span>
-            <Span>
+            <p>
               k == lists.length <br />
               0 &lt;= k &lt;= 10^4 <br />
               0 &lt;= lists[i].length &lt;= 500 <br />
               -10^4 &lt;= lists[i][j] &lt;= 10^4 <br />
               lists[i] is sorted in ascending order. <br />
               The sum of lists[i].length won't exceed 10^4. <br />
-            </Span>
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q23. Merge K Sorted Lists",
+                output: `#####################
+                1
+                4
+                5
+                #####################
+                1
+                3
+                4
+                #####################
+                1
+                1
+                3
+                4
+                4
+                5
+                #####################`,
+                codes: {
+                  Javascript: {
+                    code: ``,
+                  },
+                  Java: {
+                    code: `import java.util.*;
+
+                    class ListNode{
+                      int val;
+                      ListNode next;
+                      ListNode(){}
+                      ListNode(int val){
+                        this.val = val;
+                      }
+                      ListNode(int val,ListNode next){
+                        this.val = val;
+                        this.next = next;
+                      }
+                    }
+                    
+                    class Main{
+                      public static ListNode mergekLists(ListNode[] lists){
+                            PriorityQueue<ListNode> q = new PriorityQueue<ListNode>(Math.max(1,lists.length), new Comparator<ListNode>() {
+                                @Override
+                                public int compare(ListNode e1, ListNode e2) {
+                                    return e1.val - e2.val;
+                                }
+                            });
+                            for (int i = 0; i < lists.length; i++) {
+                                if (lists[i] != null) {
+                                    q.add(lists[i]);
+                                }
+                            }
+                            // Iterator i = q.iterator();
+                            // while(i.hasNext()){
+                            //   display((ListNode)i.next());
+                            // }
+                            ListNode fakeHead = new ListNode(-1);
+                            ListNode p = fakeHead;
+                            while (!q.isEmpty()) {
+                                ListNode n = q.poll();
+                                if (n.next != null) {
+                                    q.add(n.next);
+                                }
+                                n.next = null;
+                                p.next = n;
+                                p = n;
+                            }
+                            return fakeHead.next;
+                      }
+                    
+                      public static void lineBreak(){
+                        System.out.println("#####################");
+                      }
+                    
+                      public static void display(ListNode l){
+                        ListNode temp = l;
+                        while(temp!=null){
+                          System.out.println(temp.val);
+                          temp=temp.next;
+                        }
+                      }
+                    
+                      public static ListNode insert(List<Integer> l){
+                      ListNode root = new ListNode();
+                      for(int i=0;i<l.size();i++){
+                        ListNode data = new ListNode(l.get(i));
+                        if(i==0){
+                          root = data;
+                        }else{
+                          ListNode temp = new ListNode();
+                          temp=root;
+                          while(temp.next!=null){
+                            temp=temp.next;
+                          }
+                          temp.next= data;
+                        }
+                      }
+                      return root;
+                      }
+                    
+                      public static void main(String ...s){
+                        ListNode[] lists = new ListNode[2];
+                        List<Integer> list1 = Arrays.asList(1,4,5);
+                        List<Integer> list2 = Arrays.asList(1,3,4);
+                        lineBreak();
+                        ListNode l1 = insert(list1);
+                        ListNode l2 = insert(list2);
+                        lists[0] = l1;
+                        lists[1] = l2;
+                        //  list1.stream().forEach(x->{
+                        //  System.out.println(x);
+                        //  });
+                         display(l1);
+                         lineBreak();
+                         display(l2);
+                         lineBreak();
+                         ListNode res = mergekLists(lists);
+                         display(res);
+                         lineBreak();
+                      }
+                    }`,
+                  },
+                  Python: {
+                    code: `
+class PriorityQueue(object):
+
+  def __init__(self):
+    self.queue = []
+
+  def __str__(self):
+    return str(self.queue)
+
+  def insert(self,data):
+    d = []
+    for i in data:
+      d.extend(ListNode.fetchValues(i))
+    # *ListNode.fetchValues(i)
+    self.queue += d
+    self.queue = sorted(self.queue)
+
+class ListNode():
+  def __init__(self,val):
+    self.val=val
+    self.next=None
+  
+  @staticmethod 
+  def fetchValues(t):
+    res=[]
+    temp=t
+    while temp is not None:
+      res.append(temp.val)
+      temp = temp.next
+    return res
+
+  @staticmethod
+  def display(t):
+    temp = t
+    while temp is not None:
+      print(temp.val)
+      temp = temp.next
+  
+  @staticmethod
+  def insert(list):
+    root= None
+    head= None
+    for i in range(len(list)):
+      if i==0:
+        root = ListNode(list[i])
+        head = root
+      else:
+        root.next = ListNode(list[i])
+        root = root.next
+    return head
+
+def lineBreak():
+  print("###############")
+
+l1 = ListNode.insert([3,4,1])
+l2 = ListNode.insert([5,6,1])
+lineBreak()
+ListNode.display(l1)
+lineBreak()
+ListNode.display(l2)
+lineBreak()
+q = PriorityQueue()
+q.insert([l1,l2])
+print(q)
+                    `,
+                  },
+                  "C++": {
+                    code: `#include<iostream>
+                    #include<bits/stdc++.h>
+                    #include<vector>
+                    #include<queue>
+                    
+                    using namespace std;
+                    
+                    struct ListNode {
+                       int val = 0;
+                       ListNode *next;
+                       ListNode() : val(0), next(nullptr) {}
+                       ListNode(int x) : val(x), next(nullptr) {}
+                       ListNode(int x, ListNode *next) : val(x), next(next) {}
+                    };
+                    
+                    struct compare {
+                        bool operator()(
+                            struct ListNode* a, struct ListNode* b)
+                        {
+                            return a->val > b->val;
+                        }
+                    };
+                    
+                    ListNode* mergekLists(vector<ListNode*> lists){
+                      priority_queue<ListNode*,vector<ListNode*>,compare> q;  
+                      // greater<int>> q;
+                      for(int i=0;i<lists.size();i++){
+                        if(lists[i]!=nullptr){
+                          q.push(lists[i]);
+                        }
+                      } 
+                      ListNode* fakeHead;
+                      ListNode* p;
+                      p = fakeHead;
+                      while(!q.empty()){
+                        ListNode* n;
+                        n= q.top();
+                        q.pop();
+                        if(n->next!=nullptr){
+                          q.push(n->next);
+                        }
+                        n->next = nullptr;
+                        p->next = n;
+                        p=n;
+                      }
+                      return fakeHead->next;
+                    }
+                    
+                    void linebreak(){
+                      cout << "######################\n";
+                    }
+                    
+                    void display(ListNode* l){
+                      ListNode* temp;
+                      temp=l;
+                      while(temp!=nullptr){
+                        cout<<temp->val<<endl;
+                        temp = temp->next;
+                      }
+                    }
+                    
+                    ListNode* insert(vector<int> l){
+                     ListNode* root;
+                     for(int i=0;i<l.size();i++){
+                       ListNode* data;
+                       data = new ListNode(l[i]);
+                       if(i==0){
+                         root = data;
+                       }else{
+                         ListNode* temp;
+                         temp = root;
+                         while(temp->next!=nullptr){
+                           temp = temp->next;
+                         }
+                         temp->next = data;
+                       }
+                     }
+                     return root;
+                    }
+                    
+                    int main(){
+                      vector<ListNode*> lists;
+                      vector<int> list1{1,4,5};
+                      vector<int> list2{1,3,4};
+                      linebreak();
+                      ListNode* l1;
+                      l1 = insert(list1);
+                      ListNode* l2;
+                      l2 = insert(list2);
+                      lists.push_back(l1);
+                      lists.push_back(l2);
+                      display(l1);
+                      linebreak();
+                      display(l2);
+                      linebreak();
+                      ListNode* res;
+                      res = mergekLists(lists);
+                      display(res);
+                      linebreak();
+                      return 0;
+                    }`,
+                  },
+                  Kotlin: {
+                    code: `import java.util.*
+
+                    internal class ListNode {
+                        var 'val' = 0
+                        var next: ListNode? = null
+                    
+                        constructor() {}
+                        constructor('val': Int) {
+                            this.'val' = 'val'
+                        }
+                    
+                        constructor('val': Int, next: ListNode?) {
+                            this.'val' = 'val'
+                            this.next = next
+                        }
+                    }
+                    
+                    internal object Main {
+                        private fun mergekLists(lists: Array<ListNode?>): ListNode? {
+                            val q = PriorityQueue<ListNode?>(
+                                1.coerceAtLeast(lists.size)
+                            ) { e1, e2 -> e1!!.'val' - e2!!.'val' }
+                            for (i in lists.indices) {
+                                if (lists[i] != null) {
+                                    q.add(lists[i])
+                                }
+                            }
+                            // Iterator i = q.iterator();
+                            // while(i.hasNext()){
+                            //   display((ListNode)i.next());
+                            // }
+                            val fakeHead = ListNode(-1)
+                            var p: ListNode? = fakeHead
+                            while (!q.isEmpty()) {
+                                val n = q.poll()
+                                if (n!!.next != null) {
+                                    q.add(n.next)
+                                }
+                                n.next = null
+                                p!!.next = n
+                                p = n
+                            }
+                            return fakeHead.next
+                        }
+                    
+                        private fun lineBreak() {
+                            println("#####################")
+                        }
+                    
+                        private fun display(l: ListNode?) {
+                            var temp = l
+                            while (temp != null) {
+                                println(temp.'val')
+                                temp = temp.next
+                            }
+                        }
+                    
+                        private fun insert(l: List<Int>): ListNode? {
+                            var root: ListNode? = ListNode()
+                            for (i in l.indices) {
+                                val data = ListNode(l[i])
+                                if (i == 0) {
+                                    root = data
+                                } else {
+                                    var temp: ListNode? = ListNode()
+                                    temp = root
+                                    while (temp!!.next != null) {
+                                        temp = temp.next
+                                    }
+                                    temp.next = data
+                                }
+                            }
+                            return root
+                        }
+                    
+                        @JvmStatic
+                        fun main(s: Array<String>) {
+                            val lists = arrayOfNulls<ListNode>(2)
+                            val list1 = listOf(1, 4, 5)
+                            val list2 = listOf(1, 3, 4)
+                            lineBreak()
+                            val l1 = insert(list1)
+                            val l2 = insert(list2)
+                            lists[0] = l1
+                            lists[1] = l2
+                            //  list1.stream().forEach(x->{
+                            //  System.out.println(x);
+                            //  });
+                            display(l1)
+                            lineBreak()
+                            display(l2)
+                            lineBreak()
+                            val res = mergekLists(lists)
+                            display(res)
+                            lineBreak()
+                        }
+                    }`,
+                  },
+                },
+              }}
+            />
           </>
         ),
       },
