@@ -21336,22 +21336,22 @@ while y is not None:
                   },
                   Python: {
                     code: `class Solution():
-                    @staticmethod
-                    def isValid(s):
-                      match={
-                        ')':'(',
-                        '}':'{',
-                        ']':'['
-                      }
-                      stack = []
-                      for i in range(len(s)):
-                        if s[i] == '(' or s[i] == '{' or s[i] == '[':
-                          stack.append(s[i])
-                          continue
-                        if len(stack) == 0 or match[s[i]] != stack.pop():
-                          return False
-                      return len(stack)==0
-                  print(Solution.isValid('{{()}}'))`,
+  @staticmethod
+  def isValid(s):
+    match={
+      ')':'(',
+      '}':'{',
+      ']':'['
+    }
+    stack = []
+    for i in range(len(s)):
+      if s[i] == '(' or s[i] == '{' or s[i] == '[':
+        stack.append(s[i])
+        continue
+      if len(stack) == 0 or match[s[i]] != stack.pop():
+        return False
+    return len(stack)==0
+print(Solution.isValid('{{()}}'))`,
                   },
                   Kotlin: {
                     code: `import java.util.*
@@ -21385,6 +21385,9 @@ while y is not None:
       },
       q21: {
         title: "Q21. Merge Two Sorted Lists",
+        content: <>
+        
+        </>,
       },
       q22: {
         title: "Q22. Generate Parentheses",
