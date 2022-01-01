@@ -17754,6 +17754,272 @@ print(convert(str))`,
             <Span>
               <b>Q6. ZigZag Conversion</b>
             </Span>
+            <>
+              <Span>
+                The string "PAYPALISHIRING" is written in a zigzag pattern on a
+                given number of rows like this: (you may want to display this
+                pattern in a fixed font for better legibility)
+              </Span>
+              <Span>
+                P -- A -- H -- N <br />
+                A P L S I I G <br />Y -- I -- R
+              </Span>
+              <Span>
+                And then read line by line: "PAHNAPLSIIGYIR" <br />
+                Write the code that will take a string and make this conversion
+                given a number of rows: <br />
+                string convert(string s, int numRows);
+              </Span>
+              <Span>
+                <b>Example 1:</b>
+              </Span>
+              <Span>
+                Input: s = "PAYPALISHIRING", numRows = 3 <br />
+                Output: "PAHNAPLSIIGYIR"
+              </Span>
+              <Span>
+                <b>Example 3:</b>
+              </Span>
+              <Span>
+                Input: s = "A", numRows = 1 <br />
+                Output: "A"
+              </Span>
+              <Span>
+                <b>Constraints</b>
+              </Span>
+              <p>
+                1 &lt;= s.length &lt;= 1000 <br />
+                s consists of English letters (lower-case and upper-case), ','
+                and '.'. <br />1 &lt;= numRows &lt;= 1000
+              </p>
+              <CodeEditor
+                options={{
+                  title: `Q6. ZigZag Conversion`,
+                  output: `PAHNAPLSIIGYIR`,
+                  codes: {
+                    Javascript: {
+                      code: `/**
+                      * @param {string} s
+                      * @param {number} numRows
+                      * @return {string}
+                      */
+                     var convert = function(s, numRows) {
+                       if (numRows === 1 || s.length < numRows) {
+                         return s;
+                       }
+                       let rows = Array.from(Array(numRows), () => []);
+                       let currentRow = 0;
+                       let reverse = false;
+                       let result = "";
+                     
+                       for (let i = 0; i < s.length; i++) {
+                         rows[currentRow].push(s[i]);
+                         if (reverse === false) {
+                           currentRow++;
+                         } else {
+                           currentRow--;
+                         }
+                     
+                         if (currentRow === numRows - 1 || currentRow === 0) {
+                           reverse = !reverse;
+                         }
+                       }
+                     
+                       rows.forEach((row) => {
+                         result += row.join("");
+                       });
+                     
+                       return result;
+                     }
+                     
+                     convert("PAYPALISHIRING", 3);
+                     `,
+                    },
+                    Java: {
+                      code: `import java.util.ArrayList;
+                      import java.util.Collections;
+                      import java.util.List;
+                      
+                      class Main {
+                      
+                          public static String convert(String s,int numRows){
+                              if(numRows==0||s.length()<numRows){
+                                  return s;
+                              }
+                              int currentRow=0;
+                              boolean reverse=false;
+                              String result="";
+                              List<ArrayList<Character>> rows = new ArrayList<ArrayList<Character>>();
+                              for(int i=0;i<numRows;i++){
+                                 rows.addAll(Collections.singleton(new ArrayList<Character>()));
+                              }
+                              
+                              for (int i=0;i<s.length();i++){
+                                  rows.get(currentRow).add(s.charAt(i));
+                                  if(!reverse){
+                                      currentRow++;
+                                  }else{
+                                      currentRow--;
+                                  }
+                                  if(currentRow == numRows -1 || currentRow ==0 ){
+                                      reverse = !reverse;
+                                  }
+                              }
+                      
+                              for(int i=0;i<rows.size();i++){
+                              String str="";
+                              for(int j=0;j<rows.get(i).size();j++){
+                                str += rows.get(i).get(j);    
+                              }
+                              result+= str;
+                              }
+                              
+                              return result;
+                          }
+                      
+                          public static void main(String[] args) {
+                              System.out.println(convert("PAYPALISHIRING", 3));
+                          }
+                          
+                      }`,
+                    },
+                    Python: {
+                      code: `
+def convert(s, numRows):
+    if numRows == 1 or len(s) < numRows:
+        return s
+
+    rows = []
+    currentRow = 0
+    reverse = False
+    result = ""
+
+    for i in range(0, numRows):
+        rows.insert(i, [])
+
+    for i in range(0, len(s)):
+        rows[currentRow].append(s[i])
+
+        if reverse == False:
+            currentRow += 1
+        else:
+            currentRow -= 1
+
+        if currentRow == numRows - 1 or currentRow == 0:
+            reverse = not reverse
+
+    for i in rows:
+        result += "".join(i)
+
+    return result
+
+
+print(convert("PAYPALISHIRING", 3))
+# PAHNAPLSIIGYIR`,
+                    },
+                    "C++": {
+                      code: `#include <iostream>
+                      #include <string>
+                      #include <algorithm>
+                      #include <vector>
+                      #include <numeric>      
+                      
+                      
+                      using namespace std;
+                      
+                      string convert(string s,int numRows){
+                        if(numRows==1||s.length()<numRows){
+                          return s;
+                        }
+                      
+                        vector<vector<char>> rows;
+                        int currentRow=0;
+                        bool reverse = false;
+                        string result="";
+                      
+                        for(int i=0;i<numRows;i++){
+                          vector<char> s;
+                          rows.push_back(s);
+                        }
+                      
+                        for(int i=0;i<s.length();i++){
+                          rows[currentRow].push_back(s[i]);
+                      
+                          if(!reverse){
+                              currentRow++;
+                          }else{
+                              currentRow--;
+                          }
+                      
+                          if(currentRow == numRows -1 || currentRow ==0 ){
+                            reverse = !reverse;
+                          }
+                        }
+                        
+                        for(auto i:rows){
+                         result+= accumulate(
+                          i.begin(),i.end(),string("")
+                        );
+                        }
+                      
+                        return result;
+                      }
+                      
+                      int main() {
+                        cout << convert("PAYPALISHIRING", 3)<<endl;
+                        return 0;
+                      }
+                      // PAHNAPLSIIGYIR`,
+                    },
+                    Kotlin: {
+                      code: `import java.util.*
+
+                      fun convert(s:String, numRows:Int):String{
+                      
+                          if(numRows==0 || s.length <numRows){
+                              return s;
+                          }
+                          var currentRow:Int=0;
+                          var reverse:Boolean=false;
+                          var result:String="";
+                      
+                          var rows= mutableListOf<MutableList<Char>>()
+                      
+                          for(i  in 0..numRows){
+                              rows.addAll(Collections.singleton(mutableListOf()))
+                          }
+                      
+                          for (element in s){
+                              rows[currentRow].add(element)
+                              if(!reverse){
+                                  currentRow++;
+                              }else{
+                                  currentRow--;
+                              }
+                              if(currentRow == numRows -1 || currentRow ==0 ){
+                                  reverse = !reverse;
+                              }
+                          }
+                      
+                          for (i in 0 until rows.size){
+                              var str=""
+                              for(j in 0 until rows[i].size){
+                              str += rows[i][j];
+                          }
+                              result+= str;
+                          }
+                      
+                          return result;
+                      }
+                      
+                      fun main(){
+                          println(convert("PAYPALISHIRING",3))
+                      }`,
+                    },
+                  },
+                }}
+              />
+            </>
           </>
         ),
       },
