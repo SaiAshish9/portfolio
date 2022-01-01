@@ -13,6 +13,7 @@ import WordBreakImg from "assets/home/wordbreak.png";
 import SubsetsImg from "assets/home/subsets.png";
 import LeftViewBT from "assets/home/leftView.png";
 import RightViewBT from "assets/home/rightView.png";
+import LeetCodeQ2 from "assets/leetcode/leetcodeQ2.png";
 
 export const DATA = {
   ds: {
@@ -17073,6 +17074,7 @@ if __name__ == '__main__':
               Output: [7,0,8] <br />
               Explanation: 342 + 465 = 807.
             </Span>
+            <Img src={LeetCodeQ2} left reduceH />
             <CodeEditor
               options={{
                 title: "Q2. Add Two Numbers",
