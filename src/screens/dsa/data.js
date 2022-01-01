@@ -18276,52 +18276,47 @@ print(convert("PAYPALISHIRING", 3))
               options={{
                 title: "Q8. String to Integer (atoi)",
                 output: `42`,
-                  codes: {
-                    Javacript: {
-                      code: `class ATOI{
-                        static atoi(s){
-                           let st = s.trim()
-                           if(st == null || st.length ==0){
-                             return 0
-                           }
-                           let res=0
-                           let isNegative=false
-                           let startIndex=0
-                           
-                           if(st[0]=='+' || st[0]=='-'){
-                              startIndex+=1
-                           }
-                      
-                           if(st[0]=='-'){
-                              isNegative=true
-                           } 
-                           
-                           for(let i=startIndex;i<st.length;i++){
-                             if(st[i]<'0'||st[i]>'9'){
-                               break;
-                             }
-                             let digit = parseInt(st[i])
-                             res = res*10+digit
-                           }
-                      
-                           if(isNegative){
-                             res= -1 * res
-                           }
-                      
-                           if(res > Math.pow(2,31) - 1)
-                              return Math.pow(2,31)-1
-                      
-                           if(res < Math.pow(-2 ^ 31) + 1)
-                              return Math.pow(-2,31)+1
-                      
-                           return res
+                codes: {
+                  Javacript: {
+                    code: `/**
+                    * @param {string} s
+                    * @return {number}
+                    */
+                   var myAtoi = function(s){
+                        let st = s.trim()
+                        if(st == null || st.length ==0){
+                          return 0
                         }
-                      }
-                      
-                      console.log(ATOI.atoi(" 42"))`,
-                    },
-                    Java: {
-                      code: `class ATOI {
+                        let res=0
+                        let isNegative=false
+                        let startIndex=0
+                        
+                        if(st[0]=='+' || st[0]=='-'){
+                           startIndex+=1
+                        }
+                        if(st[0]=='-'){
+                           isNegative=true
+                        } 
+                        for(let i=startIndex;i<st.length;i++){
+                          if(st[i]<'0'||st[i]>'9'){
+                            break;
+                          }
+                          let digit = parseInt(st[i])
+                          res = res*10+digit
+                        }
+                        if(isNegative){
+                          res= -1 * res
+                        }
+                        if(res > Math.pow(2,31) - 1)
+                           return Math.pow(2,31)-1
+                        if(res < Math.pow(-2, 31))
+                           return Math.pow(-2,31)
+                        return res
+                   }
+                   console.log(myAtoi(" 42"))`,
+                  },
+                  Java: {
+                    code: `class ATOI {
                         public static int atoi(String str) {
                             str = str.trim();
                             if (str == null || str.length() == 0) {
@@ -18363,9 +18358,9 @@ print(convert("PAYPALISHIRING", 3))
                     
                     }
                     `,
-                    },
-                    Python: {
-                      code: `
+                  },
+                  Python: {
+                    code: `
 class ATOI:
     @staticmethod
     def atoi(s):
@@ -18410,9 +18405,9 @@ class ATOI:
 # sys.maxsize
 
 print(ATOI.atoi("-23"))`,
-                    },
-                    "C++": {
-                      code: `#include <iostream>
+                  },
+                  "C++": {
+                    code: `#include <iostream>
                       #include <string>
                       #include <algorithm>
                       #include <bits/stdc++.h>
@@ -18472,9 +18467,9 @@ print(ATOI.atoi("-23"))`,
                         cout << ATOI::atoi(" 42 Hello World! ")<<endl;
                         return 0;
                       }`,
-                    },
-                    kotlin: {
-                      code: `class ATOI{
+                  },
+                  kotlin: {
+                    code: `class ATOI{
                         companion object{
                             fun atoi(s:String):Int{
                                 var res:Double=0.0
@@ -18510,8 +18505,8 @@ print(ATOI.atoi("-23"))`,
                     fun main(){
                       print(ATOI.atoi(" 42"))
                     }`,
-                    },
                   },
+                },
               }}
             />
           </>
@@ -18519,6 +18514,9 @@ print(ATOI.atoi("-23"))`,
       },
       q9: {
         title: "Q9. Palindrome",
+        content: <>
+        
+        </>,
       },
       q10: {
         title: "Q10. Regular Expression Matching",
