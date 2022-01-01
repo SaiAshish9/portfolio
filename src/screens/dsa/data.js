@@ -19792,10 +19792,21 @@ print(Solution.lcp(["flower", "flow", "flight"]))
             <Span>
               <b>Constraints</b>
             </Span>
-            <Span>
+            <p>
               0 &lt;= nums.length &lt;= 3000 <br />
               -105 &lt;= nums[i] &lt;= 105
-            </Span>
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q15. 3Sum",
+                output: ``,
+                codes: {
+                  Javascript: {
+                    code: ``,
+                  },
+                },
+              }}
+            />
           </>
         ),
       },
