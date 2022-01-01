@@ -20512,6 +20512,303 @@ print(m.letterCombinations("234"))
       },
       q18: {
         title: "Q18. 4Sum",
+        content: (
+          <>
+            <Span>
+              <b>Q18. 4Sum</b>
+            </Span>
+            <Span>
+              Given an array nums of n integers, return an array of all the
+              unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+              <br />
+              0 &lt;= a, b, c, d &lt; n <br />
+              a, b, c, and d are distinct. <br />
+              nums[a] + nums[b] + nums[c] + nums[d] == target <br />
+              You may return the answer in any order.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,0,-1,0,-2,2], target = 0 <br />
+              Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <p>
+              Input: nums = [2,2,2,2,2], target = 8 <br />
+              Output: [[2,2,2,2]]
+            </p>
+            <CodeEditor
+              options={{
+                codes: {
+                  output: `[[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]`,
+                  Java: {
+                    code: `import java.util.*;
+
+                    class Main {
+                        public List<List<Integer>> fourSum(int[] nums, int target) {
+                            List<List<Integer>> result = new LinkedList<List<Integer>>();
+                            if (nums.length < 4) {
+                                return result;
+                            }
+                            Arrays.sort(nums);
+                            int max = nums[nums.length -1];
+                            for (int i = 0; i < nums.length; i++) {
+                                if (i > 0 && nums[i] == nums[i-1]) {
+                                    continue;
+                                }
+                                if (nums[i] + 3 * max < target) {
+                                    continue;
+                                }
+                                if (nums[i] * 4 > target) {
+                                    break;
+                                }
+                                for (int j = i + 1; j < nums.length; j++) {
+                                    if (j > i + 1 && nums[j] == nums[j-1]) {
+                                        continue;
+                                    }
+                                    int start = j + 1;
+                                    int end = nums.length - 1;
+                                    while (start < end) {
+                                        int sum = nums[i] + nums[j] + nums[start] + nums[end];
+                                        if (sum == target) {
+                                            List<Integer> tmp = new LinkedList<Integer>();
+                                            tmp.add(nums[i]);
+                                            tmp.add(nums[j]);
+                                            tmp.add(nums[start]);
+                                            tmp.add(nums[end]);
+                                            result.add(tmp);
+                                            int startVal = nums[start];
+                                            int endVal = nums[end];
+                                            while (start < end && startVal == nums[start]) {
+                                                start ++;
+                                            }
+                                            while (start < end && endVal == nums[end]) {
+                                                end --;
+                                            }
+                                        }
+                                        else if (sum < target) {
+                                            start ++;
+                                        }       
+                                        else {
+                                            end --;
+                                        }
+                                    }
+                                }
+                            }
+                            return result;
+                        }
+                    
+                        public static void main(String ...s){
+                          Main m = new Main();
+                          System.out.println(m.fourSum(new int[]{1,0,-1,0,-2,2},0).toString());
+                        }
+                    
+                    }`,
+                  },
+                  Python: {
+                    code: `class Main:
+  @staticmethod
+  def fourSum(nums,target:int):
+    result = []
+    if len(nums)<4:
+      return result
+    nums.sort()
+    maximum = nums[-1]
+    for i in range(len(nums)):
+      if i > 0 and nums[i]==nums[i-1]:
+        continue
+      if nums[i] + 3 * maximum < target:
+        continue
+      if nums[i]*4 > target:
+        break
+      for j in range(i+1,len(nums)):
+        if j > i+1 and nums[j]==nums[j-1]:
+          continue
+        start = j+1
+        end= len(nums)-1
+        while start < end :
+          total = nums[i]+nums[j]+nums[start]+nums[end]
+          if total == target :
+            tmp = []
+            tmp.append(nums[i])
+            tmp.append(nums[j])
+            tmp.append(nums[start])
+            tmp.append(nums[end])
+            result.append(tmp)
+            startVal = nums[start]
+            endVal = nums[end]
+            while start < end and startVal == nums[start]:
+              start += 1
+            while start < end and endVal == nums[end]:
+              end -= 1
+          elif total < target:
+            start+=1
+          else :
+            end -=1
+    return result
+print(Main.fourSum([1,0,-1,0,-2,2],0))
+                    `,
+                  },
+                  "C++": {
+                    code: `#include <iostream>
+                    #include <vector>
+                    #include <algorithm>
+                    
+                    using namespace std;
+                    
+                    vector<vector<int>> fourSum(vector<int> nums, int target)
+                    {
+                        vector<vector<int>> result;
+                        if (nums.size() == 0)
+                        {
+                            return result;
+                        }
+                        sort(nums.begin(), nums.end());
+                        int max = nums[nums.size() - 1];
+                        for (int i = 0; i < nums.size(); i++)
+                        {
+                            if (i > 0 && nums[i] == nums[i - 1])
+                            {
+                                continue;
+                            }
+                            if (nums[i] + 3 * max < target)
+                            {
+                                continue;
+                            }
+                            if (nums[i] * 4 > target)
+                            {
+                                break;
+                            }
+                            for (int j = i + 1; j < nums.size(); j++)
+                            {
+                                if (j > i + 1 && nums[j] == nums[j - 1])
+                                {
+                                    continue;
+                                }
+                                int start = j + 1;
+                                int end = nums.size() - 1;
+                                while (start < end)
+                                {
+                                    int sum = nums[i] + nums[j] + nums[start] + nums[end];
+                                    if (sum == target)
+                                    {
+                                        vector<int> tmp;
+                                        tmp.push_back(nums[i]);
+                                        tmp.push_back(nums[j]);
+                                        tmp.push_back(nums[start]);
+                                        tmp.push_back(nums[end]);
+                                        result.push_back(tmp);
+                                        int startVal = nums[start];
+                                        int endVal = nums[end];
+                                        while (start < end && startVal == nums[start])
+                                        {
+                                            start++;
+                                        }
+                                        while (start < end && endVal == nums[end])
+                                        {
+                                            end--;
+                                        }
+                                    }
+                                    else if (sum < target)
+                                    {
+                                        start++;
+                                    }
+                                    else
+                                    {
+                                        end--;
+                                    }
+                                }
+                            }
+                        }
+                        return result;
+                    }
+                    
+                    int main()
+                    {
+                        vector<int> v{1, 0, -1, 0, -2, 2};
+                        for (auto i : fourSum(v, 0))
+                        {
+                            for (auto j : i)
+                            {
+                                cout << j << " ";
+                            }
+                            cout << endl;
+                        };
+                        return 0;
+                    }`,
+                  },
+                  Kotlin: {
+                    code: `import java.util.*
+
+                    internal class Main {
+                        fun fourSum(nums: IntArray, target: Int): List<List<Int>> {
+                            val result: MutableList<List<Int>> = LinkedList()
+                            if (nums.size < 4) {
+                                return result
+                            }
+                            Arrays.sort(nums)
+                            val max = nums[nums.size - 1]
+                            for (i in nums.indices) {
+                                if (i > 0 && nums[i] == nums[i - 1]) {
+                                    continue
+                                }
+                                if (nums[i] + 3 * max < target) {
+                                    continue
+                                }
+                                if (nums[i] * 4 > target) {
+                                    break
+                                }
+                                for (j in i + 1 until nums.size) {
+                                    if (j > i + 1 && nums[j] == nums[j - 1]) {
+                                        continue
+                                    }
+                                    var start = j + 1
+                                    var end = nums.size - 1
+                                    while (start < end) {
+                                        val sum = nums[i] + nums[j] + nums[start] + nums[end]
+                                        if (sum == target) {
+                                            val tmp: MutableList<Int> = LinkedList()
+                                            tmp.add(nums[i])
+                                            tmp.add(nums[j])
+                                            tmp.add(nums[start])
+                                            tmp.add(nums[end])
+                                            result.add(tmp)
+                                            val startVal = nums[start]
+                                            val endVal = nums[end]
+                                            while (start < end && startVal == nums[start]) {
+                                                start++
+                                            }
+                                            while (start < end && endVal == nums[end]) {
+                                                end--
+                                            }
+                                        } else if (sum < target) {
+                                            start++
+                                        } else {
+                                            end--
+                                        }
+                                    }
+                                }
+                            }
+                            return result
+                        }
+                    
+                        companion object {
+                            @JvmStatic
+                            fun main(s: Array<String>) {
+                                val m = Main()
+                                println(m.fourSum(intArrayOf(1, 0, -1, 0, -2, 2), 0).toString())
+                            }
+                        }
+                    }`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q19: {
         title: "Q19. Remove Nth Node From End of List",
