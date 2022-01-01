@@ -16924,7 +16924,6 @@ if __name__ == '__main__':
               -109 &lt;= target &lt;= 109 <br />
               Only one valid answer exists.
             </Span>
-            <b>Solution</b>
             <CodeEditor
               options={{
                 title: "Q1. Two Sum(HashMap)",
@@ -17010,21 +17009,20 @@ if __name__ == '__main__':
                   },
                   Python: {
                     code: `def twoSum(a, b):
-                    x = {}
-                    i = 0
-                    while i < len(a):
-                        diff = b - a[i]
-                        if diff in x:
-                            return [x[diff],i]
-                        x[a[i]] = i
-                        i += 1
-                
-                
-                a = [3, 4, 5]
-                
-                if __name__ == '__main__':
-                    print(twoSum(a, 8))
-                
+    x = {}
+    i = 0
+    while i < len(a):
+        diff = b - a[i]
+        if diff in x:
+            return [x[diff],i]
+        x[a[i]] = i
+        i += 1
+
+
+a = [3, 4, 5]
+
+if __name__ == '__main__':
+    print(twoSum(a, 8)) 
                 `,
                   },
                   Kotlin: {
@@ -17216,6 +17214,244 @@ if __name__ == '__main__':
       },
       q3: {
         title: "Q3. Longest Substring Without Repeating Characters",
+        content: (
+          <>
+            <Span>
+              <b>Q3. Longest Substring Without Repeating Characters</b>
+            </Span>
+            <Span>
+              Given a string s, find the length of the longest substring without
+              repeating characters.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: s = "abcabcbb" <br />
+              Output: 3 <br />
+              Explanation: The answer is "abc", with the length of 3.
+            </Span>
+            <Span>
+              <b> Example 2:</b>
+            </Span>
+            <Span>
+              Input: s = "bbbbb" <br />
+              Output: 1 <br />
+              Explanation: The answer is "b", with the length of 1.
+            </Span>
+            <Span>
+              <b> Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = "pwwkew" Output: 3 Explanation: The answer is "wke",
+              with the length of 3. Notice that the answer must be a substring,
+              "pwke" is a subsequence and not a substring.
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              0 &lt;= s.length &lt;= 5 * 104 <br />s consists of English
+              letters, digits, symbols and spaces.
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q3. Longest Substring Without Repeating Characters",
+                output: `abcd`,
+                codes: {
+                  Javascript: {
+                    code: `function convert(str) {
+                      var current = 0,
+                        st = 0,
+                        max = 0,
+                        start = 0;
+                      let i;
+                      var obj = {};
+                      for (i = 0; i < str.length; i++) {
+                        if (!obj[str[i]]) {
+                          obj[str[i]] = i;
+                        } else {
+                          if (obj[str[i]] >= st) {
+                            current = i - st;
+                            if (max < current) {
+                              max = current;
+                              start = st;
+                            }
+                            st = obj[str[i]] + 1;
+                          }
+                          obj[str[i]] = i;
+                        }
+                      }
+                      if (max < i - st) {
+                        max = i - st;
+                        start = st;
+                      }
+                    
+                      return str.substring(start, start + max);
+                    }
+                    
+                    const str = "abcdefhgjfghnbahggjhh";
+                    console.log(convert(str));
+                    `,
+                  },
+                  Java: {
+                    code: `import java.util.*;
+
+                    class Main {
+                    
+                      public static String convert(String str){
+                        int st=0,start=0,max=0,current=0;
+                        HashMap<Character,Integer> pos = new HashMap<>();
+                        int i;
+                        for(i=0;i<str.length();i++){
+                        if(!pos.containsKey(str.charAt(i))){
+                           pos.put(str.charAt(i),i);
+                        }else{
+                            if(pos.get(str.charAt(i))>=st){
+                              current = i - st;
+                              if(max < current){
+                                 max = current;
+                                 start = st;
+                              }
+                              st = pos.get(str.charAt(i)) + 1;
+                            }
+                           pos.put(str.charAt(i),i);
+                        }
+                        }
+                    if (max < i - st) {
+                      max = i - st;
+                      start = st;
+                    }
+                    return str.substring(start,start+max);
+                      }
+                    
+                      public static void main(String[] args) {
+                        String x ="abcderffaccfcvccf";
+                        System.out.println(convert(x));
+                      }
+                    
+                    }`,
+                  },
+                  Python: {
+                    code: `
+def convert(str):
+  current=0
+  max=0
+  i=0
+  start=0
+  st=0
+  obj={}
+  for i in range(0,len(str)):
+    if not str[i] in obj:
+      obj[str[i]]=i
+    else :
+      if obj[str[i]] >= st:
+        current = i - st
+        if max < current:
+          max= current
+          start = st
+        st = obj[str[i]]+1
+      obj[str[i]]=i
+    if max < i -st:
+      max = i - st
+      start = st
+      
+  return str[start:start+max]
+   
+str = "abcdgdkjhjacaiachius"
+print(convert(str))`,
+                  },
+                  "C++": {
+                    code: `#include <iostream>
+                    #include <bits/stdc++.h>
+                    using namespace std;
+                    
+                    string longest(string str){
+                    
+                    unordered_map<char,int> pos;
+                    
+                    int start,st=0,current,max=0;
+                    
+                    
+                    // start represent's current location where new substring is to be inspected.
+                    
+                    // st represent's current location
+                    
+                    // current represent's present distance 
+                    
+                    int i;
+                    
+                    for(i=0;i<str.length();i++){
+                       if(pos.find(str[i]) == pos.end()){
+                          pos[str[i]]=i;
+                          // if it's not existing
+                       }else{
+                          if(pos[str[i]] >= st){
+                            current = i - st;
+                            if(max<current){
+                              max=current;
+                              start=st;
+                            }
+                            st = pos[str[i]] + 1;   
+                          }
+                          pos[str[i]] = i;
+                       }
+                    }
+                    if (max < i - st) {
+                      max = i - st;
+                      start = st;
+                    }
+                    return str.substr(start,start+max);
+                    }
+                    
+                    int main() {
+                      string str="abcdbabsbd";
+                      cout<< longest(str)<<endl;
+                      return 0;
+                    }`,
+                  },
+                  Kotlin: {
+                    code: `package com.programming
+
+                    fun convert(str: String): String {
+                        var st=0;
+                        var start=0;
+                        var max=0;
+                        var current=0;
+                        var pos = mutableMapOf<Char,Int>();
+                        var i:Int=0;
+                        for(i in 0 until str.length-1){
+                            if(!pos.containsKey(str[i])){
+                                pos[str[i]]=i;
+                            }else{
+                                if(pos[str[i]]!! >= st){
+                                    current = i - st;
+                                    if(current>max){
+                                        max=current;
+                                        start=st;
+                                    }
+                                    st = pos[str[i]]?.plus(1) ?: 0;
+                                }
+                                pos[str[i]]=i;
+                            }
+                        }
+                        if(max<i-st){
+                            max=i-st;
+                            start=st;
+                        }
+                        return str.substring(start,start+max)
+                    }
+                    
+                    fun main(){
+                        val str:String = "abcderffaccfcvccf";
+                        print(convert(str))
+                    }`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q4: {
         title: "Q4. Median Of Two Sorted Arrays",
