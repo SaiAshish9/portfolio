@@ -19017,8 +19017,130 @@ print(Solution.isMatch("aab", "c*a*b"))`,
             <CodeEditor
               options={{
                 title: "Q11. Container With Most Medium Water",
+                output: `2`,
                 codes: {
-                  Javascript: {},
+                  Javascript: {
+                    code: `var maxArea = function(height){
+                      let max=0,min=0,left=0;
+                      let right=height.length-1
+                      while(left<right){
+                        max=Math.max(max,Math.min(height[left],height[right])*(right-left))
+                        if(height[left]<height[right]){
+                          left+=1
+                        }else{
+                          right-=1
+                        }
+                        return max
+                      }
+                    }
+                        
+                    console.log(maxArea([1,2,1]))`,
+                  },
+                  Java: {
+                    code: `class Main {
+ 
+                      public static int maxArea(int[] height) {
+                            int left = 0, right = height.length -1;
+                            int max = 0;
+                            while (left < right) {
+                                max = Math.max(max, Math.min(height[left], height[right]) * (right - left));
+                                if (height[left] < height[right]) {
+                                    left ++;
+                                }
+                                else {
+                                    right --;
+                                }
+                            }
+                            return max;
+                      }
+                    
+                      public static void main(String[] args) {
+                        System.out.println(maxArea(new int[]{1,2,1}));
+                       }
+                    
+                    }`,
+                  },
+                  Python: {
+                    code: `class Solution:
+
+  @staticmethod
+  def maxArea(height)->int:
+    max1=0
+    min1=0
+    left=0
+    right=len(height)-1
+    while left<right:
+      max1 = max(max1, min(height[left], height[right]) * (right - left))
+      if height[left]<height[right]:
+        left+=1
+      else:
+        right-=1
+    return max1
+
+print(Solution.maxArea([1,2,1]))
+
+                    `,
+                  },
+                  "C++": {
+                    code: `#include <iostream>
+                    #include <algorithm> 
+                    #include <vector>
+                    
+                    using namespace std;
+                    
+                    class Solution{
+                      public:
+                      static int maxArea(vector<int>& height){
+                        int left{0};
+                        int right= height.size()-1;
+                        int max=0;
+                        while (left < right) {
+                          max = std::max(max,min(height[left], height[right]) * (right - left));
+                          if (height[left] < height[right]) {
+                            left ++;
+                          }
+                          else {
+                            right --;
+                          }
+                        }
+                        return max;
+                      }
+                    };
+                    
+                    int main(){
+                      vector<int> arr{1,2,1};
+                      cout<<Solution::maxArea(arr)<<endl;
+                      return 0;
+                    }`,
+                  },
+                  Kotlin: {
+                    code: `import kotlin.math.min
+
+                    class Solution{
+                        companion object{
+                            fun maxArea(height: List<Int>):Int{
+                              var max:Int=0
+                              var left:Int=0
+                              var right=height.size-1
+                              while(left<right){
+                                  max = kotlin.math.max(max, min(height[left], height[right]) * (right - left));
+                                  if (height[left] < height[right]) {
+                                      left ++;
+                                  }
+                                  else {
+                                      right --;
+                                  }
+                              }
+                              return max
+                            }
+                        }
+                    }
+                    
+                    fun main(){
+                        val arr= listOf<Int>(1,2,1)
+                        print(Solution.maxArea(arr))
+                    }`,
+                  },
                 },
               }}
             />
