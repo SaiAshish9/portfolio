@@ -19342,6 +19342,102 @@ print(Solution.maxArea(12))
       },
       q13: {
         title: "Q13. Roman To Integer",
+        content: (
+          <>
+            <Span>
+              <b>Q13. Roman To Integer</b>
+            </Span>
+            <Span>
+              Roman numerals are represented by seven different symbols: I, V,
+              X, L, C, D and M.
+            </Span>
+            <Span>
+              Symbol -&lt; Value <br />
+              I -&gt; 1 <br />
+              V -&gt; 5 <br />
+              X -&gt; 10 <br />
+              L -&gt; 50 <br />
+              C -&gt; 100 <br />
+              D -&gt; 500 <br />M -&gt; 1000
+            </Span>
+            <Span>
+              For example, 2 is written as II in Roman numeral, just two one's
+              added together. 12 is written as XII, which is simply X + II. The
+              number 27 is written as XXVII, which is XX + V + II.
+              <br />
+              Roman numerals are usually written largest to smallest from left
+              to right. However, the numeral for four is not IIII. Instead, the
+              number four is written as IV. Because the one is before the five
+              we subtract it making four. The same principle applies to the
+              number nine, which is written as IX. There are six instances where
+              subtraction is used:
+              <br />
+              I can be placed before V (5) and X (10) to make 4 and 9. <br />X
+              can be placed before L (50) and C (100) to make 40 and 90. <br />C
+              can be placed before D (500) and M (1000) to make 400 and 900.{" "}
+              <br />
+              Given a roman numeral, convert it to an integer.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>Input: s = "III" Output: 3 Explanation: III = 3.</Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: s = "LVIII" Output: 58 Explanation: L = 50, V= 5, III = 3.
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = "MCMXCIV" Output: 1994 Explanation: M = 1000, CM = 900,
+              XC = 90 and IV = 4.
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= s.length &lt;= 15 <br />
+              s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D',
+              'M'). <br />
+              It is guaranteed that s is a valid roman numeral in the range [1,
+              3999].
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q13. Roman To Integer",
+                output: 4,
+                codes: {
+                  Javascript: {
+                    code: `var romanToInt = function(s){
+                    let helper = {
+                      'M':1000,
+                      'D':500,
+                      'C':100,
+                      'L':50,
+                      'X':10,
+                      'V':5,
+                      'I':1
+                    }
+                    var result =0
+                    for(let i=0;i<s.length;i++){
+                       if(i>0 && helper[s[i]] > helper[s[i-1]]){
+                          result -= 2 * helper[s[i-1]]
+                       }
+                       result += helper[s[i]]
+                    }
+                    return result
+                  }
+                  
+                  console.log(romanToInt("IV"))`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q14: {
         title: "Q14. Longest Common Prefix",
