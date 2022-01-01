@@ -19799,10 +19799,223 @@ print(Solution.lcp(["flower", "flow", "flight"]))
             <CodeEditor
               options={{
                 title: "Q15. 3Sum",
-                output: ``,
+                output: `[ [ -1, -1, 2 ], [ -1, 0, 1 ] ]`,
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number[][]}
+                    */
+                   var threeSum = function(nums) {
+                    var result=[]
+                         nums.sort((a,b)=>a-b)
+                         for(let i=0;i<nums.length;i++){
+                           if(i==0||nums[i]!=nums[i-1]){
+                             let start = i+1
+                             let end = nums.length - 1
+                             while(start<end){
+                               let s = nums[i] + nums[start] + nums[end]
+                               if(s==0){
+                                   let temp = [nums[i],nums[start],nums[end]]
+                                   result.push(temp)
+                                   let startVal = nums[start]
+                                   let endVal = nums[end]
+                                   while(start < end && startVal == nums[start]){
+                                      start+=1        
+                                   }
+                                   while(end > start && endVal == nums[end]){
+                                     end-=1
+                                   }
+                               }else if(s<0){start+=1}
+                               else{end-=1}
+                             }
+                           }
+                         }
+                         return result    
+                   };
+                   
+                   console.log(threeSum([-1, 0, 1, 2, -1, -4]))
+                   `,
+                  },
+                  Java: {
+                    code: `import java.util.*;
+
+                    class Main{
+                      public static List<List<Integer>> threeSum(int[] nums) {
+                            List<List<Integer>> result = new LinkedList<List<Integer>>();
+                            Arrays.sort(nums);
+                            for (int i = 0; i < nums.length; i++) {
+                                if (i == 0 || nums[i] != nums[i-1]) {
+                                    int start = i + 1, end = nums.length - 1;
+                                    while (start < end) {
+                                        int sum = nums[i] + nums[start] + nums[end];
+                                        if (sum == 0){
+                                            List<Integer> tmp = new LinkedList<Integer>();
+                                            tmp.add(nums[i]);
+                                            tmp.add(nums[start]);
+                                            tmp.add(nums[end]);
+                                            result.add(tmp);
+                                            int startVal = nums[start];
+                                            int endVal = nums[end];
+                                            while (start < end && startVal == nums[start]) {
+                                                start ++;
+                                            }
+                                            while (end > start && endVal == nums[end]) {
+                                                end --;
+                                            }
+                                        }
+                                        else if (sum < 0) {
+                                            start ++;
+                                        }
+                                        else {
+                                            end --;
+                                        }
+                                    }
+                                }
+                            }
+                            return result;
+                      }
+                    
+                      public static void main(String ...s){
+                        System.out.println(threeSum(new int[]{-1,0,1,2,-1,-4}));
+                      }
+                    
+                    }
+                    `,
+                  },
+                  Python: {
+                    code: `
+class Test:
+
+  @staticmethod
+  def threeSum(nums):
+    result = []
+    nums.sort()
+    for i in range(len(nums)):
+      if i == 0 or nums[i] != nums[i-1]:
+        start = i+1
+        end = len(nums) - 1
+        while start < end :
+          s = nums[i] + nums[start] + nums[end]
+          if s == 0:
+            temp = [nums[i],nums[start],nums[end]]
+            result.append(temp)
+            startVal = nums[start]
+            endVal = nums[end]
+            while start < end and startVal == nums[start]:
+              start+=1
+            while end > start and endVal == nums[end]:
+              end-=1
+          elif s < 0:
+            start+=1
+          else:
+            end-=1
+    return result  
+            
+print(Test.threeSum([-1, 0, 1, 2, -1, -4]))`,
+                  },
+                  "C++": {
+                    code: `#include <iostream>
+                    #include <vector>
+                    #include <algorithm>
+                    
+                    using namespace std;
+                    
+                    class Solution{
+                      
+                      public:
+                      vector<vector<int>> threeSum(vector<int> nums){
+                         vector<vector<int>> result;
+                         sort(nums.begin(),nums.end());
+                         for(int i=0;i<nums.size();i++){
+                           if(i==0||nums[i]!=nums[i-1]){
+                             int start = i+1;
+                             int end = nums.size() - 1;
+                             while(start<end){
+                               int s = nums[i] + nums[start] + nums[end];
+                               if(s==0){
+                                 vector<int> temp;
+                                 temp.insert(temp.end(),{nums[i],nums[start],nums[end]});
+                                 result.push_back(temp);
+                                 int startVal = nums[start];
+                                 int endVal = nums[end];
+                                 while(start < end && startVal == nums[start]){
+                                       start++;   
+                                 }
+                                 while(end > start && endVal == nums[end]){
+                                      end--;
+                                 }
+                               }else if(s<0){start++;}
+                           else{end--;}
+                             }
+                           }
+                         }
+                         return result;
+                      }
+                    
+                    };
+                    
+                    int main(){
+                      Solution s;
+                      vector<int> l{-1, 0, 1, 2, -1, -4};
+                      for(auto v:s.threeSum(l)){
+                        cout << "[ ";
+                        for(auto i:v){
+                          cout << i <<" , " ;
+                        }
+                        cout << " ]" << endl;
+                      }
+                      return 0;
+                    }`,
+                  },
+                  Kotlin: {
+                    code: `package com.programming
+
+                    import java.util.LinkedList
+                    
+                    import java.util.Arrays
+                    
+                    internal class Test{
+                       companion object {
+                           fun threeSum(nums: IntArray): List<List<Int>>? {
+                               val result: MutableList<List<Int>> = LinkedList()
+                               Arrays.sort(nums)
+                               for (i in nums.indices) {
+                                   if (i == 0 || nums[i] != nums[i - 1]) {
+                                       var start = i + 1
+                                       var end = nums.size - 1
+                                       while (start < end) {
+                                           val sum = nums[i] + nums[start] + nums[end]
+                                           if (sum == 0) {
+                                               val tmp: MutableList<Int> = LinkedList()
+                                               tmp.add(nums[i])
+                                               tmp.add(nums[start])
+                                               tmp.add(nums[end])
+                                               result.add(tmp)
+                                               val startVal = nums[start]
+                                               val endVal = nums[end]
+                                               while (start < end && startVal == nums[start]) {
+                                                   start++
+                                               }
+                                               while (end > start && endVal == nums[end]) {
+                                                   end--
+                                               }
+                                           } else if (sum < 0) {
+                                               start++
+                                           } else {
+                                               end--
+                                           }
+                                       }
+                                   }
+                               }
+                               return result
+                           }
+                       }
+                    }
+                    
+                    fun main(){
+                        print(Test.threeSum(intArrayOf(-1, 0, 1, 2, -1, -4)))
+                    }`,
                   },
                 },
               }}
