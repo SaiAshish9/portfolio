@@ -19408,7 +19408,7 @@ print(Solution.maxArea(12))
             <CodeEditor
               options={{
                 title: "Q13. Roman To Integer",
-                output: 4,
+                output: `4`,
                 codes: {
                   Javascript: {
                     code: `var romanToInt = function(s){
@@ -19432,6 +19432,135 @@ print(Solution.maxArea(12))
                   }
                   
                   console.log(romanToInt("IV"))`,
+                  },
+                  Java: {
+                    code: `import java.util.*;
+
+                  class Main{
+                  
+                  public int romanToInt(String s){ 
+                    HashMap<Character,Integer> helper = new HashMap<Character,Integer>();
+                    initHelper(helper);
+                    int result = 0;
+                    for (int i = 0; i < s.length(); i ++){
+                      if ( i > 0 && helper.get(s.charAt(i)) > helper.get(s.charAt(i-1))) {
+                        result = result - 2 * helper.get(s.charAt(i-1));
+                      }
+                      result = result + helper.get(s.charAt(i));
+                    }
+                    return result;
+                  }
+                  
+                  public void initHelper(HashMap<Character,Integer> helper){
+                     helper.put('M',1000);
+                     helper.put('D',500);
+                     helper.put('C',100);
+                     helper.put('L',50);
+                     helper.put('X',10);
+                     helper.put('V',5);
+                     helper.put('I',1);
+                  }
+                  public static void main(String ...s){
+                      Main m = new Main();
+                      System.out.println(m.romanToInt("IV"));
+                  } 
+                  };
+                  `,
+                  },
+                  Python: {
+                    code: `
+class Main:
+  def romanToInt(self,s):
+    helper = {
+      'M':1000,
+      'D':500,
+      'C':100,
+      'L':50,
+      'X':10,
+      'V':5,
+      'I':1
+    }
+    result = 0
+    for i in range(0,len(s)):
+      if i > 0 and helper[s[i]] > helper[s[i-1]]:
+        result -= 2 * helper[s[i-1]]
+      result += helper[s[i]]
+    return result 
+    
+m = Main()
+print(m.romanToInt("IV"))`,
+                  },
+                  "C++": {
+                    code: `#include <iostream>
+                  #include <bits/stdc++.h>
+                  
+                  using namespace std;
+                  
+                  class Main{
+                  
+                  public:
+                    int romanToInt(string s){
+                         unordered_map<char,int> helper({
+                           {'M',1000},
+                           {'D',500},
+                           {'C',100},
+                           {'L',50},
+                           {'X',10},
+                           {'V',5},
+                           {'I',1}
+                         });
+                         int result = 0;
+                         for (int i = 0; i < s.length(); i++){
+                            if ( i > 0 && helper[s[i]] > helper[s[i-1]]) {
+                            result -= 2 * helper[s[i-1]];
+                         }
+                        result += helper[s[i]];
+                        }
+                        return result;
+                    }
+                  
+                  };
+                  
+                  
+                  int main(){
+                    Main m;
+                    cout<< m.romanToInt("IV") <<endl;
+                    return 0;
+                  }`,
+                  },
+                  Kotlin: {
+                    code: `internal class Main {
+                    fun romanToInt(s: String): Int {
+                        val helper = HashMap<Char, Int>()
+                        initHelper(helper)
+                        var result = 0
+                        for (i in s.indices) {
+                            if (i > 0 && helper[s[i]]!! > helper[s[i - 1]]!!) {
+                                result -= 2 * helper[s[i - 1]]!!
+                            }
+                            result += helper[s[i]]!!
+                        }
+                        return result
+                    }
+                
+                    private fun initHelper(helper: HashMap<Char, Int>) {
+                        helper['M'] = 1000
+                        helper['D'] = 500
+                        helper['C'] = 100
+                        helper['L'] = 50
+                        helper['X'] = 10
+                        helper['V'] = 5
+                        helper['I'] = 1
+                    }
+                
+                    companion object {
+                        @JvmStatic
+                        fun main(s: Array<String>) {
+                            val m = Main()
+                            println(m.romanToInt("IV"))
+                        }
+                    }
+                }`,
                   },
                 },
               }}
