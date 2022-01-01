@@ -21400,7 +21400,7 @@ print(Solution.isValid('{{()}}'))`,
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Img src={LeetcodeQ21} alt="img" />
+            <Img src={LeetcodeQ21} left alt="img" />
             <Span>
               Input: list1 = [1,2,4], list2 = [1,3,4] <br />
               Output: [1,1,2,3,4,4]
