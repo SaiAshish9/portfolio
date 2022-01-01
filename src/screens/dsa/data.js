@@ -19020,21 +19020,25 @@ print(Solution.isMatch("aab", "c*a*b"))`,
                 output: `2`,
                 codes: {
                   Javascript: {
-                    code: `var maxArea = function(height){
-                      let max=0,min=0,left=0;
-                      let right=height.length-1
-                      while(left<right){
-                        max=Math.max(max,Math.min(height[left],height[right])*(right-left))
-                        if(height[left]<height[right]){
-                          left+=1
-                        }else{
-                          right-=1
-                        }
-                        return max
-                      }
-                    }
-                        
-                    console.log(maxArea([1,2,1]))`,
+                    code: `
+                    /*
+@param {number[]} height
+@return {number}
+*/
+var maxArea = function(height){
+let max=0,left=0;
+let right=height.length-1
+while(left<right){
+max=Math.max(max,Math.min(height[left],height[right])*(right-left))
+if(height[left]<height[right]){
+  left++
+}else{
+  right--
+}
+}
+return max
+}       
+console.log(maxArea([1,2,1]))`,
                   },
                   Java: {
                     code: `class Main {
@@ -19149,6 +19153,9 @@ print(Solution.maxArea([1,2,1]))
       },
       q12: {
         title: "Q12. Integer To Roman",
+        content: <>
+        
+        </>,
       },
       q13: {
         title: "Q13. Roman To Integer",
