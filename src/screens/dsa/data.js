@@ -18069,12 +18069,10 @@ print(convert("PAYPALISHIRING", 3))
             <CodeEditor
               options={{
                 title: `Q7. Reverse Integer`,
+                output: `-21`,
                 codes: {
                   Javacript: {
-                    code: `/**
-                    * @param {number} x
-                    * @return {number}
-                    */
+                    code: `
                    var reverse = function(x) {
                        // Number.MAX_SAFE_INTEGER -> 2^53 - 1
                        let sign = x>0 ? 1 : -1
@@ -18111,7 +18109,7 @@ print(convert("PAYPALISHIRING", 3))
                         return (int)(sign*ans);  }
                     
                       public static void main(String[] args) {
-                        System.out.println(reverse(123));
+                        System.out.println(reverse(-12));
                       }
                     }`,
                   },
@@ -18143,7 +18141,7 @@ print(convert("PAYPALISHIRING", 3))
                     };
                     
                     int main(){
-                      cout<<Solution::reverse(-123)<<endl;
+                      cout<<Solution::reverse(-12)<<endl;
                       return 0;
                     }`,
                   },
@@ -18172,7 +18170,7 @@ print(convert("PAYPALISHIRING", 3))
                   
                   
                   fun main(){
-                      println(A.reverse(123))
+                      println(A.reverse(-12))
                   }`,
                   },
                 },
