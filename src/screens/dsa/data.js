@@ -17455,6 +17455,112 @@ print(convert(str))`,
       },
       q4: {
         title: "Q4. Median Of Two Sorted Arrays",
+        content: (
+          <>
+            <Span>
+              <b>Q4. Median of Two Sorted Arrays</b>
+            </Span>
+            <Span>
+              Given two sorted arrays nums1 and nums2 of size m and n
+              respectively, return the median of the two sorted arrays.
+            </Span>
+            <Span>The overall run time complexity should be O(log (m+n)).</Span>
+            <Span>
+              <b> Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums1 = [1,3], nums2 = [2] <br />
+              Output: 2.00000 <br />
+              Explanation: merged array = [1,2,3] and median is 2.
+            </Span>
+            <Span>
+              <b> Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums1 = [1,2], nums2 = [3,4] <br />
+              Output: 2.50000 <br />
+              Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 =
+              2.5.
+            </Span>
+            <Span>
+              <b>Constraints</b>
+            </Span>
+            <p>
+              nums1.length == m <br />
+              nums2.length == n <br />
+              0 &lt;= m &lt;= 1000 <br />
+              0 &lt;= n &lt;= 1000 <br />
+              1 &lt;= m + n &lt;= 2000 <br />
+              -106 &lt;= nums1[i], nums2[i] &lt;= 106
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q4. Median of Two Sorted Arrays",
+                output: "2.5",
+                codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {number[]} nums1
+                    * @param {number[]} nums2
+                    * @return {number}
+                    */
+                   
+                   var findMedianSortedArrays = function(nums1, nums2) {
+                   const list = [...nums1, ...nums2];
+                   list.sort((a,b)=>a-b);
+                   var median;
+                   var mid;
+                   mid = parseInt(list.length / 2);
+                   if (list.length % 2 != 0) {
+                     median = list[mid];
+                   } else {
+                     median = (list[mid - 1] + list[mid]) / 2;
+                   }
+                   return median;
+                   };
+                   
+                   findMedianSortedArrays([3],[-2, -1])`,
+                  },
+                  "C++": {
+                    code: `#include <iostream>
+                    #include <vector>
+                    #include <algorithm>
+                    
+                    using namespace std;
+                    
+                    class Solution {
+                    public:
+                        static double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+                             vector<int> vec(nums1);
+                             vec.insert(vec.begin(),nums2.begin(),nums2.end());
+                             sort(vec.begin(),vec.end());
+                             double median;
+                             int mid; 
+                             if(vec.size()==1){
+                               return vec[0];
+                             }
+                             mid = (int) vec.size()/2.0;
+                             if(vec.size()%2!=0){
+                                median = vec[mid];
+                             }else{
+                                median = (vec[mid-1]+vec[mid])/2.0;
+                             }
+                             return median;
+                        }
+                    };
+                    
+                    int main() {
+                      vector<int> v1{};
+                      vector<int> v2{2,3};
+                      cout<<Solution::findMedianSortedArrays(v1,v2)<<endl;
+                      return 0;
+                    }`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q5: {
         title: "Q5. LPS",
