@@ -15,6 +15,7 @@ import LeftViewBT from "assets/home/leftView.png";
 import RightViewBT from "assets/home/rightView.png";
 import LeetCodeQ2 from "assets/leetcode/leetcodeQ2.png";
 import LeetCodeQ11 from "assets/leetcode/q11.png";
+import LeetcodeQ17 from "assets/leetcode/q17.png";
 
 export const DATA = {
   ds: {
@@ -20277,6 +20278,7 @@ print(Test.threeSumClosest([-1, 0, 1, 2, -1, -4],8))`,
               (just like on the telephone buttons) is given below. Note that 1
               does not map to any letters.
             </Span>
+            <Img left src={LeetcodeQ17} />
             <Span>
               <b>Example 1:</b>
             </Span>
