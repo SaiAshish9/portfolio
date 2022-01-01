@@ -22009,6 +22009,59 @@ print(sol.generateParenthesis(3))`,
       },
       q23: {
         title: "Q23. Merge K Sorted Lists",
+        content: (
+          <>
+            <Span>
+              <b>Q23. Merge K Sorted Lists</b>
+            </Span>
+            <Span>
+              You are given an array of k linked-lists lists, each linked-list
+              is sorted in ascending order. Merge all the linked-lists into one
+              sorted linked-list and return it.
+            </Span>
+            <Span>
+              <b>Example 1</b>
+            </Span>
+            <Span>
+              Input: lists = [[1,4,5],[1,3,4],[2,6]] <br />
+              Output: [1,1,2,3,4,4,5,6] <br />
+              Explanation: The linked-lists are: <br />
+              [ <br />
+              1-&gt;4-&gt;5, <br />
+              1-&gt;3-&gt;4, <br />
+              2-&gt;6 <br />
+              ] <br />
+              ] <br />
+              merging them into one sorted list: <br />
+              1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6 <br />
+            </Span>
+            <Span>
+              <b>Example 2</b>
+            </Span>
+            <Span>
+              Input: lists = [] <br />
+              Output: []
+            </Span>
+            <Span>
+              <b>Example 3</b>
+            </Span>
+            <Span>
+              Input: lists = [] <br />
+              Output: []
+            </Span>
+            <Span>
+              <b>Constraints</b>
+            </Span>
+            <Span>
+              k == lists.length <br />
+              0 &lt;= k &lt;= 10^4 <br />
+              0 &lt;= lists[i].length &lt;= 500 <br />
+              -10^4 &lt;= lists[i][j] &lt;= 10^4 <br />
+              lists[i] is sorted in ascending order. <br />
+              The sum of lists[i].length won't exceed 10^4. <br />
+            </Span>
+          </>
+        ),
       },
       q24: {
         title: "Q24. Swap Nodes In Pairs",
