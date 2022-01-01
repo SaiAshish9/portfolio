@@ -13552,6 +13552,99 @@ SC O(N*W)
             ),
           },
           {
+            title: "Longest Palindromic Substring",
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  Given a string s, return the longest palindromic substring in
+                  s.
+                </Span>
+
+                <Span>
+                  <b>Example 1:</b>
+                </Span>
+
+                <Span>
+                  Input: s = "babad" <br />
+                  Output: "bab" <br />
+                  Explanation: "aba" is also a valid answer.
+                </Span>
+
+                <Span>
+                  <b>Example 2:</b>
+                </Span>
+
+                <Span>
+                  Input: s = "cbbd" <br />
+                  Output: "bb"
+                </Span>
+
+                <Span>
+                  <b>Constraints:</b>
+                </Span>
+
+                <Span>
+                  1 &lt;= s.length &lt;= 1000 <br />s consist of only digits and
+                  English letters.
+                </Span>
+
+                <CodeEditor
+                  options={{
+                    title: "Q5. Longest Palindromic Substring",
+                    output: `bab`,
+                    codes: {
+                      Javascript: {
+                        code: `/**
+                          * @param {string} s
+                          * @return {string}
+                          */
+                         
+                         var longestPalindrome = function(s) {
+                             let n = s.length;
+                             let lookupTab = Array.from(Array(n),()=>Array(n).fill(false));
+                             let maxLength = 1;
+                             for (let i = 0; i < n; ++i)
+                               lookupTab[i][i] = true;
+                             let start = 0;
+                             for (let i = 0; i < n - 1; ++i)
+                             {
+                               if (s[i] == s[i + 1])
+                               {
+                                 lookupTab[i][i + 1] = true;
+                                 start = i;
+                                 maxLength = 2;
+                               }
+                             }
+                             for (let k = 3; k <= n; ++k) {
+                               for (let i = 0; i < n - k + 1; ++i)
+                               {
+                                 let j = i + k - 1;
+                                 if (lookupTab[i + 1][j - 1]
+                                   && s[i] == s[j]) {
+                                   lookupTab[i][j] = true;
+                                   if (k > maxLength) {
+                                     start = i;
+                                     maxLength = k;
+                                   }
+                                 }
+                               }
+                             }
+                             return s.substring(start, start+maxLength);
+                         }
+                           
+                         console.log(longestPalindrome("babad"));
+                         `,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
+          },
+          {
             title: "LCS",
             content: (
               <>
@@ -17566,7 +17659,41 @@ print(convert(str))`,
         title: "Q5. Longest Palindromic Substring",
         content: (
           <>
-            <Span>Q5. Longest Palindromic Substring</Span>
+            <Span>
+              <b>Q5. Longest Palindromic Substring</b>
+            </Span>
+            <Span>
+              Given a string s, return the longest palindromic substring in s.
+            </Span>
+
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+
+            <Span>
+              Input: s = "babad" <br />
+              Output: "bab" <br />
+              Explanation: "aba" is also a valid answer.
+            </Span>
+
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+
+            <Span>
+              Input: s = "cbbd" <br />
+              Output: "bb"
+            </Span>
+
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+
+            <Span>
+              1 &lt;= s.length &lt;= 1000 <br />s consist of only digits and
+              English letters.
+            </Span>
+
             <CodeEditor
               options={{
                 title: "Q5. Longest Palindromic Substring",
@@ -17622,6 +17749,13 @@ print(convert(str))`,
       },
       q6: {
         title: "Q6. ZigZag Conversion",
+        content: (
+          <>
+            <Span>
+              <b>Q6. ZigZag Conversion</b>
+            </Span>
+          </>
+        ),
       },
       q7: {
         title: "Q7. Reverse Integer",
