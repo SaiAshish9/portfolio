@@ -19757,6 +19757,47 @@ print(Solution.lcp(["flower", "flow", "flight"]))
       },
       q15: {
         title: "Q15. 3Sum",
+        content: (
+          <>
+            <Span>
+              <b>Q15. 3Sum</b>
+            </Span>
+            <Span>
+              Given an integer array nums, return all the triplets [nums[i],
+              nums[j], nums[k]] such that i != j, i != k, and j != k, and
+              nums[i] + nums[j] + nums[k] == 0. Notice that the solution set
+              must not contain duplicate triplets.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [-1,0,1,2,-1,-4] <br />
+              Output: [[-1,-1,2],[-1,0,1]]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums = [] <br />
+              Output: []
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: nums = [0] <br />
+              Output: []
+            </Span>
+            <Span>
+              <b>Constraints</b>
+            </Span>
+            <Span>
+              0 &lt;= nums.length &lt;= 3000 <br />
+              -105 &lt;= nums[i] &lt;= 105
+            </Span>
+          </>
+        ),
       },
       q16: {
         title: "Q16. 3SumClosest",
