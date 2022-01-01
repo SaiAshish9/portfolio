@@ -18700,6 +18700,276 @@ print(Solution.isPalindrome(121))
       },
       q10: {
         title: "Q10. Regular Expression Matching",
+        content: (
+          <>
+            <Span>
+              <b>Q10. Regular Expression Matching</b>
+            </Span>
+            <Span>
+              Given an input string s and a pattern p, implement regular
+              expression matching with support for '.' and '*' where:
+              <br />
+              '.' Matches any single character.​​​​ <br />
+              '*' Matches zero or more of the preceding element. <br />
+              The matching should cover the entire input string (not partial).
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: s = "aa", p = "a" Output: false Explanation: "a" does not
+              match the entire string "aa".
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: s = "aa", p = "a*" Output: true Explanation: '*' means zero
+              or more of the preceding element, 'a'. Therefore, by repeating 'a'
+              once, it becomes "aa".
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = "ab", p = ".*" Output: true Explanation: ".*" means
+              "zero or more (*) of any character (.)".
+            </Span>
+            <Span>
+              <b>Constraints</b>
+            </Span>
+            <Span>
+              1 &lt;= s.length &lt;= 20 <br />
+              1 &lt;= p.length &lt;= 30 <br />
+              s contains only lowercase English letters. <br />
+              p contains only lowercase English letters, '.', and '*'. <br />
+              It is guaranteed for each appearance of the character '*', there
+              will be a previous valid character to match.
+            </Span>
+            <CodeEditor
+              options={{
+                title: "Q10. Regular Expression Matching",
+                output: `true`,
+                codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {string} s
+                    * @param {string} p
+                    * @return {boolean}
+                    */
+                   var isMatch = function(s, p) {
+                      const rows = s.length;
+                      const columns = p.length;
+                       if (rows == 0 && columns == 0) {
+                         return true;
+                       }
+                       if (columns == 0) {
+                         return false;
+                       }
+                       const dp = Array.from({ length: s.length + 1 }, () => [false]);
+                       dp[0][0] = true;
+                       for (let i = 1; i < columns + 1; i++) {
+                         if (p[i - 1] === "*") {
+                           dp[0][i] = dp[0][i - 2];
+                         } else {
+                           dp[0][i] = false;
+                         }
+                       }
+                       for (let i = 1; i < rows + 1; i++) {
+                         for (let j = 1; j < columns + 1; j++) {
+                           if (p[j - 1] === "*") {
+                             if (p[j - 2] === s[i - 1] || p[j - 2] === ".") {
+                               dp[i][j] = dp[i][j - 2] || dp[i - 1][j];
+                             } else {
+                               dp[i][j] = dp[i][j - 2];
+                             }
+                           } else if (p[j - 1] === s[i - 1] || p[j - 1] === ".") {
+                             dp[i][j] = dp[i - 1][j - 1];
+                           } else {
+                             dp[i][j] = false;
+                           }
+                         }
+                       }
+                       return dp[rows][columns]; 
+                   };
+                   
+                   console.log(isMatch("aab", "c*a*b"));
+                   `,
+                  },
+                  Java: {
+                    code: ` 
+                    // c	*	a	*	b
+                    // 0	1	2	3	4	5
+                    // 0	TRUE	FALSE	TRUE	FALSE	TRUE	FALSE
+                    // a	1	FALSE	FALSE	FALSE	TRUE	TRUE	FALSE
+                    // a	2	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE
+                    // b	3	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE                    
+                    class Main {
+                    
+                        public static boolean isMatch(String s,String p){
+                          int rows = s.length();
+                          int columns = p.length();
+                          
+                          if(rows==0&&columns==0){
+                            return true;
+                          }
+                          if(columns==0){
+                            return false;
+                          }
+                          boolean[][] dp=new boolean[rows+1][columns+1];
+                          
+                          dp[0][0]=true;
+                      
+                          for (int i = 2; i < columns + 1; i++) {
+                                  if (p.charAt(i - 1) == '*') {
+                                      dp[0][i] = dp[0][i - 2];
+                                  }
+                          }
+                          
+                          for (int i = 1; i < rows + 1; i++) {
+                                  for (int j = 1; j < columns + 1; j++) {
+                                      if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '.') {
+                                          dp[i][j] = dp[i - 1][j - 1];
+                                      } else if (j > 1 && p.charAt(j - 1) == '*') {
+                                          dp[i][j] = dp[i][j - 2];
+                                          if (p.charAt(j - 2) == '.' || p.charAt(j - 2) == s.charAt(i - 1)) {
+                                              dp[i][j] = dp[i][j] | dp[i - 1][j];
+                                          }
+                                      }
+                            }
+                          }
+                              return dp[rows][columns];
+                      
+                        }
+                      
+                        public static void main(String[] args) {
+                          System.out.println(isMatch("aab","c*a*b"));
+                        }
+                      }         
+                    `,
+                  },
+                  Python: {
+                    code: `
+class Solution:
+  @staticmethod
+  def isMatch(s: str, p: str) -> bool:
+    rows, columns = (len(s), len(p))
+    if rows == 0 and columns == 0:
+        return True
+    if columns == 0:
+        return False
+    dp = [[False for j in range(columns + 1)] for i in range(rows + 1)]
+    dp[0][0] = True
+    for i in range(2, columns + 1):
+        if p[i - 1] == '*':
+            dp[0][i] = dp[0][i - 2]
+    for i in range(1, rows + 1):
+        for j in range(1, columns + 1):
+            if s[i - 1] == p[j - 1] or p[j - 1] == '.':
+                dp[i][j] = dp[i - 1][j - 1]
+            elif j > 1 and p[j - 1] == '*':
+                dp[i][j] = dp[i][j - 2]
+                if p[j - 2] == '.' or p[j - 2] == s[i - 1]:
+                    dp[i][j] = dp[i][j] or dp[i - 1][j]
+    return dp[rows][columns]
+
+print(Solution.isMatch("aab", "c*a*b"))`,
+                  },
+                  "C++": {
+                    code: `#include <iostream>
+
+                    using namespace std;
+                    
+                    class Solution
+                    {
+                    public:
+                        static bool isMatch(string s, string p)
+                        {
+                            int rows = 0, columns = 0;
+                            bool dp[rows][columns];
+                            dp[0][0] = true;
+                    
+                            for (int i = 2; i < columns + 1; i++)
+                            {
+                                if (p[i - 1] == '*')
+                                {
+                                    dp[0][i] = dp[0][i - 2];
+                                }
+                            }
+                    
+                            for (int i = 1; i < rows + 1; i++)
+                            {
+                                for (int j = 1; j < columns + 1; j++)
+                                {
+                                    if (s[i - 1] == p[j - 1] || p[j - 1] == '.')
+                                    {
+                                        dp[i][j] = dp[i - 1][j - 1];
+                                    }
+                                    else if (j > 1 && p[j - 1] == '*')
+                                    {
+                                        dp[i][j] = dp[i][j - 2];
+                                        if (p[j - 2] == '.' || p[j - 2] == s[i - 1])
+                                        {
+                                            dp[i][j] = dp[i][j] or dp[i - 1][j];
+                                        }
+                                    }
+                                }
+                            }
+                    
+                            return dp[rows][columns];
+                        }
+                    };
+                    
+                    int main()
+                    {
+                        cout << boolalpha;
+                        cout << Solution::isMatch("aab", "c*a*b") << endl;
+                    }`,
+                  },
+                  Kotlin: {
+                    code: `class Solution{
+                      companion object {
+                          fun isMatch(s:String,p:String):Boolean{
+                              val rows:Int=0
+                              val columns:Int=0
+                              val dp = Array(
+                                  rows+1
+                              ){
+                                  BooleanArray(columns+1)
+                              }
+                              dp[0][0]=true
+                              for(i in 2 until  columns+1){
+                                  if(p[i-1]=='*'){
+                                      dp[0][i]=dp[0][i-2]
+                                  }
+                              }
+                              for(i in 1 until  rows+1){
+                                  for(j in 1 until columns+1){
+                                      if (s[i - 1] === p[j - 1] || p[j - 1] === '.') {
+                                          dp[i][j] = dp[i - 1][j - 1]
+                                      } else if (j > 1 && p[j - 1] === '*') {
+                                          dp[i][j] = dp[i][j - 2]
+                                          if (p[j - 2] === '.' || p[j - 2] === s[i - 1]) {
+                                              dp[i][j] = dp[i][j] or dp[i - 1][j]
+                                          }
+                                      }
+                                  }
+                              }
+                  
+                              return dp[rows][columns]
+                          }
+                      }
+                  }
+                  
+                  fun main(){
+                    print(Solution.isMatch("aab","c*a*b"))
+                  }`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q11: {
         title: "Q11. Container With Most Medium Water",
