@@ -18180,7 +18180,342 @@ print(convert("PAYPALISHIRING", 3))
         ),
       },
       q8: {
-        title: "Q8. ATOI",
+        title: "Q8. String to Integer (atoi)",
+        content: (
+          <>
+            <Span>
+              <b>Q8. String to Integer (atoi)</b>
+            </Span>
+            <Span>
+              Implement the myAtoi(string s) function, which converts a string
+              to a 32-bit signed integer (similar to C/C++'s atoi function).
+            </Span>
+            <Span>The algorithm for myAtoi(string s) is as follows:</Span>
+            <Span>
+              1. Read in and ignore any leading whitespace. <br />
+              Check if the next character (if not already at the end of the
+              string) is '-' or '+'. Read this character in if it is either.
+              This determines if the final result is negative or positive
+              respectively. Assume the result is positive if neither is present.
+              <br />
+              2. Read in next the characters until the next non-digit character
+              or the end of the input is reached. The rest of the string is
+              ignored.
+              <br />
+              3. Convert these digits into an integer (i.e. "123" -&lt; 123,
+              "0032" -&lt; 32). If no digits were read, then the integer is 0.
+              Change the sign as necessary (from step 2). <br />
+              4. If the integer is out of the 32-bit signed integer range [-231,
+              231 - 1], then clamp the integer so that it remains in the range.
+              Specifically, integers less than -231 should be clamped to -231,
+              and integers greater than 231 - 1 should be clamped to 231 - 1.
+              Return the integer as the final result.
+            </Span>
+            <Span>
+              <b>Note:</b>
+            </Span>
+            <Span>
+              1. Only the space character ' ' is considered a whitespace
+              character. <br />
+              2.Do not ignore any characters other than the leading whitespace
+              or the rest of the string after the digits.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: s = "42" <br />
+              Output: 42 <br />
+              Explanation: The underlined characters are what is read in, the
+              caret is the current reader position. Step 1: "42" (no characters
+              read because there is no leading whitespace) <br />
+              ^ Step 2: "42" (no characters read because there is neither a '-'
+              nor '+') <br />
+              ^ Step 3: "42" ("42" is read in) <br />^ The parsed integer is 42.
+              Since 42 is in the range [-231, 231 - 1], the final result is 42.
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: s = " -42" <br />
+              Output: -42 <br />
+              Explanation: <br />
+              Step 1: " -42" (leading whitespace is read and ignored) <br />^
+              Step 2: " -42" ('-' is read, so the result should be negative){" "}
+              <br />
+              ^ Step 3: " -42" ("42" is read in) <br />^ The parsed integer is
+              -42. Since -42 is in the range [-231, 231 - 1], the final result
+              is -42.
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = "4193 with words" <br />
+              Output: 4193 <br />
+              Explanation: <br />
+              Step 1: "4193 with words" (no characters read because there is no
+              leading whitespace) <br />
+              ^ Step 2: "4193 with words" (no characters read because there is
+              neither a '-' nor '+') <br />
+              ^ Step 3: "4193 with words" ("4193" is read in; reading stops
+              because the next character is a non-digit) <br />^ The parsed
+              integer is 4193. Since 4193 is in the range [-231, 231 - 1], the
+              final result is 4193.
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1. 0 &lt;= s.length &lt;= 200 <br />
+              2. s consists of English letters (lower-case and upper-case),
+              digits (0-9), ' ', '+', '-', and '.'.
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q8. String to Integer (atoi)",
+                output: ``,
+                  codes: {
+                    Javacript: {
+                      code: `class ATOI{
+                        static atoi(s){
+                           let st = s.trim()
+                           if(st == null || st.length ==0){
+                             return 0
+                           }
+                           let res=0
+                           let isNegative=false
+                           let startIndex=0
+                           
+                           if(st[0]=='+' || st[0]=='-'){
+                              startIndex+=1
+                           }
+                      
+                           if(st[0]=='-'){
+                              isNegative=true
+                           } 
+                           
+                           for(let i=startIndex;i<st.length;i++){
+                             if(st[i]<'0'||st[i]>'9'){
+                               break;
+                             }
+                             let digit = parseInt(st[i])
+                             res = res*10+digit
+                           }
+                      
+                           if(isNegative){
+                             res= -1 * res
+                           }
+                      
+                           if(res > Math.pow(2,31) - 1)
+                              return Math.pow(2,31)-1
+                      
+                           if(res < Math.pow(-2 ^ 31) + 1)
+                              return Math.pow(-2,31)+1
+                      
+                           return res
+                        }
+                      }
+                      
+                      console.log(ATOI.atoi(" 42"))`,
+                    },
+                    Java: {
+                      code: `class ATOI {
+                        public static int atoi(String str) {
+                            str = str.trim();
+                            if (str == null || str.length() == 0) {
+                                return 0;
+                            }
+                            double result = 0;
+                            boolean isNegative = false;
+                            int startIndex = 0;
+                            if (str.charAt(0) == '+' || str.charAt(0) == '-') {
+                                startIndex++;
+                            }
+                            if (str.charAt(0) == '-') {
+                                isNegative = true;
+                            }
+                            for (int i = startIndex; i < str.length(); i++) {
+                                if (str.charAt(i) < '0' || str.charAt(i) > '9') {
+                                    break;
+                                }
+                                int digitValue = (int) (str.charAt(i) - '0');
+                                result = result * 10 + digitValue;
+                            }
+                    
+                            if (isNegative) {
+                                result = -result;
+                            }
+                            if (result > Integer.MAX_VALUE) {
+                                return Integer.MAX_VALUE;
+                            }
+                            if (result < Integer.MIN_VALUE) {
+                                return Integer.MIN_VALUE;
+                            }
+                    
+                            return (int) result;
+                        }
+                    
+                        public static void main(String... s) {
+                            System.out.println(ATOI.atoi("42"));
+                        }
+                    
+                    }
+                    `,
+                    },
+                    Python: {
+                      code: `
+class ATOI:
+    @staticmethod
+    def atoi(s):
+        st = s.strip()
+
+        if (st is None or len(st) == 0):
+            return 0
+
+        res = 0
+        isNegative = False
+        startIndex = 0
+
+        if st[0] == '+' or st[0] == '-':
+            startIndex += 1
+        if st[0] == '-':
+            isNegative = True
+
+        print(startIndex, isNegative)
+
+        i = startIndex
+
+        while i < len(st):
+            if st[i] < '0' or st[i] > '9':
+                break
+            digit = (int)(st[i])
+            res = res * 10 + digit
+            i += 1
+
+        if isNegative:
+            res = -res
+
+        if res > 2 ^ 31 - 1:
+            return 2 ^ 31
+
+        if res < -2 ^ 31 + 1:
+            return -2 ^ 31
+
+        return res
+
+
+# import sys
+# sys.maxsize
+
+print(ATOI.atoi("-23"))`,
+                    },
+                    "C++": {
+                      code: `#include <iostream>
+                      #include <string>
+                      #include <algorithm>
+                      #include <bits/stdc++.h>
+                      
+                      using namespace std;
+                      
+                      class ATOI{
+                      public:
+                      
+                        static string trim(const string &s){
+                        auto start = s.begin();
+                        while(start != s.end() && isspace(*start)){
+                           start++;
+                        }
+                        auto end = s.end();
+                        do{
+                          end--;
+                        }while(distance(start,end)>0 && isspace(*end));
+                        return string(start,end+1);
+                        }
+                      
+                        static int atoi(string s){
+                              string str = trim(s);
+                              double result = 0;
+                              bool isNegative = false;
+                              int startIndex = 0;
+                              if (str[0] == '+' || str[0] == '-') {
+                                  startIndex++;
+                              }
+                              if (str[0] == '-') {
+                                  isNegative = true;
+                              }
+                              for (int i = startIndex; i < str.length(); i++) {
+                                  if (str[i] < '0' || str[i] > '9') {
+                                      break;
+                                  }
+                                  int digitValue = (int) (str[i] - '0');
+                                  result = result * 10 + digitValue;
+                              }
+                      
+                              if (isNegative) {
+                                  result = -result;
+                              }
+                              if (result > INT_MAX) {
+                                  return INT_MAX;
+                              }
+                              if (result < INT_MIN) {
+                                  return INT_MIN;
+                              }
+                      
+                              return (int) result;
+                        }
+                      
+                      };
+                      
+                      int main() {
+                        cout << ATOI::atoi(" 42 Hello World! ")<<endl;
+                        return 0;
+                      }`,
+                    },
+                    kotlin: {
+                      code: `class ATOI{
+                        companion object{
+                            fun atoi(s:String):Int{
+                                var res:Double=0.0
+                                var str = s.trim()
+                                var isNegative:Boolean = false
+                                var startIndex:Int=0
+                                if(str[0]=='+'||str[0]=='-'){
+                                    startIndex++
+                                }
+                                if(str[0]=='-'){
+                                    isNegative = true
+                                }
+                                for(i: Int in startIndex until str.length){
+                                    if(str[i]<'0'||str[i]>'9'){
+                                        break;
+                                    }
+                                    var digit:Int = (str[i] - '0').toInt()
+                                    res = res *10 + digit
+                                }
+                                if(isNegative){
+                                    res = -res
+                                }
+                                if(res > Int.MAX_VALUE){
+                                    return Int.MAX_VALUE
+                                }else if(res<Int.MIN_VALUE){
+                                    return Int.MIN_VALUE
+                                }
+                                return res.toInt()
+                            }
+                        }
+                    }
+                    
+                    fun main(){
+                      print(ATOI.atoi(" 42"))
+                    }`,
+                    },
+                  },
+              }}
+            />
+          </>
+        ),
       },
       q9: {
         title: "Q9. Palindrome",
