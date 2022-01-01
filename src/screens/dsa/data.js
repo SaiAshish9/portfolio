@@ -18275,7 +18275,7 @@ print(convert("PAYPALISHIRING", 3))
             <CodeEditor
               options={{
                 title: "Q8. String to Integer (atoi)",
-                output: ``,
+                output: `42`,
                   codes: {
                     Javacript: {
                       code: `class ATOI{
