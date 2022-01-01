@@ -18513,10 +18513,84 @@ print(ATOI.atoi("-23"))`,
         ),
       },
       q9: {
-        title: "Q9. Palindrome",
-        content: <>
-        
-        </>,
+        title: "Q9. Palindrome Number",
+        content: (
+          <>
+            <Span>
+              <b>Q9. Palindrome Number</b>
+            </Span>
+            <Span>
+              Given an integer x, return true if x is palindrome integer. An
+              integer is a palindrome when it reads the same backward as
+              forward. For example, 121 is a palindrome while 123 is not.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: x = 121 <br />
+              Output: true <br />
+              Explanation: 121 reads as 121 from left to right and from right to
+              left. <br />
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: x = -121 <br />
+              Output: false <br />
+              Explanation: From left to right, it reads -121. From right to
+              left, it becomes 121-. Therefore it is not a palindrome. <br />
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: x = 10 <br />
+              Output: false
+              <br />
+              Explanation: Reads 01 from right to left. Therefore it is not a
+              palindrome.
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>-231 &lt;= x &lt;= 231 - 1</p>
+            <CodeEditor
+              options={{
+                output: `true`,
+                title: "Q9. Palindrome Number",
+                codes: {
+                  Javacript: {
+                    code: `/*
+@param {number} x
+@return {boolean}
+*/
+
+                   var isPalindrome = function(x){
+                         var n=x
+                         if(n<0){
+                           return false
+                         }
+                         var rev=0
+                         while(parseInt(n)>0){
+                           rev=rev*10+parseInt(n)%10
+                           n/=10
+                         }
+                         if(rev==x){
+                           return true
+                         }else{
+                           return false
+                         }
+                       } 
+                    
+                   console.log(isPalindrome(121))`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q10: {
         title: "Q10. Regular Expression Matching",
