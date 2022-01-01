@@ -20301,6 +20301,210 @@ print(Test.threeSumClosest([-1, 0, 1, 2, -1, -4],8))`,
               0 &lt;= digits.length &lt;= 4 <br />
               digits[i] is a digit in the range ['2', '9'].
             </p>
+            <CodeEditor
+              options={{
+                title: "Q17. Letter Combinations Of A PhoneNumber",
+                codes: {
+                  Java: {
+                    code: `import java.util.*;
+                    class Main {
+                        public List<String> letterCombinations(String digits) {
+                            HashMap<Character, String> keyboard = new HashMap<Character, String>();
+                            initKeyboard(keyboard);
+                            List<String> result = new LinkedList<String>();
+                            if (digits.length() == 0) {
+                                return result;
+                            }
+                            compile(digits, "", 0, keyboard, result); 
+                            return result;
+                        }
+                    
+                        // public LinkedList<String> letterCombinations(String digits) {
+                        //     HashMap<Character, String> keyboard = new HashMap<Character, String>();
+                        //     initKeyboard(keyboard);
+                        //     LinkedList<String> result = new LinkedList<String>();
+                        //     if (digits.length() == 0) {
+                        //         return result;
+                        //     }
+                        //     compile(digits, "", 0, keyboard, result); 
+                        //     return result;
+                        // }
+                    
+                        private void compile(String digits, String prefix, int start, HashMap<Character, String> keyboard, List<String> result) {
+                            if (start == digits.length()) {
+                                result.add(prefix);
+                                return;
+                            }
+                            String cand = keyboard.get(digits.charAt(start));
+                            for (int j = 0; j < cand.length(); j++) {
+                                compile(digits, prefix + cand.charAt(j), start + 1, keyboard, result);
+                            }
+                        }
+                        private void initKeyboard(HashMap<Character, String> keyboard) {
+                            keyboard.put('2', "abc");
+                            keyboard.put('3', "def");
+                            keyboard.put('4', "ghi");
+                            keyboard.put('5', "jkl");
+                            keyboard.put('6', "mno");
+                            keyboard.put('7', "pqrs");
+                            keyboard.put('8', "tuv");
+                            keyboard.put('9', "wxyz");
+                        }
+                    
+                       public static void main(String ...s){
+                            Main m = new Main();
+                            System.out.println(m.letterCombinations("234").toString());
+                       }
+                    
+                    }`,
+                    Python: {
+                      code: `
+class Main:
+
+  def __initKeyboard(self,keyboard):
+    keyboard['2'] = "abc"
+    keyboard['3'] = "def"
+    keyboard['4'] = "ghi"
+    keyboard['5'] = "jkl"
+    keyboard['6'] = "mno"
+    keyboard['7'] = "pqrs"
+    keyboard['8'] = "tuv"
+    keyboard['9'] = "wxyz"
+
+  def comp(self,digits:str,prefix:str,start:int,keyboard,result):
+    if start == len(digits):
+      result.append(prefix)
+      return
+    cand = keyboard[digits[start]]
+    for e in cand:
+      self.comp(digits,prefix+e,start+1,keyboard,result)
+
+  def letterCombinations(self,digits:str):
+    keyboard = {}
+    self.__initKeyboard(keyboard)
+    res=[]
+    if len(digits)==0:
+      return res
+    self.comp(digits,"",0,keyboard,res)
+    return res
+  
+m = Main()
+print(m.letterCombinations("234"))
+                      `,
+                    },
+                    "C++": {
+                      code: `#include <iostream>
+                      #include <string>
+                      #include <vector>
+                      #include <bits/stdc++.h>
+                      
+                      using namespace std;
+                      
+                      class Main{
+                        
+                        public:
+                        unordered_map<char,string> initKeyboard(unordered_map<char,string> keyboard){
+                          keyboard['2'] = "abc";
+                          keyboard['3'] = "def";
+                          keyboard['4'] = "ghi";
+                          keyboard['5'] = "jkl";
+                          keyboard['6'] = "mno";
+                          keyboard['7'] = "pqrs";
+                          keyboard['8'] = "tuv";
+                          keyboard['9'] = "wxyz";
+                          return keyboard;
+                        }
+                      
+                        void comp(string digits,string prefix,int start,unordered_map<char,string> keyboard,vector<string> 
+                        *result){
+                          if(start==digits.length()){
+                            result->push_back(prefix);
+                            return;
+                          }
+                          string cand = keyboard[digits[start]];
+                          for(auto e:cand){
+                            comp(digits,prefix+e,start+1,keyboard,result);
+                          }
+                        }
+                        
+                        vector<string> letterCombinations(string digits){
+                          unordered_map<char,string> keyboard;
+                          keyboard = initKeyboard(keyboard);
+                          vector<string> res;
+                          if(digits.length()==0){
+                             return res;
+                          }
+                          this->comp(digits,"",0,keyboard,&res);
+                          return res; 
+                        }
+                      
+                      };
+                      
+                      int main(){
+                        Main m;
+                        for(auto i:m.letterCombinations("234")){
+                          cout << i << endl;
+                        }
+                        return 0;
+                      }`,
+                    },
+                    Kotlin: {
+                      code: `import java.util.*
+                      import kotlin.collections.HashMap
+                      
+                      internal class Main {
+                          fun letterCombinations(digits: String): List<String> {
+                              val keyboard = HashMap<Char, String>()
+                              initKeyboard(keyboard)
+                              val result: MutableList<String> = LinkedList()
+                              if (digits.isEmpty()) {
+                                  return result
+                              }
+                              compile(digits, "", 0, keyboard, result)
+                              return result
+                          }
+                      
+                          private fun compile(
+                              digits: String,
+                              prefix: String,
+                              start: Int,
+                              keyboard: HashMap<Char, String>,
+                              result: MutableList<String>
+                          ) {
+                              if (start == digits.length) {
+                                  result.add(prefix)
+                                  return
+                              }
+                              val cand = keyboard[digits[start]]
+                              for (element in cand!!) {
+                                  compile(digits, prefix + element, start + 1, keyboard, result)
+                              }
+                          }
+                      
+                          private fun initKeyboard(keyboard: HashMap<Char, String>) {
+                              keyboard['2'] = "abc"
+                              keyboard['3'] = "def"
+                              keyboard['4'] = "ghi"
+                              keyboard['5'] = "jkl"
+                              keyboard['6'] = "mno"
+                              keyboard['7'] = "pqrs"
+                              keyboard['8'] = "tuv"
+                              keyboard['9'] = "wxyz"
+                          }
+                      
+                          companion object {
+                              @JvmStatic
+                              fun main(s: Array<String>) {
+                                  val m = Main()
+                                  println(m.letterCombinations("234").toString())
+                              }
+                          }
+                      }`,
+                    },
+                  },
+                },
+              }}
+            />
           </>
         ),
       },
