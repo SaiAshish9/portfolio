@@ -20843,6 +20843,8 @@ print(Main.fourSum([1,0,-1,0,-2,2],0))
             </p>
             <CodeEditor
               options={{
+                code: `1 -> 2 -> 3 -> 4 -> 5
+                1 -> 2 -> 3 -> 5`,
                 title: "Q19. Remove Nth Node From End of List",
                 codes: {
                   Javascript: {
