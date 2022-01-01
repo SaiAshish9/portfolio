@@ -21823,6 +21823,45 @@ while ans is not None:
       },
       q22: {
         title: "Q22. Generate Parentheses",
+        content: (
+          <>
+            <Span>
+              <b>22. Generate Parentheses</b>
+            </Span>
+            <Span>
+              Given n pairs of parentheses, write a function to generate all
+              combinations of well-formed parentheses
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: n = 3 <br />
+              Output: ["((()))","(()())","(())()","()(())","()()()"]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: n = 1 <br />
+              Output: ["()"]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>1 &lt;= n &lt;= 8</p>
+            <CodeEditor
+              options={{
+                title: "Q22. Generate Parentheses",
+                codes: {
+                  Javascript: {
+                    code: ``,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q23: {
         title: "Q23. Merge K Sorted Lists",
