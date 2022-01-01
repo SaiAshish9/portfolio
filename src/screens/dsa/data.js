@@ -16,6 +16,7 @@ import RightViewBT from "assets/home/rightView.png";
 import LeetCodeQ2 from "assets/leetcode/leetcodeQ2.png";
 import LeetCodeQ11 from "assets/leetcode/q11.png";
 import LeetcodeQ17 from "assets/leetcode/q17.png";
+import LeetcodeQ19 from "assets/leetcode/q19.png";
 
 export const DATA = {
   ds: {
@@ -20542,8 +20543,9 @@ print(m.letterCombinations("234"))
             </p>
             <CodeEditor
               options={{
+                title: "Q18. 4Sum",
+                output: `[[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]`,
                 codes: {
-                  output: `[[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]`,
                   Java: {
                     code: `import java.util.*;
 
@@ -20812,6 +20814,335 @@ print(Main.fourSum([1,0,-1,0,-2,2],0))
       },
       q19: {
         title: "Q19. Remove Nth Node From End of List",
+        content: (
+          <>
+            <Span>
+              <b>Q19. Remove Nth Node From End of List"</b>
+            </Span>
+            <Span>
+              Given the head of a linked list, remove the nth node from the end
+              of the list and return its head.
+            </Span>
+            <Img src={LeetcodeQ19} alt="img" left />
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              The number of nodes in the list is sz. <br />
+              1 &lt;= sz &lt;= 30 <br />
+              0 &lt;= Node.val &lt;= 100 <br />1 &lt;= n &lt;= sz
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q19. Remove Nth Node From End of List",
+                codes: {
+                  Javascript: {
+                    code: ``,
+                  },
+                  Java: {
+                    code: `import java.util.List;
+                    import java.util.stream.Collectors;
+                    import java.util.*;
+                    
+                    class ListNode {
+                         int val;
+                         ListNode next;
+                         ListNode() {}
+                         ListNode(int val) { this.val = val; }
+                         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+                      }
+                    
+                    class Main {
+                    
+                        static ListNode root;
+                    
+                        public  static ListNode removeNthFromEnd(ListNode head, int n) {
+                            int len = 0;
+                            ListNode tmp = head;
+                            while(tmp != null){
+                                tmp = tmp.next;
+                                len ++;
+                            }
+                            int toDe = len - n;
+                            ListNode fake = new ListNode(-1);
+                            ListNode parent = fake;
+                            parent.next = head;
+                            while (toDe > 0){
+                                parent = parent.next;
+                                toDe --;
+                            }
+                            parent.next = parent.next.next;
+                            return fake.next;      
+                        }
+                    
+                        public static void display(){
+                          display(root);
+                        }
+                    
+                        public static void display(ListNode temp){
+                          while(temp.next != null){
+                            System.out.print(String.valueOf(temp.val) + (temp.next != null ?" -> ":""));
+                            temp =temp.next;
+                          }
+                          if(temp != root)
+                          System.out.print(String.valueOf(temp.val));
+                          System.out.print("\n");
+                        }
+                    
+                        public static void main(String ...s){
+                          int arr[] = {1,2,3,4,5};
+                          List<Integer> list = Arrays.stream(arr).boxed().collect(Collectors.toList());
+                          ListNode temp = new ListNode();
+                            for(int i=0;i<list.size();i++){
+                              if(list.size()==0){
+                                 return;
+                              }else if(i==0){
+                                 root = new ListNode(list.get(i)); 
+                              }else{
+                                temp = root;
+                                while(temp.next != null){
+                                      temp = temp.next;      
+                                }
+                                temp.next = new ListNode(list.get(i));
+                              } 
+                            }
+                          display(); 
+                          ListNode res = removeNthFromEnd(root,2);
+                          display(res);
+                        }
+                    }`,
+                  },
+                  Python: {
+                    code: `class ListNode:
+  
+  def __init__(self,val=0):
+    self.val=val
+    self.next=None
+  
+class Main:
+
+  def __init__(self):
+    self.root = None
+
+  def add(self,data):
+    node = ListNode(data)
+    if self.root is None:
+      self.root = node
+    else:
+      temp = self.root
+      while temp.next is not None:
+        temp = temp.next
+      temp.next = node
+  
+  def removeNthFromEnd(self,n):
+    count = 0
+    tmp = self.root
+    while tmp is not None:
+      tmp = tmp.next
+      count+=1
+    toDe = count - n
+    parent = ListNode(0)
+    parent.next = self.root
+    second = parent
+    while toDe > 0:
+      second = second.next
+      toDe -= 1
+    second.next = second.next.next
+    return parent.next
+  
+  def display(self):
+    tmp = self.root
+    while tmp is not None:
+      print(tmp.val)
+      tmp = tmp.next
+
+arr = list(range(6))
+m = Main()
+for i in range(1,len(arr)):
+  m.add(arr[i])
+m.display()
+y = m.removeNthFromEnd(2)
+while y is not None:
+  print(y.val)
+  y = y.next
+                    `,
+                  },
+                  "C++": {
+                    code: `#include <iostream>
+                    #include <bits/stdc++.h>
+                    #include <vector>
+                    
+                    using namespace std;
+                    
+                    struct ListNode {
+                       int val = 0;
+                       ListNode *next;
+                       ListNode() : val(0), next(nullptr) {}
+                       ListNode(int x) : val(x), next(nullptr) {}
+                       ListNode(int x, ListNode *next) : val(x), next(next) {}
+                    };
+                    
+                    class Main{
+                      
+                      public:
+                      ListNode *root;
+                    
+                    
+                      void add(vector<int> v1){
+                      vector<int> v(v1);
+                      ListNode* temp= new ListNode();
+                      for(auto i=0;i<v.size();i++){
+                        if(v.size()==0)
+                        return;
+                        else if(i==0){
+                         root = new ListNode(v[i]);
+                        }else{
+                         temp = root;
+                         while(temp->next!=nullptr){
+                          temp = temp -> next;
+                         }
+                         temp -> next = new ListNode(v[i]);
+                        }
+                      }
+                      }
+                    
+                      ListNode* removeNthFromEnd(int n){
+                        int len =0;
+                        ListNode *tmp;
+                        tmp = root;
+                        while(tmp!=NULL){
+                          tmp = tmp->next;
+                          len++;
+                        }
+                        int toDe = len -n;
+                        ListNode* fake = new ListNode(0); 
+                        ListNode* parent = fake;
+                        parent->next = root;
+                        while(toDe>0){
+                          parent = parent->next;
+                          toDe--;
+                        }
+                        parent -> next = parent -> next -> next;
+                        return fake->next;
+                      }
+                    
+                      void display(){
+                        ListNode *temp = new ListNode();
+                        temp = root;
+                        while(temp!= nullptr){
+                          cout << temp -> val << endl;
+                          temp = temp -> next;
+                        }
+                      }
+                    
+                    };
+                    
+                    
+                    int main(){
+                      vector<int> v(5);
+                      iota(v.begin(),v.end(),1);
+                      Main m;
+                      m.add(v);
+                      m.display();
+                      cout << endl;
+                      ListNode *m1=m.removeNthFromEnd(2);
+                      while(m1!= nullptr){
+                          cout << m1 -> val << endl;
+                          m1 = m1 -> next;
+                      }  
+                      return 0;
+                    }
+                    `,
+                  },
+                  Kotlin: {
+                    code: `import java.util.*
+                    import java.util.stream.Collectors
+                    
+                    internal class ListNode {
+                        var 'val' = 0
+                        var next: ListNode? = null
+                    
+                        constructor() {}
+                        constructor('val': Int) {
+                            this.'val' = 'val'
+                        }
+                    
+                        constructor('val': Int, next: ListNode?) {
+                            this.'val' = 'val'
+                            this.next = next
+                        }
+                    }
+                    
+                    internal object Main {
+                        var root: ListNode? = null
+                        fun removeNthFromEnd(head: ListNode?, n: Int): ListNode? {
+                            var len = 0
+                            var tmp = head
+                            while (tmp != null) {
+                                tmp = tmp.next
+                                len++
+                            }
+                            var toDe = len - n
+                            val fake = ListNode(-1)
+                            var parent: ListNode? = fake
+                            parent!!.next = head
+                            while (toDe > 0) {
+                                parent = parent!!.next
+                                toDe--
+                            }
+                            parent!!.next = parent.next!!.next
+                            return fake.next
+                        }
+                    
+                        @JvmOverloads
+                        fun display(temp: ListNode? = root) {
+                            var temp = temp
+                            while (temp!!.next != null) {
+                                print(temp.'val'.toString() + if (temp.next != null) " -> " else "")
+                                temp = temp.next
+                            }
+                            if (temp !== root) print(temp.'val'.toString())
+                            print("\n")
+                        }
+                    
+                        @JvmStatic
+                        fun main(s: Array<String>) {
+                            val arr = intArrayOf(1, 2, 3, 4, 5)
+                            val list = Arrays.stream(arr).boxed().collect(Collectors.toList())
+                            var temp: ListNode? = ListNode()
+                            for (i in list.indices) {
+                                if (list.size == 0) {
+                                    return
+                                } else if (i == 0) {
+                                    root = ListNode(list[i])
+                                } else {
+                                    temp = root
+                                    while (temp!!.next != null) {
+                                        temp = temp.next
+                                    }
+                                    temp.next = ListNode(list[i])
+                                }
+                            }
+                            display()
+                            val res = removeNthFromEnd(root, 2)
+                            display(res)
+                        }
+                    }`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q20: {
         title: "Q20. Valid Parenthesis",
