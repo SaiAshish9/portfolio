@@ -20359,150 +20359,150 @@ print(Test.threeSumClosest([-1, 0, 1, 2, -1, -4],8))`,
                        }
                     
                     }`,
-                    Python: {
-                      code: `
+                  },
+                  Python: {
+                    code: `
 class Main:
 
-  def __initKeyboard(self,keyboard):
-    keyboard['2'] = "abc"
-    keyboard['3'] = "def"
-    keyboard['4'] = "ghi"
-    keyboard['5'] = "jkl"
-    keyboard['6'] = "mno"
-    keyboard['7'] = "pqrs"
-    keyboard['8'] = "tuv"
-    keyboard['9'] = "wxyz"
+def __initKeyboard(self,keyboard):
+  keyboard['2'] = "abc"
+  keyboard['3'] = "def"
+  keyboard['4'] = "ghi"
+  keyboard['5'] = "jkl"
+  keyboard['6'] = "mno"
+  keyboard['7'] = "pqrs"
+  keyboard['8'] = "tuv"
+  keyboard['9'] = "wxyz"
 
-  def comp(self,digits:str,prefix:str,start:int,keyboard,result):
-    if start == len(digits):
-      result.append(prefix)
-      return
-    cand = keyboard[digits[start]]
-    for e in cand:
-      self.comp(digits,prefix+e,start+1,keyboard,result)
+def comp(self,digits:str,prefix:str,start:int,keyboard,result):
+  if start == len(digits):
+    result.append(prefix)
+    return
+  cand = keyboard[digits[start]]
+  for e in cand:
+    self.comp(digits,prefix+e,start+1,keyboard,result)
 
-  def letterCombinations(self,digits:str):
-    keyboard = {}
-    self.__initKeyboard(keyboard)
-    res=[]
-    if len(digits)==0:
-      return res
-    self.comp(digits,"",0,keyboard,res)
+def letterCombinations(self,digits:str):
+  keyboard = {}
+  self.__initKeyboard(keyboard)
+  res=[]
+  if len(digits)==0:
     return res
-  
+  self.comp(digits,"",0,keyboard,res)
+  return res
+
 m = Main()
 print(m.letterCombinations("234"))
-                      `,
-                    },
-                    "C++": {
-                      code: `#include <iostream>
-                      #include <string>
-                      #include <vector>
-                      #include <bits/stdc++.h>
+                    `,
+                  },
+                  "C++": {
+                    code: `#include <iostream>
+                    #include <string>
+                    #include <vector>
+                    #include <bits/stdc++.h>
+                    
+                    using namespace std;
+                    
+                    class Main{
                       
-                      using namespace std;
-                      
-                      class Main{
-                        
-                        public:
-                        unordered_map<char,string> initKeyboard(unordered_map<char,string> keyboard){
-                          keyboard['2'] = "abc";
-                          keyboard['3'] = "def";
-                          keyboard['4'] = "ghi";
-                          keyboard['5'] = "jkl";
-                          keyboard['6'] = "mno";
-                          keyboard['7'] = "pqrs";
-                          keyboard['8'] = "tuv";
-                          keyboard['9'] = "wxyz";
-                          return keyboard;
+                      public:
+                      unordered_map<char,string> initKeyboard(unordered_map<char,string> keyboard){
+                        keyboard['2'] = "abc";
+                        keyboard['3'] = "def";
+                        keyboard['4'] = "ghi";
+                        keyboard['5'] = "jkl";
+                        keyboard['6'] = "mno";
+                        keyboard['7'] = "pqrs";
+                        keyboard['8'] = "tuv";
+                        keyboard['9'] = "wxyz";
+                        return keyboard;
+                      }
+                    
+                      void comp(string digits,string prefix,int start,unordered_map<char,string> keyboard,vector<string> 
+                      *result){
+                        if(start==digits.length()){
+                          result->push_back(prefix);
+                          return;
                         }
-                      
-                        void comp(string digits,string prefix,int start,unordered_map<char,string> keyboard,vector<string> 
-                        *result){
-                          if(start==digits.length()){
-                            result->push_back(prefix);
-                            return;
-                          }
-                          string cand = keyboard[digits[start]];
-                          for(auto e:cand){
-                            comp(digits,prefix+e,start+1,keyboard,result);
-                          }
+                        string cand = keyboard[digits[start]];
+                        for(auto e:cand){
+                          comp(digits,prefix+e,start+1,keyboard,result);
                         }
-                        
-                        vector<string> letterCombinations(string digits){
-                          unordered_map<char,string> keyboard;
-                          keyboard = initKeyboard(keyboard);
-                          vector<string> res;
-                          if(digits.length()==0){
-                             return res;
-                          }
-                          this->comp(digits,"",0,keyboard,&res);
-                          return res; 
+                      }
+                      
+                      vector<string> letterCombinations(string digits){
+                        unordered_map<char,string> keyboard;
+                        keyboard = initKeyboard(keyboard);
+                        vector<string> res;
+                        if(digits.length()==0){
+                           return res;
                         }
-                      
-                      };
-                      
-                      int main(){
-                        Main m;
-                        for(auto i:m.letterCombinations("234")){
-                          cout << i << endl;
+                        this->comp(digits,"",0,keyboard,&res);
+                        return res; 
+                      }
+                    
+                    };
+                    
+                    int main(){
+                      Main m;
+                      for(auto i:m.letterCombinations("234")){
+                        cout << i << endl;
+                      }
+                      return 0;
+                    }`,
+                  },
+                  Kotlin: {
+                    code: `import java.util.*
+                    import kotlin.collections.HashMap
+                    
+                    internal class Main {
+                        fun letterCombinations(digits: String): List<String> {
+                            val keyboard = HashMap<Char, String>()
+                            initKeyboard(keyboard)
+                            val result: MutableList<String> = LinkedList()
+                            if (digits.isEmpty()) {
+                                return result
+                            }
+                            compile(digits, "", 0, keyboard, result)
+                            return result
                         }
-                        return 0;
-                      }`,
-                    },
-                    Kotlin: {
-                      code: `import java.util.*
-                      import kotlin.collections.HashMap
-                      
-                      internal class Main {
-                          fun letterCombinations(digits: String): List<String> {
-                              val keyboard = HashMap<Char, String>()
-                              initKeyboard(keyboard)
-                              val result: MutableList<String> = LinkedList()
-                              if (digits.isEmpty()) {
-                                  return result
-                              }
-                              compile(digits, "", 0, keyboard, result)
-                              return result
-                          }
-                      
-                          private fun compile(
-                              digits: String,
-                              prefix: String,
-                              start: Int,
-                              keyboard: HashMap<Char, String>,
-                              result: MutableList<String>
-                          ) {
-                              if (start == digits.length) {
-                                  result.add(prefix)
-                                  return
-                              }
-                              val cand = keyboard[digits[start]]
-                              for (element in cand!!) {
-                                  compile(digits, prefix + element, start + 1, keyboard, result)
-                              }
-                          }
-                      
-                          private fun initKeyboard(keyboard: HashMap<Char, String>) {
-                              keyboard['2'] = "abc"
-                              keyboard['3'] = "def"
-                              keyboard['4'] = "ghi"
-                              keyboard['5'] = "jkl"
-                              keyboard['6'] = "mno"
-                              keyboard['7'] = "pqrs"
-                              keyboard['8'] = "tuv"
-                              keyboard['9'] = "wxyz"
-                          }
-                      
-                          companion object {
-                              @JvmStatic
-                              fun main(s: Array<String>) {
-                                  val m = Main()
-                                  println(m.letterCombinations("234").toString())
-                              }
-                          }
-                      }`,
-                    },
+                    
+                        private fun compile(
+                            digits: String,
+                            prefix: String,
+                            start: Int,
+                            keyboard: HashMap<Char, String>,
+                            result: MutableList<String>
+                        ) {
+                            if (start == digits.length) {
+                                result.add(prefix)
+                                return
+                            }
+                            val cand = keyboard[digits[start]]
+                            for (element in cand!!) {
+                                compile(digits, prefix + element, start + 1, keyboard, result)
+                            }
+                        }
+                    
+                        private fun initKeyboard(keyboard: HashMap<Char, String>) {
+                            keyboard['2'] = "abc"
+                            keyboard['3'] = "def"
+                            keyboard['4'] = "ghi"
+                            keyboard['5'] = "jkl"
+                            keyboard['6'] = "mno"
+                            keyboard['7'] = "pqrs"
+                            keyboard['8'] = "tuv"
+                            keyboard['9'] = "wxyz"
+                        }
+                    
+                        companion object {
+                            @JvmStatic
+                            fun main(s: Array<String>) {
+                                val m = Main()
+                                println(m.letterCombinations("234").toString())
+                            }
+                        }
+                    }`,
                   },
                 },
               }}
