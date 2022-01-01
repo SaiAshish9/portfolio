@@ -19185,13 +19185,158 @@ print(Solution.maxArea([1,2,1]))
               subtraction is used:
             </Span>
             <Span>
-              I can be placed before V (5) and X (10) to make 4 and 9. <br />
-              X can be placed before L (50) and C (100) to make 40 and 90.{" "}
-              <br />
-              C can be placed before D (500) and M (1000) to make 400 and 900.{" "}
+              I can be placed before V (5) and X (10) to make 4 and 9. <br />X
+              can be placed before L (50) and C (100) to make 40 and 90. <br />C
+              can be placed before D (500) and M (1000) to make 400 and 900.{" "}
               <br />
               Given an integer, convert it to a roman numeral.
             </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: num = 3 <br />
+              Output: "III" <br />
+              Explanation: 3 is represented as 3 ones.
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: num = 58 <br />
+              Output: "LVIII" <br />
+              Explanation: L = 50, V = 5, III = 3.
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: num = 1994 <br />
+              Output: "MCMXCIV" <br />
+              Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+            </Span>
+            <Span>
+              <b>Constraints</b>
+            </Span>
+            <p>1 &lt;= num &lt;= 3999</p>
+            <CodeEditor
+              options={{
+                title: "Q12. Integer To Roman",
+                output: `XII`,
+                codes: {
+                  Javascript: {
+                    code: `var intToRoman = function(n){
+                      let  num=n
+                      const base=[1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+                      const chars=["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+                      let result=""
+                      for(let i=0;i<base.length;i++){
+                        if(parseInt(num/base[i])>0){
+                         for(let j=0;j<parseInt(num/base[i]);j++){
+                           result+=chars[i]
+                         }
+                         num-= parseInt((num/base[i]))*base[i]
+                        }
+                      }
+                      return result
+                    }
+                 
+                console.log(intToRoman(12))`,
+                  },
+                  Java: {
+                    code: `class Solution {
+                      public String intToRoman(int num) {
+                          int[] base = new int[]{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+                          String[] chars = new String[]{"M","CM","D","CD","C","XC","L","XL","X","IX", "V", "IV", "I"};
+                          String result = "";
+                          for (int i = 0; i < base.length; i++) {
+                              if (num / base[i] > 0) {
+                                  for (int j = 0; j < num/base[i]; j++) {
+                                      result = result + chars[i];
+                                  }
+                                  num = num - (num / base[i]) * base[i];
+                              }
+                          }
+                          return result;
+                      }
+                      
+                  }`,
+                  },
+                  Python: {
+                    code: `
+class Solution:
+
+  @staticmethod
+  def maxArea(num:int)->str:
+    base=[1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    chars=["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+    result = ""
+    for i in range(len(base)):
+      if int(num / base[i]) > 0 :
+        for j in range(int(num/base[i])):
+          result += chars[i]
+        num -= int(num/base[i])*base[i]
+    return result
+
+print(Solution.maxArea(12))
+                    `,
+                  },
+                  "C++": {
+                    code: `#include <iostream>
+
+                    using namespace std;
+                    
+                    class Solution{
+                      public:
+                      string intToRoman(int num){
+                        int base[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+                        string chars[] = {"M","CM","D","CD","C","XC","L","XL","X","IX", "V", "IV", "I"};
+                        string result="";
+                        for (int i = 0; i < sizeof(base)/sizeof(base[0]) ; i ++) {
+                                if (num / base[i] > 0) {
+                                    for (int j = 0; j < num/base[i]; j ++) {
+                                        result = result + chars[i];
+                                    }
+                                    num = num - (num / base[i]) * base[i];
+                                }
+                        }
+                        return result;
+                      }
+                    };
+                    
+                    int main(){
+                      Solution s1;
+                      cout<<s1.intToRoman(44)<<endl;
+                      return 0;
+                    }`,
+                  },
+                  Kotlin: {
+                    code: `internal class Solution {
+                      fun intToRoman(num: Int): String {
+                          var num = num
+                          val base = intArrayOf(1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1)
+                          val chars = arrayOf("M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I")
+                          var result = ""
+                          for (i in base.indices) {
+                              if (num / base[i] > 0) {
+                                  for (j in 0 until num / base[i]) {
+                                      result += chars[i]
+                                  }
+                                  num -= num / base[i] * base[i]
+                              }
+                          }
+                          return result
+                      }
+                  }
+                  
+                  fun main(){
+                      var s:Solution=Solution()
+                      print(s.intToRoman(8))
+                  }`,
+                  },
+                },
+              }}
+            />
           </>
         ),
       },
