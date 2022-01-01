@@ -17165,6 +17165,16 @@ if __name__ == '__main__':
               Output: [7,0,8] <br />
               Explanation: 342 + 465 = 807.
             </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <Span>
+              The number of nodes in each linked list is in the range [1, 100].{" "}
+              <br />
+              0 &lt;= Node.val &lt;= 9 <br />
+              It is guaranteed that the list represents a number that does not
+              have leading zeros.
+            </Span>
             <Img src={LeetCodeQ2} left reduceH />
             <CodeEditor
               options={{
@@ -18610,7 +18620,8 @@ print(ATOI.atoi("-23"))`,
                       }
                   }`,
                   },
-                  Python: { code: `
+                  Python: {
+                    code: `
 class Solution:
   @staticmethod
   def isPalindrome(x):
@@ -18627,8 +18638,10 @@ class Solution:
       return False
   
 print(Solution.isPalindrome(121))
-                  ` },
-                  "C++": { code: `#include <iostream>
+                  `,
+                  },
+                  "C++": {
+                    code: `#include <iostream>
 
                   using namespace std;
                   
@@ -18656,8 +18669,10 @@ print(Solution.isPalindrome(121))
                     cout << boolalpha;
                     cout << Solution::isPalindrome(-121) <<endl;
                     return 0;
-                  }` },
-                  Kotlin: { code: `class Solution{
+                  }`,
+                  },
+                  Kotlin: {
+                    code: `class Solution{
                     companion object{
                         fun isPalindrome(x:Int):Boolean{
                             var n:Int=x
@@ -18675,7 +18690,8 @@ print(Solution.isPalindrome(121))
                 
                 fun main(){
                     print(Solution.isPalindrome(121))
-                }` },
+                }`,
+                  },
                 },
               }}
             />
