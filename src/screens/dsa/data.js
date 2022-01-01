@@ -22080,9 +22080,6 @@ print(sol.generateParenthesis(3))`,
                 5
                 #####################`,
                 codes: {
-                  Javascript: {
-                    code: ``,
-                  },
                   Java: {
                     code: `import java.util.*;
 
