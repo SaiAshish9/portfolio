@@ -18025,6 +18025,161 @@ print(convert("PAYPALISHIRING", 3))
       },
       q7: {
         title: "Q7. Reverse Integer",
+        content: (
+          <>
+            <Span>
+              <b>Q7. Reverse Integer</b>
+            </Span>
+            <Span>
+              Given a signed 32-bit integer x, return x with its digits
+              reversed. If reversing x causes the value to go outside the signed
+              32-bit integer range [-231, 231 - 1], then return 0.
+            </Span>
+            <Span>
+              <b>
+                Assume the environment does not allow you to store 64-bit
+                integers (signed or unsigned).
+              </b>
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: x = 123 <br />
+              Output: 321
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: x = -123 <br />
+              Output: -321
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: x = 120 <br />
+              Output: 21
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>-231 &lt;= x &lt;= 231 - 1</p>
+            <CodeEditor
+              options={{
+                title: `Q7. Reverse Integer`,
+                codes: {
+                  Javacript: {
+                    code: `/**
+                    * @param {number} x
+                    * @return {number}
+                    */
+                   var reverse = function(x) {
+                       // Number.MAX_SAFE_INTEGER -> 2^53 - 1
+                       let sign = x>0 ? 1 : -1
+                       let y = Math.abs(x)
+                       // while(y>0){
+                       // ans = ans*10 + n%10;
+                       // n = parseInt(n/10);
+                       // }
+                       const ans = parseInt(String(y).split("").reverse().join(""))
+                       if(ans > 0x7FFFFFFF)
+                       return 0
+                       return sign * ans
+                   };
+                   
+                   console.log(reverse(-12))`,
+                  },
+                  Java: {
+                    code: `class Main {
+                      static int reverse(int x){
+                       long n=x;
+                        long ans=0;
+                        int sign =1;
+                        if(x<0) {
+                          n*=-1;
+                          sign = -1;
+                          };
+                        while(n>0){
+                          ans= ans*10 + n%10;
+                          n/=10;
+                        }
+                        if(ans > Integer.MAX_VALUE){
+                            return 0;
+                        }     
+                        return (int)(sign*ans);  }
+                    
+                      public static void main(String[] args) {
+                        System.out.println(reverse(123));
+                      }
+                    }`,
+                  },
+                  "C++": {
+                    code: `#include <iostream>
+                    #include <bits/stdc++.h>
+                    
+                    using namespace std;
+                    
+                    class Solution{
+                      public:
+                      int static reverse(int x){
+                       long n=x;
+                        long ans=0;
+                        int sign =1;
+                        if(x<0) {
+                          n*=-1;
+                          sign = -1;
+                          };
+                        while(n>0){
+                          ans= ans*10 + n%10;
+                          n/=10;
+                        }
+                        if(ans > INT_MAX){
+                            return 0;
+                        }     
+                        return (int)sign*ans;
+                      }
+                    };
+                    
+                    int main(){
+                      cout<<Solution::reverse(-123)<<endl;
+                      return 0;
+                    }`,
+                  },
+                  Kotlin: {
+                    code: `class A{
+                      companion object{
+                          fun reverse(x:Int):Int{
+                              var n:Long = x.toLong();
+                              var ans:Long=0;
+                              var sign:Int=1;
+                              if(x<0){
+                                  n*=-1;
+                                  sign*=-1;
+                              }
+                              while(n>0){
+                                  ans= ans*10 + n%10;
+                                  n/=10;
+                              }
+                              if(ans > Integer.MAX_VALUE){
+                                  return 0;
+                              }
+                              return (sign*ans).toInt();
+                          }
+                      }
+                  }
+                  
+                  
+                  fun main(){
+                      println(A.reverse(123))
+                  }`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q8: {
         title: "Q8. ATOI",
