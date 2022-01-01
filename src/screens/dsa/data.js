@@ -20025,6 +20025,243 @@ print(Test.threeSum([-1, 0, 1, 2, -1, -4]))`,
       },
       q16: {
         title: "Q16. 3SumClosest",
+        content: (
+          <>
+            <Span>
+              <b>Q16. 3SumClosest</b>
+            </Span>
+            <Span>
+              Given an integer array nums of length n and an integer target,
+              find three integers in nums such that the sum is closest to
+              target. Return the sum of the three integers. You may assume that
+              each input would have exactly one solution.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [-1,2,1,-4], target = 1 <br />
+              Output: 2 <br />
+              Explanation: The sum that is closest to the target is 2. (-1 + 2 +
+              1 = 2).
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums = [0,0,0], target = 1 <br />
+              Output: 0
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              3 &lt;= nums.length &lt;= 1000 <br />
+              -1000 &lt;= nums[i] &lt;= 1000 <br />
+              -104 &lt;= target &lt;= 104
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q16. 3SumClosest",
+                output: `3`,
+                codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {number[]} nums
+                    * @param {number} target
+                    * @return {number}
+                    */
+                   var threeSumClosest = function(nums, target) {
+                         if(nums.length==0){
+                           return 0
+                         }
+                         nums.sort((a,b)=>a-b)
+                         let minimum = Number.MAX_VALUE
+                         // Number.MIN_SAFE_INTEGER
+                         var closest = 0 
+                         for(let i=0;i<nums.length;i++){
+                           if(i==0||nums[i]!=nums[i-1]){
+                             let start = i+1
+                             let end = nums.length - 1
+                             while(start<end){
+                               let s = nums[i] + nums[start] + nums[end]
+                               if(Math.abs(s-target)<minimum){
+                                 minimum = Math.abs(s-target)
+                                 closest =s 
+                               }
+                               if(s<target){start+=1}
+                               else{end-=1}
+                               }
+                             }
+                           }
+                             return closest
+                   };
+                   
+                   console.log(threeSumClosest([-1, 0, 1, 2, -1, -4],8))`,
+                    Java: {
+                      code: `import java.util.*;
+
+                      public class Main {
+                          public static int threeSumClosest(int[] nums, int target) {
+                              if (nums.length == 0){
+                                  return 0;
+                              }
+                              Arrays.sort(nums);
+                              int min = Integer.MAX_VALUE;
+                              int closed = 0;
+                              for (int i = 0; i < nums.length; i ++){
+                                  if (i == 0 || nums[i] != nums[i-1]){
+                                      int start = i + 1;
+                                      int end = nums.length - 1;
+                                      while (start < end){
+                                          int sum = nums[i] + nums[start] + nums[end];
+                                          if (Math.abs(sum - target) < min){
+                                              min = Math.abs(sum - target);
+                                              closed = sum;
+                                          }
+                                          if (sum < target){ 
+                                              start ++; } 
+                                          else{ 
+                                              end --;
+                                          }
+                                      }
+                                   }
+                              }
+                              return closed;
+                          }
+                      
+                          public static void main(String ...s){
+                            System.out.println(threeSumClosest(new int[]{-1,3,3},5));
+                          }
+                      
+                      }`,
+                    },
+                    Python: {
+                      code: `
+import sys
+
+class Test:
+
+  @staticmethod
+  def threeSumClosest(nums,target):
+    if len(nums) == 0:
+      return 0    
+    nums.sort()
+    # python 2 -> sys.maxint
+    # python 3 > sys.maxsize
+    minimum =  sys.maxsize
+    closed = 0
+
+    for i in range(len(nums)):
+      if i == 0 or nums[i] != nums[i-1]:
+        start = i+1
+        end = len(nums) - 1
+        while start < end :
+          s = nums[i] + nums[start] + nums[end]
+          if abs(s-target)<minimum:
+            minimum = abs(s-target)
+            closed = s
+          if s < target:
+            start+=1
+          else:
+            end-=1
+    return closed
+            
+print(Test.threeSumClosest([-1, 0, 1, 2, -1, -4],8))`,
+                    },
+                    "C++": {
+                      code: `#include <iostream>
+                      #include <vector>
+                      #include <algorithm>
+                      #include <cstdlib>
+                      #include <bits/stdc++.h>
+                      
+                      using namespace std;
+                      
+                      class Solution{
+                        
+                        public:
+                        int threeSum(vector<int> nums,int target){
+                           vector<vector<int>> result;
+                           sort(nums.begin(),nums.end());
+                           int closed = 0;
+                           int minimum = INT_MAX;
+                           if(nums.size()==0){
+                             return 0;
+                           }
+                           for(int i=0;i<nums.size();i++){
+                             if(i==0||nums[i]!=nums[i-1]){
+                               int start = i+1;
+                               int end = nums.size() - 1;
+                               while(start<end){
+                                 int s = nums[i] + nums[start] + nums[end];
+                                 if(abs(s-target)<minimum){
+                                   minimum = abs(s-target);
+                                   closed = s;
+                                 }
+                             if(s<target){start++;}
+                             else{end--;}
+                               }
+                             }
+                           }
+                      
+                           return closed;
+                        }
+                      
+                      };
+                      
+                      int main(){
+                        Solution s;
+                        vector<int> l{-1, 0, 1, 2, -1, -4};
+                        cout << s.threeSum(l,8)<<endl;
+                        return 0;
+                      }`,
+                    },
+                    Kotlin: {
+                      code: `import java.util.*
+                      import kotlin.math.abs
+                      
+                      object Main {
+                          fun threeSumClosest(nums: IntArray, target: Int): Int {
+                              if (nums.isEmpty()) {
+                                  return 0
+                              }
+                              Arrays.sort(nums)
+                              var min = Int.MAX_VALUE
+                              var closed = 0
+                              for (i in nums.indices) {
+                                  if (i == 0 || nums[i] != nums[i - 1]) {
+                                      var start = i + 1
+                                      var end = nums.size - 1
+                                      while (start < end) {
+                                          val sum = nums[i] + nums[start] + nums[end]
+                                          if (abs(sum - target) < min) {
+                                              min = abs(sum - target)
+                                              closed = sum
+                                          }
+                                          if (sum < target) {
+                                              start++
+                                          } else {
+                                              end--
+                                          }
+                                      }
+                                  }
+                              }
+                              return closed
+                          }
+                      
+                          @JvmStatic
+                          fun main(s: Array<String>) {
+                              println(threeSumClosest(intArrayOf(-1, 3, 3), 5))
+                          }
+                      }`,
+                    },
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q17: {
         title: "Q17. Letter Combinations Of A PhoneNumber",
