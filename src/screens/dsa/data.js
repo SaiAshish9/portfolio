@@ -21385,9 +21385,70 @@ print(Solution.isValid('{{()}}'))`,
       },
       q21: {
         title: "Q21. Merge Two Sorted Lists",
-        content: <>
-        
-        </>,
+        content: (
+          <>
+            <Span>
+              <b>Q21. Merge Two Sorted Lists</b>
+            </Span>
+            <Span>
+              You are given the heads of two sorted linked lists list1 and
+              list2. Merge the two lists in a one sorted list. The list should
+              be made by splicing together the nodes of the first two lists.
+              Return the head of the merged linked list.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: list1 = [1,2,4], list2 = [1,3,4] <br />
+              Output: [1,1,2,3,4,4]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: list1 = [], list2 = [] <br />
+              Output: []
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: list1 = [], list2 = [0] <br />
+              Output: [0]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              The number of nodes in both lists is in the range [0, 50]. -100
+              &lt;= Node.val &lt;= 100 Both list1 and list2 are sorted in
+              non-decreasing order.
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q21. Merge Two Sorted Lists",
+                codes: {
+                  Javacript: {
+                    code: ``,
+                  },
+                  Java: {
+                    code: ``,
+                  },
+                  "C++":{
+                    code:``
+                  },
+                  Python: {
+                    code: ``,
+                  },
+                  Kotlin: {
+                    code: ``,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q22: {
         title: "Q22. Generate Parentheses",
