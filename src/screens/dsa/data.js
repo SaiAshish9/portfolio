@@ -17,6 +17,7 @@ import LeetCodeQ2 from "assets/leetcode/leetcodeQ2.png";
 import LeetCodeQ11 from "assets/leetcode/q11.png";
 import LeetcodeQ17 from "assets/leetcode/q17.png";
 import LeetcodeQ19 from "assets/leetcode/q19.png";
+import LeetcodeQ21 from "assets/leetcode/q21.png";
 
 export const DATA = {
   ds: {
@@ -21399,6 +21400,7 @@ print(Solution.isValid('{{()}}'))`,
             <Span>
               <b>Example 1:</b>
             </Span>
+            <Img src={LeetcodeQ21} alt="img" />
             <Span>
               Input: list1 = [1,2,4], list2 = [1,3,4] <br />
               Output: [1,1,2,3,4,4]
@@ -21429,20 +21431,350 @@ print(Solution.isValid('{{()}}'))`,
               options={{
                 title: "Q21. Merge Two Sorted Lists",
                 codes: {
+                  output: `#############
+                  1
+                  2
+                  4
+                  #############
+                  #############
+                  1
+                  3
+                  4
+                  #############
+                  #############
+                  1
+                  1
+                  2
+                  3
+                  4
+                  4
+                  #############`,
                   Javacript: {
                     code: ``,
                   },
                   Java: {
-                    code: ``,
+                    code: `import java.util.*;
+                    import java.util.stream.Collectors;
+                    
+                    class ListNode{
+                      int val;
+                      ListNode next;
+                      ListNode(){}
+                      ListNode(int val){
+                        this.val = val;
+                      }
+                      ListNode(int val,ListNode next){
+                        this.val=val;
+                        this.next=next;
+                      }
+                    }
+                    
+                    class Main{
+                      
+                      public static ListNode mergeTwoLists(ListNode l1,ListNode l2){
+                        ListNode l3= new ListNode(-1);
+                        ListNode node = l3;
+                        while(l1 !=null && l2 != null){
+                              if(l1.val<l2.val){
+                                node.next = l1;
+                                l1 = l1.next;
+                                node = node.next;
+                              }else{
+                                node.next = l2;
+                                l2 = l2.next;
+                                node = node.next;
+                              }
+                        }
+                        if(l1 != null){
+                          node.next = l1;
+                        }else if(l2!=null){
+                          node.next = l2;
+                        }
+                        return l3.next;
+                      }
+                    
+                      public static ListNode insert(List<Integer> l){
+                      ListNode root = new ListNode();
+                      for(int i=0;i<l.size();i++){
+                        ListNode data = new ListNode(l.get(i));
+                        if(i==0){
+                          root = data;
+                        }else{
+                          ListNode temp = new ListNode();
+                          temp=root;
+                          while(temp.next!=null){
+                            temp=temp.next;
+                          }
+                          temp.next= data;
+                        }
+                      }
+                      return root;
+                      }
+                    
+                      public static void display(ListNode l){
+                          ListNode temp = new ListNode();
+                          temp = l;
+                          System.out.println("#############");
+                          while(temp!=null){
+                            System.out.println(temp.val);
+                            temp=temp.next;
+                          }
+                          System.out.println("#############");
+                      }
+                    
+                      public static void main(String ...s){
+                        int arr1[] = {1,2,4};
+                        int arr2[] = {1,3,4};
+                        List<Integer> list1 = Arrays.stream(arr1).boxed().collect(Collectors.toList());
+                        List<Integer> list2 = Arrays.stream(arr2).boxed().collect(Collectors.toList());
+                        ListNode l1 = insert(list1);
+                        ListNode l2 = insert(list2);
+                        display(l1);
+                        display(l2);
+                        ListNode res = mergeTwoLists(l1,l2);
+                        display(res);
+                      }
+                    }`,
                   },
-                  "C++":{
-                    code:``
+                  "C++": {
+                    code: `#include <iostream>
+                    #include <bits/stdc++.h>
+                    #include <vector>
+                    
+                    using namespace std;
+                    
+                    struct ListNode {
+                       int val = 0;
+                       ListNode *next;
+                       ListNode() : val(0), next(nullptr) {}
+                       ListNode(int x) : val(x), next(nullptr) {}
+                       ListNode(int x, ListNode *next) : val(x), next(next) {}
+                    };
+                    
+                    class Main{
+                      
+                      public:
+                      ListNode *root;
+                    
+                      void add(vector<int> v1){
+                      vector<int> v(v1);
+                      ListNode* temp= new ListNode();
+                      for(auto i=0;i<v.size();i++){
+                        if(v.size()==0)
+                        return;
+                        else if(i==0){
+                         root = new ListNode(v[i]);
+                        }else{
+                         temp = root;
+                         while(temp->next!=nullptr){
+                          temp = temp -> next;
+                         }
+                         temp -> next = new ListNode(v[i]);
+                        }
+                      }
+                      }
+                    
+                      static ListNode* mergeTwoLists(ListNode* l1,ListNode* l2){
+                        ListNode* l3   = new ListNode(-1);
+                        ListNode* node = l3;
+                        while(l1 != nullptr && l2 != nullptr){
+                           if(l1->val < l2->val){
+                             node-> next = l1;
+                             l1 = l1->next;
+                             node = node->next;
+                           }else{
+                             node-> next = l2;
+                             l2 = l2->next;
+                             node = node->next; 
+                           }
+                        }
+                        if(l1 != nullptr){
+                          node->next = l1;
+                        }else if(l2 != nullptr){
+                          node->next = l2;
+                        }
+                        return l3->next;
+                      }
+                    
+                      void display(){
+                        ListNode *temp = new ListNode();
+                        temp = root;
+                        while(temp!= nullptr){
+                          cout << temp -> val << endl;
+                          temp = temp -> next;
+                        }
+                      }
+                    
+                    };
+                    
+                    
+                    int main(){
+                      vector<int> v(5);
+                      iota(v.begin(),v.end(),1);
+                      Main m;
+                      m.add(v);
+                      Main m1;
+                      m1.add(v);
+                      cout << endl;
+                      ListNode* m2=Main::mergeTwoLists(m.root,m1.root);
+                      while(m2!= nullptr){
+                          cout << m2 -> val << endl;
+                          m2 = m2 -> next;
+                      }  
+                      return 0;
+                    }
+                    `,
                   },
                   Python: {
-                    code: ``,
+                    code: `
+class Node:
+  def __init__(self,data):
+    self.data=data
+    self.next=None
+  
+class LinkedList:
+  def __init__(self):
+    self.root = None
+
+  def add(self,data):
+    node = Node(data)
+    if self.root is None:
+      self.root = node
+    else:
+      temp = self.root
+      while temp.next is not None:
+        temp= temp.next
+      temp.next = node
+
+  def display(self):
+    temp = self.root
+    while temp is not None:
+      print(temp.data)
+      temp = temp.next
+    print("############")
+  
+  @staticmethod
+  def mergeTwoLists(l1,l2):
+    l3 = Node(-1)
+    node = l3
+    while l1 is not None and l2 is not None:
+      if l1.data < l2.data:
+        node.next = l1
+        l1=l1.next
+        node = node.next
+      else:
+        node.next = l2
+        l2 = l2.next
+        node = node.next
+    if l1 is not None:
+      node.next = l1
+    else:
+      node.next = l2
+    return l3.next
+
+
+l1 = LinkedList()
+l2 = LinkedList()
+l1.add(2)
+l1.add(4)
+l1.add(3)
+l2.add(5)
+l2.add(6)
+l2.add(4)
+l1.display()
+l2.display()
+ans = LinkedList.mergeTwoLists(l1.root,l2.root)
+while ans is not None:
+  print(ans.data)
+  ans = ans.next`,
                   },
                   Kotlin: {
-                    code: ``,
+                    code: `import java.util.*
+                    import java.util.stream.Collectors
+                    
+                    internal class ListNode {
+                        var 'val' = 0
+                        var next: ListNode? = null
+                    
+                        constructor() {}
+                        constructor('val': Int) {
+                            this.'val' = 'val'
+                        }
+                    
+                        constructor('val': Int, next: ListNode?) {
+                            this.'val' = 'val'
+                            this.next = next
+                        }
+                    }
+                    
+                    internal object Main {
+                        private fun mergeTwoLists(l1: ListNode?, l2: ListNode?): ListNode? {
+                            var l1 = l1
+                            var l2 = l2
+                            val l3 = ListNode(-1)
+                            var node: ListNode? = l3
+                            while (l1 != null && l2 != null) {
+                                if (l1.'val' < l2.'val') {
+                                    node!!.next = l1
+                                    l1 = l1.next
+                                    node = node.next
+                                } else {
+                                    node!!.next = l2
+                                    l2 = l2.next
+                                    node = node.next
+                                }
+                            }
+                            if (l1 != null) {
+                                node!!.next = l1
+                            } else if (l2 != null) {
+                                node!!.next = l2
+                            }
+                            return l3.next
+                        }
+                    
+                        private fun insert(l: List<Int>): ListNode? {
+                            var root: ListNode? = ListNode()
+                            for (i in l.indices) {
+                                val data = ListNode(l[i])
+                                if (i == 0) {
+                                    root = data
+                                } else {
+                                    var temp: ListNode? = ListNode()
+                                    temp = root
+                                    while (temp!!.next != null) {
+                                        temp = temp.next
+                                    }
+                                    temp.next = data
+                                }
+                            }
+                            return root
+                        }
+                    
+                        private fun display(l: ListNode?) {
+                            var temp: ListNode? = ListNode()
+                            temp = l
+                            println("#############")
+                            while (temp != null) {
+                                println(temp.'val')
+                                temp = temp.next
+                            }
+                            println("#############")
+                        }
+                    
+                        @JvmStatic
+                        fun main(s: Array<String>) {
+                            val arr1 = intArrayOf(1, 2, 4)
+                            val arr2 = intArrayOf(1, 3, 4)
+                            val list1 = Arrays.stream(arr1).boxed().collect(Collectors.toList())
+                            val list2 = Arrays.stream(arr2).boxed().collect(Collectors.toList())
+                            val l1 = insert(list1)
+                            val l2 = insert(list2)
+                            display(l1)
+                            display(l2)
+                            val res = mergeTwoLists(l1, l2)
+                            display(res)
+                        }
+                    }`,
                   },
                 },
               }}
