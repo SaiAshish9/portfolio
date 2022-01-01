@@ -20817,7 +20817,7 @@ print(Main.fourSum([1,0,-1,0,-2,2],0))
         content: (
           <>
             <Span>
-              <b>Q19. Remove Nth Node From End of List"</b>
+              <b>Q19. Remove Nth Node From End of List</b>
             </Span>
             <Span>
               Given the head of a linked list, remove the nth node from the end
@@ -21244,29 +21244,31 @@ while y is not None:
                 title: "Q20. Valid Parenthesis",
                 codes: {
                   Javacript: {
-                    code: `class Solution{
-  
-                      static isValid(s){
-                        var match={
-                          ')':'(',
-                          '}':'{',
-                          ']':'['
-                        }
-                        var stack=[]
-                        for(let i in s){
-                          if(s[i]==='('||s[i]==='{'||s[i]==='['){
-                            stack.push(s[i])
-                            continue
-                          }
-                          if(stack.length === 0 || match[s[i]] != stack.pop()){
-                            return false
-                          }
-                        }
-                          return stack.length === 0
-                      }
-                    }
-                    
-                    console.log(Solution.isValid('()()'))`,
+                    output: `true`,
+                    code: `/**
+                    * @param {string} s
+                    * @return {boolean}
+                    */
+                   var isValid = function(s) {
+                     var match={
+                       ')':'(',
+                       '}':'{',
+                       ']':'['
+                     }
+                     var stack=[]
+                     for(let i in s){
+                       if(s[i]==='('||s[i]==='{'||s[i]==='['){
+                         stack.push(s[i])
+                         continue
+                       }
+                       if(stack.length === 0 || match[s[i]] != stack.pop()){
+                         return false
+                       }
+                     }
+                     return stack.length === 0
+                   };
+                   
+                   console.log(isValid('()()'))`,
                   },
                   Java: {
                     code: `import java.util.*;
