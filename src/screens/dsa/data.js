@@ -19570,6 +19570,190 @@ print(m.romanToInt("IV"))`,
       },
       q14: {
         title: "Q14. Longest Common Prefix",
+        content: (
+          <>
+            <Span>
+              <b>Q14. Longest Common Prefix</b>
+            </Span>
+            <Span>
+              Write a function to find the longest common prefix string amongst
+              an array of strings. If there is no common prefix, return an empty
+              string "".
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: strs = ["flower","flow","flight"] <br />
+              Output: "fl"
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: strs = ["dog","racecar","car"] <br />
+              Output: "" <br />
+              Explanation: There is no common prefix among the input strings.
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= strs.length &lt;= 200 <br />
+              0 &lt;= strs[i].length &lt;= 200 <br />
+              strs[i] consists of only lower-case English letters.
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q14. Longest Common Prefix",
+                output: `fl`,
+                codes: {
+                  Javascript: {
+                    code: `/**
+                  * @param {string[]} strs
+                  * @return {string}
+                  */
+                 var longestCommonPrefix = function(strs) {
+                     if (strs.length == 0) {
+                       return "";
+                     }
+                     var prefix = strs[0];
+                     for (let i = 0; i < strs.length; i++) {
+                       for (let j = 0; j < prefix.length; j++) {
+                         if (j == strs[i].length || prefix[j] != strs[i][j]) {
+                           prefix = prefix.substr(0, j);
+                           break;
+                         }
+                       }
+                     }
+                     return prefix;    
+                 };
+                 
+                 console.log(longestCommonPrefix(["flower", "flow", "flight"]));
+                 `,
+                  },
+                  Java: {
+                    code: `import java.util.*;
+
+                    class Main{
+                    
+                    public static String lcp(List<String> s){
+                      if(s.size()==0){
+                        return "";
+                      }
+                      String prefix = s.get(0);
+                      for (int i = 0; i < s.size(); i++)
+                      {
+                          for (int j = 0; j < prefix.length();j++)
+                          {
+                              if (j == s.get(i).length() || prefix.charAt(j)!= s.get(i).charAt(j))
+                              {
+                                  prefix = prefix.substring(0, j);
+                                  break;
+                              }
+                          }
+                      }
+                      return prefix;
+                    }
+                    
+                    public static void main(String ...s){
+                      System.out.println(lcp(Arrays.asList("flower", "flow", "flight")));
+                    }
+                    
+                    }
+                    `,
+                  },
+                  "C++": {
+                    code: `#include <iostream>
+                    #include <vector>
+                    
+                    using namespace std;
+                    
+                    class Solution
+                    {
+                    public:
+                        static string lcp(vector<string> s)
+                        {
+                            if (s.size() == 0)
+                            {
+                                return "";
+                            }
+                            string prefix = s[0];
+                            for (int i = 0; i < s.size(); i++)
+                            {
+                                for (int j = 0; j < prefix.length(); j++)
+                                {
+                                    if (j == s[i].length() || prefix[j] != s[i][j])
+                                    {
+                                        prefix = prefix.substr(0, j);
+                                        break;
+                                    }
+                                }
+                            }
+                            return prefix;
+                        }
+                    };
+                    
+                    int main()
+                    {
+                        Solution s;
+                        vector<string> l{"flower", "flow", "flight"};
+                        cout << s.lcp(l) << endl;
+                        return 0;
+                    }`,
+                  },
+                  Python: {
+                    code: `
+class Solution:
+
+  @staticmethod
+  def lcp(s):
+    if len(s)==0:
+      return ""
+    prefix = s[0]
+    for i in range(len(s)):
+      for j in range(len(prefix)):
+        if j == len(s[i]) or prefix[j] != s[i][j]:
+          prefix = prefix[:j]
+          break
+    return prefix
+
+
+print(Solution.lcp(["flower", "flow", "flight"]))
+`,
+                  },
+                  Kotlin: {
+                    code: `package com.programming
+
+                    internal class Test{
+                        companion object{
+                            fun lcp(s: List<String>):String {
+                                if(s.isEmpty()){
+                                    return ""
+                                }
+                                var prefix:String = s[0]
+                                for(i in s.indices){
+                                    for(j in prefix.indices){
+                                        if(j == s[i].length || prefix[j]!= s[i][j]){
+                                            prefix = prefix.substring(0,j)
+                                            break
+                                        }
+                                    }
+                                }
+                                return prefix
+                            }
+                        }
+                    }
+                    
+                    fun main(){
+                        print(Test.lcp(listOf<String>("flower", "flow", "flight")))
+                    }`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q15: {
         title: "Q15. 3Sum",
@@ -19653,7 +19837,7 @@ print(m.romanToInt("IV"))`,
         title: "Q41. Missing Positive",
       },
       q42: {
-        title: "Q42. Tapping Rain Water",
+        title: "Q42. Trapping Rain Water",
       },
       q43: {
         title: "Q43. Multiply Strings",
