@@ -21826,7 +21826,7 @@ while ans is not None:
         content: (
           <>
             <Span>
-              <b>22. Generate Parentheses</b>
+              <b>Q22. Generate Parentheses</b>
             </Span>
             <Span>
               Given n pairs of parentheses, write a function to generate all
@@ -21856,7 +21856,30 @@ while ans is not None:
                 output: `[((())), (()()), (())(), ()(()), ()()()]`,
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {string[]}
+                    */
+                   var generateParenthesis = function(n) {
+                     var result = []
+                     gen("",n,n,result)
+                     return result
+                   };
+                   
+                   function gen(prefix,left,right,result){
+                     if(left===0 && right===0){
+                       result.push(prefix)
+                       return
+                     }
+                     if(left>0){
+                       gen(prefix +"(",left-1,right,result)
+                     }
+                     if(left<right){
+                       gen(prefix + ")",left,right-1,result)
+                     }
+                   }    
+                   
+                   console.log(generateParenthesis(3))`,
                   },
                   Java: {
                     code: `import java.util.*;
@@ -21886,8 +21909,7 @@ while ans is not None:
                     }`,
                   },
                   Python: {
-                    code: `
-class Main:
+                    code: `class Main:
 
   def generateParenthesis(self,n:int):
     result = []
