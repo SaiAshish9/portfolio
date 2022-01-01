@@ -17563,7 +17563,62 @@ print(convert(str))`,
         ),
       },
       q5: {
-        title: "Q5. LPS",
+        title: "Q5. Longest Palindromic Substring",
+        content: (
+          <>
+            <Span>Q5. Longest Palindromic Substring</Span>
+            <CodeEditor
+              options={{
+                title: "Q5. Longest Palindromic Substring",
+                output: `bab`,
+                codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {string} s
+                    * @return {string}
+                    */
+                   
+                   var longestPalindrome = function(s) {
+                       let n = s.length;
+                       let lookupTab = Array.from(Array(n),()=>Array(n).fill(false));
+                       let maxLength = 1;
+                       for (let i = 0; i < n; ++i)
+                         lookupTab[i][i] = true;
+                       let start = 0;
+                       for (let i = 0; i < n - 1; ++i)
+                       {
+                         if (s[i] == s[i + 1])
+                         {
+                           lookupTab[i][i + 1] = true;
+                           start = i;
+                           maxLength = 2;
+                         }
+                       }
+                       for (let k = 3; k <= n; ++k) {
+                         for (let i = 0; i < n - k + 1; ++i)
+                         {
+                           let j = i + k - 1;
+                           if (lookupTab[i + 1][j - 1]
+                             && s[i] == s[j]) {
+                             lookupTab[i][j] = true;
+                             if (k > maxLength) {
+                               start = i;
+                               maxLength = k;
+                             }
+                           }
+                         }
+                       }
+                       return s.substring(start, start+maxLength);
+                   }
+                     
+                   console.log(longestPalindrome("babad"));
+                   `,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q6: {
         title: "Q6. ZigZag Conversion",
