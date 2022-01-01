@@ -20823,15 +20823,27 @@ print(Main.fourSum([1,0,-1,0,-2,2],0))
               Given the head of a linked list, remove the nth node from the end
               of the list and return its head.
             </Span>
-            <Img src={LeetcodeQ19} alt="img" left />
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Img src={LeetcodeQ19} alt="img" left />
+            <Span>
+              Input: head = [1,2,3,4,5], n = 2 <br />
+              Output: [1,2,3,5]
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: head = [1], n = 1 <br />
+              Output: []
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: head = [1,2], n = 1 <br />
+              Output: [1]
             </Span>
             <Span>
               <b>Constraints:</b>
@@ -20843,6 +20855,9 @@ print(Main.fourSum([1,0,-1,0,-2,2],0))
             </p>
             <CodeEditor
               options={{
+                title: "Q19. Remove Nth Node From End of List",
+                output: `1 -> 2 -> 3 -> 4 -> 5
+                1 -> 2 -> 3 -> 5`,
                 code: `1 -> 2 -> 3 -> 4 -> 5
                 1 -> 2 -> 3 -> 5`,
                 title: "Q19. Remove Nth Node From End of List",
@@ -21193,6 +21208,178 @@ while y is not None:
       },
       q20: {
         title: "Q20. Valid Parenthesis",
+        content: (
+          <>
+            <Span>
+              <b>Q20. Valid Parenthesis</b>
+            </Span>
+            <Span>
+              Given a string s containing just the characters '(', ')', {"{"},{" "}
+              {"}"}
+              ', '[' and ']', determine if the input string is valid. An input
+              string is valid if: Open brackets must be closed by the same type
+              of brackets. Open brackets must be closed in the correct order.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>Input: s = "()" Output: true</Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>Input: s = "()[]{"{}"}" Output: true</Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>Input: s = "(]" Output: false</Span>
+            <Span>
+              <b>Constraints</b>
+            </Span>
+            <p>
+              1 &lt;= s.length &lt;= 104 <br />s consists of parentheses only
+              '()[]{"{}"}'.
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q20. Valid Parenthesis",
+                codes: {
+                  Javacript: {
+                    code: `class Solution{
+  
+                      static isValid(s){
+                        var match={
+                          ')':'(',
+                          '}':'{',
+                          ']':'['
+                        }
+                        var stack=[]
+                        for(let i in s){
+                          if(s[i]==='('||s[i]==='{'||s[i]==='['){
+                            stack.push(s[i])
+                            continue
+                          }
+                          if(stack.length === 0 || match[s[i]] != stack.pop()){
+                            return false
+                          }
+                        }
+                          return stack.length === 0
+                      }
+                    }
+                    
+                    console.log(Solution.isValid('()()'))`,
+                  },
+                  Java: {
+                    code: `import java.util.*;
+
+                    class Solution {
+                        public boolean isValid(String s) {
+                            HashMap<Character, Character> match = new HashMap<Character, Character>();
+                            match.put(')', '(');
+                            match.put('}', '{');
+                            match.put(']', '[');
+                            Stack<Character> stack = new Stack<Character>();
+                            for (int i = 0; i < s.length(); i++) {
+                                if (s.charAt(i) == '(' || s.charAt(i) == '{' || s.charAt(i) == '[') {
+                                    stack.push(s.charAt(i));
+                                    continue;
+                                }
+                                if (stack.size() == 0 || match.get(s.charAt(i)) != stack.pop()) {
+                                    return false;
+                                }
+                            }
+                            if (stack.size() == 0) {
+                                return true;
+                            }
+                            return false;
+                        }
+                    }`,
+                  },
+                  "C++": {
+                    code: `#include <iostream>
+                    #include <stack> 
+                    #include <bits/stdc++.h>
+                    
+                    using namespace std;
+                      
+                    class Solution{
+                      public:
+                      static bool isValid(string s){
+                        unordered_map<char,char> match;
+                        match[')'] = '(';
+                        match['}'] = '{';
+                        match[']'] = '[';
+                        stack<char> st;
+                        for(int i=0;i<s.length();i++){
+                          if(s[i]=='('||s[i]=='{'||s[i]=='['){
+                            st.push(s[i]);
+                            continue;
+                          }
+                          if(st.size()==0||match[s[i]]!=st.top()){
+                            return false;
+                          }
+                          st.pop();
+                        }
+                        if(st.size()==0){
+                          return true;
+                        }
+                        return false;
+                      }
+                    };
+                    
+                    int main(){
+                      cout<< boolalpha;
+                      cout<< Solution::isValid("(())")<<endl;
+                      return 0;
+                    }`,
+                  },
+                  Python: {
+                    code: `class Solution():
+                    @staticmethod
+                    def isValid(s):
+                      match={
+                        ')':'(',
+                        '}':'{',
+                        ']':'['
+                      }
+                      stack = []
+                      for i in range(len(s)):
+                        if s[i] == '(' or s[i] == '{' or s[i] == '[':
+                          stack.append(s[i])
+                          continue
+                        if len(stack) == 0 or match[s[i]] != stack.pop():
+                          return False
+                      return len(stack)==0
+                  print(Solution.isValid('{{()}}'))`,
+                  },
+                  Kotlin: {
+                    code: `import java.util.*
+                    import kotlin.collections.HashMap
+                    
+                    internal class Solution {
+                        fun isValid(s: String): Boolean {
+                            val match = HashMap<Char, Char>()
+                            match[')'] = '('
+                            match['}'] = '{'
+                            match[']'] = '['
+                            val stack = Stack<Char>()
+                            for (i in s.indices) {
+                                if (s[i] == '(' || s[i] == '{' || s[i] == '[') {
+                                    stack.push(s[i])
+                                    continue
+                                }
+                                if (stack.size == 0 || match[s[i]] !== stack.pop()) {
+                                    return false
+                                }
+                            }
+                            return stack.size == 0
+                        }
+                    }`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q21: {
         title: "Q21. Merge Two Sorted Lists",
