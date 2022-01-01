@@ -18586,6 +18586,96 @@ print(ATOI.atoi("-23"))`,
                     
                    console.log(isPalindrome(121))`,
                   },
+                  Java: {
+                    code: `class p{
+                      static boolean isPalindrome(int x){
+                          int n=x;
+                          if(x<0){
+                              return false;
+                          }
+                          int rev=0;
+                          while(n>0){
+                              rev= rev*10 + n%10;
+                              n/=10;
+                          }
+                          if(x==rev){
+                              return true;
+                          }else{
+                              return false;
+                          }
+                      }
+                  
+                      public static void main(String[] args) {
+                          System.out.println(isPalindrome(121));
+                      }
+                  }`,
+                  },
+                  Python: { code: `
+class Solution:
+  @staticmethod
+  def isPalindrome(x):
+    n=x
+    if x<0:
+      return False
+    rev=0
+    while int(n)>0:
+      rev = rev*10 + int(n)%10
+      n/=10
+    if x==rev:
+      return True
+    else:
+      return False
+  
+print(Solution.isPalindrome(121))
+                  ` },
+                  "C++": { code: `#include <iostream>
+
+                  using namespace std;
+                  
+                  class Solution {
+                      public:
+                       static bool isPalindrome(int x) {
+                          int n=x;
+                          if(x<0){
+                            return false;
+                          }
+                          int rev=0;
+                          while(n>0){
+                            rev= rev*10 + n%10;
+                            n/=10;
+                          }
+                          if(x==rev){
+                            return true;
+                          }else{
+                            return false;
+                          }
+                      }
+                  };
+                  
+                  int main() {
+                    cout << boolalpha;
+                    cout << Solution::isPalindrome(-121) <<endl;
+                    return 0;
+                  }` },
+                  Kotlin: { code: `class Solution{
+                    companion object{
+                        fun isPalindrome(x:Int):Boolean{
+                            var n:Int=x
+                            if(x<0)
+                                return false
+                            var rev:Int=0
+                            while(n>0){
+                                rev=rev*10+(n%10)
+                                n/=10
+                            }
+                            return x==rev
+                        }
+                    }
+                }
+                
+                fun main(){
+                    print(Solution.isPalindrome(121))
+                }` },
                 },
               }}
             />
