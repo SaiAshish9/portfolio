@@ -18738,14 +18738,14 @@ print(Solution.isPalindrome(121))
             <Span>
               <b>Constraints</b>
             </Span>
-            <Span>
+            <p>
               1 &lt;= s.length &lt;= 20 <br />
               1 &lt;= p.length &lt;= 30 <br />
               s contains only lowercase English letters. <br />
               p contains only lowercase English letters, '.', and '*'. <br />
               It is guaranteed for each appearance of the character '*', there
               will be a previous valid character to match.
-            </Span>
+            </p>
             <CodeEditor
               options={{
                 title: "Q10. Regular Expression Matching",
