@@ -21450,7 +21450,46 @@ print(Solution.isValid('{{()}}'))`,
                   4
                   #############`,
                   Javacript: {
-                    code: ``,
+                    code: `// Definition for singly-linked list.
+                    function ListNode(val, next) {
+                        this.val = (val===undefined ? 0 : val)
+                        this.next = (next===undefined ? null : next)
+                    }
+                    /**
+                     * @param {ListNode} list1
+                     * @param {ListNode} list2
+                     * @return {ListNode}
+                     */
+                    var mergeTwoLists = function(list1, list2) {
+                      let l3= new ListNode(-1);
+                      let l1 = list1, l2 = list2
+                      let node = l3;
+                      while(l1 !=null && l2 != null){
+                            if(l1.val<l2.val){
+                              node.next = l1;
+                              l1 = l1.next;
+                              node = node.next;
+                            }else{
+                              node.next = l2;
+                              l2 = l2.next;
+                              node = node.next;
+                            }
+                      }
+                      if(l1 != null){
+                        node.next = l1;
+                      }else if(l2!=null){
+                        node.next = l2;
+                      }
+                      return l3.next;
+                    };
+                    
+                    const l1 = new ListNode(1)
+                    l1.next = new ListNode(2)
+                    l1.next.next = new ListNode(4)
+                    const l2 = new ListNode(1)
+                    l2.next = new ListNode(3)
+                    l2.next.next = new ListNode(4)
+                    console.log(mergeTwoLists(l1,l2))`,
                   },
                   Java: {
                     code: `import java.util.*;
