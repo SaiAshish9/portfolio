@@ -14,6 +14,7 @@ import SubsetsImg from "assets/home/subsets.png";
 import LeftViewBT from "assets/home/leftView.png";
 import RightViewBT from "assets/home/rightView.png";
 import LeetCodeQ2 from "assets/leetcode/leetcodeQ2.png";
+import LeetCodeQ11 from "assets/leetcode/q11.png";
 
 export const DATA = {
   ds: {
@@ -18978,6 +18979,41 @@ print(Solution.isMatch("aab", "c*a*b"))`,
             <Span>
               <b>Q11. Container With Most Medium Water</b>
             </Span>
+            <Span>
+              You are given an integer array height of length n. There are n
+              vertical lines drawn such that the two endpoints of the ith line
+              are (i, 0) and (i, height[i]).
+            </Span>
+            <Span>
+              Return the maximum amount of water a container can store. Notice
+              that you may not slant the container.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={LeetCodeQ11} left />
+            <Span>
+              Input: height = [1,8,6,2,5,4,8,3,7] <br />
+              Output: 49 <br />
+              Explanation: The above vertical lines are represented by array
+              [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue
+              section) the container can contain is 49.
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: height = [1,1]
+              <br />
+              Output: 1
+            </Span>
+            <Span>
+              <b>Constraints</b>
+            </Span>
+            <p>
+              n == height.length <br />
+              2 &lt;= n &lt;= 105 <br />0 &lt;= height[i] &lt;= 104
+            </p>
             <CodeEditor
               options={{
                 title: "Q11. Container With Most Medium Water",
