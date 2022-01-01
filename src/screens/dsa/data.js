@@ -18973,6 +18973,21 @@ print(Solution.isMatch("aab", "c*a*b"))`,
       },
       q11: {
         title: "Q11. Container With Most Medium Water",
+        content: (
+          <>
+            <Span>
+              <b>Q11. Container With Most Medium Water</b>
+            </Span>
+            <CodeEditor
+              options={{
+                title: "Q11. Container With Most Medium Water",
+                codes: {
+                  Javascript: {},
+                },
+              }}
+            />
+          </>
+        ),
       },
       q12: {
         title: "Q12. Integer To Roman",
