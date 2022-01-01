@@ -17073,6 +17073,142 @@ if __name__ == '__main__':
               Output: [7,0,8] <br />
               Explanation: 342 + 465 = 807.
             </Span>
+            <CodeEditor
+              options={{
+                title: "Q2. Add Two Numbers",
+                codes: {
+                  Javascript: {
+                    code: `function ListNode(val, next) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.next = (next===undefined ? null : next)
+                    }
+                    
+                    /**
+                     * @param {ListNode} l1
+                     * @param {ListNode} l2
+                     * @return {ListNode}
+                     */
+                    
+                    var addTwoNumbers = function(l1, l2) {
+                      let carry = val1 = val2 = 0
+                      console.log(l1,l2)
+                      let curr = new ListNode()
+                      let result = curr
+                      while(l1!=null || l2!= null || carry != 0){
+                         if(l1){
+                           val1 = l1.val
+                           l1=l1.next
+                         }else{
+                           val1 = 0
+                         }  
+                         if(l2){
+                           val2 = l2.val
+                           l2=l2.next
+                         }else{
+                           val2 = 0
+                         }
+                         carry += (val1 + val2)
+                         curr.next = new ListNode(carry%10)
+                         curr = curr.next
+                         carry= parseInt(carry/10)   
+                      }
+                      return result.next
+                    };
+                    
+                    // driver code
+                    const num1 = [2,4,3]
+                    const num2 = [5,6,4]
+                    const l1 = new ListNode(2)
+                    l1.next = new ListNode(4)
+                    l1.next.next = new ListNode(3)
+                    const l2 = new ListNode(5)
+                    l2.next = new ListNode(6)
+                    l2.next.next = new ListNode(4)
+                    addTwoNumbers(l1,l2)`,
+                    output: `ListNode {
+                      val: 2,
+                      next: ListNode { val: 4, next: ListNode { val: 3, next: null } }
+                    } ListNode {
+                      val: 5,
+                      next: ListNode { val: 6, next: ListNode { val: 4, next: null } }
+                    }
+                    ListNode {
+                      val: 7,
+                      next: ListNode { val: 0, next: ListNode { val: 8, next: null } }
+                    }`,
+                  },
+                  "C++": {
+                    code: `#include<iostream>
+
+                    using namespace std;
+                    
+                    struct ListNode {
+                        int val;
+                        ListNode *next;
+                        ListNode() : val(0), next(nullptr) {}
+                        ListNode(int x) : val(x), next(nullptr) {}
+                        ListNode(int x, ListNode *next) : val(x), next(next) {}
+                    };
+                    
+                    class Solution {
+                    public:
+                        ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+                            int v1=0;
+                            int v2 =0;
+                            int carry=0;
+                            
+                            ListNode* current= new ListNode(0);
+                            ListNode *ans= current;
+                            while(l1!=nullptr || l2!=nullptr || carry!=0){
+                                
+                                if(l1!=nullptr){
+                                    v1=l1->val;
+                                    l1=l1->next;
+                                }else{
+                                    v1=0;
+                                }
+                                
+                                if(l2!=nullptr){
+                                    v2=l2->val;
+                                    l2=l2->next;
+                                }else{
+                                    v2=0;
+                                }
+                                
+                                carry+=(v1+v2);
+                                
+                                current->next= new ListNode (carry%10);
+                                current=current->next;
+                                carry/=10;
+                                
+                            }
+                            return ans->next;
+                        }
+                    };
+                    
+                    int main(){
+                     Solution s;
+                     ListNode* l1= new ListNode(2);
+                     l1->next = new ListNode(4);
+                     l1->next->next = new ListNode(3);
+                     ListNode* l2= new ListNode(5);
+                     l2->next = new ListNode(6);
+                     l2->next->next = new ListNode(4);
+                     ListNode* result =  s.addTwoNumbers(l1,l2);
+                     ListNode* temp;
+                     temp = result;
+                     while(temp!=nullptr){
+                       cout << temp -> val << " ";
+                       temp = temp -> next;
+                     }
+                     cout<< endl;
+                     return 0;
+                    }`,
+                    output: `7 0 8 `,
+                  },
+                },
+              }}
+            />
           </>
         ),
       },
