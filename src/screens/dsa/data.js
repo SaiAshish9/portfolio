@@ -27,6 +27,8 @@ import LeetcodeQ48 from "assets/leetcode/q48.png";
 import LeetcodeQ48b from "assets/leetcode/q48b.png";
 import LeetcodeQ51 from "assets/leetcode/q51.png";
 import LeetcodeQ52 from "assets/leetcode/q52.png";
+import LeetcodeQ54a from "assets/leetcode/54a.png";
+import LeetcodeQ54b from "assets/leetcode/54b.png";
 
 export const DATA = {
   ds: {
@@ -26040,7 +26042,42 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
       },
       q54: {
         title: "Q54. Spiral Matrix",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Q54. Spiral Matrix</b>
+            </Span>
+            <Span>
+              Given an m x n matrix, return all elements of the matrix in spiral
+              order.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={LeetcodeQ54a} left />
+            <Span>
+              Input: matrix = [[1,2,3],[4,5,6],[7,8,9]] <br />
+              Output: [1,2,3,6,9,8,7,4,5]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Img src={LeetcodeQ54b} left />
+            <Span>
+              Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]] <br />
+              Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              m == matrix.length <br />
+              n == matrix[i].length <br />
+              1 &lt;= m, n &lt;= 10 <br />
+              -100 &lt;= matrix[i][j] &lt;= 100
+            </p>
+          </>
+        ),
       },
       q55: {
         title: "Q55. Jump Game",
@@ -26059,7 +26096,20 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <b>Example 1:</b>
             </Span>
             <Span>
+              Input: nums = [2,3,1,1,4] <br />
+              Output: true <br />
+              Explanation: Jump 1 step from index 0 to 1, then 3 steps to the
+              last index.
+            </Span>
+            <Span>
               <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums = [3,2,1,0,4] <br />
+              Output: false <br />
+              Explanation: You will always arrive at index 3 no matter what. Its
+              maximum jump length is 0, which makes it impossible to reach the
+              last index.
             </Span>
             <Span>
               <b>Constraints:</b>
