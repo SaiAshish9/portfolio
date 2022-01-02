@@ -25132,7 +25132,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         ),
       },
       q43: {
-        title: "Q4q42.png3. Multiply Strings",
+        title: "Q44. Multiply Strings",
         content: <></>,
       },
       q44: {
