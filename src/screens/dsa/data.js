@@ -27221,4 +27221,4 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
   },
 };
 
-// at algorithms also include its characteristics
+// https://cheonhyangzhang.gitbooks.io/leetcode-solutions/content/56-merge-intervals.html
