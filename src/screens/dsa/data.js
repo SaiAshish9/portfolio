@@ -23691,10 +23691,51 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span>
+            <p>
               0 &lt;= haystack.length, needle.length &lt;= 5 * 104 <br />
               haystack and needle consist of only lower-case English characters.
-            </Span>
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q28. Implement strStr()",
+                codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {string} haystack
+                    * @param {string} needle
+                    * @return {number}
+                    */
+                   
+                   var strStr = function(haystack, needle) {
+                       const txt = haystack
+                       const pat = needle
+                       const m = pat.length
+                       const n = txt.length
+                       
+                   
+                       // console.log(pat,txt,m,n)
+                       for (let i = 0; i <= n - m; i++) {
+                           let j
+                           for (j = 0; j < m; j++) {
+                               if (txt[i + j] != pat[j])
+                                   break;
+                           }
+                           if (j == m){
+                            return i;
+                           }
+                       }
+                       return -1
+                   }
+                   
+                   const txt = "hello"
+                   const pat = "ll"
+                   strStr(txt, pat)
+                   `,
+                    output: `2`,
+                  },
+                },
+              }}
+            />
           </>
         ),
       },
