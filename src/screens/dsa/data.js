@@ -19,6 +19,8 @@ import LeetcodeQ17 from "assets/leetcode/q17.png";
 import LeetcodeQ19 from "assets/leetcode/q19.png";
 import LeetcodeQ21 from "assets/leetcode/q21.png";
 import LeetcodeQ24 from "assets/leetcode/q24.png";
+import LeetcodeQ25a from "assets/leetcode/q25a.png";
+import LeetcodeQ25b from "assets/leetcode/q25b.png";
 
 export const DATA = {
   ds: {
@@ -22849,6 +22851,477 @@ linebreak()
       },
       q25: {
         title: "Q25. Reverse Nodes in k-Group",
+        content: (
+          <>
+            <Span>
+              <b>Q25. Reverse Nodes in k-Group</b>
+            </Span>
+            <Span>
+              Given the head of a linked listq25a, reverse the nodes of the list
+              k at a time, and return the modified list. k is a positive integer
+              and is less than or equal to the length of the linked list. If the
+              number of nodes is not a multiple of k then left-out nodes, in the
+              end, should remain as it is. You may not alter the values in the
+              list's nodes, only nodes themselves may be changed.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img left src={LeetcodeQ25a} />
+            <Span>
+              Input: head = [1,2,3,4,5], k = 2 <br />
+              Output: [2,1,4,3,5]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Img left src={LeetcodeQ25b} />
+            <Span>
+              Input: head = [1,2,3,4,5], k = 3 <br />
+              Output: [3,2,1,4,5]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <Span>
+              The number of nodes in the list is n. <br />
+              1 &lt;= k &lt;= n &lt;= 5000 <br />0 &lt;= Node.val &lt;= 1000
+            </Span>
+            <Span>
+              <b>Follow-up</b>: Can you solve the problem in O(1) extra memory
+              space?
+            </Span>
+            <CodeEditor
+              options={{
+                title: "Q25. Reverse Nodes in k-Group",
+                code: `#####################
+                1
+                2
+                3
+                4
+                5
+                #####################
+                2
+                1
+                4
+                3
+                5
+                #####################`,
+                codes: {
+                  Javascript: {
+                    code: `function ListNode(val, next) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.next = (next===undefined ? null : next)
+                    }
+                    /**
+                     * @param {ListNode} head
+                     * @param {number} k
+                     * @return {ListNode}
+                     */
+                    
+                    function reverse(pre,next){
+                      let last = pre.next
+                      let curr = last.next
+                      while(curr!=next){
+                        last.next = curr.next
+                        curr.next = pre.next
+                        pre.next = curr
+                        curr = last.next
+                      }
+                      return last
+                    }
+                    
+                    var reverseKGroup = function(head,k){
+                      if(head==null || k==1){
+                         return head
+                      }
+                      let fake = new ListNode(0)
+                      fake.next = head
+                      let pre = fake
+                      let i=0
+                      let p = head
+                      while(p!=null){
+                        i+=1
+                        if(i%k===0){
+                          pre = reverse(pre,p.next)
+                          p = pre.next
+                        }else{
+                          p = p.next
+                        }
+                      }
+                      return fake.next
+                    }
+                    
+                    const head = new ListNode(1)
+                    head.next = new ListNode(2)
+                    head.next.next = new ListNode(3)
+                    head.next.next.next = new ListNode(4)
+                    console.log(reverseKGroup(head,2))
+                    `,
+                    output: `ListNode {
+                      val: 2,
+                      next: ListNode { val: 1, next: ListNode { val: 4, next`,
+                  },
+                  Java: {
+                    code: `import java.util.*;
+                    import java.util.stream.*;
+                    
+                    class ListNode{
+                      int val;
+                      ListNode next;
+                      ListNode(){}
+                      ListNode(int x){
+                       this.val=x;
+                      }
+                    }
+                    
+                    class Main{
+                      
+                      public static ListNode reverseKGroup(ListNode head, int k) 
+                      {
+                            if(head==null||k==1)
+                                return head;
+                            ListNode fake = new ListNode(0);
+                            fake.next = head;
+                            ListNode pre = fake;
+                            int i=0;
+                            ListNode p = head;
+                            while(p!=null){
+                                i++;
+                                if(i%k==0){
+                                    pre = reverse(pre, p.next);
+                                    p = pre.next;
+                                }else{
+                                    p = p.next; 
+                                }
+                            }
+                            return fake.next; 
+                      }
+                    
+                      public static ListNode insert(List<Integer> l){
+                      ListNode root = new ListNode();
+                      for(int i=0;i<l.size();i++){
+                        ListNode data = new ListNode(l.get(i));
+                        if(i==0){
+                          root = data;
+                        }else{
+                          ListNode temp = new ListNode();
+                          temp=root;
+                          while(temp.next!=null){
+                            temp=temp.next;
+                          }
+                          temp.next= data;
+                        }
+                      }
+                      return root;
+                      }
+                       
+                      public static ListNode reverse(ListNode pre, ListNode next){
+                            ListNode last = pre.next;
+                            ListNode curr = last.next;
+                            while(curr != next){
+                                last.next = curr.next;
+                                curr.next = pre.next;
+                                pre.next = curr;
+                                curr = last.next;
+                            }
+                            return last; 
+                      }
+                    
+                      public static void display(ListNode root){
+                        ListNode temp = new ListNode();
+                        temp = root;
+                        while(temp!=null){
+                          System.out.println(temp.val);
+                          temp=temp.next;
+                        }
+                      }
+                    
+                      public static void linebreak(){
+                        System.out.println("#####################");
+                      }
+                    
+                      public static void main(String ...s){
+                         int[] arr = {1,2,3,4,5};
+                         List<Integer> list = Arrays.stream(arr).boxed().collect(Collectors.toList());
+                         ListNode l1= insert(list);
+                         linebreak();
+                         display(l1);
+                         linebreak();
+                         ListNode res = reverseKGroup(l1,2);
+                         display(res);
+                         linebreak();
+                      }
+                    }`,
+                  },
+                  Python: {
+                    code: `
+class ListNode:
+  def __init__(self,val=0):
+    self.val=val
+    self.next=None
+
+def linebreak():
+  print("##############")
+
+def reverse(pre,next):
+  last = pre.next
+  curr = last.next
+  while curr != next:
+    last.next = curr.next
+    curr.next = pre.next
+    pre.next = curr
+    curr = last.next
+  return last
+
+def reverseKGroup(head,k):
+  if head is None or k ==1:
+    return head
+  fake = ListNode(0)
+  fake.next = head
+  pre = fake
+  i = 0
+  p = head
+  while p is not None:
+    i+=1
+    if i%k == 0:
+      pre = reverse(pre,p.next)
+      p = pre.next
+    else:
+      p = p.next
+  return fake.next
+
+def display(node):
+  temp = ListNode()
+  temp = node
+  while temp is not None:
+    print(temp.val)
+    temp = temp.next
+
+def insert(l):
+  root = ListNode()
+  for i in range(len(l)):
+    data = ListNode(l[i])
+    if i == 0:
+      root =  data
+    else:
+      temp = ListNode()
+      temp = root
+      while temp.next is not None:
+        temp = temp.next
+      temp.next = data
+  return root
+ 
+arr = [1,2,3,4,5]
+l = insert(arr)
+linebreak()
+display(l)
+linebreak()
+display(reverseKGroup(l,2))
+linebreak()
+                    `,
+                  },
+                  "C++": {
+                    code: `#include<iostream>
+                    #include<bits/stdc++.h>
+                    #include<vector>
+                    
+                    using namespace std;
+                    
+                    struct ListNode {
+                       int val = 0;
+                       ListNode *next;
+                       ListNode() : val(0), next(nullptr) {}
+                       ListNode(int x) : val(x), next(nullptr) {}
+                       ListNode(int x, ListNode *next) : val(x), next(next) {}
+                    };
+                    
+                    
+                    ListNode* reverse(ListNode* pre,ListNode* next){
+                      ListNode* last;
+                      ListNode* curr;
+                      last = new ListNode(0);
+                      curr = new ListNode(0);
+                      last = pre->next;
+                      curr = last->next;
+                      while(curr!=next){
+                        last->next = curr->next;
+                        curr->next = pre->next;
+                        pre->next= curr;
+                        curr = last->next;
+                      }
+                      return last;
+                    }
+                    
+                    ListNode* reverseKGroup(ListNode* head,int k){
+                      if(head==nullptr||k==1){
+                        return head;
+                      }
+                      ListNode* fake;
+                      fake = new ListNode(0);
+                      ListNode* pre;
+                      pre = new ListNode(0);
+                      fake->next = head;
+                      pre = fake;
+                      int i=0;
+                      ListNode* p;
+                      p = new ListNode(0);
+                      p = head;
+                      while(p!=nullptr){
+                        i+=1;
+                        if(i%k==0){
+                        pre = reverse(pre,p->next);
+                        p = pre->next;
+                        }else{
+                        p = p->next;
+                        }
+                      }
+                      return fake->next;
+                    }
+                    
+                    void linebreak(){
+                      cout << "######################\n";
+                    }
+                    
+                    void display(ListNode* l){
+                      ListNode* temp;
+                      temp=l;
+                      while(temp!=nullptr){
+                        cout<<temp->val<<endl;
+                        temp = temp->next;
+                      }
+                    }
+                    
+                    ListNode* insert(vector<int> l){
+                     ListNode* root;
+                     for(int i=0;i<l.size();i++){
+                       ListNode* data;
+                       data = new ListNode(l[i]);
+                       if(i==0){
+                         root = data;
+                       }else{
+                         ListNode* temp;
+                         temp = root;
+                         while(temp->next!=nullptr){
+                           temp = temp->next;
+                         }
+                         temp->next = data;
+                       }
+                     }
+                     return root;
+                    }
+                    
+                    int main(){
+                      vector<ListNode*> lists;
+                      vector<int> list1(5);
+                      iota(list1.begin(),list1.end(),1);
+                      linebreak();
+                      ListNode* l1;
+                      l1 = insert(list1);
+                      display(l1);
+                      linebreak();
+                      ListNode* res = reverseKGroup(l1,2);
+                      display(res);
+                      linebreak();
+                      return 0;
+                    }`,
+                  },
+                  Kotlin: {
+                    code: `import java.util.*
+                    import java.util.stream.Collectors
+                    
+                    internal class ListNode {
+                        var 'val' = 0
+                        var next: ListNode? = null
+                    
+                        constructor() {}
+                        constructor(x: Int) {
+                            'val' = x
+                        }
+                    }
+                    
+                    internal object Main {
+                        private fun reverseKGroup(head: ListNode?, k: Int): ListNode? {
+                            if (head == null || k == 1) return head
+                            val fake = ListNode(0)
+                            fake.next = head
+                            var pre: ListNode? = fake
+                            var i = 0
+                            var p = head
+                            while (p != null) {
+                                i++
+                                if (i % k == 0) {
+                                    pre = reverse(pre, p.next)
+                                    p = pre!!.next
+                                } else {
+                                    p = p.next
+                                }
+                            }
+                            return fake.next
+                        }
+                    
+                        private fun insert(l: List<Int>): ListNode? {
+                            var root: ListNode? = ListNode()
+                            for (i in l.indices) {
+                                val data = ListNode(l[i])
+                                if (i == 0) {
+                                    root = data
+                                } else {
+                                    var temp: ListNode? = ListNode()
+                                    temp = root
+                                    while (temp!!.next != null) {
+                                        temp = temp.next
+                                    }
+                                    temp.next = data
+                                }
+                            }
+                            return root
+                        }
+                    
+                        private fun reverse(pre: ListNode?, next: ListNode?): ListNode? {
+                            val last = pre!!.next
+                            var curr = last!!.next
+                            while (curr !== next) {
+                                last.next = curr!!.next
+                                curr.next = pre.next
+                                pre.next = curr
+                                curr = last.next
+                            }
+                            return last
+                        }
+                    
+                        private fun display(root: ListNode?) {
+                            var temp: ListNode? = ListNode()
+                            temp = root
+                            while (temp != null) {
+                                println(temp.'val')
+                                temp = temp.next
+                            }
+                        }
+                    
+                        private fun linebreak() {
+                            println("#####################")
+                        }
+                    
+                        @JvmStatic
+                        fun main(s: Array<String>) {
+                            val arr = intArrayOf(1, 2, 3, 4, 5)
+                            val list = Arrays.stream(arr).boxed().collect(Collectors.toList())
+                            val l1 = insert(list)
+                            linebreak()
+                            display(l1)
+                            linebreak()
+                            val res = reverseKGroup(l1, 2)
+                            display(res)
+                            linebreak()
+                        }
+                    }`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q26: {
         title: "Q26. Remove Duplicates from Sorted Array.",
