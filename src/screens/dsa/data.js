@@ -25798,54 +25798,6 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q51. N-Queens",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
-                  },
-                },
-              }}
-            />
-          </>
-        ),
-      },
-      q52: {
-        title: "Q52. N-Queens II",
-        content: (
-          <>
-            <Span>
-              <b>Q51. N-Queens II</b>
-            </Span>
-            <Span>
-              The n-queens puzzle is the problem of placing n queens on an n x n
-              chessboard such that no two queens attack each other. Given an
-              integer n, return the number of distinct solutions to the n-queens
-              puzzle.
-            </Span>
-            <Span>
-              <b>Example 1:</b>
-            </Span>
-            <Img src={LeetcodeQ52} left />
-            <Span>
-              Input: n = 4 <br />
-              Output: 2 <br />
-              Explanation: There are two distinct solutions to the 4-queens
-              puzzle as shown.
-            </Span>
-            <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span>
-              Input: n = 1 <br />
-              Output: 1
-            </Span>
-            <Span>
-              <b>Constraints</b>
-            </Span>
-            <p>1 &lt;= n &lt;= 9</p>
-            <CodeEditor
-              options={{
-                title: "Q51. N-Queens",
-                codes: {
-                  Javascript: {
                     code: `/**
                     * @param {number} n
                     * @return {string[][]}
@@ -25905,6 +25857,107 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                       [ '..Q.', 'Q...', '...Q', '.Q..' ],
                       [ '.Q..', '...Q', 'Q...', '..Q.' ]
                     ]`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
+      },
+      q52: {
+        title: "Q52. N-Queens II",
+        content: (
+          <>
+            <Span>
+              <b>Q51. N-Queens II</b>
+            </Span>
+            <Span>
+              The n-queens puzzle is the problem of placing n queens on an n x n
+              chessboard such that no two queens attack each other. Given an
+              integer n, return the number of distinct solutions to the n-queens
+              puzzle.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={LeetcodeQ52} left />
+            <Span>
+              Input: n = 4 <br />
+              Output: 2 <br />
+              Explanation: There are two distinct solutions to the 4-queens
+              puzzle as shown.
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: n = 1 <br />
+              Output: 1
+            </Span>
+            <Span>
+              <b>Constraints</b>
+            </Span>
+            <p>1 &lt;= n &lt;= 9</p>
+            <CodeEditor
+              options={{
+                title: "Q52. N-Queens II",
+                codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {number} n
+                    * @return {number}
+                    */
+                   function isSafe(board, row, col, n) {
+                       let i, j
+                   
+                       // left side
+                       for (let i = 0; i < col; i++)
+                           if (board[row][i] == 1) return false
+                   
+                       // upper diagonal
+                       for (let i = row, j = col; i >= 0 && j >= 0; i--, j--)
+                           if (board[i][j] == 1) return false;
+                   
+                       // lower diagnoal  
+                       for (i = row, j = col; j >= 0 && i < n; i++, j--)
+                           if (board[i][j] == 1) return false;
+                   
+                       return true
+                   }
+                   
+                   function placeQueens(board, col, n, result) {
+                       // if all columns are explored, the board is solved
+                       if (col == n) {
+                           result.push(board.map((cell, i) => cell.indexOf(1)))
+                           return true
+                       };
+                       let res = false
+                       for (let i = 0; i < n; i++) {
+                           if (isSafe(board, i, col, n)) {
+                               board[i][col] = 1;
+                               // check for next col 
+                               res = placeQueens(board, col + 1, n, result) || res;
+                               board[i][col] = 0; // backtrack
+                           }
+                       }
+                       return res;
+                   }
+                   
+                   var totalNQueens = function(n) {
+                     const board = Array.from(Array(n), () => Array(n).fill(0))
+                     const result = []
+                     placeQueens(board, 0, n,result)
+                     const answer = []
+                     result.forEach((r, k) => {
+                       let temp = Array.from(Array(n), () => Array(n).fill(0))
+                       for (let index in r) temp[index][r[index]] = 1
+                       answer.push(temp)
+                     })
+                     return answer.length
+                   };
+                   
+                   totalNQueens(4)`,
+                    output: `2`,
                   },
                 },
               }}
