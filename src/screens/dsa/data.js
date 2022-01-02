@@ -25,6 +25,8 @@ import LeetcodeQ38 from "assets/leetcode/q38.png";
 import LeetcodeQ42 from "assets/leetcode/q42.png";
 import LeetcodeQ48 from "assets/leetcode/q48.png";
 import LeetcodeQ48b from "assets/leetcode/q48b.png";
+import LeetcodeQ51 from "assets/leetcode/q51.png";
+import LeetcodeQ52 from "assets/leetcode/q52.png";
 
 export const DATA = {
   ds: {
@@ -25610,19 +25612,305 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
       },
       q49: {
         title: "Q49. Group Anagrams",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Q49. Group Anagrams</b>
+            </Span>
+            <Span>
+              Given an array of strings strs, group the anagrams together. You
+              can return the answer in any order. An Anagram is a word or phrase
+              formed by rearranging the letters of a different word or phrase,
+              typically using all the original letters exactly once.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: strs = ["eat","tea","tan","ate","nat","bat"] <br />
+              Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: strs = [""] <br />
+              Output: [[""]]
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: strs = ["a"] ] <br />
+              Output: [["a"]]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= strs.length &lt;= 104 <br />
+              0 &lt;= strs[i].length &lt;= 100 <br />
+              strs[i] consists of lowercase English letters.
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q49. Group Anagrams",
+                codes: {
+                  Javascript: {
+                    output: `[ [ 'eat', 'tea', 'ate' ], [ 'tan', 'nat' ], [ 'bat' ] ]`,
+                    code: `/**
+                    * @param {string[]} strs
+                    * @return {string[][]}
+                    */
+                   var groupAnagrams = function(strs) {
+                     let result = []
+                     let helper = {}
+                     for(let s of strs){
+                       let tmpChar = s.split("")
+                       tmpChar.sort()
+                       let tmp = tmpChar.join("")
+                       if(Object.keys(helper).includes(tmp)){
+                          result[helper[tmp]].push(s)
+                          continue;
+                       }
+                       let curr =[]
+                       curr.push(s)
+                       result.push(curr)
+                       helper[tmp] = result.length - 1 
+                     }
+                     return result 
+                   };
+                   
+                   console.log(groupAnagrams(["eat","tea","tan","ate","nat","bat"]))`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q50: {
         title: "Q50. Pow(x,n)",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Q50. Pow(x, n)</b>
+            </Span>
+            <Span>
+              Implement pow(x, n), which calculates x raised to the power n
+              (i.e., xn).
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: x = 2.00000, n = 10 <br />
+              Output: 1024.00000
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: x = 2.10000, n = 3 <br />
+              Output: 9.26100
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: x = 2.00000, n = -2 <br />
+              Output: 0.25000 <br />
+              Explanation: 2-2 = 1/22 = 1/4 = 0.25
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              -100.0 &lt; x &lt; 100.0 <br />
+              -231 &lt;= n &lt;= 231-1 <br />
+              -104 &lt;= xn &lt;= 104 <br />
+            </p>
+            <CodeEditor
+              options={{
+                codes: {
+                  Javascript: {
+                    output: `1024`,
+                    code: `/**
+                  * @param {number} x
+                  * @param {number} n
+                  * @return {number}
+                  */
+                 var myPow = function(x, n) {
+                     if(n===0) return 1.0
+                     let half = myPow(x,parseInt(n/2))
+                     if(n%2===0) return half * half
+                     else if(n>0) return half * half * x;
+                     else return half * half/x;
+                 };
+                   console.log(myPow(2.00000,10))`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q51: {
         title: "Q51. N-Queens",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Q51. N-Queens</b>
+            </Span>
+            <Span>
+              The n-queens puzzle is the problem of placing n queens on an n x n
+              chessboard such that no two queens attack each other. Given an
+              integer n, return all distinct solutions to the n-queens puzzle.
+              You may return the answer in any order. Each solution contains a
+              distinct board configuration of the n-queens' placement, where 'Q'
+              and '.' both indicate a queen and an empty space, respectively.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={LeetcodeQ51} left />
+            <Span>
+              Input: n = 4 <br />
+              Output:
+              [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
+              <br />
+              Explanation: There exist two distinct solutions to the 4-queens
+              puzzle as shown above
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: n = 1 <br />
+              Output: [["Q"]]
+            </Span>
+            <Span>
+              <b>Constraints</b>
+            </Span>
+            <p>1 &lt;= n &lt;= 9</p>
+            <CodeEditor
+              options={{
+                title: "Q51. N-Queens",
+                codes: {
+                  Javascript: {
+                    code: ``,
+                    output: ``,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q52: {
-        title: "Q52. N-Queen’s 2",
-        content: <></>,
+        title: "Q52. N-Queens II",
+        content: (
+          <>
+            <Span>
+              <b>Q51. N-Queens II</b>
+            </Span>
+            <Span>
+              The n-queens puzzle is the problem of placing n queens on an n x n
+              chessboard such that no two queens attack each other. Given an
+              integer n, return the number of distinct solutions to the n-queens
+              puzzle.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={LeetcodeQ52} left />
+            <Span>
+              Input: n = 4 <br />
+              Output: 2 <br />
+              Explanation: There are two distinct solutions to the 4-queens
+              puzzle as shown.
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: n = 1 <br />
+              Output: 1
+            </Span>
+            <Span>
+              <b>Constraints</b>
+            </Span>
+            <p>1 &lt;= n &lt;= 9</p>
+            <CodeEditor
+              options={{
+                title: "Q51. N-Queens",
+                codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {number} n
+                    * @return {string[][]}
+                    */
+                   
+                   function isSafe(board, row, col, n) {
+                       let i, j
+                   
+                       // left side
+                       for (let i = 0; i < col; i++)
+                           if (board[row][i] == 1) return false
+                   
+                       // upper diagonal
+                       for (let i = row, j = col; i >= 0 && j >= 0; i--, j--)
+                           if (board[i][j] == 1) return false;
+                   
+                       // lower diagnoal  
+                       for (i = row, j = col; j >= 0 && i < n; i++, j--)
+                           if (board[i][j] == 1) return false;
+                   
+                       return true
+                   }
+                   
+                   function placeQueens(board, col, n, result) {
+                       // if all columns are explored, the board is solved
+                       if (col == n) {
+                           result.push(board.map((cell, i) => cell.indexOf(1)))
+                           return true
+                       };
+                       let res = false
+                       for (let i = 0; i < n; i++) {
+                           if (isSafe(board, i, col, n)) {
+                               board[i][col] = 1;
+                               // check for next col 
+                               res = placeQueens(board, col + 1, n, result) || res;
+                               board[i][col] = 0; // backtrack
+                           }
+                       }
+                       return res;
+                   }
+                   
+                   var solveNQueens = function(n) {
+                     const board = Array.from(Array(n), () => Array(n).fill(0))
+                     const result = []
+                     placeQueens(board, 0, n,result)
+                     const answer = []
+                     result.forEach((r, k) => {
+                       let temp = Array.from(Array(n), () => Array(n).fill(0))
+                       for (let index in r) temp[index][r[index]] = 1
+                       answer.push(temp)
+                     })
+                     return answer.map(x=>x.map(y=>y.map(z=>z?'Q':'.').join('')))
+                   };
+                   
+                   solveNQueens(4)`,
+                    output: `[
+                      [ '..Q.', 'Q...', '...Q', '.Q..' ],
+                      [ '.Q..', '...Q', 'Q...', '..Q.' ]
+                    ]`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q53: {
         title: "Q53. Maximum Subarray",
