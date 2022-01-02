@@ -25364,11 +25364,169 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
       },
       q46: {
         title: "Q46. Permutations",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Q46. Permutations</b>
+            </Span>
+            <Span>
+              Given an array nums of distinct integers, return all the possible
+              permutations. You can return the answer in any order.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,2,3] <br />
+              Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums = [0,1] <br />
+              Output: [[0,1],[1,0]]
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: nums = [1] <br />
+              Output: [[1]]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= nums.length &lt;= 6 <br />
+              -10 &lt;= nums[i] &lt;= 10 <br />
+              All the integers of nums are unique.
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q46. Permutations",
+                codes: {
+                  Javascript: {
+                    output: `[
+                      [ 1, 2, 3 ],
+                      [ 1, 3, 2 ],
+                      [ 2, 1, 3 ],
+                      [ 2, 3, 1 ],
+                      [ 3, 1, 2 ],
+                      [ 3, 2, 1 ]
+                    ]`,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number[][]}
+                    */
+                   var permute = function (nums) {
+                     let res = [];
+                     let visited = Array(nums.length).fill(false);
+                     dfs(nums, res, [], visited);
+                     return res;
+                   };
+                   
+                   var dfs = function (nums, res = [], curr = [], visited = []) {
+                     if (curr.length == nums.length) {
+                       res.push(curr.slice());
+                       return;
+                     }
+                     for (let i in nums) {
+                       if (visited[i] === false) {
+                         visited[i] = true;
+                         curr.push(nums[i]);
+                         dfs(nums, res, curr, visited);
+                         curr.pop();
+                         visited[i] = false;
+                       }
+                     }
+                   };
+                   
+                   console.log(permute([1, 2, 3]));
+                   
+                   `,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q47: {
         title: "Q47. Permutations 2",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>47. Permutations II</b>
+            </Span>
+            <Span>
+              Given a collection of numbers, nums, that might contain
+              duplicates, return all possible unique permutations in any order.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= nums.length &lt;= 8 <br />
+              -10 &lt;= nums[i] &lt;= 10
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q47. Permutations 2",
+                codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number[][]}
+                    */
+                   var permuteUnique = function(nums) {
+                         let res = [];
+                     let visited = Array(nums.length).fill(false);
+                     if (nums === null || nums.length === 0) {
+                       return res;
+                     }
+                     nums.sort();
+                     dfs(nums, res, [], visited);
+                     return res;
+                   };
+                   
+                   var dfs = function (nums, res = [], curr = [], visited = []) {
+                     if (curr.length == nums.length) {
+                       res.push(curr.slice());
+                       return;
+                     }
+                     for (let i in nums) {
+                       if (visited[i] === true) {
+                         continue;
+                       }
+                       if (
+                         i === 0 ||
+                         nums[i] !== nums[i - 1] ||
+                         (nums[i] === nums[i - 1] && visited[i - 1] === true)
+                       ) {
+                         visited[i] = true;
+                         curr.push(nums[i]);
+                         dfs(nums, res, curr, visited);
+                         curr.pop();
+                         visited[i] = false;
+                       }
+                     }
+                   };
+                   
+                   console.log(permuteUnique([1, 1, 2]));`,
+                    output: `[ [ 1, 1, 2 ], [ 1, 2, 1 ], [ 2, 1, 1 ] ]`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q48: {
         title: "Q48. Rotate Image",
