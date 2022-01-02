@@ -18,6 +18,7 @@ import LeetCodeQ11 from "assets/leetcode/q11.png";
 import LeetcodeQ17 from "assets/leetcode/q17.png";
 import LeetcodeQ19 from "assets/leetcode/q19.png";
 import LeetcodeQ21 from "assets/leetcode/q21.png";
+import LeetcodeQ24 from "assets/leetcode/q24.png";
 
 export const DATA = {
   ds: {
@@ -22456,6 +22457,391 @@ print(q)
       },
       q24: {
         title: "Q24. Swap Nodes In Pairs",
+        content: (
+          <>
+            <Span>
+              <b>24. Swap Nodes in Pairs</b>
+            </Span>
+            <Span>
+              Given a linked list, swap every two adjacent nodes and return its
+              head. You must solve the problem without modifying the values in
+              the list's nodes (i.e., only nodes themselves may be changed.)
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={LeetcodeQ24} left />
+            <Span>
+              Input: head = [1,2,3,4] <br />
+              Output: [2,1,4,3]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: head = [] <br />
+              Output: []
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            q24.png
+            <Span>
+              Input: head = [1] <br />
+              Output: [1]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              The number of nodes in the list is in the range [0, 100]. <br />0
+              &lt;= Node.val &lt;= 100
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q24. Swap Nodes In Pairs",
+                output: `#############
+                1
+                2
+                3
+                4
+                #############
+                2
+                1
+                4
+                3
+                #############`,
+                codes: {
+                  Javascript: {
+                    code: `function ListNode(val, next) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.next = (next===undefined ? null : next)
+                    }
+                    /**
+                     * @param {ListNode} head
+                     * @return {ListNode}
+                     */
+                    
+                    var swapPairs = function(head) {
+                        var temp = new ListNode(-1)
+                        temp.next = head
+                        var node = temp
+                        while(node && node.next && node.next.next){
+                         let first = node
+                         let second = node.next
+                         let third = node.next.next
+                         first.next = third
+                         second.next = third.next
+                         third.next = second
+                         node = second
+                        }
+                        return temp.next
+                    };
+                    
+                    const head = new ListNode(1)
+                    head.next = new ListNode(2)
+                    head.next.next = new ListNode(3)
+                    head.next.next.next = new ListNode(4)
+                    console.log(swapPairs(head))                    
+                    `,
+                  },
+                  Java: {
+                    code: `import java.util.*;
+                    import java.util.stream.*;
+                    
+                    class ListNode{
+                      int val;
+                      ListNode next;
+                      ListNode(){}
+                      ListNode(int val){this.val=val;}
+                      ListNode(int val,ListNode next){
+                        this.val=val;
+                        this.next=next;
+                      }
+                    }
+                    
+                    class Main{
+                      
+                      public static ListNode swapPairs(ListNode head){
+                            ListNode fakeHead = new ListNode(-1);
+                            fakeHead.next = head;
+                            ListNode node = fakeHead;
+                            while (node!=null & node.next != null && node.next.next!= null){
+                                ListNode first = node;
+                                ListNode second = node.next;
+                                ListNode third = node.next.next;
+                                first.next = third;
+                                second.next = third.next;
+                                third.next = second;
+                                node = second;
+                            }
+                            return fakeHead.next;
+                      }
+                    
+                      public static void display(ListNode node){
+                        ListNode temp = new ListNode();
+                        temp = node;
+                        while(temp!=null){
+                          System.out.println(temp.val);
+                          temp = temp.next;
+                        }
+                      }
+                    
+                      public static ListNode insert(List<Integer> l){
+                      ListNode root = new ListNode();
+                      for(int i=0;i<l.size();i++){
+                        ListNode data = new ListNode(l.get(i));
+                        if(i==0){
+                          root = data;
+                        }else{
+                          ListNode temp = new ListNode();
+                          temp=root;
+                          while(temp.next!=null){
+                            temp=temp.next;
+                          }
+                          temp.next= data;
+                        }
+                      }
+                      return root;
+                      }
+                    
+                      public static void linebreak(){
+                        System.out.println("#############");
+                      }
+                    
+                      public static void main(String ...s){
+                        int[] arr = {1,2,3,4};
+                        List<Integer> list= Arrays.stream(arr).boxed().collect(Collectors.toList());
+                        ListNode l = insert(list);
+                        linebreak();
+                        display(l);
+                        ListNode res = swapPairs(l);
+                        linebreak();
+                        display(res);
+                        linebreak();
+                      }
+                    
+                    }`,
+                  },
+                  Python: {
+                    code: `
+class ListNode:
+  def __init__(self,val=0):
+    self.val=val
+    self.next=None
+
+def linebreak():
+  print("##############")
+
+def swapPairs(head):
+  fakeHead = ListNode(-1)
+  fakeHead.next = head
+  node = fakeHead
+  while node.next is not None:
+    first = node
+    second = node.next
+    third = node.next.next
+    first.next = third
+    second.next = third.next
+    third.next = second
+    node = second
+  return fakeHead.next
+
+def display(node):
+  temp = ListNode()
+  temp = node
+  while temp is not None:
+    print(temp.val)
+    temp = temp.next
+
+def insert(l):
+  root = ListNode()
+  for i in range(len(l)):
+    data = ListNode(l[i])
+    if i == 0:
+      root =  data
+    else:
+      temp = ListNode()
+      temp = root
+      while temp.next is not None:
+        temp = temp.next
+      temp.next = data
+  return root
+ 
+arr = [1,2,3,4]
+l = insert(arr)
+linebreak()
+display(l)
+linebreak()
+display(swapPairs(l))
+linebreak()
+                    `,
+                  },
+                  "C++": {
+                    code: `#include<iostream>
+                    #include<bits/stdc++.h>
+                    #include<vector>
+                    
+                    using namespace std;
+                    
+                    struct ListNode {
+                       int val = 0;
+                       ListNode *next;
+                       ListNode() : val(0), next(nullptr) {}
+                       ListNode(int x) : val(x), next(nullptr) {}
+                       ListNode(int x, ListNode *next) : val(x), next(next) {}
+                    };
+                    
+                    
+                    ListNode* swapPairs(ListNode* head){
+                      ListNode* fakeHead = new ListNode();
+                      fakeHead->next = head;
+                      ListNode* node;
+                      node = fakeHead;
+                      while(node != nullptr && node->next != nullptr && node->next->next != nullptr){
+                        ListNode* first = node;
+                        ListNode* second = node->next;
+                        ListNode* third = node->next->next;
+                        first->next = third;
+                        second->next = third->next;
+                        third->next = second;
+                        node = second;
+                      }
+                      return fakeHead->next;
+                    }
+                    
+                    void linebreak(){
+                      cout << "######################\n";
+                    }
+                    
+                    void display(ListNode* l){
+                      ListNode* temp;
+                      temp=l;
+                      while(temp!=nullptr){
+                        cout<<temp->val<<endl;
+                        temp = temp->next;
+                      }
+                    }
+                    
+                    ListNode* insert(vector<int> l){
+                     ListNode* root;
+                     for(int i=0;i<l.size();i++){
+                       ListNode* data;
+                       data = new ListNode(l[i]);
+                       if(i==0){
+                         root = data;
+                       }else{
+                         ListNode* temp;
+                         temp = root;
+                         while(temp->next!=nullptr){
+                           temp = temp->next;
+                         }
+                         temp->next = data;
+                       }
+                     }
+                     return root;
+                    }
+                    
+                    int main(){
+                      vector<ListNode*> lists;
+                      vector<int> list1{1,2,3,4};
+                      linebreak();
+                      ListNode* l1;
+                      l1 = insert(list1);
+                      display(l1);
+                      linebreak();
+                      ListNode* res = swapPairs(l1);
+                      display(res);
+                      linebreak();
+                      return 0;
+                    }`,
+                  },
+                  Kotlin: {
+                    code: `import java.util.*
+                    import java.util.stream.Collectors
+                    
+                    internal class ListNode {
+                        var 'val' = 0
+                        var next: ListNode? = null
+                    
+                        constructor() {}
+                        constructor('val': Int) {
+                            this.'val' = 'val'
+                        }
+                    
+                        constructor('val': Int, next: ListNode?) {
+                            this.'val' = 'val'
+                            this.next = next
+                        }
+                    }
+                    
+                    internal object Main {
+                        private fun swapPairs(head: ListNode?): ListNode? {
+                            val fakeHead = ListNode(-1)
+                            fakeHead.next = head
+                            var node: ListNode? = fakeHead
+                            while (node?.next!!.next != null) {
+                                val first = node
+                                val second = node.next
+                                val third = node.next!!.next
+                                first.next = third
+                                second!!.next = third!!.next
+                                third.next = second
+                                node = second
+                            }
+                            return fakeHead.next
+                        }
+                    
+                        private fun display(node: ListNode?) {
+                            var temp: ListNode? = ListNode()
+                            temp = node
+                            while (temp != null) {
+                                println(temp.'val')
+                                temp = temp.next
+                            }
+                        }
+                    
+                        private fun insert(l: List<Int>): ListNode? {
+                            var root: ListNode? = ListNode()
+                            for (i in l.indices) {
+                                val data = ListNode(l[i])
+                                if (i == 0) {
+                                    root = data
+                                } else {
+                                    var temp: ListNode? = ListNode()
+                                    temp = root
+                                    while (temp!!.next != null) {
+                                        temp = temp.next
+                                    }
+                                    temp.next = data
+                                }
+                            }
+                            return root
+                        }
+                    
+                        private fun linebreak() {
+                            println("#############")
+                        }
+                    
+                        @JvmStatic
+                        fun main(s: Array<String>) {
+                            val arr = intArrayOf(1, 2, 3, 4)
+                            val list = Arrays.stream(arr).boxed().collect(Collectors.toList())
+                            val l = insert(list)
+                            linebreak()
+                            display(l)
+                            val res = swapPairs(l)
+                            linebreak()
+                            display(res)
+                            linebreak()
+                        }
+                    }`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q25: {
         title: "Q25. Reverse Nodes in k-Group",
