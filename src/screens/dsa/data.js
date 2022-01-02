@@ -25215,11 +25215,152 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
       },
       q44: {
         title: "Q44. Wildcard Matching",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Q44. Wildcard Matching</b>
+            </Span>
+            <Span>
+              Given an input string (s) and a pattern (p), implement wildcard
+              pattern matching with support for '?' and '*' where:
+              <br />
+              '?' Matches any single character. <br />
+              '*' Matches any sequence of characters (including the empty
+              sequence). <br />
+              The matching should cover the entire input string (not partial).
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: s = "aa", p = "a" <br />
+              Output: false <br />
+              Explanation: "a" does not match the entire string "aa".
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: s = "aa", p = "*" <br />
+              Output: true <br />
+              Explanation: '*' matches any sequence.
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = "cb", p = "?a" <br />
+              Output: false <br />
+              Explanation: '?' matches 'c', but the second letter is 'a', which
+              does not match 'b'.
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              0 &lt;= s.length, p.length &lt;= 2000 <br />
+              s contains only lowercase English letters. <br />p contains only
+              lowercase English letters, '?' or '*'.
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q44. Wildcard Matching",
+                codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {string} s
+                    * @param {string} p
+                    * @return {boolean}
+                    */
+                   var isMatch = function (s, p) {
+                     let dp = Array.from(Array(s.length + 1),()=>Array(p.length + 1).fill(false));
+                     dp[0][0] = true;
+                     for (let j = 1; j <= p.length; j++) {
+                       if (p[j - 1] == "*") {
+                         dp[0][j] = dp[0][j - 1];
+                       }
+                     }
+                     for (let i = 1; i < s.length + 1; i++) {
+                       for (let j = 1; j < p.length + 1; j++) {
+                         if (p[j - 1] == "?" || p[j - 1] == s[i - 1]) {
+                           dp[i][j] = dp[i][j] || dp[i - 1][j - 1];
+                         } else if (p[j - 1] == "*") {
+                           dp[i][j] = dp[i - 1][j] || dp[i][j - 1];
+                         }
+                       }
+                     }
+                     return dp[s.length][p.length];
+                   };
+                   
+                   console.log(isMatch("aa", "a"));
+                   `,
+                    output: `false`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q45: {
         title: "Q45. Jump Game 2",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Q45. Jump Game 2</b>
+            </Span>
+            <Span>
+              Given an array of non-negative integers nums, you are initially
+              positioned at the first index of the array. Each element in the
+              array represents your maximum jump length at that position. Your
+              goal is to reach the last index in the minimum number of jumps.
+              You can assume that you can always reach the last index.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= nums.length &lt;= 104 <br />0 &lt;= nums[i] &lt;= 1000
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q45. Jump Game 2",
+                codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var jump = function (n) {
+                     let len = n.length - 1;
+                     let curr = -1,
+                       next = 0,
+                       ans = 0;
+                     for (let i = 0; next < len; i++) {
+                       if (i > curr) {
+                         ans++;
+                         curr = next;
+                       }
+                       next = Math.max(next, n[i] + i);
+                     }
+                     return ans;
+                   };
+                   
+                   console.log(jump([2, 3, 1, 1, 4]));
+                   `,
+                    output: `2`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q46: {
         title: "Q46. Permutations",
