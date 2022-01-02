@@ -23552,9 +23552,13 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             </p>
             <CodeEditor
               options={{
+                title: "Q27. Remove Element",
+                output: `5`,
                 codes: {
                   Java: {
-                    code: `class Solution {
+                    code: `import java.io.*;
+
+                    class Solution {
                       public int removeElement(int[] nums, int val) {
                           int start = 0, end = nums.length -1;
                           while (start <= end) {
@@ -23572,7 +23576,15 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                           }
                           return start;
                       }
-                    }`,
+                      public static void main(String ...s){
+                        Solution m = new Solution();
+                        PrintStream ps = System.out;
+                        ps.println(m.removeElement(new int[]{
+                          0,1,2,2,3,0,4,2
+                        },2));
+                      }
+                    }
+                    `,
                   },
                   "C++": {
                     code: `#include <iostream>
