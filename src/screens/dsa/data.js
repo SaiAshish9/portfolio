@@ -23986,11 +23986,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               1 &lt;= nums.length &lt;= 100 <br />0 &lt;= nums[i] &lt;= 100
             </p>
             <CodeEditor
-            options={{
-              title: "Q31. Next Permutation",
-              codes:{
-                Java:{
-                  code:`import java.util.Arrays;
+              options={{
+                title: "Q31. Next Permutation",
+                codes: {
+                  Java: {
+                    code: `import java.util.Arrays;
                   import java.util.*;
                   import java.util.stream.Collectors;
                   
@@ -24034,17 +24034,97 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                     }
                     
                   }`,
-                  output:`[1,3,2]`
-                }
-              }
-            }}
+                    output: `[1,3,2]`,
+                  },
+                },
+              }}
             />
           </>
         ),
       },
       q32: {
         title: "Q32. Longest Valid Parentheses",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Q32. Longest Valid Parentheses</b>
+            </Span>
+            <Span>
+              Given a string containing just the characters '(' and ')', find
+              the length of the longest valid (well-formed) parentheses
+              substring.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: s = "(()" <br />
+              Output: 2 <br />
+              Explanation: The longest valid parentheses substring is "()".
+            </Span>
+            <Span>
+              Input: s = "(()" <br />
+              Output: 2 <br />
+              Explanation: The longest valid parentheses substring is "()".
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: s = ")()())" <br />
+              Output: 4 <br />
+              Explanation: The longest valid parentheses substring is "()()".
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = "" <br />
+              Output: 0
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              0 &lt;= s.length &lt;= 3 * 104 <br />
+              s[i] is '(', or ')'.
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q32. Longest Valid Parentheses",
+                output: `(()`,
+                codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {string} s
+                    * @return {number}
+                    */
+                   var longestValidParentheses = function (s) {
+                     let maxans = 0;
+                     let stack = [];
+                     stack.push(-1);
+                     for (let i = 0; i < s.length; i++) {
+                       if (s[i] == "(") stack.push(i);
+                       else {
+                         stack.pop();
+                         if (stack.length == 0) {
+                           stack.push(i);
+                         } else {
+                           maxans = Math.max(maxans, i - stack.slice(-1)[0]);
+                         }
+                       }
+                     }
+                     return maxans;
+                   };
+                   
+                   console.log(longestValidParentheses("(()()"));
+                   `,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q33: {
         title: "Q33. Search in Rotated Sorted Array",
