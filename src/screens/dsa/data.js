@@ -24306,7 +24306,67 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
       },
       q35: {
         title: "Q35. Search Insert Position",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Q35. Search Insert Position</b>
+            </Span>
+            <Span>
+              Given a sorted array of distinct integers and a target value,
+              return the index if the target is found. If not, return the index
+              where it would be if it were inserted in order. You must write an
+              algorithm with O(log n) runtime complexity.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= nums.length &lt;= 104 <br />
+              -104 &lt;= nums[i] &lt;= 104 <br />
+              nums contains distinct values sorted in ascending order. <br />
+              -104 &lt;= target &lt;= 104{" "}
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q35. Search Insert Position",
+                codes: {
+                  Javascript: {
+                    code: `
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+                    var searchInsert = function (nums, target) {
+                      return bs(nums, 0, nums.length - 1, target);
+                    };
+                    
+                    var bs = function (nums, start, end, target) {
+                      if (start > end) return end + 1;
+                      let mid = parseInt((start + end) / 2);
+                      if (nums[mid] < target) return bs(nums, mid + 1, end, target);
+                      else if (nums[mid] > target) return bs(nums, start, mid - 1, target);
+                      return mid;
+                    };
+                    
+                    console.log(searchInsert([2, 3, 4, 5, 6], 5));
+                    `,
+                    output: `3`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q36: {
         title: "Q36. Valid Sudoku",
