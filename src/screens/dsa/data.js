@@ -21,6 +21,7 @@ import LeetcodeQ21 from "assets/leetcode/q21.png";
 import LeetcodeQ24 from "assets/leetcode/q24.png";
 import LeetcodeQ25a from "assets/leetcode/q25a.png";
 import LeetcodeQ25b from "assets/leetcode/q25b.png";
+import LeetcodeQ38 from "assets/leetcode/q38.png";
 
 export const DATA = {
   ds: {
@@ -24581,8 +24582,9 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               It is guaranteed that the input board has only one solution.
             </p>
             <CodeEditor
-            options={{
-              code:`/**
+              options={{
+                title: "Q37. Sudoku Solver",
+                code: `/**
               * @param {character[][]} board
               * @return {void} Do not return anything, modify board in-place instead.
               */
@@ -24649,7 +24651,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
              solveSudoku(sudoku)
              sudoku.forEach(x => console.log(x.join(" ")))
              `,
-              output:`. . . . . . . . .
+                output: `. . . . . . . . .
               . . . . . . . . .
               . . . . . . . . .
               . . . . . . . . .
@@ -24666,15 +24668,80 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               8 9 7 2 1 4 3 6 5
               5 3 1 6 4 2 9 7 8
               6 4 2 9 7 8 5 3 1
-              9 7 8 5 3 1 6 4 2`
-            }}
+              9 7 8 5 3 1 6 4 2`,
+              }}
             />
           </>
         ),
       },
       q38: {
         title: "Q38: Count And Say",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>38. Count and Say</b>
+            </Span>
+            <Span>
+              The count-and-say sequence is a sequence of digit strings defined
+              by the recursive formula:
+              <br />
+              countAndSay(1) = "1"
+              <br />
+              countAndSay(n) is the way you would "say" the digit string from
+              countAndSay(n-1), which is then converted into a different digit
+              string. To determine how you "say" a digit string, split it into
+              the minimal number of groups so that each group is a contiguous
+              section all of the same character. Then for each group, say the
+              number of characters, then say the character. To convert the
+              saying into a digit string, replace the counts with a number and
+              concatenate every saying.
+              <br />
+              For example, the saying and conversion for digit string "3322251":
+            </Span>
+            <Img src={LeetcodeQ38} reduceH left />
+            <Span>
+              Given a positive integer n, return the nth term of the
+              count-and-say sequence.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: n = 1 <br />
+              Output: "1" <br />
+              Explanation: This is the base case.
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: n = 4 <br />
+              Output: "1211"
+              <br />
+              Explanation:
+              <br />
+              countAndSay(1) = "1"
+              <br />
+              countAndSay(2) = say "1" = one 1 = "11" <br />
+              countAndSay(3) = say "11" = two 1's = "21" <br />
+              countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211"
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>1 &lt;= n &lt;= 30</p>
+            <CodeEditor
+              options={{
+                title: "Q38: Count And Say",
+                codes: {
+                  Javscript: {
+                    code: ``,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q39: {
         title: "Q39. Combination Sum",
