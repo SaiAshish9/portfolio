@@ -24733,8 +24733,8 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <CodeEditor
               options={{
                 title: "Q38: Count And Say",
+                output: `1211`,
                 codes: {
-                  output: `1211`,
                   Javscript: {
                     code: `/**
                     * @param {number} n
@@ -24778,7 +24778,113 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
       },
       q39: {
         title: "Q39. Combination Sum",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              Given an array of distinct integers candidates and a target
+              integer target, return a list of all unique combinations of
+              candidates where the chosen numbers sum to target. You may return
+              the combinations in any order.
+              <br />
+              The same number may be chosen from candidates an unlimited number
+              of times. Two combinations are unique if the frequency of at least
+              one of the chosen numbers is different.
+              <br />
+              It is guaranteed that the number of unique combinations that sum
+              up to target is less than 150 combinations for the given input.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: candidates = [2,3,6,7], target = 7
+              <br />
+              Output: [[2,2,3],[7]]
+              <br />
+              Explanation:
+              <br />
+              2 and 3 are candidates, and 2 + 2 + 3 = 7. Note that 2 can be used
+              multiple times.
+              <br />
+              7 is a candidate, and 7 = 7.
+              <br />
+              These are the only two combinations.
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: candidates = [2,3,5], target = 8 <br />
+              Output: [[2,2,2,2],[2,3,3],[3,5]]
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: candidates = [2], target = 1 <br />
+              Output: []
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= candidates.length &lt;= 30 <br />
+              1 &lt;= candidates[i] &lt;= 200 <br />
+              All elements of candidates are distinct. <br />1 &lt;= target
+              &lt;= 500
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q39. Combination Sum",
+                codes: {
+                  Javascript: {
+                    output: `[ [ 2, 2, 3 ], [ 7 ] ]`,
+                    code: `/**
+                    * @param {number[]} candidates
+                    * @param {number} target
+                    * @return {number[][]}
+                    */
+                   
+                   const recursiveSum = (
+                       candidates,
+                       remainingSum,
+                       finalCombinations = [],
+                       currentCombination = [],
+                       startFrom = 0,
+                    ) => {
+                       if (remainingSum < 0) {
+                          return finalCombinations;
+                       }
+                       if (remainingSum === 0) {
+                          finalCombinations.push(currentCombination.slice());
+                          return finalCombinations;
+                       }
+                       for (let candidateIndex = startFrom; candidateIndex < candidates.length; candidateIndex += 1) {
+                          const currentCandidate = candidates[candidateIndex];
+                          currentCombination.push(currentCandidate);
+                          recursiveSum(
+                             candidates,
+                             remainingSum - currentCandidate,
+                             finalCombinations,
+                             currentCombination,
+                             candidateIndex,
+                          );
+                          currentCombination.pop();
+                       }
+                       return finalCombinations;
+                    }
+                   
+                    var combinationSum = function(candidates, target) {
+                    return recursiveSum(candidates, target);   
+                   };
+                    
+                    console.log(combinationSum([2, 3, 6, 7], 7));`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q40: {
         title: "Q40. Combination Sum 2",
