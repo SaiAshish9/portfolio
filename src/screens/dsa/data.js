@@ -25967,7 +25967,76 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
       },
       q53: {
         title: "Q53. Maximum Subarray",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>53. Maximum Subarray</b>
+            </Span>
+            <Span>
+              Given an integer array nums, find the contiguous subarray
+              (containing at least one number) which has the largest sum and
+              return its sum. A subarray is a contiguous part of an array.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [-2,1,-3,4,-1,2,1,-5,4] <br /> Output: 6 <br />{" "}
+              Explanation: [4,-1,2,1] has the largest sum = 6.
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums = [1] <br />
+              Output: 1 <br />
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: nums = [5,4,-1,7,8] <br />
+              Output: 23
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <Span>
+              1 &lt;= nums.length &lt;= 105 <br />
+              -104 &lt;= nums[i] &lt;= 104
+            </Span>
+            <p>
+              <b>Follow up</b>: If you have figured out the O(n) solution, try
+              coding another solution using the divide and conquer approach,
+              which is more subtle.
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q53. Maximum Subarray",
+                codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var maxSubArray = function(nums) {
+                     let currSum =0;
+                     let max = Number.MIN_SAFE_INTEGER
+                     for(let i=0;i<nums.length;i++){
+                       currSum = Math.max(currSum + nums[i],nums[i])
+                       max = Math.max(currSum,max)
+                     }
+                     return max
+                   };
+                     
+                   console.log(maxSubArray([1,2,3]))`,
+                    output: `6`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q54: {
         title: "Q54. Spiral Matrix",
