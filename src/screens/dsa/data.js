@@ -26076,6 +26076,69 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               1 &lt;= m, n &lt;= 10 <br />
               -100 &lt;= matrix[i][j] &lt;= 100
             </p>
+            <CodeEditor
+              options={{
+                title: "Q54. Spiral Matrix",
+                codes: {
+                  Javascript: {
+                    code: `/**
+                  * @param {number[][]} matrix
+                  * @return {number[]}
+                  */
+                 var spiralOrder = function(matrix) {
+                   const result = []
+                   if(matrix == null || matrix.length == 0) return result;
+                   let m = matrix.length;
+                   let n = matrix[0].length;
+                   let x=0;
+                   let y=0;
+                   while(m>0 && n>0){
+                   if(m==1){
+                       for(let i=0; i<n; i++){
+                           result.push(matrix[x][y++]);
+                       }
+                       break;
+                   }
+                   else if(n==1){
+                       for(let i=0; i<m; i++){
+                           result.push(matrix[x++][y]);
+                       }
+                       break;
+                   }
+                   //below, process a circle
+                   //top - move right
+                   for(let i=0;i<n-1;i++){
+                       result.push(matrix[x][y++]);
+                   }
+                   //right - move down
+                   for(let i=0;i<m-1;i++){
+                       result.push(matrix[x++][y]);
+                   }
+                   //bottom - move left
+                   for(let i=0;i<n-1;i++){
+                       result.push(matrix[x][y--]);
+                   }
+                   //left - move up
+                   for(let i=0;i<m-1;i++){
+                       result.push(matrix[x--][y]);
+                   }
+                   x++;
+                   y++;
+                   m=m-2;
+                   n=n-2;
+                   }
+                   return result;  
+                 };
+                 
+                 console.log(spiralOrder([[1,2,3],[4,5,6],[7,8,9]]))`,
+                    output: `[
+                  1, 2, 3, 6, 9,
+                  8, 7, 4, 5
+                ]`,
+                  },
+                },
+              }}
+            />
           </>
         ),
       },
