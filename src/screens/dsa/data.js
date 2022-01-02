@@ -23,6 +23,8 @@ import LeetcodeQ25a from "assets/leetcode/q25a.png";
 import LeetcodeQ25b from "assets/leetcode/q25b.png";
 import LeetcodeQ38 from "assets/leetcode/q38.png";
 import LeetcodeQ42 from "assets/leetcode/q42.png";
+import LeetcodeQ48 from "assets/leetcode/q48.png";
+import LeetcodeQ48b from "assets/leetcode/q48b.png";
 
 export const DATA = {
   ds: {
@@ -25530,7 +25532,54 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
       },
       q48: {
         title: "Q48. Rotate Image",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>48. Rotate Image</b>
+            </Span>
+            <Span>
+              You are given an n x n 2D matrix representing an image, rotate the
+              image by 90 degrees (clockwise). You have to rotate the image
+              in-place, which means you have to modify the input 2D matrix
+              directly. DO NOT allocate another 2D matrix and do the rotation.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={LeetcodeQ48} left />
+            <Span>
+              Input: matrix = [[1,2,3],[4,5,6],[7,8,9]] <br />
+              Output: [[7,4,1],[8,5,2],[9,6,3]]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Img src={LeetcodeQ48b} left />
+            <Span>
+              Input: matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
+              <br />
+              Output: [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              n == matrix.length == matrix[i].length <br />
+              1 &lt;= n &lt;= 20 <br />
+              -1000 &lt;= matrix[i][j] &lt;= 1000
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q48. Rotate Image",
+                codes: {
+                  Javascript: {
+                    code: ``,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q49: {
         title: "Q49. Group Anagrams",
