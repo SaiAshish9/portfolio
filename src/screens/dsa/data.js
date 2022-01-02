@@ -26209,6 +26209,9 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
           </>
         ),
       },
+      q56: {
+        title: "56. Merge Intervals",
+      },
     },
   },
 };
