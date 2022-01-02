@@ -23392,6 +23392,7 @@ linebreak()
             <CodeEditor
               options={{
                 title: "Q26. Remove Duplicates from Sorted Array.",
+                output: `5`,
                 codes: {
                   Java: {
                     code: `import java.util.*;
