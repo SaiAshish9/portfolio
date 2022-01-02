@@ -25869,7 +25869,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b>Q51. N-Queens II</b>
+              <b>Q52. N-Queens II</b>
             </Span>
             <Span>
               The n-queens puzzle is the problem of placing n queens on an n x n
@@ -26044,7 +26044,57 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
       },
       q55: {
         title: "Q55. Jump Game",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Q55. Jump Game</b>
+            </Span>
+            <Span>
+              You are given an integer array nums. You are initially positioned
+              at the array's first index, and each element in the array
+              represents your maximum jump length at that position. Return true
+              if you can reach the last index, or false otherwise.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= nums.length &lt;= 104 <br />0 &lt;= nums[i] &lt;= 105
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q55. Jump Game",
+                codes: {
+                  Javascript: {
+                    output: `false`,
+                    code: `/**
+                * @param {number[]} nums
+                * @return {boolean}
+                */
+               var canJump = function(nums) {
+                 let max = 0;
+                 for (let i=0;i<nums.length;i++) {
+                     if (i > max) {
+                         return false;
+                     }
+                     max = Math.max(max, i + nums[i]);
+                 }
+                 return true;
+               };
+               
+               console.log(canJump([3,2,1,0,4]))`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
     },
   },
