@@ -23792,7 +23792,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q29. Divide Two Integers",
                 codes: {
                   Javascript: {
-                    output:`3`,
+                    output: `3`,
                     code: `import java.io.*;
 
                     class Main {
@@ -23841,82 +23841,302 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
       },
       q30: {
         title: "Q30. Substring with Concatenation of All Words",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Q30. Substring with Concatenation of All Words</b>
+            </Span>
+            <Span>
+              You are given a string s and an array of strings words of the same
+              length. Return all starting indices of substring(s) in s that is a
+              concatenation of each word in words exactly once, in any order,
+              and without any intervening characters. You can return the answer
+              in any order.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: s = "barfoothefoobarman", words = ["foo","bar"] <br />
+              Output: [0,9] <br />
+              Explanation: Substrings starting at index 0 and 9 are "barfoo" and
+              "foobar" respectively. The output order does not matter, returning
+              [9,0] is fine too.
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: s = "wordgoodgoodgoodbestword", words =
+              ["word","good","best","word"]
+              <br />
+              Output: []
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = "barfoofoobarthefoobarman", words = ["bar","foo","the"]
+              <br />
+              Output: [6,9,12]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= s.length &lt;= 104 <br />
+              s consists of lower-case English letters. <br />
+              1 &lt;= words.length &lt;= 5000 <br />
+              1 &lt;= words[i].length &lt;= 30 <br />
+              words[i] consists of lower-case English letters.
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q30. Substring with Concatenation of All Words",
+                codes: {
+                  Javascript: {
+                    output: `[0,9]`,
+                    code: `/**
+                    * @param {string} s
+                    * @param {string[]} words
+                    * @return {number[]}
+                    */
+                   var findSubstring = function(s, words) {
+                       var sLen = s.length;
+                       var wLen = words.length;
+                       var wordLen = (words[0] || '').length;
+                     
+                       if (!sLen || !wLen || !wordLen) return [];
+                     
+                       var count = 0;
+                       var tmp = '';
+                       var map1 = {};
+                       var map2 = {};
+                       var res = [];
+                     
+                       for (var i = 0; i < wLen; i++) {
+                         map1[words[i]] = (map1[words[i]] || 0) + 1;
+                       }
+                     
+                       out: for (var j = 0; j <= sLen - (wLen * wordLen); j++) {
+                         map2 = {};
+                         count = 0;
+                         while (count < wLen) {
+                           tmp = s.substr(j + (count * wordLen), wordLen);
+                           if (map1[tmp] === undefined || map1[tmp] === map2[tmp]) continue out;
+                           map2[tmp] = (map2[tmp] || 0) + 1;
+                           count++;
+                         }
+                         res.push(j);
+                       }
+                     
+                       return res;
+                     };
+                     
+                     console.log(findSubstring("barfoothefoobarman",["foo","bar"]))`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q31: {
         title: "Q31. Next Permutation",
+        content: (
+          <>
+            <Span>
+              <b>Q31. Next Permutation</b>
+            </Span>
+            <Span>
+              Implement next permutation, which rearranges numbers into the
+              lexicographically next greater permutation of numbers.
+              <br />
+              If such an arrangement is impossible, it must rearrange it to the
+              lowest possible order (i.e., sorted in ascending order).
+              <br />
+              The replacement must be in place and use only constant extra
+              memory.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,2,3] <br />
+              Output: [1,3,2]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums = [3,2,1] <br />
+              Output: [1,2,3]
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,1,5] <br />
+              Output: [1,5,1]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= nums.length &lt;= 100 <br />0 &lt;= nums[i] &lt;= 100
+            </p>
+            <CodeEditor
+            options={{
+              title: "Q31. Next Permutation",
+              codes:{
+                Java:{
+                  code:`import java.util.Arrays;
+                  import java.util.*;
+                  import java.util.stream.Collectors;
+                  
+                  class Solution{
+                  
+                    public void nextPermutation(int nums[]){
+                      int paNumIndex = -1;
+                          for (int i = nums.length - 1; i >0; i --){
+                              if (nums[i-1] < nums[i]){ 
+                                  paNumIndex = i-1; 
+                                  break; 
+                              } 
+                          } 
+                          if (paNumIndex != -1){ 
+                              int chNumIndex = -1;
+                              for (int i = nums.length - 1; i > paNumIndex; i --){
+                                  if (nums[i] > nums[paNumIndex]){
+                                      chNumIndex = i;
+                                      break;
+                                  }
+                              }
+                              int tmp = nums[paNumIndex];
+                              nums[paNumIndex] = nums[chNumIndex];
+                              nums[chNumIndex] = tmp;
+                          }
+                          int start = paNumIndex + 1, end = nums.length -1;
+                          while (start < end) {
+                              int tmp = nums[start];
+                              nums[start] = nums[end];
+                              nums[end] = tmp;
+                              start ++;
+                              end --;
+                          }
+                      List<Integer> x = Arrays.stream(nums).boxed().collect(Collectors.toList());
+                      x.stream().forEach(System.out::print);
+                    }
+                  
+                    public static void main(String ...st){
+                      Solution s = new Solution();
+                      s.nextPermutation(new int[]{1,2,3});
+                    }
+                    
+                  }`,
+                  output:`[1,3,2]`
+                }
+              }
+            }}
+            />
+          </>
+        ),
       },
       q32: {
         title: "Q32. Longest Valid Parentheses",
+        content: <></>,
       },
       q33: {
         title: "Q33. Search in Rotated Sorted Array",
+        content: <></>,
       },
       q34: {
         title: "Q34. Find First and Last Position of Element in Sorted Array",
+        content: <></>,
       },
       q35: {
         title: "Q35. Search Insert Position",
+        content: <></>,
       },
       q36: {
         title: "Q36. Valid Sudoku",
+        content: <></>,
       },
       q37: {
         title: "Q37. Sudoku Solver",
+        content: <></>,
       },
       q38: {
         title: "Q38: Count And Say",
+        content: <></>,
       },
       q39: {
         title: "Q39. Combination Sum",
+        content: <></>,
       },
       q40: {
         title: "Q40. Combination Sum 2",
+        content: <></>,
       },
       q41: {
         title: "Q41. Missing Positive",
+        content: <></>,
       },
       q42: {
         title: "Q42. Trapping Rain Water",
+        content: <></>,
       },
       q43: {
         title: "Q43. Multiply Strings",
+        content: <></>,
       },
       q44: {
         title: "Q44. Wildcard Matching",
+        content: <></>,
       },
       q45: {
         title: "Q45. Jump Game 2",
+        content: <></>,
       },
       q46: {
         title: "Q46. Permutations",
+        content: <></>,
       },
       q47: {
         title: "Q47. Permutations 2",
+        content: <></>,
       },
       q48: {
         title: "Q48. Rotate Image",
+        content: <></>,
       },
       q49: {
         title: "Q49. Group Anagrams",
+        content: <></>,
       },
       q50: {
         title: "Q50. Pow(x,n)",
+        content: <></>,
       },
       q51: {
         title: "Q51. N-Queens",
+        content: <></>,
       },
       q52: {
         title: "Q52. N-Queen’s 2",
+        content: <></>,
       },
       q53: {
         title: "Q53. Maximum Subarray",
+        content: <></>,
       },
       q54: {
         title: "Q54. Spiral Matrix",
+        content: <></>,
       },
       q55: {
         title: "Q55. Jump Game",
+        content: <></>,
       },
     },
   },
