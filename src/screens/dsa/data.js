@@ -24528,7 +24528,149 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
       },
       q37: {
         title: "Q37. Sudoku Solver",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Q37. Sudoku Solver</b>
+            </Span>
+            <Span>
+              Write a program to solve a Sudoku puzzle by filling the empty
+              cells. A sudoku solution must satisfy all of the following rules:
+            </Span>
+            <Span>
+              1. Each of the digits 1-9 must occur exactly once in each row.{" "}
+              <br />
+              2. Each of the digits 1-9 must occur exactly once in each column.{" "}
+              <br />
+              3. Each of the digits 1-9 must occur exactly once in each of the 9
+              3x3 sub-boxes of the grid.
+            </Span>
+            <Span>The '.' character indicates empty cells.</Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: board = <br />
+              [["5","3",".",".","7",".",".",".","."], <br />
+              ["6",".",".","1","9","5",".",".","."], <br />
+              [".","9","8",".",".",".",".","6","."], <br />
+              ["8",".",".",".","6",".",".",".","3"], <br />
+              ["4",".",".","8",".","3",".",".","1"], <br />
+              ["7",".",".",".","2",".",".",".","6"], <br />
+              [".","6",".",".",".",".","2","8","."], <br />
+              [".",".",".","4","1","9",".",".","5"], <br />
+              [".",".",".",".","8",".",".","7","9"]]
+              <br />
+              Output: [["5","3","4","6","7","8","9","1","2"], <br />
+              ["6","7","2","1","9","5","3","4","8"], <br />
+              ["1","9","8","3","4","2","5","6","7"], <br />
+              ["8","5","9","7","6","1","4","2","3"], <br />
+              ["4","2","6","8","5","3","7","9","1"], <br />
+              ["7","1","3","9","2","4","8","5","6"], <br />
+              ["9","6","1","5","3","7","2","8","4"], <br />
+              ["2","8","7","4","1","9","6","3","5"], <br />
+              ["3","4","5","2","8","6","1","7","9"]]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              board.length == 9 <br />
+              board[i].length == 9 <br />
+              board[i][j] is a digit or '.'. <br />
+              It is guaranteed that the input board has only one solution.
+            </p>
+            <CodeEditor
+            options={{
+              code:`/**
+              * @param {character[][]} board
+              * @return {void} Do not return anything, modify board in-place instead.
+              */
+             function isSafe(grid, row, col, num) {
+                 // check horizontally
+                 for (let j = 0; j < n; j++)
+                     if (grid[row][j] == num)
+                         return false;
+             
+                 // check vertically
+                 for (let i = 0; i < n; i++)
+                     if (grid[i][col] == num)
+                         return false;
+             
+             
+                 let startRow = row - row % 3,
+                     startCol = col - col % 3;
+             
+                 // check within the section (3 * 3) (n = 3)
+                 for (let i = 0; i < 3; i++)
+                     for (let j = 0; j < 3; j++)
+                         if (grid[i + startRow][j + startCol] == num)
+                             return false;
+             
+                 return true;
+             }
+             
+             
+             function solve(grid, row, col, n) {
+                 // avoid further tracking if all cells are explored 8 9
+                 if (row == n - 1 && col == n)
+                     return true;
+             
+                 // move to next row
+                 if (col == n) {
+                     row++;
+                     col = 0;
+                 }
+             
+                 // check for next element horizontally if element is already present 
+                 if (grid[row][col] != ".")
+                     return solve(grid, row, col + 1, n);
+             
+                 // if present value is 0, replace it with values from 0-9
+                 for (let num = 1; num < n + 1; num++) {
+                     if (isSafe(grid, row, col, num)) {
+                         grid[row][col] = "" + num;
+                         // check for next column
+                         if (solve(grid, row, col + 1, n))
+                             return true;
+                     }
+                     grid[row][col] = ".";
+                 }
+                 return false;
+             }
+             
+             var solveSudoku = function(board){
+               solve(board, 0, 0, n)
+             }
+             
+             let n = 9;
+             const sudoku = Array.from(Array(n), () => Array(n).fill("."))
+             sudoku.forEach(x => console.log(x.join(" ")))
+             solveSudoku(sudoku)
+             sudoku.forEach(x => console.log(x.join(" ")))
+             `,
+              output:`. . . . . . . . .
+              . . . . . . . . .
+              . . . . . . . . .
+              . . . . . . . . .
+              . . . . . . . . .
+              . . . . . . . . .
+              . . . . . . . . .
+              . . . . . . . . .
+              . . . . . . . . .
+              1 2 3 4 5 6 7 8 9
+              4 5 6 7 8 9 1 2 3
+              7 8 9 1 2 3 4 5 6
+              2 1 4 3 6 5 8 9 7
+              3 6 5 8 9 7 2 1 4
+              8 9 7 2 1 4 3 6 5
+              5 3 1 6 4 2 9 7 8
+              6 4 2 9 7 8 5 3 1
+              9 7 8 5 3 1 6 4 2`
+            }}
+            />
+          </>
+        ),
       },
       q38: {
         title: "Q38: Count And Say",
