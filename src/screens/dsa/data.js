@@ -23647,7 +23647,56 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
       },
       q28: {
         title: "Q28. Implement strStr()",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Q28. Implement strStr()</b>
+            </Span>
+            <Span>
+              Implement strStr().
+              <br />
+              Return the index of the first occurrence of needle in haystack, or
+              -1 if needle is not part of haystack.
+            </Span>
+            <Span>
+              <b>Clarification:</b>
+            </Span>
+            <Span>
+              What should we return when needle is an empty string? This is a
+              great question to ask during an interview. For the purpose of this
+              problem, we will return 0 when needle is an empty string. This is
+              consistent to C's strstr() and Java's indexOf().
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: haystack = "hello", needle = "ll" <br />
+              Output: 2
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: haystack = "aaaaa", needle = "bba" <br />
+              Output: -1
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: haystack = "", needle = "" <br />
+              Output: 0
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <Span>
+              0 &lt;= haystack.length, needle.length &lt;= 5 * 104 <br />
+              haystack and needle consist of only lower-case English characters.
+            </Span>
+          </>
+        ),
       },
       q29: {
         title: "Q29. Divide Two Integers",
