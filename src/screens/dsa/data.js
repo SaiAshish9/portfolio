@@ -23482,9 +23482,160 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
       },
       q27: {
         title: "Q27. Remove Element",
+        content: (
+          <>
+            <Span>
+              <b>Q27. Remove Element</b>
+            </Span>
+            <Span>
+              Given an integer array nums and an integer val, remove all
+              occurrences of val in nums in-place. The relative order of the
+              elements may be changed.
+              <br />
+              Since it is impossible to change the length of the array in some
+              languages, you must instead have the result be placed in the first
+              part of the array nums. More formally, if there are k elements
+              after removing the duplicates, then the first k elements of nums
+              should hold the final result. It does not matter what you leave
+              beyond the first k elements.
+              <br />
+              Return k after placing the final result in the first k slots of
+              nums.
+              <br />
+              Do not allocate extra space for another array. You must do this by
+              modifying the input array in-place with O(1) extra memory.
+            </Span>
+            <Span>
+              <b>Custom Judge:</b>
+            </Span>
+            <Span>
+              The judge will test your solution with the following code: int[]
+              nums = [...]; // Input array int val = ...; // Value to remove
+              int[] expectedNums = [...]; // The expected answer with correct
+              length. // It is sorted with no values equaling val. int k =
+              removeElement(nums, val); // Calls your implementation assert k ==
+              expectedNums.length; sort(nums, 0, k); // Sort the first k
+              elements of nums <br />
+              for (int i = 0; i &lt; actualLength; i++) {"{"} <br />
+              assert nums[i] == expectedNums[i]; <br />
+              {"}"} <br />
+              If all assertions pass, then your solution will be accepted.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [3,2,2,3], val = 3 <br />
+              Output: 2, nums = [2,2,_,_] <br />
+              Explanation: Your function should return k = 2, with the first two
+              elements of nums being 2. It does not matter what you leave beyond
+              the returned k (hence they are underscores).
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums = [0,1,2,2,3,0,4,2], val = 2 <br />
+              Output: 5, nums = [0,1,4,0,3,_,_,_] <br />
+              Explanation: Your function should return k = 5, with the first
+              five elements of nums containing 0, 0, 1, 3, and 4. Note that the
+              five elements can be returned in any order. <br />
+              It does not matter what you leave beyond the returned k (hence
+              they are underscores).
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              0 &lt;= nums.length &lt;= 100 <br />
+              0 &lt;= nums[i] &lt;= 50 <br />0 &lt;= val &lt;= 100
+            </p>
+            <CodeEditor
+              options={{
+                codes: {
+                  Java: {
+                    code: `class Solution {
+                      public int removeElement(int[] nums, int val) {
+                          int start = 0, end = nums.length -1;
+                          while (start <= end) {
+                              if (nums[start] != val) {
+                                  start ++;
+                                  continue;
+                              }
+                              if (nums[end] == val) {
+                                  end --;
+                                  continue;
+                              }
+                              nums[start] = nums[end];
+                              start ++;
+                              end --;
+                          }
+                          return start;
+                      }
+                    }`,
+                  },
+                  "C++": {
+                    code: `#include <iostream>
+                  #include <bits/stdc++.h>
+                  
+                  using namespace std;
+                  
+                  int removeElement(int nums[], int val) {
+                      int start = 0;
+                      int end = *(&nums+1)-nums-2;
+                      while (start <= end) {
+                          if (nums[start] != val) {
+                              start ++;
+                              continue;
+                          }
+                          if (nums[end] == val) {
+                              end --;
+                              continue;
+                          }
+                          nums[start] = nums[end];
+                          start ++;
+                          end --;
+                        }
+                        return start;
+                  }
+                  
+                  int main(){
+                    int r[]={0,0,1,2,2,3,4};
+                    cout << removeElement(r,0) << endl;
+                    return 0;
+                  }`,
+                  },
+                  Kotlin: {
+                    code: `import java.util.*
+                    import java.util.stream.Collectors
+                    
+                    internal object Main {
+                        fun removeElement(nums: IntArray, 'val': Int): Int {
+                            var nums = nums
+                            var arr = Arrays.stream(nums).boxed().collect(Collectors.toList())
+                            arr = arr.stream().filter { x: Int -> x != 'val' }
+                                .collect(Collectors.toList())
+                            // Integer[] x = arr.toArray();
+                            nums = arr.stream().mapToInt { i: Int? -> i!! }.toArray()
+                            println(nums[0].toString() + " " + nums[1])
+                            return arr.size
+                        }
+                    
+                        @JvmStatic
+                        fun main(s: Array<String>) {
+                            println(removeElement(intArrayOf(3, 2, 2, 3), 3))
+                        }
+                    }`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q28: {
         title: "Q28. Implement strStr()",
+        content: <></>,
       },
       q29: {
         title: "Q29. Divide Two Integers",
