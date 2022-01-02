@@ -24966,7 +24966,79 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
       },
       q41: {
         title: "Q41. Missing Positive",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Q41. Missing Positive</b>
+            </Span>
+            <Span>
+              Given an unsorted integer array nums, return the smallest missing
+              positive integer. You must implement an algorithm that runs in
+              O(n) time and uses constant extra space.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,2,0] <br />
+              Output: 3
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums = [3,4,-1,1] <br />
+              Output: 2
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: nums = [7,8,9,11,12] <br />
+              Output: 1
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= nums.length &lt;= 5 * 105 <br />
+              -231 &lt;= nums[i] &lt;= 231 - 1
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q41. Missing Positive",
+                codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   
+                   var firstMissingPositive = function(nums){
+                       let n = nums.length
+                       let present = []
+                       for(let i=0;i<n;i++){
+                        if(nums[i]>0&&nums[i]<=n){
+                          present[nums[i]] = true
+                        }
+                       }
+                       for(let i=1;i<n+1;i++){
+                        if(!present[i]){
+                          return i
+                        }
+                       }
+                       return n+1
+                    }
+                    
+                   const nums = [0,-1,3,1]
+                   console.log(firstMissingPositive(nums))`,
+                    output: `3`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q42: {
         title: "Q42. Trapping Rain Water",
