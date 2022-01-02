@@ -22544,6 +22544,10 @@ print(q)
                     head.next.next.next = new ListNode(4)
                     console.log(swapPairs(head))                    
                     `,
+                    output: `ListNode {
+                      val: 2,
+                      next: ListNode { val: 1, next: ListNode { val: 4, next: [ListNode] } }
+                    }`,
                   },
                   Java: {
                     code: `import java.util.*;
