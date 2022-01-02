@@ -25046,7 +25046,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b>42. Trapping Rain Water</b>
+              <b>Q42. Trapping Rain Water</b>
             </Span>
             <Span>
               Given n non-negative integers representing an elevation map where
@@ -25132,8 +25132,86 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         ),
       },
       q43: {
-        title: "Q44. Multiply Strings",
-        content: <></>,
+        title: "Q43. Multiply Strings",
+        content: (
+          <>
+            <Span>
+              <b>Q43. Multiply Strings</b>
+            </Span>
+            <Span>
+              Given two non-negative integers num1 and num2 represented as
+              strings, return the product of num1 and num2, also represented as
+              a string. Note: You must not use any built-in BigInteger library
+              or convert the inputs to integer directly.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: num1 = "2", num2 = "3" <br />
+              Output: "6"
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: num1 = "123", num2 = "456" <br />
+              Output: "56088"
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= num1.length, num2.length &lt;= 200 <br />
+              num1 and num2 consist of digits only.
+              <br />
+              Both num1 and num2 do not contain any leading zero, except the
+              number 0 itself.
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q43. Multiply Strings",
+                codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {string} num1
+                    * @param {string} num2
+                    * @return {string}
+                    */
+                   var multiply = function(num1, num2) {
+                       let n1 = num1.split("").reverse().join("");
+                       let n2 = num2.split("").reverse().join("");
+                       var d = Array(n1.length + n2.length).fill(0);
+                       for (let i = 0; i < n1.length; i++) {
+                         for (let j = 0; j < n2.length; j++) {
+                           d[i + j] += (n1[i] - "0") * (n2[j] - "0");
+                         }
+                       }
+                       let result = "";
+                       for (let i = 0; i < d.length; i++) {
+                         let digit = d[i] % 10;
+                         let carry = parseInt(d[i] / 10);
+                         if (i + 1 < d.length) {
+                           d[i + 1] += carry;
+                         }
+                         result = digit + "" + result;
+                       }
+                       let index = 0;
+                       while (index < result.length - 1 && result[index] == "0") {
+                         index++;
+                       }
+                       return result.substr(index);
+                   };
+                   
+                   console.log(multiply("7", "8"));
+                   `,
+                    output: `56`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q44: {
         title: "Q44. Wildcard Matching",
