@@ -24215,7 +24215,39 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
       },
       q34: {
         title: "Q34. Find First and Last Position of Element in Sorted Array",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>
+                Q34. Find First and Last Position of Element in Sorted Array
+              </b>
+            </Span>
+            <Span>
+              Given an array of integers nums sorted in non-decreasing order,
+              find the starting and ending position of a given target value. If
+              target is not found in the array, return [-1, -1]. You must write
+              an algorithm with O(log n) runtime complexity.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              0 &lt;= nums.length &lt;= 105 <br />
+              -109 &lt;= nums[i] &lt;= 109 <br />
+              nums is a non-decreasing array. <br />
+              -109 &lt;= target &lt;= 109
+            </p>
+          </>
+        ),
       },
       q35: {
         title: "Q35. Search Insert Position",
