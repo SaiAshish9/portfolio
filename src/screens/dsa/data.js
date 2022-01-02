@@ -24888,7 +24888,81 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
       },
       q40: {
         title: "Q40. Combination Sum 2",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Q40. Combination Sum 2</b>
+            </Span>
+            <Span>
+              Given a collection of candidate numbers (candidates) and a target
+              number (target), find all unique combinations in candidates where
+              the candidate numbers sum to target. Each number in candidates may
+              only be used once in the combination. Note: The solution set must
+              not contain duplicate combinations.
+            </Span>
+            <Span>
+              Note: The solution set must not contain duplicate combinations.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= candidates.length &lt;= 100 <br />
+              1 &lt;= candidates[i] &lt;= 50 <br />1 &lt;= target &lt;= 30
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q40. Combination Sum 2",
+                output: `[[1, 1, 6], [1, 2, 5], [1, 7], [2, 6]]`,
+                codes: {
+                  Java: {
+                    code: `import java.util.*;
+
+              class Solution {
+                  public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+                      List<List<Integer>> result = new ArrayList<List<Integer>>();
+                      if(candidates == null || candidates.length == 0) return result;
+                      ArrayList<Integer> current = new ArrayList<Integer>();
+                      Arrays.sort(candidates);
+                      combinationSum(candidates, target, 0, current, result);
+                      return result;
+                  }
+                  public void combinationSum(int[] candidates, int target, int j, ArrayList<Integer> curr, List<List<Integer>> result){
+                      if(target == 0){
+                          ArrayList<Integer> temp = new ArrayList<Integer>(curr);
+                          result.add(temp);
+                          return;
+                      }
+                      for(int i=j; i<candidates.length; i++){
+                          if (target < candidates[i]){
+                              return;
+                          }
+                          if (i == j || candidates[i] != candidates[i-1]){
+                              curr.add(candidates[i]);
+                              combinationSum(candidates, target - candidates[i], i + 1, curr, result);
+                              curr.remove(curr.size()-1);
+                          }
+                      }
+                  }
+              
+                  public static void Solution(String ...st){
+                       Solution m = new Solution();
+                       System.out.println(m.combinationSum2(new int[]{10,1,2,7,6,1,5},8));
+                  }
+              
+              }`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
       },
       q41: {
         title: "Q41. Missing Positive",
