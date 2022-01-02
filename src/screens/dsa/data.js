@@ -24734,8 +24734,41 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               options={{
                 title: "Q38: Count And Say",
                 codes: {
+                  output: `1211`,
                   Javscript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {string}
+                    */
+                   var countAndSay = function(n){
+                    let result=""
+                    for(let i=0;i<n;i++){
+                      if(i==0){
+                       result = "1"
+                       continue
+                      }
+                      result = count(result)
+                    }
+                    return result
+                   }
+                   function count(s){
+                     let result=""
+                     let curr = s[0]
+                     let count = 1
+                     for(let i=1;i<s.length;i++){
+                       if(s[i]!=curr){
+                         result += count + "" + curr
+                         curr = s[i]
+                         count = 1
+                         continue
+                       }
+                       count+=1
+                     }
+                     result += count + "" + curr
+                     return result
+                   }
+                   
+                   console.log(countAndSay(4))`,
                   },
                 },
               }}
