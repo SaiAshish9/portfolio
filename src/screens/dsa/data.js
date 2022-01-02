@@ -25573,7 +25573,34 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q48. Rotate Image",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    output: `[ [ 7, 4, 1 ], [ 8, 5, 2 ], [ 9, 6, 3 ] ]`,
+                    code: `/**
+                    * @param {number[][]} matrix
+                    * @return {void} Do not return anything, modify matrix in-place instead.
+                    */
+                   var rotate = function(matrix) {
+                     const n = matrix.length;
+                     for (let i = 0; i < parseInt(n / 2); i++) {
+                       for (let j = 0; j < Math.ceil(n / 2); j++) {
+                         let temp = matrix[i][j];
+                         matrix[i][j] = matrix[n - 1 - j][i];
+                         matrix[n - 1 - j][i] = matrix[n - 1 - i][n - 1 - j];
+                         matrix[n - 1 - i][n - 1 - j] = matrix[j][n - 1 - i];
+                         matrix[j][n - 1 - i] = temp;
+                       }
+                     }
+                   };
+                   
+                   const arr = [
+                     [1, 2, 3],
+                     [4, 5, 6],
+                     [7, 8, 9],
+                   ];
+                   
+                   rotate(arr);
+                   console.log(arr);
+                   ;
+                   `,
                   },
                 },
               }}
