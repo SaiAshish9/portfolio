@@ -70,6 +70,16 @@ import AppTown6 from "assets/interview/appTown6.png";
 import AppTown7 from "assets/interview/appTown7.png";
 import AppTown8 from "assets/interview/appTown8.png";
 import AppTown9 from "assets/interview/appTown9.png";
+import Nex2Me1 from "assets/interview/nex2me1.png";
+import Nex2Me2 from "assets/interview/nex2me2.png";
+import Nex2Me3 from "assets/interview/nex2me3.png";
+import Nex2Me4 from "assets/interview/nex2me4.png";
+import Nex2Me5 from "assets/interview/nex2me5.png";
+import Nex2Me6 from "assets/interview/nex2me6.png";
+import Nex2Me7 from "assets/interview/nex2me7.png";
+import Nex2Me8 from "assets/interview/nex2me8.png";
+import Nex2Me9 from "assets/interview/nex2me9.png";
+import Nex2Me10 from "assets/interview/nex2me10.png";
 
 export const DATA = {
   ds: {
@@ -17283,6 +17293,60 @@ if __name__ == '__main__':
       },
       nex2Me: {
         title: "Nex2Me",
+        content: (
+          <>
+            <Span>
+              <b>Nex2Me Internship Interview Experience ( 3rd Semester ) :</b>
+            </Span>
+            <Span>
+              I applied for a full stack java ( MongoDB + Express + React +
+              Node.js + AWS + Docker ) internship via internshala. I showed them
+              my amazon clone and I was given a task. They're impressed by it .
+              Then,someone from NIT Raipur took my interview. After the
+              interview, I was invited to be the interviewer of two candidates
+              much older than me because of my knowledge.
+            </Span>
+            <Span>
+              My work can be found at the experience section of the home section
+              by simply clicking at the desired logo.
+            </Span>
+            <Span>
+              <b>Screenshots:</b>
+            </Span>
+            <Span>
+              <b>
+                During the interview, I was asked one problem solving question:
+              </b>
+            </Span>
+            <p>
+              <b>
+                Q. Return length of longest subarray of 0s from an array which
+                consists of 0s and 1s only
+              </b>
+            </p>
+            <CodeEditor
+              options={{
+                title: "nex2me",
+                codes: {
+                  Java: {
+                    code: ``,
+                    output: ``,
+                  },
+                },
+              }}
+            />
+            <Img src={Nex2Me1} left />
+            <Img src={Nex2Me2} left />
+            <Img src={Nex2Me3} left />
+            <Img src={Nex2Me4} left />
+            <Img src={Nex2Me5} left />
+            <Img src={Nex2Me6} left />
+            <Img src={Nex2Me7} left />
+            <Img src={Nex2Me8} left />
+            <Img src={Nex2Me9} left />
+            <Img src={Nex2Me10} left />
+          </>
+        ),
       },
       pracify: {
         title: "Pracify ( Mauka )",
