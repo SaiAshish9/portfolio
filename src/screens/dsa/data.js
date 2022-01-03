@@ -25326,7 +25326,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <b>Example 1:</b>
             </Span>
             <Span>
+              Input: nums = [2,3,1,1,4] <br />
+              Output: 2 <br />
+              Explanation: The minimum number of jumps to reach the last index
+              is 2. Jump 1 step from index 0 to 1, then 3 steps to the last
+              index.
+            </Span>
+            <Span>
               <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums = [2,3,0,1,4] <br />
+              Output: 2
             </Span>
             <Span>
               <b>Constraints:</b>
