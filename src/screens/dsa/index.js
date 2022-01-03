@@ -38,7 +38,10 @@ const SearchInput = React.forwardRef(
         resultantEntriesData.length > 0
       ) {
         const index = parseInt(params?.index);
-        if (index > 0) inputRef.current.value = `Q${index + 2}`;
+        if (index > 0 && index < resultantEntriesData.length - 1)
+          inputRef.current.value = `Q${index + 2}`;
+        else if (index === resultantEntriesData.length - 1)
+          inputRef.current.value = `Q${index}`;
         else inputRef.current.value = `Q${index + 1}`;
         handleChange();
       }
