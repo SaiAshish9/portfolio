@@ -145,7 +145,7 @@ export const BtnContainer = memo(
       css`
         overflow-y: scroll;
         @media only screen and (max-width: ${BREAKPOINTS.xs}) {
-          max-height: 45vh;
+          max-height: calc(45vh);
         } ;
       `}
       ${start === 1 &&

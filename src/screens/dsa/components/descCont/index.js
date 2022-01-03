@@ -28,9 +28,9 @@ const DescCont = ({ data }) => {
           Back
         </Button>
       </BtnContainer>
-      <BtnContainer>
-        {data.types?.length > 0 &&
-          data.types
+      {data.types?.length > 0 && (
+        <BtnContainer>
+          {data.types
             .map((x) => x["title"])
             .map((i, k) => (
               <Button
@@ -54,7 +54,9 @@ const DescCont = ({ data }) => {
                 {i}
               </Button>
             ))}
-      </BtnContainer>
+        </BtnContainer>
+      )}
+
       <BtnContainer>
         {["Hindi", "English"].map((i, key) => (
           <Button key={key}>
