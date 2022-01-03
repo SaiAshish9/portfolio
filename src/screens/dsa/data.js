@@ -24162,10 +24162,23 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <b>Example 1:</b>
             </Span>
             <Span>
+              Input: nums = [4,5,6,7,0,1,2], <br />
+              target = 0 <br />
+              Output: 4
+            </Span>
+            <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: nums = [4,5,6,7,0,1,2], target = 3 <br />
+              Output: -1
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: nums = [1], target = 0 <br />
+              Output: -1
             </Span>
             <Span>
               <b>Constraints:</b>
@@ -24240,10 +24253,25 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <b>Example 1:</b>
             </Span>
             <Span>
+              Input: nums = [5,7,7,8,8,10], <br />
+              target = 8 <br />
+              Output: [3,4]
+            </Span>
+            <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: nums = [5,7,7,8,8,10], <br />
+              target = 6 <br />
+              Output: [-1,-1]
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: nums = [], <br />
+              target = 0 <br />
+              Output: [-1,-1]
             </Span>
             <Span>
               <b>Constraints:</b>
@@ -24329,10 +24357,23 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <b>Example 1:</b>
             </Span>
             <Span>
+              Input: nums = [1,3,5,6], <br />
+              target = 5 <br />
+              Output: 2
+            </Span>
+            <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: nums = [1,3,5,6], <br /> target = 2 <br />
+              Output: 1
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,3,5,6], <br /> target = 7 <br />
+              Output: 4
             </Span>
             <Span>
               <b>Constraints:</b>
