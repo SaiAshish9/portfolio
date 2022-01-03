@@ -8,7 +8,6 @@ const { veryDarkGray, white, blue, darkGrey, lightBluishGrey, orange, red } =
 
 export const Container = memo(styled.div`
   padding-top: 4.5rem;
-  margin-bottom: -2rem;
   ::-webkit-scrollbar {
     display: none;
   }
