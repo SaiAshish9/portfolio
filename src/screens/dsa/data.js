@@ -16953,6 +16953,7 @@ if __name__ == '__main__':
     types: {
       amazon: {
         title: "Amazon",
+        content: <></>,
       },
       paytm: {
         title: "Paytm",
@@ -16988,8 +16989,9 @@ if __name__ == '__main__':
     content: (
       <>
         <Span>
-          Your resume, projects and quality of your work matters a lot in order
-          to get the call for round 1 from hr.
+          Your resume, projects, knowledge and quality of work matters a lot in order to
+          get the call for round 1 from hr. Be confident, try to interact with
+          interviewers friendly. Just don't lose your confidence in between.
         </Span>
         <Span>
           I insist you to go through data structures and algorithms sections
@@ -17001,30 +17003,52 @@ if __name__ == '__main__':
         </Span>
         <Span>Atmost there will be four rounds:</Span>
         <Span>
-          <b>Round 1:</b>
+          <b>Round 1 ( Important ):</b>
         </Span>
         <Span>
           This round is mainly based on problem solving skills of the
-          individual. There can be a online test of duration 30min - 1hr or
-          online meeting with interviewer at zoom or google meet for the
-          duration of 45min to 1hr 30 min. In case of online meeting rounds,
-          you'll be asked to pick your slot. At max 4 dsa ( Data Structures And
-          Algorithms ) questions will be asked.
+          individual. There can be an online test of duration 30min - 1hr or
+          online meeting with interviewers at zoom or google meet for the
+          duration of 45min to 2hrs. In case of online meeting rounds, you'll be
+          asked to pick your slot. At max 4 dsa ( Data Structures And Algorithms
+          ) questions will be asked. At max. 2 senior employees will come in
+          order to take your interview. They may or may not ask questions based
+          on development skills. You can ask for feedback from the interviewers
+          at the end.
         </Span>
         <Span>
-          <b>Round 2:</b>
+          You'll be asked to write the code in a paper or in an online editor
+          while sharing your screen. It's better to switch on your camera for a
+          nice impression otherwise it's upon the interviewer. One puzzle can
+          also be asked with the help of canvas tool.
         </Span>
         <Span>
-          <b>Round 3:</b>
+          <b>Round 2 ( Very Important ) :</b>
+        </Span>
+        <Span>
+          This will be based on your development skills and you might need to
+          explain code of your previous projects. Interview will ask a few
+          tricky questions based on development skills. They might even give a
+          few tasks to implement. Duration will be between 45 min and 2 hours.
+          You can ask the feedback from interviewers at the end.
+        </Span>
+        <Span>
+          <b>Round 3 ( Congrats 🥳 you're selected ) :</b>
+        </Span>
+        <Span>
+          This round may or may not happen. This will be similar to the second
+          round. This round may be held with your manager.
         </Span>
         <Span>
           <b>Round 4:</b>
         </Span>
         <Span>
-          the second round will be based on your development skills ,
-          experience, projects and code quality. Last two will be based upon hr
-          and they will be similar to the second round.
+          This will be held with your hiring manager. You need to discuss the
+          stipend or package with your hr. And you'll be provided with an
+          instruction guide. In some cases, Hr will try to provide as less
+          stipend as possible so beware of that.
         </Span>
+        <Span>All the best ❤️. You'll make it 🤝.</Span>
       </>
     ),
   },
