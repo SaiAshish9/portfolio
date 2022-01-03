@@ -17323,11 +17323,14 @@ if __name__ == '__main__':
         title: "App Town",
         content: (
           <>
-            <Span>App Town Technologies In-office Interview Experience:</Span>
             <Span>
-              I applied for react and react native internship via internshala. I
-              was invited to the office.And I was given a task to make
-              calculator with provided UI. And picked on the basis of my resume.
+              <b>App Town Technologies In-office Interview Experience:</b>
+            </Span>
+            <Span>
+              I applied for a react and react native internship via internshala.
+              I was invited to the office.And I was given a task to make a
+              calculator with a provided UI. And picked on the basis of my
+              resume.
             </Span>
             <Span>I worked on 5 react and react native projects.</Span>
             <Span>
