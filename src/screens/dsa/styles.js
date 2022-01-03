@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styled, { css } from "styled-components";
 import { Styles, Theme, Colors, BREAKPOINTS } from "constants/index";
 import { BiSearch } from "react-icons/bi";
@@ -5,14 +6,15 @@ import { BiSearch } from "react-icons/bi";
 const { veryDarkGray, white, blue, darkGrey, lightBluishGrey, orange, red } =
   Colors;
 
-export const Container = styled.div`
+export const Container = memo(styled.div`
   padding-top: 4.5rem;
+  margin-bottom: -2rem;
   ::-webkit-scrollbar {
     display: none;
   }
-`;
+`);
 
-export const Content = styled.div`
+export const Content = memo(styled.div`
   min-height: calc(100vh - 9.5rem);
   padding: 0 2rem;
   padding-top: 1rem;
@@ -20,9 +22,9 @@ export const Content = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
-`;
+`);
 
-export const Button = styled.div`
+export const Button = memo(styled.div`
   border-radius: 0.36rem;
   text-align: center;
   padding: 0.2rem 0.4rem;
@@ -128,37 +130,45 @@ export const Button = styled.div`
             : white};
       }
     `};
-`;
+`);
 
-export const BtnContainer = styled.div(
-  ({ scroll, start }) => css`
-    ${Styles.RCC};
-    flex-wrap: wrap;
-    margin: 1.8rem auto 0;
-    padding: 0px;
-    max-height: 41vh;
-    ${scroll &&
-    css`
-      overflow-y: scroll;
-      @media only screen and (max-width: ${BREAKPOINTS.xs}) {
-        max-height: 21vh;
-      } ;
-    `}
-    ${start === 1 &&
-    css`
-      justify-content: flex-start;
-    `}
-  `
+export const BtnContainer = memo(
+  styled.div(
+    ({ scroll, start }) => css`
+      ${Styles.RCC};
+      flex-wrap: wrap;
+      margin: 1.8rem auto 0;
+      padding: 0px;
+      position: relative;
+      max-height: calc(38.8vh + 2rem);
+      ${scroll &&
+      css`
+        overflow-y: scroll;
+        @media only screen and (max-width: ${BREAKPOINTS.xs}) {
+          max-height: 45vh;
+        } ;
+      `}
+      ${start === 1 &&
+      css`
+        justify-content: flex-start;
+      `}
+    `
+  )
 );
 
-export const SearchContainer = styled.div`
-  ${Styles.RCC};
+export const SearchContainer = memo(styled.div`
   position: relative;
-  margin: 1.5rem auto;
-  width: fit-content;
-`;
+  ${Styles.RCC};
+`);
 
-export const Search = styled.input`
+export const SearchParentContainer = memo(styled.div`
+  margin: 1.5rem auto 0;
+  ${Styles.RCC};
+  width: 100%;
+  z-index: 2;
+`);
+
+export const Search = memo(styled.input`
   ${Styles.HideBorder};
   background: ${({ theme: { current } }) =>
     current === Theme.dark
@@ -202,9 +212,9 @@ export const Search = styled.input`
       `};
   }
   padding-left: 2.1rem;
-`;
+`);
 
-export const StyledSearchIcon = styled(BiSearch)`
+export const StyledSearchIcon = memo(styled(BiSearch)`
   color: #000;
   position: absolute;
   left: 0.72rem;
@@ -221,24 +231,24 @@ export const StyledSearchIcon = styled(BiSearch)`
     css`
       color: #fff;
     `};
-`;
+`);
 
-export const Img = styled.img`
+export const Img = memo(styled.img`
   width: 9rem;
   margin: 5.4rem auto;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     margin: 2.7rem auto;
   }
-`;
+`);
 
-export const Desc = styled.p`
+export const Desc = memo(styled.p`
   text-align: start;
   margin: auto;
   min-width: 100%;
   margin-top: 1.8rem;
-`;
+`);
 
-export const InitialStepContainer = styled.div`
+export const InitialStepContainer = memo(styled.div`
   margin: 1.8rem auto 0;
   ${Styles.CCC};
   width: 80%;
@@ -246,4 +256,4 @@ export const InitialStepContainer = styled.div`
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     width: 94%;
   }
-`;
+`);
