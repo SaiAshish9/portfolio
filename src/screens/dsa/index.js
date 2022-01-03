@@ -1,4 +1,4 @@
-import React, { useState, useRef, memo } from "react";
+import React, { useState, useEffect, useRef, memo } from "react";
 import qs from "query-string";
 import GaneshaImg from "assets/home/ganesha.png";
 
@@ -23,8 +23,16 @@ import { useHistory, useLocation } from "react-router-dom";
 
 import { AiOutlineAudio } from "react-icons/ai";
 
-const SearchInput = ({ setData, resultantEntriesData }) => {
+const SearchInput = ({ setData, resultantEntriesData, params }) => {
   const inputRef = useRef();
+
+  useEffect(() => {
+    if (params?.index) {
+      const index = parseInt(params?.index);
+      inputRef.current.value = `Q${index + 2}`;
+      handleChange();
+    }
+  }, [params]);
 
   function handleChange() {
     const value = inputRef.current.value.toLowerCase();
@@ -49,57 +57,60 @@ const SearchInput = ({ setData, resultantEntriesData }) => {
   );
 };
 
-const LeetCodeQuestions = memo(({ entries, selectedOption, history }) => {
-  const entriesData = Object.entries(entries[selectedOption][1].types).map(
-    (x) => x[1].title
-  );
+const LeetCodeQuestions = memo(
+  ({ entries, selectedOption, history, params }) => {
+    const entriesData = Object.entries(entries[selectedOption][1].types).map(
+      (x) => x[1].title
+    );
 
-  const resultantEntriesData = [
-    ...entriesData,
-    ...Array(1008 - entriesData?.length).keys(),
-  ];
+    const resultantEntriesData = [
+      ...entriesData,
+      ...Array(1008 - entriesData?.length).keys(),
+    ];
 
-  const [data, setData] = useState(resultantEntriesData);
+    const [data, setData] = useState(resultantEntriesData);
 
-  return (
-    <>
-      <SearchContainer>
-        <StyledSearchIcon />
-        <SearchInput
-          setData={setData}
-          resultantEntriesData={resultantEntriesData}
-        />
-      </SearchContainer>
-      <BtnContainer scroll>
-        {data?.map((i, key) =>
-          key < entriesData.length ? (
-            <Button
-              onClick={() => {
-                const index = resultantEntriesData.indexOf(i);
-                history.push(
-                  `?category=${selectedOption}&&subCategory=${index}&&l_index=${index}`
-                );
-              }}
-              key={key}
-            >
-              {i.length > 35 ? i.substr(0, 36) + "..." : i}
-            </Button>
-          ) : (
-            <Button key={key} onClick={() => {}}>
-              Q
-              {i +
-                1 +
-                Object.entries(entries[selectedOption][1].types).map(
-                  (x) => x[1].title
-                )?.length}{" "}
-              . Work In Progress
-            </Button>
-          )
-        )}
-      </BtnContainer>
-    </>
-  );
-});
+    return (
+      <>
+        <SearchContainer>
+          <StyledSearchIcon />
+          <SearchInput
+            setData={setData}
+            resultantEntriesData={resultantEntriesData}
+            params={params}
+          />
+        </SearchContainer>
+        <BtnContainer scroll>
+          {data?.map((i, key) =>
+            key < entriesData.length ? (
+              <Button
+                onClick={() => {
+                  const index = resultantEntriesData.indexOf(i);
+                  history.push(
+                    `?category=${selectedOption}&&subCategory=${index}&&l_index=${index}`
+                  );
+                }}
+                key={key}
+              >
+                {i.length > 35 ? i.substr(0, 36) + "..." : i}
+              </Button>
+            ) : (
+              <Button key={key} onClick={() => {}}>
+                Q
+                {i +
+                  1 +
+                  Object.entries(entries[selectedOption][1].types).map(
+                    (x) => x[1].title
+                  )?.length}{" "}
+                . Work In Progress
+              </Button>
+            )
+          )}
+        </BtnContainer>
+      </>
+    );
+  }
+);
 
 const DSA = () => {
   const history = useHistory();
@@ -184,6 +195,7 @@ const DSA = () => {
               entries={entries}
               selectedOption={selectedOption}
               history={history}
+              params={params}
             />
           )}
 

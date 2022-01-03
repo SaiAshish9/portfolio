@@ -21,11 +21,7 @@ const DescCont = ({ data }) => {
             let l_index = params.l_index;
             if (l_index) {
               l_index = parseInt(l_index);
-              history.push(
-                `?category=${params?.category}&&index=${
-                  l_index > 0 ? l_index - 1 : l_index
-                }`
-              );
+              history.push(`?category=${params?.category}&&index=${l_index}`);
             } else history.push(`?category=${params?.category}`);
           }}
         >
