@@ -43,6 +43,12 @@ import Amazon11Img from "assets/interview/amazon11.png";
 import Amazon12Img from "assets/interview/amazon12.png";
 import Amazon13Img from "assets/interview/amazon13.png";
 import Amazon14Img from "assets/interview/amazon14.png";
+import Vmware1Img from "assets/interview/vmware-q1.png";
+import Vmware2Img from "assets/interview/vmware-q2.png";
+import Vmware3Img from "assets/interview/vmware-q3.png";
+import Vmware4Img from "assets/interview/vmware-q4.png";
+import Vmware5Img from "assets/interview/vmware-q5.png";
+import Vmware6Img from "assets/interview/vmware-q6.png";
 
 export const DATA = {
   ds: {
@@ -14176,7 +14182,7 @@ SC O(N*W)
                   subsequence [LCIS] and print one of such sequences (multiple
                   sequences may exist) Suppose we consider two arrays – arr1[] ={" "}
                   [3, 4, 9, 1] and arr2[] = [5, 3, 8, 9, 10, 2, 1] Our answer
-                  would be [3, 9] as this is the longest common subsequence
+                  would be 2 [3, 9] as this is the longest common subsequence
                   which is increasing also.
                 </p>
                 <CodeEditor
@@ -15808,7 +15814,7 @@ SC O(N*W)
                   the cells exactly once )
                 </Span>
                 <Img left src={KnightImg} alt="img" />
-                <p>Note -&lt; board[7][4] will be 53 at below pic.</p>
+                <p>Note -&lt; board[7][4] will be 53 at above pic.</p>
                 <CodeEditor
                   options={{
                     title: "Knight Tour",
@@ -17031,7 +17037,210 @@ if __name__ == '__main__':
         title: "CRED",
       },
       vmware: {
-        title: "Vmware",
+        title: "VMWare",
+        content: (
+          <>
+            <Span>
+              <b>
+                VMWare Member Of Technical Staff Internship Interview Experience
+              </b>
+            </Span>
+            <Span>
+              I received the mail from VMWare for an off campus{" "}
+              <b>MTS internship</b> opportunity because of my professional
+              network.
+            </Span>
+            <Span>
+              I choosed a slot out of many using a form link provided by them.
+            </Span>
+            <Span>
+              The Hackerrank test was mailed to me 30 min prior to the exam.
+            </Span>
+            <Span>
+              There were a total of two questions and the video was kept on.
+            </Span>
+            <Span>
+              <b>Test duration was 1 hour.</b>
+            </Span>
+            <Span>
+              <b>
+                Q1. Longest Increasing Common Subsequence Of Two Arrays Which
+                Consists of 1, -1 and 0 Only.
+              </b>
+            </Span>
+            <p>
+              Given two arrays, find length of the longest common increasing
+              subsequence [LCIS] and print one of such sequences (multiple
+              sequences may exist). Suppose we consider two arrays – arr1[] =
+              [-1, 0, 1, 0] and arr2[] = [1, -1, -1, 0, 1, 0, 1] Our answer
+              would be 2 [3, 9] as this is the longest common subsequence which
+              is increasing also.
+            </p>
+            <CodeEditor
+              options={{
+                title: `vmware-q1`,
+                codes: {
+                  Javascript: {
+                    code: `function lcis(arr1, arr2) {
+                      let m = arr1.length
+                      let n = arr2.length
+                      let lookupTab = Array(n).fill(0)
+                      // tab represents table
+                      let parent = Array(n).fill(0)
+                  
+                      for (let i = 0; i < m; i++) {
+                          let current = 0,
+                              last = -1
+                          for (let j = 0; j < n; j++) {
+                              // if both elements are same
+                              if (arr1[i] == arr2[j] && current + 1 > lookupTab[j]) {
+                                  lookupTab[j] = current + 1;
+                                  parent[j] = last
+                              }
+                  
+                              // if first element is greater than second
+                              if (arr1[i] > arr2[j] && lookupTab[j] > current) {
+                                  current = lookupTab[j];
+                                  last = j
+                              }
+                          }
+                      }
+                  
+                      const max = Math.max(...lookupTab)
+                      let index = lookupTab.indexOf(max);
+                      let result = Array(max).fill(null),
+                          i = 0;
+                      while (index != -1) {
+                          result[i] = arr2[index];
+                          index = parent[index];
+                          i += 1
+                      }
+                      result = result.reverse()
+                      console.log(result)
+                      return max
+                  }
+                  
+                  const arr1 = [-1,0, 1, 0]
+                  const arr2 = [1, -1, -1, 0, 1, 0, 1]
+                  console.log(lcis(arr1, arr2));                                                                                          
+                      `,
+                    output: `[ -1, 0, 1 ]
+                    3`,
+                  },
+                },
+              }}
+            />
+            <Span>
+              <b>Q2. Knight Tour Problem (Backtracking)(dfs)(stack)</b>
+            </Span>
+            <Span>
+              <b> Problem Statement</b>
+            </Span>
+            <Span>
+              Given a N*N board with the Knight placed on the first block of an
+              empty board. Moving according to the rules of chess knight must
+              visit each square exactly once. Print the order of each the cell
+              in which they are visited. ( horse should visite all the cells
+              exactly once )
+            </Span>
+            <Img left src={KnightImg} alt="img" />
+            <p>Note -&lt; board[7][4] will be 53 at above pic.</p>
+            <CodeEditor
+              options={{
+                title: `vmware-q2`,
+                codes: {
+                  Javascript: {
+                    code: `const print = b => b.forEach(x=>console.log(x.join(" ")))
+
+                    function isSafe(x,y,board){
+                      // coordinate should lie within the board
+                       return x >=0 && x<n && y >= 0 && y<n && board[x][y] == -1
+                    }
+                    
+                    function knightTour(board,xMove,yMove,n){
+                      // place knight at (0,0) first
+                      board[0][0] = 0
+                      if(!knightTourGuide(0,0,1,board,xMove,yMove,n)){
+                         return false
+                      }
+                      return true
+                    }
+                    
+                    function knightTourGuide(x,y,move,board,xMove,yMove,n){
+                      let next_x, next_y;
+                      if(move == n*n) return true
+                      for(let k=0;k<n;k++){
+                        // find next move using array
+                        next_x = x + xMove[k];
+                        next_y = y + yMove[k];
+                        if(isSafe(next_x,next_y,board)){
+                          board[next_x][next_y] = move
+                        // check for next move
+                        if(knightTourGuide(next_x, next_y, move + 1, board, xMove, yMove,n)) 
+                          return true
+                        else
+                          board[next_x][next_y] = -1 // backtrack
+                      }
+                      }
+                      return false
+                    }
+                    
+                    
+                    const n = 8
+                    // A Knight can make maximum eight moves
+                    
+                    console.log("Initial Board")
+                    const board = Array.from(Array(n),()=>Array(n).fill(-1))
+                    
+                    // we need to memorize below two arrays:
+                    const xMove = [ 2, 1, -1, -2, -2, -1, 1, 2 ];
+                    // 2 -> move 2 cells right
+                    const yMove = [ 1, 2, 2, 1, -1, -2, -2, -1 ];
+                    // -1 -> move one cell downwards
+                    
+                    print(board)
+                    console.log("Total No. Of Cells : " + n*n)
+                    const start = new Date().getTime()
+                    knightTour(board,xMove,yMove,n)
+                    const end = new Date().getTime()
+                    console.log("Solved Board")
+                    print(board)
+                    console.log("Time Required For Execution: "+ (end-start)/1000 + "s")`,
+                    output: `Initial Board
+                    -1 -1 -1 -1 -1 -1 -1 -1
+                    -1 -1 -1 -1 -1 -1 -1 -1
+                    -1 -1 -1 -1 -1 -1 -1 -1
+                    -1 -1 -1 -1 -1 -1 -1 -1
+                    -1 -1 -1 -1 -1 -1 -1 -1
+                    -1 -1 -1 -1 -1 -1 -1 -1
+                    -1 -1 -1 -1 -1 -1 -1 -1
+                    -1 -1 -1 -1 -1 -1 -1 -1
+                    Total No. Of Cells : 64
+                    Solved Board
+                    0 59 38 33 30 17 8 63
+                    37 34 31 60 9 62 29 16
+                    58 1 36 39 32 27 18 7
+                    35 48 41 26 61 10 15 28
+                    42 57 2 49 40 23 6 19
+                    47 50 45 54 25 20 11 14
+                    56 43 52 3 22 13 24 5
+                    51 46 55 44 53 4 21 12
+                    Time Required For Execution: 23.616s`,
+                  },
+                },
+              }}
+            />
+            <Span>
+              <b>Screenshots:</b>
+            </Span>
+            <Img src={Vmware1Img} large />
+            <Img src={Vmware2Img} large />
+            <Img src={Vmware3Img} large />
+            <Img src={Vmware4Img} large />
+            <Img src={Vmware5Img} large />
+            <Img src={Vmware6Img} large />
+          </>
+        ),
       },
       browserstack: {
         title: "Browserstack",
