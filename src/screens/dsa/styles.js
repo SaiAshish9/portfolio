@@ -136,13 +136,14 @@ export const BtnContainer = memo(
     ({ scroll, start }) => css`
       ${Styles.RCC};
       flex-wrap: wrap;
-      margin: 1.8rem auto 0;
+      margin: 1.8rem auto;
       padding: 0px;
       position: relative;
-      max-height: calc(38.8vh + 2rem);
+      max-height: calc(43vh);
       ${scroll &&
       css`
         overflow-y: scroll;
+        margin: 1.8rem auto -2.7rem;
         @media only screen and (max-width: ${BREAKPOINTS.xs}) {
           max-height: calc(45vh);
         } ;
