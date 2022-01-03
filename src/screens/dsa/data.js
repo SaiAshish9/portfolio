@@ -61,6 +61,15 @@ import Pracify3Img from "assets/interview/pracify-3.png";
 import Pracify4Img from "assets/interview/pracify-4.png";
 import Pracify5Img from "assets/interview/pracify5.png";
 import Pracify6Img from "assets/interview/pracify6.png";
+import AppTown1 from "assets/interview/appTown1.png";
+import AppTown2 from "assets/interview/appTown2.png";
+import AppTown3 from "assets/interview/appTown3.png";
+import AppTown4 from "assets/interview/appTown4.png";
+import AppTown5 from "assets/interview/appTown5.png";
+import AppTown6 from "assets/interview/appTown6.png";
+import AppTown7 from "assets/interview/appTown7.png";
+import AppTown8 from "assets/interview/appTown8.png";
+import AppTown9 from "assets/interview/appTown9.png";
 
 export const DATA = {
   ds: {
@@ -17282,7 +17291,11 @@ if __name__ == '__main__':
             <Span>
               <b>Pracify Internship Interview Experience ( 3rd Semester ) :</b>
             </Span>
-            <Span>I applied for MERN stack internship via internshala.</Span>
+            <Span>
+              I applied for MERN ( MongoDB + Express + React + Node.js + AWS +
+              Docker ) stack internship via internshala. I was invited to the
+              office.
+            </Span>
             <Span>
               This was later selected for 100x.vc and inc42 collaboration. My
               work can be found at the experience section of the home section by
@@ -17308,7 +17321,33 @@ if __name__ == '__main__':
       },
       appTown: {
         title: "App Town",
-        content: <></>,
+        content: (
+          <>
+            <Span>App Town Technologies In-office Interview Experience:</Span>
+            <Span>
+              I applied for react and react native internship via internshala. I
+              was invited to the office.And I was given a task to make
+              calculator with provided UI. And picked on the basis of my resume.
+            </Span>
+            <Span>I worked on 5 react and react native projects.</Span>
+            <Span>
+              My work can be found at the experience section of the home section
+              by simply clicking at the desired logo.
+            </Span>
+            <Span>
+              <b>Screenshots:</b>
+            </Span>
+            <Img src={AppTown1} left />
+            <Img src={AppTown2} left />
+            <Img src={AppTown3} left />
+            <Img src={AppTown4} left />
+            <Img src={AppTown5} left />
+            <Img src={AppTown6} left />
+            <Img src={AppTown7} left />
+            <Img src={AppTown8} left />
+            <Img src={AppTown9} left />
+          </>
+        ),
       },
     },
     content: (
