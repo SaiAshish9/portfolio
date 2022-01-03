@@ -61,8 +61,6 @@ const LeetCodeQuestions = memo(({ entries, selectedOption, history }) => {
 
   const [data, setData] = useState(resultantEntriesData);
 
-  console.log(data);
-
   return (
     <>
       <SearchContainer>
@@ -78,7 +76,9 @@ const LeetCodeQuestions = memo(({ entries, selectedOption, history }) => {
             <Button
               onClick={() => {
                 const index = resultantEntriesData.indexOf(i);
-                history.push(`?category=${selectedOption}&&subCategory=${index}`);
+                history.push(
+                  `?category=${selectedOption}&&subCategory=${index}`
+                );
               }}
               key={key}
             >
