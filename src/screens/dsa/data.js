@@ -55,6 +55,12 @@ import Vmware9Img from "assets/interview/vmware-q9.png";
 import Vmware10Img from "assets/interview/vmware-q10.png";
 import Vmware11Img from "assets/interview/vmware-q11.png";
 import Vmware12Img from "assets/interview/vmware-q12.png";
+import Pracify1Img from "assets/interview/pracify-1.png";
+import Pracify2Img from "assets/interview/pracify-2.png";
+import Pracify3Img from "assets/interview/pracify-3.png";
+import Pracify4Img from "assets/interview/pracify-4.png";
+import Pracify5Img from "assets/interview/pracify5.png";
+import Pracify6Img from "assets/interview/pracify6.png";
 
 export const DATA = {
   ds: {
@@ -17271,9 +17277,38 @@ if __name__ == '__main__':
       },
       pracify: {
         title: "Pracify ( Mauka )",
+        content: (
+          <>
+            <Span>
+              <b>Pracify Internship Interview Experience ( 3rd Semester ) :</b>
+            </Span>
+            <Span>I applied for MERN stack internship via internshala.</Span>
+            <Span>
+              This was later selected for 100x.vc and inc42 collaboration. My
+              work can be found at the experience section of the home section by
+              simply clicking at the desired logo.
+            </Span>
+            <Span>
+              <b>Screenshots:</b>
+            </Span>
+            <Img src={Pracify5Img} left />
+            <Img src={Pracify6Img} left />
+            <Span>
+              <b>Internship Task:</b>
+            </Span>
+            <Img src={Pracify1Img} left />
+            <Img src={Pracify2Img} left />
+            <Span>
+              <b>Solution:</b>
+            </Span>
+            <Img src={Pracify3Img} left />
+            <Img src={Pracify4Img} left />
+          </>
+        ),
       },
       appTown: {
         title: "App Town",
+        content: <></>,
       },
     },
     content: (
