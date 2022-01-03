@@ -24955,7 +24955,16 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <b>Example 1:</b>
             </Span>
             <Span>
+              Input: candidates = [10,1,2,7,6,1,5],
+              <br /> target = 8 <br />
+              Output: [ [1,1,6], [1,2,5], [1,7], [2,6] ]
+            </Span>
+            <Span>
               <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: candidates = [2,5,2,1,2], <br /> target = 5 <br />
+              Output: [ [1,2,2], [5] ]
             </Span>
             <Span>
               <b>Constraints:</b>
@@ -25525,7 +25534,15 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <b>Example 1:</b>
             </Span>
             <Span>
+              Input: nums = [1,1,2] <br />
+              Output: [[1,1,2], [1,2,1], [2,1,1]]
+            </Span>
+            <Span>
               <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,2,3] <br />
+              Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
             </Span>
             <Span>
               <b>Constraints:</b>
