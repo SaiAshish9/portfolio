@@ -49,6 +49,12 @@ import Vmware3Img from "assets/interview/vmware-q3.png";
 import Vmware4Img from "assets/interview/vmware-q4.png";
 import Vmware5Img from "assets/interview/vmware-q5.png";
 import Vmware6Img from "assets/interview/vmware-q6.png";
+import Vmware7Img from "assets/interview/vmware-q7.png";
+import Vmware8Img from "assets/interview/vmware-q8.png";
+import Vmware9Img from "assets/interview/vmware-q9.png";
+import Vmware10Img from "assets/interview/vmware-q10.png";
+import Vmware11Img from "assets/interview/vmware-q11.png";
+import Vmware12Img from "assets/interview/vmware-q12.png";
 
 export const DATA = {
   ds: {
@@ -17239,6 +17245,12 @@ if __name__ == '__main__':
             <Img src={Vmware4Img} large />
             <Img src={Vmware5Img} large />
             <Img src={Vmware6Img} large />
+            <Img src={Vmware7Img} large />
+            <Img src={Vmware8Img} large />
+            <Img src={Vmware9Img} large />
+            <Img src={Vmware10Img} large />
+            <Img src={Vmware11Img} large />
+            <Img src={Vmware12Img} large />
           </>
         ),
       },
