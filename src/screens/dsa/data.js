@@ -3946,7 +3946,7 @@ pop_back() :
                   It consists of elements organised in a hierarchical way such
                   that there can be only one connection in between two elements.
                 </Span>
-                <Span>Let n => number of nodes</Span>
+                <Span>Let n =&gt; number of nodes</Span>
                 <Span>
                   <b>Catalian Number:</b> 2nCn/(n+1) or (2n)!/(n+1)
                 </Span>
@@ -16963,6 +16963,9 @@ if __name__ == '__main__':
       vmware: {
         title: "Vmware",
       },
+      browserstack: {
+        title: "Browserstack",
+      },
       turing: {
         title: "Turing",
       },
@@ -16982,8 +16985,48 @@ if __name__ == '__main__':
         title: "App Town",
       },
     },
-    content:
-      "Atmost there will be four rounds , the second round will be based on your development skills , experience, projects and code quality. Last two will be based upon hr and they will be similar to the second round.",
+    content: (
+      <>
+        <Span>
+          Your resume matters a lot in order to get the call for round 1 from
+          hr.
+        </Span>
+        <Span>
+          I insist you to go through data structures and algorithms sections
+          before the interview. If you're smart enough, you can do that in a
+          maximum of 2 days. And solve ( or understand ) ( with code complexity
+          ) atleast first 50 leetcode questions using any language. You'll be
+          able to crack problem solving rounds of any interview by solving first
+          108 leetcode questions for beginner positions ( + internships ).
+        </Span>
+        <Span>Atmost there will be four rounds:</Span>
+        <Span>
+          <b>Round 1:</b>
+        </Span>
+        <Span>
+          This round is mainly based on problem solving skills of the
+          individual. There can be a online test of duration 30min - 1hr or
+          online meeting with interviewer at zoom or google meet for the
+          duration of 45min to 1hr 30 min. In case of online meeting rounds,
+          you'll be asked to pick your slot. At max 4 dsa ( Data Structures And
+          Algorithms ) questions will be asked.
+        </Span>
+        <Span>
+          <b>Round 2:</b>
+        </Span>
+        <Span>
+          <b>Round 3:</b>
+        </Span>
+        <Span>
+          <b>Round 4:</b>
+        </Span>
+        <Span>
+          the second round will be based on your development skills ,
+          experience, projects and code quality. Last two will be based upon hr
+          and they will be similar to the second round.
+        </Span>
+      </>
+    ),
   },
   //
   leetcode: {
