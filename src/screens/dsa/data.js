@@ -16953,7 +16953,13 @@ if __name__ == '__main__':
     types: {
       amazon: {
         title: "Amazon",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Amazon Interview Experience</b>
+            </Span>
+          </>
+        ),
       },
       paytm: {
         title: "Paytm",
@@ -16989,9 +16995,10 @@ if __name__ == '__main__':
     content: (
       <>
         <Span>
-          Your resume, projects, knowledge and quality of work matters a lot in order to
-          get the call for round 1 from hr. Be confident, try to interact with
-          interviewers friendly. Just don't lose your confidence in between.
+          Your resume, projects, knowledge and quality of work matters a lot in
+          order to get the call for round 1 from hr. Be confident, try to
+          interact with interviewers friendly. Just don't lose your confidence
+          in between.
         </Span>
         <Span>
           I insist you to go through data structures and algorithms sections
