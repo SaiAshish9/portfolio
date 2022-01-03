@@ -1,12 +1,12 @@
 import React from "react";
 
-const Img = ({ src, left, style, reduceH }) => {
+const Img = ({ src, left, style, reduceH, large }) => {
   return (
     <img
       src={src}
       alt="img"
       style={{
-        width: "18rem",
+        width: large ? "100%" : "18rem",
         margin: left
           ? reduceH
             ? "0 0 0.7rem 0"

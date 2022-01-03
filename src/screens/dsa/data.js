@@ -29,6 +29,20 @@ import LeetcodeQ51 from "assets/leetcode/q51.png";
 import LeetcodeQ52 from "assets/leetcode/q52.png";
 import LeetcodeQ54a from "assets/leetcode/54a.png";
 import LeetcodeQ54b from "assets/leetcode/54b.png";
+import Amazon1Img from "assets/interview/amazon1.jpeg";
+import Amazon2Img from "assets/interview/amazon2.png";
+import Amazon3Img from "assets/interview/amazon3.png";
+import Amazon4Img from "assets/interview/amazon4.png";
+import Amazon5Img from "assets/interview/amazon5.png";
+import Amazon6Img from "assets/interview/amazon6.png";
+import Amazon7Img from "assets/interview/amazon7.png";
+import Amazon8Img from "assets/interview/amazon8.png";
+import Amazon9Img from "assets/interview/amazon9.png";
+import Amazon10Img from "assets/interview/amazon10.png";
+import Amazon11Img from "assets/interview/amazon11.png";
+import Amazon12Img from "assets/interview/amazon12.png";
+import Amazon13Img from "assets/interview/amazon13.png";
+import Amazon14Img from "assets/interview/amazon14.png";
 
 export const DATA = {
   ds: {
@@ -16958,6 +16972,55 @@ if __name__ == '__main__':
             <Span>
               <b>Amazon Interview Experience</b>
             </Span>
+            <Span>
+              I was invited to complete an online assessment at hacker rank in 2
+              hours ( 4 sections ) . There were a total of 2 questions ( 2
+              sections ). I had to solve those two questions and explain my
+              approach in two separate sections . They were easy. Video was kept
+              off during the test. I don't exactly remember those questions but
+              they were based on amazon internal tools. Maybe they were made by
+              amazon employees itself.
+            </Span>
+            <Span>
+              I was invited to complete an online assessment at hacker rank.
+              There were a total of 2 questions. I had to solve those two
+              questions and expalin my approach. They were easy.
+            </Span>
+            <Span>
+              After the exam, I had the fill-up the survey form for about 15
+              minutes. I applied for this exam when I was 20 ( 5th Semester ) .
+            </Span>
+            <Span>
+              Note: While solving a question , don't move to the next question
+              without submitting the previous question. Past changes can be
+              modified.
+            </Span>
+            <Span>
+              Screenshots of sample coding assessment are provided below.
+            </Span>
+            <Span>
+              <b>Initial mail from hr</b>
+            </Span>
+            <Img src={Amazon1Img} large left />
+            <Span>
+              <b>Screenshots for online assessment:</b>
+            </Span>
+            <Img src={Amazon2Img} left large />
+            <Img src={Amazon3Img} left large />
+            <Img src={Amazon4Img} left large />
+            <Span>
+              <b>Coding Assessment Demo:</b>
+            </Span>
+            <Img src={Amazon5Img} left large />
+            <Img src={Amazon6Img} left large />
+            <Img src={Amazon7Img} left large />
+            <Img src={Amazon8Img} left large />
+            <Img src={Amazon9Img} left large />
+            <Img src={Amazon10Img} left large />
+            <Img src={Amazon11Img} left large />
+            <Img src={Amazon12Img} left large />
+            <Img src={Amazon13Img} left large />
+            <Img src={Amazon14Img} left large />
           </>
         ),
       },
