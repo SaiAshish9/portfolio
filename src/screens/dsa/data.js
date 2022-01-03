@@ -17320,8 +17320,8 @@ if __name__ == '__main__':
             </Span>
             <p>
               <b>
-                Q. Return length of longest subarray of 0s from an array which
-                consists of 0s and 1s only
+                Q. Return length of longest subarray of continuos 0s from an
+                array which consists of 0s and 1s only
               </b>
             </p>
             <CodeEditor
@@ -17329,8 +17329,110 @@ if __name__ == '__main__':
                 title: "nex2me",
                 codes: {
                   Java: {
-                    code: ``,
-                    output: ``,
+                    code: `import java.io.*;
+                    import java.util.*;
+                    
+                    class Main{
+                      
+                      static PrintStream ps = System.out;
+                    
+                      public static void main(String ...s){
+                        int[] arr = {0,1,0,0};
+                        // Map<Integer,Integer> map = new HashMap();
+                        // for(int i:arr){
+                        //   if(map.containsKey(i)){
+                        //     map.put(i,map.get(i)+1);
+                        //   }else{
+                        //     map.put(i,1);
+                        //   }
+                        // }
+                        // int max_count = map.get(0); 
+                        int max = 0;
+                        int count = 0;
+                        for(int i=0;i<arr.length;i++){
+                        // if(max_count == 0) break;    
+                        if(arr[i]==1){
+                          // max_count--;
+                          count = 0;
+                        }else {
+                          count++;
+                          max = Math.max(max,count);
+                        }
+                        }
+                        ps.println(max);
+                      }
+                    }`,
+                    output: `2`,
+                  },
+                },
+              }}
+            />
+            <p>
+              <b>Largest subarray with equal number of 0s and 1s</b>
+            </p>
+            <CodeEditor
+              options={{
+                title: "nex2me",
+                codes: {
+                  Java: {
+                    code: `import java.util.HashMap;
+                    import java.io.*;
+                    
+                    class Main {
+                    
+                      static PrintStream ps = System.out;
+                    
+                      int maxLen(int arr[], int n)
+                      {
+                    
+                        HashMap<Integer, Integer> map
+                          = new HashMap<Integer, Integer>();
+                    
+                        int sum = 0;
+                    
+                        int max_len = 0;
+                        int ending_index = -1;
+                        int start_index = 0;
+                    
+                        for (int i = 0; i < n; i++) {
+                          arr[i] = (arr[i] == 0) ? -1 : 1;
+                        }
+                    
+                        for (int i = 0; i < n; i++) {
+                          sum += arr[i];
+                          if (sum == 0) {
+                            max_len = i + 1;
+                            ending_index = i;
+                          }
+                          if (map.containsKey(sum)) {
+                            if (max_len < i - map.get(sum)) {
+                              max_len = i - map.get(sum);
+                              ending_index = i;
+                            }
+                          }
+                            map.put(sum, i);
+                        }
+                    
+                        for (int i = 0; i < n; i++) {
+                          arr[i] = (arr[i] == -1) ? 0 : 1;
+                        }
+                    
+                        int end = ending_index - max_len + 1;
+                        System.out.println(end + " to " + ending_index);
+                        return max_len;
+                      }
+                    
+                      public static void main(String[] args)
+                      {
+                        Main sub = new Main();
+                        int arr[] = { 1, 0, 0, 1, 0, 1, 1 };
+                        int n = arr.length;
+                        ps.println(sub.maxLen(arr, n));
+                      }
+                    }
+                    `,
+                    output: `0 to 5
+                    6`,
                   },
                 },
               }}
