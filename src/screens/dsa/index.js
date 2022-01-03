@@ -184,7 +184,7 @@ const InitialStep = () => {
                 }}
                 key={key}
               >
-                {i.length > 35 ? i.substr(0, 36) + "..." : i}
+                {i.length > 35 ? i.substring(0, 36) + "..." : i}
               </Button>
             ))}
         </BtnContainer>

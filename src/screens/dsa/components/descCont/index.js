@@ -51,7 +51,7 @@ const DescCont = ({ data }) => {
                 hover={0}
                 active={+(selected === k)}
               >
-                {i}
+                {i.length > 35 ? i.substring(0, 36) + "..." : i}
               </Button>
             ))}
         </BtnContainer>
