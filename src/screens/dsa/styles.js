@@ -139,9 +139,9 @@ export const BtnContainer = memo(
       margin: 1.8rem auto;
       padding: 0px;
       position: relative;
-      max-height: calc(43vh);
       ${scroll &&
       css`
+        max-height: calc(43vh);
         overflow-y: scroll;
         margin: 1.8rem auto -2.7rem;
         @media only screen and (max-width: ${BREAKPOINTS.xs}) {
