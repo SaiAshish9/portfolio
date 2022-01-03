@@ -77,7 +77,7 @@ const LeetCodeQuestions = memo(({ entries, selectedOption, history }) => {
               onClick={() => {
                 const index = resultantEntriesData.indexOf(i);
                 history.push(
-                  `?category=${selectedOption}&&subCategory=${index}`
+                  `?category=${selectedOption}&&subCategory=${index}&&l_index=${index}`
                 );
               }}
               key={key}
