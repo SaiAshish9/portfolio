@@ -16988,8 +16988,8 @@ if __name__ == '__main__':
     content: (
       <>
         <Span>
-          Your resume matters a lot in order to get the call for round 1 from
-          hr.
+          Your resume, projects and quality of your work matters a lot in order
+          to get the call for round 1 from hr.
         </Span>
         <Span>
           I insist you to go through data structures and algorithms sections
