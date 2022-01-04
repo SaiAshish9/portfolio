@@ -17288,9 +17288,9 @@ if __name__ == '__main__':
               week.
             </Span>
             <Span>
-              I sent them a attached zip file as well as a drive link which
-              consists of my resume , cover letter, source code, app screenshot
-              and screen record.
+              I completed the task in 4 hours and sent them an attached zip file
+              as well as a drive link which consists of my resume , cover
+              letter, source code, app screenshot and screen record.
             </Span>
             <Span>
               They were happy with my application and invited me for the second
