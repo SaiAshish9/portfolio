@@ -17119,11 +17119,6 @@ if __name__ == '__main__':
               about the feedback and he said he's 95% sure that I'll receive the
               call for the next round soon.{" "}
             </Span>
-            <Span>
-              Senior developer of paytm asked me several questions. I showed him
-              my code style. He asked me about my approach towards developing a
-              few things.This round was purely based on development.
-            </Span>
             <Img src={Paytm1} left large />
             <p>
               <b>
