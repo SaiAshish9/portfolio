@@ -17192,6 +17192,27 @@ if __name__ == '__main__':
                 of Object.values(match).includes(s[i])?
               </b>
             </Span>
+            <Span>n represents input size in O(n)</Span>
+            <Span>
+              In Asynmptotic analysis, we calculate, how the time (or space)
+              taken by an algorithm increases with the input size.
+              <br />
+              The complexity of an algorithm is a function describing the
+              efficiency of the algorithm in terms of the amount of data the
+              algorithm must process.
+              <br />
+              Time Complexity of algorithm/code is not equal to the actual time
+              required to execute a particular code but the number of times a
+              statement executes.
+              <br />
+              Space Complexity of an algorithm is the total space taken by the
+              algorithm with respect to the input size.
+            </Span>
+            <Span>
+              Time Complexity of Object.values(match).includes(s[i]) will be
+              O(1) since match is a constant. Object.values(match) should always
+              be fixed.
+            </Span>
             <p>
               <b>
                 Problem Solving Q3: There are 5 given cities : Mumbai, Chennai,
