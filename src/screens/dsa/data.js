@@ -6671,6 +6671,167 @@ if __name__=='__main__':
                     },
                   }}
                 />
+                <p>
+                  <b>Print All possible paths from source to destination:</b>
+                </p>
+                <CodeEditor
+                  options={{
+                    title: "AllPathsDFS",
+                    codes: {
+                      Javascript: {
+                        code: `class Graph {
+
+                          constructor(n, v) {
+                              this.n = n
+                              this.g = {}
+                              this.v = v
+                          }
+                      
+                          addVertex(i) {
+                              this.g[i] = []
+                          }
+                      
+                          removeVertex(i) {
+                              delete this.g[i]
+                              for (let k in this.g) {
+                                  this.g[k] = this.g[k].filter(x => x !== i)
+                              }
+                          }
+                      
+                          addEdge(u, v) {
+                              this.g[u].push(v)
+                              this.g[v].push(u)
+                          }
+                      
+                          print() {
+                              let res = {}
+                              Object.entries(this.g).forEach((i, k) => {
+                                  res[this.v[i[0]]] = i[1].map(x => this.v[x])
+                              })
+                              console.log(res)
+                          }
+                      
+                          bfs(v = 0) {
+                              let q = []
+                              let visited = {}
+                              q.push(v)
+                              visited[v] = true
+                              while (q.length) {
+                                  const ele = q.shift()
+                                  console.log(this.v[ele])
+                                  const list = this.g[ele]
+                                  for (let i of list) {
+                                      if (!visited[i]) {
+                                          visited[i] = true
+                                          q.push(i)
+                                      }
+                                  }
+                              }
+                          }
+                      
+                          dfs(v = 0, visited = {}) {
+                              visited[v] = true
+                              console.log(this.v[v])
+                              const list = this.g[v]
+                              for (let i of list) {
+                                  if (!visited[i]) this.dfs(i, visited)
+                              }
+                          }
+                      
+                          paths(source,destination){
+                             const result = []     
+                             const curr = []
+                             curr.push(source)
+                             this.pathsUsingDfs(source,destination,result,curr)
+                             console.log(result.map(x=>x.map(y=>this.v[y])))
+                          }
+                      
+                          pathsUsingDfs(s,d,result,curr=[],visited={}){
+                            if(s === d){
+                              result.push(curr.slice())
+                              return
+                            }
+                            visited[s] = true
+                            const list = this.g[s]
+                            for (let i of list) {
+                              if (!visited[i]){
+                                curr.push(i)
+                                this.pathsUsingDfs(i,d,result,curr,visited)
+                                curr.splice(curr.indexOf(i),1)
+                              }
+                            }
+                            visited[s] = false
+                          }
+                      
+                      }
+                      
+                      const v = ['A', 'B', 'C', 'D', 'E', 'F']
+                      const g = new Graph(6, v)
+                      for (let i in v)
+                          g.addVertex(i)
+                      g.addEdge(0, 1);
+                      g.addEdge(0, 3);
+                      g.addEdge(0, 4);
+                      g.addEdge(1, 2);
+                      g.addEdge(3, 4);
+                      g.addEdge(4, 5);
+                      g.addEdge(4, 2);
+                      g.addEdge(2, 5);
+                      // g.removeVertex(1)
+                      console.log("Graph:")
+                      g.print()
+                      console.log("BFS:")
+                      g.bfs()
+                      console.log("DFS:")
+                      g.dfs()
+                      console.log("All paths")
+                      g.paths(0,5)`,
+                        output: `Graph:
+                        {
+                          A: [ 'B', 'D', 'E' ],
+                          B: [ 'A', 'C' ],
+                          C: [ 'B', 'E', 'F' ],
+                          D: [ 'A', 'E' ],
+                          E: [ 'A', 'D', 'F', 'C' ],
+                          F: [ 'E', 'C' ]
+                        }
+                        BFS:
+                        Graph:
+                        {
+                          A: [ 'B', 'D', 'E' ],
+                          B: [ 'A', 'C' ],
+                          C: [ 'B', 'E', 'F' ],
+                          D: [ 'A', 'E' ],
+                          E: [ 'A', 'D', 'F', 'C' ],
+                          F: [ 'E', 'C' ]
+                        }
+                        BFS:
+                        A
+                        B
+                        D
+                        E
+                        C
+                        F
+                        DFS:
+                        A
+                        B
+                        C
+                        E
+                        D
+                        F
+                        All paths
+                        [
+                          [ 'A', 'B', 'C', 'E', 'F' ],
+                          [ 'A', 'B', 'C', 'F' ],
+                          [ 'A', 'D', 'E', 'F' ],
+                          [ 'A', 'D', 'E', 'C', 'F' ],
+                          [ 'A', 'E', 'F' ],
+                          [ 'A', 'E', 'C', 'F' ]
+                        ]`,
+                      },
+                    },
+                  }}
+                />
                 <Span>
                   <b>Trie</b>
                 </Span>
