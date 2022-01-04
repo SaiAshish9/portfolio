@@ -17297,6 +17297,24 @@ if __name__ == '__main__':
       },
       browserstack: {
         title: "Browserstack",
+        content: (
+          <>
+            <Span>
+              <b>Browserstack Interview Experience :</b>
+            </Span>
+            <Span>
+              I got messages from their talent team for full time employment.
+            </Span>
+            <Span>
+              My <b>friend</b> who earlier worked as a intern at CodeNation
+              called me during the interview.
+            </Span>
+            <Span>
+              He wanted me to explain how to continuously take input from a file
+              and perform operations on it using javascript.
+            </Span>
+          </>
+        ),
       },
       turing: {
         title: "Turing",
