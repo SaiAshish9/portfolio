@@ -17383,10 +17383,10 @@ if __name__ == '__main__':
             <Span>
               <b>Screenshots:</b>
             </Span>
-            <Img src={Turing1} left />
+            <Img src={Turing1} left large />
             <Img src={Turing2} left />
-            <Img src={Turing3} left />
-            <Img src={Turing4} left />
+            <Img src={Turing3} left large />
+            <Img src={Turing4} left large />
           </>
         ),
       },
