@@ -113,6 +113,9 @@ import Paytm6 from "assets/interview/paytm6.png";
 import Paytm7 from "assets/interview/paytm7.png";
 import Paytm8 from "assets/interview/paytm8.png";
 import Paytm9 from "assets/interview/paytm9.png";
+import Oh1 from "assets/interview/oh1.png";
+import Oh2 from "assets/interview/oh2.png";
+import Oh3 from "assets/interview/oh3.png";
 
 export const DATA = {
   ds: {
@@ -18286,6 +18289,24 @@ console.log(isPairSum(arr, arrSize, val));
             <Img src={AppTown7} left />
             <Img src={AppTown8} left />
             <Img src={AppTown9} left />
+          </>
+        ),
+      },
+      openHouse: {
+        title: "OpenHouse",
+        content: (
+          <>
+            <Span>
+              <b>OpenHouse Offer:</b>
+            </Span>{" "}
+            <Span>
+              I got the invitation for python / django developer opportunity
+              along with several other offers.
+            </Span>
+            <Span>Screenshots:</Span>
+            <Img src={Oh1} left />
+            <Img src={Oh2} left />
+            <Img src={Oh3} left />
           </>
         ),
       },
