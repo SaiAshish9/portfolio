@@ -6282,6 +6282,7 @@ if __name__=='__main__':
                     F`,
                   }}
                 />
+                <Img src={GraphImg} alt="img" left />
                 <p>
                   <b>Practice</b>
                 </p>
@@ -6551,6 +6552,7 @@ if __name__=='__main__':
                     `,
                   }}
                 />
+                <Img src={GraphImg} alt="img" left />
                 <p>
                   <b>Practice:</b>
                 </p>
@@ -17641,8 +17643,8 @@ console.log(isPairSum(arr, arrSize, val));
               subsequence [LCIS] and print one of such sequences (multiple
               sequences may exist). Suppose we consider two arrays – arr1[] =
               [-1, 0, 1, 0] and arr2[] = [1, -1, -1, 0, 1, 0, 1] Our answer
-              would be 3 [-1,0,1] as this is the longest common subsequence which
-              is increasing also.
+              would be 3 [-1,0,1] as this is the longest common subsequence
+              which is increasing also.
             </p>
             <CodeEditor
               options={{
@@ -17871,8 +17873,8 @@ console.log(isPairSum(arr, arrSize, val));
               <b>Test duration was 30 minutes.</b>
             </Span>
             <Span>
-              I was suggested to solve the first few ( ~20-30 ) leetcode questions
-              before attempting the test.
+              I was suggested to solve the first few ( ~20-30 ) leetcode
+              questions before attempting the test.
             </Span>
             <Span>
               I received emails for remote jobs from the Turing afterwards.
