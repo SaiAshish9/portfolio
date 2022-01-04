@@ -108,6 +108,11 @@ import Paytm1 from "assets/interview/paytm1.png";
 import Paytm2 from "assets/interview/paytm2.png";
 import Paytm3 from "assets/interview/paytm3.png";
 import Paytm4 from "assets/interview/paytm4.png";
+import Paytm5 from "assets/interview/paytm5.png";
+import Paytm6 from "assets/interview/paytm6.png";
+import Paytm7 from "assets/interview/paytm7.png";
+import Paytm8 from "assets/interview/paytm8.png";
+import Paytm9 from "assets/interview/paytm9.png";
 
 export const DATA = {
   ds: {
@@ -17258,6 +17263,11 @@ if __name__ == '__main__':
               with the onboarding guide.
             </Span>
             <Img src={Paytm4} left large />
+            <Img src={Paytm5} left />
+            <Img src={Paytm6} left />
+            <Img src={Paytm7} left />
+            <Img src={Paytm8} left />
+            <Img src={Paytm9} left />
           </>
         ),
       },
