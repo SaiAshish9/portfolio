@@ -1,4 +1,6 @@
 import { CodeEditor, Span, Img } from "./components";
+import { PlayerContainer } from "screens/home/components/projects/styles";
+import ReactPlayer from "react-player";
 import BigOChart from "assets/home/complexity-chart.jpeg";
 import GraphImg from "assets/home/graphColoring.png";
 import TSPDPImg from "assets/home/tsp_dp.png";
@@ -102,8 +104,10 @@ import CRED3 from "assets/interview/cred3.png";
 import CRED4 from "assets/interview/cred4.png";
 import CRED5 from "assets/interview/cred5.png";
 import CRED6 from "assets/interview/cred6.png";
-import { PlayerContainer } from "screens/home/components/projects/styles";
-import ReactPlayer from "react-player";
+import Paytm1 from "assets/interview/paytm1.png";
+import Paytm2 from "assets/interview/paytm2.png";
+import Paytm3 from "assets/interview/paytm3.png";
+import Paytm4 from "assets/interview/paytm4.png";
 
 export const DATA = {
   ds: {
@@ -17095,6 +17099,165 @@ if __name__ == '__main__':
             <Span>
               I applied for a software development internship with a referral.{" "}
             </Span>
+            <Span>Note: It's always better to switch your video on.</Span>
+            <Span>
+              <b>Round 1 ( 45 minutes ): </b>
+            </Span>
+            <Span>
+              Senior developer of paytm asked me a few questions based on my
+              internship work such as ACID vs BASE, aws services , celery and he
+              asked me about how I'm gonna implement a few things. He later
+              asked me a few problem solving questions. At last , I asked him
+              about the feedback and he said he's 95% sure that I'll receive the
+              call for the next round soon.{" "}
+            </Span>
+            <Span>
+              Senior developer of paytm asked me several questions. I showed him
+              my code style. He asked me about my approach towards developing a
+              few things.This round was purely based on development.
+            </Span>
+            <Img src={Paytm1} left large />
+            <p>
+              <b>
+                Problem Solving Q1: Search element in a sorted array using
+                recursion ( Basic Test , obviously we should we binary search )
+              </b>
+            </p>
+            <CodeEditor
+              options={{
+                title: "paytm-q1",
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `function recBinarySearch(arr, l, r, x){
+                      if (r >= l) {
+                          let mid = l + Math.floor((r - l) / 2);
+                          if (arr[mid] == x)
+                              return mid;
+                          if (arr[mid] > x)
+                              return binarySearch(arr, l, mid - 1, x);
+                          return binarySearch(arr, mid + 1, r, x);
+                      }
+                      return -1;
+                  }
+                  
+                  // every number can be represented as the sum of powers of 2.
+                  // Hence it can solved using bitwise approach
+                  
+                  function binarySearch(arr, x)
+                  {
+                    let l = 0;
+                    let r = arr.length - 1;
+                    let mid;
+                    while (r >= l) {
+                      mid = l + Math.floor((r - l) / 2);
+                      if (arr[mid] == x)
+                        return mid;
+                      if (arr[mid] > x)
+                        r = mid - 1;
+                      else
+                        l = mid + 1;
+                    }
+                    return -1;
+                  }
+                  
+                  const	arr =new Array(2, 3, 4, 10, 40);
+                  const	x = 10;
+                  const	n = arr.length;
+                  const	result = binarySearch(arr, x);
+                  console.log(result)
+                  `,
+                    output: `3`,
+                  },
+                },
+              }}
+            />
+            <p>
+              <b>
+                Problem Solving Q2: Longest Common Increasing Subsequence Of Two
+                Strings
+              </b>
+            </p>
+            <CodeEditor
+              options={{
+                title: "LCIS",
+                codes: {
+                  Javascript: {
+                    code: `function lcis(arr1,arr2){
+                      let m = arr1.length
+                      let n = arr2.length
+                      let lookupTab = Array(n).fill(0)
+                      // tab represents table
+                      let parent = Array(n).fill(0)
+                      
+                      for(let i=0;i<m;i++){
+                        let current = 0, last = -1
+                        for(let j=0;j<n;j++){
+                          // if both elements are same
+                          if (arr1[i] == arr2[j] && current + 1 > lookupTab[j]){
+                              lookupTab[j] = current + 1; 
+                              parent[j] = last
+                          }  
+                      
+                          // if first element is greater than second
+                          if (arr1[i] > arr2[j] && lookupTab[j] > current){
+                              current = lookupTab[j];
+                              last = j
+                          } 
+                        }
+                      }
+                      
+                      const max = Math.max(...lookupTab)
+                      let index = lookupTab.indexOf(max);
+                      let result=Array(max).fill(null),i=0;
+                      while(index!=-1){
+                        result[i] = arr2[index]; 
+                        index = parent[index]; 
+                        i+=1
+                      }
+                      result = result.reverse()
+                      console.log(result.join(""))
+                      return max
+                      }
+                      
+                      const arr1 = "b3sak"
+                      const arr2 = "baejkl"
+                      console.log(lcis(arr1,arr2));                                                                                     
+                          `,
+                    output: `bk
+                    2`,
+                  },
+                },
+              }}
+            />
+            <Span>
+              <b>Round 2 ( 45 minutes ): </b>
+            </Span>
+
+            <Span>
+              Senior developer of paytm ( who owns paytm.com ) asked me several
+              questions. I showed him my code style. He asked me about my
+              approach towards developing a few things.This round was purely
+              based on development.
+            </Span>
+
+            <Img src={Paytm2} left large />
+            <Span>
+              <b>Round 3 ( 45 minutes ): </b>
+            </Span>
+            <Span>
+              My manager asked me several questions based on development skills
+              at this round.
+            </Span>
+            <Img src={Paytm3} left large />
+            <Span>
+              <b>Round 4 ( HR ): </b>
+            </Span>
+            <Span>
+              I discussed with my hr regarding stipend and she later provided me
+              with the onboarding guide.
+            </Span>
+            <Img src={Paytm4} left large />
           </>
         ),
       },
@@ -17304,9 +17467,128 @@ if __name__ == '__main__':
                 },
               }}
             />
+            <p>
+              <b>
+                Problem Solving Q4: Detection Of Loop In A Singly Linked List.
+              </b>
+            </p>
+            <CodeEditor
+              options={{
+                title: "cred-q4",
+                codes: {
+                  Javascript: {
+                    code: `class Node {
+                          constructor(data) {
+                              this.data = data
+                              this.next = null
+                          }
+                      }
+                      class LinkedList {
+                          constructor() {
+                              this.head = null
+                          }
+                          push(data) {
+                              let node = new Node(data)
+                              if (this.head == null) {
+                                  this.head = node
+                              } else {
+                                  let temp = this.head
+                                  while (temp.next) {
+                                      temp = temp.next
+                                  }
+                                  temp.next = node
+                              }
+                          }
+                          print() {
+                              let temp = this.head
+                              let output = ""
+                              while (temp != null) {
+                                  output += temp.data + " "
+                                  temp = temp.next
+                              }
+                              console.log(output)
+                          }
+                      
+                          loop(){
+                           let temp = this.head
+                           let s = new Set()
+                           while(temp !== null){
+                             if(s.has(temp))
+                             return true
+                             s.add(temp)
+                             temp = temp.next
+                           }
+                           return false
+                          }
+                      
+                      }
+                      
+                      const l = new LinkedList();
+                      
+                      console.log("Push:")
+                      l.push(9);
+                      l.push(8);
+                      l.push(10);
+                      l.print()
+                      l.head.next = l.head
+                      console.log(l.loop())
+                      `,
+                    output: `Push:
+                        9 8 10 
+                        true`,
+                  },
+                },
+              }}
+            />
+            <p>
+              <b>Problem Solving Q5: Two Pointers Technique.</b>
+            </p>
+            <CodeEditor
+              options={{
+                title: "cred-q5",
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `
+                    function isPairSum(A, N, X)
+{
+	var i = 0;
+	var j = N - 1;
+
+	while (i < j) {
+
+		if (A[i] + A[j] == X)
+    {
+      console.log({
+        i,
+        j,
+        l: A[i],r:A[j] , X
+      })
+			return true;
+    }
+		else if (A[i] + A[j] < X)
+			i++;
+		else
+			j--;
+	}
+	return false;
+}
+
+var arr = [ 3, 5, 9, 2, 8, 10, 11 ];
+var val = 17;
+var arrSize =7;
+
+console.log(isPairSum(arr, arrSize, val));
+                    `,
+                    output: `{ i: 2, j: 4, l: 9, r: 8, X: 17 }
+                    true`,
+                  },
+                },
+              }}
+            />
             <Span>
               <b>
-                Problem Solving Q5 ( Puzzle ): Divide a cake into 8 pieces using
+                Problem Solving Q6 ( Puzzle ): Divide a cake into 8 pieces using
                 3 cuts.
               </b>
             </Span>
