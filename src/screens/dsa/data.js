@@ -18333,10 +18333,14 @@ console.log(isPairSum(arr, arrSize, val));
     content: (
       <>
         <Span>
-          Your resume, projects, knowledge and quality of work matters a lot in
-          order to get the call for round 1 from hr. Be confident, try to
-          interact with interviewers friendly. Just don't lose your confidence
-          in between.
+          I specified some of the start-ups and companies who took my interview
+          above.
+        </Span>
+        <Span>
+          Resume, projects, knowledge and quality of work matters a lot in order
+          to get the call for round 1 from hr. Be confident, try to interact
+          with interviewers friendly. Just don't lose your confidence in
+          between.
         </Span>
         <Span>
           I insist you to go through data structures and algorithms sections
