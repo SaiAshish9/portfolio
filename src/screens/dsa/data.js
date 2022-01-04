@@ -17186,9 +17186,9 @@ if __name__ == '__main__':
                 title: "LCIS",
                 codes: {
                   Javascript: {
-                    code: `function lcis(arr1,arr2){
-                      let m = arr1.length
-                      let n = arr2.length
+                    code: `function lcis(str11,str2){
+                      let m = str1.length
+                      let n = str2.length
                       let lookupTab = Array(n).fill(0)
                       // tab represents table
                       let parent = Array(n).fill(0)
@@ -17197,13 +17197,13 @@ if __name__ == '__main__':
                         let current = 0, last = -1
                         for(let j=0;j<n;j++){
                           // if both elements are same
-                          if (arr1[i] == arr2[j] && current + 1 > lookupTab[j]){
+                          if (str1[i] == str2[j] && current + 1 > lookupTab[j]){
                               lookupTab[j] = current + 1; 
                               parent[j] = last
                           }  
                       
                           // if first element is greater than second
-                          if (arr1[i] > arr2[j] && lookupTab[j] > current){
+                          if (str1[i] > str2[j] && lookupTab[j] > current){
                               current = lookupTab[j];
                               last = j
                           } 
@@ -17214,7 +17214,7 @@ if __name__ == '__main__':
                       let index = lookupTab.indexOf(max);
                       let result=Array(max).fill(null),i=0;
                       while(index!=-1){
-                        result[i] = arr2[index]; 
+                        result[i] = str2[index]; 
                         index = parent[index]; 
                         i+=1
                       }
@@ -17223,9 +17223,9 @@ if __name__ == '__main__':
                       return max
                       }
                       
-                      const arr1 = "b3sak"
-                      const arr2 = "baejkl"
-                      console.log(lcis(arr1,arr2));                                                                                     
+                      const str1 = "b3sak"
+                      const str2 = "baejkl"
+                      console.log(lcis(str1,str2));                                                                                     
                           `,
                     output: `bk
                     2`,
