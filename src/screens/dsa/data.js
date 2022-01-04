@@ -17290,6 +17290,25 @@ if __name__ == '__main__':
       },
       inuvest: {
         title: "Inuvest",
+        content: (
+          <>
+            <Span>
+              <b>Inuvest Internship Interview Experience ( 3rd Semester ) :</b>
+            </Span>
+            <Span>
+              I applied for a full stack python ( Django + Flask + Angular + ML
+              + Postgres + AI + + AWS + Docker + Digital Ocean + Redis )
+              internship via internshala.
+            </Span>
+            <Span>
+              After completing the task, they called me . And three interviewers
+              asked me questions on linked list operations, tricky questions on
+              angular and various aws services. I still remember , the founder
+              of this start-up was impressed with what I'm doing at this age.
+            </Span>
+            <Span>Task Screenshots:</Span>
+          </>
+        ),
       },
       nex2Me: {
         title: "Nex2Me",
