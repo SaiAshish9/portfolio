@@ -17373,9 +17373,7 @@ if __name__ == '__main__':
                     import java.util.*;
                     
                     class Main{
-                      
                       static PrintStream ps = System.out;
-                    
                       public static void main(String ...s){
                         int[] arr = {0,1,0,0};
                         // Map<Integer,Integer> map = new HashMap();
