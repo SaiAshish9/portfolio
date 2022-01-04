@@ -101,6 +101,7 @@ import CRED2 from "assets/interview/cred2.png";
 import CRED3 from "assets/interview/cred3.png";
 import CRED4 from "assets/interview/cred4.png";
 import CRED5 from "assets/interview/cred5.png";
+import CRED6 from "assets/interview/cred6.png";
 import { PlayerContainer } from "screens/home/components/projects/styles";
 import ReactPlayer from "react-player";
 
@@ -17151,33 +17152,137 @@ if __name__ == '__main__':
               <b>Interview Call Invitation:</b>
             </Span>
             <Img src={CRED5} left large />
-            <Span>
-              <b>Problem Solving Q1: Valid Parentheses</b>
-            </Span>
+            <p>
+              <b>Problem Solving Q1: Valid Parenthesis</b>
+            </p>
+            <CodeEditor
+              options={{
+                title: "cred-q1",
+                codes: {
+                  Javascript: {
+                    code: `var isValid = function(s) {
+                      var match = {
+                          ')': '(',
+                          '}': '{',
+                          ']': '['
+                      }
+                      var stack = []
+                      for (let i in s) {
+                          if (Object.values(match).includes(s[i])) {
+                              stack.push(s[i])
+                              continue
+                          }
+                          if (stack.length === 0 || match[s[i]] != stack.pop()) {
+                              return false
+                          }
+                      }
+                      return stack.length === 0
+                  };
+                  
+                  console.log(isValid('()()'))`,
+                    output: `true`,
+                  },
+                },
+              }}
+            />
             <Span>
               <b>
                 Problem Solving Q2: What is n in O(n)? How time complexity and
                 space complexity is related to n. At Q1, what will be complexity
-                of Object.includes()?
+                of Object.values(match).includes(s[i])?
               </b>
             </Span>
-            <Span>
+            <p>
               <b>
                 Problem Solving Q3: There are 5 given cities : Mumbai, Chennai,
-                Delhi, Hyderabad and Kolkata. Start from any of the cities and
-                traverse all cities without returning back to any city in
-                between.
+                Delhi, Hyderabad, Bangalore and Kolkata. Start from any of the
+                cities and traverse all cities without returning back to any
+                city in between.
               </b>
-            </Span>
-            <Span>
-              <b>Problem Solving Q4: Detection Of Loop In A Linked List</b>
-            </Span>
+            </p>
+            <CodeEditor
+              options={{
+                title: "cred-q3",
+                codes: {
+                  Javascript: {
+                    code: `class Graph {
+
+                      constructor(n, v) {
+                          this.n = n
+                          this.g = {}
+                          this.v = v
+                      }
+                  
+                      addVertex(i) {
+                          this.g[i] = []
+                      }
+                  
+                  
+                      addEdge(u, v) {
+                          this.g[u].push(v)
+                          this.g[v].push(u)
+                      }
+                  
+                      print() {
+                          let res = {}
+                          Object.entries(this.g).forEach((i, k) => {
+                              res[this.v[i[0]]] = i[1].map(x => this.v[x])
+                          })
+                          console.log(res)
+                      }
+                  
+                      dfs(v = 0, visited = {}) {
+                          visited[v] = true
+                          console.log(this.v[v])
+                          const list = this.g[v]
+                          for (let i of list) {
+                              if (!visited[i]) this.dfs(i, visited)
+                          }
+                      }
+                  
+                  }
+                  
+                  const v = ['Mumbai', 'Chennai', 'Delhi', 'Hyderabad', 'Kolkata', 'Bangalore']
+                  const g = new Graph(6, v)
+                  for (let i in v)
+                      g.addVertex(i)
+                  g.addEdge(0, 1);
+                  g.addEdge(1, 2);
+                  g.addEdge(2, 3);
+                  g.addEdge(3, 4);
+                  g.addEdge(4, 5);
+                  console.log("Graph ( with no cycles ):")
+                  g.print()
+                  console.log("DFS:")
+                  g.dfs()
+                      `,
+                    output: `Graph ( with no cycles ):
+                    {
+                      Mumbai: [ 'Chennai' ],
+                      Chennai: [ 'Mumbai', 'Delhi' ],
+                      Delhi: [ 'Chennai', 'Hyderabad' ],
+                      Hyderabad: [ 'Delhi', 'Kolkata' ],
+                      Kolkata: [ 'Hyderabad', 'Bangalore' ],
+                      Bangalore: [ 'Kolkata' ]
+                    }
+                    DFS:
+                    Mumbai
+                    Chennai
+                    Delhi
+                    Hyderabad
+                    Kolkata
+                    Bangalore`,
+                  },
+                },
+              }}
+            />
             <Span>
               <b>
-                Problem Solving Q5 ( Puzzle ): Divide a cake into 4 pieces using
+                Problem Solving Q5 ( Puzzle ): Divide a cake into 8 pieces using
                 3 cuts.
               </b>
             </Span>
+            <Img src={CRED6} left />
           </>
         ),
       },
