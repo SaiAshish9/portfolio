@@ -17087,6 +17087,16 @@ if __name__ == '__main__':
       },
       paytm: {
         title: "Paytm",
+        content: (
+          <>
+            <Span>
+              <b>Paytm Interview Experience:</b>
+            </Span>
+            <Span>
+              I applied for a software development internship with a referral.{" "}
+            </Span>
+          </>
+        ),
       },
       cred: {
         title: "CRED",
@@ -17096,10 +17106,8 @@ if __name__ == '__main__':
               <b>CRED Interview Experience:</b>
             </Span>
             <Span>
-              <b>
-                I applied for mobile development internship where the stack was:
-                Flutter, Kotlin , Android and Swift
-              </b>
+              I applied for mobile development internship where the stack was:
+              Flutter, Kotlin , Android and Swift
             </Span>
             <Span>
               During the first call from a member who belongs to the talent
