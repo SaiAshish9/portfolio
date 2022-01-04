@@ -17217,7 +17217,6 @@ if __name__ == '__main__':
                           this.g[i] = []
                       }
                   
-                  
                       addEdge(u, v) {
                           this.g[u].push(v)
                           this.g[v].push(u)
