@@ -17871,7 +17871,7 @@ console.log(isPairSum(arr, arrSize, val));
               <b>Test duration was 30 minutes.</b>
             </Span>
             <Span>
-              I was suggested to the first few ( ~20-30 ) leetcode questions
+              I was suggested to solve the first few ( ~20-30 ) leetcode questions
               before attempting the test.
             </Span>
             <Span>
