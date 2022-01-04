@@ -17113,7 +17113,8 @@ if __name__ == '__main__':
             <Span>
               They were happy with my application and invited me for the second
               round. Two developers asked me several problem solving questions
-              including a puzzle for about 2 hours, after proper introduction.
+              including a puzzle for about 2 hours, after proper introduction. I
+              showed the interviewers my projects.
             </Span>
             <Span>
               <b>First Email Screenshot:</b>
