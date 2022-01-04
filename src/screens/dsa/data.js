@@ -80,6 +80,14 @@ import Nex2Me7 from "assets/interview/nex2me7.png";
 import Nex2Me8 from "assets/interview/nex2me8.png";
 import Nex2Me9 from "assets/interview/nex2me9.png";
 import Nex2Me10 from "assets/interview/nex2me10.png";
+import Inuvest1 from "assets/interview/inuvest1.png";
+import Inuvest2 from "assets/interview/inuvest2.png";
+import Inuvest3 from "assets/interview/inuvest3.png";
+import Inuvest4 from "assets/interview/inuvest4.png";
+import Inuvest5 from "assets/interview/inuvest5.png";
+import Inuvest6 from "assets/interview/inuvest6.png";
+import Inuvest7 from "assets/interview/inuvest7.png";
+import Inuvest8 from "assets/interview/inuvest8.png";
 
 export const DATA = {
   ds: {
@@ -17306,7 +17314,20 @@ if __name__ == '__main__':
               angular and various aws services. I still remember , the founder
               of this start-up was impressed with what I'm doing at this age.
             </Span>
+            <Span>
+              My work can be found at the experience section of the home section
+              by simply clicking at the desired logo.
+            </Span>
+            <Span>Screenshots:</Span>
+            <Img left src={Inuvest1} />
+            <Img left src={Inuvest2} />
             <Span>Task Screenshots:</Span>
+            <Img left src={Inuvest3} />
+            <Img left src={Inuvest4} />
+            <Img left src={Inuvest5} />
+            <Img left src={Inuvest6} />
+            <Img left src={Inuvest7} />
+            <Img left src={Inuvest8} />
           </>
         ),
       },
