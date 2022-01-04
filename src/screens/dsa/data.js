@@ -6672,7 +6672,10 @@ if __name__=='__main__':
                   }}
                 />
                 <p>
-                  <b>Print All possible paths from source to destination:</b>
+                  <b>
+                    Print All possible paths from source to destination ( using
+                    dfs):
+                  </b>
                 </p>
                 <CodeEditor
                   options={{
@@ -6828,6 +6831,22 @@ if __name__=='__main__':
                           [ 'A', 'E', 'F' ],
                           [ 'A', 'E', 'C', 'F' ]
                         ]`,
+                      },
+                    },
+                  }}
+                />
+                <p>
+                  <b>
+                    Print All possible paths from source to destination ( using
+                    bfs):
+                  </b>
+                </p>
+                <CodeEditor
+                  options={{
+                    title: "AllPathsBFS",
+                    codes: {
+                      Javascript: {
+                        code: ``,
                       },
                     },
                   }}
