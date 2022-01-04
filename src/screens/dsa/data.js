@@ -88,6 +88,10 @@ import Inuvest5 from "assets/interview/inuvest5.png";
 import Inuvest6 from "assets/interview/inuvest6.png";
 import Inuvest7 from "assets/interview/inuvest7.png";
 import Inuvest8 from "assets/interview/inuvest8.png";
+import Stewards1 from "assets/interview/stewards1.png";
+import Stewards2 from "assets/interview/stewards2.png";
+import Stewards3 from "assets/interview/stewards3.png";
+import Stewards4 from "assets/interview/stewards4.png";
 
 export const DATA = {
   ds: {
@@ -17300,9 +17304,94 @@ if __name__ == '__main__':
             <Span>
               <b>Stewards Internship Interview Experience :</b>
             </Span>
-            <Span>This internship really changed my life.
-                
+            <Span>This internship really changed my life.</Span>
+            <Span>
+              After completion of the first two tasks, I showed the CTO of the
+              company ( Ukraine ) multiple projects during a interview call. He
+              asked me questions about ACID and BASE , various concepts which I
+              made use of in my projects, batch transactions, and recycler views
+              in android,etc.
             </Span>
+            <Span>
+              Then I made a project with the CEO of the company ( London ), and
+              someone who belongs to Brazil Government. My work was presented at
+              Brazil media.
+            </Span>
+            <Span>
+              My work can be found at the experience section of the home section
+              by simply clicking at the desired logos. ( uvrobots + velvet.video
+              + searchvaccines ) .
+            </Span>
+            <Span>
+              <b>Interview Task 1:</b>
+            </Span>
+            <Span>
+              <b>Input Formatter</b>
+            </Span>
+            <Span>
+              const input1 = 12345.12 <br />
+              const input2 = 3.12 <br />
+              const input3 = 123456789
+              <br />
+              <br />
+              function formatter(input){"{"}
+              <br />
+              <br />
+              {"}"}
+              <br />
+              <br />
+              // formatter(input1) === 12,345.12 <br />
+              // formatter(input2) === 3.12 <br />
+              // formatter(input3) === 123,456,789 //implement formatter. // Do
+              not use Regex:
+            </Span>
+            <Img left large src={Stewards1} reduceH />
+            <CodeEditor
+              options={{
+                title: "Stewards ❤️",
+                codes: {
+                  Javascript: {
+                    code: `function convert(x){
+                      const y=String(parseInt(x)).split("").reverse()
+                      var z= []
+                      for(let i=0;i<y.length;i+=3){
+                         let u=y[i]
+                         if(y[i+1])
+                         u+= y[i+1]
+                         if(y[i+2])
+                         u+=y[i+2]
+                         z.push(u)
+                      }
+                      var ans = z.join(",").split("").reverse().join("")
+                      const diff = String(x-parseInt(x)).substring(2,String(x).length-String(parseInt(x)).length+1)
+                      if(diff.length>0) ans+="."+ diff
+                      return ans
+                      }
+                      console.log(convert(16.14))`,
+                    output: `16.14`,
+                  },
+                },
+              }}
+            />
+            <Span>
+              <b>Interview Task 2:</b>
+            </Span>
+            <Span>
+              <b>TikTok Clone ( Rs. 5000 for completion ): </b>
+            </Span>
+            <Img src={Stewards2} left large />
+            <Span>
+              <b>
+                I showed the CEO, my instagram clone, he was impressed and I got
+                selected after a final interview call, which I mentioned above
+                with the CTO.
+              </b>
+            </Span>
+            <Span>
+              <b>Screenshots:</b>
+            </Span>
+            <Img src={Stewards3} left />
+            <Img src={Stewards4} left />
           </>
         ),
       },
