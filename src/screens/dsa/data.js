@@ -96,6 +96,10 @@ import Turing1 from "assets/interview/turing1.png";
 import Turing2 from "assets/interview/turing2.png";
 import Turing3 from "assets/interview/turing3.png";
 import Turing4 from "assets/interview/turing4.png";
+import CRED1 from "assets/interview/cred1.png";
+import CRED2 from "assets/interview/cred2.png";
+import CRED3 from "assets/interview/cred3.png";
+import CRED4 from "assets/interview/cred4.png";
 
 export const DATA = {
   ds: {
@@ -17087,7 +17091,32 @@ if __name__ == '__main__':
             <Span>
               <b>CRED Interview Experience:</b>
             </Span>
-            
+            <Span>
+              <b>
+                I applied for mobile development internship where the stack was:
+                Flutter, Kotlin , Android and Swift
+              </b>
+            </Span>
+            <Span>
+              During the first call from a member who belongs to the talent
+              team, I was asked to complete the assignment within the first
+              week.
+            </Span>
+            <Span>
+              <b>First Email Screenshot:</b>
+            </Span>
+            <Img src={CRED1} large />
+            <Span>
+              I sent them a attached zip file as well as a drive link which
+              consists of my resume , cover letter, source code, app screenshot
+              and screen record.
+            </Span>
+            <Span>
+              <b>Task Screenshots:</b>
+            </Span>
+            <Img src={CRED2} left />
+            <Img src={CRED3} left />
+            <Img src={CRED4} left large />
           </>
         ),
       },
