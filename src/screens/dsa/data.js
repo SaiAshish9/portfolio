@@ -100,6 +100,7 @@ import CRED1 from "assets/interview/cred1.png";
 import CRED2 from "assets/interview/cred2.png";
 import CRED3 from "assets/interview/cred3.png";
 import CRED4 from "assets/interview/cred4.png";
+import CRED5 from "assets/interview/cred5.png";
 import { PlayerContainer } from "screens/home/components/projects/styles";
 import ReactPlayer from "react-player";
 
@@ -17111,7 +17112,7 @@ if __name__ == '__main__':
             </Span>
             <Span>
               They were happy with my application and invited me for the second
-              reund. Two developers asked me 5 problem solving questions
+              round. Two developers asked me several problem solving questions
               including a puzzle for about 2 hours, after proper introduction.
             </Span>
             <Span>
@@ -17145,6 +17146,37 @@ if __name__ == '__main__':
                 url="https://res.cloudinary.com/saiashish/video/upload/v1641297009/screen_record_krviny.mp4"
               />
             </PlayerContainer>
+            <Span>
+              <b>Interview Call Invitation:</b>
+            </Span>
+            <Img src={CRED5} left large />
+            <Span>
+              <b>Problem Solving Q1: Valid Parentheses</b>
+            </Span>
+            <Span>
+              <b>
+                Problem Solving Q2: What is n in O(n)? How time complexity and
+                space complexity is related to n. At Q1, what will be complexity
+                of Object.includes()?
+              </b>
+            </Span>
+            <Span>
+              <b>
+                Problem Solving Q3: There are 5 given cities : Mumbai, Chennai,
+                Delhi, Hyderabad and Kolkata. Start from any of the cities and
+                traverse all cities without returning back to any city in
+                between.
+              </b>
+            </Span>
+            <Span>
+              <b>Problem Solving Q4: Detection Of Loop In A Linked List</b>
+            </Span>
+            <Span>
+              <b>
+                Problem Solving Q5 ( Puzzle ): Divide a cake into 4 pieces using
+                3 cuts.
+              </b>
+            </Span>
           </>
         ),
       },
