@@ -17641,7 +17641,7 @@ console.log(isPairSum(arr, arrSize, val));
               subsequence [LCIS] and print one of such sequences (multiple
               sequences may exist). Suppose we consider two arrays – arr1[] =
               [-1, 0, 1, 0] and arr2[] = [1, -1, -1, 0, 1, 0, 1] Our answer
-              would be 2 [3, 9] as this is the longest common subsequence which
+              would be 3 [-1,0,1] as this is the longest common subsequence which
               is increasing also.
             </p>
             <CodeEditor
