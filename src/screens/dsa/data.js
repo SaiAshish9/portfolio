@@ -17821,6 +17821,22 @@ console.log(isPairSum(arr, arrSize, val));
           </>
         ),
       },
+      razorpay: {
+        title: "Razorpay",
+        content: (
+          <>
+            <Span>
+              <b>Razorpay Interview Experience (call) :</b>
+            </Span>
+            <Span>
+              I got the call from razorpay . They asked me questions regarding
+              ci/cd , graphql and various important libraries,etc. I was able to
+              answer all of them.
+            </Span>
+            <Span>They're ready to provide me full time employment.</Span>
+          </>
+        ),
+      },
       browserstack: {
         title: "Browserstack",
         content: (
