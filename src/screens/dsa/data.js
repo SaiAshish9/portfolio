@@ -17879,7 +17879,7 @@ console.log(isPairSum(arr, arrSize, val));
             </Span>
             <Span>
               I don't remember second question but the first question was
-              longest common subsequence of two strings
+              longest palindromic subsequence of two strings
             </Span>
             <p>
               <b>Q1. Longest Palindromic Subsequence Of Two Strings:</b>
