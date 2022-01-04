@@ -92,6 +92,10 @@ import Stewards1 from "assets/interview/stewards1.png";
 import Stewards2 from "assets/interview/stewards2.png";
 import Stewards3 from "assets/interview/stewards3.png";
 import Stewards4 from "assets/interview/stewards4.png";
+import Turing1 from "assets/interview/turing1.png";
+import Turing2 from "assets/interview/turing2.png";
+import Turing3 from "assets/interview/turing3.png";
+import Turing4 from "assets/interview/turing4.png";
 
 export const DATA = {
   ds: {
@@ -17296,6 +17300,95 @@ if __name__ == '__main__':
       },
       turing: {
         title: "Turing",
+        content: (
+          <>
+            <Span>
+              <b>Turing Interview Experience :</b>
+            </Span>
+            <Span>
+              I updated my profile and passed multiple tests. Due to which I was
+              able to attempt the live coding contest. My video was kept on.
+            </Span>
+            <Span>
+              <b>Test duration was 30 minutes.</b>
+            </Span>
+            <Span>
+              I was suggested to the first few ( ~20-30 ) leetcode questions
+              before attempting the test.
+            </Span>
+            <Span>
+              I received emails for remote jobs from the Turing afterwards.
+            </Span>
+            <Span>
+              I don't remember second question but the first question was
+              longest common subsequence of two strings
+            </Span>
+            <p>
+              <b>Q1. Longest Palindromic Subsequence Of Two Strings:</b>
+            </p>
+            <CodeEditor
+              options={{
+                title: "turing-q1",
+                codes: {
+                  Javascript: {
+                    code: `const lcs = function(str1, str2) {
+                      const m = str1.length
+                      const n = str2.length
+                      const lookupTab = Array.from(Array(m + 1), () => Array(n + 1).fill(n + 1))
+                      for (let i = 0; i <= m; i++) {
+                          for (let j = 0; j <= n; j++) {
+                              if (i === 0 || j === 0) lookupTab[i][j] = 0
+                              else if (str1[i - 1] === str2[j - 1])
+                                  lookupTab[i][j] = lookupTab[i - 1][j - 1] + 1
+                              else
+                                  lookupTab[i][j] = Math.max(lookupTab[i - 1][j], lookupTab[i][j - 1])
+                          }
+                      }
+                      const result = lookupTab[m][n]
+                      let subsequence = Array(result).fill(null)
+                      let len = result
+                      let i = m,
+                          j = n;
+                      while (i > 0 && j > 0) {
+                          if (str1[i - 1] == str2[j - 1]) {
+                              subsequence[len - 1] = str1[i - 1]
+                              i -= 1
+                              j -= 1
+                              len -= 1
+                          }
+                          else if (lookupTab[i - 1][j] > lookupTab[i][j - 1]) {
+                              i -= 1
+                          } else {
+                              j -= 1
+                          }
+                      }
+                      console.log(typeof str === "string"? subsequence.join("") : subsequence )
+                      return result
+                  }
+                  
+                    function lps(str) {
+                      return lcs(str, typeof str === "string"? str.split("").reverse().join(): str.reverse());
+                    }
+                  
+                    
+                    let str = "abs123abs";
+                    console.log(lps(str));
+                  `,
+                    output: `sbs
+                  3`,
+                  },
+                },
+              }}
+            />
+            <Span>
+              <b>Screenshots:</b>
+            </Span>
+            <Img src={Turing1} left />
+            <Img src={Turing2} left />
+            <Img src={Turing3} left />
+            <Img src={Turing4} left />
+          </>
+        ),
       },
       stewards: {
         title: "Stewards ❤️",
