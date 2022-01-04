@@ -100,6 +100,8 @@ import CRED1 from "assets/interview/cred1.png";
 import CRED2 from "assets/interview/cred2.png";
 import CRED3 from "assets/interview/cred3.png";
 import CRED4 from "assets/interview/cred4.png";
+import { PlayerContainer } from "screens/home/components/projects/styles";
+import ReactPlayer from "react-player";
 
 export const DATA = {
   ds: {
@@ -17103,20 +17105,46 @@ if __name__ == '__main__':
               week.
             </Span>
             <Span>
-              <b>First Email Screenshot:</b>
-            </Span>
-            <Img src={CRED1} large />
-            <Span>
               I sent them a attached zip file as well as a drive link which
               consists of my resume , cover letter, source code, app screenshot
               and screen record.
             </Span>
+            <Span>
+              They were happy with my application and invited me for the second
+              reund. Two developers asked me 5 problem solving questions
+              including a puzzle for about 2 hours, after proper introduction.
+            </Span>
+            <Span>
+              <b>First Email Screenshot:</b>
+            </Span>
+            <Img src={CRED1} large />
             <Span>
               <b>Task Screenshots:</b>
             </Span>
             <Img src={CRED2} left />
             <Img src={CRED3} left />
             <Img src={CRED4} left large />
+            <PlayerContainer
+              style={{
+                display: "flex",
+                height: "auto",
+                alignItems: "flex-start",
+                width: "auto",
+              }}
+            >
+              <ReactPlayer
+                loop
+                muted
+                height="32rem"
+                style={{
+                  margin: "auto 0",
+                }}
+                width="auto"
+                controls
+                playing
+                url="https://res.cloudinary.com/saiashish/video/upload/v1641297009/screen_record_krviny.mp4"
+              />
+            </PlayerContainer>
           </>
         ),
       },
