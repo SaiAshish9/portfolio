@@ -17120,7 +17120,7 @@ if __name__ == '__main__':
             <p>
               <b>
                 Problem Solving Q1: Search element in a sorted array using
-                recursion ( Basic Test , obviously we should we binary search )
+                recursion ( Basic Test , obviously we should use binary search )
               </b>
             </p>
             <CodeEditor
