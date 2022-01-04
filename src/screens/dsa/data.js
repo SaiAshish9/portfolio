@@ -18300,7 +18300,7 @@ console.log(isPairSum(arr, arrSize, val));
               <b>OpenHouse Offer:</b>
             </Span>{" "}
             <Span>
-              I got the invitation for python / django developer opportunity
+              I got the invitation for a python / django developer opportunity
               along with several other offers.
             </Span>
             <Span>Screenshots:</Span>
