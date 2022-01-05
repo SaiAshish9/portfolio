@@ -28711,7 +28711,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b>64. Minimum Path Sum</b>
+              <b>Q64. Minimum Path Sum</b>
             </Span>
             <Span>
               Given a m x n grid filled with non-negative numbers, find a path
@@ -28792,10 +28792,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q65. Valid Number</b>
             </Span>
             <CodeEditor
               options={{
+                title: "Q65. Valid Number",
                 codes: {
                   Javascript: {
                     code: ``,
