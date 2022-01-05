@@ -28274,6 +28274,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <p>1 &lt;= n &lt;= 20</p>
             <CodeEditor
               options={{
+                title: "Q59. Spiral Matrix II",
                 codes: {
                   Javascript: {
                     code: `/**
@@ -28323,14 +28324,89 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q60. Permutation Sequence</b>
             </Span>
+            <Span>
+              The set [1, 2, 3, ..., n] contains a total of n! unique
+              permutations.
+            </Span>
+            <Span>
+              By listing and labeling all of the permutations in order, we get
+              the following sequence for n = 3:
+            </Span>
+            <Span>
+              "123" <br />
+              "132" <br />
+              "213" <br />
+              "231" <br />
+              "312" <br />
+              "321"
+            </Span>
+            <Span>Given n and k, return the kth permutation sequence.</Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: n = 3, k = 3 <br />
+              Output: "213"
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: n = 4, k = 9 <br />
+              Output: "2314"
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: n = 3, k = 1 <br />
+              Output: "123"
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= n &lt;= 9 <br />1 &lt;= k &lt;= n!
+            </p>
             <CodeEditor
               options={{
+                title: "Q60. Permutation Sequence",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @param {number} k
+                    * @return {string}
+                    */
+                   
+                   function permuteBacktrack(str, answer,result,k) {
+                       if(result.length<k){
+                       if (str.length === 0) {
+                           result.push(answer.slice())
+                           return
+                       }
+                       for (let i = 0; i < str.length; i++) {
+                           let ch = str[i];
+                           let left = str.substring(0, i);
+                           let right = str.substring(i + 1);
+                           let rest = left + right;
+                           permuteBacktrack(rest, answer + ch,result,k);
+                       }
+                       }
+                   }
+                   
+                   var getPermutation = function(n, k) {
+                       const str = [...Array(n).keys()].map(x=>x+1).join("")
+                       const result = []
+                       permuteBacktrack(str,"",result,k)
+                       return result[k-1]
+                   };
+                   
+                   getPermutation(3,3)`,
                   },
+                  output: `213`,
                 },
               }}
             />
