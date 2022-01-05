@@ -28017,13 +28017,60 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q56. Merge Intervals</b>
             </Span>
+            <Span>
+              Given an array of intervals where intervals[i] = [starti, endi],
+              merge all overlapping intervals, and return an array of the
+              non-overlapping intervals that cover all the intervals in the
+              input.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: intervals = [[1,3],[2,6],[8,10],[15,18]] <br />
+              Output: [[1,6],[8,10],[15,18]] <br />
+              Explanation: Since intervals [1,3] and [2,6] overlaps, merge them
+              into [1,6].
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: intervals = [[1,4],[4,5]] <br />
+              Output: [[1,5]] <br />
+              Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= intervals.length &lt;= 104 <br />
+              intervals[i].length == 2 <br />0 &lt;= starti &lt;= endi &lt;= 104
+            </p>
             <CodeEditor
               options={{
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[][]} intervals
+                    * @return {number[][]}
+                    */
+                   var merge = function(intervals) {
+                      const result = []
+                      intervals.sort((a,b) => a[0] - b[0])
+                      for(let i of intervals){
+                        if(!result.length || result.slice(-1)[0][1] < i[0])
+                        result.push(i)
+                        else
+                        result[result.length-1][1] = Math.max(result.slice(-1)[0][1],i[1])
+                      }
+                     return result
+                   };
+                   
+                   merge([[1,4],[4,5]])`,
+                    output: `[ [ 1, 5 ] ]`,
                   },
                 },
               }}
@@ -28036,13 +28083,84 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q57. Insert Interval</b>
             </Span>
+            <Span>
+              You are given an array of non-overlapping intervals intervals
+              where intervals[i] = [starti, endi] represent the start and the
+              end of the ith interval and intervals is sorted in ascending order
+              by starti. You are also given an interval newInterval = [start,
+              end] that represents the start and end of another interval.
+            </Span>
+            <Span>
+              Insert newInterval into intervals such that intervals is still
+              sorted in ascending order by starti and intervals still does not
+              have any overlapping intervals (merge overlapping intervals if
+              necessary).
+            </Span>
+            <Span>Return intervals after the insertion.</Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: intervals = [[1,3],[6,9]], newInterval = [2,5] <br />
+              Output: [[1,5],[6,9]]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], <br />
+              newInterval = [4,8]
+              <br />
+              Output: [[1,2],[3,10],[12,16]]
+              <br />
+              Explanation: Because the new interval [4,8] overlaps with
+              [3,5],[6,7],[8,10].
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              0 &lt;= intervals.length &lt;= 10^4 <br />
+              intervals[i].length == 2 <br />
+              0 &lt;= starti &lt;= endi &lt;= 10^5 <br />
+              intervals is sorted by starti in ascending order. <br />
+              newInterval.length == 2 <br />
+              0 &lt;= start &lt;= end &lt;= 10^5
+            </p>
             <CodeEditor
               options={{
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[][]} intervals
+                    * @param {number[]} newInterval
+                    * @return {number[][]}
+                    */
+                   var insert = function(intervals, newInterval){
+                     const result = []
+                     const n = intervals.length
+                     // intervals.sort((a, b) => a[0] - b[0])
+                     let i = 0;
+                     while(i<n && intervals[i][1]<newInterval[0])
+                     result.push(intervals[i++])
+                     while(i<n && intervals[i][0]<=newInterval[1]){
+                     newInterval[0] = Math.min(newInterval[0], intervals[i][0]);
+                     newInterval[1] = Math.max(newInterval[1], intervals[i][1]);
+                     ++i;
+                     }
+                     result.push(newInterval)
+                     while(i<n)
+                     result.push(intervals[i++])
+                     return result
+                   };
+                   
+                   insert([
+                       [1, 3],
+                       [6, 9]
+                   ],[2,5])`,
+                   output:`[ [ 1, 5 ], [ 6, 9 ] ]`
                   },
                 },
               }}
