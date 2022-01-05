@@ -116,6 +116,7 @@ import Paytm9 from "assets/interview/paytm9.png";
 import Oh1 from "assets/interview/oh1.png";
 import Oh2 from "assets/interview/oh2.png";
 import Oh3 from "assets/interview/oh3.png";
+import LeetcodeQ59 from "assets/leetcode/q59.png";
 
 export const DATA = {
   ds: {
@@ -28246,13 +28247,70 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q59. Spiral Matrix II</b>
             </Span>
+            <Span>
+              Given a positive integer n, generate an n x n matrix filled with
+              elements from 1 to n2 in spiral order.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={LeetcodeQ59} left />
+            <Span>
+              Input: n = 3 <br />
+              Output: [[1,2,3],[8,9,4],[7,6,5]]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: n = 1 <br />
+              Output: [[1]]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>1 &lt;= n &lt;= 20</p>
             <CodeEditor
               options={{
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {number[][]}
+                    */
+                   var generateMatrix = function(n) {
+                   
+                     const result = Array.from(Array(n),()=>Array(n).fill(0))
+                     let count = 1
+                     
+                     const x = parseInt(n/2);
+                   
+                     for (let min = 0; min < x; ++min) {
+                       const max = n - min - 1;
+                       for (let i = min; i < max; ++i)
+                         result[min][i] = count++;
+                       for (let i = min; i < max; ++i)
+                         result[i][max] = count++;
+                       for (let i = max; i > min; --i)
+                         result[max][i] = count++;
+                       for (let i = max; i > min; --i)
+                         result[i][min] = count++;
+                     }
+                   
+                     if(n % 2 == 1){
+                       result[x][x] = count;
+                     }
+                     return result
+                   };
+                   
+                   generateMatrix(3).forEach(x=>console.log(x.join(" ")))`,
+                    output: `
+                    1 2 3
+8 9 4
+7 6 5
+                    `,
                   },
                 },
               }}
