@@ -28126,8 +28126,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               intervals[i].length == 2 <br />
               0 &lt;= starti &lt;= endi &lt;= 10^5 <br />
               intervals is sorted by starti in ascending order. <br />
-              newInterval.length == 2 <br />
-              0 &lt;= start &lt;= end &lt;= 10^5
+              newInterval.length == 2 <br />0 &lt;= start &lt;= end &lt;= 10^5
             </p>
             <CodeEditor
               options={{
@@ -28160,7 +28159,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                        [1, 3],
                        [6, 9]
                    ],[2,5])`,
-                   output:`[ [ 1, 5 ], [ 6, 9 ] ]`
+                    output: `[ [ 1, 5 ], [ 6, 9 ] ]`,
                   },
                 },
               }}
