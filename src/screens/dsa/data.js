@@ -28512,6 +28512,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             </Span>
             <CodeEditor
               options={{
+                title: "Q62. Unique Paths",
                 codes: {
                   Javascript: {
                     code: ``,
