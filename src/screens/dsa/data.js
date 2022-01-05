@@ -28405,8 +28405,8 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                    };
                    
                    getPermutation(3,3)`,
+                   output: `213`,
                   },
-                  output: `213`,
                 },
               }}
             />
@@ -28422,6 +28422,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             </Span>
             <CodeEditor
               options={{
+                title: "Q61. Rotate List",
                 codes: {
                   Javascript: {
                     code: ``,
