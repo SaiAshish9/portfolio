@@ -122,6 +122,7 @@ import LeetcodeQ61b from "assets/leetcode/61b.png";
 import LeetcodeQ62 from "assets/leetcode/62.png";
 import LeetcodeQ63a from "assets/leetcode/63a.png";
 import LeetcodeQ63b from "assets/leetcode/63b.png";
+import LeetcodeQ64 from "assets/leetcode/64.png";
 
 export const DATA = {
   ds: {
@@ -28710,8 +28711,40 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>64. Minimum Path Sum</b>
             </Span>
+            <Span>
+              Given a m x n grid filled with non-negative numbers, find a path
+              from top left to bottom right, which minimizes the sum of all
+              numbers along its path.
+            </Span>
+            <Span>
+              Note: You can only move either down or right at any point in time.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={LeetcodeQ64} left />
+            <Span>
+              Input: grid = [[1,3,1],[1,5,1],[4,2,1]] <br />
+              Output: 7 <br />
+              Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: grid = [[1,2,3],[4,5,6]] <br />
+              Output: 12
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              m == grid.length <br />
+              n == grid[i].length <br />
+              1 &lt;= m, n &lt;= 200 <br />0 &lt;= grid[i][j] &lt;= 100
+            </p>
             <CodeEditor
               options={{
                 codes: {
