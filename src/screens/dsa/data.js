@@ -28655,7 +28655,49 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q63. Unique Paths II",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[][]} obstacleGrid
+                    * @return {number}
+                    */
+                   var uniquePathsWithObstacles1 = function(obstacleGrid) {
+                     const m = obstacleGrid.length
+                     const n = obstacleGrid[0].length
+                     const dp = Array.from(Array(m+1),()=>Array(n+1).fill(0))
+                     dp[0][1] = 1 
+                     // or dp[1][0] = 1
+                     for (let i = 1; i <= m; ++i)
+                     for (let j = 1; j <= n; ++j)
+                     if (!obstacleGrid[i - 1][j - 1])
+                       dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+                     dp.forEach(x=>console.log(x.join(" ")))
+                     return dp[m][n]
+                   };
+                   
+                   var uniquePathsWithObstacles = function(obstacleGrid) {
+                     const m = obstacleGrid.length
+                     const n = obstacleGrid[0].length    
+                     const dp = Array(n).fill(0)
+                     dp[0] = 1
+                     for (let i = 0; i < m; ++i)
+                     for (let j = 0; j < n; ++j)
+                     if (obstacleGrid[i][j])
+                       dp[j] = 0;
+                     else if (j > 0)
+                       dp[j] += dp[j - 1];
+                     console.log(dp.join(" "))
+                     return dp[n-1]
+                   };
+                   
+                   uniquePathsWithObstacles1([[0,0,0],[0,1,0],[0,0,0]])
+                   console.log("####")
+                   uniquePathsWithObstacles([[0,0,0],[0,1,0],[0,0,0]])`,
+                    output: `0 1 0 0
+                   0 1 1 1
+                   0 1 0 1
+                   0 1 1 2
+                   ####
+                   1 1 2
+                   2`,
                   },
                 },
               }}
