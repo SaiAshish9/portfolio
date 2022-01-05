@@ -28749,8 +28749,37 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               options={{
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[][]} grid
+                    * @return {number}
+                    */
+                   var minPathSum = function(grid) {
+                     const m = grid.length;
+                     const n = grid[0].length;
+                     grid.forEach(x=>console.log(x.join(" ")));
+                     console.log("#####")
+                     // at each cell place the minimum value
+                     for (let i = 0; i < m; ++i)
+                       for (let j = 0; j < n; ++j)
+                         if (i > 0 && j > 0)
+                           grid[i][j] += Math.min(grid[i - 1][j], grid[i][j - 1]);
+                         else if (i > 0)
+                           grid[i][0] += grid[i - 1][0];
+                         else if (j > 0)
+                           grid[0][j] += grid[0][j - 1];
+                     grid.forEach(x=>console.log(x.join(" ")));
+                     return grid[m - 1][n - 1];
+                   };
+                   
+                   minPathSum([[1,3,1],[1,5,1],[4,2,1]])`,
+                    output: `1 3 1
+                    1 5 1
+                    4 2 1
+                    #####
+                    1 4 5
+                    2 7 6
+                    6 8 7
+                    7`,
                   },
                 },
               }}
