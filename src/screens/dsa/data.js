@@ -28051,6 +28051,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             </p>
             <CodeEditor
               options={{
+                title: "Q56. Merge Intervals",
                 codes: {
                   Javascript: {
                     code: `/**
@@ -28130,6 +28131,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             </p>
             <CodeEditor
               options={{
+                title: "Q57. Insert Interval",
                 codes: {
                   Javascript: {
                     code: `/**
@@ -28172,13 +28174,66 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q58. Length of Last Word</b>
             </Span>
+            <Span>
+              Given a string s consisting of some words separated by some number
+              of spaces, return the length of the last word in the string.
+            </Span>
+            <Span>
+              A word is a maximal substring consisting of non-space characters
+              only.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: s = "Hello World" <br />
+              Output: 5 <br />
+              Explanation: The last word is "World" with length 5.
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: s = " fly me to the moon " <br />
+              Output: 4 <br />
+              Explanation: The last word is "moon" with length 4.
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = "luffy is still joyboy" <br />
+              Output: 6 <br />
+              Explanation: The last word is "joyboy" with length 6.
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= s.length &lt;= 104 <br />
+              s consists of only English letters and spaces ' '. <br />
+              There will be at least one word in s.
+            </p>
             <CodeEditor
               options={{
+                title: "Q58. Length of Last Word",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @return {number}
+                    */
+                   var lengthOfLastWord = function(s) {
+                       const res = s.split(" ").filter(x=>x!=='')
+                       if(res.length)
+                       return res.slice(-1)[0].length
+                       return 0
+                   };
+                   
+                   lengthOfLastWord("   fly me   to   the moon  ")`,
+                    output: `4`,
                   },
                 },
               }}
