@@ -117,6 +117,8 @@ import Oh1 from "assets/interview/oh1.png";
 import Oh2 from "assets/interview/oh2.png";
 import Oh3 from "assets/interview/oh3.png";
 import LeetcodeQ59 from "assets/leetcode/q59.png";
+import LeetcodeQ61a from "assets/leetcode/61a.png";
+import LeetcodeQ61b from "assets/leetcode/61b.png";
 
 export const DATA = {
   ds: {
@@ -28405,7 +28407,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                    };
                    
                    getPermutation(3,3)`,
-                   output: `213`,
+                    output: `213`,
                   },
                 },
               }}
@@ -28418,14 +28420,82 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q61. Rotate List</b>
             </Span>
+            <Span>
+              Given the head of a linked list, rotate the list to the right by k
+              places.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: head = [1,2,3,4,5], k = 2<br />
+              Output: [4,5,1,2,3]
+            </Span>
+            <Img src={LeetcodeQ61a} left />
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: head = [0,1,2], k = 4 <br />
+              Output: [2,0,1]
+            </Span>
+            <Img src={LeetcodeQ61b} left />
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              The number of nodes in the list is in the range [0, 500]. <br />
+              -100 &lt;= Node.val &lt;= 100 <br />0 &lt;= k &lt;= 2 * 109
+            </p>
             <CodeEditor
               options={{
                 title: "Q61. Rotate List",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function ListNode(val, next) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.next = (next===undefined ? null : next)
+                      }
+                      
+                      /**
+                       * @param {ListNode} head
+                       * @param {number} k
+                       * @return {ListNode}
+                       */
+                      var rotateRight = function(head, k) {
+                        if(!head || !head.next || k==0)
+                        return head
+                        
+                        let len = 1
+                        let tail = head
+                      
+                        while(tail.next){
+                          ++len
+                          tail = tail.next
+                        }
+                        tail.next = head
+                      
+                        const t = len - k%len
+                        for(let i=0;i<t;i++)
+                        tail = tail.next
+                        const newHead = tail.next
+                        tail.next = null
+                        return newHead  
+                      };
+                      
+                      const head = new ListNode(1)
+                      head.next = new ListNode(2)
+                      head.next.next = new ListNode(3)
+                      head.next.next.next = new ListNode(4)
+                      head.next.next.next.next = new ListNode(5)
+                      rotateRight(head,2)
+                      `,
+                    output: `ListNode {
+                      val: 4,
+                      next: ListNode { val: 5, next: ListNode { val: 1, next: [ListNode] } }
+                    }`,
                   },
                 },
               }}
