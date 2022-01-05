@@ -28508,8 +28508,46 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q62. Unique Paths</b>
             </Span>
+            <Span>
+              There is a robot on an m x n grid. The robot is initially located
+              at the top-left corner (i.e., grid[0][0]). The robot tries to move
+              to the bottom-right corner (i.e., grid[m - 1][n - 1]). The robot
+              can only move either down or right at any point in time.
+            </Span>
+            <Span>
+              Given the two integers m and n, return the number of possible
+              unique paths that the robot can take to reach the bottom-right
+              corner.
+            </Span>
+            <Span>
+              The test cases are generated so that the answer will be less than
+              or equal to 2 * 10^9.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: m = 3, n = 7 <br />
+              Output: 28
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: m = 3, n = 2 <br />
+              Output: 3 <br />
+              Explanation: From the top-left corner, there are a total of 3 ways
+              to reach the bottom-right corner:
+              <br /> 1. Right -&gt; Down -&gt; Down <br />
+              2. Down -&gt; Down -&gt; Right <br />
+              3. Down -&gt; Right -&gt; Down
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>1 &lt;= m, n &lt;= 6100</p>
             <CodeEditor
               options={{
                 title: "Q62. Unique Paths",
