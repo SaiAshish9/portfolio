@@ -120,6 +120,8 @@ import LeetcodeQ59 from "assets/leetcode/q59.png";
 import LeetcodeQ61a from "assets/leetcode/61a.png";
 import LeetcodeQ61b from "assets/leetcode/61b.png";
 import LeetcodeQ62 from "assets/leetcode/62.png";
+import LeetcodeQ63a from "assets/leetcode/63a.png";
+import LeetcodeQ63b from "assets/leetcode/63b.png";
 
 export const DATA = {
   ds: {
@@ -17387,7 +17389,7 @@ if __name__ == '__main__':
               questions and expalin my approach. They were easy.
             </Span>
             <Span>
-              After the exam, I had the fill-up the survey form for about 15
+              After the exam, I had to fill-up the survey form for about 15
               minutes. I applied for this exam when I was 20 ( 5th Semester ) .
             </Span>
             <Span>
@@ -28555,7 +28557,38 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q62. Unique Paths",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number} m
+                    * @param {number} n
+                    * @return {number}
+                    */
+                   var uniquePaths1 = function(m, n) {
+                     const dp = Array.from(Array(m),()=>Array(n).fill(1))
+                     for(let i=1;i<m;i++)
+                     for(let j=1;j<n;j++)
+                     dp[i][j] = dp[i-1][j] + dp[i][j-1] 
+                     dp.forEach(x=>console.log(x.join(" ")))
+                     return dp[m-1][n-1]
+                   };
+                   
+                   var uniquePaths = function(m, n) {
+                     const dp = Array(n).fill(1)
+                     for(let i=1;i<m;i++)
+                     for(let j=1;j<n;j++)
+                     dp[j] += dp[j-1] 
+                     console.log(dp.join(" "))
+                     return dp[n-1] 
+                   };
+                   
+                   uniquePaths1(3,2)
+                   console.log("###")
+                   uniquePaths(3,2)`,
+                    output: `1 1
+                    1 2
+                    1 3
+                    ###
+                    1 3
+                    3`,
                   },
                 },
               }}
@@ -28568,10 +28601,58 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q63. Unique Paths II</b>
             </Span>
+            <Span>
+              A robot is located at the top-left corner of a m x n grid (marked
+              'Start' in the diagram below).
+            </Span>
+            <Span>
+              The robot can only move either down or right at any point in time.
+              The robot is trying to reach the bottom-right corner of the grid
+              (marked 'Finish' in the diagram below).
+            </Span>
+            <Span>
+              Now consider if some obstacles are added to the grids. How many
+              unique paths would there be?
+            </Span>
+            <Span>
+              An obstacle and space is marked as 1 and 0 respectively in the
+              grid.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={LeetcodeQ63a} left />
+            <Span>
+              Input: obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]] <br />
+              Output: 2 <br />
+              Explanation: There is one obstacle in the middle of the 3x3 grid
+              above. <br />
+              There are two ways to reach the bottom-right corner: <br />
+              1. Right -&gt; Right -&gt; Down -&gt; Down <br />
+              2. Down -&gt; Down -&gt; Right -&gt; Right
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Img src={LeetcodeQ63b} left />
+            <Span>
+              Input: obstacleGrid = [[0,1],[0,0]] <br />
+              Output: 1
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              m == obstacleGrid.length <br />
+              n == obstacleGrid[i].length <br />
+              1 &lt;= m, n &lt;= 100 <br />
+              obstacleGrid[i][j] is 0 or 1.
+            </p>
             <CodeEditor
               options={{
+                title: "Q63. Unique Paths II",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -28594,6 +28675,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 codes: {
                   Javascript: {
                     code: ``,
+                    output: ``,
                   },
                 },
               }}
