@@ -119,6 +119,7 @@ import Oh3 from "assets/interview/oh3.png";
 import LeetcodeQ59 from "assets/leetcode/q59.png";
 import LeetcodeQ61a from "assets/leetcode/61a.png";
 import LeetcodeQ61b from "assets/leetcode/61b.png";
+import LeetcodeQ62 from "assets/leetcode/62.png";
 
 export const DATA = {
   ds: {
@@ -28528,6 +28529,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 1:</b>
             </Span>
+            <Img left src={LeetcodeQ62} />
             <Span>
               Input: m = 3, n = 7 <br />
               Output: 28
