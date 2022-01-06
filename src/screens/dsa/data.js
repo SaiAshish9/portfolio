@@ -29696,10 +29696,45 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q74. Search a 2D Matrix</b>
             </Span>
+            <Span>
+              Write an efficient algorithm that searches for a value in an m x n
+              matrix. This matrix has the following properties:
+            </Span>
+            <Span>
+              1. Integers in each row are sorted from left to right. <br />
+              2. The first integer of each row is greater than the last integer
+              of the previous row.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <SPan>
+              Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target =
+              3 <br />
+              Output: true
+            </SPan>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target =
+              13 <br />
+              Output: false
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              m == matrix.length <br />
+              n == matrix[i].length <br />
+              1 &lt;= m, n &lt;= 100 <br />
+              -104 &lt;= matrix[i][j], target &lt;= 104
+            </p>
             <CodeEditor
               options={{
+                title: "Q74. Search a 2D Matrix",
                 codes: {
                   Javascript: {
                     code: ``,
