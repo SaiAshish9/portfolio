@@ -29913,11 +29913,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 2:</b>
             </Span>
-            <SPan>
+            <Span>
               Input: s = "a", t = "a" <br />
               Output: "a" <br />
               Explanation: The entire string s is the minimum window.
-            </SPan>
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>{" "}
@@ -29939,7 +29939,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               lowercase English letters.
             </Span>
             <p>
-              <b>Follow up:</b>
+              <b>Follow up: </b>
               Could you find an algorithm that runs in O(m + n) time?
             </p>
             <CodeEditor
@@ -29947,7 +29947,35 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q76. Minimum Window Substring",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @param {string} t
+                    * @return {string}
+                    */
+                   var minWindow = function(s, t) {
+                     const count = Array(128).fill(0)
+                     let required = t.length;
+                     let bestLeft = -1;
+                     let minLength = s.length + 1;
+                     for (let c of t)
+                       ++count[c.charCodeAt(0)];
+                     for (let l = 0, r = 0; r < s.length; ++r) {
+                       if (--count[s[r].charCodeAt(0)] >= 0)
+                         --required;
+                       while (required == 0) {
+                         if (r - l + 1 < minLength) {
+                           bestLeft = l;
+                           minLength = r - l + 1;
+                         }
+                         if (++count[s[l++].charCodeAt(0)] > 0)
+                           ++required;
+                       }
+                     }
+                     return bestLeft == -1 ? "" : s.substring(bestLeft, bestLeft + minLength);
+                   };
+                   
+                   minWindow("ADOBECODEBANC","ABC")`,
+                    output: `BANC`,
                   },
                 },
               }}
