@@ -30061,6 +30061,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             </Span>
             <CodeEditor
               options={{
+                title: "Q78. Subsets",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -30080,6 +30081,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             </Span>
             <CodeEditor
               options={{
+                title: "Q79. Word Search",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -30118,6 +30120,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             </Span>
             <CodeEditor
               options={{
+                title: "Q81. Search in Rotated Sorted Array II",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -30129,7 +30132,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         ),
       },
       q82: {
-        title: "Q82. Remove Duplicates from Sorted List",
+        title: "Q82. Remove Duplicates from Sorted List II",
         content: (
           <>
             <Span>
@@ -30137,6 +30140,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             </Span>
             <CodeEditor
               options={{
+                title: "Q82. Remove Duplicates from Sorted List II",
                 codes: {
                   Javascript: {
                     code: ``,
