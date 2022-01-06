@@ -125,6 +125,8 @@ import LeetcodeQ63b from "assets/leetcode/63b.png";
 import LeetcodeQ64 from "assets/leetcode/64.png";
 import Leetcode73a from "assets/leetcode/73a.png";
 import Leetcode73b from "assets/leetcode/73b.png";
+import Leetcode74a from "assets/leetcode/74a.png";
+import Leetcode74b from "assets/leetcode/74b.png";
 
 export const DATA = {
   ds: {
@@ -29710,14 +29712,16 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 1:</b>
             </Span>
-            <SPan>
+            <Img src={Leetcode74a} left />
+            <Span>
               Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target =
               3 <br />
               Output: true
-            </SPan>
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
+            <Img src={Leetcode74b} left />
             <Span>
               Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target =
               13 <br />
