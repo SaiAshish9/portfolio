@@ -28862,8 +28862,47 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q65. Valid Number",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @return {boolean}
+                    */
+                   var isNumber = function(s) {
+                     s = s.trim()
+                     s = s.toLowerCase()
+                     if(!s) return false
+                     let seenNum = false;
+                     let seenDot = false;
+                     let seenE = false;
+                     for (let i=0;i<s.length;i++) {
+                       switch (s[i]) {
+                         case '.':
+                           if (seenDot || seenE)
+                             return false;
+                           seenDot = true;
+                           break;
+                         case 'e':
+                           if (seenE || !seenNum)
+                             return false;
+                           seenE = true;
+                           seenNum = false;
+                           break;
+                         case '+':
+                         case '-':
+                           if (i > 0 && s[i - 1] != 'e')
+                             return false;
+                           seenNum = false;
+                           break;
+                         default:
+                           if (!Number.isInteger(+s[i]))
+                             return false;
+                           seenNum = true;
+                       }
+                     }
+                     return seenNum;
+                   };
+                   
+                   isNumber("1E9")`,
+                    output: `true`,
                   },
                 },
               }}
