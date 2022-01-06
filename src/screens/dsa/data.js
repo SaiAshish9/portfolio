@@ -29286,7 +29286,25 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q69. Sqrt(x)",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number} x
+                    * @return {number}
+                    */
+                   var mySqrt = function(x) {
+                     let l =1
+                     let r = x+1
+                     while (l < r) {
+                     const m = l + parseInt((r - l) / 2);
+                     if (m > parseInt(x / m))
+                       r = m;
+                     else
+                       l = m + 1;
+                     }
+                     return l - 1;
+                   };
+                   
+                   mySqrt(9)`,
+                    output: `3`,
                   },
                 },
               }}
@@ -29299,13 +29317,79 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q70. Climbing Stairs</b>
             </Span>
+            <Span>
+              You are climbing a staircase. It takes n steps to reach the top.
+            </Span>
+            <Span>
+              Each time you can either climb 1 or 2 steps. In how many distinct
+              ways can you climb to the top?
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: n = 2 <br />
+              Output: 2 <br />
+              Explanation: There are two ways to climb to the top. <br />
+              1. 1 step + 1 step <br />
+              2. 2 steps
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: n = 3<br />
+              Output: 3<br />
+              Explanation: There are three ways to climb to the top.
+              <br />
+              1. 1 step + 1 step + 1 step
+              <br />
+              2. 1 step + 2 steps
+              <br />
+              3. 2 steps + 1 step
+              <br />
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>1 &lt;= n &lt;= 45</p>
             <CodeEditor
               options={{
+                title: "Q70. Climbing Stairs",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {number}
+                    */
+                   var climbStairs = function(n) {
+                     const dp = Array(n + 1).fill(0);
+                     dp[0] = 1;
+                     dp[1] = 1;
+                     for (let i = 2; i <= n; ++i)
+                       dp[i] = dp[i - 1] + dp[i - 2];
+                     console.log(dp)
+                     console.log("###")
+                     return dp[n];    
+                   };
+                   
+                   var climbStairs1 = function(n){
+                       let prev1 = prev2 = 1;  
+                       for (let i = 2; i <= n; ++i) {
+                         const dp = prev1 + prev2;
+                         prev2 = prev1;
+                         prev1 = dp;
+                       }
+                       return prev1;
+                   }
+                   
+                   climbStairs(2)
+                   `,
+                    output: `[ 1, 1, 2 ]
+                   ###
+                   2`,
                   },
                 },
               }}
