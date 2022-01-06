@@ -29349,7 +29349,6 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               2. 1 step + 2 steps
               <br />
               3. 2 steps + 1 step
-              <br />
             </Span>
             <Span>
               <b>Constraints:</b>
@@ -29402,10 +29401,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q71. Simplify Path</b>
             </Span>
             <CodeEditor
               options={{
+                title: "Q71. Simplify Path",
                 codes: {
                   Javascript: {
                     code: ``,
