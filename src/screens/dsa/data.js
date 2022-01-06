@@ -29818,8 +29818,9 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               nums[i] is either 0, 1, or 2.
             </Span>
             <p>
-              Follow up: Could you come up with a one-pass algorithm using only
-              constant extra space?
+              <b>Follow up:</b>
+              Could you come up with a one-pass algorithm using only constant
+              extra space?
             </p>
             <CodeEditor
               options={{
@@ -29885,10 +29886,65 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q76. Minimum Window Substring</b>
             </Span>
+            <Span>
+              Given two strings s and t of lengths m and n respectively, return
+              the minimum window substring of s such that every character in t
+              (including duplicates) is included in the window. If there is no
+              such substring, return the empty string "".
+            </Span>
+            <Span>
+              The testcases will be generated such that the answer is unique.
+            </Span>
+            <Span>
+              A substring is a contiguous sequence of characters within the
+              string.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: s = "ADOBECODEBANC", t = "ABC" <br />
+              Output: "BANC" <br />
+              Explanation: The minimum window substring "BANC" includes 'A',
+              'B', and 'C' from string t.
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <SPan>
+              Input: s = "a", t = "a" <br />
+              Output: "a" <br />
+              Explanation: The entire string s is the minimum window.
+            </SPan>
+            <Span>
+              <b>Example 3:</b>
+            </Span>{" "}
+            <Span>
+              Input: s = "a", t = "aa" <br />
+              Output: "" <br />
+              Explanation: Both 'a's from t must be included in the window.{" "}
+              <br />
+              Since the largest window of s only has one 'a', return empty
+              string.
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>{" "}
+            <Span>
+              m == s.length <br />
+              n == t.length <br />
+              1 &lt;= m, n &lt;= 105 <br />s and t consist of uppercase and
+              lowercase English letters.
+            </Span>
+            <p>
+              <b>Follow up:</b>
+              Could you find an algorithm that runs in O(m + n) time?
+            </p>
             <CodeEditor
               options={{
+                title: "Q76. Minimum Window Substring",
                 codes: {
                   Javascript: {
                     code: ``,
