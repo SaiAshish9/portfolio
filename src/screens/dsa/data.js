@@ -29988,10 +29988,36 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q77. Combinations</b>
             </Span>
+            <Span>
+              Given two integers n and k, return all possible combinations of k
+              numbers out of the range [1, n].
+            </Span>
+            <Span>You may return the answer in any order.</Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: n = 4, k = 2 <br />
+              Output: [ [2,4], [3,4], [2,3], [1,2], [1,3], [1,4], ]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: n = 1, k = 1 <br />
+              Output: [[1]]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= n &lt;= 20 <br />1 &lt;= k &lt;= n
+            </p>
             <CodeEditor
               options={{
+                title: "Q77. Combinations",
                 codes: {
                   Javascript: {
                     code: ``,
