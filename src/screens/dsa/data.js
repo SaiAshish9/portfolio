@@ -28931,11 +28931,31 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 1:</b>
             </Span>
+            <Span></Span>
+            Input: digits = [1,2,3] <br />
+            Output: [1,2,4] <br />
+            Explanation: The array represents the integer 123. <br />
+            Incrementing by one gives 123 + 1 = 124. <br />
+            Thus, the result should be [1,2,4].
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: digits = [4,3,2,1] <br />
+              Output: [4,3,2,2] <br />
+              Explanation: The array represents the integer 4321. <br />
+              Incrementing by one gives 4321 + 1 = 4322. <br />
+              Thus, the result should be [4,3,2,2].
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: digits = [9] <br />
+              Output: [1,0] <br />
+              Explanation: The array represents the integer 9. <br />
+              Incrementing by one gives 9 + 1 = 10. <br />
+              Thus, the result should be [1,0].
             </Span>
             <Span>
               <b>Constraints:</b>
