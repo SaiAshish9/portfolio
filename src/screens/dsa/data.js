@@ -30020,7 +30020,31 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q77. Combinations",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @param {number} k
+                    * @return {number[][]}
+                    */
+                   var dfs = function(n,k,s,res,curr=[]){
+                     if(k==0){
+                      res.push(curr.slice())
+                      return
+                     }
+                     for(let i=s;i<=n;i++){
+                     curr.push(i)
+                     dfs(n,k-1,i+1,res,curr)
+                     curr.pop()
+                     }
+                   }
+                   
+                   var combine = function(n, k) {
+                     const res = [] 
+                     dfs(n,k,1,res) 
+                     return res
+                   };
+                   
+                   combine(4,2)`,
+                    output: `[ [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 2, 3 ], [ 2, 4 ], [ 3, 4 ] ]`,
                   },
                 },
               }}
