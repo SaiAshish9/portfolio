@@ -30094,8 +30094,34 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q78. Subsets",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number[][]}
+                    */
+                   function subsetsH(i_set, result, subset = [], index = 0) {
+                       result.push(subset.slice()) 
+                       for (let i = index; i < i_set.length; i++) {
+                           subset.push(i_set[i])
+                           subsetsH(i_set, result, subset, i + 1)
+                           subset.pop()
+                       }
+                       return
+                   }
+                   
+                   var subsets = function(nums){
+                     const result = []
+                     subsetsH(nums,result)
+                     return result
+                   };
+                   
+                   subsets([1,2,3])`,
+                    output: `[
+                      [],       [ 1 ],
+                      [ 1, 2 ], [ 1, 2, 3 ],
+                      [ 1, 3 ], [ 2 ],
+                      [ 2, 3 ], [ 3 ]
+                    ]
+                    Hi`,
                   },
                 },
               }}
