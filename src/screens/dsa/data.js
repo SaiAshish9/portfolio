@@ -30057,14 +30057,45 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q78. Subsets</b>
             </Span>
+            <Span>
+              Given an integer array nums of unique elements, return all
+              possible subsets (the power set).
+            </Span>
+            <Span>
+              The solution set must not contain duplicate subsets. Return the
+              solution in any order.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,2,3] <br />
+              Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums = [0] <br />
+              Output: [[],[0]]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= nums.length &lt;= 10 <br />
+              -10 &lt;= nums[i] &lt;= 10 <br />
+              All the numbers of nums are unique.
+            </p>
             <CodeEditor
               options={{
                 title: "Q78. Subsets",
                 codes: {
                   Javascript: {
                     code: ``,
+                    output: ``,
                   },
                 },
               }}

@@ -34,7 +34,7 @@ const data = [
     img: VelvetImg,
     label: <I18n t="velvet" />,
     position: <I18n t="applicationDevIntern" />,
-    exp: 8,
+    exp: 11,
     id: 1,
     link: "https://velvet.video",
     images: [
