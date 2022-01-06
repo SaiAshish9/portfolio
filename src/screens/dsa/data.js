@@ -30201,8 +30201,41 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q79. Word Search",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {character[][]} board
+                    * @param {string} word
+                    * @return {boolean}
+                    */
+                   
+                   var dfs = function(board,word,i,j,s){
+                     const m = board.length
+                     const n = board[0].length
+                     if(i<0||i==m||j<0||j==n) return false
+                     if (board[i][j] != word[s] || board[i][j] == '*')
+                       return false;
+                     if (s == word.length - 1)
+                       return true;
+                     const cache = board[i][j]
+                     board[i][j]='*'
+                     const isExist = dfs(board, word, i + 1, j, s + 1) 
+                     || dfs(board, word, i - 1, j, s + 1) ||
+                     dfs(board, word, i, j + 1, s + 1) ||
+                     dfs(board, word, i, j - 1, s + 1);
+                     board[i][j] = cache
+                     return isExist
+                   }
+                   
+                   var exist = function(board, word) {
+                     const m = board.length
+                     const n = board[0].length
+                     for (let i = 0; i < m; ++i)
+                     for (let j = 0; j < n; ++j)
+                     if (dfs(board, word, i, j, 0)) return true;
+                     return false;
+                   };
+                   
+                   exist([["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]],"ABCCED")`,
+                    output: `true`,
                   },
                 },
               }}
@@ -30215,13 +30248,108 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q80. Remove Duplicates from Sorted Array II</b>
             </Span>
+            <Span>
+              Given an integer array nums sorted in non-decreasing order, remove
+              some duplicates in-place such that each unique element appears at
+              most twice. The relative order of the elements should be kept the
+              same.
+            </Span>
+            <Span>
+              Since it is impossible to change the length of the array in some
+              languages, you must instead have the result be placed in the first
+              part of the array nums. More formally, if there are k elements
+              after removing the duplicates, then the first k elements of nums
+              should hold the final result. It does not matter what you leave
+              beyond the first k elements.
+            </Span>
+            <Span>
+              Return k after placing the final result in the first k slots of
+              nums.
+            </Span>
+            <Span>
+              Do not allocate extra space for another array. You must do this by
+              modifying the input array in-place with O(1) extra memory.
+            </Span>
+            <Span>
+              <b>Custom Judge:</b>
+            </Span>
+            <Span>
+              The judge will test your solution with the following code:
+            </Span>
+            <Span>
+              int[] nums = [...]; // Input array <br />
+              int[] expectedNums = [...]; // The expected answer with correct
+              length
+              <br />
+              int k = removeDuplicates(nums); // Calls your implementation
+              <br />
+              assert k == expectedNums.length;
+              <br />
+              for (int i = 0; i &lt; k; i++) {"{"}
+              <br />
+              assert nums[i] == expectedNums[i];
+              <br />
+              {"}"}
+              <br />
+            </Span>
+            <Span>
+              If all assertions pass, then your solution will be accepted.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,1,1,2,2,3]
+              <br />
+              Output: 5, nums = [1,1,2,2,3,_]
+              <br />
+              Explanation: Your function should return k = 5, with the first
+              five elements of nums being 1, 1, 2, 2 and 3 respectively. It does
+              not matter what you leave beyond the returned k (hence they are
+              underscores).
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums = [0,0,1,1,1,1,2,3,3]
+              <br />
+              Output: 7, nums = [0,0,1,1,2,3,3,_,_]
+              <br />
+              Explanation: Your function should return k = 7, with the first
+              seven elements of nums being 0, 0, 1, 1, 2, 3 and 3 respectively.
+              It does not matter what you leave beyond the returned k (hence
+              they are underscores).
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= nums.length &lt;= 3 * 104 <br />
+              -104 &lt;= nums[i] &lt;= 104 <br />
+              nums is sorted in non-decreasing order.
+            </p>
             <CodeEditor
               options={{
+                title: "Q80. Remove Duplicates from Sorted Array",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var removeDuplicates = function(nums) {
+                     let i = 0;
+                     for (let n of nums)
+                       if (i < 2 || n > nums[i - 2])
+                         nums[i++] = n;
+                     return i;
+                   };
+                   
+                   removeDuplicates([0,0,1,1,1,1,2,3,3])`,
+                    output: `7`,
                   },
                 },
               }}
@@ -30234,7 +30362,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q81. Search in Rotated Sorted Array II</b>
             </Span>
             <CodeEditor
               options={{
