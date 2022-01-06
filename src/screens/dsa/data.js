@@ -29505,10 +29505,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q72. Edit Distance</b>
             </Span>
             <CodeEditor
               options={{
+                title: "Q72. Edit Distance",
                 codes: {
                   Javascript: {
                     code: ``,
