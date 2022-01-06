@@ -29780,13 +29780,99 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q75. Sort Colors</b>
             </Span>
+            <Span>
+              Given an array nums with n objects colored red, white, or blue,
+              sort them in-place so that objects of the same color are adjacent,
+              with the colors in the order red, white, and blue.
+            </Span>
+            <Span>
+              We will use the integers 0, 1, and 2 to represent the color red,
+              white, and blue, respectively.
+            </Span>
+            <Span>
+              You must solve this problem without using the library's sort
+              function.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [2,0,2,1,1,0] <br />
+              Output: [0,0,1,1,2,2]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums = [2,0,1] <br />
+              Output: [0,1,2]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <Span>
+              n == nums.length <br />
+              1 &lt;= n &lt;= 300 <br />
+              nums[i] is either 0, 1, or 2.
+            </Span>
+            <p>
+              Follow up: Could you come up with a one-pass algorithm using only
+              constant extra space?
+            </p>
             <CodeEditor
               options={{
+                title: "Q75. Sort Colors",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {void} Do not return anything, modify nums in-place instead.
+                    */
+                   function threePointers(nums){
+                     let p = q = r = -1;
+                     for (let n of nums)
+                       if (n == 0) {
+                         nums[++r] = 2;
+                         nums[++q] = 1;
+                         nums[++p] = 0;
+                       } else if (n == 1) {
+                         nums[++r] = 2;
+                         nums[++q] = 1;
+                       } else {
+                         nums[++r] = 2;
+                       }
+                   }
+                   // O(n) O(1)
+                   
+                   function twoPointers(nums){
+                       let l = 0
+                       let r = nums.length - 1
+                       let i = 0
+                       while(i<=r){
+                         if(nums[i]==0){
+                         [nums[i],nums[l]] = [nums[l],nums[i]]
+                         i++
+                         l++
+                         }else if(nums[i]==1){
+                         i++
+                         }else{
+                         [nums[i],nums[r]] = [nums[r],nums[i]]
+                         r--
+                         }
+                       }
+                   }
+                   // O(n) O(1)
+                   
+                   var sortColors = function(nums) {
+                     //  twoPointers(nums)
+                      threePointers(nums)
+                      console.log(nums)
+                   };
+                   
+                   sortColors([2,0,2,1,1,0])`,
+                    output: `[ 0, 0, 1, 1, 2, 2 ]`,
                   },
                 },
               }}
