@@ -127,6 +127,9 @@ import Leetcode73a from "assets/leetcode/73a.png";
 import Leetcode73b from "assets/leetcode/73b.png";
 import Leetcode74a from "assets/leetcode/74a.png";
 import Leetcode74b from "assets/leetcode/74b.png";
+import Leetcode79a from "assets/leetcode/79a.png";
+import Leetcode79b from "assets/leetcode/79b.png";
+import Leetcode79c from "assets/leetcode/79c.png";
 
 export const DATA = {
   ds: {
@@ -30134,14 +30137,72 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q79. Word Search</b>
             </Span>
+            <Span>
+              Given an m x n grid of characters board and a string word, return
+              true if word exists in the grid.
+            </Span>
+            <Span>
+              The word can be constructed from letters of sequentially adjacent
+              cells, where adjacent cells are horizontally or vertically
+              neighboring. The same letter cell may not be used more than once.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode79a} left />
+            <Span>
+              Input: board =
+              [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], <br />
+              word = "ABCCED"
+              <br />
+              Output: true
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Img src={Leetcode79b} left />
+            <Span>
+              Input: board =
+              [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], <br />
+              word = "SEE"
+              <br />
+              Output: true
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Img src={Leetcode79c} left />
+            <Span>
+              Input: board =
+              [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], <br />
+              word = "ABCB" <br />
+              Output: false
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <Span>
+              m == board.length <br />
+              n = board[i].length <br />
+              1 &lt;= m, n &lt;= 6 <br />
+              1 &lt;= word.length &lt;= 15 <br />
+              board and word consists of only lowercase and uppercase English
+              letters.
+            </Span>
+            <p>
+              <b>Follow up: </b>
+              Could you use search pruning to make your solution faster with a
+              larger board?
+            </p>
             <CodeEditor
               options={{
                 title: "Q79. Word Search",
                 codes: {
                   Javascript: {
                     code: ``,
+                    output: ``,
                   },
                 },
               }}
