@@ -123,6 +123,8 @@ import LeetcodeQ62 from "assets/leetcode/62.png";
 import LeetcodeQ63a from "assets/leetcode/63a.png";
 import LeetcodeQ63b from "assets/leetcode/63b.png";
 import LeetcodeQ64 from "assets/leetcode/64.png";
+import Leetcode73a from "assets/leetcode/73a.png";
+import Leetcode73b from "assets/leetcode/73b.png";
 
 export const DATA = {
   ds: {
@@ -29492,7 +29494,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                    };
                    
                    simplifyPath("/home/")`,
-                    output:`/home`
+                    output: `/home`,
                   },
                 },
               }}
@@ -29507,12 +29509,88 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Q72. Edit Distance</b>
             </Span>
+            <Span>
+              Given two strings word1 and word2, return the minimum number of
+              operations required to convert word1 to word2.
+              <br />
+              You have the following three operations permitted on a word:
+              <br />
+              Insert a character <br />
+              Delete a character
+              <br />
+              Replace a character
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>{" "}
+            <Span>
+              Input: word1 = "horse", word2 = "ros" <br />
+              Output: 3<br />
+              Explanation: <br />
+              horse -&gt; rorse (replace 'h' with 'r')
+              <br />
+              rorse -&gt; rose (remove 'r')
+              <br />
+              rose -&gt; ros (remove 'e')
+              <br />
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: word1 = "intention", word2 = "execution"
+              <br />
+              Output: 5<br />
+              Explanation: <br />
+              intention -&gt; inention (remove 't')
+              <br />
+              inention -&gt; enention (replace 'i' with 'e')
+              <br />
+              enention -&gt; exention (replace 'n' with 'x')
+              <br />
+              exention -&gt; exection (replace 'n' with 'c')
+              <br />
+              exection -&gt; execution (insert 'u')
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              0 &lt;= word1.length, word2.length &lt;= 500
+              <br />
+              word1 and word2 consist of lowercase English letters.
+            </p>
             <CodeEditor
               options={{
                 title: "Q72. Edit Distance",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {string} word1
+                    * @param {string} word2
+                    * @return {number}
+                    */
+                   var minDistance = function(word1, word2) {
+                     const m = word1.length
+                     const n = word2.length
+                     if (m == 0) return n;
+                     if (n == 0) return m;
+                     const dp = Array.from(Array(m + 1),()=>Array(n + 1).fill(0));
+                     for (let i = 1; i <= m; ++i)
+                       dp[i][0] = i;
+                     for (let j = 1; j <= n; ++j)
+                       dp[0][j] = j;
+                     for (let i = 1; i <= m; ++i)
+                       for (let j = 1; j <= n; ++j)
+                         if (word1[i - 1] == word2[j - 1])
+                           dp[i][j] = dp[i - 1][j - 1];
+                         else
+                           dp[i][j] = Math.min(dp[i - 1][j - 1], Math.min(dp[i - 1][j], dp[i][j - 1])) + 1;
+                     return dp[m][n];
+                   };
+                   
+                   minDistance("horse","ros")`,
+                    output: `3`,
                   },
                 },
               }}
@@ -29525,13 +29603,87 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q73. Set Matrix Zeroes</b>
             </Span>
+            <Span>
+              Given an m x n integer matrix matrix, if an element is 0, set its
+              entire row and column to 0's, and return the matrix.
+            </Span>
+            <Span>You must do it in place.</Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode73a} left />
+            <Span>
+              Input: matrix = [[1,1,1],[1,0,1],[1,1,1]] <br />
+              Output: [[1,0,1],[0,0,0],[1,0,1]]
+            </Span>
+            <Img src={Leetcode73b} left />
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]] <br />
+              Output: [[0,0,0,0],[0,4,5,0],[0,3,1,0]]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              m == matrix.length <br />
+              n == matrix[0].length <br />
+              1 &lt;= m, n &lt;= 200 <br />
+              -231 &lt;= matrix[i][j] &lt;= 231 - 1
+            </p>
             <CodeEditor
               options={{
+                title: "Q73. Set Matrix Zeroes",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[][]} matrix
+                    * @return {void} Do not return anything, modify matrix in-place instead.
+                    */
+                   var setZeroes = function(matrix) {
+                     const m = matrix.length;
+                     const n = matrix[0].length;
+                     let row = false;
+                     let col = false;
+                     for (let j = 0; j < n; ++j)
+                       if (matrix[0][j] == 0) {
+                         row = true;
+                         break;
+                       }
+                     for (let i = 0; i < m; ++i)
+                       if (matrix[i][0] == 0) {
+                         col = true;
+                         break;
+                       }
+                     for (let i = 1; i < m; ++i)
+                       for (let j = 1; j < n; ++j)
+                         if (matrix[i][j] == 0) {
+                           matrix[i][0] = 0;
+                           matrix[0][j] = 0;
+                         }
+                     for (let i = 1; i < m; ++i)
+                       for (let j = 1; j < n; ++j)
+                         if (matrix[i][0] == 0 || matrix[0][j] == 0)
+                           matrix[i][j] = 0;
+                     if (row)
+                       for (let j = 0; j < n; ++j)
+                         matrix[0][j] = 0;
+                     if (col)
+                       for (let i = 0; i < m; ++i)
+                         matrix[i][0] = 0;
+                     matrix.forEach(x=>console.log(x.join(" ")))
+                   };
+                   
+                   setZeroes(
+                     [[1,1,1],[1,0,1],[1,1,1]]
+                   )`,
+                    output: `1 0 1
+                    0 0 0
+                    1 0 1`,
                   },
                 },
               }}
