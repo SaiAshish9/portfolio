@@ -6794,7 +6794,7 @@ if __name__=='__main__':
                       g.bfs()
                       console.log("DFS:")
                       g.dfs()
-                      console.log("All paths")
+                      console.log("All possible paths from A to F:")
                       g.paths(0,5)`,
                         output: `Graph:
                         {
@@ -6829,7 +6829,7 @@ if __name__=='__main__':
                         E
                         D
                         F
-                        All paths
+                        All possible paths from A to F:
                         [
                           [ 'A', 'B', 'C', 'E', 'F' ],
                           [ 'A', 'B', 'C', 'F' ],
@@ -6925,10 +6925,9 @@ if __name__=='__main__':
                       // g.removeVertex(1)
                       console.log("Graph:")
                       g.print()
-                      console.log("BFS:")
+                      console.log("All possible paths from A to F (bfs):")
                       g.bfs()
-                      // console.log("All paths")
-                      // g.paths(0,5)`,
+                      `,
                         output: `Graph:
                         {
                           A: [ 'B', 'D', 'E' ],
@@ -6938,7 +6937,7 @@ if __name__=='__main__':
                           E: [ 'A', 'D', 'F', 'C' ],
                           F: [ 'E', 'C' ]
                         }
-                        BFS:
+                        All possible paths from A to F (bfs):
                         [ 'A', 'E', 'F' ]
                         [ 'A', 'B', 'C', 'F' ]
                         [ 'A', 'D', 'E', 'F' ]
