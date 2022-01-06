@@ -28915,14 +28915,62 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q66. Plus One</b>
             </Span>
+            <Span>
+              You are given a large integer represented as an integer array
+              digits, where each digits[i] is the ith digit of the integer. The
+              digits are ordered from most significant to least significant in
+              left-to-right order. The large integer does not contain any
+              leading 0's.
+            </Span>
+            <Span>
+              Increment the large integer by one and return the resulting array
+              of digits.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= digits.length &lt;= 100 <br />
+              0 &lt;= digits[i] &lt;= 9 <br />
+              digits does not contain any leading 0's.
+            </p>
             <CodeEditor
               options={{
+                title: "Q66. Plus One",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[]} digits
+                    * @return {number[]}
+                    */
+                   var plusOne = function(digits) {
+                     for (let i = digits.length - 1; i >= 0; i--) {
+                       if (digits[i] < 9) {
+                         ++digits[i];
+                         return digits;
+                       }
+                       digits[i] = 0;
+                     }
+                     return [1,...digits]
+                   };
+                   
+                   plusOne([6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3])`,
                   },
+                  output: `[
+                    6, 1, 4, 5, 3, 9, 0,
+                    1, 9, 5, 1, 8, 6, 7,
+                    0, `,
                 },
               }}
             />
@@ -28934,10 +28982,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q67. Add Binary</b>
             </Span>
             <CodeEditor
               options={{
+                title: "Q67. Add Binary",
                 codes: {
                   Javascript: {
                     code: ``,
