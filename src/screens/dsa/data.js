@@ -28931,12 +28931,13 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
-            Input: digits = [1,2,3] <br />
-            Output: [1,2,4] <br />
-            Explanation: The array represents the integer 123. <br />
-            Incrementing by one gives 123 + 1 = 124. <br />
-            Thus, the result should be [1,2,4].
+            <Span>
+              Input: digits = [1,2,3] <br />
+              Output: [1,2,4] <br />
+              Explanation: The array represents the integer 123. <br />
+              Incrementing by one gives 123 + 1 = 124. <br />
+              Thus, the result should be [1,2,4].
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
@@ -28986,11 +28987,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                    };
                    
                    plusOne([6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3])`,
-                  },
-                  output: `[
+                    output: `[
                     6, 1, 4, 5, 3, 9, 0,
                     1, 9, 5, 1, 8, 6, 7,
                     0, `,
+                  },
                 },
               }}
             />
@@ -29004,12 +29005,76 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Q67. Add Binary</b>
             </Span>
+            <Span>
+              Given two binary strings a and b, return their sum as a binary
+              string.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: a = "11", b = "1" <br />
+              Output: "100"
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: a = "1010", b = "1011" <br />
+              Output: "10101"
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= a.length, b.length &lt;= 104 <br />
+              a and b consist only of '0' or '1' characters. <br />
+              Each string does not contain leading zeros except for the zero
+              itself.
+            </p>
             <CodeEditor
               options={{
                 title: "Q67. Add Binary",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {string} a
+                    * @param {string} b
+                    * @return {string}
+                    */
+                   
+                   // function b2d(bin){
+                   //   return parseInt(bin, 2).toString(10);
+                   // }
+                   
+                   // function d2b(dec){
+                   //   return (dec >>> 0).toString(2);
+                   // }
+                   
+                   var addBinary = function(a, b) {
+                     const s = []
+                     let carry = 0
+                     let i = a.length -1
+                     let j = b.length -1
+                     while(i >= 0 || j >= 0 || carry){
+                     if(i >= 0){
+                       carry += +a[i]
+                       i -= 1
+                     }
+                     if(j >= 0){
+                       carry += +b[j]
+                       j -= 1
+                     }
+                     s.push(String(carry % 2))
+                     carry = parseInt(carry/2)
+                     }
+                     s.reverse()
+                     return s.join("")
+                   };
+                   
+                   addBinary("10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101",
+                   "110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011")`,
+                    output: `110111101100010011000101110110100000011101000101011001000011011000001100011110011010010011000000000`,
                   },
                 },
               }}
