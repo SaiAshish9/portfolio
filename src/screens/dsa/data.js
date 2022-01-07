@@ -30635,7 +30635,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <b>Example 1:</b>
             </Span>
             <Span>
+              Input: heights = [2,1,5,6,2,3] <br />
+              Output: 10 <br />
+              Explanation: The above is a histogram where width of each bar is
+              1. <br />
+              The largest rectangle is shown in the red area, which has an area
+              = 10 units.
+            </Span>
+            <Span>
               <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: heights = [2,4] <br />
+              Output: 4
             </Span>
             <Span>
               <b>Constraints:</b>
