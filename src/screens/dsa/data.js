@@ -134,6 +134,8 @@ import Leetcode82a from "assets/leetcode/q82a.png";
 import Leetcode82b from "assets/leetcode/q82b.png";
 import Leetcode83a from "assets/leetcode/83a.png";
 import Leetcode83b from "assets/leetcode/83b.png";
+import Leetcode84a from "assets/leetcode/84a.png";
+import Leetcode84b from "assets/leetcode/84b.png";
 
 export const DATA = {
   ds: {
@@ -30633,7 +30635,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             </Span>
             <Span>
               <b>Example 1:</b>
-            </Span>
+            </Span>84
             <Span>
               Input: heights = [2,1,5,6,2,3] <br />
               Output: 10 <br />
