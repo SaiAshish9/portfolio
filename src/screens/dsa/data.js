@@ -130,6 +130,8 @@ import Leetcode74b from "assets/leetcode/74b.png";
 import Leetcode79a from "assets/leetcode/79a.png";
 import Leetcode79b from "assets/leetcode/79b.png";
 import Leetcode79c from "assets/leetcode/79c.png";
+import Leetcode82a from "assets/leetcode/q82a.png";
+import Leetcode82b from "assets/leetcode/q82b.png";
 
 export const DATA = {
   ds: {
@@ -30456,14 +30458,79 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q82. Remove Duplicates from Sorted List IIq82a</b>
             </Span>
+            <Span>
+              Given the head of a sorted linked list, delete all nodes that have
+              duplicate numbers, leaving only distinct numbers from the original
+              list. Return the linked list sorted as well.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode82a} left />
+            <Span>
+              Input: head = [1,2,3,3,4,4,5] <br />
+              Output: [1,2,5]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Img src={Leetcode82b} left />
+            <Span>
+              Input: head = [1,1,1,2,3] <br />
+              Output: [2,3]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              The number of nodes in the list is in the range [0, 300]. <br />
+              -100 &lt;= Node.val &lt;= 100 <br />
+              The list is guaranteed to be sorted in ascending order.
+            </p>
             <CodeEditor
               options={{
                 title: "Q82. Remove Duplicates from Sorted List II",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function ListNode(val, next) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.next = (next===undefined ? null : next)
+                    }
+                    
+                    /**
+                     * @param {ListNode} head
+                     * @return {ListNode}
+                     */
+                    var deleteDuplicates = function(head) {
+                        const temp = new ListNode(0, head);
+                        let prev = temp;
+                        while (head) {
+                          while (head.next && head.val == head.next.val)
+                            head = head.next;
+                          if (prev.next == head)
+                            prev = prev.next;
+                          else
+                            prev.next = head.next;
+                          head = head.next;
+                        }
+                        return temp.next;  
+                    };
+                    
+                    const l = new ListNode(1)
+                    l.next = new ListNode(2)
+                    l.next.next = new ListNode(3)
+                    l.next.next.next = new ListNode(3)
+                    l.next.next.next.next = new ListNode(4)
+                    l.next.next.next.next.next = new ListNode(4)
+                    l.next.next.next.next.next.next = new ListNode(5)
+                    deleteDuplicates(l)
+                    `,
+                    output: `ListNode {
+                      val: 1,
+                      next: ListNode { val: 2, next: ListNode { val: 5, next: null } }
+                    }`,
                   },
                 },
               }}
