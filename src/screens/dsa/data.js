@@ -30292,7 +30292,6 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               assert nums[i] == expectedNums[i];
               <br />
               {"}"}
-              <br />
             </Span>
             <Span>
               If all assertions pass, then your solution will be accepted.
