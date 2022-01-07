@@ -136,6 +136,7 @@ import Leetcode83a from "assets/leetcode/83a.png";
 import Leetcode83b from "assets/leetcode/83b.png";
 import Leetcode84a from "assets/leetcode/84a.png";
 import Leetcode84b from "assets/leetcode/84b.png";
+import Leetcode85 from "assets/leetcode/85.png";
 
 export const DATA = {
   ds: {
@@ -30635,7 +30636,8 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             </Span>
             <Span>
               <b>Example 1:</b>
-            </Span>84
+            </Span>
+            <Img src={Leetcode84a} left />
             <Span>
               Input: heights = [2,1,5,6,2,3] <br />
               Output: 10 <br />
@@ -30647,6 +30649,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 2:</b>
             </Span>
+            <Img src={Leetcode84b} left />
             <Span>
               Input: heights = [2,4] <br />
               Output: 4
@@ -30668,9 +30671,25 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                     * @return {number}
                     */
                    var largestRectangleArea = function(heights) {
-                       
-                   };`,
-                    output: ``,
+                     let ans = 0
+                     const stack = []
+                     for(let i=0;i<=heights.length;i++){
+                       while(stack.length && (i == heights.length || heights[stack[stack.length-1]] > heights[i])){
+                         let h = heights[stack.pop()]
+                         let w;
+                         if(stack.length)
+                         w = i - stack[stack.length-1] - 1 
+                         else 
+                         w = i
+                         ans = Math.max(ans, h * w)
+                       }
+                       stack.push(i)
+                     }
+                     return ans   
+                   };
+                   
+                   largestRectangleArea([2,1,5,6,2,3])`,
+                    output: `10`,
                   },
                 },
               }}
@@ -30683,13 +30702,86 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q85. Maximal Rectangle</b>
             </Span>
+            <Span>
+              Given a rows x cols binary matrix filled with 0's and 1's, find
+              the largest rectangle containing only 1's and return its area.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode85} left />
+            <Span>
+              Input: matrix = [["1","0","1","0","0"], <br />
+              ["1","0","1","1","1"], <br />
+              ["1","1","1","1","1"], <br />
+              ["1","0","0","1","0"]]
+              <br />
+              Output: 6<br />
+              Explanation: The maximal rectangle is shown in the above picture.
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: matrix = [["0"]] <br />
+              Output: 0
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: matrix = [["1"]] <br />
+              Output: 1
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              rows == matrix.length <br />
+              cols == matrix[i].length <br />
+              1 &lt;= row, cols &lt;= 200 <br />
+              matrix[i][j] is '0' or '1'.
+            </p>
             <CodeEditor
               options={{
+                title: "Q85. Maximal Rectangle",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {character[][]} matrix
+                    * @return {number}
+                    */
+                   
+                   var maximalRectangle = function(matrix) {
+                     if (matrix.length == 0)
+                       return 0;
+                     let ans = 0;
+                     const hist = Array(matrix[0].length).fill(0);
+                     for (let row of matrix) {
+                       for (let i = 0; i < row.length; ++i)
+                         hist[i] = row[i] == '0' ? 0 : hist[i] + 1;
+                       ans = Math.max(ans, largestRectangleArea(hist));
+                     }
+                     return ans;
+                   }
+                   var largestRectangleArea = function(heights) {
+                     let ans = 0;
+                     const stack = [];
+                     for (let i = 0; i <= heights.length; ++i) {
+                       while (stack.length && (i == heights.length || heights[stack.slice(-1)[0]] > heights[i])) {
+                         let h = heights[stack.pop()];
+                         let w = !stack.length ? i : i - stack.slice(-1)[0] - 1;
+                         ans = Math.max(ans, h * w);
+                       }
+                       stack.push(i);
+                     }
+                     return ans;
+                   }
+                   
+                   maximalRectangle([["0"]])`,
+                    output: `0`,
                   },
                 },
               }}
@@ -30702,13 +30794,84 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Partition List</b>
             </Span>
+            <Span>
+              Given the head of a linked list and a value x, partition it such
+              that all nodes less than x come before nodes greater than or equal
+              to x.
+            </Span>
+            <Span>
+              You should preserve the original relative order of the nodes in
+              each of the two partitions.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: head = [1,4,3,2,5,2], x = 3 <br />
+              Output: [1,2,2,4,3,5]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: head = [2,1], x = 2 <br />
+              Output: [1,2]
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              The number of nodes in the list is in the range [0, 200]. <br />
+              -100 &lt;= Node.val &lt;= 100
+              <br />
+              -200 &lt;= x &lt;= 200
+            </p>
             <CodeEditor
               options={{
+                title: "Q86. Partition List",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: ` function ListNode(val, next) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.next = (next===undefined ? null : next)
+                }
+                
+                /** 
+                 * @param {ListNode} head
+                 * @param {number} x
+                 * @return {ListNode}
+                 */
+                var partition = function(head, x) {
+                  let beforeHead = new ListNode(0);
+                  let afterHead = new ListNode(0);
+                  let before = beforeHead;
+                  let after = afterHead;
+                  for (; head; head = head.next)
+                    if (head.val < x) {
+                      before.next = head;
+                      before = head;
+                    } else {
+                      after.next = head;
+                      after = head;
+                    }
+                  after.next = null;
+                  before.next = afterHead.next;
+                  return beforeHead.next;
+                };
+                
+                const l = new ListNode(1)
+                l.next = new ListNode(4)
+                l.next.next = new ListNode(3)
+                l.next.next.next = new ListNode(2)
+                l.next.next.next.next = new ListNode(5)
+                l.next.next.next.next.next = new ListNode(2)
+                partition(l,3)`,
+                    output:`ListNode {
+                      val: 1,
+                      next: ListNode { val: 2, next: ListNode { val: 2, next: [ListNode] } }
+                    }`
                   },
                 },
               }}
