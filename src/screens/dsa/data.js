@@ -30624,13 +30624,39 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q84. Largest Rectangle in Histogram</b>
             </Span>
+            <Span>
+              Given an array of integers heights representing the histogram's
+              bar height where the width of each bar is 1, return the area of
+              the largest rectangle in the histogram.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= heights.length &lt;= 105 <br />0 &lt;= heights[i] &lt;=
+              104
+            </p>
             <CodeEditor
               options={{
+                title: "Q84. Largest Rectangle in Histogram",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[]} heights
+                    * @return {number}
+                    */
+                   var largestRectangleArea = function(heights) {
+                       
+                   };`,
+                    output: ``,
                   },
                 },
               }}
