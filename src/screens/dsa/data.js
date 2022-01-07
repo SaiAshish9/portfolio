@@ -137,6 +137,7 @@ import Leetcode83b from "assets/leetcode/83b.png";
 import Leetcode84a from "assets/leetcode/84a.png";
 import Leetcode84b from "assets/leetcode/84b.png";
 import Leetcode85 from "assets/leetcode/85.png";
+import Leetcode86 from "assets/leetcode/86.png"; 
 
 export const DATA = {
   ds: {
@@ -30808,6 +30809,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 1:</b>
             </Span>
+            <Img src={Leetcode86} left />
             <Span>
               Input: head = [1,4,3,2,5,2], x = 3 <br />
               Output: [1,2,2,4,3,5]
@@ -30903,11 +30905,12 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q88. Merge Sorted Array</b>
             </Span>
             <CodeEditor
               options={{
                 codes: {
+                  title: "Q88. Merge Sorted Array",
                   Javascript: {
                     code: ``,
                   },
