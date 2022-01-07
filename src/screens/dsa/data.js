@@ -30555,6 +30555,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 1:</b>
             </Span>
+            <Img src={Leetcode83a} left />
             <Span>
               Input: head = [1,1,2] <br />
               Output: [1,2]
@@ -30562,6 +30563,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 2:</b>
             </Span>
+            <Img src={Leetcode83b} left />
             <Span>
               Input: head = [1,1,2,3,3] <br />
               Output: [1,2,3]
@@ -30579,8 +30581,37 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q83. Remove Duplicates from Sorted List",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function ListNode(val, next) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.next = (next===undefined ? null : next)
+                    }
+                    
+                    /**
+                     * @param {ListNode} head
+                     * @return {ListNode}
+                     */
+                    var deleteDuplicates = function(head) {
+                      let curr = head;
+                      while (curr) {
+                        while (curr.next && curr.val == curr.next.val)
+                          curr.next = curr.next.next;
+                        curr = curr.next;
+                      }
+                      return head;    
+                    };
+                    
+                    const l = new ListNode(1)
+                    l.next = new ListNode(2)
+                    l.next.next = new ListNode(3)
+                    l.next.next.next = new ListNode(3)
+                    l.next.next.next.next = new ListNode(4)
+                    l.next.next.next.next.next = new ListNode(4)
+                    l.next.next.next.next.next.next = new ListNode(5)
+                    deleteDuplicates(l)`,
+                    output: `ListNode {
+                      val: 1,
+                      next: ListNode { val: 2, next: ListNode { val: 3, next: [ListNode] } }
+                    }`,
                   },
                 },
               }}
