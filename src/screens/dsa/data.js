@@ -30886,7 +30886,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q87. Scramble String</b>
             </Span>
             <CodeEditor
               options={{
