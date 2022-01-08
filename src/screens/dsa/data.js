@@ -137,7 +137,7 @@ import Leetcode83b from "assets/leetcode/83b.png";
 import Leetcode84a from "assets/leetcode/84a.png";
 import Leetcode84b from "assets/leetcode/84b.png";
 import Leetcode85 from "assets/leetcode/85.png";
-import Leetcode86 from "assets/leetcode/86.png"; 
+import Leetcode86 from "assets/leetcode/86.png";
 
 export const DATA = {
   ds: {
@@ -30822,7 +30822,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               Output: [1,2]
             </Span>
             <Span>
-              <b>Complexity:</b>
+              <b>Constraints</b>
             </Span>
             <p>
               The number of nodes in the list is in the range [0, 200]. <br />
@@ -30870,10 +30870,10 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 l.next.next.next.next = new ListNode(5)
                 l.next.next.next.next.next = new ListNode(2)
                 partition(l,3)`,
-                    output:`ListNode {
+                    output: `ListNode {
                       val: 1,
                       next: ListNode { val: 2, next: ListNode { val: 2, next: [ListNode] } }
-                    }`
+                    }`,
                   },
                 },
               }}
@@ -30888,6 +30888,78 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Q87. Scramble String</b>
             </Span>
+            <Span>
+              We can scramble a string s to get a string t using the following
+              algorithm:
+            </Span>
+            <Span>
+              1. If the length of the string is 1, stop. <br />
+              2. If the length of the string is &gt; 1, do the following:
+            </Span>
+            <Span>
+              (a). Split the string into two non-empty substrings at a random
+              index, i.e., if the string is s, divide it to x and y where s = x
+              + y. <br />
+              (b). Randomly decide to swap the two substrings or to keep them in
+              the same order. i.e., after this step, s may become s = x + y or s
+              = y + x. <br />
+              (c). Apply step 1 recursively on each of the two substrings x and
+              y.
+            </Span>
+            <Span>
+              Given two strings s1 and s2 of the same length, return true if s2
+              is a scrambled string of s1, otherwise, return false.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: s1 = "great", s2 = "rgeat" <br />
+              Output: true <br />
+              Explanation: One possible scenario applied on s1 is: <br />
+              "great" --&gt; "gr/eat" // divide at random index.
+              <br />
+              "gr/eat" --&gt; "gr/eat" // random decision is not to swap the two
+              substrings and keep them in order. <br />
+              "gr/eat" --&gt; "g/r / e/at" // apply the same algorithm
+              recursively on both substrings. divide at ranom index each of
+              them. <br />
+              "g/r / e/at" --&gt; "r/g / e/at" // random decision was to swap
+              the first substring and to keep the second substring in the same
+              order. <br />
+              "r/g / e/at" --&gt; "r/g / e/ a/t" // again apply the algorithm
+              recursively, divide "at" to "a/t".
+              <br />
+              "r/g / e/ a/t" --&gt; "r/g / e/ a/t" // random decision is to keep
+              both substrings in the same order. <br />
+              The algorithm stops now and the result string is "rgeat" which is
+              s2.
+              <br />
+              As there is one possible scenario that led s1 to be scrambled to
+              s2, we return true.
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: s1 = "abcde", s2 = "caebd" <br />
+              Output: false
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s1 = "a", s2 = "a" <br />
+              Output: true
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              s1.length == s2.length <br />
+              1 &lt;= s1.length &lt;= 30 <br />
+              s1 and s2 consist of lower-case English letters.
+            </p>
             <CodeEditor
               options={{
                 codes: {
