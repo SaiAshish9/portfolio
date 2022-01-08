@@ -143,6 +143,8 @@ import Leetcode94 from "assets/leetcode/94.png";
 import Leetcode95 from "assets/leetcode/95.png";
 import Leetcode96 from "assets/leetcode/96.png";
 import Leetcode97 from "assets/leetcode/97.png";
+import Leetcode98a from "assets/leetcode/98a.png";
+import Leetcode98b from "assets/leetcode/98b.png";
 
 export const DATA = {
   ds: {
@@ -31983,8 +31985,8 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                    };
                    
                    isInterleave( "aabcc","dbbca","aadbbcbcac")`,
-                   output:`[ false, false, false, true, false, true ]
-                   true`
+                    output: `[ false, false, false, true, false, true ]
+                   true`,
                   },
                 },
               }}
@@ -31997,13 +31999,84 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q98. Validate Binary Search Tree</b>
             </Span>
+            <Span>
+              Given the root of a binary tree, determine if it is a valid binary
+              search tree (BST).
+              <br />
+              A valid BST is defined as follows:
+              <br />
+              The left subtree of a node contains only nodes with keys less than
+              the node's key.
+              <br />
+              The right subtree of a node contains only nodes with keys greater
+              than the node's key.
+              <br />
+              Both the left and right subtrees must also be binary search trees.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode98a} left />
+            <Span>
+              Input: root = [2,1,3] <br />
+              Output: true
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Img src={Leetcode98b} left />
+            <Span>
+              Input: root = [5,1,4,null,null,3,6]] <br />
+              Output: false] <br />
+              Explanation: The root node's value is 5 but its right child's
+              value is 4.
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              The number of nodes in the tree is in the range [1, 104]. <br />
+              -2^31 &lt;= Node.val &lt;= 2^31 - 1
+            </p>
             <CodeEditor
               options={{
+                title: "Q98. Validate Binary Search Tree",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                    }
+                    
+                    /**
+                     * @param {TreeNode} root
+                     * @return {boolean}
+                     */
+                    var isValidBST = function(root) {
+                      const stack = []
+                      let pred = null
+                    
+                      while(root || stack.length){
+                        while(root){
+                          stack.push(root)
+                          root = root.left
+                        }
+                        root = stack.pop()
+                        if(pred && pred.val >= root.val) return false
+                        pred = root
+                        root = root.right
+                        }
+                      return true
+                    };
+                    
+                    const t = new TreeNode(2)
+                    t.left = new TreeNode(1)
+                    t.right = new TreeNode(3)
+                    isValidBST(t)`,
+                    output:`true`
                   },
                 },
               }}
