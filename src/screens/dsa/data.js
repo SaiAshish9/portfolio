@@ -151,6 +151,8 @@ import Leetcode100 from "assets/leetcode/100.png";
 import Leetcode101a from "assets/leetcode/101.png";
 import Leetcode101b from "assets/leetcode/101b.png";
 import Leetcode102 from "assets/leetcode/102.png";
+import Leetcode103 from "assets/leetcode/103.png";
+import Leetcode104 from "assets/leetcode/104.png";
 
 export const DATA = {
   ds: {
@@ -32419,7 +32421,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                     t.right.left = new TreeNode(15)
                     t.right.right = new TreeNode(7)
                     levelOrder(t)`,
-                    output:`[ [ 3 ], [ 9, 20 ], [ 15, 7 ] ]`
+                    output: `[ [ 3 ], [ 9, 20 ], [ 15, 7 ] ]`,
                   },
                 },
               }}
@@ -32432,13 +32434,91 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q103. Binary Tree Zigzag Level Order Traversal</b>
             </Span>
+            <Span>
+              Given the root of a binary tree, return the zigzag level order
+              traversal of its nodes' values. (i.e., from left to right, then
+              right to left for the next level and alternate between).
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode103} left />
+            <Span>
+              Input: root = [3,9,20,null,null,15,7] <br />
+              Output: [[3],[20,9],[15,7]]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: root = [1] <br />
+              Output: [[1]]
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: root = [] <br />
+              Output: []
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              The number of nodes in the tree is in the range [0, 2000].
+              <br />
+              -100 &lt;= Node.val &lt;= 100
+            </p>
             <CodeEditor
               options={{
+                title: "Q103. Binary Tree Zigzag Level Order Traversal",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                    }
+                    /**
+                     * @param {TreeNode} root
+                     * @return {number[][]}
+                     */
+                    var zigzagLevelOrder = function(root) {
+                      const q = []
+                      const result = []
+                      q.push(root)
+                      let ltr = true
+                      while(q.length && root){
+                       let curr = []
+                       const n = q.length
+                       for(let i=n;i>0;i--){
+                        if(ltr){
+                        const ele = q.shift()
+                        curr.push(ele.val)
+                        if(ele.left) q.push(ele.left)
+                        if(ele.right) q.push(ele.right)
+                        }else{
+                        const ele = q.pop()
+                        curr.push(ele.val)
+                        if(ele.right) q.unshift(ele.right)
+                        if(ele.left) q.unshift(ele.left)
+                        }
+                       }
+                       result.push(curr)
+                       ltr = !ltr
+                      }
+                      return result  
+                    };
+                    
+                    const t= new TreeNode(3)
+                    t.left = new TreeNode(9)
+                    t.right = new TreeNode(20)
+                    t.right.left = new TreeNode(15)
+                    t.right.right = new TreeNode(7)
+                    zigzagLevelOrder(t)`,
+                    output: `[ [ 3 ], [ 20, 9 ], [ 15, 7 ] ]`,
                   },
                 },
               }}
@@ -32451,13 +32531,79 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q104. Maximum Depth of Binary Tree</b>
             </Span>
+            <Span>
+              Given the root of a binary tree, return its maximum depth.
+              <br />A binary tree's maximum depth is the number of nodes along
+              the longest path from the root node down to the farthest leaf
+              node.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode104} left />
+            <Span>
+              Input: root = [3,9,20,null,null,15,7]
+              <br />
+              Output: 3
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: root = [1,null,2]
+              <br />
+              Output: 2
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              The number of nodes in the tree is in the range [0, 104]. <br />
+              -100 &lt;= Node.val &lt;= 100
+            </p>
             <CodeEditor
               options={{
+                title: "Q104. Maximum Depth of Binary Tree",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                    }
+                    /**
+                     * @param {TreeNode} root
+                     * @return {number}
+                     */
+                    var maxDepth = function(root) {
+                    const q = []
+                    q.push(root)
+                    let height=0;
+                    while(q.length && root){
+                     let curr = []
+                     let n = q.length
+                     if(n===0) break;
+                     height++
+                     while(n>0){
+                     const ele = q.shift()
+                     curr.push(ele.val)
+                     if(ele.left) q.push(ele.left)
+                     if(ele.right) q.push(ele.right)
+                     n--
+                     }
+                    }
+                    return height
+                    };
+                    
+                    const t= new TreeNode(3)
+                    t.left = new TreeNode(9)
+                    t.right = new TreeNode(20)
+                    t.right.left = new TreeNode(15)
+                    t.right.right = new TreeNode(7)
+                    maxDepth(t)`,
+                    output:`3`
                   },
                 },
               }}
