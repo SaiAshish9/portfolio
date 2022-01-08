@@ -31416,12 +31416,49 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Q92. Reverse Linked List II</b>
             </Span>
+            <Span>
+              Given the head of a singly linked list and two integers left and
+              right where left &lt;= right, reverse the nodes of the list from
+              position left to position right, and return the reversed list.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: head = [1,2,3,4,5], <br />
+              left = 2,
+              <br />
+              right = 4<br />
+              Output: [1,4,3,2,5]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: head = [5], <br />
+              left = 1,
+              <br /> right = 1 <br />
+              Output: [5]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <Span>
+              The number of nodes in the list is n. <br />
+              1 &lt;= n &lt;= 500 <br />
+              -500 &lt;= Node.val &lt;= 500 <br />1 &lt;= left &lt;= right &lt;=
+              n
+            </Span>
+            <p>
+              <b>Follow up:</b> Could you do it in one pass?
+            </p>
             <CodeEditor
               options={{
                 title: "Q92. Reverse Linked List II",
                 codes: {
                   Javascript: {
                     code: ``,
+                    output: ``,
                   },
                 },
               }}
