@@ -141,6 +141,7 @@ import Leetcode86 from "assets/leetcode/86.png";
 import Leetcode92 from "assets/leetcode/92.png";
 import Leetcode94 from "assets/leetcode/94.png";
 import Leetcode95 from "assets/leetcode/95.png";
+import Leetcode96 from "assets/leetcode/96.png";
 
 export const DATA = {
   ds: {
@@ -31819,13 +31820,62 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q96. Unique Binary Search Trees</b>
             </Span>
+            <Span>
+              Given an integer n, return the number of structurally unique BST's
+              (binary search trees) which has exactly n nodes of unique values
+              from 1 to n.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode96} left />
+            <Span>
+              Input: n = 3 <br />
+              Output: 5
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: n = 1 <br />
+              Output: 1
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>1 &lt;= n &lt;= 19</p>
             <CodeEditor
               options={{
+                title: "Q96. Unique Binary Search Trees",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {number}
+                    */
+                   
+                   // Total number of possible 
+                   // Binary Trees with n different 
+                   // keys = catalian number * n!
+                   
+                   // catalian number = 2nCn
+                   
+                   var numTrees = function(n) {
+                     const dp = Array(n+1).fill(0)
+                     dp[0] = 1
+                     dp[1] = 1
+                     for (let i = 2; i <= n; ++i)
+                     for (let j = 0; j < i; ++j)
+                     dp[i] += dp[j] * dp[i - j - 1];
+                     console.log(dp)
+                     return dp[n]
+                   };
+                   
+                   numTrees(3)`,
+                    output: `[ 1, 1, 2, 5 ]
+                   5`,
                   },
                 },
               }}
