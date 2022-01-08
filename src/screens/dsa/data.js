@@ -145,6 +145,8 @@ import Leetcode96 from "assets/leetcode/96.png";
 import Leetcode97 from "assets/leetcode/97.png";
 import Leetcode98a from "assets/leetcode/98a.png";
 import Leetcode98b from "assets/leetcode/98b.png";
+import Leetcode99a from "assets/leetcode/99a.png";
+import Leetcode99b from "assets/leetcode/99b.png";
 
 export const DATA = {
   ds: {
@@ -32076,7 +32078,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                     t.left = new TreeNode(1)
                     t.right = new TreeNode(3)
                     isValidBST(t)`,
-                    output:`true`
+                    output: `true`,
                   },
                 },
               }}
@@ -32089,13 +32091,92 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q99. Recover Binary Search Tree</b>
             </Span>
+            <Span>
+              You are given the root of a binary search tree (BST), where the
+              values of exactly two nodes of the tree were swapped by mistake.
+              Recover the tree without changing its structure.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode99a} left />
+            <Span>
+              Input: root = [1,3,null,null,2] <br />
+              Output: [3,1,null,null,2]
+              <br />
+              Explanation: 3 cannot be a left child of 1 because 3 &gt; 1.
+              Swapping 1 and 3 makes the BST valid.
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Img src={Leetcode99b} left />
+            <Span>
+              Input: root = [3,1,4,null,null,2] <br />
+              Output: [2,1,4,null,null,3]
+              <br />
+              Explanation: 2 cannot be in the right subtree of 3 because 2 &lt;
+              3. Swapping 2 and 3 makes the BST valid.
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <Span>
+              The number of nodes in the tree is in the range [2, 1000]. <br />
+              -231 &lt;= Node.val &lt;= 231 - 1
+            </Span>
+            <p>
+              <b>Follow up: </b>A solution using O(n) space is pretty
+              straight-forward. Could you devise a constant O(1) space solution?
+            </p>
             <CodeEditor
               options={{
+                title: "Q99. Recover Binary Search Tree",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                     }
+                     
+                     
+                     /**
+                      * @param {TreeNode} root
+                      * @return {void} Do not return anything, modify root in-place instead.
+                      */
+                     var recoverTree = function(root) {
+                       let pred = x = y = null  
+                       stack = []
+                       while(root || stack.length){
+                         while(root){
+                           stack.push(root)
+                           root = root.left
+                         }
+                         root = stack.pop()
+                         if(pred && root.val < pred.val){
+                           y = root
+                           if(!x) x = pred
+                         }
+                         pred = root
+                         root = root.right
+                       }
+                       if(x)
+                       [x.val,y.val] = [y.val,x.val]
+                     };
+                     
+                     const t = new TreeNode(2)
+                     t.left = new TreeNode(1)
+                     t.right = new TreeNode(3)
+                     recoverTree(t)
+                     console.log(t)`,
+                     output:`TreeNode {
+                      val: 2,
+                      left: TreeNode { val: 1, left: null, right: null },
+                      right: TreeNode { val: 3, left: null, right: null }
+                    }`
                   },
                 },
               }}
