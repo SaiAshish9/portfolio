@@ -138,6 +138,7 @@ import Leetcode84a from "assets/leetcode/84a.png";
 import Leetcode84b from "assets/leetcode/84b.png";
 import Leetcode85 from "assets/leetcode/85.png";
 import Leetcode86 from "assets/leetcode/86.png";
+import Leetcode92 from "assets/leetcode/92.png";
 
 export const DATA = {
   ds: {
@@ -31424,6 +31425,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 1:</b>
             </Span>
+            <Img src={Leetcode92} left />
             <Span>
               Input: head = [1,2,3,4,5], <br />
               left = 2,
@@ -31457,8 +31459,42 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q92. Reverse Linked List II",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function ListNode(val, next) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.next = (next===undefined ? null : next)
+                    }
+                    /**
+                     * @param {ListNode} head
+                     * @param {number} left
+                     * @param {number} right
+                     * @return {ListNode}
+                     */
+                    var reverseBetween = function(head, left, right) {
+                      if (head == null || left == right) return head;
+                      const temp = new ListNode(0, head);
+                      let prev = temp;
+                      for (let i = 0; i < left - 1; ++i)
+                        prev = prev.next; 
+                      const tail = prev.next; 
+                      for (let i = 0; i < right - left; ++i) {
+                        const cache = tail.next;
+                        tail.next = cache.next;
+                        cache.next = prev.next;
+                        prev.next = cache;
+                      }
+                      return temp.next;
+                    };
+                    
+                    const l = new ListNode(1)
+                    l.next = new ListNode(2)
+                    l.next.next = new ListNode(3)
+                    l.next.next.next = new ListNode(4)
+                    l.next.next.next.next = new ListNode(5)
+                    reverseBetween(l,2,4)`,
+                    output: `ListNode {
+                      val: 1,
+                      next: ListNode { val: 4, next: ListNode { val: 3, next: [ListNode] } }
+                    }`,
                   },
                 },
               }}
@@ -31471,10 +31507,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q93. Restore IP Addresses</b>
             </Span>
             <CodeEditor
               options={{
+                title: "Q93. Restore IP Addresses",
                 codes: {
                   Javascript: {
                     code: ``,
