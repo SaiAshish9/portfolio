@@ -31598,13 +31598,92 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q94. Binary Tree Inorder Traversal</b>
             </Span>
+            <Span>
+              Given the root of a binary tree, return the inorder traversal of
+              its nodes' values.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: root = [1,null,2,3] <br />
+              Output: [1,3,2]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: root = [] <br />
+              Output: []
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: root = [1] <br />
+              Output: [1]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              <b>Follow up:</b>
+              Recursive solution is trivial, could you do it iteratively?
+            </p>
             <CodeEditor
               options={{
+                title: "Q94. Binary Tree Inorder Traversal",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                    }
+                    /**
+                     * @param {TreeNode} root
+                     * @return {number[]}
+                     */
+                    
+                    function inorder1(r){
+                      if(r){
+                        inorder1(r.left)
+                        console.log(r.val)
+                        inorder1(r.right)
+                      }
+                    }
+                    
+                    function inorder(result,root,stack=[]){
+                     while(root || stack.length){
+                     while(root){
+                     stack.push(root)
+                     root = root.left
+                     }
+                     root = stack.pop()
+                     result.push(root.val)
+                     root = root.right
+                    }
+                    }
+                    
+                    var inorderTraversal = function(root) {
+                      inorder1(root)
+                      console.log("###")
+                      const result = []
+                      inorder(result,root)
+                      return result
+                    }
+                    
+                    const t = new TreeNode(1)
+                    t.right = new TreeNode(2)
+                    t.right.left = new TreeNode(3)
+                    inorderTraversal(t)`,
+                    output: `1
+                    3
+                    2
+                    ###
+                    [ 1, 3, 2 ]`,
                   },
                 },
               }}
@@ -31617,10 +31696,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q95. Unique Binary Search Trees II</b>
             </Span>
             <CodeEditor
               options={{
+                title: "Q95. Unique Binary Search Trees II",
                 codes: {
                   Javascript: {
                     code: ``,
