@@ -147,6 +147,7 @@ import Leetcode98a from "assets/leetcode/98a.png";
 import Leetcode98b from "assets/leetcode/98b.png";
 import Leetcode99a from "assets/leetcode/99a.png";
 import Leetcode99b from "assets/leetcode/99b.png";
+import Leetcode100 from "assets/leetcode/100.png";
 
 export const DATA = {
   ds: {
@@ -32202,6 +32203,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 1:</b>
             </Span>
+            <Img src={Leetcode100} left />
             <Span>
               Input: p = [1,2,3], q = [1,2,3] <br />
               Output: true
