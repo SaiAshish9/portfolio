@@ -31054,7 +31054,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 1:</b>
             </Span>
-            <SPan>
+            <Span>
               Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3 <br />
               Output: [1,2,2,3,5,6]
               <br />
@@ -31062,7 +31062,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <br />
               The result of the merge is [1,2,2,3,5,6] with the underlined
               elements coming from nums1.
-            </SPan>
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
@@ -31096,10 +31096,29 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             </p>
             <CodeEditor
               options={{
+                title: "Q88. Merge Sorted Array",
                 codes: {
-                  title: "Q88. Merge Sorted Array",
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[]} nums1
+                    * @param {number} m
+                    * @param {number[]} nums2
+                    * @param {number} n
+                    * @return {void} Do not return anything, modify nums1 in-place instead.
+                    */
+                   var merge = function(nums1, m, nums2, n){
+                     let i = m - 1;    
+                     let j = n - 1;    
+                     let k = m + n - 1; 
+                     while (j >= 0)
+                     if (i >= 0 && nums1[i] > nums2[j])
+                       nums1[k--] = nums1[i--];
+                     else
+                       nums1[k--] = nums2[j--];
+                     console.log(nums1)
+                   }
+                   merge([1,2,3,0,0,0],3,[2,5,6],3)`,
+                    output: `[ 1, 2, 2, 3, 5, 6 ]`,
                   },
                 },
               }}
@@ -31112,13 +31131,82 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q89. Gray Code</b>
             </Span>
+            <Span>
+              An n-bit gray code sequence is a sequence of 2n integers where:
+              <br />
+              Every integer is in the inclusive range [0, 2n - 1],
+              <br />
+              The first integer is 0,
+              <br />
+              An integer appears no more than once in the sequence,
+              <br />
+              The binary representation of every pair of adjacent integers
+              differs by exactly one bit, and
+              <br />
+              The binary representation of the first and last integers differs
+              by exactly one bit.
+              <br />
+              Given an integer n, return any valid n-bit gray code sequence.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: n = 2 <br />
+              Output: [0,1,3,2] <br />
+              Explanation: <br />
+              The binary representation of [0,1,3,2] is [00,01,11,10]. <br />
+              - 00 and 01 differ by one bit
+              <br />
+              - 01 and 11 differ by one bit
+              <br />
+              - 11 and 10 differ by one bit
+              <br />
+              - 10 and 00 differ by one bit
+              <br />
+              [0,2,3,1] is also a valid gray code sequence, whose binary
+              representation is [00,10,11,01].
+              <br />
+              - 00 and 10 differ by one bit
+              <br />
+              - 10 and 11 differ by one bit
+              <br />
+              - 11 and 01 differ by one bit
+              <br />- 01 and 00 differ by one bit
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: n = 1<br />
+              Output: [0,1]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>1 &lt;= n &lt;= 16</p>
             <CodeEditor
               options={{
+                title: "Q89. Gray Code",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {number[]}
+                    */
+                   var grayCode = function(n) {
+                     const ans = [];
+                     ans.push(0);
+                     for (let i = 0; i < n; ++i)
+                       for (let j = ans.length - 1; j >= 0; --j)
+                         ans.push(ans[j] | 1 << i);
+                     return ans;
+                   };
+                   
+                   grayCode(2)`,
+                    output: `[0,1,3,2]`,
                   },
                 },
               }}
@@ -31131,8 +31219,29 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q90. Subsets II</b>
             </Span>
+            <Span>
+              Given an integer array nums that may contain duplicates, return
+              all possible subsets (the power set).
+            </Span>
+            <Span>
+              The solution set must not contain duplicate subsets. Return the
+              solution in any order.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= nums.length &lt;= 10 <br />
+              -10 &lt;= nums[i] &lt;= 10
+            </p>
             <CodeEditor
               options={{
                 codes: {
