@@ -31305,10 +31305,47 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q91. Decode Ways</b>
             </Span>
+            <Span>
+              A message containing letters from A-Z can be encoded into numbers
+              using the following mapping:
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: s = "12" <br />
+              Output: 2<br />
+              Explanation: "12" could be decoded as "AB" (1 2) or "L" (12).
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: s = "226" <br />
+              Output: 3 <br />
+              Explanation: "226" could be decoded as "BZ" (2 26), "VF" (22 6),
+              or "BBF" (2 2 6).
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = "06" <br /> Output: 0 <br />
+              Explanation: "06" cannot be mapped to "F" because of the leading
+              zero ("6" is different from "06").
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= s.length &lt;= 100 <br />s contains only digits and may
+              contain leading zero(s).
+            </p>
             <CodeEditor
               options={{
+                title: "Q91. Decode Ways",
                 codes: {
                   Javascript: {
                     code: ``,
