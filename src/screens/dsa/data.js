@@ -31374,7 +31374,34 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q91. Decode Ways",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @return {number}
+                    */
+                   
+                   function isSafe(c1,c2=null){
+                     if(!c2)
+                     return c1 != '0';
+                     return c1 == '1' || (c1 == '2' && c2 <= '6') 
+                   }
+                   
+                   var numDecodings = function(s) {
+                     const n = s.length
+                     const dp = [...Array(n).fill(0),1]
+                     if(isSafe(s[n-1])) dp[n-1] = 1
+                     for (let i = n - 2; i >= 0; --i) {   
+                     if(isSafe(s[i]))
+                       dp[i] += dp[i + 1]
+                     if(isSafe(s[i], s[i + 1]))
+                       dp[i] += dp[i + 2]
+                   }
+                   console.log(dp)
+                   return dp[0]
+                   };
+                   
+                   numDecodings("12")`,
+                    output: `[ 2, 1, 1 ]
+                    2`,
                   },
                 },
               }}
