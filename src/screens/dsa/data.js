@@ -32172,11 +32172,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                      t.right = new TreeNode(3)
                      recoverTree(t)
                      console.log(t)`,
-                     output:`TreeNode {
+                    output: `TreeNode {
                       val: 2,
                       left: TreeNode { val: 1, left: null, right: null },
                       right: TreeNode { val: 3, left: null, right: null }
-                    }`
+                    }`,
                   },
                 },
               }}
@@ -32189,13 +32189,72 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q100. Same Tree</b>
             </Span>
+            <Span>
+              Given the roots of two binary trees p and q, write a function to
+              check if they are the same or not.
+            </Span>
+            <Span>
+              Two binary trees are considered the same if they are structurally
+              identical, and the nodes have the same value.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: p = [1,2,3], q = [1,2,3] <br />
+              Output: true
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: p = [1,2], q = [1,null,2] <br />
+              Output: false
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: p = [1,2,1], q = [1,1,2] <br />
+              Output: false
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              The number of nodes in both trees is in the range [0, 100]. <br />
+              -104 &lt;= Node.val &lt;= 104
+            </p>
             <CodeEditor
               options={{
+                title: "Q100. Same Tree",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                    }
+                    /**
+                     * @param {TreeNode} p
+                     * @param {TreeNode} q
+                     * @return {boolean}
+                     */
+                    var isSameTree = function(p, q) {
+                      if (p == null || q == null) return p == q;
+                      return p.val == q.val &&
+                               isSameTree(p.left, q.left) &&
+                               isSameTree(p.right, q.right);
+                    };
+                    
+                    const t1= new TreeNode(1)
+                    t1.left = new TreeNode(2)
+                    t1.right = new TreeNode(3)
+                    const t2 = t1
+                    isSameTree(t1,t2)`,
+                    output: `true`,
                   },
                 },
               }}
@@ -32208,10 +32267,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q101. Symmetric Tre</b>
             </Span>
             <CodeEditor
               options={{
+                title: "Q101. Symmetric Tree",
                 codes: {
                   Javascript: {
                     code: ``,
