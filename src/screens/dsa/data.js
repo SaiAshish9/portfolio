@@ -148,7 +148,8 @@ import Leetcode98b from "assets/leetcode/98b.png";
 import Leetcode99a from "assets/leetcode/99a.png";
 import Leetcode99b from "assets/leetcode/99b.png";
 import Leetcode100 from "assets/leetcode/100.png";
-import Leetcode101 from "assets/leetcode/101.png";
+import Leetcode101a from "assets/leetcode/101.png";
+import Leetcode101b from "assets/leetcode/101b.png";
 
 export const DATA = {
   ds: {
@@ -32279,6 +32280,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 1:</b>
             </Span>
+            <Img src={Leetcode101a} left />
             <Span>
               Input: root = [1,2,2,3,4,4,3] <br />
               Output: true
@@ -32286,6 +32288,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 2:</b>
             </Span>
+            <Img src={Leetcode101b} left />
             <Span>
               Input: root = [1,2,2,null,3,null,3] <br />
               Output: false
@@ -32302,7 +32305,34 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q101. Symmetric Tree",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                    }
+                    /**
+                     * @param {TreeNode} p
+                     * @param {TreeNode} q
+                     * @return {boolean}
+                     */
+                    var isSameTree = function(p, q) {
+                      if (!p || !q) return p == q;
+                      return p.val === q.val &&
+                               isSameTree(p.left, q.right) &&
+                               isSameTree(p.right, q.left);
+                    };
+                    
+                    var isSymmetric = function(root) {
+                      return isSameTree(root,root)
+                    };
+                    
+                    const t1= new TreeNode(1)
+                    t1.left = new TreeNode(2)
+                    t1.left.right = new TreeNode(3)
+                    t1.right = new TreeNode(2)
+                    t1.right.right = new TreeNode(3)
+                    isSymmetric(t1)`,
+                    output: `false`,
                   },
                 },
               }}
