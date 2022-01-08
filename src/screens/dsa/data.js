@@ -148,6 +148,7 @@ import Leetcode98b from "assets/leetcode/98b.png";
 import Leetcode99a from "assets/leetcode/99a.png";
 import Leetcode99b from "assets/leetcode/99b.png";
 import Leetcode100 from "assets/leetcode/100.png";
+import Leetcode101 from "assets/leetcode/101.png";
 
 export const DATA = {
   ds: {
@@ -32271,6 +32272,31 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Q101. Symmetric Tre</b>
             </Span>
+            <Span>
+              Given the root of a binary tree, check whether it is a mirror of
+              itself (i.e., symmetric around its center).
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: root = [1,2,2,3,4,4,3] <br />
+              Output: true
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: root = [1,2,2,null,3,null,3] <br />
+              Output: false
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              <b>Follow up:</b>
+              Could you solve it both recursively and iteratively?
+            </p>
             <CodeEditor
               options={{
                 title: "Q101. Symmetric Tree",
