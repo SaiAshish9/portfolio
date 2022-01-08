@@ -150,6 +150,7 @@ import Leetcode99b from "assets/leetcode/99b.png";
 import Leetcode100 from "assets/leetcode/100.png";
 import Leetcode101a from "assets/leetcode/101.png";
 import Leetcode101b from "assets/leetcode/101b.png";
+import Leetcode102 from "assets/leetcode/102.png";
 
 export const DATA = {
   ds: {
@@ -32354,6 +32355,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 1:</b>
             </Span>
+            <Img src={Leetcode102} left />
             <Span>
               Input: root = [3,9,20,null,null,15,7] <br />
               Output: [[3],[9,20],[15,7]]
