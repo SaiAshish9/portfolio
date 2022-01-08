@@ -31509,12 +31509,83 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Q93. Restore IP Addresses</b>
             </Span>
+            <Span>
+              A valid IP address consists of exactly four integers separated by
+              single dots. Each integer is between 0 and 255 (inclusive) and
+              cannot have leading zeros.
+              <br />
+              For example, "0.1.2.201" and "192.168.1.1" are valid IP addresses,
+              but "0.011.255.245", "192.168.1.312" and "192.168@1.1" are invalid
+              IP addresses.
+              <br />
+              Given a string s containing only digits, return all possible valid
+              IP addresses that can be formed by inserting dots into s. You are
+              not allowed to reorder or remove any digits in s. You may return
+              the valid IP addresses in any order.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: s = "25525511135" <br />
+              Output: ["255.255.11.135","255.255.111.35"]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: s = "0000" <br />
+              Output: ["0.0.0.0"]
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = "101023" <br />
+              Output:
+              ["1.0.10.23","1.0.102.3","10.1.0.23","10.10.2.3","101.0.2.3"]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              0 &lt;= s.length &lt;= 20 <br />s consists of digits only.
+            </p>
             <CodeEditor
               options={{
                 title: "Q93. Restore IP Addresses",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @return {string[]}
+                    */
+                   
+                   function dfs(result,str,s=0,curr=[]){
+                    if(curr.length == 4 && s == str.length){
+                      result.push(curr.join("."))
+                      return
+                    }
+                     if(curr.length == 4 || s == str.length) return
+                     for(let i=1;i<=3;++i){
+                       if(s + i > str.length) return
+                       if(i > 1 && str[s] == '0') return
+                       let num = str.substring(s,s+i)
+                       if(+num>255) return
+                       curr.push(num)
+                       dfs(result,str,s+i,curr)
+                       curr.pop()
+                     }
+                   }
+                   
+                   var restoreIpAddresses = function(s) {
+                     const result = []
+                     dfs(result,s)
+                     return result
+                   };
+                   
+                   restoreIpAddresses("25525511135")`,
+                    output: `[ '255.255.11.135', '255.255.111.35' ]`,
                   },
                 },
               }}
