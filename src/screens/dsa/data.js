@@ -139,6 +139,7 @@ import Leetcode84b from "assets/leetcode/84b.png";
 import Leetcode85 from "assets/leetcode/85.png";
 import Leetcode86 from "assets/leetcode/86.png";
 import Leetcode92 from "assets/leetcode/92.png";
+import Leetcode94 from "assets/leetcode/94.png";
 
 export const DATA = {
   ds: {
@@ -31607,6 +31608,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 1:</b>
             </Span>
+            <Img src={Leetcode94} left />
             <Span>
               Input: root = [1,null,2,3] <br />
               Output: [1,3,2]
@@ -31629,7 +31631,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <b>Constraints:</b>
             </Span>
             <p>
-              <b>Follow up:</b>
+              <b>Follow up: </b>
               Recursive solution is trivial, could you do it iteratively?
             </p>
             <CodeEditor
