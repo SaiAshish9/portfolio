@@ -32386,7 +32386,40 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q102. Binary Tree Level Order Traversal",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                    }
+                    /**
+                     * @param {TreeNode} root
+                     * @return {number[][]}
+                     */
+                    var levelOrder = function(root) {
+                      const q = []
+                      const result = []
+                      q.push(root)
+                      while(q.length && root){
+                       let curr = []
+                       const n = q.length
+                       for(let i=0;i<n;i++){
+                        const ele = q.shift()
+                        curr.push(ele.val)
+                        if(ele.left) q.push(ele.left)
+                        if(ele.right) q.push(ele.right)
+                       }
+                       result.push(curr)
+                      }
+                      return result
+                    };
+                    
+                    const t= new TreeNode(3)
+                    t.left = new TreeNode(9)
+                    t.right = new TreeNode(20)
+                    t.right.left = new TreeNode(15)
+                    t.right.right = new TreeNode(7)
+                    levelOrder(t)`,
+                    output:`[ [ 3 ], [ 9, 20 ], [ 15, 7 ] ]`
                   },
                 },
               }}
