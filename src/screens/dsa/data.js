@@ -31233,7 +31233,15 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <b>Example 1:</b>
             </Span>
             <Span>
+              Input: nums = [1,2,2] <br />
+              Output: [[],[1],[1,2],[1,2,2],[2],[2,2]]
+            </Span>
+            <Span>
               <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums = [0] <br />
+              Output: [[],[0]]
             </Span>
             <Span>
               <b>Constraints:</b>
@@ -31246,7 +31254,45 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               options={{
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number[][]}
+                    */
+                   
+                   function subsetsH(i_set, result, subset = [], index = 0) {
+                       result.push(subset.slice())
+                       for (let i = index; i < i_set.length; i++) {
+                           if(i>index && i_set[i]===i_set[i-1])
+                           continue
+                           subset.push(i_set[i])
+                           subsetsH(i_set, result, subset, i + 1)
+                           subset.pop()
+                       }
+                       return
+                   }
+                   
+                   var subsetsWithDup = function(nums) {
+                     const result = []
+                     nums = nums.sort()
+                     subsetsH(nums, result)
+                     return result    
+                   };
+                   
+                   subsetsWithDup([4,4,4,1,4])
+                   `,
+                    output: `[
+                    [],
+                    [ 1 ],
+                    [ 1, 4 ],
+                    [ 1, 4, 4 ],
+                    [ 1, 4, 4, 4 ],
+                    [ 1, 4, 4, 4, 4 ],
+                    [ 4 ],
+                    [ 4, 4 ],
+                    [ 4, 4, 4 ],
+                    [ 4, 4, 4, 4 ]
+                  ]
+                  Hin`,
                   },
                 },
               }}
