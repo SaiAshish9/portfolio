@@ -30964,7 +30964,63 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               options={{
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {string} s1
+                    * @param {string} s2
+                    * @return {boolean}
+                    */
+                    
+                    const memo = new Map()
+                    
+                    // function Counter(a){
+                    //   let res = a.split("")
+                    //   res = res.reduce((acc,curr)=>{
+                    //     acc[curr] =  acc[curr] || 0  + 1
+                    //     return acc
+                    //   } ,{})
+                    //   res = Object.keys(res).sort().reduce(
+                    //   (obj, key) => { 
+                    //     obj[key] = res[key]; 
+                    //     return obj;
+                    //   }, {})
+                    //   return JSON.stringify(res)
+                    // }
+                    
+                    
+                    var isScramble = function(s1, s2) {
+                      if(s1 == s2) return true
+                      if(s1.length != s2.length) return false
+                      const hashedKey = s1 + "+" + s2
+                      if(memo.has(hashedKey))
+                        return memo.get(hashedKey)
+                      const count = Array(128).fill(0)
+                      for (let i = 0; i < s1.length; ++i) {
+                        ++count[s1[i].charCodeAt(0)];
+                        --count[s2[i].charCodeAt(0)];
+                      }
+                    
+                        for (let c of count)
+                          if (c != 0) {
+                            memo.set(hashedKey, false);
+                            return false;
+                          }
+                    
+                      for(let i=1;i<s1.length;i++){
+                        if(isScramble(s1.substring(0,i), s2.substring(0,i)) && isScramble(s1.substring(i), s2.substring(i))){
+                          memo.set(hashedKey, true);
+                          return true
+                        } 
+                        if(isScramble(s1.substring(0,i), s2.substring(s2.length-i)) && isScramble(s1.substring(i), s2.substring(0,s2.length-i))){
+                          memo.set(hashedKey, true);
+                          return true
+                        }
+                      } 
+                      memo.set(hashedKey, false);
+                      return false   
+                    };
+                    
+                    isScramble("great","rgeat")`,
+                   output:`true`
                   },
                 },
               }}
