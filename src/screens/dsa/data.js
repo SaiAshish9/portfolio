@@ -31312,6 +31312,32 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               using the following mapping:
             </Span>
             <Span>
+              'A' -&gt; "1" <br />
+              'B' -&gt; "2" <br />
+              ... <br />
+              'Z' -&gt; "26"
+            </Span>
+            <Span>
+              To decode an encoded message, all the digits must be grouped then
+              mapped back into letters using the reverse of the mapping above
+              (there may be multiple ways). For example, "11106" can be mapped
+              into:
+              <br />
+              "AAJF" with the grouping (1 1 10 6)
+              <br />
+              "KJF" with the grouping (11 10 6)
+              <br />
+              Note that the grouping (1 11 06) is invalid because "06" cannot be
+              mapped into 'F' since "6" is different from "06".
+              <br />
+              <br />
+              Given a string s containing only digits, return the number of ways
+              to decode it.
+              <br />
+              The test cases are generated so that the answer fits in a 32-bit
+              integer.
+            </Span>
+            <Span>
               <b>Example 1:</b>
             </Span>
             <Span>
