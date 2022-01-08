@@ -140,6 +140,7 @@ import Leetcode85 from "assets/leetcode/85.png";
 import Leetcode86 from "assets/leetcode/86.png";
 import Leetcode92 from "assets/leetcode/92.png";
 import Leetcode94 from "assets/leetcode/94.png";
+import Leetcode95 from "assets/leetcode/95.png";
 
 export const DATA = {
   ds: {
@@ -31630,6 +31631,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
+            <Span>
+              The number of nodes in the tree is in the range [0, 100].
+              <br />
+              -100 &lt;= Node.val &lt;= 100
+            </Span>
             <p>
               <b>Follow up: </b>
               Recursive solution is trivial, could you do it iteratively?
@@ -31700,12 +31706,107 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Q95. Unique Binary Search Trees II</b>
             </Span>
+            <Span>
+              Given an integer n, return all the structurally unique BST's
+              (binary search trees), which has exactly n nodes of unique values
+              from 1 to n. Return the answer in any order.
+            </Span>{" "}
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode95} left />
+            <Span>
+              Input: n = 3 <br />
+              Output: [[1,null,2,null,3],
+              <br />
+              [1,null,3,2],
+              <br />
+              [2,1,3],
+              <br />
+              [3,1,null,null,2],
+              <br />
+              [3,2,null,1]]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: n = 1<br />
+              Output: [[1]]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>1 &lt;= n &lt;= 8</p>
             <CodeEditor
               options={{
                 title: "Q95. Unique Binary Search Trees II",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right){
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                      }
+                      /**
+                       * @param {number} n
+                       * @return {TreeNode[]}
+                       */
+                      
+                      function generate(start,end){
+                        var list = [];
+                        if (start > end){
+                        list.push(null);
+                        return list;
+                        }
+                        for (var i = start; i <= end; i++){
+                        var leftSubtree = generate(start, i - 1);
+                        var rightSubtree = generate(i + 1, end);
+                        for (var j = 0; j < leftSubtree.length; j++){
+                          var left = leftSubtree[j];
+                          for (var k = 0; k < rightSubtree.length; k++){
+                              var right = rightSubtree[k];
+                              var node = new TreeNode(i);
+                              node.left = left;
+                              node.right = right;    
+                              list.push(node);        
+                          }}}
+                        return list;
+                      }
+                      
+                      var generateTrees = function(n) {
+                      return generate(1,n)
+                      };
+                      
+                      generateTrees(3)`,
+                    output: `
+                      TreeNode {
+                        val: 1,
+                        left: null,
+                        right: TreeNode { val: 2, left: null, right: [TreeNode] }
+                      },
+                      TreeNode {
+                        val: 1,
+                        left: null,
+                        right: TreeNode { val: 3, left: [TreeNode], right: null }
+                      },
+                      TreeNode {
+                        val: 2,
+                        left: TreeNode { val: 1, left: null, right: null },
+                        right: TreeNode { val: 3, left: null, right: null }
+                      },
+                      TreeNode {
+                        val: 3,
+                        left: TreeNode { val: 1, left: null, right: [TreeNode] },
+                        right: null
+                      },
+                      TreeNode {
+                        val: 3,
+                        left: TreeNode { val: 2, left: [TreeNode], right: null },
+                        right: null
+                      }
+                    ]
+                    Hint:`,
                   },
                 },
               }}
