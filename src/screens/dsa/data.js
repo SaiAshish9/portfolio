@@ -153,6 +153,7 @@ import Leetcode101b from "assets/leetcode/101b.png";
 import Leetcode102 from "assets/leetcode/102.png";
 import Leetcode103 from "assets/leetcode/103.png";
 import Leetcode104 from "assets/leetcode/104.png";
+import Leetcode105 from "assets/leetcode/105.png";
 
 export const DATA = {
   ds: {
@@ -32603,7 +32604,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                     t.right.left = new TreeNode(15)
                     t.right.right = new TreeNode(7)
                     maxDepth(t)`,
-                    output:`3`
+                    output: `3`,
                   },
                 },
               }}
@@ -32617,10 +32618,52 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>
+                Q105. Construct Binary Tree from Preorder and Inorder Traversal
+              </b>
             </Span>
+            <Span>
+              Given two integer arrays preorder and inorder where preorder is
+              the preorder traversal of a binary tree and inorder is the inorder
+              traversal of the same tree, construct and return the binary tree.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode105} left />
+            <Span>
+              Input: preorder = [3,9,20,15,7],
+              <br /> inorder = [9,3,15,20,7] <br />
+              Output: [3,9,20,null,null,15,7]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: preorder = [-1], <br />
+              inorder = [-1] <br />
+              Output: [-1]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= preorder.length &lt;= 3000 <br />
+              inorder.length == preorder.length <br />
+              -3000 &lt;= preorder[i], inorder[i] &lt;= 3000
+              <br />
+              preorder and inorder consist of unique values.
+              <br />
+              Each value of inorder also appears in preorder.
+              <br />
+              preorder is guaranteed to be the preorder traversal of the tree.
+              <br />
+              inorder is guaranteed to be the inorder traversal of the tree.
+            </p>
             <CodeEditor
               options={{
+                title:
+                  "Q105. Construct Binary Tree from Preorder and Inorder Traversal",
                 codes: {
                   Javascript: {
                     code: ``,
