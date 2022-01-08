@@ -31414,10 +31414,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q92. Reverse Linked List II</b>
             </Span>
             <CodeEditor
               options={{
+                title: "Q92. Reverse Linked List II",
                 codes: {
                   Javascript: {
                     code: ``,
