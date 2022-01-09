@@ -33507,20 +33507,51 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Q114. Flatten Binary Tree to Linked List</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the root of a binary tree, flatten the tree into a "linked
+              list":
+            </Span>
+            <Span>
+              The "linked list" should use the same TreeNode class where the
+              right child pointer points to the next node in the list and the
+              left child pointer is always null.
+            </Span>
+            <SPan>
+              The "linked list" should be in the same order as a pre-order
+              traversal of the binary tree.
+            </SPan>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: root = [1,2,5,3,4,null,6] <br />
+              Output: [1,null,2,null,3,null,4,null,5,null,6]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: root = [] <br />
+              Output: []
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: root = [0] <br />
+              Output: [0]
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              The number of nodes in the tree is in the range [0, 2000]. <br />
+              -100 &lt;= Node.val &lt;= 100
+            </Span>
+            <p>
+              <b>Follow up: </b>
+              Can you flatten the tree in-place (with O(1) extra space)?
+            </p>
             <CodeEditor
               options={{
                 title: "Q114. Flatten Binary Tree to Linked List",
