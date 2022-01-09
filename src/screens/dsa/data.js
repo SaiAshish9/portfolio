@@ -154,6 +154,9 @@ import Leetcode102 from "assets/leetcode/102.png";
 import Leetcode103 from "assets/leetcode/103.png";
 import Leetcode104 from "assets/leetcode/104.png";
 import Leetcode105 from "assets/leetcode/105.png";
+import Leetcode106 from "assets/leetcode/106.png";
+import Leetcode107 from "assets/leetcode/107.png";
+import Leetcode108 from "assets/leetcode/108.png";
 
 export const DATA = {
   ds: {
@@ -32693,12 +32696,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                       for(let i in inorder){
                         map.set(inorder[i],+i)
                       }
-                      const pIndex = 0
                       return construct(preorder,0,preorder.length-1,inorder,0,inorder.length-1,map);
                     };
                     
                     buildTree([3,9,20,15,7],[9,3,15,20,7])`,
-                    output:`TreeNode {
+                    output: `TreeNode {
                       val: 3,
                       left: TreeNode { val: 9, left: null, right: null },
                       right: TreeNode {
@@ -32706,7 +32708,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                         left: TreeNode { val: 15, left: null, right: null },
                         right: TreeNode { val: 7, left: null, right: null }
                       }
-                    }`
+                    }`,
                   },
                 },
               }}
@@ -32715,17 +32717,99 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         ),
       },
       q106: {
-        title: "Q106. Construct Binary Tree from Inorder and Post",
+        title:
+          "Q106. Construct Binary Tree from Inorder and Postorder Traversal",
         content: (
           <>
             <Span>
-              <b></b>
+              <b>
+                Q106. Construct Binary Tree from Inorder and Postorder Traversal
+              </b>
             </Span>
+            <Span>
+              Given two integer arrays inorder and postorder where inorder is
+              the inorder traversal of a binary tree and postorder is the
+              postorder traversal of the same tree, construct and return the
+              binary tree.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode106} left />
+            <Span>
+              Input: inorder = [9,3,15,20,7],
+              <br /> postorder = [9,15,7,20,3]
+              <br />
+              Output: [3,9,20,null,null,15,7]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: inorder = [-1],
+              <br /> postorder = [-1]
+              <br />
+              Output: [-1]
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= inorder.length &lt;= 3000 <br />
+              postorder.length == inorder.length <br />
+              -3000 &lt;= inorder[i], postorder[i] &lt;= 3000 <br />
+              inorder and postorder consist of unique values. <br />
+              Each value of postorder also appears in inorder. <br />
+              inorder is guaranteed to be the inorder traversal of the tree.
+              <br />
+              postorder is guaranteed to be the postorder traversal of the tree.
+            </p>
             <CodeEditor
               options={{
+                title: "Q106. Construct Binary Tree from Inorder and Post",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                    }
+                    
+                    /**
+                     * @param {number[]} inorder
+                     * @param {number[]} postorder
+                     * @return {TreeNode}
+                     */
+                    
+                    function construct(inorder,iL,iR,postorder,pL,pR,map){
+                      if (iL > iR) return null;
+                      const pE = postorder[pR]
+                      const i = map.get(pE)
+                      const curr = new TreeNode(pE)
+                      curr.left = construct(inorder, iL, i - 1, postorder, pL, pL + i - iL - 1,map);
+                      curr.right = construct(inorder, i + 1, iR, postorder, pL + i - iL, pR - 1, map);
+                      return curr
+                    }
+                    
+                    var buildTree = function(inorder, postorder) {
+                      const map = new Map()
+                      for(let i in inorder){
+                        map.set(inorder[i],+i)
+                      }
+                      return construct(inorder,0,inorder.length-1,postorder,0,postorder.length-1,map);
+                    };
+                    
+                    buildTree([9,3,15,20,7],[9,15,7,20,3])`,
+                    output: `TreeNode {
+                      val: 3,
+                      left: TreeNode { val: 9, left: null, right: null },
+                      right: TreeNode {
+                        val: 20,
+                        left: TreeNode { val: 15, left: null, right: null },
+                        right: TreeNode { val: 7, left: null, right: null }
+                      }
+                    }
+                    `,
                   },
                 },
               }}
@@ -32738,13 +32822,89 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q107. Binary Tree Level Order Traversal II</b>
             </Span>
+            <Span>
+              Given the root of a binary tree, return the bottom-up level order
+              traversal of its nodes' values. (i.e., from left to right, level
+              by level from leaf to root).
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode107} left />
+            <Span>
+              Input: root = [3,9,20,null,null,15,7] <br />
+              Output: [[15,7],[9,20],[3]]
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: root = [1] <br />
+              Output: [[1]]
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: root = []
+              <br />
+              Output: []
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              The number of nodes in the tree is in the range [0, 2000].
+              <br />
+              -1000 &lt;= Node.val &lt;= 1000
+            </p>
             <CodeEditor
               options={{
+                title: "Q107. Binary Tree Level Order Traversal II",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                    }
+                    
+                    /**
+                     * @param {TreeNode} root
+                     * @return {number[][]}
+                     */
+                    var levelOrderBottom = function(root) {
+                      if (!root) return [];
+                      let q = [];
+                      let ans = []
+                      q.push(root);
+                      while (q.length && root) {
+                          let n = q.length;
+                          const curr = []
+                          for(let i=n;i>0;i--) {
+                              let node = q.shift();
+                              curr.push(node.val)
+                              if (node.left)
+                                  q.push(node.left);
+                              if (node.right)
+                                  q.push(node.right);
+                          }
+                          ans.push(curr)
+                      }
+                      ans.reverse()
+                      return ans
+                    };
+                    
+                    const t = new TreeNode(1)
+                    t.left = new TreeNode(3)
+                    t.right = new TreeNode(20)
+                    t.right.left = new TreeNode(15)
+                    t.right.right = new TreeNode(7)
+                    levelOrderBottom(t)
+                    `,
+                    output: `[ [ 15, 7 ], [ 3, 20 ], [ 1 ] ]`,
                   },
                 },
               }}
@@ -32757,13 +32917,89 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q108. Convert Sorted Array to Binary Search Tree</b>
             </Span>
+            <Span>
+              Given an integer array nums where the elements are sorted in
+              ascending order, convert it to a height-balanced binary search
+              tree.
+            </Span>
+            <Span>
+              A height-balanced binary tree is a binary tree in which the depth
+              of the two subtrees of every node never differs by more than one.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode108} left />
+            <Span>
+              Input: nums = [-10,-3,0,5,9]
+              <br />
+              Output: [0,-3,9,-10,null,5]
+              <br />
+              Explanation: [0,-10,5,null,-3,null,9] is also accepted:
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,3]
+              <br />
+              Output: [3,1]
+              <br />
+              Explanation: [1,3] and [3,1] are both a height-balanced BSTs.
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= nums.length &lt;= 104 <br />
+              -104 &lt;= nums[i] &lt;= 104 <br />
+              nums is sorted in a strictly increasing order.
+            </p>
             <CodeEditor
               options={{
+                title: "Q108. Convert Sorted Array to Binary Search Tree",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                  }
+                  
+                  /**
+                   * @param {number[]} nums
+                   * @return {TreeNode}
+                   */
+                  
+                  function helper(nums,l,r){
+                    if (l > r) return null;
+                    const m = l + parseInt((r - l) / 2);
+                    const root = new TreeNode(nums[m]);
+                    root.left = helper(nums, l, m - 1);
+                    root.right = helper(nums, m + 1, r);
+                    return root;
+                  }
+                  
+                  var sortedArrayToBST = function(nums) {
+                    return helper(nums, 0, nums.length - 1);
+                  };
+                  
+                  sortedArrayToBST([-10,-3,0,5,9])
+                  `,
+                  output:`  val: 0,
+                  left: TreeNode {
+                    val: -10,
+                    left: null,
+                    right: TreeNode { val: -3, left: null, right: null }
+                  },
+                  right: TreeNode {
+                    val: 5,
+                    left: null,
+                    right: TreeNode { val: 9, left: null, right: null }
+                  }
+                }`
                   },
                 },
               }}
