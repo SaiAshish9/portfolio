@@ -161,6 +161,7 @@ import Leetcode109 from "assets/leetcode/109.png";
 import Leetcode110 from "assets/leetcode/110.png";
 import Leetcode111 from "assets/leetcode/111.png";
 import Leetcode112 from "assets/leetcode/112.png";
+import Leetcode113 from "assets/leetcode/113.png";
 
 export const DATA = {
   ds: {
@@ -33401,13 +33402,32 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q113. Path Sum II</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the root of a binary tree and an integer targetSum, return
+              all root-to-leaf paths where the sum of the node values in the
+              path equals targetSum. Each path should be returned as a list of
+              the node values, not node references.
+            </Span>
+            <Span>
+              A root-to-leaf path is a path starting from the root and ending at
+              any leaf node. A leaf is a node with no children.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode113} left />
+            <Span>
+              Input: root = [5,4,8,11,null,13,4,7,2,null,null,5,1], targetSum =
+              22 <br />
+              Output: [[5,4,11,2],[5,8,4,5]]
+              <br />
+              Explanation: There are two paths whose sum equals targetSum:
+              <br />
+              5 + 4 + 11 + 2 = 22
+              <br />5 + 8 + 4 + 5 = 22
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
@@ -33419,9 +33439,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <p></p>
             <CodeEditor
               options={{
+                title: "Q113. Path Sum II",
                 codes: {
                   Javascript: {
                     code: ``,
+                    output: ``,
                   },
                 },
               }}
