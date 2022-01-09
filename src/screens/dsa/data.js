@@ -159,6 +159,7 @@ import Leetcode107 from "assets/leetcode/107.png";
 import Leetcode108 from "assets/leetcode/108.png";
 import Leetcode109 from "assets/leetcode/109.png";
 import Leetcode110 from "assets/leetcode/110.png";
+import Leetcode111 from "assets/leetcode/111.png";
 
 export const DATA = {
   ds: {
@@ -33196,7 +33197,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                     t.right.left = new TreeNode(16)
                     t.right.right = new TreeNode(7)
                     isBalanced(t)`,
-                    output:`true`
+                    output: `true`,
                   },
                 },
               }}
@@ -33211,20 +33212,37 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Q111. Minimum Depth of Binary Tree</b>
             </Span>
-            <Span></Span>
+            <Span>Given a binary tree, find its minimum depth.</Span>
+            <Span>
+              The minimum depth is the number of nodes along the shortest path
+              from the root node down to the nearest leaf node.
+            </Span>
+            <Span>
+              <b>Note: </b>A leaf is a node with no children.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode111} left />
+            <Span>
+              Input: root = [3,9,20,null,null,15,7] <br />
+              Output: 2
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: root = [2,null,3,null,4,null,5,null,6] <br />
+              Output: 5
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              The number of nodes in the tree is in the range [0, 105].
+              <br />
+              -1000 &lt;= Node.val &lt;= 1000
+            </p>
             <CodeEditor
               options={{
                 title: "Q111. Minimum Depth of Binary Tree",
