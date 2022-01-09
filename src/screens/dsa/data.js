@@ -162,6 +162,7 @@ import Leetcode110 from "assets/leetcode/110.png";
 import Leetcode111 from "assets/leetcode/111.png";
 import Leetcode112 from "assets/leetcode/112.png";
 import Leetcode113 from "assets/leetcode/113.png";
+import Leetcode114 from "assets/leetcode/114.png";
 
 export const DATA = {
   ds: {
@@ -33516,13 +33517,14 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               right child pointer points to the next node in the list and the
               left child pointer is always null.
             </Span>
-            <SPan>
+            <Span>
               The "linked list" should be in the same order as a pre-order
               traversal of the binary tree.
-            </SPan>
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
+            <Img src={Leetcode114} left />
             <Span>
               Input: root = [1,2,5,3,4,null,6] <br />
               Output: [1,null,2,null,3,null,4,null,5,null,6]
@@ -33557,7 +33559,46 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q114. Flatten Binary Tree to Linked List",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                  }
+                  /**
+                   * @param {TreeNode} root
+                   * @return {void} Do not return anything, modify root in-place instead.
+                   */
+                  
+                  var flatten = function(root) {
+                     if(!root) return 
+                     const stack = []
+                     stack.push(root)
+                     while(stack.length && root){
+                      root = stack.pop()
+                      if(root.right)
+                      stack.push(root.right);
+                      if (root.left)
+                      stack.push(root.left);
+                      if (stack.length)
+                      root.right = stack[stack.length-1];
+                      root.left = null;
+                     }
+                  };
+                  
+                  const t = new TreeNode(2)
+                  t.left = new TreeNode(1)
+                  t.right = new TreeNode(3)
+                  flatten(t)
+                  console.log(t)`,
+                    output: `TreeNode {
+                    val: 2,
+                    left: null,
+                    right: TreeNode {
+                      val: 1,
+                      left: null,
+                      right: TreeNode { val: 3, left: null, right: null }
+                    }
+                  }`,
                   },
                 },
               }}
