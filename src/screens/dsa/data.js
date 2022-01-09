@@ -34101,7 +34101,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                    };
                    
                    getRow(3)`,
-                   output:`[1,3,3,1]`
+                    output: `[1,3,3,1]`,
                   },
                 },
               }}
@@ -34114,24 +34114,55 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q120. Triangle</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a triangle array, return the minimum path sum from top to
+              bottom.
+            </Span>
+            <Span>
+              For each step, you may move to an adjacent number of the row
+              below. More formally, if you are on index i on the current row,
+              you may move to either index i or index i + 1 on the next row.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: triangle = [[2],[3,4],[6,5,7],[4,1,8,3]] <br />
+              Output: 11 <br />
+              Explanation: The triangle looks like: <br />
+              2 <br />
+              3 4<br />
+              6 5 7<br />
+              4 1 8 3<br />
+              The minimum path sum from top to bottom is 2 + 3 + 5 + 1 = 11
+              (underlined above).
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: triangle = [[-10]] <br />
+              Output: -10
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              1 &lt;= triangle.length &lt;= 200 <br />
+              triangle[0].length == 1 <br />
+              triangle[i].length == triangle[i - 1].length + 1 <br />
+              -104 &lt;= triangle[i][j] &lt;= 104
+            </Span>
+            <p>
+              <b>Follow up: </b>
+              Could you do this using only O(n) extra space, where n is the
+              total number of rows in the triangle?
+            </p>
             <CodeEditor
               options={{
+                title: "Q120. Triangle",
                 codes: {
                   Javascript: {
                     code: ``,
