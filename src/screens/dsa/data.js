@@ -165,6 +165,7 @@ import Leetcode113 from "assets/leetcode/113.png";
 import Leetcode114 from "assets/leetcode/114.png";
 import Leetcode116 from "assets/leetcode/116.png";
 import Leetcode117 from "assets/leetcode/117.png";
+import Leetcode118 from "assets/leetcode/118.png";
 
 export const DATA = {
   ds: {
@@ -33932,7 +33933,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                    t.right.left = new Node(6)
                    t.right.right = new Node(7)
                    connect(t)`,
-                   output:`Node {
+                    output: `Node {
                     val: 1,
                     left: Node {
                       val: 2,
@@ -33947,7 +33948,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                       next: null
                     },
                     next: null
-                  }`
+                  }`,
                   },
                 },
               }}
@@ -33960,27 +33961,75 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q118. Pascal's Triangle</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer numRows, return the first numRows of Pascal's
+              triangle.
+            </Span>
+            <Span>
+              In Pascal's triangle, each number is the sum of the two numbers
+              directly above it as shown:
+            </Span>
+            <Img src={Leetcode118} left />
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: numRows = 5 <br />
+              Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: numRows = 1 <br />
+              Output: [[1]]
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>1 &lt;= numRows &lt;= 30</p>
             <CodeEditor
               options={{
+                title: "Q118. Pascal's Triangle",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number} numRows
+                    * @return {number[][]}
+                    */
+                   var generate = function(numRows) {
+                     const result = []
+                     for(let i=0;i<numRows;i++)
+                     result.push(Array(i+1).fill(1))
+                     for (let i = 2; i < numRows; ++i)
+                     for (let j = 1; j < result[i].length - 1; ++j)
+                     result[i][j] = result[i - 1][j - 1] + result[i - 1][j]
+                     return result  
+                   };
+                   
+                   generate(9)`,
+                   output:`[
+                    [ 1 ],
+                    [ 1, 1 ],
+                    [ 1, 2, 1 ],
+                    [ 1, 3, 3, 1 ],
+                    [ 1, 4, 6, 4, 1 ],
+                    [ 1, 5, 10, 10, 5, 1 ],
+                    [
+                       1, 6, 15, 20,
+                      15, 6,  1
+                    ],
+                    [
+                       1,  7, 21, 35,
+                      35, 21,  7,  1
+                    ],
+                    [
+                       1,  8, 28, 56, 70,
+                      56, 28,  8,  1
+                    ]
+                  ]`
                   },
                 },
               }}
