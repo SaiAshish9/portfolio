@@ -356,7 +356,7 @@ const CodeEditor = ({ options }) => {
       if (!["Execute", "Copy I/P", "Copy O/P", "Copied"].includes(i))
         setSelected(i);
     }
-    if (i === "Copy I/P") {
+    if (i.includes("I/P")) {
       if (!copied) setIsCopied(true);
       if (copiedOutput) setIsCopiedOutput(false);
       navigator.clipboard.writeText(
@@ -365,7 +365,7 @@ const CodeEditor = ({ options }) => {
           : options.codes["Python"].code
       );
     }
-    if (i === "Copy O/P") {
+    if (i.includes("O/P")) {
       if (!copiedOutput) setIsCopiedOutput(true);
       if (copied) setIsCopied(false);
       navigator.clipboard.writeText(
