@@ -33248,7 +33248,55 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q111. Minimum Depth of Binary Tree",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                  }
+                  
+                  /**
+                   * @param {TreeNode} root
+                   * @return {number}
+                   */
+                  
+                  function topDownDFS(root){
+                    if (!root) return 0;
+                    if (!root.left)
+                      return topDownDFS(root.right) + 1;
+                    if (!root.right)
+                      return topDownDFS(root.left) + 1;
+                    return Math.min(topDownDFS(root.left), topDownDFS(root.right)) + 1;
+                  }
+                  
+                  function bottomUpBFS(root){
+                    if (!root) return 0;
+                    let minDepth = 0
+                    const q = []
+                    q.push(root)
+                    while(q.length && root){
+                      ++minDepth
+                      let n = q.length;
+                      for(let i=n;i>0;i--){
+                      const node = q.shift()
+                      if(!node.left && !node.right) return minDepth
+                      if(node.left) q.push(node.left)
+                      if(node.right) q.push(node.right)
+                      }
+                    }
+                  }
+                  
+                  var minDepth = function(root) {
+                      return bottomUpBFS(root)
+                  };
+                  
+                  const t = new TreeNode(3)
+                  t.left = new TreeNode(9)
+                  t.right= new TreeNode(20)
+                  t.right.left = new TreeNode(15)
+                  t.right.right = new TreeNode(7)
+                  minDepth(t)
+                  `,
+                    output: `2`,
                   },
                 },
               }}
