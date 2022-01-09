@@ -163,6 +163,7 @@ import Leetcode111 from "assets/leetcode/111.png";
 import Leetcode112 from "assets/leetcode/112.png";
 import Leetcode113 from "assets/leetcode/113.png";
 import Leetcode114 from "assets/leetcode/114.png";
+import Leetcode116 from "assets/leetcode/116.png";
 
 export const DATA = {
   ds: {
@@ -33696,11 +33697,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                    };
                    
                    numDistinct("rabbbit", "rabbit")`,
-                   output:`[
+                    output: `[
                     1, 1, 1, 3,
                     3, 3, 3
                   ]
-                  3`
+                  3`,
                   },
                 },
               }}
@@ -33715,26 +33716,114 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Q116. Populating Next Right Pointers in Each Node</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given a perfect binary tree where all leaves are on the
+              same level, and every parent has two children. The binary tree has
+              the following definition:
+            </Span>
+            <Span>
+              struct Node {"{"}
+              int val; <br />
+              Node *left; <br />
+              Node *right; <br />
+              Node *next; <br />
+              {"}"}
+            </Span>
+            <Span>
+              Populate each next pointer to point to its next right node. If
+              there is no next right node, the next pointer should be set to
+              NULL.
+            </Span>
+            <Span>Initially, all next pointers are set to NULL.</Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode116} left />
+            <Span>
+              Input: root = [1,2,3,4,5,6,7] <br />
+              Output: [1,#,2,3,#,4,5,6,7,#] <br />
+              Explanation: Given the above perfect binary tree (Figure A), your
+              function should populate each next pointer to point to its next
+              right node, just like in Figure B. The serialized output is in
+              level order as connected by the next pointers, with '#' signifying
+              the end of each level.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: root = [] <br />
+              Output: []
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              The number of nodes in the tree is in the range [0, 212 - 1].{" "}
+              <br />
+              -1000 &lt;= Node.val &lt;= 1000
+            </Span>
+            <p>
+              You may only use constant extra space.
+              <br />
+              The recursive approach is fine. You may assume implicit stack
+              space does not count as extra space for this problem.
+            </p>
             <CodeEditor
               options={{
                 title: "Q116. Populating Next Right Pointers in Each Node",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function Node(val, left, right, next) {
+                      this.val = val === undefined ? null : val;
+                      this.left = left === undefined ? null : left;
+                      this.right = right === undefined ? null : right;
+                      this.next = next === undefined ? null : next;
+                   };
+                   
+                   /**
+                    * @param {Node} root
+                    * @return {Node}
+                    */
+                   var connect = function(root) {
+                     let node = root
+                     while(node && node.left){
+                      const temp = new Node()
+                      for(let n = temp;node;node=node.next){
+                        n.next = node.left
+                        n = n.next
+                        n.next = node.right
+                        n = n.next
+                      }
+                      node = temp.next
+                     }
+                     return root
+                   };
+                   
+                   const t = new Node(1)
+                   t.left = new Node(2)
+                   t.left.left = new Node(4)
+                   t.left.right = new Node(5)
+                   t.right = new Node(3)
+                   t.right.left = new Node(6)
+                   t.right.right = new Node(7)
+                   connect(t)`,
+                   output:`Node {
+                    val: 1,
+                    left: Node {
+                      val: 2,
+                      left: Node { val: 4, left: null, right: null, next: [Node] },
+                      right: Node { val: 5, left: null, right: null, next: [Node] },
+                      next: Node { val: 3, left: [Node], right: [Node], next: null }
+                    },
+                    right: Node {
+                      val: 3,
+                      left: Node { val: 6, left: null, right: null, next: [Node] },
+                      right: Node { val: 7, left: null, right: null, next: null },
+                      next: null
+                    },
+                    next: null
+                  }`
                   },
                 },
               }}
