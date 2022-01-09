@@ -33808,7 +33808,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                    t.right.left = new Node(6)
                    t.right.right = new Node(7)
                    connect(t)`,
-                   output:`Node {
+                    output: `Node {
                     val: 1,
                     left: Node {
                       val: 2,
@@ -33823,7 +33823,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                       next: null
                     },
                     next: null
-                  }`
+                  }`,
                   },
                 },
               }}
@@ -33832,11 +33832,11 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         ),
       },
       q117: {
-        title: "117. Populating Next Right Pointers in Each Node II",
+        title: "Q117. Populating Next Right Pointers in Each Node II",
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q117. Populating Next Right Pointers in Each Node II</b>
             </Span>
             <Span></Span>
             <Span>
@@ -33854,6 +33854,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <p></p>
             <CodeEditor
               options={{
+                title: "Q117. Populating Next Right Pointers in Each Node II",
                 codes: {
                   Javascript: {
                     code: ``,
