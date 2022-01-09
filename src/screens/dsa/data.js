@@ -33611,24 +33611,70 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q115. Distinct Subsequences</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given two strings s and t, return the number of distinct
+              subsequences of s which equals t.
+            </Span>
+            <Span>
+              A string's subsequence is a new string formed from the original
+              string by deleting some (can be none) of the characters without
+              disturbing the remaining characters' relative positions. (i.e.,
+              "ACE" is a subsequence of "ABCDE" while "AEC" is not).
+            </Span>
+            <Span>
+              The test cases are generated so that the answer fits on a 32-bit
+              signed integer.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "rabbbit", t = "rabbit" <br />
+              Output: 3<br />
+              Explanation:
+              <br />
+              As shown below, there are 3 ways you can generate "rabbit" from S.
+              <br />
+              [rabb]b[it]
+              <br />
+              [ra]b[bbit]
+              <br />
+              [rab]b[bit]
+              <br />
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "babgbag", t = "bag"
+              <br />
+              Output: 5<br />
+              Explanation:
+              <br />
+              As shown below, there are 5 ways you can generate "bag" from S.
+              <br />
+              babgbag
+              <br />
+              babgbag
+              <br />
+              babgbag
+              <br />
+              babgbag
+              <br />
+              babgbag
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= s.length, t.length &lt;= 1000 s and t consist of English
+              letters.
+            </p>
             <CodeEditor
               options={{
+                title: "Q115. Distinct Subsequences",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -33644,7 +33690,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q116. Populating Next Right Pointers in Each Node</b>
             </Span>
             <Span></Span>
             <Span>
@@ -33662,6 +33708,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <p></p>
             <CodeEditor
               options={{
+                title: "Q116. Populating Next Right Pointers in Each Node",
                 codes: {
                   Javascript: {
                     code: ``,
