@@ -33431,12 +33431,26 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: root = [1,2,3], targetSum = 5 <br />
+              Output: []
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: root = [1,2], <br />
+              targetSum = 0<br />
+              Output: []
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              The number of nodes in the tree is in the range [0, 5000]. <br />
+              -1000 &lt;= Node.val &lt;= 1000 <br />
+              -1000 &lt;= targetSum &lt;= 1000
+            </p>
             <CodeEditor
               options={{
                 title: "Q113. Path Sum II",
