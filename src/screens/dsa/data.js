@@ -32666,7 +32666,47 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                   "Q105. Construct Binary Tree from Preorder and Inorder Traversal",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                    }
+                    
+                    /**
+                     * @param {number[]} preorder
+                     * @param {number[]} inorder
+                     * @return {TreeNode}
+                     */
+                    
+                    function construct(preorder,pL,pR,inorder,iL,iR,map){
+                      if (pL > pR) return null;
+                      const pE = preorder[pL]
+                      const i = map.get(pE)
+                      const curr = new TreeNode(pE)
+                      curr.left = construct(preorder, pL + 1, pL + i - iL, inorder, iL, i - 1,map);
+                      curr.right = construct(preorder, pL + i - iL + 1, pR, inorder, i + 1, iR, map);
+                      return curr
+                    }
+                    
+                    var buildTree = function(preorder, inorder) {
+                      const map = new Map()
+                      for(let i in inorder){
+                        map.set(inorder[i],+i)
+                      }
+                      const pIndex = 0
+                      return construct(preorder,0,preorder.length-1,inorder,0,inorder.length-1,map);
+                    };
+                    
+                    buildTree([3,9,20,15,7],[9,3,15,20,7])`,
+                    output:`TreeNode {
+                      val: 3,
+                      left: TreeNode { val: 9, left: null, right: null },
+                      right: TreeNode {
+                        val: 20,
+                        left: TreeNode { val: 15, left: null, right: null },
+                        right: TreeNode { val: 7, left: null, right: null }
+                      }
+                    }`
                   },
                 },
               }}
