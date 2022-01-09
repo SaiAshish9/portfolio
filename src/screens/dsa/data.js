@@ -157,6 +157,7 @@ import Leetcode105 from "assets/leetcode/105.png";
 import Leetcode106 from "assets/leetcode/106.png";
 import Leetcode107 from "assets/leetcode/107.png";
 import Leetcode108 from "assets/leetcode/108.png";
+import Leetcode109 from "assets/leetcode/109.png";
 
 export const DATA = {
   ds: {
@@ -33015,26 +33016,97 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Q109. Convert Sorted List to Binary Search Tree</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the head of a singly linked list where elements are sorted
+              in ascending order, convert it to a height balanced BST.
+            </Span>
+            <Span>
+              For this problem, a height-balanced binary tree is defined as a
+              binary tree in which the depth of the two subtrees of every node
+              never differ by more than 1.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode109} left />
+            <Span>
+              Input: head = [-10,-3,0,5,9] <br />
+              Output: [0,-3,9,-10,null,5] <br />
+              Explanation: One possible answer is [0,-3,9,-10,null,5], which
+              represents the shown height balanced BST.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: head = []
+              <br />
+              Output: []
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              The number of nodes in head is in the range [0, 2 * 104]. <br />
+              -105 &lt;= Node.val &lt;= 105
+            </p>
             <CodeEditor
               options={{
                 title: "Q109. Convert Sorted List to Binary Search Tree",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function ListNode(val, next) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.next = (next===undefined ? null : next)
+                    }
+                    
+                    function TreeNode(val, left, right) {
+                        this.val = (val===undefined ? 0 : val)
+                        this.left = (left===undefined ? null : left)
+                        this.right = (right===undefined ? null : right)
+                    }
+                    
+                    /**
+                     * @param {ListNode} head
+                     * @return {TreeNode}
+                     */
+                    // O(n) , O(n)
+                    
+                    function helper(list,l,r){
+                      if(l>r) return null
+                      const m = l + parseInt((r - l) / 2);
+                      const root = new TreeNode(list[m]);
+                      root.left = helper(list, l, m - 1);
+                      root.right = helper(list, m + 1, r);
+                      return root
+                    }
+                    
+                    var sortedListToBST = function(head) {
+                      const list = [];
+                      for (let curr = head; curr; curr = curr.next)
+                      list.push(curr.val);
+                      return helper(list, 0, list.length - 1);
+                    };
+                    
+                    const l = new ListNode(-10)
+                    l.next = new ListNode(-3)
+                    l.next.next = new ListNode(0)
+                    l.next.next.next = new ListNode(5)
+                    l.next.next.next.next = new ListNode(9)
+                    sortedListToBST(l)`,
+                    output:`TreeNode {
+                      val: 0,
+                      left: TreeNode {
+                        val: -10,
+                        left: null,
+                        right: TreeNode { val: -3, left: null, right: null }
+                      },
+                      right: TreeNode {
+                        val: 5,
+                        left: null,
+                        right: TreeNode { val: 9, left: null, right: null }
+                      }
+                    }`
                   },
                 },
               }}
