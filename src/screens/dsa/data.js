@@ -158,6 +158,7 @@ import Leetcode106 from "assets/leetcode/106.png";
 import Leetcode107 from "assets/leetcode/107.png";
 import Leetcode108 from "assets/leetcode/108.png";
 import Leetcode109 from "assets/leetcode/109.png";
+import Leetcode110 from "assets/leetcode/110.png";
 
 export const DATA = {
   ds: {
@@ -33094,7 +33095,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                     l.next.next.next = new ListNode(5)
                     l.next.next.next.next = new ListNode(9)
                     sortedListToBST(l)`,
-                    output:`TreeNode {
+                    output: `TreeNode {
                       val: 0,
                       left: TreeNode {
                         val: -10,
@@ -33106,7 +33107,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                         left: null,
                         right: TreeNode { val: 9, left: null, right: null }
                       }
-                    }`
+                    }`,
                   },
                 },
               }}
@@ -33119,27 +33120,83 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q110. Balanced Binary Tree</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a binary tree, determine if it is height-balanced.
+            </Span>
+            <Span>
+              For this problem, a height-balanced binary tree is defined as:
+            </Span>
+            <Span>
+              a binary tree in which the left and right subtrees of every node
+              differ in height by no more than 1.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode110} left />
+            <Span>
+              Input: root = [3,9,20,null,null,15,7] <br />
+              Output: true
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: root = [1,2,2,3,3,null,null,4,4]
+              <br />
+              Output: false
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: root = []
+              <br />
+              Output: true
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              The number of nodes in the tree is in the range [0, 5000]. <br />
+              -104 &lt;= Node.val &lt;= 104
+            </p>
             <CodeEditor
               options={{
+                title: "Q110. Balanced Binary Tree",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                    }
+                    
+                    /**
+                     * @param {TreeNode} root
+                     * @return {boolean}
+                     */
+                    // O(nlogn)
+                    
+                    function maxDepth(root){
+                      if(!root) return 0
+                      return 1 + Math.max(maxDepth(root.left),maxDepth(root.right))
+                    }
+                    
+                    var isBalanced = function(root) {
+                      if(!root) return true
+                      return Math.abs(maxDepth(root.left) - maxDepth(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right);
+                    };
+                    
+                    const t = new TreeNode(3)
+                    t.left = new TreeNode(9)
+                    t.right = new TreeNode(20)
+                    t.right.left = new TreeNode(16)
+                    t.right.right = new TreeNode(7)
+                    isBalanced(t)`,
+                    output:`true`
                   },
                 },
               }}
@@ -33152,7 +33209,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q111. Minimum Depth of Binary Tree</b>
             </Span>
             <Span></Span>
             <Span>
@@ -33170,6 +33227,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <p></p>
             <CodeEditor
               options={{
+                title: "Q111. Minimum Depth of Binary Tree",
                 codes: {
                   Javascript: {
                     code: ``,
