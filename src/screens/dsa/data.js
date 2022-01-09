@@ -160,6 +160,7 @@ import Leetcode108 from "assets/leetcode/108.png";
 import Leetcode109 from "assets/leetcode/109.png";
 import Leetcode110 from "assets/leetcode/110.png";
 import Leetcode111 from "assets/leetcode/111.png";
+import Leetcode112 from "assets/leetcode/112.png";
 
 export const DATA = {
   ds: {
@@ -33309,27 +33310,85 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q112. Path Sum</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the root of a binary tree and an integer targetSum, return
+              true if the tree has a root-to-leaf path such that adding up all
+              the values along the path equals targetSum.
+            </Span>
+            <Span>A leaf is a node with no children.</Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode112} left />
+            <Span>
+              Input: root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum
+              = 22 <br />
+              Output: true <br />
+              Explanation: The root-to-leaf path with the target sum is shown.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: root = [1,2,3], targetSum = 5 <br />
+              Output: false
+              <br />
+              Explanation: There two root-to-leaf paths in the tree:
+              <br />
+              (1 --&gt; 2): The sum is 3.
+              <br />
+              (1 --&gt; 3): The sum is 4.
+              <br />
+              There is no root-to-leaf path with sum = 5.
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: root = [], targetSum = 0 <br />
+              Output: false <br />
+              Explanation: Since the tree is empty, there are no root-to-leaf
+              paths.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              The number of nodes in the tree is in the range [0, 5000]. <br />
+              -1000 &lt;= Node.val &lt;= 1000
+              <br />
+              -1000 &lt;= targetSum &lt;= 1000
+            </p>
             <CodeEditor
               options={{
+                title: "Q112. Path Sum",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                  }
+                  /**
+                   * @param {TreeNode} root
+                   * @param {number} targetSum
+                   * @return {boolean}
+                   */
+                  var hasPathSum = function(root, targetSum) {
+                    if (!root) return false;
+                    if (root.val == targetSum && !root.left && !root.right)
+                    return true;
+                    return hasPathSum(root.left, targetSum - root.val) ||
+                             hasPathSum(root.right, targetSum - root.val);
+                  };
+                  
+                  const t = new TreeNode(1)
+                  t.left = new TreeNode(2)
+                  t.right = new TreeNode(3)
+                  hasPathSum(t,5)`,
+                    output: `false`,
                   },
                 },
               }}
