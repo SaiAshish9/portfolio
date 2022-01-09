@@ -34010,7 +34010,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                    };
                    
                    generate(9)`,
-                   output:`[
+                    output: `[
                     [ 1 ],
                     [ 1, 1 ],
                     [ 1, 2, 1 ],
@@ -34029,7 +34029,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                        1,  8, 28, 56, 70,
                       56, 28,  8,  1
                     ]
-                  ]`
+                  ]`,
                   },
                 },
               }}
@@ -34042,27 +34042,66 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q119. Pascal's Triangle II</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer rowIndex, return the rowIndexth (0-indexed) row
+              of the Pascal's triangle.
+            </Span>
+            <Span>
+              In Pascal's triangle, each number is the sum of the two numbers
+              directly above it as shown:
+            </Span>
+            <Img src={Leetcode118} left />
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: rowIndex = 3 <br />
+              Output: [1,3,3,1]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: rowIndex = 0 <br />
+              Output: [1]
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: rowIndex = 1 <br />
+              Output: [1,1]
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>0 &lt;= rowIndex &lt;= 33</Span>
+            <p>
+              <b>Follow up: </b>
+              Could you optimize your algorithm to use only O(rowIndex) extra
+              space?
+            </p>
             <CodeEditor
               options={{
+                title: "Q119. Pascal's Triangle II",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number} rowIndex
+                    * @return {number[]}
+                    */
+                   var getRow = function(rowIndex) {
+                     const result = Array(rowIndex+1).fill(1)    
+                     for (let i = 2; i < rowIndex + 1; ++i)
+                       for (let j = 1; j < i; ++j)
+                         result[i - j] += result[i - j - 1];
+                     return result  
+                   };
+                   
+                   getRow(3)`,
+                   output:`[1,3,3,1]`
                   },
                 },
               }}
