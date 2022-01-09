@@ -33442,8 +33442,43 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q113. Path Sum II",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                  }
+                  /**
+                   * @param {TreeNode} root
+                   * @param {number} targetSum
+                   * @return {boolean}
+                   */
+                  
+                  function dfs(root,sum,result,curr=[]){
+                    if(!root) return
+                    if (root.val == sum && !root.left && !root.right) {
+                    curr.push(root.val);
+                    console.log(curr)
+                    result.push(curr.slice());
+                    curr.pop();
+                    return;
+                    }
+                    curr.push(root.val);
+                    dfs(root.left, sum - root.val, result, curr);
+                    dfs(root.right, sum - root.val, result, curr);
+                    curr.pop();
+                  }
+                  
+                  var pathSum = function(root, targetSum) {
+                   const result = []
+                   dfs(root,targetSum,result)
+                   return result
+                  };
+                  
+                  const t = new TreeNode(1)
+                  t.left = new TreeNode(2)
+                  t.right = new TreeNode(3)
+                  pathSum(t,5)`,
+                    output: `[]`,
                   },
                 },
               }}
@@ -33456,7 +33491,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q114. Flatten Binary Tree to Linked List</b>
             </Span>
             <Span></Span>
             <Span>
@@ -33474,6 +33509,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <p></p>
             <CodeEditor
               options={{
+                title: "Q114. Flatten Binary Tree to Linked List",
                 codes: {
                   Javascript: {
                     code: ``,
