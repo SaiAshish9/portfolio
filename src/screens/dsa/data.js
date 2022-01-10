@@ -34262,27 +34262,78 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q122. Best Time to Buy and Sell Stock II</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given an integer array prices where prices[i] is the price
+              of a given stock on the ith day.
+            </Span>
+            <Span>
+              On each day, you may decide to buy and/or sell the stock. You can
+              only hold at most one share of the stock at any time. However, you
+              can buy it then immediately sell it on the same day
+            </Span>
+            <Span>Find and return the maximum profit you can achieve.</Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: prices = [7,1,5,3,6,4] <br />
+              Output: 7 <br />
+              Explanation: Buy on day 2 (price = 1) and sell on day 3 (price =
+              5), profit = 5-1 = 4. Then buy on day 4 (price = 3) and sell on
+              day 5 (price = 6), profit = 6-3 = 3. <br />
+              Total profit is 4 + 3 = 7.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: prices = [1,2,3,4,5]
+              <br />
+              Output: 4<br />
+              Explanation: Buy on day 1 (price = 1) and sell on day 5 (price =
+              5), profit = 5-1 = 4.
+              <br />
+              Total profit is 4.
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: prices = [7,6,4,3,1]
+              <br /> Output: 0<br /> Explanation: There is no way to make a
+              positive profit, so we never buy the stock to achieve the maximum
+              profit of 0.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= prices.length &lt;= 3 * 104
+              <br />0 &lt;= prices[i] &lt;= 104
+            </p>
             <CodeEditor
               options={{
+                title: "Q122. Best Time to Buy and Sell Stock II",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[]} prices
+                    * @return {number}
+                    */
+                   var maxProfit = function(prices) {
+                     let i = 0;
+                     let j = Number.MIN_SAFE_INTEGER;
+                     for (let p of prices) {
+                       i = Math.max(i, j + p);
+                       j = Math.max(j, i - p);
+                     }
+                     return i;    
+                   };
+                   
+                   maxProfit([7,6,4,3,1])`,
+                    output: `0`,
                   },
                 },
               }}
@@ -34295,27 +34346,83 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q123. Best Time to Buy and Sell Stock III</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given an array prices where prices[i] is the price of a
+              given stock on the ith day.
+            </Span>
+            <Span>
+              Find the maximum profit you can achieve. You may complete at most
+              two transactions.
+            </Span>
+            <Span>
+              Note: You may not engage in multiple transactions simultaneously
+              (i.e., you must sell the stock before you buy again).
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: prices = [3,3,5,0,0,3,1,4] <br />
+              Output: 6 <br />
+              Explanation: Buy on day 4 (price = 0) and sell on day 6 (price =
+              3), profit = 3-0 = 3. Then buy on day 7 (price = 1) and sell on
+              day 8 (price = 4), profit = 4-1 = 3.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: prices = [1,2,3,4,5] <br />
+              Output: 4<br />
+              Explanation: Buy on day 1 (price = 1) and sell on day 5 (price =
+              5), profit = 5-1 = 4.
+              <br />
+              Note that you cannot buy on day 1, buy on day 2 and sell them
+              later, as you are engaging multiple transactions at the same time.
+              You must sell before buying again.
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: prices = [7,6,4,3,1] <br />
+              Output: 0 <br />
+              Explanation: In this case, no transaction is done, i.e. max profit
+              = 0.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= prices.length &lt;= 105 <br />0 &lt;= prices[i] &lt;= 105
+            </p>
             <CodeEditor
               options={{
+                title: "Q123. Best Time to Buy and Sell Stock III",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[]} prices
+                    * @return {number}
+                    */
+                   var maxProfit = function(prices) {
+                     let sellTwo = 0;
+                     let holdTwo = Number.MIN_SAFE_INTEGER;
+                     let sellOne = 0;
+                     let holdOne = Number.MIN_SAFE_INTEGER;
+                     for (let price of prices) {
+                       sellTwo = Math.max(sellTwo, holdTwo + price);
+                       holdTwo = Math.max(holdTwo, sellOne - price);
+                       sellOne = Math.max(sellOne, holdOne + price);
+                       holdOne = Math.max(holdOne, -price);
+                     }
+                     return sellTwo;
+                   };
+                   
+                   maxProfit([7,6,4,3,1])`,
+                    output: `0`,
                   },
                 },
               }}
