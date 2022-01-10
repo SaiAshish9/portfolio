@@ -34497,14 +34497,16 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                      * @return {number}
                      */
                     var maxPathSum = function(root) {
-                      return maxPathSumDownFrom(root)
+                      const res = { output : Number.MIN_SAFE_INTEGER }
+                      maxPathSumDownFrom(root,res)
+                      return res.output
                     };
                     
-                    function maxPathSumDownFrom(root,res=Number.MIN_SAFE_INTEGER){
+                    function maxPathSumDownFrom(root,res){
                       if (!root) return 0;
                       let l = Math.max(maxPathSumDownFrom(root.left,res), 0);
                       let r = Math.max(maxPathSumDownFrom(root.right,res), 0);
-                      res = Math.max(res, root.val + l + r);
+                      res.output = Math.max(res.output, root.val + l + r);
                       return root.val + Math.max(l, r);
                     };
                     
@@ -34512,7 +34514,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                     t.left = new TreeNode(2)
                     t.right = new TreeNode(3)
                     maxPathSum(t)`,
-                    output: `4`,
+                    output: `6`,
                   },
                 },
               }}
@@ -34525,27 +34527,65 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q125. Valid Palindrome</b>
             </Span>
-            <Span></Span>
+            <Span>
+              A phrase is a palindrome if, after converting all uppercase
+              letters into lowercase letters and removing all non-alphanumeric
+              characters, it reads the same forward and backward. Alphanumeric
+              characters include letters and numbers.
+            </Span>
+            <Span>
+              Given a string s, return true if it is a palindrome, or false
+              otherwise.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "A man, a plan, a canal: Panama"
+              <br />
+              Output: true
+              <br />
+              Explanation: "amanaplanacanalpanama" is a palindrome.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "race a car" <br />
+              Output: false <br />
+              Explanation: "raceacar" is not a palindrome.
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = " "<br />
+              Output: true
+              <br />
+              Explanation: s is an empty string "" after removing
+              non-alphanumeric characters. Since an empty string reads the same
+              forward and backward, it is a palindrome.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= s.length &lt;= 2 * 105 <br />s consists only of printable
+              ASCII characters.
+            </p>
             <CodeEditor
               options={{
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @return {boolean}
+                    */
+                   var isPalindrome = function(s) {
+                       
+                   };`,
                   },
                 },
               }}
