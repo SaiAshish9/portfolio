@@ -34486,7 +34486,33 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q124. Binary Tree Maximum Path Sum",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                    }
+                    
+                    /**
+                     * @param {TreeNode} root
+                     * @return {number}
+                     */
+                    var maxPathSum = function(root) {
+                      return maxPathSumDownFrom(root)
+                    };
+                    
+                    function maxPathSumDownFrom(root,res=Number.MIN_SAFE_INTEGER){
+                      if (!root) return 0;
+                      let l = Math.max(maxPathSumDownFrom(root.left,res), 0);
+                      let r = Math.max(maxPathSumDownFrom(root.right,res), 0);
+                      res = Math.max(res, root.val + l + r);
+                      return root.val + Math.max(l, r);
+                    };
+                    
+                    const t = new TreeNode(1)
+                    t.left = new TreeNode(2)
+                    t.right = new TreeNode(3)
+                    maxPathSum(t)`,
+                    output: `4`,
                   },
                 },
               }}
