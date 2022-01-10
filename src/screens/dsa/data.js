@@ -166,6 +166,8 @@ import Leetcode114 from "assets/leetcode/114.png";
 import Leetcode116 from "assets/leetcode/116.png";
 import Leetcode117 from "assets/leetcode/117.png";
 import Leetcode118 from "assets/leetcode/118.png";
+import Leetcode124a from "assets/leetcode/124a.png";
+import Leetcode124b from "assets/leetcode/124b.png";
 
 export const DATA = {
   ds: {
@@ -34435,24 +34437,40 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q124. Binary Tree Maximum Path Sum</b>
             </Span>
             <Span></Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode124a} left />
+            <Span>
+              Input: root = [1,2,3] <br />
+              Output: 6 <br />
+              Explanation: The optimal path is 2 -&gt; 1 -&gt; 3 with a path sum
+              of 2 + 1 + 3 = 6.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode124b} left />
+            <Span>
+              Input: root = [-10,9,20,null,null,15,7] <br />
+              Output: 42 <br />
+              Explanation: The optimal path is 15 -&gt; 20 -&gt; 7 with a path
+              sum of 15 + 20 + 7 = 42.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              The number of nodes in the tree is in the range [1, 3 * 104].{" "}
+              <br />
+              -1000 &lt;= Node.val &lt;= 1000
+            </p>
             <CodeEditor
               options={{
+                title: "Q124. Binary Tree Maximum Path Sum",
                 codes: {
                   Javascript: {
                     code: ``,
