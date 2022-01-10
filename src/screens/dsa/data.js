@@ -34191,27 +34191,65 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q121. Best Time to Buy and Sell Stock</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given an array prices where prices[i] is the price of a
+              given stock on the ith day.
+            </Span>
+            <Span>
+              You want to maximize your profit by choosing a single day to buy
+              one stock and choosing a different day in the future to sell that
+              stock.
+            </Span>
+            <Span>
+              Return the maximum profit you can achieve from this transaction.
+              If you cannot achieve any profit, return 0.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: prices = [7,1,5,3,6,4] <br />
+              Output: 5 <br />
+              Explanation: Buy on day 2 (price = 1) and sell on day 5 (price =
+              6), profit = 6-1 = 5. Note that buying on day 2 and selling on day
+              1 is not allowed because you must buy before you sell.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: prices = [7,6,4,3,1] <br />
+              Output: 0 <br />
+              Explanation: In this case, no transactions are done and the max
+              profit = 0.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= prices.length &lt;= 105 <br />0 &lt;= prices[i] &lt;= 104
+            </p>
             <CodeEditor
               options={{
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[]} prices
+                    * @return {number}
+                    */
+                   var maxProfit = function(prices) {
+                     let i = 0
+                     let j = Number.MIN_SAFE_INTEGER
+                     for(let p of prices){
+                       i = Math.max(i,j+p)
+                       j = Math.max(j,-p)
+                     }
+                     return i
+                   };
+                   maxProfit([7,1,5,3,6,4])`,
+                    output: `5`,
                   },
                 },
               }}
