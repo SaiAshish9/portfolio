@@ -34439,7 +34439,20 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Q124. Binary Tree Maximum Path Sum</b>
             </Span>
-            <Span></Span>
+            <Span>
+              A path in a binary tree is a sequence of nodes where each pair of
+              adjacent nodes in the sequence has an edge connecting them. A node
+              can only appear in the sequence at most once. Note that the path
+              does not need to pass through the root.
+            </Span>
+            <Span>
+              The path sum of a path is the sum of the node's values in the
+              path.
+            </Span>
+            <Span>
+              Given the root of a binary tree, return the maximum path sum of
+              any non-empty path.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
