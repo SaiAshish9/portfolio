@@ -35902,24 +35902,56 @@ class Solution:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q139. Word Break</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a string s and a dictionary of strings wordDict, return true
+              if s can be segmented into a space-separated sequence of one or
+              more dictionary words.
+            </Span>
+            <Span>
+              Note that the same word in the dictionary may be reused multiple
+              times in the segmentation.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "leetcode", wordDict = ["leet","code"] <br />
+              Output: true <br />
+              Explanation: Return true because "leetcode" can be segmented as
+              "leet code".
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "applepenapple", wordDict = ["apple","pen"] <br />
+              Output: true <br />
+              Explanation: Return true because "applepenapple" can be segmented
+              as "apple pen apple". Note that you are allowed to reuse a
+              dictionary word.
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = "catsandog", wordDict =
+              ["cats","dog","sand","and","cat"] Output: false
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= s.length &lt;= 300 <br />
+              1 &lt;= wordDict.length &lt;= 1000 <br />
+              1 &lt;= wordDict[i].length &lt;= 20 <br />s and wordDict[i]
+              consist of only lowercase English letters. <br />
+              All the strings of wordDict are unique.
+            </p>
             <CodeEditor
               options={{
+                title: "Q139. Word Break",
                 codes: {
                   Javascript: {
                     code: ``,
