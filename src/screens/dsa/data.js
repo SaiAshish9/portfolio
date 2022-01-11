@@ -35994,27 +35994,93 @@ class Solution:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q140. Word Break II</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a string s and a dictionary of strings wordDict, add spaces
+              in s to construct a sentence where each word is a valid dictionary
+              word. Return all such possible sentences in any order.
+            </Span>
+            <Span>
+              Note that the same word in the dictionary may be reused multiple
+              times in the segmentation.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "catsanddog", <br /> wordDict =
+              ["cat","cats","and","sand","dog"] <br />
+              Output: ["cats and dog","cat sand dog"]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "pineapplepenapple", <br />
+              wordDict = ["apple","pen","applepen","pine","pineapple"]
+              <br />
+              Output: ["pine apple pen apple","pineapple pen apple","pine
+              applepen apple"]
+              <br />
+              Explanation: Note that you are allowed to reuse a dictionary word.
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = "catsandog", <br />
+              wordDict = ["cats","dog","sand","and","cat"]
+              <br />
+              Output: []
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= s.length &lt;= 20 <br />
+              1 &lt;= wordDict.length &lt;= 1000 <br />
+              1 &lt;= wordDict[i].length &lt;= 10 <br />s and wordDict[i]
+              consist of only lowercase English letters. <br />
+              All the strings of wordDict are unique.
+            </p>
             <CodeEditor
               options={{
+                title: "Q140. Word Break II",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @param {string[]} wordDict
+                    * @return {string[]}
+                    */
+                   function helper(s,wordSet,memo){
+                   if(memo.has(s))
+                   return memo.get(s)
+                   const ans = []
+                   
+                   for (let i = 1; i < s.length; ++i) {
+                     const prefix = s.substring(0, i);
+                     const suffix = s.substring(i);
+                     if (wordSet.has(prefix))
+                       for (let word of helper(suffix, wordSet, memo))
+                         ans.push(prefix + " " + word);
+                   }
+                   
+                   if(wordSet.has(s))
+                   ans.push(s)
+                   memo.set(s,ans)
+                   return ans
+                   }
+                   
+                   var wordBreak = function(s, wordDict) {
+                     const wordSet = new Set(wordDict)
+                     const memo = new Map()
+                     return helper(s,wordSet,memo)  
+                   };
+                   
+                   wordBreak("catsanddog",["cat","cats","and","sand","dog"])`,
+                   output:`[ 'cat sand dog', 'cats and dog' ]`
                   },
                 },
               }}
