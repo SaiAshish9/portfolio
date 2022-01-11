@@ -36080,7 +36080,7 @@ class Solution:
                    };
                    
                    wordBreak("catsanddog",["cat","cats","and","sand","dog"])`,
-                   output:`[ 'cat sand dog', 'cats and dog' ]`
+                    output: `[ 'cat sand dog', 'cats and dog' ]`,
                   },
                 },
               }}
@@ -36093,13 +36093,32 @@ class Solution:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q141. Linked List Cycle</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given head, the head of a linked list, determine if the linked
+              list has a cycle in it.
+            </Span>
+            <Span>
+              There is a cycle in a linked list if there is some node in the
+              list that can be reached again by continuously following the next
+              pointer. Internally, pos is used to denote the index of the node
+              that tail's next pointer is connected to. Note that pos is not
+              passed as a parameter.
+            </Span>
+            <Span>
+              Return true if there is a cycle in the linked list. Otherwise,
+              return false.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: head = [3,2,0,-4], pos = 1 <br />
+              Output: true <br />
+              Explanation: There is a cycle in the linked list, where the tail
+              connects to the 1st node (0-indexed)
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
@@ -36111,6 +36130,7 @@ class Solution:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q141. Linked List Cycle",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -36126,7 +36146,7 @@ class Solution:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q142. Linked List Cycle II</b>
             </Span>
             <Span></Span>
             <Span>
@@ -36144,6 +36164,7 @@ class Solution:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q142. Linked List Cycle II",
                 codes: {
                   Javascript: {
                     code: ``,
