@@ -34773,7 +34773,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                     
                     }                    
                     `,
-                    output:`[[hit, hot, dot, dog, cog], [hit, hot, lot, log, cog]]`
+                    output: `[[hit, hot, dot, dog, cog], [hit, hot, lot, log, cog]]`,
                   },
                 },
               }}
@@ -34786,27 +34786,101 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q127. Word Ladder</b>
             </Span>
-            <Span></Span>
+            <Span>
+              A transformation sequence from word beginWord to word endWord
+              using a dictionary wordList is a sequence of words beginWord -&gt;
+              s1 -&gt; s2 -&gt; ... -&gt; sk such that:
+            </Span>
+            <Span>
+              Every adjacent pair of words differs by a single letter. <br />
+              Every si for 1 &lt;= i &lt;= k is in wordList. Note that beginWord
+              does not need to be in wordList. <br />
+              sk == endWord
+            </Span>
+            <Span>
+              Given two words, beginWord and endWord, and a dictionary wordList,
+              return the number of words in the shortest transformation sequence
+              from beginWord to endWord, or 0 if no such sequence exists.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: beginWord = "hit", endWord = "cog", wordList =
+              ["hot","dot","dog","lot","log","cog"]
+              <br />
+              Output: 5<br />
+              Explanation: One shortest transformation sequence is "hit" -&gt;
+              "hot" -&gt; "dot" -&gt; "dog" -&gt; cog", which is 5 words long.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: beginWord = "hit", <br />
+              endWord = "cog" <br /> wordList = ["hot","dot","dog","lot","log"]{" "}
+              <br />
+              Output: 0 <br />
+              Explanation: The endWord "cog" is not in wordList, therefore there
+              is no valid transformation sequence.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= beginWord.length &lt;= 10 <br />
+              endWord.length == beginWord.length <br />
+              1 &lt;= wordList.length &lt;= 5000 <br />
+              wordList[i].length == beginWord.length <br />
+              beginWord, endWord, and wordList[i] consist of lowercase English
+              letters. beginWord != endWord <br />
+              All the words in wordList are unique.
+            </p>
             <CodeEditor
               options={{
+                title: "Q127. Word Ladder",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {string} beginWord
+                    * @param {string} endWord
+                    * @param {string[]} wordList
+                    * @return {number}
+                    */
+                   var ladderLength = function(beginWord, endWord, wordList) {
+                     const wordSet = new Set(wordList)
+                     if(!wordSet.has(endWord))
+                     return 0
+                     let ans = 0
+                     const q = []
+                     q.push(beginWord)
+                     while (q.length) {
+                       ++ans;
+                       for (let size = q.length; size > 0; --size) {
+                         const sb = q.shift().split("")
+                         for (let i = 0; i < sb.length; ++i) {
+                           const cache = sb[i];
+                           for (let c = 'a'.charCodeAt(0); c <= 'z'.charCodeAt(0); ++c) {
+                             sb[i] = String.fromCharCode(c);
+                             const word = sb.join("");
+                             if (word == endWord)
+                               return ans + 1;
+                             if (wordSet.has(word)){
+                               q.push(word);
+                               wordSet.delete(word);
+                             }
+                           }
+                           sb[i] = cache
+                         }
+                       }
+                     }
+                     return 0
+                   };
+                   
+                   ladderLength("hit","cog",["hot","dot","dog","lot","log","cog"])`,
+                    output: `5`,
                   },
                 },
               }}
@@ -34819,27 +34893,62 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q128. Longest Consecutive Sequence</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an unsorted array of integers nums, return the length of the
+              longest consecutive elements sequence.
+            </Span>
+            <Span>You must write an algorithm that runs in O(n) time.</Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [100,4,200,1,3,2] <br />
+              Output: 4<br />
+              Explanation: The longest consecutive elements sequence is [1, 2,
+              3, 4]. Therefore its length is 4.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [0,3,7,2,5,8,4,6,0,1]
+              <br />
+              Output: 9
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              0 &lt;= nums.length &lt;= 105 <br />
+              -109 &lt;= nums[i] &lt;= 109
+            </p>
             <CodeEditor
               options={{
+                title: "Q128. Longest Consecutive Sequence",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var longestConsecutive = function(nums) {
+                     let res = 0
+                     const seen = new Set(nums)
+                     for(let n of nums){
+                     if(seen.has(n-1))
+                     continue
+                     let length = 1;
+                     while (seen.has(++n))
+                     ++length;
+                     res = Math.max(res, length);
+                     }
+                     return res 
+                   };
+                   
+                   longestConsecutive([100,4,200,1,3,2])`,
+                    output: `4`,
                   },
                 },
               }}
