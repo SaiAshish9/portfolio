@@ -35615,7 +35615,29 @@ class Solution:
                 title: "Q135. Candy",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[]} ratings
+                    * @return {number}
+                    */
+                   var candy = function(ratings) {
+                     const n = ratings.length;
+                     let ans = 0;
+                     let l = Array(n).fill(1);
+                     let r = Array(n).fill(1);
+                     for (let i = 1; i < n; ++i)
+                       if (ratings[i] > ratings[i - 1])
+                         l[i] = l[i - 1] + 1;
+                     for (let i = n - 2; i >= 0; --i)
+                       if (ratings[i] > ratings[i + 1])
+                         r[i] = r[i + 1] + 1;
+                     for (let i = 0; i < n; ++i)
+                       ans += Math.max(l[i], r[i]);
+                     return ans;  
+                   };
+                   
+                   candy([1,0,2])
+                   `,
+                    output: `5`,
                   },
                 },
               }}
@@ -35628,27 +35650,65 @@ class Solution:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q136. Single Number</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a non-empty array of integers nums, every element appears
+              twice except for one. Find that single one.
+            </Span>
+            <Span>
+              You must implement a solution with a linear runtime complexity and
+              use only const1ant extra space.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [2,2,1] <br />
+              Output: 1
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [4,1,2,1,2]
+              <br />
+              Output: 4
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: nums = [1]
+              <br />
+              Output: 1
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= nums.length &lt;= 3 * 104 <br />
+              -3 * 104 &lt;= nums[i] &lt;= 3 * 104 <br />
+              Each element in the array appears twice except for one element
+              which appears only once.
+            </p>
             <CodeEditor
               options={{
+                title: "Q136. Single Number",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var singleNumber = function(nums) {
+                       let ans = 0
+                       for(let n of nums)
+                       ans^=n
+                       return ans
+                   };
+                   singleNumber([2,2,1])`,
+                    output: `1`,
                   },
                 },
               }}
@@ -35661,27 +35721,78 @@ class Solution:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q137. Single Number II</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer array nums where every element appears three
+              times except for one, which appears exactly once. Find the single
+              element and return it.
+            </Span>
+            <Span>
+              You must implement a solution with a linear runtime complexity and
+              use only constant extra space.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [2,2,3,2] <br />
+              Output: 3
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [0,1,0,1,0,1,99] <br />
+              Output: 99
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= nums.length &lt;= 3 * 104 <br />
+              -231 &lt;= nums[i] &lt;= 231 - 1 <br />
+              Each element in nums appears exactly three times except for one
+              element which appears once.
+            </p>
             <CodeEditor
               options={{
+                title: "Q137. Single Number II",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   // O(32n) = )(n) O(1)
+                   
+                   function bit(nums){
+                     let ans = 0;
+                     for (let i = 0; i < 32; ++i) {
+                       let sum = 0;
+                       for (let n of nums)
+                         sum += (n >> i) & 1;
+                       sum %= 3;
+                       ans |= (sum << i);
+                     }
+                     return ans;
+                   }
+                   
+                   function magic(nums){
+                     let ones = twos = 0;
+                     for (let n of nums) {
+                     ones ^= (num & ~twos);
+                     twos ^= (num & ~ones);
+                     }
+                     return ones;
+                   }
+                   
+                   var singleNumber = function(nums) {
+                     return bit(nums)
+                   };
+                   
+                   singleNumber([2,2,3,2])`,
+                    output: `3`,
                   },
                 },
               }}
