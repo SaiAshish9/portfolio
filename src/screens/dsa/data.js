@@ -34583,9 +34583,40 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                     * @param {string} s
                     * @return {boolean}
                     */
+                   
+                   function isalnum(str) {
+                     var code, i, len;
+                   
+                     for (i = 0, len = str.length; i < len; i++) {
+                       code = str.charCodeAt(i);
+                       if (!(code > 47 && code < 58) && //  (0-9)
+                           !(code > 64 && code < 91) && //  (A-Z)
+                           !(code > 96 && code < 123)) { // (a-z)
+                         return false;
+                       }
+                     }
+                     return true;
+                   };
+                   // string.match(/^[0-9a-z]+$/)
+                   
                    var isPalindrome = function(s) {
-                       
-                   };`,
+                     let l = 0
+                     let r = s.length - 1
+                     while (l < r) {
+                       while (l < r && !isalnum(s[l]))
+                         ++l;
+                       while (l < r && !isalnum(s[r]))
+                         --r;
+                       if (s[l].toLowerCase() != s[r].toLowerCase())
+                         return false;
+                       ++l;
+                       --r;
+                     }  
+                     return true   
+                   };
+                   
+                   isPalindrome("A man, a plan, a canal: Panama")`,
+                    output: `true`,
                   },
                 },
               }}
@@ -34598,27 +34629,151 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q126. Word Ladder II</b>
             </Span>
-            <Span></Span>
+            <Span>
+              A transformation sequence from word beginWord to word endWord
+              using a dictionary wordList is a sequence of words beginWord -&gt;
+              s1 -&gt; s2 -&gt; ... -&gt; sk such that:
+            </Span>
+            <Span>
+              Every adjacent pair of words differs by a single letter. <br />
+              Every si for 1 &lt;= i &lt;= k is in wordList. Note that beginWord
+              does not need to be in wordList. <br />
+              sk == endWord
+            </Span>
+            <Span>
+              Given two words, beginWord and endWord, and a dictionary wordList,
+              return all the shortest transformation sequences from beginWord to
+              endWord, or an empty list if no such sequence exists. Each
+              sequence should be returned as a list -of the words [beginWord,
+              s1, s2, ..., sk].
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: beginWord = "hit", <br />
+              endWord = "cog", <br />
+              wordList = ["hot","dot","dog","lot","log","cog"]
+              <br />
+              Output:
+              [["hit","hot","dot","dog","cog"],["hit","hot","lot","log","cog"]]
+              <br />
+              Explanation: There are 2 shortest transformation sequences:
+              <br />
+              "hit" -&gt; "hot" -&gt; "dot" -&gt; "dog" -&gt; "cog"
+              <br />
+              "hit" -&gt; "hot" -&gt; "lot" -&gt; "log" -&gt; "cog"
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: beginWord = "hit",
+              <br /> endWord = "cog",
+              <br /> wordList = ["hot","dot","dog","lot","log"]
+              <br />
+              Output: []
+              <br />
+              Explanation: The endWord "cog" is not in wordList, therefore there
+              is no valid transformation sequence.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= beginWord.length &lt;= 5 <br />
+              endWord.length == beginWord.length
+              <br />
+              1 &lt;= wordList.length &lt;= 1000
+              <br />
+              wordList[i].length == beginWord.length
+              <br />
+              beginWord, endWord, and wordList[i] consist of lowercase English
+              letters. beginWord != endWord
+              <br />
+              All the words in wordList are unique.
+              <br />
+            </p>
             <CodeEditor
               options={{
                 codes: {
-                  Javascript: {
-                    code: ``,
+                  Javas: {
+                    code: `import java.util.*;
+
+                    class Main {
+                      public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
+                        Set<String> wordSet = new HashSet<>(wordList);
+                        if (!wordSet.contains(endWord))
+                          return new ArrayList<>();
+                    
+                        Map<String, List<String>> parentToChildren = new HashMap<>();
+                        Set<String> currentLevelWords = new HashSet<>();
+                        currentLevelWords.add(beginWord);
+                        boolean isFound = false;
+                    
+                        while (!currentLevelWords.isEmpty()) {
+                          for (final String word : currentLevelWords)
+                            wordSet.remove(word);
+                          Set<String> nextLevelWords = new HashSet<>();
+                          for (final String parent : currentLevelWords) {
+                            StringBuilder sb = new StringBuilder(parent);
+                            for (int i = 0; i < sb.length(); ++i) {
+                              final char cache = sb.charAt(i);
+                              for (char c = 'a'; c <= 'z'; ++c) {
+                                sb.setCharAt(i, c);
+                                final String child = sb.toString();
+                                if (wordSet.contains(child)) {
+                                  if (child.equals(endWord))
+                                    isFound = true;
+                                  nextLevelWords.add(child);
+                                  parentToChildren.computeIfAbsent(parent, k -> new ArrayList<>()).add(child);
+                                }
+                              }
+                              sb.setCharAt(i, cache);
+                            }
+                            currentLevelWords = nextLevelWords;
+                          }
+                          if (isFound)
+                            break;
+                        }
+                    
+                        if (!isFound)
+                          return new ArrayList<>();
+                    
+                        List<List<String>> ans = new ArrayList<>();
+                        List<String> path = new ArrayList<>(Arrays.asList(beginWord));
+                    
+                        dfs(parentToChildren, beginWord, endWord, path, ans);
+                    
+                        return ans;
+                      }
+                    
+                      private void dfs(Map<String, List<String>> parentToChildren, final String word,
+                                       final String endWord, List<String> path, List<List<String>> ans) {
+                        if (word.equals(endWord)) {
+                          ans.add(new ArrayList<>(path));
+                          return;
+                        }
+                        if (!parentToChildren.containsKey(word))
+                          return;
+                    
+                        for (final String child : parentToChildren.get(word)) {
+                          path.add(child);
+                          dfs(parentToChildren, child, endWord, path, ans);
+                          path.remove(path.size() - 1);
+                        }
+                      }
+                    
+                      public static void main(String ...s){
+                        Main m = new Main();
+                        System.out.println(m.findLadders("hit","cog",Arrays.asList("hot","dot","dog","lot","log","cog")));
+                      }
+                    
+                    }                    
+                    `,
+                    output:`[[hit, hot, dot, dog, cog], [hit, hot, lot, log, cog]]`
                   },
                 },
               }}
