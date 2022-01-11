@@ -169,6 +169,7 @@ import Leetcode118 from "assets/leetcode/118.png";
 import Leetcode124a from "assets/leetcode/124a.png";
 import Leetcode124b from "assets/leetcode/124b.png";
 import Leetcode129 from "assets/leetcode/129.png";
+import Leetcode130 from "assets/leetcode/130.png";
 
 export const DATA = {
   ds: {
@@ -35049,7 +35050,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                     t.left = new TreeNode(2)
                     t.right = new TreeNode(3)
                     sumNumbers(t)`,
-                    output:`25`
+                    output: `25`,
                   },
                 },
               }}
@@ -35062,27 +35063,100 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q130. Surrounded Regions</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an m x n matrix board containing 'X' and 'O', capture all
+              regions that are 4-directionally surrounded by 'X'.
+            </Span>
+            <Span>
+              A region is captured by flipping all 'O's into 'X's in that
+              surrounded region.
+            </Span>{" "}
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode130} left />
+            <Span>
+              Input: board =
+              [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]{" "}
+              <br />
+              Output:
+              [["X","X","X","X"],["X","X","X","X"],["X","X","X","X"],["X","O","X","X"]]{" "}
+              <br />
+              Explanation: Surrounded regions should not be on the border, which
+              means that any 'O' on the border of the board are not flipped to
+              'X'. Any 'O' that is not on the border and it is not connected to
+              an 'O' on the border will be flipped to 'X'. Two cells are
+              connected if they are adjacent cells connected horizontally or
+              vertically.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: board = [["X"]] <br />
+              Output: [["X"]]
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              m == board.length <br />
+              n == board[i].length <br />
+              1 &lt;= m, n &lt;= 200 <br />
+              board[i][j] is 'X' or 'O'.
+            </p>
             <CodeEditor
               options={{
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {character[][]} board
+                    * @return {void} Do not return anything, modify board in-place instead.
+                    */
+                   var solve = function(board) {
+                     if(board.length===0) return
+                     const m = board.length
+                     const n = board[0].length
+                     const dirs = [0,1,0,-1,0]
+                     const q = []
+                     for (let i = 0; i < m; ++i)
+                     for (let j = 0; j < n; ++j)
+                     if (i * j == 0 || i == m - 1 || j == n - 1)
+                     if (board[i][j] == 'O') {
+                       q.push([i,j]);
+                       board[i][j] = '*';
+                     }
+                     while(q.length){
+                       const [i,j] = q.shift()
+                       for (let k = 0; k < 4; ++k) {
+                         let x = i + dirs[k];
+                         let y = j + dirs[k + 1];
+                         if (x < 0 || x == m || y < 0 || y == n)
+                           continue;
+                         if (board[x][y] != 'O')
+                           continue;
+                         q.push([x, y]);
+                         board[x][y] = '*';
+                       }
+                       }
+                     for(let row of board){
+                       for(let i=0;i<row.length;i++){
+                         if (row[i] == '*') row[i] = 'O';
+                         else if (row[i] == 'O') row[i] = 'X';
+                       }
+                     }
+                     console.log(board)
+                   };
+                   
+                   solve([["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]])`,
+                  output:`[
+                    [ 'X', 'X', 'X', 'X' ],
+                    [ 'X', 'X', 'X', 'X' ],
+                    [ 'X', 'X', 'X', 'X' ],
+                    [ 'X', 'O', 'X', 'X' ]
+                  ]`
                   },
                 },
               }}
