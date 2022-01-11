@@ -35460,26 +35460,98 @@ class Solution:
             <Span>
               <b>Q134. Gas Station</b>
             </Span>
-            <Span></Span>
+            <Span>
+              There are n gas stations along a circular route, where the amount
+              of gas at the ith station is gas[i].
+            </Span>
+            <Span>
+              You have a car with an unlimited gas tank and it costs cost[i] of
+              gas to travel from the ith station to its next (i + 1)th station.
+              You begin the journey with an empty tank at one of the gas
+              stations.
+            </Span>
+            <Span>
+              Given two integer arrays gas and cost, return the starting gas
+              station's index if you can travel around the circuit once in the
+              clockwise direction, otherwise return -1. If there exists a
+              solution, it is guaranteed to be unique
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: gas = [1,2,3,4,5], cost = [3,4,5,1,2] <br />
+              Output: 3 <br />
+              Explanation: <br />
+              Start at station 3 (index 3) and fill up with 4 unit of gas. Your
+              tank = 0 + 4 = 4 <br />
+              Travel to station 4. Your tank = 4 - 1 + 5 = 8 <br />
+              Travel to station 0. Your tank = 8 - 2 + 1 = 7 <br />
+              Travel to station 1. Your tank = 7 - 3 + 2 = 6 <br />
+              Travel to station 2. Your tank = 6 - 4 + 3 = 5 <br />
+              Travel to station 3. The cost is 5. Your gas is just enough to
+              travel back to station 3. Therefore, return 3 as the starting
+              index.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: gas = [2,3,4], cost = [3,4,3]
+              <br />
+              Output: -1
+              <br />
+              Explanation:
+              <br />
+              You can't start at station 0 or 1, as there is not enough gas to
+              travel to the next station.
+              <br />
+              Let's start at station 2 and fill up with 4 unit of gas. Your tank
+              = 0 + 4 = 4<br />
+              Travel to station 0. Your tank = 4 - 3 + 2 = 3<br />
+              Travel to station 1. Your tank = 3 - 3 + 3 = 3<br />
+              You cannot travel back to station 2, as it requires 4 unit of gas
+              but you only have 3.
+              <br />
+              Therefore, you can't travel around the circuit once no matter
+              where you start.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              gas.length == n<br />
+              cost.length == n<br />
+              1 &lt;= n &lt;= 105
+              <br />0 &lt;= gas[i], cost[i] &lt;= 104
+            </p>
             <CodeEditor
               options={{
                 title: "Q134. Gas Station",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[]} gas
+                    * @param {number[]} cost
+                    * @return {number}
+                    */
+                   var canCompleteCircuit = function(gas, cost) {
+                     let ans = net = sum = 0
+                   
+                     for(let i=0;i<gas.length;i++){
+                       net += gas[i] - cost[i]
+                       sum += gas[i] - cost[i]
+                       if(sum < 0){
+                         sum = 0
+                         ans = i + 1
+                       }
+                     }
+                     if(net < 0) return -1
+                     return ans 
+                   };
+                   
+                   canCompleteCircuit([2,3,4],[3,4,3])`,
+                   output:`-1`
                   },
                 },
               }}
@@ -35492,7 +35564,7 @@ class Solution:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q135. Candy</b>
             </Span>
             <Span></Span>
             <Span>
@@ -35510,6 +35582,7 @@ class Solution:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q135. Candy",
                 codes: {
                   Javascript: {
                     code: ``,
