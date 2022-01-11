@@ -168,6 +168,7 @@ import Leetcode117 from "assets/leetcode/117.png";
 import Leetcode118 from "assets/leetcode/118.png";
 import Leetcode124a from "assets/leetcode/124a.png";
 import Leetcode124b from "assets/leetcode/124b.png";
+import Leetcode129 from "assets/leetcode/129.png";
 
 export const DATA = {
   ds: {
@@ -34961,27 +34962,94 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q129. Sum Root to Leaf Numbers</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given the root of a binary tree containing digits from 0
+              to 9 only.
+            </Span>
+            <Span>Each root-to-leaf path in the tree represents a number.</Span>
+            <Span>
+              For example, the root-to-leaf path 1 -&gt; 2 -&gt; 3 represents
+              the number 123.
+            </Span>
+            <Span>
+              Return the total sum of all root-to-leaf numbers. Test cases are
+              generated so that the answer will fit in a 32-bit integer.
+            </Span>
+            <Span>A leaf node is a node with no children.</Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode129} left />
+            <Span>
+              Input: root = [1,2,3] <br />
+              Output: 25 <br />
+              Explanation: <br />
+              The root-to-leaf path 1-&gt;2 represents the number 12.
+              <br />
+              The root-to-leaf path 1-&gt;3 represents the number 13.
+              <br />
+              Therefore, sum = 12 + 13 = 25.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: root = [4,9,0,5,1] <br />
+              Output: 1026 <br />
+              Explanation: The root-to-leaf path 4-&gt;9-&gt;5 represents the
+              number 495. <br />
+              The root-to-leaf path 4-&gt;9-&gt;1 represents the number 491.{" "}
+              <br />
+              The root-to-leaf path 4-&gt;0 represents the number 40. <br />
+              Therefore, sum = 495 + 491 + 40 = 1026.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              The number of nodes in the tree is in the range [1, 1000].
+              <br />
+              0 &lt;= Node.val &lt;= 9<br />
+              The depth of the tree will not exceed 10.
+            </p>
             <CodeEditor
               options={{
+                title: "Q129. Sum Root to Leaf Numbers",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                    }
+                    
+                    /**
+                     * @param {TreeNode} root
+                     * @return {number}
+                     */
+                    function dfs(root,res,path=0){
+                      if (!root) return;
+                      if (!root.left && !root.right) {
+                          res.out += path * 10 + root.val;
+                          return;
+                      }
+                      dfs(root.left,res, path * 10 + root.val);
+                      dfs(root.right,res, path * 10 + root.val);
+                    }
+                    
+                    var sumNumbers = function(root) {
+                      const res = {out:0}
+                      dfs(root,res)
+                      return res.out    
+                    };
+                    
+                    const t = new TreeNode(1)
+                    t.left = new TreeNode(2)
+                    t.right = new TreeNode(3)
+                    sumNumbers(t)`,
+                    output:`25`
                   },
                 },
               }}
