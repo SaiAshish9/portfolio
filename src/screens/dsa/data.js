@@ -170,6 +170,7 @@ import Leetcode124a from "assets/leetcode/124a.png";
 import Leetcode124b from "assets/leetcode/124b.png";
 import Leetcode129 from "assets/leetcode/129.png";
 import Leetcode130 from "assets/leetcode/130.png";
+import Leetcode133 from "assets/leetcode/133.png";
 
 export const DATA = {
   ds: {
@@ -35151,12 +35152,12 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                    };
                    
                    solve([["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]])`,
-                  output:`[
+                    output: `[
                     [ 'X', 'X', 'X', 'X' ],
                     [ 'X', 'X', 'X', 'X' ],
                     [ 'X', 'X', 'X', 'X' ],
                     [ 'X', 'O', 'X', 'X' ]
-                  ]`
+                  ]`,
                   },
                 },
               }}
@@ -35169,27 +35170,76 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q131. Palindrome Partitioning</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a string s, partition s such that every substring of the
+              partition is a palindrome. Return all possible palindrome
+              partitioning of s.
+            </Span>
+            <Span>
+              A palindrome string is a string that reads the same backward as
+              forward.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "aab" <br />
+              Output: [["a","a","b"],["aa","b"]]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "a" <br />
+              Output: [["a"]]
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= s.length &lt;= 16
+              <br />s contains only lowercase English letters.
+            </p>
             <CodeEditor
               options={{
+                title: "Q131. Palindrome Partitioning",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @return {string[][]}
+                    */
+                   
+                   function isPalindrome(s){
+                     return s === s.split("").reverse().join("")
+                   }
+                   
+                   function dfs(s,j,res,path=[]){
+                     if(j===s.length){
+                       res.push(path.slice())
+                       return
+                     }
+                     for(let i=j;i<s.length;i++){
+                       if(isPalindrome(s.substring(j,i+1))){
+                         path.push(s.substring(j, i + 1));
+                         dfs(s, i + 1, res,path);
+                         path.pop()
+                   // or
+                   // dfs(s,i+1,res,[...path,s.substring(j,i+1)])
+                       }
+                     }
+                   }
+                   
+                   var partition = function(s) {
+                     const res = []
+                     dfs(s,0,res)
+                     return res  
+                   };
+                   
+                   partition("aab")`,
+                    output: `[ [ 'a', 'a', 'b' ], [ 'aa', 'b' ] ]`,
                   },
                 },
               }}
@@ -35202,27 +35252,75 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q132. Palindrome Partitioning II</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a string s, partition s such that every substring of the
+              partition is a palindrome.
+            </Span>
+            <Span>
+              Return the minimum cuts needed for a palindrome partitioning of s.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "aab" <br />
+              Output: 1 <br />
+              Explanation: The palindrome partitioning ["aa","b"] could be
+              produced using 1 cut.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "a" <br />
+              Output: 0
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = "ab"
+              <br />
+              Output: 1
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= s.length &lt;= 2000 <br />s consists of lowercase English
+              letters only.
+            </p>
             <CodeEditor
               options={{
+                title: "Q132. Palindrome Partitioning II",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @return {number}
+                    */
+                   var minCut = function(s) {
+                     const n = s.length
+                     const cut = Array(n).fill(0)
+                     const dp = Array.from(Array(n),()=>Array(n).fill(false)) 
+                     for(let i=0;i<n;i++){
+                       let min = i
+                       for(let j=0;j<i+1;j++){
+                         if(s[j] == s[i] && (j + 1 > i - 1 || dp[j + 1][i - 1])){
+                           dp[j][i] = true
+                           if(j==0) min = 0
+                           else min = Math.min(min, cut[j - 1] + 1)
+                         } 
+                       }
+                       cut[i] = min
+                     }
+                     return cut[n-1]
+                   };
+                   
+                   minCut("aab")`,
+                    output: `1`,
                   },
                 },
               }}
@@ -35235,27 +35333,119 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q133. Clone Graph</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a reference of a node in a connected undirected graph.
+            </Span>
+            <Span>Return a deep copy (clone) of the graph.</Span>
+            <Span>
+              Each node in the graph contains a value (int) and a list
+              (List[Node]) of its neighbors.
+            </Span>
+            <Span>
+              class Node {"{"}
+              public int val; <br />
+              public List{"<Node>"} neighbors; <br />
+              {"}"}
+            </Span>
+            <Span>
+              <b>Test case format:</b>
+            </Span>
+            <Span>
+              For simplicity, each node's value is the same as the node's index
+              (1-indexed). For example, the first node with val == 1, the second
+              node with val == 2, and so on. The graph is represented in the
+              test case using an adjacency list.
+            </Span>
+            <Span>
+              An adjacency list is a collection of unordered lists used to
+              represent a finite graph. Each list describes the set of neighbors
+              of a node in the graph.
+            </Span>
+            <Span>
+              The given node will always be the first node with val = 1. You
+              must return the copy of the given node as a reference to the
+              cloned graph.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode133} left />
+            <Span>
+              Input: adjList = [[2,4],[1,3],[2,4],[1,3]] <br />
+              Output: [[2,4],[1,3],[2,4],[1,3]] <br />
+              Explanation: There are 4 nodes in the graph. <br />
+              1st node (val = 1)'s neighbors are 2nd node (val = 2) and 4th node
+              (val = 4). <br />
+              2nd node (val = 2)'s neighbors are 1st node (val = 1) and 3rd node
+              (val = 3). <br />
+              3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node
+              (val = 4). <br />
+              4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node
+              (val = 3).
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: adjList = [[]] <br />
+              Output: [[]] <br />
+              Explanation: Note that the input contains one empty list. The
+              graph consists of only one node with val = 1 and it does not have
+              any neighbors.
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: adjList = []
+              <br />
+              Output: []
+              <br />
+              Explanation: This an empty graph, it does not have any nodes.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              The number of nodes in the graph is in the range [0, 100].
+              <br />
+              1 &lt;= Node.val &lt;= 100
+              <br />
+              Node.val is unique for each node.
+              <br />
+              There are no repeated edges and no self-loops in the graph.
+              <br />
+              The Graph is connected and all nodes can be visited starting from
+              the given node.
+            </p>
             <CodeEditor
               options={{
+                title: "Q133. Clone Graph",
                 codes: {
-                  Javascript: {
-                    code: ``,
+                  Python: {
+                    code: `
+class Node:
+  def __init__(self, val = 0, neighbors = None):
+    self.val = val
+    self.neighbors = neighbors if neighbors is not None else []
+class Solution:
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        if not node:
+            return None
+        q = deque([node])
+        map = {}
+        map[node] = Node(node.val)
+        while q:
+            n = q.popleft()
+            for neighbor in n.neighbors:
+                if neighbor not in map:
+                    map[neighbor] = Node(neighbor.val)
+                    q.append(neighbor)
+                map[n].neighbors.append(map[neighbor])
+        return map[node]        
+                `,
                   },
                 },
               }}
@@ -35268,7 +35458,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q134. Gas Station</b>
             </Span>
             <Span></Span>
             <Span>
@@ -35286,6 +35476,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <p></p>
             <CodeEditor
               options={{
+                title: "Q134. Gas Station",
                 codes: {
                   Javascript: {
                     code: ``,
