@@ -171,6 +171,7 @@ import Leetcode124b from "assets/leetcode/124b.png";
 import Leetcode129 from "assets/leetcode/129.png";
 import Leetcode130 from "assets/leetcode/130.png";
 import Leetcode133 from "assets/leetcode/133.png";
+import Leetcode138 from "assets/leetcode/138.png";
 
 export const DATA = {
   ds: {
@@ -35807,20 +35808,65 @@ class Solution:
             <Span>
               <b>Q138. Copy List with Random Pointer</b>
             </Span>
-            <Span></Span>
+            <Span>
+              A linked list of length n is given such that each node contains an
+              additional random pointer, which could point to any node in the
+              list, or null.
+            </Span>
+            <Span>
+              Construct a deep copy of the list. The deep copy should consist of
+              exactly n brand new nodes, where each new node has its value set
+              to the value of its corresponding original node. Both the next and
+              random pointer of the new nodes should point to new nodes in the
+              copied list such that the pointers in the original list and copied
+              list represent the same list state. None of the pointers in the
+              new list should point to nodes in the original list.
+            </Span>
+            <Span>
+              For example, if there are two nodes X and Y in the original list,
+              where X.random --&gt; Y, then for the corresponding two nodes x
+              and y in the copied list, x.random --&gt; y.
+            </Span>
+            <Span>Return the head of the copied linked list.</Span>
+            <Span>
+              The linked list is represented in the input/output as a list of n
+              nodes. Each node is represented as a pair of [val, random_index]
+              where:
+            </Span>
+            <Span>val: an integer representing Node.val</Span>
+            <Span>
+              random_index: the index of the node (range from 0 to n-1) that the
+              random pointer points to, or null if it does not point to any
+              node.
+            </Span>
+            <Span>
+              Your code will only be given the head of the original linked list.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode138} left />
+            <Span>
+              Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]] <br />
+              Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: head = [[1,1],[2,1]]
+              <br />
+              Output: [[1,1],[2,1]]
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              0 &lt;= n &lt;= 1000 <br />
+              -104 &lt;= Node.val &lt;= 104 <br />
+              Node.random is null or is pointing to some node in the linked
+              list.
+            </p>
             <CodeEditor
               options={{
                 title: "Q138. Copy List with Random Pointer",
