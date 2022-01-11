@@ -35551,7 +35551,7 @@ class Solution:
                    };
                    
                    canCompleteCircuit([2,3,4],[3,4,3])`,
-                   output:`-1`
+                    output: `-1`,
                   },
                 },
               }}
@@ -35566,20 +35566,50 @@ class Solution:
             <Span>
               <b>Q135. Candy</b>
             </Span>
-            <Span></Span>
+            <Span>
+              There are n children standing in a line. Each child is assigned a
+              rating value given in the integer array ratings.
+            </Span>
+            <Span>
+              You are giving candies to these children subjected to the
+              following requirements:
+            </Span>
+            <Span>Each child must have at least one candy.</Span>
+            <Span>
+              Children with a higher rating get more candies than their
+              neighbors.
+            </Span>
+            <Span>
+              Return the minimum number of candies you need to have to
+              distribute the candies to the children.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: ratings = [1,0,2] <br />
+              Output: 5 <br />
+              Explanation: You can allocate to the first, second and third child
+              with 2, 1, 2 candies respectively.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: ratings = [1,2,2]
+              <br />
+              Output: 4<br />
+              Explanation: You can allocate to the first, second and third child
+              with 1, 2, 1 candies respectively. The third child gets 1 candy
+              because it satisfies the above two conditions.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              n == ratings.length <br />
+              1 &lt;= n &lt;= 2 * 104 <rb />0 &lt;= ratings[i] &lt;= 2 * 104
+            </p>
             <CodeEditor
               options={{
                 title: "Q135. Candy",
