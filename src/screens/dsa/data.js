@@ -35805,7 +35805,7 @@ class Solution:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q138. Copy List with Random Pointer</b>
             </Span>
             <Span></Span>
             <Span>
@@ -35823,6 +35823,7 @@ class Solution:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q138. Copy List with Random Pointer",
                 codes: {
                   Javascript: {
                     code: ``,
