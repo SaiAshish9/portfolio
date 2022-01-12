@@ -36521,7 +36521,7 @@ class Solution:
                   t.right = new TreeNode(2)
                   t.right.left = new TreeNode(3)
                   preorderTraversal(t)`,
-                  output:`[1,2,3]`
+                    output: `[ 1, 2, 3 ]`,
                   },
                 },
               }}
@@ -36534,27 +36534,98 @@ class Solution:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q145. Binary Tree Postorder Traversal</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the root of a binary tree, return the postorder traversal of
+              its nodes' values.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode144} left />
+            <Span>
+              Input: root = [1,null,2,3] <br />
+              Output: [3,2,1]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: root = []
+              <br />
+              Output: []
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: root = [1]
+              <br />
+              Output: [1]
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              The number of the nodes in the tree is in the range [0, 100].
+              <br />
+              -100 &lt;= Node.val &lt;= 100
+            </Span>
+            <p>
+              <b>Follow up: </b>
+              Recursive solution is trivial, could you do it iteratively?
+            </p>
             <CodeEditor
               options={{
+                title: "Q145. Binary Tree Postorder Traversal",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                  }
+                  
+                  /**
+                   * @param {TreeNode} root
+                   * @return {number[]}
+                   */
+                  
+                  function rec(head,res){
+                  if(!head) return
+                  rec(head.left,res)
+                  rec(head.right,res)
+                  res.push(head.val)
+                  }
+                  // O(n) O(h)
+                  
+                  function iter(head,res){
+                  if(!head) return []
+                  const stack = []
+                  stack.push(head)
+                  while (stack.length) {
+                    let curr = stack.pop();
+                    res.push(curr.val);
+                    if (curr.left)
+                      stack.push(curr.left);
+                    if (curr.right)
+                      stack.push(curr.right);
+                  }
+                  res.reverse()
+                  }
+                  
+                  var postorderTraversal = function(root) {
+                    const res = []
+                    iter(root,res)
+                    return res
+                  };
+                  
+                  const t = new TreeNode(1)
+                  t.right = new TreeNode(2)
+                  t.right.left = new TreeNode(3)
+                  postorderTraversal(t)`,
+                    output:`[ 3, 2, 1 ]`
                   },
                 },
               }}
