@@ -174,6 +174,7 @@ import Leetcode133 from "assets/leetcode/133.png";
 import Leetcode138 from "assets/leetcode/138.png";
 import Leetcode141 from "assets/leetcode/141.png";
 import Leetcode143 from "assets/leetcode/143.png";
+import Leetcode144 from "assets/leetcode/144.png";
 
 export const DATA = {
   ds: {
@@ -36412,14 +36413,14 @@ class Solution:
                     l.next.next.next = new ListNode(4)
                     reorderList(l)
                     console.log(l)`,
-                    output:`ListNode {
+                    output: `ListNode {
                       val: 1,
                       next: ListNode { val: 4, next: ListNode { val: 2, next: [ListNode] } }
                     }
                     ListNode {
                       val: 1,
                       next: ListNode { val: 4, next: ListNode { val: 2, next: [ListNode] } }
-                    }`
+                    }`,
                   },
                 },
               }}
@@ -36432,27 +36433,95 @@ class Solution:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q144. Binary Tree Preorder Traversal</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the root of a binary tree, return the preorder traversal of
+              its nodes' values.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode144} left />
+            <Span>
+              Input: root = [1,null,2,3] <br />
+              Output: [1,2,3]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: root = []
+              <br />
+              Output: []
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: root = [1]
+              <br />
+              Output: [1]
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              The number of nodes in the tree is in the range [0, 100]. <br />
+              -100 &lt;= Node.val &lt;= 100
+            </Span>
+            <p>
+              <b>Follow up: </b>
+              Recursive solution is trivial, could you do it iteratively?
+            </p>
             <CodeEditor
               options={{
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                  }
+                  
+                  /**
+                   * @param {TreeNode} root
+                   * @return {number[]}
+                   */
+                  
+                  function rec(head,res){
+                  if(!head) return
+                  res.push(head.val)
+                  rec(head.left,res)
+                  rec(head.right,res)
+                  }
+                  // O(n) O(h)
+                  
+                  function iter(head,res){
+                  if(!head) return []
+                  const stack = []
+                  stack.push(head)
+                  while (stack.length) {
+                    let curr = stack.pop();
+                    res.push(curr.val);
+                    if (curr.right)
+                      stack.push(curr.right);
+                    if (curr.left)
+                      stack.push(curr.left);
+                  }
+                  }
+                  
+                  var preorderTraversal = function(root) {
+                    const res = []
+                    iter(root,res)
+                    return res
+                  };
+                  
+                  const t = new TreeNode(1)
+                  t.right = new TreeNode(2)
+                  t.right.left = new TreeNode(3)
+                  preorderTraversal(t)`,
+                  output:`[1,2,3]`
                   },
                 },
               }}
