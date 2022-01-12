@@ -37255,7 +37255,7 @@ class LRUCache:
                    };
                    
                    evalRPN(["4","13","5","/","+"])`,
-                    output: 6,
+                    output: `6`,
                   },
                 },
               }}
@@ -37268,27 +37268,65 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q151. Reverse Words in a String</b>
             </Span>
             <Span></Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "the sky is blue" <br />
+              Output: "blue is sky the"
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = " hello world <br />
+              Output: "world hello"
+              <br />
+              Explanation: Your reversed string should not contain leading or
+              trailing spaces.
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = "a good example"
+              <br />
+              Output: "example good a"
+              <br />
+              Explanation: You need to reduce multiple spaces between two words
+              to a single space in the reversed string.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              1 &lt;= s.length &lt;= 104 <br />
+              s contains English letters (upper-case and lower-case), digits,
+              and spaces ' '. <br />
+              There is at least one word in s.
+            </Span>
+            <p>
+              <b>Follow-up: </b>
+              If the string data type is mutable in your language, can you solve
+              it in-place with O(1) extra space?
+            </p>
             <CodeEditor
               options={{
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @return {string}
+                    */
+                   var reverseWords = function(s) {
+                     return s.split(' ').filter(x=> x!='').reverse().join(' ').trim()
+                   };
+                   
+                   reverseWords("a good   example")`,
+                    output: `example good a`,
                   },
                 },
               }}
