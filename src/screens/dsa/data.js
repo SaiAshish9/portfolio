@@ -175,6 +175,7 @@ import Leetcode138 from "assets/leetcode/138.png";
 import Leetcode141 from "assets/leetcode/141.png";
 import Leetcode143 from "assets/leetcode/143.png";
 import Leetcode144 from "assets/leetcode/144.png";
+import Leetcode147 from "assets/leetcode/147.png" 
 
 export const DATA = {
   ds: {
@@ -36715,8 +36716,8 @@ class Solution:
               options={{
                 title: "Q146. LRU Cache",
                 codes: {
-                  Python:{
-                    code:`
+                  Python: {
+                    code: `
 class Node:
     def __init__(self, key: int, value: int):
         self.key = key
@@ -36760,7 +36761,7 @@ class LRUCache:
             self.remove(lastNode)
         self.moveToHead(Node(key, value))
         self.dict[key] = self.head.next
-`
+`,
                   },
                   Javascript: {
                     code: `class Node {
@@ -36837,8 +36838,8 @@ class LRUCache:
                     console.log(obj.get(0))
                     obj.put(0,1)
                     console.log(obj.get(0))`,
-                    output:`-1
-                    1`
+                    output: `-1
+                    1`,
                   },
                 },
               }}
@@ -36853,26 +36854,88 @@ class LRUCache:
             <Span>
               <b>Q147. Insertion Sort List</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the head of a singly linked list, sort the list using
+              insertion sort, and return the sorted list's head.
+              <br />
+              The steps of the insertion sort algorithm:
+              <br />
+              Insertion sort iterates, consuming one input element each
+              repetition and growing a sorted output list.
+              <br />
+              At each iteration, insertion sort removes one element from the
+              input data, finds the location it belongs within the sorted list
+              and inserts it there.
+              <br />
+              It repeats until no input elements remain.
+              <br />
+              The following is a graphical example of the insertion sort
+              algorithm. The partially sorted list (black) initially contains
+              only the first element in the list. One element (red) is removed
+              from the input data and inserted in-place into the sorted list
+              with each iteration.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode147} left />
+            <Span>
+              Input: head = [4,2,1,3] <br />
+              Output: [1,2,3,4]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: head = [-1,5,3,4,0] <br />
+              Output: [-1,0,3,4,5]
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              The number of nodes in the list is in the range [1, 5000].
+              <br />
+              -5000 &lt;= Node.val &lt;= 5000
+            </p>
             <CodeEditor
               options={{
                 title: "Q147. Insertion Sort List",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function ListNode(val, next) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.next = (next===undefined ? null : next)
+                    }
+                    
+                    /**
+                     * @param {ListNode} head
+                     * @return {ListNode}
+                     */
+                    var insertionSortList = function(head) {
+                      let temp = new ListNode()
+                      let curr = head
+                      while(curr){
+                        let prev = temp
+                        while(prev.next && prev.next.val < curr.val)
+                        prev = prev.next
+                        next = curr.next
+                        curr.next = prev.next
+                        prev.next = curr
+                        curr = next
+                      } 
+                      return temp.next    
+                    };
+                    
+                    const l = new ListNode(4)
+                    l.next = new ListNode(2)
+                    l.next.next = new ListNode(1)
+                    l.next.next.next = new ListNode(3)
+                    insertionSortList(l)`,
+                    output:`ListNode {
+                      val: 1,
+                      next: ListNode { val: 2, next: ListNode { val: 3, next: [ListNode] } }
+                    }`
                   },
                 },
               }}
