@@ -36988,7 +36988,75 @@ class LRUCache:
                 title: "Q148. Sort List",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function ListNode(val, next) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.next = (next===undefined ? null : next)
+                    }
+                    
+                    /**
+                     * @param {ListNode} head
+                     * @return {ListNode}
+                     */
+                    
+                    function count(h){
+                      if(!h) return 0
+                      if(!h.next) return 1
+                      return 1 + count(h.next)
+                    }
+                    
+                    function merge(l1,l2){
+                      let temp = new ListNode();
+                      let tail = temp;
+                      while (l1 && l2) {
+                        if (l1.val > l2.val) {
+                          let temp = l1;
+                          l1 = l2;
+                          l2 = temp;
+                        }
+                        tail.next = l1;
+                        l1 = l1.next;
+                        tail = tail.next;
+                      }
+                      tail.next = l1 == null ? l2 : l1;
+                      while (tail.next != null)
+                        tail = tail.next;
+                      return [temp.next, tail]
+                    }
+                    
+                    function split(head,k){
+                      while (--k > 0 && head) head = head.next;
+                      let rest = head == null ? null : head.next;
+                      if (head != null) head.next = null;
+                      return rest;
+                    }
+                    
+                    var sortList = function(head) {
+                      let length = count(head) 
+                      let temp = new ListNode(0,head)
+                      for (let k = 1; k < length; k *= 2) {
+                        let curr = temp.next;
+                        let tail = temp;
+                        while (curr) {
+                          let l = curr;
+                          let r = split(l, k);
+                          curr = split(r, k);
+                          const merged = merge(l, r);
+                          tail.next = merged[0];
+                          tail = merged[1];
+                        }
+                      }
+                      return temp.next
+                    };
+                    
+                    const l = new ListNode(4)
+                    l.next = new ListNode(2)
+                    l.next.next = new ListNode(1)
+                    l.next.next.next = new ListNode(3)
+                    sortList(l)`,
+                    output:`ListNode {
+                      val: 1,
+                      next: ListNode { val: 2, next: ListNode { val: 3, next: [ListNode] } }
+                    }`
                   },
                 },
               }}
@@ -37001,7 +37069,7 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q149. Max Points on a Line</b>
             </Span>
             <Span></Span>
             <Span>
@@ -37019,6 +37087,7 @@ class LRUCache:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q149. Max Points on a Line",
                 codes: {
                   Javascript: {
                     code: ``,
