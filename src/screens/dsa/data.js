@@ -36625,7 +36625,7 @@ class Solution:
                   t.right = new TreeNode(2)
                   t.right.left = new TreeNode(3)
                   postorderTraversal(t)`,
-                    output:`[ 3, 2, 1 ]`
+                    output: `[ 3, 2, 1 ]`,
                   },
                 },
               }}
@@ -36638,27 +36638,207 @@ class Solution:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q146. LRU Cache</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Design a data structure that follows the constraints of a Least
+              Recently Used (LRU) cache.
+            </Span>
+            <Span>Implement the LRUCache class:</Span>
+            <Span>
+              LRUCache(int capacity) Initialize the LRU cache with positive size
+              capacity.
+            </Span>
+            <Span>
+              int get(int key) Return the value of the key if the key exists,
+              otherwise return -1.
+            </Span>
+            <Span>
+              void put(int key, int value) Update the value of the key if the
+              key exists. Otherwise, add the key-value pair to the cache. If the
+              number of keys exceeds the capacity from this operation, evict the
+              least recently used key.
+            </Span>
+            <Span>
+              The functions get and put must each run in O(1) average time
+              complexity.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 2:</b>
+              Input ["LRUCache", "put", "put", "get", "put", "get", "put",
+              "get", "get", "get"] <br />
+              [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+              <br />
+              Output
+              <br />
+              [null, null, null, 1, null, -1, null, -1, 3, 4]
+              <br />
+              Explanation
+              <br />
+              LRUCache lRUCache = new LRUCache(2);
+              <br />
+              lRUCache.put(1, 1); // cache is {"{"}1=1{"}"}
+              <br />
+              lRUCache.put(2, 2); // cache is {"{"}1=1, 2=2{"}"}
+              <br />
+              lRUCache.get(1); // return 1
+              <br />
+              lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {"{"}
+              1=1, 3=3{"}"}
+              <br />
+              lRUCache.get(2); // returns -1 (not found)
+              <br />
+              lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {"{"}
+              4=4, 3=3{"}"}
+              <br />
+              lRUCache.get(1); // return -1 (not found)
+              <br />
+              lRUCache.get(3); // return 3
+              <br />
+              lRUCache.get(4); // return 4
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= capacity &lt;= 3000
+              <br />
+              0 &lt;= key &lt;= 104
+              <br />
+              0 &lt;= value &lt;= 105
+              <br />
+              At most 2 * 105 calls will be made to get and put.
+            </p>
             <CodeEditor
               options={{
+                title: "Q146. LRU Cache",
                 codes: {
+                  Python:{
+                    code:`
+class Node:
+    def __init__(self, key: int, value: int):
+        self.key = key
+        self.value = value
+        self.prev = None
+        self.next = None
+
+
+class LRUCache:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.dict = {}
+        self.head = Node(-1, -1)
+        self.tail = Node(-1, -1)
+        self.join(self.head, self.tail)
+    def join(self, node1: Node, node2: Node):
+        node1.next = node2
+        node2.prev = node1
+    def remove(self, node: Node):
+        self.join(node.prev, node.next)    
+    def moveToHead(self, node: Node):
+        self.join(node, self.head.next)
+        self.join(self.head, node)        
+    def get(self, key: int) -> int:
+        if key not in self.dict:
+            return -1
+        node = self.dict[key]
+        self.remove(node)
+        self.moveToHead(node)
+        return node.value
+    def put(self, key: int, value: int) -> None:
+        if key in self.dict:
+            node = self.dict[key]
+            node.value = value
+            self.remove(node)
+            self.moveToHead(node)
+            return
+        if len(self.dict) == self.capacity:
+            lastNode = self.tail.prev
+            del self.dict[lastNode.key]
+            self.remove(lastNode)
+        self.moveToHead(Node(key, value))
+        self.dict[key] = self.head.next
+`
+                  },
                   Javascript: {
-                    code: ``,
+                    code: `class Node {
+                      constructor(k=-1,v=-1,next=null,prev=null){
+                       this.key = k 
+                       this.value = v
+                       this.next = next
+                       this.prev = prev
+                      }
+                    }
+                    
+                    /**
+                     * @param {number} capacity
+                     */
+                    var LRUCache = function(capacity) {
+                      this.capacity = capacity;
+                      this.cache = {}
+                      this.head = new Node();
+                      this.tail = new Node();
+                      this.join(this.head,this.tail)
+                    };
+                    
+                    
+                    LRUCache.prototype.join = function(n1,n2) {
+                      n1.next = n2
+                      n2.prev = n1
+                    }
+                    
+                    LRUCache.prototype.remove = function(n) {
+                      this.join(n.prev,n.next)
+                    }
+                    
+                    LRUCache.prototype.moveToHead = function(n) {
+                      this.join(n,this.head.next)
+                      this.join(this.head, n)
+                    }
+                    
+                    /** 
+                     * @param {number} key
+                     * @return {number}
+                     */
+                    LRUCache.prototype.get = function(key) {
+                     if(!(key in this.cache)) return -1
+                     let node = this.cache[key]
+                     this.remove(node)
+                     this.moveToHead(node)
+                     return node.value
+                    };
+                    
+                    /** 
+                     * @param {number} key 
+                     * @param {number} value
+                     * @return {void}
+                     */
+                    LRUCache.prototype.put = function(key, value) {
+                      if(key in this.cache){
+                        let node = this.cache[key]
+                        node.value = value
+                        this.remove(node)
+                        this.moveToHead(node)
+                        return
+                      }
+                      if(Object.keys(this.cache).length == this.capacity){
+                        let lastNode = this.tail.prev
+                        delete this.cache[lastNode.key]
+                        this.remove(lastNode)
+                      }
+                      this.moveToHead(new Node(key, value))
+                      this.cache[key] = this.head.next
+                    };
+                    
+                    
+                    var obj = new LRUCache(2)
+                    console.log(obj.get(0))
+                    obj.put(0,1)
+                    console.log(obj.get(0))`,
+                    output:`-1
+                    1`
                   },
                 },
               }}
@@ -36671,7 +36851,7 @@ class Solution:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q147. Insertion Sort List</b>
             </Span>
             <Span></Span>
             <Span>
@@ -36689,6 +36869,7 @@ class Solution:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q147. Insertion Sort List",
                 codes: {
                   Javascript: {
                     code: ``,
