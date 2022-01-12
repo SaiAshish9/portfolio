@@ -173,6 +173,7 @@ import Leetcode130 from "assets/leetcode/130.png";
 import Leetcode133 from "assets/leetcode/133.png";
 import Leetcode138 from "assets/leetcode/138.png";
 import Leetcode141 from "assets/leetcode/141.png";
+import Leetcode143 from "assets/leetcode/143.png";
 
 export const DATA = {
   ds: {
@@ -36315,26 +36316,110 @@ class Solution:
             <Span>
               <b>Q143. Reorder List</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given the head of a singly linked-list. The list can be
+              represented as:
+            </Span>
+            <Span>L0 → L1 → … → Ln - 1 → Ln</Span>
+            <Span>Reorder the list to be on the following form:</Span>
+            <Span>L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …</Span>
+            <Span>
+              You may not modify the values in the list's nodes. Only nodes
+              themselves may be changed.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode143} left />
+            <Span>
+              Input: head = [1,2,3,4] <br />
+              Output: [1,4,2,3]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: head = [1,2,3,4,5] <br />
+              Output: [1,5,2,4,3]
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              The number of nodes in the list is in the range [1, 5 * 104].
+              <br />1 &lt;= Node.val &lt;= 1000
+            </p>
             <CodeEditor
               options={{
                 title: "Q143. Reorder List",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function ListNode(val) {
+                      this.val = val;
+                      this.next = null;
+                    }
+                    
+                    /**
+                     * @param {ListNode} head
+                     * @return {void} Do not return anything, modify head in-place instead.
+                     */
+                    
+                    function merge(l1,l2){
+                    while(l2){
+                      let next = l1.next
+                      l1.next = l2;
+                      l1 = l2;
+                      l2 = next;
+                    }
+                    }
+                    
+                    function findMid(head){
+                      let prev = null
+                      let slow = fast = head
+                      while(fast && fast.next){
+                        prev = slow;
+                        slow = slow.next;
+                        fast = fast.next.next;
+                      }
+                      prev.next = null
+                      return slow
+                    }
+                    
+                    function reverse(head){
+                    let prev = next = null
+                    let curr = head
+                    while(curr){
+                    next = curr.next
+                    curr.next = prev
+                    prev = curr
+                    curr = next
+                    }
+                    return prev
+                    }
+                    
+                    var reorderList = function(head) {
+                      if (!head|| !head.next)
+                          return;
+                      let mid = findMid(head);
+                      let reversed = reverse(mid);
+                      merge(head, reversed); 
+                      console.log(head)
+                    };
+                    
+                    const l = new ListNode(1)
+                    l.next = new ListNode(2)
+                    l.next.next = new ListNode(3)
+                    l.next.next.next = new ListNode(4)
+                    reorderList(l)
+                    console.log(l)`,
+                    output:`ListNode {
+                      val: 1,
+                      next: ListNode { val: 4, next: ListNode { val: 2, next: [ListNode] } }
+                    }
+                    ListNode {
+                      val: 1,
+                      next: ListNode { val: 4, next: ListNode { val: 2, next: [ListNode] } }
+                    }`
                   },
                 },
               }}
