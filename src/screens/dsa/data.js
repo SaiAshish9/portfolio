@@ -176,6 +176,7 @@ import Leetcode141 from "assets/leetcode/141.png";
 import Leetcode143 from "assets/leetcode/143.png";
 import Leetcode144 from "assets/leetcode/144.png";
 import Leetcode147 from "assets/leetcode/147.png";
+import Leetcode149 from "assets/leetcode/149.png";
 
 export const DATA = {
   ds: {
@@ -36950,7 +36951,10 @@ class LRUCache:
             <Span>
               <b>Q148. Sort List</b>
             </Span>
-            <Span>Given the head of a linked list, return the list after sorting it in ascending order.</Span>
+            <Span>
+              Given the head of a linked list, return the list after sorting it
+              in ascending order.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
@@ -37053,10 +37057,10 @@ class LRUCache:
                     l.next.next = new ListNode(1)
                     l.next.next.next = new ListNode(3)
                     sortList(l)`,
-                    output:`ListNode {
+                    output: `ListNode {
                       val: 1,
                       next: ListNode { val: 2, next: ListNode { val: 3, next: [ListNode] } }
-                    }`
+                    }`,
                   },
                 },
               }}
@@ -37071,26 +37075,85 @@ class LRUCache:
             <Span>
               <b>Q149. Max Points on a Line</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an array of points where points[i] = [xi, yi] represents a
+              point on the X-Y plane, return the maximum number of points that
+              lie on the same straight line.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode149} left />
+            <Span>
+              Input: points = [[1,1],[2,2],[3,3]] <br />
+              Output: 3
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
+              <br />
+              Output: 4
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= points.length &lt;= 300 <br />
+              points[i].length == 2 <br />
+              -104 &lt;= xi, yi &lt;= 104 <br />
+              All the points are unique.
+            </p>
             <CodeEditor
               options={{
                 title: "Q149. Max Points on a Line",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[][]} points
+                    * @return {number}
+                    */
+                   
+                   // hcf
+                   function gcd(a,b){
+                     if(b===0) return a
+                     return gcd(b,a%b)
+                   }
+                   
+                   function getSlope(p1,p2){
+                     let dx = p2[0] - p1[0];
+                     let dy = p2[1] - p1[1];
+                     if (dx == 0) return [0, p1[0]]
+                     if (dy == 0) return [p1[1], 0]
+                     let d = gcd(dx, dy);
+                     return [parseInt(dx / d), parseInt(dy / d)]
+                   }
+                   
+                   var maxPoints = function(points) {
+                     let ans = 0
+                     for (let i = 0; i < points.length; ++i) {
+                     let slopeCount = {};
+                     let p1 = points[i];
+                     let samePoints = 1;
+                     let maxPoints = 0; 
+                     for (let j = i + 1; j < points.length; ++j) {
+                       let p2 = points[j];
+                       if (p1[0] == p2[0] && p1[1] == p2[1])
+                         ++samePoints;
+                       else {
+                         let slope = getSlope(p1, p2);
+                         slopeCount[slope] = (slopeCount[slope] || 0) + 1
+                         maxPoints = Math.max(maxPoints, slopeCount[slope]);
+                       }
+                     }
+                     ans = Math.max(ans, samePoints + maxPoints);
+                     }
+                     return ans;
+                   };
+                   
+                   maxPoints([[1,1],[2,2],[3,3]])`,
+                    output: `3`,
                   },
                 },
               }}
@@ -37103,24 +37166,68 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q150. Evaluate Reverse Polish Notation</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Evaluate the value of an arithmetic expression in Reverse Polish
+              Notation.
+            </Span>
+            <Span>
+              Valid operators are +, -, *, and /. Each operand may be an integer
+              or another expression.
+            </Span>
+            <Span>
+              Note that division between two integers should truncate toward
+              zero.
+            </Span>
+            <Span>
+              It is guaranteed that the given RPN expression is always valid.
+              That means the expression would always evaluate to a result, and
+              there will not be any division by zero operation.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: tokens = ["2","1","+","3","*"]
+              <br />
+              Output: 9 Explanation: ((2 + 1) * 3) = 9
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: tokens = ["4","13","5","/","+"] <br />
+              Output: 6 Explanation: (4 + (13 / 5)) = 6
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: tokens =
+              ["10","6","9","3","+","-11","*","/","*","17","+","5","+"] Output:
+              22
+              <br />
+              <br />
+              Explanation: ((10 * (6 / ((9 + 3) * -11))) + 17) + 5
+              <br />= ((10 * (6 / (12 * -11))) + 17) + 5
+              <br />= ((10 * (6 / -132)) + 17) + 5
+              <br />= ((10 * 0) + 17) + 5
+              <br />= (0 + 17) + 5
+              <br />= 17 + 5
+              <br />= 22
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= tokens.length &lt;= 104 <br />
+              tokens[i] is either an operator: "+", "-", "*", or "/", or an
+              integer in the range [-200, 200].
+            </p>
             <CodeEditor
               options={{
+                title: "Q150. Evaluate Reverse Polish Notation",
                 codes: {
                   Javascript: {
                     code: ``,
