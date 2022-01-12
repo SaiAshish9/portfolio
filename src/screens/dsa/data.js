@@ -172,6 +172,7 @@ import Leetcode129 from "assets/leetcode/129.png";
 import Leetcode130 from "assets/leetcode/130.png";
 import Leetcode133 from "assets/leetcode/133.png";
 import Leetcode138 from "assets/leetcode/138.png";
+import Leetcode141 from "assets/leetcode/141.png";
 
 export const DATA = {
   ds: {
@@ -36113,6 +36114,7 @@ class Solution:
             <Span>
               <b>Example 1:</b>
             </Span>
+            <Img src={Leetcode141} left />
             <Span>
               Input: head = [3,2,0,-4], pos = 1 <br />
               Output: true <br />
@@ -36122,18 +36124,66 @@ class Solution:
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: head = [1], pos = -1
+              <br />
+              Output: false
+              <br />
+              Explanation: There is no cycle in the linked list.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              The number of the nodes in the list is in the range [0, 104].
+              <br />
+              -105 &lt;= Node.val &lt;= 105
+              <br />
+              pos is -1 or a valid index in the linked-list.
+            </p>
             <CodeEditor
               options={{
                 title: "Q141. Linked List Cycle",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function ListNode(val) {
+                      this.val = val;
+                      this.next = null;
+                    }
+                    
+                    /**
+                     * @param {ListNode} head
+                     * @return {boolean}
+                     */
+                    
+                    // let slow = fast = head;
+                    // while (fast && fast.next) {
+                    //   slow = slow.next;
+                    //   fast = fast.next.next;
+                    //   if (slow == fast)
+                    //     return true;
+                    // }
+                    // return false;
+                    
+                    var hasCycle = function(head) {
+                      let temp = head
+                      let s = new Set()
+                      while(temp !== null){
+                        if(s.has(temp))
+                        return true
+                        s.add(temp)
+                        temp = temp.next
+                      }
+                      return false
+                    };
+                    
+                    const l = new ListNode(3)
+                    l.next = new ListNode(2)
+                    l.next.next = new ListNode(0)
+                    l.next.next.next = new ListNode(-4)
+                    l.next.next.next.next = l.next
+                    hasCycle(l)`,
+                    output: `true`,
                   },
                 },
               }}
@@ -36152,22 +36202,94 @@ class Solution:
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode141} left />
+            <Span>
+              Input: head = [3,2,0,-4], pos = 1 <br />
+              Output: tail connects to node index 1 <br />
+              Explanation: There is a cycle in the linked list, where tail
+              connects to the second node.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: head = [1,2], pos = 0<br />
+              Output: tail connects to node index 0<br />
+              Explanation: There is a cycle in the linked list, where tail
+              connects to the first node.
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: head = [1], pos = -1
+              <br />
+              Output: no cycle
+              <br />
+              Explanation: There is no cycle in the linked list.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              The number of the nodes in the list is in the range [0, 104].
+              <br />
+              -105 &lt;= Node.val &lt;= 105
+              <br />
+              pos is -1 or a valid index in the linked-list.
+            </Span>
+            <p>
+              <b>Follow up: </b>
+              Can you solve it using O(1) (i.e. constant) memory?
+            </p>
             <CodeEditor
               options={{
                 title: "Q142. Linked List Cycle II",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `class ListNode {
+                      int val;
+                      ListNode next;
+                      ListNode(int x) {
+                          val = x;
+                          next = null;
+                      }
+                  }
+                  
+                  // comment ListNode class before submission
+
+                  public class Solution {
+                    public ListNode detectCycle(ListNode head) {
+                      ListNode slow = head;
+                      ListNode fast = head;
+                  
+                      while (fast != null && fast.next != null) {
+                        slow = slow.next;
+                        fast = fast.next.next;
+                        if (slow == fast) {
+                          slow = head;
+                          while (slow != fast) {
+                            slow = slow.next;
+                            fast = fast.next;
+                          }
+                          return slow;
+                        }
+                      }
+                  
+                      return null;
+                    }
+                    public static void Solution(String ...s){
+                      ListNode l = new ListNode(3);
+                      l.next = new ListNode(2);
+                      l.next.next = new ListNode(0); 
+                      l.next.next.next = new ListNode(-4);
+                      l.next.next.next.next = l.next;
+                      Solution m = new Solution();
+                      System.out.println(m.detectCycle(l));
+                    }
+                  }
+                  `,
+                    output: `ListNode@2c7b84de`,
                   },
                 },
               }}
