@@ -37230,7 +37230,32 @@ class LRUCache:
                 title: "Q150. Evaluate Reverse Polish Notation",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {string[]} tokens
+                    * @return {number}
+                    */
+                   var evalRPN = function(tokens) {
+                     const stack = []
+                     const operators = {
+                       '+': (a,b) => a + b,
+                       '-': (a,b) => a - b,
+                       '*': (a,b) => a * b,
+                       '/': (a,b) => parseInt(a / b),
+                     }
+                     for(let token of tokens){
+                       if(token in operators){
+                         let b = stack.pop()
+                         let a = stack.pop()
+                         stack.push(operators[token](a, b))
+                       }
+                       else
+                         stack.push(parseInt(token))
+                     }
+                     return stack[0]
+                   };
+                   
+                   evalRPN(["4","13","5","/","+"])`,
+                    output: 6,
                   },
                 },
               }}
