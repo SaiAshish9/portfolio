@@ -175,7 +175,7 @@ import Leetcode138 from "assets/leetcode/138.png";
 import Leetcode141 from "assets/leetcode/141.png";
 import Leetcode143 from "assets/leetcode/143.png";
 import Leetcode144 from "assets/leetcode/144.png";
-import Leetcode147 from "assets/leetcode/147.png" 
+import Leetcode147 from "assets/leetcode/147.png";
 
 export const DATA = {
   ds: {
@@ -36932,10 +36932,10 @@ class LRUCache:
                     l.next.next = new ListNode(1)
                     l.next.next.next = new ListNode(3)
                     insertionSortList(l)`,
-                    output:`ListNode {
+                    output: `ListNode {
                       val: 1,
                       next: ListNode { val: 2, next: ListNode { val: 3, next: [ListNode] } }
-                    }`
+                    }`,
                   },
                 },
               }}
@@ -36948,24 +36948,44 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q148. Sort List</b>
             </Span>
-            <Span></Span>
+            <Span>Given the head of a linked list, return the list after sorting it in ascending order.</Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode147} left />
+            <Span>
+              Input: head = [4,2,1,3] <br />
+              Output: [1,2,3,4]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: head = [-1,5,3,4,0] <br />
+              Output: [-1,0,3,4,5]
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: head = []
+              <br />
+              Output: []
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              The number of nodes in the list is in the range [0, 5 * 104].{" "}
+              <br />
+              -105 &lt;= Node.val &lt;= 105
+            </Span>
             <p></p>
             <CodeEditor
               options={{
+                title: "Q148. Sort List",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -36976,7 +36996,7 @@ class LRUCache:
           </>
         ),
       },
-      q148: {
+      q149: {
         title: "Q149. Max Points on a Line",
         content: (
           <>
