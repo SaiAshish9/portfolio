@@ -37354,26 +37354,66 @@ class LRUCache:
             <Span>
               <b>Q152. Maximum Product Subarray</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer array nums, find a contiguous non-empty subarray
+              within the array that has the largest product, and return the
+              product.
+              <br />
+              The test cases are generated so that the answer will fit in a
+              32-bit integer.
+              <br />A subarray is a contiguous subsequence of the array.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [2,3,-2,4]
+              <br />
+              Output: 6<br />
+              Explanation: [2,3] has the largest product 6.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [-2,0,-1]
+              <br />
+              Output: 0<br />
+              Explanation: The result cannot be 2, because [-2,-1] is not a
+              subarray.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= nums.length &lt;= 2 * 104 <br />
+              -10 &lt;= nums[i] &lt;= 10 <br />
+              The product of any prefix or suffix of nums is guaranteed to fit
+              in a 32-bit integer.
+            </p>
             <CodeEditor
               options={{
                 title: "Q152. Maximum Product Subarray",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var maxProduct = function(nums) {
+                     let ans = prevMin = prevMax = nums[0]
+                     for(let i = 1;i<nums.length;i++){
+                       let mini = prevMin * nums[i]
+                       let maxi = prevMax * nums[i]
+                       prevMin = Math.min(nums[i], mini, maxi)
+                       prevMax = Math.max(nums[i], mini, maxi)
+                       ans = Math.max(ans, prevMax)
+                     }
+                     return ans
+                   };
+                   
+                   maxProduct([2,3,-2,4])`,
+                    output: `6`,
                   },
                 },
               }}
@@ -37386,7 +37426,7 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q153. Find Minimum in Rotated Sorted Array</b>
             </Span>
             <Span></Span>
             <Span>
@@ -37404,9 +37444,11 @@ class LRUCache:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q153. Find Minimum in Rotated Sorted Array",
                 codes: {
                   Javascript: {
                     code: ``,
+                    output: ``,
                   },
                 },
               }}
@@ -37419,7 +37461,7 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q154. Find Minimum in Rotated Sorted Array II</b>
             </Span>
             <Span></Span>
             <Span>
@@ -37437,9 +37479,11 @@ class LRUCache:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q154. Find Minimum in Rotated Sorted Array II",
                 codes: {
                   Javascript: {
                     code: ``,
+                    output: ``,
                   },
                 },
               }}
@@ -37452,7 +37496,7 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q155. Min Stack</b>
             </Span>
             <Span></Span>
             <Span>
@@ -37470,9 +37514,11 @@ class LRUCache:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q155. Min Stack",
                 codes: {
                   Javascript: {
                     code: ``,
+                    output: ``,
                   },
                 },
               }}
@@ -37485,7 +37531,7 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q160. Intersection of Two Linked Lists (Q156)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -37503,9 +37549,11 @@ class LRUCache:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q160. Intersection of Two Linked Lists (Q156)",
                 codes: {
                   Javascript: {
                     code: ``,
+                    output: ``,
                   },
                 },
               }}
@@ -37518,7 +37566,7 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q162. Find Peak Element (Q157)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -37536,9 +37584,11 @@ class LRUCache:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q162. Find Peak Element (Q157)",
                 codes: {
                   Javascript: {
                     code: ``,
+                    output: ``,
                   },
                 },
               }}
@@ -37572,6 +37622,7 @@ class LRUCache:
                 codes: {
                   Javascript: {
                     code: ``,
+                    output: ``,
                   },
                 },
               }}
@@ -37584,7 +37635,7 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q165. Compare Version Numbers (Q159)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -37602,9 +37653,11 @@ class LRUCache:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q165. Compare Version Numbers (Q159)",
                 codes: {
                   Javascript: {
                     code: ``,
+                    output: ``,
                   },
                 },
               }}
@@ -37617,7 +37670,7 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q166. Fraction to Recurring Decimal (Q160)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -37635,9 +37688,11 @@ class LRUCache:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q166. Fraction to Recurring Decimal (Q160)",
                 codes: {
                   Javascript: {
                     code: ``,
+                    output: ``,
                   },
                 },
               }}
@@ -37650,7 +37705,7 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q167. Two Sum II - Input Array Is Sorted (Q161)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -37668,9 +37723,11 @@ class LRUCache:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q167. Two Sum II - Input Array Is Sorted (Q161)",
                 codes: {
                   Javascript: {
                     code: ``,
+                    output: ``,
                   },
                 },
               }}
@@ -37683,7 +37740,7 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q168. Excel Sheet Column Title (Q162</b>
             </Span>
             <Span></Span>
             <Span>
@@ -37701,9 +37758,11 @@ class LRUCache:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q168. Excel Sheet Column Title (Q162)",
                 codes: {
                   Javascript: {
                     code: ``,
+                    output: ``,
                   },
                 },
               }}
@@ -37716,7 +37775,7 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q169. Majority Element (Q164)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -37734,9 +37793,11 @@ class LRUCache:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q169. Majority Element (Q164)",
                 codes: {
                   Javascript: {
                     code: ``,
+                    output: ``,
                   },
                 },
               }}
