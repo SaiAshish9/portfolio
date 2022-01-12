@@ -36198,7 +36198,18 @@ class Solution:
             <Span>
               <b>Q142. Linked List Cycle II</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the head of a linked list, return the node where the cycle
+              begins. If there is no cycle, return null.
+            </Span>
+            <Span>
+              There is a cycle in a linked list if there is some node in the
+              list that can be reached again by continuously following the next
+              pointer. Internally, pos is used to denote the index of the node
+              that tail's next pointer is connected to (0-indexed). It is -1 if
+              there is no cycle. Note that pos is not passed as a parameter.
+            </Span>
+            <Span>Do not modify the linked list.</Span>
             <Span>
               <b>Example 1:</b>
             </Span>
