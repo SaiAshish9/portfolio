@@ -36313,7 +36313,7 @@ class Solution:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q143. Reorder List</b>
             </Span>
             <Span></Span>
             <Span>
@@ -36331,6 +36331,7 @@ class Solution:
             <p></p>
             <CodeEditor
               options={{
+                title: "Q143. Reorder List",
                 codes: {
                   Javascript: {
                     code: ``,
