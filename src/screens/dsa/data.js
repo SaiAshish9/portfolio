@@ -37954,28 +37954,87 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q164. Maximum Gap (Q158)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer array nums, return the maximum difference between
+              two successive elements in its sorted form. If the array contains
+              less than two elements, return 0.
+            </Span>
+            <Span>
+              You must write an algorithm that runs in linear time and uses
+              linear extra space.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [3,6,9,1]
+              <br />
+              Output: 3<br />
+              Explanation: The sorted form of the array is [1,3,6,9], either
+              (3,6) or (6,9) has the maximum difference 3.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [10] <br />
+              Output: 0 <br />
+              Explanation: The array contains less than 2 elements, therefore
+              return 0.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= nums.length &lt;= 105 <bt />0 &lt;= nums[i] &lt;= 109
+            </p>
             <CodeEditor
               options={{
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   
+                   class Bucket{
+                     constructor(min=Number.MAX_SAFE_INTEGER,max=Number.MIN_SAFE_INTEGER){
+                       this.min = min 
+                       this.max = max
+                     }
+                   }
+                   
+                   var maximumGap = function(nums) {
+                     if(nums.length < 2) return 0
+                       let min = Math.min(...nums)
+                       let max = Math.max(...nums)
+                       if(min == max)
+                         return 0
+                       let gap = Math.ceil((max - min) / (nums.length - 1))
+                       let bucketSize = parseInt((max - min) / gap)+1
+                       const buckets = []
+                       for(let i=0;i<bucketSize;i++)
+                       buckets.push(new Bucket())
+                       for(let num of nums){
+                         let i = parseInt((num - min) / gap)
+                         buckets[i].min = Math.min(buckets[i].min, num)
+                         buckets[i].max = Math.max(buckets[i].max, num)
+                       }
+                       let ans = 0
+                       let prevMax = min
+                       for(let bucket of buckets){
+                         if(bucket.min == Number.MAX_SAFE_INTEGER) continue  
+                         ans = Math.max(ans, bucket.min - prevMax)
+                         prevMax = bucket.max
+                       }
+                       return ans
+                   };
+                   
+                   maximumGap([3,6,9,1])
+                   `,
+                    output: `3`,
                   },
                 },
               }}
