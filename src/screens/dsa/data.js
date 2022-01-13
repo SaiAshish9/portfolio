@@ -17978,15 +17978,15 @@ console.log(isPairSum(arr, arrSize, val));
                 },
               }}
             />
-            <p>
+            <Span>
               <b>
                 Problem Solving Q6: Implement your own custom data structure.
               </b>
-            </p>
+            </Span>
             <Span>
               <b>Min Stack</b>
             </Span>
-            <Span>
+            <p>
               MinStack() initializes the stack object.
               <br />
               void push(int val) pushes the element val onto the stack.
@@ -17996,7 +17996,7 @@ console.log(isPairSum(arr, arrSize, val));
               int top() gets the top element of the stack.
               <br />
               int getMin() retrieves the minimum element in the stack.
-            </Span>
+            </p>
             <CodeEditor
               options={{
                 title: "cred-q6",
