@@ -38049,27 +38049,100 @@ class LRUCache:
             <Span>
               <b>Q165. Compare Version Numbers (Q159)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given two version numbers, version1 and version2, compare them.
+            </Span>
+            <Span>
+              Version numbers consist of one or more revisions joined by a dot
+              '.'. Each revision consists of digits and may contain leading
+              zeros. Every revision contains at least one character. Revisions
+              are 0-indexed from left to right, with the leftmost revision being
+              revision 0, the next revision being revision 1, and so on. For
+              example 2.5.33 and 0.1 are valid version numbers.
+            </Span>
+            <Span>
+              To compare version numbers, compare their revisions in
+              left-to-right order. Revisions are compared using their integer
+              value ignoring any leading zeros. This means that revisions 1 and
+              001 are considered equal. If a version number does not specify a
+              revision at an index, then treat the revision as 0. For example,
+              version 1.0 is less than version 1.1 because their revision 0s are
+              the same, but their revision 1s are 0 and 1 respectively, and 0
+              &lt; 1.
+            </Span>
+            <Span>
+              Return the following:
+              <br />
+              If version1 &lt; version2, return -1.
+              <br />
+              If version1 &gt; version2, return 1.
+              <br />
+              Otherwise, return 0.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: version1 = "1.01", version2 = "1.001"
+              <br />
+              Output: 0<br />
+              Explanation: Ignoring leading zeroes, both "01" and "001"
+              represent the same integer "1".
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: version1 = "1.0", version2 = "1.0.0"
+              <br />
+              Output: 0<br />
+              Explanation: version1 does not specify revision 2, which means it
+              is treated as "0".
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: version1 = "0.1", version2 = "1.1" Output: -1 Explanation:
+              version1's revision 0 is "0", while version2's revision 0 is "1".
+              0 &lt; 1, so version1 &lt; version2.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= version1.length, version2.length &lt;= 500 <br />
+              version1 and version2 only contain digits and '.'. <br />
+              version1 and version2 are valid version numbers. <br />
+              All the given revisions in version1 and version2 can be stored in
+              a 32-bit integer.
+            </p>
             <CodeEditor
               options={{
                 title: "Q165. Compare Version Numbers (Q159)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string} version1
+                    * @param {string} version2
+                    * @return {number}
+                    */
+                   var compareVersion = function(version1, version2) {
+                     const l1 = version1.split('.')
+                     const l2 = version2.split('.')
+                     const len = Math.max(l1.length,l2.length)
+                     for(let i=0;i<len;i++){
+                       let v1 = v2 =0
+                       if(i<l1.length) v1 = +l1[i]
+                       if(i<l2.length) v2 = +l2[i]
+                       if(v1 < v2) return -1
+                       if(v1 > v2) return 1
+                     }
+                     return 0
+                   };
+                   
+                   compareVersion("0.1","1.1")`,
+                    output: `-1`,
                   },
                 },
               }}
