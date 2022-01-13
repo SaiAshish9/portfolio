@@ -36793,8 +36793,7 @@ class Solution:
                 1`,
                 codes: {
                   Python: {
-                    code: `
-class Node:
+                    code: `class Node:
     def __init__(self, key: int, value: int):
         self.key = key
         self.value = value
