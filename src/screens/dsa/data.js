@@ -38252,27 +38252,79 @@ class LRUCache:
             <Span>
               <b>Q167. Two Sum II - Input Array Is Sorted (Q161)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a 1-indexed array of integers numbers that is already sorted
+              in non-decreasing order, find two numbers such that they add up to
+              a specific target number. Let these two numbers be numbers[index1]
+              and numbers[index2] where 1 &lt;= index1 &lt; index2 &lt;=
+              numbers.length.
+            </Span>
+            <Span>
+              Return the indices of the two numbers, index1 and index2, added by
+              one as an integer array [index1, index2] of length 2.
+            </Span>
+            <Span>
+              The tests are generated such that there is exactly one solution.
+              You may not use the same element twice.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: numbers = [2,7,11,15], target = 9<br />
+              Output: [1,2]
+              <br />
+              Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1,
+              index2 = 2. We return [1, 2].
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: numbers = [-1,0], target = -1
+              <br />
+              Output: [1,2]
+              <br />
+              Explanation: The sum of -1 and 0 is -1. Therefore index1 = 1,
+              index2 = 2. We return [1, 2].
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              2 &lt;= numbers.length &lt;= 3 * 104
+              <br />
+              -1000 &lt;= numbers[i] &lt;= 1000
+              <br />
+              numbers is sorted in non-decreasing order.
+              <br />
+              -1000 &lt;= target &ly;= 1000
+              <br />
+              The tests are generated such that there is exactly one solution.
+            </p>
             <CodeEditor
               options={{
                 title: "Q167. Two Sum II - Input Array Is Sorted (Q161)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} numbers
+                    * @param {number} target
+                    * @return {number[]}
+                    */
+                   var twoSum = function(numbers, target) {
+                     let l = 0;
+                     let r = numbers.length - 1;
+                     while (numbers[l] + numbers[r] != target)
+                     if (numbers[l] + numbers[r] < target)
+                       ++l;
+                     else
+                     --r;
+                     return [l + 1, r + 1] 
+                   };
+                   
+                   twoSum([2,3,4],6)`,
+                    output: `[1,3]`,
                   },
                 },
               }}
