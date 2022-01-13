@@ -37428,27 +37428,88 @@ class LRUCache:
             <Span>
               <b>Q153. Find Minimum in Rotated Sorted Array</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Suppose an array of length n sorted in ascending order is rotated
+              between 1 and n times. For example, the array nums =
+              [0,1,2,4,5,6,7] might become:
+            </Span>
+            <Span>
+              [4,5,6,7,0,1,2] if it was rotated 4 times. <br />
+              [0,1,2,4,5,6,7] if it was rotated 7 times.
+            </Span>
+            <Span>
+              Notice that rotating an array [a[0], a[1], a[2], ..., a[n-1]] 1
+              time results in the array [a[n-1], a[0], a[1], a[2], ..., a[n-2]].
+            </Span>
+            <Span>
+              Given the sorted rotated array nums of unique elements, return the
+              minimum element of this array.
+            </Span>
+            <Span>You must write an algorithm that runs in O(log n) time.</Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [3,4,5,1,2]
+              <br />
+              Output: 1<br />
+              Explanation: The original array was [1,2,3,4,5] rotated 3 times.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [4,5,6,7,0,1,2]
+              <br />
+              Output: 0<br />
+              Explanation: The original array was [0,1,2,4,5,6,7] and it was
+              rotated 4 times.
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: nums = [11,13,15,17]
+              <br />
+              Output: 11
+              <br />
+              Explanation: The original array was [11,13,15,17] and it was
+              rotated 4 times.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              n == nums.length <br />
+              1 &lt;= n &lt;= 5000 <br />
+              -5000 &lt;= nums[i] &lt;= 5000 <br />
+              All the integers of nums are unique. <br />
+              nums is sorted and rotated between 1 and n times.
+            </p>
             <CodeEditor
               options={{
                 title: "Q153. Find Minimum in Rotated Sorted Array",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var findMin = function(nums) {
+                     let l = 0;
+                     let r = nums.length - 1;
+                     while (l < r) {
+                       const m = l + parseInt((r - l) / 2);
+                       if (nums[m] < nums[r])
+                         r = m;
+                       else
+                         l = m + 1;
+                     }
+                     return nums[l];
+                   };
+                   
+                   findMin([11,13,15,17])`,
+                    output: `11`,
                   },
                 },
               }}
@@ -37463,27 +37524,86 @@ class LRUCache:
             <Span>
               <b>Q154. Find Minimum in Rotated Sorted Array II</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Suppose an array of length n sorted in ascending order is rotated
+              between 1 and n times. For example, the array nums =
+              [0,1,4,4,5,6,7] might become:
+            </Span>
+            <Span>
+              [4,5,6,7,0,1,4] if it was rotated 4 times. <br />
+              [0,1,4,4,5,6,7] if it was rotated 7 times.
+            </Span>
+            <Span>
+              Notice that rotating an array [a[0], a[1], a[2], ..., a[n-1]] 1
+              time results in the array [a[n-1], a[0], a[1], a[2], ..., a[n-2]].
+            </Span>
+            <Span>
+              Given the sorted rotated array nums that may contain duplicates,
+              return the minimum element of this array.
+            </Span>
+            <Span>
+              You must decrease the overall operation steps as much as possible.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [1,3,5]
+              <br />
+              Output: 1
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [2,2,2,0,1]
+              <br />
+              Output: 0
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              n == nums.length
+              <br />
+              1 &lt;= n &lt;= 5000
+              <br />
+              -5000 &lt;= nums[i] &lt;= 5000
+              <br />
+              nums is sorted and rotated between 1 and n times.
+            </Span>
+            <p>
+              <b>Follow up: </b>
+              This problem is similar to Find Minimum in Rotated Sorted Array,
+              but nums may contain duplicates. Would this affect the runtime
+              complexity? How and why?
+            </p>
             <CodeEditor
               options={{
                 title: "Q154. Find Minimum in Rotated Sorted Array II",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var findMin = function(nums) {
+                     let l = 0;
+                     let r = nums.length - 1;
+                     while (l < r) {
+                       const m = l + parseInt((r - l) / 2);
+                       if (nums[m] === nums[r])
+                         r-=1
+                       else if (nums[m] < nums[r])
+                         r = m;
+                       else
+                         l = m + 1;
+                     }
+                     return nums[l];
+                   };
+                   
+                   findMin([1,3,3])`,
+                    output: `3`,
                   },
                 },
               }}
