@@ -38157,20 +38157,48 @@ class LRUCache:
             <Span>
               <b>Q166. Fraction to Recurring Decimal (Q160)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given two integers representing the numerator and denominator of a
+              fraction, return the fraction in string format.
+            </Span>
+            <Span>
+              If the fractional part is repeating, enclose the repeating part in
+              parentheses.
+            </Span>
+            <Span>If multiple answers are possible, return any of them.</Span>
+            <Span>
+              It is guaranteed that the length of the answer string is less than
+              104 for all the given inputs.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: numerator = 1, <br />
+              denominator = 2 <br />
+              Output: "0.5"
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: numerator = 2,
+              <br /> denominator = 1<br />
+              Output: "2"
+            </Span>
+            <Span>
+              Input: numerator = 4,
+              <br /> denominator = 333
+              <br />
+              Output: "0.(012)"
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              -231 &lt;= numerator, denominator &lt;= 231 - 1 <br />
+              denominator != 0
+            </p>
             <CodeEditor
               options={{
                 title: "Q166. Fraction to Recurring Decimal (Q160)",
