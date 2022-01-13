@@ -177,6 +177,7 @@ import Leetcode143 from "assets/leetcode/143.png";
 import Leetcode144 from "assets/leetcode/144.png";
 import Leetcode147 from "assets/leetcode/147.png";
 import Leetcode149 from "assets/leetcode/149.png";
+import Leetcode160 from "assets/leetcode/160.png";
 
 export const DATA = {
   ds: {
@@ -37618,27 +37619,108 @@ class LRUCache:
             <Span>
               <b>Q155. Min Stack</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Design a stack that supports push, pop, top, and retrieving the
+              minimum element in constant time.
+            </Span>
+            <Span>Implement the MinStack class:</Span>
+            <Span>
+              MinStack() initializes the stack object.
+              <br />
+              void push(int val) pushes the element val onto the stack.
+              <br />
+              void pop() removes the element on the top of the stack.
+              <br />
+              int top() gets the top element of the stack.
+              <br />
+              int getMin() retrieves the minimum element in the stack.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 2:</b>
+              Input <br />
+              ["MinStack","push","push","push","getMin","pop","top","getMin"]{" "}
+              <br />
+              [[],[-2],[0],[-3],[],[],[],[]] <br />
+              <br />
+              Output <br />
+              [null,null,null,null,-3,null,0,-2]
+              <br />
+              Explanation
+              <br />
+              MinStack minStack = new MinStack();
+              <br />
+              minStack.push(-2);
+              <br />
+              minStack.push(0);
+              <br />
+              minStack.push(-3);
+              <br />
+              minStack.getMin(); // return -3
+              <br />
+              minStack.pop();
+              <br />
+              minStack.top(); // return 0 minStack.getMin(); // return -2
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              -231 &lt;= val &lt;= 231 - 1 <br />
+              Methods pop, top and getMin operations will always be called on
+              non-empty stacks. <br />
+              At most 3 * 104 calls will be made to push, pop, top, and getMin.
+            </p>
             <CodeEditor
               options={{
                 title: "Q155. Min Stack",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `var MinStack = function() {
+                      this.stack = []
+                    };
+                    
+                    /** 
+                     * @param {number} val
+                     * @return {void}
+                     */
+                    MinStack.prototype.push = function(val) {
+                      let min = val
+                      if(this.stack.length) min = Math.min(this.stack.slice(-1)[0][1],val)
+                      this.stack.push([val,min])
+                    };
+                    
+                    /**
+                     * @return {void}
+                     */
+                    MinStack.prototype.pop = function() {
+                      this.stack.pop()  
+                    };
+                    
+                    /**
+                     * @return {number}
+                     */
+                    MinStack.prototype.top = function() {
+                      return this.stack.slice(-1)[0][0] 
+                    };
+                    
+                    /**
+                     * @return {number}
+                     */
+                    MinStack.prototype.getMin = function() {
+                      return this.stack.slice(-1)[0][1]
+                    };
+                    
+                    var obj = new MinStack()
+                    obj.push(1)
+                    obj.push(2)
+                    console.log(obj.top())
+                    obj.pop()
+                    console.log(obj.getMin())
+                    `,
+                    output: `2
+                    1`,
                   },
                 },
               }}
@@ -37653,20 +37735,96 @@ class LRUCache:
             <Span>
               <b>Q160. Intersection of Two Linked Lists (Q156)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the heads of two singly linked-lists headA and headB, return
+              the node at which the two lists intersect. If the two linked lists
+              have no intersection at all, return null.
+            </Span>
+            <Span>
+              For example, the following two linked lists begin to intersect at
+              node c1:
+            </Span>
+            <Span>
+              The test cases are generated such that there are no cycles
+              anywhere in the entire linked structure.
+            </Span>
+            <Span>
+              Note that the linked lists must retain their original structure
+              after the function returns.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode160} left />
+            <Span>
+              Input: intersectVal = 8, listA = [4,1,8,4,5], listB =
+              [5,6,1,8,4,5], skipA = 2, skipB = 3
+              <br />
+              Output: Intersected at '8'
+              <br />
+              Explanation: The intersected node's value is 8 (note that this
+              must not be 0 if the two lists intersect).
+              <br />
+              From the head of A, it reads as [4,1,8,4,5]. From the head of B,
+              it reads as [5,6,1,8,4,5]. There are 2 nodes before the
+              intersected node in A; There are 3 nodes before the intersected
+              node in B.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: intersectVal = 2, listA = [1,9,1,2,4], listB = [3,2,4],
+              skipA = 3, skipB = 1
+              <br />
+              Output: Intersected at '2'
+              <br />
+              Explanation: The intersected node's value is 2 (note that this
+              must not be 0 if the two lists intersect).
+              <br />
+              From the head of A, it reads as [1,9,1,2,4]. From the head of B,
+              it reads as [3,2,4]. There are 3 nodes before the intersected node
+              in A; There are 1 node before the intersected node in B.
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA =
+              3, skipB = 2
+              <br />
+              Output: No intersection
+              <br />
+              Explanation: From the head of A, it reads as [2,6,4]. From the
+              head of B, it reads as [1,5]. Since the two lists do not
+              intersect, intersectVal must be 0, while skipA and skipB can be
+              arbitrary values.
+              <br />
+              Explanation: The two lists do not intersect, so return null.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              The number of nodes of listA is in the m. <br />
+              The number of nodes of listB is in the n. <br />
+              1 &lt;= m, n &lt;= 3 * 104
+              <br />
+              1 &lt;= Node.val &lt;= 105
+              <br />
+              0 &lt;= skipA &lt; m<br />
+              0 &lt;= skipB &lt; n<br />
+              intersectVal is 0 if listA and listB do not intersect.
+              <br />
+              intersectVal == listA[skipA] == listB[skipB] if listA and listB
+              intersect.
+              <br />
+            </Span>
+            <p>
+              <b>Follow up: </b>
+              Could you write a solution that runs in O(m + n) time and use only
+              O(1) memory?
+            </p>
             <CodeEditor
               options={{
                 title: "Q160. Intersection of Two Linked Lists (Q156)",
