@@ -18854,7 +18854,7 @@ console.log(isPairSum(arr, arrSize, val));
   },
   //
   leetcode: {
-    title: "Leetcode Questions (1008)",
+    title: "Leetcode Questions (1008+)",
     types: {
       q1: {
         title: "Q1. Two Sum",
