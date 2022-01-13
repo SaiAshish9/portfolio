@@ -38337,29 +38337,69 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b>Q168. Excel Sheet Column Title (Q162</b>
+              <b>Q168. Excel Sheet Column Title (Q162)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer columnNumber, return its corresponding column
+              title as it appears in an Excel sheet.
+            </Span>
+            <Span>
+              For example:
+              <br />
+              A -&gt; 1<br />
+              B -&gt; 2<br />
+              C -&gt; 3<br />
+              ...
+              <br />
+              Z -&gt; 26
+              <br />
+              AA -&gt; 27
+              <br />
+              AB -&gt; 28 <br />
+              ...
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: columnNumber = 1 <br />
+              Output: "A"
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: columnNumber = 28
+              <br />
+              Output: "AB"
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: columnNumber = 701 <br />
+              Output: "ZY"
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>1 &lt;= columnNumber &lt;= 231 - 1</p>
             <CodeEditor
               options={{
                 title: "Q168. Excel Sheet Column Title (Q162)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} columnNumber
+                    * @return {string}
+                    */
+                   var convertToTitle = function(columnNumber) {
+                     let n = columnNumber
+                     return n == 0 ? "" : convertToTitle(parseInt((n - 1) / 26)) +String.fromCharCode(65+parseInt(((n - 1) % 26)))
+                   };
+                   
+                   convertToTitle(28)`,
+                    output: `AB`,
                   },
                 },
               }}
@@ -38368,33 +38408,153 @@ class LRUCache:
         ),
       },
       q163: {
-        title: "Q169. Majority Element (Q164)",
+        title: "Q169. Majority Element (Q163)",
         content: (
           <>
             <Span>
-              <b>Q169. Majority Element (Q164)</b>
+              <b>Q169. Majority Element (Q163)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an array nums of size n, return the majority element.
+            </Span>{" "}
+            <Span>
+              The majority element is the element that appears more than ⌊n / 2⌋
+              times. You may assume that the majority element always exists in
+              the array.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [3,2,3] <br />
+              Output: 3
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [3,2,3] <br />
+              Output: 3
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              n == nums.length <br />
+              1 &lt;= n &lt;= 5 * 104
+              <br />
+              -231 &lt;= nums[i] &lt;= 231 - 1
+            </Span>
+            <p>
+              <b>Follow-up: </b>
+              Could you solve the problem in linear time and in O(1) space?
+            </p>
             <CodeEditor
               options={{
-                title: "Q169. Majority Element (Q164)",
+                title: "Q169. Majority Element (Q163)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var majorityElement = function(nums) {
+                     let ans = null;
+                     let count = 0;
+                     for (let num of nums) {
+                       if (count == 0)
+                         ans = num;
+                       count += num == ans ? 1 : -1;
+                     }
+                       return ans;
+                   };
+                   
+                   majorityElement([3,2,3])`,
+                    output: `3`,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
+      },
+      q164: {
+        title: "Q171. Excel Sheet Column Number (Q164)",
+        content: (
+          <>
+            <Span>
+              <b>Q171. Excel Sheet Column Number (Q164)</b>
+            </Span>
+            <Span>
+              Given a string columnTitle that represents the column title as
+              appear in an Excel sheet, return its corresponding column number.
+            </Span>
+            <Span>
+              For example:
+              <br />
+              A -&gt; 1<br />
+              B -&gt; 2<br />
+              C -&gt; 3<br />
+              ...
+              <br />
+              Z -&gt; 26
+              <br />
+              AA -&gt; 27
+              <br />
+              AB -&gt; 28 <br />
+              ...
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: columnTitle = "A"
+              <br />
+              Output: 1
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: columnTitle = "AB" <br />
+              Output: 28
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: columnTitle = "ZY"
+              <br />
+              Output: 701
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <p>
+              1 &lt;= columnTitle.length &lt;= 7<br />
+              columnTitle consists only of uppercase English letters.
+              <br />
+              columnTitle is in the range ["A", "FXSHRXW"].
+              <br />
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q171. Excel Sheet Column Number (Q164)",
+                codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {string} columnTitle
+                    * @return {number}
+                    */
+                   var titleToNumber = function(columnTitle) {
+                     let ans = 0;
+                     for (let c of columnTitle)
+                     ans = ans * 26 + c.charCodeAt(0) - 64;
+                     return ans;  
+                   };
+                   
+                   titleToNumber("A")`,
+                    output: `1`,
                   },
                 },
               }}
