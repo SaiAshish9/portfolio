@@ -36789,6 +36789,8 @@ class Solution:
             <CodeEditor
               options={{
                 title: "Q146. LRU Cache",
+                output: `-1
+                1`,
                 codes: {
                   Python: {
                     code: `
@@ -36912,8 +36914,6 @@ class LRUCache:
                     console.log(obj.get(0))
                     obj.put(0,1)
                     console.log(obj.get(0))`,
-                    output: `-1
-                    1`,
                   },
                 },
               }}
@@ -38850,7 +38850,7 @@ class LRUCache:
           </>
         ),
       },
-      q170: {
+      q171: {
         title: "Q178. Rank Scores (Q171)",
         content: (
           <>
@@ -39019,41 +39019,6 @@ class LRUCache:
             <CodeEditor
               options={{
                 title: "Q182. Duplicate Emails (Q175)",
-                codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
-                  },
-                },
-              }}
-            />
-          </>
-        ),
-      },
-      q175: {
-        title: "Q (Q)",
-        content: (
-          <>
-            <Span>
-              <b>Q (Q)</b>
-            </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 1:</b>
-            </Span>
-            <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
-            <CodeEditor
-              options={{
                 codes: {
                   Javascript: {
                     code: ``,
