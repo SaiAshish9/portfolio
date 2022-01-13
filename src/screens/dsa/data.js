@@ -17978,9 +17978,81 @@ console.log(isPairSum(arr, arrSize, val));
                 },
               }}
             />
+            <p>
+              <b>
+                Problem Solving Q6: Implement your own custom data structure.
+              </b>
+            </p>
+            <Span>
+              <b>Min Stack</b>
+            </Span>
+            <Span>
+              MinStack() initializes the stack object.
+              <br />
+              void push(int val) pushes the element val onto the stack.
+              <br />
+              void pop() removes the element on the top of the stack.
+              <br />
+              int top() gets the top element of the stack.
+              <br />
+              int getMin() retrieves the minimum element in the stack.
+            </Span>
+            <CodeEditor
+              options={{
+                title: "cred-q6",
+                codes: {
+                  Javascript: {
+                    code: `var MinStack = function() {
+                      this.stack = []
+                    };
+                    
+                    /** 
+                     * @param {number} val
+                     * @return {void}
+                     */
+                    MinStack.prototype.push = function(val) {
+                      let min = val
+                      if(this.stack.length) min = Math.min(this.stack.slice(-1)[0][1],val)
+                      this.stack.push([val,min])
+                    };
+                    
+                    /**
+                     * @return {void}
+                     */
+                    MinStack.prototype.pop = function() {
+                      this.stack.pop()  
+                    };
+                    
+                    /**
+                     * @return {number}
+                     */
+                    MinStack.prototype.top = function() {
+                      return this.stack.slice(-1)[0][0] 
+                    };
+                    
+                    /**
+                     * @return {number}
+                     */
+                    MinStack.prototype.getMin = function() {
+                      return this.stack.slice(-1)[0][1]
+                    };
+                    
+                    var obj = new MinStack()
+                    obj.push(1)
+                    obj.push(2)
+                    console.log(obj.top())
+                    obj.pop()
+                    console.log(obj.getMin())
+                    `,
+                    output: `2
+                    1`,
+                  },
+                },
+              }}
+            />
             <Span>
               <b>
-                Problem Solving Q6 ( Puzzle ): Divide a cake into 8 pieces using
+                Problem Solving Q7 ( Puzzle ): Divide a cake into 8 pieces using
                 3 cuts.
               </b>
             </Span>
