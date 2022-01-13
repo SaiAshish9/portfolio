@@ -37830,8 +37830,42 @@ class LRUCache:
                 title: "Q160. Intersection of Two Linked Lists (Q156)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function ListNode(val) {
+                      this.val = val;
+                      this.next = null;
+                  }
+                  
+                  /**
+                   * @param {ListNode} headA
+                   * @param {ListNode} headB
+                   * @return {ListNode}
+                   */
+                  var getIntersectionNode = function(headA, headB) {
+                    let a = headA
+                    let b = headB
+                    while (a != b) {
+                      a = a ? a.next : headB;
+                      b = b ? b.next : headA;
+                    }
+                    return a
+                  };
+                  
+                  const c = new ListNode(8)
+                  c.next = new ListNode(4)
+                  c.next.next = new ListNode(5)
+                  const l1 = new ListNode(4)
+                  l1.next = new ListNode(1)
+                  l1.next.next = c
+                  const l2 = new ListNode(5)
+                  l2.next = new ListNode(6)
+                  l2.next.next = new ListNode(1)
+                  l2.next.next.next = c
+                  
+                  getIntersectionNode(l1,l2)`,
+                    output: `ListNode {
+                      val: 8,
+                      next: ListNode { val: 4, next: ListNode { val: 5, next: null } }
+                    }`,
                   },
                 },
               }}
@@ -37846,27 +37880,68 @@ class LRUCache:
             <Span>
               <b>Q162. Find Peak Element (Q157)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              A peak element is an element that is strictly greater than its
+              neighbors.
+            </Span>
+            <Span>
+              Given an integer array nums, find a peak element, and return its
+              index. If the array contains multiple peaks, return the index to
+              any of the peaks.
+            </Span>
+            <Span>You may imagine that nums[-1] = nums[n] = -∞.</Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>You must write an algorithm that runs in O(log n) time.</Span>
+            <Span>
+              Input: nums = [1,2,3,1]
+              <br />
+              Output: 2<br />
+              Explanation: 3 is a peak element and your function should return
+              the index number 2.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              <br />
+              Input: nums = [1,2,1,3,5,6,4] Output: 5<br /> Explanation: Your
+              function can return either index number 1 where the peak element
+              is 2, or index number 5 where the peak element is 6.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= nums.length &lt;= 1000 <br />
+              -231 &lt;= nums[i] &lt;= 231 - 1 <br />
+              nums[i] != nums[i + 1] for all valid i.
+            </p>
             <CodeEditor
               options={{
                 title: "Q162. Find Peak Element (Q157)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var findPeakElement = function(nums) {
+                     let l = 0;
+                     let r = nums.length - 1;
+                     while (l < r) {
+                       let m = l + parseInt((r - l) / 2);
+                       if (nums[m] >= nums[m + 1])
+                         r = m;
+                       else
+                         l = m + 1;
+                     }
+                     return l;
+                   };
+                   
+                   findPeakElement([1,2,3,1])`,
+                    output: `2`,
                   },
                 },
               }}
