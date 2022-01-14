@@ -16821,6 +16821,104 @@ SC O(N*W)
             ),
           },
           {
+            title: "Array Permutations",
+            content: (
+              <>
+                <p>
+                  <b>Array Permutations Using Dfs</b>
+                </p>
+                <CodeEditor
+                  options={{
+                    title: "Array Permutations",
+                    codes: {
+                      Javascript: {
+                        output: `[
+                      [ 1, 2, 3 ],
+                      [ 1, 3, 2 ],
+                      [ 2, 1, 3 ],
+                      [ 2, 3, 1 ],
+                      [ 3, 1, 2 ],
+                      [ 3, 2, 1 ]
+                    ]`,
+                        code: `/**
+                    * @param {number[]} nums
+                    * @return {number[][]}
+                    */
+                   var permute = function (nums) {
+                     let res = [];
+                     let visited = Array(nums.length).fill(false);
+                     dfs(nums, res, [], visited);
+                     return res;
+                   };
+                   
+                   var dfs = function (nums, res = [], curr = [], visited = []) {
+                     if (curr.length == nums.length) {
+                       res.push(curr.slice());
+                       return;
+                     }
+                     for (let i in nums) {
+                       if (visited[i] === false) {
+                         visited[i] = true;
+                         curr.push(nums[i]);
+                         dfs(nums, res, curr, visited);
+                         curr.pop();
+                         visited[i] = false;
+                       }
+                     }
+                   };
+                   
+                   console.log(permute([1, 2, 3]));
+                   
+                   `,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
+          },
+          {
+            title: "Array Combinations",
+            content: (
+              <>
+                <CodeEditor
+                  options={{
+                    title: "Array Combinations",
+                    codes: {
+                      Javascript: {
+                        code: `/**
+                    * @param {number} n
+                    * @param {number} k
+                    * @return {number[][]}
+                    */
+                   var dfs = function(n,k,s,res,curr=[]){
+                     if(k==0){
+                      res.push(curr.slice())
+                      return
+                     }
+                     for(let i=s;i<=n;i++){
+                     curr.push(i)
+                     dfs(n,k-1,i+1,res,curr)
+                     curr.pop()
+                     }
+                   }
+                   
+                   var combine = function(n, k) {
+                     const res = [] 
+                     dfs(n,k,1,res) 
+                     return res
+                   };
+                   
+                   combine(4,2)`,
+                        output: `[ [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 2, 3 ], [ 2, 4 ], [ 3, 4 ] ]`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
+          },
+          {
             title: "Word Break",
             content: (
               <>
@@ -38981,7 +39079,8 @@ class LRUCache:
             <p></p>
             <CodeEditor
               options={{
-                title: "Q181. Employees Earning More Than Their Managers (Q174)",
+                title:
+                  "Q181. Employees Earning More Than Their Managers (Q174)",
                 codes: {
                   Javascript: {
                     code: ``,
