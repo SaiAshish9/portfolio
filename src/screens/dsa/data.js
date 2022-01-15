@@ -39257,7 +39257,8 @@ class LRUCache:
                         LIMIT 1 OFFSET 1) AS SecondHighestSalary
                 ;`,
                     output: `
-                    {"headers": ["SecondHighestSalary"], "values": [[200]]}`,
+                    {"headers": ["SecondHighestSalary"], 
+                    "values": [[200]]}`,
                   },
                 },
               }}
@@ -39355,8 +39356,18 @@ class LRUCache:
                 title: "Q177. Nth Highest Salary (Q170)",
                 codes: {
                   Mysql: {
-                    code: ``,
-                    output: ``,
+                    code: `CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+                    BEGIN
+                      SET N = N - 1;
+                      RETURN (
+                          select distinct e.Salary
+                          from Employee e
+                          order by e.Salary desc
+                          limit N, 1
+                      );
+                    END`,
+                    output: `{"headers": ["getNthHighestSalary(2)"],
+                     "values": [[200]]}`,
                   },
                 },
               }}
