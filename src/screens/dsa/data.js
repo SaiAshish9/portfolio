@@ -41170,28 +41170,93 @@ class LRUCache:
             <Span>
               <b>Q200. Number of Islands (Q191)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an m x n 2D binary grid grid which represents a map of '1's
+              (land) and '0's (water), return the number of islands.
+              <br />
+              An island is surrounded by water and is formed by connecting
+              adjacent lands horizontally or vertically. You may assume all four
+              edges of the grid are all surrounded by water.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: grid = [ ["1","1","1","1","0"]
+              <br />
+              , ["1","1","0","1","0"],
+              <br />
+              ["1","1","0","0","0"],
+              <br /> ["0","0","0","0","0"] ]
+              <br />
+              Output: 1
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: grid = [
+              <br />
+              ["1","1","0","0","0"], <br />
+              ["1","1","0","0","0"], <br />
+              ["0","0","1","0","0"], <br />
+              ["0","0","0","1","1"] <br />
+              ] <br />
+              Output: 3
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              m == grid.length <br />
+              n == grid[i].length
+              <br />
+              1 &lt;= m, n &lt;= 300
+              <br />
+              grid[i][j] is '0' or '1'.
+            </p>
             <CodeEditor
               options={{
                 title: "Q200. Number of Islands (Q192)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {character[][]} grid
+                    * @return {number}
+                    */
+                   
+                   function dfs(grid,i,j){
+                    const m = grid.length
+                    const n = grid[0].length
+                    if(i < 0 || i == m || j < 0 || j == n) return
+                    if(grid[i][j] != '1') return
+                    grid[i][j] = '2'  
+                    dfs(grid,i + 1, j)
+                    dfs(grid,i - 1, j)
+                    dfs(grid,i, j + 1)
+                    dfs(grid,i, j - 1)
+                   }
+                   
+                   var numIslands = function(grid) {
+                     const m = grid.length
+                     const n = grid[0].length
+                     let res = 0
+                     for (let i = 0; i < m; ++i)
+                      for (let j = 0; j < n; ++j)
+                        if (grid[i][j] == '1') {
+                          dfs(grid, i, j);
+                          ++res;
+                        }
+                     return res
+                   };
+                   
+                   numIslands([
+                     ["1","1","1","1","0"],
+                     ["1","1","0","1","0"],
+                     ["1","1","0","0","0"],
+                     ["0","0","0","0","0"]
+                   ])`,
+                    output: `1`,
                   },
                 },
               }}
