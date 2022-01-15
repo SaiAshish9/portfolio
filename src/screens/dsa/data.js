@@ -40789,7 +40789,7 @@ class LRUCache:
                     while IFS= read -r row; do
                         rows[i++]="$row"
                     done < file.txt
-                    echo "${'${'}rows[9]}"`,
+                    echo "${"${"}rows[9]}"`,
                     output: `Line 10`,
                   },
                 },
@@ -40805,28 +40805,74 @@ class LRUCache:
             <Span>
               <b>Q196. Delete Duplicate Emails (Q188)</b>
             </Span>
-            <Span></Span>
+            <p>
+              SQL Schema <br />
+              Table: Person
+            </p>
+            <pre>
+              {`
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| email       | varchar |
++-------------+---------+  
+  `}
+            </pre>
+            <Span>
+              id is the primary key column for this table. <br />
+              Each row of this table contains an email. The emails will not
+              contain uppercase letters.
+            </Span>
+            <Span>
+              Write an SQL query to delete all the duplicate emails, keeping
+              only one unique email with the smallest id.
+              <br />
+              Return the result table in any order.
+              <br />
+              The query result format is in the following example.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
+
+            <p>
+              Input: <br />
+              Person table:
+              <pre>
+                {`
++----+------------------+
+| id | email            |
++----+------------------+
+| 1  | john@example.com |
+| 2  | bob@example.com  |
+| 3  | john@example.com |
++----+------------------+ 
+ `}
+              </pre>
+              Output: <br />
+              <pre>
+                {`
++----+------------------+
+| id | email            |
++----+------------------+
+| 1  | john@example.com |
+| 2  | bob@example.com  |
++----+------------------+
+`}
+              </pre>
+              Explanation: john@example.com is repeated two times. We keep the
+              row with the smallest Id = 1.
+            </p>
             <CodeEditor
               options={{
                 title: "Q196. Delete Duplicate Emails (Q188)",
                 codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
+                  Mysql: {
+                    code: `delete p1
+                    from Person p1, Person p2
+                    where p1.Email = p2.Email and p1.Id > p2.Id`,
+                    output: `{"headers": ["id", "email"], "values": [[1, "john@example.com"], [2, "bob@example.com"]]}`,
                   },
                 },
               }}
@@ -40860,7 +40906,7 @@ class LRUCache:
               options={{
                 title: "Q197. Rising Temperature (Q189)",
                 codes: {
-                  Javascript: {
+                  Mysql: {
                     code: ``,
                     output: ``,
                   },
