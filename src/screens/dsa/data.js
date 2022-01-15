@@ -40199,8 +40199,25 @@ class LRUCache:
                 title: "Q187. Repeated DNA Sequences (Q179)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @return {string[]}
+                    */
+                   var findRepeatedDnaSequences = function(s) {
+                     const ans = new Set()
+                     const seen = new Set()
+                     for (let i = 0; i + 10 <= s.length; ++i) {
+                     const seq = s.substring(i, i + 10);
+                     if (seen.has(seq))
+                     ans.add(seq);
+                     seen.add(seq);
+                     }
+                     return Array.from(ans)
+                   };
+                   
+                   findRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT")
+                   `,
+                    output: `["AAAAACCCCC","CCCCCAAAAA"]`,
                   },
                 },
               }}
