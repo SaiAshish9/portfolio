@@ -180,6 +180,7 @@ import Leetcode149 from "assets/leetcode/149.png";
 import Leetcode160 from "assets/leetcode/160.png";
 import Leetcode173 from "assets/leetcode/173.png";
 import Leetcode174 from "assets/leetcode/174.png";
+import Leetcode199 from "assets/leetcode/199.png";
 
 export const DATA = {
   ds: {
@@ -41079,21 +41080,43 @@ class LRUCache:
             <Span>
               <b>Q199. Binary Tree Right Side View (Q191)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the root of a binary tree, imagine yourself standing on the
+              right side of it, return the values of the nodes you can see
+              ordered from top to bottom.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode199} left alt="img" />
+            <Span>
+              Input: root = [1,2,3,null,5,null,4] <br />
+              Output: [1,3,4]
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: root = [1,null,3]
+              <br />
+              Output: [1,3]
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: root = []
+              <br />
+              Output: []
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              The number of nodes in the tree is in the range [0, 100].
+              <br />
+              -100 &lt;= Node.val &lt;= 100
+            </p>
             <CodeEditor
               options={{
                 title: "Q199. Binary Tree Right Side View (Q191)",
