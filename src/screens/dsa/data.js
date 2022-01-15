@@ -40280,8 +40280,33 @@ class LRUCache:
                 title: "Q188. Best Time to Buy and Sell Stock IV (Q180)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} k
+                    * @param {number[]} prices
+                    * @return {number}
+                    */
+                   var maxProfit = function(k, prices) {
+                       if(k>=parseInt(prices.length/2)){
+                         let sell = 0
+                         let hold = Number.MIN_SAFE_INTEGER
+                         for(let p of prices){
+                           sell =  Math.max(sell, hold + p)
+                           hold =  Math.max(hold, sell - p)
+                         }
+                         return sell
+                       }
+                       const sell = Array(k+1).fill(0)
+                       const hold = Array(k+1).fill(Number.MIN_SAFE_INTEGER)
+                       for (let price of prices)
+                       for (let i = k; i > 0; --i) {
+                         sell[i] = Math.max(sell[i], hold[i] + price);
+                         hold[i] = Math.max(hold[i], sell[i - 1] - price);
+                       }
+                       return sell[k]
+                   };
+                   
+                   maxProfit(2, [2,4,1])`,
+                    output: `2`,
                   },
                 },
               }}
