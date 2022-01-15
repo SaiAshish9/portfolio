@@ -39138,9 +39138,13 @@ class LRUCache:
               options={{
                 title: "Q175. Combine Two Tables (Q168)",
                 codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
+                  Mysql: {
+                    code: `select FirstName, LastName, City, State
+                    from Person left join Address
+                    on Person.PersonId = Address.PersonId
+                    ;`,
+                    output: `{"headers": ["FirstName", "LastName", "City", "State"],
+                     "values": [["Allen", "Wang", null, null], ["Bob", "Alice", "New York City", "New York"]]}`,
                   },
                 },
               }}

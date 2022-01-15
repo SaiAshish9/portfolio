@@ -54,13 +54,11 @@ const CodeEditor = ({ options }) => {
         headers: {
           "content-type": "application/json",
           "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
-          "x-rapidapi-key":
-            "api_9670a081-5ce5-4931-809e-35f267d86a75",
+          "x-rapidapi-key": "api_9670a081-5ce5-4931-809e-35f267d86a75",
         },
         data: {
           language_id: 63,
-          source_code:
-            `// class Array will override default Array class
+          source_code: `// class Array will override default Array class
             class CustomArray {
                 constructor() {
                     this.length = 0;
@@ -437,6 +435,8 @@ const CodeEditor = ({ options }) => {
                   ? "clike"
                   : selected === "Javascript"
                   ? "javascript"
+                  : selected === "Mysql"
+                  ? "sql"
                   : "python",
                 theme:
                   theme === Theme.dark
@@ -459,6 +459,8 @@ const CodeEditor = ({ options }) => {
                   ? "clike"
                   : selected === "Javascript"
                   ? "javascript"
+                  : selected === "Mysql"
+                  ? "sql"
                   : "python",
                 theme:
                   theme === Theme.dark
