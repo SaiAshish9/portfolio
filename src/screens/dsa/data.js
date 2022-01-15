@@ -41426,7 +41426,7 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b>"Q203. Remove Linked List Elements (Q195)</b>
+              <b>Q203. Remove Linked List Elements (Q195)</b>
             </Span>
             <Span>
               Given the head of a linked list and an integer val, remove all the
@@ -41521,28 +41521,63 @@ class LRUCache:
             <Span>
               <b>Q204. Count Primes (Q196)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer n, return the number of prime numbers that are
+              strictly less than n.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: n = 10 <br />
+              Output: 4 <br />
+              Explanation: There are 4 prime numbers less than 10, they are 2,
+              3, 5, 7.
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: n = 0<br />
+              Output: 0
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: n = 1 <br />
+              Output: 0
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>0 &lt;= n &lt;= 5 * 106</p>
             <CodeEditor
               options={{
                 title: "Q204. Count Primes (Q196)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {number}
+                    */
+                   var countPrimes = function(n) {
+                     if (n <= 2) return 0;
+                     let ans = 0;
+                     const prime = Array(n).fill(true);
+                     prime[0] = prime[1] = false
+                     for (let i = 2; i < n**0.5; ++i){
+                     if (prime[i])
+                     for (let j = i * i; j < n; j += i)
+                     prime[j] = false;
+                     }
+                     for (let p of prime)
+                     if (p) ++ans;
+                     return ans;  
+                   };
+                   
+                   countPrimes(10)`,
+                    output: `4`,
                   },
                 },
               }}
@@ -41557,28 +41592,72 @@ class LRUCache:
             <Span>
               <b>Q205. Isomorphic Strings (Q197)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given two strings s and t, determine if they are isomorphic.
+              <br />
+              Two strings s and t are isomorphic if the characters in s can be
+              replaced to get t.
+              <br />
+              All occurrences of a character must be replaced with another
+              character while preserving the order of characters. No two
+              characters may map to the same character, but a character may map
+              to itself.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: s = "egg", t = "add" <br />
+              Output: true
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: s = "foo", t = "bar"
+              <br />
+              Output: false
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = "paper", t = "title"
+              <br />
+              Output: true
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= s.length &lt;= 5 * 104 <br />
+              t.length == s.length <br />s and t consist of any valid ascii
+              character.
+            </p>
             <CodeEditor
               options={{
                 title: "Q205. Isomorphic Strings (Q197)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @param {string} t
+                    * @return {boolean}
+                    */
+                   var isIsomorphic = function(s, t) {
+                     const m1 = new Map();
+                     const m2 = new Map();
+                     for (let i = 0; i < s.length; ++i){
+                       if (m1.get(s[i]) != m2.get(t[i]))
+                         return false;
+                       m1.set(s[i],i+1)
+                       m2.set(t[i],i+1)
+                     }
+                     return true;
+                   };
+                   
+                   isIsomorphic("foo","bar")`,
+                    output: `false`,
                   },
                 },
               }}
