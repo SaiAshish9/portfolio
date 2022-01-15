@@ -41340,21 +41340,49 @@ class LRUCache:
             <Span>
               <b>Q202. Happy Number (Q194)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Write an algorithm to determine if a number n is happy.
+              <br />
+              A happy number is a number defined by the following process:
+              <br />
+              Starting with any positive integer, replace the number by the sum
+              of the squares of its digits.
+              <br />
+              Repeat the process until the number equals 1 (where it will stay),
+              or it loops endlessly in a cycle which does not include 1.
+              <br />
+              Those numbers for which this process ends in 1 are happy. Return
+              true if n is a happy number, and false if not.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: n = 19
+              <br />
+              Output: true
+              <br />
+              Explanation:
+              <br />
+              12 + 92 = 82
+              <br />
+              82 + 22 = 68
+              <br />
+              62 + 82 = 100
+              <br />
+              12 + 02 + 02 = 1
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: n = 2 <br />
+              Output: false
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>1 &lt;= n &lt;= 231 - 1</p>
             <CodeEditor
               options={{
                 title: "Q202. Happy Number (Q194)",
