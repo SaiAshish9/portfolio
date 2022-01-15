@@ -40491,28 +40491,80 @@ class LRUCache:
             <Span>
               <b>Q191. Number of 1 Bits (Q183)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Write a function that takes an unsigned integer and returns the
+              number of '1' bits it has (also known as the Hamming weight).
+            </Span>
+            <Span>Note:</Span>
+            <Span>
+              Note that in some languages, such as Java, there is no unsigned
+              integer type. In this case, the input will be given as a signed
+              integer type. It should not affect your implementation, as the
+              integer's internal binary representation is the same, whether it
+              is signed or unsigned. <br />
+              In Java, the compiler represents the signed integers using 2's
+              complement notation. Therefore, in Example 3, the input represents
+              the signed integer. -3.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: n = 00000000000000000000000000001011
+              <br />
+              Output: 3<br />
+              Explanation: The input binary string
+              00000000000000000000000000001011 has a total of three '1' bits.
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: n = 00000000000000000000000010000000 <br />
+              Output: 1 <br />
+              Explanation: The input binary string
+              00000000000000000000000010000000 has a total of one '1' bit.
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: n = 11111111111111111111111111111101
+              <br />
+              Output: 31
+              <br />
+              Explanation: The input binary string
+              11111111111111111111111111111101 has a total of thirty one '1'
+              bits.
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>The input must be a binary string of length 32.</Span>
+            <p>
+              <b>Follow up: </b>
+              If this function is called many times, how would you optimize it?
+            </p>
             <CodeEditor
               options={{
                 title: "Q191. Number of 1 Bits (Q183)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `public class Solution {
+                      // you need to treat n as an unsigned value
+                      public int hammingWeight(int n) {
+                        int ans = 0;
+                    
+                        for (int i = 0; i < 32; ++i)
+                          if (((n >> i) & 1) == 1)
+                            ++ans;
+                    
+                        return ans;
+                      }
+                    }
+                    //  00000000000000000000000000001011
+                    `,
+                    output: `3`,
                   },
                 },
               }}
