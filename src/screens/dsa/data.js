@@ -41672,7 +41672,10 @@ class LRUCache:
             <Span>
               <b>Q206. Reverse Linked List (Q198)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the head of a singly linked list, reverse the list, and
+              return the reversed list.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
@@ -41763,28 +41766,101 @@ class LRUCache:
             <Span>
               <b>Q207. Course Schedule (Q199)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              There are a total of numCourses courses you have to take, labeled
+              from 0 to numCourses - 1. You are given an array prerequisites
+              where prerequisites[i] = [ai, bi] indicates that you must take
+              course bi first if you want to take course ai.
+              <br />
+              For example, the pair [0, 1], indicates that to take course 0 you
+              have to first take course 1.
+              <br />
+              Return true if you can finish all courses. Otherwise, return
+              false.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: numCourses = 2, prerequisites = [[1,0]] <br />
+              Output: true
+              <br />
+              Explanation: There are a total of 2 courses to take. <br />
+              To take course 1 you should have finished course 0. So it is
+              possible.
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
+              <br />
+              Output: false
+              <br />
+              Explanation: There are a total of 2 courses to take. <br />
+              To take course 1 you should have finished course 0, and to take
+              course 0 you should also have finished course 1. So it is
+              impossible.
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= numCourses &lt;= 105 <br />
+              0 &lt;= prerequisites.length &lt;= 5000
+              <br />
+              prerequisites[i].length == 2<br />
+              0 &lt;= ai, bi &lt; numCourses
+              <br />
+              All the pairs prerequisites[i] are unique.
+            </p>
+
             <CodeEditor
               options={{
                 title: "Q207. Course Schedule (Q199)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} numCourses
+                    * @param {number[][]} prerequisites
+                    * @return {boolean}
+                    */
+                   
+                   const State = {
+                     init: 0,
+                     visiting : 1,
+                     visited: 2
+                   }
+                   
+                   var canFinish = function(numCourses, prerequisites) {
+                     const graph = Array.from(Array(numCourses),()=>[]);
+                     const state = Array.from(Array(numCourses),()=>[]);
+                   
+                     for (let p of prerequisites)
+                       graph[p[1]].push(p[0]);
+                     for (let i = 0; i < numCourses; ++i)
+                       if (hasCycle(graph, i, state))
+                         return false;
+                   
+                     return true;
+                   };
+                   
+                     function hasCycle(graph, u, state) {
+                       if (state[u] == State.visiting)
+                         return true;
+                       if (state[u] == State.visited)
+                         return false;
+                       state[u] = State.visiting;
+                       for (let v of graph[u])
+                         if (hasCycle(graph, v, state))
+                           return true;
+                       state[u] = State.visited;
+                       return false;
+                     }
+                   
+                     canFinish(2,[[1,0]])
+                   `,
+                    output: `true`,
                   },
                 },
               }}
@@ -41799,21 +41875,61 @@ class LRUCache:
             <Span>
               <b>Q208. Implement Trie (Prefix Tree) (Q200)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              A trie (pronounced as "try") or prefix tree is a tree data
+              structure used to efficiently store and retrieve keys in a dataset
+              of strings. There are various applications of this data structure,
+              such as autocomplete and spellchecker
+            </Span>
+            <Span>
+              Implement the Trie class:
+              <br />
+              Trie() Initializes the trie object.
+              <br />
+              void insert(String word) Inserts the string word into the trie.
+              <br />
+              boolean search(String word) Returns true if the string word is in
+              the trie (i.e., was inserted before), and false otherwise.
+              <br />
+              boolean startsWith(String prefix) Returns true if there is a
+              previously inserted string word that has the prefix prefix, and
+              false otherwise.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
             <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span>
-              <b>Example 3:</b>
+              Input ["Trie", "insert", "search", "search", "startsWith",
+              "insert", "search"]
+              <br />
+              [[], ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"]]
+              Output
+              <br />
+              [null, null, true, false, true, null, true]
+              <br />
+              Explanation
+              <br />
+              Trie trie = new Trie();
+              <br />
+              trie.insert("apple");
+              <br />
+              trie.search("apple"); // return True
+              <br />
+              trie.search("app"); // return False
+              <br />
+              trie.startsWith("app"); // return True
+              <br />
+              trie.insert("app"); trie.search("app"); // return True
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= word.length, prefix.length &lt;= 2000 <br />
+              word and prefix consist only of lowercase English letters. <br />
+              At most 3 * 104 calls in total will be made to insert, search, and
+              startsWith.
+            </p>
             <CodeEditor
               options={{
                 title: "Q208. Implement Trie (Prefix Tree) (Q200)",
