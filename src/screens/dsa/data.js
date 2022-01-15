@@ -39247,9 +39247,17 @@ class LRUCache:
               options={{
                 title: "Q176. Second Highest Salary (Q169)",
                 codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
+                  Mysql: {
+                    code: `SELECT
+                    (SELECT DISTINCT
+                            Salary
+                        FROM
+                            Employee
+                        ORDER BY Salary DESC
+                        LIMIT 1 OFFSET 1) AS SecondHighestSalary
+                ;`,
+                    output: `
+                    {"headers": ["SecondHighestSalary"], "values": [[200]]}`,
                   },
                 },
               }}
@@ -39264,26 +39272,89 @@ class LRUCache:
             <Span>
               <b>Q177. Nth Highest Salary (Q170)</b>
             </Span>
-            <Span></Span>
+            <p>Table: Employee</p>
+            <pre>{`
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| id          | int  |
+| salary      | int  |
++-------------+------+   
+            `}</pre>
             <Span>
+              id is the primary key column for this table.
+              <br /> Each row of this table contains information about the
+              salary of an employee.
+            </Span>
+            <Span>
+              Write an SQL query to report the nth highest salary from the
+              Employee table. If there is no nth highest salary, the query
+              should report null.
+              <br />
+              The query result format is in the following example.
+            </Span>
+            <p>
               <b>Example 1:</b>
-            </Span>
-            <Span>
+            </p>
+            <p>
+              Input: <br />
+              Employee table: <br />
+              <pre>
+                {`
++----+--------+
+| id | salary |
++----+--------+
+| 1  | 100    |
+| 2  | 200    |
+| 3  | 300    |
++----+--------+    
+    `}
+              </pre>
+              n = 2 <br />
+              Output: <br />
+              <pre>
+                {`
++------------------------+
+| getNthHighestSalary(2) |
++------------------------+
+| 200                    |
++------------------------+
+    `}
+              </pre>
+            </p>
+            <p>
               <b>Example 2:</b>
-            </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
+            </p>
+            <p>
+              Input: <br />
+              Employee table:
+              <br />
+              <pre>
+                {`
++----+--------+
+| id | salary |
++----+--------+
+| 1  | 100    |
++----+--------+    
+    `}
+              </pre>
+              n = 2<br />
+              Output: <br />
+              <pre>
+                {`
++------------------------+
+| getNthHighestSalary(2) |
++------------------------+
+| null                   |
++------------------------+        
+    `}
+              </pre>
+            </p>
             <CodeEditor
               options={{
                 title: "Q177. Nth Highest Salary (Q170)",
                 codes: {
-                  Javascript: {
+                  Mysql: {
                     code: ``,
                     output: ``,
                   },
