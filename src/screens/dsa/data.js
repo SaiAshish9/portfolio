@@ -41271,28 +41271,61 @@ class LRUCache:
             <Span>
               <b>Q201. Bitwise AND of Numbers Range (Q192)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given two integers left and right that represent the range [left,
+              right], return the bitwise AND of all numbers in this range,
+              inclusive.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: left = 5, right = 7 <br />
+              Output: 4
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: left = 0, right = 0 <br />
+              Output: 0
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: left = 1, right = 2147483647
+              <br />
+              Output: 0
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>0 &lt;= left &lt;= right &lt;= 231 - 1</p>
             <CodeEditor
               options={{
                 title: "Q201. Bitwise AND of Numbers Range (Q192)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} left
+                    * @param {number} right
+                    * @return {number}
+                    */
+                   var rangeBitwiseAnd = function(left, right) {
+                     let shiftBits = 0;
+                     let m = left
+                     let n = right
+                     while (m != n) {
+                       m >>= 1;
+                       n >>= 1;
+                       ++shiftBits;
+                     }
+                     return m << shiftBits;  
+                   };
+                   
+                   rangeBitwiseAnd(5,7)`,
+                    output: `4`,
                   },
                 },
               }}
