@@ -41677,23 +41677,78 @@ class LRUCache:
               <b>Example 1:</b>
             </Span>
             <Span>
+              Input: head = [1,2,3,4,5] <br />
+              Output: [5,4,3,2,1]
+            </Span>
+            <Span>
               <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: head = [1,2]
+              <br />
+              Output: [2,1]
             </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
             <Span>
+              Input: head = []
+              <br />
+              Output: []
+            </Span>
+            <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              The number of nodes in the list is the range [0, 5000]. <br />
+              -5000 &lt;= Node.val &lt;= 5000
+            </Span>
+            <p>
+              <b>Follow up: </b>A linked list can be reversed either iteratively
+              or recursively. Could you implement both?
+            </p>
             <CodeEditor
               options={{
                 title: "Q206. Reverse Linked List (Q198)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function ListNode(val, next) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.next = (next===undefined ? null : next)
+                  }
+                  
+                  /**
+                   * @param {ListNode} head
+                   * @return {ListNode}
+                   */
+                  function iter(head){
+                  let prev = next = null
+                  let curr = head
+                  while(curr){
+                  next = curr.next
+                  curr.next = prev
+                  prev = curr
+                  curr = next
+                  }
+                  return prev
+                  }
+                  
+                  function rec(head){
+                    if(!head || !head.next) return head
+                    let newHead = rec(head.next);
+                    head.next.next = head;
+                    head.next = null;
+                    return newHead;
+                  }
+                  
+                  var reverseList = function(head) {
+                    return iter(head)   
+                  };
+                  
+                  const l = new ListNode(1)
+                  l.next = new ListNode(2)
+                  reverseList(l)`,
+                    output: `ListNode { val: 2, next: ListNode { val: 1, next: null } }`,
                   },
                 },
               }}
