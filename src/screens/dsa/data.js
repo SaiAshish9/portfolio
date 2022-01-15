@@ -40409,28 +40409,74 @@ class LRUCache:
             <Span>
               <b>Q190. Reverse Bits (Q182)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Reverse bits of a given 32 bits unsigned integer.
+              <br />
+              Note:
+              <br />
+              Note that in some languages, such as Java, there is no unsigned
+              integer type. In this case, both input and output will be given as
+              a signed integer type. They should not affect your implementation,
+              as the integer's internal binary representation is the same,
+              whether it is signed or unsigned.
+              <br />
+              In Java, the compiler represents the signed integers using 2's
+              complement notation. Therefore, in Example 2 above, the input
+              represents the signed integer -3 and the output represents the
+              signed integer -1073741825.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: n = 00000010100101000001111010011100
+              <br />
+              Output: 964176192 (00111001011110000010100101000000)
+              <br />
+              Explanation: The input binary string
+              00000010100101000001111010011100 represents the unsigned integer
+              43261596, so return 964176192 which its binary representation is
+              00111001011110000010100101000000.
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: n = 11111111111111111111111111111101
+              <br />
+              Output: 3221225471 (10111111111111111111111111111111)
+              <br />
+              Explanation: The input binary string
+              11111111111111111111111111111101 represents the unsigned integer
+              4294967293, so return 3221225471 which its binary representation
+              is 10111111111111111111111111111111.
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>The input must be a binary string of length 32</Span>
+            <p>
+              <b>Follow up: </b>
+              If this function is called many times, how would you optimize it?
+            </p>
             <CodeEditor
               options={{
                 title: "Q190. Reverse Bits (Q182)",
                 codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
+                  Java: {
+                    code: `public class Solution {
+                      public int reverseBits(int n) {
+                        int ans = 0;
+                    
+                        for (int i = 0; i < 32; ++i)
+                          if (((n >> i) & 1) == 1)
+                            ans |= (1 << (31 - i));
+                    
+                        return ans;
+                      }
+                    }
+                    `,
+                    output: `11111111111111111111111111111101`,
                   },
                 },
               }}
