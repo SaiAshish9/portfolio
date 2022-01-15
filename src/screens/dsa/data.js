@@ -40159,21 +40159,41 @@ class LRUCache:
             <Span>
               <b>Q187. Repeated DNA Sequences (Q179)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              The DNA sequence is composed of a series of nucleotides
+              abbreviated as 'A', 'C', 'G', and 'T'.
+              <br />
+              For example, "ACGAATTCCG" is a DNA sequence.
+              <br />
+              When studying DNA, it is useful to identify repeated sequences
+              within the DNA.
+              <br />
+              Given a string s that represents a DNA sequence, return all the
+              10-letter-long sequences (substrings) that occur more than once in
+              a DNA molecule. You may return the answer in any order.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT" <br />
+              Output: ["AAAAACCCCC","CCCCCAAAAA"]
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: s = "AAAAAAAAAAAAA"
+              <br />
+              Output: ["AAAAAAAAAA"]
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= s.length &lt;= 105 <br />
+              s[i] is either 'A', 'C', 'G', or 'T'.
+            </p>
             <CodeEditor
               options={{
                 title: "Q187. Repeated DNA Sequences (Q179)",
