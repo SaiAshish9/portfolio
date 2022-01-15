@@ -41122,8 +41122,40 @@ class LRUCache:
                 title: "Q199. Binary Tree Right Side View (Q191)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                  }
+                  
+                  /**
+                   * @param {TreeNode} root
+                   * @return {number[]}
+                   */
+                  var rightSideView = function(root) {
+                    let queue = []
+                    queue.push(root)
+                    const res = []
+                    while (queue.length > 0&& root) {
+                        const n = queue.length
+                        for (let i = 0; i < n; i++) {
+                            let curr = queue.shift();
+                            if (i == n - 1 && curr)
+                                res.push(curr.val)
+                            if (curr.left != null)
+                                queue.push(curr.left);
+                            if (curr.right != null)
+                                queue.push(curr.right);
+                        }
+                    }
+                    return res
+                  } 
+                  
+                  const t = new TreeNode(1)
+                  t.right = new TreeNode(3)
+                  rightSideView(t)                  
+                  `,
+                    output: `[1,3]`,
                   },
                 },
               }}
