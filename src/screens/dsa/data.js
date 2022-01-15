@@ -39887,21 +39887,103 @@ class LRUCache:
             <Span>
               <b>Q184. Department Highest Salary (Q177)</b>
             </Span>
-            <Span></Span>
+            <Span>SQL Schema</Span>
+            <p> Table: Employee</p>
+            <pre>
+              {`
++--------------+---------+
+| Column Name  | Type    |
++--------------+---------+
+| id           | int     |
+| name         | varchar |
+| salary       | int     |
+| departmentId | int     |
++--------------+---------+
+                `}
+            </pre>
+            <p>
+              id is the primary key column for this table. departmentId is a
+              foreign key of the ID from the Department table. Each row of this
+              table indicates the ID, name, and salary of an employee. It also
+              contains the ID of their department.
+            </p>
+            <pre>
+              {
+                `
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| name        | varchar |
++-------------+---------+
+                `
+              }
+            </pre>
+            <p>id is the primary key column for this table.
+Each row of this table indicates the ID of a department and its name.</p>
+            <Span>
+              A company's executives are interested in seeing who earns the most
+              money in each of the company's departments. A high earner in a
+              department is an employee who has a salary in the top three unique
+              salaries for that department.
+              <br />
+              Write an SQL query to find the employees who are high earners in
+              each of the departments.
+              <br />
+              Return the result table in any order.
+              <br />
+              The query result format is in the following example.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              <p>
+                Input: <br />
+                Employee table: <br />
+              </p>
+            </p>
+            <pre>
+              {`
++----+-------+--------+--------------+
+| id | name  | salary | departmentId |
++----+-------+--------+--------------+
+| 1  | Joe   | 70000  | 1            |
+| 2  | Jim   | 90000  | 1            |
+| 3  | Henry | 80000  | 2            |
+| 4  | Sam   | 60000  | 2            |
+| 5  | Max   | 90000  | 1            |
++----+-------+--------+--------------+
+`}
+            </pre>
+            <p>Department table:</p>
+            <pre>
+              {`
++----+-------+
+| id | name  |
++----+-------+
+| 1  | IT    |
+| 2  | Sales |
++----+-------+
+              `}
+            </pre>
+            <p>Output: </p>
+            <pre>
+              {`
++------------+----------+--------+
+| Department | Employee | Salary |
++------------+----------+--------+
+| IT         | Jim      | 90000  |
+| Sales      | Henry    | 80000  |
+| IT         | Max      | 90000  |
++------------+----------+--------+
+                `}
+            </pre>
+            <p>
+              <b>Explanation: </b>
+              Max and Jim both have the highest salary in the IT department and
+              Henry has the highest salary in the Sales department.
+            </p>
             <CodeEditor
               options={{
                 title: "Q184. Department Highest Salary (Q177)",
