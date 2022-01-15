@@ -40016,6 +40016,139 @@ class LRUCache:
             <Span>
               <b>Q185. Department Top Three Salaries (Q178)</b>
             </Span>
+            <p>
+              SQL Schema <br />
+              Table: Employee
+            </p>
+            <pre>
+              {`
++--------------+---------+
+| Column Name  | Type    |
++--------------+---------+
+| id           | int     |
+| name         | varchar |
+| salary       | int     |
+| departmentId | int     |
++--------------+---------+
+                `}
+            </pre>
+            <Span>
+              id is the primary key column for this table. departmentId is a
+              foreign key of the ID from the Department table. Each row of this
+              table indicates the ID, name, and salary of an employee. It also
+              contains the ID of their department.
+            </Span>
+            <p>Table: Department</p>
+            <pre>
+              {`
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| name        | varchar |
++-------------+---------+
+                `}
+            </pre>
+            <Span>
+              id is the primary key column for this table. <br />
+              Each row of this table indicates the ID of a department and its
+              name.
+            </Span>
+            <Span>
+              A company's executives are interested in seeing who earns the most
+              money in each of the company's departments. A high earner in a
+              department is an employee who has a salary in the top three unique
+              salaries for that department.
+              <br />
+              Write an SQL query to find the employees who are high earners in
+              each of the departments.
+              <br />
+              Return the result table in any order.
+              <br />
+              The query result format is in the following example.
+            </Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <p>
+              Input:
+              <br />
+              Employee table:
+              <br />
+              <pre>
+                {`
++----+-------+--------+--------------+
+| id | name  | salary | departmentId |
++----+-------+--------+--------------+
+| 1  | Joe   | 85000  | 1            |
+| 2  | Henry | 80000  | 2            |
+| 3  | Sam   | 60000  | 2            |
+| 4  | Max   | 90000  | 1            |
+| 5  | Janet | 69000  | 1            |
+| 6  | Randy | 85000  | 1            |
+| 7  | Will  | 70000  | 1            |
++----+-------+--------+--------------+    
+    `}
+              </pre>
+              Department table: <br />
+              <pre>
+                {`
++----+-------+
+| id | name  |
++----+-------+
+| 1  | IT    |
+| 2  | Sales |
++----+-------+  
+  `}
+              </pre>
+              Output: <br />
+              <pre>
+                {`
++------------+----------+--------+
+| Department | Employee | Salary |
++------------+----------+--------+
+| IT         | Max      | 90000  |
+| IT         | Joe      | 85000  |
+| IT         | Randy    | 85000  |
+| IT         | Will     | 70000  |
+| Sales      | Henry    | 80000  |
+| Sales      | Sam      | 60000  |
++------------+----------+--------+  
+  `}
+              </pre>
+              Explanation:
+              <br />
+              In the IT department:
+              <br />- Max earns the highest unique salary
+              <br />- Both Randy and Joe earn the second-highest unique salary
+              <br />- Will earns the third-highest unique salary
+              <br />
+              In the Sales department:
+              <br />- Henry earns the highest salary
+              <br />- Sam earns the second-highest salary
+              <br />- There is no third-highest salary as there are only two
+              employees
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q185. Department Top Three Salaries (Q178)",
+                codes: {
+                  Mysql: {
+                    code: `select d1.Name as Department, e1.Name as
+                    Employee, e1.Salary as Salary
+                    from Employee e1, Department d1
+                    where e1.DepartmentId  = d1.Id and 3 > 
+                    (select count(distinct(e2.salary)) from Employee e2 where
+                    e2.salary > e1.salary and e2.DepartmentId = e1.DepartmentId)`,
+                    output: `{"headers": ["Department", "Employee", "Salary"], 
+                    "values": [["IT", "Joe", 85000], ["Sales", "Henry", 80000],
+                    ["Sales", "Sam", 60000], ["IT", "Max", 90000], 
+                    ["IT", "Randy", 85000],
+                    ["IT", "Will", 70000]]}`,
+                  },
+                },
+              }}
+            />
           </>
         ),
       },
