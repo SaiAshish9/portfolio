@@ -437,6 +437,8 @@ const CodeEditor = ({ options }) => {
                   ? "javascript"
                   : selected === "Mysql"
                   ? "sql"
+                  : selected === "Shell"
+                  ? "shell"
                   : "python",
                 theme:
                   theme === Theme.dark
@@ -461,6 +463,8 @@ const CodeEditor = ({ options }) => {
                   ? "javascript"
                   : selected === "Mysql"
                   ? "sql"
+                  : selected === "Shell"
+                  ? "shell"
                   : "python",
                 theme:
                   theme === Theme.dark

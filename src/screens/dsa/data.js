@@ -39991,15 +39991,19 @@ class LRUCache:
                 title: "Q184. Department Highest Salary (Q177)",
                 codes: {
                   Mysql: {
-                    code: `select d1.Name as Department, e1.Name as Employee, e1.Salary as Salary
+                    code: `select d1.Name as Department, e1.Name as Employee,
+                    e1.Salary as Salary
                     from Employee e1, Department d1, 
                     
-                    (select d.Id as Id, e.Name as Employee, max(e.Salary) as Salary
+                    (select d.Id as Id, e.Name as Employee, max(e.Salary) 
+                    
+                    as Salary
                     from Employee e, Department d
                     where e.DepartmentId = d.Id
                     group by d.Id) as a
-                    
-                    where e1.DepartmentId = d1.Id and d1.Id = a.Id and a.Salary = e1.Salary`,
+
+                    where e1.DepartmentId = d1.Id and d1.Id = a.Id and
+                     a.Salary = e1.Salary`,
                     output: `{"headers": ["Department", "Employee", "Salary"],
                      "values": [["IT", "Jim", 90000], ["Sales", "Henry", 80000], ["IT", "Max", 90000]]}`,
                   },
@@ -40579,28 +40583,53 @@ class LRUCache:
             <Span>
               <b>Q192. Word Frequency (Q184)</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 1:</b>
+              Write a bash script to calculate the frequency of each word in a
+              text file words.txt.
             </Span>
             <Span>
-              <b>Example 2:</b>
+              For simplicity sake, you may assume: <br />
+              words.txt contains only lowercase characters and space ' '
+              characters. <br />
+              Each word must consist of lowercase characters only. <br />
+              Words are separated by one or more whitespace characters.
             </Span>
             <Span>
-              <b>Example 3:</b>
+              <b>Example:</b>
+            </Span>
+            <Span>Assume that words.txt has the following content:</Span>
+            <Span>
+              the day is sunny the the <br />
+              the sunny is is
             </Span>
             <Span>
-              <b>Constraints:</b>
+              Your script should output the following, sorted by descending
+              frequency:
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              the 4<br />
+              is 3<br />
+              sunny 2<br />
+              day 1
+            </Span>
+            <Span>Note:</Span>
+            <p>
+              Don't worry about handling ties, it is guaranteed that each word's
+              frequency count is unique.
+              <br />
+              Could you write it in one-line using Unix pipes?
+            </p>
             <CodeEditor
               options={{
                 title: "Q192. Word Frequency (Q184)",
                 codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
+                  Shell: {
+                    code: `cat words.txt | awk '{for(i=1;i<=NF;i++){printf "%s\\n", $i}}' | sort 
+                    | uniq -c | sort -r | awk '{print $2" "$1}'`,
+                    output: `the 4
+                is 3
+                sunny 2
+                day 1`,
                   },
                 },
               }}
@@ -40615,28 +40644,44 @@ class LRUCache:
             <Span>
               <b>Q193. Valid Phone Numbers (Q184) (Q185)</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 1:</b>
+              Given a text file file.txt that contains a list of phone numbers
+              (one per line), write a one-liner bash script to print all valid
+              phone numbers.
+              <br />
+              You may assume that a valid phone number must appear in one of the
+              following two formats: (xxx) xxx-xxxx or xxx-xxx-xxxx. (x means a
+              digit)
+              <br />
+              You may also assume each line in the text file must not contain
+              leading or trailing white spaces.
             </Span>
             <Span>
-              <b>Example 2:</b>
+              <b>Example :</b>
             </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              Assume that file.txt has the following content:
+              <br />
+              987-123-4567
+              <br />
+              123 456 7890
+              <br />
+              (123) 456-7890
+              <br />
+              Your script should output the following valid phone numbers:
+              <br />
+              987-123-4567
+              <br />
+              (123) 456-7890
+            </p>
             <CodeEditor
               options={{
                 title: "Q193. Valid Phone Numbers (Q185)",
                 codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
+                  Shell: {
+                    code: `grep -Po '^(\(\\d{3}\) |\\d{3}-)\\d{3}-\\d{4}$' file.txt`,
+                    output: `987-123-4567
+                    (123) 456-7890`,
                   },
                 },
               }}
@@ -40651,28 +40696,45 @@ class LRUCache:
             <Span>
               <b>Q194. Transpose File (Q186)</b>
             </Span>
-            <Span></Span>
+            <Span>Given a text file file.txt, transpose its content.</Span>
             <Span>
-              <b>Example 1:</b>
+              You may assume that each row has the same number of columns, and
+              each field is separated by the ' ' character.
             </Span>
             <Span>
-              <b>Example 2:</b>
+              <b>Example:</b>
             </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              If file.txt has the following content:
+              <br />
+              name age
+              <br />
+              alice 21
+              <br />
+              ryan 30
+              <br />
+              Output the following:
+              <br />
+              name alice ryan
+              <br />
+              age 21 30
+            </p>
             <CodeEditor
               options={{
                 title: "Q194. Transpose File (Q186)",
                 codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
+                  Shell: {
+                    code: `#!/usr/bin/bash
+                    while IFS=' ' read -a l; do
+                            for i in ${"${"}!l[@]}; do
+                                    a[i]="${"${"}a[i]} ${"${"}l[i]}"
+                            done
+                    done < file.txt
+                    for i in ${"${"}!a[@]}; do
+                            echo ${"${"}a[i]}
+                    done`,
+                    output: `name alice ryan
+                    age 21 30`,
                   },
                 },
               }}
@@ -40687,28 +40749,48 @@ class LRUCache:
             <Span>
               <b>Q195. Tenth Line (Q187)</b>
             </Span>
-            <Span></Span>
+
             <Span>
-              <b>Example 1:</b>
+              Given a text file file.txt, print just the 10th line of the file.
             </Span>
             <Span>
-              <b>Example 2:</b>
+              <b>Example:</b>
+              <br />
+              Assume that file.txt has the following content:
+              <br />
+              Line 1<br />
+              Line 2<br />
+              Line 3<br />
+              Line 4<br />
+              Line 5<br />
+              Line 6<br />
+              Line 7<br />
+              Line 8<br />
+              Line 9<br />
+              Line 10 Your script should output the tenth line, which is:
+              <br />
+              Line 10
+              <br />
+              Note:
+              <br />
+              1. If the file contains less than 10 lines, what should you
+              output?
+              <br />
+              2. There's at least three different solutions. Try to explore all
+              possibilities.
             </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
             <p></p>
             <CodeEditor
               options={{
                 title: "Q195. Tenth Line (Q187)",
                 codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
+                  Shell: {
+                    code: `i=0
+                    while IFS= read -r row; do
+                        rows[i++]="$row"
+                    done < file.txt
+                    echo "${'${'}rows[9]}"`,
+                    output: `Line 10`,
                   },
                 },
               }}

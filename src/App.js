@@ -20,6 +20,8 @@ require('codemirror/theme/neat.css');
 require('codemirror/mode/javascript/javascript.js');
 require('codemirror/mode/clike/clike.js');
 require('codemirror/mode/python/python.js');
+require('codemirror/mode/shell/shell.js');
+require('codemirror/mode/sql/sql.js');
 
 const App = () => {
   const [scrolled, isScrolled] = useState(null);
