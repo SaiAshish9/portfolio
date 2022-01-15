@@ -40887,28 +40887,104 @@ class LRUCache:
             <Span>
               <b>Q197. Rising Temperature (Q189)</b>
             </Span>
-            <Span></Span>
+            <p>
+              SQL Schema <br />
+              Create table If Not Exists Weather (id int, recordDate date,
+              temperature int)
+              <br />
+              Truncate table Weather
+              <br />
+              insert into Weather (id, recordDate, temperature) values ('1',
+              '2015-01-01', '10')
+              <br />
+              insert into Weather (id, recordDate, temperature) values ('2',
+              '2015-01-02', '25')
+              <br />
+              insert into Weather (id, recordDate, temperature) values ('3',
+              '2015-01-03', '20')
+              <br />
+              insert into Weather (id, recordDate, temperature) values ('4',
+              '2015-01-04', '30')
+              <br />
+              Table: Weather
+            </p>
+            <pre>
+              {`
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| id            | int     |
+| recordDate    | date    |
+| temperature   | int     |
++---------------+---------+
+                `}
+            </pre>
+            <Span>
+              id is the primary key for this table. <br />
+              This table contains information about the temperature on a certain
+              day.
+            </Span>
+            <Span>
+              Write an SQL query to find all dates' Id with higher temperatures
+              compared to its previous dates (yesterday).
+              <br />
+              Return the result table in any order.
+              <br />
+              The query result format is in the following example.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              Input: <br />
+              Weather table: <br />
+              <pre>
+                {`
++----+------------+-------------+
+| id | recordDate | temperature |
++----+------------+-------------+
+| 1  | 2015-01-01 | 10          |
+| 2  | 2015-01-02 | 25          |
+| 3  | 2015-01-03 | 20          |
+| 4  | 2015-01-04 | 30          |
++----+------------+-------------+        
+    `}
+              </pre>
+            </p>
+            <p>
+              <b>Output:</b>
+            </p>
+            <pre>
+              {`
++----+
+| id |
++----+
+| 2  |
+| 4  |
++----+
+                `}
+            </pre>
+            <p>
+              Explanation: <br />
+              In 2015-01-02, the temperature was higher than the previous day
+              (10 -&gt; 25).
+              <br />
+              In 2015-01-04, the temperature was higher than the previous day
+              (20 -&gt; 30).
+              <br />
+            </p>
             <CodeEditor
               options={{
                 title: "Q197. Rising Temperature (Q189)",
                 codes: {
                   Mysql: {
-                    code: ``,
-                    output: ``,
+                    code: `WITH yesterday AS (SELECT id,recordDate,temperature,DATE_SUB(recordDate, INTERVAL 1 DAY) AS yesterday
+                    FROM Weather)
+                    
+                    SELECT yesterday.id
+                    FROM yesterday LEFT JOIN Weather on yesterday.yesterday = Weather.recordDate
+                    WHERE Weather.temperature IS NOT NULL AND yesterday.temperature > Weather.temperature`,
+                    output: `{"headers": ["id"], "values": [[2], [4]]}`,
                   },
                 },
               }}
@@ -40923,21 +40999,51 @@ class LRUCache:
             <Span>
               <b>Q198. House Robber (Q190)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are a professional robber planning to rob houses along a
+              street. Each house has a certain amount of money stashed, the only
+              constraint stopping you from robbing each of them is that adjacent
+              houses have security systems connected and it will automatically
+              contact the police if two adjacent houses were broken into on the
+              same night.
+            </Span>
+            <Span>
+              Given an integer array nums representing the amount of money of
+              each house, return the maximum amount of money you can rob tonight
+              without alerting the police.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,2,3,1]
+              <br />
+              Output: 4
+              <br />
+              Explanation: Rob house 1 (money = 1) and then rob house 3 (money =
+              3).
+              <br />
+              Total amount you can rob = 1 + 3 = 4.
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: nums = [2,7,9,3,1]
+              <br />
+              Output: 12
+              <br />
+              Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and
+              rob house 5 (money = 1).
+              <br />
+              Total amount you can rob = 2 + 9 + 1 = 12.
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= nums.length &lt;= 100 <br />0 &lt;= nums[i] &lt;= 400
+            </p>
             <CodeEditor
               options={{
                 title: "Q198. House Robber (Q190)",
