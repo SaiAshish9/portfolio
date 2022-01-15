@@ -41388,8 +41388,31 @@ class LRUCache:
                 title: "Q202. Happy Number (Q194)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {boolean}
+                    */
+                   function helper(n) {
+                   let sum = 0;
+                   while (n > 0) {
+                       sum += Math.pow(n % 10, 2);
+                       n = parseInt(n/10);
+                   }
+                   return sum;  
+                   }
+                   
+                   var isHappy = function(n) {
+                     let slow = helper(n);
+                     let fast = helper(helper(n));
+                     while (slow != fast) {
+                       slow = helper(slow);
+                       fast = helper(helper(fast));
+                     }
+                     return slow == 1; 
+                   };
+                   
+                   isHappy(19)`,
+                    output: `true`,
                   },
                 },
               }}
