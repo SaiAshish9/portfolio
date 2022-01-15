@@ -39909,19 +39909,19 @@ class LRUCache:
             </p>
             <p> Table: Department</p>
             <pre>
-              {
-                `
+              {`
 +-------------+---------+
 | Column Name | Type    |
 +-------------+---------+
 | id          | int     |
 | name        | varchar |
 +-------------+---------+
-                `
-              }
+                `}
             </pre>
-            <p>id is the primary key column for this table.
-Each row of this table indicates the ID of a department and its name.</p>
+            <p>
+              id is the primary key column for this table. Each row of this
+              table indicates the ID of a department and its name.
+            </p>
             <Span>
               A company's executives are interested in seeing who earns the most
               money in each of the company's departments. A high earner in a
@@ -39957,7 +39957,7 @@ Each row of this table indicates the ID of a department and its name.</p>
 +----+-------+--------+--------------+
 `}
             </pre>
-            <br/>
+            <br />
             <p>Department table:</p>
             <pre>
               {`
@@ -40010,47 +40010,21 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q178: {
-        title: "Q187. Repeated DNA Sequences (Q178)",
+        title: "Q185. Department Top Three Salaries (Q178)",
         content: (
           <>
             <Span>
-              <b>Q187. Repeated DNA Sequences (Q178)</b>
+              <b>Q185. Department Top Three Salaries (Q178)</b>
             </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 1:</b>
-            </Span>
-            <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
-            <CodeEditor
-              options={{
-                title: "Q187. Repeated DNA Sequences (Q178)",
-                codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
-                  },
-                },
-              }}
-            />
           </>
         ),
       },
       q179: {
-        title: "Q188. Best Time to Buy and Sell Stock IV (Q179)",
+        title: "Q187. Repeated DNA Sequences (Q179)",
         content: (
           <>
             <Span>
-              <b>Q188. Best Time to Buy and Sell Stock IV (Q179)</b>
+              <b>Q187. Repeated DNA Sequences (Q179)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40069,7 +40043,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q188. Best Time to Buy and Sell Stock IV (Q179)",
+                title: "Q187. Repeated DNA Sequences (Q179)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40082,11 +40056,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q180: {
-        title: "Q189. Rotate Array (Q180)",
+        title: "Q188. Best Time to Buy and Sell Stock IV (Q180)",
         content: (
           <>
             <Span>
-              <b>Q189. Rotate Array (Q180)</b>
+              <b>Q188. Best Time to Buy and Sell Stock IV (Q180)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40105,7 +40079,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q189. Rotate Array (Q180)",
+                title: "Q188. Best Time to Buy and Sell Stock IV (Q180)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40118,11 +40092,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q181: {
-        title: "Q190. Reverse Bits (Q181)",
+        title: "Q189. Rotate Array (Q181)",
         content: (
           <>
             <Span>
-              <b>Q190. Reverse Bits (Q181)</b>
+              <b>Q189. Rotate Array (Q181)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40141,7 +40115,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q190. Reverse Bits (Q181)",
+                title: "Q189. Rotate Array (Q181)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40154,11 +40128,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q182: {
-        title: "Q191. Number of 1 Bits (Q182)",
+        title: "Q190. Reverse Bits (Q182)",
         content: (
           <>
             <Span>
-              <b>Q191. Number of 1 Bits (Q182)</b>
+              <b>Q190. Reverse Bits (Q182)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40177,7 +40151,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q191. Number of 1 Bits (Q182)",
+                title: "Q190. Reverse Bits (Q182)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40190,11 +40164,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q183: {
-        title: "Q192. Word Frequency (Q183)",
+        title: "Q191. Number of 1 Bits (Q183)",
         content: (
           <>
             <Span>
-              <b>Q192. Word Frequency (Q183)</b>
+              <b>Q191. Number of 1 Bits (Q183)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40213,7 +40187,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q192. Word Frequency (Q183)",
+                title: "Q191. Number of 1 Bits (Q183)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40226,11 +40200,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q184: {
-        title: "Q193. Valid Phone Numbers (Q184)",
+        title: "Q192. Word Frequency (Q184)",
         content: (
           <>
             <Span>
-              <b>Q193. Valid Phone Numbers (Q184) (Q184)</b>
+              <b>Q192. Word Frequency (Q184)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40249,7 +40223,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q193. Valid Phone Numbers (Q184)",
+                title: "Q192. Word Frequency (Q184)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40262,11 +40236,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q185: {
-        title: "Q194. Transpose File (Q185)",
+        title: "Q193. Valid Phone Numbers (Q185)",
         content: (
           <>
             <Span>
-              <b>Q194. Transpose File (Q185)</b>
+              <b>Q193. Valid Phone Numbers (Q184) (Q185)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40285,7 +40259,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q194. Transpose File (Q185)",
+                title: "Q193. Valid Phone Numbers (Q185)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40298,11 +40272,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q186: {
-        title: "Q195. Tenth Line (Q186)",
+        title: "Q194. Transpose File (Q186)",
         content: (
           <>
             <Span>
-              <b>Q195. Tenth Line (Q186)</b>
+              <b>Q194. Transpose File (Q186)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40321,7 +40295,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q195. Tenth Line (Q186)",
+                title: "Q194. Transpose File (Q186)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40334,11 +40308,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q187: {
-        title: "Q196. Delete Duplicate Emails (Q187)",
+        title: "Q195. Tenth Line (Q187)",
         content: (
           <>
             <Span>
-              <b>Q196. Delete Duplicate Emails (Q187)</b>
+              <b>Q195. Tenth Line (Q187)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40357,7 +40331,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q196. Delete Duplicate Emails (Q187)",
+                title: "Q195. Tenth Line (Q187)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40370,11 +40344,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q188: {
-        title: "Q197. Rising Temperature (Q188)",
+        title: "Q196. Delete Duplicate Emails (Q188)",
         content: (
           <>
             <Span>
-              <b>Q197. Rising Temperature (Q188)</b>
+              <b>Q196. Delete Duplicate Emails (Q188)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40393,7 +40367,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q197. Rising Temperature (Q188)",
+                title: "Q196. Delete Duplicate Emails (Q188)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40406,11 +40380,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q189: {
-        title: "Q198. House Robber (Q189)",
+        title: "Q197. Rising Temperature (Q189)",
         content: (
           <>
             <Span>
-              <b>Q198. House Robber (Q189)</b>
+              <b>Q197. Rising Temperature (Q189)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40429,7 +40403,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q198. House Robber (Q189)",
+                title: "Q197. Rising Temperature (Q189)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40442,11 +40416,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q190: {
-        title: "Q199. Binary Tree Right Side View (Q190)",
+        title: "Q198. House Robber (Q190)",
         content: (
           <>
             <Span>
-              <b>Q199. Binary Tree Right Side View (Q190)</b>
+              <b>Q198. House Robber (Q190)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40465,7 +40439,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q199. Binary Tree Right Side View (Q190)",
+                title: "Q198. House Robber (Q190)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40478,11 +40452,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q191: {
-        title: "Q200. Number of Islands (Q191)",
+        title: "Q199. Binary Tree Right Side View (Q191)",
         content: (
           <>
             <Span>
-              <b>Q200. Number of Islands (Q191) (Q191)</b>
+              <b>Q199. Binary Tree Right Side View (Q191)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40501,7 +40475,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q200. Number of Islands (Q191)",
+                title: "Q199. Binary Tree Right Side View (Q191)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40514,7 +40488,43 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q192: {
-        title: "Q201. Bitwise AND of Numbers Range (Q192)",
+        title: "Q200. Number of Islands (Q192)",
+        content: (
+          <>
+            <Span>
+              <b>Q200. Number of Islands (Q191)</b>
+            </Span>
+            <Span></Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <Span></Span>
+            <p></p>
+            <CodeEditor
+              options={{
+                title: "Q200. Number of Islands (Q192)",
+                codes: {
+                  Javascript: {
+                    code: ``,
+                    output: ``,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
+      },
+      q193: {
+        title: "Q201. Bitwise AND of Numbers Range (Q193)",
         content: (
           <>
             <Span>
@@ -40549,48 +40559,12 @@ Each row of this table indicates the ID of a department and its name.</p>
           </>
         ),
       },
-      q193: {
-        title: "Q202. Happy Number (Q193)",
-        content: (
-          <>
-            <Span>
-              <b>Q202. Happy Number (Q193)</b>
-            </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 1:</b>
-            </Span>
-            <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
-            <CodeEditor
-              options={{
-                title: "Q202. Happy Number (Q193)",
-                codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
-                  },
-                },
-              }}
-            />
-          </>
-        ),
-      },
       q194: {
-        title: "Q203. Remove Linked List Elements (Q194)",
+        title: "Q202. Happy Number (Q194)",
         content: (
           <>
             <Span>
-              <b>"Q203. Remove Linked List Elements (Q194)</b>
+              <b>Q202. Happy Number (Q194)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40609,7 +40583,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q203. Remove Linked List Elements (Q194)",
+                title: "Q202. Happy Number (Q194)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40622,11 +40596,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q195: {
-        title: "Q204. Count Primes (Q195)",
+        title: "Q203. Remove Linked List Elements (Q195)",
         content: (
           <>
             <Span>
-              <b>Q204. Count Primes (Q195)</b>
+              <b>"Q203. Remove Linked List Elements (Q195)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40645,7 +40619,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q204. Count Primes (Q195)",
+                title: "Q203. Remove Linked List Elements (Q195)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40658,11 +40632,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q196: {
-        title: "Q205. Isomorphic Strings (Q196)",
+        title: "Q204. Count Primes (Q196)",
         content: (
           <>
             <Span>
-              <b>Q205. Isomorphic Strings (Q196)</b>
+              <b>Q204. Count Primes (Q196)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40681,7 +40655,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q205. Isomorphic Strings (Q196)",
+                title: "Q204. Count Primes (Q196)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40694,11 +40668,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q197: {
-        title: "Q206. Reverse Linked List (Q197)",
+        title: "Q205. Isomorphic Strings (Q197)",
         content: (
           <>
             <Span>
-              <b>Q206. Reverse Linked List (Q197)</b>
+              <b>Q205. Isomorphic Strings (Q197)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40717,7 +40691,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q206. Reverse Linked List (Q197)",
+                title: "Q205. Isomorphic Strings (Q197)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40730,11 +40704,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q198: {
-        title: "Q207. Course Schedule (Q198)",
+        title: "Q206. Reverse Linked List (Q198)",
         content: (
           <>
             <Span>
-              <b>Q207. Course Schedule (Q198)</b>
+              <b>Q206. Reverse Linked List (Q198)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40753,7 +40727,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q207. Course Schedule (Q198)",
+                title: "Q206. Reverse Linked List (Q198)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40766,11 +40740,11 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q199: {
-        title: "Q208. Implement Trie (Prefix Tree) (Q199)",
+        title: "Q207. Course Schedule (Q199)",
         content: (
           <>
             <Span>
-              <b>Q208. Implement Trie (Prefix Tree) (Q199)</b>
+              <b>Q207. Course Schedule (Q199)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -40789,7 +40763,7 @@ Each row of this table indicates the ID of a department and its name.</p>
             <p></p>
             <CodeEditor
               options={{
-                title: "Q208. Implement Trie (Prefix Tree) (Q199)",
+                title: "Q207. Course Schedule (Q199)",
                 codes: {
                   Javascript: {
                     code: ``,
@@ -40802,6 +40776,42 @@ Each row of this table indicates the ID of a department and its name.</p>
         ),
       },
       q200: {
+        title: "Q208. Implement Trie (Prefix Tree) (Q200)",
+        content: (
+          <>
+            <Span>
+              <b>Q208. Implement Trie (Prefix Tree) (Q200)</b>
+            </Span>
+            <Span></Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <Span></Span>
+            <p></p>
+            <CodeEditor
+              options={{
+                title: "Q208. Implement Trie (Prefix Tree) (Q200)",
+                codes: {
+                  Javascript: {
+                    code: ``,
+                    output: ``,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
+      },
+      q201: {
         title: "Q209. Minimum Size Subarray Sum (Q200)",
         content: (
           <>
