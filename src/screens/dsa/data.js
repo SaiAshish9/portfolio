@@ -39680,7 +39680,7 @@ class LRUCache:
                 title:
                   "Q181. Employees Earning More Than Their Managers (Q174)",
                 codes: {
-                  Javascript: {
+                  Mysql: {
                     code: `select e1.Name as Employee
                     from Employee e1, Employee e2
                     where e1.ManagerId = e2.Id and e1.Salary > e2.Salary`,
@@ -39758,7 +39758,7 @@ class LRUCache:
               options={{
                 title: "Q182. Duplicate Emails (Q175)",
                 codes: {
-                  Javascript: {
+                  Mysql: {
                     code: `select distinct p1.Email
                     from Person p1, Person p2
                     where p1.Id <> p2.Id and p1.Email = p2.Email`,
@@ -39864,7 +39864,7 @@ class LRUCache:
               options={{
                 title: "Q183. Customers Who Never Order (Q176)",
                 codes: {
-                  Javascript: {
+                  Mysql: {
                     code: `select c2.Name as Customers
                     from Customers c2
                     where c2.Id 
@@ -39907,6 +39907,7 @@ class LRUCache:
               table indicates the ID, name, and salary of an employee. It also
               contains the ID of their department.
             </p>
+            <p> Table: Department</p>
             <pre>
               {
                 `
@@ -39956,6 +39957,7 @@ Each row of this table indicates the ID of a department and its name.</p>
 +----+-------+--------+--------------+
 `}
             </pre>
+            <br/>
             <p>Department table:</p>
             <pre>
               {`
@@ -39988,9 +39990,18 @@ Each row of this table indicates the ID of a department and its name.</p>
               options={{
                 title: "Q184. Department Highest Salary (Q177)",
                 codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
+                  Mysql: {
+                    code: `select d1.Name as Department, e1.Name as Employee, e1.Salary as Salary
+                    from Employee e1, Department d1, 
+                    
+                    (select d.Id as Id, e.Name as Employee, max(e.Salary) as Salary
+                    from Employee e, Department d
+                    where e.DepartmentId = d.Id
+                    group by d.Id) as a
+                    
+                    where e1.DepartmentId = d1.Id and d1.Id = a.Id and a.Salary = e1.Salary`,
+                    output: `{"headers": ["Department", "Employee", "Salary"],
+                     "values": [["IT", "Jim", 90000], ["Sales", "Henry", 80000], ["IT", "Max", 90000]]}`,
                   },
                 },
               }}
