@@ -181,6 +181,7 @@ import Leetcode160 from "assets/leetcode/160.png";
 import Leetcode173 from "assets/leetcode/173.png";
 import Leetcode174 from "assets/leetcode/174.png";
 import Leetcode199 from "assets/leetcode/199.png";
+import Leetcode203 from "assets/leetcode/203.png";
 
 export const DATA = {
   ds: {
@@ -41427,28 +41428,85 @@ class LRUCache:
             <Span>
               <b>"Q203. Remove Linked List Elements (Q195)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the head of a linked list and an integer val, remove all the
+              nodes of the linked list that has Node.val == val, and return the
+              new head.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode203} left alt="img" />
+            <Span>
+              Input: head = [1,2,6,3,4,5,6], val = 6 <br />
+              Output: [1,2,3,4,5]
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: head = [], val = 1 <br />
+              Output: []
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: head = [7,7,7,7], val = 7 <br />
+              Output: []
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              The number of nodes in the list is in the range [0, 104].
+              <br />
+              1 &lt;= Node.val &lt;= 50
+              <br />0 &lt;= val &lt;= 50
+            </p>
             <CodeEditor
               options={{
                 title: "Q203. Remove Linked List Elements (Q195)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function ListNode(val, next) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.next = (next===undefined ? null : next)
+                  }
+                  
+                  /**
+                   * @param {ListNode} head
+                   * @param {number} val
+                   * @return {ListNode}
+                   */
+                  var removeElements = function(head, val){
+                    let temp = new ListNode(0, head)
+                    let prev = temp
+                    while(head){
+                      if(head.val != val){
+                        prev.next = head
+                        prev = prev.next
+                      }
+                      head = head.next
+                    }
+                    prev.next = null
+                    return temp.next
+                  };
+                  
+                  const l = new ListNode(1)
+                  l.next = new ListNode(2)
+                  l.next.next = new ListNode(6)
+                  l.next.next.next = new ListNode(3)
+                  l.next.next.next.next = new ListNode(4)
+                  l.next.next.next.next.next = new ListNode(5)
+                  l.next.next.next.next.next.next = new ListNode(6)
+                  
+                  removeElements(l,6)
+                  `,
+                    output: `ListNode {
+                      val: 1,
+                      next: ListNode { val: 2, next: ListNode { val: 3, next: [ListNode] } }
+                    }`,
                   },
                 },
               }}
