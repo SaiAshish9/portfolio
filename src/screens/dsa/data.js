@@ -39822,7 +39822,8 @@ class LRUCache:
             <p>
               Input: <br />
               Customers table: <br />
-              {`
+              <pre>
+                {`
 +----+-------+
 | id | name  |
 +----+-------+
@@ -39832,10 +39833,12 @@ class LRUCache:
 | 4  | Max   |
 +----+-------+
 `}
+              </pre>
               <br />
               Orders table:
               <br />
-              {`
+              <pre>
+                {`
 +----+------------+
 | id | customerId |
 +----+------------+
@@ -39843,9 +39846,11 @@ class LRUCache:
 | 2  | 1          |
 +----+------------+
 `}
+              </pre>
               <br />
               Output:
-              {`
+              <pre>
+                {`
 +-----------+
 | Customers |
 +-----------+
@@ -39853,6 +39858,7 @@ class LRUCache:
 | Max       |
 +-----------+
 `}
+              </pre>
             </p>
             <CodeEditor
               options={{
