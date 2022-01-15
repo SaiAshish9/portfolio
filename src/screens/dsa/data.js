@@ -40232,21 +40232,49 @@ class LRUCache:
             <Span>
               <b>Q188. Best Time to Buy and Sell Stock IV (Q180)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given an integer array prices where prices[i] is the price
+              of a given stock on the ith day, and an integer k.
+              <br />
+              Find the maximum profit you can achieve. You may complete at most
+              k transactions.
+              <br />
+              Note: You may not engage in multiple transactions simultaneously
+              (i.e., you must sell the stock before you buy again).
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: k = 2, prices = [2,4,1]
+              <br />
+              Output: 2
+              <br />
+              Explanation: Buy on day 1 (price = 2) and sell on day 2 (price =
+              4), profit = 4-2 = 2.
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              <br />
+              Input: k = 2, prices = [3,2,6,5,0,3]
+              <br />
+              Output: 7
+              <br />
+              Explanation: Buy on day 2 (price = 2) and sell on day 3 (price =
+              6), profit = 6-2 = 4. Then buy on day 5 (price = 0) and sell on
+              day 6 (price = 3), profit = 3-0 = 3.
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              0 &lt;= k &lt;= 100
+              <br />
+              0 &lt;= prices.length &lt;= 1000
+              <br />0 &lt;= prices[i] &lt;= 1000
+            </p>
             <CodeEditor
               options={{
                 title: "Q188. Best Time to Buy and Sell Stock IV (Q180)",
