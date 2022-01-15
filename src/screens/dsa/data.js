@@ -41049,8 +41049,22 @@ class LRUCache:
                 title: "Q198. House Robber (Q190)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var rob = function(nums) {
+                     let prev1 = 0; // dp[i - 1]
+                     let prev2 = 0; // dp[i - 2]
+                     for (let num of nums) {
+                       let dp = Math.max(prev1, prev2 + num);
+                       prev2 = prev1;
+                       prev1 = dp;
+                     }
+                     return prev1;
+                   };
+                   rob([1,2,3,1])`,
+                    output: `4`,
                   },
                 },
               }}
