@@ -8,6 +8,11 @@ export const Container = styled.div`
   width: 100vw !important;
   overflow-x: hidden;
   min-height: 100vh !important;
+  pre {
+    ::-webkit-scrollbar {
+      display: none !important;
+    }
+  }
 `;
 
 export const FabButton = styled.div`
@@ -23,7 +28,7 @@ export const FabButton = styled.div`
       ? "#eb4031"
       : current === Theme.highContrast
       ? "#18ebff"
-      : current=== Theme.fire
+      : current === Theme.fire
       ? "#FF7600"
       : lightBluishGrey};
   color: ${({ theme: { current } }) =>

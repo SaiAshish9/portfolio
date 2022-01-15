@@ -39046,21 +39046,94 @@ class LRUCache:
             <Span>
               <b>Q175. Combine Two Tables (Q168)</b>
             </Span>
-            <Span></Span>
+            <p>Table: Person</p>
+            <pre>
+              {`
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| personId    | int     |
+| lastName    | varchar |
+| firstName   | varchar |
++-------------+---------+
+                `}
+            </pre>
+            <Span>
+              personId is the primary key column for this table. This table
+              contains information about the ID of some persons and their first
+              and last names.
+            </Span>
+            <p>
+              <b>Example 2:</b>
+            </p>
+            <pre>
+              {`
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| addressId   | int     |
+| personId    | int     |
+| city        | varchar |
+| state       | varchar |
++-------------+---------+
+                `}
+            </pre>
+            <Span>
+              addressId is the primary key column for this table. Each row of
+              this table contains information about the city and state of one
+              person with ID = PersonId.
+            </Span>
+            <Span>
+              Return the result table in any order.
+              <br />
+              The query result format is in the following example.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
+            <p>
+              Input: <br />
+              Person table:
+            </p>
+            <pre>
+              {`
++----------+----------+-----------+
+| personId | lastName | firstName |
++----------+----------+-----------+
+| 1        | Wang     | Allen     |
+| 2        | Alice    | Bob       |
++----------+----------+-----------+
+                `}
+            </pre>
+            <p>Address table:</p>
+            <pre>
+              {`
++-----------+----------+---------------+------------+
+| addressId | personId | city          | state      |
++-----------+----------+---------------+------------+
+| 1         | 2        | New York City | New York   |
+| 2         | 3        | Leetcode      | California |
++-----------+----------+---------------+------------+  
+  `}
+            </pre>
+            <p>Output</p>
+            <pre>
+              {`
++-----------+----------+---------------+----------+
+| firstName | lastName | city          | state    |
++-----------+----------+---------------+----------+
+| Allen     | Wang     | Null          | Null     |
+| Bob       | Alice    | New York City | New York |
++-----------+----------+---------------+----------+ 
+`}
+            </pre>
+            <br />
+            <Span>Explanation:</Span>
             <Span>
-              <b>Example 2:</b>
+              There is no address in the address table for the personId = 1 so
+              we return null in their city and state. addressId = 1 contains
+              information about the address of personId = 2.
             </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
             <CodeEditor
               options={{
                 title: "Q175. Combine Two Tables (Q168)",
@@ -39082,21 +39155,90 @@ class LRUCache:
             <Span>
               <b>Q176. Second Highest Salary (Q169)</b>
             </Span>
-            <Span></Span>
+
+            <Span>
+              Table: Employee
+              <br />
+              <pre>
+                {`
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| id          | int  |
+| salary      | int  |
++-------------+------+ 
+  `}
+              </pre>
+              <br />
+              id is the primary key column for this table.
+              <br />
+              Each row of this table contains information about t
+            </Span>
+            <Span>
+              {" "}
+              Write an SQL query to report the second highest salary from the
+              Employee table. If there is no second highest salary, the query
+              should report null.
+              <br />
+              The query result format is in the following example.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
+            <p>
+              Input: <br />
+              Employee table: <br />
+              <pre>
+                {`
++----+--------+
+| id | salary |
++----+--------+
+| 1  | 100    |
+| 2  | 200    |
+| 3  | 300    |
++----+--------+
+  
+  `}
+              </pre>
+              Output: <br />
+              <pre>
+                {`
++---------------------+
+| SecondHighestSalary |
++---------------------+
+| 200                 |
++---------------------+
+  `}
+              </pre>
+            </p>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              Input: Employee table:
+              <pre>
+                {`
++----+--------+
+| id | salary |
++----+--------+
+| 1  | 100    |
++----+--------+ 
+ `}{" "}
+              </pre>
+              <br />
+              Output:
+              <br />
+              <pre>
+                {`
++---------------------+
+| SecondHighestSalary |
++---------------------+
+| null                |
++---------------------+  
+  `}{" "}
+              </pre>
+            </p>
+
             <CodeEditor
               options={{
                 title: "Q176. Second Highest Salary (Q169)",
