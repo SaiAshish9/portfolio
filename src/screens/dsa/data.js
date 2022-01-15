@@ -40257,7 +40257,6 @@ class LRUCache:
               <b>Example 2:</b>
             </Span>
             <Span>
-              <br />
               Input: k = 2, prices = [3,2,6,5,0,3]
               <br />
               Output: 7
@@ -40321,28 +40320,81 @@ class LRUCache:
             <Span>
               <b>Q189. Rotate Array (Q181)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an array, rotate the array to the right by k steps, where k
+              is non-negative.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,2,3,4,5,6,7], k = 3 <br />
+              Output: [5,6,7,1,2,3,4] <br />
+              Explanation: <br />
+              rotate 1 steps to the right: [7,1,2,3,4,5,6] <br />
+              rotate 2 steps to the right: [6,7,1,2,3,4,5] <br />
+              rotate 3 steps to the right: [5,6,7,1,2,3,4]
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: nums = [-1,-100,3,99], k = 2<br />
+              Output: [3,99,-1,-100]
+              <br />
+              Explanation: <br />
+              rotate 1 steps to the right: [99,-1,-100,3]
+              <br />
+              rotate 2 steps to the right: [3,99,-1,-100]
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              1 &lt;= nums.length &lt;= 105
+              <br />
+              -231 &lt;= nums[i] &lt;= 231 - 1<br />0 &lt;= k &lt;= 105
+            </Span>
+            <p>
+              <b>Follow up: </b>
+              <br />
+              Try to come up with as many solutions as you can. There are at
+              least three different ways to solve this problem.
+              <br />
+              Could you do it in-place with O(1) extra space?
+            </p>
             <CodeEditor
               options={{
                 title: "Q189. Rotate Array (Q181)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @param {number} k
+                    * @return {void} Do not return anything, modify nums in-place instead.
+                    */
+                   
+                   function reverse(nums,l,r){
+                   while(l<r){
+                     [nums[l],nums[r]] = [nums[r],nums[l]]
+                     l++
+                     r--
+                   }
+                   }
+                   
+                   var rotate = function(nums, k) {
+                     k %= nums.length;
+                     reverse(nums, 0, nums.length - 1);
+                     reverse(nums, 0, k - 1);
+                     reverse(nums, k, nums.length - 1);
+                     console.log(nums)
+                   };
+                   
+                   rotate([1,2,3,4,5,6,7],3)`,
+                    output: `[
+                      5, 6, 7, 1,
+                      2, 3, 4
+                    ]`,
                   },
                 },
               }}
