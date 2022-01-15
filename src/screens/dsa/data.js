@@ -179,6 +179,7 @@ import Leetcode147 from "assets/leetcode/147.png";
 import Leetcode149 from "assets/leetcode/149.png";
 import Leetcode160 from "assets/leetcode/160.png";
 import Leetcode173 from "assets/leetcode/173.png";
+import Leetcode174 from "assets/leetcode/174.png";
 
 export const DATA = {
   ds: {
@@ -38947,28 +38948,90 @@ class LRUCache:
             <Span>
               <b>Q174. Dungeon Game (Q167)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              The demons had captured the princess and imprisoned her in the
+              bottom-right corner of a dungeon. The dungeon consists of m x n
+              rooms laid out in a 2D grid. Our valiant knight was initially
+              positioned in the top-left room and must fight his way through
+              dungeon to rescue the princess.
+            </Span>
+            <Span>
+              The knight has an initial health point represented by a positive
+              integer. If at any point his health point drops to 0 or below, he
+              dies immediately.
+            </Span>
+            <Span>
+              Some of the rooms are guarded by demons (represented by negative
+              integers), so the knight loses health upon entering these rooms;
+              other rooms are either empty (represented as 0) or contain magic
+              orbs that increase the knight's health (represented by positive
+              integers).
+            </Span>
+            <Span>
+              To reach the princess as quickly as possible, the knight decides
+              to move only rightward or downward in each step.
+            </Span>
+            <Span>
+              Return the knight's minimum initial health so that he can rescue
+              the princess.
+            </Span>
+            <Span>
+              Note that any room can contain threats or power-ups, even the
+              first room the knight enters and the bottom-right room where the
+              princess is imprisoned.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode174} left />
+            <Span>
+              Input: dungeon = [[-2,-3,3],[-5,-10,1],[10,30,-5]]
+              <br />
+              Output: 7<br />
+              Explanation: The initial health of the knight must be at least 7
+              if he follows the optimal path: RIGHT-&gt; RIGHT -&gt; DOWN -&gt;
+              DOWN.
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: dungeon = [[0]]
+              <br />
+              Output: 1
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              m == dungeon.length <br />
+              n == dungeon[i].length <br />
+              1 &lt;= m, n &lt;= 200 <br />
+              -1000 &lt;= dungeon[i][j] &lt;= 1000
+            </p>
             <CodeEditor
               options={{
                 title: "Q174. Dungeon Game (Q167)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[][]} dungeon
+                    * @return {number}
+                    */
+                   var calculateMinimumHP = function(dungeon){
+                     const m = dungeon.length
+                     const n = dungeon[0].length
+                     const dp = Array(n+1).fill(Number.MAX_SAFE_INTEGER)
+                     dp[n-1] = 1
+                     for (let i = m - 1; i >= 0; --i)
+                       for (let j = n - 1; j >= 0; --j) {
+                       dp[j] = Math.min(dp[j], dp[j + 1]) - dungeon[i][j];
+                       dp[j] = Math.max(dp[j], 1);
+                     }
+                     return dp[0]
+                   };
+                   calculateMinimumHP([[-2,-3,3],[-5,-10,1],[10,30,-5]])`,
+                    output: `7`,
                   },
                 },
               }}
