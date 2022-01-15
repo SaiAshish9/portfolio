@@ -39382,28 +39382,91 @@ class LRUCache:
             <Span>
               <b>Q178. Rank Scores (Q171)</b>
             </Span>
-            <Span></Span>
+            <p>Table: Scores</p>
+            <pre>
+              {`
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| score       | decimal |
++-------------+---------+
+                `}
+            </pre>
+            <Span>
+              id is the primary key for this table. Each row of this table
+              contains the score of a game. Score is a floating point value with
+              two decimal places.
+            </Span>
+            <Span>
+              Write an SQL query to rank the scores. The ranking should be
+              calculated according to the following rules:
+              <br />
+              <br />
+              The scores should be ranked from the highest to the lowest.
+              <br />
+              If there is a tie between two scores, both should have the same
+              ranking.
+              <br />
+              After a tie, the next ranking number should be the next
+              consecutive integer value. In other words, there should be no
+              holes between ranks.
+              <br />
+              Return the result table ordered by score in descending order.
+              <br />
+              The query result format is in the following example.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              Input: <br />
+              Scores table: <br />
+              <pre>
+                {`
++----+-------+
+| id | score |
++----+-------+
+| 1  | 3.50  |
+| 2  | 3.65  |
+| 3  | 4.00  |
+| 4  | 3.85  |
+| 5  | 4.00  |
+| 6  | 3.65  |
++----+-------+  
+  `}
+              </pre>
+              Output: <br />
+              <pre>
+                {`
++-------+------+
+| score | rank |
++-------+------+
+| 4.00  | 1    |
+| 4.00  | 1    |
+| 3.85  | 2    |
+| 3.65  | 3    |
+| 3.65  | 3    |
+| 3.50  | 4    |
++-------+------+
+`}
+              </pre>
+            </p>
             <CodeEditor
               options={{
                 title: "Q178. Rank Scores (Q171)",
                 codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
+                  Mysql: {
+                    code: `# Write your MySQL query statement below
+
+                    SELECT s.score, (SELECT count(distinct(score)) from scores m where m.score >= s.score) as "Rank" FROM scores s order by s.score desc;
+                    
+                    # SELECT
+                    #     score,
+                    #     DENSE_RANK() OVER(ORDER BY score DESC) as "Rank"
+                    # FROM scores`,
+                    output: `{"headers": ["score", "Rank"],
+                     "values": [[4.00, 1], [4.00, 1], [3.85, 2], [3.65, 3], [3.65, 3], [3.50, 4]]}`,
                   },
                 },
               }}
@@ -39418,28 +39481,51 @@ class LRUCache:
             <Span>
               <b>Q179. Largest Number (Q172)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a list of non-negative integers nums, arrange them such that
+              they form the largest number and return it.
+            </Span>
+            <Span>
+              Since the result may be very large, so you need to return a string
+              instead of an integer.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [10,2] <br />
+              Output: "210"
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: nums = [3,30,34,5,9]
+              <br />
+              Output: "9534330"
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= nums.length &lt;= 100 <br />0 &lt;= nums[i] &lt;= 109
+            </p>
             <CodeEditor
               options={{
                 title: "Q179. Largest Number (Q172)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {string}
+                    */
+                   var largestNumber = function(nums) {
+                     nums = nums.sort((a,b)=>(String(b)+String(a))-(String(a)+String(b))).join('')
+                     return nums[0] == '0'?'0':nums
+                   };
+                   
+                   largestNumber([10,2])`,
+                    output: `210`,
                   },
                 },
               }}
@@ -39454,28 +39540,70 @@ class LRUCache:
             <Span>
               <b>Q180. Consecutive Numbers (Q173)</b>
             </Span>
-            <Span></Span>
+            <p>Table: Logs</p>
+            <pre>
+              {`
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| num         | varchar |
++-------------+---------+
+                `}
+            </pre>
+            <p>id is the primary key for this table.</p>
+            <Span>
+              Write an SQL query to find all numbers that appear at least three
+              times consecutively.
+            </Span>
+            <Span>Return the result table in any order.</Span>
+            <Span>The query result format is in the following example.</Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              Input: <br />
+              Logs table: <br />
+              <pre>
+                {`
++----+-----+
+| id | num |
++----+-----+
+| 1  | 1   |
+| 2  | 1   |
+| 3  | 1   |
+| 4  | 2   |
+| 5  | 1   |
+| 6  | 2   |
+| 7  | 2   |
++----+-----+
+`}
+              </pre>
+              <br />
+              Output: <br />
+              <pre>
+                {`
++-----------------+
+| ConsecutiveNums |
++-----------------+
+| 1               |
++-----------------+
+`}
+              </pre>
+              <br />
+              Explanation: 1 is the only number that appears consecutively for
+              at least three times.
+            </p>
             <CodeEditor
               options={{
                 title: "Q180. Consecutive Numbers (Q173)",
                 codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
+                  Mysql: {
+                    code: `select distinct l1.Num as ConsecutiveNums
+                    from Logs l1, Logs l2, Logs l3
+                    where l2.Id = l1.Id+1 and l3.Id = l2.Id + 1 and l1.Num = l2.Num and l2.Num = l3.Num`,
+                    output: `{"headers": ["ConsecutiveNums"],
+                     "values": [[1]]}`,
                   },
                 },
               }}
@@ -39490,29 +39618,74 @@ class LRUCache:
             <Span>
               <b>Q181. Employees Earning More Than Their Managers (Q174)</b>
             </Span>
-            <Span></Span>
+            <Span>Table: Employee</Span>
+            <pre>
+              {`                
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| name        | varchar |
+| salary      | int     |
+| managerId   | int     |
++-------------+---------+
+                `}
+            </pre>
+            <Span>
+              id is the primary key column for this table. <br />
+              Each row of this table indicates the ID of an employee, their
+              name, salary, and the ID of their manager.
+            </Span>
+            <Span>
+              Write an SQL query to find the employees who earn more than their
+              managers.
+              <br />
+              Return the result table in any order.
+              <rb />
+              The query result format is in the following example.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              Input: <br />
+              Employee table: <br />
+              <pre>
+                {`
++----+-------+--------+-----------+
+| id | name  | salary | managerId |
++----+-------+--------+-----------+
+| 1  | Joe   | 70000  | 3         |
+| 2  | Henry | 80000  | 4         |
+| 3  | Sam   | 60000  | Null      |
+| 4  | Max   | 90000  | Null      |
++----+-------+--------+-----------+
+`}
+              </pre>
+              Output: <br />
+              <pre>
+                {`
++----------+
+| Employee |
++----------+
+| Joe      |
++----------+
+`}
+              </pre>
+              Explanation: Joe is the only employee who earns more than his
+              manager.
+            </p>
             <CodeEditor
               options={{
                 title:
                   "Q181. Employees Earning More Than Their Managers (Q174)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `select e1.Name as Employee
+                    from Employee e1, Employee e2
+                    where e1.ManagerId = e2.Id and e1.Salary > e2.Salary`,
+                    output: `{"headers": ["Employee"],
+                     "values": [["Joe"]]}`,
                   },
                 },
               }}
@@ -39527,28 +39700,70 @@ class LRUCache:
             <Span>
               <b>Q182. Duplicate Emails (Q175)</b>
             </Span>
-            <Span></Span>
+            <p>Table: Person</p>
+            <pre>
+              {`
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| email       | varchar |
++-------------+---------+
+                `}
+            </pre>
+            <Span>
+              id is the primary key column for this table. <br />
+              Each row of this table contains an email. The emails will not
+              contain uppercase letters.
+            </Span>
+            <Span>
+              Write an SQL query to report all the duplicate emails.
+              <br />
+              Return the result table in any order.
+              <br />
+              The query result format is in the following example.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              Input: <br />
+              Person table: <br />
+              <pre>
+                {`
++----+---------+
+| id | email   |
++----+---------+
+| 1  | a@b.com |
+| 2  | c@d.com |
+| 3  | a@b.com |
++----+---------+
+`}
+              </pre>
+              <br />
+              Output: <br />
+              <pre>
+                {`
++---------+
+| Email   |
++---------+
+| a@b.com |
++---------+
+`}
+              </pre>{" "}
+              <br />
+              Explanation: a@b.com is repeated two times.
+            </p>
             <CodeEditor
               options={{
                 title: "Q182. Duplicate Emails (Q175)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `select distinct p1.Email
+                    from Person p1, Person p2
+                    where p1.Id <> p2.Id and p1.Email = p2.Email`,
+                    output: `{"headers": ["Email"],
+                     "values": [["a@b.com"]]}`,
                   },
                 },
               }}
@@ -39561,30 +39776,97 @@ class LRUCache:
         content: (
           <>
             <Span>
-              <b>Q (Q)</b>
+              <b>Q183. Customers Who Never Order (Q176)</b>
             </Span>
-            <Span></Span>
+            <Span>Table: Customers</Span>
+            <pre>
+              {`+-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| name        | varchar |
++-------------+---------+`}
+            </pre>
+            <p>
+              id is the primary key column for this table. Each row of this
+              table indicates the ID and name of a customer.
+            </p>
+            <Span>Table: Orders</Span>
+            <pre>
+              {`
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| id          | int  |
+| customerId  | int  |
++-------------+------+
+              `}
+            </pre>
+            <Span>
+              id is the primary key column for this table. customerId is a
+              foreign key of the ID from the Customers table. Each row of this
+              table indicates the ID of an order and the ID of the customer who
+              ordered it.
+            </Span>
+            <Span>
+              Write an SQL query to report all customers who never order
+              anything.
+              <br />
+              Return the result table in any order.
+              <br />
+              The query result format is in the following example.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              Input: <br />
+              Customers table: <br />
+              {`
++----+-------+
+| id | name  |
++----+-------+
+| 1  | Joe   |
+| 2  | Henry |
+| 3  | Sam   |
+| 4  | Max   |
++----+-------+
+`}
+              <br />
+              Orders table:
+              <br />
+              {`
++----+------------+
+| id | customerId |
++----+------------+
+| 1  | 3          |
+| 2  | 1          |
++----+------------+
+`}
+              <br />
+              Output:
+              {`
++-----------+
+| Customers |
++-----------+
+| Henry     |
+| Max       |
++-----------+
+`}
+            </p>
             <CodeEditor
               options={{
                 title: "Q183. Customers Who Never Order (Q176)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `select c2.Name as Customers
+                    from Customers c2
+                    where c2.Id 
+                    not in 
+                    (select o.CustomerId
+                    from Customers c, Orders o
+                    where c.Id = o.CustomerId)`,
+                    output: `{"headers": ["Customers"], "values": [["Henry"], ["Max"]]}`,
                   },
                 },
               }}
