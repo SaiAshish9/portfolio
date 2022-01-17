@@ -41990,21 +41990,49 @@ class LRUCache:
             <Span>
               <b>Q209. Minimum Size Subarray Sum (Q201)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an array of positive integers nums and a positive integer
+              target, return the minimal length of a contiguous subarray [numsl,
+              numsl+1, ..., numsr-1, numsr] of which the sum is greater than or
+              equal to target. If there is no such subarray, return 0 instead.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
             <Span>
+              Input: target = 7,
+              <br /> nums = [2,3,1,2,4,3] <br />
+              Output: 2<br />
+              Explanation: The subarray [4,3] has the minimal length under the
+              problem constraint.
+            </Span>
+            <Span>
               <b>Example 2:</b>
             </Span>
+            <SPan>
+              Input: target = 4,
+              <br /> nums = [1,4,4]
+              <br />
+              Output: 1
+            </SPan>
             <Span>
               <b>Example 3:</b>
             </Span>
             <Span>
+              Input: target = 11,
+              <br /> nums = [1,1,1,1,1,1,1,1] Output: 0<br />
+            </Span>
+            <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              1 &lt;= target &lt;= 109 <br />
+              1 &lt;= nums.length &lt;= 105 <br />1 &lt;= nums[i] &lt;= 105
+            </Span>
+            <p>
+              Follow up: If you have figured out the O(n) solution, try coding
+              another solution of which the time complexity is O(n log(n)).
+            </p>
             <CodeEditor
               options={{
                 title: "Q209. Minimum Size Subarray Sum (Q201)",
