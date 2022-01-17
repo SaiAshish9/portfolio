@@ -42038,8 +42038,26 @@ class LRUCache:
                 title: "Q209. Minimum Size Subarray Sum (Q201)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} target
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var minSubArrayLen = function(target, nums) {
+                     let ans = Number.MAX_SAFE_INTEGER;
+                     let sum = 0;
+                     for (let l = 0, r = 0; r < nums.length; ++r) {
+                       sum += nums[r];
+                       while (sum >= target) {
+                         ans = Math.min(ans, r - l + 1);
+                         sum -= nums[l++];
+                       }
+                     }
+                     return ans != Number.MAX_SAFE_INTEGER ? ans : 0;  
+                   };
+                   
+                   minSubArrayLen(7,[2,3,1,2,4,3])`,
+                    output: `2`,
                   },
                 },
               }}
