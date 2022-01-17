@@ -42072,28 +42072,113 @@ class LRUCache:
             <Span>
               <b>Q210. Course Schedule II (Q202)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              There are a total of numCourses courses you have to take, labeled
+              from 0 to numCourses - 1. You are given an array prerequisites
+              where prerequisites[i] = [ai, bi] indicates that you must take
+              course bi first if you want to take course ai.
+              <br />
+              For example, the pair [0, 1], indicates that to take course 0 you
+              have to first take course 1.
+              <br />
+              Return the ordering of courses you should take to finish all
+              courses. If there are many valid answers, return any of them. If
+              it is impossible to finish all courses, return an empty array.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: numCourses = 2,
+              <br />
+              prerequisites = [[1,0]]
+              <br />
+              Output: [0,1]
+              <br />
+              Explanation: There are a total of 2 courses to take. To take
+              course 1 you should have finished course 0. So the correct course
+              order is [0,1].
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: numCourses = 4, <br />
+              prerequisites = [[1,0],[2,0],[3,1],[3,2]]
+              <br />
+              Output: [0,2,1,3]
+              <br />
+              Explanation: There are a total of 4 courses to take. To take
+              course 3 you should have finished both courses 1 and 2. Both
+              courses 1 and 2 should be taken after you finished course 0. So
+              one correct course order is [0,1,2,3]. Another correct ordering is
+              [0,2,1,3].
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: numCourses = 1, <br />
+              prerequisites = []
+              <br />
+              Output: [0]
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= numCourses &lt;= 2000 <br />0 &lt;= prerequisites.length
+              &lt;= numCourses * (numCourses - 1) <br />
+              prerequisites[i].length == 2 <br />
+              0 &lt;= ai, bi &lt; numCourses <br />
+              ai != bi <br />
+              All the pairs [ai, bi] are distinct.
+            </p>
             <CodeEditor
               options={{
                 title: "Q210. Course Schedule II (Q202)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} numCourses
+                    * @param {number[][]} prerequisites
+                    * @return {number[]}
+                    */
+                   
+                   const State = {
+                     init : 0,
+                     visiting : 1,
+                     visited : 2
+                   }
+                   
+                   function hasCycle(graph, u, ans, state){
+                     if(state[u] == State.visiting)
+                       return true
+                     if(state[u] == State.visited)
+                       return false
+                     state[u] = State.visiting
+                     for(let v of graph[u]){
+                       if(hasCycle(graph,v,ans,state)) return true
+                     }
+                     state[u] = State.visited
+                     ans.push(u)
+                     return false
+                   }
+                   
+                   var findOrder = function(numCourses, prerequisites) {
+                     const ans = [];
+                     const state = []
+                     const graph = Array.from(Array(numCourses),()=>[]);
+                     for (let p of prerequisites)
+                       graph[p[1]].push(p[0]);
+                     for (let i = 0; i < numCourses; ++i)
+                       if (hasCycle(graph, i, ans, state))
+                         return [];
+                     return ans.reverse();
+                   };
+                   
+                   findOrder(2,[[1,0]])`,
+                    output: `[0,1]`,
                   },
                 },
               }}
