@@ -42009,12 +42009,12 @@ class LRUCache:
             <Span>
               <b>Example 2:</b>
             </Span>
-            <SPan>
+            <Span>
               Input: target = 4,
               <br /> nums = [1,4,4]
               <br />
               Output: 1
-            </SPan>
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
@@ -42193,21 +42193,66 @@ class LRUCache:
             <Span>
               <b>Q211. Design Add and Search Words Data Structure (Q203)</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 1:</b>
+              Design a data structure that supports adding new words and finding
+              if a string matches any previously added string.
+              <br />
+              Implement the WordDictionary class:
+              <br />
+              WordDictionary() Initializes the object.
+              <br />
+              void addWord(word) Adds word to the data structure, it can be
+              matched later.
+              <br />
+              bool search(word) Returns true if there is any string in the data
+              structure that matches word or false otherwise. word may contain
+              dots '.' where dots can be matched with any letter.
             </Span>
             <Span>
-              <b>Example 2:</b>
+              <b>Example:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input
+              <br />
+              ["WordDictionary","addWord","addWord","addWord","search","search","search","search"]
+              <br />
+              [[],["bad"],["dad"],["mad"],["pad"],["bad"],[".ad"],["b.."]]
+              <br />
+              Output
+              <br />
+              [null,null,null,null,false,true,true,true]
+            </Span>
+            <Span>
+              1 &lt;= word.length &lt;= 500 <br />
+              word in addWord consists lower-case English letters. <br />
+              word in search consist of '.' or lower-case English letters.{" "}
+              <br />
+              At most 50000 calls will be made to addWord and search.
+              <br />
+              Explanation
+              <br />
+              WordDictionary wordDictionary = new WordDictionary(); <br />
+              wordDictionary.addWord("bad"); <br />
+              wordDictionary.addWord("dad"); <br />
+              wordDictionary.addWord("mad"); <br />
+              wordDictionary.search("pad"); // return False <br />
+              wordDictionary.search("bad"); // return True <br />
+              wordDictionary.search(".ad"); // return True <br />
+              wordDictionary.search("b.."); // return True
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= word.length &lt;= 500
+              <br />
+              word in addWord consists lower-case English letters.
+              <br />
+              word in search consist of '.' or lower-case English letters.
+              <br />
+              At most 50000 calls will be made to addWord and search.
+            </p>
+
             <CodeEditor
               options={{
                 title:
