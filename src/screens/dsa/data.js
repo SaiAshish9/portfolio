@@ -184,6 +184,7 @@ import Leetcode199 from "assets/leetcode/199.png";
 import Leetcode203 from "assets/leetcode/203.png";
 import Leetcode212 from "assets/leetcode/212.png";
 import Leetcode218 from "assets/leetcode/q218.png";
+import Leetcode221 from "assets/leetcode/221.png";
 
 export const DATA = {
   ds: {
@@ -43075,28 +43076,78 @@ class LRUCache:
             <Span>
               <b>Q220. Contains Duplicate III (Q212)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer array nums and two integers k and t, return true
+              if there are two distinct indices i and j in the array such that
+              abs(nums[i] - nums[j]) &lt;= t and abs(i - j) &lt;= k.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,2,3,1],
+              <br /> k = 3,
+              <br /> t = 0 <br />
+              Output: true
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: nums = [1,0,1,1], <br />k = 1,
+              <br /> t = 2<br />
+              Output: true
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,5,9,1,5,9],
+              <br /> k = 2, <br />t = 3<br />
+              Output: false
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= nums.length &lt;= 2 * 10^4 <br />
+              -231 &lt;= nums[i] &lt;= 2^31 - 1 <br />
+              0 &lt;= k &lt;= 104 <br />0 &lt;= t &lt;= 2^31 - 1
+            </p>
             <CodeEditor
               options={{
                 title: "Q220. Contains Duplicate III (Q212)",
                 codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
+                  Java: {
+                    code: `import java.util.*;
+
+                    class Solution {
+                      public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
+                        TreeSet<Long> set = new TreeSet<>();
+                    
+                        for (int i = 0; i < nums.length; ++i) {
+                          final long num = (long) nums[i];
+                          final Long ceiling = set.ceiling(num); // the smallest num >= nums[i]
+                          if (ceiling != null && ceiling - num <= t)
+                            return true;
+                          final Long floor = set.floor(num); // the largest num <= nums[i]
+                          if (floor != null && num - floor <= t)
+                            return true;
+                          set.add(num);
+                          if (i >= k)
+                            set.remove((long) nums[i - k]);
+                        }
+                    
+                        return false;
+                      }
+                      
+                      public static void Solution(String ...s){
+                        System.out.println(new Solution().containsNearbyAlmostDuplicate(new int[]{1,2,3,1},3,0));
+                      }
+                    
+                    }
+                    `,
+                    output: `true`,
                   },
                 },
               }}
@@ -43111,28 +43162,78 @@ class LRUCache:
             <Span>
               <b>Q221. Maximal Square (Q213)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an m x n binary matrix filled with 0's and 1's, find the
+              largest square containing only 1's and return its area.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode221} left />
+            <Span>
+              Input: <br />
+              matrix = [["1","0","1","0","0"], <br />
+              ["1","0","1","1","1"], <br />
+              ["1","1","1","1","1"], <br />
+              ["1","0","0","1","0"]] <br />
+              Output: 4
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: <br />
+              matrix = [["0","1"],["1","0"]] <br />
+              Output: 1
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: matrix = [["0"]]
+              <br />
+              Output: 0
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              m == matrix.length <br />
+              n == matrix[i].length <br />
+              1 &lt;= m, n &lt;= 300 <br />
+              matrix[i][j] is '0' or '1'.
+            </p>
             <CodeEditor
               options={{
                 title: "Q221. Maximal Square (Q213)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {character[][]} matrix
+                    * @return {number}
+                    */
+                   var maximalSquare = function(matrix) {
+                     if (matrix.length == 0) return 0;
+                     const m = matrix.length;
+                     const n = matrix[0].length;
+                     const dp = Array(n).fill(0);
+                     let maxLength = 0;
+                     let prev = 0; // dp[i - 1][j - 1]
+                     for (let i = 0; i < m; ++i)
+                       for (let j = 0; j < n; ++j) {
+                         let cache = dp[j];
+                         if (i == 0 || j == 0 || matrix[i][j] == '0')
+                           dp[j] = matrix[i][j] == '1' ? 1 : 0;
+                         else
+                           dp[j] = Math.min(prev, Math.min(dp[j], dp[j - 1])) + 1;
+                         maxLength = Math.max(maxLength, dp[j]);
+                         prev = cache;
+                       }
+                     return maxLength * maxLength;
+                   };
+                   
+                   maximalSquare([["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]])`,
+                    output: `4`,
                   },
                 },
               }}
@@ -43160,8 +43261,12 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              The number of nodes in the tree is in the range [0, 5 * 104].{" "}
+              <br />
+              0 &lt;= Node.val &lt;= 5 * 104 <br />
+              The tree is guaranteed to be complete.
+            </p>
             <CodeEditor
               options={{
                 title: "Q222. Count Complete Tree Nodes (Q214)",
