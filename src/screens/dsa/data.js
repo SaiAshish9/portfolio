@@ -43013,10 +43013,22 @@ class LRUCache:
               <b>Example 1:</b>
             </Span>
             <Span>
+              Input: nums = [1,2,3,1], k = 3<br />
+              Output: true
+            </Span>
+            <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: nums = [1,0,1,1], k = 1<br />
+              Output: true
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,2,3,1,2,3], k = 2<br />
+              Output: false
             </Span>
             <Span>
               <b>Constraints:</b>
