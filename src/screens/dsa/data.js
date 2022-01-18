@@ -182,6 +182,7 @@ import Leetcode173 from "assets/leetcode/173.png";
 import Leetcode174 from "assets/leetcode/174.png";
 import Leetcode199 from "assets/leetcode/199.png";
 import Leetcode203 from "assets/leetcode/203.png";
+import Leetcode212 from "assets/leetcode/212.png";
 
 export const DATA = {
   ds: {
@@ -42314,28 +42315,110 @@ class LRUCache:
             <Span>
               <b>Q212. Word Search II (Q204)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an m x n board of characters and a list of strings words,
+              return all words on the board.
+            </Span>
+            <Span>
+              Each word must be constructed from letters of sequentially
+              adjacent cells, where adjacent cells are horizontally or
+              vertically neighboring. The same letter cell may not be used more
+              than once in a word.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
             <Span>
+              Input: board =
+              [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]],{" "}
+              <br />
+              words = ["oath","pea","eat","rain"]
+              <br />
+              Output: ["eat","oath"]
+            </Span>
+            <Img src={Leetcode212} left />
+            <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: board = [["a","b"],["c","d"]], <br /> words = ["abcb"]{" "}
+              <br />
+              Output: []
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              m == board.length <br />
+              n == board[i].length <br />
+              1 &lt;= m, n &lt;= 12 <br />
+              board[i][j] is a lowercase English letter. <br />
+              1 &lt;= words.length &lt;= 3 * 104 <br />
+              1 &lt;= words[i].length &lt;= 10 <br />
+              words[i] consists of lowercase English letters. <br />
+              All the strings of words are unique.
+            </p>
             <CodeEditor
               options={{
                 title: "Q212. Word Search II (Q204)",
                 codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
+                  Java: {
+                    code: `class TrieNode {
+                      public TrieNode[] children = new TrieNode[26];
+                      public String word;
+                    }
+                    
+                    class Solution {
+                      public List<String> findWords(char[][] board, String[] words) {
+                        for (final String word : words)
+                          insert(word);
+                    
+                        List<String> ans = new ArrayList<>();
+                    
+                        for (int i = 0; i < board.length; ++i)
+                          for (int j = 0; j < board[0].length; ++j)
+                            dfs(board, i, j, root, ans);
+                    
+                        return ans;
+                      }
+                    
+                      private TrieNode root = new TrieNode();
+                    
+                      private void insert(final String word) {
+                        TrieNode node = root;
+                        for (final char c : word.toCharArray()) {
+                          if (node.children[c - 'a'] == null)
+                            node.children[c - 'a'] = new TrieNode();
+                          node = node.children[c - 'a'];
+                        }
+                        node.word = word;
+                      }
+                    
+                      private void dfs(char[][] board, int i, int j, TrieNode node, List<String> ans) {
+                        if (i < 0 || i == board.length || j < 0 || j == board[0].length)
+                          return;
+                        if (board[i][j] == '*')
+                          return;
+                    
+                        final char c = board[i][j];
+                        TrieNode next = node.children[(int) (c - 'a')];
+                        if (next == null)
+                          return;
+                        if (next.word != null) {
+                          ans.add(next.word);
+                          next.word = null;
+                        }
+                    
+                        board[i][j] = '*';
+                        dfs(board, i + 1, j, next, ans);
+                        dfs(board, i - 1, j, next, ans);
+                        dfs(board, i, j + 1, next, ans);
+                        dfs(board, i, j - 1, next, ans);
+                        board[i][j] = c;
+                      }
+                    }
+                    `,
+                    output: `["oath","eat"]`,
                   },
                 },
               }}
