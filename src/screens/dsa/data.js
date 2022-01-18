@@ -185,6 +185,8 @@ import Leetcode203 from "assets/leetcode/203.png";
 import Leetcode212 from "assets/leetcode/212.png";
 import Leetcode218 from "assets/leetcode/q218.png";
 import Leetcode221 from "assets/leetcode/221.png";
+import Leetcode222 from "assets/leetcode/222.png";
+import Leetcode223 from "assets/leetcode/223.png";
 
 export const DATA = {
   ds: {
@@ -43248,15 +43250,41 @@ class LRUCache:
             <Span>
               <b>Q222. Count Complete Tree Nodes (Q214)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the root of a complete binary tree, return the number of the
+              nodes in the tree.
+            </Span>
+            <Span>
+              According to Wikipedia, every level, except possibly the last, is
+              completely filled in a complete binary tree, and all nodes in the
+              last level are as far left as possible. It can have between 1 and
+              2h nodes inclusive at the last level h.
+            </Span>
+            <Span>
+              Design an algorithm that runs in less than O(n) time complexity.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode222} left />
+            <Span>
+              Input: root = [1,2,3,4,5,6] <br />
+              Output: 6
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: root = [] <br />
+              Output: 0
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: root = [1]
+              <br />
+              Output: 1
             </Span>
             <Span>
               <b>Constraints:</b>
@@ -43272,8 +43300,42 @@ class LRUCache:
                 title: "Q222. Count Complete Tree Nodes (Q214)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                  }
+                  
+                  /**
+                   * @param {TreeNode} root
+                   * @return {number}
+                   */
+                  var countNodes = function(root) {
+                    if (root == null) return 0;
+                    let l = r = root;
+                    let heightL = 0;
+                    let heightR = 0;
+                    while (l != null) {
+                      ++heightL;
+                      l = l.left;
+                    }
+                    while (r != null) {
+                      ++heightR;
+                      r = r.right;
+                    }
+                    if (heightL == heightR) 
+                      return Math.pow(2, heightL) - 1;
+                    return 1 + countNodes(root.left) + countNodes(root.right);
+                  };
+                  
+                  const t = new TreeNode(1)
+                  t.left = new TreeNode(2)
+                  t.right = new TreeNode(3)
+                  t.left.left = new TreeNode(4)
+                  t.left.right = new TreeNode(5)
+                  t.right.left = new TreeNode(6)
+                  countNodes(t)`,
+                    output: `4`,
                   },
                 },
               }}
@@ -43288,28 +43350,67 @@ class LRUCache:
             <Span>
               <b>Q223. Rectangle Area (Q215)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the coordinates of two rectilinear rectangles in a 2D plane,
+              return the total area covered by the two rectangles.
+              <br />
+              The first rectangle is defined by its bottom-left corner (ax1,
+              ay1) and its top-right corner (ax2, ay2).
+              <br />
+              The second rectangle is defined by its bottom-left corner (bx1,
+              by1) and its top-right corner (bx2, by2).
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode223} left />
+            <Span>
+              Input: ax1 = -3, ay1 = 0, ax2 = 3, ay2 = 4, bx1 = 0, by1 = -1, bx2
+              = 9, by2 = 2<br />
+              Output: 45
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: ax1 = -2, ay1 = -2, <br />
+              ax2 = 2, ay2 = 2, <br />
+              bx1 = -2, by1 = -2,
+              <br /> bx2 = 2, by2 = 2
+              <br />
+              Output: 16
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>-104 &lt;= ax1, ay1, ax2, ay2, bx1, by1, bx2, by2 &lt;= 104</p>
             <CodeEditor
               options={{
                 title: "Q223. Rectangle Area (Q215)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} ax1
+                    * @param {number} ay1
+                    * @param {number} ax2
+                    * @param {number} ay2
+                    * @param {number} bx1
+                    * @param {number} by1
+                    * @param {number} bx2
+                    * @param {number} by2
+                    * @return {number}
+                    */
+                   var computeArea = function(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2) {
+                     let x = y = 0
+                     if(Math.max(ax1, bx1) < Math.min(ax2, bx2))
+                     x = Math.min(ax2, bx2) - Math.max(ax1, bx1) 
+                     if(Math.max(ay1, by1) < Math.min(ay2, by2))
+                     y = Math.min(ay2, by2) - Math.max(ay1, by1)
+                     return (ax2 - ax1) * (ay2 - ay1) + (bx2 - bx1) * (by2 - by1) - x * y  
+                   };
+                   
+                   computeArea(-3,0,3,2,0,-1,9,2)`,
+                    output: `33`,
                   },
                 },
               }}
