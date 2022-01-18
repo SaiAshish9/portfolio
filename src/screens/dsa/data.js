@@ -43926,28 +43926,90 @@ class LRUCache:
             <Span>
               <b>Q229. Majority Element II (Q221)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer array of size n, find all elements that appear
+              more than ⌊ n/3 ⌋ times.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [3,2,3] <br />
+              Output: [3]
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: nums = [1] <br />
+              Output: [1]
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,2]
+              <br />
+              Output: [1,2]
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              1 &lt;= nums.length &lt;= 5 * 104
+              <br />
+              -109 &lt;= nums[i] &lt;= 109
+            </Span>
+            <p>
+              Follow up: Could you solve the problem in linear time and in O(1)
+              space?
+            </p>
             <CodeEditor
               options={{
                 title: "Q229. Majority Element II (Q221)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number[]}
+                    */
+                   var majorityElement = function(nums) {
+                     const ans = [];
+                     let candidate1 = 0;
+                     let candidate2 = 1; 
+                     let countSoFar1 = 0; 
+                     let countSoFar2 = 0;
+                     for (let num of nums)
+                       if (num == candidate1) {
+                         ++countSoFar1;
+                       } else if (num == candidate2) {
+                         ++countSoFar2;
+                       } else if (countSoFar1 == 0) { 
+                         candidate1 = num;
+                         ++countSoFar1;
+                       } else if (countSoFar2 == 0) { 
+                         candidate2 = num;
+                         ++countSoFar2;
+                       } else { 
+                         --countSoFar1;
+                         --countSoFar2;
+                       }
+                     let count1 = 0;
+                     let count2 = 0;
+                     for (let num of nums)
+                       if (num == candidate1)
+                         ++count1;
+                       else if (num == candidate2)
+                         ++count2;
+                     if (count1 > parseInt(nums.length / 3))
+                       ans.push(candidate1);
+                     if (count2 > parseInt(nums.length / 3))
+                       ans.push(candidate2);
+                     return ans; 
+                   };
+                   
+                   majorityElement([3,2,3])`,
+                    output: `[ 3 ]`,
                   },
                 },
               }}
