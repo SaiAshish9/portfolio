@@ -42437,28 +42437,76 @@ class LRUCache:
             <Span>
               <b>Q213. House Robber II (Q205)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are a professional robber planning to rob houses along a
+              street. Each house has a certain amount of money stashed. All
+              houses at this place are arranged in a circle. That means the
+              first house is the neighbor of the last one. Meanwhile, adjacent
+              houses have a security system connected, and it will automatically
+              contact the police if two adjacent houses were broken into on the
+              same night.
+            </Span>
+            <Span>
+              Given an integer array nums representing the amount of money of
+              each house, return the maximum amount of money you can rob tonight
+              without alerting the police.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [2,3,2] <br />
+              Output: 3 <br />
+              Explanation: You cannot rob house 1 (money = 2) and then rob house
+              3 (money = 2), because they are adjacent houses.
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: nums = [1,2,3,1]
+              <br />
+              Output: 4<br />
+              Explanation: Rob house 1 (money = 1) and then rob house 3 (money =
+              3).
+              <br />
+              Total amount you can rob = 1 + 3 = 4.
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= nums.length &lt;= 100 <br />0 &lt;= nums[i] &lt;= 1000
+            </p>
             <CodeEditor
               options={{
                 title: "Q213. House Robber II (Q205)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   
+                   function robH(nums,l,r){
+                     let prev1 = 0; // dp[i - 1]
+                     let prev2 = 0; // dp[i - 2]
+                     for(let i = l; i <= r; ++i) {
+                       const dp = Math.max(prev1, prev2 + nums[i]);
+                       prev2 = prev1;
+                       prev1 = dp;
+                     }
+                     return prev1;
+                   }
+                   
+                   var rob = function(nums) {
+                     if(!nums) return 0
+                     if(nums.length < 2) return nums[0]
+                     return Math.max(robH(nums,0, nums.length - 2), robH(nums,1, nums.length - 1))
+                   };
+                   
+                   rob([1,2,1])`,
+                    output: `2`,
                   },
                 },
               }}
@@ -42473,28 +42521,62 @@ class LRUCache:
             <Span>
               <b>Q214. Shortest Palindrome (Q206)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given a string s. You can convert s to a palindrome by
+              adding characters in front of it.
+            </Span>
+            <Span>
+              Return the shortest palindrome you can find by performing this
+              transformation.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: s = "aacecaaa" <br />
+              Output: "aaacecaaa"
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: s = "abcd"
+              <br />
+              Output: "dcbabcd"
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              0 &lt;= s.length &lt;= 5 * 104 <br />s consists of lowercase
+              English letters only.
+            </p>
             <CodeEditor
               options={{
                 title: "Q214. Shortest Palindrome (Q206)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `import java.io.*;
+
+                    class Solution {
+                      public String shortestPalindrome(String s) {
+                        final String t = new StringBuilder(s).reverse().toString();
+                    
+                        for (int i = 0; i < t.length(); ++i)
+                          if (s.startsWith(t.substring(i)))
+                            return t.substring(0, i) + s;
+                    
+                        return t + s;
+                      }
+                    
+                      public static void Solution(String ...s){
+                        PrintStream ps = System.out;
+                        ps.println(new Solution().shortestPalindrome("aacecaaa"));
+                      }
+                    
+                    }
+                    `,
+                    output: `aaacecaaa`,
                   },
                 },
               }}
@@ -42509,21 +42591,36 @@ class LRUCache:
             <Span>
               <b>Q215. Kth Largest Element in an Array (Q207)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer array nums and an integer k, return the kth
+              largest element in the array.
+            </Span>
+            <Span>
+              Note that it is the kth largest element in the sorted order, not
+              the kth distinct element.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [3,2,1,5,6,4],
+              <br /> k = 2<br />
+              Output: 5
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: nums = [3,2,3,1,2,4,5,5,6], <br />k = 4 <br />
+              Output: 4
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= k &lt;= nums.length &lt;= 104 <br />
+              -104 &lt;= nums[i] &lt;= 104
+            </p>
             <CodeEditor
               options={{
                 title: "215. Kth Largest Element in an Array (Q207)",
