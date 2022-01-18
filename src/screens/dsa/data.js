@@ -188,6 +188,7 @@ import Leetcode221 from "assets/leetcode/221.png";
 import Leetcode222 from "assets/leetcode/222.png";
 import Leetcode223 from "assets/leetcode/223.png";
 import Leetcode226 from "assets/leetcode/226.png";
+import Leetcode230 from "assets/leetcode/230.png";
 
 export const DATA = {
   ds: {
@@ -44024,28 +44025,77 @@ class LRUCache:
             <Span>
               <b>Q230. Kth Smallest Element in a BST (Q222)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the root of a binary search tree, and an integer k, return
+              the kth smallest value (1-indexed) of all the values of the nodes
+              in the tree.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode230} left />
+            <Span>
+              Input: root = [3,1,4,null,2], k = 1<br />
+              Output: 1
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: root = [5,3,6,2,4,null,null,1], k = 3<br />
+              Output: 3
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              The number of nodes in the tree is n. <br />
+              1 &lt;= k &lt;= n &lt;= 104 <br />0 &lt;= Node.val &lt;= 104
+            </Span>
+            <p>
+              Follow up: If the BST is modified often (i.e., we can do insert
+              and delete operations) and you need to find the kth smallest
+              frequently, how would you optimize?
+            </p>
             <CodeEditor
               options={{
                 title: "Q230. Kth Smallest Element in a BST (Q222)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                  }
+                  
+                  /**
+                   * @param {TreeNode} root
+                   * @param {number} k
+                   * @return {number}
+                   */
+                  var kthSmallest = function(root, k) {
+                    const stack = [];
+                    while (root) {
+                      stack.push(root);
+                      root = root.left;
+                    }
+                    for (let i = 0; i < k - 1; ++i) {
+                      root = stack.pop();
+                      root = root.right;
+                      while (root) {
+                        stack.push(root);
+                        root = root.left;
+                      }
+                    }
+                    return stack.slice(-1)[0].val;   
+                  };
+                  
+                  const t = new TreeNode(3)
+                  t.left = new TreeNode(1)
+                  t.left.right = new TreeNode(2)
+                  t.right = new TreeNode(4)
+                  kthSmallest(t)`,
+                    output: `1`,
                   },
                 },
               }}
@@ -44060,28 +44110,62 @@ class LRUCache:
             <Span>
               <b>Q231. Power of Two (Q223)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer n, return true if it is a power of two.
+              Otherwise, return false.
+              <br />
+              An integer n is a power of two, if there exists an integer x such
+              that n == 2x.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: n = 1 <br />
+              Output: true <br />
+              Explanation: 2^0 = 1
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: n = 16
+              <br />
+              Output: true
+              <br />
+              Explanation: 2^4 = 16
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: n = 3<br />
+              Output: false
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>-2^31 &lt;= n &lt;= 2^31 - 1</Span>
+            <p>Follow up: Could you solve it without loops/recursion?</p>
             <CodeEditor
               options={{
                 title: "Q231. Power of Two (Q223)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {boolean}
+                    */
+                   var isPowerOfTwo = function(n) {
+                    if(typeof n !== 'number' || n>= Math.pow(2,31)-1 || n<=Math.pow(-2,31))
+                     return false  
+                     return n && (n & (n - 1)) === 0;
+                     // 2 && 2 & 1 
+                     // 0010 & 0001 -> 0000
+                   };
+                   
+                   isPowerOfTwo(-2147483648)`,
+                    output: `false`,
                   },
                 },
               }}
