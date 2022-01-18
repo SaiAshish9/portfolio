@@ -43425,21 +43425,57 @@ class LRUCache:
             <Span>
               <b>Q224. Basic Calculator (Q216)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a string s representing a valid expression, implement a
+              basic calculator to evaluate it, and return the result of the
+              evaluation.
+              <br />
+              Note: You are not allowed to use any built-in function which
+              evaluates strings as mathematical expressions, such as eval().
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
+            <SPan>
+              Input: s = "1 + 1"
+              <br />
+              Output: 2
+            </SPan>
             <Span>
               <b>Example 2:</b>
+            </Span>
+            <Span>
+              Input: s = " 2-1 + 2 "
+              <br />
+              Output: 3
             </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
             <Span>
+              Input: s = "(1+(4+5+2)-3)+(6+8)"
+              <br />
+              Output: 23
+            </Span>
+            <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= s.length &lt;= 3 * 105 s consists of digits, '+', '-',
+              '(', ')', and ' '. <br />
+              s represents a valid expression.
+              <br />
+              '+' is not used as a unary operation (i.e., "+1" and "+(2 + 3)" is
+              invalid).
+              <br />
+              '-' could be used as a unary operation (i.e., "-1" and "-(2 + 3)"
+              is valid).
+              <br />
+              There will be no two consecutive operators in the input.
+              <br />
+              Every number and running calculation will fit in a signed 32-bit
+              integer.
+            </p>
             <CodeEditor
               options={{
                 title: "Q224. Basic Calculator (Q216)",
