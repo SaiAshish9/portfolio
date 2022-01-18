@@ -43004,7 +43004,11 @@ class LRUCache:
             <Span>
               <b>Q219. Contains Duplicate II (Q211)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer array nums and an integer k, return true if there
+              are two distinct indices i and j in the array such that nums[i] ==
+              nums[j] and abs(i - j) &lt;= k.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
@@ -43017,15 +43021,34 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= nums.length &lt;= 105 -109 &lt;= nums[i] &lt;= 109 0 &lt;=
+              k &lt;= 105
+            </p>
             <CodeEditor
               options={{
                 title: "Q219. Contains Duplicate II (Q211)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @param {number} k
+                    * @return {boolean}
+                    */
+                   var containsNearbyDuplicate = function(nums, k) {
+                     const seen = new Set();
+                     for (let i = 0; i < nums.length; ++i){
+                     if (i > k)
+                       seen.delete(nums[i - k-1]);
+                     if (seen.has(nums[i]))
+                       return true;
+                     seen.add(nums[i])
+                     }
+                     return false;
+                   };
+                   
+                   containsNearbyDuplicate([1,2,3,1],3)`,
+                    output: `true`,
                   },
                 },
               }}
