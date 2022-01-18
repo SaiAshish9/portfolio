@@ -43891,8 +43891,27 @@ class LRUCache:
                 title: "Q228. Summary Ranges (Q220)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {string[]}
+                    */
+                   var summaryRanges = function(nums) {
+                     const ans = [];
+                     for (let i = 0; i < nums.length; ++i) {
+                       const begin = nums[i];
+                       while (i + 1 < nums.length && nums[i] == nums[i + 1] - 1)
+                         ++i;
+                       const end = nums[i];
+                       if (begin == end)
+                         ans.push("" + begin);
+                       else
+                         ans.push("" + begin + "->" + end);
+                     }
+                     return ans;
+                   };
+                   
+                   summaryRanges([0,2,3,4,6,8,9])`,
+                    output: `[ '0', '2->4', '6', '8->9' ]`,
                   },
                 },
               }}
