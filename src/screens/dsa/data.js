@@ -187,6 +187,7 @@ import Leetcode218 from "assets/leetcode/q218.png";
 import Leetcode221 from "assets/leetcode/221.png";
 import Leetcode222 from "assets/leetcode/222.png";
 import Leetcode223 from "assets/leetcode/223.png";
+import Leetcode226 from "assets/leetcode/226.png";
 
 export const DATA = {
   ds: {
@@ -43653,6 +43654,7 @@ class LRUCache:
             <Span>
               <b>Example 1:</b>
             </Span>
+            <Img src={Leetcode226} left />
             <Span>
               Input: root = [4,2,7,1,3,6,9] <br />
               Output: [4,7,2,9,6,3,1]
@@ -43699,25 +43701,25 @@ class LRUCache:
                     var invertTree = function(root) {
                       let queue = []
                       queue.push(root)
-                      while (queue.length > 0)
+                      while (queue.length && root)
                       {
-                      let curr = queue[0];
-                      queue.shift();
+                      let curr = queue.shift();
                       let temp = curr.left;
                       curr.left = curr.right;
-                      curr.right = temp;;
-                      if (curr.left != null)
+                      curr.right = temp;
+                      if (curr.left)
                         queue.push(curr.left);
-                      if (curr.right != null)
+                      if (curr.right)
                         queue.push(curr.right);
                       }
+                      return root
                     };
                     
                     const t = new TreeNode(1)
                     t.left = new TreeNode(2)
                     t.right = new TreeNode(3)
                     invertTree(t)
-                    console.log(t)`,
+                    `,
                     output: `TreeNode {
                       val: 1,
                       left: TreeNode { val: 3, left: null, right: null },
@@ -43737,28 +43739,87 @@ class LRUCache:
             <Span>
               <b>Q227. Basic Calculator II (Q219)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a string s which represents an expression, evaluate this
+              expression and return its value.
+              <br />
+              The integer division should truncate toward zero.
+              <br />
+              You may assume that the given expression is always valid. All
+              intermediate results will be in the range of [-231, 231 - 1].
+              <br />
+              Note: You are not allowed to use any built-in function which
+              evaluates strings as mathematical expressions, such as eval().
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: s = "3+2*2" <br />
+              Output: 7
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: s = " 3/2 " <br />
+              Output: 1
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: s = " 3+5 / 2 "<br />
+              Output: 5
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= s.length &lt;= 3 * 105 <br />
+              s consists of integers and operators ('+', '-', '*', '/')
+              separated by some number of spaces. <br />
+              s represents a valid expression. <br />
+              All the integers in the expression are non-negative integers in
+              the range [0, 231 - 1]. <br />
+              The answer is guaranteed to fit in a 32-bit integer.
+            </p>
             <CodeEditor
               options={{
                 title: "Q227. Basic Calculator II (Q219)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @return {number}
+                    */
+                   var calculate = function(s) {
+                     let ans = 0;
+                     let currNum = 0;
+                     let prevNum = 0;
+                     let op = '+';
+                     for (let i = 0; i < s.length; ++i) {
+                       const c = s[i];
+                       if (Number.isInteger(parseInt(c)))
+                         currNum = currNum * 10 + parseInt(c);
+                       if (!Number.isInteger(parseInt(c)) && c != ' ' || i == s.length - 1) {
+                         if (op == '+' || op == '-') {
+                           ans += prevNum;
+                           prevNum = op == '+' ? currNum : -currNum;
+                         } else if (op == '*') {
+                           prevNum = prevNum * currNum;
+                         } else if (op == '/') {
+                           prevNum = parseInt(prevNum / currNum);
+                         }
+                         op = c;
+                         currNum = 0;
+                       }
+                     }
+                     return ans + prevNum; 
+                   };
+                   
+                   calculate("3/2")`,
+                    output: `1`,
                   },
                 },
               }}
