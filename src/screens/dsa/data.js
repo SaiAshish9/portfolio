@@ -43436,11 +43436,11 @@ class LRUCache:
             <Span>
               <b>Example 1:</b>
             </Span>
-            <SPan>
+            <Span>
               Input: s = "1 + 1"
               <br />
               Output: 2
-            </SPan>
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
@@ -43481,8 +43481,35 @@ class LRUCache:
                 title: "Q224. Basic Calculator (Q216)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @return {number}
+                    */
+                   var calculate = function(s) {
+                     // return eval(s)
+                     let ans = 0;
+                     let num = 0;
+                     let sign = 1;
+                     const stack = [];
+                     stack.push(sign);
+                     for (let c of s)
+                       if (Number.isInteger(parseInt(c))){
+                         num = num * 10 + parseInt(c);
+                       }
+                       else if (c == '(')
+                         stack.push(sign);
+                       else if (c == ')')
+                         stack.pop();
+                       else if (c == '+' || c == '-') {
+                         ans += sign * num;
+                         sign = (c == '+' ? 1 : -1) * stack.slice(-1)[0];
+                         num = 0;
+                       }
+                     return ans + sign * num;
+                   };
+                   
+                   calculate("1 + 1")`,
+                    output: `2`,
                   },
                 },
               }}
