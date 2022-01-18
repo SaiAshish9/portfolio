@@ -42674,28 +42674,92 @@ class LRUCache:
             <Span>
               <b>Q216. Combination Sum III (Q208)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Find all valid combinations of k numbers that sum up to n such
+              that the following conditions are true:
+              <br />
+              Only numbers 1 through 9 are used.
+              <br />
+              Each number is used at most once.
+              <br />
+              Return a list of all possible valid combinations. The list must
+              not contain the same combination twice, and the combinations may
+              be returned in any order.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: k = 3, n = 7 <br />
+              Output: [[1,2,4]] <br />
+              Explanation: <br />
+              1 + 2 + 4 = 7 <br />
+              There are no other valid combinations.
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: k = 3, n = 9<br />
+              Output: [[1,2,6],[1,3,5],[2,3,4]]
+              <br />
+              Explanation:
+              <br />
+              1 + 2 + 6 = 9<br />
+              1 + 3 + 5 = 9<br />
+              2 + 3 + 4 = 9<br />
+              There are no other valid combinations.
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: k = 4, n = 1 <br />
+              Output: [] <br />
+              Explanation: There are no valid combinations. <br />
+              Using 4 different numbers in the range [1,9], the smallest sum we
+              can get is 1+2+3+4 = 10 and since 10 &gt; 1, there are no valid
+              combination.
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              2 &lt;= k &lt;= 9 <br />1 &lt;= n &lt;= 60
+            </p>
             <CodeEditor
               options={{
                 title: "Q216. Combination Sum III (Q208)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} k
+                    * @param {number} n
+                    * @return {number[][]}
+                    */
+                   
+                   function dfs(k,n,s,res,curr=[]){
+                     if (k == 0 && n == 0) {
+                       res.push(curr.slice());
+                       return;
+                     }
+                     if (k == 0 || n < 0)
+                       return;
+                     for (let i = s; i <= 9; ++i) {
+                       curr.push(i);
+                       dfs(k - 1, n - i, i + 1, res,curr);
+                       curr.pop()
+                     }
+                   }
+                   
+                   var combinationSum3 = function(k, n) {
+                     const res = []
+                     dfs(k,n,1,res)
+                     return res  
+                   };
+                   
+                   combinationSum3(3,9)`,
+                    output: `[ [ 1, 2, 6 ], [ 1, 3, 5 ], [ 2, 3, 4 ] ]`,
                   },
                 },
               }}
