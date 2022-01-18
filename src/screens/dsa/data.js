@@ -183,6 +183,7 @@ import Leetcode174 from "assets/leetcode/174.png";
 import Leetcode199 from "assets/leetcode/199.png";
 import Leetcode203 from "assets/leetcode/203.png";
 import Leetcode212 from "assets/leetcode/212.png";
+import Leetcode218 from "assets/leetcode/q218.png";
 
 export const DATA = {
   ds: {
@@ -42774,28 +42775,60 @@ class LRUCache:
             <Span>
               <b>Q217. Contains Duplicate (Q208)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer array nums, return true if any value appears at
+              least twice in the array, and return false if every element is
+              distinct.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,2,3,1]
+              <br />
+              Output: true
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: nums = [1,2,3,4]
+              <br />
+              Output: false
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: nums = [1,1,1,3,3,4,3,2,4,2]
+              <br />
+              Output: true
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= nums.length &lt;= 105 <br />
+              -109 &lt;= nums[i] &lt;= 109
+            </p>
             <CodeEditor
               options={{
                 title: "Q217. Contains Duplicate (Q209)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {boolean}
+                    */
+                   var containsDuplicate = function(nums) {
+                     return Object.values(nums.reduce((acc,curr)=>{
+                       acc[curr] = (acc[curr]||0) + 1
+                       return acc
+                     },{})).some(x=>x>1)
+                   };
+                   
+                   containsDuplicate([1,2,3,1])`,
+                    output: `true`,
                   },
                 },
               }}
@@ -42810,28 +42843,153 @@ class LRUCache:
             <Span>
               <b>Q218. The Skyline Problem (Q210)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              A city's skyline is the outer contour of the silhouette formed by
+              all the buildings in that city when viewed from a distance. Given
+              the locations and heights of all the buildings, return the skyline
+              formed by these buildings collectively.
+            </Span>
+            <Span>
+              The geometric information of each building is given in the array
+              buildings where buildings[i] = [lefti, righti, heighti]:
+            </Span>
+            <Span>
+              lefti is the x coordinate of the left edge of the ith building.
+              <br />
+              righti is the x coordinate of the right edge of the ith building.
+              <br />
+              heighti is the height of the ith building.
+            </Span>
+            <Span>
+              You may assume all buildings are perfect rectangles grounded on an
+              absolutely flat surface at height 0.
+            </Span>
+            <Span>
+              The skyline should be represented as a list of "key points" sorted
+              by their x-coordinate in the form [[x1,y1],[x2,y2],...]. Each key
+              point is the left endpoint of some horizontal segment in the
+              skyline except the last point in the list, which always has a
+              y-coordinate 0 and is used to mark the skyline's termination where
+              the rightmost building ends. Any ground between the leftmost and
+              rightmost buildings should be part of the skyline's contour.
+            </Span>
+            <Span>
+              Note: There must be no consecutive horizontal lines of equal
+              height in the output skyline. For instance, [...,[2 3],[4 5],[7
+              5],[11 5],[12 7],...] is not acceptable; the three lines of height
+              5 should be merged into one in the final output as such: [...,[2
+              3],[4 5],[12 7],...]
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode218} left />
+            <Span>
+              Input: buildings =
+              [[2,9,10],[3,7,15],[5,12,12],[15,20,10],[19,24,8]]
+              <br />
+              Output: [[2,10],[3,15],[7,12],[12,0],[15,10],[20,8],[24,0]]
+              <br />
+              Explanation:
+              <br />
+              Figure A shows the buildings of the input.
+              <br />
+              Figure B shows the skyline formed by those buildings. The red
+              points in figure B represent the key points in the output list.
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: buildings = [[0,2,3],[2,5,3]] <br />
+              Output: [[0,3],[5,0]]
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= buildings.length &lt;= 104 <br />
+              0 &lt;= lefti &lt; righti &lt;= 231 - 1<br />
+              1 &lt;= heighti &lt;= 231 - 1<br />
+              buildings is sorted by lefti in non-decreasing order.
+            </p>
             <CodeEditor
               options={{
                 title: "Q218. The Skyline Problem (Q210)",
                 codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
+                  "C++": {
+                    code: `#include <vector>
+                    #include <bits/stdc++.h>
+                    #include <cmath>
+                    #include <iostream>
+                    
+                    using namespace std;
+                    
+                    class Solution {
+                     public:
+                      vector<vector<int>> getSkyline(vector<vector<int>>& buildings) {
+                        vector<vector<int>> ans;
+                        vector<vector<int>> events; 
+                    
+                        for (const auto& b : buildings) {
+                          events.push_back({b[0], b[2]});
+                          events.push_back({b[1], -b[2]});
+                        }
+                    
+                        sort(begin(events), end(events), [](const auto& a, const auto& b) {
+                          return a[0] == b[0] ? a[1] > b[1] : a[0] < b[0];
+                        });
+                    
+                        for (const auto& event : events) {
+                          const int x = event[0];
+                          const int h = abs(event[1]);
+                          const int isEntering = event[1] > 0;
+                          if (isEntering) {
+                            if (h > maxHeight())
+                              ans.push_back({x, h});
+                            set.insert(h);
+                          } else {
+                            set.erase(set.equal_range(h).first);
+                            if (h > maxHeight())
+                              ans.push_back({x, maxHeight()});
+                          }
+                        }
+                    
+                        return ans;
+                      }
+                    
+                     private:
+                      multiset<int> set;
+                      int maxHeight() const {
+                        return set.empty() ? 0 : *rbegin(set);
+                      }
+                    };
+                    
+                    // int main(){
+                    //   Solution s;
+                    //   vector<vector<int>> v{
+                    //     {2,9,10},
+                    //     {3,7,15},
+                    //     {5,12,12},
+                    //     {15,20,10},
+                    //     {19,24,8}
+                    //   };
+                    //   for(auto v1 : s.getSkyline(v)){
+                    //      for(auto v2 : v1){
+                    //        cout << v2 << " ";
+                    //      }
+                    //      cout << endl;
+                    //   }
+                    //   return 0;
+                    // }
+                    `,
+                    output: `2 10 
+                    3 15 
+                    7 12 
+                    12 0 
+                    15 10 
+                    20 8 
+                    24 0 `,
                   },
                 },
               }}
