@@ -42626,8 +42626,40 @@ class LRUCache:
                 title: "215. Kth Largest Element in an Array (Q207)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @param {number} k
+                    * @return {number}
+                    */
+                   
+                   function swap(nums,l,r){
+                     [nums[l],nums[r]] = [nums[r],nums[l]]
+                   }
+                   
+                   function quickSelect(nums,l,r,k){
+                     let randIndex = Math.floor((Math.random() * (r-l+1)) + l);
+                     swap(nums, randIndex, r);
+                     let pivot = nums[r];
+                     let nextSwapped = l;
+                     for(let i = l; i < r; ++i)
+                       if (nums[i] >= pivot)
+                         swap(nums, nextSwapped++, i);
+                     swap(nums, nextSwapped, r);
+                     let count = nextSwapped - l + 1; 
+                     if (count == k)
+                       return nums[nextSwapped];
+                     if (count > k)
+                       return quickSelect(nums, l, nextSwapped - 1, k);
+                     return quickSelect(nums, nextSwapped + 1, r, k - count);
+                   }
+                   
+                   var findKthLargest = function(nums, k) {
+                     return quickSelect(nums, 0, nums.length - 1, k);
+                   };
+                   
+                   findKthLargest([3,2,3,1,2,4,5,5,6],4)
+                   `,
+                    output: `4`,
                   },
                 },
               }}
