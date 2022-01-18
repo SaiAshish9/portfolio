@@ -42363,7 +42363,11 @@ class LRUCache:
                 title: "Q212. Word Search II (Q204)",
                 codes: {
                   Java: {
-                    code: `class TrieNode {
+                    code: `
+                    // [["o","a","a","n"],["e","t","a","e"],
+                    // ["i","h","k","r"],["i","f","l","v"]]
+                    // ["oath","pea","eat","rain"]
+                    class TrieNode {
                       public TrieNode[] children = new TrieNode[26];
                       public String word;
                     }
