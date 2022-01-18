@@ -43646,28 +43646,83 @@ class LRUCache:
             <Span>
               <b>Q226. Invert Binary Tree (Q218)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the root of a binary tree, invert the tree, and return its
+              root.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: root = [4,2,7,1,3,6,9] <br />
+              Output: [4,7,2,9,6,3,1]
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: root = [2,1,3]
+              <br />
+              Output: [2,3,1]
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: root = []
+              <br />
+              Output: []
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              The number of nodes in the tree is in the range [0, 100].
+              <br />
+              -100 &lt;= Node.val &lt;= 100
+            </p>
             <CodeEditor
               options={{
                 title: "Q226. Invert Binary Tree (Q217)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                    }
+                    
+                    /**
+                     * @param {TreeNode} root
+                     * @return {TreeNode}
+                     */
+                    var invertTree = function(root) {
+                      let queue = []
+                      queue.push(root)
+                      while (queue.length > 0)
+                      {
+                      let curr = queue[0];
+                      queue.shift();
+                      let temp = curr.left;
+                      curr.left = curr.right;
+                      curr.right = temp;;
+                      if (curr.left != null)
+                        queue.push(curr.left);
+                      if (curr.right != null)
+                        queue.push(curr.right);
+                      }
+                    };
+                    
+                    const t = new TreeNode(1)
+                    t.left = new TreeNode(2)
+                    t.right = new TreeNode(3)
+                    invertTree(t)
+                    console.log(t)`,
+                    output: `TreeNode {
+                      val: 1,
+                      left: TreeNode { val: 3, left: null, right: null },
+                      right: TreeNode { val: 2, left: null, right: null }
+                    }`,
                   },
                 },
               }}
