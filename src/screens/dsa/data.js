@@ -43524,28 +43524,114 @@ class LRUCache:
             <Span>
               <b>Q225. Implement Stack using Queues (Q217)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Implement a last-in-first-out (LIFO) stack using only two queues.
+              The implemented stack should support all the functions of a normal
+              stack (push, top, pop, and empty).
+            </Span>
+            <Span>
+              Implement a last-in-first-out (LIFO) stack using only two queues.{" "}
+              <br />
+              void push(int x) Pushes element x to the top of the stack.
+              <br />
+              int pop() Removes the element on the top of the stack and returns
+              it.
+              <br />
+              int top() Returns the element on the top of the stack.
+              <br />
+              boolean empty() Returns true if the stack is empty, false
+              otherwise.
+            </Span>
+            <Span>
+              Notes:
+              <br />
+              You must use only standard operations of a queue, which means that
+              only push to back, peek/pop from front, size and is empty
+              operations are valid.
+              <br />
+              Depending on your language, the queue may not be supported
+              natively. You may simulate a queue using a list or deque
+              (double-ended queue) as long as you use only a queue's standard
+              operations.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
             <Span>
-              <b>Example 2:</b>
+              Input <br />
+              ["MyStack", "push", "push", "top", "pop", "empty"] <br />
+              [[], [1], [2], [], [], []] <br />
+              Output <br />
+              [null, null, null, 2, 2, false]
+              <br />
+              Explanation
+              <br />
+              MyStack myStack = new MyStack();
+              <br />
+              myStack.push(1);
+              <br />
+              myStack.push(2);
+              <br />
+              myStack.top(); // return 2
+              <br />
+              myStack.pop(); // return 2 myStack.empty(); // return False
             </Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              1 &lt;= x &lt;= 9 <br />
+              At most 100 calls will be made to push, pop, top, and empty.{" "}
+              <br />
+              All the calls to pop and top are valid.
+            </p>
             <CodeEditor
               options={{
                 title: "Q225. Implement Stack using Queues (Q217)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `var MyStack = function() {
+                      this.q = []
+                    };
+                    
+                    /** 
+                     * @param {number} x
+                     * @return {void}
+                     */
+                    MyStack.prototype.push = function(x) {
+                      this.q.push(x);
+                      for (let i = 0; i < this.q.length - 1; ++i)
+                      this.q.push(this.q.shift());
+                    };
+                    
+                    /**
+                     * @return {number}
+                     */
+                    MyStack.prototype.pop = function() {
+                      return this.q.shift()
+                    };
+                    
+                    /**
+                     * @return {number}
+                     */
+                    MyStack.prototype.top = function() {
+                       return this.q[0] 
+                    };
+                    
+                    /**
+                     * @return {boolean}
+                     */
+                    MyStack.prototype.empty = function() {
+                      return !this.q.length
+                    };
+                    
+                    
+                    var obj = new MyStack()
+                    obj.push(4)
+                    obj.push(8)
+                    obj.push(1)
+                    var param_2 = obj.pop()
+                    var param_3 = obj.top()
+                    var param_4 = obj.empty()
+                    console.log({ param_2, param_3, param_4 })`,
+                    output: `{ param_2: 1, param_3: 8, param_4: false }`,
                   },
                 },
               }}
