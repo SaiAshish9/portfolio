@@ -43834,21 +43834,58 @@ class LRUCache:
             <Span>
               <b>Q228. Summary Ranges (Q219)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given a sorted unique integer array nums.
+              <br />
+              Return the smallest sorted list of ranges that cover all the
+              numbers in the array exactly. That is, each element of nums is
+              covered by exactly one of the ranges, and there is no integer x
+              such that x is in one of the ranges but not in nums.
+              <br />
+              Each range [a,b] in the list should be output as:
+              <br />
+              "a-&gt;b" if a != b<br />
+              "a" if a == b
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: nums = [0,1,2,4,5,7]
+              <br />
+              Output: ["0-&gt;2","4-&gt;5","7"]
+              <br />
+              Explanation: The ranges are:
+              <br />
+              [0,2] --&gt; "0-&gt;2"
+              <br />
+              [4,5] --&gt; "4-&gt;5"
+              <br />
+              [7,7] --&gt; "7"
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: nums = [0,2,3,4,6,8,9] <br />
+              Output: ["0","2-&gt;4","6","8-&gt;9"] <br />
+              Explanation: The ranges are: <br />
+              [0,0] --&gt; "0" <br />
+              [2,4] --&gt; "2-&gt;4" <br />
+              [6,6] --&gt; "6" <br />
+              [8,9] --&gt; "8-&gt;9" <br />
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>
+              0 &lt;= nums.length &lt;= 20
+              <br />
+              -231 &lt;= nums[i] &lt;= 231 - 1<br />
+              All the values of nums are unique.
+              <br />
+              nums is sorted in ascending order.
+            </p>
             <CodeEditor
               options={{
                 title: "Q228. Summary Ranges (Q220)",
