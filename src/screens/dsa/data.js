@@ -45457,8 +45457,24 @@ Window position                Max
                 title: "Q260. Single Number III (Q237)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number[]}
+                    */
+                   var singleNumber = function(nums) { 
+                     const xors = nums.reduce((a,b)=>a^b)
+                     const lowbit = xors & -xors;
+                     const res = Array(2).fill(0)
+                     for (let num of nums)
+                       if ((num & lowbit) > 0)
+                         res[0] ^= num;
+                       else
+                         res[1] ^= num;
+                     return res
+                   };
+                   
+                   singleNumber([1,2,1,3,2,5])`,
+                    output: `[ 3, 5 ]`,
                   },
                 },
               }}
