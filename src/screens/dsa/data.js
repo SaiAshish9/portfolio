@@ -46460,12 +46460,13 @@ Window position                Max
             <Span>
               <b>Q283. Move Zeroes (Q248)</b>
             </Span>
-            <Span></Span>
-            Given an integer array nums, move all 0's to the end of it while
-            maintaining the relative order of the non-zero elements.
-            <br />
-            Note that you must do this in-place without making a copy of the
-            array.
+            <Span>
+              Given an integer array nums, move all 0's to the end of it while
+              maintaining the relative order of the non-zero elements.
+              <br />
+              Note that you must do this in-place without making a copy of the
+              array.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
@@ -46491,7 +46492,10 @@ Window position                Max
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(n) <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q283. Move Zeroes (Q248)",
@@ -46527,35 +46531,136 @@ Window position                Max
             <Span>
               <b>Q284. Peeking Iterator (Q249)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Design an iterator that supports the peek operation on an existing
+              iterator in addition to the hasNext and the next operations.
+              <br />
+              Implement the PeekingIterator class:
+              <br />
+              PeekingIterator(Iterator{`<int>`} nums) Initializes the object
+              with the given integer iterator iterator.
+              <br />
+              int next() Returns the next element in the array and moves the
+              pointer to the next element.
+              <br />
+              boolean hasNext() Returns true if there are still elements in the
+              array.
+              <br />
+              int peek() Returns the next element in the array without moving
+              the pointer.
+              <br />
+              Note: Each language may have a different implementation of the
+              constructor and Iterator, but they all support the int next() and
+              boolean hasNext() functions.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 2:</b>
+              Input <br />
+              ["PeekingIterator", "next", "peek", "next", "next", "hasNext"]{" "}
+              <br />
+              [[[1, 2, 3]], [], [], [], [], []] <br />
+              Output <br />
+              [null, 1, 2, 2, 3, false]
+              <br />
+              Explanation <br />
+              PeekingIterator peekingIterator = new PeekingIterator([1, 2, 3]);
+              // [1,2,3] <br />
+              peekingIterator.next(); // return 1, the pointer moves to the next
+              element [1,2,3].
+              <br />
+              peekingIterator.peek(); // return 2, the pointer does not move
+              [1,2,3]. <br />
+              peekingIterator.next(); // return 2, the pointer moves to the next
+              element [1,2,3] <br />
+              peekingIterator.next(); // return 3, the pointer moves to the next
+              element [1,2,3] <br />
+              peekingIterator.hasNext(); // return False
             </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              1 &lt;= nums.length &lt;= 1000 <br />
+              1 &lt;= nums[i] &lt;= 1000 <br />
+              All the calls to next and peek are valid. <br />
+              At most 1000 calls will be made to next, hasNext, and peek.
+            </Span>
+            <Span>
+              Follow up: How would you extend your design to be generic and work
+              with all types, not just integer?
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(1) <br />
+              Space: O(n)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q284. Peeking Iterator (Q249)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * // This is the Iterator's API interface.
+                    * // You should not implement it, or speculate about its implementation.
+                    * function Iterator() {
+                    *    @ return {number}
+                    *    this.next = function() { // return the next number of the iterator
+                    *       ...
+                    *    }; 
+                    *
+                    *    @return {boolean}
+                    *    this.hasNext = function() { // return true if it still has numbers
+                    *       ...
+                    *    };
+                    * };
+                    */
+                   
+                   /**
+                    * @param {Iterator} iterator
+                    */
+                   var PeekingIterator = function(iterator) {
+                     this.iterator = iterator
+                     this.buffer = null
+                     if(this.iterator.hasNext())
+                     this.buffer = this.iterator.next()    
+                   };
+                   
+                   /**
+                    * @return {number}
+                    */
+                   PeekingIterator.prototype.peek = function() {
+                     return this.buffer
+                   };
+                   
+                   /**
+                    * @return {number}
+                    */
+                   PeekingIterator.prototype.next = function() {
+                     let next = this.buffer
+                     if(this.iterator.hasNext())
+                     this.buffer = this.iterator.next()
+                     else
+                     this.buffer = null
+                     return next 
+                   };
+                   
+                   /**
+                    * @return {boolean}
+                    */
+                   PeekingIterator.prototype.hasNext = function() {
+                     return this.buffer !== null
+                   };
+                   
+                   // var obj = new PeekingIterator([1,2,3])
+                   // var param_1 = obj.peek()
+                   // var param_2 = obj.next()
+                   // var param_3 = obj.hasNext()
+                   // console.log({ param_1, param_2 , param_3 })`,
+                    output: `[null,1,2,2,3,false]`,
                   },
                 },
               }}
