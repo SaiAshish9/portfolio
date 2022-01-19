@@ -45230,8 +45230,24 @@ Window position                Max
                 title: "Q242. Valid Anagram (Q234)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @param {string} t
+                    * @return {boolean}
+                    */
+                   var isAnagram = function(s, t) {
+                     if(s.length != t.length) return false;
+                     const count = Array(128).fill(0);
+                     for (let c of s)
+                       ++count[c.charCodeAt(0)];
+                     for (let c of t)
+                       if (--count[c.charCodeAt(0)] < 0)
+                       return false;
+                       return true;
+                   };
+                   
+                   isAnagram("rat", "car")`,
+                    output: `false`,
                   },
                 },
               }}
