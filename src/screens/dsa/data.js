@@ -46403,7 +46403,10 @@ Window position                Max
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(n4^(n - 1)) <br />
+              Space: O(n^2)
+            </p>
             <CodeEditor
               options={{
                 title: "Q282. Expression Add Operators (Q247)",
@@ -46458,23 +46461,33 @@ Window position                Max
               <b>Q283. Move Zeroes (Q248)</b>
             </Span>
             <Span></Span>
+            Given an integer array nums, move all 0's to the end of it while
+            maintaining the relative order of the non-zero elements.
+            <br />
+            Note that you must do this in-place without making a copy of the
+            array.
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [0,1,0,3,12] <br />
+              Output: [1,3,12,0,0]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: nums = [0]
+              <br />
+              Output: [0]
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              1 &lt;= nums.length &lt;= 10^4 <br />
+              -2^31 &lt;= nums[i] &lt;= 2^31 - 1
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
@@ -46484,8 +46497,22 @@ Window position                Max
                 title: "Q283. Move Zeroes (Q248)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {void} Do not return anything, modify nums in-place instead.
+                    */
+                   var moveZeroes = function(nums) {
+                     let i = 0;
+                     for (let num of nums)
+                       if (num != 0)
+                         nums[i++] = num;
+                     for (; i < nums.length; ++i)
+                         nums[i] = 0;
+                     console.log(nums)
+                   };
+                   
+                   moveZeroes([0,1,0,3,12])`,
+                    output: `[ 1, 3, 12, 0, 0 ]`,
                   },
                 },
               }}
