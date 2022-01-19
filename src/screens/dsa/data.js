@@ -45137,8 +45137,39 @@ Window position                Max
                 title: "Q241. Different Ways to Add Parentheses (Q233)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string} expression
+                    * @return {number[]}
+                    */
+                   var diffWaysToCompute = function(expression) {
+                     const memo = new Map()
+                     return ways(expression,memo)
+                   };
+                   
+                   function ways(s,memo){
+                     if (memo.has(s))
+                         return memo.get(s);
+                     const ans = [];
+                     for (let i = 0; i < s.length; ++i)
+                       if (!Number.isInteger(parseInt(s[i])))
+                         for (let a of ways(s.substring(0, i), memo))
+                           for (let b of ways(s.substring(i + 1), memo))
+                             if (s[i] == '+')
+                               ans.push(a + b);
+                             else if (s[i] == '-')
+                               ans.push(a - b);
+                             else
+                               ans.push(a * b);
+                     if (!ans.length) {
+                       memo.set(s, [parseInt(s)]);
+                       return memo.get(s);
+                     }
+                     memo.set(s, ans);
+                     return ans;
+                   }
+                   
+                   diffWaysToCompute("2-1-1")`,
+                    output: `[ 2, 0 ]`,
                   },
                 },
               }}
@@ -45153,25 +45184,47 @@ Window position                Max
             <Span>
               <b>Q242. Valid Anagram (Q233)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given two strings s and t, return true if t is an anagram of s,
+              and false otherwise.
+              <br />
+              An Anagram is a word or phrase formed by rearranging the letters
+              of a different word or phrase, typically using all the original
+              letters exactly once.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: s = "anagram", t = "nagaram"
+              <br />
+              Output: true
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: s = "rat", t = "car" <br />
+              Output: false{" "}
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              1 &lt;= s.length, t.length &lt;= 5 * 104 <br />s and t consist of
+              lowercase English letters.
+            </Span>
+            <Span>
+              Follow up: What if the inputs contain Unicode characters? How
+              would you adapt your solution to such a case?
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(n) <br />
+              Space: O(128) = O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q242. Valid Anagram (Q234)",
