@@ -46675,35 +46675,74 @@ Window position                Max
             <Span>
               <b>Q287. Find the Duplicate Number (Q250)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an array of integers nums containing n + 1 integers where
+              each integer is in the range [1, n] inclusive.
+              <br />
+              There is only one repeated number in nums, return this repeated
+              number.
+              <br />
+              You must solve the problem without modifying the array nums and
+              uses only constant extra space.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [1,3,4,2,2]
+              <br />
+              Output: 2
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: nums = [3,1,3,4,2]
+              <br />
+              Output: 3
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              1 &lt;= n &lt;= 105 <br />
+              nums.length == n + 1 <br />
+              1 &lt;= nums[i] &lt;= n <br />
+              All the integers in nums appear only once except for precisely one
+              integer which appears two or more times.
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(n) <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q287. Find the Duplicate Number (Q250)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var findDuplicate = function(nums) {
+                     let slow = nums[nums[0]];
+                     let fast = nums[nums[nums[0]]];
+                     while (slow != fast) {
+                       slow = nums[slow];
+                       fast = nums[nums[fast]];
+                     }
+                     slow = nums[0];
+                     while (slow != fast) {
+                       slow = nums[slow];
+                       fast = nums[fast];
+                     }
+                     return slow;
+                   };
+                   findDuplicate([1,3,4,2,2])`,
+                    output: `2`,
                   },
                 },
               }}
