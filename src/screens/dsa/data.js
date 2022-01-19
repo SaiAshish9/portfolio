@@ -44716,21 +44716,45 @@ class LRUCache:
             <Span>
               <b>Q237. Delete Node in a Linked List (Q229)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Write a function to delete a node in a singly-linked list. You
+              will not be given access to the head of the list, instead you will
+              be given access to the node to be deleted directly.
+              <br />
+              It is guaranteed that the node to be deleted is not a tail node in
+              the list.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: head = [4,5,1,9], node = 5 <br />
+              Output: [4,1,9] <br />
+              Explanation: You are given the second node with value 5, the
+              linked list should become 4 -&gt; 1 -&gt; 9 after calling your
+              function.
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: head = [4,5,1,9],
+              <br /> node = 1<br />
+              Output: [4,5,9]
+              <br />
+              Explanation: You are given the third node with value 1, the linked
+              list should become 4 -&gt; 5 -&gt; 9 after calling your function.
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              The number of the nodes in the given list is in the range [2,
+              1000]. <br />
+              -1000 &lt;= Node.val &lt;= 1000 <br />
+              The value of each node in the list is unique. <br />
+              The node to be deleted is in the list and is not a tail node
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
@@ -44744,8 +44768,30 @@ class LRUCache:
                 title: "Q237. Delete Node in a Linked List (Q229)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function ListNode(val) {
+                      this.val = val;
+                      this.next = null;
+                    }
+                    
+                    /**
+                     * @param {ListNode} node
+                     * @return {void} Do not return anything, modify node in-place instead.
+                     */
+                    var deleteNode = function(node) {
+                      node.val = node.next.val
+                      node.next = node.next.next    
+                    };
+                    
+                    const l = new ListNode(4)
+                    l.next = new ListNode(5)
+                    l.next.next = new ListNode(1)
+                    l.next.next.next = new ListNode(9)
+                    deleteNode(l.next)
+                    console.log(l)`,
+                    output: `ListNode {
+                      val: 4,
+                      next: ListNode { val: 1, next: ListNode { val: 9, next: null } }
+                    }`,
                   },
                 },
               }}
