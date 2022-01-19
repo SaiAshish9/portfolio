@@ -45750,35 +45750,73 @@ Window position                Max
             <Span>
               <b>Q264. Ugly Number II (Q240)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              An ugly number is a positive integer whose prime factors are
+              limited to 2, 3, and 5.
+              <br />
+              Given an integer n, return the nth ugly number.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 10 <br />
+              Output: 12 <br />
+              Explanation: [1, 2, 3, 4, 5, 6, 8, 9, 10, 12] is the sequence of
+              the first 10 ugly numbers.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: n = 1<br />
+              Output: 1<br />
+              Explanation: 1 has no prime factors, therefore all of its prime
+              factors are limited to 2, 3, and 5.
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>1 &lt;= n &lt;= 1690</Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(n) <br />
+              Space: O(n)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q264. Ugly Number II (Q240)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {number}
+                    */
+                   var nthUglyNumber = function(n) {
+                     const nums = [1]
+                     let i2 = 0
+                     let i3 = 0
+                     let i5 = 0
+                   
+                     while(nums.length < n){
+                     const next2 = nums[i2] * 2
+                     const next3 = nums[i3] * 3
+                     const next5 = nums[i5] * 5
+                     const next = Math.min(next2, next3, next5)
+                     if(next == next2)
+                       i2 += 1
+                     if(next == next3)
+                       i3 += 1
+                     if(next == next5)
+                       i5 += 1
+                     nums.push(next)
+                     }
+                     return nums.slice(-1)[0] 
+                   };
+                   nthUglyNumber(1)`,
+                    output: `1`,
                   },
                 },
               }}
@@ -45793,24 +45831,57 @@ Window position                Max
             <Span>
               <b>Q268. Missing Number (Q241)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an array nums containing n distinct numbers in the range [0,
+              n], return the only number in the range that is missing from the
+              array.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [3,0,1]
+              <br />
+              Output: 2<br />
+              Explanation: n = 3 since there are 3 numbers, so all numbers are
+              in the range [0,3]. 2 is the missing number in the range since it
+              does not appear in nums.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [0,1]
+              <br />
+              Output: 2<br />
+              Explanation: n = 2 since there are 2 numbers, so all numbers are
+              in the range [0,2]. 2 is the missing number in the range since it
+              does not appear in nums.
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [9,6,4,2,3,5,7,0,1]
+              <br />
+              Output: 8<br />
+              Explanation: n = 9 since there are 9 numbers, so all numbers are
+              in the range [0,9]. 8 is the missing number in the range since it
+              does not appear in nums.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              n == nums.length <br />
+              1 &lt;= n &lt;= 104 <br />
+              0 &lt;= nums[i] &lt;= n <br />
+              All the numbers of nums are unique.
+            </Span>
+            <Span>
+              Follow up: Could you implement a solution using only O(1) extra
+              space complexity and O(n) runtime complexity?
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
