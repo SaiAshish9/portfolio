@@ -189,6 +189,7 @@ import Leetcode222 from "assets/leetcode/222.png";
 import Leetcode223 from "assets/leetcode/223.png";
 import Leetcode226 from "assets/leetcode/226.png";
 import Leetcode230 from "assets/leetcode/230.png";
+import Leetcode235 from "assets/leetcode/235.png";
 
 export const DATA = {
   ds: {
@@ -44380,28 +44381,92 @@ class LRUCache:
             <Span>
               <b>Q234. Palindrome Linked List (Q226)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the head of a singly linked list, return true if it is a
+              palindrome.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: head = [1,2,2,1] <br />
+              Output: true
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: head = [1,2]
+              <br />
+              Output: false
             </Span>
+
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              The number of nodes in the list is in the range [1, 105].
+              <br />0 &lt;= Node.val &lt;= 9
+            </Span>
+            <Span>Follow up: Could you do it in O(n) time and O(1) space?</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n) <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q234. Palindrome Linked List (Q226)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function ListNode(val, next) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.next = (next===undefined ? null : next)
+                  }
+                  
+                  /**
+                   * @param {ListNode} head
+                   * @return {boolean}
+                   */
+                  
+                  function reverse(head) {
+                    let prev = null;
+                    while (head) {
+                    let next = head.next;
+                    head.next = prev;
+                    prev = head;
+                    head = next;
+                    }
+                    return prev;
+                  }
+                  
+                  var isPalindrome = function(head) {
+                    let slow = head;
+                    let fast = head;
+                    while (fast && fast.next) {
+                      slow = slow.next;
+                      fast = fast.next.next;
+                    }
+                    if (fast)
+                      slow = slow.next;
+                    slow = reverse(slow);
+                    while (slow) {
+                      if (slow.val != head.val)
+                        return false;
+                      slow = slow.next;
+                      head = head.next;
+                    }
+                    return true; 
+                  };
+                  
+                  const l = new ListNode(1)
+                  l.next = new ListNode(2)
+                  l.next.next = new ListNode(2)
+                  l.next.next.next = new ListNode(1)
+                  isPalindrome(l)`,
+                    output: `true`,
                   },
                 },
               }}
@@ -44416,29 +44481,110 @@ class LRUCache:
             <Span>
               <b>Q235. Lowest Common Ancestor of a Binary Search Tree (Q227)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a binary search tree (BST), find the lowest common ancestor
+              (LCA) of two given nodes in the BST.
+              <br />
+              According to the definition of LCA on Wikipedia: “The lowest
+              common ancestor is defined between two nodes p and q as the lowest
+              node in T that has both p and q as descendants (where we allow a
+              node to be a descendant of itself).”
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode235} left />
+            <Span>
+              Input: root = [6,2,8,0,4,7,9,null,null,3,5],
+              <br /> p = 2, q = 8 <br />
+              Output: 6 <br />
+              Explanation: The LCA of nodes 2 and 8 is 6.
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: root = [6,2,8,0,4,7,9,null,null,3,5],
+              <br /> p = 2, q = 4<br />
+              Output: 2<br />
+              Explanation: The LCA of nodes 2 and 4 is 2, since a node can be a
+              descendant of itself according to the LCA definition.
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: root = [2,1], <br />p = 2, q = 1<br />
+              Output: 2
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              The number of nodes in the tree is in the range [2, 105]. <br />
+              -109 &lt;= Node.val &lt;= 109 <br />
+              All Node.val are unique. <br />
+              p != q <br />p and q will exist in the BST.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(h) <br />
+              Space: O(h)
+            </p>
             <CodeEditor
               options={{
                 title:
                   "Q235. Lowest Common Ancestor of a Binary Search Tree (Q227)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function TreeNode(val) {
+                      this.val = val;
+                      this.left = this.right = null;
+                  }
+                  
+                  
+                  /**
+                   * @param {TreeNode} root
+                   * @param {TreeNode} p
+                   * @param {TreeNode} q
+                   * @return {TreeNode}
+                   */
+                  var lowestCommonAncestor = function(root, p, q) {
+                    if(root.val > Math.max(p.val, q.val))
+                    return lowestCommonAncestor(root.left, p, q);
+                    if(root.val < Math.min(p.val, q.val))
+                    return lowestCommonAncestor(root.right, p, q);
+                    console.log("Answer: " + root.val)
+                    return root;   
+                  };
+                  
+                  const t = new TreeNode(6)
+                  t.left = new TreeNode(2)
+                  t.left.left = new TreeNode(0)
+                  t.left.right = new TreeNode(4)
+                  t.left.right.left = new TreeNode(3)
+                  t.left.right.right = new TreeNode(5)
+                  t.right = new TreeNode(8)
+                  t.right.left = new TreeNode(7)
+                  t.right.right = new TreeNode(9)
+                  lowestCommonAncestor(t,2,4)
+                  `,
+                    output: `Answer: 6
+                    TreeNode {
+                      val: 6,
+                      right: TreeNode {
+                        val: 8,
+                        right: TreeNode { val: 9, right: null, left: null },
+                        left: TreeNode { val: 7, right: null, left: null }
+                      },
+                      left: TreeNode {
+                        val: 2,
+                        right: TreeNode { val: 4, right: [TreeNode], left: [TreeNode] },
+                        left: TreeNode { val: 0, right: null, left: null }
+                      }
+                    }`,
                   },
                 },
               }}
@@ -44467,6 +44613,10 @@ class LRUCache:
               <b>Constraints:</b>
             </Span>
             <Span></Span>
+            <Span></Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
             <p></p>
             <CodeEditor
               options={{
@@ -44503,6 +44653,10 @@ class LRUCache:
               <b>Constraints:</b>
             </Span>
             <Span></Span>
+            <Span></Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
             <p></p>
             <CodeEditor
               options={{
@@ -44539,6 +44693,10 @@ class LRUCache:
               <b>Constraints:</b>
             </Span>
             <Span></Span>
+            <Span></Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
             <p></p>
             <CodeEditor
               options={{
@@ -44575,6 +44733,10 @@ class LRUCache:
               <b>Constraints:</b>
             </Span>
             <Span></Span>
+            <Span></Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
             <p></p>
             <CodeEditor
               options={{
@@ -44611,6 +44773,10 @@ class LRUCache:
               <b>Constraints:</b>
             </Span>
             <Span></Span>
+            <Span></Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
             <p></p>
             <CodeEditor
               options={{
@@ -44647,6 +44813,10 @@ class LRUCache:
               <b>Constraints:</b>
             </Span>
             <Span></Span>
+            <Span></Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
             <p></p>
             <CodeEditor
               options={{
@@ -44683,6 +44853,10 @@ class LRUCache:
               <b>Constraints:</b>
             </Span>
             <Span></Span>
+            <Span></Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
             <p></p>
             <CodeEditor
               options={{
