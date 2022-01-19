@@ -46285,35 +46285,63 @@ Window position                Max
             <Span>
               <b>Q279. Perfect Squares (Q246)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer n, return the least number of perfect square
+              numbers that sum to n.
+              <br />A perfect square is an integer that is the square of an
+              integer; in other words, it is the product of some integer with
+              itself. For example, 1, 4, 9, and 16 are perfect squares while 3
+              and 11 are not.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 12 <br />
+              Output: 3 <br />
+              Explanation: 12 = 4 + 4 + 4.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: n = 13
+              <br />
+              Output: 2<br />
+              Explanation: 13 = 4 + 9.
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>1 &lt;= n &lt;= 10^4</Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(logn) <br />
+              Space: O(nlogn)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q279. Perfect Squares (Q246)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {number}
+                    */
+                   var numSquares = function(n) {
+                     const dp = Array(n + 1).fill(n); // 1^2 x n
+                     dp[0] = 0; // no way
+                     dp[1] = 1; // 1^2
+                     for (let i = 2; i <= n; ++i)
+                       for (let j = 1; j * j <= i; ++j)
+                         dp[i] = Math.min(dp[i], dp[i - j * j] + 1);
+                     return dp[n];  
+                   };
+                   
+                   numSquares(12)`,
+                    output: `3`,
                   },
                 },
               }}
@@ -46328,24 +46356,50 @@ Window position                Max
             <Span>
               <b>Q282. Expression Add Operators (Q247)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a string num that contains only digits and an integer
+              target, return all possibilities to insert the binary operators
+              '+', '-', and/or '*' between the digits of num so that the
+              resultant expression evaluates to the target value.
+              <br />
+              Note that operands in the returned expressions should not contain
+              leading zeros.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: num = "123", target = 6<br />
+              Output: ["1*2*3","1+2+3"]
+              <br />
+              Explanation: Both "1*2*3" and "1+2+3" evaluate to 6.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: num = "232", target = 8<br />
+              Output: ["2*3+2","2+3*2"]
+              <br />
+              Explanation: Both "2*3+2" and "2+3*2" evaluate to 8.
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: num = "3456237490", target = 9191 <br />
+              Output: [] <br />
+              Explanation: There are no expressions that can be created from
+              "3456237490" to evaluate to 9191.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              1 &lt;= num.length &lt;= 10 <br />
+              num consists of only digits. <br />
+              -2^31 &lt;= target &lt;= 2^31 - 1
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
@@ -46355,8 +46409,40 @@ Window position                Max
                 title: "Q282. Expression Add Operators (Q247)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string} num
+                    * @param {number} target
+                    * @return {string[]}
+                    */
+                   function dfs(num,target,res,s=0,prev=0,ev=0,st=""){
+                     if (s == num.length) {
+                       if (ev == target)
+                         res.push(st);
+                       return;
+                     }
+                     for (let i = s; i < num.length; ++i) {
+                       if (i > s && num[s] == '0')
+                         return;
+                       let curr = parseInt(num.substring(s, i + 1))
+                       const length = st.length;
+                       if (s == 0) {
+                         dfs(num, target,res, i + 1, curr, curr, st + curr);
+                       } else {
+                         dfs(num, target, res , i + 1, curr, ev + curr, st + "+" + curr);
+                         dfs(num, target, res , i + 1, -curr, ev - curr, st + "-" + curr);
+                         dfs(num, target, res , i + 1, prev * curr, ev - prev + prev * curr, st + "*" + curr);
+                       }
+                     }
+                   }
+                   
+                   var addOperators = function(num, target) {
+                     const res = [] 
+                     dfs(num,target,res)
+                     return res
+                   };
+                   
+                   addOperators("123",6)`,
+                    output: `[ '1+2+3', '1*2*3' ]`,
                   },
                 },
               }}
