@@ -45885,7 +45885,10 @@ Window position                Max
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(n) <br />
+              Space: O(1)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q268. Missing Number (Q241)",
@@ -45918,35 +45921,79 @@ Window position                Max
             <Span>
               <b>Q273. Integer to English Words (Q242)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Convert a non-negative integer num to its English words
+              representation.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: num = 123 <br />
+              Output: "One Hundred Twenty Three"
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: num = 12345
+              <br />
+              Output: "Twelve Thousand Three Hundred Forty Five"
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: num = 1234567 <br />
+              Output: "One Million Two Hundred Thirty Four Thousand Five Hundred
+              Sixty Seven"
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
-            <Span>
-              <b>Complexity:</b>
-            </Span>
-            <p></p>
+            <Span>0 &lt;= num &lt;= 2^31 - 1</Span>
             <CodeEditor
               options={{
                 title: "Q273. Integer to English Words (Q242)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} num
+                    * @return {string}
+                    */
+                   const belowTwenty = ["",        "One",       "Two","Three",
+                                      "Four",    "Five",      "Six",      "Seven",
+                                      "Eight",   "Nine",      "Ten",      "Eleven",
+                                      "Twelve",  "Thirteen",  "Fourteen", "Fifteen",
+                                      "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
+                   const tens = ["",      "Ten",   "Twenty",  "Thirty", "Forty",
+                               "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"]  
+                   
+                   var numberToWords = function(num) {
+                     if(num == 0) return "Zero"
+                     return helper(num)
+                   };
+                   
+                   function helper(num){
+                     if(num < 20)
+                       s = belowTwenty[num]
+                     else if(num < 100)
+                       s = tens[parseInt(num / 10)] + " " + belowTwenty[num % 10]
+                     else if(num < 1000)
+                       s = helper(parseInt(num / 100)) + " Hundred " + helper(num % 100)
+                     else if(num < 1000000)
+                       s = helper(parseInt(num / 1000)) + " Thousand " + helper(num % 1000)
+                     else if(num < 1000000000)
+                       s = helper(parseInt(num / 1000000)) + " Million " + 
+                               helper(num % 1000000)
+                     else
+                       s = helper(parseInt(num / 1000000000)) + " Billion " + 
+                               helper(num % 1000000000)
+                     return s.trim()
+                   }
+                      
+                   numberToWords(123)`,
+                    output: `One Hundred Twenty Three`,
                   },
                 },
               }}
@@ -45961,35 +46008,79 @@ Window position                Max
             <Span>
               <b>Q274. H-Index (Q243)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an array of integers citations where citations[i] is the
+              number of citations a researcher received for their ith paper,
+              return compute the researcher's h-index.
+              <br />
+              According to the definition of h-index on Wikipedia: A scientist
+              has an index h if h of their n papers have at least h citations
+              each, and the other n − h papers have no more than h citations
+              each.
+              <br />
+              If there are several possible values for h, the maximum one is
+              taken as the h-index.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: citations = [3,0,6,1,5] <br />
+              Output: 3<br />
+              Explanation: [3,0,6,1,5] means the researcher has 5 papers in
+              total and each of them had received 3, 0, 6, 1, 5 citations
+              respectively.
+              <br />
+              Since the researcher has 3 papers with at least 3 citations each
+              and the remaining two with no more than 3 citations each, their
+              h-index is 3.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: citations = [1,3,1] <br />
+              Output: 1
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              n == citations.length <br />
+              1 &lt;= n &lt;= 5000
+              <br />0 &lt;= citations[i] &lt;= 1000
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(n) <br />
+              Space: O(n)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q274. H-Index (Q243)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} citations
+                    * @return {number}
+                    */
+                   var hIndex = function(citations) {
+                     const n = citations.length;
+                     let accumulate = 0;
+                     const count = Array(n + 1).fill(0);
+                     for (let citation of citations)
+                       ++count[Math.min(citation, n)];
+                     for (let i = n; i >= 0; --i) {
+                       accumulate += count[i];
+                       if (accumulate >= i)
+                         return i;
+                     }
+                   };
+                   
+                   hIndex([3,0,6,1,5])`,
+                    output: `3`,
                   },
                 },
               }}
@@ -46004,35 +46095,84 @@ Window position                Max
             <Span>
               <b>Q275. H-Index II (Q244)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an array of integers citations where citations[i] is the
+              number of citations a researcher received for their ith paper and
+              citations is sorted in an ascending order, return compute the
+              researcher's h-index.
+              <br />
+              According to the definition of h-index on Wikipedia: A scientist
+              has an index h if h of their n papers have at least h citations
+              each, and the other n − h papers have no more than h citations
+              each.
+              <br />
+              If there are several possible values for h, the maximum one is
+              taken as the h-index.
+              <br />
+              You must write an algorithm that runs in logarithmic time.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: citations = [0,1,3,5,6]
+              <br />
+              Output: 3<br />
+              Explanation: [0,1,3,5,6] means the researcher has 5 papers in
+              total and each of them had received 0, 1, 3, 5, 6 citations
+              respectively.
+              <br />
+              Since the researcher has 3 papers with at least 3 citations each
+              and the remaining two with no more than 3 citations each, their
+              h-index is 3.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: citations = [1,2,100]
+              <br />
+              Output: 2
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              n == citations.length <br />
+              1 &lt;= n &lt;= 10^5
+              <br />0 &lt;= citations[i] &lt;= 1000
+            </Span>{" "}
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(logn) <br />
+              Space: O(n)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q275. H-Index II (Q244)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} citations
+                    * @return {number}
+                    */
+                   var hIndex = function(citations) {
+                     let l = 0;
+                     let r = citations.length;
+                     while (l < r) {
+                       const m = l + parseInt((r - l) / 2);
+                       if (citations[m] >= citations.length - m)
+                         r = m;
+                       else
+                         l = m + 1;
+                     }
+                     return citations.length - l;
+                   };
+                   
+                   hIndex([0,1,3,5,6])`,
+                    output: `3`,
                   },
                 },
               }}
