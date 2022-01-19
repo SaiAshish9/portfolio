@@ -46828,14 +46828,41 @@ Window position                Max
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(mn) <br />
+              Space: O(1)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q289. Game of Life (Q251)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[][]} board
+                    * @return {void} Do not return anything, modify board in-place instead.
+                    */
+                   var gameOfLife = function(board) {
+                     const m = board.length;
+                     const n = board[0].length;
+                     for (let i = 0; i < m; ++i)
+                     for (let j = 0; j < n; ++j) {
+                         let ones = 0;
+                         for (let x = Math.max(0, i - 1); x < Math.min(m, i + 2); ++x)
+                           for (let y = Math.max(0, j - 1); y < Math.min(n, j + 2); ++y)
+                             ones += board[x][y] & 1;
+                         if (board[i][j] == 1 && (ones == 3 || ones == 4))
+                           board[i][j] |= 0b10;
+                         if (board[i][j] == 0 && ones == 3)
+                           board[i][j] |= 0b10;
+                       }
+                     for (let i = 0; i < m; ++i)
+                       for (let j = 0; j < n; ++j)
+                         board[i][j] >>= 1; 
+                     console.log(board)
+                   };
+                   
+                   gameOfLife([[0,1,0],[0,0,1],[1,1,1],[0,0,0]])`,
+                    output: `[ [ 0, 0, 0 ], [ 1, 0, 1 ], [ 0, 1, 1 ], [ 0, 1, 0 ] ]`,
                   },
                 },
               }}
