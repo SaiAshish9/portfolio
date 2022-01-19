@@ -46187,35 +46187,90 @@ Window position                Max
             <Span>
               <b>Q278. First Bad Version (Q245)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are a product manager and currently leading a team to develop
+              a new product. Unfortunately, the latest version of your product
+              fails the quality check. Since each version is developed based on
+              the previous version, all the versions after a bad version are
+              also bad.
+              <br />
+              Suppose you have n versions [1, 2, ..., n] and you want to find
+              out the first bad one, which causes all the following ones to be
+              bad.
+              <br />
+              You are given an API bool isBadVersion(version) which returns
+              whether version is bad. Implement a function to find the first bad
+              version. You should minimize the number of calls to the API.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 5, bad = 4 <br />
+              Output: 4 <br />
+              Explanation: <br />
+              call isBadVersion(3) -&gt; false <br />
+              call isBadVersion(5) -&gt; true <br />
+              call isBadVersion(4) -&gt; true <br />
+              Then 4 is the first bad version.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: n = 1, bad = 1<br />
+              Output: 1
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>1 &lt;= bad &lt;= n &lt;= 2^31 - 1</Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(logn) <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q278. First Bad Version (Q245)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `
+                    /**
+                    * Definition for isBadVersion()
+                    * 
+                    * @param {integer} version number
+                    * @return {boolean} whether the version is bad
+                    * isBadVersion = function(version) {
+                    *     ...
+                    * };
+                    */
+                   I/P: 5 4
+                   /**
+                    * @param {function} isBadVersion()
+                    * @return {function}
+                    */
+                   var solution = function(isBadVersion) {
+                       /**
+                        * @param {integer} n Total versions
+                        * @return {integer} The first bad version
+                        */
+                       return function(n) {
+                       let l = 1;
+                       let r = n;
+                       while (l < r) {
+                         const m = l + parseInt((r - l) / 2);
+                         if (isBadVersion(m))
+                           r = m;
+                         else
+                           l = m + 1;
+                       }
+                       return l;
+                       };
+                   };`,
+                    output: `4`,
                   },
                 },
               }}
