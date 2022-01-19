@@ -45493,35 +45493,171 @@ Window position                Max
             <Span>
               <b>Q262. Trips and Users (Q238)</b>
             </Span>
-            <Span></Span>
+            <p>Table: Trips</p>
+            <pre>
+              {`
++-------------+----------+
+| Column Name | Type     |
++-------------+----------+
+| id          | int      |
+| client_id   | int      |
+| driver_id   | int      |
+| city_id     | int      |
+| status      | enum     |
+| request_at  | date     |     
++-------------+----------+
+                `}
+            </pre>
+            <Span>
+              id is the primary key for this table.
+              <br />
+              The table holds all taxi trips. Each trip has a unique id, while
+              client_id and driver_id are foreign keys to the users_id at the
+              Users table.
+              <br />
+              Status is an ENUM type of ('completed', 'cancelled_by_driver',
+              'cancelled_by_client').
+            </Span>
+            <p>Table: Users</p>
+            <pre>
+              {`
++-------------+----------+
+| Column Name | Type     |
++-------------+----------+
+| users_id    | int      |
+| banned      | enum     |
+| role        | enum     |
++-------------+----------+
+              `}
+            </pre>
+            <Span>
+              users_id is the primary key for this table. <br />
+              The table holds all users. Each user has a unique users_id, and
+              role is an ENUM type of ('client', 'driver', 'partner').
+              <br />
+              banned is an ENUM type of ('Yes', 'No').
+            </Span>
+            <Span>
+              The cancellation rate is computed by dividing the number of
+              canceled (by client or driver) requests with unbanned users by the
+              total number of requests with unbanned users on that day.
+              <br />
+              Write a SQL query to find the cancellation rate of requests with
+              unbanned users (both client and driver must not be banned) each
+              day between "2013-10-01" and "2013-10-03". Round Cancellation Rate
+              to two decimal points.
+              <br />
+              Return the result table in any order.
+              <br />
+              The query result format is in the following example.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span></Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span>
-            <Span></Span>
-            <Span>
-              <b>Complexity:</b>
-            </Span>
-            <p></p>
+            <p>
+              Input: <br />
+              Trips table:
+            </p>
+            <pre>
+              {`
++----+-----------+-----------+---------+---------------------+------------+
+| id | client_id | driver_id | city_id | status              | request_at |
++----+-----------+-----------+---------+---------------------+------------+
+| 1  | 1         | 10        | 1       | completed           | 2013-10-01 |
+| 2  | 2         | 11        | 1       | cancelled_by_driver | 2013-10-01 |
+| 3  | 3         | 12        | 6       | completed           | 2013-10-01 |
+| 4  | 4         | 13        | 6       | cancelled_by_client | 2013-10-01 |
+| 5  | 1         | 10        | 1       | completed           | 2013-10-02 |
+| 6  | 2         | 11        | 6       | completed           | 2013-10-02 |
+| 7  | 3         | 12        | 6       | completed           | 2013-10-02 |
+| 8  | 2         | 12        | 12      | completed           | 2013-10-03 |
+| 9  | 3         | 10        | 12      | completed           | 2013-10-03 |
+| 10 | 4         | 13        | 12      | cancelled_by_driver | 2013-10-03 |
++----+-----------+-----------+---------+---------------------+------------+
+                `}
+            </pre>
+            <p>Users table:</p>
+            <pre>
+              {`
++----------+--------+--------+
+| users_id | banned | role   |
++----------+--------+--------+
+| 1        | No     | client |
+| 2        | Yes    | client |
+| 3        | No     | client |
+| 4        | No     | client |
+| 10       | No     | driver |
+| 11       | No     | driver |
+| 12       | No     | driver |
+| 13       | No     | driver |
++----------+--------+--------+
+              `}
+            </pre>
+            <p>
+              <b>Output:</b>
+            </p>
+            <pre>
+              {`
++------------+-------------------+
+| Day        | Cancellation Rate |
++------------+-------------------+
+| 2013-10-01 | 0.33              |
+| 2013-10-02 | 0.00              |
+| 2013-10-03 | 0.50              |
++------------+-------------------+
+                `}
+            </pre>
+            <p>
+              Explanation: <br />
+              On 2013-10-01: <br />
+              <br /> - There were 4 requests in total, 2 of which were canceled.
+              <br />- However, the request with Id=2 was made by a banned client
+              (User_Id=2), so it is ignored in the calculation.
+              <br />- Hence there are 3 unbanned requests in total, 1 of which
+              was canceled.
+              <br />- The Cancellation Rate is (1 / 3) = 0.33
+              <br />
+              On 2013-10-02:
+              <br /> - There were 3 requests in total, 0 of which were canceled.
+              <br /> - The request with Id=6 was made by a banned client, so it
+              is ignored.
+              <br /> - Hence there are 2 unbanned requests in total, 0 of which
+              were canceled.
+              <br /> - The Cancellation Rate is (0 / 2) = 0.00
+              <br />
+              On 2013-10-03:
+              <br /> - There were 3 requests in total, 1 of which was canceled.
+              <br /> - The request with Id=8 was made by a banned client, so it
+              is ignored.
+              <br /> - Hence there are 2 unbanned request in total, 1 of which
+              were canceled.
+              <br /> - The Cancellation Rate is (1 / 2) = 0.50
+            </p>
             <CodeEditor
               options={{
                 title: "Q262. Trips and Users (Q238)",
                 codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
+                  Mysql: {
+                    code: `SELECT 
+                    t1.Day
+                    ,ROUND(SUM(t1.not_completed)/COUNT(*),2) AS "Cancellation Rate"
+                    FROM
+                    (SELECT 
+                        t.request_at AS Day
+                        ,(CASE
+                            WHEN status<>'completed' THEN 1
+                            ELSE 0 END) AS not_completed
+                        
+                     
+                    FROM
+                     Trips t
+                    WHERE client_id IN (SELECT users_id FROM Users WHERE banned='No' AND role='client')
+                          AND driver_id IN (SELECT users_id FROM Users WHERE banned='No' AND role='driver')
+                            ) t1
+                    WHERE (t1.Day BETWEEN '2013-10-01' AND '2013-10-03')
+                    
+                    GROUP BY t1.Day`,
+                    output: `{"headers": ["Day", "Cancellation Rate"], "values": [["2013-10-01", 0.33], ["2013-10-02", 0.00], ["2013-10-03", 0.50]]}`,
                   },
                 },
               }}
@@ -45536,35 +45672,70 @@ Window position                Max
             <Span>
               <b>Q263. Ugly Number (Q239)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              An ugly number is a positive integer whose prime factors are
+              limited to 2, 3, and 5.
+              <br />
+              Given an integer n, return true if n is an ugly number.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 6<br />
+              Output: true
+              <br />
+              Explanation: 6 = 2 × 3
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 1 <br />
+              Output: true <br />
+              Explanation: 1 has no prime factors, therefore all of its prime
+              factors are limited to 2, 3, and 5.
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 14
+              <br />
+              Output: false
+              <br />
+              Explanation: 14 is not ugly since it includes the prime factor 7.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>-2^31 &lt;= n &lt;= 2^31 - 1</Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(logn) <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q263. Ugly Number (Q239)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {boolean}
+                    */
+                   var isUgly = function(n) {
+                     if (n == 0) return false;
+                     for (let prime of [2, 3, 5])
+                       while (n % prime == 0)
+                         n = parseInt(n/prime);
+                     return n == 1;
+                   };
+                   
+                   isUgly(6)`,
+                    output: `true`,
                   },
                 },
               }}
