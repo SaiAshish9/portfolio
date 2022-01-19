@@ -191,6 +191,7 @@ import Leetcode226 from "assets/leetcode/226.png";
 import Leetcode230 from "assets/leetcode/230.png";
 import Leetcode235 from "assets/leetcode/235.png";
 import Leetcode236 from "assets/leetcode/236.png";
+import Leetcode240 from "assets/leetcode/240.png";
 
 export const DATA = {
   ds: {
@@ -44984,25 +44985,64 @@ Window position                Max
             <Span>
               <b>Q240. Search a 2D Matrix II (Q232)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Write an efficient algorithm that searches for a target value in
+              an m x n integer matrix. The matrix has the following properties:
+              <br />
+              Integers in each row are sorted in ascending from left to right.
+              <br />
+              Integers in each column are sorted in ascending from top to
+              bottom.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode240} left />
+            <Span>
+              Input: matrix = [[1,4,7,11,15],[2,5,8,12,19], <br />
+              [3,6,9,16,22], <br />
+              [10,13,14,17,24], <br />
+              [18,21,23,26,30]], <br />
+              target = 5 <br />
+              Output: true
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: matrix = [[1,4,7,11,15],
+              <br />
+              [2,5,8,12,19],
+              <br />
+              [3,6,9,16,22],
+              <br />
+              [10,13,14,17,24],
+              <br />
+              [18,21,23,26,30]], target = 20 Output: false
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              m == matrix.length <br />
+              n == matrix[i].length <br />
+              1 &lt;= n, m &lt;= 300
+              <br />
+              -109 &lt;= matrix[i][j] &lt;= 109
+              <br />
+              All the integers in each row are sorted in ascending order.
+              <br />
+              All the integers in each column are sorted in ascending order.
+              <br />
+              -109 &lt;= target &lt;= 109
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(m + n) <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q240. Search a 2D Matrix II (Q232)",
