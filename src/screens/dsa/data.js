@@ -44842,12 +44842,17 @@ class LRUCache:
               in a 32-bit integer.
             </Span>
             <Span>
-              <b>Complexity:</b>
-            </Span>
-            <p>
               Follow up: Can you solve the problem in O(1) extra space
               complexity? (The output array does not count as extra space for
               space complexity analysis.)
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -44888,32 +44893,83 @@ class LRUCache:
             <Span>
               <b>Q239. Sliding Window Maximum (Q231)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given an array of integers nums, there is a sliding window
+              of size k which is moving from the very left of the array to the
+              very right. You can only see the k numbers in the window. Each
+              time the sliding window moves right by one position.
+              <br />
+              Return the max sliding window.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
+            <p>
+              Input: nums = [1,3,-1,-3,5,3,6,7], k = 3<br />
+              Output: [3,3,5,5,6,7]
+              <br />
+              Explanation: <br />
+              <pre>
+                {`
+Window position                Max
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7    
+    `}
+              </pre>
+            </p>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: nums = [1], k = 1<br />
+              Output: [1]
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              1 &lt;= nums.length &lt;= 105 <br />
+              -104 &lt;= nums[i] &lt;= 104 <br />1 &lt;= k &lt;= nums.length
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(n) <br />
+              Space: O(n)
+            </p>
             <CodeEditor
               options={{
                 title: "Q239. Sliding Window Maximum (Q231)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @param {number} k
+                    * @return {number[]}
+                    */
+                   var maxSlidingWindow = function(nums, k) {
+                     const ans = []
+                     const q = []
+                     for(let i in nums){
+                     while(q.length && q.slice(-1)[0] < nums[i])
+                     q.pop()
+                     q.push(nums[i])
+                     if(i >= k && nums[i - k] == q[0])
+                     q.shift()
+                     if(i >= k - 1)
+                     ans.push(q[0])
+                     }
+                     return ans
+                   };
+                   
+                   maxSlidingWindow([1,3,-1,-3,5,3,6,7],3)`,
+                    output: `[ 3, 3, 5, 5, 6, 7 ]`,
                   },
                 },
               }}
