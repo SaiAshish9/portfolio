@@ -45084,25 +45084,54 @@ Window position                Max
             <Span>
               <b>Q241. Different Ways to Add Parentheses (Q233)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a string expression of numbers and operators, return all
+              possible results from computing all the different possible ways to
+              group numbers and operators. You may return the answer in any
+              order.
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: expression = "2-1-1" <br />
+              Output: [0,2] <br />
+              Explanation: <br />
+              ((2-1)-1) = 0 <br />
+              (2-(1-1)) = 2
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: expression = "2*3-4*5"
+              <br />
+              Output: [-34,-14,-10,-10,10]
+              <br />
+              Explanation:
+              <br />
+              (2*(3-(4*5))) = -34
+              <br />
+              ((2*3)-(4*5)) = -14 <br />
+              ((2*(3-4))*5) = -10 <br />
+              (2*((3-4)*5)) = -10 <br />
+              (((2*3)-4)*5) = 10
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              1 &lt;= expression.length &lt;= 20 expression consists of digits
+              and the operator '+', '-', and '*'. All the integer values in the
+              input expression are in the range [0, 99].
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(2^n -&gt; n) <br />
+              Space: O(2^n) )
+            </p>
             <CodeEditor
               options={{
                 title: "Q241. Different Ways to Add Parentheses (Q233)",
