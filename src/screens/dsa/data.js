@@ -46985,24 +46985,60 @@ Window position                Max
             <Span>
               <b>Q292. Nim Game (Q253)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are playing the following Nim Game with your friend:
+              <br />
+              Initially, there is a heap of stones on the table.
+              <br />
+              You and your friend will alternate taking turns, and you go first.
+              <br />
+              On each turn, the person whose turn it is will remove 1 to 3
+              stones from the heap.
+              <br />
+              The one who removes the last stone is the winner.
+              <br />
+              Given n, the number of stones in the heap, return true if you can
+              win the game assuming both you and your friend play optimally,
+              otherwise return false.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 4 <br />
+              Output: false
+              <br />
+              Explanation: These are the possible outcomes:
+              <br />
+              1. You remove 1 stone. Your friend removes 3 stones, including the
+              last stone. Your friend wins.
+              <br />
+              2. You remove 2 stones. Your friend removes 2 stones, including
+              the last stone. Your friend wins.
+              <br />
+              3. You remove 3 stones. Your friend removes the last stone. Your
+              friend wins.
+              <br />
+              In all outcomes, your friend wins.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 1 <br />
+              Output: true
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 2 <br />
+              Output: true
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>1 &lt;= n &lt;= 2^31 - 1</Span>
             <Span>
               <b>Complexity:</b>
             </Span>
