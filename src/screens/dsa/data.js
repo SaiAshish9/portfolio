@@ -190,6 +190,7 @@ import Leetcode223 from "assets/leetcode/223.png";
 import Leetcode226 from "assets/leetcode/226.png";
 import Leetcode230 from "assets/leetcode/230.png";
 import Leetcode235 from "assets/leetcode/235.png";
+import Leetcode236 from "assets/leetcode/236.png";
 
 export const DATA = {
   ds: {
@@ -44599,32 +44600,108 @@ class LRUCache:
             <Span>
               <b>Q236. Lowest Common Ancestor of a Binary Tree (Q228)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a binary tree, find the lowest common ancestor (LCA) of two
+              given nodes in the tree.
+              <br />
+              According to the definition of LCA on Wikipedia: “The lowest
+              common ancestor is defined between two nodes p and q as the lowest
+              node in T that has both p and q as descendants (where we allow a
+              node to be a descendant of itself).”
+            </Span>
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Img src={Leetcode236} left />
+            <Span>
+              Input: root = [3,5,1,6,2,0,8,null,null,7,4], <br /> p = 5, q = 1{" "}
+              <br />
+              Output: 3 <br />
+              Explanation: The LCA of nodes 5 and 1 is 3.
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
+              Input: root = [3,5,1,6,2,0,8,null,null,7,4], <br /> p = 5, q = 4{" "}
+              <br />
+              Output: 5 <br />
+              Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a
+              descendant of itself according to the LCA definition.
+            </Span>
+            <Span>
               <b>Example 3:</b>
+            </Span>
+            <Span>
+              Input: root = [1,2], <br />p = 1, q = 2 <br />
+              Output: 1
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              The number of nodes in the tree is in the range [2, 105]. <br />
+              -109 &lt;= Node.val &lt;= 109 <br />
+              All Node.val are unique. <br />
+              p != q <br />p and q will exist in the tree.
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(h) <br />
+              Space: O(h)
+            </p>
             <CodeEditor
               options={{
                 title: "Q236. Lowest Common Ancestor of a Binary Tree (Q228)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function TreeNode(val) {
+                      this.val = val;
+                      this.left = this.right = null;
+                  }
+                  
+                  /**
+                   * @param {TreeNode} root
+                   * @param {TreeNode} p
+                   * @param {TreeNode} q
+                   * @return {TreeNode}
+                   */
+                  var lowestCommonAncestor = function(root, p, q) {
+                    if (!root || root == p || root == q)
+                      return root;
+                    const l = lowestCommonAncestor(root.left, p, q);
+                    const r = lowestCommonAncestor(root.right, p, q);
+                    if (l && r) return root;
+                    return l ? l : r;
+                  };
+                  
+                  const t = new TreeNode(3)
+                  t.left = new TreeNode(5)
+                  t.left.left = new TreeNode(6)
+                  t.left.right = new TreeNode(2)
+                  t.left.right.left = new TreeNode(7)
+                  t.left.right.right = new TreeNode(4)
+                  t.right = new TreeNode(1)
+                  t.right.left = new TreeNode(0)
+                  t.right.right = new TreeNode(8)
+                  lowestCommonAncestor(t,5,1)
+                  console.log(t)
+                  `,
+                    output: `TreeNode {
+                      val: 3,
+                      right: TreeNode {
+                        val: 1,
+                        right: TreeNode { val: 8, right: null, left: null },
+                        left: TreeNode { val: 0, right: null, left: null }
+                      },
+                      left: TreeNode {
+                        val: 5,
+                        right: TreeNode { val: 2, right: [TreeNode], left: [TreeNode] },
+                        left: TreeNode { val: 6, right: null, left: null }
+                      }
+                    }`,
                   },
                 },
               }}
@@ -44657,7 +44734,11 @@ class LRUCache:
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(h)
+              <br />
+              Space: O(h)
+            </p>
             <CodeEditor
               options={{
                 title: "Q237. Delete Node in a Linked List (Q229)",
