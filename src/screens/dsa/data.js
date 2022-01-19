@@ -44315,28 +44315,57 @@ class LRUCache:
             <Span>
               <b>Q233. Number of Digit One (Q225)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer n, count the total number of digit 1 appearing in
+              all non-negative integers less than or equal to n.
+            </Span>
+
             <Span>
               <b>Example 1:</b>
+            </Span>
+            <Span>
+              Input: n = 13 <br />
+              Output: 6
             </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
             <Span>
-              <b>Example 3:</b>
+              Input: n = 0<br />
+              Output: 0
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <p>0 &lt;= n &lt;= 109</p>
             <CodeEditor
               options={{
                 title: "Q233. Number of Digit One (Q225)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {number}
+                    */
+                   var countDigitOne = function(n) {
+                     
+                     let ans = 0
+                     let pow10 = 1
+                     while(pow10 <= n){
+                     let divisor = pow10 * 10
+                     let quotient = parseInt(n/divisor) 
+                     let remainder = n % divisor
+                     if(quotient > 0)
+                       ans += quotient * pow10
+                     if(remainder >= pow10)
+                       ans += Math.min(remainder - pow10 + 1, pow10)
+                     pow10 *= 10
+                     }
+                     return ans
+                   };
+                   
+                   countDigitOne(13)`,
+                    output: `6`,
                   },
                 },
               }}
