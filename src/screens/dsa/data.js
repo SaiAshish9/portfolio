@@ -46877,35 +46877,100 @@ Window position                Max
             <Span>
               <b>Q290. Word Pattern (Q252)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a pattern and a string s, find if s follows the same
+              pattern.
+              <br />
+              Here follow means a full match, such that there is a bijection
+              between a letter in pattern and a non-empty word in s.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: pattern = "abba", s = "dog cat cat dog"
+              <br />
+              Output: true
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: pattern = "abba", s = "dog cat cat fish"
+              <br />
+              Output: false
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: pattern = "aaaa", s = "dog cat cat dog"
+              <br />
+              Output: false
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              1 &lt;= pattern.length &lt;= 300 <br />
+              pattern contains only lower-case English letters. <br />
+              1 &lt;= s.length &lt;= 3000 <br />
+              s contains only lowercase English letters and spaces ' '. <br />
+              s does not contain any leading or trailing spaces. <br />
+              All the words in s are separated by a single space.
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(n) <br />
+              Space: O(n)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q290. Word Pattern (Q252)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string} pattern
+                    * @param {string} s
+                    * @return {boolean}
+                    */
+                   var wordPattern = function(pattern, s) {
+                     if (!pattern || !pattern.length) return false;
+                     if (!s || !s.length) return false;
+                     const map = new Map();
+                     const map2 = new Map();
+                   
+                     const array = s.trim().split(" ");
+                     if (array.length != pattern.length){
+                       return false;
+                     }
+                     for (let i = 0; i < array.length; i++) {
+                         const p = pattern[i]
+                         const c = array[i];
+                         if (map.has(p)) {
+                             if (c != map.get(p)) {
+                                 return false;
+                             }
+                         } else {
+                             map.set(p, c);
+                         }
+                         if (map2.has(c)) {
+                             if (p != map2.get(c)) {
+                                 return false;
+                             }
+                         } else {
+                             map2.set(c, p);
+                         }
+                     }
+                     console.log(map,map2)
+                     return true;
+                   };
+                   
+                   wordPattern("abba","dog cat cat dog")`,
+                    output: `Map { 'a' => 'dog', 'b' => 'cat' } Map { 'dog' => 'a', 'cat' => 'b' }
+                    true`,
                   },
                 },
               }}
