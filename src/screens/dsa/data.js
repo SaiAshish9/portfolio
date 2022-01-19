@@ -45891,8 +45891,19 @@ Window position                Max
                 title: "Q268. Missing Number (Q241)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var missingNumber = function(nums) {
+                     let ans = nums.length;
+                     for (let i = 0; i < nums.length; ++i)
+                       ans ^= i ^ nums[i];
+                     return ans;
+                   };
+                   
+                   missingNumber([3,0,1])`,
+                    output: `2`,
                   },
                 },
               }}
