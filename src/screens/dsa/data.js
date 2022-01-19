@@ -44180,28 +44180,127 @@ class LRUCache:
             <Span>
               <b>Q232. Implement Queue using Stacks (Q224)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Implement a first in first out (FIFO) queue using only two stacks.
+              The implemented queue should support all the functions of a normal
+              queue (push, peek, pop, and empty).
+            </Span>
+            <Span>
+              Implement the MyQueue class:
+              <br />
+              void push(int x) Pushes element x to the back of the queue. <br />
+              int pop() Removes the element from the front of the queue and
+              returns it.
+              <br />
+              int peek() Returns the element at the front of the queue. <br />
+              boolean empty() Returns true if the queue is empty, false
+              otherwise.
+            </Span>
+            <Span>
+              Notes:
+              <br />
+              You must use only standard operations of a stack, which means only
+              push to top, peek/pop from top, size, and is empty operations are
+              valid.
+              <br />
+              Depending on your language, the stack may not be supported
+              natively. You may simulate a stack using a list or deque
+              (double-ended queue) as long as you use only a stack's standard
+              operations.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
             <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span>
-              <b>Example 3:</b>
+              Input ["MyQueue", "push", "push", "peek", "pop", "empty"]
+              <br />
+              [[], [1], [2], [], [], []]
+              <br />
+              Output
+              <br />
+              [null, null, null, 1, 1, false]
+              <br />
+              Explanation MyQueue myQueue = new MyQueue();
+              <br />
+              myQueue.push(1); // queue is: [1]
+              <br />
+              myQueue.push(2); // queue is: [1, 2] (leftmost is front of the
+              queue)
+              <br />
+              myQueue.peek(); // return 1<br />
+              myQueue.pop(); // return 1, queue is [2]
+              <br />
+              myQueue.empty(); // return false
+              <br />
             </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <p></p>
+            <Span>
+              1 &lt;= x &lt;= 9 <br />
+              At most 100 calls will be made to push, pop, peek, and empty.{" "}
+              <br />
+              All the calls to pop and peek are valid.
+            </Span>
+            <p>
+              Follow-up: Can you implement the queue such that each operation is
+              amortized O(1) time complexity? In other words, performing n
+              operations will take overall O(n) time even if one of those
+              operations may take longer.
+            </p>
             <CodeEditor
               options={{
                 title: "Q232. Implement Queue using Stacks (Q224)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `
+                    var MyQueue = function() {
+                      this.input = []
+                      this.output = []
+                    };
+                    
+                    /** 
+                     * @param {number} x
+                     * @return {void}
+                     */
+                    MyQueue.prototype.push = function(x) {
+                      this.input.push(x)  
+                    };
+                    
+                    /**
+                     * @return {number}
+                     */
+                    MyQueue.prototype.pop = function() {
+                      this.peek() 
+                      return this.output.pop()
+                    };
+                    
+                    /**
+                     * @return {number}
+                     */
+                    MyQueue.prototype.peek = function() {
+                      if(!this.output.length)
+                      while(this.input.length)
+                      this.output.push(this.input.pop())
+                      return this.output.slice(-1)[0]  
+                    };
+                    
+                    /**
+                     * @return {boolean}
+                     */
+                    MyQueue.prototype.empty = function() {
+                      return !this.input.length && !this.output.length  
+                    };
+                    
+                    
+                    var obj = new MyQueue()
+                    obj.push(1)
+                    obj.push(2)
+                    var param_2 = obj.pop()
+                    var param_3 = obj.peek()
+                    var param_4 = obj.empty()
+                    console.log({param_2,param_3,param_4})`,
+                    output: `{ param_2: 1, param_3: 2, param_4: false }`,
                   },
                 },
               }}
