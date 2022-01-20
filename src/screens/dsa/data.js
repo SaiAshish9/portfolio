@@ -48048,8 +48048,66 @@ Window position                Max
                 title: "Q307. Range Sum Query - Mutable (Q262)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `class FenwickTree {
+                      constructor(n){
+                        this.sums = Array(n + 1).fill(0);
+                      }
+                    
+                      update(i, delta) {
+                        while (i < this.sums.length) {
+                          this.sums[i] += delta;
+                          i += i & -i;
+                        }
+                      }
+                    
+                      get(i) {
+                        let sum = 0;
+                        while (i > 0) {
+                          sum += this.sums[i];
+                          i -= i & -i;
+                        }
+                        return sum;
+                      }
+                    
+                    }
+                    
+                    
+                    /**
+                     * @param {number[]} nums
+                     */
+                    var NumArray = function(nums) {
+                      this.nums = nums
+                      this.tree = new FenwickTree(nums.length);
+                        for (let i = 0; i < nums.length; ++i)
+                          this.tree.update(i + 1, nums[i]);  
+                    };
+                    
+                    /** 
+                     * @param {number} index 
+                     * @param {number} val
+                     * @return {void}
+                     */
+                    NumArray.prototype.update = function(index, val) {
+                      this.tree.update(index + 1, val - this.nums[index]);
+                      this.nums[index] = val;  
+                    };
+                    
+                    /** 
+                     * @param {number} left 
+                     * @param {number} right
+                     * @return {number}
+                     */
+                    NumArray.prototype.sumRange = function(left, right) {
+                      return this.tree.get(right + 1) - this.tree.get(left);
+                    };
+                    
+                    /** 
+                     * Your NumArray object will be instantiated and called as such:
+                     * var obj = new NumArray(nums)
+                     * obj.update(index,val)
+                     * var param_2 = obj.sumRange(left,right)
+                     */`,
+                    output: `[null,9,null,8]`,
                   },
                 },
               }}
