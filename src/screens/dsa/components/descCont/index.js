@@ -27,6 +27,38 @@ const DescCont = ({ data }) => {
         >
           Back
         </Button>
+        {params.l_index && (
+          <>
+            {+params.l_index !== 0 && +params.subCategory !== 0 && (
+              <Button
+                onClick={() => {
+                  let l_index = params.l_index;
+                  l_index = parseInt(l_index);
+                  history.push(
+                    `?category=${params?.category}&&subCategory=${
+                      l_index - 1
+                    }&&l_index=${l_index - 1}`
+                  );
+                }}
+              >
+                Prev
+              </Button>
+            )}
+            <Button
+              onClick={() => {
+                let l_index = params.l_index;
+                l_index = parseInt(l_index);
+                history.push(
+                  `?category=${params?.category}&&subCategory=${
+                    l_index + 1
+                  }&&l_index=${l_index + 1}`
+                );
+              }}
+            >
+              Next
+            </Button>
+          </>
+        )}
       </BtnContainer>
       {data.types?.length > 0 && (
         <BtnContainer>

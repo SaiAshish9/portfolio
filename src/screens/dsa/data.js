@@ -26392,7 +26392,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b>36. Valid Sudoku</b>
+              <b>Q36. Valid Sudoku</b>
             </Span>
             <Span>
               Determine if a 9 x 9 Sudoku board is valid. Only the filled cells
@@ -26602,91 +26602,95 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <CodeEditor
               options={{
                 title: "Q37. Sudoku Solver",
-                code: `/**
-              * @param {character[][]} board
-              * @return {void} Do not return anything, modify board in-place instead.
-              */
-             function isSafe(grid, row, col, num) {
-                 // check horizontally
-                 for (let j = 0; j < n; j++)
-                     if (grid[row][j] == num)
-                         return false;
-             
-                 // check vertically
-                 for (let i = 0; i < n; i++)
-                     if (grid[i][col] == num)
-                         return false;
-             
-             
-                 let startRow = row - row % 3,
-                     startCol = col - col % 3;
-             
-                 // check within the section (3 * 3) (n = 3)
-                 for (let i = 0; i < 3; i++)
-                     for (let j = 0; j < 3; j++)
-                         if (grid[i + startRow][j + startCol] == num)
-                             return false;
-             
-                 return true;
-             }
-             
-             
-             function solve(grid, row, col, n) {
-                 // avoid further tracking if all cells are explored 8 9
-                 if (row == n - 1 && col == n)
-                     return true;
-             
-                 // move to next row
-                 if (col == n) {
-                     row++;
-                     col = 0;
-                 }
-             
-                 // check for next element horizontally if element is already present 
-                 if (grid[row][col] != ".")
-                     return solve(grid, row, col + 1, n);
-             
-                 // if present value is 0, replace it with values from 0-9
-                 for (let num = 1; num < n + 1; num++) {
-                     if (isSafe(grid, row, col, num)) {
-                         grid[row][col] = "" + num;
-                         // check for next column
-                         if (solve(grid, row, col + 1, n))
-                             return true;
-                     }
-                     grid[row][col] = ".";
-                 }
-                 return false;
-             }
-             
-             var solveSudoku = function(board){
-               solve(board, 0, 0, n)
-             }
-             
-             let n = 9;
-             const sudoku = Array.from(Array(n), () => Array(n).fill("."))
-             sudoku.forEach(x => console.log(x.join(" ")))
-             solveSudoku(sudoku)
-             sudoku.forEach(x => console.log(x.join(" ")))
-             `,
-                output: `. . . . . . . . .
-              . . . . . . . . .
-              . . . . . . . . .
-              . . . . . . . . .
-              . . . . . . . . .
-              . . . . . . . . .
-              . . . . . . . . .
-              . . . . . . . . .
-              . . . . . . . . .
-              1 2 3 4 5 6 7 8 9
-              4 5 6 7 8 9 1 2 3
-              7 8 9 1 2 3 4 5 6
-              2 1 4 3 6 5 8 9 7
-              3 6 5 8 9 7 2 1 4
-              8 9 7 2 1 4 3 6 5
-              5 3 1 6 4 2 9 7 8
-              6 4 2 9 7 8 5 3 1
-              9 7 8 5 3 1 6 4 2`,
+                codes: {
+                  Javacript: {
+                    code: `/**
+                * @param {character[][]} board
+                * @return {void} Do not return anything, modify board in-place instead.
+                */
+               function isSafe(grid, row, col, num) {
+                   // check horizontally
+                   for (let j = 0; j < n; j++)
+                       if (grid[row][j] == num)
+                           return false;
+               
+                   // check vertically
+                   for (let i = 0; i < n; i++)
+                       if (grid[i][col] == num)
+                           return false;
+               
+               
+                   let startRow = row - row % 3,
+                       startCol = col - col % 3;
+               
+                   // check within the section (3 * 3) (n = 3)
+                   for (let i = 0; i < 3; i++)
+                       for (let j = 0; j < 3; j++)
+                           if (grid[i + startRow][j + startCol] == num)
+                               return false;
+               
+                   return true;
+               }
+               
+               
+               function solve(grid, row, col, n) {
+                   // avoid further tracking if all cells are explored 8 9
+                   if (row == n - 1 && col == n)
+                       return true;
+               
+                   // move to next row
+                   if (col == n) {
+                       row++;
+                       col = 0;
+                   }
+               
+                   // check for next element horizontally if element is already present 
+                   if (grid[row][col] != ".")
+                       return solve(grid, row, col + 1, n);
+               
+                   // if present value is 0, replace it with values from 0-9
+                   for (let num = 1; num < n + 1; num++) {
+                       if (isSafe(grid, row, col, num)) {
+                           grid[row][col] = "" + num;
+                           // check for next column
+                           if (solve(grid, row, col + 1, n))
+                               return true;
+                       }
+                       grid[row][col] = ".";
+                   }
+                   return false;
+               }
+               
+               var solveSudoku = function(board){
+                 solve(board, 0, 0, n)
+               }
+               
+               let n = 9;
+               const sudoku = Array.from(Array(n), () => Array(n).fill("."))
+               sudoku.forEach(x => console.log(x.join(" ")))
+               solveSudoku(sudoku)
+               sudoku.forEach(x => console.log(x.join(" ")))
+               `,
+                    output: `. . . . . . . . .
+                . . . . . . . . .
+                . . . . . . . . .
+                . . . . . . . . .
+                . . . . . . . . .
+                . . . . . . . . .
+                . . . . . . . . .
+                . . . . . . . . .
+                . . . . . . . . .
+                1 2 3 4 5 6 7 8 9
+                4 5 6 7 8 9 1 2 3
+                7 8 9 1 2 3 4 5 6
+                2 1 4 3 6 5 8 9 7
+                3 6 5 8 9 7 2 1 4
+                8 9 7 2 1 4 3 6 5
+                5 3 1 6 4 2 9 7 8
+                6 4 2 9 7 8 5 3 1
+                9 7 8 5 3 1 6 4 2`,
+                  },
+                },
               }}
             />
           </>
@@ -26798,6 +26802,9 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         title: "Q39. Combination Sum",
         content: (
           <>
+            <Span>
+              <b>Q39. Combination Sum</b>
+            </Span>
             <Span>
               Given an array of distinct integers candidates and a target
               integer target, return a list of all unique combinations of
@@ -27494,7 +27501,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b>47. Permutations II</b>
+              <b>Q47. Permutations II</b>
             </Span>
             <Span>
               Given a collection of numbers, nums, that might contain
@@ -27578,7 +27585,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b>48. Rotate Image</b>
+              <b>Q48. Rotate Image</b>
             </Span>
             <Span>
               You are given an n x n 2D matrix representing an image, rotate the
@@ -28011,7 +28018,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b>53. Maximum Subarray</b>
+              <b>Q53. Maximum Subarray</b>
             </Span>
             <Span>
               Given an integer array nums, find the contiguous subarray
@@ -31010,7 +31017,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b>Partition List</b>
+              <b>Q86. Partition List</b>
             </Span>
             <Span>
               Given the head of a linked list and a value x, partition it such
@@ -48885,7 +48892,8 @@ Window position                Max
             </p>
             <CodeEditor
               options={{
-                title: "Q331. Verify Preorder Serialization of a Binary Tree (Q278)",
+                title:
+                  "Q331. Verify Preorder Serialization of a Binary Tree (Q278)",
                 codes: {
                   Javacript: {
                     code: ``,

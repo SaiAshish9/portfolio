@@ -318,8 +318,8 @@ const CodeEditor = ({ options }) => {
       {
         text:
           selected !== "Python"
-            ? beautify.js_beautify(options.codes[selected].code)
-            : options.codes["Python"].code,
+            ? beautify.js_beautify(options.codes[selected]?.code)
+            : options.codes["Python"]?.code,
         alignment: "left",
       },
       {
@@ -330,7 +330,7 @@ const CodeEditor = ({ options }) => {
       },
       {
         text: beautify.html_beautify(
-          options.codes[selected].output ?? options.output
+          options.codes[selected]?.output ?? options.output
         ),
         alignment: "left",
       },
@@ -359,22 +359,22 @@ const CodeEditor = ({ options }) => {
       if (copiedOutput) setIsCopiedOutput(false);
       navigator.clipboard.writeText(
         selected !== "Python"
-          ? beautify.js_beautify(options.codes[selected].code)
-          : options.codes["Python"].code
+          ? beautify.js_beautify(options.codes[selected]?.code)
+          : options.codes["Python"]?.code
       );
     }
     if (i.includes("O/P")) {
       if (!copiedOutput) setIsCopiedOutput(true);
       if (copied) setIsCopied(false);
       navigator.clipboard.writeText(
-        beautify.html_beautify(options.codes[selected].output ?? options.output)
+        beautify.html_beautify(options.codes[selected]?.output ?? options.output)
       );
     }
     if (i === "Download") downloadPDF();
     // if (i === "Execute") executeCode();
   }
 
-  const outputCheck = options.codes[selected].output || options.output;
+  const outputCheck = options.codes[selected]?.output || options.output;
 
   return (
     <Span>
@@ -427,8 +427,8 @@ const CodeEditor = ({ options }) => {
             <Editor
               value={
                 selected !== "Python"
-                  ? beautify.js_beautify(options.codes[selected].code)
-                  : options.codes["Python"].code
+                  ? beautify.js_beautify(options.codes[selected]?.code)
+                  : options.codes["Python"]?.code
               }
               options={{
                 mode: ["Java", "Kotlin", "C++", "C"].includes(selected)
@@ -453,8 +453,8 @@ const CodeEditor = ({ options }) => {
             <SEditor
               value={
                 selected !== "Python"
-                  ? beautify.js_beautify(options.codes[selected].code)
-                  : options.codes["Python"].code
+                  ? beautify.js_beautify(options.codes[selected]?.code)
+                  : options.codes["Python"]?.code
               }
               options={{
                 mode: ["Java", "Kotlin", "C++", "C"].includes(selected)
@@ -483,7 +483,7 @@ const CodeEditor = ({ options }) => {
                   {/* playground */}
                   <Output
                     value={beautify.html_beautify(
-                      options.codes[selected].output ?? options.output
+                      options.codes[selected]?.output ?? options.output
                     )}
                     options={{
                       mode: "html",
@@ -503,7 +503,7 @@ const CodeEditor = ({ options }) => {
                   {/* playground */}
                   <Output
                     value={beautify.html_beautify(
-                      options.codes[selected].output ?? options.output
+                      options.codes[selected]?.output ?? options.output
                     )}
                     options={{
                       mode: "html",
