@@ -47823,7 +47823,6 @@ Window position                Max
               0 &lt;= col1 &lt;= col2 &lt; n <br />
               At most 104 calls will be made to sumRegion.
             </Span>
-            <Span></Span>
             <Span>
               <b>Complexity:</b>
             </Span>
@@ -47875,35 +47874,99 @@ Window position                Max
             <Span>
               <b>Q306. Additive Number (Q261)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              An additive number is a string whose digits can form an additive
+              sequence.
+              <br />
+              A valid additive sequence should contain at least three numbers.
+              Except for the first two numbers, each subsequent number in the
+              sequence must be the sum of the preceding two.
+              <br />
+              Given a string containing only digits, return true if it is an
+              additive number or false otherwise.
+              <br />
+              Note: Numbers in the additive sequence cannot have leading zeros,
+              so sequence 1, 2, 03 or 1, 02, 3 is invalid.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: "112358"
+              <br />
+              Output: true
+              <br />
+              Explanation: <br />
+              The digits can form an additive sequence: 1, 1, 2, 3, 5, 8. <br />
+              1 + 1 = 2, 1 + 2 = 3, 2 + 3 = 5, 3 + 5 = 8
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: "199100199"
+              <br />
+              Output: true
+              <br />
+              Explanation: <br />
+              The additive sequence is: 1, 99, 100, 199. <br />1 + 99 = 100, 99
+              + 100 = 199
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              1 &lt;= num.length &lt;= 35 <br />
+              num consists only of digits.
+            </Span>
+            <Span>
+              Follow up: How would you handle overflow for very large input
+              integers?
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(n^2)
+              <br />
+              Space: O(n^2)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q306. Additive Number (Q261)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string} num
+                    * @return {boolean}
+                    */
+                   
+                   function dfs(num,n1,n2,s){
+                     if(s===num.length) return true
+                     const n3  = n1 + n2
+                     const n3_s = String(n3)
+                     return num.indexOf(n3_s, s) == s && dfs(num,n2, n3, s + n3_s.length)
+                   }
+                   
+                   var isAdditiveNumber = function(num) {
+                     const n = num.length;
+                     for (let i = 0; i < parseInt(n / 2); ++i) {
+                       if (i > 0 && num[0] == '0')
+                           return false;
+                       const firstNum = parseInt(num.substring(0, i + 1));
+                         for (let j = i + 1; Math.max(i, j - i) < n - j; ++j) {
+                           if (j > i + 1 && num[i + 1] == '0')
+                             break;
+                           const secondNum = parseInt(num.substring(i + 1, j + 1));
+                           if (dfs(num, firstNum, secondNum, j + 1))
+                             return true;
+                         }
+                       }
+                       return false;
+                   };
+                   
+                   isAdditiveNumber("120122436")`,
+                    output: `false`,
                   },
                 },
               }}
