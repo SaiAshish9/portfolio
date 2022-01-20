@@ -194,6 +194,7 @@ import Leetcode236 from "assets/leetcode/236.png";
 import Leetcode240 from "assets/leetcode/240.png";
 import Leetcode257 from "assets/leetcode/257.png";
 import Leetcode289 from "assets/leetcode/289.png";
+import Leetcode297 from "assets/leetcode/297.png";
 
 export const DATA = {
   ds: {
@@ -47203,35 +47204,125 @@ Window position                Max
             <Span>
               <b>Q297. Serialize and Deserialize Binary Tree (Q255)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Serialization is the process of converting a data structure or
+              object into a sequence of bits so that it can be stored in a file
+              or memory buffer, or transmitted across a network connection link
+              to be reconstructed later in the same or another computer
+              environment.
+              <br />
+              Design an algorithm to serialize and deserialize a binary tree.
+              There is no restriction on how your serialization/deserialization
+              algorithm should work. You just need to ensure that a binary tree
+              can be serialized to a string and this string can be deserialized
+              to the original tree structure.
+              <br />
+              Clarification: The input/output format is the same as how LeetCode
+              serializes a binary tree. You do not necessarily need to follow
+              this format, so please be creative and come up with different
+              approaches yourself.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode297} left />
+            <Span>
+              Input: root = [1,2,3,null,null,4,5] <br />
+              Output: [1,2,3,null,null,4,5]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: root = []
+              <br />
+              Output: []
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              The number of nodes in the tree is in the range [0, 104]. <br />
+              -1000 &lt;= Node.val &lt;= 1000
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(n) <br />
+              Space: O(n)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q297. Serialize and Deserialize Binary Tree (Q255)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function TreeNode(val) {
+                      this.val = val;
+                      this.left = this.right = null;
+                    }
+                    
+                    /**
+                     * Encodes a tree to a single string.
+                     *
+                     * @param {TreeNode} root
+                     * @return {string}
+                     */
+                    
+                    function preorderS(root,res){
+                      if (!root) {
+                        res.push("n ");
+                        return;
+                      }
+                      res.push(root.val," ")
+                      preorderS(root.left, res);
+                      preorderS(root.right, res);
+                    }
+                    
+                    var serialize = function(root) {
+                      const res = []
+                      preorderS(root, res);
+                      return res.join("");
+                    };
+                    
+                    /**
+                     * Decodes your encoded data to tree.
+                     *
+                     * @param {string} data
+                     * @return {TreeNode}
+                     */
+                    
+                    function preorderD(q){
+                      const s = q.shift();
+                      if (s == "n")
+                        return null;
+                      const root = new TreeNode(parseInt(s));
+                      root.left = preorderD(q);
+                      root.right = preorderD(q);
+                      return root;
+                    }
+                    
+                    var deserialize = function(data) {
+                      const vals = data.split(" ");
+                      return preorderD(vals); 
+                    };
+                    
+                    const t = new TreeNode(1)
+                    t.left = new TreeNode(2)
+                    t.right = new TreeNode(3)
+                    t.right.left = new TreeNode(4)
+                    t.right.right = new TreeNode(5)
+                    deserialize(serialize(t));
+                    `,
+                    output: `TreeNode {
+                      val: 1,
+                      right: TreeNode {
+                        val: 3,
+                        right: TreeNode { val: 5, right: null, left: null },
+                        left: TreeNode { val: 4, right: null, left: null }
+                      },
+                      left: TreeNode { val: 2, right: null, left: null }
+                    }`,
                   },
                 },
               }}
