@@ -24440,7 +24440,7 @@ print(q)
         content: (
           <>
             <Span>
-              <b>24. Swap Nodes in Pairs</b>
+              <b>Q24. Swap Nodes in Pairs</b>
             </Span>
             <Span>
               Given a linked list, swap every two adjacent nodes and return its
