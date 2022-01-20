@@ -47,7 +47,7 @@ const ContainerStyles = css`
 `;
 
 export const Container = styled.div`
-  ${ContainerStyles}
+  ${ContainerStyles};
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     padding: 3rem 3rem 2rem !important;
   }
@@ -60,17 +60,17 @@ export const Content = styled.div`
   ${({ id }) =>
     id < 4 &&
     css`
-      margin-bottom: 1rem;
+      margin-bottom: 2.4rem;
     `};
   ${Styles.CBC}
   width:25%;
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     width: 50%;
     ${({ id }) =>
-    id < 6 &&
-    css`
-      margin-bottom: 1rem;
-    `};
+      id < 6 &&
+      css`
+        margin-bottom: 1rem;
+      `};
   }
 `;
 
