@@ -5204,9 +5204,9 @@ pop_back() :
                   It's a self balancing binary search tree where difference b/w
                   left and right subtress for every node cannot be more than 1.
                   They are used to improve the cost of operations of skewed bst
-                  from O(n) to O(logn)
+                  from O(n) to O(log n)
                 </Span>
-                <Span>The height of an AVL tree is always O(Logn)</Span>
+                <Span>The height of an AVL tree is always O(log n)</Span>
                 Balance factor of a node: (height of left subtree) - (height of
                 right tree). It should be between -1 and 1. If it's greater than
                 1 then we should consider LL (Left Left) or LR case. Otherwise
@@ -8326,10 +8326,10 @@ console.log(arr)
                   to be sorted, it needs no additional memory space to work
                 </Span>
                 <Span>
-                  Best TC: O(nlogn)
+                  Best TC: O(nlog n)
                   <br />
-                  Average TC: O(nlogn) <br />
-                  Worst TC: O(nlogn) <br />
+                  Average TC: O(nlog n) <br />
+                  Worst TC: O(nlog n) <br />
                   Space Complexity: O(n)
                 </Span>
                 <Span>
@@ -8360,7 +8360,7 @@ console.log(arr)
                       
                           for (var i = Math.floor(n / 2) - 1; i >= 0; i--) // O(n)
                             heapify(arr, n, i); // O(log n)
-                            // O(nlogn)
+                            // O(nlog n)
                       
                           for (var i = n - 1; i > 0; i--) {
                             var temp = arr[0];
@@ -8446,10 +8446,10 @@ console.log(arr)
                   linear time to merge two halves.
                 </Span>
                 <Span>
-                  Best TC: O(nlogn)
+                  Best TC: O(nlog n)
                   <br />
-                  Average TC: O(nlogn) <br />
-                  Worst TC: O(nlogn) <br />
+                  Average TC: O(nlog n) <br />
+                  Worst TC: O(nlog n) <br />
                   Space Complexity: O(n) //depends
                 </Span>
                 <Span>
@@ -8549,9 +8549,9 @@ console.log(arr, arr_size);
                   done in linear time
                 </Span>
                 <Span>
-                  Best TC: O(nlogn)
+                  Best TC: O(nlog n)
                   <br />
-                  Average TC: O(nlogn) <br />
+                  Average TC: O(nlog n) <br />
                   Worst TC: O(n*n) <br />
                   Space Complexity: O(n)
                 </Span>
@@ -8620,10 +8620,10 @@ print(f'Sorted array: {array}')
                   involved.
                 </Span>
                 <Span>
-                  Best TC: O(nlogn) // already sorted
+                  Best TC: O(nlog n) // already sorted
                   <br />
                   For other cases it depends on gap sequence. Generally, Average
-                  TC: O(nlogn) <br />
+                  TC: O(nlog n) <br />
                   Worst TC: O(nlog^2n) <br />
                   Space Complexity: O(1)
                 </Span>
@@ -8705,9 +8705,9 @@ console.log(arr);
                   faster than O(n log n) for inputs that are nearly sorted.
                 </Span>
                 <Span>
-                  Best TC: O(nlogn)
+                  Best TC: O(nlog n)
                   <br />
-                  TC: O(nlogn) <br />
+                  TC: O(nlog n) <br />
                   Worst TC: O(n^2) <br />
                   Space Complexity: O(n)
                 </Span>
@@ -9502,7 +9502,7 @@ console.log(isPairSum(arr, arrSize, val));
               2. T(n) = T(n-1) + n <br /> O(n^2)
             </Span>
             <Span>
-              3. T(n) = T(n-1) + logn <br /> O(nlogn)
+              3. T(n) = T(n-1) + log n <br /> O(nlog n)
             </Span>
             <Span>
               <pre>
@@ -9541,7 +9541,7 @@ console.log(isPairSum(arr, arrSize, val));
             <Span>a. p &gt; -1</Span>
             <Span>O(n^k * logp+1 n)</Span>
             <Span>b. p = -1</Span>
-            <Span>O(n^k * log logn)</Span>
+            <Span>O(n^k * log log n)</Span>
             <Span>a. p &lt; -1</Span>
             <Span>O(n^k)</Span>
             <Span>Case 3: if logb a &lt; k</Span>
@@ -9562,7 +9562,7 @@ console.log(isPairSum(arr, arrSize, val));
             </Span>
 
             <Span>
-              Binary search: T(n) = T(n/2) + Θ(1). log2 1 == 0 O(n^k * logn)
+              Binary search: T(n) = T(n/2) + Θ(1). log2 1 == 0 O(n^k * log n)
             </Span>
             <Span>T(n) = 2T(n/2) + Θ(n). log2 2 === 1, n^1 * log2 n</Span>
           </>
@@ -9863,13 +9863,13 @@ console.log(isPairSum(arr, arrSize, val));
             </Span>
             <Span>
               For example consider the recurrence T(n) = 2T(n/2) + n We guess
-              the solution as T(n) = O(nLogn). Now we use induction to prove our
-              guess. We need to prove that T(n) &lt;= cnLogn. We can assume that
+              the solution as T(n) = O(nlog n). Now we use induction to prove our
+              guess. We need to prove that T(n) &lt;= cnlog n. We can assume that
               it is true for values smaller than n.
             </Span>
             <pre>
-              T(n) = 2T(n/2) + n <br /> &lt;= 2cn/2Log(n/2) + n <br /> = cnLogn
-              - cnLog2 + n <br /> = cnLogn - cn + n <br /> &lt;= cnLogn <br />
+              T(n) = 2T(n/2) + n <br /> &lt;= 2cn/2Log(n/2) + n <br /> = cnlog n
+              - cnLog2 + n <br /> = cnlog n - cn + n <br /> &lt;= cnlog n <br />
             </pre>
             <br />
             <Span>
@@ -19002,6 +19002,14 @@ console.log(isPairSum(arr, arrSize, val));
               -109 &lt;= target &lt;= 109 <br />
               Only one valid answer exists.
             </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
+            </p>
             <CodeEditor
               options={{
                 title: "Q1. Two Sum(HashMap)",
@@ -19161,6 +19169,14 @@ if __name__ == '__main__':
               have leading zeros.
             </Span>
             <Img src={LeetCodeQ2} left reduceH />
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q2. Add Two Numbers",
@@ -19338,9 +19354,17 @@ if __name__ == '__main__':
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= s.length &lt;= 5 * 104 <br />s consists of English
               letters, digits, symbols and spaces.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -19573,13 +19597,21 @@ print(convert(str))`,
             <Span>
               <b>Constraints</b>
             </Span>
-            <p>
+            <Span>
               nums1.length == m <br />
               nums2.length == n <br />
               0 &lt;= m &lt;= 1000 <br />
               0 &lt;= n &lt;= 1000 <br />
               1 &lt;= m + n &lt;= 2000 <br />
               -106 &lt;= nums1[i], nums2[i] &lt;= 106
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -19688,7 +19720,14 @@ print(convert(str))`,
               1 &lt;= s.length &lt;= 1000 <br />s consist of only digits and
               English letters.
             </Span>
-
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n^2)
+              <br />
+              Space: O(n)
+            </p>
             <CodeEditor
               options={{
                 title: "Q5. Longest Palindromic Substring",
@@ -19782,10 +19821,18 @@ print(convert(str))`,
               <Span>
                 <b>Constraints</b>
               </Span>
-              <p>
+              <Span>
                 1 &lt;= s.length &lt;= 1000 <br />
                 s consists of English letters (lower-case and upper-case), ','
                 and '.'. <br />1 &lt;= numRows &lt;= 1000
+              </Span>
+              <Span>
+                <b>Complexity:</b>
+              </Span>
+              <p>
+                Time: O(n)
+                <br />
+                Space: O(n)
               </p>
               <CodeEditor
                 options={{
@@ -20060,7 +20107,15 @@ print(convert("PAYPALISHIRING", 3))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>-231 &lt;= x &lt;= 231 - 1</p>
+            <Span>-231 &lt;= x &lt;= 231 - 1</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log n)
+              <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: `Q7. Reverse Integer`,
@@ -20262,10 +20317,18 @@ print(convert("PAYPALISHIRING", 3))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1. 0 &lt;= s.length &lt;= 200 <br />
               2. s consists of English letters (lower-case and upper-case),
               digits (0-9), ' ', '+', '-', and '.'.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -20550,7 +20613,15 @@ print(ATOI.atoi("-23"))`,
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>-231 &lt;= x &lt;= 231 - 1</p>
+            <Span>-2^31 &lt;= x &lt;= 2^31 - 1</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log n)
+              <br />
+              Space: O(log n)
+            </p>
             <CodeEditor
               options={{
                 output: `true`,
@@ -20723,13 +20794,21 @@ print(Solution.isPalindrome(121))
             <Span>
               <b>Constraints</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length &lt;= 20 <br />
               1 &lt;= p.length &lt;= 30 <br />
               s contains only lowercase English letters. <br />
               p contains only lowercase English letters, '.', and '*'. <br />
               It is guaranteed for each appearance of the character '*', there
               will be a previous valid character to match.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(mn)
+              <br />
+              Space: O(mn)
             </p>
             <CodeEditor
               options={{
@@ -33379,7 +33458,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                      * @param {TreeNode} root
                      * @return {boolean}
                      */
-                    // O(nlogn)
+                    // O(nlog n)
                     
                     function maxDepth(root){
                       if(!root) return 0
@@ -45724,7 +45803,7 @@ Window position                Max
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(logn) <br />
+              Time: O(log n) <br />
               Space: O(1)
             </p>
             <CodeEditor
@@ -46156,7 +46235,7 @@ Window position                Max
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(logn) <br />
+              Time: O(log n) <br />
               Space: O(n)
             </p>{" "}
             <CodeEditor
@@ -46239,7 +46318,7 @@ Window position                Max
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(logn) <br />
+              Time: O(log n) <br />
               Space: O(1)
             </p>
             <CodeEditor
@@ -46328,8 +46407,8 @@ Window position                Max
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(logn) <br />
-              Space: O(nlogn)
+              Time: O(log n) <br />
+              Space: O(nlog n)
             </p>{" "}
             <CodeEditor
               options={{
@@ -47156,7 +47235,7 @@ Window position                Max
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(nlogn) <br />
+              Time: O(nlog n) <br />
               Space: O(n)
             </p>{" "}
             <CodeEditor
@@ -48046,7 +48125,7 @@ Window position                Max
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: Constructor: O(nlogn), update(): O(logn),sumRange(): O(logn)
+              Time: Constructor: O(nlog n), update(): O(log n),sumRange(): O(log n)
               <br />
               Space: O(n)
             </p>
