@@ -74,7 +74,11 @@ export const Img = styled.img`
   border-radius: 0.2rem;
   cursor: pointer;
   margin: 0 0.2rem;
-  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+  @media only screen and (max-width: ${BREAKPOINTS.xl}) {
+    height: 4.2rem;
+    width: 4.2rem;
+  }
+  @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     height: 3.6rem;
     width: 3.6rem;
     margin: 0 0.2rem;
