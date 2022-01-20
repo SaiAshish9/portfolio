@@ -47981,28 +47981,68 @@ Window position                Max
             <Span>
               <b>Q307. Range Sum Query - Mutable (Q262)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer array nums, handle multiple queries of the
+              following types:
+              <br />
+              Update the value of an element in nums.
+              <br />
+              Calculate the sum of the elements of nums between indices left and
+              right inclusive where left &lt;= right.
+              <br />
+              Implement the NumArray class:
+              <br />
+              <br />
+              NumArray(int[] nums) Initializes the object with the integer array
+              nums.
+              <br />
+              void update(int index, int val) Updates the value of nums[index]
+              to be val.
+              <br />
+              int sumRange(int left, int right) Returns the sum of the elements
+              of nums between indices left and right inclusive (i.e. nums[left]
+              + nums[left + 1] + ... + nums[right]).
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 2:</b>
+              Input ["NumArray", "sumRange", "update", "sumRange"]
+              <br />
+              [[[1, 3, 5]], [0, 2], [1, 2], [0, 2]]
+              <br />
+              Output
+              <br />
+              [null, 9, null, 8]
+              <br />
+              Explanation
+              <br />
+              NumArray numArray = new NumArray([1, 3, 5]);
+              <br />
+              numArray.sumRange(0, 2); // return 1 + 3 + 5 = 9<br />
+              numArray.update(1, 2); // nums = [1, 2, 5]
+              <br />
+              numArray.sumRange(0, 2); // return 1 + 2 + 5 = 8
             </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              1 &lt;= nums.length &lt;= 3 * 104 <br />
+              -100 &lt;= nums[i] &lt;= 100 <br />
+              0 &lt;= index &lt; nums.length <br />
+              -100 &lt;= val &lt;= 100 <br />
+              0 &lt;= left &lt;= right &lt; nums.length <br />
+              At most 3 * 104 calls will be made to update and sumRange.
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: Constructor: O(nlogn), update(): O(logn),sumRange(): O(logn)
+              <br />
+              Space: O(n)
+            </p>
             <CodeEditor
               options={{
                 title: "Q307. Range Sum Query - Mutable (Q262)",
