@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { Styles, BREAKPOINTS } from "constants/index";
 
@@ -10,15 +10,23 @@ export const Container = styled.div`
   cursor: pointer;
 `;
 
-export const Label = styled.p`
-  font-size: 1.08rem;
-  text-align: center;
-  @media only screen and (max-width: ${BREAKPOINTS.xs}) {
-    font-size: 0.9rem;
-    margin-bottom: 1.8rem;
-    padding: 0 1rem;
-  }
-`;
+export const Label = styled.p(
+  ({ m }) => css`
+    font-size: 1.08rem;
+    text-align: center;
+    @media only screen and (max-width: ${BREAKPOINTS.lg}) {
+      ${m &&
+      css`
+        margin-bottom: 1.8rem;
+      `}
+    }
+    @media only screen and (max-width: ${BREAKPOINTS.xs}) {
+      font-size: 0.9rem;
+      margin-bottom: 1.8rem;
+      padding: 0 1rem;
+    }
+  `
+);
 
 export const ImgContainer = styled.div`
   ${Styles.RAC};
@@ -30,7 +38,7 @@ export const ImgContainer = styled.div`
 
 export const MediumImgContainer = styled.div`
   ${Styles.RAC};
-  margin: 0.9rem auto 0;
+  margin: 1.2rem auto 0;
   @media only screen and (min-width: ${BREAKPOINTS.lg}) {
     display: none;
   }
@@ -66,9 +74,9 @@ export const Img = styled.img`
   border-radius: 0.2rem;
   cursor: pointer;
   margin: 0 0.2rem;
-  @media only screen and (max-width: ${BREAKPOINTS.xs}) {
-    height: 4rem;
-    width: 4rem;
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    height: 3.6rem;
+    width: 3.6rem;
     margin: 0 0.2rem;
   }
 `;
