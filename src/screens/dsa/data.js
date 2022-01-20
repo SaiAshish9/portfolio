@@ -47455,35 +47455,79 @@ Window position                Max
             <Span>
               <b>Q300. Longest Increasing Subsequence (Q257)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer array nums, return the length of the longest
+              strictly increasing subsequence.
+              <br />A subsequence is a sequence that can be derived from an
+              array by deleting some or no elements without changing the order
+              of the remaining elements. For example, [3,6,2,7] is a subsequence
+              of the array [0,3,1,6,2,2,7].
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [10,9,2,5,3,7,101,18]
+              <br />
+              Output: 4 <br />
+              Explanation: The longest increasing subsequence is [2,3,7,101],
+              therefore the length is 4.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [0,1,0,3,2,3] <br />
+              Output: 4
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [7,7,7,7,7,7,7] <br />
+              Output: 1
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              1 &lt;= nums.length &lt;= 2500 <br />
+              -10^4 &lt;= nums[i] &lt;= 10^4
+            </Span>
+            <Span>
+              Follow up: Can you come up with an algorithm that runs in O(n
+              log(n)) time complexity?
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(n^2) <br />
+              Space: O(n)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q300. Longest Increasing Subsequence (Q257)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var lengthOfLIS = function(nums) {
+                     const n = nums.length
+                     const dp = Array(n+1).fill(1)
+                     for(let i=1;i<n;i++){
+                     for(let j=0;j<=i;j++){
+                       if(nums[i]>nums[j]&&dp[i]<dp[j]+1)
+                       dp[i] = dp[j] + 1 
+                     } 
+                     } 
+                     return Math.max(...dp) 
+                   };
+                   
+                   lengthOfLIS([10,9,2,5,3,7,101,18])`,
+                    output: `4`,
                   },
                 },
               }}
