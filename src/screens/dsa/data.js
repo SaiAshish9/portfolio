@@ -47542,35 +47542,116 @@ Window position                Max
             <Span>
               <b>Q301. Remove Invalid Parentheses (Q258)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a string s that contains parentheses and letters, remove the
+              minimum number of invalid parentheses to make the input string
+              valid.
+              <br />
+              Return all the possible results. You may return the answer in any
+              order.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "()())()" <br />
+              Output: ["(())()","()()()"]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "(a)())()" <br />
+              Output: ["(a())()","(a)()()"]
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = ")("
+              <br />
+              Output: [""]
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              1 &lt;= s.length &lt;= 25
+              <br />
+              s consists of lowercase English letters and parentheses '(' and
+              ')'.
+              <br />
+              There will be at most 20 parentheses in s.
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(2^n)
+              <br />
+              Space: O(n+∣ans∣)
+            </p>
             <CodeEditor
               options={{
                 title: "Q301. Remove Invalid Parentheses (Q258)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function getLeftAndRightCounts(s) {
+                      let l = 0;
+                      let r = 0;
+                      for (let c of s)
+                        if (c == '(')
+                          ++l;
+                        else if (c == ')') {
+                          if (l == 0)
+                            ++r;
+                          else
+                            --l;
+                        }
+                      return [l, r];
+                    }
+                    
+                    function isValid(s) {
+                      let count = 0; 
+                      for (let c of s) {
+                        if (c == '(')
+                          ++count;
+                        else if (c == ')')
+                          --count;
+                        if (count < 0)
+                          return false;
+                      }
+                      return true; 
+                    }
+                    
+                    function dfs(s,start,l,r,res) {
+                      if (l == 0 && r == 0 && isValid(s)) {
+                        res.push(s);
+                        return;
+                      }
+                      for (let i = start; i < s.length; ++i) {
+                        if (i > start && s[i] == s[i - 1])
+                        continue;
+                        if (l > 0 && s[i] == '(') 
+                        dfs(s.substring(0, i) + s.substring(i + 1), i, l - 1, r, res);
+                        else if (r > 0 && s.charAt(i) == ')') 
+                        dfs(s.substring(0, i) + s.substring(i + 1), i, l, r - 1, res);
+                      }
+                    }
+                    
+                    /**
+                     * @param {string} s
+                     * @return {string[]}
+                     */
+                    var removeInvalidParentheses = function(s) {
+                      const res = [];
+                      const counts = getLeftAndRightCounts(s);
+                      dfs(s, 0, counts[0], counts[1], res);
+                      return res; 
+                    };
+                    
+                    removeInvalidParentheses("()())()")`,
+                    output: `[ '(())()', '()()()' ]`,
                   },
                 },
               }}
