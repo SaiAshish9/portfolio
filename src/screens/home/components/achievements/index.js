@@ -19,6 +19,7 @@ import IEMISImg from "assets/home/iemis.jpeg";
 import BvpImg from "assets/home/bvp_pic.jpeg";
 import Class8AwardImg from "assets/home/school.jpeg";
 import NetskopeRecognitionImg from "assets/home/netskopeRecognition.jpeg";
+import EducativeInvitationImg from "assets/home/educativeInvitation.png";
 
 import AmazonImg1 from "assets/home/amazon1.jpeg";
 import AmazonImg2 from "assets/home/amazon2.jpeg";
@@ -86,6 +87,22 @@ const data = [
     ],
   },
   {
+    title: <I18n t="amazonSDE2" />,
+    subTitle: <I18n t="amazonSDE2Desc" />,
+    img: AmazonImg3,
+    images: [AmazonImg1, AmazonImg2, AmazonImg3],
+  },
+  {
+    title: <I18n t="netskope" />,
+    subTitle: <I18n t="netskopeDesc" />,
+    img: NetskopeRecognitionImg,
+  },
+  {
+    title: <I18n t="educative" />,
+    subTitle: <I18n t="authorInvi" />,
+    img: EducativeInvitationImg,
+  },
+  {
     title: <I18n t="iemis" />,
     subTitle: <I18n t="publication" />,
     img: IEMISImg,
@@ -99,17 +116,6 @@ const data = [
     title: <I18n t="class8" />,
     subTitle: <I18n t="topper" />,
     img: Class8AwardImg,
-  },
-  {
-    title: <I18n t="netskope" />,
-    subTitle: <I18n t="netskopeDesc" />,
-    img: NetskopeRecognitionImg,
-  },
-  {
-    title: <I18n t="amazonSDE2" />,
-    subTitle: <I18n t="amazonSDE2Desc" />,
-    img: AmazonImg3,
-    images: [AmazonImg1, AmazonImg2, AmazonImg3],
   },
   {
     title: <I18n t="srm" />,
