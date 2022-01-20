@@ -47042,14 +47042,25 @@ Window position                Max
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(1) <br />
+              Space: O(1)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q292. Nim Game (Q253)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {boolean}
+                    */
+                   var canWinNim = function(n) {
+                      return n % 4 != 0
+                   };
+                   
+                   canWinNim(2)`,
+                    output: `true`,
                   },
                 },
               }}
@@ -47064,35 +47075,120 @@ Window position                Max
             <Span>
               <b>Q295. Find Median from Data Stream (Q254)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              The median is the middle value in an ordered integer list. If the
+              size of the list is even, there is no middle value and the median
+              is the mean of the two middle values.
+            </Span>
+            <Span>
+              For example, for arr = [2,3,4], the median is 3.
+              <br />
+              For example, for arr = [2,3], the median is (2 + 3) / 2 = 2.5.
+            </Span>
+            <Span>
+              Implement the MedianFinder class:
+              <br />
+              <br />
+              MedianFinder() initializes the MedianFinder object.
+              <br />
+              void addNum(int num) adds the integer num from the data stream to
+              the data structure.
+              <br />
+              double findMedian() returns the median of all elements so far.
+              Answers within 10-5 of the actual answer will be accepted.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 2:</b>
+              Input
+              <br />
+              ["MedianFinder", "addNum", "addNum", "findMedian", "addNum",
+              "findMedian"]
+              <br />
+              [[], [1], [2], [], [3], []] Output
+              <br />
+              [null, null, null, 1.5, null, 2.0]
+              <br />
+              Explanation
+              <br />
+              MedianFinder medianFinder = new MedianFinder();
+              <br />
+              medianFinder.addNum(1); // arr = [1]
+              <br />
+              medianFinder.addNum(2); // arr = [1, 2]
+              <br />
+              medianFinder.findMedian(); // return 1.5 (i.e., (1 + 2) / 2)
+              <br />
+              medianFinder.addNum(3); // arr[1, 2, 3]
+              <br />
+              medianFinder.findMedian(); // return 2.0
             </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              -105 &lt;= num &lt;= 105 <br />
+              <br />
+              There will be at least one element in the data structure before
+              calling findMedian. At most 5 * 104 calls will be made to addNum
+              and findMedian.
+            </Span>
+            <Span>
+              Follow up:
+              <br />
+              If all integer numbers from the stream are in the range [0, 100],
+              how would you optimize your solution?
+              <br />
+              If 99% of all integer numbers from the stream are in the range [0,
+              100], how would you optimize your solution?
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(nlogn) <br />
+              Space: O(n)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q295. Find Median from Data Stream (Q254)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `
+                    // ["MedianFinder","addNum","addNum",
+                    // "findMedian","addNum","findMedian"]
+                    // [[],[1],[2],[],[3],[]]
+                    class MedianFinder {
+                      public void addNum(int num) {
+                        if (l.isEmpty() || num <= l.peek())
+                          l.offer(num);
+                        else
+                          r.offer(num);
+                        if (l.size() < r.size())
+                          l.offer(r.poll());
+                        else if (l.size() - r.size() > 1)
+                          r.offer(l.poll());
+                      }
+                    
+                      public double findMedian() {
+                        if (l.size() == r.size())
+                          return (double) (l.peek() + r.peek()) / 2.0;
+                        return (double) l.peek();
+                      }
+                    
+                      private PriorityQueue<Integer> l = new PriorityQueue<>(Collections.reverseOrder());
+                      private PriorityQueue<Integer> r = new PriorityQueue<>();                           
+                    }
+                    
+                    
+                    /**
+                     * Your MedianFinder object will be instantiated and called as such:
+                     * MedianFinder obj = new MedianFinder();
+                     * obj.addNum(num);
+                     * double param_2 = obj.findMedian();
+                     */`,
+                    output: `[null,null,null,1.50000,null,2.00000]`,
                   },
                 },
               }}
