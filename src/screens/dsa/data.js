@@ -195,6 +195,7 @@ import Leetcode240 from "assets/leetcode/240.png";
 import Leetcode257 from "assets/leetcode/257.png";
 import Leetcode289 from "assets/leetcode/289.png";
 import Leetcode297 from "assets/leetcode/297.png";
+import Leetcode304 from "assets/leetcode/304.png";
 
 export const DATA = {
   ds: {
@@ -47666,35 +47667,91 @@ Window position                Max
             <Span>
               <b>Q303. Range Sum Query - Immutable (Q259)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer array nums, handle multiple queries of the
+              following type:
+              <br />
+              Calculate the sum of the elements of nums between indices left and
+              right inclusive where left &lt;= right.
+              <br />
+              Implement the NumArray class:
+              <br />
+              NumArray(int[] nums) Initializes the object with the integer array
+              nums.
+              <br />
+              int sumRange(int left, int right) Returns the sum of the elements
+              of nums between indices left and right inclusive (i.e. nums[left]
+              + nums[left + 1] + ... + nums[right]).
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 2:</b>
+              Input
+              <br />
+              ["NumArray", "sumRange", "sumRange", "sumRange"]
+              <br />
+              [[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]]
+              <br />
+              Output
+              <br />
+              [null, 1, -1, -3]
+              <br />
+              Explanation
+              <br />
+              NumArray numArray = new NumArray([-2, 0, 3, -5, 2, -1]);
+              <br />
+              numArray.sumRange(0, 2); // return (-2) + 0 + 3 = 1<br />
+              numArray.sumRange(2, 5); // return 3 + (-5) + 2 + (-1) = -1
+              <br />
+              numArray.sumRange(0, 5); // return (-2) + 0 + 3 + (-5) + 2 + (-1)
+              = -3
             </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              1 &lt;= nums.length &lt;= 104 <br />
+              -105 &lt;= nums[i] &lt;= 105 <br />
+              0 &lt;= left &lt;= right &lt; nums.length <br />
+              At most 104 calls will be made to sumRange.
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q303. Range Sum Query - Immutable (Q259)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    */
+                   var NumArray = function(nums) {
+                     this.prefix = Array(nums.length + 1).fill(0);
+                     for(let i = 0; i < nums.length; ++i)
+                     this.prefix[i + 1] = nums[i] + this.prefix[i]; 
+                   };
+                   
+                   /** 
+                    * @param {number} left 
+                    * @param {number} right
+                    * @return {number}
+                    */
+                   NumArray.prototype.sumRange = function(left, right) {
+                     return this.prefix[right + 1] - this.prefix[left];
+                   };
+                   
+                   
+                   var obj = new NumArray([-2, 0, 3, -5, 2, -1])
+                   var param_1 = obj.sumRange(0,4)
+                   console.log(param_1)`,
+                    output: `-2`,
                   },
                 },
               }}
@@ -47709,35 +47766,101 @@ Window position                Max
             <Span>
               <b>Q304. Range Sum Query 2D - Immutable (Q260)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a 2D matrix matrix, handle multiple queries of the following
+              type:
+              <br />
+              Calculate the sum of the elements of matrix inside the rectangle
+              defined by its upper left corner (row1, col1) and lower right
+              corner (row2, col2).
+              <br />
+              Implement the NumMatrix class:
+              <br />
+              NumMatrix(int[][] matrix) Initializes the object with the integer
+              matrix matrix.
+              <br />
+              int sumRegion(int row1, int col1, int row2, int col2) Returns the
+              sum of the elements of matrix inside the rectangle defined by its
+              upper left corner (row1, col1) and lower right corner (row2,
+              col2).
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode304} left />
             <Span>
-              <b>Example 2:</b>
+              Input ["NumMatrix", "sumRegion", "sumRegion", "sumRegion"] <br />
+              [[[[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1,
+              7], [1, 0, 3, 0, 5]]], [2, 1, 4, 3], [1, 1, 2, 2], [1, 2, 2, 4]]
+              <br />
+              Output
+              <br />
+              [null, 8, 11, 12]
+              <br />
+              Explanation
+              <br />
+              NumMatrix numMatrix = new NumMatrix([[3, 0, 1, 4, 2], [5, 6, 3, 2,
+              1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]]);
+              <br />
+              numMatrix.sumRegion(2, 1, 4, 3); // return 8 (i.e sum of the red
+              rectangle)
+              <br />
+              numMatrix.sumRegion(1, 1, 2, 2); // return 11 (i.e sum of the
+              green rectangle)
+              <br />
+              numMatrix.sumRegion(1, 2, 2, 4); // return 12 (i.e sum of the blue
+              rectangle)
             </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              m == matrix.length <br />
+              n == matrix[i].length <br />
+              1 &lt;= m, n &lt;= 200 <br />
+              -105 &lt;= matrix[i][j] &lt;= 105 <br />
+              0 &lt;= row1 &lt;= row2 &lt; m <br />
+              0 &lt;= col1 &lt;= col2 &lt; n <br />
+              At most 104 calls will be made to sumRegion.
+            </Span>
             <Span></Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(mn)
+              <br />
+              Space: O(mn)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q304. Range Sum Query 2D - Immutable (Q260)",
                 codes: {
-                  Javascript: {
-                    code: ``,
-                    output: ``,
+                  Java: {
+                    code: `class NumMatrix {
+                      public NumMatrix(int[][] matrix) {
+                        if (matrix.length == 0)
+                          return;
+                    
+                        final int m = matrix.length;
+                        final int n = matrix[0].length;
+                    
+                        prefix = new int[m + 1][n + 1];
+                    
+                        for (int i = 0; i < m; ++i)
+                          for (int j = 0; j < n; ++j)
+                            prefix[i + 1][j + 1] = matrix[i][j] + prefix[i][j + 1] + prefix[i + 1][j] - prefix[i][j];
+                      }
+                    
+                      public int sumRegion(int row1, int col1, int row2, int col2) {
+                        return prefix[row2 + 1][col2 + 1] - prefix[row1][col2 + 1]
+                             - prefix[row2 + 1][col1] + prefix[row1][col1];
+                      }
+                    
+                      private int[][] prefix;
+                    }
+                    `,
+                    output: `[null,8,11,12]`,
                   },
                 },
               }}
