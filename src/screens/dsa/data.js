@@ -47337,35 +47337,110 @@ Window position                Max
             <Span>
               <b>Q299. Bulls and Cows (Q256)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are playing the Bulls and Cows game with your friend.
+              <br />
+              You write down a secret number and ask your friend to guess what
+              the number is. When your friend makes a guess, you provide a hint
+              with the following info:
+              <br />
+              <br />
+              The number of "bulls", which are digits in the guess that are in
+              the correct position.
+              <br />
+              The number of "cows", which are digits in the guess that are in
+              your secret number but are located in the wrong position.
+              Specifically, the non-bull digits in the guess that could be
+              rearranged such that they become bulls.
+              <br />
+              Given the secret number secret and your friend's guess guess,
+              return the hint for your friend's guess.
+              <br />
+              The hint should be formatted as "xAyB", where x is the number of
+              bulls and y is the number of cows. Note that both secret and guess
+              may contain duplicate digits.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: secret = "1807", guess = "7810"
+              <br />
+              Output: "1A3B"
+              <br />
+              Explanation: Bulls are connected with a '|' and cows are
+              underlined:
+              <br />
+              <pre>{`
+"1807"
+|
+"7810              
+              `}</pre>
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: secret = "1123", guess = "0111" <br />
+              Output: "1A1B" <br />
+              Explanation: Bulls are connected with a '|' and cows are
+              underlined: <br />
+              <pre>
+                {`
+"1123"        "1123"
+|      or     |
+"0111"        "0111"
+    `}
+              </pre>
+              Note that only one of the two unmatched 1s is counted as a cow
+              since the non-bull digits can only be rearranged to allow one 1 to
+              be a bull.
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span>
-            <Span></Span>
+            <Span>
+              1 &lt;= secret.length, guess.length &lt;= 1000 <br />
+              secret.length == guess.length <br />
+              secret and guess consist of digits only.
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
-            <p></p>
+            <p>
+              Time: O(n) <br />
+              Space: O(10)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q299. Bulls and Cows (Q256)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string} secret
+                    * @param {string} guess
+                    * @return {string}
+                    */
+                   var getHint = function(secret, guess) {
+                     let A = 0;
+                     let B = 0;
+                     const count1 = Array(10).fill(0);
+                     const count2 = Array(10).fill(0);
+                     for (let i = 0; i < secret.length; ++i)
+                       if(secret[i] == guess[i])
+                           ++A;
+                       else {
+                         ++count1[parseInt(secret[i])];
+                         ++count2[parseInt(guess[i])];
+                       }
+                       for (let i = 0; i < 10; ++i)
+                         B += Math.min(count1[i], count2[i]);
+                   
+                       return A + "A" + B + "B";
+                   };
+                   
+                   getHint("1807","7810")`,
+                    output: `1A3B`,
                   },
                 },
               }}
