@@ -26701,7 +26701,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
         content: (
           <>
             <Span>
-              <b>38. Count and Say</b>
+              <b>Q38. Count and Say</b>
             </Span>
             <Span>
               The count-and-say sequence is a sequence of digit strings defined
