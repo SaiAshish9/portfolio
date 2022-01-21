@@ -12,6 +12,7 @@ import SentryImg from "assets/bugs/sentry.png";
 import CREDImg from "assets/home/cred1.png";
 import I18n from "common/I18n";
 import { Label } from "../offers/styles";
+import { goTo } from "utils";
 
 const images = [
   {
@@ -49,6 +50,12 @@ const images = [
 ];
 // https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_geeksforgeeks-activity-6871923789240913920-CRqp
 
+function handleClick(e, i) {
+  e.preventDefault();
+  e.stopPropagation();
+  goTo(i.link);
+}
+
 const Bugs = () => {
   return (
     <div style={{ position: "relative", top: "-1.8rem" }}>
@@ -58,34 +65,64 @@ const Bugs = () => {
       <Container data-aos="flip-right">
         <Row>
           {images.slice(0, 8).map((i, k) => (
-            <Img alt="img" src={i.img} key={k} />
+            <Img
+              alt="img"
+              onClick={(e) => handleClick(e, i)}
+              src={i.img}
+              key={k}
+            />
           ))}
         </Row>
         <Row>
           {images.slice(8).map((i, k) => (
-            <Img alt="img" src={i.img} key={k} />
+            <Img
+              alt="img"
+              onClick={(e) => handleClick(e, i)}
+              src={i.img}
+              key={k}
+            />
           ))}
         </Row>
       </Container>
       <MContainer>
         <Row>
           {images.slice(0, 4).map((i, k) => (
-            <Img alt="img" src={i.img} key={k} />
+            <Img
+              alt="img"
+              onClick={(e) => handleClick(e, i)}
+              src={i.img}
+              key={k}
+            />
           ))}
         </Row>
         <Row>
           {images.slice(4, 8).map((i, k) => (
-            <Img alt="img" src={i.img} key={k} />
+            <Img
+              alt="img"
+              onClick={(e) => handleClick(e, i)}
+              src={i.img}
+              key={k}
+            />
           ))}
         </Row>
         <Row>
           {images.slice(8, 12).map((i, k) => (
-            <Img alt="img" src={i.img} key={k} />
+            <Img
+              alt="img"
+              onClick={(e) => handleClick(e, i)}
+              src={i.img}
+              key={k}
+            />
           ))}
         </Row>
         <Row>
           {images.slice(12).map((i, k) => (
-            <Img alt="img" src={i.img} key={k} />
+            <Img
+              alt="img"
+              onClick={(e) => handleClick(e, i)}
+              src={i.img}
+              key={k}
+            />
           ))}
         </Row>
       </MContainer>
