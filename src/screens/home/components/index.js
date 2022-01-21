@@ -6,10 +6,12 @@ import Languages from "./languages";
 import Achievements from "./achievements";
 import Experience from "./experience";
 import OffersComponent from "./offers";
+import Bugs from "./bugs";
 
 export {
   Intro,
   Skills,
+  Bugs,
   Info,
   Languages,
   Achievements,

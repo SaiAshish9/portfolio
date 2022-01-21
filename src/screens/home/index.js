@@ -4,6 +4,7 @@ import {
   Intro,
   Skills,
   Info,
+  Bugs,
   Languages,
   Achievements,
   Experience,
@@ -22,6 +23,7 @@ function App() {
       <Achievements />
       <Experience />
       <Projects />
+      <Bugs />
     </>
   );
 }
