@@ -50292,23 +50292,36 @@ Window position                Max
             <Span>
               <b>Q316. Remove Duplicate Letters (Q268)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a string s, remove duplicate letters so that every letter
+              appears once and only once. You must make sure your result is the
+              smallest in lexicographical order among all possible results.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "bcabc" <br />
+              Output: "abc"
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: s = "cbacdcbc" <br />
+              Output: "acdb"
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= s.length &lt;= 104 s consists of lowercase English
+              letters.
+            </Span>{" "}
+            <Span>
+              Note: This question is the same as 1081:
+              https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
@@ -50322,8 +50335,32 @@ Window position                Max
                 title: "Q316. Remove Duplicate Letters (Q268)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @return {string}
+                    */
+                   var removeDuplicateLetters = function(s) {
+                     const st = [];
+                     const count = Array(128).fill(0);
+                     const used = Array(128).fill(false);
+                     for (let c of s)
+                       ++count[c.charCodeAt(0)];
+                   
+                     for (let c of s) {
+                     --count[c.charCodeAt(0)];
+                     if (used[c.charCodeAt(0)]) continue;
+                     while (st.length > 0 && st[st.length-1].charCodeAt(0) > c.charCodeAt(0) && count[st[st.length-1].charCodeAt(0)] > 0) {
+                       used[st[st.length-1].charCodeAt(0)] = false;
+                       st.pop()
+                     }
+                     used[c.charCodeAt(0)] = true;
+                     st.push(c);
+                     }
+                     return st.join("");
+                   }
+                   
+                   removeDuplicateLetters("bcabc")`,
+                    output: `abc`,
                   },
                 },
               }}
