@@ -50989,23 +50989,42 @@ Window position                Max
             <Span>
               <b>Q327. Count of Range Sum (Q275)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer array nums and two integers lower and upper,
+              return the number of range sums that lie in [lower, upper]
+              inclusive.
+              <br />
+              Range sum S(i, j) is defined as the sum of the elements in nums
+              between indices i and j inclusive, where i &lt;= j.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [-2,5,-1], <br />
+              lower = -2, <br /> upper = 2 <br />
+              Output: 3 <br />
+              Explanation: The three ranges are: [0,0], [2,2], and [0,2] and
+              their respective sums are: -2, -1, 2.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: nums = [0],
+              <br /> lower = 0, <br />
+              upper = 0<br />
+              Output: 1
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= nums.length &lt;= 105 <br />
+              -2^31 &lt;= nums[i] &lt;= 2^31 - 1 <br />
+              -10^5 &lt;= lower &lt;= upper &lt;= 10^5 <br />
+              The answer is guaranteed to fit in a 32-bit integer.
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
