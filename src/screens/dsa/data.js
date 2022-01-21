@@ -9863,9 +9863,9 @@ console.log(isPairSum(arr, arrSize, val));
             </Span>
             <Span>
               For example consider the recurrence T(n) = 2T(n/2) + n We guess
-              the solution as T(n) = O(nlog n). Now we use induction to prove our
-              guess. We need to prove that T(n) &lt;= cnlog n. We can assume that
-              it is true for values smaller than n.
+              the solution as T(n) = O(nlog n). Now we use induction to prove
+              our guess. We need to prove that T(n) &lt;= cnlog n. We can assume
+              that it is true for values smaller than n.
             </Span>
             <pre>
               T(n) = 2T(n/2) + n <br /> &lt;= 2cn/2Log(n/2) + n <br /> = cnlog n
@@ -21073,9 +21073,17 @@ print(Solution.isMatch("aab", "c*a*b"))`,
             <Span>
               <b>Constraints</b>
             </Span>
-            <p>
+            <Span>
               n == height.length <br />
               2 &lt;= n &lt;= 105 <br />0 &lt;= height[i] &lt;= 104
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -21281,7 +21289,15 @@ print(Solution.maxArea([1,2,1]))
             <Span>
               <b>Constraints</b>
             </Span>
-            <p>1 &lt;= num &lt;= 3999</p>
+            <Span>1 &lt;= num &lt;= 3999</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(1)
+              <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q12. Integer To Roman",
@@ -21461,12 +21477,20 @@ print(Solution.maxArea(12))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length &lt;= 15 <br />
               s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D',
               'M'). <br />
               It is guaranteed that s is a valid roman numeral in the range [1,
               3999].
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -21661,10 +21685,18 @@ print(m.romanToInt("IV"))`,
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= strs.length &lt;= 200 <br />
               0 &lt;= strs[i].length &lt;= 200 <br />
               strs[i] consists of only lower-case English letters.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n*n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -21855,9 +21887,17 @@ print(Solution.lcp(["flower", "flow", "flight"]))
             <Span>
               <b>Constraints</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= nums.length &lt;= 3000 <br />
               -105 &lt;= nums[i] &lt;= 105
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n^2)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -22118,10 +22158,18 @@ print(Test.threeSum([-1, 0, 1, 2, -1, -4]))`,
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               3 &lt;= nums.length &lt;= 1000 <br />
               -1000 &lt;= nums[i] &lt;= 1000 <br />
               -104 &lt;= target &lt;= 104
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n^2)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -22361,9 +22409,14 @@ print(Test.threeSumClosest([-1, 0, 1, 2, -1, -4],8))`,
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= digits.length &lt;= 4 <br />
               digits[i] is a digit in the range ['2', '9'].
+            </Span>
+            <p>
+              Time: O(n4^n)
+              <br />
+              Space: O(4^n)
             </p>
             <CodeEditor
               options={{
@@ -22598,9 +22651,17 @@ print(m.letterCombinations("234"))
             <Span>
               <b>Example 2:</b>
             </Span>
-            <p>
+            <Span>
               Input: nums = [2,2,2,2,2], target = 8 <br />
               Output: [[2,2,2,2]]
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n^3)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -22909,10 +22970,18 @@ print(Main.fourSum([1,0,-1,0,-2,2],0))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the list is sz. <br />
               1 &lt;= sz &lt;= 30 <br />
               0 &lt;= Node.val &lt;= 100 <br />1 &lt;= n &lt;= sz
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -23296,9 +23365,17 @@ while y is not None:
             <Span>
               <b>Constraints</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length &lt;= 104 <br />s consists of parentheses only
               '()[]{"{}"}'.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -23482,10 +23559,18 @@ print(Solution.isValid('{{()}}'))`,
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in both lists is in the range [0, 50]. -100
               &lt;= Node.val &lt;= 100 Both list1 and list2 are sorted in
               non-decreasing order.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -23909,7 +23994,15 @@ while ans is not None:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>1 &lt;= n &lt;= 8</p>
+            <Span>1 &lt;= n &lt;= 8</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(2^2n)
+              <br />
+              Space: O(n)
+            </p>
             <CodeEditor
               options={{
                 title: "Q22. Generate Parentheses",
@@ -24112,13 +24205,21 @@ print(sol.generateParenthesis(3))`,
             <Span>
               <b>Constraints</b>
             </Span>
-            <p>
+            <Span>
               k == lists.length <br />
               0 &lt;= k &lt;= 10^4 <br />
               0 &lt;= lists[i].length &lt;= 500 <br />
               -10^4 &lt;= lists[i][j] &lt;= 10^4 <br />
               lists[i] is sorted in ascending order. <br />
               The sum of lists[i].length won't exceed 10^4. <br />
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(nlogk)
+              <br />
+              Space: O(k)
             </p>
             <CodeEditor
               options={{
@@ -24552,9 +24653,17 @@ print(q)
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the list is in the range [0, 100]. <br />0
               &lt;= Node.val &lt;= 100
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -24944,9 +25053,17 @@ linebreak()
               The number of nodes in the list is n. <br />
               1 &lt;= k &lt;= n &lt;= 5000 <br />0 &lt;= Node.val &lt;= 1000
             </Span>
-            <p>
+            <Span>
               <b>Follow-up</b>: Can you solve the problem in O(1) extra memory
               space?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -25441,10 +25558,18 @@ linebreak()
             <Span>
               <b>Constraints</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= nums.length &lt;= 3 * 104 <br />
               -100 &lt;= nums[i] &lt;= 100 <br />
               nums is sorted in non-decreasing order.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -25603,9 +25728,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= nums.length &lt;= 100 <br />
               0 &lt;= nums[i] &lt;= 50 <br />0 &lt;= val &lt;= 100
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -25748,9 +25881,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= haystack.length, needle.length &lt;= 5 * 104 <br />
               haystack and needle consist of only lower-case English characters.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O((m-n)n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -25840,9 +25981,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               -231 &lt;= dividend, divisor &lt;= 231 - 1 <br />
               divisor != 0
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log^2 n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -25940,12 +26089,20 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length &lt;= 104 <br />
               s consists of lower-case English letters. <br />
               1 &lt;= words.length &lt;= 5000 <br />
               1 &lt;= words[i].length &lt;= 30 <br />
               words[i] consists of lower-case English letters.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -26039,8 +26196,16 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 100 <br />0 &lt;= nums[i] &lt;= 100
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -26142,9 +26307,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= s.length &lt;= 3 * 104 <br />
               s[i] is '(', or ')'.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -26232,12 +26405,20 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 5000 <br />
               -104 &lt;= nums[i] &lt;= 104 <br />
               All values of nums are unique. <br />
               nums is an ascending array that is possibly rotated. <br />
               -104 &lt;= target &lt;= 104
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -26325,11 +26506,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= nums.length &lt;= 105 <br />
               -109 &lt;= nums[i] &lt;= 109 <br />
               nums is a non-decreasing array. <br />
               -109 &lt;= target &lt;= 109
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -26427,11 +26616,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 104 <br />
               -104 &lt;= nums[i] &lt;= 104 <br />
               nums contains distinct values sorted in ascending order. <br />
               -104 &lt;= target &lt;= 104{" "}
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -26546,11 +26743,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               board.length == 9 <br />
               board[i].length == 9 <br />
               board[i][j] is a digit 1-9 or '.'.
-            </p>
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(1)
+              <br />
+              Space: O(1)
+            </p>{" "}
             <CodeEditor
               options={{
                 title: "Q36. Valid Sudoku",
@@ -26672,11 +26877,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               board.length == 9 <br />
               board[i].length == 9 <br />
               board[i][j] is a digit or '.'. <br />
               It is guaranteed that the input board has only one solution.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: NP Complete
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -26830,7 +27043,15 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>1 &lt;= n &lt;= 30</p>
+            <Span>1 &lt;= n &lt;= 30</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n*n)
+              <br />
+              Space: O(n)
+            </p>
             <CodeEditor
               options={{
                 title: "Q38: Count And Say",
@@ -26931,11 +27152,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= candidates.length &lt;= 30 <br />
               1 &lt;= candidates[i] &lt;= 200 <br />
               All elements of candidates are distinct. <br />1 &lt;= target
               &lt;= 500
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(candidates^target)
+              <br />
+              Space: O(target)
             </p>
             <CodeEditor
               options={{
@@ -27025,9 +27254,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= candidates.length &lt;= 100 <br />
               1 &lt;= candidates[i] &lt;= 50 <br />1 &lt;= target &lt;= 30
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n2^n)
+              <br />
+              Space: O(n.2^n)
             </p>
             <CodeEditor
               options={{
@@ -27113,9 +27350,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 5 * 105 <br />
               -231 &lt;= nums[i] &lt;= 231 - 1
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -27190,9 +27435,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               n == height.length <br />
               1 &lt;= n &lt;= 2 * 104 <br />0 &lt;= height[i] &lt;= 105
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -27273,12 +27526,20 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= num1.length, num2.length &lt;= 200 <br />
               num1 and num2 consist of digits only.
               <br />
               Both num1 and num2 do not contain any leading zero, except the
               number 0 itself.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(mn)
+              <br />
+              Space: O(m+n)
             </p>
             <CodeEditor
               options={{
@@ -27369,10 +27630,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= s.length, p.length &lt;= 2000 <br />
               s contains only lowercase English letters. <br />p contains only
               lowercase English letters, '?' or '*'.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(sp)
+              <br />
+              Space: O(sp)
             </p>
             <CodeEditor
               options={{
@@ -27448,8 +27717,16 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 104 <br />0 &lt;= nums[i] &lt;= 1000
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -27520,10 +27797,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 6 <br />
               -10 &lt;= nums[i] &lt;= 10 <br />
               All the integers of nums are unique.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n.n!)
+              <br />
+              Space: O(n.n!)
             </p>
             <CodeEditor
               options={{
@@ -27603,9 +27888,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 8 <br />
               -10 &lt;= nums[i] &lt;= 10
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n.n!)
+              <br />
+              Space: O(n.n!)
             </p>
             <CodeEditor
               options={{
@@ -27692,10 +27985,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               n == matrix.length == matrix[i].length <br />
               1 &lt;= n &lt;= 20 <br />
               -1000 &lt;= matrix[i][j] &lt;= 1000
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n^2)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -27774,10 +28075,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= strs.length &lt;= 104 <br />
               0 &lt;= strs[i].length &lt;= 100 <br />
               strs[i] consists of lowercase English letters.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(nklogk)
+              <br />
+              Space: O(nk)
             </p>
             <CodeEditor
               options={{
@@ -27852,10 +28161,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               -100.0 &lt; x &lt; 100.0 <br />
               -231 &lt;= n &lt;= 231-1 <br />
               -104 &lt;= xn &lt;= 104 <br />
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -27919,7 +28236,15 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints</b>
             </Span>
-            <p>1 &lt;= n &lt;= 9</p>
+            <Span>1 &lt;= n &lt;= 9</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n.n!)
+              <br />
+              Space: O(n)
+            </p>
             <CodeEditor
               options={{
                 title: "Q51. N-Queens",
@@ -28024,7 +28349,15 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints</b>
             </Span>
-            <p>1 &lt;= n &lt;= 9</p>
+            <Span>1 &lt;= n &lt;= 9</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n.n!)
+              <br />
+              Space: O(n)
+            </p>
             <CodeEditor
               options={{
                 title: "Q52. N-Queens II",
@@ -28132,10 +28465,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               1 &lt;= nums.length &lt;= 105 <br />
               -104 &lt;= nums[i] &lt;= 104
             </Span>
-            <p>
+            <Span>
               <b>Follow up</b>: If you have figured out the O(n) solution, try
               coding another solution using the divide and conquer approach,
               which is more subtle.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -28195,11 +28536,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               m == matrix.length <br />
               n == matrix[i].length <br />
               1 &lt;= m, n &lt;= 10 <br />
               -100 &lt;= matrix[i][j] &lt;= 100
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(mn)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -28302,8 +28651,16 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 104 <br />0 &lt;= nums[i] &lt;= 105
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -28367,9 +28724,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= intervals.length &lt;= 104 <br />
               intervals[i].length == 2 <br />0 &lt;= starti &lt;= endi &lt;= 104
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n.log n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -28444,12 +28809,20 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= intervals.length &lt;= 10^4 <br />
               intervals[i].length == 2 <br />
               0 &lt;= starti &lt;= endi &lt;= 10^5 <br />
               intervals is sorted by starti in ascending order. <br />
               newInterval.length == 2 <br />0 &lt;= start &lt;= end &lt;= 10^5
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -28533,10 +28906,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length &lt;= 104 <br />
               s consists of only English letters and spaces ' '. <br />
               There will be at least one word in s.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -28592,7 +28973,15 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>1 &lt;= n &lt;= 20</p>
+            <Span>1 &lt;= n &lt;= 20</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n^2)
+              <br />
+              Space: O(n^2)
+            </p>
             <CodeEditor
               options={{
                 title: "Q59. Spiral Matrix II",
@@ -28688,8 +29077,16 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= n &lt;= 9 <br />1 &lt;= k &lt;= n!
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -28764,9 +29161,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the list is in the range [0, 500]. <br />
               -100 &lt;= Node.val &lt;= 100 <br />0 &lt;= k &lt;= 2 * 109
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -28867,7 +29272,15 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>1 &lt;= m, n &lt;= 6100</p>
+            <Span>1 &lt;= m, n &lt;= 6100</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(mn)
+              <br />
+              Space: O(n)
+            </p>
             <CodeEditor
               options={{
                 title: "Q62. Unique Paths",
@@ -28960,11 +29373,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               m == obstacleGrid.length <br />
               n == obstacleGrid[i].length <br />
               1 &lt;= m, n &lt;= 100 <br />
               obstacleGrid[i][j] is 0 or 1.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(mn)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -29055,10 +29476,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               m == grid.length <br />
               n == grid[i].length <br />
               1 &lt;= m, n &lt;= 200 <br />0 &lt;= grid[i][j] &lt;= 100
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(mn)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -29168,10 +29597,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length &lt;= 20 <br />s consists of only English letters
               (both uppercase and lowercase), digits (0-9), plus '+', minus '-',
               or dot '.'.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -29277,10 +29714,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= digits.length &lt;= 100 <br />
               0 &lt;= digits[i] &lt;= 9 <br />
               digits does not contain any leading 0's.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -29342,11 +29787,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= a.length, b.length &lt;= 104 <br />
               a and b consist only of '0' or '1' characters. <br />
               Each string does not contain leading zeros except for the zero
               itself.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -29509,7 +29962,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= words.length &lt;= 300 <br />
               1 &lt;= words[i].length &lt;= 20
               <br />
@@ -29518,6 +29971,14 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               1 &lt;= maxWidth &lt;= 100
               <br />
               words[i].length &lt;= maxWidth
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -29596,7 +30057,15 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>0 &lt;= x &lt;= 231 - 1</p>
+            <Span>0 &lt;= x &lt;= 231 - 1</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log n)
+              <br />
+              Space: O(n)
+            </p>
             <CodeEditor
               options={{
                 title: "Q69. Sqrt(x)",
@@ -29669,7 +30138,15 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>1 &lt;= n &lt;= 45</p>
+            <Span>1 &lt;= n &lt;= 45</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q70. Climbing Stairs",
@@ -29778,12 +30255,20 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= path.length &lt;= 3000 <br />
               path consists of English letters, digits, period '.', slash '/' or
               '_'.
               <br />
               path is a valid absolute Unix path.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -29869,10 +30354,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= word1.length, word2.length &lt;= 500
               <br />
               word1 and word2 consist of lowercase English letters.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(mn)
+              <br />
+              Space: O(mn)
             </p>
             <CodeEditor
               options={{
@@ -29943,11 +30436,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               m == matrix.length <br />
               n == matrix[0].length <br />
               1 &lt;= m, n &lt;= 200 <br />
               -231 &lt;= matrix[i][j] &lt;= 231 - 1
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(mn)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -30042,11 +30543,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               m == matrix.length <br />
               n == matrix[i].length <br />
               1 &lt;= m, n &lt;= 100 <br />
               -104 &lt;= matrix[i][j], target &lt;= 104
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(mn log mn)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -30129,10 +30638,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               1 &lt;= n &lt;= 300 <br />
               nums[i] is either 0, 1, or 2.
             </Span>
-            <p>
+            <Span>
               <b>Follow up:</b>
               Could you come up with a one-pass algorithm using only constant
               extra space?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -30250,9 +30767,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               1 &lt;= m, n &lt;= 105 <br />s and t consist of uppercase and
               lowercase English letters.
             </Span>
-            <p>
+            <Span>
               <b>Follow up: </b>
               Could you find an algorithm that runs in O(m + n) time?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -30324,8 +30849,16 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= n &lt;= 20 <br />1 &lt;= k &lt;= n
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(nCk)
+              <br />
+              Space: O(k.nCk)
             </p>
             <CodeEditor
               options={{
@@ -30396,10 +30929,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 10 <br />
               -10 &lt;= nums[i] &lt;= 10 <br />
               All the numbers of nums are unique.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(2^n)
+              <br />
+              Space: O(n2^n)
             </p>
             <CodeEditor
               options={{
@@ -30500,10 +31041,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               board and word consists of only lowercase and uppercase English
               letters.
             </Span>
-            <p>
+            <Span>
               <b>Follow up: </b>
               Could you use search pruning to make your solution faster with a
               larger board?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(4^n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -30634,10 +31183,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 3 * 104 <br />
               -104 &lt;= nums[i] &lt;= 104 <br />
               nums is sorted in non-decreasing order.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -30710,11 +31267,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               <b>Follow up:</b>
               This problem is similar to Search in Rotated Sorted Array, but
               nums may contain duplicates. Would this affect the runtime
               complexity? How and why?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log n -&gt; n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -30791,10 +31356,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the list is in the range [0, 300]. <br />
               -100 &lt;= Node.val &lt;= 100 <br />
               The list is guaranteed to be sorted in ascending order.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -30876,10 +31449,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the list is in the range [0, 300]. <br />
               -100 &lt;= Node.val &lt;= 100 <br />
               The list is guaranteed to be sorted in ascending order.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -30959,9 +31540,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= heights.length &lt;= 105 <br />0 &lt;= heights[i] &lt;=
               104
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -31040,11 +31629,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               rows == matrix.length <br />
               cols == matrix[i].length <br />
               1 &lt;= row, cols &lt;= 200 <br />
               matrix[i][j] is '0' or '1'.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(mn)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -31125,11 +31722,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the list is in the range [0, 200]. <br />
               -100 &lt;= Node.val &lt;= 100
               <br />
               -200 &lt;= x &lt;= 200
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -31256,10 +31861,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               s1.length == s2.length <br />
               1 &lt;= s1.length &lt;= 30 <br />
               s1 and s2 consist of lower-case English letters.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -31388,12 +32001,20 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               nums1.length == m + n <br />
               nums2.length == n <br />
               0 &lt;= m, n &lt;= 200 <br />
               1 &lt;= m + n &lt;= 200 <br />
               -109 &lt;= nums1[i], nums2[j] &lt;= 109
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(m + n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -31487,7 +32108,15 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>1 &lt;= n &lt;= 16</p>
+            <Span>1 &lt;= n &lt;= 16</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(2^n)
+              <br />
+              Space: O(2^n)
+            </p>
             <CodeEditor
               options={{
                 title: "Q89. Gray Code",
@@ -31547,9 +32176,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 10 <br />
               -10 &lt;= nums[i] &lt;= 10
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n.2^n)
+              <br />
+              Space: O(n.2^n)
             </p>
             <CodeEditor
               options={{
@@ -31666,9 +32303,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length &lt;= 100 <br />s contains only digits and may
               contain leading zero(s).
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -31751,8 +32396,16 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               -500 &lt;= Node.val &lt;= 500 <br />1 &lt;= left &lt;= right &lt;=
               n
             </Span>
-            <p>
+            <Span>
               <b>Follow up:</b> Could you do it in one pass?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -31848,8 +32501,16 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= s.length &lt;= 20 <br />s consists of digits only.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(3^4)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -31934,9 +32595,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <br />
               -100 &lt;= Node.val &lt;= 100
             </Span>
-            <p>
+            <Span>
               <b>Follow up: </b>
               Recursive solution is trivial, could you do it iteratively?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -32035,7 +32704,15 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>1 &lt;= n &lt;= 8</p>
+            <Span>1 &lt;= n &lt;= 8</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(3^n)
+              <br />
+              Space: O(3^n)
+            </p>
             <CodeEditor
               options={{
                 title: "Q95. Unique Binary Search Trees II",
@@ -32142,7 +32819,15 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>1 &lt;= n &lt;= 19</p>
+            <Span>1 &lt;= n &lt;= 19</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n^2)
+              <br />
+              Space: O(n)
+            </p>
             <CodeEditor
               options={{
                 title: "Q96. Unique Binary Search Trees",
@@ -32242,10 +32927,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <br />
               s1, s2, and s3 consist of lowercase English letters.
             </Span>
-            <p>
+            <Span>
               <b>Follow up: </b>
               Could you solve it using only O(s2.length) additional memory
               space?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(mn)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -32330,9 +33023,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the tree is in the range [1, 104]. <br />
               -2^31 &lt;= Node.val &lt;= 2^31 - 1
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(h)
             </p>
             <CodeEditor
               options={{
@@ -32419,9 +33120,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               The number of nodes in the tree is in the range [2, 1000]. <br />
               -231 &lt;= Node.val &lt;= 231 - 1
             </Span>
-            <p>
+            <Span>
               <b>Follow up: </b>A solution using O(n) space is pretty
               straight-forward. Could you devise a constant O(1) space solution?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(h)
             </p>
             <CodeEditor
               options={{
@@ -32516,9 +33225,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in both trees is in the range [0, 100]. <br />
               -104 &lt;= Node.val &lt;= 104
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(h)
             </p>
             <CodeEditor
               options={{
@@ -32585,9 +33302,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               <b>Follow up: </b>
               Could you solve it both recursively and iteratively?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(h)
             </p>
             <CodeEditor
               options={{
@@ -32665,9 +33390,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the tree is in the range [0, 2000]. <br />
               -1000 &lt;= Node.val &lt;= 1000
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -32752,10 +33485,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the tree is in the range [0, 2000].
               <br />
               -100 &lt;= Node.val &lt;= 100
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -32845,9 +33586,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the tree is in the range [0, 104]. <br />
               -100 &lt;= Node.val &lt;= 100
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -32932,7 +33681,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= preorder.length &lt;= 3000 <br />
               inorder.length == preorder.length <br />
               -3000 &lt;= preorder[i], inorder[i] &lt;= 3000
@@ -32944,6 +33693,14 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               preorder is guaranteed to be the preorder traversal of the tree.
               <br />
               inorder is guaranteed to be the inorder traversal of the tree.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -33036,7 +33793,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= inorder.length &lt;= 3000 <br />
               postorder.length == inorder.length <br />
               -3000 &lt;= inorder[i], postorder[i] &lt;= 3000 <br />
@@ -33045,6 +33802,14 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               inorder is guaranteed to be the inorder traversal of the tree.
               <br />
               postorder is guaranteed to be the postorder traversal of the tree.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -33137,10 +33902,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the tree is in the range [0, 2000].
               <br />
               -1000 &lt;= Node.val &lt;= 1000
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -33234,10 +34007,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 104 <br />
               -104 &lt;= nums[i] &lt;= 104 <br />
               nums is sorted in a strictly increasing order.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(log n)
             </p>
             <CodeEditor
               options={{
@@ -33327,9 +34108,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in head is in the range [0, 2 * 104]. <br />
               -105 &lt;= Node.val &lt;= 105
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -33439,9 +34228,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the tree is in the range [0, 5000]. <br />
               -104 &lt;= Node.val &lt;= 104
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n.log n)
+              <br />
+              Space: O(h)
             </p>
             <CodeEditor
               options={{
@@ -33517,10 +34314,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the tree is in the range [0, 105].
               <br />
               -1000 &lt;= Node.val &lt;= 1000
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -33633,11 +34438,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the tree is in the range [0, 5000]. <br />
               -1000 &lt;= Node.val &lt;= 1000
               <br />
               -1000 &lt;= targetSum &lt;= 1000
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(h)
             </p>
             <CodeEditor
               options={{
@@ -33723,10 +34536,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the tree is in the range [0, 5000]. <br />
               -1000 &lt;= Node.val &lt;= 1000 <br />
               -1000 &lt;= targetSum &lt;= 1000
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n.log n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -33826,9 +34647,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               The number of nodes in the tree is in the range [0, 2000]. <br />
               -100 &lt;= Node.val &lt;= 100
             </Span>
-            <p>
+            <Span>
               <b>Follow up: </b>
               Can you flatten the tree in-place (with O(1) extra space)?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(h)
             </p>
             <CodeEditor
               options={{
@@ -33944,9 +34773,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length, t.length &lt;= 1000 s and t consist of English
               letters.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(mn)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -34038,11 +34875,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <br />
               -1000 &lt;= Node.val &lt;= 1000
             </Span>
-            <p>
+            <Span>
               You may only use constant extra space.
               <br />
               The recursive approach is fine. You may assume implicit stack
               space does not count as extra space for this problem.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -34157,11 +35002,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               The number of nodes in the tree is in the range [0, 6000]. <br />
               -100 &lt;= Node.val &lt;= 100
             </Span>
-            <p>
+            <Span>
               <b>Follow-up: </b>
               You may only use constant extra space. <br />
               The recursive approach is fine. You may assume implicit stack
               space does not count as extra space for this problem.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -34262,7 +35115,15 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>1 &lt;= numRows &lt;= 30</p>
+            <Span>1 &lt;= numRows &lt;= 30</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n^2)
+              <br />
+              Space: O(n^2)
+            </p>
             <CodeEditor
               options={{
                 title: "Q118. Pascal's Triangle",
@@ -34351,10 +35212,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <b>Constraints:</b>
             </Span>
             <Span>0 &lt;= rowIndex &lt;= 33</Span>
-            <p>
+            <Span>
               <b>Follow up: </b>
               Could you optimize your algorithm to use only O(rowIndex) extra
               space?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n^2)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -34428,10 +35297,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               triangle[i].length == triangle[i - 1].length + 1 <br />
               -104 &lt;= triangle[i][j] &lt;= 104
             </Span>
-            <p>
+            <Span>
               <b>Follow up: </b>
               Could you do this using only O(n) extra space, where n is the
               total number of rows in the triangle?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n^2)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -34501,8 +35378,16 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= prices.length &lt;= 105 <br />0 &lt;= prices[i] &lt;= 104
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -34582,9 +35467,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= prices.length &lt;= 3 * 104
               <br />0 &lt;= prices[i] &lt;= 104
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -34671,6 +35564,14 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <p>
               1 &lt;= prices.length &lt;= 105 <br />0 &lt;= prices[i] &lt;= 105
             </p>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q123. Best Time to Buy and Sell Stock III",
@@ -34747,10 +35648,18 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the tree is in the range [1, 3 * 104].{" "}
               <br />
               -1000 &lt;= Node.val &lt;= 1000
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(h)
             </p>
             <CodeEditor
               options={{
@@ -34842,9 +35751,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length &lt;= 2 * 105 <br />s consists only of printable
               ASCII characters.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -34953,7 +35870,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= beginWord.length &lt;= 5 <br />
               endWord.length == beginWord.length
               <br />
@@ -34966,6 +35883,14 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <br />
               All the words in wordList are unique.
               <br />
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n.26^n)
+              <br />
+              Space: O(n^2)
             </p>
             <CodeEditor
               options={{
@@ -35100,7 +36025,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= beginWord.length &lt;= 10 <br />
               endWord.length == beginWord.length <br />
               1 &lt;= wordList.length &lt;= 5000 <br />
@@ -35108,6 +36033,14 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               beginWord, endWord, and wordList[i] consist of lowercase English
               letters. beginWord != endWord <br />
               All the words in wordList are unique.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n26^n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -35191,9 +36124,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= nums.length &lt;= 105 <br />
               -109 &lt;= nums[i] &lt;= 109
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(h)
             </p>
             <CodeEditor
               options={{
@@ -35278,11 +36219,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the tree is in the range [1, 1000].
               <br />
               0 &lt;= Node.val &lt;= 9<br />
               The depth of the tree will not exceed 10.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(h)
             </p>
             <CodeEditor
               options={{
@@ -35370,11 +36319,19 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               m == board.length <br />
               n == board[i].length <br />
               1 &lt;= m, n &lt;= 200 <br />
               board[i][j] is 'X' or 'O'.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(mn)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -35466,9 +36423,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length &lt;= 16
               <br />s contains only lowercase English letters.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n2^n)
+              <br />
+              Space: O(n2^n)
             </p>
             <CodeEditor
               options={{
@@ -35556,9 +36521,17 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length &lt;= 2000 <br />s consists of lowercase English
               letters only.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(mn)
+              <br />
+              Space: O(mn)
             </p>
             <CodeEditor
               options={{
@@ -35676,7 +36649,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the graph is in the range [0, 100].
               <br />
               1 &lt;= Node.val &lt;= 100
@@ -35687,6 +36660,14 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               <br />
               The Graph is connected and all nodes can be visited starting from
               the given node.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(v+e)
+              <br />
+              Space: O(v+e)
             </p>
             <CodeEditor
               options={{
@@ -35787,11 +36768,19 @@ class Solution:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               gas.length == n<br />
               cost.length == n<br />
               1 &lt;= n &lt;= 105
               <br />0 &lt;= gas[i], cost[i] &lt;= 104
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -35874,9 +36863,17 @@ class Solution:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               n == ratings.length <br />
               1 &lt;= n &lt;= 2 * 104 <rb />0 &lt;= ratings[i] &lt;= 2 * 104
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -35954,11 +36951,19 @@ class Solution:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 3 * 104 <br />
               -3 * 104 &lt;= nums[i] &lt;= 3 * 104 <br />
               Each element in the array appears twice except for one element
               which appears only once.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -36017,11 +37022,19 @@ class Solution:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 3 * 104 <br />
               -231 &lt;= nums[i] &lt;= 231 - 1 <br />
               Each element in nums appears exactly three times except for one
               element which appears once.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -36128,11 +37141,19 @@ class Solution:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= n &lt;= 1000 <br />
               -104 &lt;= Node.val &lt;= 104 <br />
               Node.random is null or is pointing to some node in the linked
               list.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -36209,12 +37230,20 @@ class Solution:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length &lt;= 300 <br />
               1 &lt;= wordDict.length &lt;= 1000 <br />
               1 &lt;= wordDict[i].length &lt;= 20 <br />s and wordDict[i]
               consist of only lowercase English letters. <br />
               All the strings of wordDict are unique.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n^3)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -36304,12 +37333,20 @@ class Solution:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length &lt;= 20 <br />
               1 &lt;= wordDict.length &lt;= 1000 <br />
               1 &lt;= wordDict[i].length &lt;= 10 <br />s and wordDict[i]
               consist of only lowercase English letters. <br />
               All the strings of wordDict are unique.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(2^n)
+              <br />
+              Space: O(2^n)
             </p>
             <CodeEditor
               options={{
@@ -36400,12 +37437,20 @@ class Solution:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of the nodes in the list is in the range [0, 104].
               <br />
               -105 &lt;= Node.val &lt;= 105
               <br />
               pos is -1 or a valid index in the linked-list.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -36515,9 +37560,17 @@ class Solution:
               <br />
               pos is -1 or a valid index in the linked-list.
             </Span>
-            <p>
+            <Span>
               <b>Follow up: </b>
               Can you solve it using O(1) (i.e. constant) memory?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -36610,9 +37663,17 @@ class Solution:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the list is in the range [1, 5 * 104].
               <br />1 &lt;= Node.val &lt;= 1000
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -36734,9 +37795,17 @@ class Solution:
               The number of nodes in the tree is in the range [0, 100]. <br />
               -100 &lt;= Node.val &lt;= 100
             </Span>
-            <p>
+            <Span>
               <b>Follow up: </b>
               Recursive solution is trivial, could you do it iteratively?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(h)
             </p>
             <CodeEditor
               options={{
@@ -36836,9 +37905,17 @@ class Solution:
               <br />
               -100 &lt;= Node.val &lt;= 100
             </Span>
-            <p>
+            <Span>
               <b>Follow up: </b>
               Recursive solution is trivial, could you do it iteratively?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(h)
             </p>
             <CodeEditor
               options={{
@@ -36966,7 +38043,7 @@ class Solution:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= capacity &lt;= 3000
               <br />
               0 &lt;= key &lt;= 104
@@ -36974,6 +38051,14 @@ class Solution:
               0 &lt;= value &lt;= 105
               <br />
               At most 2 * 105 calls will be made to get and put.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(1)
+              <br />
+              Space: O(capacity)
             </p>
             <CodeEditor
               options={{
@@ -37155,10 +38240,18 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the list is in the range [1, 5000].
               <br />
               -5000 &lt;= Node.val &lt;= 5000
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n^2)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -37247,7 +38340,14 @@ class LRUCache:
               <br />
               -105 &lt;= Node.val &lt;= 105
             </Span>
-            <p></p>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n.log n)
+              <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q148. Sort List",
@@ -37360,11 +38460,19 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= points.length &lt;= 300 <br />
               points[i].length == 2 <br />
               -104 &lt;= xi, yi &lt;= 104 <br />
               All the points are unique.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n^2)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -37481,10 +38589,18 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= tokens.length &lt;= 104 <br />
               tokens[i] is either an operator: "+", "-", "*", or "/", or an
               integer in the range [-200, 200].
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -37582,10 +38698,18 @@ class LRUCache:
               and spaces ' '. <br />
               There is at least one word in s.
             </Span>
-            <p>
+            <Span>
               <b>Follow-up: </b>
               If the string data type is mutable in your language, can you solve
               it in-place with O(1) extra space?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -37646,11 +38770,19 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 2 * 104 <br />
               -10 &lt;= nums[i] &lt;= 10 <br />
               The product of any prefix or suffix of nums is guaranteed to fit
               in a 32-bit integer.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -37740,12 +38872,20 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               n == nums.length <br />
               1 &lt;= n &lt;= 5000 <br />
               -5000 &lt;= nums[i] &lt;= 5000 <br />
               All the integers of nums are unique. <br />
               nums is sorted and rotated between 1 and n times.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -37833,11 +38973,19 @@ class LRUCache:
               <br />
               nums is sorted and rotated between 1 and n times.
             </Span>
-            <p>
+            <Span>
               <b>Follow up: </b>
               This problem is similar to Find Minimum in Rotated Sorted Array,
               but nums may contain duplicates. Would this affect the runtime
               complexity? How and why?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log n -&gt; n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -37926,11 +39074,19 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               -231 &lt;= val &lt;= 231 - 1 <br />
               Methods pop, top and getMin operations will always be called on
               non-empty stacks. <br />
               At most 3 * 104 calls will be made to push, pop, top, and getMin.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(1)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -38080,10 +39236,18 @@ class LRUCache:
               intersect.
               <br />
             </Span>
-            <p>
+            <Span>
               <b>Follow up: </b>
               Could you write a solution that runs in O(m + n) time and use only
               O(1) memory?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -38173,10 +39337,18 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 1000 <br />
               -231 &lt;= nums[i] &lt;= 231 - 1 <br />
               nums[i] != nums[i + 1] for all valid i.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -38247,8 +39419,16 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 105 <bt />0 &lt;= nums[i] &lt;= 109
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -38370,12 +39550,20 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= version1.length, version2.length &lt;= 500 <br />
               version1 and version2 only contain digits and '.'. <br />
               version1 and version2 are valid version numbers. <br />
               All the given revisions in version1 and version2 can be stored in
               a 32-bit integer.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -38455,9 +39643,17 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               -231 &lt;= numerator, denominator &lt;= 231 - 1 <br />
               denominator != 0
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -38551,7 +39747,7 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               2 &lt;= numbers.length &lt;= 3 * 104
               <br />
               -1000 &lt;= numbers[i] &lt;= 1000
@@ -38561,6 +39757,14 @@ class LRUCache:
               -1000 &lt;= target &ly;= 1000
               <br />
               The tests are generated such that there is exactly one solution.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -38643,7 +39847,15 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>1 &lt;= columnNumber &lt;= 231 - 1</p>
+            <Span>1 &lt;= columnNumber &lt;= 2^31 - 1</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q168. Excel Sheet Column Title (Q162)",
@@ -38705,9 +39917,17 @@ class LRUCache:
               <br />
               -231 &lt;= nums[i] &lt;= 231 - 1
             </Span>
-            <p>
+            <Span>
               <b>Follow-up: </b>
               Could you solve the problem in linear time and in O(1) space?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -38790,12 +40010,20 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= columnTitle.length &lt;= 7<br />
               columnTitle consists only of uppercase English letters.
               <br />
               columnTitle is in the range ["A", "FXSHRXW"].
               <br />
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -38860,10 +40088,18 @@ class LRUCache:
               <b>Constraints:</b>
             </Span>
             <Span>0 &lt;= n &lt;= 104</Span>
-            <p>
+            <Span>
               <b>Follow up :</b>
               Could you write a solution that works in logarithmic time
               complexity?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log5 n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -38962,9 +40198,17 @@ class LRUCache:
               0 &lt;= Node.val &lt;= 106 <br />
               At most 105 calls will be made to hasNext, and next.
             </Span>
-            <p>
+            <Span>
               Could you implement next() and hasNext() to run in average O(1)
               time and use O(h) memory, where h is the height of the tree?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(h)
+              <br />
+              Space: O(h)
             </p>
             <CodeEditor
               options={{
@@ -39092,11 +40336,19 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               m == dungeon.length <br />
               n == dungeon[i].length <br />
               1 &lt;= m, n &lt;= 200 <br />
               -1000 &lt;= dungeon[i][j] &lt;= 1000
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(mn)
+              <br />
+              Space: O(mn -&gt; n)
             </p>
             <CodeEditor
               options={{
@@ -39596,8 +40848,16 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 100 <br />0 &lt;= nums[i] &lt;= 109
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n.log n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -40283,9 +41543,17 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length &lt;= 105 <br />
               s[i] is either 'A', 'C', 'G', or 'T'.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -40361,11 +41629,19 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= k &lt;= 100
               <br />
               0 &lt;= prices.length &lt;= 1000
               <br />0 &lt;= prices[i] &lt;= 1000
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n.k)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -40448,13 +41724,21 @@ class LRUCache:
               <br />
               -231 &lt;= nums[i] &lt;= 231 - 1<br />0 &lt;= k &lt;= 105
             </Span>
-            <p>
+            <Span>
               <b>Follow up: </b>
               <br />
               Try to come up with as many solutions as you can. There are at
               least three different ways to solve this problem.
               <br />
               Could you do it in-place with O(1) extra space?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -40548,9 +41832,17 @@ class LRUCache:
               <b>Constraints:</b>
             </Span>
             <Span>The input must be a binary string of length 32</Span>
-            <p>
+            <Span>
               <b>Follow up: </b>
               If this function is called many times, how would you optimize it?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(1)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -40634,9 +41926,17 @@ class LRUCache:
               <b>Constraints:</b>
             </Span>
             <Span>The input must be a binary string of length 32.</Span>
-            <p>
+            <Span>
               <b>Follow up: </b>
               If this function is called many times, how would you optimize it?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(1)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -41130,8 +42430,16 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 100 <br />0 &lt;= nums[i] &lt;= 400
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -41200,10 +42508,18 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the tree is in the range [0, 100].
               <br />
               -100 &lt;= Node.val &lt;= 100
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(h)
             </p>
             <CodeEditor
               options={{
@@ -41295,13 +42611,21 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               m == grid.length <br />
               n == grid[i].length
               <br />
               1 &lt;= m, n &lt;= 300
               <br />
               grid[i][j] is '0' or '1'.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(mn)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -41389,7 +42713,15 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>0 &lt;= left &lt;= right &lt;= 231 - 1</p>
+            <Span>0 &lt;= left &lt;= right &lt;= 231 - 1</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(1)
+              <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q201. Bitwise AND of Numbers Range (Q192)",
@@ -41470,7 +42802,15 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>1 &lt;= n &lt;= 231 - 1</p>
+            <Span>1 &lt;= n &lt;= 231 - 1</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log n)
+              <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q202. Happy Number (Q194)",
@@ -41545,11 +42885,19 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the list is in the range [0, 104].
               <br />
               1 &lt;= Node.val &lt;= 50
               <br />0 &lt;= val &lt;= 50
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -41638,7 +42986,15 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>0 &lt;= n &lt;= 5 * 106</p>
+            <Span>0 &lt;= n &lt;= 5 * 106</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(nlog log n)
+              <br />
+              Space: O(n)
+            </p>
             <CodeEditor
               options={{
                 title: "Q204. Count Primes (Q196)",
@@ -41716,10 +43072,18 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length &lt;= 5 * 104 <br />
               t.length == s.length <br />s and t consist of any valid ascii
               character.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -41793,9 +43157,17 @@ class LRUCache:
               The number of nodes in the list is the range [0, 5000]. <br />
               -5000 &lt;= Node.val &lt;= 5000
             </Span>
-            <p>
+            <Span>
               <b>Follow up: </b>A linked list can be reversed either iteratively
               or recursively. Could you implement both?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n (rec) / 1 (iter) )
             </p>
             <CodeEditor
               options={{
@@ -41892,7 +43264,7 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= numCourses &lt;= 105 <br />
               0 &lt;= prerequisites.length &lt;= 5000
               <br />
@@ -41900,8 +43272,15 @@ class LRUCache:
               0 &lt;= ai, bi &lt; numCourses
               <br />
               All the pairs prerequisites[i] are unique.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(v+e)
+              <br />
+              Space: O(v+e)
             </p>
-
             <CodeEditor
               options={{
                 title: "Q207. Course Schedule (Q199)",
@@ -42011,11 +43390,19 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= word.length, prefix.length &lt;= 2000 <br />
               word and prefix consist only of lowercase English letters. <br />
               At most 3 * 104 calls in total will be made to insert, search, and
               startsWith.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -42116,9 +43503,17 @@ class LRUCache:
               1 &lt;= target &lt;= 109 <br />
               1 &lt;= nums.length &lt;= 105 <br />1 &lt;= nums[i] &lt;= 105
             </Span>
-            <p>
+            <Span>
               Follow up: If you have figured out the O(n) solution, try coding
               another solution of which the time complexity is O(n log(n)).
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -42213,13 +43608,21 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= numCourses &lt;= 2000 <br />0 &lt;= prerequisites.length
               &lt;= numCourses * (numCourses - 1) <br />
               prerequisites[i].length == 2 <br />
               0 &lt;= ai, bi &lt; numCourses <br />
               ai != bi <br />
               All the pairs [ai, bi] are distinct.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(v+e)
+              <br />
+              Space: O(v+e)
             </p>
             <CodeEditor
               options={{
@@ -42330,7 +43733,7 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= word.length &lt;= 500
               <br />
               word in addWord consists lower-case English letters.
@@ -42338,8 +43741,15 @@ class LRUCache:
               word in search consist of '.' or lower-case English letters.
               <br />
               At most 50000 calls will be made to addWord and search.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: 
+              <br />
+              Space: O(n)
             </p>
-
             <CodeEditor
               options={{
                 title:
@@ -42434,7 +43844,7 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               m == board.length <br />
               n == board[i].length <br />
               1 &lt;= m, n &lt;= 12 <br />
@@ -42443,6 +43853,14 @@ class LRUCache:
               1 &lt;= words[i].length &lt;= 10 <br />
               words[i] consists of lowercase English letters. <br />
               All the strings of words are unique.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -42561,8 +43979,16 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 100 <br />0 &lt;= nums[i] &lt;= 1000
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -42633,9 +44059,17 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= s.length &lt;= 5 * 104 <br />s consists of lowercase
               English letters only.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n^2)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -42703,9 +44137,17 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= k &lt;= nums.length &lt;= 104 <br />
               -104 &lt;= nums[i] &lt;= 104
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n^2)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -42810,8 +44252,16 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               2 &lt;= k &lt;= 9 <br />1 &lt;= n &lt;= 60
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(9Ck -&gt; 9^k)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -42892,9 +44342,17 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 105 <br />
               -109 &lt;= nums[i] &lt;= 109
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -42992,11 +44450,19 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= buildings.length &lt;= 104 <br />
               0 &lt;= lefti &lt; righti &lt;= 231 - 1<br />
               1 &lt;= heighti &lt;= 231 - 1<br />
               buildings is sorted by lefti in non-decreasing order.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n.log n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -43118,9 +44584,17 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 105 -109 &lt;= nums[i] &lt;= 109 0 &lt;=
               k &lt;= 105
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -43193,10 +44667,18 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= nums.length &lt;= 2 * 10^4 <br />
               -231 &lt;= nums[i] &lt;= 2^31 - 1 <br />
               0 &lt;= k &lt;= 104 <br />0 &lt;= t &lt;= 2^31 - 1
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n.log k)
+              <br />
+              Space: O(k)
             </p>
             <CodeEditor
               options={{
@@ -43281,11 +44763,19 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               m == matrix.length <br />
               n == matrix[i].length <br />
               1 &lt;= m, n &lt;= 300 <br />
               matrix[i][j] is '0' or '1'.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -43371,11 +44861,19 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the tree is in the range [0, 5 * 104].{" "}
               <br />
               0 &lt;= Node.val &lt;= 5 * 104 <br />
               The tree is guaranteed to be complete.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log^2 n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -43465,7 +44963,17 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>-104 &lt;= ax1, ay1, ax2, ay2, bx1, by1, bx2, by2 &lt;= 104</p>
+            <Span>
+              -104 &lt;= ax1, ay1, ax2, ay2, bx1, by1, bx2, by2 &lt;= 104
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(1)
+              <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q223. Rectangle Area (Q215)",
@@ -43542,7 +45050,7 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length &lt;= 3 * 105 s consists of digits, '+', '-',
               '(', ')', and ' '. <br />
               s represents a valid expression.
@@ -43557,6 +45065,14 @@ class LRUCache:
               <br />
               Every number and running calculation will fit in a signed 32-bit
               integer.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -43658,11 +45174,19 @@ class LRUCache:
               <br />
               myStack.pop(); // return 2 myStack.empty(); // return False
             </Span>
-            <p>
+            <Span>
               1 &lt;= x &lt;= 9 <br />
               At most 100 calls will be made to push, pop, top, and empty.{" "}
               <br />
               All the calls to pop and top are valid.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(1)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -43759,10 +45283,18 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               The number of nodes in the tree is in the range [0, 100].
               <br />
               -100 &lt;= Node.val &lt;= 100
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(h)
             </p>
             <CodeEditor
               options={{
@@ -43856,7 +45388,7 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               1 &lt;= s.length &lt;= 3 * 105 <br />
               s consists of integers and operators ('+', '-', '*', '/')
               separated by some number of spaces. <br />
@@ -43864,6 +45396,14 @@ class LRUCache:
               All the integers in the expression are non-negative integers in
               the range [0, 231 - 1]. <br />
               The answer is guaranteed to fit in a 32-bit integer.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -43959,13 +45499,21 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>
+            <Span>
               0 &lt;= nums.length &lt;= 20
               <br />
               -231 &lt;= nums[i] &lt;= 231 - 1<br />
               All the values of nums are unique.
               <br />
               nums is sorted in ascending order.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -44044,6 +45592,14 @@ class LRUCache:
             <p>
               Follow up: Could you solve the problem in linear time and in O(1)
               space?
+            </p>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -44132,10 +45688,18 @@ class LRUCache:
               The number of nodes in the tree is n. <br />
               1 &lt;= k &lt;= n &lt;= 104 <br />0 &lt;= Node.val &lt;= 104
             </Span>
-            <p>
+            <Span>
               Follow up: If the BST is modified often (i.e., we can do insert
               and delete operations) and you need to find the kth smallest
               frequently, how would you optimize?
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(h)
             </p>
             <CodeEditor
               options={{
@@ -44226,7 +45790,15 @@ class LRUCache:
               <b>Constraints:</b>
             </Span>
             <Span>-2^31 &lt;= n &lt;= 2^31 - 1</Span>
-            <p>Follow up: Could you solve it without loops/recursion?</p>
+            <Span>Follow up: Could you solve it without loops/recursion?</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(1)
+              <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q231. Power of Two (Q223)",
@@ -44322,11 +45894,19 @@ class LRUCache:
               <br />
               All the calls to pop and peek are valid.
             </Span>
-            <p>
+            <Span>
               Follow-up: Can you implement the queue such that each operation is
               amortized O(1) time complexity? In other words, performing n
               operations will take overall O(n) time even if one of those
               operations may take longer.
+            </Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(1)
+              <br />
+              Space: O(n)
             </p>
             <CodeEditor
               options={{
@@ -44417,7 +45997,15 @@ class LRUCache:
             <Span>
               <b>Constraints:</b>
             </Span>
-            <p>0 &lt;= n &lt;= 109</p>
+            <Span>0 &lt;= n &lt;= 109</Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(log n)
+              <br />
+              Space: O(1)
+            </p>
             <CodeEditor
               options={{
                 title: "Q233. Number of Digit One (Q225)",
@@ -48125,7 +49713,8 @@ Window position                Max
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: Constructor: O(nlog n), update(): O(log n),sumRange(): O(log n)
+              Time: Constructor: O(nlog n), update(): O(log n),sumRange(): O(log
+              n)
               <br />
               Space: O(n)
             </p>
