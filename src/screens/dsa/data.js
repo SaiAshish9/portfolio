@@ -50182,23 +50182,45 @@ Window position                Max
             <Span>
               <b>Q315. Count of Smaller Numbers After Self (Q267)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given an integer array nums and you have to return a new
+              counts array. The counts array has the property where counts[i] is
+              the number of smaller elements to the right of nums[i].
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [5,2,6,1] <br />
+              Output: [2,1,1,0] <br />
+              Explanation: <br />
+              To the right of 5 there are 2 smaller elements (2 and 1). <br />
+              To the right of 2 there is only 1 smaller element (1). <br />
+              To the right of 6 there is 1 smaller element (1). <br />
+              To the right of 1 there is 0 smaller element.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [-1] <br />
+              Output: [0]
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [-1,-1]
+              <br />
+              Output: [0,0]
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= nums.length &lt;= 10^5 <br />
+              -10^4 &lt;= nums[i] &lt;= 10^4
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
