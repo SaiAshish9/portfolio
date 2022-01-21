@@ -196,6 +196,7 @@ import Leetcode257 from "assets/leetcode/257.png";
 import Leetcode289 from "assets/leetcode/289.png";
 import Leetcode297 from "assets/leetcode/297.png";
 import Leetcode304 from "assets/leetcode/304.png";
+import Leetcode310 from "assets/leetcode/310.png";
 
 export const DATA = {
   ds: {
@@ -43746,7 +43747,7 @@ class LRUCache:
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: 
+              Time:
               <br />
               Space: O(n)
             </p>
@@ -49796,23 +49797,43 @@ Window position                Max
             <Span>
               <b>Q309. Best Time to Buy and Sell Stock with Cooldown (Q263)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given an array prices where prices[i] is the price of a
+              given stock on the ith day.
+              <br />
+              Find the maximum profit you can achieve. You may complete as many
+              transactions as you like (i.e., buy one and sell one share of the
+              stock multiple times) with the following restrictions:
+              <br />
+              After you sell your stock, you cannot buy stock on the next day
+              (i.e., cooldown one day).
+              <br />
+              Note: You may not engage in multiple transactions simultaneously
+              (i.e., you must sell the stock before you buy again).
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: prices = [1,2,3,0,2] <br />
+              Output: 3 <br />
+              Explanation: transactions = [buy, sell, cooldown, buy, sell]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: prices = [1]
+              <br />
+              Output: 0
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= prices.length &lt;= 5000 <br />0 &lt;= prices[i] &lt;=
+              1000
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
@@ -49827,8 +49848,25 @@ Window position                Max
                   "Q309. Best Time to Buy and Sell Stock with Cooldown (Q263)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} prices
+                    * @return {number}
+                    */
+                   var maxProfit = function(prices){
+                     let sell = 0;
+                     let hold = Number.MIN_SAFE_INTEGER;
+                     let prev = 0;
+                     for (let price of prices){
+                     const cache = sell;
+                     sell = Math.max(sell, hold + price);
+                     hold = Math.max(hold, prev - price);
+                     prev = cache;
+                     }
+                     return sell;
+                   };
+                   
+                   maxProfit([1,2,3,0,2])`,
+                    output: `3`,
                   },
                 },
               }}
@@ -49843,23 +49881,59 @@ Window position                Max
             <Span>
               <b>Q310. Minimum Height Trees (Q264)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              A tree is an undirected graph in which any two vertices are
+              connected by exactly one path. In other words, any connected graph
+              without simple cycles is a tree.
+              <br />
+              Given a tree of n nodes labelled from 0 to n - 1, and an array of
+              n - 1 edges where edges[i] = [ai, bi] indicates that there is an
+              undirected edge between the two nodes ai and bi in the tree, you
+              can choose any node of the tree as the root. When you select a
+              node x as the root, the result tree has height h. Among all
+              possible rooted trees, those with minimum height (i.e. min(h)) are
+              called minimum height trees (MHTs).
+              <br />
+              Return a list of all MHTs' root labels. You can return the answer
+              in any order.
+              <br />
+              The height of a rooted tree is the number of edges on the longest
+              downward path between the root and a leaf.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode310} left />
+            <Span>
+              Input: n = 4, <br />
+              edges = [[1,0],[1,2],[1,3]] Output: [1] <br />
+              Explanation: As shown, the height of the tree is 1 when the root
+              is the node with label 1 which is the only MHT.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: n = 6, <br />
+              edges = [[3,0],[3,1],[3,2],[3,4],[5,4]]
+              <br />
+              Output: [3,4]
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= n &lt;= 2 * 104
+              <br />
+              edges.length == n - 1<br />
+              0 &lt;= ai, bi &lt; n<br />
+              ai != bi
+              <br />
+              All the pairs (ai, bi) are distinct.
+              <br />
+              The given input is guaranteed to be a tree and there will be no
+              repeated edges.
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
@@ -49872,9 +49946,45 @@ Window position                Max
               options={{
                 title: "Q310. Minimum Height Trees (Q264)",
                 codes: {
-                  Javacript: {
-                    code: ``,
-                    output: ``,
+                  "C++": {
+                    code: `class Solution {
+                      public:
+                       vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
+                         if (n == 1 || edges.empty())
+                           return {0};
+                     
+                         vector<int> ans;
+                         unordered_map<int, unordered_set<int>> graph;
+                     
+                         for (const auto& edge : edges) {
+                           const int u = edge[0];
+                           const int v = edge[1];
+                           graph[u].insert(v);
+                           graph[v].insert(u);
+                         }
+                     
+                         for (const auto& [label, children] : graph)
+                           if (children.size() == 1)
+                             ans.push_back(label);
+                     
+                         while (n > 2) {
+                           n -= ans.size();
+                           vector<int> nextLeaves;
+                           for (const int leaf : ans) {
+                             const int u = *begin(graph[leaf]);
+                             graph[u].erase(leaf);
+                             if (graph[u].size() == 1)
+                               nextLeaves.push_back(u);
+                           }
+                           ans = nextLeaves;
+                         }
+                         for(auto a: ans)
+                         cout << a << " ";
+                         return ans;
+                       }
+                     };
+                     `,
+                    output: `1`,
                   },
                 },
               }}
@@ -50342,58 +50452,12 @@ Window position                Max
           </>
         ),
       },
-      q263: {
-        title: "Q327. Count of Range Sum (Q263)",
-        content: (
-          <>
-            <Span>
-              <b>Q327. Count of Range Sum (Q263)</b>
-            </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 1:</b>
-            </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span></Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span> <Span></Span>
-            <Span>
-              <b>Complexity:</b>
-            </Span>
-            <p>
-              Time: O(n)
-              <br />
-              Space: O(n)
-            </p>
-            <CodeEditor
-              options={{
-                title: "Q327. Count of Range Sum (Q263)",
-                codes: {
-                  Javacript: {
-                    code: ``,
-                    output: ``,
-                  },
-                },
-              }}
-            />
-          </>
-        ),
-      },
       q275: {
-        title: "Q328. Odd Even Linked List (Q275)",
+        title: "Q327. Count of Range Sum (Q275)",
         content: (
           <>
             <Span>
-              <b>Q328. Odd Even Linked List (Q275)</b>
+              <b>Q327. Count of Range Sum (Q275)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -50422,7 +50486,7 @@ Window position                Max
             </p>
             <CodeEditor
               options={{
-                title: "Q328. Odd Even Linked List (Q275)",
+                title: "Q327. Count of Range Sum (Q275)",
                 codes: {
                   Javacript: {
                     code: ``,
@@ -50435,7 +50499,53 @@ Window position                Max
         ),
       },
       q276: {
-        title: "Q329. Longest Increasing Path in a Matrix (Q276)",
+        title: "Q328. Odd Even Linked List (Q276)",
+        content: (
+          <>
+            <Span>
+              <b>Q328. Odd Even Linked List (Q276)</b>
+            </Span>
+            <Span></Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span></Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span></Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span></Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <Span></Span> <Span></Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q328. Odd Even Linked List (Q276)",
+                codes: {
+                  Javacript: {
+                    code: ``,
+                    output: ``,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
+      },
+      q277: {
+        title: "Q329. Longest Increasing Path in a Matrix (Q277)",
         content: (
           <>
             <Span>
@@ -50468,7 +50578,7 @@ Window position                Max
             </p>
             <CodeEditor
               options={{
-                title: "Q329. Longest Increasing Path in a Matrix (Q276)",
+                title: "Q329. Longest Increasing Path in a Matrix (Q277)",
                 codes: {
                   Javacript: {
                     code: ``,
@@ -50480,12 +50590,12 @@ Window position                Max
           </>
         ),
       },
-      q277: {
-        title: "Q330. Patching Array (Q277)",
+      q278: {
+        title: "Q330. Patching Array (Q278)",
         content: (
           <>
             <Span>
-              <b>Q330. Patching Array (Q277)</b>
+              <b>Q330. Patching Array (Q278)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -50514,7 +50624,7 @@ Window position                Max
             </p>
             <CodeEditor
               options={{
-                title: "Q330. Patching Array (Q277)",
+                title: "Q330. Patching Array (Q278)",
                 codes: {
                   Javacript: {
                     code: ``,
@@ -50526,12 +50636,12 @@ Window position                Max
           </>
         ),
       },
-      q278: {
-        title: "Q331. Verify Preorder Serialization of a Binary Tree (Q278)",
+      q279: {
+        title: "Q331. Verify Preorder Serialization of a Binary Tree (Q279)",
         content: (
           <>
             <Span>
-              <b>Q331. Verify Preorder Serialization of a Binary Tree (Q278)</b>
+              <b>Q331. Verify Preorder Serialization of a Binary Tree (Q279)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -50561,53 +50671,7 @@ Window position                Max
             <CodeEditor
               options={{
                 title:
-                  "Q331. Verify Preorder Serialization of a Binary Tree (Q278)",
-                codes: {
-                  Javacript: {
-                    code: ``,
-                    output: ``,
-                  },
-                },
-              }}
-            />
-          </>
-        ),
-      },
-      q279: {
-        title: "Q332. Reconstruct Itinerary (Q279)",
-        content: (
-          <>
-            <Span>
-              <b>Q332. Reconstruct Itinerary (Q279)</b>
-            </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 1:</b>
-            </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span></Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span> <Span></Span>
-            <Span>
-              <b>Complexity:</b>
-            </Span>
-            <p>
-              Time: O(n)
-              <br />
-              Space: O(n)
-            </p>
-            <CodeEditor
-              options={{
-                title: "Q332. Reconstruct Itinerary (Q279)",
+                  "Q331. Verify Preorder Serialization of a Binary Tree (Q279)",
                 codes: {
                   Javacript: {
                     code: ``,
@@ -50620,11 +50684,11 @@ Window position                Max
         ),
       },
       q280: {
-        title: "Q334. Increasing Triplet Subsequence (Q334)",
+        title: "Q332. Reconstruct Itinerary (Q280)",
         content: (
           <>
             <Span>
-              <b>Q334. Increasing Triplet Subsequence (Q334)</b>
+              <b>Q332. Reconstruct Itinerary (Q280)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -50653,7 +50717,7 @@ Window position                Max
             </p>
             <CodeEditor
               options={{
-                title: "Q334. Increasing Triplet Subsequence (Q334)",
+                title: "Q332. Reconstruct Itinerary (Q280)",
                 codes: {
                   Javacript: {
                     code: ``,
@@ -50666,11 +50730,11 @@ Window position                Max
         ),
       },
       q281: {
-        title: "Q335. Self Crossing (Q281)",
+        title: "Q334. Increasing Triplet Subsequence (Q281)",
         content: (
           <>
             <Span>
-              <b>Q335. Self Crossing (Q281)</b>
+              <b>Q334. Increasing Triplet Subsequence (Q281)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -50699,7 +50763,7 @@ Window position                Max
             </p>
             <CodeEditor
               options={{
-                title: "Q335. Self Crossing (Q281)",
+                title: "Q334. Increasing Triplet Subsequence (Q281)",
                 codes: {
                   Javacript: {
                     code: ``,
@@ -50712,11 +50776,11 @@ Window position                Max
         ),
       },
       q282: {
-        title: "Q336. Palindrome Pairs (Q282)",
+        title: "Q335. Self Crossing (Q282)",
         content: (
           <>
             <Span>
-              <b>Q336. Palindrome Pairs (Q282)</b>
+              <b>Q335. Self Crossing (Q282)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -50745,7 +50809,7 @@ Window position                Max
             </p>
             <CodeEditor
               options={{
-                title: "Q336. Palindrome Pairs (Q282)",
+                title: "Q335. Self Crossing (Q282)",
                 codes: {
                   Javacript: {
                     code: ``,
@@ -50758,11 +50822,11 @@ Window position                Max
         ),
       },
       q283: {
-        title: "Q337. House Robber III (Q283)",
+        title: "Q336. Palindrome Pairs (Q283)",
         content: (
           <>
             <Span>
-              <b>Q337. House Robber III (Q283)</b>
+              <b>Q336. Palindrome Pairs (Q283)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -50791,7 +50855,7 @@ Window position                Max
             </p>
             <CodeEditor
               options={{
-                title: "Q337. House Robber III (Q283)",
+                title: "Q336. Palindrome Pairs (Q283)",
                 codes: {
                   Javacript: {
                     code: ``,
@@ -50804,11 +50868,11 @@ Window position                Max
         ),
       },
       q284: {
-        title: "Q338. Counting Bits (Q284)",
+        title: "Q337. House Robber III (Q284)",
         content: (
           <>
             <Span>
-              <b>Q338. Counting Bits (Q284)</b>
+              <b>Q337. House Robber III (Q284)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -50837,7 +50901,7 @@ Window position                Max
             </p>
             <CodeEditor
               options={{
-                title: "Q338. Counting Bits (Q284)",
+                title: "Q337. House Robber III (Q284)",
                 codes: {
                   Javacript: {
                     code: ``,
@@ -50850,11 +50914,11 @@ Window position                Max
         ),
       },
       q285: {
-        title: "Q341. Flatten Nested List Iterator (Q285)",
+        title: "Q338. Counting Bits (Q285)",
         content: (
           <>
             <Span>
-              <b>Q341. Flatten Nested List Iterator (Q285)</b>
+              <b>Q338. Counting Bits (Q285)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -50883,7 +50947,7 @@ Window position                Max
             </p>
             <CodeEditor
               options={{
-                title: "Q341. Flatten Nested List Iterator (Q285)",
+                title: "Q338. Counting Bits (Q285)",
                 codes: {
                   Javacript: {
                     code: ``,
@@ -50896,11 +50960,11 @@ Window position                Max
         ),
       },
       q286: {
-        title: "Q342. Power of Four (Q286)",
+        title: "Q341. Flatten Nested List Iterator (Q286)",
         content: (
           <>
             <Span>
-              <b>Q342. Power of Four (Q286)</b>
+              <b>Q341. Flatten Nested List Iterator (Q286)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -50929,7 +50993,7 @@ Window position                Max
             </p>
             <CodeEditor
               options={{
-                title: "Q342. Power of Four (Q286)",
+                title: "Q341. Flatten Nested List Iterator (Q286)",
                 codes: {
                   Javacript: {
                     code: ``,
@@ -50942,11 +51006,11 @@ Window position                Max
         ),
       },
       q287: {
-        title: "Q343. Integer Break (Q287)",
+        title: "Q342. Power of Four (Q287)",
         content: (
           <>
             <Span>
-              <b>Q343. Integer Break (Q287)</b>
+              <b>Q342. Power of Four (Q287)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -50975,7 +51039,7 @@ Window position                Max
             </p>
             <CodeEditor
               options={{
-                title: "Q343. Integer Break (Q287)",
+                title: "Q342. Power of Four (Q287)",
                 codes: {
                   Javacript: {
                     code: ``,
@@ -50988,7 +51052,53 @@ Window position                Max
         ),
       },
       q288: {
-        title: "Q344. Reverse String (Q288)",
+        title: "Q343. Integer Break (Q288)",
+        content: (
+          <>
+            <Span>
+              <b>Q343. Integer Break (Q288)</b>
+            </Span>
+            <Span></Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span></Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span></Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span></Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <Span></Span> <Span></Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q343. Integer Break (Q288)",
+                codes: {
+                  Javacript: {
+                    code: ``,
+                    output: ``,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
+      },
+      q289: {
+        title: "Q344. Reverse String (Q289)",
         content: (
           <>
             <Span>
@@ -51021,53 +51131,7 @@ Window position                Max
             </p>
             <CodeEditor
               options={{
-                title: "Q344. Reverse String (Q288)",
-                codes: {
-                  Javacript: {
-                    code: ``,
-                    output: ``,
-                  },
-                },
-              }}
-            />
-          </>
-        ),
-      },
-      q289: {
-        title: "Q345. Reverse Vowels of a String (Q289)",
-        content: (
-          <>
-            <Span>
-              <b>Q345. Reverse Vowels of a String (Q289)</b>
-            </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 1:</b>
-            </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 2:</b>
-            </Span>
-            <Span></Span>
-            <Span>
-              <b>Example 3:</b>
-            </Span>
-            <Span></Span>
-            <Span>
-              <b>Constraints:</b>
-            </Span>
-            <Span></Span> <Span></Span>
-            <Span>
-              <b>Complexity:</b>
-            </Span>
-            <p>
-              Time: O(n)
-              <br />
-              Space: O(n)
-            </p>
-            <CodeEditor
-              options={{
-                title: "Q345. Reverse Vowels of a String (Q289)",
+                title: "Q344. Reverse String (Q289)",
                 codes: {
                   Javacript: {
                     code: ``,
@@ -51080,11 +51144,11 @@ Window position                Max
         ),
       },
       q290: {
-        title: "Q347. Top K Frequent Elements (Q290)",
+        title: "Q345. Reverse Vowels of a String (Q290)",
         content: (
           <>
             <Span>
-              <b>Q347. Top K Frequent Elements (Q290)</b>
+              <b>Q345. Reverse Vowels of a String (Q290)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -51113,7 +51177,7 @@ Window position                Max
             </p>
             <CodeEditor
               options={{
-                title: "Q347. Top K Frequent Elements (Q290)",
+                title: "Q345. Reverse Vowels of a String (Q290)",
                 codes: {
                   Javacript: {
                     code: ``,
@@ -51126,11 +51190,11 @@ Window position                Max
         ),
       },
       q291: {
-        title: "Q349. Intersection of Two Arrays (Q291)",
+        title: "Q347. Top K Frequent Elements (Q291)",
         content: (
           <>
             <Span>
-              <b>Q349. Intersection of Two Arrays (Q291)</b>
+              <b>Q347. Top K Frequent Elements (Q291)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -51159,7 +51223,7 @@ Window position                Max
             </p>
             <CodeEditor
               options={{
-                title: "Q349. Intersection of Two Arrays (Q291)",
+                title: "Q347. Top K Frequent Elements (Q291)",
                 codes: {
                   Javacript: {
                     code: ``,
@@ -51172,11 +51236,11 @@ Window position                Max
         ),
       },
       q292: {
-        title: "Q350. Intersection of Two Arrays II (Q292)",
+        title: "Q349. Intersection of Two Arrays (Q292)",
         content: (
           <>
             <Span>
-              <b>Q350. Intersection of Two Arrays II (Q292)</b>
+              <b>Q349. Intersection of Two Arrays (Q292)</b>
             </Span>
             <Span></Span>
             <Span>
@@ -51205,7 +51269,53 @@ Window position                Max
             </p>
             <CodeEditor
               options={{
-                title: "Q350. Intersection of Two Arrays II (Q292)",
+                title: "Q349. Intersection of Two Arrays (Q292)",
+                codes: {
+                  Javacript: {
+                    code: ``,
+                    output: ``,
+                  },
+                },
+              }}
+            />
+          </>
+        ),
+      },
+      q293: {
+        title: "Q350. Intersection of Two Arrays II (Q293)",
+        content: (
+          <>
+            <Span>
+              <b>Q350. Intersection of Two Arrays II (Q293)</b>
+            </Span>
+            <Span></Span>
+            <Span>
+              <b>Example 1:</b>
+            </Span>
+            <Span></Span>
+            <Span>
+              <b>Example 2:</b>
+            </Span>
+            <Span></Span>
+            <Span>
+              <b>Example 3:</b>
+            </Span>
+            <Span></Span>
+            <Span>
+              <b>Constraints:</b>
+            </Span>
+            <Span></Span> <Span></Span>
+            <Span>
+              <b>Complexity:</b>
+            </Span>
+            <p>
+              Time: O(n)
+              <br />
+              Space: O(n)
+            </p>
+            <CodeEditor
+              options={{
+                title: "Q350. Intersection of Two Arrays II (Q293)",
                 codes: {
                   Javacript: {
                     code: ``,
