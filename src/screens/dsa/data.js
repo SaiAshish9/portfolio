@@ -197,6 +197,7 @@ import Leetcode289 from "assets/leetcode/289.png";
 import Leetcode297 from "assets/leetcode/297.png";
 import Leetcode304 from "assets/leetcode/304.png";
 import Leetcode310 from "assets/leetcode/310.png";
+import Leetcode319 from "assets/leetcode/319.png";
 
 export const DATA = {
   ds: {
@@ -50473,38 +50474,70 @@ Window position                Max
             <Span>
               <b>Q319. Bulb Switcher (Q270)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              There are n bulbs that are initially off. You first turn on all
+              the bulbs, then you turn off every second bulb.
+              <br />
+              On the third round, you toggle every third bulb (turning on if
+              it's off or turning off if it's on). For the ith round, you toggle
+              every i bulb. For the nth round, you only toggle the last bulb.
+              <br />
+              Return the number of bulbs that are on after n rounds.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode319} left />
+            <Span>
+              Input: n = 3 <br />
+              Output: 1 <br />
+              Explanation: At first, the three bulbs are [off, off, off]. <br />
+              After the first round, the three bulbs are [on, on, on]. <br />
+              After the second round, the three bulbs are [on, off, on]. <br />
+              After the third round, the three bulbs are [on, off, off]. <br />
+              So you should return 1 because there is only one bulb is on.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 0<br />
+              Output: 0
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 1<br />
+              Output: 1
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>0 &lt;= n &lt;= 109</Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(n)
+              Time: O(1)
               <br />
-              Space: O(n)
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
                 title: "Q319. Bulb Switcher (Q270)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {number}
+                    */
+                   var bulbSwitch = function(n) {
+                     return parseInt(Math.sqrt(n))
+                   };
+                   
+                   bulbSwitch(1)`,
+                    output: `1`,
                   },
                 },
               }}
