@@ -50801,9 +50801,110 @@ Window position                Max
               options={{
                 title: "Q324. Wiggle Sort II (Q273)",
                 codes: {
-                  Javacript: {
-                    code: ``,
-                    output: ``,
+                  Java: {
+                    code: `public class Solution {
+                      public void wiggleSort(int[] nums) {
+                          if (nums == null || nums.length <= 1) return;
+                  
+                          int size = nums.length;
+                          int medium = medium(nums);
+                          int[] newArray = new int[size];
+                          for (int i = 0; i < size; i++) {
+                              newArray[i] = medium;
+                          }
+                  
+                          if (size % 2 == 0) {
+                              int l = nums.length - 2;
+                              int r = 1;
+                              for (int i = 0; i < nums.length; i++) {
+                                  if (nums[i] < medium) {
+                                      newArray[l] = nums[i];
+                                      l -= 2;
+                                  } else if (nums[i] > medium) {
+                                      newArray[r] = nums[i];
+                                      r += 2;
+                                  }
+                              }
+                          } else {
+                              int i = 0;
+                              int j = size - 2;
+                              for (int runner = 0; runner < size; runner++) {
+                                  if (nums[runner] < medium) {
+                                      newArray[i] = nums[runner];
+                                      i += 2;
+                                  } else if (nums[runner] > medium) {
+                                      newArray[j] = nums[runner];
+                                      j -= 2;
+                                  }
+                              }
+                          }
+                  
+                          for (int i = 0; i < size; i++) {
+                              nums[i] = newArray[i];
+                          }
+                      }
+                  
+                      private int medium(int[] nums) {
+                          int size = nums.length;
+                          return kTh(nums, size / 2);
+                      }
+                  
+                      private int kTh(int[] nums, int k) {
+                          int start = 0;
+                          int end = nums.length - 1;
+                  
+                          while (start < end) {
+                              int partition = partition(nums, start, end);
+                              if (partition == k) {
+                                  return nums[partition];
+                              } else if (partition < k) {
+                                  start = partition + 1;
+                              } else {
+                                  end = partition - 1;
+                              }
+                          }
+                  
+                          return nums[k];
+                      }
+                  
+                      private int partition(int[] nums, int start, int end) {
+                          if (start == end) return start;
+                  
+                          int pivot = nums[start];
+                          int i = start + 1;
+                          int j = end;
+                  
+                          while (true) {
+                              while (i <= end && nums[i] <= pivot) {
+                                  i++;
+                              }
+                  
+                              while (j >= start + 1 && nums[j] > pivot) {
+                                  j--;
+                              }
+                  
+                              if (i > j) {
+                                  break;
+                              }
+                  
+                              swap(nums, i, j);
+                          }
+                  
+                          swap(nums, start, j);
+                          return j;
+                      }
+                  
+                      private void swap(int[] nums, int start, int end) {
+                          if (start < end) {
+                              int temp = nums[start];
+                              nums[start] = nums[end];
+                              nums[end] = temp;
+                          }
+                      }
+                  
+                  
+                  }`,
+                    output: `[1,5,1,6,1,4]`,
                   },
                 },
               }}
@@ -50818,38 +50919,62 @@ Window position                Max
             <Span>
               <b>Q326. Power of Three (Q274)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer n, return true if it is a power of three.
+              Otherwise, return false.
+              <br />
+              An integer n is a power of three, if there exists an integer x
+              such that n == 3^x.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 27 <br />
+              Output: true
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 0<br />
+              Output: false
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 9 <br />
+              Output: true
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>-2^31 &lt;= n &lt;= 2^31 - 1</Span>{" "}
+            <Span>Follow up: Could you solve it without loops/recursion?</Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(n)
+              Time: O(1)
               <br />
-              Space: O(n)
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
                 title: "Q326. Power of Three (Q274)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {boolean}
+                    */
+                   var isPowerOfThree = function(n) {
+                     return n > 0 && Math.pow(3, 19) % n == 0;
+                   };
+                   
+                   isPowerOfThree(3)`,
+                    output: `true`,
                   },
                 },
               }}
