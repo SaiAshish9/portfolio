@@ -60,7 +60,7 @@ const Bugs = () => {
   return (
     <div style={{ position: "relative", top: "-1.8rem" }}>
       <Label m>
-        <I18n t="messages" />
+        <I18n t="bugs" />
       </Label>
       <Container data-aos="flip-right">
         <Row>
