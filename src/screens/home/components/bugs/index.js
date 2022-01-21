@@ -25,7 +25,7 @@ const images = [
   },
   {
     img: LinkedInImg,
-    text: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_bug-activity-6869609356883849216-F2T2",
+    link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_bug-activity-6869609356883849216-F2T2",
   },
   {
     img: MicrosoftImg,
