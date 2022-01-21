@@ -39,8 +39,10 @@ export const Img = styled.img`
   height: 4rem;
   cursor: pointer;
   width: 4rem;
+  border-radius: 0.4rem;
   @media only screen and (max-width: ${BREAKPOINTS.md}) {
     height: 2.4rem;
     width: 2.4rem;
+    border-radius: 0.24rem;
   }
 `;
