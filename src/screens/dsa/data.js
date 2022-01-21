@@ -50552,38 +50552,112 @@ Window position                Max
             <Span>
               <b>Q321. Create Maximum Number (Q271)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given two integer arrays nums1 and nums2 of lengths m and
+              n respectively. nums1 and nums2 represent the digits of two
+              numbers. You are also given an integer k.
+              <br />
+              Create the maximum number of length k &lt;= m + n from digits of
+              the two numbers. The relative order of the digits from the same
+              array must be preserved.
+              <br />
+              Return an array of the k digits representing the answer.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums1 = [3,4,6,5],
+              <br /> nums2 = [9,1,2,5,8,3], k = 5<br />
+              Output: [9,8,6,5,3]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums1 = [6,7], <br />
+              nums2 = [6,0,4], <br /> k = 5 <br />
+              Output: [6,7,6,0,4]
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums1 = [3,9], <br /> nums2 = [8,9], k = 3 <br />
+              Output: [9,8,9]
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              m == nums1.length <br />
+              n == nums2.length <br />
+              1 &lt;= m, n &lt;= 500 <br />
+              0 &lt;= nums1[i], nums2[i] &lt;= 9 <br />1 &lt;= k &lt;= m + n
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(n)
+              Time: O(k(m+n)^2)
               <br />
-              Space: O(n)
+              Space: O(m+n)
             </p>
             <CodeEditor
               options={{
                 title: "Q321. Create Maximum Number (Q271)",
                 codes: {
-                  Javacript: {
-                    code: ``,
-                    output: ``,
+                  "C++": {
+                    code: `class Solution {
+                      public:
+                       vector<int> maxNumber(vector<int>& nums1, vector<int>& nums2, int k) {
+                         vector<int> ans;
+                     
+                         for (int k1 = 0; k1 <= k; ++k1) {
+                           const int k2 = k - k1;
+                           if (k1 > nums1.size() || k2 > nums2.size())
+                             continue;
+                           ans = max(ans, maxNumber(maxNumber(nums1, k1), maxNumber(nums2, k2)));
+                         }
+                     
+                         return ans;
+                       }
+                     
+                      private:
+                       vector<int> maxNumber(const vector<int>& nums, int k) {
+                         if (k == 0)
+                           return {};
+                     
+                         vector<int> ans;
+                         int toPop = nums.size() - k;
+                     
+                         for (const int num : nums) {
+                           while (!ans.empty() && ans.back() < num && toPop-- > 0)
+                             ans.pop_back();
+                           ans.push_back(num);
+                         }
+                     
+                         return {begin(ans), begin(ans) + k};
+                       }
+                     
+                      private:
+                       vector<int> maxNumber(const vector<int>& nums1, const vector<int>& nums2) {
+                         vector<int> ans;
+                     
+                         auto s1 = cbegin(nums1);
+                         auto s2 = cbegin(nums2);
+                     
+                         while (s1 != cend(nums1) || s2 != cend(nums2))
+                           if (lexicographical_compare(s1, cend(nums1), s2, cend(nums2)))
+                             ans.push_back(*s2++);
+                           else
+                             ans.push_back(*s1++);
+                     
+                         return ans;
+                       }
+                     };
+                     `,
+                    output: `[9,8,6,5,3]`,
                   },
                 },
               }}
@@ -50598,23 +50672,50 @@ Window position                Max
             <Span>
               <b>Q322. Coin Change (Q272)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given an integer array coins representing coins of
+              different denominations and an integer amount representing a total
+              amount of money.
+              <br />
+              Return the fewest number of coins that you need to make up that
+              amount. If that amount of money cannot be made up by any
+              combination of the coins, return -1.
+              <br />
+              You may assume that you have an infinite number of each kind of
+              coin.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: coins = [1,2,5], <br />
+              amount = 11 <br />
+              Output: 3 <br />
+              Explanation: 11 = 5 + 5 + 1
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: coins = [2], <br />
+              amount = 3<br />
+              Output: -1
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: coins = [1],
+              <br /> amount = 0<br />
+              Output: 0
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= coins.length &lt;= 12 <br />
+              1 &lt;= coins[i] &lt;= 2^31 - 1 <br />0 &lt;= amount &lt;= 10^4
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
