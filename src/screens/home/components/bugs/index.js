@@ -58,7 +58,7 @@ function handleClick(e, i) {
 
 const Bugs = () => {
   return (
-    <div style={{ position: "relative", top: "-1.8rem" }}>
+    <div style={{ position: "relative", top: "-2.7rem" }}>
       <Label m>
         <I18n t="bugs" />
       </Label>

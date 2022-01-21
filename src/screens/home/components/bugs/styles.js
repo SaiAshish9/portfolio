@@ -13,7 +13,8 @@ export const Container = styled.div`
 `;
 
 export const MContainer = styled.div`
-  padding: 1rem;
+  padding: 0rem 0 -1rem;
+  margin-bottom: -2.7rem;
   @media only screen and (min-width: ${BREAKPOINTS.xs}) {
     display: none;
   }
