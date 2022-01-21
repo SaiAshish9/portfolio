@@ -50225,7 +50225,7 @@ Window position                Max
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(n)
+              Time: O(n.log n)
               <br />
               Space: O(n)
             </p>
@@ -50234,8 +50234,50 @@ Window position                Max
                 title: "Q315. Count of Smaller Numbers After Self (Q267)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number[]}
+                    */
+                   
+                   class FenwickTree {
+                     constructor(n){
+                      this.sums = Array(n+1).fill(0)
+                     }
+                     update(i, delta) {
+                       while (i < this.sums.length) {
+                         this.sums[i] += delta;
+                         i += i & -i;
+                       }
+                     }
+                     get(i) {
+                       let sum = 0;
+                       while (i > 0) {
+                         sum += this.sums[i];
+                         i -= i & -i;
+                       }
+                       return sum;
+                     }
+                   }
+                   
+                   var countSmaller = function(nums) {
+                     const ans = []
+                     const uniqueNums = new Set(nums)
+                     const tree = new FenwickTree(uniqueNums.size)
+                     const ranks = {}
+                     let rank = 0
+                     for(let num of [...Array.from(uniqueNums).sort((a,b)=>a-b)]){
+                       ranks[num] = ++rank
+                     }
+                     for(let i = nums.length - 1; i >= 0; --i){
+                       let num = nums[i]
+                       ans.push(tree.get(ranks[num] - 1))
+                       tree.update(ranks[+num], 1)
+                     }
+                     return ans.reverse()
+                   };
+                   
+                   countSmaller([5,2,6,1])`,
+                    output: `[ 2, 1, 1, 0 ]`,
                   },
                 },
               }}
