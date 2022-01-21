@@ -50375,28 +50375,56 @@ Window position                Max
             <Span>
               <b>Q318. Maximum Product of Word Lengths (Q269)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a string array words, return the maximum value of
+              length(word[i]) * length(word[j]) where the two words do not share
+              common letters. If no such two words exist, return 0.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: words = ["abcw","baz","foo","bar","xtfn","abcdef"]
+              <br />
+              Output: 16
+              <br />
+              Explanation: The two words can be "abcw", "xtfn".
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: words = ["abcw","baz","foo","bar","xtfn","abcdef"]
+              <br />
+              Output: 16
+              <br />
+              Explanation: The two words can be "abcw", "xtfn".
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: words = ["abcw","baz","foo","bar","xtfn","abcdef"]
+              <br />
+              Output: 16
+              <br />
+              Explanation: The two words can be "abcw", "xtfn".
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              2 &lt;= words.length &lt;= 1000
+              <br />
+              1 &lt;= words[i].length &lt;= 1000
+              <br />
+              words[i] consists only of lowercase English letters.
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(n)
+              Time: O(n^2)
               <br />
               Space: O(n)
             </p>
@@ -50405,8 +50433,32 @@ Window position                Max
                 title: "Q318. Maximum Product of Word Lengths (Q269)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string[]} words
+                    * @return {number}
+                    */
+                   
+                   function getMask(word) {
+                     let mask = 0;
+                     for (let c of word)
+                       mask |= 1 << c.charCodeAt(0);
+                     return mask;
+                   }
+                   
+                   var maxProduct = function(words) {
+                     let ans = 0;
+                     const masks = Array(words.length).fill(0);
+                     for (let i = 0; i < words.length; ++i)
+                       masks[i] = getMask(words[i]);
+                     for (let i = 0; i < masks.length; ++i)
+                     for (let j = 0; j < i; ++j)
+                       if((masks[i] & masks[j]) == 0)
+                       ans = Math.max(ans, words[i].length * words[j].length);
+                       return ans;
+                   };
+                   
+                   maxProduct(["a","ab","abc","d","cd","bcd","abcd"])`,
+                    output: `4`,
                   },
                 },
               }}
