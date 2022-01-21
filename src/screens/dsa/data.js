@@ -49999,38 +49999,82 @@ Window position                Max
             <Span>
               <b>Q312. Burst Balloons (Q265)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given n balloons, indexed from 0 to n - 1. Each balloon is
+              painted with a number on it represented by an array nums. You are
+              asked to burst all the balloons.
+              <br />
+              If you burst the ith balloon, you will get nums[i - 1] * nums[i] *
+              nums[i + 1] coins. If i - 1 or i + 1 goes out of bounds of the
+              array, then treat it as if there is a balloon with a 1 painted on
+              it.
+              <br />
+              Return the maximum coins you can collect by bursting the balloons
+              wisely.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [3,1,5,8]
+              <br />
+              Output: 167
+              <br />
+              Explanation:
+              <br />
+              nums = [3,1,5,8] --&gt; [3,5,8] --&gt; [3,8] --&gt; [8] --&gt; []
+              <br />
+              coins = 3*1*5 + 3*5*8 + 1*3*8 + 1*8*1 = 167
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: nums = [1,5] <br />
+              Output: 10
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              n == nums.length <br />
+              1 &lt;= n &lt;= 300 <br />0 7lt;= nums[i] &lt;= 100
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(n)
+              Time: O(n^2)
               <br />
-              Space: O(n)
+              Space: O(n^2)
             </p>
             <CodeEditor
               options={{
                 title: "Q312. Burst Balloons (Q265)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var maxCoins = function(nums) {
+                     const n = nums.length;
+                     const a = nums
+                     a.unshift(1)
+                     a.push(1)
+                     const dp = Array.from(Array(n+2),()=>Array(n+2).fill(0))
+                     for (let d = 0; d < n; ++d)
+                     for (let i = 1; i < n - d + 1; ++i) {
+                     const j = i + d;
+                     for (let k = i; k <= j; ++k)
+                     dp[i][j] = Math.max(dp[i][j],
+                       dp[i][k - 1]+dp[k + 1][j]+ a[i - 1] * a[k] * a[j + 1]);
+                     }
+                     return dp[1][n];
+                   };
+                   
+                   maxCoins([3,1,5,8])`,
+                    output: `167`,
                   },
                 },
               }}
@@ -50043,30 +50087,54 @@ Window position                Max
         content: (
           <>
             <Span>
-              <b></b>
+              <b>Q313. Super Ugly Number (Q266)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              A super ugly number is a positive integer whose prime factors are
+              in the array primes.
+              <br />
+              Given an integer n and an array of integers primes, return the nth
+              super ugly number.
+              <br />
+              The nth super ugly number is guaranteed to fit in a 32-bit signed
+              integer.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 12,
+              <br /> primes = [2,7,13,19]
+              <br />
+              Output: 32
+              <br />
+              Explanation: [1,2,4,7,8,13,14,16,19,26,28,32] is the sequence of
+              the first 12 super ugly numbers given primes = [2,7,13,19].
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: n = 1, <br /> primes = [2,3,5] <br />
+              Output: 1 <br />
+              Explanation: 1 has no prime factors, therefore all of its prime
+              factors are in the array primes = [2,3,5].
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= n &lt;= 106 <br />
+              1 &lt;= primes.length &lt;= 100 <br />
+              2 &lt;= primes[i] &lt;= 1000 <br />
+              primes[i] is guaranteed to be a prime number. <br />
+              All the values of primes are unique and sorted in ascending order.
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(n)
+              Time: O(nk)
               <br />
               Space: O(n)
             </p>
@@ -50075,8 +50143,31 @@ Window position                Max
                 title: "Q313. Super Ugly Number (Q266)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @param {number[]} primes
+                    * @return {number}
+                    */
+                   var nthSuperUglyNumber = function(n, primes) {
+                     const k = primes.length;
+                     const indices = Array(k).fill(0);
+                     const uglyNums = Array(n).fill(0);
+                     uglyNums[0] = 1;
+                     for (let i = 1; i < n; ++i) {
+                       const nexts = Array(k).fill(0);
+                       for (let j = 0; j < k; ++j)
+                         nexts[j] = uglyNums[indices[j]] * primes[j];
+                       const next = Math.min(...nexts)
+                       for (let j = 0; j < k; ++j)
+                         if (next == nexts[j])
+                           ++indices[j];
+                       uglyNums[i] = next;
+                     }
+                     return uglyNums[n - 1];
+                   };
+                   
+                   nthSuperUglyNumber(12,[2,7,13,19])`,
+                    output: `32`,
                   },
                 },
               }}
