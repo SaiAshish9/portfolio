@@ -49819,7 +49819,7 @@ Window position                Max
             <p>
               Time: O(n)
               <br />
-              Space: O(n)
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
