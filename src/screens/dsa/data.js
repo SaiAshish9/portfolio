@@ -51108,38 +51108,94 @@ Window position                Max
             <Span>
               <b>Q328. Odd Even Linked List (Q276)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given the head of a singly linked list, group all the nodes with
+              odd indices together followed by the nodes with even indices, and
+              return the reordered list.
+              <b />
+              The first node is considered odd, and the second node is even, and
+              so on.
+              <br />
+              Note that the relative order inside both the even and odd groups
+              should remain as it was in the input.
+              <br />
+              You must solve the problem in O(1) extra space complexity and O(n)
+              time complexity.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: head = [1,2,3,4,5] <br />
+              Output: [1,3,5,2,4]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: head = [2,1,3,5,6,4,7] <br />
+              Output: [2,3,6,7,1,5,4]
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              n == number of nodes in the linked list
+              <br />
+              0 &lt;= n &lt;= 104
+              <br />
+              -106 &lt;= Node.val &lt;= 106
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
               Time: O(n)
               <br />
-              Space: O(n)
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
                 title: "Q328. Odd Even Linked List (Q276)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `function ListNode(val, next) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.next = (next===undefined ? null : next)
+                    }
+                     
+                    /**
+                     * @param {ListNode} head
+                     * @return {ListNode}
+                     */
+                    var oddEvenList = function(head) {
+                      let oddHead = new ListNode(0);
+                      let evenHead = new ListNode(0);
+                      let odd = oddHead;
+                      let even = evenHead;
+                      for (let isOdd = 0; head; head = head.next)
+                        if (isOdd ^= 1) {
+                          odd.next = head;
+                          odd = odd.next;
+                        } else {
+                          even.next = head;
+                          even = even.next;
+                        }
+                      odd.next = evenHead.next;
+                      even.next = null;
+                      return oddHead.next;
+                    };
+                    
+                    const l = new ListNode(1)
+                    l.next = new ListNode(2)
+                    l.next.next = new ListNode(3)
+                    l.next.next.next = new ListNode(4)
+                    l.next.next.next.next = new ListNode(5)
+                    oddEvenList(l)`,
+                    output: `ListNode {
+                      val: 1,
+                      next: ListNode { val: 3, next: ListNode { val: 5, next: [ListNode] } }
+                    }`,
                   },
                 },
               }}
