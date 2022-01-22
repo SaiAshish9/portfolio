@@ -51477,8 +51477,21 @@ Window position                Max
                   "Q331. Verify Preorder Serialization of a Binary Tree (Q279)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string} preorder
+                    * @return {boolean}
+                    */
+                   var isValidSerialization = function(preorder) {
+                     let degree = 1; 
+                     for (let node of preorder.split(",")) {
+                       if (--degree < 0) return false;
+                       if (node !== "#") degree += 2; 
+                     }
+                     return degree == 0;
+                   };
+                   
+                   isValidSerialization("9,3,4,#,#,1,#,#,2,#,6,#,#")`,
+                    output: `true`,
                   },
                 },
               }}
