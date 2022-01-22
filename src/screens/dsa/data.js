@@ -201,6 +201,7 @@ import Leetcode319 from "assets/leetcode/319.png";
 import Leetcode329 from "assets/leetcode/329.png";
 import Leetcode331 from "assets/leetcode/331.png";
 import Leetcode332 from "assets/leetcode/332.png";
+import Leetcode335 from "assets/leetcode/335.png";
 
 export const DATA = {
   ds: {
@@ -51660,7 +51661,7 @@ Window position                Max
             <p>
               Time: O(n)
               <br />
-              Space: O(n)
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -51700,38 +51701,83 @@ Window position                Max
             <Span>
               <b>Q335. Self Crossing (Q282)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given an array of integers distance.
+              <br />
+              You start at point (0,0) on an X-Y plane and you move distance[0]
+              meters to the north, then distance[1] meters to the west,
+              distance[2] meters to the south, distance[3] meters to the east,
+              and so on. In other words, after each move, your direction changes
+              counter-clockwise.
+              <br />
+              Return true if your path crosses itself, and false if it does not.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode335} left />
+            <Span>
+              Input: distance = [2,1,1,2] <br />
+              Output: true
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: distance = [1,2,3,4] <br />
+              Output: false
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: distance = [1,1,1,1]
+              <br />
+              Output: true
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= distance.length &lt;= 105 <br />1 &lt;= distance[i] &lt;=
+              10^5
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
               Time: O(n)
               <br />
-              Space: O(n)
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
                 title: "Q335. Self Crossing (Q282)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} distance
+                    * @return {boolean}
+                    */
+                   var isSelfCrossing = function(distance) {
+                         if (distance.length <= 3)
+                         return false;
+                   
+                       for (let i = 3; i < distance.length; ++i) {
+                         if (distance[i - 2] <= distance[i] && distance[i - 1] <= distance[i - 3])
+                           return true;
+                         if (i >= 4 && distance[i - 1] == distance[i - 3] && distance[i - 2] <= distance[i] + distance[i - 4])
+                           return true;
+                         if (i >= 5 && distance[i - 4] <= distance[i - 2] && distance[i - 2] <= distance[i] + distance[i - 4] && distance[i - 1] <= distance[i - 3] &&
+                             distance[i - 3] <= distance[i - 1] + distance[i - 5])
+                           return true;
+                       }
+                   
+                       return false;
+                   };
+                   
+                   isSelfCrossing([1,2,3,4])`,
+                    output: `false`,
                   },
                 },
               }}
