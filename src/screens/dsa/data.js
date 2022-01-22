@@ -53320,9 +53320,10 @@ Window position                Max
         ),
       },
       q299: {
-        title: "Q (Q299)",
+        title: "Q365. Water and Jug Problem (Q299)",
         content: (
           <Comp
+            title="Q365. Water and Jug Problem (Q299)"
             content1={
               <>
                 You are given two jugs with capacities jug1Capacity and
@@ -53379,7 +53380,9 @@ Window position                Max
             }
             tc="1"
             sc="1"
-            codes={{ Javascript: { code: `/**
+            codes={{
+              Javascript: {
+                code: `/**
             * @param {number} jug1Capacity
             * @param {number} jug2Capacity
             * @param {number} targetCapacity
@@ -53397,37 +53400,69 @@ Window position                Max
              return z == 0 || x + y >= z && z % gcd(x, y) == 0;  
            };
            
-           canMeasureWater(1,2,3)`, output: `true` } }}
+           canMeasureWater(1,2,3)`,
+                output: `true`,
+              },
+            }}
           />
         ),
       },
       q300: {
-        title: "Q (Q300)",
+        title: "Q367. Valid Perfect Square (Q300)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q367. Valid Perfect Square (Q300)"
+            content1={
+              <>
+                Given a positive integer num, write a function which returns
+                True if num is a perfect square else False.
+                <br />
+                <b>Follow up: </b>Do not use any built-in library function such
+                as sqrt.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = 16 <br />
+                    Output: true
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = 14
+                    <br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up: </b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            constraints={<>1 &lt;= num &lt;= 2^31 - 1</>}
+            tc="log num"
+            sc="1"
+            codes={{ Javascript: { code: `/**
+            * @param {number} num
+            * @return {boolean}
+            */
+           var isPerfectSquare = function(num) {
+             let l = 1;
+             let r = num;
+             while (l < r) {
+               let m = l + parseInt((r - l) / 2);
+               if (m >= num / m)
+                 r = m;
+               else
+                 l = m + 1;
+             }
+             return l * l == num;   
+           };
+           
+           isPerfectSquare(16)`, output: `true` } }}
           />
         ),
       },
