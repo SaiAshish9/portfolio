@@ -202,6 +202,7 @@ import Leetcode329 from "assets/leetcode/329.png";
 import Leetcode331 from "assets/leetcode/331.png";
 import Leetcode332 from "assets/leetcode/332.png";
 import Leetcode335 from "assets/leetcode/335.png";
+import Leetcode337 from "assets/leetcode/337.png"; 
 
 export const DATA = {
   ds: {
@@ -51895,23 +51896,45 @@ Window position                Max
             <Span>
               <b>Q337. House Robber III (Q284)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              The thief has found himself a new place for his thievery again.
+              There is only one entrance to this area, called root.
+              <br />
+              Besides the root, each house has one and only one parent house.
+              After a tour, the smart thief realized that all houses in this
+              place form a binary tree. It will automatically contact the police
+              if two directly-linked houses were broken into on the same night.
+              <br />
+              Given the root of the binary tree, return the maximum amount of
+              money the thief can rob without alerting the police.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode337} left />
+            <Span>
+              Input: root = [3,2,3,null,3,null,1] <br />
+              Output: 7 <br />
+              Explanation: Maximum amount of money the thief can rob = 3 + 3 + 1
+              = 7.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: root = [3,4,5,1,3,null,1]
+              <br />
+              Output: 9<br />
+              Explanation: Maximum amount of money the thief can rob = 4 + 5 =
+              9.
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              The number of nodes in the tree is in the range [1, 104]. <br />0
+              &lt;= Node.val &lt;= 104
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
@@ -51925,8 +51948,44 @@ Window position                Max
                 title: "Q337. House Robber III (Q284)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `function TreeNode(val, left, right) {
+                      this.val = (val===undefined ? 0 : val)
+                      this.left = (left===undefined ? null : left)
+                      this.right = (right===undefined ? null : right)
+                  }
+                  
+                  
+                  class T {
+                    constructor(robRoot,notRobRoot) {
+                      this.robRoot = robRoot;
+                      this.notRobRoot = notRobRoot;
+                    }
+                  }
+                  
+                  function robOrNotRob(root){
+                    if(!root) return new T(0, 0);
+                    const l = robOrNotRob(root.left);
+                    const r = robOrNotRob(root.right);
+                    return new T(root.val + l.notRobRoot + r.notRobRoot,
+                                   Math.max(l.robRoot, l.notRobRoot) + Math.max(r.robRoot, r.notRobRoot));
+                  }
+                  
+                  /**
+                   * @param {TreeNode} root
+                   * @return {number}
+                   */
+                  var rob = function(root) {
+                    const t = robOrNotRob(root);
+                    return Math.max(t.robRoot, t.notRobRoot);
+                  };
+                  
+                  const t = new TreeNode(3)
+                  t.left = new TreeNode(2)
+                  t.left.right = new TreeNode(3)
+                  t.right = new TreeNode(3)
+                  t.right.right = new TreeNode(1)
+                  rob(t)`,
+                    output: `7`,
                   },
                 },
               }}
