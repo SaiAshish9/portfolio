@@ -52847,16 +52847,46 @@ Window position                Max
                 the data stream?
               </>
             }
-            tc="n"
+            tc="n.log n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{
+              Java: {
+                code: `class SummaryRanges {
+              public void addNum(int val) {
+                if (map.containsKey(val))
+                  return;
+                final Integer lo = map.lowerKey(val);  
+                final Integer hi = map.higherKey(val);
+                if (lo != null && hi != null && map.get(lo)[1] + 1 == val && val + 1 == hi) {
+                  map.get(lo)[1] = map.get(hi)[1];
+                  map.remove(hi);
+                } else if (lo != null && map.get(lo)[1] + 1 >= val) {
+                  map.get(lo)[1] = Math.max(map.get(lo)[1], val);
+                } else if (hi != null && val + 1 == hi) {
+                  map.put(val, new int[] {val, map.get(hi)[1]});
+                  map.remove(hi);
+                } else {
+                  map.put(val, new int[] {val, val});
+                }
+              }
+              public int[][] getIntervals() {
+                List<int[]> intervals = new ArrayList<>(map.values());
+                return intervals.toArray(new int[intervals.size()][]);
+              }
+              private TreeMap<Integer, int[]> map = new TreeMap<>();
+            }
+            `,
+                output: `[null,null,[[1,1]],null,[[1,1],[3,3]],null,[[1,1],[3,3],[7,7]],null,[[1,3],[7,7]],null,[[1,3],[6,7]]]`,
+              },
+            }}
           />
         ),
       },
       q295: {
-        title: "Q (Q295)",
+        title: "Q354. Russian Doll Envelopes (Q295)",
         content: (
           <Comp
+            title="Q354. Russian Doll Envelopes (Q295)"
             content1={<></>}
             img={null}
             content2={null}
