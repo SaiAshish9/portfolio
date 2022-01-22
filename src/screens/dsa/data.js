@@ -52351,38 +52351,66 @@ Window position                Max
             <Span>
               <b>Q344. Reverse String (Q288)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Write a function that reverses a string. The input string is given
+              as an array of characters s.
+              <br />
+              You must do this by modifying the input array in-place with O(1)
+              extra memory.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = ["h","e","l","l","o"]
+              <br />
+              Output: ["o","l","l","e","h"]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: s = ["H","a","n","n","a","h"]
+              <br />
+              Output: ["h","a","n","n","a","H"]
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= s.length &lt;= 105 <br />
+              s[i] is a printable ascii character.
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
               Time: O(n)
               <br />
-              Space: O(n)
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
                 title: "Q344. Reverse String (Q289)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {character[]} s
+                    * @return {void} Do not return anything, modify s in-place instead.
+                    */
+                   var reverseString = function(s) {
+                     let l = 0;
+                     let r = s.length - 1;
+                     while (l < r) {
+                     const temp = s[l];
+                     s[l++] = s[r];
+                     s[r--] = temp;
+                     } 
+                     console.log(s)
+                   };
+                   
+                   reverseString(["h","e","l","l","o"])`,
+                    output: `[ 'o', 'l', 'l', 'e', 'h' ]`,
                   },
                 },
               }}
