@@ -51312,30 +51312,59 @@ Window position                Max
             <Span>
               <b>Q330. Patching Array (Q278)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a sorted integer array nums and an integer n, add/patch
+              elements to the array such that any number in the range [1, n]
+              inclusive can be formed by the sum of some elements in the array.
+              <br />
+              Return the minimum number of patches required.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [1,3], n = 6 <br />
+              Output: 1 <br />
+              Explanation: <br />
+              Combinations of nums are [1], [3], [1,3], which form possible sums
+              of: 1, 3, 4. <br />
+              Now if we add/patch 2 to nums, the combinations are: [1], [2],
+              [3], [1,3], [2,3], [1,2,3]. <br />
+              Possible sums are 1, 2, 3, 4, 5, 6, which now covers the range [1,
+              6]. <br />
+              So we only need 1 patch.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [1,5,10], n = 20
+              <br />
+              Output: 2<br />
+              Explanation: The two patches can be [2, 4].
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [1,2,2], n = 5<br />
+              Output: 0
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= nums.length &lt;= 1000 <br />
+              1 &lt;= nums[i] &lt;= 10^4 <br />
+              nums is sorted in ascending order. <br />1 &lt;= n &lt;= 2^31 - 1
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
               Time: O(n)
               <br />
-              Space: O(n)
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
