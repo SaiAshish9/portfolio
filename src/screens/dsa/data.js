@@ -51792,23 +51792,45 @@ Window position                Max
             <Span>
               <b>Q336. Palindrome Pairs (Q283)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a list of unique words, return all the pairs of the distinct
+              indices (i, j) in the given list, so that the concatenation of the
+              two words words[i] + words[j] is a palindrome.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: words = ["abcd","dcba","lls","s","sssll"]
+              <br />
+              Output: [[0,1],[1,0],[3,2],[2,4]]
+              <br />
+              Explanation: The palindromes are
+              ["dcbaabcd","abcddcba","slls","llssssll"]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: words = ["bat","tab","cat"] <br />
+              Output: [[0,1],[1,0]] <br />
+              Explanation: The palindromes are ["battab","tabbat"]
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: words = ["a",""] <br />
+              Output: [[0,1],[1,0]]
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= words.length &lt;= 5000 <br />
+              0 &lt;= words[i].length &lt;= 300 <br />
+              words[i] consists of lower-case English letters.
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
