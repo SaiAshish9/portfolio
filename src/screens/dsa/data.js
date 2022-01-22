@@ -53445,7 +53445,9 @@ Window position                Max
             constraints={<>1 &lt;= num &lt;= 2^31 - 1</>}
             tc="log num"
             sc="1"
-            codes={{ Javascript: { code: `/**
+            codes={{
+              Javascript: {
+                code: `/**
             * @param {number} num
             * @return {boolean}
             */
@@ -53462,44 +53464,99 @@ Window position                Max
              return l * l == num;   
            };
            
-           isPerfectSquare(16)`, output: `true` } }}
+           isPerfectSquare(16)`,
+                output: `true`,
+              },
+            }}
           />
         ),
       },
       q301: {
-        title: "Q (Q301)",
+        title: "Q368. Largest Divisible Subset (Q301)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q368. Largest Divisible Subset (Q301)"
+            content1={
+              <>
+                Given a set of distinct positive integers nums, return the
+                largest subset answer such that every pair (answer[i],
+                answer[j]) of elements in this subset satisfies:
+                <br />
+                answer[i] % answer[j] == 0, or <br />
+                answer[j] % answer[i] == 0 <br />
+                If there are multiple solutions, return any of them.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3] <br />
+                    Output: [1,2] <br />
+                    Explanation: [1,3] is also accepted.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,4,8]
+                    <br />
+                    Output: [1,2,4,8]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= nums.length &lt;= 1000 <br />
+                1 &lt;= nums[i] &lt;= 2 * 10^9 <br />
+                All the integers in nums are unique.
               </>
             }
-            tc="n"
+            tc="n^2"
             sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: `/**
+            * @param {number[]} nums
+            * @return {number[]}
+            */
+           var largestDivisibleSubset = function(nums) {
+             const n = nums.length;
+             const ans = [];
+             const sizeEndsAt = Array(n).fill(1);
+             const prevIndex = Array(n).fill(-1);
+             let maxSize = 0;
+             let index = -1; 
+             nums = nums.sort((a,b)=>a-b)
+             for (let i = 0; i < n; ++i) {
+               for (let j = i - 1; j >= 0; --j)
+                 if (nums[i] % nums[j] == 0 && sizeEndsAt[i] < sizeEndsAt[j] + 1) {
+                   sizeEndsAt[i] = sizeEndsAt[j] + 1;
+                   prevIndex[i] = j;
+                 }
+               if (maxSize < sizeEndsAt[i]) {
+                 maxSize = sizeEndsAt[i];
+                 index = i;
+               }
+             }
+             while (index != -1) {
+               ans.push(nums[index]);
+               index = prevIndex[index];
+             }
+             return ans; 
+           };
+           
+           largestDivisibleSubset([1,2,3])`, output: `[ 2, 1 ]` } }}
           />
         ),
       },
       q302: {
-        title: "Q (Q302)",
+        title: "Q371. Sum of Two Integers (Q302)",
         content: (
           <Comp
+            title="Q371. Sum of Two Integers (Q302)"
             content1={<></>}
             img={null}
             content2={null}
