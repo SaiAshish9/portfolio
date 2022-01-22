@@ -36,12 +36,12 @@ const images = [
     link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_cred-activity-6863131141751361536-69Yt",
   },
   {
-    img: LinkedInImg,
-    link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_bug-activity-6869609356883849216-F2T2",
-  },
-  {
     img: MicrosoftImg,
     link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_microsoft-activity-6865598829408866304-T6NS",
+  },
+  {
+    img: LinkedInImg,
+    link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_bug-activity-6869609356883849216-F2T2",
   },
   {
     img: WhatsappImg,
