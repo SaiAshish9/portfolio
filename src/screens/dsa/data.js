@@ -52206,7 +52206,6 @@ Window position                Max
               <br />
               An integer n is a power of four, if there exists an integer x such
               that n == 4^x.
-              <br />
             </Span>
             <Span>
               <b>Example 1:</b>
@@ -52277,7 +52276,12 @@ Window position                Max
             <Span>
               <b>Q343. Integer Break (Q288)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer n, break it into the sum of k positive integers,
+              where k >= 2, and maximize the product of those integers.
+              <br />
+              Return the maximum product you can get.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
