@@ -52548,7 +52548,10 @@ Window position                Max
                 title: "Q347. Top K Frequent Elements (Q291)",
                 codes: {
                   Java: {
-                    code: `class T {
+                    code: `
+                    // [1,1,1,2,2,3]
+// 2
+                    class T {
                       public int num;
                       public int freq;
                       public T(int num, int freq) {
