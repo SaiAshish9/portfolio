@@ -52505,28 +52505,41 @@ Window position                Max
             <Span>
               <b>Q347. Top K Frequent Elements (Q291)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer array nums and an integer k, return the k most
+              frequent elements. You may return the answer in any order.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [1,1,1,2,2,3], k = 2<br />
+              Output: [1,2]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: nums = [1], k = 1<br />
+              Output: [1]
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= nums.length &lt;= 10^5 <br />k is in the range [1, the
+              number of unique elements in the array]. <br />
+              It is guaranteed that the answer is unique.
+            </Span>{" "}
+            <Span>
+              Follow up: Your algorithm's time complexity must be better than
+              O(n log n), where n is the array's size.
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(n)
+              Time: O(n.log k)
               <br />
               Space: O(n)
             </p>
@@ -52534,9 +52547,43 @@ Window position                Max
               options={{
                 title: "Q347. Top K Frequent Elements (Q291)",
                 codes: {
-                  Javacript: {
-                    code: ``,
-                    output: ``,
+                  Java: {
+                    code: `class T {
+                      public int num;
+                      public int freq;
+                      public T(int num, int freq) {
+                        this.num = num;
+                        this.freq = freq;
+                      }
+                    }
+                    
+                    class Solution {
+                      public int[] topKFrequent(int[] nums, int k) {
+                        final int n = nums.length;
+                    
+                        int[] ans = new int[k];
+                        Map<Integer, Integer> count = new HashMap<>();
+                        PriorityQueue<T> pq = new PriorityQueue<>((a, b) -> a.freq - b.freq);
+                    
+                        for (final int num : nums)
+                          count.put(num, count.getOrDefault(num, 0) + 1);
+                    
+                        for (Map.Entry<Integer, Integer> entry : count.entrySet()) {
+                          final int num = entry.getKey();
+                          final int freq = entry.getValue();
+                          pq.offer(new T(num, freq));
+                          if (pq.size() > k)
+                            pq.poll();
+                        }
+                    
+                        for (int i = 0; i < k; ++i)
+                          ans[i] = pq.poll().num;
+                    
+                        return ans;
+                      }
+                    }
+                    `,
+                    output: `[2,1]`,
                   },
                 },
               }}
