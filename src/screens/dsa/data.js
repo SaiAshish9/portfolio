@@ -52467,8 +52467,30 @@ Window position                Max
                 title: "Q345. Reverse Vowels of a String (Q290)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string} s
+                    * @return {string}
+                    */
+                   var reverseVowels = function(s) {
+                     const chars = s.split("")
+                     const vowels = "aeiouAEIOU";
+                     const st = vowels.split("");
+                     let l = 0;
+                     let r = s.length - 1;
+                     while (l < r) {
+                       while (l < r && !st.includes(chars[l]))
+                         ++l;
+                       while (l < r && !st.includes(chars[r]))
+                         --r;
+                     [ chars[l], chars[r] ] = [ chars[r], chars[l] ];
+                     l++
+                     r--
+                     }
+                     return chars.join("")
+                   };
+                   
+                   reverseVowels("hello");`,
+                    output: `holle`,
                   },
                 },
               }}
