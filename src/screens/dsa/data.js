@@ -53379,7 +53379,25 @@ Window position                Max
             }
             tc="1"
             sc="1"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: `/**
+            * @param {number} jug1Capacity
+            * @param {number} jug2Capacity
+            * @param {number} targetCapacity
+            * @return {boolean}
+            */
+           
+           function gcd(x, y) {
+             return y == 0 ? x : gcd(y, x % y);
+           }
+           
+           var canMeasureWater = function(jug1Capacity, jug2Capacity, targetCapacity) {
+             const x = jug1Capacity
+             const y = jug2Capacity
+             const z = targetCapacity
+             return z == 0 || x + y >= z && z % gcd(x, y) == 0;  
+           };
+           
+           canMeasureWater(1,2,3)`, output: `true` } }}
           />
         ),
       },
