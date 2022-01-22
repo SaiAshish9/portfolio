@@ -53279,7 +53279,9 @@ Window position                Max
             }
             tc="min(m,n)^2⋅max(m,n)⋅logmax(m,n)"
             sc="max(m,n)"
-            codes={{ Java: { code: `
+            codes={{
+              Java: {
+                code: `
             // [[1,0,1],[0,-2,3]], 2
             class Solution {
               public int maxSumSubmatrix(int[][] matrix, int k) {
@@ -53310,7 +53312,10 @@ Window position                Max
                 return ans;
               }
             }
-            `, output: `2` } }}
+            `,
+                output: `2`,
+              },
+            }}
           />
         ),
       },
@@ -53318,28 +53323,62 @@ Window position                Max
         title: "Q (Q299)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                You are given two jugs with capacities jug1Capacity and
+                jug2Capacity liters. There is an infinite amount of water supply
+                available. Determine whether it is possible to measure exactly
+                targetCapacity liters using these two jugs.
+                <br />
+                If targetCapacity liters of water are measurable, you must have
+                targetCapacity liters of water contained within one or both
+                buckets by the end.
+                <br />
+                Operations allowed:
+                <br />
+                Fill any of the jugs with water.
+                <br />
+                Empty any of the jugs.
+                <br />
+                Pour water from one jug into another till the other jug is
+                completely full, or the first jug itself is empty.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: jug1Capacity = 3, <br />
+                    jug2Capacity = 5,
+                    <br /> targetCapacity = 4<br /> Output: true Explanation:
+                    The famous Die Hard example
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: jug1Capacity = 2, <br /> jug2Capacity = 6, <br />{" "}
+                    targetCapacity = 5 Output: false
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: jug1Capacity = 1, jug2Capacity = 2, <br />
+                    targetCapacity = 3 <br /> Output: true
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up: </b>
-              </>
+            constraints={
+              <>1 &lt;= jug1Capacity, jug2Capacity, targetCapacity &lt;= 106</>
             }
-            tc="n"
-            sc="n"
+            tc="1"
+            sc="1"
             codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
