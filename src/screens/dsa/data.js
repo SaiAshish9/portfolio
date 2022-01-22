@@ -6378,7 +6378,7 @@ if __name__=='__main__':
                   options={{
                     title: "Adjacency List(Practice)",
                     codes: {
-                      Javacript: {
+                      Javascript: {
                         code: `class Graph{
 
                           constructor(n,v){
@@ -15428,7 +15428,7 @@ SC O(N*W)
                   options={{
                     title: "Rabin Karp",
                     codes: {
-                      Javacript: {
+                      Javascript: {
                         code: `//  The Rabin-Karp algorithm uses a rolling hash to
                         //  detect the presence of a desired substring. 
                         //  Because it's a hash function, it maps many different 
@@ -20129,7 +20129,7 @@ print(convert("PAYPALISHIRING", 3))
                 title: `Q7. Reverse Integer`,
                 output: `-21`,
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `
                    var reverse = function(x) {
                        // Number.MAX_SAFE_INTEGER -> 2^53 - 1
@@ -20343,7 +20343,7 @@ print(convert("PAYPALISHIRING", 3))
                 title: "Q8. String to Integer (atoi)",
                 output: `42`,
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {string} s
                     * @return {number}
@@ -20635,7 +20635,7 @@ print(ATOI.atoi("-23"))`,
                 output: `true`,
                 title: "Q9. Palindrome Number",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/*
 @param {number} x
 @return {boolean}
@@ -23389,7 +23389,7 @@ while y is not None:
               options={{
                 title: "Q20. Valid Parenthesis",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     output: `true`,
                     code: `/**
                     * @param {string} s
@@ -23602,7 +23602,7 @@ print(Solution.isValid('{{()}}'))`,
                 4
                 #############`,
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `// Definition for singly-linked list.
                     function ListNode(val, next) {
                         this.val = (val===undefined ? 0 : val)
@@ -26903,7 +26903,7 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
               options={{
                 title: "Q37. Sudoku Solver",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                 * @param {character[][]} board
                 * @return {void} Do not return anything, modify board in-place instead.
@@ -49854,7 +49854,7 @@ Window position                Max
                 title:
                   "Q309. Best Time to Buy and Sell Stock with Cooldown (Q263)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {number[]} prices
                     * @return {number}
@@ -50059,7 +50059,7 @@ Window position                Max
               options={{
                 title: "Q312. Burst Balloons (Q265)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {number[]} nums
                     * @return {number}
@@ -50149,7 +50149,7 @@ Window position                Max
               options={{
                 title: "Q313. Super Ugly Number (Q266)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {number} n
                     * @param {number[]} primes
@@ -50240,7 +50240,7 @@ Window position                Max
               options={{
                 title: "Q315. Count of Smaller Numbers After Self (Q267)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {number[]} nums
                     * @return {number[]}
@@ -50341,7 +50341,7 @@ Window position                Max
               options={{
                 title: "Q316. Remove Duplicate Letters (Q268)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {string} s
                     * @return {string}
@@ -50439,7 +50439,7 @@ Window position                Max
               options={{
                 title: "Q318. Maximum Product of Word Lengths (Q269)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {string[]} words
                     * @return {number}
@@ -50533,7 +50533,7 @@ Window position                Max
               options={{
                 title: "Q319. Bulb Switcher (Q270)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {number} n
                     * @return {number}
@@ -50734,7 +50734,7 @@ Window position                Max
               options={{
                 title: "Q322. Coin Change (Q272)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {number[]} coins
                     * @param {number} amount
@@ -50970,7 +50970,7 @@ Window position                Max
               options={{
                 title: "Q326. Power of Three (Q274)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {number} n
                     * @return {boolean}
@@ -51164,7 +51164,7 @@ Window position                Max
               options={{
                 title: "Q328. Odd Even Linked List (Q276)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `function ListNode(val, next) {
                       this.val = (val===undefined ? 0 : val)
                       this.next = (next===undefined ? null : next)
@@ -51270,7 +51270,7 @@ Window position                Max
               options={{
                 title: "Q329. Longest Increasing Path in a Matrix (Q277)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {number[][]} matrix
                     * @return {number}
@@ -51375,7 +51375,7 @@ Window position                Max
               options={{
                 title: "Q330. Patching Array (Q278)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {number[]} nums
                     * @param {number} n
@@ -51480,7 +51480,7 @@ Window position                Max
                 title:
                   "Q331. Verify Preorder Serialization of a Binary Tree (Q279)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {string} preorder
                     * @return {boolean}
@@ -51669,7 +51669,7 @@ Window position                Max
               options={{
                 title: "Q334. Increasing Triplet Subsequence (Q281)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {number[]} nums
                     * @return {boolean}
@@ -51756,7 +51756,7 @@ Window position                Max
               options={{
                 title: "Q335. Self Crossing (Q282)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {number[]} distance
                     * @return {boolean}
@@ -51845,7 +51845,7 @@ Window position                Max
               options={{
                 title: "Q336. Palindrome Pairs (Q283)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {string[]} words
                     * @return {number[][]}
@@ -51948,7 +51948,7 @@ Window position                Max
               options={{
                 title: "Q337. House Robber III (Q284)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `function TreeNode(val, left, right) {
                       this.val = (val===undefined ? 0 : val)
                       this.left = (left===undefined ? null : left)
@@ -52057,7 +52057,7 @@ Window position                Max
               options={{
                 title: "Q338. Counting Bits (Q285)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {number} n
                     * @return {number[]}
@@ -52158,7 +52158,7 @@ Window position                Max
               options={{
                 title: "Q341. Flatten Nested List Iterator (Q286)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `public class NestedIterator implements Iterator<Integer> {
                       public NestedIterator(List<NestedInteger> nestedList) {
                         addInteger(nestedList);
@@ -52246,7 +52246,7 @@ Window position                Max
               options={{
                 title: "Q342. Power of Four (Q287)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {number} n
                     * @return {boolean}
@@ -52317,7 +52317,7 @@ Window position                Max
               options={{
                 title: "Q343. Integer Break (Q288)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {number} n
                     * @return {number}
@@ -52394,7 +52394,7 @@ Window position                Max
               options={{
                 title: "Q344. Reverse String (Q289)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {character[]} s
                     * @return {void} Do not return anything, modify s in-place instead.
@@ -52467,7 +52467,7 @@ Window position                Max
               options={{
                 title: "Q345. Reverse Vowels of a String (Q290)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {string} s
                     * @return {string}
@@ -52641,7 +52641,7 @@ Window position                Max
               options={{
                 title: "Q349. Intersection of Two Arrays (Q292)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {number[]} nums1
                     * @param {number[]} nums2
@@ -52731,7 +52731,7 @@ Window position                Max
               options={{
                 title: "Q350. Intersection of Two Arrays II (Q293)",
                 codes: {
-                  Javacript: {
+                  Javascript: {
                     code: `/**
                     * @param {number[]} nums1
                     * @param {number[]} nums2
@@ -52935,7 +52935,7 @@ Window position                Max
             tc="n.log n"
             sc="n"
             codes={{
-              Javacript: {
+              Javascript: {
                 code: `/**
             * @param {number[][]} envelopes
             * @return {number}
@@ -53056,7 +53056,99 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Java: { code: `class Tweet {
+              public int id;
+              public int time;
+              public Tweet next = null;
+              public Tweet(int id, int time) {
+                this.id = id;
+                this.time = time;
+              }
+            }
+            
+            class User {
+              private int id;
+              public Set<Integer> followeeIds = new HashSet<>();
+              public Tweet tweetHead = null;
+            
+              public User(int id) {
+                this.id = id;
+                follow(id); 
+              }
+            
+              public void follow(int followeeId) {
+                followeeIds.add(followeeId);
+              }
+            
+              public void unfollow(int followeeId) {
+                followeeIds.remove(followeeId);
+              }
+            
+              public void post(int tweetId, int time) {
+                final Tweet oldTweetHead = tweetHead;
+                tweetHead = new Tweet(tweetId, time);
+                tweetHead.next = oldTweetHead;
+              }
+            }
+            
+            class Twitter {
+              public void postTweet(int userId, int tweetId) {
+                users.putIfAbsent(userId, new User(userId));
+                users.get(userId).post(tweetId, time++);
+              }
+            
+              public List<Integer> getNewsFeed(int userId) {
+                if (!users.containsKey(userId))
+                  return new ArrayList<>();
+            
+                List<Integer> newsFeed = new ArrayList<>();
+                PriorityQueue<Tweet> pq = new PriorityQueue<>((a, b) -> b.time - a.time);
+            
+                for (final int followeeId : users.get(userId).followeeIds) {
+                  Tweet tweetHead = users.get(followeeId).tweetHead;
+                  if (tweetHead != null)
+                    pq.offer(tweetHead);
+                }
+            
+                int count = 0;
+                while (!pq.isEmpty() && count++ < 10) {
+                  Tweet tweet = pq.poll();
+                  newsFeed.add(tweet.id);
+                  if (tweet.next != null)
+                    pq.offer(tweet.next);
+                }
+            
+                return newsFeed;
+              }
+            
+              public void follow(int followerId, int followeeId) {
+                if (followerId == followeeId)
+                  return;
+                users.putIfAbsent(followerId, new User(followerId));
+                users.putIfAbsent(followeeId, new User(followeeId));
+                users.get(followerId).follow(followeeId);
+              }
+            
+            
+              public void unfollow(int followerId, int followeeId) {
+                if (followerId == followeeId)
+                  return;
+                if (users.containsKey(followerId) && users.containsKey(followeeId))
+                  users.get(followerId).unfollow(followeeId);
+              }
+            
+              private int time = 0;
+              private Map<Integer, User> users = new HashMap<>(); 
+            }
+            
+            /**
+             * Your Twitter object will be instantiated and called as such:
+             * Twitter obj = new Twitter();
+             * obj.postTweet(userId,tweetId);
+             * List<Integer> param_2 = obj.getNewsFeed(userId);
+             * obj.follow(followerId,followeeId);
+             * obj.unfollow(followerId,followeeId);
+             */`, output: `[null,null,[5],null,null,[6,5],null,[5]]` } }}
           />
         ),
       },
@@ -53086,7 +53178,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53116,7 +53208,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53146,7 +53238,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53176,7 +53268,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53206,7 +53298,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53236,7 +53328,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53266,7 +53358,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53296,7 +53388,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53326,7 +53418,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53356,7 +53448,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53386,7 +53478,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53416,7 +53508,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53446,7 +53538,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53476,37 +53568,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
-          />
-        ),
-      },
-      q295: {
-        title: "Q (Q295)",
-        content: (
-          <Comp
-            content1={<></>}
-            img={null}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up: </b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53536,7 +53598,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53566,7 +53628,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53596,7 +53658,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53626,7 +53688,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53656,7 +53718,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53686,7 +53748,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53716,7 +53778,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53746,7 +53808,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53776,7 +53838,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53806,7 +53868,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53836,7 +53898,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53866,7 +53928,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53896,7 +53958,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53926,7 +53988,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53956,7 +54018,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -53986,7 +54048,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -54016,7 +54078,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -54046,7 +54108,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -54076,7 +54138,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -54106,7 +54168,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -54136,7 +54198,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -54166,7 +54228,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -54196,7 +54258,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -54226,7 +54288,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -54256,7 +54318,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -54286,7 +54348,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -54316,7 +54378,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
@@ -54346,7 +54408,7 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
       },
