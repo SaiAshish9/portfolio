@@ -24,6 +24,18 @@ const images = [
     link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_firebase-google-activity-6868979111851900928-3bBv",
   },
   {
+    img: StripeImg,
+    link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_stripe-activity-6867165190501339136-dAk5",
+  },
+  {
+    img: GFGImg,
+    link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_geeksforgeeks-activity-6871923789240913920-CRqp",
+  },
+  {
+    img: CREDImg,
+    link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_cred-activity-6863131141751361536-69Yt",
+  },
+  {
     img: LinkedInImg,
     link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_bug-activity-6869609356883849216-F2T2",
   },
@@ -32,20 +44,8 @@ const images = [
     link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_microsoft-activity-6865598829408866304-T6NS",
   },
   {
-    img: GFGImg,
-    link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_geeksforgeeks-activity-6871923789240913920-CRqp",
-  },
-  {
-    img: StripeImg,
-    link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_stripe-activity-6867165190501339136-dAk5",
-  },
-  {
     img: WhatsappImg,
     link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_whatsappbusiness-whatsapp-meta-activity-6870017467322912768-kr9V",
-  },
-  {
-    img: CREDImg,
-    link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_cred-activity-6863131141751361536-69Yt",
   },
 ];
 // https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_geeksforgeeks-activity-6871923789240913920-CRqp

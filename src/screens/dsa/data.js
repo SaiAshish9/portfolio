@@ -51835,9 +51835,9 @@ Window position                Max
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(n)
+              Time: O(n.k^2)
               <br />
-              Space: O(n)
+              Space: O(nk)
             </p>
             <CodeEditor
               options={{
