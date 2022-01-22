@@ -52425,30 +52425,42 @@ Window position                Max
             <Span>
               <b>Q345. Reverse Vowels of a String (Q290)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given a string s, reverse only all the vowels in the string and
+              return it.
+              <br />
+              The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in
+              both cases.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: s = "hello"
+              <br />
+              Output: "holle"
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: s = "leetcode" <br />
+              Output: "leotcede"
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= s.length &lt;= 3 * 10^5 <br />s consist of printable ASCII
+              characters.
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
               Time: O(n)
               <br />
-              Space: O(n)
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
