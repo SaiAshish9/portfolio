@@ -198,6 +198,7 @@ import Leetcode297 from "assets/leetcode/297.png";
 import Leetcode304 from "assets/leetcode/304.png";
 import Leetcode310 from "assets/leetcode/310.png";
 import Leetcode319 from "assets/leetcode/319.png";
+import Leetcode329 from "assets/leetcode/329.png";
 
 export const DATA = {
   ds: {
@@ -51210,38 +51211,93 @@ Window position                Max
             <Span>
               <b>Q329. Longest Increasing Path in a Matrix (Q276)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an m x n integers matrix, return the length of the longest
+              increasing path in matrix.
+              <br />
+              From each cell, you can either move in four directions: left,
+              right, up, or down. You may not move diagonally or move outside
+              the boundary (i.e., wrap-around is not allowed).
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode329} left />
+            <Span>
+              Input: matrix = [[9,9,4],[6,6,8],[2,1,1]] <br />
+              Output: 4 <br />
+              Explanation: The longest increasing path is [1, 2, 6, 9].
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: matrix = [[3,4,5],[3,2,6],[2,2,1]]
+              <br />
+              Output: 4<br />
+              Explanation: The longest increasing path is [3, 4, 5, 6]. Moving
+              diagonally is not allowed.
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: matrix = [[1]] <br />
+              Output: 1
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              m == matrix.length <br />
+              n == matrix[i].length <br />
+              1 &lt;= m, n &lt;= 200 <br />0 &lt;= matrix[i][j] &lt;= 231 - 1
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(n)
+              Time: O(mn)
               <br />
-              Space: O(n)
+              Space: O(mn)
             </p>
             <CodeEditor
               options={{
                 title: "Q329. Longest Increasing Path in a Matrix (Q277)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[][]} matrix
+                    * @return {number}
+                    */
+                   function dfs(matrix,i,j,prev,memo){
+                     if (i < 0 || i == matrix.length || j < 0 || j == matrix[0].length)
+                       return 0;
+                     if (matrix[i][j] <= prev)
+                       return 0;
+                     if (memo[i][j] > 0)
+                       return memo[i][j];
+                     const curr = matrix[i][j];
+                     const a = dfs(matrix, i + 1, j, curr, memo);
+                     const b = dfs(matrix, i - 1, j, curr, memo);
+                     const c = dfs(matrix, i, j + 1, curr, memo);
+                     const d = dfs(matrix, i, j - 1, curr, memo);
+                     return memo[i][j] = 1 + Math.max(Math.max(a, b), Math.max(c, d));
+                   }
+                   
+                   var longestIncreasingPath = function(matrix) {
+                     const m = matrix.length;
+                     const n = matrix[0].length;
+                     let ans = 0;
+                     const memo = Array.from(Array(m),()=>Array(n).fill(0))
+                     for (let i = 0; i < m; ++i)
+                       for (let j = 0; j < n; ++j)
+                         ans = Math.max(ans, dfs(matrix, i, j, Number.MIN_SAFE_INTEGER, memo));
+                     return ans;
+                   };
+                   
+                   longestIncreasingPath([[9,9,4],[6,6,8],[2,1,1]])`,
+                    output: `4`,
                   },
                 },
               }}
