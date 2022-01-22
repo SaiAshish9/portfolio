@@ -202,7 +202,7 @@ import Leetcode329 from "assets/leetcode/329.png";
 import Leetcode331 from "assets/leetcode/331.png";
 import Leetcode332 from "assets/leetcode/332.png";
 import Leetcode335 from "assets/leetcode/335.png";
-import Leetcode337 from "assets/leetcode/337.png"; 
+import Leetcode337 from "assets/leetcode/337.png";
 
 export const DATA = {
   ds: {
@@ -52000,23 +52000,50 @@ Window position                Max
             <Span>
               <b>Q338. Counting Bits (Q285)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer n, return an array ans of length n + 1 such that
+              for each i (0 &lt;= i &lt;= n), ans[i] is the number of 1's in the
+              binary representation of i.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 2 <br />
+              Output: [0,1,1] <br />
+              Explanation:
+              <br />
+              0 --&gt; 0<br />
+              1 --&gt; 1<br />2 --&gt; 10
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: n = 5<br />
+              Output: [0,1,1,2,1,2]
+              <br />
+              Explanation:
+              <br />
+              0 --&gt; 0<br />
+              1 --&gt; 1<br />
+              2 --&gt; 10
+              <br />
+              3 --&gt; 11
+              <br />
+              4 --&gt; 100
+              <br />5 --&gt; 101
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>0 &lt;= n &lt;= 105</Span>{" "}
+            <Span>
+              It is very easy to come up with a solution with a runtime of O(n
+              log n). Can you do it in linear time O(n) and possibly in a single
+              pass? Can you do it without using any built-in function (i.e.,
+              like __builtin_popcount in C++)?
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
@@ -52030,8 +52057,21 @@ Window position                Max
                 title: "Q338. Counting Bits (Q285)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {number[]}
+                    */
+                   var countBits = function(n) {
+                     const ans = Array(n + 1).fill(0);
+                   
+                     for (let i = 1; i <= n; ++i)
+                       ans[i] = ans[parseInt(i / 2)] + (i % 2 == 0 ? 0 : 1);
+                   
+                     return ans;
+                   };
+                   
+                   countBits(2)`,
+                    output: `[ 0, 1, 1 ]`,
                   },
                 },
               }}
