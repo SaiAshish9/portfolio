@@ -200,6 +200,7 @@ import Leetcode310 from "assets/leetcode/310.png";
 import Leetcode319 from "assets/leetcode/319.png";
 import Leetcode329 from "assets/leetcode/329.png";
 import Leetcode331 from "assets/leetcode/331.png";
+import Leetcode332 from "assets/leetcode/332.png";
 
 export const DATA = {
   ds: {
@@ -51506,38 +51507,96 @@ Window position                Max
             <Span>
               <b>Q332. Reconstruct Itinerary (Q280)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given a list of airline tickets where tickets[i] = [fromi,
+              toi] represent the departure and the arrival airports of one
+              flight. Reconstruct the itinerary in order and return it.
+              <br />
+              All of the tickets belong to a man who departs from "JFK", thus,
+              the itinerary must begin with "JFK". If there are multiple valid
+              itineraries, you should return the itinerary that has the smallest
+              lexical order when read as a single string.
+              <br />
+              For example, the itinerary ["JFK", "LGA"] has a smaller lexical
+              order than ["JFK", "LGB"].
+              <br />
+              You may assume all tickets form at least one valid itinerary. You
+              must use all the tickets once and only once.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Img src={Leetcode332} left />
+            <Span>
+              Input: tickets =
+              [["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]] <br />
+              Output: ["JFK","MUC","LHR","SFO","SJC"]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: tickets =
+              [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]{" "}
+              <br />
+              Output: ["JFK","ATL","JFK","SFO","ATL","SFO"] <br />
+              Explanation: Another possible reconstruction is
+              ["JFK","SFO","ATL","JFK","ATL","SFO"] but it is larger in lexical
+              order.
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= tickets.length &lt;= 300
+              <br />
+              tickets[i].length == 2<br />
+              fromi.length == 3<br />
+              toi.length == 3<br />
+              fromi and toi consist of uppercase English letters.
+              <br />
+              fromi != toi
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(n)
+              Time: O(|E| log |E|)
               <br />
-              Space: O(n)
+              Space: O(|E|)
             </p>
             <CodeEditor
               options={{
                 title: "Q332. Reconstruct Itinerary (Q280)",
                 codes: {
-                  Javacript: {
-                    code: ``,
-                    output: ``,
+                  Java: {
+                    code: `
+                    // [["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]]
+                    class Solution {
+                      public List<String> findItinerary(List<List<String>> tickets) {
+                        LinkedList<String> ans = new LinkedList<>();
+                        Map<String, PriorityQueue<String>> graph = new HashMap<>();
+                    
+                        for (final List<String> ticket : tickets) {
+                          graph.putIfAbsent(ticket.get(0), new PriorityQueue<>());
+                          graph.get(ticket.get(0)).offer(ticket.get(1));
+                        }
+                    
+                        dfs(graph, "JFK", ans);
+                    
+                        return ans;
+                      }
+                    
+                      private void dfs(Map<String, PriorityQueue<String>> graph, final String u,
+                                       LinkedList<String> ans) {
+                        final PriorityQueue<String> arrivals = graph.get(u);
+                        while (arrivals != null && !arrivals.isEmpty())
+                          dfs(graph, arrivals.poll(), ans);
+                        ans.addFirst(u);
+                      }
+                    }
+                    `,
+                    output: `["JFK","MUC","LHR","SFO","SJC"]`,
                   },
                 },
               }}
