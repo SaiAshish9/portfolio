@@ -52278,41 +52278,65 @@ Window position                Max
             </Span>
             <Span>
               Given an integer n, break it into the sum of k positive integers,
-              where k >= 2, and maximize the product of those integers.
+              where k &gt;= 2, and maximize the product of those integers.
               <br />
               Return the maximum product you can get.
             </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 2 <br />
+              Output: 1 <br />
+              Explanation: 2 = 1 + 1, 1 × 1 = 1.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: n = 10
+              <br />
+              Output: 36
+              <br />
+              Explanation: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36.
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>2 &lt;= n &lt;= 58</Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(n)
+              Time: O(n/3)
               <br />
-              Space: O(n)
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
                 title: "Q343. Integer Break (Q288)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {number}
+                    */
+                   var integerBreak = function(n) {
+                     if (n == 2)
+                       return 1; 
+                     if (n == 3)
+                       return 2; 
+                     let ans = 1;
+                     while (n > 4) {
+                       n -= 3;
+                       ans *= 3;
+                     }
+                     ans *= n;
+                     return ans;    
+                   };
+                   
+                   integerBreak(2)`,
+                    output: `1`,
                   },
                 },
               }}
