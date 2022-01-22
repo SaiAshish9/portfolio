@@ -3,7 +3,7 @@ import React from "react";
 import { CodeEditor, Span } from "./components";
 
 const Comp = ({
-  title,
+  title = null,
   codes,
   tc = "n",
   sc = "n",

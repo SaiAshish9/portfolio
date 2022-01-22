@@ -52766,11 +52766,98 @@ Window position                Max
         ),
       },
       q294: {
-        title: "Q352. Data Stream as Disjoint Intervals (Q293)",
+        title: "Q352. Data Stream as Disjoint Intervals (Q294)",
         content: (
           <Comp
-          title= "Q352. Data Stream as Disjoint Intervals (Q293)"
-          content1={<></>}
+            title="Q352. Data Stream as Disjoint Intervals (Q294)"
+            content1={
+              <>
+                Given a data stream input of non-negative integers a1, a2, ...,
+                an, summarize the numbers seen so far as a list of disjoint
+                intervals.
+                <br />
+                Implement the SummaryRanges class:
+                <br />
+                <br />
+                SummaryRanges() Initializes the object with an empty stream.
+                <br />
+                void addNum(int val) Adds the integer val to the stream.
+                <br />
+                int[][] getIntervals() Returns a summary of the integers in the
+                stream currently as a list of disjoint intervals [starti, endi].
+              </>
+            }
+            img={null}
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input <br />
+                    <br /> ["SummaryRanges", "addNum", "getIntervals", "addNum",
+                    "getIntervals", "addNum", "getIntervals", "addNum",
+                    "getIntervals", "addNum", "getIntervals"]
+                    <br />
+                    [[], [1], [], [3], [], [7], [], [2], [], [6], []]
+                    <br />
+                    Output
+                    <br />
+                    [null, null, [[1, 1]], null, [[1, 1], [3, 3]], null, [[1,
+                    1], [3, 3], [7, 7]], null, [[1, 3], [7, 7]], null, [[1, 3],
+                    [6, 7]]]
+                    <br />
+                    Explanation
+                    <br />
+                    SummaryRanges summaryRanges = new SummaryRanges();
+                    <br />
+                    summaryRanges.addNum(1); // arr = [1]
+                    <br />
+                    summaryRanges.getIntervals(); // return [[1, 1]]
+                    <br />
+                    summaryRanges.addNum(3); // arr = [1, 3]
+                    <br />
+                    summaryRanges.getIntervals(); // return [[1, 1], [3, 3]]
+                    <br />
+                    summaryRanges.addNum(7); // arr = [1, 3, 7]
+                    <br />
+                    summaryRanges.getIntervals(); // return [[1, 1], [3, 3], [7,
+                    7]]
+                    <br />
+                    summaryRanges.addNum(2); // arr = [1, 2, 3, 7]
+                    <br />
+                    summaryRanges.getIntervals(); // return [[1, 3], [7, 7]]
+                    <br />
+                    summaryRanges.addNum(6); // arr = [1, 2, 3, 6, 7]
+                    summaryRanges.getIntervals(); // return [[1, 3], [6, 7]]
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                0 &lt;= val &lt;= 10^4
+                <br />
+                At most 3 * 10^4 calls will be made to addNum and getIntervals.
+              </>
+            }
+            fp={
+              <>
+                <b>Follow up:</b> What if there are lots of merges and the
+                number of disjoint intervals is small compared to the size of
+                the data stream?
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{ Javacript: { code: ``, output: `` } }}
+          />
+        ),
+      },
+      q295: {
+        title: "Q (Q295)",
+        content: (
+          <Comp
+            content1={<></>}
             img={null}
             content2={null}
             examples={[
@@ -52785,7 +52872,11 @@ Window position                Max
               },
             ]}
             constraints={<></>}
-            fp={null}
+            fp={
+              <>
+                <b>Follow up: </b>
+              </>
+            }
             tc="n"
             sc="n"
             codes={{ Javacript: { code: ``, output: `` } }}
