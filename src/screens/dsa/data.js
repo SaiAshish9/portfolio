@@ -52086,23 +52086,65 @@ Window position                Max
             <Span>
               <b>Q341. Flatten Nested List Iterator (Q286)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              You are given a nested list of integers nestedList. Each element
+              is either an integer or a list whose elements may also be integers
+              or other lists. Implement an iterator to flatten it.
+              <br />
+              Implement the NestedIterator class:
+              <br />
+              NestedIterator(List{`<NestedInteger>`} nestedList) Initializes the
+              iterator with the nested list nestedList.
+              <br />
+              int next() Returns the next integer in the nested list.
+              <br />
+              boolean hasNext() Returns true if there are still some integers in
+              the nested list and false otherwise.
+              <br />
+              Your code will be tested with the following pseudocode:
+              <br />
+              initialize iterator with nestedList
+              <br />
+              res = []
+              <br />
+              while iterator.hasNext()
+              <br />
+              append iterator.next() to the end of res
+              <br />
+              return res
+              <br />
+              If res matches the expected flattened list, then your code will be
+              judged as correct.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nestedList = [[1,1],2,[1,1]]
+              <br />
+              Output: [1,1,2,1,1]
+              <br />
+              Explanation: By calling next repeatedly until hasNext returns
+              false, the order of elements returned by next should be:
+              [1,1,2,1,1].
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: nestedList = [1,[4,[6]]] <br />
+              Output: [1,4,6] <br />
+              Explanation: By calling next repeatedly until hasNext returns
+              false, the order of elements returned by next should be: [1,4,6].
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= nestedList.length &lt;= 500 <br />
+              The values of the integers in the nested list is in the range
+              [-106, 106].
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
@@ -52116,8 +52158,34 @@ Window position                Max
                 title: "Q341. Flatten Nested List Iterator (Q286)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `public class NestedIterator implements Iterator<Integer> {
+                      public NestedIterator(List<NestedInteger> nestedList) {
+                        addInteger(nestedList);
+                      }
+                    
+                      @Override
+                      public Integer next() {
+                        return stack.pop().getInteger();
+                      }
+                    
+                      @Override
+                      public boolean hasNext() {
+                        while (!stack.isEmpty() && !stack.peek().isInteger()) {
+                          final NestedInteger ni = stack.pop();
+                          addInteger(ni.getList());
+                        }
+                        return !stack.isEmpty();
+                      }
+                    
+                      private Stack<NestedInteger> stack = new Stack<>();
+                    
+                      private void addInteger(final List<NestedInteger> nestedList) {
+                        for (int i = nestedList.size() - 1; i >= 0; --i)
+                          stack.push(nestedList.get(i));
+                      }
+                    }
+                    `,
+                    output: `[1,1,2,1,1]`,
                   },
                 },
               }}
