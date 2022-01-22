@@ -203,6 +203,7 @@ import Leetcode331 from "assets/leetcode/331.png";
 import Leetcode332 from "assets/leetcode/332.png";
 import Leetcode335 from "assets/leetcode/335.png";
 import Leetcode337 from "assets/leetcode/337.png";
+import Comp from "./comp";
 
 export const DATA = {
   ds: {
@@ -52762,6 +52763,33 @@ Window position                Max
               }}
             />
           </>
+        ),
+      },
+      q294: {
+        title: "Q352. Data Stream as Disjoint Intervals (Q293)",
+        content: (
+          <Comp
+          title= "Q352. Data Stream as Disjoint Intervals (Q293)"
+          content1={<></>}
+            img={null}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={null}
+            tc="n"
+            sc="n"
+            codes={{ Javacript: { code: ``, output: `` } }}
+          />
         ),
       },
     },
