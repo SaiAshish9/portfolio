@@ -52887,29 +52887,81 @@ Window position                Max
         content: (
           <Comp
             title="Q354. Russian Doll Envelopes (Q295)"
-            content1={<></>}
+            content1={
+              <>
+                You are given a 2D array of integers envelopes where
+                envelopes[i] = [wi, hi] represents the width and the height of
+                an envelope.
+                <br />
+                One envelope can fit into another if and only if both the width
+                and height of one envelope are greater than the other envelope's
+                width and height.
+                <br />
+                Return the maximum number of envelopes you can Russian doll
+                (i.e., put one inside the other).
+                <br />
+                Note: You cannot rotate an envelope.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: envelopes = [[5,4],[6,4],[6,7],[2,3]] <br />
+                    Output: 3 <br />
+                    Explanation: The maximum number of envelopes you can Russian
+                    doll is 3 ([2,3] =&gt; [5,4] =&gt; [6,7]).
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: envelopes = [[1,1],[1,1],[1,1]]
+                    <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= envelopes.length &lt;= 5000 <br />
+                envelopes[i].length == 2 <br />1 &lt;= wi, hi &lt;= 10^4
               </>
             }
-            tc="n"
+            tc="n.log n"
             sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
+            codes={{ Javacript: { code: `/**
+            * @param {number[][]} envelopes
+            * @return {number}
+            */
+           var maxEnvelopes = function(envelopes) {
+             envelopes.sort((a, b) => a[0] == b[0] ? b[1] - a[1] : a[0] - b[0]);
+             let ans = 0;
+             const dp = Array(envelopes.length);
+           
+             for (let e of envelopes) {
+               let l =0
+               let r = ans
+               while(l<r){
+                 let m = parseInt((l+r)/2)
+                 if(dp[m]>=e[1]){
+                   r = m
+                 }else{
+                   l = m + 1
+                 }
+               }
+               dp[l] = e[1]
+               if(l===ans) ans+=1
+             }
+           
+             return ans; 
+           };
+           
+           maxEnvelopes([[5,4],[6,4],[6,7],[2,3]])`, output: `3` } }}
           />
         ),
       },
