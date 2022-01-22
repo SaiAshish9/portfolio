@@ -199,6 +199,7 @@ import Leetcode304 from "assets/leetcode/304.png";
 import Leetcode310 from "assets/leetcode/310.png";
 import Leetcode319 from "assets/leetcode/319.png";
 import Leetcode329 from "assets/leetcode/329.png";
+import Leetcode331 from "assets/leetcode/331.png";
 
 export const DATA = {
   ds: {
@@ -51371,8 +51372,27 @@ Window position                Max
                 title: "Q330. Patching Array (Q278)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @param {number} n
+                    * @return {number}
+                    */
+                   var minPatches = function(nums, n) {
+                     let ans = 0;
+                     let i = 0;   
+                     let miss = 1; 
+                     while (miss <= n)
+                     if (i < nums.length && nums[i] <= miss) {
+                       miss += nums[i++];
+                     } else {
+                       miss += miss;
+                       ++ans;
+                     }
+                     return ans; 
+                   };
+                   
+                   minPatches([1,3],6)`,
+                    output: `1`,
                   },
                 },
               }}
@@ -51387,23 +51407,62 @@ Window position                Max
             <Span>
               <b>Q331. Verify Preorder Serialization of a Binary Tree (Q279)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              One way to serialize a binary tree is to use preorder traversal.
+              When we encounter a non-null node, we record the node's value. If
+              it is a null node, we record using a sentinel value such as '#'.
+            </Span>
+            <Img src={Leetcode331} left />
+            <Span>
+              For example, the above binary tree can be serialized to the string
+              "9,3,4,#,#,1,#,#,2,#,6,#,#", where '#' represents a null node.
+              <br />
+              Given a string of comma-separated values preorder, return true if
+              it is a correct preorder traversal serialization of a binary tree.
+              <br />
+              It is guaranteed that each comma-separated value in the string
+              must be either an integer or a character '#' representing null
+              pointer.
+              <br />
+              You may assume that the input format is always valid.
+              <br />
+              For example, it could never contain two consecutive commas, such
+              as "1,,3".
+              <br />
+              Note: You are not allowed to reconstruct the tree.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: preorder = "9,3,4,#,#,1,#,#,2,#,6,#,#"
+              <br />
+              Output: true
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: preorder = "1,#"
+              <br />
+              Output: false
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: preorder = "9,#,#,1"
+              <br />
+              Output: false
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= preorder.length &lt;= 104 <br />
+              preorder consist of integers in the range [0, 100] and '#'
+              separated by commas ','.
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
