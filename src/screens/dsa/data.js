@@ -52200,38 +52200,69 @@ Window position                Max
             <Span>
               <b>Q342. Power of Four (Q287)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer n, return true if it is a power of four.
+              Otherwise, return false.
+              <br />
+              An integer n is a power of four, if there exists an integer x such
+              that n == 4^x.
+              <br />
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 16 <br />
+              Output: true
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 5<br />
+              Output: false
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: n = 1 <br />
+              Output: true
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>-2^31 &lt;= n &lt;= 2^31 - 1</Span>
+            <Span>Follow up: Could you solve it without loops/recursion?</Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(n)
+              Time: O(1)
               <br />
-              Space: O(n)
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
                 title: "Q342. Power of Four (Q287)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number} n
+                    * @return {boolean}
+                    */
+                   
+                   function countBit1(n){
+                   return (n).toString(2).split('').filter(x=>+x===1).length
+                   }
+                   
+                   var isPowerOfFour = function(n) {
+                     return n > 0 && countBit1(n) == 1 && (n - 1) % 3 == 0;
+                   };
+                   
+                   isPowerOfFour(4)
+                   // 0100`,
+                    output: `true`,
                   },
                 },
               }}
