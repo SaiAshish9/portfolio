@@ -52674,30 +52674,57 @@ Window position                Max
             <Span>
               <b>Q350. Intersection of Two Arrays II (Q293)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given two integer arrays nums1 and nums2, return an array of their
+              intersection. Each element in the result must appear as many times
+              as it shows in both arrays and you may return the result in any
+              order.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums1 = [1,2,2,1], nums2 = [2,2] <br />
+              Output: [2,2]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+              <br />
+              Output: [4,9]
+              <br />
+              Explanation: [9,4] is also accepted.
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= nums1.length, <br />
+              nums2.length &lt;= 1000 <br />0 &lt;= nums1[i], nums2[i] &lt;=
+              1000
+            </Span>
+            <Span>
+              Follow up:
+              <br />
+              What if the given array is already sorted? How would you optimize
+              your algorithm?
+              <br />
+              What if nums1's size is small compared to nums2's size? Which
+              algorithm is better?
+              <br />
+              What if elements of nums2 are stored on disk, and the memory is
+              limited such that you cannot load all elements into the memory at
+              once?
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(n)
+              Time: O(m.log n + n.log m)
               <br />
-              Space: O(n)
+              Space: O(min(m , n))
             </p>
             <CodeEditor
               options={{
