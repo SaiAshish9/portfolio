@@ -51844,8 +51844,43 @@ Window position                Max
                 title: "Q336. Palindrome Pairs (Q283)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {string[]} words
+                    * @return {number[][]}
+                    */
+                   
+                   function isPalindrome(word) {
+                     let l = 0;
+                     let r = word.length - 1;
+                       while (l < r)
+                         if (word[l++] != word[r--])
+                           return false;
+                       return true;
+                     }
+                   
+                   var palindromePairs = function(words) {
+                     const ans = [];
+                     const map = new Map(); 
+                     for (let i = 0; i < words.length; ++i)
+                       map.set(words[i].split("").reverse().join(""), i);
+                     for (let i = 0; i < words.length; ++i) {
+                       const word = words[i];
+                       if (map.has("") && map.get("") != i && isPalindrome(word))
+                         ans.push([i, map.get("")]);
+                       for (let j = 1; j <= word.length; ++j) {
+                         const l = word.substring(0, j);
+                         const r = word.substring(j);
+                         if (map.has(l) && map.get(l) != i && isPalindrome(r))
+                           ans.push([i, map.get(l)]);
+                         if (map.has(r) && map.get(r) != i && isPalindrome(l))
+                           ans.push([map.get(r), i]);
+                       }
+                     }
+                     return ans;
+                   };
+                   
+                   palindromePairs(["bat","tab","cat"])`,
+                    output: `[ [ 0, 1 ], [ 1, 0 ] ]`,
                   },
                 },
               }}
