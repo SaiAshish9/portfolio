@@ -53033,8 +53033,8 @@ Window position                Max
                     6).
                     <br />
                     twitter.getNewsFeed(1); // User 1's news feed should return
-                    a list with 2 tweet ids -&lt; [6, 5]. Tweet id 6 should precede
-                    tweet id 5 because it is posted after tweet id 5.
+                    a list with 2 tweet ids -&lt; [6, 5]. Tweet id 6 should
+                    precede tweet id 5 because it is posted after tweet id 5.
                     <br />
                     twitter.unfollow(1, 2); // User 1 unfollows user 2.
                     <br />
@@ -53056,7 +53056,9 @@ Window position                Max
             }
             tc="n + log k"
             sc="n"
-            codes={{ Java: { code: `class Tweet {
+            codes={{
+              Java: {
+                code: `class Tweet {
               public int id;
               public int time;
               public Tweet next = null;
@@ -53148,37 +53150,68 @@ Window position                Max
              * List<Integer> param_2 = obj.getNewsFeed(userId);
              * obj.follow(followerId,followeeId);
              * obj.unfollow(followerId,followeeId);
-             */`, output: `[null,null,[5],null,null,[6,5],null,[5]]` } }}
+             */`,
+                output: `[null,null,[5],null,null,[6,5],null,[5]]`,
+              },
+            }}
           />
         ),
       },
       q297: {
-        title: "Q (Q297)",
+        title: "Q357. Count Numbers with Unique Digits (Q297)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q357. Count Numbers with Unique Digits (Q297)"
+            content1={
+              <>
+                Given an integer n, return the count of all numbers with unique
+                digits, x, where 0 &lt;= x &lt; 10^n.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 2<br />
+                    Output: 91
+                    <br />
+                    Explanation: The answer should be the total numbers in the
+                    range of 0 ≤ x &lt; 100, excluding
+                    11,22,33,44,55,66,77,88,99
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 0 <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up: </b>
-              </>
-            }
+            constraints={<>0 &lt;= n &lt;= 8</>}
             tc="1"
             sc="1"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: `/**
+            * @param {number} n
+            * @return {number}
+            */
+           var countNumbersWithUniqueDigits = function(n) {
+               if (n == 0)
+                 return 1;
+               let ans = 10;
+               let uniqueDigits = 9;
+               for (let availableNum = 9; n > 1 && availableNum > 0; --n, --availableNum) {
+                 uniqueDigits *= availableNum;
+                 ans += uniqueDigits;
+               }
+               return ans;
+           };
+           
+           countNumbersWithUniqueDigits(0)`, output: `1` } }}
           />
         ),
       },
