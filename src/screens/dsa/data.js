@@ -53054,7 +53054,7 @@ Window position                Max
                 follow, and unfollow.
               </>
             }
-            tc="n"
+            tc="n + log k"
             sc="n"
             codes={{ Java: { code: `class Tweet {
               public int id;
@@ -53176,8 +53176,8 @@ Window position                Max
                 <b>Follow up: </b>
               </>
             }
-            tc="n"
-            sc="n"
+            tc="1"
+            sc="1"
             codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
