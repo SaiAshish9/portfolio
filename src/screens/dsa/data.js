@@ -53195,7 +53195,9 @@ Window position                Max
             constraints={<>0 &lt;= n &lt;= 8</>}
             tc="1"
             sc="1"
-            codes={{ Javascript: { code: `/**
+            codes={{
+              Javascript: {
+                code: `/**
             * @param {number} n
             * @return {number}
             */
@@ -53211,36 +53213,70 @@ Window position                Max
                return ans;
            };
            
-           countNumbersWithUniqueDigits(0)`, output: `1` } }}
+           countNumbersWithUniqueDigits(0)`,
+                output: `1`,
+              },
+            }}
           />
         ),
       },
       q298: {
-        title: "Q (Q298)",
+        title: "Q363. Max Sum of Rectangle No Larger Than K (Q298)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given an m x n matrix matrix and an integer k, return the max
+                sum of a rectangle in the matrix such that its sum is no larger
+                than k.
+                <br />
+                It is guaranteed that there will be a rectangle with a sum no
+                larger than k.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: matrix = [[1,0,1],[0,-2,3]], k = 2<br />
+                    Output: 2<br />
+                    Explanation: Because the sum of the blue rectangle [[0, 1],
+                    [-2, 3]] is 2, and 2 is the max number no larger than k (k =
+                    2).
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: matrix = [[2,2,-1]], k = 3 <br />
+                    Output: 3
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                m == matrix.length <br />
+                n == matrix[i].length
+                <br />
+                1 &lt;= m, n &lt;= 100
+                <br />
+                -100 &lt;= matrix[i][j] &lt;= 100
+                <br />
+                -105 &lt;= k &lt;= 105
               </>
             }
-            tc="n"
-            sc="n"
+            fp={
+              <>
+                <b>Follow up: </b>What if the number of rows is much larger than
+                the number of columns?
+              </>
+            }
+            tc="min(m,n)^2⋅max(m,n)⋅logmax(m,n)"
+            sc="max(m,n)"
             codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
