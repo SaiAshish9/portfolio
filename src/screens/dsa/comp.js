@@ -1,6 +1,5 @@
-import { Img } from "common/modal/styles";
 import React from "react";
-import { CodeEditor, Span } from "./components";
+import { CodeEditor, Span, Img } from "./components";
 
 const Comp = ({
   title = null,

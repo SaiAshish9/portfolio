@@ -203,6 +203,7 @@ import Leetcode331 from "assets/leetcode/331.png";
 import Leetcode332 from "assets/leetcode/332.png";
 import Leetcode335 from "assets/leetcode/335.png";
 import Leetcode337 from "assets/leetcode/337.png";
+import Leetcode363 from "assets/leetcode/363.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -53224,6 +53225,7 @@ Window position                Max
         title: "Q363. Max Sum of Rectangle No Larger Than K (Q298)",
         content: (
           <Comp
+            title="Q363. Max Sum of Rectangle No Larger Than K (Q298)"
             content1={
               <>
                 Given an m x n matrix matrix and an integer k, return the max
@@ -53234,10 +53236,10 @@ Window position                Max
                 larger than k.
               </>
             }
-            img={null}
             content2={null}
             examples={[
               {
+                img: Leetcode363,
                 content: (
                   <>
                     Input: matrix = [[1,0,1],[0,-2,3]], k = 2<br />
@@ -53277,7 +53279,38 @@ Window position                Max
             }
             tc="min(m,n)^2⋅max(m,n)⋅logmax(m,n)"
             sc="max(m,n)"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{ Java: { code: `
+            // [[1,0,1],[0,-2,3]], 2
+            class Solution {
+              public int maxSumSubmatrix(int[][] matrix, int k) {
+                final int m = matrix.length;
+                final int n = matrix[0].length;
+            
+                int ans = Integer.MIN_VALUE;
+            
+                for (int baseCol = 0; baseCol < n; ++baseCol) {
+                  // sums[i] := sum(matrix[i][baseCol..j])
+                  int[] sums = new int[m];
+                  for (int j = baseCol; j < n; ++j) {
+                    for (int i = 0; i < m; ++i)
+                      sums[i] += matrix[i][j];
+                    // find the max subarray no more than k
+                    TreeSet<Integer> accumulate = new TreeSet<>(Arrays.asList(0));
+                    int prefix = 0;
+                    for (final int sum : sums) {
+                      prefix += sum;
+                      final Integer lo = accumulate.ceiling(prefix - k);
+                      if (lo != null)
+                        ans = Math.max(ans, prefix - lo);
+                      accumulate.add(prefix);
+                    }
+                  }
+                }
+            
+                return ans;
+              }
+            }
+            `, output: `2` } }}
           />
         ),
       },
