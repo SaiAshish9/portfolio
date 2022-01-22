@@ -52934,7 +52934,9 @@ Window position                Max
             }
             tc="n.log n"
             sc="n"
-            codes={{ Javacript: { code: `/**
+            codes={{
+              Javacript: {
+                code: `/**
             * @param {number[][]} envelopes
             * @return {number}
             */
@@ -52961,32 +52963,95 @@ Window position                Max
              return ans; 
            };
            
-           maxEnvelopes([[5,4],[6,4],[6,7],[2,3]])`, output: `3` } }}
+           maxEnvelopes([[5,4],[6,4],[6,7],[2,3]])`,
+                output: `3`,
+              },
+            }}
           />
         ),
       },
       q296: {
-        title: "Q (Q296)",
+        title: "Q355. Design Twitter (Q296)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q355. Design Twitter (Q296)"
+            content1={
+              <>
+                Design a simplified version of Twitter where users can post
+                tweets, follow/unfollow another user, and is able to see the 10
+                most recent tweets in the user's news feed.
+                <br />
+                Implement the Twitter class:
+                <br />
+                <br />
+                Twitter() Initializes your twitter object.
+                <br />
+                void postTweet(int userId, int tweetId) Composes a new tweet
+                with ID tweetId by the user userId. Each call to this function
+                will be made with a unique tweetId.
+                <br />
+                List{"<Integer>"} getNewsFeed(int userId) Retrieves the 10 most
+                recent tweet IDs in the user's news feed. Each item in the news
+                feed must be posted by users who the user followed or by the
+                user themself. Tweets must be ordered from most recent to least
+                recent.
+                <br />
+                void follow(int followerId, int followeeId) The user with ID
+                followerId started following the user with ID followeeId.
+                <br />
+                void unfollow(int followerId, int followeeId) The user with ID
+                followerId started unfollowing the user with ID followeeId.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input
+                    <br /> ["Twitter", "postTweet", "getNewsFeed", "follow",
+                    "postTweet", "getNewsFeed", "unfollow", "getNewsFeed"]
+                    <br />
+                    [[], [1, 5], [1], [1, 2], [2, 6], [1], [1, 2], [1]]
+                    <br /> Output [null, null, [5], null, null, [6, 5], null,
+                    [5]]
+                    <br />
+                    <br /> Explanation
+                    <br />
+                    Twitter twitter = new Twitter();
+                    <br />
+                    twitter.postTweet(1, 5); // User 1 posts a new tweet (id =
+                    5).
+                    <br />
+                    twitter.getNewsFeed(1); // User 1's news feed should return
+                    a list with 1 tweet id -&lt; [5]. return [5]
+                    <br />
+                    twitter.follow(1, 2); // User 1 follows user 2.
+                    <br />
+                    twitter.postTweet(2, 6); // User 2 posts a new tweet (id =
+                    6).
+                    <br />
+                    twitter.getNewsFeed(1); // User 1's news feed should return
+                    a list with 2 tweet ids -&lt; [6, 5]. Tweet id 6 should precede
+                    tweet id 5 because it is posted after tweet id 5.
+                    <br />
+                    twitter.unfollow(1, 2); // User 1 unfollows user 2.
+                    <br />
+                    twitter.getNewsFeed(1); // User 1's news feed should return
+                    a list with 1 tweet id -&lt; [5], since user 1 is no longer
+                    following user 2.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= userId, followerId, followeeId &lt;= 500 <br />
+                0 &lt;= tweetId &lt;= 10^4 <br />
+                All the tweets have unique IDs. <br />
+                At most 3 * 104 calls will be made to postTweet, getNewsFeed,
+                follow, and unfollow.
               </>
             }
             tc="n"
