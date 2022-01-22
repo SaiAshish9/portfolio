@@ -52601,23 +52601,33 @@ Window position                Max
             <Span>
               <b>Q349. Intersection of Two Arrays (Q292)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given two integer arrays nums1 and nums2, return an array of their
+              intersection. Each element in the result must be unique and you
+              may return the result in any order.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums1 = [1,2,2,1], nums2 = [2,2] <br />
+              Output: [2]
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
             <Span>
-              <b>Example 3:</b>
+              Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4] <br />
+              Output: [9,4] <br />
+              Explanation: [4,9] is also accepted.
             </Span>
-            <Span></Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= nums1.length, nums2.length &lt;= 1000
+              <br />0 &lt;= nums1[i], nums2[i] &lt;= 1000
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
@@ -52631,8 +52641,25 @@ Window position                Max
                 title: "Q349. Intersection of Two Arrays (Q292)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums1
+                    * @param {number[]} nums2
+                    * @return {number[]}
+                    */
+                   var intersection = function(nums1, nums2) {
+                     const ans = []
+                     nums1 = new Set(nums1)
+                   
+                     for(let num of nums2){
+                       if(nums1.has(num))
+                       ans.push(num)
+                       nums1.delete(num)
+                     }
+                     return ans
+                   };
+                   
+                   intersection([1,2,2,1],[2,2])`,
+                    output: `[ 2 ]`,
                   },
                 },
               }}
