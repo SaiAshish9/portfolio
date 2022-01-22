@@ -52913,36 +52913,6 @@ Window position                Max
           />
         ),
       },
-      q296: {
-        title: "Q (Q296)",
-        content: (
-          <Comp
-            content1={<></>}
-            img={null}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up: </b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{ Javacript: { code: ``, output: `` } }}
-          />
-        ),
-      },
       q297: {
         title: "Q (Q297)",
         content: (
