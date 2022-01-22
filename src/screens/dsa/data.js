@@ -51611,23 +51611,49 @@ Window position                Max
             <Span>
               <b>Q334. Increasing Triplet Subsequence (Q281)</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Given an integer array nums, return true if there exists a triple
+              of indices (i, j, k) such that i &lt; j &lt; k and nums[i] &lt;
+              nums[j] &lt; nums[k]. If no such indices exists, return false.
+            </Span>
             <Span>
               <b>Example 1:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [1,2,3,4,5] <br />
+              Output: true <br />
+              Explanation: Any triplet where i &lt; j &lt; k is valid.
+            </Span>
             <Span>
               <b>Example 2:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [5,4,3,2,1]
+              <br />
+              Output: false
+              <br />
+              Explanation: No triplet exists.
+            </Span>
             <Span>
               <b>Example 3:</b>
             </Span>
-            <Span></Span>
+            <Span>
+              Input: nums = [2,1,5,0,4,6] <br />
+              Output: true <br />
+              Explanation: The triplet (3, 4, 5) is valid because nums[3] == 0
+              &lt; nums[4] == 4 &lt; nums[5] == 6.
+            </Span>
             <Span>
               <b>Constraints:</b>
             </Span>
-            <Span></Span> <Span></Span>
+            <Span>
+              1 &lt;= nums.length &lt;= 5 * 10^5 <br />
+              -2^31 &lt;= nums[i] &lt;= 2^31 - 1
+            </Span>{" "}
+            <Span>
+              Follow up: Could you implement a solution that runs in O(n) time
+              complexity and O(1) space complexity?
+            </Span>
             <Span>
               <b>Complexity:</b>
             </Span>
@@ -51641,8 +51667,25 @@ Window position                Max
                 title: "Q334. Increasing Triplet Subsequence (Q281)",
                 codes: {
                   Javacript: {
-                    code: ``,
-                    output: ``,
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {boolean}
+                    */
+                   var increasingTriplet = function(nums) {
+                     let first = Number.MAX_SAFE_INTEGER;
+                     let second = Number.MAX_SAFE_INTEGER;
+                     for (let num of nums)
+                       if (num <= first)
+                         first = num;
+                       else if (num <= second) 
+                         second = num;
+                       else 
+                         return true;
+                     return false;
+                   };
+                   
+                   increasingTriplet([1,2,3,4,5])`,
+                    output: `true`,
                   },
                 },
               }}
