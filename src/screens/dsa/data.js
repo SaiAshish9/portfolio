@@ -54909,27 +54909,60 @@ Window position                Max
         ),
       },
       q315: {
-        title: "Q (Q315)",
+        title: "Q385. Mini Parser (Q315)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q385. Mini Parser (Q315)"
+            content1={
+              <>
+                Given a string s represents the serialization of a nested list,
+                implement a parser to deserialize it and return the deserialized
+                NestedInteger.
+                <br />
+                Each element is either an integer or a list whose elements may
+                also be integers or other lists.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "324"
+                    <br />
+                    Output: 324
+                    <br />
+                    Explanation: You should return a NestedInteger object which
+                    contains a single integer 324.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "[123,[456,[789]]]"
+                    <br />
+                    Output: [123,[456,[789]]]
+                    <br />
+                    Explanation: Return a NestedInteger object containing a
+                    nested list with 2 elements:
+                    <br /> 1. An integer containing value 123.
+                    <br /> 2. A nested list containing two elements:
+                    <br /> i. An integer containing value 456.
+                    <br /> ii. A nested list with one element:
+                    <br /> a. An integer containing value 789
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= s.length &lt;= 5 * 10^4 <br />
+                s consists of digits, square brackets "[]", negative sign '-',
+                and commas ','. <br />
+                s is the serialization of valid NestedInteger. <br />
+                All the values in the input are in the range [-106, 106].
               </>
             }
             tc="n"
