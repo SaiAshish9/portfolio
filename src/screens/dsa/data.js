@@ -206,6 +206,7 @@ import Leetcode337 from "assets/leetcode/337.png";
 import Leetcode363 from "assets/leetcode/363.png";
 import Leetcode375 from "assets/leetcode/375.png";
 import Leetcode388 from "assets/leetcode/388.png";
+import Leetcode391 from "assets/leetcode/391.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -55450,7 +55451,9 @@ dir
             constraints={<>1 &lt;= n &lt;= 10^9</>}
             tc="log n"
             sc="log n"
-            codes={{ Javascript: { code: `/**
+            codes={{
+              Javascript: {
+                code: `/**
             * @param {number} n
             * @return {number}
             */
@@ -55458,37 +55461,123 @@ dir
              return n == 1 ? 1 : 2 * (1 + parseInt(n / 2) - lastRemaining(parseInt(n / 2)));
            };
            
-           lastRemaining(9)`, output: `6` } }}
+           lastRemaining(9)`,
+                output: `6`,
+              },
+            }}
           />
         ),
       },
       q321: {
-        title: "Q (Q321)",
+        title: "Q391. Perfect Rectangle (Q321)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q391. Perfect Rectangle (Q321)"
+            content1={
+              <>
+                Given an array rectangles where rectangles[i] = [xi, yi, ai, bi]
+                represents an axis-aligned rectangle. The bottom-left point of
+                the rectangle is (xi, yi) and the top-right point of it is (ai,
+                bi).
+                <br />
+                Return true if all the rectangles together form an exact cover
+                of a rectangular region.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode391,
+                content: (
+                  <>
+                    Input: rectangles =
+                    [[1,1,3,3],[3,1,4,2],[3,2,4,4],[1,3,2,4],[2,3,3,4]]
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation: All 5 rectangles together form an exact cover
+                    of a rectangular region.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: rectangles =
+                    [[1,1,2,3],[1,3,2,4],[3,1,4,2],[3,2,4,4]]
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation: Because there is a gap between the two
+                    rectangular regions.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: rectangles =
+                    [[1,1,3,3],[3,1,4,2],[1,3,2,4],[2,2,4,4]]
+                    <br />
+                    Output: false <br />
+                    Explanation: Because two of the rectangles overlap with each
+                    other.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= rectangles.length &lt;= 2 * 10^4 <br />
+                rectangles[i].length == 4 <br />
+                -10^5 &lt;= xi, yi, ai, bi &lt;= 105
               </>
             }
             tc="n"
             sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{ Java: { code: `
+            // [[1,1,3,3],[3,1,4,2],[1,3,2,4],[2,2,4,4]]
+            class Solution {
+              public boolean isRectangleCover(int[][] rectangles) {
+                int area = 0;
+                int x1 = Integer.MAX_VALUE;
+                int y1 = Integer.MAX_VALUE;
+                int x2 = Integer.MIN_VALUE;
+                int y2 = Integer.MIN_VALUE;
+                Set<String> corners = new HashSet<>();
+            
+                for (int[] r : rectangles) {
+                  area += (r[2] - r[0]) * (r[3] - r[1]);
+                  x1 = Math.min(x1, r[0]);
+                  y1 = Math.min(y1, r[1]);
+                  x2 = Math.max(x2, r[2]);
+                  y2 = Math.max(y2, r[3]);
+            
+                  // four points of current rectangle
+                  String[] points = new String[] {
+                    r[0] + " " + r[1],
+                    r[0] + " " + r[3],
+                    r[2] + " " + r[1],
+                    r[2] + " " + r[3]
+                  };
+                  for (final String point : points)
+                    if (!corners.add(point))
+                      corners.remove(point);
+                }
+            
+                if (corners.size() != 4)
+                  return false;
+                if (!corners.contains(x1 + " " + y1) ||
+                    !corners.contains(x1 + " " + y2) ||
+                    !corners.contains(x2 + " " + y1) ||
+                    !corners.contains(x2 + " " + y2))
+                  return false;
+            
+                return area == (x2 - x1) * (y2 - y1);
+              }
+            }
+            `, output: `false` } }}
           />
         ),
       },
