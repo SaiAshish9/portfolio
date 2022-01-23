@@ -54625,9 +54625,10 @@ Window position                Max
         ),
       },
       q312: {
-        title: "Q (Q311)",
+        title: "Q382. Linked List Random Node (Q311)",
         content: (
           <Comp
+            title="Q382. Linked List Random Node (Q311)"
             content1={<></>}
             img={null}
             content2={null}
@@ -54649,7 +54650,7 @@ Window position                Max
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
