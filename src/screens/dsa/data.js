@@ -54048,6 +54048,7 @@ Window position                Max
         title: "Q376. Wiggle Subsequence (Q307)",
         content: (
           <Comp
+            title="Q376. Wiggle Subsequence (Q307)"
             content1={
               <>
                 A wiggle sequence is a sequence where the differences between
