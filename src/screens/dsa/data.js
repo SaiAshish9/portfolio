@@ -55640,7 +55640,9 @@ dir
             }
             tc="n"
             sc="1"
-            codes={{ Javascript: { code: `/**
+            codes={{
+              Javascript: {
+                code: `/**
             * @param {string} s
             * @param {string} t
             * @return {boolean}
@@ -55654,67 +55656,222 @@ dir
              return false;
            };
            
-           isSubsequence("abc","ahbgdc")`, output: `true` } }}
+           isSubsequence("abc","ahbgdc")`,
+                output: `true`,
+              },
+            }}
           />
         ),
       },
       q333: {
-        title: "Q (Q333)",
+        title: "Q393. UTF-8 Validation (Q333)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q393. UTF-8 Validation (Q333)"
+            content1={
+              <>
+                Given an integer array data representing the data, return
+                whether it is a valid UTF-8 encoding.
+                <br />
+                A character in UTF8 can be from 1 to 4 bytes long, subjected to
+                the following rules:
+                <br />
+                <br />
+                For a 1-byte character, the first bit is a 0, followed by its
+                Unicode code.
+                <br />
+                For an n-bytes character, the first n bits are all one's, the n
+                + 1 bit is 0, followed by n - 1 bytes with the most significant
+                2 bits being 10.
+                <br />
+                This is how the UTF-8 encoding would work:
+                <pre>
+                  {`
+   Char. number range  |        UTF-8 octet sequence
+   (hexadecimal)    |              (binary)
+--------------------+---------------------------------------------
+0000 0000-0000 007F | 0xxxxxxx
+0000 0080-0000 07FF | 110xxxxx 10xxxxxx
+0000 0800-0000 FFFF | 1110xxxx 10xxxxxx 10xxxxxx
+0001 0000-0010 FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx   
+                  `}
+                </pre>
+                Note: The input is an array of integers. Only the least
+                significant 8 bits of each integer is used to store the data.
+                This means each integer represents only 1 byte of data.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: data = [197,130,1]
+                    <br /> Output: true
+                    <br /> Explanation: data represents the octet sequence:
+                    11000101 10000010 00000001.
+                    <br /> It is a valid utf-8 encoding for a 2-bytes character
+                    followed by a 1-byte character.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: data = [235,140,4] <br />
+                    Output: false
+                    <br />
+                    Explanation: data represented the octet sequence: 11101011
+                    10001100 00000100.
+                    <br />
+                    The first 3 bits are all one's and the 4th bit is 0 means it
+                    is a 3-bytes character.
+                    <br />
+                    The next byte is a continuation byte which starts with 10
+                    and that's correct.
+                    <br />
+                    But the second continuation byte does not start with 10, so
+                    it is invalid.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= data.length &lt;= 2 * 10^4 <br />0 &lt;= data[i] &lt;=
+                255
               </>
             }
             tc="n"
-            sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            sc="1"
+            codes={{
+              Javascript: {
+                code: `/**
+            * @param {number[]} data
+            * @return {boolean}
+            */
+           var validUtf8 = function(data) {
+             let leftToCheck = 0;
+             for (let d of data)
+               if (leftToCheck == 0) {
+                 if ((d >> 3) == 0b11110)
+                   leftToCheck = 3;
+                 else if ((d >> 4) == 0b1110)
+                   leftToCheck = 2;
+                 else if ((d >> 5) == 0b110)
+                   leftToCheck = 1;
+                 else if ((d >> 7) == 0b0)
+                   leftToCheck = 0;
+                 else
+                   return false;
+               } else {
+                 if ((d >> 6) != 0b10)
+                   return false;
+                 --leftToCheck;
+               }
+             return leftToCheck == 0;
+           };
+           
+           validUtf8([197,130,1])`,
+                output: `true`,
+              },
+            }}
           />
         ),
       },
       q334: {
-        title: "Q (Q334)",
+        title: "Q394. Decode String (Q334)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q394. Decode String (Q334)"
+            content1={
+              <>
+                Given an encoded string, return its decoded string.
+                <br />
+                The encoding rule is: k[encoded_string], where the
+                encoded_string inside the square brackets is being repeated
+                exactly k times. Note that k is guaranteed to be a positive
+                integer.
+                <br />
+                You may assume that the input string is always valid; there are
+                no extra white spaces, square brackets are well-formed, etc.
+                <br />
+                Furthermore, you may assume that the original data does not
+                contain any digits and that digits are only for those repeat
+                numbers, k. For example, there will not be input like 3a or
+                2[4].
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "3[a]2[bc]"
+                    <br />
+                    Output: "aaabcbc"
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "3[a2[c]]" <br />
+                    Output: "accaccacc"
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "2[abc]3[cd]ef"
+                    <br />
+                    Output: "abcabccdcdcdef"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= s.length &lt;= 30
+                <br /> s consists of lowercase English letters, digits, and
+                square brackets '[]'.
+                <br />s is guaranteed to be a valid input. All the integers in s
+                are in the range [1, 300].
               </>
             }
-            tc="n"
-            sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            tc="∣ans∣"
+            sc="∣ans∣"
+            codes={{ Javascript: { code: `/**
+            * @param {string} s
+            * @return {string}
+            */
+           var decodeString = function(s) {
+             const stack = [] 
+             let currStr = ''
+             let currNum = 0
+           
+             for(let c of s){
+               if(Number.isInteger(+c))
+               currNum = currNum * 10 + parseInt(c)
+               else{
+                 if(c == '['){
+                 stack.push([currStr, currNum])
+                 currStr = ''
+                 currNum = 0
+               } else if(c == ']'){
+                 let [ prevStr, num ] = stack.pop()
+                 currStr = prevStr + Array(num).fill(currStr).join('')
+               }else
+                   currStr += c
+               } 
+             }
+             return currStr
+           };
+           
+           decodeString("3[a]2[bc]")`, output: `aaabcbc` } }}
           />
         ),
       },
