@@ -55844,7 +55844,9 @@ dir
             }
             tc="∣ans∣"
             sc="∣ans∣"
-            codes={{ Javascript: { code: `/**
+            codes={{
+              Javascript: {
+                code: `/**
             * @param {string} s
             * @return {string}
             */
@@ -55870,38 +55872,102 @@ dir
              }
              return currStr
            };
-           
-           decodeString("3[a]2[bc]")`, output: `aaabcbc` } }}
+           decodeString("3[a]2[bc]")`,
+                output: `aaabcbc`,
+              },
+            }}
           />
         ),
       },
       q335: {
-        title: "Q (Q335)",
+        title:
+          "Q395. Longest Substring with At Least K Repeating Characters (Q335)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q395. Longest Substring with At Least K Repeating Characters (Q335)"
+            content1={
+              <>
+                Given a string s and an integer k, return the length of the
+                longest substring of s such that the frequency of each character
+                in this substring is greater than or equal to k.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "aaabb", k = 3 <br />
+                    Output: 3 <br />
+                    Explanation: The longest substring is "aaa", as 'a' is
+                    repeated 3 times.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "ababbc", k = 2<br />
+                    Output: 5<br />
+                    Explanation: The longest substring is "ababb", as 'a' is
+                    repeated 2 times and 'b' is repeated 3 times.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= s.length &lt;= 10^4 <br />
+                s consists of only lowercase English letters. <br />1 &lt;= k
+                &lt;= 10^5
               </>
             }
             tc="n"
-            sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            sc="1"
+            codes={{
+              Javascript: {
+                code: `/**
+            * @param {string} s
+            * @param {number} k
+            * @return {number}
+            */
+           function longestSubstringWithNUniqueCharacters(s, k, n) {
+             let ans = 0;
+             let uniqueChars = 0; 
+             let noLessThanK = 0; 
+             const count = Array(128).fill(0);
+             for (let l = 0, r = 0; r < s.length; ++r) {
+               if (count[s[r].charCodeAt(0)] == 0)
+                 ++uniqueChars;
+               if (++count[s[r].charCodeAt(0)] == k)
+                 ++noLessThanK;
+               while (uniqueChars > n) {
+                 if (count[s[l].charCodeAt(0)] == k)
+                   --noLessThanK;
+                 if (--count[s[l].charCodeAt(0)] == 0)
+                   --uniqueChars;
+                 ++l;
+               }
+               if (noLessThanK == n) 
+                 ans = Math.max(ans, r - l + 1);
+             }
+             return ans;
+           }
+           
+           
+           var longestSubstring = function(s, k) {
+             let ans = 0;
+             for (let n = 1; n <= 26; ++n)
+               ans = Math.max(ans, longestSubstringWithNUniqueCharacters(s, k, n));
+           
+             return ans;
+           };
+           
+           longestSubstring("aaabb",3)`,
+                output: `3`,
+              },
+            }}
           />
         ),
       },
