@@ -54689,7 +54689,9 @@ Window position                Max
             }
             tc="n"
             sc="1"
-            codes={{ Javascript: { code: `function ListNode(val, next) {
+            codes={{
+              Javascript: {
+                code: `function ListNode(val, next) {
               this.val = (val===undefined ? 0 : val)
               this.next = (next===undefined ? null : next)
           }
@@ -54718,7 +54720,10 @@ Window position                Max
           l.next.next = new ListNode(3) 
           var obj = new Solution(l)
           var param_1 = obj.getRandom()
-          `, output: `ListNode { val: 3, next: null }` } }}
+          `,
+                output: `ListNode { val: 3, next: null }`,
+              },
+            }}
           />
         ),
       },
@@ -54726,28 +54731,55 @@ Window position                Max
         title: "Q (Q313)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given two strings ransomNote and magazine, return true if
+                ransomNote can be constructed from magazine and false otherwise.
+                <br />
+                Each letter in magazine can only be used once in ransomNote.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: ransomNote = "a",
+                    <br /> magazine = "b"
+                    <br />
+                    Output: false
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: ransomNote = "aa",
+                    <br /> magazine = "ab" <br />
+                    Output: false
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: ransomNote = "aa",
+                    <br /> magazine = "aab"
+                    <br />
+                    Output: true
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= ransomNote.length, magazine.length &lt;= 10^5 <br />
+                ransomNote and magazine consist of lowercase English letters.
               </>
             }
-            tc="n"
-            sc="n"
+            tc="∣ransomNote∣+∣magazine∣"
+            sc="1"
             codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
