@@ -55080,7 +55080,9 @@ Window position                Max
             constraints={<>1 &lt;= n &lt;= 5 * 104</>}
             tc="n"
             sc="n"
-            codes={{ Javascript: { code: `/**
+            codes={{
+              Javascript: {
+                code: `/**
             * @param {number} n
             * @return {number[]}
             */
@@ -55100,41 +55102,14 @@ Window position                Max
              return ans; 
            };
            
-           lexicalOrder(13)`, output: `[
+           lexicalOrder(13)`,
+                output: `[
             1, 10, 11, 12, 13, 2,
             3,  4,  5,  6,  7, 8,
             9
-          ]` } }}
-          />
-        ),
-      },
-      q316: {
-        title: "Q (Q316)",
-        content: (
-          <Comp
-            content1={<></>}
-            img={null}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
+          ]`,
               },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up: </b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            }}
           />
         ),
       },
@@ -55142,7 +55117,12 @@ Window position                Max
         title: "Q (Q317)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given a string s, find the first non-repeating character in it
+                and return its index. If it does not exist, return -1.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
@@ -55163,7 +55143,7 @@ Window position                Max
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
