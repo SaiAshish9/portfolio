@@ -53700,6 +53700,7 @@ Window position                Max
         title: "Q373. Find K Pairs with Smallest Sums (Q304)",
         content: (
           <Comp
+            title="Q373. Find K Pairs with Smallest Sums (Q304)"
             content1={
               <>
                 You are given two integer arrays nums1 and nums2 sorted in
@@ -53761,7 +53762,9 @@ Window position                Max
             }
             tc="k.log k"
             sc="k"
-            codes={{ Java: { code: `class T {
+            codes={{
+              Java: {
+                code: `class T {
               public int i;
               public int j;
               public int sum; // nums1[i] + nums2[j]
@@ -53794,37 +53797,109 @@ Window position                Max
                 return ans;
               }
             }
-            `, output: `[[1,2],[1,4],[1,6]]` } }}
+            `,
+                output: `[[1,2],[1,4],[1,6]]`,
+              },
+            }}
           />
         ),
       },
       q305: {
-        title: "Q (Q305)",
+        title: "Q374. Guess Number Higher or Lower (Q305)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q374. Guess Number Higher or Lower (Q305)"
+            content1={
+              <>
+                We are playing the Guess Game. The game is as follows:
+                <br />
+                I pick a number from 1 to n. You have to guess which number I
+                picked.
+                <br />
+                Every time you guess wrong, I will tell you whether the number I
+                picked is higher or lower than your guess.
+                <br />
+                You call a pre-defined API int guess(int num), which returns 3
+                possible results:
+                <br />
+                <br />
+                -1: The number I picked is lower than your guess (i.e. pick &lt;
+                num).
+                <br />
+                1: The number I picked is higher than your guess (i.e. pick &gt;
+                num).
+                <br />
+                0: The number I picked is equal to your guess (i.e. pick ==
+                num).
+                <br />
+                Return the number that I picked.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 10, pick = 6 <br />
+                    Output: 6
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1, pick = 1<br />
+                    Output: 1
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 2, pick = 1<br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= n &lt;= 2^31 - 1 <br />1 &lt;= pick &lt;= n
               </>
             }
-            tc="n"
-            sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            tc="log n"
+            sc="1"
+            codes={{ Javascript: { code: `/**
+            * Forward declaration of guess API.
+            * (The problem description is not clear, so I translate it into follows.)
+            *
+            * @param traget num
+            *        guess num
+            *
+            * @return -1 if guess num >  target num
+            *          0 if guess num == target num
+            *          1 if guess num <  target num
+            */
+           // I/P:  10 6
+           public class Solution extends GuessGame {
+             public int guessNumber(int n) {
+               int l = 1;
+               int r = n;
+           
+               // find the first guess num that >= target num
+               while (l < r) {
+                 final int m = l + (r - l) / 2;
+                 if (guess(m) <= 0) // -1, 0
+                   r = m;
+                 else
+                   l = m + 1;
+               }
+           
+               return l;
+             }
+           }
+           `, output: `6` } }}
           />
         ),
       },
