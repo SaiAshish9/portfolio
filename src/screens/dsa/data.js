@@ -53572,24 +53572,40 @@ Window position                Max
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: a = 1, b = 2 <br />
+                    Output: 3
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: a = 2, b = 3 <br />
+                    Output: 5
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up: </b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            constraints={<>-1000 &lt;= a, b &lt;= 1000</>}
+            tc="1"
+            sc="1"
+            codes={{ Javascript: { code: `/**
+            * @param {number} a
+            * @param {number} b
+            * @return {number}
+            */
+           var getSum = function(a, b) {
+            while (b != 0) {          
+             const carry = a & b; 
+             a ^= b;                  
+             b = carry << 1;
+             }
+             return a; 
+           };
+           
+           getSum(1, 2)`, output: `3` } }}
           />
         ),
       },
