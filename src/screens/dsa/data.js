@@ -53591,7 +53591,9 @@ Window position                Max
             constraints={<>-1000 &lt;= a, b &lt;= 1000</>}
             tc="1"
             sc="1"
-            codes={{ Javascript: { code: `/**
+            codes={{
+              Javascript: {
+                code: `/**
             * @param {number} a
             * @param {number} b
             * @return {number}
@@ -53605,14 +53607,18 @@ Window position                Max
              return a; 
            };
            
-           getSum(1, 2)`, output: `3` } }}
+           getSum(1, 2)`,
+                output: `3`,
+              },
+            }}
           />
         ),
       },
       q303: {
-        title: "Q (Q303)",
+        title: "Q372. Super Pow (Q303)",
         content: (
           <Comp
+            title="Q372. Super Pow (Q303)"
             content1={<></>}
             img={null}
             content2={null}
@@ -53634,7 +53640,7 @@ Window position                Max
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
