@@ -55455,7 +55455,15 @@ dir
             }
             tc="log n"
             sc="log n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: `/**
+            * @param {number} n
+            * @return {number}
+            */
+           var lastRemaining = function(n) {
+             return n == 1 ? 1 : 2 * (1 + parseInt(n / 2) - lastRemaining(parseInt(n / 2)));
+           };
+           
+           lastRemaining(9)`, output: `6` } }}
           />
         ),
       },
