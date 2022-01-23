@@ -56110,7 +56110,9 @@ dir
             constraints={<>1 &lt;= n &lt;= 2^31 - 1</>}
             tc="log n"
             sc="n"
-            codes={{ Java: { code: `
+            codes={{
+              Java: {
+                code: `
             // n = 8
             class Solution {
               public int integerReplacement(long n) {
@@ -56125,32 +56127,70 @@ dir
                 return ans;
               }
             }
-            `, output: `3` } }}
+            `,
+                output: `3`,
+              },
+            }}
           />
         ),
       },
       q338: {
-        title: "Q (Q338)",
+        title: "Q398. Random Pick Index (Q338)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q398. Random Pick Index (Q338)"
+            content1={
+              <>
+                Given an integer array nums with possible duplicates, randomly
+                output the index of a given target number. You can assume that
+                the given target number must exist in the array.
+                <br />
+                Implement the Solution class:
+                <br />
+                Solution(int[] nums) Initializes the object with the array nums.
+                <br />
+                int pick(int target) Picks a random index i from nums where
+                nums[i] == target. If there are multiple valid i's, then each
+                index should have an equal probability of returning.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input
+                    <br />
+                    ["Solution", "pick", "pick", "pick"]
+                    <br />
+                    [[[1, 2, 3, 3, 3]], [3], [1], [3]]
+                    <br />
+                    Output
+                    <br />
+                    [null, 4, 0, 2]
+                    <br />
+                    Explanation
+                    <br />
+                    <br /> Solution solution = new Solution([1, 2, 3, 3, 3]);
+                    <br /> solution.pick(3); // It should return either index 2,
+                    3, or 4 randomly. Each index should have equal probability
+                    of returning.
+                    <br /> solution.pick(1); // It should return 0. Since in the
+                    array only nums[0] is equal to 1.
+                    <br /> solution.pick(3); // It should return either index 2,
+                    3, or 4 randomly. Each index should have equal probability
+                    of returning.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= nums.length &lt;= 2 * 10^4 <br />
+                -2^31 &lt;= nums[i] &lt;= 2^31 - 1 <br />
+                target is an integer from nums. <br />
+                At most 104 calls will be made to pick.
               </>
             }
             tc="n"
