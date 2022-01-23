@@ -55536,7 +55536,9 @@ dir
             }
             tc="n"
             sc="n"
-            codes={{ Java: { code: `
+            codes={{
+              Java: {
+                code: `
             // [[1,1,3,3],[3,1,4,2],[1,3,2,4],[2,2,4,4]]
             class Solution {
               public boolean isRectangleCover(int[][] rectangles) {
@@ -55577,36 +55579,66 @@ dir
                 return area == (x2 - x1) * (y2 - y1);
               }
             }
-            `, output: `false` } }}
+            `,
+                output: `false`,
+              },
+            }}
           />
         ),
       },
       q322: {
-        title: "Q (Q322)",
+        title: "Q392. Is Subsequence (Q322)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given two strings s and t, return true if s is a subsequence of
+                t, or false otherwise.
+                <br />A subsequence of a string is a new string that is formed
+                from the original string by deleting some (can be none) of the
+                characters without disturbing the relative positions of the
+                remaining characters. (i.e., "ace" is a subsequence of "abcde"
+                while "aec" is not).
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "abc", t = "ahbgdc" <br />
+                    Output: true
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "axc", t = "ahbgdc"
+                    <br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                0 &lt;= s.length &lt;= 100 <br />
+                0 &lt;= t.length &lt;= 104 <br />s and t consist only of
+                lowercase English letters.
+              </>
+            }
             fp={
               <>
-                <b>Follow up: </b>
+                <b>Follow up: </b> Suppose there are lots of incoming s, say s1,
+                s2, ..., sk where k &gt;= 109, and you want to check one by one
+                to see if t has its subsequence. In this scenario, how would you
+                change your code?
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
