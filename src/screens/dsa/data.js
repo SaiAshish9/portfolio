@@ -53518,7 +53518,9 @@ Window position                Max
             }
             tc="n^2"
             sc="n"
-            codes={{ Javascript: { code: `/**
+            codes={{
+              Javascript: {
+                code: `/**
             * @param {number[]} nums
             * @return {number[]}
             */
@@ -53548,7 +53550,10 @@ Window position                Max
              return ans; 
            };
            
-           largestDivisibleSubset([1,2,3])`, output: `[ 2, 1 ]` } }}
+           largestDivisibleSubset([1,2,3])`,
+                output: `[ 2, 1 ]`,
+              },
+            }}
           />
         ),
       },
@@ -53557,7 +53562,12 @@ Window position                Max
         content: (
           <Comp
             title="Q371. Sum of Two Integers (Q302)"
-            content1={<></>}
+            content1={
+              <>
+                Given two integers a and b, return the sum of the two integers
+                without using the operators + and -.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
