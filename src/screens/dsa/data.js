@@ -55447,12 +55447,7 @@ dir
                 ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up: </b>
-              </>
-            }
+            constraints={<>1 &lt;= n &lt;= 10^9</>}
             tc="log n"
             sc="log n"
             codes={{ Javascript: { code: `/**
