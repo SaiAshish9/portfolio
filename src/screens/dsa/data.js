@@ -55972,32 +55972,84 @@ dir
         ),
       },
       q336: {
-        title: "Q (Q336)",
+        title: "Q396. Rotate Function (Q336)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q396. Rotate Function (Q336)"
+            content1={
+              <>
+                You are given an integer array nums of length n.
+                <br />
+                Assume arrk to be an array obtained by rotating nums by k
+                positions clock-wise. We define the rotation function F on nums
+                as follow:
+                <br />
+                F(k) = 0 * arrk[0] + 1 * arrk[1] + ... + (n - 1) * arrk[n - 1].
+                <br />
+                Return the maximum value of F(0), F(1), ..., F(n-1).
+                <br />
+                The test cases are generated so that the answer fits in a 32-bit
+                integer.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [4,3,2,6]
+                    <br /> Output: 26
+                    <br /> Explanation:
+                    <br /> F(0) = (0 * 4) + (1 * 3) + (2 * 2) + (3 * 6) = 0 + 3
+                    + 4 + 18 = 25
+                    <br /> F(1) = (0 * 6) + (1 * 4) + (2 * 3) + (3 * 2) = 0 + 4
+                    + 6 + 6 = 16
+                    <br /> F(2) = (0 * 2) + (1 * 6) + (2 * 4) + (3 * 3) = 0 + 6
+                    + 8 + 9 = 23
+                    <br /> F(3) = (0 * 3) + (1 * 2) + (2 * 6) + (3 * 4) = 0 + 2
+                    + 12 + 12 = 26
+                    <br /> So the maximum value of F(0), F(1), F(2), F(3) is
+                    F(3) = 26.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [100]
+                    <br /> Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                n == nums.length <br />
+                1 &lt;= n &lt;= 10^5 <br />
+                -100 &lt;= nums[i] &lt;= 100
               </>
             }
             tc="n"
-            sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            sc="1"
+            codes={{ Javascript: { code: `/**
+            * @param {number[]} nums
+            * @return {number}
+            */
+           var maxRotateFunction = function(nums) {
+             const sum = nums.reduce((a,b)=>a+b,0);
+             let f = 0;
+             for (let i = 0; i < nums.length; ++i)
+               f += i * nums[i];
+             let ans = f;
+             for (let i = nums.length - 1; i >= 0; --i) {
+               f += sum - nums.length * nums[i];
+               ans = Math.max(ans, f);
+             }
+             return ans;
+           };
+           
+           maxRotateFunction([100])`, output: `0` } }}
           />
         ),
       },
