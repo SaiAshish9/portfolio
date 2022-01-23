@@ -56032,7 +56032,9 @@ dir
             }
             tc="n"
             sc="1"
-            codes={{ Javascript: { code: `/**
+            codes={{
+              Javascript: {
+                code: `/**
             * @param {number[]} nums
             * @return {number}
             */
@@ -56049,35 +56051,64 @@ dir
              return ans;
            };
            
-           maxRotateFunction([100])`, output: `0` } }}
+           maxRotateFunction([100])`,
+                output: `0`,
+              },
+            }}
           />
         ),
       },
       q337: {
-        title: "Q (Q337)",
+        title: "Q397. Integer Replacement (Q337)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q397. Integer Replacement (Q337)"
+            content1={
+              <>
+                Given a positive integer n, you can apply one of the following
+                operations:
+                <br />
+                If n is even, replace n with n / 2.
+                <br />
+                If n is odd, replace n with either n + 1 or n - 1.
+                <br />
+                Return the minimum number of operations needed for n to become
+                1.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 8<br />
+                    Output: 3<br />
+                    Explanation: 8 -&gt; 4 -&gt; 2 -&gt; 1
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 7<br />
+                    Output: 4<br />
+                    Explanation: 7 -&gt; 8 -&gt; 4 -&gt; 2 -&gt; 1<br />
+                    or 7 -&gt; 6 -7gt; 3 -&gt; 2 -&gt; 1
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 4 <br />
+                    Output: 2
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up: </b>
-              </>
-            }
-            tc="n"
+            constraints={<>1 &lt;= n &lt;= 2^31 - 1</>}
+            tc="log n"
             sc="n"
             codes={{ Javascript: { code: ``, output: `` } }}
           />
