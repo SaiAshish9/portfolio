@@ -54728,9 +54728,10 @@ Window position                Max
         ),
       },
       q313: {
-        title: "Q (Q313)",
+        title: "Q383. Ransom Note (Q313)",
         content: (
           <Comp
+            title="Q383. Ransom Note (Q313)"
             content1={
               <>
                 Given two strings ransomNote and magazine, return true if
@@ -54780,37 +54781,130 @@ Window position                Max
             }
             tc="∣ransomNote∣+∣magazine∣"
             sc="1"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{
+              Javascript: {
+                code: `/**
+            * @param {string} ransomNote
+            * @param {string} magazine
+            * @return {boolean}
+            */
+           var canConstruct = function(ransomNote, magazine) {
+             const count = Array(128).fill(0);
+             for (let c of magazine)
+               ++count[c.charCodeAt(0)];
+             for (let c of ransomNote)
+               if (--count[c.charCodeAt(0)] < 0)
+                 return false;
+             return true;
+           };
+           
+           canConstruct("a","b")`,
+                output: `false`,
+              },
+            }}
           />
         ),
       },
       q314: {
-        title: "Q (Q314)",
+        title: "Q384. Shuffle an Array (Q314)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q384. Shuffle an Array (Q314)"
+            content1={
+              <>
+                Given an integer array nums, design an algorithm to randomly
+                shuffle the array. All permutations of the array should be
+                equally likely as a result of the shuffling.
+                <br />
+                Implement the Solution class:
+                <br />
+                <br />
+                Solution(int[] nums) Initializes the object with the integer
+                array nums.
+                <br />
+                int[] reset() Resets the array to its original configuration and
+                returns it.
+                <br />
+                int[] shuffle() Returns a random shuffling of the array.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input <br />
+                    ["Solution", "shuffle", "reset", "shuffle"] <br />
+                    [[[1, 2, 3]], [], [], []] <br />
+                    Output <br />
+                    [null, [3, 1, 2], [1, 2, 3], [1, 3, 2]] <br />
+                    Explanation <br />
+                    Solution solution = new Solution([1, 2, 3]); <br />
+                    solution.shuffle(); // Shuffle the array [1,2,3] and return
+                    its result. <br />
+                    // Any permutation of [1,2,3] must be equally likely to be
+                    returned.
+                    <br />
+                    // Example: return [3, 1, 2] <br />
+                    solution.reset(); // Resets the array back to its original
+                    configuration [1,2,3]. Return [1, 2, 3]
+                    <br />
+                    solution.shuffle(); // Returns the random shuffling of array
+                    [1,2,3]. Example: return [1, 3, 2]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= nums.length &lt;= 200 <br />
+                -10^6 &lt;= nums[i] &lt;= 10^6 <br />
+                All the elements of nums are unique. <br />
+                At most 5 * 104 calls in total will be made to reset and
+                shuffle.
               </>
             }
             tc="n"
             sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{
+              Javascript: {
+                code: `/**
+            * @param {number[]} nums
+            */
+           var Solution = function(nums) {
+             this.nums = nums
+           };
+           
+           /**
+            * @return {number[]}
+            */
+           Solution.prototype.reset = function() {
+             return this.nums  
+           };
+           
+           /**
+            * @return {number[]}
+            */
+           Solution.prototype.shuffle = function() {
+             const a = this.nums.slice();
+             for (let i = a.length - 1; i > 0; --i) {
+               const j = Math.floor(Math.random()*(i+1));
+               [ a[i], a[j] ] = [ a[j], a[i] ]
+           };
+             return a; 
+           }
+           
+           /**
+            *  
+            * Your Solution object will be instantiated and called as such:
+            * var obj = new Solution(nums)
+            * var param_1 = obj.reset()
+            * var param_2 = obj.shuffle()
+            */`,
+                output: `[null,[3,2,1],[1,2,3],[1,3,2]]`,
+              },
+            }}
           />
         ),
       },
