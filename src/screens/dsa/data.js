@@ -54265,13 +54265,24 @@ Window position                Max
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: matrix = [[1,5,9],[10,11,13],[12,13,15]]
+                    <br />, k = 8<br />
+                    Output: 13
+                    <br />
+                    Explanation: The elements in the matrix are
+                    [1,5,9,10,11,12,13,13,15], and the 8th smallest number is 13
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: matrix = [[-5]], k = 1<br />
+                    Output: -5
+                  </>
+                ),
               },
             ]}
             constraints={
@@ -54297,32 +54308,109 @@ Window position                Max
             }
             tc="nlog(max−min)"
             sc="1"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{
+              Javascript: {
+                code: `/**
+            * @param {number[][]} matrix
+            * @param {number} k
+            * @return {number}
+            */
+           function numsNoGreaterThan(matrix, m) {
+             let count = 0;
+             let j = matrix[0].length - 1;
+             for (let row of matrix) {
+               while (j >= 0 && row[j] > m)
+                 --j;
+               count += j + 1;
+             }
+             return count;
+           }
+           
+           var kthSmallest = function(matrix, k) {
+             let l = matrix[0][0];
+             let r = matrix[matrix.length - 1][matrix.length - 1];
+             while (l < r) {
+               let m = l + parseInt((r - l) / 2);
+               if (numsNoGreaterThan(matrix, m) >= k)
+                 r = m;
+               else
+                 l = m + 1;
+             }
+             return l; 
+           };
+           
+           kthSmallest([[1,5,9],[10,11,13],[12,13,15]],8)`,
+                output: `13`,
+              },
+            }}
           />
         ),
       },
       q310: {
-        title: "Q (Q310)",
+        title: "Q380. Insert Delete GetRandom O(1) (Q310)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q380. Insert Delete GetRandom O(1) (Q310)"
+            content1={
+              <>
+                Implement the RandomizedSet class:
+                <br />
+                <br /> RandomizedSet() Initializes the RandomizedSet object.
+                <br /> bool insert(int val) Inserts an item val into the set if
+                not present. Returns true if the item was not present, false
+                otherwise.
+                <br /> bool remove(int val) Removes an item val from the set if
+                present. Returns true if the item was present, false otherwise.
+                <br /> int getRandom() Returns a random element from the current
+                set of elements (it's guaranteed that at least one element
+                exists when this method is called). Each element must have the
+                same probability of being returned. You must implement the
+                functions of the class such that each function works in average
+                O(1) time complexity.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input
+                    <br /> ["RandomizedSet", "insert", "remove", "insert",
+                    "getRandom", "remove", "insert", "getRandom"]
+                    <br /> [[], [1], [2], [2], [], [1], [2], []]
+                    <br /> Output
+                    <br /> [null, true, false, true, 2, true, false, 2]
+                    <br />
+                    <br /> Explanation
+                    <br /> RandomizedSet randomizedSet = new RandomizedSet();
+                    <br /> randomizedSet.insert(1); // Inserts 1 to the set.
+                    Returns true as 1 was inserted successfully.
+                    <br /> randomizedSet.remove(2); // Returns false as 2 does
+                    not exist in the set.
+                    <br /> randomizedSet.insert(2); // Inserts 2 to the set,
+                    returns true. Set now contains [1,2].
+                    <br /> randomizedSet.getRandom(); // getRandom() should
+                    return either 1 or 2 randomly.
+                    <br /> randomizedSet.remove(1); // Removes 1 from the set,
+                    returns true. Set now contains [2].
+                    <br /> randomizedSet.insert(2); // 2 was already in the set,
+                    so return false. randomizedSet.getRandom(); // Since 2 is
+                    the only number in the set, getRandom() will always return
+                    2.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                -2^31 &lt;= val &lt;= 2^31 - 1
+                <br />
+                At most 2 * 105 calls will be made to insert, remove, and
+                getRandom.
+                <br />
+                There will be at least one element in the data structure when
+                getRandom is called.
               </>
             }
             tc="n"
