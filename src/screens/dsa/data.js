@@ -54629,24 +54629,62 @@ Window position                Max
         content: (
           <Comp
             title="Q382. Linked List Random Node (Q311)"
-            content1={<></>}
+            content1={
+              <>
+                Given a singly linked list, return a random node's value from
+                the linked list. Each node must have the same probability of
+                being chosen.
+                <br />
+                Implement the Solution class:
+                <br />
+                Solution(ListNode head) Initializes the object with the head of
+                the singly-linked list head.
+                <br />
+                int getRandom() Chooses a node randomly from the list and
+                returns its value. All the nodes of the list should be equally
+                likely to be chosen.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input <br />
+                    ["Solution", "getRandom", "getRandom", "getRandom",
+                    "getRandom", "getRandom"] <br />
+                    [[[1, 2, 3]], [], [], [], [], []] <br />
+                    Output <br />
+                    [null, 1, 3, 2, 2, 3] <br />
+                    <br />
+                    Explanation <br />
+                    Solution solution = new Solution([1, 2, 3]); <br />
+                    solution.getRandom(); // return 1 <br />
+                    solution.getRandom(); // return 3 <br />
+                    solution.getRandom(); // return 2 <br />
+                    solution.getRandom(); // return 2 <br />
+                    solution.getRandom(); // return 3 <br />
+                    // getRandom() should return either 1, 2, or 3 randomly.
+                    Each element should have equal probability of returning.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the linked list will be in the range [1,
+                104].
+                <br /> -10^4 &lt;= Node.val &lt;= 10^4
+                <br /> At most 10^4 calls will be made to getRandom.
+              </>
+            }
             fp={
               <>
-                <b>Follow up: </b>
+                <b>Follow up: </b>What if the linked list is extremely large and
+                its length is unknown to you?
+                <br />
+                Could you solve this efficiently without using extra space?
               </>
             }
             tc="n"
