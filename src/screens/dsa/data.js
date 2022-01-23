@@ -55335,6 +55335,7 @@ dir
         title: "Q389. Find the Difference (Q319)",
         content: (
           <Comp
+            title="Q389. Find the Difference (Q319)"
             content1={
               <>
                 You are given two strings s and t.
@@ -55372,14 +55373,11 @@ dir
                 English letters.
               </>
             }
-            fp={
-              <>
-                <b>Follow up: </b>
-              </>
-            }
             tc="n"
             sc="1"
-            codes={{ Javascript: { code: `/**
+            codes={{
+              Javascript: {
+                code: `/**
             * @param {string} s
             * @param {string} t
             * @return {character}
@@ -55393,26 +55391,60 @@ dir
              return String.fromCharCode(ans);
            };
            
-           findTheDifference("","y")`, output: `y` } }}
+           findTheDifference("","y")`,
+                output: `y`,
+              },
+            }}
           />
         ),
       },
       q320: {
-        title: "Q (Q320)",
+        title: "Q390. Elimination Game (Q320)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q390. Elimination Game (Q320)"
+            content1={
+              <>
+                You have a list arr of all integers in the range [1, n] sorted
+                in a strictly increasing order. Apply the following algorithm on
+                arr:
+                <br />
+                Starting from left to right, remove the first number and every
+                other number afterward until you reach the end of the list.
+                <br />
+                Repeat the previous step again, but this time from right to
+                left, remove the rightmost number and every other number from
+                the remaining numbers.
+                <br />
+                Keep repeating the steps again, alternating left to right and
+                right to left, until a single number remains.
+                <br />
+                Given the integer n, return the last number that remains in arr.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 9 <br />
+                    Output: 6 <br />
+                    Explanation: <br />
+                    arr = [1, 2, 3, 4, 5, 6, 7, 8, 9] <br />
+                    arr = [2, 4, 6, 8] <br />
+                    arr = [2, 6] <br />
+                    arr = [6]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1<br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
             constraints={<></>}
@@ -55421,8 +55453,8 @@ dir
                 <b>Follow up: </b>
               </>
             }
-            tc="n"
-            sc="n"
+            tc="log n"
+            sc="log n"
             codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
