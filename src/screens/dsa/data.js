@@ -54120,7 +54120,24 @@ Window position                Max
             }
             tc="n"
             sc="1"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: `/**
+            * @param {number[]} nums
+            * @return {number}
+            */
+           var wiggleMaxLength = function(nums) {
+             if (nums.length == 0)
+               return 0;
+             let increasing = 1;
+             let decreasing = 1;
+             for (let i = 1; i < nums.length; ++i)
+               if (nums[i] > nums[i - 1])
+                 increasing = decreasing + 1;
+               else if (nums[i] < nums[i - 1])
+                 decreasing = increasing + 1;
+             return Math.max(increasing, decreasing);
+           };
+           
+           wiggleMaxLength([1,17,5,10,13,15,10,5,16,8])`, output: `7` } }}
           />
         ),
       },
