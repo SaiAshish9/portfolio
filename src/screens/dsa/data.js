@@ -54142,7 +54142,7 @@ Window position                Max
         ),
       },
       q308: {
-        title: "Q (Q308)",
+        title: "Q377. Combination Sum IV (Q308)",
         content: (
           <Comp
             content1={<></>}
@@ -54165,8 +54165,8 @@ Window position                Max
                 <b>Follow up: </b>
               </>
             }
-            tc="n"
-            sc="n"
+            tc="|coins|.target"
+            sc="target"
             codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
