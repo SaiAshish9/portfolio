@@ -53619,29 +53619,75 @@ Window position                Max
         content: (
           <Comp
             title="Q372. Super Pow (Q303)"
-            content1={<></>}
+            content1={
+              <>
+                Your task is to calculate ab mod 1337 where a is a positive
+                integer and b is an extremely large positive integer given in
+                the form of an array.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: a = 2, b = [3] <br />
+                    Output: 8
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: a = 2, b = [1,0]
+                    <br />
+                    Output: 1024
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: a = 1, b = [4,3,3,8,5,2]
+                    <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= a &lt;= 2^31 - 1 <br />
+                1 &lt;= b.length &lt;= 2000 <br />
+                0 &lt;= b[i] &lt;= 9 <br />b does not contain leading zeros.
               </>
             }
             tc="n"
             sc="1"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: `/**
+            * @param {number} a
+            * @param {number[]} b
+            * @return {number}
+            */
+           
+           function powMod(x, y, k) {
+             let pow = 1;
+             while (y-- > 0)
+               pow = (pow * x) % k;
+             return pow;
+           }
+           
+           var superPow = function(a, b) {
+             let ans = 1;
+             let k = 1337
+             a %= k;
+             for (let i of b)
+               ans = powMod(ans, 10, k) * powMod(a, i, k) % k;
+             return ans;    
+           };
+           
+           superPow(2,[3])`, output: `8` } }}
           />
         ),
       },
