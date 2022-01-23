@@ -205,6 +205,7 @@ import Leetcode335 from "assets/leetcode/335.png";
 import Leetcode337 from "assets/leetcode/337.png";
 import Leetcode363 from "assets/leetcode/363.png";
 import Leetcode375 from "assets/leetcode/375.png";
+import Leetcode388 from "assets/leetcode/388.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -55114,9 +55115,10 @@ Window position                Max
         ),
       },
       q317: {
-        title: "Q (Q317)",
+        title: "Q387. First Unique Character in a String (Q317)",
         content: (
           <Comp
+            title="Q387. First Unique Character in a String (Q317)"
             content1={
               <>
                 Given a string s, find the first non-repeating character in it
@@ -55127,49 +55129,162 @@ Window position                Max
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "leetcode"
+                    <br />
+                    Output: 0
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "loveleetcode"
+                    <br />
+                    Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "aabb"
+                    <br />
+                    Output: -1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= s.length &lt;= 10^5 <br />s consists of only lowercase
+                English letters.
               </>
             }
             tc="n"
             sc="1"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{
+              Javascript: {
+                code: `/**
+            * @param {string} s
+            * @return {number}
+            */
+           var firstUniqChar = function(s) {
+             const count = Array(128).fill(0);
+             for (let c of s)
+               ++count[c.charCodeAt(0)];
+             for (let i = 0; i < s.length; ++i)
+               if (count[s[i].charCodeAt(0)] == 1)
+                 return i;
+             return -1;
+           };
+           
+           firstUniqChar("leetcode")`,
+                output: `0`,
+              },
+            }}
           />
         ),
       },
       q318: {
-        title: "Q (Q318)",
+        title: "Q388. Longest Absolute File Path (Q318)",
         content: (
           <Comp
-            content1={<></>}
-            img={null}
+            content1={
+              <>
+                Suppose we have a file system that stores both files and
+                directories. An example of one system is represented in the
+                following picture:
+              </>
+            }
+            content2={
+              <>
+                Here, we have dir as the only directory in the root. dir
+                contains two subdirectories, subdir1 and subdir2. subdir1
+                contains a file file1.ext and subdirectory subsubdir1. subdir2
+                contains a subdirectory subsubdir2, which contains a file
+                file2.ext.
+                <br />
+                In text form, it looks like this (with ⟶ representing the tab
+                character):
+                <br />
+                <pre>
+                  {`
+dir
+⟶ subdir1
+⟶ ⟶ file1.ext
+⟶ ⟶ subsubdir1
+⟶ subdir2
+⟶ ⟶ subsubdir2
+⟶ ⟶ ⟶ file2.ext
+                  `}
+                </pre>
+                <br />
+                If we were to write this representation in code, it will look
+                like this:
+                "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext".
+                Note that the '\n' and '\t' are the new-line and tab characters.
+                <br />
+                Every file and directory has a unique absolute path in the file
+                system, which is the order of directories that must be opened to
+                reach the file/directory itself, all concatenated by '/'s. Using
+                the above example, the absolute path to file2.ext is
+                "dir/subdir2/subsubdir2/file2.ext". Each directory name consists
+                of letters, digits, and/or spaces. Each file name is of the form
+                name.extension, where name and extension consist of letters,
+                digits, and/or spaces.
+                <br />
+                Given a string input representing the file system in the
+                explained format, return the length of the longest absolute path
+                to a file in the abstracted file system. If there is no file in
+                the system, return 0.
+              </>
+            }
+            img={Leetcode388}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: input = "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext"
+                    <br /> Output: 20
+                    <br /> Explanation: We have only one file, and the absolute
+                    path is "dir/subdir2/file.ext" of length 20.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: input =
+                    "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext"
+                    <br />
+                    Output: 32 Explanation: We have two files: <br />
+                    "dir/subdir1/file1.ext" of length 21 <br />
+                    "dir/subdir2/subsubdir2/file2.ext" of length 32. <br />
+                    We return 32 since it is the longest absolute path to a
+                    file.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: input = "a" <br />
+                    Output: 0 <br />
+                    Explanation: We do not have any files, just a single
+                    directory named "a".
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= input.length &lt;= 10^4 <br />
+                input may contain lowercase or uppercase English letters, a new
+                line character '\n', a tab character '\t', a dot '.', a space '
+                ', and digits.
               </>
             }
             tc="n"
