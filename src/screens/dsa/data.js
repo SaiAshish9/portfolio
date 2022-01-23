@@ -53665,7 +53665,9 @@ Window position                Max
             }
             tc="n"
             sc="1"
-            codes={{ Javascript: { code: `/**
+            codes={{
+              Javascript: {
+                code: `/**
             * @param {number} a
             * @param {number[]} b
             * @return {number}
@@ -53687,37 +53689,112 @@ Window position                Max
              return ans;    
            };
            
-           superPow(2,[3])`, output: `8` } }}
+           superPow(2,[3])`,
+                output: `8`,
+              },
+            }}
           />
         ),
       },
       q304: {
-        title: "Q (Q304)",
+        title: "Q373. Find K Pairs with Smallest Sums (Q304)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                You are given two integer arrays nums1 and nums2 sorted in
+                ascending order and an integer k.
+                <br />
+                Define a pair (u, v) which consists of one element from the
+                first array and one element from the second array.
+                <br />
+                Return the k pairs (u1, v1), (u2, v2), ..., (uk, vk) with the
+                smallest sums.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums1 = [1,7,11], nums2 = [2,4,6], k = 3<br />
+                    Output: [[1,2],[1,4],[1,6]]
+                    <br />
+                    Explanation: The first 3 pairs are returned from the
+                    sequence:
+                    [1,2],[1,4],[1,6],[7,2],[7,4],[11,2],[7,6],[11,4],[11,6]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums1 = [1,1,2], <br /> nums2 = [1,2,3], k = 2 <br />
+                    Output: [[1,1],[1,1]] <br />
+                    Explanation: The first 2 pairs are returned from the
+                    sequence:
+                    [1,1],[1,1],[1,2],[2,1],[1,2],[2,2],[1,3],[1,3],[2,3]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums1 = [1,2], <br />
+                    nums2 = [3], k = 3<br />
+                    Output: [[1,3],[2,3]]
+                    <br />
+                    Explanation: All possible pairs are returned from the
+                    sequence: [1,3],[2,3]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= nums1.length, nums2.length &lt;= 10^5 <br />
+                -10^9 &lt;= nums1[i], nums2[i] &lt;= 10^9 <br />
+                nums1 and nums2 both are sorted in ascending order. <br />1
+                &lt;= k &lt;= 1000
               </>
             }
-            tc="n"
-            sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            tc="k.log k"
+            sc="k"
+            codes={{ Java: { code: `class T {
+              public int i;
+              public int j;
+              public int sum; // nums1[i] + nums2[j]
+              public T(int i, int j, int sum) {
+                this.i = i;
+                this.j = j;
+                this.sum = sum;
+              }
+            }
+            
+            class Solution {
+              public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
+                if (nums1.length == 0 || nums2.length == 0 || k == 0)
+                  return new ArrayList<>();
+            
+                List<List<Integer>> ans = new ArrayList<>();
+                PriorityQueue<T> pq = new PriorityQueue<>((a, b) -> a.sum - b.sum);
+            
+                for (int i = 0; i < k && i < nums1.length; ++i)
+                  pq.offer(new T(i, 0, nums1[i] + nums2[0]));
+            
+                while (!pq.isEmpty() && ans.size() < k) {
+                  final int i = pq.peek().i;
+                  final int j = pq.poll().j;
+                  ans.add(Arrays.asList(nums1[i], nums2[j]));
+                  if (j + 1 < nums2.length)
+                    pq.offer(new T(i, j + 1, nums1[i] + nums2[j + 1]));
+                }
+            
+                return ans;
+              }
+            }
+            `, output: `[[1,2],[1,4],[1,6]]` } }}
           />
         ),
       },
