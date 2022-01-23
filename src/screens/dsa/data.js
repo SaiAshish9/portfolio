@@ -54689,7 +54689,36 @@ Window position                Max
             }
             tc="n"
             sc="1"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: `function ListNode(val, next) {
+              this.val = (val===undefined ? 0 : val)
+              this.next = (next===undefined ? null : next)
+          }
+          
+          /**
+           * @param {ListNode} head
+           */
+          var Solution = function(head) {
+            this.head = head
+          };
+          
+          /**
+           * @return {number}
+           */
+          Solution.prototype.getRandom = function() {
+            let ans = -1;
+            let i = 1;
+            for (let curr = this.head; curr != null; curr = curr.next, ++i)
+              if (Math.floor(Math.random()*i) == i - 1)
+                ans = curr.val;
+            return ans;
+          };
+          
+          const l = new ListNode(1) 
+          l.next = new ListNode(2) 
+          l.next.next = new ListNode(3) 
+          var obj = new Solution(l)
+          var param_1 = obj.getRandom()
+          `, output: `ListNode { val: 3, next: null }` } }}
           />
         ),
       },
