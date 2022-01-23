@@ -54967,37 +54967,144 @@ Window position                Max
             }
             tc="n"
             sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{
+              Java: {
+                code: `/**
+            * // This is the interface that allows for creating nested lists.
+            * // You should not implement it, or speculate about its implementation
+            * public interface NestedInteger {
+            *     // Constructor initializes an empty nested list.
+            *     public NestedInteger();
+            *
+            *     // Constructor initializes a single integer.
+            *     public NestedInteger(int value);
+            *
+            *     // @return true if this NestedInteger holds a single integer, rather than a nested list.
+            *     public boolean isInteger();
+            *
+            *     // @return the single integer that this NestedInteger holds, if it holds a single integer
+            *     // Return null if this NestedInteger holds a nested list
+            *     public Integer getInteger();
+            *
+            *     // Set this NestedInteger to hold a single integer.
+            *     public void setInteger(int value);
+            *
+            *     // Set this NestedInteger to hold a nested list and adds a nested integer to it.
+            *     public void add(NestedInteger ni);
+            *
+            *     // @return the nested list that this NestedInteger holds, if it holds a nested list
+            *     // Return empty list if this NestedInteger holds a single integer
+            *     public List<NestedInteger> getList();
+            * }
+            */
+           class Solution {
+             public NestedInteger deserialize(String s) {
+               if (s.charAt(0) != '[')
+                 return new NestedInteger(Integer.parseInt(s));
+           
+               Stack<NestedInteger> stack = new Stack<>();
+               int start = 1;
+           
+               for (int i = 0; i < s.length(); ++i)
+                 switch (s.charAt(i)) {
+                   case '[':
+                     stack.push(new NestedInteger());
+                     start = i + 1;
+                     break;
+                   case ',':
+                     if (i > start) {
+                       final int num = Integer.parseInt(s.substring(start, i));
+                       stack.peek().add(new NestedInteger(num));
+                     }
+                     start = i + 1;
+                     break;
+                   case ']':
+                     NestedInteger popped = stack.pop();
+                     if (i > start) {
+                       final int num = Integer.parseInt(s.substring(start, i));
+                       popped.add(new NestedInteger(num));
+                     }
+                     if (!stack.isEmpty())
+                       stack.peek().add(popped);
+                     else
+                       return popped;
+                     start = i + 1;
+                     break;
+                 }
+           
+               throw new IllegalArgumentException();
+             }
+           }
+           `,
+                output: `324`,
+              },
+            }}
           />
         ),
       },
       q316: {
-        title: "Q (Q316)",
+        title: "Q386. Lexicographical Numbers (Q316)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q386. Lexicographical Numbers (Q316)"
+            content1={
+              <>
+                Given an integer n, return all the numbers in the range [1, n]
+                sorted in lexicographical order.
+                <br />
+                You must write an algorithm that runs in O(n) time and uses O(1)
+                extra space.{" "}
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 13
+                    <br />
+                    Output: [1,10,11,12,13,2,3,4,5,6,7,8,9]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 2<br />
+                    Output: [1,2]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up: </b>
-              </>
-            }
+            constraints={<>1 &lt;= n &lt;= 5 * 104</>}
             tc="n"
             sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: `/**
+            * @param {number} n
+            * @return {number[]}
+            */
+           var lexicalOrder = function(n) {
+             const ans = [];
+             let curr = 1;
+             while (ans.length < n) {
+               ans.push(curr);
+               if (curr * 10 <= n) {
+                 curr *= 10;
+               } else {
+                 while (curr % 10 == 9 || curr == n)
+                   curr = parseInt(curr / 10);
+                 ++curr;
+               }
+             }
+             return ans; 
+           };
+           
+           lexicalOrder(13)`, output: `[
+            1, 10, 11, 12, 13, 2,
+            3,  4,  5,  6,  7, 8,
+            9
+          ]` } }}
           />
         ),
       },
