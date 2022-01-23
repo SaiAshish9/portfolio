@@ -54219,7 +54219,9 @@ Window position                Max
             }
             tc="|coins|.target"
             sc="target"
-            codes={{ Javascript: { code: `/**
+            codes={{
+              Javascript: {
+                code: `/**
             * @param {number[]} nums
             * @param {number} target
             * @return {number}
@@ -54234,15 +54236,31 @@ Window position                Max
              return dp[target];
            };
            
-           combinationSum4([1,2,3],4)`, output: `7` } }}
+           combinationSum4([1,2,3],4)`,
+                output: `7`,
+              },
+            }}
           />
         ),
       },
       q309: {
-        title: "Q (Q309)",
+        title: "Q378. Kth Smallest Element in a Sorted Matrix (Q309)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q378. Kth Smallest Element in a Sorted Matrix (Q309)"
+            content1={
+              <>
+                Given an n x n matrix where each of the rows and columns is
+                sorted in ascending order, return the kth smallest element in
+                the matrix.
+                <br />
+                Note that it is the kth smallest element in the sorted order,
+                not the kth distinct element.
+                <br />
+                You must find a solution with a memory complexity better than
+                O(n2).
+              </>
+            }
             img={null}
             content2={null}
             examples={[
@@ -54256,14 +54274,29 @@ Window position                Max
                 content: <></>,
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                n == matrix.length == matrix[i].length <br />
+                1 &lt;= n&lt;= 300 <br />
+                -109 &lt;= matrix[i][j] &lt;= 10^9 <br />
+                All the rows and columns of matrix are guaranteed to be sorted
+                in non-decreasing order.
+                <br /> 1 &lt;= k &lt;= n^2
+              </>
+            }
             fp={
               <>
                 <b>Follow up: </b>
+                Could you solve the problem with a constant memory (i.e., O(1)
+                memory complexity)?
+                <br />
+                Could you solve the problem in O(n) time complexity? The
+                solution may be too advanced for an interview but you may find
+                reading this paper fun.
               </>
             }
-            tc="n"
-            sc="n"
+            tc="nlog(max−min)"
+            sc="1"
             codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
