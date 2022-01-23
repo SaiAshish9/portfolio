@@ -54019,36 +54019,106 @@ Window position                Max
             constraints={<>1 &lt;= n &lt;= 200</>}
             tc="n^3"
             sc="n^2"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{
+              Javascript: {
+                code: `/**
+            * @param {number} n
+            * @return {number}
+            */
+           var getMoneyAmount = function(n) {
+             const dp = Array.from(Array(n+2),()=>Array(n+2).fill(0))
+             for (let d = 1; d < n; ++d)
+               for (let i = 1; i + d <= n; ++i) {
+                 const j = i + d;
+                 dp[i][j] = Number.MAX_SAFE_INTEGER;
+                 for (let k = i; k <= j; ++k)
+                   dp[i][j] = Math.min(dp[i][j], Math.max(dp[i][k - 1], dp[k + 1][j]) + k);
+               }
+             return dp[1][n];   
+           };
+           
+           getMoneyAmount(2)`,
+                output: `1`,
+              },
+            }}
           />
         ),
       },
       q307: {
-        title: "Q (Q307)",
+        title: "Q376. Wiggle Subsequence (Q307)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                A wiggle sequence is a sequence where the differences between
+                successive numbers strictly alternate between positive and
+                negative. The first difference (if one exists) may be either
+                positive or negative. A sequence with one element and a sequence
+                with two non-equal elements are trivially wiggle sequences.
+                <br />
+                For example, [1, 7, 4, 9, 2, 5] is a wiggle sequence because the
+                differences (6, -3, 5, -7, 3) alternate between positive and
+                negative.
+                <br /> In contrast, [1, 4, 7, 2, 5] and [1, 7, 4, 5, 5] are not
+                wiggle sequences. The first is not because its first two
+                differences are positive, and the second is not because its last
+                difference is zero.
+                <br /> A subsequence is obtained by deleting some elements
+                (possibly zero) from the original sequence, leaving the
+                remaining elements in their original order.
+                <br />
+                Given an integer array nums, return the length of the longest
+                wiggle subsequence of nums.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,7,4,9,2,5] <br />
+                    Output: 6 <br />
+                    Explanation: The entire sequence is a wiggle sequence with
+                    differences (6, -3, 5, -7, 3).
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,17,5,10,13,15,10,5,16,8] <br />
+                    Output: 7 <br />
+                    Explanation: There are several subsequences that achieve
+                    this length. <br />
+                    One is [1, 17, 10, 13, 10, 16, 8] with differences (16, -7,
+                    3, -3, 6, -8).
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,4,5,6,7,8,9]
+                    <br />
+                    Output: 2
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 1000 <br />0 &lt;= nums[i] &lt;= 1000
+              </>
+            }
             fp={
               <>
                 <b>Follow up: </b>
+                Could you solve this in O(n) time?
               </>
             }
-            tc="n"
-            sc="n"
+            tc="n^2"
+            sc="n^2"
             codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
