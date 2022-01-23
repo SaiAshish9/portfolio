@@ -56308,7 +56308,9 @@ dir
             }
             tc="e + q"
             sc="e"
-            codes={{ Java: { code: `class Solution {
+            codes={{
+              Java: {
+                code: `class Solution {
               public double[] calcEquation(List<List<String>> equations, double[] values,
                                            List<List<String>> queries) {
                 double[] ans = new double[queries.size()];
@@ -56353,31 +56355,49 @@ dir
                 return -1.0;
               }
             }
-            `, output: `[6.00000,0.50000,-1.00000,1.00000,-1.00000]` } }}
+            `,
+                output: `[6.00000,0.50000,-1.00000,1.00000,-1.00000]`,
+              },
+            }}
           />
         ),
       },
       q340: {
-        title: "Q (Q340)",
+        title: "Q400. Nth Digit (Q340)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q400. Nth Digit (Q340)"
+            content1={
+              <>
+                Given an integer n, return the nth digit of the infinite integer
+                sequence [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...].
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 3 <br />
+                    Output: 3
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 11 <br />
+                    Output: 0 <br /> Explanation: The 11th digit of the sequence
+                    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ... is a 0, which is part
+                    of the number 10.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={<>1&lt;= n &lt;= 2^31 - 1</>}
+            tc="log n"
+            sc="1"
             codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
