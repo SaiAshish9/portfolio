@@ -54150,6 +54150,7 @@ Window position                Max
         title: "Q377. Combination Sum IV (Q308)",
         content: (
           <Comp
+            title="Q377. Combination Sum IV (Q308)"
             content1={
               <>
                 Given an array of distinct integers nums and a target integer
@@ -54218,7 +54219,22 @@ Window position                Max
             }
             tc="|coins|.target"
             sc="target"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: `/**
+            * @param {number[]} nums
+            * @param {number} target
+            * @return {number}
+            */
+           var combinationSum4 = function(nums, target) {
+             const dp = Array(target + 1).fill(0);
+             dp[0] = 1;
+             for (let i = 0; i <= target; ++i)
+               for (let num of nums)
+                 if (i >= num)
+                   dp[i] += dp[i - num];
+             return dp[target];
+           };
+           
+           combinationSum4([1,2,3],4)`, output: `7` } }}
           />
         ),
       },
