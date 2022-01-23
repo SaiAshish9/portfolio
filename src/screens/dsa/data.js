@@ -54120,7 +54120,9 @@ Window position                Max
             }
             tc="n"
             sc="1"
-            codes={{ Javascript: { code: `/**
+            codes={{
+              Javascript: {
+                code: `/**
             * @param {number[]} nums
             * @return {number}
             */
@@ -54137,7 +54139,10 @@ Window position                Max
              return Math.max(increasing, decreasing);
            };
            
-           wiggleMaxLength([1,17,5,10,13,15,10,5,16,8])`, output: `7` } }}
+           wiggleMaxLength([1,17,5,10,13,15,10,5,16,8])`,
+                output: `7`,
+              },
+            }}
           />
         ),
       },
@@ -54145,24 +54150,70 @@ Window position                Max
         title: "Q377. Combination Sum IV (Q308)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given an array of distinct integers nums and a target integer
+                target, return the number of possible combinations that add up
+                to target.
+                <br />
+                The test cases are generated so that the answer can fit in a
+                32-bit integer.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3], target = 4<br />
+                    Output: 7<br />
+                    Explanation:
+                    <br />
+                    The possible combination ways are:
+                    <br />
+                    (1, 1, 1, 1)
+                    <br />
+                    (1, 1, 2)
+                    <br />
+                    (1, 2, 1)
+                    <br />
+                    (1, 3)
+                    <br />
+                    (2, 1, 1)
+                    <br />
+                    (2, 2)
+                    <br />
+                    (3, 1)
+                    <br />
+                    Note that different sequences are counted as different
+                    combinations.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [9], <br />
+                    target = 3<br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 200 <br />
+                1 &lt;= nums[i] &lt;= 1000 <br />
+                All the elements of nums are unique. <br />1 &lt;= target &lt;=
+                1000
+              </>
+            }
             fp={
               <>
-                <b>Follow up: </b>
+                <b>Follow up: </b> What if negative numbers are allowed in the
+                given array? How does it change the problem? What limitation we
+                need to add to the question to allow negative numbers?
               </>
             }
             tc="|coins|.target"
