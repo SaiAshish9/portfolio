@@ -54117,8 +54117,8 @@ Window position                Max
                 Could you solve this in O(n) time?
               </>
             }
-            tc="n^2"
-            sc="n^2"
+            tc="n"
+            sc="1"
             codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
