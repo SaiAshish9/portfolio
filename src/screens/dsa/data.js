@@ -55590,6 +55590,7 @@ dir
         title: "Q392. Is Subsequence (Q322)",
         content: (
           <Comp
+            title="Q392. Is Subsequence (Q322)"
             content1={
               <>
                 Given two strings s and t, return true if s is a subsequence of
@@ -55639,7 +55640,21 @@ dir
             }
             tc="n"
             sc="1"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: `/**
+            * @param {string} s
+            * @param {string} t
+            * @return {boolean}
+            */
+           var isSubsequence = function(s, t) {
+             if (!s.length) return true;
+             let i = 0;
+             for (let c of t)
+               if (s[i] == c && ++i == s.length)
+                 return true;
+             return false;
+           };
+           
+           isSubsequence("abc","ahbgdc")`, output: `true` } }}
           />
         ),
       },
