@@ -54415,7 +54415,9 @@ Window position                Max
             }
             tc="1"
             sc="n"
-            codes={{ Java: { code: `class RandomizedSet {
+            codes={{
+              Java: {
+                code: `class RandomizedSet {
               public boolean insert(int val) {
                 if (valToIndex.containsKey(val))
                   return false;
@@ -54458,7 +54460,10 @@ Window position                Max
              * boolean param_1 = obj.insert(val);
              * boolean param_2 = obj.remove(val);
              * int param_3 = obj.getRandom();
-             */`, output: `[null,true,false,true,2,true,false,2]` } }}
+             */`,
+                output: `[null,true,false,true,2,true,false,2]`,
+              },
+            }}
           />
         ),
       },
@@ -54467,29 +54472,155 @@ Window position                Max
         content: (
           <Comp
             title="Q381. Insert Delete GetRandom O(1) - Duplicates allowed (Q312)"
-            content1={<></>}
+            content1={
+              <>
+                RandomizedCollection is a data structure that contains a
+                collection of numbers, possibly duplicates (i.e., a multiset).
+                It should support inserting and removing specific elements and
+                also removing a random element.
+                <br />
+                Implement the RandomizedCollection class:
+                <br />
+                RandomizedCollection() Initializes the empty
+                RandomizedCollection object.
+                <br />
+                bool insert(int val) Inserts an item val into the multiset, even
+                if the item is already present. Returns true if the item is not
+                present, false otherwise.
+                <br />
+                bool remove(int val) Removes an item val from the multiset if
+                present. Returns true if the item is present, false otherwise.
+                Note that if val has multiple occurrences in the multiset, we
+                only remove one of them.
+                <br />
+                int getRandom() Returns a random element from the current
+                multiset of elements. The probability of each element being
+                returned is linearly related to the number of same values the
+                multiset contains.
+                <br />
+                You must implement the functions of the class such that each
+                function works on average O(1) time complexity.
+                <br />
+                Note: The test cases are generated such that getRandom will only
+                be called if there is at least one item in the
+                RandomizedCollection.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input
+                    <br /> ["RandomizedCollection", "insert", "insert",
+                    "insert", "getRandom", "remove", "getRandom"]
+                    <br /> [[], [1], [1], [2], [], [1], []]
+                    <br /> Output
+                    <br />
+                    [null, true, false, true, 2, true, 1]
+                    <br /> Explanation
+                    <br /> RandomizedCollection randomizedCollection = new
+                    RandomizedCollection();
+                    <br /> randomizedCollection.insert(1); // return true since
+                    the collection does not contain 1.
+                    <br /> // Inserts 1 into the collection.
+                    <br /> randomizedCollection.insert(1); // return false since
+                    the collection contains 1.
+                    <br /> // Inserts another 1 into the collection. Collection
+                    now contains [1,1].
+                    <br /> randomizedCollection.insert(2); // return true since
+                    the collection does not contain 2.
+                    <br /> // Inserts 2 into the collection. Collection now
+                    contains [1,1,2].
+                    <br /> randomizedCollection.getRandom(); // getRandom
+                    should:
+                    <br /> // - return 1 with probability 2/3, or
+                    <br /> // - return 2 with probability 1/3.
+                    <br /> randomizedCollection.remove(1); // return true since
+                    the collection contains 1.
+                    <br /> // Removes 1 from the collection. Collection now
+                    contains [1,2].
+                    <br /> randomizedCollection.getRandom(); // getRandom should
+                    return 1 or 2, both equally likely.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                -2^31 &lt;= val &lt;= 2^31 - 1<br />
+                <br /> At most 2 * 105 calls in total will be made to insert,
+                remove, and getRandom. There will be at least one element in the
+                data structure when getRandom is called.
               </>
             }
-            tc="n"
+            tc="1"
             sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{
+              Java: {
+                code: `class Item {
+              public int val;
+              public int indexInMap;
+              public Item(int val, int indexInMap) {
+                this.val = val;
+                this.indexInMap = indexInMap;
+              }
+            }
+            
+            class RandomizedCollection {
+              public boolean insert(int val) {
+                valToIndices.putIfAbsent(val, new ArrayList<>());
+                valToIndices.get(val).add(items.size());
+                items.add(new Item(val, valToIndices.get(val).size() - 1));
+                return valToIndices.get(val).size() == 1;
+              }
+            
+              public boolean remove(int val) {
+                if (!valToIndices.containsKey(val))
+                  return false;
+            
+                final int index = lastIndex(valToIndices.get(val));
+                valToIndices.get(last(items).val).set(last(items).indexInMap, index);
+                final int indicesSize = valToIndices.get(val).size();
+                valToIndices.get(val).remove(indicesSize - 1);
+                if (valToIndices.get(val).isEmpty())
+                  valToIndices.remove(val);
+                items.set(index, last(items));
+                items.remove(items.size() - 1);
+            
+                return true;
+              }
+            
+              public int getRandom() {
+                final int index = rand.nextInt(items.size());
+                return items.get(index).val;
+              }
+            
+              private Map<Integer, List<Integer>> valToIndices = new HashMap<>();
+              private List<Item> items = new ArrayList<>();
+              private Random rand = new Random();
+            
+              private int lastIndex(List<Integer> indices) {
+                return indices.get(indices.size() - 1);
+              }
+            
+              private Item last(List<Item> items) {
+                return items.get(items.size() - 1);
+              }
+            }
+            
+            
+            /**
+             * Your RandomizedCollection object will be instantiated and called as such:
+             * RandomizedCollection obj = new RandomizedCollection();
+             * boolean param_1 = obj.insert(val);
+             * boolean param_2 = obj.remove(val);
+             * int param_3 = obj.getRandom();
+             */`,
+                output: `[null,true,false,true,1,true,1]`,
+              },
+            }}
           />
         ),
       },
