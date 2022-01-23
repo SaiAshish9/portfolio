@@ -56310,7 +56310,9 @@ dir
             sc="e"
             codes={{
               Java: {
-                code: `class Solution {
+                code: `
+              //  equations = [["a","b"],["b","c"]], values = [2.0,3.0], queries = [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]
+                class Solution {
               public double[] calcEquation(List<List<String>> equations, double[] values,
                                            List<List<String>> queries) {
                 double[] ans = new double[queries.size()];
@@ -56398,7 +56400,26 @@ dir
             constraints={<>1&lt;= n &lt;= 2^31 - 1</>}
             tc="log n"
             sc="1"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: `/**
+            * @param {number} n
+            * @return {number}
+            */
+           var findNthDigit = function(n) {
+             let digitSize = 1;
+             let startNum = 1;
+             let count = 9;
+             while (digitSize * count < n) {
+               n -= digitSize * count;
+               ++digitSize;
+               startNum *= 10;
+               count *= 10;
+             }
+             let targetNum = startNum + parseInt((n - 1) / digitSize)
+             let index = (n - 1) % digitSize;
+             return +String(targetNum)[index] 
+           };
+           
+           findNthDigit(3)`, output: `3` } }}
           />
         ),
       },
