@@ -57615,31 +57615,69 @@ class Solution {
         title: "Q413. Arithmetic Slices (Q351)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                An integer array is called arithmetic if it consists of at least
+                three elements and if the difference between any two consecutive
+                elements is the same.
+                <br />
+                For example, [1,3,5,7,9], [7,7,7,7], and [3,-1,-5,-9] are
+                arithmetic sequences.
+                <br /> Given an integer array nums, return the number of
+                arithmetic subarrays of nums.
+                <br />A subarray is a contiguous subsequence of the array.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,4]
+                    <br />
+                    Output: 3<br />
+                    Explanation: We have 3 arithmetic slices in nums: [1, 2, 3],
+                    [2, 3, 4] and [1,2,3,4] itself.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1] <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                1 &lt;= nums.length &lt;= 5000 <br />
+                -1000 &lt;= nums[i] &lt;= 1000
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var numberOfArithmeticSlices = function(nums) {
+                 let ans = 0;
+                 let dp = 0;
+                 for (let i = 2; i < nums.length; ++i) {
+                   if (nums[i] - nums[i - 1] == nums[i - 1] - nums[i - 2])
+                     ans += ++dp;
+                   else
+                     dp = 0;
+                 }
+                 return ans;   
+               };
+               
+               numberOfArithmeticSlices([1,2,3,4])`,
+                output: `3`,
               },
             }}
           />
