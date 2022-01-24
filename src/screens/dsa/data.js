@@ -208,6 +208,7 @@ import Leetcode375 from "assets/leetcode/375.png";
 import Leetcode388 from "assets/leetcode/388.png";
 import Leetcode391 from "assets/leetcode/391.png";
 import Leetcode401 from "assets/leetcode/401.png";
+import Leetcode404 from "assets/leetcode/404.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -56520,6 +56521,7 @@ dir
         title: "Q402. Remove K Digits (Q342)",
         content: (
           <Comp
+            title="Q402. Remove K Digits (Q342)"
             content1={
               <>
                 Given string num representing a non-negative integer num, and an
@@ -56573,7 +56575,9 @@ dir
             }
             tc="n"
             sc="n"
-            codes={{ Javascript: { code: `/**
+            codes={{
+              Javascript: {
+                code: `/**
             * @param {string} num
             * @param {number} k
             * @return {string}
@@ -56604,62 +56608,143 @@ dir
              return sb.length == 0 ? "0" : sb.join(""); 
            };
            
-           removeKdigits("10200",1)`, output: `200` } }}
+           removeKdigits("10200",1)`,
+                output: `200`,
+              },
+            }}
           />
         ),
       },
       q343: {
-        title: "Q (Q343)",
+        title: "Q403. Frog Jump (Q343)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q403. Frog Jump (Q343)"
+            content1={
+              <>
+                A frog is crossing a river. The river is divided into some
+                number of units, and at each unit, there may or may not exist a
+                stone. The frog can jump on a stone, but it must not jump into
+                the water.
+                <br />
+                Given a list of stones' positions (in units) in sorted ascending
+                order, determine if the frog can cross the river by landing on
+                the last stone. Initially, the frog is on the first stone and
+                assumes the first jump must be 1 unit.
+                <br />
+                If the frog's last jump was k units, its next jump must be
+                either k - 1, k, or k + 1 units. The frog can only jump in the
+                forward direction.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: stones = [0,1,3,5,6,8,12,17] <br />
+                    Output: true
+                    <br />
+                    Explanation: The frog can jump to the last stone by jumping
+                    1 unit to the 2nd stone, then 2 units to the 3rd stone, then
+                    2 units to the 4th stone, then 3 units to the 6th stone, 4
+                    units to the 7th stone, and 5 units to the 8th stone.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: stones = [0,1,2,3,4,8,9,11]
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation: There is no way to jump to the last stone as
+                    the gap between the 5th and 6th stone is too large.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                2 &lt;= stones.length &lt;= 2000 <br />
+                0 &lt;= stones[i] &lt;= 2^31 - 1 <br />
+                stones[0] == 0 <br />
+                stones is sorted in a strictly increasing order.
               </>
             }
             tc="n"
             sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{
+              Javascript: {
+                code: `/**
+            * @param {number[]} stones
+            * @return {boolean}
+            */
+           var canCross = function(stones) {
+             const n = stones.length
+             const dp = Array.from(Array(n),() => Array(n + 1).fill(0));
+             dp[0][1] = 1;
+             for (let i = 1; i < n; ++i)
+               for (let j = 0; j < i; ++j) {
+                 const k = stones[i] - stones[j];
+                 if (k <= n && dp[j][k] == 1) {
+                   dp[i][k - 1] = 1;
+                   dp[i][k] = 1;
+                   dp[i][k + 1] = 1;
+                 }
+             }
+             return dp[n - 1].some(a => a == 1);
+           };
+           
+           canCross([0,1,2,3,4,8,9,11])`,
+                output: `false`,
+              },
+            }}
           />
         ),
       },
       q344: {
-        title: "Q (Q344)",
+        title: "Q404. Sum of Left Leaves (Q344)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q404. Sum of Left Leaves (Q344)"
+            content1={
+              <>
+                Given the root of a binary tree, return the sum of all left
+                leaves.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode404,
+                content: (
+                  <>
+                    Input: root = [3,9,20,null,null,15,7]
+                    <br />
+                    Output: 24
+                    <br />
+                    Explanation: There are two left leaves in the binary tree,
+                    with values 9 and 15 respectively.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [1] <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                The number of nodes in the tree is in the range [1, 1000].
+                <br /> -1000 &lt;= Node.val &lt;= 1000
               </>
             }
             tc="n"
