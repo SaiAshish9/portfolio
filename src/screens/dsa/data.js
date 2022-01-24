@@ -56748,68 +56748,198 @@ dir
               </>
             }
             tc="n"
-            sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            sc="h"
+            codes={{
+              Javascript: {
+                code: `function TreeNode(val, left, right) {
+              this.val = (val===undefined ? 0 : val)
+              this.left = (left===undefined ? null : left)
+              this.right = (right===undefined ? null : right)
+          }
+          
+          /**
+           * @param {TreeNode} root
+           * @return {number}
+           */
+          var sumOfLeftLeaves = function(root) {
+            if (!root) return 0;
+            let ans = 0;
+            const stack = [];
+            stack.push(root);
+            while (stack.length && root) {
+              root = stack.pop();
+              if (root.left) {
+                if (!root.left.left && !root.left.right)
+                  ans += root.left.val;
+                else
+                  stack.push(root.left);
+              }
+              if (root.right)
+                stack.push(root.right);
+            }
+            return ans;  
+          };
+          
+          const t = new TreeNode(3)
+          t.left = new TreeNode(9)
+          t.right = new TreeNode(20)
+          t.right.left = new TreeNode(15)
+          t.right.left = new TreeNode(7)
+          sumOfLeftLeaves(t)`,
+                output: `16`,
+              },
+            }}
           />
         ),
       },
       q345: {
-        title: "Q (Q345)",
+        title: "Q405. Convert a Number to Hexadecimal (Q345)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q405. Convert a Number to Hexadecimal (Q345)"
+            content1={
+              <>
+                Given an integer num, return a string representing its
+                hexadecimal representation. For negative integers, two’s
+                complement method is used.
+                <br />
+                All the letters in the answer string should be lowercase
+                characters, and there should not be any leading zeros in the
+                answer except for the zero itself.
+                <br />
+                Note: You are not allowed to use any built-in library method to
+                directly solve this problem.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = 26 <br />
+                    Output: "1a"
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = -1
+                    <br />
+                    Output: "ffffffff"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up: </b>
-              </>
-            }
-            tc="n"
+            constraints={<>-2^31 &lt;= num &lt;= 2^31 - 1</>}
+            tc="log16 n"
             sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{
+              Javascript: {
+                code: `/**
+            * @param {number} num
+            * @return {string}
+            */
+           var toHex = function(num) {
+             const hex = ['0', '1', '2', '3', '4', '5', '6', '7',
+                                   '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+             
+             const sb = [];
+             while (num != 0) {
+               sb.push(hex[num & 0xf]);
+               num >>>= 4;
+             }
+             return sb.length == 0 ? "0" : sb.reverse().join("");  
+           };
+           
+           toHex(26)`,
+                output: `1a`,
+              },
+            }}
           />
         ),
       },
       q346: {
-        title: "Q (Q346)",
+        title: "Q406. Queue Reconstruction by Height (Q346)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q406. Queue Reconstruction by Height (Q346)"
+            content1={
+              <>
+                You are given an array of people, people, which are the
+                attributes of some people in a queue (not necessarily in order).
+                Each people[i] = [hi, ki] represents the ith person of height hi
+                with exactly ki other people in front who have a height greater
+                than or equal to hi.
+                <br />
+                Reconstruct and return the queue that is represented by the
+                input array people. The returned queue should be formatted as an
+                array queue, where queue[j] = [hj, kj] is the attributes of the
+                jth person in the queue (queue[0] is the person at the front of
+                the queue).
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: people = [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]
+                    <br /> Output: [[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]
+                    <br /> Explanation:
+                    <br /> Person 0 has height 5 with no other people taller or
+                    the same height in front.
+                    <br /> Person 1 has height 7 with no other people taller or
+                    the same height in front.
+                    <br /> Person 2 has height 5 with two persons taller or the
+                    same height in front, which is person 0 and 1.
+                    <br /> Person 3 has height 6 with one person taller or the
+                    same height in front, which is person 1.
+                    <br /> Person 4 has height 4 with four people taller or the
+                    same height in front, which are people 0, 1, 2, and 3.
+                    <br /> Person 5 has height 7 with one person taller or the
+                    same height in front, which is person 1.
+                    <br /> Hence [[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]] is the
+                    reconstructed queue.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: people = [[6,0],[5,0],[4,0],[3,2],[2,2],[1,4]]
+                    <br /> Output: [[4,0],[5,0],[2,2],[3,2],[1,4],[6,0]]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= people.length &lt;= 2000 <br />
+                0 &lt;= hi &lt;= 106 <br />
+                0 &lt;= ki &lt; people.length <br />
+                It is guaranteed that the queue can be reconstructed.
               </>
             }
-            tc="n"
+            tc="n^2"
             sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{ Java: { code: `
+            [[6,0],[5,0],[4,0],[3,2],[2,2],[1,4]]
+class Solution {
+  public int[][] reconstructQueue(int[][] people) {
+    List<int[]> ans = new ArrayList<>();
+
+    Arrays.sort(people, (a, b) -> a[0] == b[0] ? a[1] - b[1] : b[0] - a[0]);
+
+    for (final int[] p : people)
+      ans.add(p[1], p);
+
+    return ans.toArray(new int[ans.size()][]);
+  }
+}
+`, output: `[[4,0],[5,0],[2,2],[3,2],[1,4],[6,0]]` } }}
           />
         ),
       },
@@ -56837,8 +56967,8 @@ dir
                 <b>Follow up: </b>
               </>
             }
-            tc="n"
-            sc="n"
+            tc="mn log mn"
+            sc="mn"
             codes={{ Javascript: { code: ``, output: `` } }}
           />
         ),
