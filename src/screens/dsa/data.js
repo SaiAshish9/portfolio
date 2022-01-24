@@ -26806,45 +26806,45 @@ removeElement([3,2,2,3],3)`,
                     * @param {number} target
                     * @return {number[]}
                     */
-                   var searchRange = function(nums,target){
-                       var left = 0
-                       var right = nums.length -1
+                   var searchRange = function(nums, target) {
+                       var l = 0
+                       var r = nums.length - 1
                        var res = []
                        res[0] = -1
                        var has = false
-                       while(left <= right){
-                         var mid = left + parseInt((right-left)/2)
-                         if(nums[mid]<target){
-                           left++
-                         }else if(nums[mid]==target){
-                           has = true
-                           right--
-                         }else{
-                           right--
-                         }
+                       while (l <= r) {
+                           var m = l + parseInt((r - l) / 2)
+                           if (nums[m] < target) {
+                               l++
+                           } else if (nums[m] == target) {
+                               has = true
+                               r--
+                           } else {
+                               r--
+                           }
                        }
-                       if(has){
-                         res[0] = left
+                       if (has) {
+                           res[0] = l
                        }
-                       left = 0
-                       right = nums.length - 1
-                       while (left <= right) {
-                         let mid = left + parseInt((right - left) / 2)
-                         if (nums[mid] <= target) {
-                           left++
-                         } else {
-                           right--
-                         }
-                         }
-                         if (has) {
-                           res[1] = right
-                         }else{
-                             res[1] = -1
-                         }
+                       l = 0
+                       r = nums.length - 1
+                       while (l <= r) {
+                           let m = l + parseInt((r - l) / 2)
+                           if (nums[m] <= target) {
+                               l++
+                           } else {
+                               r--
+                           }
+                       }
+                       if (has) {
+                           res[1] = r
+                       } else {
+                           res[1] = -1
+                       }
                        return res
-                     }
-                     
-                     console.log(searchRange([5,7,7,8,8,10],8))`,
+                   }
+                   
+                   console.log(searchRange([5, 7, 7, 8, 8, 10], 8))`,
                   },
                 },
               }}
