@@ -28451,8 +28451,8 @@ removeElement([3,2,2,3],3)`,
             </Span>
             <Span>
               -100.0 &lt; x &lt; 100.0 <br />
-              -231 &lt;= n &lt;= 231-1 <br />
-              -104 &lt;= xn &lt;= 104 <br />
+              -2^31 &lt;= n &lt;= 2^31-1 <br />
+              -10^4 &lt;= xn &lt;= 10^4 <br />
             </Span>
             <Span>
               <b>Complexity:</b>
@@ -28468,18 +28468,30 @@ removeElement([3,2,2,3],3)`,
                   Javascript: {
                     output: `1024`,
                     code: `/**
-                  * @param {number} x
-                  * @param {number} n
-                  * @return {number}
-                  */
-                 var myPow = function(x, n) {
-                     if(n===0) return 1.0
-                     let half = myPow(x,parseInt(n/2))
-                     if(n%2===0) return half * half
-                     else if(n>0) return half * half * x;
-                     else return half * half/x;
-                 };
-                   console.log(myPow(2.00000,10))`,
+                    * @param {number} x
+                    * @param {number} n
+                    * @return {number}
+                    */
+                   var myPow1 = function(x, n) {
+                       if (n === 0) return 1.0
+                       let half = myPow(x, parseInt(n / 2))
+                       if (n % 2 === 0) return half * half
+                       else if (n > 0) return half * half * x;
+                       else return half * half / x;
+                   };
+                   
+                   var myPow = function(x, n) {
+                    if (n == 0)
+                      return 1;
+                    if (n < 0)
+                      return 1 / myPow(x, -n);
+                    if (n & 1)
+                      return x * myPow(x, n - 1);
+                    return myPow(x * x, parseInt(n / 2));
+                   }
+                   
+                   console.log(myPow(2.00000, 10))
+                   `,
                   },
                 },
               }}
