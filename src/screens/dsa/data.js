@@ -21954,31 +21954,34 @@ print(Solution.lcp(["flower", "flow", "flight"]))
                     * @return {number[][]}
                     */
                    var threeSum = function(nums) {
-                    var result=[]
-                         nums.sort((a,b)=>a-b)
-                         for(let i=0;i<nums.length;i++){
-                           if(i==0||nums[i]!=nums[i-1]){
-                             let start = i+1
-                             let end = nums.length - 1
-                             while(start<end){
-                               let s = nums[i] + nums[start] + nums[end]
-                               if(s==0){
-                                   let temp = [nums[i],nums[start],nums[end]]
-                                   result.push(temp)
-                                   let startVal = nums[start]
-                                   let endVal = nums[end]
-                                   while(start < end && startVal == nums[start]){
-                                      start+=1        
+                       var result = []
+                       nums.sort((a, b) => a - b)
+                       for (let i = 0; i < nums.length; i++) {
+                           if (i == 0 || nums[i] != nums[i - 1]) {
+                               let l = i + 1
+                               let r = nums.length - 1
+                               while (l < r) {
+                                   let s = nums[i] + nums[l] + nums[r]
+                                   if (s == 0) {
+                                       let temp = [nums[i], nums[l], nums[r]]
+                                       result.push(temp)
+                                       let startVal = nums[l]
+                                       let endVal = nums[r]
+                                       while (l < r && startVal == nums[l]) {
+                                           l += 1
+                                       }
+                                       while (r > l && endVal == nums[r]) {
+                                           r -= 1
+                                       }
+                                   } else if (s < 0) {
+                                       l += 1
+                                   } else {
+                                       r -= 1
                                    }
-                                   while(end > start && endVal == nums[end]){
-                                     end-=1
-                                   }
-                               }else if(s<0){start+=1}
-                               else{end-=1}
-                             }
+                               }
                            }
-                         }
-                         return result    
+                       }
+                       return result
                    };
                    
                    console.log(threeSum([-1, 0, 1, 2, -1, -4]))
