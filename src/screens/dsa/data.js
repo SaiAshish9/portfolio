@@ -28386,24 +28386,33 @@ removeElement([3,2,2,3],3)`,
                     * @param {string[]} strs
                     * @return {string[][]}
                     */
-                   var groupAnagrams = function(strs) {
+                   var groupAnagrams1 = function(strs) {
                      let result = []
-                     let helper = {}
+                     let map = {}
                      for(let s of strs){
-                       let tmpChar = s.split("")
-                       tmpChar.sort()
-                       let tmp = tmpChar.join("")
-                       if(Object.keys(helper).includes(tmp)){
-                          result[helper[tmp]].push(s)
+                       let temp = s.split("")
+                       temp.sort()
+                       let tmp = temp.join("")
+                       if(tmp in map){
+                          result[map[tmp]].push(s)
                           continue;
                        }
                        let curr =[]
                        curr.push(s)
                        result.push(curr)
-                       helper[tmp] = result.length - 1 
+                       map[tmp] = result.length - 1 
                      }
                      return result 
                    };
+                   
+                   var groupAnagrams = function(strs) {
+                     const d = {}
+                     for(let s of strs){
+                       let k = s.split('').sort((a,b)=>a.charCodeAt(0)-b.charCodeAt(0)).join('')
+                       d[k] = d[k]? [...d[k],s]:[s]
+                     }
+                     return Object.values(d)
+                   }
                    
                    console.log(groupAnagrams(["eat","tea","tan","ate","nat","bat"]))`,
                   },
