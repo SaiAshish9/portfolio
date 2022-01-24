@@ -21141,14 +21141,14 @@ print(Solution.isMatch("aab", "c*a*b"))`,
 @return {number}
 */
 var maxArea = function(height){
-let max=0,left=0;
-let right=height.length-1
-while(left<right){
-max=Math.max(max,Math.min(height[left],height[right])*(right-left))
-if(height[left]<height[right]){
-  left++
+let max=0,l=0;
+let r=height.length-1
+while(l<r){
+max=Math.max(max,Math.min(height[l],height[r])*(r-l))
+if(height[l]<height[r]){
+  l++
 }else{
-  right--
+  r--
 }
 }
 return max
