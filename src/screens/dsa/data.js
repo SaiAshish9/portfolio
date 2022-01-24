@@ -209,6 +209,7 @@ import Leetcode388 from "assets/leetcode/388.png";
 import Leetcode391 from "assets/leetcode/391.png";
 import Leetcode401 from "assets/leetcode/401.png";
 import Leetcode404 from "assets/leetcode/404.png";
+import Leetcode407 from "assets/leetcode/407.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -56949,10 +56950,10 @@ class Solution {
         ),
       },
       q347: {
-        title: "407. Trapping Rain Water IIQ (Q347)",
+        title: "Q407. Trapping Rain Water IIQ (Q347)",
         content: (
           <Comp
-            title="407. Trapping Rain Water IIQ (Q347)"
+            title="Q407. Trapping Rain Water IIQ (Q347)"
             content1={
               <>
                 Given an m x n integer matrix heightMap representing the height
@@ -56960,10 +56961,10 @@ class Solution {
                 water it can trap after raining.
               </>
             }
-            img={null}
             content2={null}
             examples={[
               {
+                img: Leetcode407,
                 content: (
                   <>
                     Input: heightMap =
@@ -56986,10 +56987,12 @@ class Solution {
                 ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                m == heightMap.length <br />
+                n == heightMap[i].length <br />
+                1 &lt;= m, n &lt;= 200 <br />0 &lt;= heightMap[i][j] &lt;= 2 *
+                104
               </>
             }
             tc="mn log mn"
