@@ -26419,13 +26419,67 @@ removeElement([3,2,2,3],3)`,
               options={{
                 title: "Q31. Next Permutation",
                 codes: {
+                  Javascript: {
+                    code: `function permuteBacktrack(str, answer,result) {
+                      if (str.length === 0) {
+                          result.push(answer)
+                          return
+                      }
+                  
+                      for (let i = 0; i < str.length; i++) {
+                          let ch = str[i];
+                          let left = str.substring(0, i);
+                          let right = str.substring(i + 1);
+                          let rest = left + right;
+                          if(result.length<2)
+                          permuteBacktrack(rest, answer + ch,result);
+                      }
+                  }
+                  
+                  /**
+                   * @param {number[]} nums
+                   * @return {void} Do not return anything, modify nums in-place instead.
+                   */
+                  var nextPermutation = function(nums) {
+                  const result = []
+                  permuteBacktrack(nums.join(""), "",result)
+                  nums = result[1].split("").map(x=>+x)
+                  console.log(nums)
+                  };
+                  
+                  
+                  console.log(nextPermutation([1,2,3]))`,
+                  },
                   Java: {
                     code: `import java.util.Arrays;
                   import java.util.*;
                   import java.util.stream.Collectors;
                   
+                    // public void nextPermutation(int[] nums) {
+                    //   final int n = nums.length;
+                    //   int i;
+                    //   for (i = n - 2; i >= 0; --i)
+                    //     if (nums[i] < nums[i + 1])
+                    //       break;
+                    //   if (i >= 0)
+                    //     for (int j = n - 1; j > i; --j)
+                    //       if (nums[j] > nums[i]) {
+                    //         swap(nums, i, j);
+                    //         break;
+                    //       }
+                    //   reverse(nums, i + 1, n - 1);
+                    // }
+                    // private void reverse(int[] nums, int l, int r) {
+                    //   while (l < r)
+                    //     swap(nums, l++, r--);
+                    // }
+                    // private void swap(int[] nums, int i, int j) {
+                    //   final int temp = nums[i];
+                    //   nums[i] = nums[j];
+                    //   nums[j] = temp;
+                    // }
+
                   class Solution{
-                  
                     public void nextPermutation(int nums[]){
                       int paNumIndex = -1;
                           for (int i = nums.length - 1; i >0; i --){
@@ -26457,7 +26511,6 @@ removeElement([3,2,2,3],3)`,
                       List<Integer> x = Arrays.stream(nums).boxed().collect(Collectors.toList());
                       x.stream().forEach(System.out::print);
                     }
-                  
                     public static void main(String ...st){
                       Solution s = new Solution();
                       s.nextPermutation(new int[]{1,2,3});
@@ -26569,7 +26622,7 @@ removeElement([3,2,2,3],3)`,
         content: (
           <>
             <Span>
-              <b>33. Search in Rotated Sorted Array</b>
+              <b>Q33. Search in Rotated Sorted Array</b>
             </Span>
             <Span>
               There is an integer array nums sorted in ascending order (with
@@ -28696,16 +28749,16 @@ removeElement([3,2,2,3],3)`,
                     * @return {number}
                     */
                    var maxSubArray = function(nums) {
-                     let currSum =0;
-                     let max = Number.MIN_SAFE_INTEGER
-                     for(let i=0;i<nums.length;i++){
-                       currSum = Math.max(currSum + nums[i],nums[i])
-                       max = Math.max(currSum,max)
-                     }
-                     return max
+                       let curr = 0;
+                       let max = Number.MIN_SAFE_INTEGER
+                       for (let i = 0; i < nums.length; i++) {
+                           curr = Math.max(curr + nums[i], nums[i])
+                           max = Math.max(curr, max)
+                       }
+                       return max
                    };
-                     
-                   console.log(maxSubArray([1,2,3]))`,
+                   
+                   console.log(maxSubArray([1, 2, 3]))`,
                     output: `6`,
                   },
                 },
