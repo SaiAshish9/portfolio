@@ -26704,29 +26704,29 @@ removeElement([3,2,2,3],3)`,
                     * @param {number} target
                     * @return {number}
                     */
-                   const search = function (nums, target) {
-                     let start = 0;
-                     let end = nums.length - 1;
-                     while (start <= end) {
-                       let mid = parseInt((start + end) / 2);
-                       if (nums[mid] == target) {
-                         return mid;
+                   const search = function(nums, target) {
+                       let l = 0;
+                       let r = nums.length - 1;
+                       while (l <= r) {
+                           let m = parseInt((l + r) / 2);
+                           if (nums[m] == target) {
+                               return m;
+                           }
+                           if (nums[l] <= nums[m]) {
+                               if (nums[l] <= target && target < nums[m]) {
+                                   r = m - 1;
+                               } else {
+                                   l = m + 1;
+                               }
+                           } else {
+                               if (nums[m] < target && target <= nums[r]) {
+                                   l = m + 1;
+                               } else {
+                                   r = m - 1;
+                               }
+                           }
                        }
-                       if (nums[start] <= nums[mid]) {
-                         if (nums[start] <= target && target < nums[mid]) {
-                           end = mid - 1;
-                         } else {
-                           start = mid + 1;
-                         }
-                       } else {
-                         if (nums[mid] < target && target <= nums[end]) {
-                           start = mid + 1;
-                         } else {
-                           end = mid - 1;
-                         }
-                       }
-                     }
-                     return -1;
+                       return -1;
                    };
                    
                    console.log(search([4, 5, 6, 0, 1, 2], 0));`,
