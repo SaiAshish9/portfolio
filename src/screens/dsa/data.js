@@ -27469,40 +27469,29 @@ removeElement([3,2,2,3],3)`,
                     * @return {number[][]}
                     */
                    
-                   const recursiveSum = (
-                       candidates,
-                       remainingSum,
-                       finalCombinations = [],
-                       currentCombination = [],
-                       startFrom = 0,
-                    ) => {
-                       if (remainingSum < 0) {
-                          return finalCombinations;
-                       }
-                       if (remainingSum === 0) {
-                          finalCombinations.push(currentCombination.slice());
-                          return finalCombinations;
-                       }
-                       for (let candidateIndex = startFrom; candidateIndex < candidates.length; candidateIndex += 1) {
-                          const currentCandidate = candidates[candidateIndex];
-                          currentCombination.push(currentCandidate);
-                          recursiveSum(
-                             candidates,
-                             remainingSum - currentCandidate,
-                             finalCombinations,
-                             currentCombination,
-                             candidateIndex,
-                          );
-                          currentCombination.pop();
-                       }
-                       return finalCombinations;
-                    }
+                   function dfs(s, candidates, target, res, curr = []) {
+                     if (target < 0)
+                       return;
+                     if (target == 0) {
+                       res.push(curr.slice());
+                       return;
+                     }
+                     for (let i = s; i < candidates.length; ++i) {
+                       curr.push(candidates[i]);
+                       dfs(i, candidates, target - candidates[i], res, curr);
+                       curr.pop();
+                     }
+                   }
                    
-                    var combinationSum = function(candidates, target) {
-                    return recursiveSum(candidates, target);   
+                   
+                   var combinationSum = function(candidates, target){
+                     const res = []
+                     candidates.sort((a,b)=>a-b)
+                     dfs(0, candidates, target, res)
+                     return res  
                    };
-                    
-                    console.log(combinationSum([2, 3, 6, 7], 7));`,
+                   
+                   combinationSum([2,3,6,7],7)`,
                   },
                 },
               }}
