@@ -220,7 +220,7 @@ export const SLanguageIcon = styled.span`
 `;
 
 export const DsaIcon = styled(SiVisualstudiocode)`
-  margin-right: 1.27rem;
+  margin-right: 1.36rem;
   font-size: 1rem;
   cursor: pointer;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
