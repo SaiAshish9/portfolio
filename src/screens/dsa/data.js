@@ -57507,8 +57507,28 @@ class Solution {
             sc="mn"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} m
+                * @return {number}
+                */
+               var splitArray = function(nums, m) {
+                 const n = nums.length;
+                 const dp = Array.from(Array(n + 1),()=>Array(m + 1).fill(Number.MAX_SAFE_INTEGER));
+                 const prefix = Array(n + 1).fill(0);
+                 for (let i = 1; i <= n; ++i) {
+                   prefix[i] = prefix[i - 1] + nums[i - 1];
+                   dp[i][1] = prefix[i];
+                 }
+                 for (let k = 2; k <= m; ++k)
+                   for (let i = k; i <= n; ++i)
+                     for (let j = k - 1; j < i; ++j)
+                     dp[i][k] = Math.min(dp[i][k], Math.max(dp[j][k - 1], prefix[i] - prefix[j]));
+                 return dp[n][m];    
+               };
+               
+               splitArray([1,4,4],3)`,
+                output: `4`,
               },
             }}
           />
