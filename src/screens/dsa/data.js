@@ -57538,6 +57538,7 @@ class Solution {
         title: "Q412. Fizz Buzz (Q350)",
         content: (
           <Comp
+            title="Q412. Fizz Buzz (Q350)"
             content1={
               <>
                 Given an integer n, return a string array answer (1-indexed)
@@ -57615,6 +57616,7 @@ class Solution {
         title: "Q413. Arithmetic Slices (Q351)",
         content: (
           <Comp
+            title="Q413. Arithmetic Slices (Q351)"
             content1={
               <>
                 An integer array is called arithmetic if it consists of at least
