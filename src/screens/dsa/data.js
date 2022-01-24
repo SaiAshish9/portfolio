@@ -57450,27 +57450,65 @@ class Solution {
         title: "Q410. Split Array Largest Sum (Q349)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given an array nums which consists of non-negative integers and
+                an integer m, you can split the array into m non-empty
+                continuous subarrays.
+                <br />
+                Write an algorithm to minimize the largest sum among these m
+                subarrays.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [7,2,5,10,8],
+                    <br /> m = 2 <br />
+                    Output: 18 <br />
+                    Explanation: <br />
+                    There are four ways to split nums into two subarrays. <br />
+                    The best way is to split it into [7,2,5] and [10,8], <br />
+                    where the largest sum among the two subarrays is only 18.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,4,5],
+                    <br /> m = 2<br />
+                    Output: 9
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,4,4],
+                    <br /> m = 3<br />
+                    Output: 4
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 1000
+                <br />
+                0 &lt;= nums[i] &lt;= 1^6
+                <br />1 &lt;= m &lt;= min(50, nums.length)
+              </>
+            }
             fp={
               <>
                 <b>Follow up :</b>{" "}
               </>
             }
-            tc="n"
-            sc="n"
+            tc="m.n^2"
+            sc="mn"
             codes={{
               Javascript: {
                 code: ``,
