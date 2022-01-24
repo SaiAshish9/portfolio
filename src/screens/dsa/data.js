@@ -22230,32 +22230,35 @@ print(Test.threeSum([-1, 0, 1, 2, -1, -4]))`,
                     * @return {number}
                     */
                    var threeSumClosest = function(nums, target) {
-                         if(nums.length==0){
+                       if (nums.length == 0) {
                            return 0
-                         }
-                         nums.sort((a,b)=>a-b)
-                         let minimum = Number.MAX_VALUE
-                         // Number.MIN_SAFE_INTEGER
-                         var closest = 0 
-                         for(let i=0;i<nums.length;i++){
-                           if(i==0||nums[i]!=nums[i-1]){
-                             let start = i+1
-                             let end = nums.length - 1
-                             while(start<end){
-                               let s = nums[i] + nums[start] + nums[end]
-                               if(Math.abs(s-target)<minimum){
-                                 minimum = Math.abs(s-target)
-                                 closest =s 
+                       }
+                       nums.sort((a, b) => a - b)
+                       let min = Number.MAX_VALUE
+                       // Number.MIN_SAFE_INTEGER
+                       var closest = 0
+                       for (let i = 0; i < nums.length; i++) {
+                           if (i == 0 || nums[i] != nums[i - 1]) {
+                               let l = i + 1
+                               let r = nums.length - 1
+                               while (l < r) {
+                                   let s = nums[i] + nums[l] + nums[r]
+                                   if (Math.abs(s - target) < min) {
+                                       min = Math.abs(s - target)
+                                       closest = s
+                                   }
+                                   if (s < target) {
+                                       l += 1
+                                   } else {
+                                       r -= 1
+                                   }
                                }
-                               if(s<target){start+=1}
-                               else{end-=1}
-                               }
-                             }
                            }
-                             return closest
+                       }
+                       return closest
                    };
                    
-                   console.log(threeSumClosest([-1, 0, 1, 2, -1, -4],8))`,
+                   console.log(threeSumClosest([-1, 0, 1, 2, -1, -4], 8))`,
                     Java: {
                       code: `import java.util.*;
 
