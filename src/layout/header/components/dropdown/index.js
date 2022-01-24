@@ -107,12 +107,12 @@ const DropdownContainer = ({
 
   return (
     <StyledDropdown
-      overlay={isPathDsa ? <></> : menu}
+      overlay={isPathDsa && !songs ? <></> : menu}
       trigger={["click"]}
       placement="bottomRight"
-      arrow={!isPathDsa}
+      arrow={!(isPathDsa && !songs)}
     >
-      <Container isPathDsa={isPathDsa}>
+      <Container isPathDsa={isPathDsa && !songs}>
         <Label>
           <LangugageIcon>
             {language ? languages[selectedLanguage].icon : null}
@@ -127,7 +127,7 @@ const DropdownContainer = ({
             </Row>
           )}
         </Label>
-        {!isPathDsa && <Icon />}
+        {(!isPathDsa || songs) && <Icon />}
       </Container>
     </StyledDropdown>
   );
