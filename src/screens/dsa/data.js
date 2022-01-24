@@ -26583,32 +26583,45 @@ removeElement([3,2,2,3],3)`,
             <CodeEditor
               options={{
                 title: "Q32. Longest Valid Parentheses",
-                output: `(()`,
+                output: `4
+                [ 0, 0, 0, 2, 0, 4 ]
+                4`,
                 codes: {
                   Javascript: {
-                    code: `/**
-                    * @param {string} s
-                    * @return {number}
-                    */
-                   var longestValidParentheses = function (s) {
-                     let maxans = 0;
-                     let stack = [];
-                     stack.push(-1);
-                     for (let i = 0; i < s.length; i++) {
-                       if (s[i] == "(") stack.push(i);
-                       else {
-                         stack.pop();
-                         if (stack.length == 0) {
-                           stack.push(i);
-                         } else {
-                           maxans = Math.max(maxans, i - stack.slice(-1)[0]);
-                         }
-                       }
-                     }
-                     return maxans;
-                   };
-                   
-                   console.log(longestValidParentheses("(()()"));
+                    code: `
+                    /**
+                     * @param {string} s
+                     * @return {number}
+                     */
+                    var longestValidParentheses = function(s) {
+                        let maxans = 0;
+                        let stack = [];
+                        stack.push(-1);
+                        for (let i = 0; i < s.length; i++) {
+                            if (s[i] == "(") stack.push(i);
+                            else {
+                                stack.pop();
+                                if (stack.length == 0) {
+                                    stack.push(i);
+                                } else {
+                                    maxans = Math.max(maxans, i - stack.slice(-1)[0]);
+                                }
+                            }
+                        }
+                        return maxans;
+                    };
+                    
+                    function lvp(s){
+                      let s2 = ")" + s;
+                      const dp = Array(s2.length).fill(0);
+                      for (let i = 1; i < s2.length; ++i)
+                      if (s2[i] == ')' && s2[i - dp[i - 1] - 1] == '(')
+                      dp[i] = dp[i - 1] + dp[i - dp[i - 1] - 2] + 2;
+                      console.log(dp)
+                      return Math.max(...dp);
+                    }
+                    console.log(longestValidParentheses("(()()"));
+                    console.log(lvp("(()()"));
                    `,
                   },
                 },
