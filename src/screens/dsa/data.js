@@ -19031,17 +19031,23 @@ console.log(isPairSum(arr, arrSize, val));
                 output: `[ 0, 1 ]`,
                 codes: {
                   Javascript: {
-                    code: `var twoSum = function(nums, target){
-                      const map = {}
-                      for(let i in nums){
-                        let diff = target - nums[i]
-                        if(map[diff])
-                        return [+map[diff],+i]
-                        else
-                        map[nums[i]] = i
-                      }
-                      }
-                      twoSum([3,3],6)
+                    code: `/**
+                    * @param {number[]} nums
+                    * @param {number} target
+                    * @return {number[]}
+                    */
+                   var twoSum = function(nums, target){
+                   const map = {}
+                   for(let i in nums){
+                     let diff = target - nums[i]
+                     if(map[diff])
+                     return [+map[diff],+i]
+                     else
+                     map[nums[i]] = i
+                   }
+                   }
+                   
+                   twoSum([3,3],6)                   
                       `,
                   },
                   Java: {
@@ -19387,38 +19393,61 @@ if __name__ == '__main__':
                 output: `abcd`,
                 codes: {
                   Javascript: {
-                    code: `function convert(str) {
-                      var current = 0,
-                        st = 0,
-                        max = 0,
-                        start = 0;
-                      let i;
-                      var obj = {};
-                      for (i = 0; i < str.length; i++) {
-                        if (!obj[str[i]]) {
-                          obj[str[i]] = i;
-                        } else {
-                          if (obj[str[i]] >= st) {
-                            current = i - st;
-                            if (max < current) {
-                              max = current;
-                              start = st;
-                            }
-                            st = obj[str[i]] + 1;
-                          }
-                          obj[str[i]] = i;
-                        }
-                      }
-                      if (max < i - st) {
-                        max = i - st;
-                        start = st;
-                      }
-                    
-                      return str.substring(start, start + max);
-                    }
-                    
-                    const str = "abcdefhgjfghnbahggjhh";
-                    console.log(convert(str));
+                    output: `9`,
+                    code: `/**
+                    * @param {string} s
+                    * @return {number}
+                    */
+                   
+                   // method -> a
+                   
+                   var lengthOfLongestSubstring = function(s) {
+                     let ans = 0;
+                     const count = Array(128).fill(0);
+                     for (let l = 0, r = 0; r < s.length; ++r) {
+                         ++count[s[r].charCodeAt(0)];
+                         while (count[s[r].charCodeAt(0)] > 1)
+                           --count[s[l++].charCodeAt(0)];
+                         ans = Math.max(ans, r - l + 1);
+                       }
+                     return ans;
+                   };
+                   
+                   const str = "abcdefhgjfghnbahggjhh";
+                   lengthOfLongestSubstring(str)
+                   
+                   // method -> b
+                   function convert(str) {
+                       var current = 0,
+                           st = 0,
+                           max = 0,
+                           start = 0;
+                       let i;
+                       var obj = {};
+                       for (i = 0; i < str.length; i++) {
+                           if (!obj[str[i]]) {
+                               obj[str[i]] = i;
+                           } else {
+                               if (obj[str[i]] >= st) {
+                                   current = i - st;
+                                   if (max < current) {
+                                       max = current;
+                                       start = st;
+                                   }
+                                   st = obj[str[i]] + 1;
+                               }
+                               obj[str[i]] = i;
+                           }
+                       }
+                       if (max < i - st) {
+                           max = i - st;
+                           start = st;
+                       }
+                   
+                       return str.substring(start, start + max);
+                   }
+                   
+                   // console.log(convert(str));
                     `,
                   },
                   Java: {
