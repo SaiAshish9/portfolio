@@ -57587,8 +57587,25 @@ class Solution {
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @return {string[]}
+                */
+               var fizzBuzz = function(n) {
+                 const res = [];
+                 for (let i = 1; i <= n; ++i) {
+                   const s = [];
+                   if (i % 3 == 0)
+                     s.push("Fizz");
+                   if (i % 5 == 0)
+                     s.push("Buzz");
+                   res.push(s.length == 0 ? String(i) : s.join(""));
+                 }
+                 return res;  
+               };
+               
+               fizzBuzz(5)`,
+                output: `[ '1', '2', 'Fizz', '4', 'Buzz' ]`,
               },
             }}
           />
