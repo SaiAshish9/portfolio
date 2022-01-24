@@ -27829,9 +27829,9 @@ removeElement([3,2,2,3],3)`,
               <b>Complexity:</b>
             </Span>
             <p>
-              Time: O(mn)
+              Time: O(∣num1∣∣num2∣)
               <br />
-              Space: O(m+n)
+              Space: O(∣num1∣ + ∣num2∣)
             </p>
             <CodeEditor
               options={{
@@ -27844,28 +27844,24 @@ removeElement([3,2,2,3],3)`,
                     * @return {string}
                     */
                    var multiply = function(num1, num2) {
-                       let n1 = num1.split("").reverse().join("");
-                       let n2 = num2.split("").reverse().join("");
-                       var d = Array(n1.length + n2.length).fill(0);
-                       for (let i = 0; i < n1.length; i++) {
-                         for (let j = 0; j < n2.length; j++) {
-                           d[i + j] += (n1[i] - "0") * (n2[j] - "0");
-                         }
+                     const m = num1.length;
+                     const n = num2.length;
+                     const st = [];
+                     const pos = Array(m + n).fill(0);
+                   
+                     for (let i = m - 1; i >= 0; --i)
+                       for (let j = n - 1; j >= 0; --j) {
+                         let multiply = +num1[i] * +num2[j];
+                         let sum = multiply + pos[i + j + 1];
+                         pos[i + j] += parseInt(sum / 10);
+                         pos[i + j + 1] = sum % 10;
                        }
-                       let result = "";
-                       for (let i = 0; i < d.length; i++) {
-                         let digit = d[i] % 10;
-                         let carry = parseInt(d[i] / 10);
-                         if (i + 1 < d.length) {
-                           d[i + 1] += carry;
-                         }
-                         result = digit + "" + result;
-                       }
-                       let index = 0;
-                       while (index < result.length - 1 && result[index] == "0") {
-                         index++;
-                       }
-                       return result.substr(index);
+                   
+                     for (let p of pos)
+                       if (p > 0 || sb.length > 0)
+                         st.push(p);
+                   
+                     return st.length == 0 ? "0" : st.join("");
                    };
                    
                    console.log(multiply("7", "8"));
