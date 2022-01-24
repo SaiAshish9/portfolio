@@ -25895,6 +25895,23 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q27. Remove Element",
                 output: `5`,
                 codes: {
+                  Javascript: {
+                    code: `/**
+* @param {number[]} nums
+* @param {number} val
+* @return {number}
+*/
+var removeElement = function(nums, val) {
+ let i = 0;
+ for (let num of nums)
+   if (num != val)
+     nums[i++] = num;
+ return i;  
+};
+
+removeElement([3,2,2,3],3)`,
+                    output: `2`,
+                  },
                   Java: {
                     code: `import java.io.*;
 
@@ -26148,6 +26165,32 @@ print(removeDuplicates([0,0,1,2,2,3,4]))
                 title: "Q29. Divide Two Integers",
                 codes: {
                   Javascript: {
+                    output: `3`,
+                    code: `/**
+                    * @param {number} dividend
+                    * @param {number} divisor
+                    * @return {number}
+                    */
+                   var divide = function(dividend, divisor) {
+                     if (dividend == Math.pow(-2,31) && divisor == -1)
+                         return Math.pow(2,31)-1;
+                     let sign = dividend > 0 ^ divisor > 0 ? -1 : 1;
+                     let ans = 0;
+                     let dvd = Math.abs(dividend);
+                     let dvs = Math.abs(divisor);
+                     while (dvd >= dvs) {
+                       let k = 1;
+                       while (k * 2 * dvs <= dvd)
+                         k *= 2;
+                       dvd -= k * dvs;
+                       ans += k;
+                     }
+                     return sign * ans;
+                   };
+                   
+                   divide(10,3)`,
+                  },
+                  Java: {
                     output: `3`,
                     code: `import java.io.*;
 
