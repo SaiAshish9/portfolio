@@ -27570,8 +27570,8 @@ removeElement([3,2,2,3],3)`,
                 title: "Q40. Combination Sum 2",
                 output: `[[1, 1, 6], [1, 2, 5], [1, 7], [2, 6]]`,
                 codes: {
-                  Javascript:{
-                    code:`/**
+                  Javascript: {
+                    code: `/**
                     * @param {number[]} candidates
                     * @param {number} target
                     * @return {number[][]}
@@ -27601,8 +27601,8 @@ removeElement([3,2,2,3],3)`,
                      return res  
                    };
                    
-                   combinationSum2([10,1,2,7,6,1,5],8)`
-                  }
+                   combinationSum2([10,1,2,7,6,1,5],8)`,
+                  },
                 },
               }}
             />
@@ -57365,31 +57365,82 @@ class Solution {
         content: (
           <Comp
             title="Q409. Longest Palindrome (Q348)"
-            content1={<></>}
+            content1={
+              <>
+                Given a string s which consists of lowercase or uppercase
+                letters, return the length of the longest palindrome that can be
+                built with those letters.
+                <br />
+                Letters are case sensitive, for example, "Aa" is not considered
+                a palindrome here.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "abccccdd"
+                    <br />
+                    Output: 7<br />
+                    Explanation:
+                    <br />
+                    One longest palindrome that can be built is "dccaccd", whose
+                    length is 7.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "a"
+                    <br />
+                    Output: 1
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "bb"
+                    <br />
+                    Output: 2
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                1 &lt;= s.length &lt;= 2000
+                <br />s consists of lowercase and/or uppercase English letters
+                only.
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {number}
+                */
+               var longestPalindrome = function(s) {
+                 let ans = 0;
+                 const count = Array(128).fill(0);
+               
+                 for (let c of s)
+                   ++count[c.charCodeAt(0)];
+               
+                 for (let c of count)
+                   ans += c % 2 == 0 ? c : c - 1;
+               
+                 const hasOddCount = count.some(c => c % 2 == 1);
+               
+                 return ans + (hasOddCount ? 1 : 0);
+               };
+               
+               longestPalindrome("abccccdd")`,
+                output: `7`,
               },
             }}
           />
