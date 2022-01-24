@@ -6,7 +6,13 @@ import { MdClose } from "react-icons/md";
 
 import { IoMusicalNotesSharp } from "react-icons/io5";
 
-import { Styles, Theme, Colors, FontWeight } from "constants/index";
+import {
+  Styles,
+  Theme,
+  Colors,
+  FontWeight,
+  BREAKPOINTS,
+} from "constants/index";
 
 const { veryDarkGray, white, blue } = Colors;
 
@@ -70,6 +76,9 @@ export const StyledDrawer = styled(Drawer)`
         : current === Theme.fire
         ? "#FF7600"
         : white};
+  }
+  @media only screen and (min-width: ${BREAKPOINTS.sm}) {
+    display: none;
   }
 `;
 
