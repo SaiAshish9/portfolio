@@ -27747,7 +27747,7 @@ removeElement([3,2,2,3],3)`,
             <p>
               Time: O(n)
               <br />
-              Space: O(n)
+              Space: O(1)
             </p>
             <CodeEditor
               options={{
@@ -27760,35 +27760,25 @@ removeElement([3,2,2,3],3)`,
                     */
                    
                    var trap = function(height) {
-                    if (height.length === 0) {
+                     if (height.length == 0)
                          return 0;
+                     let ans = 0;
+                     let l = 0;
+                     let r = height.length - 1;
+                     let maxL = height[l];
+                     let maxR = height[r];
+                     while (l < r)
+                       if (maxL < maxR) {
+                         ans += maxL - height[l];
+                         maxL = Math.max(maxL, height[++l]);
+                       } else {
+                         ans += maxR - height[r];
+                         maxR = Math.max(maxR, height[--r]);
                        }
-                       let left = [],
-                         right = [];
-                       let max = height[0];
-                       left[0] = height[0];
-                       for (let i = 1; i < height.length; i++) {
-                         if (height[i] > max) {
-                           max = height[i];
-                         }
-                         left[i] = max;
-                       }
-                       max = height[height.length - 1];
-                       right[height.length - 1] = height[height.length - 1];
-                       for (let i = height.length - 2; i >= 0; i--) {
-                         if (height[i] > max) {
-                           max = height[i];
-                         }
-                         right[i] = max;
-                       }
-                       let water = 0;
-                       for (let i = 0; i < height.length; i++) {
-                         water += Math.min(left[i], right[i]) - height[i];
-                       }
-                       return water;    
+                     return ans;  
                    };
                    
-                   console.log([4, 2, 0, 3, 2, 5]);
+                   console.log([4, 2, 0, 3, 2, 5]);                   
                    `,
                     output: `[ 4, 2, 0, 3, 2, 5 ]`,
                   },
