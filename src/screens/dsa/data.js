@@ -22472,6 +22472,37 @@ print(Test.threeSumClosest([-1, 0, 1, 2, -1, -4],8))`,
               options={{
                 title: "Q17. Letter Combinations Of A PhoneNumber",
                 codes: {
+                  Javascript: {
+                    code: `/**
+* @param {string} digits
+* @return {string[]}
+*/
+const digitToLetters = ["","","abc","def","ghi","jkl","mno", "pqrs", "tuv", "wxyz"];
+
+function dfs(digits , i, res, curr=[]) {
+ if (i == digits.length) {
+   res.push(curr.slice().join(""));
+   return;
+ }
+
+ for (let c of digitToLetters[+digits[i]]) {
+   curr.push(c);
+   dfs(digits, i + 1, res, curr);
+   curr.pop()
+ }
+}
+
+var letterCombinations = function(digits) {
+ if (!digits.length)
+     return [];
+ const res = [];
+ dfs(digits, 0, res);
+ return res;  
+};
+
+letterCombinations("2")`,
+                    output: `[ 'a', 'b', 'c' ]`,
+                  },
                   Java: {
                     code: `import java.util.*;
                     class Main {
