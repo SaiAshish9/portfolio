@@ -58194,42 +58194,8 @@ class Solution {
           />
         ),
       },
-      q348: {
-        title: "Q440. K-th Smallest in Lexicographical Order (Q348)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>{" "}
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
       q371: {
-        title: "Q441. Arranging Coins (Q371)",
+        title: "Q440. K-th Smallest in Lexicographical Order (Q371)",
         content: (
           <Comp
             content1={<></>}
@@ -58263,7 +58229,7 @@ class Solution {
         ),
       },
       q372: {
-        title: "Q442. Find All Duplicates in an Array (Q372)",
+        title: "Q441. Arranging Coins (Q372)",
         content: (
           <Comp
             content1={<></>}
@@ -58297,41 +58263,7 @@ class Solution {
         ),
       },
       q373: {
-        title: "Q443. String Compression (Q373)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>{" "}
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q374: {
-        title: "Q445. Add Two Numbers II (Q374)",
+        title: "Q442. Find All Duplicates in an Array (Q373)",
         content: (
           <Comp
             content1={<></>}
@@ -58365,7 +58297,7 @@ class Solution {
         ),
       },
       q375: {
-        title: "Q446. Arithmetic Slices II - Subsequence (Q375)",
+        title: "Q443. String Compression (Q375)",
         content: (
           <Comp
             content1={<></>}
@@ -58399,7 +58331,7 @@ class Solution {
         ),
       },
       q376: {
-        title: "Q447. Number of Boomerangs (Q376)",
+        title: "Q445. Add Two Numbers II (Q376)",
         content: (
           <Comp
             content1={<></>}
@@ -58433,7 +58365,75 @@ class Solution {
         ),
       },
       q377: {
-        title: "Q448. Find All Numbers Disappeared in an Array (Q377)",
+        title: "Q446. Arithmetic Slices II - Subsequence (Q377)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>{" "}
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q378: {
+        title: "Q447. Number of Boomerangs (Q378)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>{" "}
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q379: {
+        title: "Q448. Find All Numbers Disappeared in an Array (Q379)",
         content: (
           <Comp
             content1={<></>}
@@ -58501,8 +58501,8 @@ class Solution {
         ),
       },
     },
-    q379: {
-      title: "Q450. Delete Node in a BST (Q379)",
+    q380: {
+      title: "Q450. Delete Node in a BST (Q380)",
       content: (
         <Comp
           content1={<></>}
