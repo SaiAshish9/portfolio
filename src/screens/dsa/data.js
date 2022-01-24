@@ -26910,26 +26910,43 @@ removeElement([3,2,2,3],3)`,
                 codes: {
                   Javascript: {
                     code: `
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number}
- */
-                    var searchInsert = function (nums, target) {
-                      return bs(nums, 0, nums.length - 1, target);
+                    /**
+                     * @param {number[]} nums
+                     * @param {number} target
+                     * @return {number}
+                     */
+                    var searchInsert = function(nums, target) {
+                        return bs(nums, 0, nums.length - 1, target);
                     };
                     
-                    var bs = function (nums, start, end, target) {
-                      if (start > end) return end + 1;
-                      let mid = parseInt((start + end) / 2);
-                      if (nums[mid] < target) return bs(nums, mid + 1, end, target);
-                      else if (nums[mid] > target) return bs(nums, start, mid - 1, target);
-                      return mid;
+                    var bs = function(nums, start, end, target) {
+                        if (start > end) return end + 1;
+                        let mid = parseInt((start + end) / 2);
+                        if (nums[mid] < target) return bs(nums, mid + 1, end, target);
+                        else if (nums[mid] > target) return bs(nums, start, mid - 1, target);
+                        return mid;
                     };
                     
+                    var SI = function(nums,target){
+                      let l = 0;
+                      let r = nums.length;
+                      while (l < r) {
+                        const m = l + parseInt((r - l) / 2);
+                        if (nums[m] == target)
+                          return m;
+                        if (nums[m] < target)
+                          l = m + 1;
+                        else
+                          r = m;
+                      }
+                      return l;
+                    }
+                    
+                    console.log(SI([2, 3, 4, 5, 6], 5))
                     console.log(searchInsert([2, 3, 4, 5, 6], 5));
                     `,
-                    output: `3`,
+                    output: `3
+                    3`,
                   },
                 },
               }}
