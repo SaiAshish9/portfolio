@@ -207,6 +207,7 @@ import Leetcode363 from "assets/leetcode/363.png";
 import Leetcode375 from "assets/leetcode/375.png";
 import Leetcode388 from "assets/leetcode/388.png";
 import Leetcode391 from "assets/leetcode/391.png";
+import Leetcode401 from "assets/leetcode/401.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -56400,7 +56401,9 @@ dir
             constraints={<>1&lt;= n &lt;= 2^31 - 1</>}
             tc="log n"
             sc="1"
-            codes={{ Javascript: { code: `/**
+            codes={{
+              Javascript: {
+                code: `/**
             * @param {number} n
             * @return {number}
             */
@@ -56419,67 +56422,189 @@ dir
              return +String(targetNum)[index] 
            };
            
-           findNthDigit(3)`, output: `3` } }}
+           findNthDigit(3)`,
+                output: `3`,
+              },
+            }}
           />
         ),
       },
       q341: {
-        title: "Q (Q341)",
+        title: "Q401. Binary Watch (Q341)",
         content: (
           <Comp
-            content1={<></>}
-            img={null}
+            title="Q401. Binary Watch (Q341)"
+            content1={
+              <>
+                A binary watch has 4 LEDs on the top which represent the hours
+                (0-11), and the 6 LEDs on the bottom represent the minutes
+                (0-59). Each LED represents a zero or one, with the least
+                significant bit on the right.
+                <br />
+                For example, the below binary watch reads "4:51".
+                <br />
+                Given an integer turnedOn which represents the number of LEDs
+                that are currently on, return all possible times the watch could
+                represent. You may return the answer in any order.
+                <br />
+                The hour must not contain a leading zero.
+                <br />
+                For example, "01:00" is not valid. It should be "1:00". <br />
+                The minute must be consist of two digits and may contain a
+                leading zero.
+                <br />
+                For example, "10:2" is not valid. It should be "10:02".
+              </>
+            }
+            img={Leetcode401}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: turnedOn = 1<br />
+                    Output:
+                    ["0:01","0:02","0:04","0:08","0:16","0:32","1:00","2:00","4:00","8:00"]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: turnedOn = 9<br />
+                    Output: []
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up: </b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            constraints={<>0 &lt;= turnedOn &lt;= 10</>}
+            tc="2^n"
+            sc="2^n"
+            codes={{
+              Javascript: {
+                code: `/**
+            * @param {number} turnedOn
+            * @return {string[]}
+            */
+           
+           const hours = [1, 2, 4, 8];
+           const minutes = [1, 2, 4, 8, 16, 32];
+           
+           function dfs(n,s,h,m,ans){
+             if (n == 0) {
+             const time = String(h) + ":" + (m < 10 ? "0" : "") + String(m);
+               ans.push(time);
+               return;
+             }
+             for (let i = s; i < hours.length + minutes.length; ++i)
+               if (i < 4 && h + hours[i] < 12)
+                 dfs(n - 1, i + 1, h + hours[i], m, ans);
+               else if (i >= 4 && m + minutes[i - 4] < 60)
+                 dfs(n - 1, i + 1, h, m + minutes[i - 4], ans);
+           }
+           
+           function readBinaryWatch(turnedOn) {
+             const ans = [];
+             dfs(turnedOn, 0, 0, 0, ans);
+             return ans;
+           }
+           
+           readBinaryWatch(9)`,
+                output: `[]`,
+              },
+            }}
           />
         ),
       },
       q342: {
-        title: "Q (Q342)",
+        title: "Q402. Remove K Digits (Q342)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given string num representing a non-negative integer num, and an
+                integer k, return the smallest possible integer after removing k
+                digits from num.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = "1432219", k = 3 <br />
+                    Output: "1219" <br />
+                    Explanation: Remove the three digits 4, 3, and 2 to form the
+                    new number 1219 which is the smallest.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = "10200", k = 1 <br />
+                    Output: "200" <br />
+                    Explanation: Remove the leading 1 and the number is 200.
+                    Note that the output must not contain leading zeroes.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = "10", k = 2<br />
+                    Output: "0"
+                    <br />
+                    Explanation: Remove all the digits from the number and it is
+                    left with nothing which is 0.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up: </b>
+                1 &lt;= k &lt;= num.length &lt;= 10^5
+                <br />
+                num consists of only digits.
+                <br />
+                num does not have any leading zeros except for the zero itself.
               </>
             }
             tc="n"
             sc="n"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{ Javascript: { code: `/**
+            * @param {string} num
+            * @param {number} k
+            * @return {string}
+            */
+           var removeKdigits = function(num, k) {
+             if (num.length == k)
+               return "0";
+           
+             const sb = [];
+             const stack = [];
+           
+             for (let i = 0; i < num.length; ++i) {
+               while (k > 0 && stack.length && stack.slice(-1)[0] > num[i]) {
+                 stack.pop();
+                 --k;
+               }
+               stack.push(num[i]);
+             }
+           
+             while (k-- > 0)
+               stack.pop();
+           
+               for (let c of stack) {
+                 if (c == '0' && sb.length == 0)
+                   continue;
+                 sb.push(c);
+               }
+             return sb.length == 0 ? "0" : sb.join(""); 
+           };
+           
+           removeKdigits("10200",1)`, output: `200` } }}
           />
         ),
       },
