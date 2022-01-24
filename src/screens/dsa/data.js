@@ -26309,38 +26309,53 @@ removeElement([3,2,2,3],3)`,
                     * @return {number[]}
                     */
                    var findSubstring = function(s, words) {
-                       var sLen = s.length;
-                       var wLen = words.length;
-                       var wordLen = (words[0] || '').length;
-                     
-                       if (!sLen || !wLen || !wordLen) return [];
-                     
-                       var count = 0;
-                       var tmp = '';
-                       var map1 = {};
-                       var map2 = {};
-                       var res = [];
-                     
-                       for (var i = 0; i < wLen; i++) {
-                         map1[words[i]] = (map1[words[i]] || 0) + 1;
+                     if(!s.length || !words.length ) return [];
+                     let m = words.length;
+                     let n = words[0].length;
+                     const res = [];
+                     const count = {};
+                     for (let word of words)
+                       count[word] = (count[word] || 0 ) + 1;
+                     for (let i = 0; i <= s.length - m * n; ++i) {
+                       const seen = {};
+                       let j = 0;
+                       for (; j < m; ++j) {
+                         let word = s.substring(i + j * n, i + j * n + n);
+                         seen[word] = (seen[word] || 0) + 1;
+                         if (seen[word] > (count[word] || 0) )
+                           break;
                        }
+                       if (j == m)
+                         res.push(i);
+                     }
+                     return res;
+                   };
                      
-                       out: for (var j = 0; j <= sLen - (wLen * wordLen); j++) {
-                         map2 = {};
-                         count = 0;
-                         while (count < wLen) {
-                           tmp = s.substr(j + (count * wordLen), wordLen);
-                           if (map1[tmp] === undefined || map1[tmp] === map2[tmp]) continue out;
-                           map2[tmp] = (map2[tmp] || 0) + 1;
-                           count++;
-                         }
-                         res.push(j);
-                       }
-                     
-                       return res;
-                     };
-                     
-                     console.log(findSubstring("barfoothefoobarman",["foo","bar"]))`,
+                   console.log(findSubstring("barfoothefoobarman",["foo","bar"]))
+                   // var sLen = s.length;
+                   // var wLen = words.length;
+                   // var wordLen = (words[0] || '').length;
+                   // if (!sLen || !wLen || !wordLen) return [];
+                   // var count = 0;
+                   // var tmp = '';
+                   // var map1 = {};
+                   // var map2 = {};
+                   // var res = [];
+                   // for (var i = 0; i < wLen; i++) {
+                   //   map1[words[i]] = (map1[words[i]] || 0) + 1;
+                   // }
+                   // out: for (var j = 0; j <= sLen - (wLen * wordLen); j++) {
+                   //   map2 = {};
+                   //   count = 0;
+                   //   while (count < wLen) {
+                   //     tmp = s.substr(j + (count * wordLen), wordLen);
+                   //     if (map1[tmp] === undefined || map1[tmp] === map2[tmp]) continue out;
+                   //     map2[tmp] = (map2[tmp] || 0) + 1;
+                   //     count++;
+                   //   }
+                   //   res.push(j);
+                   // }
+                   // return res;`,
                   },
                 },
               }}
