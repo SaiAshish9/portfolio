@@ -24142,23 +24142,23 @@ while ans is not None:
                     * @return {string[]}
                     */
                    var generateParenthesis = function(n) {
-                     var result = []
-                     gen("",n,n,result)
-                     return result
+                       var result = []
+                       dfs("", n, n, result)
+                       return result
                    };
                    
-                   function gen(prefix,left,right,result){
-                     if(left===0 && right===0){
-                       result.push(prefix)
-                       return
-                     }
-                     if(left>0){
-                       gen(prefix +"(",left-1,right,result)
-                     }
-                     if(left<right){
-                       gen(prefix + ")",left,right-1,result)
-                     }
-                   }    
+                   function dfs(prefix, l, r, result) {
+                       if (l === 0 && r === 0) {
+                           result.push(prefix)
+                           return
+                       }
+                       if (l > 0) {
+                           dfs(prefix + "(", l - 1, r, result)
+                       }
+                       if (l < r) {
+                           dfs(prefix + ")", l, r - 1, result)
+                       }
+                   }
                    
                    console.log(generateParenthesis(3))`,
                   },
