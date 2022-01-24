@@ -56925,7 +56925,9 @@ dir
             }
             tc="n^2"
             sc="n"
-            codes={{ Java: { code: `
+            codes={{
+              Java: {
+                code: `
             [[6,0],[5,0],[4,0],[3,2],[2,2],[1,4]]
 class Solution {
   public int[][] reconstructQueue(int[][] people) {
@@ -56939,26 +56941,49 @@ class Solution {
     return ans.toArray(new int[ans.size()][]);
   }
 }
-`, output: `[[4,0],[5,0],[2,2],[3,2],[1,4],[6,0]]` } }}
+`,
+                output: `[[4,0],[5,0],[2,2],[3,2],[1,4],[6,0]]`,
+              },
+            }}
           />
         ),
       },
       q347: {
-        title: "Q (Q347)",
+        title: "407. Trapping Rain Water IIQ (Q347)",
         content: (
           <Comp
-            content1={<></>}
+            title="407. Trapping Rain Water IIQ (Q347)"
+            content1={
+              <>
+                Given an m x n integer matrix heightMap representing the height
+                of each unit cell in a 2D elevation map, return the volume of
+                water it can trap after raining.
+              </>
+            }
             img={null}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: heightMap =
+                    [[1,4,3,1,3,2],[3,2,1,3,2,4],[2,3,3,2,3,1]]
+                    <br /> Output: 4
+                    <br /> Explanation: After the rain, water is trapped between
+                    the blocks.
+                    <br /> We have two small ponds 1 and 3 units trapped. The
+                    total volume of water trapped is 4.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: heightMap =
+                    [[3,3,3,3,3],[3,2,2,2,3],[3,2,1,2,3],[3,2,2,2,3],[3,3,3,3,3]]
+                    <br /> Output: 10
+                  </>
+                ),
               },
             ]}
             constraints={<></>}
@@ -56969,7 +56994,72 @@ class Solution {
             }
             tc="mn log mn"
             sc="mn"
-            codes={{ Javascript: { code: ``, output: `` } }}
+            codes={{
+              Javascript: {
+                code: `
+            // [[1,4,3,1,3,2],[3,2,1,3,2,4],[2,3,3,2,3,1]]
+            class T {
+              public int i;
+              public int j;
+              public int h; 
+              public T(int i, int j, int h) {
+                this.i = i;
+                this.j = j;
+                this.h = h;
+              }
+            }
+            
+            class Solution {
+              public int trapRainWater(int[][] heightMap) {
+                final int m = heightMap.length;
+                final int n = heightMap[0].length;
+                final int[] dirs = {0, 1, 0, -1, 0};
+                int ans = 0;
+                PriorityQueue<T> pq = new PriorityQueue<>((a, b) -> a.h - b.h);
+                boolean[][] seen = new boolean[m][n];
+            
+                for (int i = 0; i < m; ++i) {
+                  pq.offer(new T(i, 0, heightMap[i][0]));
+                  pq.offer(new T(i, n - 1, heightMap[i][n - 1]));
+                  seen[i][0] = true;
+                  seen[i][n - 1] = true;
+                }
+            
+                for (int j = 1; j < n - 1; ++j) {
+                  pq.offer(new T(0, j, heightMap[0][j]));
+                  pq.offer(new T(m - 1, j, heightMap[m - 1][j]));
+                  seen[0][j] = true;
+                  seen[m - 1][j] = true;
+                }
+            
+                while (!pq.isEmpty()) {
+                  final int i = pq.peek().i;
+                  final int j = pq.peek().j;
+                  final int h = pq.poll().h;
+                  for (int k = 0; k < 4; ++k) {
+                    final int x = i + dirs[k];
+                    final int y = j + dirs[k + 1];
+                    if (x < 0 || x == m || y < 0 || y == n)
+                      continue;
+                    if (seen[x][y])
+                      continue;
+                    if (heightMap[x][y] < h) {
+                      ans += h - heightMap[x][y];
+                      pq.offer(new T(x, y, h)); 
+                    } else {
+                      pq.offer(new T(x, y, heightMap[x][y]));
+                    }
+                    seen[x][y] = true;
+                  }
+                }
+            
+                return ans;
+              }
+            }
+            `,
+                output: `4`,
+              },
+            }}
           />
         ),
       },
