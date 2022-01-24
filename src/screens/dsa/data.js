@@ -57450,6 +57450,7 @@ class Solution {
         title: "Q410. Split Array Largest Sum (Q349)",
         content: (
           <Comp
+            title="Q410. Split Array Largest Sum (Q349)"
             content1={
               <>
                 Given an array nums which consists of non-negative integers and
@@ -57500,11 +57501,6 @@ class Solution {
                 <br />
                 0 &lt;= nums[i] &lt;= 1^6
                 <br />1 &lt;= m &lt;= min(50, nums.length)
-              </>
-            }
-            fp={
-              <>
-                <b>Follow up :</b>{" "}
               </>
             }
             tc="m.n^2"
