@@ -22749,6 +22749,58 @@ print(m.letterCombinations("234"))
                 title: "Q18. 4Sum",
                 output: `[[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]`,
                 codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {number[]} nums
+                    * @param {number} target
+                    * @return {number[][]}
+                    */
+                   function nSum(nums, n, target, l, r, curr, res) {
+                     if (r - l + 1 < n || target < nums[l] * n || target > nums[r] * n)
+                       return;
+                     if (n == 2) {
+                       while (l < r) {
+                         let sum = nums[l] + nums[r];
+                         if (sum == target) {
+                           curr.push(nums[l]);
+                           curr.push(nums[r]);
+                           res.push(curr.slice());
+                           curr.pop()
+                           curr.pop()
+                           ++l;
+                           --r;
+                           while (l < r && nums[l] == nums[l - 1])
+                             ++l;
+                           while (l < r && nums[r] == nums[r + 1])
+                             --r;
+                         } else if (sum < target) {
+                           ++l;
+                         } else {
+                           --r;
+                         }
+                       }
+                       return;
+                     }
+                   
+                     for (let i = l; i <= r; ++i) {
+                       if (i > l && nums[i] == nums[i - 1])
+                         continue;
+                       curr.push(nums[i]);
+                       nSum(nums, n - 1, target - nums[i], i + 1, r, curr, res);
+                       curr.pop()
+                     }
+                   }
+                   
+                   var fourSum = function(nums, target) {
+                     nums.sort((a,b)=>a-b)
+                     const res = []
+                     nSum(nums, 4, target, 0, nums.length - 1, [], res)
+                     return res
+                   };
+                   
+                   fourSum([1,0,-1,0,-2,2],0)`,
+                    output: `[ [ -2, -1, 1, 2 ], [ -2, 0, 0, 2 ], [ -1, 0, 0, 1 ] ]`,
+                  },
                   Java: {
                     code: `import java.util.*;
 
