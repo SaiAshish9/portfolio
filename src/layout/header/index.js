@@ -333,6 +333,7 @@ const Header = ({ scrolled, history }) => {
         <ReactPlayer
           playing={isMuted}
           loop
+          muted
           height="0px"
           width="0px"
           url={songs[selected]["songUrl"]}

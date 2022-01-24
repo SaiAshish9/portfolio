@@ -145,8 +145,8 @@ export const Eye = styled(FaEye)`
 `;
 
 export const Mute = styled(GoMute)`
-  ${IconStyle}
-  margin-right:1rem;
+  ${IconStyle};
+  margin-right: 0.7rem;
   font-size: 1.2rem;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     font-size: 0.95rem;
@@ -156,8 +156,8 @@ export const Mute = styled(GoMute)`
 `;
 
 export const UnMute = styled(GoUnmute)`
-  ${IconStyle}
-  margin-right:1rem;
+  ${IconStyle};
+  margin-right: 0.7rem;
   font-size: 1.2rem;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     font-size: 0.95rem;
@@ -220,7 +220,7 @@ export const SLanguageIcon = styled.span`
 `;
 
 export const DsaIcon = styled(SiVisualstudiocode)`
-  margin-right: 1.5rem;
+  margin-right: 1.27rem;
   font-size: 1rem;
   cursor: pointer;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {

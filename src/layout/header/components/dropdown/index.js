@@ -12,13 +12,10 @@ import {
   Content,
   SubTitle,
   LangugageIcon,
-  Img,
   LanguageContent,
   Row,
   StyledDropdown,
 } from "./styles";
-
-import { useStore } from "store";
 
 import { StyledMusicIcon } from "../drawer/styles";
 import { withRouter } from "react-router-dom";
@@ -33,10 +30,6 @@ const DropdownContainer = ({
   selectedLanguage,
   setSelectedLanguage,
 }) => {
-  const {
-    state: { theme },
-  } = useStore();
-
   const isPathDsa = history.location.pathname.includes("dsa");
 
   const menu = (
