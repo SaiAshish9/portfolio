@@ -23128,8 +23128,8 @@ print(Main.fourSum([1,0,-1,0,-2,2],0))
                   Javascript: {
                     code: `// Definition for singly-linked list.
                     function ListNode(val, next) {
-                        this.val = (val===undefined ? 0 : val)
-                        this.next = (next===undefined ? null : next)
+                        this.val = (val === undefined ? 0 : val)
+                        this.next = (next === undefined ? null : next)
                     }
                     /**
                      * @param {ListNode} head
@@ -23137,22 +23137,17 @@ print(Main.fourSum([1,0,-1,0,-2,2],0))
                      * @return {ListNode}
                      */
                     var removeNthFromEnd = function(head, n) {
-                      var len = 0
-                      var tmp = head
-                      while (tmp != null) {
-                        tmp = tmp.next
-                        len++
+                      let slow = fast = head;
+                      while (n-- > 0)
+                        fast = fast.next;
+                      if (fast == null)
+                        return head.next;
+                      while (fast.next) {
+                        slow = slow.next;
+                        fast = fast.next;
                       }
-                      var toDe = len - n
-                      var parent = new ListNode(0)
-                      parent.next = head
-                      var second = parent
-                      while (toDe > 0) {
-                        second = second.next
-                        toDe--
-                      }
-                      second.next = second.next.next
-                      return parent.next
+                      slow.next = slow.next.next;
+                      return head;
                     };
                     
                     const head = new ListNode(1)
@@ -23160,11 +23155,11 @@ print(Main.fourSum([1,0,-1,0,-2,2],0))
                     head.next.next = new ListNode(3)
                     head.next.next.next = new ListNode(4)
                     head.next.next.next.next = new ListNode(5)
-                    removeNthFromEnd(head,2)
+                    removeNthFromEnd(head, 2)
                     let temp = head
-                    while(temp){
-                      console.log(temp.val)
-                      temp = temp.next
+                    while (temp) {
+                        console.log(temp.val)
+                        temp = temp.next
                     }    
                     `,
                     output: `1
