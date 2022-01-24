@@ -25704,6 +25704,28 @@ linebreak()
                 title: "Q26. Remove Duplicates from Sorted Array.",
                 output: `5`,
                 codes: {
+                  Javascript: {
+                    code: `/**
+                    * @param {number[]} nums
+                    * @return {number}
+                    */
+                   var removeDuplicates = function(nums){
+                     let i = 0;
+                     for (let num of nums)
+                       if (i < 1 || num > nums[i - 1])
+                         nums[i++] = num;
+                     return i;
+                   //   nums = nums.reduce((accumulator,current)=>{
+                   // accumulator[current] = (accumulator[current] || 0) + 1
+                   // return accumulator
+                   // },{})
+                   //     console.log(Object.keys(nums))
+                   //   return Object.keys(nums).length
+                   };
+                     
+                   console.log(removeDuplicates([1,1,2]))`,
+                    output: `2`,
+                  },
                   Java: {
                     code: `import java.util.*;
 
