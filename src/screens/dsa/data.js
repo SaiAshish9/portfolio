@@ -27353,32 +27353,51 @@ removeElement([3,2,2,3],3)`,
                     * @param {number} n
                     * @return {string}
                     */
+                   
                    var countAndSay = function(n){
-                    let result=""
-                    for(let i=0;i<n;i++){
-                      if(i==0){
-                       result = "1"
-                       continue
-                      }
-                      result = count(result)
-                    }
-                    return result
-                   }
-                   function count(s){
-                     let result=""
-                     let curr = s[0]
-                     let count = 1
-                     for(let i=1;i<s.length;i++){
-                       if(s[i]!=curr){
-                         result += count + "" + curr
-                         curr = s[i]
-                         count = 1
-                         continue
+                     let st = ["1"];
+                     while (--n > 0) {
+                       const next = [];
+                       for (let i = 0; i < st.length; ++i) {
+                         let count = 1;
+                         while (i + 1 < st.length && st[i] == st[i + 1]) {
+                           ++count;
+                           ++i;
+                         }
+                         next.push(count,st[i])
                        }
-                       count+=1
+                       st = next;
                      }
-                     result += count + "" + curr
-                     return result
+                     return st.join("");
+                   }
+                   
+                   var countAndSay1 = function(n) {
+                       let result = ""
+                       for (let i = 0; i < n; i++) {
+                           if (i == 0) {
+                               result = "1"
+                               continue
+                           }
+                           result = count(result)
+                       }
+                       return result
+                   }
+                   
+                   function count(s) {
+                       let result = ""
+                       let curr = s[0]
+                       let count = 1
+                       for (let i = 1; i < s.length; i++) {
+                           if (s[i] != curr) {
+                               result += count + "" + curr
+                               curr = s[i]
+                               count = 1
+                               continue
+                           }
+                           count += 1
+                       }
+                       result += count + "" + curr
+                       return result
                    }
                    
                    console.log(countAndSay(4))`,
