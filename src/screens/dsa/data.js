@@ -59936,6 +59936,7 @@ class Node {
         title: "Q445. Add Two Numbers II (Q376)",
         content: (
           <Comp
+            title="Q445. Add Two Numbers II (Q376)"
             content1={
               <>
                 You are given two non-empty linked lists representing two
@@ -60050,6 +60051,7 @@ class Node {
         title: "Q446. Arithmetic Slices II - Subsequence (Q377)",
         content: (
           <Comp
+            title="Q446. Arithmetic Slices II - Subsequence (Q377)"
             content1={
               <>
                 Given an integer array nums, return the number of all the
@@ -60121,8 +60123,35 @@ class Node {
             sc="n^2"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var numberOfArithmeticSlices = function(nums) {
+                 const n = nums.length;
+                 let res = 0;
+                 const dp = Array.from(Array(n),()=>Array(n).fill(0))
+                 const m = {};
+                 for (let i = 0; i < n; ++i) {
+                   m[nums[i]] = m[nums[i]] ? [...m[nums[i]],i] : [i]
+                 }
+               
+                 for (let i = 0; i < n; ++i)
+                   for (let j = 0; j < i; ++j) {
+                     let target = nums[j] * 2 - nums[i];
+                     if (target in m){
+                      for (let k of m[target]){
+                       if (k < j)
+                           dp[i][j] += (dp[j][k] + 1);
+                       }
+                     }
+                     res += dp[i][j];
+                   }
+                 return res;
+               };
+               
+               numberOfArithmeticSlices([2,4,6,8,10])`,
+                output: `7`,
               },
             }}
           />
@@ -60132,26 +60161,58 @@ class Node {
         title: "Q447. Number of Boomerangs (Q378)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q447. Number of Boomerangs (Q378)"
+            content1={
+              <>
+                You are given n points in the plane that are all distinct, where
+                points[i] = [xi, yi]. A boomerang is a tuple of points (i, j, k)
+                such that the distance between i and j equals the distance
+                between i and k (the order of the tuple matters).
+                <br />
+                Return the number of boomerangs.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: points = [[0,0],[1,0],[2,0]]
+                    <br />
+                    Output: 2<br />
+                    Explanation: The two boomerangs are [[1,0],[0,0],[2,0]] and
+                    [[1,0],[2,0],[0,0]].
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: points = [[1,1],[2,2],[3,3]]
+                    <br />
+                    Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: points = [[1,1]] <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                n == points.length <br />
+                1 &lt;= n &lt;= 500 <br />
+                points[i].length == 2 <br />
+                -10^4 &lt;= xi, yi &lt;= 10^4 <br />
+                All the points are unique.
               </>
             }
-            tc="n"
+            tc="n^2"
             sc="n"
             codes={{
               Javascript: {
