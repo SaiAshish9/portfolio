@@ -59582,8 +59582,35 @@ class Node {
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @param {string} p
+                * @return {number[]}
+                */
+               var findAnagrams = function(s, p) {
+                 const res = [];
+                 const count = Array(128).fill(false);
+                 let required = p.length;
+               
+                 for (let c of p)
+                   ++count[c.charCodeAt(0)];
+               
+                 for (let l = 0, r = 0; r < s.length; ++r) {
+                   if (--count[s[r].charCodeAt(0)] >= 0)
+                       --required;
+                     while (required == 0) {
+                       if (r - l + 1 == p.length)
+                         res.push(l);
+                       if (++count[s[l++].charCodeAt(0)] > 0)
+                         ++required;
+                     }
+                 }
+               
+                 return res; 
+               };
+               
+               findAnagrams("cbaebabacd","abc")`,
+                output: `[ 0, 6 ]`,
               },
             }}
           />
