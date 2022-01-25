@@ -213,6 +213,7 @@ import Leetcode407 from "assets/leetcode/407.png";
 import Leetcode417 from "assets/leetcode/417.png";
 import Leetcode419 from "assets/leetcode/419.png";
 import Leetcode427 from "assets/leetcode/427.png";
+import Leetcode429 from "assets/leetcode/429.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -58668,31 +58669,87 @@ class Node {
         title: "Q429. N-ary Tree Level Order Traversal (Q362)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q429. N-ary Tree Level Order Traversal (Q362)"
+            content1={
+              <>
+                Given an n-ary tree, return the level order traversal of its
+                nodes' values.
+                <br />
+                Nary-Tree input serialization is represented in their level
+                order traversal, each group of children is separated by the null
+                value (See examples).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode429,
+                content: (
+                  <>
+                    Input: root = [1,null,3,2,4,null,5,6]
+                    <br /> Output: [[1],[3,2,4],[5,6]]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root =
+                    [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+                    <br /> Output: [[1],[2,3,4,5],[6,7,8,9,10],[11,12,13],[14]]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                The height of the n-ary tree is less than or equal to 1000
+                <br /> The total number of nodes is between [0, 104]
               </>
             }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function Node(val,children) {
+                  this.val = val;
+                  this.children = children;
+                };
+                 
+                
+                /**
+                 * @param {Node|null} root
+                 * @return {number[][]}
+                 */
+                var levelOrder = function(root) {
+                  if (!root)
+                  return [];
+                  const res = [];
+                  const q = [root];
+                  while (q.length) {
+                    const curr = [];
+                    for (let size = q.length; size > 0; --size) {
+                      const node = q.shift();
+                      curr.push(node.val);
+                      for (let child of node.children)
+                        q.push(child);
+                    }
+                    res.push(curr);
+                  }
+                  return res;
+                };
+                
+                const n = new Node(1)
+                const n1 = new Node(3,[])
+                const n2 = new Node(2,[])
+                const n3 = new Node(4,[])
+                n.children = [n1,n2,n3]
+                const n4 = new Node(5,[])
+                const n5 = new Node(6,[])
+                n3.children = [n4,n5]
+                levelOrder(n)
+                `,
+                output: `[ [ 1 ], [ 3, 2, 4 ], [ 5, 6 ] ]`,
               },
             }}
           />
