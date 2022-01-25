@@ -59128,8 +59128,43 @@ class Node {
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} start
+                * @param {string} end
+                * @param {string[]} bank
+                * @return {number}
+                */
+               var minMutation = function(start, end, bank) {
+                 const bankSet = new Set(bank);
+                 if (!bankSet.has(end))
+                     return -1;
+                 let ans = 0;
+                 const q = [start];
+                 while (q.length) {
+                   ++ans;
+                   for (let size = q.length; size > 0; --size) {
+                     const s = q.shift().split("");
+                     for (let j = 0; j < s.length; ++j) {
+                       const cache = s[j];
+                       for (let c of ['A', 'C', 'G', 'T']) {
+                         s[j] =  c;
+                         const word = s.join("");
+                         if (word == end)
+                           return ans;
+                         if (bankSet.has(word)) {
+                           bankSet.delete(word);
+                           q.push(word);
+                         }
+                       }
+                       s[j]  = cache;
+                     }
+                   }
+                 }
+                 return -1;
+               };
+               
+               minMutation("AACCGGTT","AAACGGTA",["AACCGGTA","AACCGCTA","AAACGGTA"])`,
+                output: `2`,
               },
             }}
           />
