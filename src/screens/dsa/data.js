@@ -59807,8 +59807,22 @@ class Node {
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number[]}
+                */
+               var findDuplicates = function(nums) {
+                 const res = [];
+                 for (let num of nums) {
+                   nums[Math.abs(num) - 1] *= -1;
+                   if (nums[Math.abs(num) - 1] > 0)
+                   res.push(Math.abs(num));
+                 }
+                 return res;    
+               };
+               
+               findDuplicates([1,1,2])`,
+                output: `[ 1 ]`,
               },
             }}
           />
@@ -59818,23 +59832,72 @@ class Node {
         title: "Q443. String Compression (Q375)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q443. String Compression (Q375)"
+            content1={
+              <>
+                Given an array of characters chars, compress it using the
+                following algorithm:
+                <br />
+                Begin with an empty string s. For each group of consecutive
+                repeating characters in chars:
+                <br />
+                If the group's length is 1, append the character to s.
+                <br />
+                Otherwise, append the character followed by the group's length.
+                <br />
+                The compressed string s should not be returned separately, but
+                instead, be stored in the input character array chars. Note that
+                group lengths that are 10 or longer will be split into multiple
+                characters in chars.
+                <br />
+                After you are done modifying the input array, return the new
+                length of the array.
+                <br />
+                You must write an algorithm that uses only constant extra space.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: chars = ["a","a","b","b","c","c","c"] <br />
+                    Output: Return 6, and the first 6 characters of the input
+                    array should be: ["a","2","b","2","c","3"]
+                    <br /> Explanation: The groups are "aa", "bb", and "ccc".
+                    This compresses to "a2b2c3".
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: chars = ["a"] <br />
+                    Output: Return 1, and the first character of the input array
+                    should be: ["a"] <br />
+                    Explanation: The only group is "a", which remains
+                    uncompressed since it's a single character.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: chars =
+                    ["a","b","b","b","b","b","b","b","b","b","b","b","b"] <br />
+                    Output: Return 4, and the first 4 characters of the input
+                    array should be: ["a","b","1","2"]. <br />
+                    Explanation: The groups are "a" and "bbbbbbbbbbbb". This
+                    compresses to "ab12".
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                1 &lt;= chars.length &lt;= 2000 <br />
+                chars[i] is a lowercase English letter, uppercase English
+                letter, digit, or symbol.
               </>
             }
             tc="n"
