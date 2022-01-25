@@ -217,6 +217,7 @@ import Leetcode429 from "assets/leetcode/429.png";
 import Leetcode430 from "assets/leetcode/430.png";
 import Leetcode437 from "assets/leetcode/437.png";
 import Leetcode441 from "assets/leetcode/441.png";
+import Leetcode450 from "assets/leetcode/450.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -60324,6 +60325,7 @@ class Node {
         title: "Q449. Serialize and Deserialize BST (Q378)",
         content: (
           <Comp
+            title="Q449. Serialize and Deserialize BST (Q378)"
             content1={
               <>
                 Serialization is converting a data structure or object into a
@@ -60439,40 +60441,91 @@ class Node {
           />
         ),
       },
-    },
-    q381: {
-      title: "Q450. Delete Node in a BST (Q380)",
-      content: (
-        <Comp
-          content1={<></>}
-          content2={null}
-          examples={[
-            {
-              content: <></>,
-            },
-            {
-              content: <></>,
-            },
-            {
-              content: <></>,
-            },
-          ]}
-          constraints={<></>}
-          fp={
-            <>
-              <b>Follow up :</b>{" "}
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: ``,
-              output: ``,
-            },
-          }}
-        />
-      ),
+      q381: {
+        title: "Q450. Delete Node in a BST (Q381)",
+        content: (
+          <Comp
+            title="Q450. Delete Node in a BST (Q381)"
+            content1={
+              <>
+                Given a root node reference of a BST and a key, delete the node
+                with the given key in the BST. Return the root node reference
+                (possibly updated) of the BST.
+                <br />
+                Basically, the deletion can be divided into two stages:
+                <br />
+                Search for a node to remove.
+                <br />
+                If the node is found, delete the node.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                img: Leetcode450,
+                content: (
+                  <>
+                    Input: root = [5,3,6,2,4,null,7], key = 3 <br />
+                    Output: [5,4,6,2,null,null,7] <br />
+                    Explanation: Given key to delete is 3. So we find the node
+                    with value 3 and delete it. <br />
+                    One valid answer is [5,4,6,2,null,null,7], shown in the
+                    above BST. <br />
+                    Please notice that another valid answer is
+                    [5,2,6,null,4,null,7] and it's also accepted.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: root = [5,3,6,2,4,null,7], key = 0<br />
+                    Output: [5,3,6,2,4,null,7]
+                    <br />
+                    Explanation: The tree does not contain a node with value =
+                    0.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: root = [], key = 0 <br />
+                    Output: []
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                The number of nodes in the tree is in the range [0, 10^4].{" "}
+                <br />
+                -10^5 &lt;= Node.val &lt;= 10^5
+                <br />
+                Each node has a unique value.
+                <br />
+                root is a valid binary search tree.
+                <br />
+                -10^5 &lt;= key &lt;= 105
+              </>
+            }
+            fp={
+              <>
+                <b>Follow up :</b> Could you solve it with time complexity
+                O(height of tree)?
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
     },
   },
 };
