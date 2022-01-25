@@ -59735,8 +59735,16 @@ class Node {
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @return {number}
+                */
+               var arrangeCoins = function(n) {
+                 return parseInt((-1 + Math.sqrt(8 * n + 1)) / 2);
+               };
+               
+               arrangeCoins(5)`,
+                output: `2`,
               },
             }}
           />
