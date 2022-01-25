@@ -60050,27 +60050,75 @@ class Node {
         title: "Q446. Arithmetic Slices II - Subsequence (Q377)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given an integer array nums, return the number of all the
+                arithmetic subsequences of nums.
+                <br />
+                A sequence of numbers is called arithmetic if it consists of at
+                least three elements and if the difference between any two
+                consecutive elements is the same.
+                <br />
+                For example, [1, 3, 5, 7, 9], [7, 7, 7, 7], and [3, -1, -5, -9]
+                are arithmetic sequences.
+                <br />
+                For example, [1, 1, 2, 5, 7] is not an arithmetic sequence.
+                <br />
+                A subsequence of an array is a sequence that can be formed by
+                removing some elements (possibly none) of the array.
+                <br />
+                For example, [2,5,10] is a subsequence of [1,2,1,2,4,1,5,10].
+                <br />
+                The test cases are generated so that the answer fits in 32-bit
+                integer.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [2,4,6,8,10]
+                    <br />
+                    Output: 7<br />
+                    Explanation: All arithmetic subsequence slices are:
+                    <br />
+                    [2,4,6]
+                    <br />
+                    [4,6,8]
+                    <br />
+                    [6,8,10]
+                    <br />
+                    [2,4,6,8]
+                    <br />
+                    [4,6,8,10]
+                    <br />
+                    [2,4,6,8,10]
+                    <br />
+                    [2,6,10]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [7,7,7,7,7]
+                    <br />
+                    Output: 16
+                    <br />
+                    Explanation: Any subsequence of this array is arithmetic.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                1 &lt;= nums.length &lt;= 1000 <br />
+                -2^31 &lt;= nums[i] &lt;= 2^31 - 1
               </>
             }
-            tc="n"
-            sc="n"
+            tc="n^2"
+            sc="n^2"
             codes={{
               Javascript: {
                 code: ``,
