@@ -58590,18 +58590,10 @@ class Node {
               {
                 content: <></>,
               },
-              {
-                content: <></>,
-              },
             ]}
             constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>{" "}
-              </>
-            }
-            tc="n"
-            sc="n"
+            tc="n^2. log4 n"
+            sc="log4 n"
             codes={{
               Javascript: {
                 code: ``,
