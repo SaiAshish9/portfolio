@@ -59993,8 +59993,54 @@ class Node {
             sc="m + n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function ListNode(val, next) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.next = (next===undefined ? null : next)
+                }
+                
+                /**
+                 * @param {ListNode} l1
+                 * @param {ListNode} l2
+                 * @return {ListNode}
+                 */
+                var addTwoNumbers = function(l1, l2) {
+                  const stack1 = [];
+                  const stack2 = [];
+                  while (l1) {
+                    stack1.push(l1);
+                    l1 = l1.next;
+                  }
+                  while (l2) {
+                    stack2.push(l2);
+                    l2 = l2.next;
+                  }
+                  let head = null;
+                  let carry = 0;
+                  while (carry > 0 || stack1.length || stack2.length) {
+                    if (stack1.length)
+                      carry += stack1.pop().val;
+                    if (stack2.length)
+                      carry += stack2.pop().val;
+                    let node = new ListNode(carry % 10);
+                    node.next = head;
+                    head = node;
+                    carry = parseInt(carry/ 10);
+                  }
+                  return head;    
+                };
+                
+                const l1 = new ListNode(7)
+                l1.next = new ListNode(2)
+                l1.next.next = new ListNode(4)
+                l1.next.next.next = new ListNode(3)
+                const l2 = new ListNode(5)
+                l2.next = new ListNode(6)
+                l2.next.next = new ListNode(4)
+                addTwoNumbers(l1,l2)`,
+                output: `ListNode {
+                  val: 7,
+                  next: ListNode { val: 8, next: ListNode { val: 0, next: [ListNode] } }
+                }`,
               },
             }}
           />
