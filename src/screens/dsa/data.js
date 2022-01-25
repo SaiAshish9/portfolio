@@ -58356,31 +58356,86 @@ class Solution {
         title: "Q423. Reconstruct Original Digits from English (Q359)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given a string s containing an out-of-order English
+                representation of digits 0-9, return the digits in ascending
+                order.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "owoztneoer" <br />
+                    Output: "012"
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "fviefuro" <br />
+                    Output: "45"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                1 &lt;= s.length &lt;= 10^5 <br />
+                s[i] is one of the characters
+                ["e","g","f","i","h","o","n","s","r","u","t","w","v","x","z"].
+                <br /> s is guaranteed to be valid.
               </>
             }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {string}
+                */
+               var originalDigits = function(s) {
+                 const st = [];
+                 const count = Array(10).fill(0);
+                 for (let c of s) {
+                   if (c == 'z')
+                     ++count[0];
+                   if (c == 'o')
+                     ++count[1];
+                   if (c == 'w')
+                     ++count[2];
+                   if (c == 'h')
+                     ++count[3];
+                   if (c == 'u')
+                     ++count[4];
+                   if (c == 'f')
+                     ++count[5];
+                   if (c == 'x')
+                     ++count[6];
+                   if (c == 's')
+                     ++count[7];
+                   if (c == 'g')
+                     ++count[8];
+                   if (c == 'i')
+                     ++count[9];
+                 }
+                 count[1] -= count[0] + count[2] + count[4];
+                 count[3] -= count[8];
+                 count[5] -= count[4];
+                 count[7] -= count[6];
+                 count[9] -= count[5] + count[6] + count[8];
+                 for (let i = 0; i < 10; ++i)
+                   for (let j = 0; j < count[i]; ++j)
+                     st.push(i);
+                 return st.join("");
+               };
+               
+               originalDigits("owoztneoer")`,
+                output: `012`,
               },
             }}
           />
