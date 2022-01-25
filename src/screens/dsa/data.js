@@ -58356,6 +58356,7 @@ class Solution {
         title: "Q423. Reconstruct Original Digits from English (Q359)",
         content: (
           <Comp
+            title="Q423. Reconstruct Original Digits from English (Q359)"
             content1={
               <>
                 Given a string s containing an out-of-order English
@@ -58445,6 +58446,7 @@ class Solution {
         title: "Q424. Longest Repeating Character Replacement (Q360)",
         content: (
           <Comp
+            title="Q424. Longest Repeating Character Replacement (Q360)"
             content1={
               <>
                 You are given a string s and an integer k. You can choose any
