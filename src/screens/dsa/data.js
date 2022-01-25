@@ -210,6 +210,7 @@ import Leetcode391 from "assets/leetcode/391.png";
 import Leetcode401 from "assets/leetcode/401.png";
 import Leetcode404 from "assets/leetcode/404.png";
 import Leetcode407 from "assets/leetcode/407.png";
+import Leetcode417 from "assets/leetcode/417.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -57689,6 +57690,7 @@ class Solution {
         title: "Q414. Third Maximum Number (Q352)",
         content: (
           <Comp
+            title="Q414. Third Maximum Number (Q352)"
             content1={
               <>
                 Given an integer array nums, return the third distinct maximum
@@ -57788,6 +57790,7 @@ class Solution {
         title: "Q415. Add Strings (Q353)",
         content: (
           <Comp
+            title="Q415. Add Strings (Q353)"
             content1={
               <>
                 Given two non-negative integers, num1 and num2 represented as
@@ -57875,31 +57878,71 @@ class Solution {
         title: "Q416. Partition Equal Subset Sum (Q354)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q416. Partition Equal Subset Sum (Q354)"
+            content1={
+              <>
+                Given a non-empty array nums containing only positive integers,
+                find if the array can be partitioned into two subsets such that
+                the sum of elements in both subsets is equal.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,5,11,5] <br />
+                    Output: true
+                    <br />
+                    Explanation: The array can be partitioned as [1, 5, 5] and
+                    [11].
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,5]
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation: The array cannot be partitioned into equal sum
+                    subsets.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                1 &lt;= nums.length &lt;= 200 <br />1 &lt;= nums[i] &lt;= 100
               </>
             }
-            tc="n"
+            tc="n.k"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {boolean}
+                */
+               var canPartition = function(nums) {
+                 const sum = nums.reduce((a,b)=>a+b,0);
+                 if (sum % 2 == 1)
+                   return false;
+                 return knapsack(nums, parseInt(sum / 2));
+               };
+               
+               function knapsack(nums, subsetSum) {
+                 const dp = Array(subsetSum + 1).fill(false);
+                 dp[0] = true;
+                 for (let num of nums)
+                   for (let i = subsetSum; i >= num; --i)
+                     dp[i] = dp[i] || dp[i - num];
+                 return dp[subsetSum];
+               }
+               
+               canPartition([1,5,11,5])`,
+                output: `true`,
               },
             }}
           />
@@ -57909,27 +57952,63 @@ class Solution {
         title: "Q417. Pacific Atlantic Water Flow (Q355)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q417. Pacific Atlantic Water Flow (Q355)"
+            content1={
+              <>
+                There is an m x n rectangular island that borders both the
+                Pacific Ocean and Atlantic Ocean. The Pacific Ocean touches the
+                island's left and top edges, and the Atlantic Ocean touches the
+                island's right and bottom edges.
+                <br />
+                The island is partitioned into a grid of square cells. You are
+                given an m x n integer matrix heights where heights[r][c]
+                represents the height above sea level of the cell at coordinate
+                (r, c).
+                <br />
+                The island receives a lot of rain, and the rain water can flow
+                to neighboring cells directly north, south, east, and west if
+                the neighboring cell's height is less than or equal to the
+                current cell's height. Water can flow from any cell adjacent to
+                an ocean into the ocean.
+                <br />
+                Return a 2D list of grid coordinates result where result[i] =
+                [ri, ci] denotes that rain water can flow from cell (ri, ci) to
+                both the Pacific and Atlantic oceans.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode417,
+                content: (
+                  <>
+                    Input: heights =
+                    [[1,2,2,3,5],[3,2,3,4,4],[2,4,5,3,1],[6,7,1,4,5],[5,1,1,2,4]]
+                    <br /> Output: [[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: heights = [[2,1],[1,2]] <br />
+                    Output: [[0,0],[0,1],[1,0],[1,1]]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                m == heights.length
+                <br />
+                n == heights[r].length
+                <br />
+                1 &lt;= m, n &lt;= 200
+                <br />0 &lt;= heights[r][c] &lt;= 10^5
               </>
             }
-            tc="n"
-            sc="n"
+            tc="m.n"
+            sc="m.n"
             codes={{
               Javascript: {
                 code: ``,
