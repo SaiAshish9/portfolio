@@ -58521,6 +58521,7 @@ class Solution {
         title: "Q427. Construct Quad Tree (Q361)",
         content: (
           <Comp
+            title="Q427. Construct Quad Tree (Q361)"
             content1={
               <>
                 Given a n * n matrix grid of 0's and 1's only. We want to
