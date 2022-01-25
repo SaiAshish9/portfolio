@@ -58445,31 +58445,73 @@ class Solution {
         title: "Q424. Longest Repeating Character Replacement (Q360)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                You are given a string s and an integer k. You can choose any
+                character of the string and change it to any other uppercase
+                English character. You can perform this operation at most k
+                times.
+                <br />
+                Return the length of the longest substring containing the same
+                letter you can get after performing the above operations.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "ABAB", k = 2 <br />
+                    Output: 4 <br />
+                    Explanation: Replace the two 'A's with two 'B's or vice
+                    versa.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "AABABBA", k = 1<br />
+                    Output: 4<br />
+                    Explanation: Replace the one 'A' in the middle with 'B' and
+                    form "AABBBBA".
+                    <br /> The substring "BBBB" has the longest repeating
+                    letters, which is 4.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                1 &lt;= s.length &lt;= 10^5 <br />
+                s consists of only uppercase English letters. <br />0 &lt;= k
+                &lt;= s.length
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @param {number} k
+                * @return {number}
+                */
+               var characterReplacement = function(s, k) {
+                 let ans = 0;
+                 let maxCount = 0;
+                 const count = Array(128).fill(0);
+                 for (let l = 0, r = 0; r < s.length; ++r) {
+                   maxCount = Math.max(maxCount, ++count[s[r].charCodeAt(0)]);
+                   while (maxCount + k < r - l + 1)
+                     --count[s[l++].charCodeAt(0)];
+                   ans = Math.max(ans, r - l + 1);
+                 }
+                 return ans;  
+               };
+               
+               characterReplacement("ABAB",2)`,
+                output: `4`,
               },
             }}
           />
