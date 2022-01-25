@@ -60297,8 +60297,24 @@ class Node {
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number[]}
+                */
+               var findDisappearedNumbers = function(nums) {
+                 const res = [];
+                 for (let num of nums) {
+                   let index = Math.abs(num) - 1;
+                   nums[index] = -Math.abs(nums[index]);
+                 }
+                 for (let i = 0; i < nums.length; ++i)
+                   if (nums[i] > 0)
+                     res.push(i + 1);
+                 return res;
+               };
+               
+               findDisappearedNumbers([4,3,2,7,8,2,3,1])`,
+                output: `[ 5, 6 ]`,
               },
             }}
           />
