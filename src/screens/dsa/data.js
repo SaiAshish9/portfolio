@@ -59429,6 +59429,7 @@ class Node {
         title: "Q437. Path Sum III (Q369)",
         content: (
           <Comp
+            title="Q437. Path Sum III (Q369)"
             content1={
               <>
                 Given the root of a binary tree and an integer targetSum, return
@@ -59475,8 +59476,41 @@ class Node {
             sc="log n -> n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+                }
+                
+                /**
+                 * @param {TreeNode} root
+                 * @param {number} targetSum
+                 * @return {number}
+                 */
+                
+                function dfs(root,targetSum){
+                  if (!root) return 0;
+                  return (targetSum == root.val ? 1 : 0) +
+                        dfs(root.left, targetSum - root.val) +
+                        dfs(root.right, targetSum - root.val);
+                }
+                
+                var pathSum = function(root, targetSum) {
+                  if (!root) return 0;
+                  return dfs(root, targetSum) + pathSum(root.left, targetSum) + pathSum(root.right, targetSum);
+                };
+                
+                const t = new TreeNode(10)
+                t.left = new TreeNode(5)
+                t.left.left = new TreeNode(3)
+                t.left.left.left = new TreeNode(3)
+                t.left.left.right = new TreeNode(-2)
+                t.left.right = new TreeNode(2)
+                t.left.right.right = new TreeNode(1)
+                t.right = new TreeNode(-3)
+                t.right.right = new TreeNode(11)
+                pathSum(t,8)`,
+                output: `3`,
               },
             }}
           />
