@@ -60515,12 +60515,69 @@ class Node {
                 O(height of tree)?
               </>
             }
-            tc="n"
-            sc="n"
+            tc="h = log n"
+            sc="h = log n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+              }
+              
+              /**
+               * @param {TreeNode} root
+               * @param {number} key
+               * @return {TreeNode}
+               */
+              
+              function getMin(node) {
+                while (node.left)
+                  node = node.left;
+                return node;
+              }
+              
+              var deleteNode = function(root, key) {
+                if (!root)
+                  return null;
+                if (root.val == key) {
+                  if (root.left == null)
+                    return root.right;
+                  if (root.right == null)
+                    return root.left;
+                  let minNode = getMin(root.right);
+                  root.right = deleteNode(root.right, minNode.val);
+                  minNode.left = root.left;
+                  minNode.right = root.right;
+                  root = minNode;
+                } else if (root.val < key) {
+                  root.right = deleteNode(root.right, key);
+                } else { 
+                  root.left = deleteNode(root.left, key);
+                }
+                return root;
+              };
+              
+              const t = new TreeNode(5)
+              t.left = new TreeNode(3)
+              t.left.left =  new TreeNode(2)
+              t.left.right = new TreeNode(4)
+              t.right = new TreeNode(6)
+              t.right.right =  new TreeNode(7)
+              deleteNode(t,3)`,
+                output: `TreeNode {
+                  val: 5,
+                  left: TreeNode {
+                    val: 4,
+                    left: TreeNode { val: 2, left: null, right: null },
+                    right: null
+                  },
+                  right: TreeNode {
+                    val: 6,
+                    left: null,
+                    right: TreeNode { val: 7, left: null, right: null }
+                  }
+                }`,
               },
             }}
           />
