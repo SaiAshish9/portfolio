@@ -57689,31 +57689,96 @@ class Solution {
         title: "Q414. Third Maximum Number (Q352)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given an integer array nums, return the third distinct maximum
+                number in this array. If the third maximum does not exist,
+                return the maximum number.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [3,2,1] <br />
+                    Output: 1 <br />
+                    Explanation: <br />
+                    The first distinct maximum is 3. <br />
+                    The second distinct maximum is 2. <br />
+                    The third distinct maximum is 1.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2] <br />
+                    Output: 2 <br />
+                    Explanation: <br />
+                    The first distinct maximum is 2. <br />
+                    The second distinct maximum is 1. <br />
+                    The third distinct maximum does not exist, so the maximum
+                    (2) is returned instead.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [2,2,3,1] <br />
+                    Output: 1 <br />
+                    Explanation: <br />
+                    The first distinct maximum is 3. <br />
+                    The second distinct maximum is 2 (both 2's are counted
+                    together since they have the same value).
+                    <br /> The third distinct maximum is 1.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 10^4
+                <br />
+                -2^31 &lt;= nums[i] &lt;= 2^31 - 1
+              </>
+            }
             fp={
               <>
-                <b>Follow up :</b>{" "}
+                <b>Follow up :</b> Can you find an O(n) solution?
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var thirdMax = function(nums) {
+                 let max1 = Number.MIN_SAFE_INTEGER; 
+                 let max2 = Number.MIN_SAFE_INTEGER;
+                 let max3 = Number.MIN_SAFE_INTEGER; 
+               
+                 for (let num of nums)
+                   if (num > max1) {
+                     max3 = max2;
+                     max2 = max1;
+                     max1 = num;
+                   } else if (max1 > num && num > max2) {
+                     max3 = max2;
+                     max2 = num;
+                   } else if (max2 > num && num > max3) {
+                     max3 = num;
+                   }
+               
+                 return max3 == Number.MIN_SAFE_INTEGER ? max1 : max3;   
+               };
+               
+               thirdMax([2,2,3,1])`,
+                output: `1`,
               },
             }}
           />
