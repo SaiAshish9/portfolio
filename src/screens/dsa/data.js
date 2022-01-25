@@ -60374,8 +60374,66 @@ class Node {
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * Definition for a binary tree node.
+                * public class TreeNode {
+                *     int val;
+                *     TreeNode left;
+                *     TreeNode right;
+                *     TreeNode(int x) { val = x; }
+                * }
+                */
+               // [2,1,3]
+               public class Codec {
+                 public String serialize(TreeNode root) {
+                   if (root == null)
+                     return "";
+               
+                   StringBuilder sb = new StringBuilder();
+               
+                   serialize(root, sb);
+                   return sb.toString();
+                 }
+               
+                   public TreeNode deserialize(String data) {
+                   if (data.isEmpty())
+                     return null;
+                   final String[] vals = data.split(" ");
+                   Queue<Integer> q = new LinkedList<>();
+                   for (final String val : vals)
+                     q.offer(Integer.parseInt(val));
+                   return deserialize(Integer.MIN_VALUE, Integer.MAX_VALUE, q);
+                 }
+               
+                 private void serialize(TreeNode root, StringBuilder sb) {
+                   if (root == null)
+                     return;
+                   sb.append(root.val).append(" ");
+                   serialize(root.left, sb);
+                   serialize(root.right, sb);
+                 }
+               
+                 private TreeNode deserialize(int min, int max, Queue<Integer> q) {
+                   if (q.isEmpty())
+                     return null;
+                   final int val = q.peek();
+                   if (val < min || val > max)
+                     return null;
+                   q.poll();
+                   TreeNode root = new TreeNode(val);
+                   root.left = deserialize(min, val, q);
+                   root.right = deserialize(val, max, q);
+                   return root;
+                 }
+               }
+               
+               // Your Codec object will be instantiated and called as such:
+               // Codec ser = new Codec();
+               // Codec deser = new Codec();
+               // String tree = ser.serialize(root);
+               // TreeNode ans = deser.deserialize(tree);
+               // return ans;`,
+                output: `[2,1,3]`,
               },
             }}
           />
