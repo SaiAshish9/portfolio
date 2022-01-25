@@ -60216,8 +60216,31 @@ class Node {
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} points
+                * @return {number}
+                */
+               
+               function getDist(p, q) {
+                 return Math.pow(p[0] - q[0], 2) + Math.pow(p[1] - q[1], 2);
+               }
+               
+               var numberOfBoomerangs = function(points) {
+                 let ans = 0;
+                 for (let p of points) {
+                   const count = {};
+                   for (let q of points) {
+                     const d = getDist(p, q);
+                     count[d] = (count[d] || 0) + 1;
+                   }
+                   for (let freq of Object.values(count))
+                     ans += freq * (freq - 1); 
+                 }
+                 return ans;
+               }
+               
+               numberOfBoomerangs([[1,1],[2,2],[3,3]])`,
+                output: `2`,
               },
             }}
           />
