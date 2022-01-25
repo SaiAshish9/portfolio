@@ -59697,6 +59697,7 @@ class Node {
         title: "Q441. Arranging Coins (Q372)",
         content: (
           <Comp
+            title="Q441. Arranging Coins (Q372)"
             content1={
               <>
                 You have n coins and you want to build a staircase with these
@@ -59754,27 +59755,56 @@ class Node {
         title: "Q442. Find All Duplicates in an Array (Q373)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q442. Find All Duplicates in an Array (Q373)"
+            content1={
+              <>
+                Given an integer array nums of length n where all the integers
+                of nums are in the range [1, n] and each integer appears once or
+                twice, return an array of all the integers that appears twice.
+                <br />
+                You must write an algorithm that runs in O(n) time and uses only
+                constant extra space.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [4,3,2,7,8,2,3,1] <br />
+                    Output: [2,3]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,1,2] <rb />
+                    Output: [1]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1] <br />
+                    Output: []
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                n == nums.length
+                <br />
+                1 &lt;= n &lt;= 10^5
+                <br />
+                1 &lt;= nums[i] &lt;= n<br />
+                Each element in nums appears once or twice.
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
