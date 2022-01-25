@@ -57788,31 +57788,84 @@ class Solution {
         title: "Q415. Add Strings (Q353)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given two non-negative integers, num1 and num2 represented as
+                string, return the sum of num1 and num2 as a string.
+                <br />
+                You must solve the problem without using any built-in library
+                for handling large integers (such as BigInteger). You must also
+                not convert the inputs to integers directly.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num1 = "11",
+                    <br /> num2 = "123"
+                    <br />
+                    Output: "134"
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num1 = "456", <br /> num2 = "77" <br />
+                    Output: "533"
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num1 = "0",
+                    <br /> num2 = "0"
+                    <br />
+                    Output: "0"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                1 &lt;= num1.length, num2.length &lt;= 10^4 <br />
+                num1 and num2 consist of only digits. <br />
+                num1 and num2 don't have any leading zeros except for the zero
+                itself.
               </>
             }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} num1
+                * @param {string} num2
+                * @return {string}
+                */
+               var addStrings = function(num1, num2) {
+                 let s = [];
+                 let carry = 0;
+                 let i = num1.length - 1;
+                 let j = num2.length - 1;
+               
+                 while (i >= 0 || j >= 0 || carry > 0) {
+                     if (i >= 0)
+                       carry += num1[i--] - '0';
+                     if (j >= 0)
+                       carry += num2[j--] - '0';
+                     s.push(carry % 10);
+                     carry = parseInt(carry / 10);
+                 }
+                 
+                 return s.reverse().join("");   
+               };
+               
+               addStrings("11","123")`,
+                output: `134`,
               },
             }}
           />
