@@ -59062,23 +59062,65 @@ class Node {
         title: "Q433. Minimum Genetic Mutation (Q365)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                A gene string can be represented by an 8-character long string,
+                with choices from 'A', 'C', 'G', and 'T'.
+                <br />
+                Suppose we need to investigate a mutation from a gene string
+                start to a gene string end where one mutation is defined as one
+                single character changed in the gene string.
+                <br />
+                For example, "AACCGGTT" --&gt; "AACCGGTA" is one mutation.
+                <br />
+                There is also a gene bank bank that records all the valid gene
+                mutations. A gene must be in bank to make it a valid gene
+                string.
+                <br />
+                Given the two gene strings start and end and the gene bank bank,
+                return the minimum number of mutations needed to mutate from
+                start to end. If there is no such a mutation, return -1.
+                <br />
+                Note that the starting point is assumed to be valid, so it might
+                not be included in the bank.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: start = "AACCGGTT", <br /> end = "AACCGGTA", <br />{" "}
+                    bank = ["AACCGGTA"]
+                    <br /> Output: 1
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: start = "AACCGGTT", <br /> end = "AAACGGTA", <br />{" "}
+                    bank = ["AACCGGTA","AACCGCTA","AAACGGTA"] Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: start = "AAAAACCC", <br /> end = "AACCCCCC", <br />
+                    bank = ["AAAACCCC","AAACCCCC","AACCCCCC"] Output: 3
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                start.length == 8 <br />
+                end.length == 8 <br />
+                0 &lt;= bank.length &lt;= 10 <br />
+                bank[i].length == 8 <br />
+                start, end, and bank[i] consist of only the characters ['A',
+                'C', 'G', 'T'].
               </>
             }
             tc="n.4^|word|"
