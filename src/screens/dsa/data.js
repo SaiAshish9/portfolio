@@ -215,6 +215,7 @@ import Leetcode419 from "assets/leetcode/419.png";
 import Leetcode427 from "assets/leetcode/427.png";
 import Leetcode429 from "assets/leetcode/429.png";
 import Leetcode430 from "assets/leetcode/430.png";
+import Leetcode437 from "assets/leetcode/437.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -59322,6 +59323,7 @@ class Node {
         title: "Q436. Find Right Interval (Q368)",
         content: (
           <Comp
+            title="Q436. Find Right Interval (Q368)"
             content1={
               <>
                 You are given an array of intervals, where intervals[i] =
@@ -59427,27 +59429,50 @@ class Node {
         title: "Q437. Path Sum III (Q369)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given the root of a binary tree and an integer targetSum, return
+                the number of paths where the sum of the values along the path
+                equals targetSum.
+                <br />
+                The path does not need to start or end at the root or a leaf,
+                but it must go downwards (i.e., traveling only from parent nodes
+                to child nodes).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode437,
+                content: (
+                  <>
+                    Input: root = [10,5,-3,3,2,null,11,3,-2,null,1],
+                    <br /> targetSum = 8<br />
+                    Output: 3<br />
+                    Explanation: The paths that sum to 8 are shown.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [5,4,8,11,null,13,4,7,2,null,null,5,1], <br />{" "}
+                    targetSum = 22
+                    <br /> Output: 3
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                The number of nodes in the tree is in the range [0, 1000].{" "}
+                <br />
+                -109 &lt;= Node.val &lt;= 10^9 <br />
+                -1000 &lt;= targetSum &lt;= 1000
               </>
             }
-            tc="n"
-            sc="n"
+            tc="n.log n -> n^2"
+            sc="log n -> n"
             codes={{
               Javascript: {
                 code: ``,
