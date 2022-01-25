@@ -58760,28 +58760,68 @@ class Node {
         title: "Q430. Flatten a Multilevel Doubly Linked List (Q363)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                You are given a doubly linked list, which contains nodes that
+                have a next pointer, a previous pointer, and an additional child
+                pointer. This child pointer may or may not point to a separate
+                doubly linked list, also containing these special nodes. These
+                child lists may have one or more children of their own, and so
+                on, to produce a multilevel data structure as shown in the
+                example below.
+                <br />
+                Given the head of the first level of the list, flatten the list
+                so that all the nodes appear in a single-level, doubly linked
+                list. Let curr be a node with a child list. The nodes in the
+                child list should appear after curr and before curr.next in the
+                flattened list.
+                <nr />
+                Return the head of the flattened list. The nodes in the list
+                must have all of their child pointers set to null.
+              </>
+            }
             content2={null}
             examples={[
               {
                 img: Leetcode430,
-                content: <></>,
+                content: (
+                  <>
+                    Input: head =
+                    [1,2,3,4,5,6,null,null,null,7,8,9,10,null,null,11,12] <br />
+                    Output: [1,2,3,7,8,11,12,9,10,4,5,6] <br />
+                    Explanation: The multilevel linked list in the input is
+                    shown.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: head = [1,2,null,3] <br />
+                    Output: [1,3,2] <br />
+                    Explanation: The multilevel linked list in the input is
+                    shown.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: head = [] <br />
+                    Output: [] <br />
+                    Explanation: There could be empty list in the input.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                The number of Nodes will not exceed 1000. <br />1 &lt;= Node.val
+                &lt;= 10^5
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
