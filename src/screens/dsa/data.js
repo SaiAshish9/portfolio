@@ -59081,7 +59081,7 @@ class Node {
                 <b>Follow up :</b>{" "}
               </>
             }
-            tc="n"
+            tc="n.4^|word|"
             sc="n"
             codes={{
               Javascript: {
