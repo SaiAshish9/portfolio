@@ -216,6 +216,7 @@ import Leetcode427 from "assets/leetcode/427.png";
 import Leetcode429 from "assets/leetcode/429.png";
 import Leetcode430 from "assets/leetcode/430.png";
 import Leetcode437 from "assets/leetcode/437.png";
+import Leetcode441 from "assets/leetcode/441.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -59696,27 +59697,42 @@ class Node {
         title: "Q441. Arranging Coins (Q372)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                You have n coins and you want to build a staircase with these
+                coins. The staircase consists of k rows where the ith row has
+                exactly i coins. The last row of the staircase may be
+                incomplete.
+                <br />
+                Given the integer n, return the number of complete rows of the
+                staircase you will build.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode441,
+                content: (
+                  <>
+                    Input: n = 5 <br />
+                    Output: 2 <br />
+                    Explanation: Because the 3rd row is incomplete, we return 2.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 8<br />
+                    Output: 3<br />
+                    Explanation: Because the 4th row is incomplete, we return 3.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>{" "}
-              </>
-            }
-            tc="n"
-            sc="n"
+            constraints={<>1 &lt;= n &lt;= 2^31 - 1</>}
+            tc="1"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
