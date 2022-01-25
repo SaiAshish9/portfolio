@@ -59240,31 +59240,78 @@ class Node {
         title: "Q435. Non-overlapping Intervals (Q367)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given an array of intervals intervals where intervals[i] =
+                [starti, endi], return the minimum number of intervals you need
+                to remove to make the rest of the intervals non-overlapping.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: intervals = [[1,2],[2,3],[3,4],[1,3]]
+                    <br />
+                    Output: 1<br />
+                    Explanation: [1,3] can be removed and the rest of the
+                    intervals are non-overlappin
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: intervals = [[1,2],[1,2],[1,2]] <br />
+                    Output: 2 <br />
+                    Explanation: You need to remove two [1,2] to make the rest
+                    of the intervals non-overlapping.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: intervals = [[1,2],[2,3]] <br />
+                    Output: 0 <br />
+                    Explanation: You don't need to remove any of the intervals
+                    since they're already non-overlapping.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                1 &lt;= intervals.length &lt;= 105 <br />
+                intervals[i].length == 2 <br />
+                -5 * 104 &lt;= starti &lt; endi &lt;= 5 * 10^4 Accepted
               </>
             }
-            tc="n"
+            tc="n.log n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} intervals
+                * @return {number}
+                */
+               var eraseOverlapIntervals = function(intervals) {
+                 if (intervals.length == 0)
+                     return 0;
+                 intervals.sort((a, b) => a[1] - b[1]);
+                 let ans = 0;
+                 let currentEnd = intervals[0][1];
+                 for (let i = 1; i < intervals.length; ++i)
+                   if (intervals[i][0] >= currentEnd)
+                     currentEnd = intervals[i][1];
+                   else
+                     ++ans;
+                 return ans;    
+               };
+               
+               eraseOverlapIntervals([[1,2],[1,2],[1,2]])`,
+                output: `2`,
               },
             }}
           />
