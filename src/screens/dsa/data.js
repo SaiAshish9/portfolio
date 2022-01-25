@@ -58588,10 +58588,34 @@ class Node {
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid = [[0,1],[1,0]] <br />
+                    Output: [[0,1],[1,0],[1,1],[1,1],[1,0]]
+                    <br />
+                    Explanation: The explanation of this example is shown below:
+                    <br />
+                    Notice that 0 represnts False and 1 represents True in the
+                    photo representing the Quad-Tree.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid =
+                    [[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0]]
+                    <br /> Output:
+                    [[0,1],[1,1],[0,1],[1,1],[1,0],null,null,null,null,[1,0],[1,0],[1,1],[1,1]]
+                    <br /> Explanation: All values in the grid are not the same.
+                    We divide the grid into four sub-grids.
+                    <br /> The topLeft, bottomLeft and bottomRight each has the
+                    same value.
+                    <br /> The topRight have different values so we divide it
+                    into 4 sub-grids where each has the same value.
+                    <br /> Explanation is shown in the photo below:
+                  </>
+                ),
               },
             ]}
             constraints={<></>}
