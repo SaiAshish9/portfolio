@@ -214,6 +214,7 @@ import Leetcode417 from "assets/leetcode/417.png";
 import Leetcode419 from "assets/leetcode/419.png";
 import Leetcode427 from "assets/leetcode/427.png";
 import Leetcode429 from "assets/leetcode/429.png";
+import Leetcode430 from "assets/leetcode/430.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -58756,13 +58757,14 @@ class Node {
         ),
       },
       q363: {
-        title: "Q429. N-ary Tree Level Order Traversal (Q363)",
+        title: "Q430. Flatten a Multilevel Doubly Linked List (Q363)",
         content: (
           <Comp
             content1={<></>}
             content2={null}
             examples={[
               {
+                img: Leetcode430,
                 content: <></>,
               },
               {
