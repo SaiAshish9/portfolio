@@ -211,6 +211,7 @@ import Leetcode401 from "assets/leetcode/401.png";
 import Leetcode404 from "assets/leetcode/404.png";
 import Leetcode407 from "assets/leetcode/407.png";
 import Leetcode417 from "assets/leetcode/417.png";
+import Leetcode419 from "assets/leetcode/419.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -58060,31 +58061,85 @@ class Solution {
         title: "Q419. Battleships in a Board (Q356)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q419. Battleships in a Board (Q356)"
+            content1={
+              <>
+                Given an m x n matrix board where each cell is a battleship 'X'
+                or empty '.', return the number of the battleships on board.
+                <br />
+                Battleships can only be placed horizontally or vertically on
+                board. In other words, they can only be made of the shape 1 x k
+                (1 row, k columns) or k x 1 (k rows, 1 column), where k can be
+                of any size. At least one horizontal or vertical cell separates
+                between two battleships (i.e., there are no adjacent
+                battleships).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode419,
+                content: (
+                  <>
+                    Input: board =
+                    [["X",".",".","X"],[".",".",".","X"],[".",".",".","X"]]
+                    <br /> Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: board = [["."]] <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                m == board.length
+                <br />
+                n == board[i].length
+                <br />
+                1 &lt;= m, n &lt;= 200
+                <br />
+                board[i][j] is either '.' or 'X'.
               </>
             }
-            tc="n"
-            sc="n"
+            fp={
+              <>
+                <b>Follow up :</b> Could you do it in one-pass, using only O(1)
+                extra memory and without modifying the values board?
+              </>
+            }
+            tc="m.n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {character[][]} board
+                * @return {number}
+                */
+               var countBattleships = function(board) {
+                 let ans = 0;
+                 const m = board.length
+                 const n = board[0].length
+                 for (let i = 0; i < m; ++i)
+                   for (let j = 0; j < n; ++j) {
+                     if (board[i][j] == '.')
+                       continue;
+                     if (i > 0 && board[i - 1][j] == 'X')
+                       continue;
+                     if (j > 0 && board[i][j - 1] == 'X')
+                       continue;
+                     ++ans;
+                   }
+                 return ans;   
+               };
+               
+               countBattleships([["X",".",".","X"],[".",".",".","X"],[".",".",".","X"]])`,
+                output: `2`,
               },
             }}
           />
