@@ -59240,6 +59240,7 @@ class Node {
         title: "Q435. Non-overlapping Intervals (Q367)",
         content: (
           <Comp
+            title="Q435. Non-overlapping Intervals (Q367)"
             content1={
               <>
                 Given an array of intervals intervals where intervals[i] =
@@ -59289,7 +59290,7 @@ class Node {
               </>
             }
             tc="n.log n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: `/**
@@ -59321,26 +59322,72 @@ class Node {
         title: "Q436. Find Right Interval (Q368)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                You are given an array of intervals, where intervals[i] =
+                [starti, endi] and each starti is unique.
+                <br />
+                The right interval for an interval i is an interval j such that
+                startj &gt;= endi and startj is minimized.
+                <br />
+                Return an array of right interval indices for each interval i.
+                If no right interval exists for interval i, then put -1 at index
+                i.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: intervals = [[1,2]] <br />
+                    Output: [-1] <br />
+                    Explanation: There is only one interval in the collection,
+                    so it outputs -1.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: intervals = [[3,4],[2,3],[1,2]]
+                    <br />
+                    Output: [-1,0,1]
+                    <br />
+                    Explanation: There is no right interval for [3,4].
+                    <br />
+                    The right interval for [2,3] is [3,4] since start0 = 3 is
+                    the smallest start that is &gt;= end1 = 3.
+                    <br />
+                    The right interval for [1,2] is [2,3] since start1 = 2 is
+                    the smallest start that is &gt;= end2 = 2.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: intervals = [[1,4],[2,3],[3,4]]
+                    <br />
+                    Output: [-1,2,-1]
+                    <br />
+                    Explanation: There is no right interval for [1,4] and [3,4].
+                    <br />
+                    The right interval for [2,3] is [3,4] since start2 = 3 is
+                    the smallest start that is &gt;= end1 = 3.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                1 &lt;= intervals.length &lt;= 2 * 10^4 <br />
+                intervals[i].length == 2 <br />
+                -10^6 &lt;= starti &lt;= endi &lt;= 10^6 <br />
+                The start point of each interval is unique.
               </>
             }
-            tc="n"
+            tc="n.log n"
             sc="n"
             codes={{
               Javascript: {
