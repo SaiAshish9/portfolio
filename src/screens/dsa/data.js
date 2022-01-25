@@ -59936,27 +59936,61 @@ class Node {
         title: "Q445. Add Two Numbers II (Q376)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                You are given two non-empty linked lists representing two
+                non-negative integers. The most significant digit comes first
+                and each of their nodes contains a single digit. Add the two
+                numbers and return the sum as a linked list.
+                <br />
+                You may assume the two numbers do not contain any leading zero,
+                except the number 0 itself.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: l1 = [7,2,4,3], l2 = [5,6,4] <br />
+                    Output: [7,8,0,7]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: l1 = [2,4,3], l2 = [5,6,4] <br />
+                    Output: [8,0,7]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: l1 = [0], l2 = [0] <br />
+                    Output: [0]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                The number of nodes in each linked list is in the range [1,
+                100]. <br />
+                0 &lt;= Node.val &lt;= 9 <br />
+                It is guaranteed that the list represents a number that does not
+                have leading zeros.
               </>
             }
-            tc="n"
-            sc="n"
+            fp={
+              <>
+                <b>Follow up :</b> Could you solve it without reversing the
+                input lists?
+              </>
+            }
+            tc="m + n"
+            sc="m + n"
             codes={{
               Javascript: {
                 code: ``,
