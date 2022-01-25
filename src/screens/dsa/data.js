@@ -58323,8 +58323,30 @@ class Solution {
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var findMaximumXOR = function(nums) {
+                 let ans = 0;
+                 let mask = 0;
+                 for (let i = 31; i >= 0; --i) {
+                   mask |= 1 << i;
+                   const prefixes = new Set();
+                   for (let num of nums)
+                     prefixes.add(num & mask);
+                   let candidate = ans | 1 << i;
+                   for (let prefix of prefixes)
+                     if (prefixes.has(prefix ^ candidate)) {
+                       ans = candidate;
+                       break;
+                     }
+                 }
+                 return ans; 
+               };
+               
+               findMaximumXOR([3,10,5,25,2,8])`,
+                output: `28`,
               },
             }}
           />
