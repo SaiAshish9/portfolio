@@ -59062,6 +59062,7 @@ class Node {
         title: "Q433. Minimum Genetic Mutation (Q365)",
         content: (
           <Comp
+            title="Q433. Minimum Genetic Mutation (Q365)"
             content1={
               <>
                 A gene string can be represented by an 8-character long string,
