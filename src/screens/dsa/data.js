@@ -58823,9 +58823,38 @@ class Node {
             tc="n"
             sc="1"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `/*
+                // Definition for a Node.
+                class Node {
+                    public int val;
+                    public Node prev;
+                    public Node next;
+                    public Node child;
+                };
+                */
+                // [1,2,3,4,5,6,null,null,null,7,8,9,10,null,null,11,12]
+                class Solution {
+                  public Node flatten(Node head) {
+                    for (Node curr = head; curr != null; curr = curr.next)
+                      if (curr.child != null) {
+                        Node cachedNext = curr.next;
+                        curr.next = curr.child;
+                        curr.child.prev = curr;
+                        curr.child = null;
+                        Node tail = curr.next;
+                        while (tail.next != null)
+                          tail = tail.next;
+                        tail.next = cachedNext;
+                        if (cachedNext != null)
+                          cachedNext.prev = tail;
+                      }
+                
+                    return head;
+                  }
+                }
+                `,
+                output: `[1,2,3,7,8,11,12,9,10,4,5,6]`,
               },
             }}
           />
