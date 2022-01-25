@@ -58149,6 +58149,7 @@ class Solution {
         title: "Q420. Strong Password Checker (Q357)",
         content: (
           <Comp
+            title="Q420. Strong Password Checker (Q357)"
             content1={
               <>
                 A password is considered strong if the below conditions are all
