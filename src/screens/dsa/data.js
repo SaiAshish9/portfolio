@@ -59901,11 +59901,32 @@ class Node {
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {character[]} chars
+                * @return {number}
+                */
+               var compress = function(chars) {
+                 let res = 0;
+                 for (let i = 0; i < chars.length;) {
+                   const letter = chars[i];
+                   let count = 0;
+                   while (i < chars.length && chars[i] == letter) {
+                     ++count;
+                     ++i;
+                   }
+                   chars[res++] = letter;
+                   if (count > 1)
+                   for (let c of String(count))
+                   chars[res++] = c;
+                 }
+                 return res; 
+               };
+               
+               compress(["a"])`,
+                output: `1`,
               },
             }}
           />
