@@ -59174,6 +59174,7 @@ class Node {
         title: "Q434. Number of Segments in a String (Q366)",
         content: (
           <Comp
+            title="Q434. Number of Segments in a String (Q366)"
             content1={
               <>
                 Given a string s, return the number of segments in the string.
