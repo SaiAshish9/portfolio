@@ -58218,11 +58218,68 @@ class Solution {
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} password
+                * @return {number}
+                */
+               var strongPasswordChecker = function(password) {
+                 let n = password.length;
+                 const chars = password.split("");
+                 const missing = getMissing(chars);
+                 let replaces = 0;
+                 let oneSeq = 0;
+                 let twoSeq = 0;
+                 for (let i = 2; i < n;)
+                  if (chars[i] == chars[i - 1] && chars[i - 1] == chars[i - 2]) {
+                   let length = 2; 
+                   while (i < n && chars[i] == chars[i - 1]) {
+                     ++length;
+                     ++i;
+                   }
+                   replaces += parseInt(length / 3); 
+                   if (length % 3 == 0)
+                     ++oneSeq;
+                   if (length % 3 == 1)
+                     ++twoSeq;
+                   } else {
+                     ++i;
+                   }
+                   if (n < 6)
+                     return Math.max(6 - n, missing);
+                   if (n <= 20)
+                     return Math.max(replaces, missing);
+                   let deletes = n - 20;
+                   replaces -= Math.min(oneSeq, deletes);
+                   replaces -= parseInt(Math.min(Math.max(deletes - oneSeq, 0), twoSeq * 2) / 2);
+                   replaces -= parseInt(Math.max(deletes - oneSeq - twoSeq * 2, 0) / 3);
+                   return deletes + Math.max(replaces, missing);
+               };
+               
+               function getMissing(chars) {
+                 let missing = 3;  
+                 for (let c of chars)
+                   if (c==c.toUpperCase() && !Number.isInteger(parseInt(c))) {
+                     --missing;
+                     break;
+                   }
+                 for (let c of chars)
+                   if (c==c.toLowerCase() && !Number.isInteger(parseInt(c))) {
+                     --missing;
+                     break;
+                   }
+                 for (let c of chars)
+                   if (Number.isInteger(parseInt(c))) {
+                     --missing;
+                     break;
+                   }
+                 return missing;
+               }
+               
+               strongPasswordChecker("ABABABABABABABABABAB1")`,
+                output: `1`,
               },
             }}
           />
