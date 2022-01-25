@@ -58212,11 +58212,6 @@ class Solution {
                 mark '!'.
               </>
             }
-            fp={
-              <>
-                <b>Follow up :</b>{" "}
-              </>
-            }
             tc="n"
             sc="1"
             codes={{
@@ -58289,23 +58284,39 @@ class Solution {
         title: "Q421. Maximum XOR of Two Numbers in an Array (Q358)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q421. Maximum XOR of Two Numbers in an Array (Q358)"
+            content1={
+              <>
+                Given an integer array nums, return the maximum result of
+                nums[i] XOR nums[j], where 0 &lt;= i &lt;= j &lt; n.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [3,10,5,25,2,8] <br />
+                    Output: 28
+                    <br />
+                    Explanation: The maximum result is 5 XOR 25 = 28.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [14,70,53,83,49,91,36,80,92,51,66,70]
+                    <br />
+                    Output: 127
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                1 &lt;= nums.length &lt;= 2 * 10^5 <br />0 &lt;= nums[i] &lt;=
+                2^31 - 1
               </>
             }
             tc="n"
