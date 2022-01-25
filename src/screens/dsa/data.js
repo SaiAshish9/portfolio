@@ -58011,8 +58011,46 @@ class Solution {
             sc="m.n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} heights
+                * @return {number[][]}
+                */
+               
+               function dfs(heights,i,j,h,seen){
+                 if (i < 0 || i == heights.length || j < 0 || j == heights[0].length)
+                   return;
+                 if (seen[i][j] || heights[i][j] < h)
+                   return;
+                   seen[i][j] = true;
+                 dfs(heights, i + 1, j, heights[i][j], seen);
+                 dfs(heights, i - 1, j, heights[i][j], seen);
+                 dfs(heights, i, j + 1, heights[i][j], seen);
+                 dfs(heights, i, j - 1, heights[i][j], seen);
+               }
+               
+               var pacificAtlantic = function(heights) {
+                 const m = heights.length;
+                 const n = heights[0].length;
+                 const ans = [];
+                 const seenP = Array.from(Array(m),() => Array(n).fill(false))
+                 const seenA = Array.from(Array(m),() => Array(n).fill(false))
+                 for (let i = 0; i < m; ++i) {
+                   dfs(heights, i, 0, 0, seenP);
+                   dfs(heights, i, n - 1, 0, seenA);
+                 }
+                 for (let j = 0; j < n; ++j) {
+                   dfs(heights, 0, j, 0, seenP);
+                   dfs(heights, m - 1, j, 0, seenA);
+                 }
+               for (let i = 0; i < m; ++i)
+                 for (let j = 0; j < n; ++j)
+                   if (seenP[i][j] && seenA[i][j])
+                     ans.push([i, j]);
+               return ans;    
+               };
+               
+               pacificAtlantic([[2,1],[1,2]])`,
+                output: `[ [ 0, 0 ], [ 0, 1 ], [ 1, 0 ], [ 1, 1 ] ]`,
               },
             }}
           />
