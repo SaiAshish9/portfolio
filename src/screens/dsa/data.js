@@ -212,6 +212,7 @@ import Leetcode404 from "assets/leetcode/404.png";
 import Leetcode407 from "assets/leetcode/407.png";
 import Leetcode417 from "assets/leetcode/417.png";
 import Leetcode419 from "assets/leetcode/419.png";
+import Leetcode427 from "assets/leetcode/427.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -58588,6 +58589,7 @@ class Node {
             content2={null}
             examples={[
               {
+                img: Leetcode427,
                 content: (
                   <>
                     Input: grid = [[0,1],[1,0]] <br />
@@ -58618,7 +58620,12 @@ class Node {
                 ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                n == grid.length == grid[i].length <br />n == 2x where 0 &lt;= x
+                &lt;= 6
+              </>
+            }
             tc="n^2. log4 n"
             sc="log4 n"
             codes={{
