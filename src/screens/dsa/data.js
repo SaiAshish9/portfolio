@@ -60250,27 +60250,51 @@ class Node {
         title: "Q448. Find All Numbers Disappeared in an Array (Q379)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q448. Find All Numbers Disappeared in an Array (Q379)"
+            content1={
+              <>
+                Given an array nums of n integers where nums[i] is in the range
+                [1, n], return an array of all the integers in the range [1, n]
+                that do not appear in nums.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [4,3,2,7,8,2,3,1]
+                    <br />
+                    Output: [5,6]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,1] <br />
+                    Output: [2]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                {" "}
+                n == nums.length <br />
+                1 &lt;= n &lt;= 105
+                <br />1 &lt;= nums[i] &lt;= n
+              </>
+            }
             fp={
               <>
-                <b>Follow up :</b>{" "}
+                <b>Follow up :</b> Could you do it without extra space and in
+                O(n) runtime? You may assume the returned list does not count as
+                extra space.
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
@@ -60280,7 +60304,7 @@ class Node {
           />
         ),
       },
-      q378: {
+      q380: {
         title: "Q449. Serialize and Deserialize BST (Q378)",
         content: (
           <Comp
@@ -60315,7 +60339,7 @@ class Node {
         ),
       },
     },
-    q380: {
+    q381: {
       title: "Q450. Delete Node in a BST (Q380)",
       content: (
         <Comp
