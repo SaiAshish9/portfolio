@@ -59174,31 +59174,62 @@ class Node {
         title: "Q434. Number of Segments in a String (Q366)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given a string s, return the number of segments in the string.
+                <br />A segment is defined to be a contiguous sequence of
+                non-space characters.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "Hello, my name is John"
+                    <br />
+                    Output: 5 <br />
+                    Explanation: The five segments are ["Hello,", "my", "name",
+                    "is", "John"]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "Hello"
+                    <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                0 &lt;= s.length &lt;= 300 <br />
+                s consists of lowercase and uppercase English letters, digits,
+                or one of the following characters "!@#$%^&*()_+-=',.:".
+                <br /> The only space character in s is ' '.
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {number}
+                */
+               var countSegments = function(s) {
+                 let ans = 0;
+                 for (let i = 0; i < s.length; ++i)
+                 if (s[i] != ' '&& (i == 0 || s[i - 1] == ' '))
+                 ++ans;
+                 return ans; 
+               };
+               
+               countSegments("Hello, my name is John")`,
+                output: `5`,
               },
             }}
           />
