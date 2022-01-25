@@ -58760,6 +58760,7 @@ class Node {
         title: "Q430. Flatten a Multilevel Doubly Linked List (Q363)",
         content: (
           <Comp
+            title="Q430. Flatten a Multilevel Doubly Linked List (Q363)"
             content1={
               <>
                 You are given a doubly linked list, which contains nodes that
