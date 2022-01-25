@@ -60324,23 +60324,50 @@ class Node {
         title: "Q449. Serialize and Deserialize BST (Q378)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Serialization is converting a data structure or object into a
+                sequence of bits so that it can be stored in a file or memory
+                buffer, or transmitted across a network connection link to be
+                reconstructed later in the same or another computer environment.
+                <br />
+                Design an algorithm to serialize and deserialize a binary search
+                tree. There is no restriction on how your
+                serialization/deserialization algorithm should work. You need to
+                ensure that a binary search tree can be serialized to a string,
+                and this string can be deserialized to the original tree
+                structure.
+                <br />
+                The encoded string should be as compact as possible.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [2,1,3]
+                    <br />
+                    Output: [2,1,3]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = []
+                    <br />
+                    Output: []
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>{" "}
+                The number of nodes in the tree is in the range [0, 10^4].{" "}
+                <br />
+                0 &lt;= Node.val &lt;= 10^4 <br />
+                The input tree is guaranteed to be a binary search tree.
               </>
             }
             tc="n"
