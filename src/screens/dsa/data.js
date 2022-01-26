@@ -60812,13 +60812,32 @@ class Node {
                 ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                n == nums.length <br />
+                1 &lt;= nums.length &lt;= 10^5
+                <br />
+                -10^9 &lt;= nums[i] &lt;= 10^9
+                <br />
+                The answer is guaranteed to fit in a 32-bit integer.
+              </>
+            }
             tc="n"
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var minMoves = function(nums) {
+                 let sum = nums.reduce((a,b)=>a+b,0);
+                 let min = Math.min(...nums);
+                 return sum - min * nums.length;
+               };
+               
+               console.log(minMoves([1,1,1]))`,
+                output: `0`,
               },
             }}
           />
