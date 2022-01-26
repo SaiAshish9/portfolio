@@ -60754,8 +60754,24 @@ class Node {
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} points
+                * @return {number}
+                */
+               var findMinArrowShots = function(points) {
+                 points.sort((a, b) => a[1] - b[1]);
+                 let res = 1;
+                 let arrowX = points[0][1];
+                 for (let i = 1; i < points.length; ++i)
+                   if (points[i][0] > arrowX) {
+                     arrowX = points[i][1];
+                     ++res;
+                 }
+                 return res;  
+               };
+               
+               console.log(findMinArrowShots([[1,2],[3,4],[5,6],[7,8]]))`,
+                output: `4`,
               },
             }}
           />
@@ -60766,27 +60782,39 @@ class Node {
         content: (
           <Comp
             title="Q453. Minimum Moves to Equal Array Elements (Q384)"
-            content1={<></>}
+            content1={
+              <>
+                Given an integer array nums of size n, return the minimum number
+                of moves required to make all array elements equal.
+                <br />
+                In one move, you can increment n - 1 elements of the array by 1.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3] <br />
+                    Output: 3 <br />
+                    Explanation: Only three moves are needed (remember each move
+                    increments two elements): [1,2,3] =&gt; [2,3,3] =&gt;
+                    [3,4,3] =&gt; [4,4,4]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,1,1] <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
             constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
