@@ -62087,6 +62087,7 @@ class Node {
         title: "Q502. IPO (Q425)",
         content: (
           <Comp
+            title="Q502. IPO (Q425)"
             content1={<></>}
             content2={null}
             examples={[
@@ -62117,8 +62118,113 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q426: {
+        title: "Q503. Next Greater Element II (Q426)",
+        content: (
+          <Comp
+            title="Q503. Next Greater Element II (Q426)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q427: {
+        title: "Q504. Base 7 (Q427)",
+        content: (
+          <Comp
+            title="Q504. Base 7 (Q427)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q428: {
+        title: "Q506. Relative Ranks (Q428)",
+        content: (
+          <Comp
+            title="Q506. Relative Ranks (Q428)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q429: {
+        title: "Q507. Perfect Number (Q429)",
         content: (
           <Comp
             content1={<></>}
@@ -62151,8 +62257,8 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q430: {
+        title: "Q508. Most Frequent Subtree Sum (Q430)",
         content: (
           <Comp
             content1={<></>}
@@ -62185,10 +62291,11 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q431: {
+        title: "Q509. Fibonacci Number (Q431)",
         content: (
           <Comp
+            title="Q509. Fibonacci Number (Q431)"
             content1={<></>}
             content2={null}
             examples={[
@@ -62219,10 +62326,11 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q432: {
+        title: "Q513. Find Bottom Left Tree Value (Q432)",
         content: (
           <Comp
+            title="Q513. Find Bottom Left Tree Value (Q432)"
             content1={<></>}
             content2={null}
             examples={[
@@ -62253,10 +62361,11 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q433: {
+        title: "Q514. Freedom Trail (Q433)",
         content: (
           <Comp
+            title="Q514. Freedom Trail (Q433)"
             content1={<></>}
             content2={null}
             examples={[
@@ -62287,10 +62396,11 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q434: {
+        title: "Q515. Find Largest Value in Each Tree Row (Q434)",
         content: (
           <Comp
+            title="Q515. Find Largest Value in Each Tree Row (Q434)"
             content1={<></>}
             content2={null}
             examples={[
@@ -62321,110 +62431,8 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
+      q435: {
+        title: "Q516. Longest Palindromic Subsequence (Q435)",
         content: (
           <Comp
             content1={<></>}
