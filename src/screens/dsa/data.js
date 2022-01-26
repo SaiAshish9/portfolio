@@ -61105,7 +61105,29 @@ class Node {
         content: (
           <Comp
             title="Q457. Circular Array Loop (Q388)"
-            content1={<></>}
+            content1={
+              <>
+                You are playing a game involving a circular array of non-zero
+                integers nums. Each nums[i] denotes the number of indices
+                forward/backward you must move if you are located at index i:
+                <br />
+                If nums[i] is positive, move nums[i] steps forward, and <br />
+                If nums[i] is negative, move nums[i] steps backward. <br />
+                Since the array is circular, you may assume that moving forward
+                from the last element puts you on the first element, and moving
+                backwards from the first element puts you on the last element.
+                <br />
+                A cycle in the array consists of a sequence of indices seq of
+                length k where:
+                <br />
+                Following the movement rules above results in the repeating
+                index sequence seq[0] -&gt; seq[1] -&gt; ... -&gt; seq[k - 1]
+                -&gt; seq[0] -&gt; ...
+                <br /> Every nums[seq[j]] is either all positive or all
+                negative. k &gt; 1 <br />
+                Return true if there is a cycle in nums, or false otherwise.
+              </>
+            }
             content2={null}
             examples={[
               {
@@ -61118,10 +61140,17 @@ class Node {
                 content: <></>,
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 5000 <br />
+                -1000 &lt;= nums[i] &lt;= 1000 <br />
+                nums[i] != 0
+              </>
+            }
             fp={
               <>
-                <b>Follow up :</b>
+                <b>Follow up : </b>Could you solve it in O(n) time complexity
+                and O(1) extra space complexity?
               </>
             }
             tc="n"
