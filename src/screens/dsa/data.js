@@ -218,6 +218,7 @@ import Leetcode430 from "assets/leetcode/430.png";
 import Leetcode437 from "assets/leetcode/437.png";
 import Leetcode441 from "assets/leetcode/441.png";
 import Leetcode450 from "assets/leetcode/450.png";
+import Leetcode463 from "assets/leetcode/463.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -61756,19 +61757,44 @@ class Node {
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode463,
+                content: (
+                  <>
+                    Input: grid = [[0,1,0,0],[1,1,1,0],[0,1,0,0],[1,1,0,0]]
+                    <br /> Output: 16 <br />
+                    Explanation: The perimeter is the 16 yellow stripes in the
+                    image above.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid = [[1]] <br />
+                    Output: 4
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid = [[1,0]] <br />
+                    Output: 4
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                row == grid.length
+                <br />
+                col == grid[i].length
+                <br />
+                1 &lt;= row, col &lt;= 100
+                <br />
+                grid[i][j] is 0 or 1.
+                <br />
+                There is exactly one island in grid.
               </>
             }
             tc="m.n"
