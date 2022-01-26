@@ -61333,31 +61333,66 @@ class Node {
         content: (
           <Comp
             title="Q459. Repeated Substring Pattern (Q390)"
-            content1={<></>}
+            content1={
+              <>
+                Given a string s, check if it can be constructed by taking a
+                substring of it and appending multiple copies of the substring
+                together.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "abab"
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation: It is the substring "ab" twice.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "aba"
+                    <br />
+                    Output: false
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "aba"
+                    <br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= s.length &lt;= 10^4 <br />s consists of lowercase
+                English letters.
               </>
             }
-            tc="n"
+            tc="n^2"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {boolean}
+                */
+               var repeatedSubstringPattern = function(s) {
+                 let st = s + s;
+                 return st.substring(1, st.length - 1).includes(s);
+               };
+               
+               console.log(repeatedSubstringPattern("abab"))`,
+                output: `true`,
               },
             }}
           />
@@ -61387,12 +61422,72 @@ class Node {
                 <b>Follow up :</b>
               </>
             }
-            tc="n"
+            tc="1"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // ["LFUCache","put","put","get","put","get","get","put","get","get","get"]
+// [[2],[1,1],[2,2],[1],[3,3],[2],[3],[4,4],[1],[3],[4]]
+                class LFUCache {
+                  public LFUCache(int capacity) {
+                    this.capacity = capacity;
+                  }
+                
+                  public int get(int key) {
+                    if (!keyToVal.containsKey(key))
+                      return -1;
+                
+                    final int freq = keyToFreq.get(key);
+                    freqToLRUKeys.get(freq).remove(key);
+                    if (freq == minFreq && freqToLRUKeys.get(freq).isEmpty()) {
+                      freqToLRUKeys.remove(freq);
+                      ++minFreq;
+                    }
+                    putFreq(key, freq + 1);
+                    return keyToVal.get(key);
+                  }
+                
+                  public void put(int key, int value) {
+                    if (capacity == 0)
+                      return;
+                    if (keyToVal.containsKey(key)) {
+                      keyToVal.put(key, value);
+                      get(key); 
+                      return;
+                    }
+                
+                    if (keyToVal.size() == capacity) {
+                      final int keyToEvict = freqToLRUKeys.get(minFreq).iterator().next();
+                      freqToLRUKeys.get(minFreq).remove(keyToEvict);
+                      keyToVal.remove(keyToEvict);
+                    }
+                
+                    minFreq = 1;
+                    putFreq(key, minFreq);   
+                    keyToVal.put(key, value); 
+                  }
+                
+                  private int capacity;
+                  private int minFreq = 0;
+                  private Map<Integer, Integer> keyToVal = new HashMap<>();
+                  private Map<Integer, Integer> keyToFreq = new HashMap<>();
+                  private Map<Integer, LinkedHashSet<Integer>> freqToLRUKeys = new HashMap<>();
+                
+                  private void putFreq(int key, int freq) {
+                    keyToFreq.put(key, freq);
+                    freqToLRUKeys.putIfAbsent(freq, new LinkedHashSet<>());
+                    freqToLRUKeys.get(freq).add(key);
+                  }
+                }
+                
+                /**
+                 * Your LFUCache object will be instantiated and called as such:
+                 * LFUCache obj = new LFUCache(capacity);
+                 * int param_1 = obj.get(key);
+                 * obj.put(key,value);
+                 */`,
+                output: `[null,null,null,1,null,-1,3,null,-1,3,4]`,
               },
             }}
           />
