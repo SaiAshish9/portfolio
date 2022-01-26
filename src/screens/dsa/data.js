@@ -60588,23 +60588,59 @@ class Node {
         content: (
           <Comp
             title="Q451. Sort Characters By Frequency (Q382)"
-            content1={<></>}
+            content1={
+              <>
+                Given a string s, sort it in decreasing order based on the
+                frequency of the characters. The frequency of a character is the
+                number of times it appears in the string.
+                <br />
+                Return the sorted string. If there are multiple answers, return
+                any of them.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "tree" <br />
+                    Output: "eert" <br />
+                    Explanation: 'e' appears twice while 'r' and 't' both appear
+                    once. <br />
+                    So 'e' must appear before both 'r' and 't'. Therefore "eetr"
+                    is also a valid answer.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "cccaaa"
+                    <br />
+                    Output: "aaaccc"
+                    <br />
+                    Explanation: Both 'c' and 'a' appear three times, so both
+                    "cccaaa" and "aaaccc" are valid answers. Note that "cacaca"
+                    is incorrect, as the same characters must be together.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "Aabb" <br />
+                    Output: "bbAa" <br />
+                    Explanation: "bbaA" is also a valid answer, but "Aabb" is
+                    incorrect. Note that 'A' and 'a' are treated as two
+                    different characters.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= s.length &lt;= 5 * 10^5 <br />s consists of uppercase
+                and lowercase English letters and digits.
               </>
             }
             tc="n"
