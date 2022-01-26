@@ -61075,8 +61075,26 @@ class Node {
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {boolean}
+                */
+               var find132pattern = function(nums) {
+                 const stack = []; 
+                 let a = Number.MIN_SAFE_INTEGER;       
+                 for (let i = nums.length - 1; i >= 0; --i) {
+                   if (nums[i] < a) 
+                     return true;
+                   while (stack.length && stack.slice(-1)[0] < nums[i])
+                     a = stack.pop();
+                   stack.push(nums[i]);
+                 }
+               
+                 return false;   
+               };
+               
+               console.log(find132pattern([-1,3,2,0]))`,
+                output: `true`,
               },
             }}
           />
