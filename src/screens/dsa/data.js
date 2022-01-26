@@ -61407,19 +61407,68 @@ class Node {
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input ["LFUCache", "put", "put", "get", "put", "get", "get",
+                    "put", "get", "get", "get"]
+                    <br />
+                    [[2], [1, 1], [2, 2], [1], [3, 3], [2], [3], [4, 4], [1],
+                    [3], [4]]
+                    <br />
+                    Output
+                    <br />
+                    [null, null, null, 1, null, -1, 3, null, -1, 3, 4]
+                    <br />
+                    <br />
+                    Explanation
+                    <br />
+                    // cnt(x) = the use counter for key x<br />
+                    // cache=[] will show the last used order for tiebreakers
+                    (leftmost element is most recent)
+                    <br />
+                    LFUCache lfu = new LFUCache(2);
+                    <br />
+                    lfu.put(1, 1); // cache=[1,_], cnt(1)=1
+                    <br />
+                    lfu.put(2, 2); // cache=[2,1], cnt(2)=1, cnt(1)=1
+                    <br />
+                    lfu.get(1); // return 1<br />
+                    // cache=[1,2], cnt(2)=1, cnt(1)=2
+                    <br />
+                    lfu.put(3, 3); // 2 is the LFU key because cnt(2)=1 is the
+                    smallest, invalidate 2.
+                    <br />
+                    // cache=[3,1], cnt(3)=1, cnt(1)=2
+                    <br />
+                    lfu.get(2); // return -1 (not found)
+                    <br />
+                    lfu.get(3); // return 3<br />
+                    // cache=[3,1], cnt(3)=2, cnt(1)=2
+                    <br />
+                    lfu.put(4, 4); // Both 1 and 3 have the same cnt, but 1 is
+                    LRU, invalidate 1.
+                    <br />
+                    // cache=[4,3], cnt(4)=1, cnt(3)=2
+                    <br />
+                    lfu.get(1); // return -1 (not found)
+                    <br />
+                    lfu.get(3); // return 3<br />
+                    // cache=[3,4], cnt(4)=1, cnt(3)=3
+                    <br />
+                    lfu.get(4); // return 4<br />
+                    // cache=[4,3], cnt(4)=2, cnt(3)=3
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                0 &lt;= capacity &lt;= 10^4 <br />
+                0 &lt;= key &lt;= 10^5
+                <br />
+                0 &lt;= value &lt;= 10^9
+                <br />
+                At most 2 * 105 calls will be made to get and put.
               </>
             }
             tc="1"
