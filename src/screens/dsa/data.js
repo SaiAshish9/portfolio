@@ -60968,10 +60968,11 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q393: {
+        title: "Q462. Minimum Moves to Equal Array Elements II (Q393)",
         content: (
           <Comp
+            title="Q462. Minimum Moves to Equal Array Elements II (Q393)"
             content1={<></>}
             content2={null}
             examples={[
@@ -61002,10 +61003,11 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q394: {
+        title: "Q463. Island Perimeter (Q394)",
         content: (
           <Comp
+            title="Q463. Island Perimeter (Q394)"
             content1={<></>}
             content2={null}
             examples={[
@@ -61036,10 +61038,11 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q395: {
+        title: "Q464. Can I Win (Q395)",
         content: (
           <Comp
+            title="Q464. Can I Win (Q395)"
             content1={<></>}
             content2={null}
             examples={[
