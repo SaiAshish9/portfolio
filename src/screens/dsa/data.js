@@ -60902,7 +60902,30 @@ class Node {
             sc="n^2"
             codes={{
               Javascript: {
-                code: ``,
+                code: `/**
+                * @param {number[]} nums1
+                * @param {number[]} nums2
+                * @param {number[]} nums3
+                * @param {number[]} nums4
+                * @return {number}
+                */
+               var fourSumCount = function(nums1, nums2, nums3, nums4) {
+                 let res = 0;
+                 const count = new Map();
+               
+                 for (let a of nums1)
+                 for (let b of nums2)
+                 count.set(a + b, (count.get(a + b) ? count.get(a + b):0) + 1);
+               
+                 for (let c of nums3)
+                 for (let d of nums4)
+                 if (count.has(-c - d))
+                 res += count.get(-c - d);
+               
+                 return res;
+               };
+               
+               console.log(fourSumCount([0],[0],[0],[0]))`,
                 output: ``,
               },
             }}
