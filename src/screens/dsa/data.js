@@ -61834,31 +61834,109 @@ class Node {
         content: (
           <Comp
             title="Q464. Can I Win (Q395)"
-            content1={<></>}
+            content1={
+              <>
+                In the "100 game" two players take turns adding, to a running
+                total, any integer from 1 to 10. The player who first causes the
+                running total to reach or exceed 100 wins.
+                <br />
+                What if we change the game so that players cannot re-use
+                integers?
+                <br />
+                For example, two players might take turns drawing from a common
+                pool of numbers from 1 to 15 without replacement until they
+                reach a total >= 100.
+                <br />
+                Given two integers maxChoosableInteger and desiredTotal, return
+                true if the first player to move can force a win, otherwise,
+                return false. Assume both players play optimally.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: maxChoosableInteger = 10, desiredTotal = 11
+                    <br /> Output: false
+                    <br /> Explanation:
+                    <br /> No matter which integer the first player choose, the
+                    first player will lose.
+                    <br /> The first player can choose an integer from 1 up to
+                    10.
+                    <br /> If the first player choose 1, the second player can
+                    only choose integers from 2 up to 10.
+                    <br /> The second player will win by choosing 10 and get a
+                    total = 11, which is >= desiredTotal.
+                    <br /> Same with other integers chosen by the first player,
+                    the second player will always win.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: maxChoosableInteger = 10, desiredTotal = 1
+                    <br /> Output: true
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: maxChoosableInteger = 10, desiredTotal = 1
+                    <br /> Output: true
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= maxChoosableInteger &lt;= 20 <br />0 &lt;= desiredTotal
+                &lt;= 300
               </>
             }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// 10 , 11
+                class Solution {
+                  public int trav(int n,int target,int bit,int dp[])
+                  {
+                      if(target<=0)
+                          return 1;
+                      if(dp[bit]!=-1)
+                          return dp[bit];
+                      for(int i=1;i<=n;i++)
+                      {
+                          if((bit & (1<<i))==0)
+                          {
+                              if(trav(n,target-i,bit|(1<<i),dp)==1)
+                              {
+                                  return dp[bit]=0;
+                              }
+                          }
+                      }
+                      return dp[bit]=1;
+                  }
+                  public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
+                      int n=maxChoosableInteger;
+                      int sum=((n)*(n+1))/2;
+                      if(sum<desiredTotal)
+                          return false;
+                      if(desiredTotal==0)
+                          return true;
+                      int dp[]=new int[1<<(maxChoosableInteger+1)];
+                      for(int i=0;i<dp.length;i++)
+                          dp[i]=-1;
+                      if(trav(maxChoosableInteger,desiredTotal,0,dp)==0)
+                          return true;
+                      return false;
+                  }
+              }
+                `,
+                output: `false`,
               },
             }}
           />
