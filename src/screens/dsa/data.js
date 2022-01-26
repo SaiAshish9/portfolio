@@ -61018,23 +61018,57 @@ class Node {
         content: (
           <Comp
             title="Q456. 132 Pattern (Q387)"
-            content1={<></>}
+            content1={
+              <>
+                Given an array of n integers nums, a 132 pattern is a
+                subsequence of three integers nums[i], nums[j] and nums[k] such
+                that i &lt; j &lt; k and nums[i] &lt; nums[k] &lt; nums[j].
+                <br />
+                Return true if there is a 132 pattern in nums, otherwise, return
+                false.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,4] <br />
+                    Output: false <br />
+                    Explanation: There is no 132 pattern in the sequence.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [3,1,4,2]
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation: There is a 132 pattern in the sequence: [1, 4,
+                    2].
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [-1,3,2,0]
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation: There are three 132 patterns in the sequence:
+                    [-1, 3, 2], [-1, 3, 0] and [-1, 2, 0].
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                n == nums.length <br />
+                1 &lt;= n &lt;= 2 * 10^5 <br />
+                -10^9 &lt;= nums[i] &lt;= 10^9
               </>
             }
             tc="n"
