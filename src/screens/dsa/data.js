@@ -61311,8 +61311,18 @@ class Node {
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} buckets
+                * @param {number} minutesToDie
+                * @param {number} minutesToTest
+                * @return {number}
+                */
+               var poorPigs = function(buckets, minutesToDie, minutesToTest) {
+                 return parseInt(Math.ceil(Math.log(buckets) / Math.log(parseInt(minutesToTest / minutesToDie + 1))));
+               };
+               
+               console.log(poorPigs(1000,15,60))`,
+                output: `5`,
               },
             }}
           />
