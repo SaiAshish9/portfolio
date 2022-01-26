@@ -61801,8 +61801,29 @@ class Node {
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} grid
+                * @return {number}
+                */
+               var islandPerimeter = function(grid) {
+                 let islands = 0;
+                 let neighbors = 0;
+                 const m = grid.length
+                 const n = grid[0].length
+                 for (let i = 0; i < m; ++i)
+                   for (let j = 0; j < n; ++j)
+                     if (grid[i][j]) {
+                       ++islands;
+                       if (i - 1 >= 0 && grid[i - 1][j])
+                         ++neighbors;
+                       if (j - 1 >= 0 && grid[i][j - 1])
+                         ++neighbors;
+                     }
+                 return islands * 4 - neighbors * 2;
+               };
+               
+               console.log(islandPerimeter([[0,1,0,0],[1,1,1,0],[0,1,0,0],[1,1,0,0]]))`,
+                output: `16`,
               },
             }}
           />
