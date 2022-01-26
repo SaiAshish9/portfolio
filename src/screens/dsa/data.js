@@ -61212,8 +61212,113 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q400: {
+        title: "Q472. Concatenated Words (Q400)",
+        content: (
+          <Comp
+            title="Q472. Concatenated Words (Q400)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q401: {
+        title: "Q473. Matchsticks to Square (Q401)",
+        content: (
+          <Comp
+            title="Q473. Matchsticks to Square (Q401)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q402: {
+        title: "Q474. Ones and Zeroes (Q402)",
+        content: (
+          <Comp
+            title="Q474. Ones and Zeroes (Q402)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q403: {
+        title: "Q475. Heaters (Q403)",
         content: (
           <Comp
             content1={<></>}
@@ -61246,8 +61351,148 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q404: {
+        title: "Q476. Number Complement (Q404)",
+        content: (
+          <Comp
+            title="Q476. Number Complement (Q404)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q405: {
+        title: "Q477. Total Hamming Distance (Q405)",
+        content: (
+          <Comp
+            title="Q477. Total Hamming Distance (Q405)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q406: {
+        title: "Q478. Generate Random Point in a Circle (Q406)",
+        content: (
+          <Comp
+            title="Q478. Generate Random Point in a Circle (Q406)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q407: {
+        title: "Q479. Largest Palindrome Product (Q407)",
+        content: (
+          <Comp
+            title="Q479. Largest Palindrome Product (Q407)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q408: {
+        title: "Q480. Sliding Window Median (Q408)",
         content: (
           <Comp
             content1={<></>}
@@ -61280,8 +61525,428 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q409: {
+        title: "Q481. Magical String (Q409)",
+        content: (
+          <Comp
+            title="Q481. Magical String (Q409)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q410: {
+        title: "Q482. License Key Formatting (Q410)",
+        content: (
+          <Comp
+            title="Q482. License Key Formatting (Q410)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q411: {
+        title: "Q483. Smallest Good Base (Q411)",
+        content: (
+          <Comp
+            title="Q483. Smallest Good Base (Q411)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q412: {
+        title: "Q485. Max Consecutive Ones (Q412)",
+        content: (
+          <Comp
+            title="Q485. Max Consecutive Ones (Q412)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q413: {
+        title: "Q486. Predict the Winner (Q413)",
+        content: (
+          <Comp
+            title="Q486. Predict the Winner (Q413)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q414: {
+        title: "Q488. Zuma Game (Q414)",
+        content: (
+          <Comp
+            title="Q488. Zuma Game (Q414)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q415: {
+        title: "Q491. Increasing Subsequences (Q415)",
+        content: (
+          <Comp
+            title="Q491. Increasing Subsequences (Q415)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q416: {
+        title: "Q492. Construct the Rectangle (Q416)",
+        content: (
+          <Comp
+            title="Q492. Construct the Rectangle (Q416)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q417: {
+        title: "Q493. Reverse Pairs (Q417)",
+        content: (
+          <Comp
+            title="Q493. Reverse Pairs (Q417)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q418: {
+        title: "Q494. Target Sum (Q418)",
+        content: (
+          <Comp
+            title="Q494. Target Sum (Q418)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q419: {
+        title: "Q495. Teemo Attacking (Q419)",
+        content: (
+          <Comp
+            title="Q495. Teemo Attacking (Q419)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q420: {
+        title: "Q496. Next Greater Element I (Q420)",
+        content: (
+          <Comp
+            title="Q496. Next Greater Element I (Q420)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q421: {
+        title: "Q497. Random Point in Non-overlapping Rectangles (Q421)",
         content: (
           <Comp
             content1={<></>}
@@ -61314,8 +61979,43 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q422: {
+        title: "Q498. Diagonal Traverse (Q422)",
+        content: (
+          <Comp
+            title="Q498. Diagonal Traverse (Q422)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up :</b>
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q423: {
+        title: "Q500. Keyboard Row (Q423)",
         content: (
           <Comp
             content1={<></>}
@@ -61348,10 +62048,11 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q424: {
+        title: "Q501. Find Mode in Binary Search Tree (Q424)",
         content: (
           <Comp
+            title="Q501. Find Mode in Binary Search Tree (Q424)"
             content1={<></>}
             content2={null}
             examples={[
@@ -61382,688 +62083,8 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q382: {
-        title: "Q (Q382)",
+      q425: {
+        title: "Q502. IPO (Q425)",
         content: (
           <Comp
             content1={<></>}
