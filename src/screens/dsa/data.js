@@ -61575,27 +61575,47 @@ class Node {
         content: (
           <Comp
             title="Q461. Hamming Distance (Q392)"
-            content1={<></>}
+            content1={
+              <>
+                The Hamming distance between two integers is the number of
+                positions at which the corresponding bits are different.
+                <br />
+                Given two integers x and y, return the Hamming distance between
+                them.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: x = 1, y = 4 <br />
+                    Output: 2 <br />
+                    Explanation: <br />
+                    <pre>
+                      {`
+1   (0 0 0 1)  
+4   (0 1 0 0) 
+       ↑   ↑  
+                    `}
+                    </pre>
+                    The above arrows point to positions where the corresponding
+                    bits are different.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: x = 3, y = 1 <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
+            constraints={<>0 &lt;= x, y &lt;= 2^31 - 1</>}
+            tc="1"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
