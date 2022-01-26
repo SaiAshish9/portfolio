@@ -60848,27 +60848,58 @@ class Node {
         content: (
           <Comp
             title="Q454. 4Sum II (Q385)"
-            content1={<></>}
+            content1={
+              <>
+                Given four integer arrays nums1, nums2, nums3, and nums4 all of
+                length n, return the number of tuples (i, j, k, l) such that:
+                <br />
+                0 &lt;= i, j, k, l &lt; n
+                <br />
+                nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums1 = [1,2], nums2 = [-2,-1], nums3 = [-1,2], nums4
+                    = [0,2]
+                    <br />
+                    Output: 2<br />
+                    Explanation:
+                    <br />
+                    The two tuples are:
+                    <br />
+                    1. (0, 0, 0, 1) -&gt; nums1[0] + nums2[0] + nums3[0] +
+                    nums4[1] = 1 + (-2) + (-1) + 2 = 0<br />
+                    2. (1, 1, 0, 0) -&gt; nums1[1] + nums2[1] + nums3[0] +
+                    nums4[0] = 2 + (-1) + (-1) + 0 = 0
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums1 = [0], nums2 = [0], nums3 = [0], nums4 = [0]{" "}
+                    <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                n == nums1.length <br />
+                n == nums2.length <br />
+                n == nums3.length <br />
+                n == nums4.length <br />
+                1 &lt;= n &lt;= 200 <br />
+                -228 &lt;= nums1[i], nums2[i], nums3[i], nums4[i] &lt;= 228
               </>
             }
-            tc="n"
-            sc="n"
+            tc="n^2"
+            sc="n^2"
             codes={{
               Javascript: {
                 code: ``,
