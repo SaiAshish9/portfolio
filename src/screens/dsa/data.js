@@ -61073,10 +61073,11 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q396: {
+        title: "Q466. Count The Repetitions (Q396)",
         content: (
           <Comp
+            title="Q466. Count The Repetitions (Q396)"
             content1={<></>}
             content2={null}
             examples={[
@@ -61107,10 +61108,11 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q397: {
+        title: "Q467. Unique Substrings in Wraparound String (Q397)",
         content: (
           <Comp
+            title="Q467. Unique Substrings in Wraparound String (Q397)"
             content1={<></>}
             content2={null}
             examples={[
@@ -61141,10 +61143,11 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q398: {
+        title: "Q468. Validate IP Address (Q398)",
         content: (
           <Comp
+            title="Q468. Validate IP Address (Q398)"
             content1={<></>}
             content2={null}
             examples={[
@@ -61175,8 +61178,8 @@ class Node {
           />
         ),
       },
-      q382: {
-        title: "Q (Q382)",
+      q399: {
+        title: "Q470. Implement Rand10() Using Rand7() (Q399)",
         content: (
           <Comp
             content1={<></>}
