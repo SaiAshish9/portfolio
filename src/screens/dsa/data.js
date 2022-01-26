@@ -60647,8 +60647,36 @@ class Node {
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {string}
+                */
+               var frequencySort = function(s) {
+                 const n = s.length;
+                 const st = [];
+                 const count = Array(128).fill(0);
+                 const bucket = Array(n + 1).fill([]);
+                 
+                 for (let c of s)
+                   ++count[c.charCodeAt(0)];
+                 for (let i = 0; i < 128; ++i) {
+                   let freq = count[i];
+                   if (freq > 0) {
+                     bucket[freq] = [...bucket[freq],i]
+                   }
+                 }
+                 for (let freq = n; freq > 0; --freq){
+                   if (bucket[freq].length)
+                     for (let c of bucket[freq]){
+                       for (let i = 0; i < freq; ++i)
+                         st.push(String.fromCharCode(c));
+                     }
+                 }
+                 return st.join(""); 
+               };
+               
+               console.log(frequencySort("Aabb"))`,
+                output: `bbAa`,
               },
             }}
           />
