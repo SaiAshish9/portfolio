@@ -61131,25 +61131,48 @@ class Node {
             content2={null}
             examples={[
               {
-                content: <>Input: nums = [2,-1,1,2,2]<br />
-                Output: true<br />
-                Explanation:
-                There is a cycle from index 0 -&gt; 2 -&gt; 3 -&gt; 0 -&gt; ...
-                The cycle's length is 3.</>,
+                content: (
+                  <>
+                    Input: nums = [2,-1,1,2,2]
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation: There is a cycle from index 0 -&gt; 2 -&gt; 3
+                    -&gt; 0 -&gt; ... The cycle's length is 3.
+                  </>
+                ),
               },
               {
-                content: <>Input: nums = [-1,2]<br />
-                Output: false<br />
-                Explanation:<br />
-                The sequence from index 1 -&gt; 1 -&gt; 1 -&gt; ... is not a cycle because the sequence's length is 1.
-                By definition the sequence's length must be strictly greater than 1 to be a cycle.</>,
+                content: (
+                  <>
+                    Input: nums = [-1,2]
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation:
+                    <br />
+                    The sequence from index 1 -&gt; 1 -&gt; 1 -&gt; ... is not a
+                    cycle because the sequence's length is 1. By definition the
+                    sequence's length must be strictly greater than 1 to be a
+                    cycle.
+                  </>
+                ),
               },
               {
-                content: <>Input: nums = [-2,1,-1,-2,-2]<br />
-                Output: false<br />
-                Explanation:<br />
-                The sequence from index 1 -&lt; 2 -&lt; 1 -&lt; ... is not a cycle because nums[1] is positive, but nums[2] is negative.
-                Every nums[seq[j]] must be either all positive or all negative.</>,
+                content: (
+                  <>
+                    Input: nums = [-2,1,-1,-2,-2]
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation:
+                    <br />
+                    The sequence from index 1 -&lt; 2 -&lt; 1 -&lt; ... is not a
+                    cycle because nums[1] is positive, but nums[2] is negative.
+                    Every nums[seq[j]] must be either all positive or all
+                    negative.
+                  </>
+                ),
               },
             ]}
             constraints={
@@ -61219,27 +61242,73 @@ class Node {
         content: (
           <Comp
             title="Q458. Poor Pigs (Q389)"
-            content1={<></>}
+            content1={
+              <>
+                There are buckets buckets of liquid, where exactly one of the
+                buckets is poisonous. To figure out which one is poisonous, you
+                feed some number of (poor) pigs the liquid to see whether they
+                will die or not. Unfortunately, you only have minutesToTest
+                minutes to determine which bucket is poisonous.
+                <br />
+                You can feed the pigs according to these steps:
+                <br />
+                Choose some live pigs to feed.
+                <br />
+                For each pig, choose which buckets to feed it. The pig will
+                consume all the chosen buckets simultaneously and will take no
+                time.
+                <br />
+                Wait for minutesToDie minutes. You may not feed any other pigs
+                during this time.
+                <br />
+                After minutesToDie minutes have passed, any pigs that have been
+                fed the poisonous bucket will die, and all others will survive.
+                <br />
+                Repeat this process until you run out of time.
+                <br />
+                Given buckets, minutesToDie, and minutesToTest, return the
+                minimum number of pigs needed to figure out which bucket is
+                poisonous within the allotted time.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: buckets = 4, minutesToDie = 15, minutesToTest = 15{" "}
+                    <br />
+                    Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: buckets = 4, minutesToDie = 15, minutesToTest = 15{" "}
+                    <br />
+                    Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: buckets = 4, minutesToDie = 15, minutesToTest = 30{" "}
+                    <br />
+                    Output: 2
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= buckets &lt;= 1000 <br />1 &lt;= minutesToDie &lt;=
+                minutesToTest &lt;= 100
               </>
             }
-            tc="n"
-            sc="n"
+            tc="1"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
