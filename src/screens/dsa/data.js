@@ -61131,13 +61131,25 @@ class Node {
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: <>Input: nums = [2,-1,1,2,2]<br />
+                Output: true<br />
+                Explanation:
+                There is a cycle from index 0 -&gt; 2 -&gt; 3 -&gt; 0 -&gt; ...
+                The cycle's length is 3.</>,
               },
               {
-                content: <></>,
+                content: <>Input: nums = [-1,2]<br />
+                Output: false<br />
+                Explanation:<br />
+                The sequence from index 1 -&gt; 1 -&gt; 1 -&gt; ... is not a cycle because the sequence's length is 1.
+                By definition the sequence's length must be strictly greater than 1 to be a cycle.</>,
               },
               {
-                content: <></>,
+                content: <>Input: nums = [-2,1,-1,-2,-2]<br />
+                Output: false<br />
+                Explanation:<br />
+                The sequence from index 1 -&lt; 2 -&lt; 1 -&lt; ... is not a cycle because nums[1] is positive, but nums[2] is negative.
+                Every nums[seq[j]] must be either all positive or all negative.</>,
               },
             ]}
             constraints={
@@ -61154,11 +61166,49 @@ class Node {
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {boolean}
+                */
+               function advance(nums,i){
+                 let n = nums.length;
+                 let val = (i + nums[i]) % n;
+                 return i + nums[i] >= 0 ? val : n + val;
+               }
+               
+               var circularArrayLoop = function(nums) {
+                 if (nums.length < 2)
+                     return false;
+                 for (let i = 0; i < nums.length; ++i) {
+                   if (nums[i] == 0)
+                     continue;
+                   let slow = i;
+                   let fast = advance(nums, slow);
+                     while (nums[i] * nums[fast] > 0 && nums[i] * nums[advance(nums, fast)] > 0) {
+                       if (slow == fast) {
+                         if (slow == advance(nums, slow))
+                           break;
+                         return true;
+                       }
+                       slow = advance(nums, slow);
+                       fast = advance(nums, advance(nums, fast));
+                     }
+                     slow = i;
+                     let sign = nums[i];
+                     while (sign * nums[slow] > 0) {
+                       let next = advance(nums, slow);
+                       nums[slow] = 0;
+                       slow = next;
+                     }
+                   }
+                   return false;   
+               };
+               
+               console.log(circularArrayLoop([2,-1,1,2,2]))`,
+                output: `true`,
               },
             }}
           />
