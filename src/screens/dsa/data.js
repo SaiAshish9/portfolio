@@ -62690,27 +62690,46 @@ class Node {
         content: (
           <Comp
             title="Q476. Number Complement (Q404)"
-            content1={<></>}
+            content1={
+              <>
+                The complement of an integer is the integer you get when you
+                flip all the 0's to 1's and all the 1's to 0's in its binary
+                representation.
+                <br />
+                For example, The integer 5 is "101" in binary and its complement
+                is "010" which is the integer 2.
+                <br />
+                Given an integer num, return its complement.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = 5<br />
+                    Output: 2<br />
+                    Explanation: The binary representation of 5 is 101 (no
+                    leading zero bits), and its complement is 010. So you need
+                    to output 2.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = 1<br />
+                    Output: 0<br />
+                    Explanation: The binary representation of 1 is 1 (no leading
+                    zero bits), and its complement is 0. So you need to output
+                    0.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
+            constraints={<>1 &lt;= num &lt; 2^31</>}
+            tc="1"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
