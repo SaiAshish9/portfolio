@@ -62533,8 +62533,8 @@ class Node {
                 <b>Follow up :</b>
               </>
             }
-            tc="n"
-            sc="n"
+            tc="k.l.m.n"
+            sc="m.n"
             codes={{
               Javascript: {
                 code: ``,
