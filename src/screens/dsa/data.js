@@ -64429,7 +64429,15 @@ Window position                Median
                 ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                m == mat.length <br />
+                n == mat[i].length <br />
+                1 &lt;= m, n &lt;= 10^4 <br />
+                1 &lt;= m * n &lt;= 10^4 <br />
+                -10^5 &lt;= mat[i][j] &lt;= 10^5
+              </>
+            }
             tc="m.n"
             sc="m.n"
             codes={{
