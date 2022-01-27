@@ -65048,6 +65048,7 @@ Window position                Median
         title: "Q507. Perfect Number (Q429)",
         content: (
           <Comp
+            title="Q507. Perfect Number (Q429)"
             content1={
               <>
                 A perfect number is a positive integer that is equal to the sum
@@ -65084,8 +65085,22 @@ Window position                Median
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} num
+                * @return {boolean}
+                */
+               var checkPerfectNumber = function(num) {
+                 if (num == 1)
+                   return false;
+                 let sum = 1;
+                 for (let i = 2; i <= Math.sqrt(num); ++i)
+                   if (num % i == 0)
+                     sum += i + parseInt(num / i);
+                 return sum == num; 
+               };
+               
+               console.log(checkPerfectNumber(28))`,
+                output: `true`,
               },
             }}
           />
@@ -65095,6 +65110,7 @@ Window position                Median
         title: "Q508. Most Frequent Subtree Sum (Q430)",
         content: (
           <Comp
+            title="Q508. Most Frequent Subtree Sum (Q430)"
             content1={<></>}
             content2={null}
             examples={[
