@@ -64550,8 +64550,27 @@ Window position                Median
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string[]} words
+                * @return {string[]}
+                */
+               var findWords = function(words) {
+                 const res = [];
+                 const rows = [2, 3, 3, 2, 1, 2, 2, 2, 1, 2, 2, 2, 3,
+                                       3, 1, 1, 1, 1, 2, 1, 1, 3, 1, 3, 1, 3];
+               
+                 for (let word of words) {
+                   const lowerWord = word.toLowerCase();
+                   const row = rows[lowerWord[0].charCodeAt(0)-97];
+                   const isValid = lowerWord.split("").every(c => rows[c.charCodeAt(0)-97] == row);
+                   if (isValid)
+                     res.push(word);
+                 }
+                 return res
+               };
+               
+               console.log(findWords(["Hello","Alaska","Dad","Peace"]))`,
+                output: `[ 'Alaska', 'Dad' ]`,
               },
             }}
           />
