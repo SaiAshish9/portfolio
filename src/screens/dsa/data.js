@@ -64896,31 +64896,51 @@ Window position                Median
         content: (
           <Comp
             title="Q504. Base 7 (Q427)"
-            content1={<></>}
+            content1={
+              <>
+                Given an integer num, return a string of its base 7
+                representation.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = 100 <br />
+                    Output: "202"
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = -7
+                    <br />
+                    Output: "-10"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
+            constraints={<>-10^7 &lt;= num &lt;= 10^7</>}
             tc="log7 n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} num
+                * @return {string}
+                */
+               var convertToBase7 = function(num) {
+                 if (num < 0)
+                   return "-" + convertToBase7(-num);
+                 if (num < 7)
+                   return String(num);
+                 return convertToBase7(parseInt(num / 7)) + String(num % 7);    
+               };
+               
+               console.log(convertToBase7(100))`,
+                output: `202`,
               },
             }}
           />
