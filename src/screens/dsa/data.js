@@ -62732,8 +62732,16 @@ class Node {
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `// 5
+                class Solution {
+                  public int findComplement(int num) {
+                    for (long i = 1; i <= num; i <<= 1)
+                      num ^= i;
+                    return num;
+                  }
+                }
+                `,
+                output: `2`,
               },
             }}
           />
@@ -62764,7 +62772,7 @@ class Node {
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
