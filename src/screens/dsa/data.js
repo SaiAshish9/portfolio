@@ -62514,31 +62514,81 @@ class Node {
         content: (
           <Comp
             title="Q474. Ones and Zeroes (Q402)"
-            content1={<></>}
+            content1={
+              <>
+                You are given an array of binary strings strs and two integers m
+                and n.
+                <br />
+                Return the size of the largest subset of strs such that there
+                are at most m 0's and n 1's in the subset.
+                <br />A set x is a subset of a set y if all elements of x are
+                also elements of y.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: strs = ["10","0001","111001","1","0"], m = 5, n = 3{" "}
+                    <br />
+                    Output: 4 Explanation: The largest subset with at most 5 0's{" "}
+                    <br />
+                    and 3 1's is {'{("10", "0001", "1", "0")}'}, so the answer
+                    is 4. <br />
+                    Other valid but smaller subsets include {
+                      '{("0001", "1")}'
+                    }{" "}
+                    and <br />
+                    {'{("10", "1", "0")}.{"111001"}'} is an invalid subset
+                    because <br />
+                    it contains 4 1's, greater than the maximum of 3.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: strs = ["10","0","1"], m = 1, n = 1 Output: 2 <br />
+                    Input: strs = ["10","0","1"], m = 1, n = 1 Output: 2 <br />
+                    Explanation: The largest subset is {'{("0", "1")}'}, so the
+                    answer is 2.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= strs.length &lt;= 600 <br />
+                1 &lt;= strs[i].length &lt;= 100 <br />
+                strs[i] consists only of digits '0' and '1'. <br />1 &lt;= m, n
+                &lt;= 100
               </>
             }
             tc="k.l.m.n"
             sc="m.n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string[]} strs
+                * @param {number} m
+                * @param {number} n
+                * @return {number}
+                */
+               var findMaxForm = function(strs, m, n) {
+                 const dp = Array.from(Array(m + 1),()=>Array(n + 1).fill(0))
+                 for (let s of strs) {
+                   const count0 = s.split("").filter(c => c == '0').length;
+                   const count1 = s.length - count0;
+                   for (let i = m; i >= count0; --i)
+                     for (let j = n; j >= count1; --j)
+                       dp[i][j] = Math.max(dp[i][j], dp[i - count0][j - count1] + 1);
+                 }
+                 return dp[m][n];
+               }
+               
+               console.log(findMaxForm(["10","0","1"],1,1))`,
+                output: `2`,
               },
             }}
           />
