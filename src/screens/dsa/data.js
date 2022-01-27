@@ -221,6 +221,7 @@ import Leetcode450 from "assets/leetcode/450.png";
 import Leetcode463 from "assets/leetcode/463.png";
 import Leetcode473 from "assets/leetcode/473.png";
 import Leetcode497 from "assets/leetcode/497.png";
+import Leetcode498 from "assets/leetcode/498.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -64405,6 +64406,7 @@ Window position                Median
             content2={null}
             examples={[
               {
+                img: Leetcode498,
                 content: <></>,
               },
               {
@@ -64415,13 +64417,8 @@ Window position                Median
               },
             ]}
             constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
+            tc="m.n"
+            sc="m.n"
             codes={{
               Javascript: {
                 code: ``,
