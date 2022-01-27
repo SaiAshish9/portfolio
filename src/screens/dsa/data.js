@@ -63232,8 +63232,27 @@ Window position                Median
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @param {number} k
+                * @return {string}
+                */
+               var licenseKeyFormatting = function(s, k) {
+                 let res = ""
+                 let length = 0;
+                 for (let i = s.length - 1; i >= 0; --i) {
+                   if (s[i] == '-')
+                     continue;
+                   if (length > 0 && length % k == 0)
+                     res += "-";
+                   res += s[i].toUpperCase();
+                   ++length;
+                 }
+                 return res.split("").reverse().join("");
+               };
+               
+               console.log(licenseKeyFormatting("2-5g-3-J",2))`,
+                output: `2-5G-3J`,
               },
             }}
           />
@@ -63263,7 +63282,7 @@ Window position                Median
                 <b>Follow up :</b>
               </>
             }
-            tc="n"
+            tc="log^2 n"
             sc="n"
             codes={{
               Javascript: {
