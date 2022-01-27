@@ -65112,7 +65112,17 @@ Window position                Median
         content: (
           <Comp
             title="Q508. Most Frequent Subtree Sum (Q430)"
-            content1={<></>}
+            content1={
+              <>
+                Given the root of a binary tree, return the most frequent
+                subtree sum. If there is a tie, return all the values with the
+                highest frequency in any order.
+                <br />
+                The subtree sum of a node is defined as the sum of all the node
+                values formed by the subtree rooted at that node (including the
+                node itself).
+              </>
+            }
             content2={null}
             examples={[
               {
@@ -65144,8 +65154,41 @@ Window position                Median
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+              }
+              
+              /**
+               * @param {TreeNode} root
+               * @return {number[]}
+               */
+              
+              function dfs(root,count){
+                if(!root) return 0
+                let sum = root.val + dfs(root.left,count) + dfs(root.right,count)
+                count[sum] = (count[sum] || 0) + 1
+                return sum
+              }
+              
+              var findFrequentTreeSum = function(root) {
+                 if(!root) return []
+                 const count = {}
+                 dfs(root,count)
+                 let maxFreq = Math.max(...Object.values(count))
+                 const res = []
+                 for(let s in count){
+                   if(count[s]===maxFreq) res.push(+s)
+                 }
+                 return res
+              };
+              
+              const t = new TreeNode(5)
+              t.left = new TreeNode(2)
+              t.right = new TreeNode(-5)
+              console.log(findFrequentTreeSum(t))`,
+                output: `2`,
               },
             }}
           />
