@@ -62357,8 +62357,8 @@ class Node {
                 <b>Follow up :</b>
               </>
             }
-            tc="n"
-            sc="n"
+            tc="n.l^3"
+            sc="n.l"
             codes={{
               Javascript: {
                 code: ``,
