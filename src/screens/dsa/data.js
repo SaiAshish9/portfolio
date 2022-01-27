@@ -64494,6 +64494,7 @@ Window position                Median
         title: "Q500. Keyboard Row (Q423)",
         content: (
           <Comp
+            title="Q500. Keyboard Row (Q423)"
             content1={
               <>
                 Given an array of strings words, return the words that can be
@@ -64512,6 +64513,7 @@ Window position                Median
             content2={null}
             examples={[
               {
+                img: Leetcode500,
                 content: (
                   <>
                     Input: words = ["Hello","Alaska","Dad","Peace"] <br />
