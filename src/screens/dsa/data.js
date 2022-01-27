@@ -62338,23 +62338,47 @@ class Node {
         content: (
           <Comp
             title="Q472. Concatenated Words (Q400)"
-            content1={<></>}
+            content1={
+              <>
+                Given an array of strings words (without duplicates), return all
+                the concatenated words in the given list of words.
+                <br />A concatenated word is defined as a string that is
+                comprised entirely of at least two shorter words in the given
+                array.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words =
+                    ["cat","cats","catsdogcats","dog","dogcatsdog","hippopotamuses","rat","ratcatdogcat"]
+                    <br /> Output: ["catsdogcats","dogcatsdog","ratcatdogcat"]
+                    <br />
+                    Explanation: "catsdogcats" can be concatenated by "cats",
+                    "dog" and "cats";
+                    <br /> "dogcatsdog" can be concatenated by "dog", "cats" and
+                    "dog"; "ratcatdogcat" can be concatenated by "rat", "cat",
+                    "dog" and "cat".
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words = ["cat","dog","catdog"] <br />
+                    Output: ["catdog"]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= words.length &lt;= 10^4 <br />
+                0 &lt;= words[i].length &lt;= 1000 <br />
+                words[i] consists of only lowercase English letters. <br />0
+                &lt;= sum(words[i].length) &lt;= 105
               </>
             }
             tc="n.l^3"
