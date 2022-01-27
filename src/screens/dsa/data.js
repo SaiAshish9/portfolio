@@ -65080,8 +65080,8 @@ Window position                Median
               },
             ]}
             constraints={<>1 &lt;= num &lt;= 108</>}
-            tc="n"
-            sc="n"
+            tc="n^0.5 -> 1"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
