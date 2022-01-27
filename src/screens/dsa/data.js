@@ -64054,8 +64054,31 @@ Window position                Median
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} target
+                * @return {number}
+                */
+               var findTargetSumWays = function(nums, target) {
+                 const sum = nums.reduce((a,b)=>a+b,0);
+                 if (sum < Math.abs(target) || (sum + target) % 2 == 1)
+                   return 0;
+                 return knapsack(nums, parseInt((sum + target) / 2));
+               };
+               
+               function knapsack(nums, target) {
+                 const dp = Array(Math.abs(target) + 1).fill(0);
+                 dp[0] = 1;
+               
+                 for (let num of nums)
+                   for (let i = target; i >= num; --i)
+                     dp[i] += dp[i - num];
+               
+                 return dp[target];
+               }
+               
+               console.log(findTargetSumWays([1],1))`,
+                output: `1`,
               },
             }}
           />
