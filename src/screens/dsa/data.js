@@ -64707,26 +64707,75 @@ Window position                Median
         content: (
           <Comp
             title="Q502. IPO (Q425)"
-            content1={<></>}
+            content1={
+              <>
+                Suppose LeetCode will start its IPO soon. In order to sell a
+                good price of its shares to Venture Capital, LeetCode would like
+                to work on some projects to increase its capital before the IPO.
+                Since it has limited resources, it can only finish at most k
+                distinct projects before the IPO. Help LeetCode design the best
+                way to maximize its total capital after finishing at most k
+                distinct projects. <br />
+                You are given n projects where the ith project has a pure profit
+                profits[i] and a minimum capital of capital[i] is needed to
+                start it. <br />
+                Initially, you have w capital. When you finish a project, you
+                will obtain its pure profit and the profit will be added to your
+                total capital. <br />
+                Pick a list of at most k distinct projects from given projects
+                to maximize your final capital, and return the final maximized
+                capital. <br />
+                The answer is guaranteed to fit in a 32-bit signed integer.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: k = 2, w = 0, profits = [1,2,3], capital = [0,1,1]
+                    <br />
+                    Output: 4
+                    <br />
+                    Explanation: Since your initial capital is 0, you can only
+                    start the project indexed 0. After finishing it you will
+                    obtain profit 1 and your capital becomes 1. With capital 1,
+                    you can either start the project indexed 1 or the project
+                    indexed 2. Since you can choose at most 2 projects, you need
+                    to finish the project indexed 2 to get the maximum capital.
+                    Therefore, output the final maximized capital, which is 0 +
+                    1 + 3 = 4.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: k = 3, w = 0, <br />
+                    profits = [1,2,3], <br />
+                    capital = [0,1,2] <br />
+                    Output: 6
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= k &lt;= 10^5
+                <br />
+                0 &lt;= w &lt;= 10^9
+                <br />
+                n == profits.length
+                <br />
+                n == capital.length
+                <br />
+                1 &lt;= n &lt;= 105
+                <br />
+                0 &lt;= profits[i] &lt;= 104
+                <br />0 &lt;= capital[i] &lt;= 109
               </>
             }
-            tc="n"
+            tc="n.log n"
             sc="n"
             codes={{
               Javascript: {
