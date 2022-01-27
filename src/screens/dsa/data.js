@@ -64604,16 +64604,30 @@ Window position                Median
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [0] <br />
+                    Output: [0]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [0]
+                    <br />
+                    Output: [0]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                {" "}
+                The number of nodes in the tree is in the range [1, 104]. <br />
+                -10^5 &lt;= Node.val &lt;= 10^5
+              </>
+            }
             fp={
               <>
                 <b>Follow up :</b> Could you do that without using any extra
