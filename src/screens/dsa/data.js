@@ -62836,7 +62836,23 @@ class Node {
         content: (
           <Comp
             title="Q478. Generate Random Point in a Circle (Q406)"
-            content1={<></>}
+            content1={
+              <>
+                Given the radius and the position of the center of a circle,
+                implement the function randPoint which generates a uniform
+                random point inside the circle.
+                <br />
+                Implement the Solution class:
+                <br />
+                Solution(double radius, double x_center, double y_center)
+                initializes the object with the radius of the circle radius and
+                the position of the center (x_center, y_center).
+                <br />
+                randPoint() returns a random point inside the circle. A point on
+                the circumference of the circle is considered to be in the
+                circle. The answer is returned as an array [x, y].
+              </>
+            }
             content2={null}
             examples={[
               {
