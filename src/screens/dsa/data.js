@@ -63535,27 +63535,127 @@ Window position                Median
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: board = "WRRBBW", hand = "RB" <br />
+                    Output: -1 <br />
+                    Explanation: It is impossible to clear all the balls. The
+                    best you can do is:
+                    <br />
+                    - Insert 'R' so the board becomes WRRRBBW. WRRRBBW -&gt;
+                    WBBW.
+                    <br />
+                    - Insert 'B' so the board becomes WBBBW. WBBBW -&gt; WW.
+                    <br />
+                    There are still balls remaining on the board, and you are
+                    out of balls to insert.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: board = "WWRRBBWW", hand = "WRBRW"
+                    <br />
+                    Output: 2
+                    <br />
+                    Explanation: To make the board empty:
+                    <br />
+                    - Insert 'R' so the board becomes WWRRRBBWW. WWRRRBBWW -&gt;
+                    WWBBWW.
+                    <br />
+                    - Insert 'B' so the board becomes WWBBBWW. WWBBBWW -&gt;
+                    WWWW -&gt; empty.
+                    <br />2 balls from your hand were needed to clear the board.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: board = "WWRRBBWW", hand = "WRBRW"
+                    <br />
+                    Output: 2
+                    <br />
+                    Explanation: To make the board empty:
+                    <br />
+                    - Insert 'R' so the board becomes WWRRRBBWW. WWRRRBBWW -&gt;
+                    WWBBWW.
+                    <br />
+                    - Insert 'B' so the board becomes WWBBBWW. WWBBBWW -&gt;
+                    WWWW -&gt; empty.
+                    <br />2 balls from your hand were needed to clear the board.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= board.length &lt;= 16 <br />
+                1 &lt;= hand.length &lt;= 5<br />
+                board and hand consist of the characters 'R', 'Y', 'B', 'G', and
+                'W'. The initial row of balls on the board will not have any
+                groups of three or more consecutive balls of the same color.
               </>
             }
-            tc="n"
-            sc="n"
+            tc="m^2.n^2"
+            sc="m.n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} board
+                * @param {string} hand
+                * @return {number}
+                */
+               var findMinStep = function(board, hand) {
+                 const memo = new Map()
+                 let ans = dfs(board + '#', hand, memo);
+                 return ans == Number.MAX_SAFE_INTEGER ? -1 : ans; 
+               };
+               
+               function dfs(board, hand, memo) {
+                 const hashKey = board + '#' + hand;
+                 if (memo.has(hashKey))
+                   return memo.get(hashKey);
+                 board = deDup(board);
+                 if (board === "#")
+                   return 0;
+                 const boardSet = new Set();
+                 for (let c of board)
+                   boardSet.add(c);
+                 const sb = [];
+                 for (let h of hand)
+                   if (boardSet.has(h))
+                     sb.push(h);
+                 const hs = sb.join("");
+                 if (sb.length == 0) 
+                   return Number.MAX_SAFE_INTEGER;
+                 let ans = Number.MAX_SAFE_INTEGER;
+                 for (let i = 0; i < board.length; ++i)
+                   for (let j = 0; j < hs.length; ++j) {
+                     const newHand = hs.substring(0, j) + hs.substring(j + 1);
+                     const newBoard = board.substring(0, i) + hs[j] + board.substring(i);
+                     const res = dfs(newBoard, newHand, memo);
+                     if (res < Number.MAX_SAFE_INTEGER)
+                       ans = Math.min(ans, 1 + res);
+                   }
+                 memo.set(hashKey, ans);
+                 return ans;
+               }
+               
+               function deDup(board) {
+                 let start = 0;
+                 for (let i = 0; i < board.length; ++i)
+                   if (board[i] != board[start]) {
+                     if (i - start >= 3)
+                       return deDup(board.substring(0, start) + board.substring(i));
+                     start = i; 
+                   }
+                 return board;
+               }
+               
+               console.log(findMinStep("G","GGGGG"))`,
+                output: `2`,
               },
             }}
           />
