@@ -64181,20 +64181,66 @@ Window position                Median
         content: (
           <Comp
             title="Q496. Next Greater Element I (Q420)"
-            content1={<></>}
+            content1={
+              <>
+                The next greater element of some element x in an array is the
+                first greater element that is to the right of x in the same
+                array.
+                <br />
+                You are given two distinct 0-indexed integer arrays nums1 and
+                nums2, where nums1 is a subset of nums2.
+                <br />
+                For each 0 &lt;= i &lt; nums1.length, find the index j such that
+                nums1[i] == nums2[j] and determine the next greater element of
+                nums2[j] in nums2. If there is no next greater element, then the
+                answer for this query is -1.
+                <br />
+                Return an array ans of length nums1.length such that ans[i] is
+                the next greater element as described above.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums1 = [4,1,2], nums2 = [1,3,4,2] Output: [-1,3,-1]
+                    Explanation: The next greater element for each value of
+                    nums1 is as follows: - 4 is underlined in nums2 = [1,3,4,2].
+                    There is no next greater element, so the answer is -1. - 1
+                    is underlined in nums2 = [1,3,4,2]. The next greater element
+                    is 3. - 2 is underlined in nums2 = [1,3,4,2]. There is no
+                    next greater element, so the answer is -1.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums1 = [2,4], nums2 = [1,2,3,4] Output: [3,-1]
+                    Explanation: The next greater element for each value of
+                    nums1 is as follows: - 2 is underlined in nums2 = [1,2,3,4].
+                    The next greater element is 3. - 4 is underlined in nums2 =
+                    [1,2,3,4]. There is no next greater element, so the answer
+                    is -1.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums1.length &lt;= nums2.length &lt;= 1000 <br />
+                0 &lt;= nums1[i], nums2[i] &lt;= 10^4 <br />
+                All integers in nums1 and nums2 are unique. <br />
+                All the integers of nums1 also appear in nums2.
+              </>
+            }
+            fp={
+              <>
+                <b>Follow up :</b>Could you find an O(nums1.length +
+                nums2.length) solution?
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
