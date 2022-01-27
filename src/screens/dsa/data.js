@@ -64402,18 +64402,31 @@ Window position                Median
         content: (
           <Comp
             title="Q498. Diagonal Traverse (Q422)"
-            content1={<></>}
+            content1={
+              <>
+                Given an m x n matrix mat, return an array of all the elements
+                of the array in a diagonal order.
+              </>
+            }
             content2={null}
             examples={[
               {
                 img: Leetcode498,
-                content: <></>,
+                content: (
+                  <>
+                    Input: mat = [[1,2,3],[4,5,6],[7,8,9]] <br />
+                    Output: [1,2,4,7,5,3,6,8,9]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: mat = [[1,2],[3,4]]
+                    <br />
+                    Output: [1,2,3,4]
+                  </>
+                ),
               },
             ]}
             constraints={<></>}
