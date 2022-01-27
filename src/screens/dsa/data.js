@@ -61947,31 +61947,97 @@ class Node {
         content: (
           <Comp
             title="Q466. Count The Repetitions (Q396)"
-            content1={<></>}
+            content1={
+              <>
+                We define str = [s, n] as the string str which consists of the
+                string s concatenated n times.
+                <br />
+                For example, str == ["abc", 3] =="abcabcabc".
+                <br />
+                We define that string s1 can be obtained fro
+                <br />
+                m string s2 if we can remove some characters from s2 such that
+                it becomes s1.
+                <br />
+                For example, s1 = "abc" can be obtained from s2 = "abdbec" based
+                on our definition by removing the bolded underlined characters.
+                <br />
+                You are given two strings s1 and s2 and two integers n1 and n2.
+                You have the two strings str1 = [s1, n1] and str2 = [s2, n2].
+                <br />
+                Return the maximum integer m such that str = [str2, m] can be
+                obtained from str1.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s1 = "acb", n1 = 4, s2 = "ab", n2 = 2 <br />
+                    Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s1 = "acb", n1 = 1, s2 = "acb", n2 = 1<br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= s1.length, s2.length &lt;= 100
+                <br />
+                s1 and s2 consist of lowercase English letters.
+                <br />1 &lt;= n1, n2 &lt;= 106
               </>
             }
-            tc="n"
-            sc="n"
+            tc="|s1||s2|"
+            sc="|s2|"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s1
+                * @param {number} n1
+                * @param {string} s2
+                * @param {number} n2
+                * @return {number}
+                */
+               class Record {
+                 constructor(count, nextIndex) {
+                   this.count = count;
+                   this.nextIndex = nextIndex;
+                 }
+               };
+               
+               var getMaxRepetitions = function(s1, n1, s2, n2) {
+                 const records = []; 
+                 for (let i = 0; i < s2.length; ++i) {
+                   let count = 0;
+                   let nextIndex = i;
+                   for (let j = 0; j < s1.length; ++j)
+                     if (s2[nextIndex] == s1[j])
+                       if (++nextIndex == s2.length) { 
+                         ++count;
+                         nextIndex = 0;
+                       }
+                   records.push(new Record(count, nextIndex));
+                 }
+                 let matches = 0;
+                 let index = 0;
+                 while (n1-- > 0) {
+                   matches += records[index].count;
+                   index = records[index].nextIndex;
+                 }
+                 return parseInt(matches / n2);  
+               };
+               
+               console.log(getMaxRepetitions("acb",1,"acb",1))`,
+                output: `1`,
               },
             }}
           />
