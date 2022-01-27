@@ -66249,8 +66249,8 @@ Window position                Median
       title: "Q552. Student Attendance Record II (Q461)",
       content: (
         <Comp
-        title= "Q552. Student Attendance Record II (Q461)"
-        content1={<></>}
+          title="Q552. Student Attendance Record II (Q461)"
+          content1={<></>}
           content2={null}
           examples={[
             {
@@ -66280,7 +66280,6 @@ Window position                Median
         />
       ),
     },
-  },
   },
 };
 
