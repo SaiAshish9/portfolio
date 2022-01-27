@@ -62201,8 +62201,50 @@ class Node {
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} queryIP
+                * @return {string}
+                */
+               var validIPAddress = function(queryIP) {
+                 if (queryIP.split("").filter(c => c == '.').length == 3) {
+                 for (let digit of queryIP.split("."))
+                   if (!isIPv4(digit))
+                     return "Neither";
+                   return "IPv4";
+                 }
+                 if (queryIP.split("").filter(c => c == ':').length == 7) {
+                 for (let digit of queryIP.split(":"))
+                   if (!isIPv6(digit))
+                     return "Neither";
+                   return "IPv6";
+                 }
+                 return "Neither";   
+               };
+               
+               function isIPv4(digit) {
+                 if (!digit.length || digit.length > 3)
+                   return false;
+                 if (digit.length > 1 && digit[0] == '0')
+                   return false;
+                 for (let c of digit)
+                   if (c.charCodeAt(0) < 48 || c.charCodeAt(0) > 57)
+                     return false;
+                 let num = parseInt(digit);
+                 return 0 <= num && num <= 255;
+               }
+               
+               function isIPv6(digit) {
+                 const validIPv6Chars = "0123456789abcdefABCDEF";
+                 if (!digit.length || digit.length > 4)
+                   return false;
+                 for (let c of digit)
+                   if (!validIPv6Chars.includes(c))
+                     return false;
+                 return true;
+               }
+               
+               console.log(validIPAddress("2001:0db8:85a3:0:0:8A2E:0370:7334"))`,
+                output: `IPv6`,
               },
             }}
           />
