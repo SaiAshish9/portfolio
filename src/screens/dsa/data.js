@@ -63601,61 +63601,118 @@ Window position                Median
             tc="m^2.n^2"
             sc="m.n"
             codes={{
-              Javascript: {
-                code: `class Solution {
+              Java: {
+                code: `
+                //  board = "WWRRBBWW", hand = "WRBRW"
+                class Solution {
                   public int findMinStep(String board, String hand) {
-                    Map<String, Integer> memo = new HashMap<>();
-                    final int ans = dfs(board + '#', hand, memo);
-                    return ans == Integer.MAX_VALUE ? -1 : ans;
-                  }
-                
-                  private int dfs(String board, final String hand, Map<String, Integer> memo) {
-                    final String hashKey = board + '#' + hand;
-                    if (memo.containsKey(hashKey))
-                      return memo.get(hashKey);
-                    board = deDup(board);
-                    if (board.equals("#"))
-                      return 0;
-                
-                    Set<Character> boardSet = new HashSet<>();
-                    for (final char c : board.toCharArray())
-                      boardSet.add(c);
-                
-                    StringBuilder sb = new StringBuilder();
-                    for (final char h : hand.toCharArray())
-                      if (boardSet.contains(h))
-                        sb.append(h);
-                    final String hs = sb.toString();
-                    if (sb.length() == 0) // infeasible
-                      return Integer.MAX_VALUE;
-                
-                    int ans = Integer.MAX_VALUE;
-                
-                    for (int i = 0; i < board.length(); ++i)
-                      for (int j = 0; j < hs.length(); ++j) {
-                        // place hs[j] in board[i]
-                        final String newHand = hs.substring(0, j) + hs.substring(j + 1);
-                        String newBoard = board.substring(0, i) + hs.charAt(j) + board.substring(i);
-                        final int res = dfs(newBoard, newHand, memo);
-                        if (res < Integer.MAX_VALUE)
-                          ans = Math.min(ans, 1 + res);
+                      List<Character> boardList = new ArrayList<>();
+                      for (char c : board.toCharArray()) {
+                          boardList.add(c);
                       }
-                
-                    memo.put(hashKey, ans);
-                    return ans;
-                  }
-                
-                  private String deDup(String board) {
-                    int start = 0; // start index of a color sequenece
-                    for (int i = 0; i < board.length(); ++i)
-                      if (board.charAt(i) != board.charAt(start)) {
-                        if (i - start >= 3)
-                          return deDup(board.substring(0, start) + board.substring(i));
-                        start = i; // meet a new sequence
+                      List<Character> handList = new ArrayList<>();
+                      for (char c : hand.toCharArray()) {
+                          handList.add(c);
                       }
-                    return board;
+                      
+                      int res = findMinStep(boardList, handList);
+                      return res;
                   }
-                }
+                  
+                  public int findMinStep(List<Character> boardList, List<Character> handList) {
+                      if (boardList.isEmpty()) {
+                          return 0;
+                      }
+                      if (!boardList.isEmpty() && handList.isEmpty()) {
+                          return -1;
+                      }
+                      if (!isValid(boardList, handList)) {
+                          return -1;
+                      }
+                      
+                      int res = Integer.MAX_VALUE;
+                      for (int boardListIndex=0; boardListIndex<=boardList.size(); boardListIndex++) {            
+                          Set<Character> duplicate = new HashSet<>();
+                          for (int handListIndex=0; handListIndex<handList.size(); handListIndex++) {
+                              if (boardListIndex > 0 && boardList.get(boardListIndex-1) == handList.get(handListIndex)) {
+                                  continue;
+                              }
+                              if (duplicate.contains(handList.get(handListIndex))) {
+                                  continue;
+                              } else {
+                                  duplicate.add(handList.get(handListIndex));
+                              }
+              
+                              boolean goodCase1 = (boardListIndex < boardList.size() && boardList.get(boardListIndex) == handList.get(handListIndex));
+                              boolean goodCase2 = (boardListIndex > 0 && boardListIndex < boardList.size() && boardList.get(boardListIndex-1) == boardList.get(boardListIndex) && boardList.get(boardListIndex-1) != handList.get(handListIndex));
+                              if (goodCase1 == false && goodCase2 == false) continue;
+                              
+                              List<Character> boardListClone = new ArrayList<>(boardList);
+                              List<Character> handListClone = new ArrayList<>(handList);
+                              boardListClone.add(boardListIndex, handListClone.remove(handListIndex));
+                              cleanup(boardListClone);
+                              int preRes = findMinStep(boardListClone, handListClone);
+                              if (preRes != -1 && preRes < res) {
+                                  res = preRes;
+                              }
+                          }
+                      }
+                      
+                      if (res == Integer.MAX_VALUE) {
+                          return -1;
+                      }
+                      return res + 1;
+                  }
+                  
+                  public void cleanup(List<Character> boardList) {
+                      Boolean isCleanup = false;
+                      while (!isCleanup) {
+                          isCleanup = true;
+                          for (int i=0; i<boardList.size()-2; i++) {
+                              int repeatLen = 1;
+                              for (int j=i+1; j<boardList.size(); j++) {
+                                  if (boardList.get(j) == boardList.get(j-1)) {
+                                      repeatLen++;
+                                  } else {
+                                      break;
+                                  }
+                              }
+                              if (repeatLen >= 3) {
+                                  isCleanup = false;
+                                  for (; repeatLen > 0; repeatLen--) {
+                                      boardList.remove(i);
+                                  }
+                              }
+                          }
+                      }
+                  }
+                  
+                  public boolean isValid(List<Character> boardList, List<Character> handList) {
+                      int boardR = 0, boardY = 0, boardB = 0, boardG = 0, boardW = 0;
+                      int handR = 0, handY = 0, handB = 0, handG = 0, handW = 0;
+                      for (char c : boardList) {
+                          if (c == 'R') boardR++;
+                          if (c == 'Y') boardY++;
+                          if (c == 'B') boardB++;
+                          if (c == 'G') boardG++;
+                          if (c == 'W') boardW++;
+                      }
+                      for (char c : handList) {
+                          if (c == 'R') handR++;
+                          if (c == 'Y') handY++;
+                          if (c == 'B') handB++;
+                          if (c == 'G') handG++;
+                          if (c == 'W') handW++;
+                      }
+                      if (boardR < 3 && boardR > 0 && boardR + handR < 3) return false;
+                      if (boardY < 3 && boardY > 0 && boardY + handY < 3) return false;
+                      if (boardB < 3 && boardB > 0 && boardB + handB < 3) return false;
+                      if (boardG < 3 && boardG > 0 && boardG + handG < 3) return false;
+                      if (boardW < 3 && boardW > 0 && boardW + handW < 3) return false;
+                      
+                      return true;
+                  }
+              }
                 `,
                 output: `2`,
               },
@@ -63707,9 +63764,14 @@ Window position                Median
                 ),
               },
             ]}
-            constraints={<></>}
-            tc="m.n"
-            sc="m.n"
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 15 <br />
+                -100 &lt;= nums[i] &lt;= 100
+              </>
+            }
+            tc="n.2^n"
+            sc="n^2"
             codes={{
               Javascript: {
                 code: `/**
@@ -63752,31 +63814,73 @@ Window position                Median
         content: (
           <Comp
             title="Q492. Construct the Rectangle (Q416)"
-            content1={<></>}
+            content1={
+              <>
+                A web developer needs to know how to design a web page's size.
+                So, given a specific rectangular web page’s area, your job by
+                now is to design a rectangular web page, whose length L and
+                width W satisfy the following requirements:
+                <br />
+                The area of the rectangular web page you designed must equal to
+                the given target area.
+                <br /> The width W should not be larger than the length L, which
+                means L &gt;= W.
+                <br /> The difference between length L and width W should be as
+                small as possible.
+                <br /> Return an array [L, W] where L and W are the length and
+                width of the web page you designed in sequence.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: area = 4 <br />
+                    Output: [2,2] <br />
+                    Explanation: The target area is 4, and all the possible ways
+                    to construct it are [1,4], [2,2], [4,1]. But according to
+                    requirement 2, [1,4] is illegal; according to requirement 3,
+                    [4,1] is not optimal compared to [2,2]. So the length L is
+                    2, and the width W is 2.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: area = 37 <br />
+                    Output: [37,1]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: area = 122122 <br />
+                    Output: [427,286]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
+            constraints={<>1 &lt;= area &lt;= 10^7</>}
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} area
+                * @return {number[]}
+                */
+               var constructRectangle = function(area){
+                 let width = parseInt(Math.sqrt(area));
+                 while (area % width > 0)
+                   --width;
+                 return [parseInt(area / width), width]; 
+               };
+               
+               console.log(constructRectangle(4))`,
+                output: `[ 2, 2 ]`,
               },
             }}
           />
