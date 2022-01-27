@@ -222,6 +222,7 @@ import Leetcode463 from "assets/leetcode/463.png";
 import Leetcode473 from "assets/leetcode/473.png";
 import Leetcode497 from "assets/leetcode/497.png";
 import Leetcode498 from "assets/leetcode/498.png";
+import Leetcode500 from "assets/leetcode/500.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -64493,23 +64494,54 @@ Window position                Median
         title: "Q500. Keyboard Row (Q423)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given an array of strings words, return the words that can be
+                typed using letters of the alphabet on only one row of American
+                keyboard like the image below.
+                <br />
+                In the American keyboard:
+                <br />
+                the first row consists of the characters "qwertyuiop",
+                <br />
+                the second row consists of the characters "asdfghjkl", and
+                <br />
+                the third row consists of the characters "zxcvbnm".
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words = ["Hello","Alaska","Dad","Peace"] <br />
+                    Output: ["Alaska","Dad"]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words = ["omk"] <br />
+                    Output: []
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words = ["omk"] <br />
+                    Output: []
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= words.length &lt;= 20 <br />
+                1 &lt;= words[i].length &lt;= 100 <br />
+                words[i] consists of English letters (both lowercase and
+                uppercase).{" "}
               </>
             }
             tc="n"
