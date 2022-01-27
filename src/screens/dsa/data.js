@@ -62254,23 +62254,54 @@ class Node {
         title: "Q470. Implement Rand10() Using Rand7() (Q399)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given the API rand7() that generates a uniform random integer in
+                the range [1, 7], write a function rand10() that generates a
+                uniform random integer in the range [1, 10]. You can only call
+                the API rand7(), and you shouldn't call any other API. Please do
+                not use a language's built-in random API.
+                <br />
+                Each test case will have one internal argument n, the number of
+                times that your implemented function rand10() will be called
+                while testing. Note that this is not an argument passed to
+                rand10().
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1 <br />
+                    Output: [2]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 2<br />
+                    Output: [2,8]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 3<br />
+                    Output: [3,8,10]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={<>1 &lt;= n &lt;= 10^5</>}
             fp={
               <>
-                <b>Follow up :</b>
+                <b>Follow up :</b>What is the expected value for the number of
+                calls to rand7() function?
+                <br />
+                Could you minimize the number of calls to rand7()?
               </>
             }
             tc="n"
