@@ -64278,23 +64278,64 @@ Window position                Median
         title: "Q497. Random Point in Non-overlapping Rectangles (Q421)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q497. Random Point in Non-overlapping Rectangles (Q421)"
+            content1={
+              <>
+                You are given an array of non-overlapping axis-aligned
+                rectangles rects where rects[i] = [ai, bi, xi, yi] indicates
+                that (ai, bi) is the bottom-left corner point of the ith
+                rectangle and (xi, yi) is the top-right corner point of the ith
+                rectangle. Design an algorithm to pick a random integer point
+                inside the space covered by one of the given rectangles. A point
+                on the perimeter of a rectangle is included in the space covered
+                by the rectangle.
+                <br />
+                Any integer point inside the space covered by one of the given
+                rectangles should be equally likely to be returned.
+                <br />
+                Note that an integer point is a point that has integer
+                coordinates. <br />
+                Implement the Solution class:
+                <br />
+                Solution(int[][] rects) Initializes the object with the given
+                rectangles rects. <br />
+                int[] pick() Returns a random integer point [u, v] inside the
+                space covered by one of the given rectangles.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input <br />
+                    ["Solution", "pick", "pick", "pick", "pick", "pick"] <br />
+                    [[[[-2, -2, 1, 1], [2, 2, 4, 6]]], [], [], [], [], []]{" "}
+                    <br />
+                    Output <br />
+                    [null, [1, -2], [1, -1], [-1, -2], [-2, -2], [0, 0]] <br />
+                    Explanation <br />
+                    Solution solution = new Solution([[-2, -2, 1, 1], [2, 2, 4,
+                    6]]); <br />
+                    solution.pick(); // return [1, -2] <br />
+                    solution.pick(); // return [1, -1] <br />
+                    solution.pick(); // return [-1, -2] <br />
+                    solution.pick(); // return [-2, -2] <br />
+                    solution.pick(); // return [0, 0]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= rects.length &lt;= 100 <br />
+                rects[i].length == 4 <br />
+                -10^9 &lt;= ai &lt; xi &lt;= 109 <br />
+                -10^9 &lt;= bi &lt; yi &lt;= 109 <br />
+                xi - ai &lt;= 2000 <br />
+                yi - bi &lt;= 2000 <br />
+                All the rectangles do not overlap. <br />
+                At most 104 calls will be made to pick
               </>
             }
             tc="n"
