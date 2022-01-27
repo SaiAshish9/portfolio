@@ -62385,8 +62385,38 @@ class Node {
             sc="n.l"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string[]} words
+                * @return {string[]}
+                */
+               var findAllConcatenatedWordsInADict = function(words) {
+                 const res = [];
+                 const wordSet = new Set(words);
+                 const memo = new Map();
+                 for (let word of words)
+                   if (wordBreak(word, wordSet, memo))
+                     res.push(word);
+                 return res;
+               };
+               
+               function wordBreak(word, wordSet, memo) {
+                 if (memo.has(word))
+                   return memo.get(word);
+                 for (let i = 1; i < word.length; ++i) {
+                   const prefix = word.substring(0, i);
+                   const suffix = word.substring(i);
+                   if (wordSet.has(prefix) &&
+                       (wordSet.has(suffix) || wordBreak(suffix, wordSet, memo))) {
+                     memo.set(word, true);
+                     return true;
+                   }
+                 }
+                 memo.set(word, false);
+                 return false;
+               }
+               
+               console.log(findAllConcatenatedWordsInADict(["cat","dog","catdog"]))`,
+                output: `[ 'catdog' ]`,
               },
             }}
           />
