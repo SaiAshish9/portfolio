@@ -63712,8 +63712,36 @@ Window position                Median
             sc="m.n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number[][]}
+                */
+               function dfs(nums,s,res,curr=[]){
+                 if(curr.length > 1)
+                   res.push(curr.slice());
+               
+                 const existing = new Set();
+               
+                 for (let i = s; i < nums.length; ++i) {
+                   if (existing.has(nums[i]))
+                     continue;
+                   if (!curr.length || nums[i] >= curr.slice(-1)[0]) {
+                     existing.add(nums[i]);
+                     curr.push(nums[i]);
+                     dfs(nums, i + 1, res, curr);
+                     curr.pop();
+                   }
+                 }
+               }
+               
+               var findSubsequences = function(nums) {
+                 const res = [];
+                 dfs(nums, 0, res);
+                 return res;
+               };
+               
+               console.log(findSubsequences([4,4,3,2,1]))`,
+                output: `[ [ 4, 4 ] ]`,
               },
             }}
           />
