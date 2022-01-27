@@ -63141,8 +63141,34 @@ Window position                Median
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @return {number}
+                */
+               var magicalString = function(n) {
+                   if (n === 1) return 1;
+                   const arr = Array(n).fill(1);
+                   arr[0] = 1;
+                   arr[1] = 2;
+                   let left = 1;
+                   let right = 1;
+                   let num = 2;
+                   let ones = 1;
+                   while (right < n) {
+                       const count = arr[left];
+                       for (let i = 0; i < count && right < n; i++, right++) {
+                           arr[right] = num;
+                           if (num === 1) ones++;
+                       }
+                       num ^= 3;
+                       left++;
+                   }
+                   
+                   return ones;
+               };
+               
+               console.log(magicalString(6))`,
+                output: `3`,
               },
             }}
           />
