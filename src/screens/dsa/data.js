@@ -63263,23 +63263,50 @@ Window position                Median
         content: (
           <Comp
             title="Q483. Smallest Good Base (Q411)"
-            content1={<></>}
+            content1={
+              <>
+                Given an integer n represented as a string, return the smallest
+                good base of n.
+                <br />
+                We call k &gt;= 2 a good base of n, if all digits of n base k
+                are 1's.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = "13" <br />
+                    Output: "3" <br />
+                    Explanation: 13 base 3 is 111.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = "4681" <br />
+                    Output: "8" <br />
+                    Explanation: 4681 base 8 is 11111.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = "1000000000000000000" <br />
+                    Output: "999999999999999999" <br />
+                    Explanation: 1000000000000000000 base 999999999999999999 is
+                    11.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                n is an integer in the range [3, 1018]. <br />n does not contain
+                any leading zeros.
               </>
             }
             tc="log^2 n"
