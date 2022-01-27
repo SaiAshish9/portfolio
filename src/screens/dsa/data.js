@@ -63891,26 +63891,40 @@ Window position                Median
         content: (
           <Comp
             title="Q493. Reverse Pairs (Q417)"
-            content1={<></>}
+            content1={
+              <>
+                Given an integer array nums, return the number of reverse pairs
+                in the array.
+                <br />A reverse pair is a pair (i, j) where 0 &lt;= i &lt; j
+                &lt; nums.length and nums[i] &gt; 2 * nums[j].
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,3,2,3,1] <br />
+                    Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,3,2,3,1] <br />
+                    Output: 2
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= nums.length &lt;= 5 * 10^4 <br />
+                -2^31 &lt;= nums[i] &lt;= 2^31 - 1
               </>
             }
-            tc="n"
+            tc="n.log n"
             sc="n"
             codes={{
               Javascript: {
