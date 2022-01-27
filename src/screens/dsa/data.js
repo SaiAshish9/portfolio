@@ -63366,7 +63366,7 @@ Window position                Median
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
