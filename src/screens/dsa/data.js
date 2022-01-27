@@ -63346,31 +63346,61 @@ Window position                Median
         content: (
           <Comp
             title="Q485. Max Consecutive Ones (Q412)"
-            content1={<></>}
+            content1={
+              <>
+                Given a binary array nums, return the maximum number of
+                consecutive 1's in the array.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,1,0,1,1,1] <br />
+                    Output: 3 <br />
+                    Explanation: The first two digits or the last three digits
+                    are consecutive 1s. The maximum number of consecutive 1s is
+                    3.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,0,1,1,0,1] <br />
+                    Output: 2
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= nums.length &lt;= 105 <br />
+                nums[i] is either 0 or 1.
               </>
             }
             tc="n"
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var findMaxConsecutiveOnes = function(nums) {
+                 let ans = 0;
+                 let sum = 0;
+                 for (let num of nums)
+                   if (num == 1)
+                     ans = Math.max(ans, ++sum);
+                   else
+                     sum = 0;
+                 return ans;
+               };
+               
+               console.log(findMaxConsecutiveOnes([1,0,1,1,0,1]))`,
+                output: `2`,
               },
             }}
           />
