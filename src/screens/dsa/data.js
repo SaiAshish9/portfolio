@@ -62048,27 +62048,57 @@ class Node {
         content: (
           <Comp
             title="Q467. Unique Substrings in Wraparound String (Q397)"
-            content1={<></>}
+            content1={
+              <>
+                We define the string s to be the infinite wraparound string of
+                "abcdefghijklmnopqrstuvwxyz", so s will look like this:
+                <br />
+                "...zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd....".
+                <br />
+                Given a string p, return the number of unique non-empty
+                substrings of p are present in s.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: p = "a" <br />
+                    Output: 1 <br />
+                    Explanation: Only the substring "a" of p is in s.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: p = "cac" <br />
+                    Output: 2 <br />
+                    Explanation: There are two substrings ("a", "c") of p in s.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: p = "zab"
+                    <br />
+                    Output: 6<br />
+                    Explanation: There are six substrings ("z", "a", "b", "za",
+                    "ab", and "zab") of p in s.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= p.length &lt;= 10^5 <br />p consists of lowercase
+                English letters.
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
