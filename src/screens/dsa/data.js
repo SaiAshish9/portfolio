@@ -64581,7 +64581,26 @@ Window position                Median
         content: (
           <Comp
             title="Q501. Find Mode in Binary Search Tree (Q424)"
-            content1={<></>}
+            content1={
+              <>
+                Given the root of a binary search tree (BST) with duplicates,
+                return all the mode(s) (i.e., the most frequently occurred
+                element) in it.
+                <br />
+                If the tree has more than one mode, return them in any order.
+                <br />
+                Assume a BST is defined as follows:
+                <br />
+                The left subtree of a node contains only nodes with keys less
+                than or equal to the node's key.
+                <br />
+                The right subtree of a node contains only nodes with keys
+                greater than or equal to the node's key.
+                <br />
+                Both the left and right subtrees must also be binary search
+                trees.
+              </>
+            }
             content2={null}
             examples={[
               {
@@ -64597,11 +64616,13 @@ Window position                Median
             constraints={<></>}
             fp={
               <>
-                <b>Follow up :</b>
+                <b>Follow up :</b> Could you do that without using any extra
+                space? (Assume that the implicit stack space incurred due to
+                recursion does not count).
               </>
             }
             tc="n"
-            sc="n"
+            sc="n.log n"
             codes={{
               Javascript: {
                 code: ``,
