@@ -62856,27 +62856,62 @@ class Node {
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input <br />
+                    ["Solution", "randPoint", "randPoint", "randPoint"] <br />
+                    [[1.0, 0.0, 0.0], [], [], []] <br />
+                    Output <br />
+                    [null, [-0.02493, -0.38077], [0.82314, 0.38945], [0.36572,
+                    0.17248]]
+                    <br />
+                    Explanation <br />
+                    Solution solution = new Solution(1.0, 0.0, 0.0); <br />
+                    solution.randPoint(); // return [-0.02493, -0.38077] <br />
+                    solution.randPoint(); // return [0.82314, 0.38945] <br />
+                    solution.randPoint(); // return [0.36572, 0.17248]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                0 &lt; radius &lt;= 10^8 <br />
+                -10^7 &lt;= x_center, y_center &lt;= 10^7 <br />
+                At most 3 * 104 calls will be made to randPoint.
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} radius
+                * @param {number} x_center
+                * @param {number} y_center
+                */
+               var Solution = function(radius, x_center, y_center) {
+                 this.radius = radius;
+                 this.x_center = x_center;
+                 this.y_center = y_center;
+               };
+               
+               /**
+                * @return {number[]}
+                */
+               Solution.prototype.randPoint = function() {
+                 let length = Math.sqrt(Math.random()) * this.radius;
+                 let degree = Math.random() * 2 * Math.PI;
+                 let x = this.x_center + length * Math.cos(degree);
+                 let y = this.y_center + length * Math.sin(degree);
+                 return [x, y];  
+               };
+               
+               
+               var obj = new Solution(1, 0, 0)
+               var param_1 = obj.randPoint()
+               console.log(param_1)`,
+                output: `[ 0.17378474100349553, -0.3311756669145883 ]`,
               },
             }}
           />
