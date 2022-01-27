@@ -64155,8 +64155,22 @@ Window position                Median
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} timeSeries
+                * @param {number} duration
+                * @return {number}
+                */
+               var findPoisonedDuration = function(timeSeries, duration) {
+                 if (duration == 0) return 0;
+                 let ans = 0;
+                 for (let i = 0; i + 1 < timeSeries.length; ++i)
+                   ans += Math.min(timeSeries[i + 1] - timeSeries[i], duration);
+                 return ans + duration;
+               };
+               
+               console.log(findPoisonedDuration([1,4],2))
+               `,
+                output: `4`,
               },
             }}
           />
@@ -64181,11 +64195,6 @@ Window position                Median
               },
             ]}
             constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
             tc="n"
             sc="n"
             codes={{
