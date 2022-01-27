@@ -62598,6 +62598,7 @@ class Node {
         title: "Q475. Heaters (Q403)",
         content: (
           <Comp
+            title="Q475. Heaters (Q403)"
             content1={
               <>
                 Winter is coming! During the contest, your first job is to
@@ -62659,8 +62660,26 @@ class Node {
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} houses
+                * @param {number[]} heaters
+                * @return {number}
+                */
+               var findRadius = function(houses, heaters) {
+                 houses = houses.sort((a,b)=>a-b);
+                 heaters = heaters.sort((a,b)=>a-b);
+                 let ans = 0;
+                 let i = 0; 
+                 for (let house of houses) {
+                   while (i + 1 < heaters.length && house - heaters[i] > heaters[i + 1] - house)
+                     ++i; 
+                   ans = Math.max(ans, Math.abs(heaters[i] - house));
+                 }
+                 return ans;    
+               };
+               
+               console.log(findRadius([1,5],[2]))`,
+                output: `3`,
               },
             }}
           />
