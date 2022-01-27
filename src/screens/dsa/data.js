@@ -66245,6 +66245,42 @@ Window position                Median
         ),
       },
     },
+    q461: {
+      title: "Q552. Student Attendance Record II (Q461)",
+      content: (
+        <Comp
+        title= "Q552. Student Attendance Record II (Q461)"
+        content1={<></>}
+          content2={null}
+          examples={[
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+          ]}
+          constraints={<></>}
+          fp={
+            <>
+              <b>Follow up :</b>
+            </>
+          }
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: ``,
+              output: ``,
+            },
+          }}
+        />
+      ),
+    },
+  },
   },
 };
 
