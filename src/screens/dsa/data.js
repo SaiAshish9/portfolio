@@ -63602,59 +63602,61 @@ Window position                Median
             sc="m.n"
             codes={{
               Javascript: {
-                code: `/**
-                * @param {string} board
-                * @param {string} hand
-                * @return {number}
-                */
-               var findMinStep = function(board, hand) {
-                 const memo = new Map()
-                 let ans = dfs(board + '#', hand, memo);
-                 return ans == Number.MAX_SAFE_INTEGER ? -1 : ans; 
-               };
-               
-               function dfs(board, hand, memo) {
-                 const hashKey = board + '#' + hand;
-                 if (memo.has(hashKey))
-                   return memo.get(hashKey);
-                 board = deDup(board);
-                 if (board === "#")
-                   return 0;
-                 const boardSet = new Set();
-                 for (let c of board)
-                   boardSet.add(c);
-                 const sb = [];
-                 for (let h of hand)
-                   if (boardSet.has(h))
-                     sb.push(h);
-                 const hs = sb.join("");
-                 if (sb.length == 0) 
-                   return Number.MAX_SAFE_INTEGER;
-                 let ans = Number.MAX_SAFE_INTEGER;
-                 for (let i = 0; i < board.length; ++i)
-                   for (let j = 0; j < hs.length; ++j) {
-                     const newHand = hs.substring(0, j) + hs.substring(j + 1);
-                     const newBoard = board.substring(0, i) + hs[j] + board.substring(i);
-                     const res = dfs(newBoard, newHand, memo);
-                     if (res < Number.MAX_SAFE_INTEGER)
-                       ans = Math.min(ans, 1 + res);
-                   }
-                 memo.set(hashKey, ans);
-                 return ans;
-               }
-               
-               function deDup(board) {
-                 let start = 0;
-                 for (let i = 0; i < board.length; ++i)
-                   if (board[i] != board[start]) {
-                     if (i - start >= 3)
-                       return deDup(board.substring(0, start) + board.substring(i));
-                     start = i; 
-                   }
-                 return board;
-               }
-               
-               console.log(findMinStep("G","GGGGG"))`,
+                code: `class Solution {
+                  public int findMinStep(String board, String hand) {
+                    Map<String, Integer> memo = new HashMap<>();
+                    final int ans = dfs(board + '#', hand, memo);
+                    return ans == Integer.MAX_VALUE ? -1 : ans;
+                  }
+                
+                  private int dfs(String board, final String hand, Map<String, Integer> memo) {
+                    final String hashKey = board + '#' + hand;
+                    if (memo.containsKey(hashKey))
+                      return memo.get(hashKey);
+                    board = deDup(board);
+                    if (board.equals("#"))
+                      return 0;
+                
+                    Set<Character> boardSet = new HashSet<>();
+                    for (final char c : board.toCharArray())
+                      boardSet.add(c);
+                
+                    StringBuilder sb = new StringBuilder();
+                    for (final char h : hand.toCharArray())
+                      if (boardSet.contains(h))
+                        sb.append(h);
+                    final String hs = sb.toString();
+                    if (sb.length() == 0) // infeasible
+                      return Integer.MAX_VALUE;
+                
+                    int ans = Integer.MAX_VALUE;
+                
+                    for (int i = 0; i < board.length(); ++i)
+                      for (int j = 0; j < hs.length(); ++j) {
+                        // place hs[j] in board[i]
+                        final String newHand = hs.substring(0, j) + hs.substring(j + 1);
+                        String newBoard = board.substring(0, i) + hs.charAt(j) + board.substring(i);
+                        final int res = dfs(newBoard, newHand, memo);
+                        if (res < Integer.MAX_VALUE)
+                          ans = Math.min(ans, 1 + res);
+                      }
+                
+                    memo.put(hashKey, ans);
+                    return ans;
+                  }
+                
+                  private String deDup(String board) {
+                    int start = 0; // start index of a color sequenece
+                    for (int i = 0; i < board.length(); ++i)
+                      if (board.charAt(i) != board.charAt(start)) {
+                        if (i - start >= 3)
+                          return deDup(board.substring(0, start) + board.substring(i));
+                        start = i; // meet a new sequence
+                      }
+                    return board;
+                  }
+                }
+                `,
                 output: `2`,
               },
             }}
@@ -63666,27 +63668,48 @@ Window position                Median
         content: (
           <Comp
             title="Q491. Increasing Subsequences (Q415)"
-            content1={<></>}
+            content1={
+              <>
+                Given an integer array nums, return all the different possible
+                increasing subsequences of the given array with at least two
+                elements. You may return the answer in any order.
+                <br />
+                The given array may contain duplicates, and two equal integers
+                should also be considered a special case of increasing sequence.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [4,6,7,7] <br />
+                    Output:
+                    [[4,6],[4,6,7],[4,6,7,7],[4,7],[4,7,7],[6,7],[6,7,7],[7,7]]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [4,4,3,2,1]
+                    <br />
+                    Output: [[4,4]]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    1 &lt;= nums.length &lt;= 15 <br />
+                    -100 &lt;= nums[i] &lt;= 100
+                  </>
+                ),
               },
             ]}
             constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
+            tc="m.n"
+            sc="m.n"
             codes={{
               Javascript: {
                 code: ``,
