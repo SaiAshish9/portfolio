@@ -62991,6 +62991,7 @@ class Node {
         title: "Q480. Sliding Window Median (Q408)",
         content: (
           <Comp
+            title="Q480. Sliding Window Median (Q408)"
             content1={
               <>
                 The median is the middle value in an ordered integer list. If
@@ -63095,25 +63096,47 @@ Window position                Median
         content: (
           <Comp
             title="Q481. Magical String (Q409)"
-            content1={<></>}
+            content1={
+              <>
+                A magical string s consists of only '1' and '2' and obeys the
+                following rules:
+                <br />
+                The string s is magical because concatenating the number of
+                contiguous occurrences of characters '1' and '2' generates the
+                string s itself.
+                <br /> The first few elements of s is s =
+                "1221121221221121122……". If we group the consecutive 1's and 2's
+                in s, it will be "1 22 11 2 1 22 1 22 11 2 11 22 ......" and the
+                occurrences of 1's or 2's in each group are "1 2 2 1 1 2 1 2 2 1
+                2 2 ......". You can see that the occurrence sequence is s
+                itself.
+                <br />
+                Given an integer n, return the number of 1's in the first n
+                number in the magical string s.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 6 <br />
+                    Output: 3 <br />
+                    Explanation: The first 6 elements of magical string s is
+                    "122112" and it contains three 1's, so return 3.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1 <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
+            constraints={<>1 &lt;= n &lt;= 10^5</>}
             tc="n"
             sc="n"
             codes={{
