@@ -64245,8 +64245,30 @@ Window position                Median
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums1
+                * @param {number[]} nums2
+                * @return {number[]}
+                */
+               var nextGreaterElement = function(nums1, nums2) {
+                 const res = [];
+                 const m = new Map();
+                 const stack = [];
+                 for (let num of nums2) {
+                   while (stack.length && stack.slice(-1)[0] < num)
+                     m.set(stack.pop(), num);
+                   stack.push(num);
+                 }
+                 for (let num of nums1)
+                   if (m.has(num))
+                     res.push(m.get(num));
+                   else
+                     res.push(-1);
+                 return res.map(x=>+x)
+               };
+               
+               console.log(nextGreaterElement([2,4],[1,2,3,4]))`,
+                output: `[ 3, -1 ]`,
               },
             }}
           />
