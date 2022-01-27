@@ -62254,6 +62254,7 @@ class Node {
         title: "Q470. Implement Rand10() Using Rand7() (Q399)",
         content: (
           <Comp
+            title="Q470. Implement Rand10() Using Rand7() (Q399)"
             content1={
               <>
                 Given the API rand7() that generates a uniform random integer in
@@ -62304,12 +62305,29 @@ class Node {
                 Could you minimize the number of calls to rand7()?
               </>
             }
-            tc="n"
-            sc="n"
+            tc="1"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * The rand7() API is already defined for you.
+                * var rand7 = function() {}
+                * @return {number} a random integer in the range 1 to 7
+                */
+               
+               var rand7 = function() {
+                 return Math.floor(Math.random() * 7) + 1
+               }
+               
+               var rand10 = function() {
+                 let num = 40;
+                 while (num >= 40)
+                   num = (rand7() - 1) * 7 + rand7() - 1;
+                 return num % 10 + 1; 
+               };
+               
+               console.log(rand10(1))`,
+                output: `1`,
               },
             }}
           />
