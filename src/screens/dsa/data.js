@@ -219,6 +219,7 @@ import Leetcode437 from "assets/leetcode/437.png";
 import Leetcode441 from "assets/leetcode/441.png";
 import Leetcode450 from "assets/leetcode/450.png";
 import Leetcode463 from "assets/leetcode/463.png";
+import Leetcode473 from "assets/leetcode/473.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -62427,31 +62428,82 @@ class Node {
         content: (
           <Comp
             title="Q473. Matchsticks to Square (Q401)"
-            content1={<></>}
+            content1={
+              <>
+                You are given an integer array matchsticks where matchsticks[i]
+                is the length of the ith matchstick. You want to use all the
+                matchsticks to make one square. You should not break any stick,
+                but you can link them up, and each matchstick must be used
+                exactly one time.
+                <br />
+                Return true if you can make this square and false otherwise.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode473,
+                content: (
+                  <>
+                    Input: matchsticks = [1,1,2,2,2] <br />
+                    Output: true <br />
+                    Explanation: You can form a square with length 2, one side
+                    of the square came two sticks with length 1.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: matchsticks = [3,3,3,3,4] <br />
+                    Output: false <br />
+                    Explanation: You cannot find a way to form a square with all
+                    the matchsticks.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= matchsticks.length &lt;= 15
+                <br />1 &lt;= matchsticks[i] &lt;= 10^8
               </>
             }
-            tc="n"
-            sc="n"
+            tc="2^n"
+            sc="2^n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} matchsticks
+                * @return {boolean}
+                */
+               var makesquare = function(matchsticks) {
+                 if (matchsticks.length < 4)
+                   return false;
+                 let perimeter = matchsticks.reduce((a,b)=>a+b,0);
+                 if (perimeter % 4 != 0)
+                   return false;
+                 const edges = Array(4).fill(parseInt(perimeter / 4));
+                 edges.sort((a,b)=>a-b) 
+                 return dfs(matchsticks, matchsticks.length - 1, edges);
+               };
+               
+               function dfs(matchsticks, selected, edges) {
+                 if (selected == -1)
+                   return edges.every(edge => edge == 0);
+                 for (let i = 0; i < 4; ++i) {
+                   if (matchsticks[selected] > edges[i])
+                     continue;
+                   edges[i] -= matchsticks[selected];
+                   if (dfs(matchsticks, selected - 1, edges))
+                     return true;
+                   edges[i] += matchsticks[selected];
+                 }
+                 return false;
+               }
+               
+               console.log(makesquare([3,3,3,3,4]))`,
+                output: `false`,
               },
             }}
           />
