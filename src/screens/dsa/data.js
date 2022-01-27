@@ -64951,31 +64951,94 @@ Window position                Median
         content: (
           <Comp
             title="Q506. Relative Ranks (Q428)"
-            content1={<></>}
+            content1={
+              <>
+                You are given an integer array score of size n, where score[i]
+                is the score of the ith athlete in a competition. All the scores
+                are guaranteed to be unique.
+                <br />
+                The athletes are placed based on their scores, where the 1st
+                place athlete has the highest score, the 2nd place athlete has
+                the 2nd highest score, and so on. The placement of each athlete
+                determines their rank:
+                <br />
+                The 1st place athlete's rank is "Gold Medal".
+                <br />
+                The 2nd place athlete's rank is "Silver Medal".
+                <br />
+                The 3rd place athlete's rank is "Bronze Medal".
+                <br />
+                For the 4th place to the nth place athlete, their rank is their
+                placement number (i.e., the xth place athlete's rank is "x").
+                Return an array answer of size n where answer[i] is the rank of
+                the ith athlete.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: score = [5,4,3,2,1]
+                    <br />
+                    Output: ["Gold Medal","Silver Medal","Bronze Medal","4","5"]
+                    <br />
+                    Explanation: The placements are [1st, 2nd, 3rd, 4th, 5th].
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: score = [10,3,8,9,4]
+                    <br />
+                    Output: ["Gold Medal","5","Bronze Medal","Silver Medal","4"]
+                    <br />
+                    Explanation: The placements are [1st, 5th, 3rd, 2nd, 4th].
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                n == score.length
+                <br />
+                1 &lt;= n &lt;= 10^4
+                <br />
+                0 &lt;= score[i] &lt;= 10^6
+                <br />
+                All the values in score are unique.
               </>
             }
-            tc="n"
+            tc="n.log n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} score
+                * @return {string[]}
+                */
+               var findRelativeRanks = function(score) {
+                 const n = score.length;
+                 const res = Array(n).fill(null);
+                 const indices = [];
+                 for (let i = 0; i < n; ++i)
+                   indices.push(i);
+                 indices.sort((a, b) => score[b] - score[a]);
+                 for (let i = 0; i < n; ++i)
+                  if (i == 0)
+                    res[indices[0]] = "Gold Medal";
+                  else if (i == 1)
+                    res[indices[1]] = "Silver Medal";
+                  else if (i == 2)
+                    res[indices[2]] = "Bronze Medal";
+                  else
+                    res[indices[i]] = String(i + 1);
+                 return res; 
+               };
+               
+               console.log(findRelativeRanks([5,4,3,2,1]))`,
+                output: `[ 'Gold Medal', 'Silver Medal', 'Bronze Medal', '4', '5' ]`,
               },
             }}
           />
