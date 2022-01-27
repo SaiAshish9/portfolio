@@ -64024,8 +64024,7 @@ Window position                Median
 +1 - 1 + 1 + 1 + 1 = 3
 +1 + 1 - 1 + 1 + 1 = 3
 +1 + 1 + 1 - 1 + 1 = 3
-+1 + 1 + 1 + 1 - 1 = 3     
-     `}
++1 + 1 + 1 + 1 - 1 = 3`}
                     </pre>
                   </>
                 ),
@@ -64089,27 +64088,71 @@ Window position                Median
         content: (
           <Comp
             title="Q495. Teemo Attacking (Q419)"
-            content1={<></>}
+            content1={
+              <>
+                Our hero Teemo is attacking an enemy Ashe with poison attacks!
+                When Teemo attacks Ashe, Ashe gets poisoned for a exactly
+                duration seconds. More formally, an attack at second t will mean
+                Ashe is poisoned during the inclusive time interval [t, t +
+                duration - 1]. If Teemo attacks again before the poison effect
+                ends, the timer for it is reset, and the poison effect will end
+                duration seconds after the new attack.
+                <br />
+                You are given a non-decreasing integer array timeSeries, where
+                timeSeries[i] denotes that Teemo attacks Ashe at second
+                timeSeries[i], and an integer duration.
+                <br />
+                Return the total number of seconds that Ashe is poisoned.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: timeSeries = [1,4], duration = 2<br />
+                    Output: 4<br />
+                    Explanation: Teemo's attacks on Ashe go as follows:
+                    <br />
+                    - At second 1, Teemo attacks, and Ashe is poisoned for
+                    seconds 1 and 2.
+                    <br />
+                    - At second 4, Teemo attacks, and Ashe is poisoned for
+                    seconds 4 and 5.
+                    <br />
+                    Ashe is poisoned for seconds 1, 2, 4, and 5, which is 4
+                    seconds in total.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: timeSeries = [1,4], duration = 2<br />
+                    Output: 4<br />
+                    Explanation: Teemo's attacks on Ashe go as follows:
+                    <br />
+                    - At second 1, Teemo attacks, and Ashe is poisoned for
+                    seconds 1 and 2.
+                    <br />
+                    - At second 4, Teemo attacks, and Ashe is poisoned for
+                    seconds 4 and 5.
+                    <br />
+                    Ashe is poisoned for seconds 1, 2, 4, and 5, which is 4
+                    seconds in total.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= timeSeries.length &lt;= 10^4 <br />
+                0 &lt;= timeSeries[i], duration &lt;= 10^7 <br />
+                timeSeries is sorted in non-decreasing order.
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
