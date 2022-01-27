@@ -63465,12 +63465,29 @@ Window position                Median
                 1 &lt;= nums.length &lt;= 20 <br />0 &lt;= nums[i] &lt;= 10^7
               </>
             }
-            tc="n"
+            tc="n^2"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {boolean}
+                */
+               var PredictTheWinner = function(nums) {
+                 const n = nums.length;
+                 const dp = nums.slice();
+               
+                 for (let d = 1; d < n; ++d)
+                   for (let j = n - 1; j - d >= 0; --j) {
+                     const i = j - d;
+                     dp[j] = Math.max(nums[i] - dp[j],      
+                                        nums[j] - dp[j - 1]); 
+                     }
+                   return dp[n - 1] >= 0;
+               };
+               
+               console.log(PredictTheWinner([1,5,233,7]))`,
+                output: `true`,
               },
             }}
           />
