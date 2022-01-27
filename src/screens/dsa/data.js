@@ -62327,7 +62327,7 @@ class Node {
                  return num % 10 + 1; 
                };
                
-               console.log(rand10(1))`,
+               console.log(rand10())`,
                 output: `1`,
               },
             }}
