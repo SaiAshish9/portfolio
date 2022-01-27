@@ -62922,25 +62922,34 @@ class Node {
         content: (
           <Comp
             title="Q479. Largest Palindrome Product (Q407)"
-            content1={<></>}
+            content1={
+              <>
+                Given an integer n, return the largest palindromic integer that
+                can be represented as the product of two n-digits integers.
+                Since the answer can be very large, return it modulo 1337.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 2 <br />
+                    Output: 987 <br />
+                    Explanation: 99 x 91 = 9009, 9009 % 1337 = 987
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1 <br />
+                    Output: 9
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
+            constraints={<>1 &lt;= n &lt;= 8</>}
             tc="n"
             sc="n"
             codes={{
