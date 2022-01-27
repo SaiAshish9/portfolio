@@ -223,6 +223,7 @@ import Leetcode473 from "assets/leetcode/473.png";
 import Leetcode497 from "assets/leetcode/497.png";
 import Leetcode498 from "assets/leetcode/498.png";
 import Leetcode500 from "assets/leetcode/500.png";
+import Leetcode508 from "assets/leetcode/508.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -65115,19 +65116,28 @@ Window position                Median
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode508,
+                content: (
+                  <>
+                    Input: root = [5,2,-3] <br />
+                    Output: [2,-3,4]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [5,2,-5]
+                    <br />
+                    Output: [2]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The number of nodes in the tree is in the range [1, 104]. <br />
+                -10^5 &lt;= Node.val &lt;= 10^5
               </>
             }
             tc="n"
