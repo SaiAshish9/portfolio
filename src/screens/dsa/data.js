@@ -65048,25 +65048,38 @@ Window position                Median
         title: "Q507. Perfect Number (Q429)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                A perfect number is a positive integer that is equal to the sum
+                of its positive divisors, excluding the number itself. A divisor
+                of an integer x is an integer that can divide x evenly.
+                <br />
+                Given an integer n, return true if n is a perfect number,
+                otherwise return false.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = 28 <br />
+                    Output: true <br />
+                    Explanation: 28 = 1 + 2 + 4 + 7 + 14 <br />
+                    1, 2, 4, 7, and 14 are all divisors of 28.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = 7 <br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
+            constraints={<>1 &lt;= num &lt;= 108</>}
             tc="n"
             sc="n"
             codes={{
