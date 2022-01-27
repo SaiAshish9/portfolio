@@ -62800,8 +62800,32 @@ class Node {
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               function getCount(nums, mask) {
+                 let count = 0;
+                 for (let num of nums)
+                   if ((num & mask) > 0)
+                     ++count;
+                 return count;
+               }
+               
+               var totalHammingDistance = function(nums) {
+                 let ans = 0;
+                 let mask = 1;
+                 for (let i = 0; i < 30; ++i) {
+                   let onesCount = getCount(nums, mask);
+                   let zerosCount = nums.length - onesCount;
+                   ans += onesCount * zerosCount;
+                   mask <<= 1;
+                 }
+                 return ans; 
+               };
+               
+               console.log(totalHammingDistance([4,14,2]))`,
+                output: `6`,
               },
             }}
           />
