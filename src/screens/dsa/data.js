@@ -62598,27 +62598,65 @@ class Node {
         title: "Q475. Heaters (Q403)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Winter is coming! During the contest, your first job is to
+                design a standard heater with a fixed warm radius to warm all
+                the houses.
+                <br />
+                Every house can be warmed, as long as the house is within the
+                heater's warm radius range.
+                <br />
+                Given the positions of houses and heaters on a horizontal line,
+                return the minimum radius standard of heaters so that those
+                heaters could cover all houses.
+                <br />
+                Notice that all the heaters follow your radius standard, and the
+                warm radius will the same.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: houses = [1,2,3], heaters = [2] <br />
+                    Output: 1 <br />
+                    Explanation: The only heater was placed in the position 2,
+                    and if we use the radius 1 standard, then all the houses can
+                    be warmed.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: houses = [1,2,3,4], heaters = [1,4]
+                    <br />
+                    Output: 1<br />
+                    Explanation: The two heater was placed in the position 1 and
+                    4. We need to use radius 1 standard, then all the houses can
+                    be warmed.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: houses = [1,5], heaters = [2] <br />
+                    Output: 3
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= houses.length, heaters.length &lt;= 3 * 10^4 <br />1
+                &lt;= houses[i], heaters[i] &lt;= 10^9
               </>
             }
-            tc="n"
-            sc="n"
+            tc="n.log n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
