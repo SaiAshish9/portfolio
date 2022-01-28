@@ -65729,26 +65729,67 @@ Window position                Median
         content: (
           <Comp
             title="Q518. Coin Change 2 (Q437)"
-            content1={<></>}
+            content1={
+              <>
+                You are given an integer array coins representing coins of
+                different denominations and an integer amount representing a
+                total amount of money.
+                <br />
+                Return the number of combinations that make up that amount. If
+                that amount of money cannot be made up by any combination of the
+                coins, return 0.
+                <br />
+                You may assume that you have an infinite number of each kind of
+                coin.
+                <br />
+                The answer is guaranteed to fit into a signed 32-bit integer.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: amount = 5, coins = [1,2,5] <br />
+                    Output: 4 <br />
+                    Explanation: there are four ways to make up the amount:{" "}
+                    <br />
+                    5=5 <br />
+                    5=2+2+1 <br />
+                    5=2+1+1+1 <br />
+                    5=1+1+1+1+1
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: amount = 3, coins = [2]
+                    <br />
+                    Output: 0<br />
+                    Explanation: the amount of 3 cannot be made up just with
+                    coins of 2.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: amount = 10, coins = [10] <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= coins.length &lt;= 300 <br />
+                1 &lt;= coins[i] &lt;= 5000 <br />
+                All the values of coins are unique. <br />0 &lt;= amount &lt;=
+                5000
               </>
             }
-            tc="n"
+            tc="n^2"
             sc="n"
             codes={{
               Javascript: {
