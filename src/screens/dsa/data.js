@@ -65981,8 +65981,17 @@ Window position                Median
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} word
+                * @return {boolean}
+                */
+               var detectCapitalUse = function(word) {
+                 return word === word.toUpperCase() ||
+                       word.substring(1) === word.substring(1).toLowerCase();
+               };
+               
+               console.log(detectCapitalUse("USA"))`,
+                output: `true`,
               },
             }}
           />
