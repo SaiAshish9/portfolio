@@ -225,6 +225,7 @@ import Leetcode498 from "assets/leetcode/498.png";
 import Leetcode500 from "assets/leetcode/500.png";
 import Leetcode508 from "assets/leetcode/508.png";
 import Leetcode513 from "assets/leetcode/513.png";
+import Leetcode515 from "assets/leetcode/515.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -65472,6 +65473,7 @@ Window position                Median
             content2={null}
             examples={[
               {
+                img: Leetcode515,
                 content: (
                   <>
                     Input: root = [1,3,2,5,3,null,9]
