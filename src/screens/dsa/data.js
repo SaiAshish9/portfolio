@@ -65384,27 +65384,75 @@ Window position                Median
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: ring = "godding", key = "gd" <br />
+                    Output: 4 <br />
+                    Explanation: <br />
+                    For the first key character 'g', since it is already in
+                    place, we just need 1 step to spell this character. For the
+                    second key character 'd', we need to rotate the ring
+                    "godding" anticlockwise by two steps to make it become
+                    "ddinggo". Also, we need 1 more step for spelling. So the
+                    final output is 4.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: ring = "godding", key = "godding"
+                    <br />
+                    Output: 13
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= ring.length, key.length &lt;= 100
+                <br />
+                ring and key consist of only lower case English letters.
+                <br />
+                It is guaranteed that key could always be spelled by rotating
+                ring.
               </>
             }
             tc="k.r^3"
             sc="k"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} ring
+                * @param {string} key
+                * @return {number}
+                */
+               
+               function dfs(ring, key, index, memo){
+                 if (index == key.length)
+                     return 0;
+                 const hashKey = ring + index;
+                 if (memo.has(hashKey))
+                     return memo.get(hashKey);
+                 let ans = Number.MAX_SAFE_INTEGER;
+                 for (let i = 0; i < ring.length; ++i)
+                   if (ring[i] == key[index]) {
+                   let minRotates = Math.min(i, ring.length - i);
+                   const newRing = ring.substring(i) + ring.substring(0, i);
+                   let remainingRotates = dfs(newRing, key, index + 1, memo);
+                   ans = Math.min(ans, minRotates + remainingRotates);
+                   }
+                 memo.set(hashKey, ans);
+                 return ans;
+               }
+               
+               var findRotateSteps = function(ring, key){
+                 const memo = new Map();
+                 return dfs(ring, key, 0, memo) + key.length;
+               };
+               
+               console.log(findRotateSteps("godding","godding"))`,
+                output: `13`,
               },
             }}
           />
