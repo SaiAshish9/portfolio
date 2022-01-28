@@ -65243,11 +65243,24 @@ Window position                Median
             ]}
             constraints={<>0 &lt;= n &lt;= 30</>}
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @return {number}
+                */
+               var fib = function(n) {
+                 const dp = Array(30).fill(-1)
+                 dp[0] = 0
+                 dp[1] = 1
+                 for (let i = 2; i <= n; i++)
+                   dp[i] = dp[i - 1] + dp[i - 2];
+                 return dp[n]
+               };
+               
+               console.log(fib(2))`,
+                output: `1`,
               },
             }}
           />
