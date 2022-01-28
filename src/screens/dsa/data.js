@@ -65502,8 +65502,43 @@ Window position                Median
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+              }
+              
+              /**
+               * @param {TreeNode} root
+               * @return {number[]}
+               */
+              var largestValues = function(root) {
+                if (!root) return [];
+                const res = [];
+                const q = [root];
+                while (q.length) {
+                  let max = Number.MIN_SAFE_INTEGER;
+                  for (let size = q.length; size > 0; --size) {
+                    let curr = q.shift();
+                    max = Math.max(max, curr.val);
+                    if (curr.left)
+                      q.push(curr.left);
+                    if (curr.right)
+                      q.push(curr.right);
+                  }
+                  res.push(max);
+                }
+                return res;    
+              };
+              
+              const t = new TreeNode(1)
+              t.left = new TreeNode(3)
+              t.left.left = new TreeNode(5)
+              t.left.right = new TreeNode(3)
+              t.right = new TreeNode(2)
+              t.right.right = new TreeNode(9)
+              console.log(largestValues(t))`,
+                output: `[ 1, 3, 9 ]`,
               },
             }}
           />
