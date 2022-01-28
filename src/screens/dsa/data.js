@@ -66072,8 +66072,17 @@ Window position                Median
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} a
+                * @param {string} b
+                * @return {number}
+                */
+               var findLUSlength = function(a, b) {
+                 return a === b ? -1 : Math.max(a.length, b.length); 
+               };
+               
+               console.log(findLUSlength("aaa","bbb"))`,
+                output: `3`,
               },
             }}
           />
