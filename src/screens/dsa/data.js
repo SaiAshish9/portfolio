@@ -65549,23 +65549,42 @@ Window position                Median
         content: (
           <Comp
             title="Q516. Longest Palindromic Subsequence (Q435)"
-            content1={<></>}
+            content1={
+              <>
+                Given a string s, find the longest palindromic subsequence's
+                length in s.
+                <br />A subsequence is a sequence that can be derived from
+                another sequence by deleting some or no elements without
+                changing the order of the remaining elements.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "bbbab" <br />
+                    Output: 4 <br />
+                    Explanation: One possible longest palindromic subsequence is
+                    "bbbb".
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "cbbd" <br />
+                    Output: 2 <br />
+                    Explanation: One possible longest palindromic subsequence is
+                    "bb".
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= s.length &lt;= 1000 <br />s consists only of lowercase
+                English letters.
               </>
             }
             tc="n^2"
