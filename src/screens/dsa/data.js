@@ -65819,23 +65819,71 @@ Window position                Median
         content: (
           <Comp
             title="Q519. Random Flip Matrix (Q438)"
-            content1={<></>}
+            content1={
+              <>
+                There is an m x n binary grid matrix with all the values set 0
+                initially. Design an algorithm to randomly pick an index (i, j)
+                where matrix[i][j] == 0 and flips it to 1. All the indices (i,
+                j) where matrix[i][j] == 0 should be equally likely to be
+                returned.
+                <br />
+                Optimize your algorithm to minimize the number of calls made to
+                the built-in random function of your language and optimize the
+                time and space complexity.
+                <br />
+                Implement the Solution class:
+                <br />
+                Solution(int m, int n) Initializes the object with the size of
+                the binary matrix m and n.
+                <br /> int[] flip() Returns a random index [i, j] of the matrix
+                where matrix[i][j] == 0 and flips it to 1.
+                <br /> void reset() Resets all the values of the matrix to be 0.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input
+                    <br />
+                    ["Solution", "flip", "flip", "flip", "reset", "flip"]
+                    <br />
+                    [[3, 1], [], [], [], [], []]
+                    <br />
+                    Output
+                    <br />
+                    [null, [1, 0], [2, 0], [0, 0], null, [2, 0]]
+                    <br />
+                    <br />
+                    Explanation
+                    <br />
+                    Solution solution = new Solution(3, 1);
+                    <br />
+                    solution.flip(); // return [1, 0], [0,0], [1,0], and [2,0]
+                    should be equally likely to be returned.
+                    <br />
+                    solution.flip(); // return [2, 0], Since [1,0] was returned,
+                    [2,0] and [0,0]
+                    <br />
+                    solution.flip(); // return [0, 0], Based on the previously
+                    returned indices, only [0,0] can be returned.
+                    <br /> solution.reset(); // All the values are reset to 0
+                    and can be returned.
+                    <br />
+                    solution.flip(); // return [2, 0], [0,0], [1,0], and [2,0]
+                    should be equally likely to be returned.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= m, n &lt;= 10^4
+                <br />
+                There will be at least one free cell for each call to flip.
+                <br />
+                At most 1000 calls will be made to flip and reset.
               </>
             }
             tc="n"
