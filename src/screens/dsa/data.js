@@ -65591,8 +65591,32 @@ Window position                Median
             sc="n^2"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {number}
+                */
+               const lcs = function(str1, str2) {
+                 const m = str1.length
+                 const n = str2.length
+                 const dp = Array.from(Array(m + 1), () => Array(n + 1).fill(n + 1))
+                 for (let i = 0; i <= m; i++) {
+                     for (let j = 0; j <= n; j++) {
+                         if (i === 0 || j === 0) dp[i][j] = 0
+                         else if (str1[i - 1] === str2[j - 1])
+                             dp[i][j] = dp[i - 1][j - 1] + 1
+                         else
+                             dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1])
+                     }
+                 }
+                 return dp[m][n]
+               }
+               
+               var longestPalindromeSubseq = function(s) {
+                 return lcs(s, s.split("").reverse().join());
+               };
+               
+               console.log(longestPalindromeSubseq("bbbab"))`,
+                output: `4`,
               },
             }}
           />
