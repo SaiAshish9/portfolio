@@ -65938,27 +65938,47 @@ Window position                Median
         content: (
           <Comp
             title="Q520. Detect Capital (Q439)"
-            content1={<></>}
+            content1={
+              <>
+                We define the usage of capitals in a word to be right when one
+                of the following cases holds:
+                <br />
+                All letters in this word are capitals, like "USA". <br />
+                All letters in this word are not capitals, like "leetcode".{" "}
+                <br />
+                Only the first letter in this word is capital, like "Google".{" "}
+                <br />
+                Given a string word, return true if the usage of capitals in it
+                is right.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: word = "FlaG" <br />
+                    Output: false
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: word = "FlaG" <br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= word.length &lt;= 100 <br />
+                word consists of lowercase and uppercase English letters.
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
