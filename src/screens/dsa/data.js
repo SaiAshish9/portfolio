@@ -65890,8 +65890,44 @@ Window position                Median
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} m
+                * @param {number} n
+                */
+               var Solution = function(m, n) {
+                 this.rows = m;
+                 this.cols = n;
+                 this.total = m * n;   
+                 this.used = new Set();
+               };
+               
+               /**
+                * @return {number[]}
+                */
+               Solution.prototype.flip = function() {
+                 if (this.used.size == this.total)
+                   return [];
+                 let index = Math.floor(Math.random() * this.total);
+                 while (this.used.has(index))
+                   index = ++index % this.total;
+                 this.used.add(index);
+                 return [parseInt(index / this.cols), index % this.cols];
+               };
+               
+               /**
+                * @return {void}
+                */
+               Solution.prototype.reset = function() {
+                 this.used.clear();
+               };
+               
+               /** 
+                * Your Solution object will be instantiated and called as such:
+                * var obj = new Solution(m, n)
+                * var param_1 = obj.flip()
+                * obj.reset()
+                */`,
+                output: `[null,[0,0],[1,0],[2,0],null,[2,0]]`,
               },
             }}
           />
