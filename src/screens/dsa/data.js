@@ -66002,27 +66002,74 @@ Window position                Median
         content: (
           <Comp
             title="Q521. Longest Uncommon Subsequence I (Q440)"
-            content1={<></>}
+            content1={
+              <>
+                Given two strings a and b, return the length of the longest
+                uncommon subsequence between a and b. If the longest uncommon
+                subsequence does not exist, return -1.
+                <br />
+                An uncommon subsequence between two strings is a string that is
+                a subsequence of one but not the other.
+                <br />
+                A subsequence of a string s is a string that can be obtained
+                after deleting any number of characters from s.
+                <br />
+                For example, "abc" is a subsequence of "aebdc" because you can
+                delete the underlined characters in "aebdc" to get "abc". Other
+                subsequences of "aebdc" include "aebdc", "aeb", and "" (empty
+                string).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: a = "aaa", b = "aaa"
+                    <br />
+                    Output: -1
+                    <br />
+                    Explanation: Every subsequence of string a is also a
+                    subsequence of string b. Similarly, every subsequence of
+                    string b is also a subsequence of string a.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: a = "aaa", b = "aaa"
+                    <br />
+                    Output: -1
+                    <br />
+                    Explanation: Every subsequence of string a is also a
+                    subsequence of string b. Similarly, every subsequence of
+                    string b is also a subsequence of string a.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: a = "aaa", b = "aaa"
+                    <br />
+                    Output: -1
+                    <br />
+                    Explanation: Every subsequence of string a is also a
+                    subsequence of string b. Similarly, every subsequence of
+                    string b is also a subsequence of string a.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= a.length, b.length &lt;= 100 <br />a and b consist of
+                lower-case English letters.
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
