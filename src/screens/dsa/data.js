@@ -66093,31 +66093,93 @@ Window position                Median
         content: (
           <Comp
             title="Q522. Longest Uncommon Subsequence II (Q441)"
-            content1={<></>}
+            content1={
+              <>
+                Given an array of strings strs, return the length of the longest
+                uncommon subsequence between them. If the longest uncommon
+                subsequence does not exist, return -1.
+                <br />
+                An uncommon subsequence between an array of strings is a string
+                that is a subsequence of one string but not the others.
+                <br />
+                A subsequence of a string s is a string that can be obtained
+                after deleting any number of characters from s.
+                <br />
+                For example, "abc" is a subsequence of "aebdc" because you can
+                delete the underlined characters in "aebdc" to get "abc". Other
+                subsequences of "aebdc" include "aebdc", "aeb", and "" (empty
+                string).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: strs = ["aba","cdc","eae"]
+                    <br />
+                    Output: 3
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: strs = ["aaa","aaa","aa"]
+                    <br />
+                    Output: -1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                2 &lt;= strs.length &lt;= 50 <br />
+                1 &lt;= strs[i].length &lt;= 10 <br />
+                strs[i] consists of lowercase English letters.
               </>
             }
-            tc="n"
+            tc="n^3.l"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} a
+                * @param {string} b
+                * @return {number}
+                */
+               
+               function isSubsequence(a, b) {
+                 let i = 0;
+                 for (let c of b)
+                   if (i < a.length && c == a[i])
+                     ++i;
+                 return i == a.length;
+               }
+               
+               var findLUSlength = function(strs) {
+                 const seen = new Set();
+                 const duplicates = new Set();
+                 for (let str of strs)
+                   if (seen.has(str))
+                     duplicates.add(str);
+                   else
+                     seen.add(str);
+                 strs.sort((a, b) => b.length - a.length);
+                 for (let i = 0; i < strs.length; ++i) {
+                   if (duplicates.has(strs[i]))
+                     continue;
+                   let isASubsequence = false;
+                   for (let j = 0; j < i; ++j)
+                     isASubsequence |= isSubsequence(strs[i], strs[j]);
+                   if (!isASubsequence)
+                     return strs[i].length;
+                 }
+                 return -1;
+               };
+               
+               console.log(findLUSlength(["aba","cdc","eae"]))`,
+                output: `3`,
               },
             }}
           />
