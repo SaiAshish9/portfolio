@@ -65699,8 +65699,26 @@ Window position                Median
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} machines
+                * @return {number}
+                */
+               var findMinMoves = function(machines) {
+                 let dresses = machines.reduce((a,b)=>a+b,0);
+                 if (dresses % machines.length != 0)
+                     return -1;
+                 let ans = 0;
+                 let inout = 0;
+                 const average = parseInt(dresses / machines.length);
+                 for (let dress of machines) {
+                   inout += dress - average;
+                   ans = Math.max(ans, Math.max(Math.abs(inout), dress - average));
+                 }
+                 return ans;    
+               };
+               
+               console.log(findMinMoves([0,2,0]))`,
+                output: `-1`,
               },
             }}
           />
