@@ -65463,23 +65463,37 @@ Window position                Median
         content: (
           <Comp
             title="Q515. Find Largest Value in Each Tree Row (Q434)"
-            content1={<></>}
+            content1={
+              <>
+                Given the root of a binary tree, return an array of the largest
+                value in each row of the tree (0-indexed).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [1,3,2,5,3,null,9]
+                    <br />
+                    Output: [1,3,9]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [1,2,3] <br />
+                    Output: [1,3]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The number of nodes in the tree will be in the range [0, 10^4].{" "}
+                <br />
+                -2^31 &lt;= Node.val &lt;= 2^31 - 1
               </>
             }
             tc="n"
