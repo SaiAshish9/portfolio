@@ -224,6 +224,7 @@ import Leetcode497 from "assets/leetcode/497.png";
 import Leetcode498 from "assets/leetcode/498.png";
 import Leetcode500 from "assets/leetcode/500.png";
 import Leetcode508 from "assets/leetcode/508.png";
+import Leetcode513 from "assets/leetcode/513.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -65271,31 +65272,74 @@ Window position                Median
         content: (
           <Comp
             title="Q513. Find Bottom Left Tree Value (Q432)"
-            content1={<></>}
+            content1={
+              <>
+                Given the root of a binary tree, return the leftmost value in
+                the last row of the tree.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode513,
+                content: (
+                  <>
+                    Input: root = [2,1,3] <br />
+                    Output: 1
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [1,2,3,4,null,5,6,null,null,7]
+                    <br />
+                    Output: 7
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The number of nodes in the tree is in the range [1, 10^4].{" "}
+                <br />
+                -2^31 &lt;= Node.val &lt;= 2^31 - 1
               </>
             }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+                }
+                
+                
+                /**
+                 * @param {TreeNode} root
+                 * @return {number}
+                 */
+                
+                var findBottomLeftValue = function(root) {
+                  const q = [root];
+                  let node = null;
+                  while (q.length) {
+                    node = q.shift();
+                    if (node.right)
+                      q.push(node.right);
+                    if (node.left)
+                      q.push(node.left);
+                  }
+                  return node.val;
+                };
+                
+                const t = new TreeNode(2)
+                t.left = new TreeNode(1)
+                t.right = new TreeNode(3)
+                console.log(findBottomLeftValue(t))`,
+                output: `1`,
               },
             }}
           />
