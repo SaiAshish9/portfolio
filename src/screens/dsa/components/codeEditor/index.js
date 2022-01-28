@@ -351,10 +351,10 @@ const CodeEditor = ({ options }) => {
         setIsCopied(false);
         setIsCopiedOutput(false);
       }
-      if (!["Execute", "Copy I/P", "Copy O/P", "Copied"].includes(i))
+      if (!["Execute", "Copy Source Code", "Copy O/P", "Copied"].includes(i))
         setSelected(i);
     }
-    if (i.includes("I/P")) {
+    if (i.includes("Source Code")) {
       if (!copied) setIsCopied(true);
       if (copiedOutput) setIsCopiedOutput(false);
       navigator.clipboard.writeText(
@@ -384,7 +384,7 @@ const CodeEditor = ({ options }) => {
             <ButtonContainer start={1}>
               {[
                 ...keys,
-                copied ? "Copied I/P" : "Copy I/P",
+                copied ? "Copied Source Code" : "Copy Source Code",
                 !copiedOutput ? "Copy O/P" : "Copied O/P",
                 "Download",
                 "Hindi",
@@ -396,7 +396,7 @@ const CodeEditor = ({ options }) => {
                   active={
                     +(
                       [selected].includes(i) ||
-                      (copied && i === "Copied I/P" && !copiedOutput) ||
+                      (copied && i === "Copied Source Code" && !copiedOutput) ||
                       (copiedOutput && i === "Copied O/P" && !copied)
                     )
                   }
