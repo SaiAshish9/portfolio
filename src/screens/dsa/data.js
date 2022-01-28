@@ -65568,8 +65568,8 @@ Window position                Median
                 <b>Follow up :</b>
               </>
             }
-            tc="n"
-            sc="n"
+            tc="n^2"
+            sc="n^2"
             codes={{
               Javascript: {
                 code: ``,
