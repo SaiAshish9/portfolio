@@ -66604,8 +66604,38 @@ Window position                Median
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} w
+                */
+               var Solution = function(w) {
+                 this.prefix = w;
+                 for (let i = 1; i < this.prefix.length; ++i)
+                   this.prefix[i] += this.prefix[i - 1];
+               };
+               
+               /**
+                * @return {number}
+                */
+               Solution.prototype.pickIndex = function() {
+                 let target = Math.floor(Math.random() * (this.prefix[this.prefix.length - 1]));
+                 let l = 0;
+                 let r = this.prefix.length;
+                 while (l < r) {
+                   let m = l + parseInt((r - l) / 2);
+                   if (this.prefix[m] > target)
+                     r = m;
+                   else
+                     l = m + 1;
+                 }
+                 return l;
+               };
+               
+               /** 
+                * Your Solution object will be instantiated and called as such:
+                * var obj = new Solution(w)
+                * var param_1 = obj.pickIndex()
+                */`,
+                output: `[null,0]`,
               },
             }}
           />
