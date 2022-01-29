@@ -67723,8 +67723,39 @@ Window position                Median
             sc="n^3"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} boxes
+                * @return {number}
+                */
+               var removeBoxes = function(boxes) {
+                 const n = boxes.length;
+                 const dp = Array.from(Array(n),()=>
+                 Array.from(Array(n),()=> Array(n).fill(0)
+                 ));
+                 return helper(boxes, 0, n - 1, 0,dp);
+               };
+               
+               function helper(boxes,i, j, k, dp) {
+                 if (i > j)
+                   return 0;
+                 if (dp[i][j][k] > 0)
+                   return dp[i][j][k];
+                 let r = j;
+                 let sameBoxes = k + 1;
+                 while (r > 0 && boxes[r - 1] == boxes[r]) {
+                   --r;
+                   ++sameBoxes;
+                 }
+                 dp[i][j][k] = helper(boxes, i, r - 1, 0,dp) + sameBoxes * sameBoxes;
+                 for (let p = i; p < r; ++p)
+                   if (boxes[p] == boxes[r])
+                     dp[i][j][k] = Math.max(dp[i][j][k], helper(boxes, i, p, sameBoxes,dp) +
+                                                             helper(boxes, p + 1, r - 1, 0,dp));
+                 return dp[i][j][k];
+               }
+               
+               console.log(removeBoxes([1,3,2,2,2,3,4,3,1]))`,
+                output: `23`,
               },
             }}
           />
@@ -67735,26 +67766,57 @@ Window position                Median
         content: (
           <Comp
             title="Q547. Number of Provinces (Q459)"
-            content1={<></>}
+            content1={
+              <>
+                There are n cities. Some of them are connected, while some are
+                not. If city a is connected directly with city b, and city b is
+                connected directly with city c, then city a is connected
+                indirectly with city c.
+                <br />
+                A province is a group of directly or indirectly connected cities
+                and no other cities outside of the group.
+                <br />
+                You are given an n x n matrix isConnected where
+                isConnected[i][j] = 1 if the ith city and the jth city are
+                directly connected, and isConnected[i][j] = 0 otherwise.
+                <br />
+                Return the total number of provinces.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
+                    <br /> Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: isConnected = [[1,0,0],[0,1,0],[0,0,1]]
+                    <br /> Output: 3
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= n &lt;= 200
+                <br />
+                n == isConnected.length
+                <br />
+                n == isConnected[i].length
+                <br />
+                isConnected[i][j] is 1 or 0.
+                <br />
+                isConnected[i][i] == 1<br />
+                isConnected[i][j] == isConnected[j][i]
               </>
             }
-            tc="n"
+            tc="n^2"
             sc="n"
             codes={{
               Javascript: {
