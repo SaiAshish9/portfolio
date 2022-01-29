@@ -67472,27 +67472,60 @@ Window position                Median
         content: (
           <Comp
             title="Q542. 01 Matrix (Q456)"
-            content1={<></>}
+            content1={
+              <>
+                Given an m x n binary matrix mat, return the distance of the
+                nearest 0 for each cell.
+                <br />
+                The distance between two adjacent cells is 1.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: mat = <br />
+                    [[0,0,0],[ <br />
+                    0,1,0], <br />
+                    [0,0,0]] <br />
+                    Output: <br /> [[0,0,0], <br />
+                    [0,1,0], <br />
+                    [0,0,0]]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: mat = <br />
+                    [[0,0,0], <br />
+                    [0,1,0], <br />
+                    [1,1,1]] <br />
+                    Output: <br /> [[0,0,0], <br />
+                    [0,1,0], <br />
+                    [1,2,1]]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                m == mat.length
+                <br />
+                n == mat[i].length
+                <br />
+                1 &lt;= m, n &lt;= 10^4
+                <br />
+                1 &lt;= m * n &lt;= 10^4
+                <br />
+                mat[i][j] is either 0 or 1.
+                <br />
+                There is at least one 0 in mat.
               </>
             }
-            tc="n"
-            sc="n"
+            tc="m.n"
+            sc="m.n"
             codes={{
               Javascript: {
                 code: ``,
