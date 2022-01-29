@@ -66946,8 +66946,28 @@ Window position                Median
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} k
+                * @return {number}
+                */
+               var findPairs = function(nums, k) {
+                 let res = 0;
+                 const m = {};
+                 for (let i = 0; i < nums.length; ++i)
+                   m[nums[i]] = i;
+                 for(let i = 0; i < nums.length; ++i) {
+                   const target = nums[i] + k;
+                   if (target in m && m[target] != i) {
+                     ++res;
+                     delete m[target]
+                   }
+                 }
+                 return res;
+               };
+               
+               console.log(findPairs([3,1,4,1,5],2))`,
+                output: `2`,
               },
             }}
           />
