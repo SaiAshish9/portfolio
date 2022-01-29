@@ -67252,20 +67252,40 @@ Window position                Median
         content: (
           <Comp
             title="Q539. Minimum Time Difference (Q453)"
-            content1={<></>}
+            content1={
+              <>
+                Given a list of 24-hour clock time points in "HH:MM" format,
+                return the minimum minutes difference between any two
+                time-points in the list.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: timePoints = ["23:59","00:00"]
+                    <br />
+                    Output: 1
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: timePoints = ["00:00","23:59","00:00"]
+                    <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                2 &lt;= timePoints.length &lt;= 2 * 10^4 <br />
+                timePoints[i] is in the format "HH:MM".
+              </>
+            }
             tc="n"
             sc="1"
             codes={{
