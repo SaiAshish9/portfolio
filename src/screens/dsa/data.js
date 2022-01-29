@@ -227,6 +227,7 @@ import Leetcode508 from "assets/leetcode/508.png";
 import Leetcode513 from "assets/leetcode/513.png";
 import Leetcode515 from "assets/leetcode/515.png";
 import Leetcode529 from "assets/leetcode/529.png";
+import Leetcode530 from "assets/leetcode/530.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -66815,6 +66816,7 @@ Window position                Median
             content2={null}
             examples={[
               {
+                img: Leetcode530,
                 content: (
                   <>
                     Input: root = [4,2,6,1,3] <br />
@@ -66837,12 +66839,46 @@ Window position                Median
                 <br /> 0 &lt;= Node.val &lt;= 105
               </>
             }
-            tc="log n"
-            sc="n"
+            tc="n"
+            sc="log n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+              }
+              
+              /**
+               * @param {TreeNode} root
+               * @return {number}
+               */
+              var getMinimumDifference = function(root) {
+                let res = Number.MAX_SAFE_INTEGER;
+                let prev = -1;
+                const stack = [];
+              
+                while (root || stack.length) {
+                  while (root) {
+                    stack.push(root);
+                    root = root.left;
+                  }
+                  root = stack.pop();
+                  if (prev >= 0)
+                    res = Math.min(res, root.val - prev);
+                  prev = root.val;
+                  root = root.right;
+                }
+                return res;
+              };
+              
+              const t = new TreeNode(4)
+              t.left = new TreeNode(2)
+              t.left.left = new TreeNode(1)
+              t.left.right = new TreeNode(3)
+              t.right = new TreeNode(6)
+              console.log(getMinimumDifference(t))`,
+                output: `1`,
               },
             }}
           />
@@ -66853,23 +66889,57 @@ Window position                Median
         content: (
           <Comp
             title="Q532. K-diff Pairs in an Array (Q449)"
-            content1={<></>}
+            content1={
+              <>
+                Given an array of integers nums and an integer k, return the
+                number of unique k-diff pairs in the array.
+                <br />
+                A k-diff pair is an integer pair (nums[i], nums[j]), where the
+                following are true:
+                <br />
+                0 &lt;= i &lt; j &lt; nums.length <br />
+                |nums[i] - nums[j]| == k <br />
+                Notice that |val| denotes the absolute value of val.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [3,1,4,1,5], k = 2
+                    <br /> Output: 2
+                    <br /> Explanation: There are two 2-diff pairs in the array,
+                    (1, 3) and (3, 5). Although we have two 1s in the input, we
+                    should only return the number of unique pairs.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,4,5], k = 1
+                    <br /> Output: 4
+                    <br /> Explanation: There are four 1-diff pairs in the
+                    array, (1, 2), (2, 3), (3, 4) and (4, 5).
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,3,1,5,4], k = 0
+                    <br /> Output: 1
+                    <br /> Explanation: There is one 0-diff pair in the array,
+                    (1, 1).
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= nums.length &lt;= 10^4 <br />
+                -107 &lt;= nums[i] &lt;= 10^7 <br />0 &lt;= k &lt;= 107
               </>
             }
             tc="n"
