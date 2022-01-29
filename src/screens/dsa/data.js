@@ -230,6 +230,7 @@ import Leetcode529 from "assets/leetcode/529.png";
 import Leetcode530 from "assets/leetcode/530.png";
 import Leetcode538 from "assets/leetcode/538.png";
 import Leetcode543 from "assets/leetcode/543.png";
+import Leetcode547 from "assets/leetcode/547.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -67786,6 +67787,7 @@ Window position                Median
             content2={null}
             examples={[
               {
+                img: Leetcode547,
                 content: (
                   <>
                     Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
@@ -67819,9 +67821,53 @@ Window position                Median
             tc="n^2"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // [[1,1,0],[1,1,0],[0,0,1]]
+                class UF {
+                  public UF(int n) {
+                    size = n;
+                    id = new int[n];
+                    for (int i = 0; i < n; ++i)
+                      id[i] = i;
+                  }
+                
+                  public void union(int u, int v) {
+                    final int i = find(u);
+                    final int j = find(v);
+                    if (i == j)
+                      return;
+                    id[i] = j;
+                    --size;
+                  }
+                
+                  public int getSize() {
+                    return size;
+                  }
+                
+                  private int size;
+                  private int[] id;
+                
+                  private int find(int u) {
+                    return id[u] == u ? u : (id[u] = find(id[u]));
+                  }
+                }
+                
+                class Solution {
+                  public int findCircleNum(int[][] M) {
+                    final int n = M.length;
+                    UF uf = new UF(n);
+                
+                    for (int i = 0; i < n; ++i)
+                      for (int j = i; j < n; ++j)
+                        if (M[i][j] == 1)
+                          uf.union(i, j);
+                
+                    return uf.getSize();
+                  }
+                }
+                `,
+                output: `2`,
               },
             }}
           />
