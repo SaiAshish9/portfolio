@@ -229,6 +229,7 @@ import Leetcode515 from "assets/leetcode/515.png";
 import Leetcode529 from "assets/leetcode/529.png";
 import Leetcode530 from "assets/leetcode/530.png";
 import Leetcode538 from "assets/leetcode/538.png";
+import Leetcode543 from "assets/leetcode/543.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -67573,20 +67574,50 @@ Window position                Median
         content: (
           <Comp
             title="Q543. Diameter of Binary Tree (Q457)"
-            content1={<></>}
+            content1={
+              <>
+                Given the root of a binary tree, return the length of the
+                diameter of the tree.
+                <br />
+                The diameter of a binary tree is the length of the longest path
+                between any two nodes in a tree. This path may or may not pass
+                through the root.
+                <br />
+                The length of a path between two nodes is represented by the
+                number of edges between them.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode543,
+                content: (
+                  <>
+                    Input: root = [1,2,3,4,5]
+                    <br />
+                    Output: 3<br />
+                    Explanation: 3 is the length of the path [4,2,1,3] or
+                    [5,2,1,3].
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [1,2]
+                    <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the tree is in the range [1, 104].
+                <br />
+                -100 &lt;= Node.val &lt;= 100
+              </>
+            }
             tc="n"
             sc="h"
             codes={{
