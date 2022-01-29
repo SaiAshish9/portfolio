@@ -228,6 +228,7 @@ import Leetcode513 from "assets/leetcode/513.png";
 import Leetcode515 from "assets/leetcode/515.png";
 import Leetcode529 from "assets/leetcode/529.png";
 import Leetcode530 from "assets/leetcode/530.png";
+import Leetcode538 from "assets/leetcode/538.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -67176,22 +67177,71 @@ Window position                Median
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode538,
+                content: (
+                  <>
+                    Input: root =
+                    [4,1,6,0,2,5,7,null,null,null,3,null,null,null,8] <br />
+                    Output:
+                    [30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [0,null,1] <br />
+                    Output: [1,null,1]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the tree is in the range [0, 10^4].{" "}
+                <br />
+                -10^4 &lt;= Node.val &lt;= 10^4 <br />
+                All the values in the tree are unique. <br />
+                root is guaranteed to be a valid binary search tree.
+              </>
+            }
             tc="n"
             sc="log n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+                }
+                
+                /**
+                 * @param {TreeNode} root
+                 * @return {TreeNode}
+                 */
+                var convertBST = function(root) {
+                  var prefix = {val:0}
+                  reversedInorder(root,prefix);
+                  return root;
+                };
+                
+                function reversedInorder(root,prefix) {
+                  if (!root)
+                    return;
+                  reversedInorder(root.right,prefix);
+                  prefix.val += root.val;
+                  root.val = prefix.val;
+                  reversedInorder(root.left,prefix);
+                }
+                
+                const t = new TreeNode(0)
+                t.right = new TreeNode(1)
+                console.log(convertBST(t))`,
+                output: `TreeNode {
+                  val: 1,
+                  left: null,
+                  right: TreeNode { val: 1, left: null, right: null }
+                }`,
               },
             }}
           />
@@ -67216,13 +67266,8 @@ Window position                Median
               },
             ]}
             constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
