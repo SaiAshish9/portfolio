@@ -67622,8 +67622,37 @@ Window position                Median
             sc="h"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+                }
+                
+                /**
+                 * @param {TreeNode} root
+                 * @return {number}
+                 */
+                var diameterOfBinaryTree = function(root) {
+                  let res = {val:0}
+                  maxDepth(root,res);
+                  return res.val;
+                }
+                
+                function maxDepth(root,res) {
+                  if(!root) return 0;
+                  let l = maxDepth(root.left,res);
+                  let r = maxDepth(root.right,res);
+                  res.val = Math.max(res.val, l + r);
+                  return 1 + Math.max(l, r);
+                }
+                
+                const t = new TreeNode(1)
+                t.left = new TreeNode(2)
+                t.left.left = new TreeNode(4)
+                t.left.right = new TreeNode(5)
+                t.right = new TreeNode(3)
+                console.log(diameterOfBinaryTree(t))`,
+                output: `3`,
               },
             }}
           />
