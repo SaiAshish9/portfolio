@@ -66402,8 +66402,27 @@ Window position                Median
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var findMaxLength = function(nums) {
+                 let res = 0;
+                 let prefix = 0;
+                 const m = new Map();
+                 m.set(0, -1);
+                 for (let i = 0; i < nums.length; ++i) {
+                   prefix += nums[i] == 1 ? 1 : -1;
+                   if (m.has(prefix))
+                     res = Math.max(res, i - m.get(prefix));
+                   else
+                     m.set(prefix, i);
+                 }
+                 return res; 
+               };
+               
+               console.log(findMaxLength([0,1]))`,
+                output: `2`,
               },
             }}
           />
