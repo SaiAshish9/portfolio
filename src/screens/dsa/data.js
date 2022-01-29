@@ -67663,27 +67663,64 @@ Window position                Median
         content: (
           <Comp
             title="Q546. Remove Boxes (Q458)"
-            content1={<></>}
+            content1={
+              <>
+                You are given several boxes with different colors represented by
+                different positive numbers.
+                <br />
+                You may experience several rounds to remove boxes until there is
+                no box left. Each time you can choose some continuous boxes with
+                the same color (i.e., composed of k boxes, k &gt;= 1), remove
+                them and get k * k points.
+                <br />
+                Return the maximum points you can get.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: boxes = [1,3,2,2,2,3,4,3,1]
+                    <br />
+                    Output: 23
+                    <br />
+                    Explanation:
+                    <br />
+                    [1, 3, 2, 2, 2, 3, 4, 3, 1] <br />
+                    ----&gt; [1, 3, 3, 4, 3, 1] (3*3=9 points) <br />
+                    ----&gt; [1, 3, 3, 3, 1] (1*1=1 points) <br />
+                    ----&gt; [1, 1] (3*3=9 points) <br />
+                    ----&gt; [] (2*2=4 points)
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: boxes = [1,1,1]
+                    <br />
+                    Output: 9
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: boxes = [1]
+                    <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= boxes.length &lt;= 100 <br />1 &lt;= boxes[i] &lt;= 100
               </>
             }
-            tc="n"
-            sc="n"
+            tc="n^4"
+            sc="n^3"
             codes={{
               Javascript: {
                 code: ``,
