@@ -66190,23 +66190,55 @@ Window position                Median
         content: (
           <Comp
             title="Q523. Continuous Subarray Sum (Q442)"
-            content1={<></>}
+            content1={
+              <>
+                Given an integer array nums and an integer k, return true if
+                nums has a continuous subarray of size at least two whose
+                elements sum up to a multiple of k, or false otherwise.
+                <br />
+                An integer x is a multiple of k if there exists an integer n
+                such that x = n * k. 0 is always a multiple of k.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [23,2,4,6,7], k = 6<br />
+                    Output: true
+                    <br />
+                    Explanation: [2, 4] is a continuous subarray of size 2 whose
+                    elements sum up to 6.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [23,2,6,4,7], k = 6 <br />
+                    Output: true <br />
+                    Explanation: [23, 2, 6, 4, 7] is an continuous subarray of
+                    size 5 whose elements sum up to 42. 42 is a multiple of 6
+                    because 42 = 7 * 6 and 7 is an integer.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [23,2,6,4,7], k = 13 <br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= nums.length &lt;= 10^5 <br />
+                0 &lt;= nums[i] &lt;= 10^9 <br />
+                0 &lt;= sum(nums[i]) &lt;= 2^31 - 1 <br />1 &lt;= k &lt;= 2^31 -
+                1
               </>
             }
             tc="n"
