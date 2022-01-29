@@ -66433,25 +66433,50 @@ Window position                Median
         content: (
           <Comp
             title="Q526. Beautiful Arrangement (Q445)"
-            content1={<></>}
+            content1={
+              <>
+                Suppose you have n integers labeled 1 through n. A permutation
+                of those n integers perm (1-indexed) is considered a beautiful
+                arrangement if for every i (1 &lt;= i &lt;= n), either of the
+                following is true:
+                <br />
+                perm[i] is divisible by i.
+                <br />
+                i is divisible by perm[i].
+                <br />
+                Given an integer n, return the number of the beautiful
+                arrangements that you can construct
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 2<br />
+                    Output: 2<br />
+                    Explanation: <br />
+                    The first beautiful arrangement is [1,2]:
+                    <br />
+                    - perm[1] = 1 is divisible by i = 1<br />
+                    - perm[2] = 2 is divisible by i = 2<br />
+                    The second beautiful arrangement is [2,1]:
+                    <br />
+                    - perm[1] = 2 is divisible by i = 1<br />- i = 2 is
+                    divisible by perm[2] = 1
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1 <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
+            constraints={<>1 &lt;= n &lt;= 15</>}
             tc="n"
             sc="n"
             codes={{
