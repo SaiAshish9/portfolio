@@ -67878,31 +67878,74 @@ Window position                Median
         content: (
           <Comp
             title="Q551. Student Attendance Record I (Q460)"
-            content1={<></>}
+            content1={
+              <>
+                You are given a string s representing an attendance record for a
+                student where each character signifies whether the student was
+                absent, late, or present on that day. The record only contains
+                the following three characters:
+                <br />
+                'A': Absent. <br />
+                'L': Late. <br />
+                'P': Present. <br />
+                The student is eligible for an attendance award if they meet
+                both of the following criteria:
+                <br />
+                The student was absent ('A') for strictly fewer than 2 days
+                total. <br />
+                The student was never late ('L') for 3 or more consecutive days.{" "}
+                <br />
+                Return true if the student is eligible for an attendance award,
+                or false otherwise.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "PPALLP"
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation: The student has fewer than 2 absences and was
+                    never late 3 or more consecutive days.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "PPALLL"
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation: The student was late 3 consecutive days in the
+                    last 3 days, so is not eligible for the award.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= s.length &lt;= 1000 <br />
+                s[i] is either 'A', 'L', or 'P'.
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {boolean}
+                */
+               var checkRecord = function(s) {
+                 return s.indexOf("A") == s.lastIndexOf("A") && !s.includes("LLL");  
+               };
+               
+               console.log(checkRecord("PPALLP"))`,
+                output: `true`,
               },
             }}
           />
