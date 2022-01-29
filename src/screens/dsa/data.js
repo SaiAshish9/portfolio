@@ -66646,7 +66646,43 @@ Window position                Median
         content: (
           <Comp
             title="Q529. Minesweeper (Q447)"
-            content1={<></>}
+            content1={
+              <>
+                Let's play the minesweeper game (Wikipedia, online game)!
+                <br />
+                You are given an m x n char matrix board representing the game
+                board where:
+                <br />
+                'M' represents an unrevealed mine, <br />
+                'E' represents an unrevealed empty square, <br />
+                'B' represents a revealed blank square that has no adjacent
+                mines (i.e., above, below, left, right, and all 4 diagonals),
+                digit ('1' to '8') represents how many mines are adjacent to
+                this revealed square, and
+                <br />
+                'X' represents a revealed mine.
+                <br />
+                You are also given an integer array click where click = [clickr,
+                clickc] represents the next click position among all the
+                unrevealed squares ('M' or 'E').
+                <br />
+                Return the board after revealing this position according to the
+                following rules:
+                <br />
+                1. If a mine 'M' is revealed, then the game is over. You should
+                change it to 'X'.
+                <br />
+                2. If an empty square 'E' with no adjacent mines is revealed,
+                then change it to a revealed blank 'B' and all of its adjacent
+                unrevealed squares should be revealed recursively.
+                <br />
+                3. If an empty square 'E' with at least one adjacent mine is
+                revealed, then change it to a digit ('1' to '8') representing
+                the number of adjacent mines.
+                <br />
+                4. Return the board when no more squares will be revealed.
+              </>
+            }
             content2={null}
             examples={[
               {
