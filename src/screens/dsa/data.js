@@ -66245,8 +66245,31 @@ Window position                Median
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} k
+                * @return {boolean}
+                */
+               var checkSubarraySum = function(nums, k) {
+                 let prefix = 0;
+                 const m = new Map();
+                 m.set(0, -1);
+                 for (let i = 0; i < nums.length; ++i) {
+                   prefix += nums[i];
+                   if (k != 0)
+                     prefix %= k;
+                   if (m.has(prefix)) {
+                     if (i - m.get(prefix) > 1)
+                       return true;
+                   } else {
+                     m.set(prefix, i);
+                   }
+                 }
+                 return false;   
+               };
+               
+               console.log(checkSubarraySum([23,2,4,6,7],6))`,
+                output: `true`,
               },
             }}
           />
