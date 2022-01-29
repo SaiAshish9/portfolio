@@ -67367,8 +67367,27 @@ Window position                Median
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var singleNonDuplicate = function(nums) {
+                 let l = 0;
+                 let r = nums.length - 1;
+                 while (l < r) {
+                   let m = l + parseInt((r - l) / 2);
+                   if (m % 2 == 1)
+                     --m;
+                   if (nums[m] == nums[m + 1])
+                     l = m + 2;
+                   else
+                     r = m;
+                 }
+                 return nums[l]; 
+               };
+               
+               console.log(singleNonDuplicate([3,3,7,7,10,11,11]))`,
+                output: `10`,
               },
             }}
           />
