@@ -66540,19 +66540,64 @@ Window position                Median
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input <br />
+                    ["Solution","pickIndex"] <br />
+                    [[[1]],[]] Output [null,0] <br />
+                    Explanation Solution solution = new Solution([1]);
+                    solution.pickIndex(); // return 0. The only option is to
+                    return 0 since there is only one element in w.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input
+                    <br />
+                    ["Solution","pickIndex","pickIndex","pickIndex","pickIndex","pickIndex"]
+                    [[[1,3]],[],[],[],[],[]]
+                    <br />
+                    Output
+                    <br />
+                    [null,1,1,1,1,0]
+                    <br />
+                    <br />
+                    Explanation Solution solution = new Solution([1, 3]);
+                    <br />
+                    solution.pickIndex(); // return 1. It is returning the
+                    second element (index = 1) that has a probability of 3/4.
+                    <br /> solution.pickIndex(); // return 1<br />
+                    solution.pickIndex(); // return 1<br />
+                    solution.pickIndex(); // return 1<br />
+                    solution.pickIndex(); // return 0. It is returning the first
+                    element (index = 0) that has a probability of 1/4.
+                    <br />
+                    Since this is a randomization problem, multiple answers are
+                    allowed. All of the following outputs can be considered
+                    correct: [null,1,1,1,1,0]
+                    <br />
+                    [null,1,1,1,1,1]
+                    <br />
+                    [null,1,1,1,0,0]
+                    <br />
+                    [null,1,1,1,0,1]
+                    <br />
+                    [null,1,0,1,0,0]
+                    <br />
+                    ......
+                    <br />
+                    and so on.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= w.length &lt;= 10^4 <br />
+                1 &lt;= w[i] &lt;= 10^5 <br />
+                pickIndex will be called at most 10^4 times
               </>
             }
             tc="n"
