@@ -67528,8 +67528,41 @@ Window position                Median
             sc="m.n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} mat
+                * @return {number[][]}
+                */
+               var updateMatrix = function(mat) {
+                 let m = mat.length;
+                 let n = mat[0].length;
+                 const dirs = [0, 1, 0, -1, 0];
+                 const q = [];
+                 const seen = Array.from(Array(m),()=>Array(n).fill(0));
+                 for (let i = 0; i < m; ++i)
+                   for (let j = 0; j < n; ++j)
+                     if (mat[i][j] == 0) {
+                       q.push([i, j]);
+                       seen[i][j] = true;
+                     }
+                 while (q.length) {
+                   const [ i, j ] = q.shift()
+                   for (let k = 0; k < 4; ++k) {
+                     let x = i + dirs[k];
+                     let y = j + dirs[k + 1];
+                     if (x < 0 || x == m || y < 0 || y == n)
+                       continue;
+                     if (seen[x][y])
+                       continue;
+                     mat[x][y] = mat[i][j] + 1;
+                     q.push([x, y]);
+                     seen[x][y] = true;
+                   }
+                 }
+                 return mat;    
+               };
+               
+               console.log(updateMatrix([[0,0,0],[0,1,0],[1,1,1]]))`,
+                output: `[ [ 0, 0, 0 ], [ 0, 1, 0 ], [ 1, 2, 1 ] ]`,
               },
             }}
           />
