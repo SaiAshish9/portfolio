@@ -67290,8 +67290,33 @@ Window position                Median
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string[]} timePoints
+                * @return {number}
+                */
+               var findMinDifference = function(timePoints) {
+                 let res = 24 * 60;
+                 let first = 24 * 60;
+                 const bucket = Array(24 * 60).fill(false);
+                 for (let timePoint of timePoints) {
+                   const num =
+                       +timePoint.substring(0, 2) * 60 + +timePoint.substring(3);
+                   first = Math.min(first, num);
+                   if (bucket[num])
+                     return 0;
+                   bucket[num] = true;
+                 }
+                 let prev = first;
+                 for (let i = first + 1; i < bucket.length; ++i)
+                   if (bucket[i]) {
+                     res = Math.min(res, i - prev);
+                     prev = i;
+                   }
+                 return Math.min(res, 24 * 60 - prev + first);    
+               };
+               
+               console.log(findMinDifference(["23:59","00:00"]))`,
+                output: `1`,
               },
             }}
           />
@@ -67302,27 +67327,44 @@ Window position                Median
         content: (
           <Comp
             title="Q540. Single Element in a Sorted Array (Q454)"
-            content1={<></>}
+            content1={
+              <>
+                You are given a sorted array consisting of only integers where
+                every element appears exactly twice, except for one element
+                which appears exactly once.
+                <br />
+                Return the single element that appears only once.
+                <br />
+                Your solution must run in O(log n) time and O(1) space.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,1,2,3,3,4,4,8,8] <br />
+                    Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [3,3,7,7,10,11,11] <br />
+                    Output: 10
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= nums.length &lt;= 10^5 &lt; <br />0 &lt;= nums[i] &lt;=
+                105
               </>
             }
-            tc="n"
-            sc="n"
+            tc="log n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
