@@ -66477,12 +66477,41 @@ Window position                Median
               },
             ]}
             constraints={<>1 &lt;= n &lt;= 15</>}
-            tc="n"
-            sc="n"
+            tc="n.2^n"
+            sc="2^n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @return {number}
+                */
+               
+               function dfs(n, num, st, memo) {
+                 if (num == n + 1)
+                   return 1;
+                 let filled = st.join("");
+                   if (memo.has(filled))
+                     return memo.get(filled);
+                   let count = 0;
+                   for (let i = 1; i <= n; ++i)
+                     if (st[i] == 'x' && (num % i == 0 || i % num == 0)) {
+                       st[i] =  'o';
+                       count += dfs(n, num + 1, st, memo);
+                       st[i] = 'x';
+                     }
+                   memo.set(filled, count);
+                   return count; 
+               } 
+               
+               
+               var countArrangement = function(n) {
+                 const st = Array(n+1).fill("x");
+                 const memo = new Map();
+                 return dfs(n, 1, st, memo);
+               };
+               
+               console.log(countArrangement(2))`,
+                output: `2`,
               },
             }}
           />
