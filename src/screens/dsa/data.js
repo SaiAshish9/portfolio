@@ -67122,8 +67122,27 @@ Window position                Median
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} num1
+                * @param {string} num2
+                * @return {string}
+                */
+               
+               function getRealAndImag(s) {
+                 let real = s.substring(0, s.indexOf('+'));
+                 let imag = s.substring(s.indexOf('+') + 1, s.length - 1);
+                 return [+real, +imag];
+               }
+               
+               var complexNumberMultiply = function(num1, num2) {
+                 let a = getRealAndImag(num1);
+                 let b = getRealAndImag(num2);
+                 return [a[0] * b[0] - a[1] * b[1]] + "+" +
+                     [a[0] * b[1] + a[1] * b[0]] + "i";
+               };
+               
+               console.log(complexNumberMultiply("1+1i","1+1i"))`,
+                output: `0+2i`,
               },
             }}
           />
@@ -67134,7 +67153,26 @@ Window position                Median
         content: (
           <Comp
             title="Q538. Convert BST to Greater Tree (Q452)"
-            content1={<></>}
+            content1={
+              <>
+                Given the root of a Binary Search Tree (BST), convert it to a
+                Greater Tree such that every key of the original BST is changed
+                to the original key plus the sum of all keys greater than the
+                original key in BST.
+                <br />
+                As a reminder, a binary search tree is a tree that satisfies
+                these constraints:
+                <br />
+                The left subtree of a node contains only nodes with keys less
+                than the node's key.
+                <br />
+                The right subtree of a node contains only nodes with keys
+                greater than the node's key.
+                <br />
+                Both the left and right subtrees must also be binary search
+                trees.
+              </>
+            }
             content2={null}
             examples={[
               {
@@ -67148,13 +67186,8 @@ Window position                Median
               },
             ]}
             constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
             tc="n"
-            sc="n"
+            sc="log n"
             codes={{
               Javascript: {
                 code: ``,
