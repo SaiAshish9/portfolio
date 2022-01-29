@@ -66280,31 +66280,77 @@ Window position                Median
         content: (
           <Comp
             title="Q524. Longest Word in Dictionary through Deleting (Q443)"
-            content1={<></>}
+            content1={
+              <>
+                Given a string s and a string array dictionary, return the
+                longest string in the dictionary that can be formed by deleting
+                some of the given string characters. If there is more than one
+                possible result, return the longest word with the smallest
+                lexicographical order. If there is no possible result, return
+                the empty string.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "abpcplea",
+                    <br /> dictionary = ["ale","apple","monkey","plea"]
+                    <br />
+                    Output: "apple"
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "abpcplea",
+                    <br /> dictionary = ["a","b","c"]
+                    <br />
+                    Output: "a"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= s.length &lt;= 1000 <br />
+                1 &lt;= dictionary.length &lt;= 1000
+                <br />
+                1 &lt;= dictionary[i].length &lt;= 1000
+                <br />s and dictionary[i] consist of lowercase English letters.
               </>
             }
-            tc="n"
+            tc="n^2"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @param {string[]} dictionary
+                * @return {string}
+                */
+               function isSubsequence(a, b) {
+                 let i = 0;
+                 for (let c of b)
+                   if (i < a.length && c == a[i])
+                     ++i;
+                 return i == a.length;
+               }
+               
+               var findLongestWord = function(s, dictionary) {
+                 let res = "";
+                 for (let word of dictionary)
+                   if (isSubsequence(word, s))
+                     if (word.length > res.length ||
+                         word.length == res.length && word < res)
+                       res = word;
+                 return res;
+               };
+               
+               console.log(findLongestWord("abpcplea",["ale","apple","monkey","plea"]))`,
+                output: `apple`,
               },
             }}
           />
