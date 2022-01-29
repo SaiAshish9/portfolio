@@ -226,6 +226,7 @@ import Leetcode500 from "assets/leetcode/500.png";
 import Leetcode508 from "assets/leetcode/508.png";
 import Leetcode513 from "assets/leetcode/513.png";
 import Leetcode515 from "assets/leetcode/515.png";
+import Leetcode529 from "assets/leetcode/529.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -66686,16 +66687,59 @@ Window position                Median
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: board = [["E","E","E","E","E"], <br />
+                    ["E","E","M","E","E"], <br />
+                    ["E","E","E","E","E"], <br />
+                    ["E","E","E","E","E"]], click = [3,0]
+                    <br />
+                    Output: [["B","1","E","1","B"], <br />
+                    ["B","1","M","1","B"], <br />
+                    ["B","1","1","1","B"], <br />
+                    ["B","B","B","B","B"]]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                img: Leetcode529,
+                content: (
+                  <>
+                    Input: board = [["B","1","E","1","B"],
+                    <br />
+                    ["B","1","M","1","B"],
+                    <br />
+                    ["B","1","1","1","B"],
+                    <br />
+                    ["B","B","B","B","B"]],
+                    <br /> click = [1,2]
+                    <br /> Output: [["B","1","E","1","B"],
+                    <br />
+                    ["B","1","X","1","B"],
+                    <br />
+                    ["B","1","1","1","B"],
+                    <br />
+                    ["B","B","B","B","B"]]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                m == board.length
+                <br />
+                n == board[i].length
+                <br />
+                1 &lt;= m, n &lt;== 50
+                <br />
+                board[i][j] is either 'M', 'E', 'B', or a digit from '1' to '8'.
+                <br />
+                click.length == 2<br />
+                0 &lt;== clickr &lt;= m<br />
+                0 &lt;== clickc &lt;= n<br />
+                board[clickr][clickc] is either 'M' or 'E'.
+              </>
+            }
             tc="m.n"
             sc="m.n"
             codes={{
