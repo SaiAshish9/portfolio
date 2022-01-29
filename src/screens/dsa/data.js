@@ -67072,25 +67072,52 @@ Window position                Median
         content: (
           <Comp
             title="Q537. Complex Number Multiplication (Q451)"
-            content1={<></>}
+            content1={
+              <>
+                A complex number can be represented as a string on the form
+                "real+imaginaryi" where:
+                <br />
+                real is the real part and is an integer in the range [-100,
+                100].
+                <br />
+                imaginary is the imaginary part and is an integer in the range
+                [-100, 100].
+                <br />
+                i2 == -1.
+                <br />
+                Given two complex numbers num1 and num2 as strings, return a
+                string of the complex number that represents their
+                multiplications.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num1 = "1+1i", num2 = "1+1i"
+                    <br />
+                    Output: "0+2i"
+                    <br />
+                    Explanation: (1 + i) * (1 + i) = 1 + i2 + 2 * i = 2i, and
+                    you need convert it to the form of 0+2i.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num1 = "1+-1i", num2 = "1+-1i"
+                    <br />
+                    Output: "0+-2i"
+                    <br />
+                    Explanation: (1 - i) * (1 - i) = 1 + i2 - 2 * i = -2i, and
+                    you need convert it to the form of 0+-2i.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
+            constraints={<>num1 and num2 are valid complex numbers.</>}
             tc="n"
             sc="n"
             codes={{
