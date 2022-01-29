@@ -66805,26 +66805,39 @@ Window position                Median
         content: (
           <Comp
             title="Q530. Minimum Absolute Difference in BST (Q448)"
-            content1={<></>}
+            content1={
+              <>
+                Given the root of a Binary Search Tree (BST), return the minimum
+                absolute difference between the values of any two different
+                nodes in the tree.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [4,2,6,1,3] <br />
+                    Output: 1
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [1,0,48,null,null,12,49] <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The number of nodes in the tree is in the range [2, 104].
+                <br /> 0 &lt;= Node.val &lt;= 105
               </>
             }
-            tc="n"
+            tc="log n"
             sc="n"
             codes={{
               Javascript: {
