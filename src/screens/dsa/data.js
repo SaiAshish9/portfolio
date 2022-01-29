@@ -66744,8 +66744,57 @@ Window position                Median
             sc="m.n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {character[][]} board
+                * @param {number[]} click
+                * @return {character[][]}
+                */
+               
+                 const dirs = [[-1, -1], [-1, 0], [-1, 1], [0, -1],
+                 [0, 1], [1, -1], [1, 0], [1, 1]];
+               
+               function dfs(board, i, j) {
+                   if (i < 0 || i == board.length || j < 0 || j == board[0].length)
+                     return;
+                   if (board[i][j] != 'E')
+                     return;
+                   let minesCount = getMinesCount(board, i, j);
+                   board[i][j] = minesCount == 0 ? 'B' : ''+minesCount;
+                   if (minesCount == 0)
+                     for (let dir of dirs)
+                       dfs(board, i + dir[0], j + dir[1]);
+                 }
+               
+                 function getMinesCount(board, i, j) {
+                   let minesCount = 0;
+                   for (let dir of dirs) {
+                     let x = i + dir[0];
+                     let y = j + dir[1];
+                     if (x < 0 || x == board.length || y < 0 || y == board[0].length)
+                       continue;
+                     if (board[x][y] == 'M')
+                       ++minesCount;
+                   }
+                   return minesCount;
+                 }
+               
+               
+               var updateBoard = function(board, click) {
+                    if (board[click[0]][click[1]] == 'M') {
+                     board[click[0]][click[1]] = 'X';
+                     return board;
+                   }
+                   dfs(board, click[0], click[1]);
+                   return board;
+               };
+               
+               console.log(updateBoard([["E","E","E","E","E"],["E","E","M","E","E"],["E","E","E","E","E"],["E","E","E","E","E"]],[3,0]))`,
+                output: `[
+                  [ 'B', '1', 'E', '1', 'B' ],
+                  [ 'B', '1', 'M', '1', 'B' ],
+                  [ 'B', '1', '1', '1', 'B' ],
+                  [ 'B', 'B', 'B', 'B', 'B' ]
+                ]`,
               },
             }}
           />
