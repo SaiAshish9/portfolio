@@ -67587,13 +67587,8 @@ Window position                Median
               },
             ]}
             constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
             tc="n"
-            sc="n"
+            sc="h"
             codes={{
               Javascript: {
                 code: ``,
