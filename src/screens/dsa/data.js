@@ -67440,8 +67440,28 @@ Window position                Median
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @param {number} k
+                * @return {string}
+                */
+               var reverseStr = function(s, k) {
+                 const st = s.split("")
+                 for (let i = 0; i < st.length; i += 2 * k) {
+                   let l = i;
+                   let r = Math.min(i + k - 1, st.length - 1);
+                   while (l < r) {
+                     st[l] = s[r];
+                     st[r] = s[l];
+                     ++l;
+                     --r;
+                   }
+                 }
+                 return st.join("")
+               };
+               
+               console.log(reverseStr("abcdefg",2))`,
+                output: `bacdfeg`,
               },
             }}
           />
