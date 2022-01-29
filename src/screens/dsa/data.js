@@ -66361,23 +66361,41 @@ Window position                Median
         content: (
           <Comp
             title="Q525. Contiguous Array (Q444)"
-            content1={<></>}
+            content1={
+              <>
+                Given a binary array nums, return the maximum length of a
+                contiguous subarray with an equal number of 0 and 1.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [0,1,0]
+                    <br />
+                    Output: 2<br />
+                    Explanation: [0, 1] (or [1, 0]) is a longest contiguous
+                    subarray with equal number of 0 and 1.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [0,1,0]
+                    <br />
+                    Output: 2<br />
+                    Explanation: [0, 1] (or [1, 0]) is a longest contiguous
+                    subarray with equal number of 0 and 1.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= nums.length &lt;= 10^5 <br />
+                nums[i] is either 0 or 1.
               </>
             }
             tc="n"
