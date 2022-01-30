@@ -70752,6 +70752,7 @@ class Node {
         title: "Q599. Minimum Index Sum of Two Lists (Q490)",
         content: (
           <Comp
+            title="Q599. Minimum Index Sum of Two Lists (Q490)"
             content1={
               <>
                 Suppose Andy and Doris want to choose a restaurant for dinner,
@@ -70807,8 +70808,35 @@ class Node {
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string[]} list1
+                * @param {string[]} list2
+                * @return {string[]}
+                */
+               var findRestaurant = function(list1, list2) {
+                 let res = [];
+                 const m = {};
+                 let minSum = Number.MAX_SAFE_INTEGER;
+                 for (let i = 0; i < list1.length; ++i)
+                   m[list1[i]] = i;
+                 for (let i = 0; i < list2.length; ++i) {
+                   let restaurant = list2[i];
+                   if (restaurant in m) {
+                     let sum = m[restaurant] + i;
+                     if (sum < minSum) {
+                       minSum = sum;
+                       res = [];
+                       res.push(restaurant);
+                     } else if (sum == minSum) {
+                       res.push(restaurant);
+                     }
+                   }
+                 }
+                 return res;
+                };
+               
+               console.log(findRestaurant(["Shogun","Tapioca Express","Burger King","KFC"],["Piatti","The Grill at Torrey Pines","Hungry Hunter Steakhouse","Shogun"]))`,
+                output: `[ 'Shogun' ]`,
               },
             }}
           />
