@@ -70846,6 +70846,7 @@ class Node {
         title: "Q600. Non-negative Integers without Consecutive Ones (Q491)",
         content: (
           <Comp
+            title="Q600. Non-negative Integers without Consecutive Ones (Q491)"
             content1={
               <>
                 Given a positive integer n, return the number of the integers in
@@ -70930,64 +70931,157 @@ class Node {
         ),
       },
       q492: {
-        title: "Q (Q492)",
+        title: "Q601. Human Traffic of Stadium (Q492)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q601. Human Traffic of Stadium (Q492)"
+            content1={
+              <>
+                <b>SQL Schema</b>
+                <br />
+                <b>Table: Stadium</b>
+                <pre>
+                  {`
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| id            | int     |
+| visit_date    | date    |
+| people        | int     |
++---------------+---------+
+              `}
+                </pre>
+                visit_date is the primary key for this table. <br />
+                Each row of this table contains the visit date and visit id to
+                the stadium with the number of people during the visit.
+                <br />
+                No two rows will have the same visit_date, and as the id
+                increases, the dates increase as well.
+                <br />
+                Write an SQL query to display the records with three or more
+                rows with consecutive id's, and the number of people is greater
+                than or equal to 100 for each.
+                <br />
+                Return the result table ordered by visit_date in ascending
+                order.
+                <br />
+                The query result format is in the following example.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: <br />
+                    Stadium table:
+                    <pre>
+                      {`
++------+------------+-----------+
+| id   | visit_date | people    |
++------+------------+-----------+
+| 1    | 2017-01-01 | 10        |
+| 2    | 2017-01-02 | 109       |
+| 3    | 2017-01-03 | 150       |
+| 4    | 2017-01-04 | 99        |
+| 5    | 2017-01-05 | 145       |
+| 6    | 2017-01-06 | 1455      |
+| 7    | 2017-01-07 | 199       |
+| 8    | 2017-01-09 | 188       |
++------+------------+-----------+                  
+                  `}
+                    </pre>
+                    <br />
+                    Output: <br />
+                    <pre>{`
++------+------------+-----------+
+| id   | visit_date | people    |
++------+------------+-----------+
+| 5    | 2017-01-05 | 145       |
+| 6    | 2017-01-06 | 1455      |
+| 7    | 2017-01-07 | 199       |
+| 8    | 2017-01-09 | 188       |
++------+------------+-----------+
+`}</pre>
+                    Explanation: <br />
+                    The four rows with ids 5, 6, 7, and 8 have consecutive ids
+                    and each of them has &gt;= 100 people attended. Note that
+                    row 8 was included even though the visit_date was not the
+                    next day after row 7.
+                    <br />
+                    The rows with ids 2 and 3 are not included because we need
+                    at least three consecutive ids.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Mysql: {
+                code: `with cte
+                as
+                (select id,visit_date, people, id - row_number() over (order by id ) diff
+                 from stadium
+                where people >=  100)
+                
+                
+                select id, visit_date, people from cte
+                where diff in (
+                select diff from cte
+                    group by diff
+                    having count(*)>=3)
+                    order by 2`,
+                output: `{"headers": ["id", "visit_date", "people"], "values": [[5, "2017-01-05", 145], [6, "2017-01-06", 1455], [7, "2017-01-07", 199], [8, "2017-01-09", 188]]}`,
               },
             }}
           />
         ),
       },
       q493: {
-        title: "Q (Q493)",
+        title: "Q605. Can Place Flowers (Q493)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                You have a long flowerbed in which some of the plots are
+                planted, and some are not. However, flowers cannot be planted in
+                adjacent plots.
+                <br />
+                Given an integer array flowerbed containing 0's and 1's, where 0
+                means empty and 1 means not empty, and an integer n, return if n
+                new flowers can be planted in the flowerbed without violating
+                the no-adjacent-flowers rule
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: flowerbed = [1,0,0,0,1], n = 1<br />
+                    Output: true
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: flowerbed = [1,0,0,0,1], n = 2<br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= flowerbed.length &lt;= 2 * 10^4 <br />
+                flowerbed[i] is 0 or 1.
+                <br />
+                There are no two adjacent flowers in flowerbed.
+                <br />0 &lt;= n &lt;= flowerbed.length
               </>
             }
             tc="n"
-            sc="n"
+            sc="`"
             codes={{
               Javascript: {
                 code: ``,
