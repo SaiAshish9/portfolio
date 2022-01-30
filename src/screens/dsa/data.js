@@ -70030,68 +70030,291 @@ class Node {
         ),
       },
       q483: {
-        title: "Q (Q483)",
+        title: "Q591. Tag Validator (Q483)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q591. Tag Validator (Q483)"
+            content1={
+              <>
+                Given a string representing a code snippet, implement a tag
+                validator to parse the code and return whether it is valid.
+                <br />
+                A code snippet is valid if all the following rules hold:
+                <br />
+                The code must be wrapped in a valid closed tag. Otherwise, the
+                code is invalid.
+                <br />A closed tag (not necessarily valid) has exactly the
+                following format : {"<TAG_NAME>TAG_CONTENT</TAG_NAME>."} Among
+                them, {"<TAG_NAME> is the start tag, and </TAG_NAME>"} is the
+                end tag. The TAG_NAME in start and end tags should be the same.
+                A closed tag is valid if and only if the TAG_NAME and
+                TAG_CONTENT are valid.
+                <br />
+                A valid TAG_NAME only contain upper-case letters, and has length
+                in range [1,9]. Otherwise, the TAG_NAME is invalid.
+                <br />
+                A valid TAG_CONTENT may contain other valid closed tags, cdata
+                and any characters (see note1) EXCEPT unmatched &lt;, unmatched
+                start and end tag, and unmatched or closed tags with invalid
+                TAG_NAME. Otherwise, the TAG_CONTENT is invalid.
+                <br />
+                A start tag is unmatched if no end tag exists with the same
+                TAG_NAME, and vice versa. However, you also need to consider the
+                issue of unbalanced when tags are nested.
+                <br />
+                {
+                  " A < is unmatched if you cannot find a subsequent >. And when you find a < or </, all the subsequent characters until the next > should be parsed as TAG_NAME (not necessarily valid)."
+                }
+                <br />
+                The cdata has the following format :{" "}
+                {
+                  "<![CDATA[CDATA_CONTENT]]>. The range of CDATA_CONTENT is defined as the characters between <![CDATA[ and the first subsequent ]]>."
+                }
+                <br />
+                CDATA_CONTENT may contain any characters. The function of cdata
+                is to forbid the validator to parse CDATA_CONTENT, so even it
+                has some characters that can be parsed as tag (no matter valid
+                or invalid), you should treat it as regular characters.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: code ={" "}
+                    {'"<DIV>This is the first line <![CDATA[<div>]]></DIV>"'}
+                    <br /> Output: true <br />
+                    Explanation: <br />
+                    {
+                      " The code is wrapped in a closed tag : <DIV> and </DIV>. "
+                    }
+                    <br /> The TAG_NAME is valid, the TAG_CONTENT consists of
+                    some characters and cdata.
+                    <br /> Although CDATA_CONTENT has an unmatched start tag
+                    with invalid TAG_NAME, it should be considered as plain
+                    text, not parsed as a tag.
+                    <br /> So TAG_CONTENT is valid, and then the code is valid.
+                    Thus return true.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    {
+                      ' Input: code = "<DIV>>>  ![cdata[]] <![CDATA[<div>]>]]>]]>>]</DIV>"'
+                    }
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation:
+                    <br />
+                    We first separate the code into :
+                    start_tag|tag_content|end_tag.
+                    <br />
+                    {'start_tag -> "<DIV>"'}
+                    <br />
+                    {'end_tag -> "</DIV>"'}
+                    <br />
+                    tag_content could also be separated into :
+                    text1|cdata|text2.
+                    <br />
+                    {'text1 -> ">>  ![cdata[]] "'}
+                    <br />
+                    {
+                      'cdata -> "<![CDATA[<div>]>]]>", where the CDATA_CONTENT is "<div>]>"'
+                    }
+                    <br />
+                    {'text2 -> "]]>>]"'}
+                    <br />
+                    {
+                      'The reason why start_tag is NOT "<DIV>>>" is because of the rule 6.'
+                    }
+                    <br />
+                    {
+                      'The reason why cdata is NOT "<![CDATA[<div>]>]]>]]>" is because of the rule 7.'
+                    }
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    {'Input: code = "<A>  <B> </A>   </B>"'} <br />
+                    Output: false <br />
+                    {
+                      'Explanation: Unbalanced. If "<A>" is closed, then "<B>" must be unmatched, and vice versa.'
+                    }
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= code.length &ly;= 500
+                <br />
+                code consists of English letters, digits, '&lt;', '&gt;', '/',
+                '!', '[', ']', '.', and ' '.
               </>
             }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `
+                // "<DIV>This is the first line <![CDATA[<div>]]></DIV>"
+                const isValid = function(code) {    
+                  const stack = []
+                  const openingTag = /^<[A-Z]{1,9}(>){1}/
+                  const closingTag = /<\\/[A-Z]{1,9}(>){1}/
+                  const cdata = /<\\!\\[CDATA\[.*?(\\]\\]>)+?/
+                  const closingTagEndIndex = code.length < 13 ? 0 : code.length - 13
+                  const openingTagEndIndex = code.length < 12 ? code.length : 12
+                  if (!openingTag.test(code.slice(0, openingTagEndIndex))) {
+                      return false
+                  }
+                  if (!closingTag.test(code.slice(closingTagEndIndex, code.length))) {
+                      return false
+                  }
+                  
+                  const lastIndex = code.length - 3
+                  let index = 0
+                  while (index < lastIndex) {
+                      const char = code[index]
+                      if (char === "<") {
+                          const nextChar = code[index + 1]
+                          const str = code.slice(index, code.length)
+                          if (/[A-Z]/.test(nextChar) && openingTag.test(str)) {
+                              const tag = str.match(openingTag)[0]
+                              stack.push(tag)
+                              index = index + tag.length - 1
+                          }
+                                      else if (nextChar === "/" && closingTag.test(str)) {
+                              const tag = str.match(closingTag)[0]
+                              const matchingOpeningTag = tag[0] + tag.slice(2)
+                              if (stack.length && stack[stack.length - 1] === matchingOpeningTag) {
+                                  stack.pop(tag)
+                              }
+                              else {
+                                  return false
+                              }
+                              index = index + tag.length - 1
+                              if (stack.length === 0 && index !== code.length - 1) {
+                                  return false
+                              }
+                          }
+                          else if (nextChar === "!" && cdata.test(code.slice(index))) {
+                              const cdataTag = code.slice(index).match(cdata)[0]
+                              index = index + cdataTag.length - 1
+                          }
+                           else {
+                              return false
+                          }
+                      }
+                      index++   
+                  }
+                  return stack.length === 0
+              };`,
+                output: `true`,
               },
             }}
           />
         ),
       },
       q484: {
-        title: "Q (Q484)",
+        title: "Q592. Fraction Addition and Subtraction (Q484)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q592. Fraction Addition and Subtraction (Q484)"
+            content1={
+              <>
+                Given a string expression representing an expression of fraction
+                addition and subtraction, return the calculation result in
+                string format.
+                <br />
+                The final result should be an irreducible fraction. If your
+                final result is an integer, change it to the format of a
+                fraction that has a denominator 1. So in this case, 2 should be
+                converted to 2/1.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: expression = "-1/2+1/2" <br />
+                    Output: "0/1"
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: expression = "-1/2+1/2+1/3" <br />
+                    Output: "1/3
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: expression = "1/3-1/2" <br />
+                    Output: "-1/6"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The input string only contains '0' to '9', '/', '+' and '-'. So
+                does the output. <br />
+                Each fraction (input and output) has the format
+                ±numerator/denominator. If the first input fraction or the
+                output is positive, then '+' will be omitted.
+                <br />
+                The input only contains valid irreducible fractions, where the
+                numerator and denominator of each fraction will always be in the
+                range [1, 10]. If the denominator is 1, it means this fraction
+                is actually an integer in a fraction format defined above.
+                <br />
+                The number of given fractions will be in the range [1, 10].
+                <br />
+                The numerator and denominator of the final result are guaranteed
+                to be valid and in the range of 32-bit int.
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // -1/2+1/2
+                class Solution {
+                  public String fractionAddition(String expression) {
+                    Scanner sc = new Scanner(expression).useDelimiter("/|(?=[+-])");
+                    int A = 0;
+                    int B = 1;
+                    while (sc.hasNext()) {
+                      final int a = sc.nextInt();
+                      final int b = sc.nextInt();
+                      A = A * b + a * B;
+                      B *= b;
+                      final int g = gcd(A, B);
+                      A /= g;
+                      B /= g;
+                    }
+                
+                    return A + "/" + B;
+                  }
+                
+                  private int gcd(int a, int b) {
+                    return a == 0 ? Math.abs(b) : gcd(b % a, a);
+                  }
+                }
+                `,
+                output: `0/1`,
               },
             }}
           />
