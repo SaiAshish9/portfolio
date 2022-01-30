@@ -237,6 +237,7 @@ import Leetcode559 from "assets/leetcode/559.png";
 import Leetcode563 from "assets/leetcode/563.png";
 import Leetcode572 from "assets/leetcode/572.png";
 import Leetcode576 from "assets/leetcode/576.png";
+import Leetcode587 from "assets/leetcode/587.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -69640,102 +69641,294 @@ class Node {
         ),
       },
       q479: {
-        title: "Q (Q479)",
+        title: "Q583. Delete Operation for Two Strings (Q479)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q583. Delete Operation for Two Strings (Q479)"
+            content1={
+              <>
+                {" "}
+                Given two strings word1 and word2, return the minimum number of
+                steps required to make word1 and word2 the same.
+                <br />
+                In one step, you can delete exactly one character in either
+                string.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: word1 = "sea", word2 = "eat"
+                    <br />
+                    Output: 2 <br />
+                    Explanation: You need one step to make "sea" to "ea" and
+                    another step to make "eat" to "ea".
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: word1 = "leetcode", word2 = "etco""
+                    <br />
+                    Output: 4
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= word1.length, word2.length &lt;= 500
+                <br />
+                word1 and word2 consist of only lowercase English letters.
               </>
             }
-            tc="n"
-            sc="n"
+            tc="m.n"
+            sc="m.n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} word1
+                * @param {string} word2
+                * @return {number}
+                */
+               var minDistance = function(word1, word2) {
+                 const k = lcs(word1, word2);
+                 return (word1.length - k) + (word2.length - k); 
+               };
+               
+               function lcs(a, b) {
+                 const m = a.length;
+                 const n = b.length;
+                 const dp = Array.from(Array(m+1),()=>Array(n+1).fill(0))
+                 for (let i = 1; i <= m; ++i)
+                   for (let j = 1; j <= n; ++j)
+                     if (a[i - 1] == b[j - 1])
+                       dp[i][j] = 1 + dp[i - 1][j - 1];
+                     else
+                       dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                 return dp[m][n];
+               }
+               
+               console.log(minDistance("leetcode","etco"))`,
+                output: `4`,
               },
             }}
           />
         ),
       },
       q480: {
-        title: "Q (Q480)",
+        title: "Q587. Erect the Fence (Q480)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q587. Erect the Fence (Q480)"
+            content1={
+              <>
+                You are given an array trees where trees[i] = [xi, yi]
+                represents the location of a tree in the garden.
+                <br />
+                You are asked to fence the entire garden using the minimum
+                length of rope as it is expensive. The garden is well fenced
+                only if all the trees are enclosed.
+                <br />
+                Return the coordinates of trees that are exactly located on the
+                fence perimeter.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode587,
+                content: (
+                  <>
+                    Input: points = [[1,1],[2,2],[2,0],[2,4],[3,3],[4,2]] <br />
+                    Output: [[1,1],[2,0],[3,3],[2,4],[4,2]]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: points = [[1,2],[2,2],[4,2]] <br />
+                    Output: [[4,2],[2,2],[1,2]]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= points.length &lt;= 3000 <br />
+                points[i].length == 2 <br />
+                0 &lt;= xi, yi &lt;= 100 <br />
+                All the given points are unique.
               </>
             }
-            tc="n"
+            tc="n^2"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // [[1,1],[2,2],[2,0],[2,4],[3,3],[4,2]]
+                class Solution {
+                  public static class Pair {
+                         int x;
+                         int y;
+                         Pair(int x, int y) {
+                           this.x = x;
+                           this.y = y;
+                         }
+                       }
+                 public int[][] outerTrees(int[][] trees) {
+                     List<Pair> points=new ArrayList<>();
+                     for(int[] point:trees){
+                        points.add(new Pair(point[0],point[1])); 
+                     }
+                     List<Pair> res=new ArrayList<>();
+                     if(points.size()==1){
+                         return trees;
+                     }
+                     int n=points.size();
+                     Collections.sort(points,(a,b)->a.y==b.y?a.x-b.x:a.y-b.y);
+                     HashSet<ArrayList<Integer>> dup=new HashSet<>();
+                     Stack<Pair> hull=new Stack<>();
+                     hull.push(points.get(0));
+                     hull.push(points.get(1));
+                     for(int i=2;i<n;i++){
+                         Pair top=hull.pop();
+                         while(!hull.isEmpty()&&ccw(hull.peek(),top,points.get(i))<0){
+                             top=hull.pop();
+                         }
+                         hull.push(top);
+                         hull.push(points.get(i));
+                     }
+                     for(int i=n-2;i>=0;i--){
+                         Pair top=hull.pop();
+                         while(!hull.isEmpty()&&ccw(hull.peek(),top,points.get(i))<0){
+                             top=hull.pop();
+                         }
+                         hull.push(top);
+                         hull.push(points.get(i));
+                     }
+                     for(Pair p:hull){
+                         ArrayList<Integer> tmp=new ArrayList<>();
+                         tmp.add(p.x);
+                         tmp.add(p.y);
+                         if(dup.contains(tmp))continue;
+                         dup.add(tmp);
+                         res.add(p);
+                     }
+             
+                     int[][] ans=new int[res.size()][2];
+                     int i=0;
+                     for(Pair p:res){
+                         ans[i][0]=p.x;
+                         ans[i][1]=p.y;
+                         i++;
+                     }
+                     return ans;
+                     
+                 }
+             
+                 public int ccw(Pair a,Pair b,Pair c){
+                     double cp=(b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x);
+                     if(cp<0)return -1;
+                     else if(cp>0)return 1;
+                     else return 0;
+                 }
+             }`,
+                output: `[[2,0],[4,2],[3,3],[2,4],[1,1]]`,
               },
             }}
           />
         ),
       },
       q481: {
-        title: "Q (Q481)",
+        title: "Q589. N-ary Tree Preorder Traversal (Q481)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q589. N-ary Tree Preorder Traversal (Q481)"
+            content1={
+              <>
+                Given the root of an n-ary tree, return the preorder traversal
+                of its nodes' values.
+                <br />
+                Nary-Tree input serialization is represented in their level
+                order traversal. Each group of children is separated by the null
+                value (See examples)
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode559,
+                content: (
+                  <>
+                    Input: root = [1,null,3,2,4,null,5,6] <br />
+                    Output: [1,3,5,6,2,4]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root =
+                    [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+                    <br /> Output: [1,2,3,6,7,11,14,4,8,12,5,9,13,10]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the tree is in the range [0, 10^4].{" "}
+                <br />
+                0 &lt;= Node.val ^lt;= 104 <br />
+                The height of the n-ary tree is less than or equal to 1000.
+              </>
+            }
             fp={
               <>
-                <b>Follow up :</b>
+                <b>Follow up :</b>Recursive solution is trivial, could you do it
+                iteratively?
               </>
             }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function Node(val, children) {
+                  this.val = val;
+                  this.children = children;
+               };
+               
+               /**
+                * @param {Node|null} root
+                * @return {number[]}
+                */
+               var preorder = function(root) {
+                 if (!root) return [];
+                 const res = []
+                 const stack = []
+                 stack.push(root);
+                 while (stack.length) {
+                   root = stack.pop();
+                   res.push(root.val);
+                   for (let i = root.children.length - 1; i >= 0; --i)
+                     stack.push(root.children[i]);
+                 }
+                 return res;   
+               };
+               
+               const n2 = new Node(2,[])
+               const n4 = new Node(4,[])
+               const n5 = new Node(5,[])
+               const n6 = new Node(6,[])
+               const n3 = new Node(3,[n5,n6])
+               const n1 = new Node(1,[n3,n2,n4])
+               console.log(preorder(n1))`,
+                output: `[ 1, 3, 5, 6, 2, 4 ]`,
               },
             }}
           />
