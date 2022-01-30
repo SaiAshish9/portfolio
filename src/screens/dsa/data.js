@@ -73811,7 +73811,7 @@ console.log(tree2str(t))`,
     types: [],
     content: (
       <>
-        <Img src={NotesImg} />
+        <Img style={{ borderRadius: "0.4rem" }} src={NotesImg} />
       </>
     ),
   },
