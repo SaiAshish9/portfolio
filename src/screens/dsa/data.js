@@ -231,6 +231,7 @@ import Leetcode530 from "assets/leetcode/530.png";
 import Leetcode538 from "assets/leetcode/538.png";
 import Leetcode543 from "assets/leetcode/543.png";
 import Leetcode547 from "assets/leetcode/547.png";
+import Leetcode554 from "assets/leetcode/554.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -68165,31 +68166,85 @@ Window position                Median
         content: (
           <Comp
             title="Q554. Brick Wall (Q463)"
-            content1={<></>}
+            content1={
+              <>
+                There is a rectangular brick wall in front of you with n rows of
+                bricks. The ith row has some number of bricks each of the same
+                height (i.e., one unit) but they can be of different widths. The
+                total width of each row is the same.
+                <br />
+                Draw a vertical line from the top to the bottom and cross the
+                least bricks. If your line goes through the edge of a brick,
+                then the brick is not considered as crossed. You cannot draw a
+                line just along one of the two vertical edges of the wall, in
+                which case the line will obviously cross no bricks.
+                <br />
+                Given the 2D array wall that contains the information about the
+                wall, return the minimum number of crossed bricks after drawing
+                such a vertical line.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode554,
+                content: (
+                  <>
+                    Input: wall =
+                    [[1,2,2,1],[3,1,2],[1,3,2],[2,4],[3,1,2],[1,3,1,1]]
+                    <br />
+                    Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: wall = [[1],[1],[1]]
+                    <br />
+                    Output: 3
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                n == wall.length
+                <br />
+                1 &lt;= n &lt;= 10^4
+                <br />
+                1 &lt;= wall[i].length &lt;= 10^4
+                <br />
+                1 &lt;= sum(wall[i].length) &lt;= 2 * 10^4
+                <br />
+                sum(wall[i]) is the same for each row i.
+                <br />1 &lt;= wall[i][j] &lt;= 2^31 - 1
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} wall
+                * @return {number}
+                */
+               var leastBricks = function(wall) {
+                 let maxFreq = 0;
+                 const count = new Map();
+                 for (let row of wall) {
+                   let prefix = 0;
+                   for (let i = 0; i < row.length - 1; ++i) {
+                     prefix += row[i];
+                     count.set(prefix, (count.get(prefix) || 0) + 1);
+                     maxFreq = Math.max(maxFreq, count.get(prefix));
+                   }
+                 }
+                 return wall.length - maxFreq;
+               };
+               
+               console.log(leastBricks([[1,2,2,1],[3,1,2],[1,3,2],[2,4],[3,1,2],[1,3,1,1]]))`,
+                output: `2`,
               },
             }}
           />
