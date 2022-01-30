@@ -69233,11 +69233,34 @@ class Node {
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s1
+                * @param {string} s2
+                * @return {boolean}
+                */
+               var checkInclusion = function(s1, s2) {
+                 const count = Array(128).fill(0);
+                 let required = s1.length;
+                 for (let c of s1)
+                   ++count[c.charCodeAt(0)];
+                 for (let l = 0, r = 0; r < s2.length; ++r) {
+                   if (--count[s2[r].charCodeAt(0)] >= 0)
+                     --required;
+                   while (required == 0) {
+                     if (r - l + 1 == s1.length)
+                       return true;
+                     if (++count[s2[l++].charCodeAt(0)] > 0)
+                       ++required;
+                   }
+                 }
+                 return false;
+               };
+               
+               console.log(checkInclusion("ab","eidbaooo"))`,
+                output: `true`,
               },
             }}
           />
