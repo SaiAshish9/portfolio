@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import beautify from "js-beautify";
 
 import { Span } from "..";
@@ -43,6 +43,14 @@ const CodeEditor = ({ options }) => {
   const [copied, setIsCopied] = useState(false);
 
   const [copiedOutput, setIsCopiedOutput] = useState(false);
+
+  useEffect(() => {
+    function cleanup() {
+      setIsCopied(false);
+      setIsCopiedOutput(false);
+    }
+    return () => cleanup();
+  }, [options]);
 
   async function executeCode() {
     try {
@@ -431,8 +439,10 @@ const CodeEditor = ({ options }) => {
             <Editor
               value={
                 selected !== "Python"
-                  ? beautify.js_beautify(options.codes[selected]?.code)
-                  : options.codes["Python"]?.code
+                  ? beautify.js_beautify(
+                      options.codes[selected]?.code ?? "Reload the page"
+                    )
+                  : options.codes["Python"]?.code ?? "Reload the page"
               }
               options={{
                 mode: ["Java", "Kotlin", "C++", "C"].includes(selected)
@@ -457,8 +467,10 @@ const CodeEditor = ({ options }) => {
             <SEditor
               value={
                 selected !== "Python"
-                  ? beautify.js_beautify(options.codes[selected]?.code)
-                  : options.codes["Python"]?.code
+                  ? beautify.js_beautify(
+                      options.codes[selected]?.code ?? "Reload the page"
+                    )
+                  : options.codes["Python"]?.code ?? "Reload the page"
               }
               options={{
                 mode: ["Java", "Kotlin", "C++", "C"].includes(selected)
@@ -483,8 +495,7 @@ const CodeEditor = ({ options }) => {
             {outputCheck && (
               <>
                 <OutputEditorContainer>
-                  <OutputLabel>Output</OutputLabel>
-                  {/* playground */}
+                  <OutputLabel>Output</OutputLabel>]{" "}
                   <Output
                     value={beautify.html_beautify(
                       options.codes[selected]?.output ?? options.output
