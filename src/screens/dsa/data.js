@@ -70560,7 +70560,6 @@ class Node {
             codes={{
               Mysql: {
                 code: `
-                # {"headers": {"World": ["name", "continent",	"area",	"population", "gdp"]}, "rows": {"World": [["Afghanistan", "Asia", 652230, 25500100, 20343000000], ["Albania", "Europe", 28748, 2831741, 12960000000], ["Algeria", "Africa", 2381741, 37100000, 188681000000], ["Andorra", "Europe", 468, 78115,	3712000000], ["Angola", "Africa", 1246700, 20609294, 100990000000]]}}
                 select name, population, area
                 from world
                 where area >= 3000000 or population >= 25000000`,
@@ -70571,26 +70570,87 @@ class Node {
         ),
       },
       q488: {
-        title: "Q (Q488)",
+        title: "Q596. Classes More Than 5 Students (Q488)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q596. Classes More Than 5 Students (Q488)"
+            content1={
+              <>
+                <b> SQL Schema</b>
+                <br />
+                <b>Table: Courses</b>
+                <pre>
+                  {`
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| student     | varchar |
+| class       | varchar |
++-------------+---------+
+`}
+                  (student, class) is the primary key column for this table.
+                  Each row of this table indicates the name of a student and the
+                  class in which they are enrolled.
+                  <br />
+                  Write an SQL query to report all the classes that have at
+                  least five students.
+                  <br />
+                  Return the result table in any order.
+                  <br />
+                  The query result format is in the following example.
+                </pre>
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: <br />
+                    Courses table:
+                    <br />
+                    <pre>
+                      {`
++---------+----------+
+| student | class    |
++---------+----------+
+| A       | Math     |
+| B       | English  |
+| C       | Math     |
+| D       | Biology  |
+| E       | Math     |
+| F       | Computer |
+| G       | Math     |
+| H       | Math     |
+| I       | Math     |
++---------+----------+
+                  `}
+                    </pre>
+                    Output:
+                    <pre>
+                      {`
++---------+
+| class   |
++---------+
+| Math    |
++---------+  
+  `}
+                    </pre>
+                    <b>Explanation: </b>
+                    <br />
+                    - Math has 6 students, so we include it.
+                    <br />
+                    - English has 1 student, so we do not include it.
+                    <br />
+                    - Biology has 1 student, so we do not include it.
+                    <br />- Computer has 1 student, so we do not include it.
+                  </>
+                ),
               },
             ]}
             codes={{
               Mysql: {
                 code: `
-                # {"headers": {"Courses": ["student", "class"]}, "rows": {"Courses": [["A", "Math"], ["B", "English"], ["C", "Math"], ["D", "Biology"], ["E", "Math"], ["F", "Computer"], ["G", "Math"], ["H", "Math"], ["I", "Math"]]}}
                 select class
                 from courses
                 group by class
@@ -70602,30 +70662,64 @@ class Node {
         ),
       },
       q489: {
-        title: "Q (Q489)",
+        title: "Q598. Range Addition II (Q489)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q598. Range Addition II (Q489)"
+            content1={
+              <>
+                You are given an m x n matrix M initialized with all 0's and an
+                array of operations ops, where ops[i] = [ai, bi] means M[x][y]
+                should be incremented by one for all 0 &lt;= x &lt; ai and 0
+                &lt;= y &lt; bi.
+                <br />
+                Count and return the number of maximum integers in the matrix
+                after performing all the operations.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: m = 3, n = 3,
+                    <br /> ops = [[2,2],[3,3]]
+                    <br />
+                    Output: 4<br />
+                    Explanation: The maximum integer in M is 2, and there are
+                    four of it in M. So return 4.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: m = 3, n = 3, <br />
+                    ops =
+                    [[2,2],[3,3],[3,3],[3,3],[2,2],[3,3],[3,3],[3,3],[2,2],[3,3],[3,3],[3,3]]
+                    Output: 4
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: m = 3, n = 3,
+                    <br /> ops = [] Output: 9
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= m, n &lt;= 4 * 10^4 <br />
+                0 &lt;= ops.length &lt;= 104 <br />
+                ops[i].length == 2 <br />
+                1 &lt;= ai &lt;= m <br />1 &lt;= bi &lt;= n
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
