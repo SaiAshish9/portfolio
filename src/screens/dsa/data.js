@@ -68585,9 +68585,10 @@ class Node {
         ),
       },
       q467: {
-        title: "Q (Q467)",
+        title: "Q559. Maximum Depth of N-ary Tree (Q467)",
         content: (
           <Comp
+            title="Q559. Maximum Depth of N-ary Tree (Q467)"
             content1={
               <>
                 Given a n-ary tree, find its maximum depth.
@@ -68630,42 +68631,96 @@ class Node {
             sc="h"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function Node(val,children) {
+                  this.val = val;
+                  this.children = children;
+                };
+                 
+                /**
+                 * @param {Node|null} root
+                 * @return {number}
+                 */
+                var maxDepth = function(root) {
+                  if (!root) return 0;
+                  let ans = 0;
+                  for (let child of root.children)
+                    ans = Math.max(ans, maxDepth(child));
+                  return 1 + ans;
+                };
+                
+                const n2 = new Node(2,[])
+                const n4 = new Node(4,[])
+                const n5 = new Node(5,[])
+                const n6 = new Node(6,[])
+                const n3 = new Node(3,[n5,n6])
+                const n1 = new Node(1,[n3,n2,n4])
+                console.log(maxDepth(n1))`,
+                output: `3`,
               },
             }}
           />
         ),
       },
       q468: {
-        title: "Q (Q468)",
+        title: "Q560. Subarray Sum Equals K (Q468)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q560. Subarray Sum Equals K (Q468)"
+            content1={
+              <>
+                Given an array of integers nums and an integer k, return the
+                total number of continuous subarrays whose sum equals to k.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,1,1], k = 2<br />
+                    Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3], k = 3<br />
+                    Output: 2
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= nums.length &lt;= 2 * 104 -1000 &lt;= nums[i] &lt;= 1000
+                -10^7 &lt;= k &lt;= 10^7
               </>
             }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} k
+                * @return {number}
+                */
+               var subarraySum = function(nums, k) {
+                 let ans = 0;
+                 let prefix = 0;
+                 const count = {};
+                 count[0] = 1;
+                 for (let num of nums) {
+                   prefix += num;
+                   ans += (count[prefix - k] ||  0);
+                   count[prefix] = (count[prefix] || 0) + 1;
+                 }
+                 return ans;
+               };
+               
+               console.log(subarraySum([1,1,1],2))`,
+                output: `2`,
               },
             }}
           />
