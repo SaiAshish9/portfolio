@@ -69935,9 +69935,10 @@ class Node {
         ),
       },
       q482: {
-        title: "Q (Q482)",
+        title: "Q590. N-ary Tree Postorder Traversal (Q482)",
         content: (
           <Comp
+            title="Q590. N-ary Tree Postorder Traversal (Q482)"
             content1={
               <>
                 Given the root of an n-ary tree, return the postorder traversal
