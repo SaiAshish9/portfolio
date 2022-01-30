@@ -18208,6 +18208,19 @@ console.log(isPairSum(arr, arrSize, val));
           </>
         ),
       },
+      uber: {
+        title: "Uber",
+        content: (
+          <>
+            <Span>
+              <b>Uber SDE Internship Interview Experience</b>
+            </Span>
+            <Span><b>Total Number Of Questions Asked:</b> 3</Span>
+            <Span><b>Duration:</b> 1hr</Span>
+            <Span>[ Work In Progress ]</Span>
+          </>
+        ),
+      },
       vmware: {
         title: "VMWare",
         content: (
