@@ -68385,8 +68385,34 @@ Window position                Median
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {string}
+                */
+               var reverseWords = function(s) {
+                 const st = s.split("");
+                 let i = 0;
+                 let j = 0;
+                 while (i < st.length) {
+                   while (i < j || i < st.length && st[i] == ' ')
+                     ++i;
+                   while (j < i || j < st.length && st[j] != ' ')
+                     ++j;
+                   reverse(st, i, j - 1);
+                 }
+                 return st.join("");
+               };
+               
+               function reverse(st, l, r) {
+                 while (l < r) {
+                 let temp = st[l];
+                 st[l++] = st[r];
+                 st[r--] = temp;
+                 }
+               }
+               
+               console.log(reverseWords("God Ding"))`,
+                output: `doG gniD`,
               },
             }}
           />
