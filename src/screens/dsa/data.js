@@ -71193,11 +71193,11 @@ class Node {
                   return root.val + "";
               }
               
-              const t = new TreeNode(1)
-              t.left = new TreeNode(2)
-              t.left.left = new TreeNode(4)
-              t.right = new TreeNode(3)
-              console.log(tree2str(t))`,
+const t = new TreeNode(1)
+t.left = new TreeNode(2)
+t.left.left = new TreeNode(4)
+t.right = new TreeNode(3)
+console.log(tree2str(t))`,
                 output: `1(2(4))(3`,
               },
             }}
