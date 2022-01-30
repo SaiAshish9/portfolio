@@ -68770,7 +68770,13 @@ class Node {
                 ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= n &lt;= 10^4 <br />
+                nums.length == 2 * n <br />
+                -10^4 &lt;= nums[i] &lt;= 10^4
+              </>
+            }
             tc="n => n.log n"
             sc="n => 1"
             codes={{
