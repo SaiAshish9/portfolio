@@ -70321,68 +70321,162 @@ class Node {
         ),
       },
       q485: {
-        title: "Q (Q485)",
+        title: "Q593. Valid Square (Q485)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q593. Valid Square (Q485)"
+            content1={
+              <>
+                Given the coordinates of four points in 2D space p1, p2, p3 and
+                p4, return true if the four points construct a square.
+                <br />
+                The coordinate of a point pi is represented as [xi, yi]. The
+                input is not given in any order.
+                <br />A valid square has four equal sides with positive length
+                and four equal angles (90-degree angles).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: p1 = [0,0], p2 = [1,1], p3 = [1,0], p4 = [0,1]
+                    <br />
+                    Output: true
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: p1 = [0,0], p2 = [1,1], p3 = [1,0], p4 = [0,12]
+                    <br />
+                    Output: false
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: p1 = [1,0], p2 = [-1,0], p3 = [0,1], p4 = [0,-1]
+                    <br />
+                    Output: true
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                p1.length == p2.length == p3.length == p4.length == 2 <br />
+                -10^4 &lt;= xi, yi &lt;= 10^4
               </>
             }
-            tc="n"
-            sc="n"
+            tc="1"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} p1
+                * @param {number[]} p2
+                * @param {number[]} p3
+                * @param {number[]} p4
+                * @return {boolean}
+                */
+               var validSquare = function(p1, p2, p3, p4) {
+                 const distSet = new Set();
+                 const points = [p1, p2, p3, p4];
+                 for (let i = 0; i < 4; ++i)
+                   for (let j = i + 1; j < 4; ++j)
+                     distSet.add(dist(points[i], points[j]));
+                 return !distSet.has(0) && distSet.size == 2;  
+               };
+               
+               function dist(p1, p2) {
+                 return (p1[0] - p2[0]) * (p1[0] - p2[0]) + (p1[1] - p2[1]) * (p1[1] - p2[1]);
+               }
+               
+               console.log(validSquare([0,0],[1,1],[1,0],[0,1]))`,
+                output: `true`,
               },
             }}
           />
         ),
       },
       q486: {
-        title: "Q (Q486)",
+        title: "Q594. Longest Harmonious Subsequence (Q486)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q594. Longest Harmonious Subsequence (Q486)"
+            content1={
+              <>
+                We define a harmonious array as an array where the difference
+                between its maximum value and its minimum value is exactly 1.
+                <br />
+                Given an integer array nums, return the length of its longest
+                harmonious subsequence among all its possible subsequences.
+                <br />A subsequence of array is a sequence that can be derived
+                from the array by deleting some or no elements without changing
+                the order of the remaining elements.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,3,2,2,5,2,3,7] <br />
+                    Output: 5 <br />
+                    Explanation: The longest harmonious subsequence is
+                    [3,2,2,2,3].
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,4] <br />
+                    Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,1,1,1] <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= nums.length &lt;= 2 * 10^4 <br />
+                -10^9 &lt;= nums[i] &lt;= 10^9
               </>
             }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var findLHS = function(nums) {
+                 let res = 0;
+                 const count = {};
+                 for (let num of nums)
+                   count[num] = (count[num] || 0) + 1;
+                 for (let num in count){
+                   if ((+num + 1) in count)
+                   res = Math.max(res, count[+num] + count[+num + 1]);
+                 }
+                 return res;   
+               };
+               
+               console.log(findLHS([1,2,3,4]))`,
+                output: `2`,
               },
             }}
           />
@@ -70392,29 +70486,81 @@ class Node {
         title: "Q (Q487)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                SQL Schema
+                <br />
+                <b>Table: World</b>
+                <pre>
+                  {`
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| name        | varchar |
+| continent   | varchar |
+| area        | int     |
+| population  | int     |
+| gdp         | int     |
++-------------+---------+
+  `}
+                </pre>
+                name is the primary key column for this table. Each row of this
+                table gives information about the name of a country, the
+                continent to which it belongs, its area, the population, and its
+                GDP value.
+                <br />
+                A country is big if: it has an area of at l <br />
+                east three million (i.e., 3000000 km2), or <br />
+                it has a population of at least twenty-five million (i.e.,
+                25000000). <br />
+                Write an SQL query to report the name, population, and area of
+                the big countries.
+                <br />
+                Return the result table in any order.
+                <br />
+                The query result format is in the following example.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: <br />
+                    World table:
+                    <pre>
+                      {`
++-------------+-----------+---------+------------+--------------+
+| name        | continent | area    | population | gdp          |
++-------------+-----------+---------+------------+--------------+
+| Afghanistan | Asia      | 652230  | 25500100   | 20343000000  |
+| Albania     | Europe    | 28748   | 2831741    | 12960000000  |
+| Algeria     | Africa    | 2381741 | 37100000   | 188681000000 |
+| Andorra     | Europe    | 468     | 78115      | 3712000000   |
+| Angola      | Africa    | 1246700 | 20609294   | 100990000000 |
++-------------+-----------+---------+------------+--------------+  
+  `}
+                    </pre>
+                    Output:
+                    <pre>
+                      {`
++-------------+------------+---------+
+| name        | population | area    |
++-------------+------------+---------+
+| Afghanistan | 25500100   | 652230  |
+| Algeria     | 37100000   | 2381741 |
++-------------+------------+---------+  
+  `}
+                    </pre>
+                  </>
+                ),
               },
             ]}
             constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
+              Mysql: {
                 code: ``,
                 output: ``,
               },
