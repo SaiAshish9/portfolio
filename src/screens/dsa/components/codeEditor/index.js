@@ -354,7 +354,7 @@ const CodeEditor = ({ options }) => {
       if (!["Execute", "Copy Source Code", "Copy O/P", "Copied"].includes(i))
         setSelected(i);
     }
-    if (i.includes("Source Code")) {
+    if (i.includes("Source Code") && !i.includes("Hide")) {
       if (!copied) setIsCopied(true);
       if (copiedOutput) setIsCopiedOutput(false);
       navigator.clipboard.writeText(
@@ -363,11 +363,13 @@ const CodeEditor = ({ options }) => {
           : options.codes["Python"]?.code
       );
     }
-    if (i.includes("O/P")) {
+    if (i.includes("O/P") && !i.includes("Hide")) {
       if (!copiedOutput) setIsCopiedOutput(true);
       if (copied) setIsCopied(false);
       navigator.clipboard.writeText(
-        beautify.html_beautify(options.codes[selected]?.output ?? options.output)
+        beautify.html_beautify(
+          options.codes[selected]?.output ?? options.output
+        )
       );
     }
     if (i === "Download") downloadPDF();
@@ -389,6 +391,8 @@ const CodeEditor = ({ options }) => {
                 "Download",
                 "Hindi",
                 "English",
+                "Hide Source Code Line Numbers",
+                "Hide O/P Line Numbers",
                 "Execute",
               ].map((i, k) => (
                 <Button
