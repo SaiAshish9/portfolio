@@ -232,6 +232,7 @@ import Leetcode538 from "assets/leetcode/538.png";
 import Leetcode543 from "assets/leetcode/543.png";
 import Leetcode547 from "assets/leetcode/547.png";
 import Leetcode554 from "assets/leetcode/554.png";
+import Leetcode558 from "assets/leetcode/558.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -68419,30 +68420,121 @@ Window position                Median
         ),
       },
       q466: {
-        title: "Q (Q466)",
+        title:
+          "Q558. Logical OR of Two Binary Grids Represented as Quad-Trees (Q466)",
         content: (
           <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
+            title="Q558. Logical OR of Two Binary Grids Represented as Quad-Trees (Q466)"
+            content1={
               <>
-                <b>Follow up :</b>
+                A Binary Matrix is a matrix in which all the elements are either
+                0 or 1.
+                <br />
+                Given quadTree1 and quadTree2. quadTree1 represents a n * n
+                binary matrix and quadTree2 represents another n * n binary
+                matrix.
+                <br />
+                Return a Quad-Tree representing the n * n binary matrix which is
+                the result of logical bitwise OR of the two binary matrixes
+                represented by quadTree1 and quadTree2.
+                <br />
+                Notice that you can assign the value of a node to True or False
+                when isLeaf is False, and both are accepted in the answer.
+                <br />
+                A Quad-Tree is a tree data structure in which each internal node
+                has exactly four children. Besides, each node has two
+                attributes:
+                <br />
+                val: True if the node represents a grid of 1's or False if the
+                node represents a grid of 0's.
+                <br />
+                isLeaf: True if the node is leaf node on the tree or False if
+                the node has the four children.
+                <br />
+                <pre>{`
+class Node {
+  public boolean val;
+  public boolean isLeaf;
+  public Node topLeft;
+  public Node topRight;
+  public Node bottomLeft;
+  public Node bottomRight;
+}
+`}</pre>
+                We can construct a Quad-Tree from a two-dimensional area using
+                the following steps:
+                <br />
+                1. If the current grid has the same value (i.e all 1's or all
+                0's) set isLeaf True and set val to the value of the grid and
+                set the four children to Null and stop.
+                <br />
+                2. If the current grid has different values, set isLeaf to False
+                and set val to any value and divide the current grid into four
+                sub-grids as shown in the photo.
+                <br />
+                Recurse for each of the children with the proper sub-grid.
               </>
             }
-            tc="n"
-            sc="n"
+            content2={
+              <>
+                If you want to know more about the Quad-Tree, you can refer to
+                the wiki.
+                <br />
+                Quad-Tree format:
+                <br />
+                The input/output represents the serialized format of a Quad-Tree
+                using level order traversal, where null signifies a path
+                terminator where no node exists below.
+                <br />
+                It is very similar to the serialization of the binary tree. The
+                only difference is that the node is represented as a list
+                [isLeaf, val].
+                <br />
+                If the value of isLeaf or val is True we represent it as 1 in
+                the list [isLeaf, val] and if the value of isLeaf or val is
+                False we represent it as 0.
+              </>
+            }
+            img={Leetcode538}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: quadTree1 = [[0,1],[1,1],[1,1],[1,0],[1,0]] <br />
+                    , quadTree2 =
+                    [[0,1],[1,1],[0,1],[1,1],[1,0],null,null,null,null,[1,0],[1,0],[1,1],[1,1]]
+                    <br /> Output: [[0,0],[1,1],[1,1],[1,1],[1,0]]
+                    <br /> Explanation: quadTree1 and quadTree2 are shown above.
+                    You can see the binary matrix which is represented by each
+                    Quad-Tree. If we apply logical bitwise OR on the two binary
+                    matrices we get the binary matrix below which is represented
+                    by the result Quad-Tree. Notice that the binary matrices
+                    shown are only for illustration, you don't have to construct
+                    the binary matrix to get the result tree.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: quadTree1 = [[1,0]], quadTree2 = [[1,0]] <br />
+                    Output: [[1,0]] <br />
+                    Explanation: Each tree represents a binary matrix of size
+                    1*1. Each matrix contains only zero. The resulting matrix is
+                    of size 1*1 with also zero.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                quadTree1 and quadTree2 are both valid Quad-Trees each
+                representing a n * n grid.
+                <br /> n == 2x where 0 &lt;= x &lt;= 9.
+              </>
+            }
+            tc="n^2.log4 n"
+            sc="log4 n"
             codes={{
               Javascript: {
                 code: ``,
