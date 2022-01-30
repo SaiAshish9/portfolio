@@ -69106,26 +69106,60 @@ class Node {
         ),
       },
       q473: {
-        title: "Q (Q473)",
+        title: "Q566. Reshape the Matrix (Q473)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q566. Reshape the Matrix (Q473)"
+            content1={
+              <>
+                In MATLAB, there is a handy function called reshape which can
+                reshape an m x n matrix into a new one with a different size r x
+                c keeping its original data.
+                <br />
+                You are given an m x n matrix mat and two integers r and c
+                representing the number of rows and the number of columns of the
+                wanted reshaped matrix.
+                <br />
+                The reshaped matrix should be filled with all the elements of
+                the original matrix in the same row-traversing order as they
+                were.
+                <br />
+                If the reshape operation with given parameters is possible and
+                legal, output the new reshaped matrix; Otherwise, output the
+                original matrix.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: mat = [[1,2],[3,4]],
+                    <br /> r = 1, c = 4<br />
+                    Output: [[1,2,3,4]]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: mat = [[1,2],[3,4]],
+                    <br /> r = 2, c = 4<br />
+                    Output: [[1,2],[3,4]]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                m == mat.length
+                <br />
+                n == mat[i].length
+                <br />
+                1 &lt;= m, n &lt;= 100
+                <br />
+                -1000 &lt;= mat[i][j] &lt;= 1000
+                <br />1 &lt;= r, c &lt;= 300
               </>
             }
             tc="n"
