@@ -69992,8 +69992,38 @@ class Node {
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function Node(val,children) {
+                  this.val = val;
+                  this.children = children;
+               };
+               
+               
+               /**
+                * @param {Node|null} root
+                * @return {number[]}
+                */
+               var postorder = function(root) {
+                 if (!root) return [];
+                 const res = []
+                 const stack = []
+                 stack.push(root);
+                 while (stack.length) {
+                     root = stack.pop();
+                     res.push(root.val);
+                     for (let i of root.children)
+                         stack.push(i);
+                 }
+                 return res.reverse();    
+               };
+               
+               const n2 = new Node(2, [])
+               const n4 = new Node(4, [])
+               const n5 = new Node(5, [])
+               const n6 = new Node(6, [])
+               const n3 = new Node(3, [n5, n6])
+               const n1 = new Node(1, [n3, n2, n4])
+               console.log(postorder(n1))`,
+                output: `[ 5, 6, 3, 2, 4, 1 ]`,
               },
             }}
           />
