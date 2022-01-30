@@ -238,6 +238,7 @@ import Leetcode563 from "assets/leetcode/563.png";
 import Leetcode572 from "assets/leetcode/572.png";
 import Leetcode576 from "assets/leetcode/576.png";
 import Leetcode587 from "assets/leetcode/587.png";
+import Leetcode598 from "assets/leetcode/598.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -70680,6 +70681,7 @@ class Node {
             content2={null}
             examples={[
               {
+                img: Leetcode598,
                 content: (
                   <>
                     Input: m = 3, n = 3,
@@ -70722,8 +70724,25 @@ class Node {
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} m
+                * @param {number} n
+                * @param {number[][]} ops
+                * @return {number}
+                */
+               var maxCount = function(m, n, ops) {
+                 let minY = m;
+                 let minX = n;
+                 for (let op of ops) {
+                   minY = Math.min(minY, op[0]);
+                   minX = Math.min(minX, op[1]);
+                 }
+                 return minX * minY;    
+               };
+               
+               console.log(maxCount(3,3,[[2,2],[3,3]]))
+               `,
+                output: `4`,
               },
             }}
           />
