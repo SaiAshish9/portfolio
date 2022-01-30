@@ -69016,30 +69016,64 @@ class Node {
         ),
       },
       q472: {
-        title: "Q (Q472)",
+        title: "Q565. Array Nesting (Q472)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q565. Array Nesting (Q472)"
+            content1={
+              <>
+                ou are given an integer array nums of length n where nums is a
+                permutation of the numbers in the range [0, n - 1].
+                <br />
+                You should build a set s[k] ={" "}
+                {"{nums[k], nums[nums[k]], nums[nums[nums[k]]], ... }"}{" "}
+                subjected to the following rule:
+                <br />
+                The first element in s[k] starts with the selection of the
+                element nums[k] of index = k.
+                <br />
+                The next element in s[k] should be nums[nums[k]], and then
+                nums[nums[nums[k]]], and so on.
+                <br />
+                We stop adding right before a duplicate element occurs in s[k].
+                <br />
+                Return the longest length of a set s[k].
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [5,4,0,3,1,6,2] <br />
+                    Output: 4 <br />
+                    Explanation: <br />
+                    nums[0] = 5, nums[1] = 4, nums[2] = 0, nums[3] = 3, nums[4]
+                    = 1, nums[5] = 6, nums[6] = 2.
+                    <br /> One of the longest sets s[k]: <br />
+                    s[0] ={" "}
+                    {"{nums[0], nums[5], nums[6], nums[2]} = {5, 6, 2, 0}"}
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [0,1,2] <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= nums.length &lt;= 10^5 <br />
+                0 &lt;= nums[i] &lt; nums.length <br />
+                All the values of nums are unique.
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
