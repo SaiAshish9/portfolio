@@ -18215,15 +18215,9 @@ console.log(isPairSum(arr, arrSize, val));
             <Span>
               <b>Uber SDE Internship Interview Experience</b>
             </Span>
-            <Span>
-              <b>Total Number Of Questions Asked:</b> 3
-            </Span>
-            <Span>
-              <b>Duration:</b> 1hr
-            </Span>
-            <Span>
-              <b>[ Work In Progress ]</b>
-            </Span>
+            <Span>Total Number Of Questions Asked: 3</Span>
+            <Span>Duration: 1hr</Span>
+            <Span>[ Work In Progress ]</Span>
           </>
         ),
       },
