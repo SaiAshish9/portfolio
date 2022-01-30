@@ -69162,12 +69162,31 @@ class Node {
                 <br />1 &lt;= r, c &lt;= 300
               </>
             }
-            tc="n"
-            sc="n"
+            tc="r.c"
+            sc="r.c"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} mat
+                * @param {number} r
+                * @param {number} c
+                * @return {number[][]}
+                */
+               var matrixReshape = function(mat, r, c) {
+                 if (mat.length == 0 || r * c != mat.length * mat[0].length)
+                    return mat;
+                 const res = Array.from(Array(r),()=>Array(c).fill(0));
+                 let k = 0;
+                 for (let row of mat)
+                   for (let num of row) {
+                     res[parseInt(k / c)][k % c] = num;
+                     ++k;
+                   }
+                 return res;  
+               };
+               
+               console.log(matrixReshape([[1,2],[3,4]],2,4))`,
+                output: `[ [ 1, 2 ], [ 3, 4 ] ]`,
               },
             }}
           />
