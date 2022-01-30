@@ -4,8 +4,8 @@ import { CodeEditor, Span, Img } from "./components";
 const Comp = ({
   title = null,
   codes,
-  tc = "n",
-  sc = "n",
+  tc,
+  sc,
   constraints,
   fp,
   content1,
@@ -30,19 +30,27 @@ const Comp = ({
           <Span>{i.content}</Span>
         </div>
       ))}
-      <Span>
-        <b>Constraints:</b>
-      </Span>
+      {constraints && (
+        <Span>
+          <b>Constraints:</b>
+        </Span>
+      )}
+
       {constraints && <Span>{constraints}</Span>}
       {fp && <Span>{fp}</Span>}
-      <Span>
-        <b>Complexity:</b>
-      </Span>
-      <p>
-        Time: O({tc})
-        <br />
-        Space: O({sc})
-      </p>
+      {tc && sc && (
+        <>
+          <Span>
+            <b>Complexity:</b>
+          </Span>
+          <p>
+            Time: O({tc})
+            <br />
+            Space: O({sc})
+          </p>
+        </>
+      )}
+
       <CodeEditor
         options={{
           title,

@@ -70483,12 +70483,13 @@ class Node {
         ),
       },
       q487: {
-        title: "Q (Q487)",
+        title: "Q596. Classes More Than 5 Students (Q487)",
         content: (
           <Comp
+            title="Q596. Classes More Than 5 Students (Q487)"
             content1={
               <>
-                SQL Schema
+                <b> SQL Schema</b>
                 <br />
                 <b>Table: World</b>
                 <pre>
@@ -70556,13 +70557,14 @@ class Node {
                 ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
             codes={{
               Mysql: {
-                code: ``,
-                output: ``,
+                code: `
+                # {"headers": {"World": ["name", "continent",	"area",	"population", "gdp"]}, "rows": {"World": [["Afghanistan", "Asia", 652230, 25500100, 20343000000], ["Albania", "Europe", 28748, 2831741, 12960000000], ["Algeria", "Africa", 2381741, 37100000, 188681000000], ["Andorra", "Europe", 468, 78115,	3712000000], ["Angola", "Africa", 1246700, 20609294, 100990000000]]}}
+                select name, population, area
+                from world
+                where area >= 3000000 or population >= 25000000`,
+                output: `{"headers": ["name", "population", "area"], "values": [["Afghanistan", 25500100, 652230], ["Algeria", 37100000, 2381741]]}`,
               },
             }}
           />
@@ -70585,18 +70587,15 @@ class Node {
                 content: <></>,
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Mysql: {
+                code: `
+                # {"headers": {"Courses": ["student", "class"]}, "rows": {"Courses": [["A", "Math"], ["B", "English"], ["C", "Math"], ["D", "Biology"], ["E", "Math"], ["F", "Computer"], ["G", "Math"], ["H", "Math"], ["I", "Math"]]}}
+                select class
+                from courses
+                group by class
+                having count(student) >= 5`,
+                output: `{"headers": ["class"], "values": [["Math"]]}`,
               },
             }}
           />
