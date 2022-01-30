@@ -68727,30 +68727,52 @@ class Node {
         ),
       },
       q469: {
-        title: "Q (Q469)",
+        title: "Q561. Array Partition I (Q469)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q561. Array Partition I (Q469)"
+            content1={
+              <>
+                Given an integer array nums of 2n integers, group these integers
+                into n pairs (a1, b1), (a2, b2), ..., (an, bn) such that the sum
+                of min(ai, bi) for all i is maximized. Return the maximized sum.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,4,3,2]
+                    <br />
+                    Output: 4<br />
+                    Explanation: All possible pairings (ignoring the ordering of
+                    elements) are:
+                    <br />
+                    1. (1, 4), (2, 3) -&gt; min(1, 4) + min(2, 3) = 1 + 2 = 3
+                    <br />
+                    2. (1, 3), (2, 4) -&gt; min(1, 3) + min(2, 4) = 1 + 2 = 3
+                    <br />
+                    3. (1, 2), (3, 4) -&gt; min(1, 2) + min(3, 4) = 1 + 3 = 4
+                    <br />
+                    So the maximum possible sum is 4.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [6,2,6,5,1,2] <br />
+                    Output: 9<br />
+                    Explanation: The optimal pairing is (2, 1), (2, 5), (6, 6).
+                    min(2, 1) + min(2, 5) + min(6, 6) = 1 + 2 + 6 = 9.
+                  </>
+                ),
               },
             ]}
             constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
+            tc="n => n.log n"
+            sc="n => 1"
             codes={{
               Javascript: {
                 code: ``,
