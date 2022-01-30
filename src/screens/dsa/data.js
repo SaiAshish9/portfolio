@@ -69076,8 +69076,30 @@ class Node {
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var arrayNesting = function(nums) {
+                 let res = 0;
+                 for (let num of nums) {
+                   if (num == -1)
+                     continue;
+                   let index = num;
+                   let count = 0;
+                   while (nums[index] != -1) { 
+                     const cache = index;
+                     index = nums[index];  
+                     nums[cache] = -1;     
+                     ++count;
+                   }
+                   res = Math.max(res, count);
+                 }
+                 return res;
+               };
+               
+               console.log(arrayNesting([0,1,2]))`,
+                output: `1`,
               },
             }}
           />
