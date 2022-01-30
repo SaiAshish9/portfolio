@@ -235,6 +235,7 @@ import Leetcode554 from "assets/leetcode/554.png";
 import Leetcode558 from "assets/leetcode/558.png";
 import Leetcode559 from "assets/leetcode/559.png";
 import Leetcode563 from "assets/leetcode/563.png";
+import Leetcode572 from "assets/leetcode/572.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -69267,60 +69268,159 @@ class Node {
         ),
       },
       q475: {
-        title: "Q (Q475)",
+        title: "Q572. Subtree of Another Tree (Q475)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q572. Subtree of Another Tree (Q475)"
+            content1={
+              <>
+                Given the roots of two binary trees root and subRoot, return
+                true if there is a subtree of root with the same structure and
+                node values of subRoot and false otherwise.
+                <br />A subtree of a binary tree tree is a tree that consists of
+                a node in tree and all of this node's descendants. The tree tree
+                could also be considered as a subtree of itself.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode572,
+                content: (
+                  <>
+                    Input: root = [3,4,5,1,2], subRoot = [4,1,2] <br />
+                    Output: true
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [3,4,5,1,2,null,null,null,null,0],
+                    <br /> subRoot = [4,1,2]
+                    <br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The number of nodes in the root tree is in the range [1, 2000].
+                <br />
+                The number of nodes in the subRoot tree is in the range [1,
+                1000].
+                <br />
+                -10^4 &lt;= root.val &lt;= 10^4
+                <br />
+                -10^4 &lt;= subRoot.val &lt;= 10^4
               </>
             }
-            tc="n"
-            sc="n"
+            tc="m.n"
+            sc="h"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+              }
+              
+              /**
+               * @param {TreeNode} root
+               * @param {TreeNode} subRoot
+               * @return {boolean}
+               */
+              
+              function isSameTree(p, q) {
+                if (!p || !q)
+                  return p == q;
+                return p.val == q.val &&
+                       isSameTree(p.left, q.left) &&
+                       isSameTree(p.right, q.right);
+              }
+              
+              var isSubtree = function(root, subRoot) {
+                if (!root)
+                  return false;
+                if (isSameTree(root, subRoot))
+                  return true;
+                return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot); 
+              };
+              
+              const t = new TreeNode(3)
+              t.left = new TreeNode(4)
+              t.left.left = new TreeNode(1)
+              t.left.right = new TreeNode(2)
+              t.left.right = new TreeNode(5) 
+              console.log(isSubtree(t))`,
+                output: `false`,
               },
             }}
           />
         ),
       },
       q476: {
-        title: "Q (Q476)",
+        title: "Q575. Distribute Candies (Q476)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q575. Distribute Candies (Q476)"
+            content1={
+              <>
+                Alice has n candies, where the ith candy is of type
+                candyType[i]. Alice noticed that she started to gain weight, so
+                she visited a doctor.
+                <br />
+                The doctor advised Alice to only eat n / 2 of the candies she
+                has (n is always even). Alice likes her candies very much, and
+                she wants to eat the maximum number of different types of
+                candies while still following the doctor's advice.
+                <br />
+                Given the integer array candyType of length n, return the
+                maximum number of different types of candies she can eat if she
+                only eats n / 2 of them.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: candyType = [1,1,2,2,3,3] <br />
+                    Output: 3 <br />
+                    Explanation: Alice can only eat 6 / 2 = 3 candies. Since
+                    there are only 3 types, she can eat one of each type.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: candyType = [1,1,2,3] <br />
+                    Output: 2 <br />
+                    Explanation: Alice can only eat 4 / 2 = 2 candies. Whether
+                    she eats types [1,2], [1,3], or [2,3], she still can only
+                    eat 2 different types.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: candyType = [6,6,6,6] <br />
+                    Output: 1 <br />
+                    Explanation: Alice can only eat 4 / 2 = 2 candies. Even
+                    though she can eat 2 candies, she only has 1 type.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                n == candyType.length <br />
+                2 &lt;= n &lt;= 10^4 <br />
+                n is even. <br />
+                -10^5 &lt;= candyType[i] &lt;= 10^5
               </>
             }
             tc="n"
