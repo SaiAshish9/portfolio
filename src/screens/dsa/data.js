@@ -68251,34 +68251,86 @@ Window position                Median
         ),
       },
       q464: {
-        title: "Q (Q464)",
+        title: "Q556. Next Greater Element III (Q464)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q556. Next Greater Element III (Q464)"
+            content1={
+              <>
+                Given a positive integer n, find the smallest integer which has
+                exactly the same digits existing in the integer n and is greater
+                in value than n. If no such positive integer exists, return -1.
+                <br />
+                ould fit in 32-bit integer, if there is a valid answer but it
+                does not fit in 32-bit integer, return -1.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 12 <br />
+                    Output: 21
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 21 <br />
+                    Output: -1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
+            constraints={<>1 &lt;= n &lt;= 2^31 - 1</>}
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @return {number}
+                */
+               var nextGreaterElement = function(n) {
+                 let s = nextPermutation(String(n).split(""));
+                 let ans = +s.join("");
+                 if(ans>Math.pow(2,31)-1||ans<=n) return -1
+                 return ans;  
+               };
+               
+               function nextPermutation(s) {
+                 const n = s.length;
+                 let i;
+                 for (i = n - 2; i >= 0; --i)
+                   if (s[i] < s[i + 1])
+                     break;
+                 if (i >= 0) {
+                   for (let j = n - 1; j > i; --j)
+                     if (s[j] > s[i]) {
+                       swap(s,i,j)
+                       break;
+                     }
+                 }
+                 reverse(s, i + 1, n - 1);
+                 return s;
+               }
+               
+               function reverse(s, l, r) {
+                 while (l < r){
+                   swap(s,l++,r--)
+                 }
+               }
+               
+               function swap(s, i, j) {
+                 let temp = s[i];
+                 s[i] = s[j];
+                 s[j] = temp;
+               }
+               
+               console.log(nextGreaterElement(21))`,
+                output: `-1`,
               },
             }}
           />
