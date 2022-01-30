@@ -69501,42 +69501,139 @@ class Node {
             sc="m.n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} m
+                * @param {number} n
+                * @param {number} maxMove
+                * @param {number} startRow
+                * @param {number} startColumn
+                * @return {number}
+                */
+               var findPaths = function(m, n, maxMove, startRow, startColumn) {
+                 const kMod = 1e9 + 7;
+                 const dirs = [0, 1, 0, -1, 0];
+                 let res = 0;
+                 let dp =Array.from(Array(m),()=>Array(n).fill(0));
+                 dp[startRow][startColumn] = 1;
+                 while (maxMove-- > 0) {
+                   let newDp =Array.from(Array(m),()=>Array(n).fill(0));
+                   for (let r = 0; r < m; ++r)
+                     for (let c = 0; c < n; ++c)
+                       if (dp[r][c] > 0)
+                         for (let k = 0; k < 4; ++k) {
+                           let x = r + dirs[k];
+                           let y = c + dirs[k + 1];
+                           if (x < 0 || x == m || y < 0 || y == n)
+                             res = (res + dp[r][c]) % kMod;
+                           else
+                             newDp[x][y] = (newDp[x][y] + dp[r][c]) % kMod;
+                         }
+                   dp = newDp;
+                 }
+                 return res;   
+               };
+               
+               console.log(findPaths(2,2,2,0,0))`,
+                output: `6`,
               },
             }}
           />
         ),
       },
       q478: {
-        title: "Q (Q478)",
+        title: "Q581. Shortest Unsorted Continuous Subarray (Q478)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q581. Shortest Unsorted Continuous Subarray (Q478)"
+            content1={
+              <>
+                Given an integer array nums, you need to find one continuous
+                subarray that if you only sort this subarray in ascending order,
+                then the whole array will be sorted in ascending order.
+                <br />
+                Return the shortest such subarray and output its length.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [2,6,4,8,10,9,15]
+                    <br /> Output: 5
+                    <br /> Explanation: You need to sort [6, 4, 8, 10, 9] in
+                    ascending order to make the whole array sorted in ascending
+                    order.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,4] <br />
+                    Output: 0
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1] <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 10^4 <br />
+                -10^5 &lt;= nums[i] &lt;= 10^5
+              </>
+            }
             fp={
               <>
-                <b>Follow up :</b>
+                <b>Follow up : </b>Can you solve it in O(n) time complexity?
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var findUnsortedSubarray = function(nums) {
+                 const n = nums.length;
+                 let min = Number.MAX_SAFE_INTEGER;
+                 let max = Number.MIN_SAFE_INTEGER;
+                 let meetDecrease = false;
+                 let meetIncrease = false;
+                 for (let i = 1; i < n; ++i) {
+                   if (nums[i] < nums[i - 1])
+                     meetDecrease = true;
+                   if (meetDecrease)
+                     min = Math.min(min, nums[i]);
+                 }
+                 for (let i = n - 2; i >= 0; --i) {
+                   if (nums[i] > nums[i + 1])
+                     meetIncrease = true;
+                   if (meetIncrease)
+                     max = Math.max(max, nums[i]);
+                 }
+                 let l = 0;
+                 for (l = 0; l < n; ++l)
+                   if (nums[l] > min)
+                     break;
+                 let r = 0;
+                 for (r = n - 1; r >= 0; --r)
+                   if (nums[r] < max)
+                     break;
+                 return l > r ? 0 : r - l + 1;
+               };
+               
+               console.log(findUnsortedSubarray([2,6,4,8,10,9,15]))`,
+                output: `5`,
               },
             }}
           />
