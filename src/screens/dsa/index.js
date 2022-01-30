@@ -223,7 +223,7 @@ const InitialStep = () => {
 
       {selectedOption === -1 && <Img src={GaneshaImg} alt="img" />}
 
-      {selectedOption > -1 && selectedOption < 4 && (
+      {selectedOption > -1 && selectedOption < 5 && (
         <InitialStepContainer>
           <Desc>{entries[selectedOption][1].content}</Desc>
         </InitialStepContainer>

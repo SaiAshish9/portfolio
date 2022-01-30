@@ -240,6 +240,7 @@ import Leetcode576 from "assets/leetcode/576.png";
 import Leetcode587 from "assets/leetcode/587.png";
 import Leetcode598 from "assets/leetcode/598.png";
 import Leetcode606 from "assets/leetcode/606.png";
+import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -73804,6 +73805,15 @@ console.log(tree2str(t))`,
         ),
       },
     },
+  },
+  notes: {
+    title: "Notes",
+    types: [],
+    content: (
+      <>
+        <Img src={NotesImg} />
+      </>
+    ),
   },
 };
 
