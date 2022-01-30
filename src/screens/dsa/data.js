@@ -68055,34 +68055,106 @@ Window position                Median
         ),
       },
       q462: {
-        title: "Q (Q462)",
+        title: "Q553. Optimal Division (Q462)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q553. Optimal Division (Q462)"
+            content1={
+              <>
+                You are given an integer array nums. The adjacent integers in
+                nums will perform the float division.
+                <br />
+                For example, for nums = [2,3,4], we will evaluate the expression
+                "2/3/4".
+                <br />
+                However, you can add any number of parenthesis at any position
+                to change the priority of operations. You want to add these
+                parentheses such the value of the expression after the
+                evaluation is maximum.
+                <br />
+                Return the corresponding expression that has the maximum value
+                in string format.
+                <br />
+                Note: your expression should not contain redundant parenthesis.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1000,100,10,2]
+                    <br />
+                    Output: "1000/(100/10/2)"
+                    <br />
+                    Explanation:
+                    <br />
+                    1000/(100/10/2) = 1000/((100/10)/2) = 200
+                    <br />
+                    However, the bold parenthesis in "1000/((100/10)/2)" are
+                    redundant, since they don't influence the operation
+                    priority. So you should return "1000/(100/10/2)".
+                    <br /> Other cases:
+                    <br />
+                    1000/(100/10)/2 = 50
+                    <br />
+                    1000/(100/(10/2)) = 50
+                    <br />
+                    1000/100/10/2 = 0.5
+                    <br />
+                    1000/100/(10/2) = 2
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [2]
+                    <br />
+                    Output: "2"
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [2]
+                    <br />
+                    Output: "2"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= nums.length &lt;= 10 <br />
+                2 &lt;= nums[i] &lt;= 1000 <br />
+                There is only one optimal division for the given iput.
               </>
             }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {string}
+                */
+               var optimalDivision = function(nums) {
+                 let res = nums[0]
+                 if(nums.length == 1)
+                   return String(res)
+                 if(nums.length == 2)
+                   return res + '/' + nums[1]
+                 res += '/(' + nums[1]
+                 for(let i=2;i<nums.length;i++)
+                   res += '/' + nums[i]
+                 res += ')'
+                 return String(res)
+               };
+               
+               console.log(optimalDivision([1000,100,10,2]))`,
+                output: `1000/(100/10/2)`,
               },
             }}
           />
