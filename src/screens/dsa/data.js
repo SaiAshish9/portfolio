@@ -236,6 +236,7 @@ import Leetcode558 from "assets/leetcode/558.png";
 import Leetcode559 from "assets/leetcode/559.png";
 import Leetcode563 from "assets/leetcode/563.png";
 import Leetcode572 from "assets/leetcode/572.png";
+import Leetcode576 from "assets/leetcode/576.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -69464,6 +69465,7 @@ class Node {
             content2={null}
             examples={[
               {
+                img: Leetcode576,
                 content: (
                   <>
                     Input: m = 2, n = 2,
