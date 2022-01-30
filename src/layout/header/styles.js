@@ -117,6 +117,7 @@ export const Sun = styled(IoMdSunny)`
 export const Heart = styled(AiFillHeart)`
   ${IconStyle}
   font-size: 1.2rem;
+  margin-left: ${({ ismuted }) => (ismuted ? "1rem" : 0)};
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     margin-left: 0;
   }
