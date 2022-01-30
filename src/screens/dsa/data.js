@@ -69193,26 +69193,43 @@ class Node {
         ),
       },
       q474: {
-        title: "Q (Q474)",
+        title: "Q567. Permutation in String (Q474)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q567. Permutation in String (Q474)"
+            content1={
+              <>
+                Given two strings s1 and s2, return true if s2 contains a
+                permutation of s1, or false otherwise.
+                <br />
+                In other words, return true if one of s1's permutations is the
+                substring of s2.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s1 = "ab", s2 = "eidbaooo" <br />
+                    Output: true <br />
+                    Explanation: s2 contains one permutation of s1 ("ba").
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s1 = "ab", s2 = "eidboaoo" <br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= s1.length, s2.length &lt;= 10^4 <br />
+                s1 and s2 consist of lowercase English letters.
               </>
             }
             tc="n"
