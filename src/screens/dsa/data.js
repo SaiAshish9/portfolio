@@ -68781,8 +68781,20 @@ class Node {
             sc="n => 1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var arrayPairSum = function(nums) {
+                 let ans = 0;
+                 nums = nums.sort((a,b)=>a-b)
+                 for (let i = 0; i < nums.length; i += 2)
+                   ans += nums[i];
+                 return ans;
+               };
+               
+               console.log(arrayPairSum([1,4,3,2]))`,
+                output: `4`,
               },
             }}
           />
