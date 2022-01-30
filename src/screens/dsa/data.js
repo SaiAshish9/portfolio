@@ -239,6 +239,7 @@ import Leetcode572 from "assets/leetcode/572.png";
 import Leetcode576 from "assets/leetcode/576.png";
 import Leetcode587 from "assets/leetcode/587.png";
 import Leetcode598 from "assets/leetcode/598.png";
+import Leetcode606 from "assets/leetcode/606.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -71085,42 +71086,119 @@ class Node {
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} flowerbed
+                * @param {number} n
+                * @return {boolean}
+                */
+               var canPlaceFlowers = function(flowerbed, n) {
+                 if (n == 0)
+                     return true;
+                 for (let i = 0; i < flowerbed.length; ++i)
+                   if (flowerbed[i] == 0 && (i == 0 || flowerbed[i - 1] == 0) &&
+                       (i == flowerbed.length - 1 || flowerbed[i + 1] == 0)) {
+                     flowerbed[i] = 1;
+                     if (--n == 0)
+                       return true;
+                   }
+                 return false;
+               };
+               
+               console.log(canPlaceFlowers([1,0,0,0,1],1))`,
+                output: `true`,
               },
             }}
           />
         ),
       },
       q494: {
-        title: "Q (Q494)",
+        title: "Q606. Construct String from Binary Tree (Q494)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q606. Construct String from Binary Tree (Q494)"
+            content1={
+              <>
+                Given the root of a binary tree, construct a string consisting
+                of parenthesis and integers from a binary tree with the preorder
+                traversal way, and return it.
+                <br />
+                Omit all the empty parenthesis pairs that do not affect the
+                one-to-one mapping relationship between the string and the
+                original binary tree.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode606,
+                content: (
+                  <>
+                    Input: root = [1,2,3,4]
+                    <br />
+                    Output: "1(2(4))(3)"
+                    <br />
+                    Explanation: Originally, it needs to be "1(2(4)())(3()())",
+                    but you need to omit all the unnecessary empty parenthesis
+                    pairs. And it will be "1(2(4))(3)"
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [1,2,3,null,4]
+                    <br />
+                    Output: "1(2()(4))(3)"
+                    <br />
+                    Explanation: Almost the same as the first example, except we
+                    cannot omit the first parenthesis pair to break the
+                    one-to-one mapping relationship between the input and the
+                    output.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The number of nodes in the tree is in the range [1, 10^4].
+                <br />
+                -1000 &lt;= Node.val &lt;= 1000
               </>
             }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+              }
+              
+              /**
+               * @param {TreeNode} root
+               * @return {string}
+               */
+              var tree2str = function(root) {
+                return dfs(root);  
+              };
+              
+              function dfs(root){
+               if (!root)
+                    return "";
+                  if (root.right
+                    return root.val + "(" + dfs(root.left) + ")(" + dfs(root.right) + ")";
+                  if (root.left)
+                    return root.val + "(" + dfs(root.left) + ")";
+                  return root.val + "";
+              }
+              
+              const t = new TreeNode(1)
+              t.left = new TreeNode(2)
+              t.left.left = new TreeNode(4)
+              t.right = new TreeNode(3)
+              console.log(tree2str(t))`,
+                output: `1(2(4))(3`,
               },
             }}
           />
