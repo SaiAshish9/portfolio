@@ -70843,28 +70843,54 @@ class Node {
         ),
       },
       q491: {
-        title: "Q (Q491)",
+        title: "Q600. Non-negative Integers without Consecutive Ones (Q491)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given a positive integer n, return the number of the integers in
+                the range [0, n] whose binary representations do not contain
+                consecutive ones.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 5 <br />
+                    Output: 5 <br />
+                    Explanation: <br />
+                    Here are the non-negative integers &lt;= 5 with their
+                    corresponding binary representations: 0 : 0 <br />
+                    1 : 1 <br />
+                    2 : 10 <br />
+                    3 : 11 <br />
+                    4 : 100 <br />
+                    5 : 101 <br />
+                    Among them, only integer 3 disobeys the rule (two
+                    consecutive ones) and the other 5 satisfy the rule.{" "}
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1 <br />
+                    Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 2 <br />
+                    Output: 3
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
+            constraints={<>1 &lt;= n &lt;= 10^9</>}
             tc="n"
             sc="n"
             codes={{
