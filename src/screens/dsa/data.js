@@ -68337,30 +68337,52 @@ Window position                Median
         ),
       },
       q465: {
-        title: "Q (Q465)",
+        title: "Q557. Reverse Words in a String III (Q465)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q557. Reverse Words in a String III (Q465)"
+            content1={
+              <>
+                Given a string s, reverse the order of characters in each word
+                within a sentence while still preserving whitespace and initial
+                word order.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "Let's take LeetCode contest"
+                    <br />
+                    Output: "s'teL ekat edoCteeL tsetnoc"
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "Let's take LeetCode contest"
+                    <br />
+                    Output: "s'teL ekat edoCteeL tsetnoc"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= s.length &lt;= 5 * 10^4
+                <br />
+                s contains printable ASCII characters. <br />
+                s does not contain any leading or trailing spaces.
+                <br />
+                There is at least one word in s.
+                <br />
+                All the words in s are separated by a single space.
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
