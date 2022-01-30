@@ -71040,6 +71040,7 @@ class Node {
         title: "Q605. Can Place Flowers (Q493)",
         content: (
           <Comp
+            title="Q605. Can Place Flowers (Q493)"
             content1={
               <>
                 You have a long flowerbed in which some of the plots are
