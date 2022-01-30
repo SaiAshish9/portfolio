@@ -68914,26 +68914,49 @@ class Node {
         ),
       },
       q471: {
-        title: "Q (Q471)",
+        title: "Q564. Find the Closest Palindrome (Q471)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q564. Find the Closest Palindrome (Q471)"
+            content1={
+              <>
+                Given a string n representing an integer, return the closest
+                integer (not including itself), which is a palindrome. If there
+                is a tie, return the smaller one.
+                <br />
+                The closest is defined as the absolute difference minimized
+                between two integers.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = "123" <br />
+                    Output: "121"
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = "1"
+                    <br />
+                    Output: "0"
+                    <br />
+                    Explanation: 0 and 2 are the closest palindromes but we
+                    return the smallest which is 0.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= n.length &lt;= 18 <br />
+                n consists of only digits. <br />
+                n does not have leading zeros. <br />n is representing an
+                integer in the range [1, 1018 - 1].
               </>
             }
             tc="n"
