@@ -70891,12 +70891,39 @@ class Node {
               },
             ]}
             constraints={<>1 &lt;= n &lt;= 10^9</>}
-            tc="n"
-            sc="n"
+            tc="log n"
+            sc="log n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} len
+                * @return {number}
+                */
+               var findIntegers = function(n) {
+                 const bits = [];
+                 for (; n > 0; n >>= 1)
+                   bits.push(n & 1);
+                 let len = bits.length;
+                 let zero = Array(len).fill(0);
+                 let one = Array(len).fill(0);
+                 zero[0] = 1;
+                 one[0] = 1;
+                 for (let i = 1; i < len; ++i) {
+                   zero[i] = zero[i - 1] + one[i - 1];
+                   one[i] = zero[i - 1];
+                 }
+                 let ans = zero[len - 1] + one[len - 1];
+                 for (let i = len - 2; i >= 0; --i) {
+                   if (bits[i] == '1' && bits[i + 1] == '1')
+                     break;
+                   if (bits[i] == '0' && bits[i + 1] == '0')
+                     ans -= one[i];
+                 }
+                 return ans;    
+               };
+               
+               console.log(findIntegers(5))`,
+                output: `5`,
               },
             }}
           />
