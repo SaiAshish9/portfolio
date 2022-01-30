@@ -234,6 +234,7 @@ import Leetcode547 from "assets/leetcode/547.png";
 import Leetcode554 from "assets/leetcode/554.png";
 import Leetcode558 from "assets/leetcode/558.png";
 import Leetcode559 from "assets/leetcode/559.png";
+import Leetcode563 from "assets/leetcode/563.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -68801,30 +68802,80 @@ class Node {
         ),
       },
       q470: {
-        title: "Q (Q470)",
+        title: "Q563. Binary Tree Tilt (Q470)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q563. Binary Tree Tilt (Q470)"
+            content1={
+              <>
+                Given the root of a binary tree, return the sum of every tree
+                node's tilt.
+                <br />
+                The tilt of a tree node is the absolute difference between the
+                sum of all left subtree node values and all right subtree node
+                values. If a node does not have a left child, then the sum of
+                the left subtree node values is treated as 0. The rule is
+                similar if the node does not have a right child.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [1,2,3] <br />
+                    Output: 1 <br />
+                    Explanation: <br />
+                    Tilt of node 2 : |0-0| = 0 (no children) <br />
+                    Tilt of node 3 : |0-0| = 0 (no children) <br />
+                    Tilt of node 1 : |2-3| = 1 (left subtree is just left child,
+                    so sum is 2; right subtree is just right child, so sum is 3)
+                    <br />
+                    Sum of every tilt : 0 + 0 + 1 = 1
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [4,2,9,3,5,null,7] <br />
+                    Output: 15 <br />
+                    Explanation: <br />
+                    Tilt of node 3 : |0-0| = 0 (no children) <br />
+                    Tilt of node 5 : |0-0| = 0 (no children) <br />
+                    Tilt of node 7 : |0-0| = 0 (no children) <br />
+                    Tilt of node 2 : |3-5| = 2 (left subtree is just left child,
+                    so sum is 3; right subtree is just right child, so sum is 5)
+                    <br />
+                    Tilt of node 9 : |0-7| = 7 (no left child, so sum is 0;
+                    right subtree is just right child, so sum is 7)
+                    <br />
+                    Tilt of node 4 : |(3+5+2)-(9+7)| = |10-16| = 6 (left subtree
+                    values are 3, 5, and 2, which sums to 10; right subtree
+                    values are 9 and 7, which sums to 16)
+                    <br />
+                    Sum of every tilt : 0 + 0 + 0 + 2 + 7 + 6 = 15
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [21,7,14,1,1,2,2,3,3] <br />
+                    Output: 9
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The number of nodes in the tree is in the range [0, 10^4].
+                <br />
+                -1000 &lt;= Node.val &lt;= 1000
               </>
             }
             tc="n"
-            sc="n"
+            sc="n.log n"
             codes={{
               Javascript: {
                 code: ``,
