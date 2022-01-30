@@ -71082,7 +71082,7 @@ class Node {
               </>
             }
             tc="n"
-            sc="`"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
