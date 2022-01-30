@@ -154,7 +154,9 @@ export const StyledSlider = styled(Slider)`
 
 export const SubTitle = styled.a`
   color: ${({ theme: { current } }) =>
-    current !== Theme.dark ? veryDarkGray : white};
+    current === Theme.light || current === Theme.highContrast
+      ? veryDarkGray
+      : white};
   text-align: center;
   font-weight: ${FontWeight.semiBold};
   margin: 1rem 0 !important;
