@@ -68161,9 +68161,10 @@ Window position                Median
         ),
       },
       q463: {
-        title: "Q (Q463)",
+        title: "Q554. Brick Wall (Q463)",
         content: (
           <Comp
+            title="Q554. Brick Wall (Q463)"
             content1={<></>}
             content2={null}
             examples={[
