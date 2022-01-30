@@ -27,8 +27,14 @@ const data = [
       "https://res.cloudinary.com/saiashish/image/upload/v1633857709/WhatsApp_Image_2021-10-10_at_14.48.57_1_meqy86.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1633857709/WhatsApp_Image_2021-10-10_at_14.48.57_fefetd.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1634480128/WhatsApp_Image_2021-10-15_at_19.55.26_yyocec.jpg",
+      "https://res.cloudinary.com/saiashish/image/upload/v1643580585/Screenshot_2022-01-31_at_3.37.58_AM_v1e6nn.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1643580585/Screenshot_2022-01-31_at_3.38.07_AM_hzbuud.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1643580585/Screenshot_2022-01-31_at_3.38.32_AM_ich2pd.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1643580585/Screenshot_2022-01-31_at_3.38.20_AM_ryompq.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1643580585/Screenshot_2022-01-31_at_3.38.39_AM_yoalcn.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1643580585/Screenshot_2022-01-31_at_3.38.54_AM_uzfchh.png"
     ],
-    link: "https://paytm.com",
+    link: "https://paytm.com/blog/engineering/plutus-a-cloud-cost-optimization-tool/",
   },
   {
     img: VelvetImg,
