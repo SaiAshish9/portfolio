@@ -69443,26 +69443,56 @@ class Node {
         ),
       },
       q477: {
-        title: "Q (Q477)",
+        title: "Q576. Out of Boundary Paths (Q477)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q576. Out of Boundary Paths (Q477)"
+            content1={
+              <>
+                There is an m x n grid with a ball. The ball is initially at the
+                position [startRow, startColumn]. You are allowed to move the
+                ball to one of the four adjacent cells in the grid (possibly out
+                of the grid crossing the grid boundary). You can apply at most
+                maxMove moves to the ball.
+                <br />
+                Given the five integers m, n, maxMove, startRow, startColumn,
+                return the number of paths to move the ball out of the grid
+                boundary. Since the answer can be very large, return it modulo
+                109 + 7.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: m = 2, n = 2,
+                    <br /> maxMove = 2, <br />
+                    startRow = 0,
+                    <br /> startColumn = 0<br />
+                    Output: 6
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: m = 1, n = 3,
+                    <br /> maxMove = 3, <br />
+                    startRow = 0,
+                    <br /> startColumn = 1<br />
+                    Output: 12
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= m, n &lt;= 50
+                <br />
+                0 &lt;= maxMove &lt;= 50
+                <br />
+                0 &lt;= startRow &lt; m<br />0 &lt;= startColumn &lt; n
               </>
             }
             tc="n"
