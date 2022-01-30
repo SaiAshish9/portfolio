@@ -69495,8 +69495,8 @@ class Node {
                 0 &lt;= startRow &lt; m<br />0 &lt;= startColumn &lt; n
               </>
             }
-            tc="n"
-            sc="n"
+            tc="m.n.N"
+            sc="m.n"
             codes={{
               Javascript: {
                 code: ``,
