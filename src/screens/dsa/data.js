@@ -233,6 +233,7 @@ import Leetcode543 from "assets/leetcode/543.png";
 import Leetcode547 from "assets/leetcode/547.png";
 import Leetcode554 from "assets/leetcode/554.png";
 import Leetcode558 from "assets/leetcode/558.png";
+import Leetcode559 from "assets/leetcode/559.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -68495,7 +68496,7 @@ class Node {
                 False we represent it as 0.
               </>
             }
-            img={Leetcode538}
+            img={Leetcode558}
             examples={[
               {
                 content: (
@@ -68536,9 +68537,48 @@ class Node {
             tc="n^2.log4 n"
             sc="log4 n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Javas: {
+                code: `// class Node {
+                  //     public boolean val;
+                  //     public boolean isLeaf;
+                  //     public Node topLeft;
+                  //     public Node topRight;
+                  //     public Node bottomLeft;
+                  //     public Node bottomRight;
+                  //     public Node() {}
+                  //     public Node(boolean _val,boolean _isLeaf,Node _topLeft,Node _topRight,Node _bottomLeft,Node _bottomRight) {
+                  //         val = _val;
+                  //         isLeaf = _isLeaf;
+                  //         topLeft = _topLeft;
+                  //         topRight = _topRight;
+                  //         bottomLeft = _bottomLeft;
+                  //         bottomRight = _bottomRight;
+                  //     }
+                  // };
+                  
+                  class Solution {
+                    public Node intersect(Node quadTree1, Node quadTree2) {
+                      if (quadTree1.isLeaf)
+                        return quadTree1.val ? quadTree1 : quadTree2;
+                      if (quadTree2.isLeaf)
+                        return quadTree2.val ? quadTree2 : quadTree1;
+                  
+                      Node topLeft = intersect(quadTree1.topLeft, quadTree2.topLeft);
+                      Node topRight = intersect(quadTree1.topRight, quadTree2.topRight);
+                      Node bottomLeft = intersect(quadTree1.bottomLeft, quadTree2.bottomLeft);
+                      Node bottomRight = intersect(quadTree1.bottomRight, quadTree2.bottomRight);
+                  
+                      if (topLeft.val == topRight.val &&
+                          topLeft.val == bottomLeft.val &&
+                          topLeft.val == bottomRight.val &&
+                          topLeft.isLeaf && topRight.isLeaf &&
+                          bottomLeft.isLeaf && bottomRight.isLeaf)
+                        return new Node(topLeft.val, true);
+                      return new Node(false, false, topLeft, topRight, bottomLeft, bottomRight);
+                    }
+                  }
+                  `,
+                output: `[[0,0],[1,1],[1,1],[1,1],[1,0]]`,
               },
             }}
           />
@@ -68548,27 +68588,46 @@ class Node {
         title: "Q (Q467)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given a n-ary tree, find its maximum depth.
+                <br />
+                The maximum depth is the number of nodes along the longest path
+                from the root node down to the farthest leaf node.
+                <br />
+                Nary-Tree input serialization is represented in their level
+                order traversal, each group of children is separated by the null
+                value (See examples).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode559,
+                content: (
+                  <>
+                    The total number of nodes is in the range [0, 104]. <br />
+                    The depth of the n-ary tree is less than or equal to 1000.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    The total number of nodes is in the range [0, 104]. <br />
+                    The depth of the n-ary tree is less than or equal to 1000.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The total number of nodes is in the range [0, 104]. <br />
+                The depth of the n-ary tree is less than or equal to 1000.
               </>
             }
             tc="n"
-            sc="n"
+            sc="h"
             codes={{
               Javascript: {
                 code: ``,
