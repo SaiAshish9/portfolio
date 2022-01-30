@@ -68821,6 +68821,7 @@ class Node {
             content2={null}
             examples={[
               {
+                img: Leetcode563,
                 content: (
                   <>
                     Input: root = [1,2,3] <br />
@@ -68878,8 +68879,35 @@ class Node {
             sc="n.log n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+                }
+                
+                /**
+                 * @param {TreeNode} root
+                 * @return {number}
+                 */
+                var findTilt = function(root) {
+                  const res = { val : 0 }
+                  sum(root,res);
+                  return res.val;
+                }
+                
+                function sum(root,res) {
+                  if (!root) return 0;
+                  let l = sum(root.left,res);
+                  let r = sum(root.right,res);
+                  res.val += Math.abs(l - r);
+                  return root.val + l + r;
+                }  
+                
+                const t = new TreeNode(1)
+                t.left = new TreeNode(2)
+                t.right = new TreeNode(3)
+                console.log(findTilt(t))`,
+                output: `1`,
               },
             }}
           />
