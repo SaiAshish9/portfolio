@@ -69424,11 +69424,19 @@ class Node {
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} candyType
+                * @return {number}
+                */
+               var distributeCandies = function(candyType) {
+                 return Math.min(parseInt(candyType.length / 2), new Set(candyType).size)  
+               };
+               
+               console.log(distributeCandies([1,1,2,2,3,3]))`,
+                output: `3`,
               },
             }}
           />
