@@ -71223,31 +71223,127 @@ console.log(tree2str(t))`,
         content: (
           <Comp
             title="Q609. Find Duplicate File in System (Q495)"
-            content1={<></>}
+            content1={
+              <>
+                Given a list paths of directory info, including the directory
+                path, and all the files with contents in this directory, return
+                all the duplicate files in the file system in terms of their
+                paths. You may return the answer in any order.
+                <br />
+                A group of duplicate files consists of at least two files that
+                have the same content.
+                <br />
+                A single directory info string in the input list has the
+                following format:
+                <br />
+                "root/d1/d2/.../dm f1.txt(f1_content) f2.txt(f2_content) ...
+                fn.txt(fn_content)"
+                <br />
+                It means there are n files (f1.txt, f2.txt ... fn.txt) with
+                content (f1_content, f2_content ... fn_content) respectively in
+                the directory "root/d1/d2/.../dm". Note that n >= 1 and m >= 0.
+                If m = 0, it means the directory is just the root directory.
+                <br />
+                The output is a list of groups of duplicate file paths. For each
+                group, it contains all the file paths of the files that have the
+                same content. A file path is a string that has the following
+                format:
+                <br />
+                "directory_path/file_name.txt"
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: paths = ["root/a 1.txt(abcd) 2.txt(efgh)","root/c
+                    3.txt(abcd)","root/c/d 4.txt(efgh)"]
+                    <br /> Output:
+                    [["root/a/2.txt","root/c/d/4.txt"],["root/a/1.txt","root/c/3.txt"]]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: paths = ["root/a 1.txt(abcd) 2.txt(efgh)","root/c
+                    3.txt(abcd)","root/c/d 4.txt(efgh)"]
+                    <br /> Output:
+                    [["root/a/2.txt","root/c/d/4.txt"],["root/a/1.txt","root/c/3.txt"]]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= paths.length &lt;= 2 * 104
+                <br /> 1 &lt;= paths[i].length &lt;= 3000
+                <br /> 1 &lt;= sum(paths[i].length) &lt;= 5 * 10^5
+                <br /> paths[i] consist of English letters, digits, '/', '.',
+                '(', ')', and ' '.
+                <br /> You may assume no files or directories share the same
+                name in the same directory.
+                <br /> You may assume each given directory info represents a
+                unique directory. A single blank space separates the directory
+                path and file info.
+              </>
+            }
             fp={
               <>
-                <b>Follow up :</b>
+                <b>Follow up :</b>Imagine you are given a real file system, how
+                will you search files? DFS or BFS?
+                <br />
+                If the file content is very large (GB level), how will you
+                modify your solution?
+                <br />
+                If you can only read the file by 1kb each time, how will you
+                modify your solution?
+                <br />
+                What is the time complexity of your modified solution? What is
+                the most time-consuming part and memory-consuming part of it?
+                How to optimize?
+                <br />
+                How to make sure the duplicated files you find are not false
+                positive?
               </>
             }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string[]} paths
+                * @return {string[][]}
+                */
+               var findDuplicate = function(paths) {
+                 const res = [];
+                 const m = {}
+               
+                 for (let path of paths) {
+                   const words = path.split(" ");
+                   const rootPath = words[0]; 
+                   for (let i = 1; i < words.length; ++i) {
+                     const fileAndContent = words[i]; 
+                     let l = fileAndContent.indexOf('(');
+                     let r = fileAndContent.indexOf(')');
+                     let file = fileAndContent.substring(0, l);
+                     let content = fileAndContent.substring(l + 1, r);
+                     let filePath = rootPath + '/' + file;
+                     m[content] = !m[content] ? [filePath] : [...m[content],filePath]
+                   }
+                 }
+                 for (let filePaths of Object.values(m))
+                   if (filePaths.length > 1)
+                     res.push(filePaths);
+                 return res;
+               };
+               
+               console.log(findDuplicate(["root/a 1.txt(abcd) 2.txt(efgh)","root/c 3.txt(abcd)","root/c/d 4.txt(efgh)"]))`,
+                output: `[
+                  [ 'root/a/1.txt', 'root/c/3.txt' ],
+                  [ 'root/a/2.txt', 'root/c/d/4.txt' ]
+                ]`,
               },
             }}
           />
