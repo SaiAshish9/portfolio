@@ -71973,6 +71973,7 @@ console.log(tree2str(t))`,
         title: "Q626. Exchange Seats (Q502)",
         content: (
           <Comp
+            title="Q626. Exchange Seats (Q502)"
             content1={
               <>
                 <b>SQL Schema</b>
@@ -72042,9 +72043,16 @@ console.log(tree2str(t))`,
               },
             ]}
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Mysql: {
+                code: `SELECT
+                s1.id, COALESCE(s2.student, s1.student) AS student
+            FROM
+                seat s1
+                    LEFT JOIN
+                seat s2 ON ((s1.id + 1) ^ 1) - 1 = s2.id
+            ORDER BY s1.id;
+      `,
+                output: `{"headers": ["id", "student"], "values": [[1, "Doris"], [2, "Abbot"], [3, "Green"], [4, "Emerson"], [5, "Jeames"]]}`,
               },
             }}
           />
