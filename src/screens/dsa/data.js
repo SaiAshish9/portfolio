@@ -73062,6 +73062,7 @@ class Solution:
         title: "Q640. Solve the Equation (Q513)",
         content: (
           <Comp
+            title="Q640. Solve the Equation (Q513)"
             content1={
               <>
                 Solve a given equation and return the value of 'x' in the form
@@ -73119,8 +73120,48 @@ class Solution:
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} equation
+                * @return {string}
+                */
+               var solveEquation = function(equation) {
+                 const equations = equation.split("=");
+                 let lhs = calculate(equations[0]);
+                 let rhs = calculate(equations[1]);
+                 let coefficient = lhs[0] - rhs[0];
+                 let constant = rhs[1] - lhs[1];
+                 if (coefficient == 0 && constant == 0)
+                   return "Infinite solutions";
+                 if (coefficient == 0 && constant != 0)
+                   return "No solution";
+                 return "x=" + parseInt(constant / coefficient);
+               };
+               
+               function calculate(s) {
+                 let coefficient = 0;
+                 let constant = 0;
+                 let num = 0;
+                 let sign = 1;
+                 for (let i = 0; i < s.length; ++i) {
+                   const c = s[i];
+                   if (Number.isInteger(+c))
+                     num = num * 10 + (c - '0');
+                   else if (c == '+' || c == '-') {
+                     constant += sign * num;
+                     sign = c == '+' ? 1 : -1;
+                     num = 0;
+                   } else {
+                     if (i > 0 && num == 0 && s[i - 1] == '0')
+                       continue;
+                     coefficient += num == 0 ? sign : sign * num;
+                     num = 0;
+                   }
+                 }
+                 return [coefficient, constant + sign * num];
+               }
+               
+               console.log(solveEquation("x+5-3+x=6+x-2"))`,
+                output: `x=2`,
               },
             }}
           />
