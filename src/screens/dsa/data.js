@@ -246,6 +246,7 @@ import Leetcode637 from "assets/leetcode/637.png";
 import Leetcode652 from "assets/leetcode/652.png";
 import Leetcode653 from "assets/leetcode/653.png";
 import Leetcode654 from "assets/leetcode/654.png";
+import Leetcode655 from "assets/leetcode/655.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -74304,6 +74305,7 @@ class Solution:
             content2={null}
             examples={[
               {
+                img: Leetcode655,
                 content: (
                   <>
                     Input: root = [1,2] Output: <br />
