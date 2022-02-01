@@ -73401,31 +73401,68 @@ class Solution:
         title: "Q645. Set Mismatch (Q516)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q645. Set Mismatch (Q516)"
+            content1={
+              <>
+                You have a set of integers s, which originally contains all the
+                numbers from 1 to n. Unfortunately, due to some error, one of
+                the numbers in s got duplicated to another number in the set,
+                which results in repetition of one number and loss of another
+                number.
+                <br />
+                You are given an integer array nums representing the data status
+                of this set after the error.
+                <br />
+                Find the number that occurs twice and the number that is missing
+                and return them in the form of an array.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,1] <br />
+                    Output: [1,2]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,1] <br />
+                    Output: [1,2]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                2 &lt;= nums.length &lt;= 10^4 <br />1 &lt;= nums[i] &lt;= 10^4
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number[]}
+                */
+               var findErrorNums = function(nums) {
+                 let duplicate = 0;
+                 for(let num of nums)
+                   if(nums[Math.abs(+num) - 1] < 0)
+                     duplicate = Math.abs(+num)
+                   else
+                     nums[Math.abs(num) - 1] *= -1
+                 for(let i in nums)
+                   if(nums[+i] > 0)
+                     return [duplicate, +i + 1]    
+               };
+               
+               console.log(findErrorNums([1,1]))`,
+                output: `[ 1, 2 ]`,
               },
             }}
           />
