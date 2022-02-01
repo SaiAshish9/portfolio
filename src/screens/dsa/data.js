@@ -74781,8 +74781,30 @@ class Solution:
             sc="m.n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} img
+                * @return {number[][]}
+                */
+               var imageSmoother = function(img) {
+                 let m = img.length;
+                 let n = img[0].length;
+                 const res = Array.from(Array(m),()=>Array(n).fill(0));
+                 for (let i = 0; i < m; ++i)
+                   for (let j = 0; j < n; ++j) {
+                     let ones = 0;
+                     let count = 0;
+                     for (let y = Math.max(0, i - 1); y < Math.min(m, i + 2); ++y)
+                       for (let x = Math.max(0, j - 1); x < Math.min(n, j + 2); ++x) {
+                         ones += img[y][x];
+                         ++count;
+                       }
+                     res[i][j] = parseInt(ones / count);
+                   }
+                 return res;
+               };
+               
+               console.log(imageSmoother([[1,1,1],[1,0,1],[1,1,1]]))`,
+                output: `[ [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ] ]`,
               },
             }}
           />
