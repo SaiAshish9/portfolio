@@ -71531,6 +71531,7 @@ console.log(tree2str(t))`,
         title: "Q620. Not Boring Movies (Q498)",
         content: (
           <Comp
+            title="Q620. Not Boring Movies (Q498)"
             content1={
               <>
                 <b>SQL Schema</b>
@@ -71610,31 +71611,94 @@ console.log(tree2str(t))`,
         title: "Q621. Task Scheduler (Q499)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q621. Task Scheduler (Q499)"
+            content1={
+              <>
+                Given a characters array tasks, representing the tasks a CPU
+                needs to do, where each letter represents a different task.
+                Tasks could be done in any order. Each task is done in one unit
+                of time. For each unit of time, the CPU could complete either
+                one task or just be idle.
+                <br />
+                However, there is a non-negative integer n that represents the
+                cooldown period between two same tasks (the same letter in the
+                array), that is that there must be at least n units of time
+                between any two same tasks.
+                <br />
+                Return the least number of units of times that the CPU will take
+                to finish all the given tasks.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: tasks = ["A","A","A","B","B","B"], n = 2
+                    <br /> Output: 8<br />
+                    Explanation: <br />
+                    A -&gt; B -&gt; idle -&gt; A -&gt; B -&gt; idle -&gt; A
+                    -&gt; B<br />
+                    There is at least 2 units of time between any two same
+                    tasks.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: tasks = ["A","A","A","B","B","B"], n = 2
+                    <br /> Output: 8
+                    <br /> Explanation:
+                    <br /> A -&gt; B -&gt; idle -&gt; A -&gt; B -&gt; idle -&gt;
+                    A -&gt; B
+                    <br /> There is at least 2 units of time between any two
+                    same tasks.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: tasks =
+                    ["A","A","A","A","A","A","B","C","D","E","F","G"], n = 2
+                    <br /> Output: 16
+                    <br /> Explanation:
+                    <br /> One possible solution is
+                    <br /> A -&gt; B -&gt; C -&gt; A -&gt; D -&gt; E -&gt; A
+                    -&gt; F -&gt; G -&gt; A -&gt; idle -&gt; idle -&gt; A -&gt;
+                    idle -&gt; idle -&gt; A
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= task.length &lt;= 10^4 <br />
+                tasks[i] is upper-case English letter. <br />
+                The integer n is in the range [0, 100].
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {character[]} tasks
+                * @param {number} n
+                * @return {number}
+                */
+               var leastInterval = function(tasks, n) {
+                 const count = Array(26).fill(0);
+                 for (let task of tasks)
+                   ++count[task.charCodeAt(0) - 65];
+                 const maxFreq = Math.max(...count)
+                 const maxFreqTaskOccupy = (maxFreq - 1) * (n + 1);
+                 const nMaxFreq = count.filter(c => c == maxFreq).length;
+                 return Math.max(maxFreqTaskOccupy + nMaxFreq, tasks.length);
+               };
+               console.log(leastInterval(["A","A","A","B","B","B"],2))`,
+                output: `8`,
               },
             }}
           />
