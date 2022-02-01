@@ -71531,29 +71531,72 @@ console.log(tree2str(t))`,
         title: "Q620. Not Boring Movies (Q498)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                <b>SQL Schema</b>
+                <br />
+                <b>Table: Cinema</b>
+                <pre>
+                  {`    
++----------------+----------+
+| Column Name    | Type     |
++----------------+----------+
+| id             | int      |
+| movie          | varchar  |
+| description    | varchar  |
+| rating         | float    |
++----------------+----------+               
+                  `}
+                </pre>
+                id is the primary key for this table.
+                <br />
+                Each row contains information about the name of a movie, its
+                genre, and its rating.
+                <br />
+                rating is a 2 decimal places float in the range [0, 10]
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: <br />
+                    Cinema table: <br />
+                    <pre>
+                      {`
++----+------------+-------------+--------+
+| id | movie      | description | rating |
++----+------------+-------------+--------+
+| 1  | War        | great 3D    | 8.9    |
+| 2  | Science    | fiction     | 8.5    |
+| 3  | irish      | boring      | 6.2    |
+| 4  | Ice song   | Fantacy     | 8.6    |
+| 5  | House card | Interesting | 9.1    |
++----+------------+-------------+--------+  
+  `}
+                    </pre>
+                    Output: <br />
+                    <pre>
+                      {`
++----+------------+-------------+--------+
+| id | movie      | description | rating |
++----+------------+-------------+--------+
+| 5  | House card | Interesting | 9.1    |
+| 1  | War        | great 3D    | 8.9    |
++----+------------+-------------+--------+  
+  `}
+                    </pre>
+                    Explanation: <br />
+                    We have three movies with odd-numbered IDs: 1, 3, and 5. The
+                    movie with ID = 3 is boring so we do not include it in the
+                    answer.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
             codes={{
-              Javascript: {
+              Mysql: {
                 code: ``,
                 output: ``,
               },
