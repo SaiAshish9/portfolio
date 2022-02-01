@@ -73743,6 +73743,7 @@ class Solution:
         title: "Q649. Dota2 Senate (Q520)",
         content: (
           <Comp
+            title="Q649. Dota2 Senate (Q520)"
             content1={
               <>
                 In the world of Dota2, there are two parties: the Radiant and
