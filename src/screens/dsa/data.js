@@ -71597,8 +71597,10 @@ console.log(tree2str(t))`,
             ]}
             codes={{
               Mysql: {
-                code: ``,
-                output: ``,
+                code: `SELECT * FROM Cinema 
+                WHERE description NOT LIKE "%boring%" AND id % 2 = 1
+                ORDER BY rating DESC;`,
+                output: `{"headers": ["id", "movie", "description", "rating"], "values": [[5, "House card", "Interesting", 9.1], [1, "War", "great 3D", 8.9]]}`,
               },
             }}
           />
