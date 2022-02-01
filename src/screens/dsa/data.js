@@ -243,6 +243,7 @@ import Leetcode606 from "assets/leetcode/606.png";
 import Leetcode617 from "assets/leetcode/617.png";
 import Leetcode623 from "assets/leetcode/623.png";
 import Leetcode637 from "assets/leetcode/637.png";
+import Leetcode652 from "assets/leetcode/652.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -73939,23 +73940,43 @@ class Solution:
         title: "Q652. Find Duplicate Subtrees (Q522)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q652. Find Duplicate Subtrees (Q522)"
+            content1={
+              <>
+                Given the root of a binary tree, return all duplicate subtrees.
+                <br />
+                For each kind of duplicate subtrees, you only need to return the
+                root node of any one of them.
+                <br />
+                Two trees are duplicate if they have the same structure with the
+                same node values.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode652,
+                content: (
+                  <>
+                    Input: root = [1,2,3,4,null,2,4,null,null,4] Output:
+                    [[2,4],[4]]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: <>Input: root = [2,1,1] Output: [[1]]</>,
               },
               {
-                content: <></>,
+                content: (
+                  <>Input: root = [2,2,2,3,null,3,null] Output: [[2,3],[3]]</>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The number of the nodes in the tree will be in the range [1,
+                10^4]
+                <br /> -200 &lt;= Node.val &lt;= 200
               </>
             }
             tc="n"
