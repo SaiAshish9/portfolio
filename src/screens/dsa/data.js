@@ -72684,8 +72684,7 @@ console.log(tree2str(t))`,
             sc="n"
             codes={{
               Python: {
-                code: `
-// 2
+                code: `// 2
 class Solution:
   def exclusiveTime(self, n: int, logs: List[str]) -> List[int]:        
       def convertToArray(log: str):
