@@ -71901,8 +71901,69 @@ console.log(tree2str(t))`,
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+                }
+                
+                /**
+                 * @param {TreeNode} root
+                 * @param {number} val
+                 * @param {number} depth
+                 * @return {TreeNode}
+                 */
+                var addOneRow = function(root, val, depth) {
+                  if (depth == 1) {
+                    const newRoot = new TreeNode(val);
+                    newRoot.left = root;
+                    return newRoot;
+                  }
+                  let d = 0;
+                  const q = [root];
+                  while (q.length) {
+                    ++d;
+                    for (let size = q.length; size > 0; --size) {
+                      let node = q.shift();
+                      if (node.left != null)
+                        q.push(node.left);
+                      if (node.right != null)
+                        q.push(node.right);
+                      if (d == depth - 1) {
+                        const cachedLeft = node.left;
+                        const cachedRight = node.right;
+                        node.left = new TreeNode(val);
+                        node.right = new TreeNode(val);
+                        node.left.left = cachedLeft;
+                        node.right.right = cachedRight;
+                      }
+                    }
+                    if (depth == d - 1)
+                      break;
+                  }
+                  return root;  
+                };
+                
+                const t = new TreeNode(4)
+                t.left = new TreeNode(2)
+                t.left.left = new TreeNode(3)
+                t.left.right = new TreeNode(1)
+                t.right = new TreeNode(6)
+                t.right.right = new TreeNode(5)
+                console.log(addOneRow(t,1,2))`,
+                output: `TreeNode {
+                  val: 4,
+                  left: TreeNode {
+                    val: 1,
+                    left: TreeNode { val: 2, left: [TreeNode], right: [TreeNode] },
+                    right: null
+                  },
+                  right: TreeNode {
+                    val: 1,
+                    left: null,
+                    right: TreeNode { val: 6, left: null, right: [TreeNode] }
+                  }
+                }`,
               },
             }}
           />
