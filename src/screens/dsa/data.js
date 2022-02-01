@@ -74416,6 +74416,7 @@ class Solution:
         title: "Q657. Robot Return to Origin (Q526)",
         content: (
           <Comp
+            title="Q657. Robot Return to Origin (Q526)"
             content1={
               <>
                 There is a robot starting at the position (0, 0), the origin, on
@@ -74470,8 +74471,8 @@ class Solution:
                 moves only contains the characters 'U', 'D', 'L' and 'R'.
               </>
             }
-            tc="n"
-            sc="n"
+            tc="1"
+            sc="1"
             codes={{
               Javascript: {
                 code: `/**
@@ -74511,31 +74512,73 @@ class Solution:
         title: "Q658. Find K Closest Elements (Q527)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q658. Find K Closest Elements (Q527)"
+            content1={
+              <>
+                Given a sorted integer array arr, two integers k and x, return
+                the k closest integers to x in the array. The result should also
+                be sorted in ascending order.
+                <br />
+                An integer a is closer to x than an integer b if:
+                <br />
+                |a - x| &lt; |b - x|, or
+                <br />
+                |a - x| == |b - x| and a &lt; b
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [1,2,3,4,5], k = 4, x = 3<br />
+                    Output: [1,2,3,4]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [1,2,3,4,5], k = 4, x = -1
+                    <br />
+                    Output: [1,2,3,4]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= k &lt;= arr.length <br />
+                1 &lt;= arr.length &lt;= 10^4 <br />
+                arr is sorted in ascending order. <br />
+                -10^4 &lt;= arr[i], x &lt;= 10^4
               </>
             }
-            tc="n"
+            tc="k + log n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} arr
+                * @param {number} k
+                * @param {number} x
+                * @return {number[]}
+                */
+               var findClosestElements = function(arr, k, x) {
+                 let l = 0;
+                 let r = arr.length - k;
+                 while (l < r) {
+                   const m = l + parseInt((r - l) / 2);
+                   if (x - arr[m] <= arr[m + k] - x)
+                     r = m;
+                   else
+                     l = m + 1;
+                 }
+                 return arr.slice(l,l+k)
+               };
+               
+               console.log(findClosestElements([1,2,3,4,5],3,2))`,
+                output: `[ 1, 2, 3 ]`,
               },
             }}
           />
