@@ -240,6 +240,7 @@ import Leetcode576 from "assets/leetcode/576.png";
 import Leetcode587 from "assets/leetcode/587.png";
 import Leetcode598 from "assets/leetcode/598.png";
 import Leetcode606 from "assets/leetcode/606.png";
+import Leetcode617 from "assets/leetcode/617.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -71430,6 +71431,7 @@ console.log(tree2str(t))`,
         title: "Q617. Merge Two Binary Trees (Q497)",
         content: (
           <Comp
+            title="Q617. Merge Two Binary Trees (Q497)"
             content1={
               <>
                 You are given two binary trees root1 and root2.
@@ -71450,6 +71452,7 @@ console.log(tree2str(t))`,
             content2={null}
             examples={[
               {
+                img: Leetcode617,
                 content: (
                   <>
                     Input: root1 = [1,3,2,5], root2 = [2,1,3,null,4,null,7]
@@ -71476,8 +71479,49 @@ console.log(tree2str(t))`,
             sc="log n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+                }
+                
+                /**
+                 * @param {TreeNode} root1
+                 * @param {TreeNode} root2
+                 * @return {TreeNode}
+                 */
+                var mergeTrees = function(root1, root2) {
+                  if (!root1 && !root2) return null;
+                  const val = (!root1 ? 0 : root1.val) + (!root2 ? 0 : root2.val);
+                  const root = new TreeNode(val);
+                  root.left = mergeTrees(!root1 ? null : root1.left, !root2 ? null : root2.left);
+                  root.right = mergeTrees(!root1 ? null : root1.right, !root2? null : root2.right);
+                  return root;
+                };
+                
+                const t1 = new TreeNode(1)
+                t1.left = new TreeNode(3)
+                t1.left.left = new TreeNode(5)
+                t1.right = new TreeNode(2)
+                const t2 = new TreeNode(2)
+                t2.left = new TreeNode(1)
+                t2.left.right = new TreeNode(4)
+                t2.right = new TreeNode(3)
+                t2.right.right = new TreeNode(7)
+                console.log(mergeTrees(t1,t2))`,
+                output: `TreeNode {
+                  val: 3,
+                  left: TreeNode {
+                    val: 4,
+                    left: TreeNode { val: 5, left: null, right: null },
+                    right: TreeNode { val: 4, left: null, right: null }
+                  },
+                  right: TreeNode {
+                    val: 5,
+                    left: null,
+                    right: TreeNode { val: 7, left: null, right: null }
+                  }
+                }`,
               },
             }}
           />
