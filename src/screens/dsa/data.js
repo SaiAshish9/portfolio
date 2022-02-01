@@ -71392,12 +71392,34 @@ console.log(tree2str(t))`,
                 1 &lt;= nums.length &lt;= 1000 <br />0 &lt;= nums[i] &lt;= 1000
               </>
             }
-            tc="n"
-            sc="n"
+            tc="n^2"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var triangleNumber = function(nums) {
+                if (nums.length < 3) return 0;
+                let res = 0;
+                nums = nums.sort((a,b)=>a-b)
+                for (let k = nums.length - 1; k > 1; --k) {
+                  let i = 0;
+                  let j = k - 1;
+                  while (i < j)
+                    if (nums[i] + nums[j] > nums[k]) {
+                      res += j - i;
+                      --j;
+                    } else {
+                      ++i;
+                    }
+                }
+                return res;   
+               };
+               
+               console.log(triangleNumber([2,2,3,4]))`,
+                output: `3`,
               },
             }}
           />
