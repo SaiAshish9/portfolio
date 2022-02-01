@@ -72921,23 +72921,90 @@ class Solution:
         title: "Q639. Decode Ways II (Q512)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                A message containing letters from A-Z can be encoded into
+                numbers using the following mapping:
+                <br />
+                'A' -&gt; "1" <br />
+                'B' -&gt; "2" <br />
+                ... 'Z' -&gt; "26" <br />
+                To decode an encoded message, all the digits must be grouped
+                then mapped back into letters using the reverse of the mapping
+                above (there may be multiple ways). For example, "11106" can be
+                mapped into:
+                <br />
+                "AAJF" with the grouping (1 1 10 6) <br />
+                "KJF" with the grouping (11 10 6) <br />
+                Note that the grouping (1 11 06) is invalid because "06" cannot
+                be mapped into 'F' since "6" is different from "06".
+                <br />
+                In addition to the mapping above, an encoded message may contain
+                the '*' character, which can represent any digit from '1' to '9'
+                ('0' is excluded). For example, the encoded message "1*" may
+                represent any of the encoded messages "11", "12", "13", "14",
+                "15", "16", "17", "18", or "19". Decoding "1*" is equivalent to
+                decoding any of the encoded messages it can represent.
+                <br />
+                Given a string s consisting of digits and '*' characters, return
+                the number of ways to decode it.
+                <br />
+                Since the answer may be very large, return it modulo 109 + 7.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "*"
+                    <br /> Output: 9
+                    <br /> Explanation: The encoded message can represent any of
+                    the encoded messages "1", "2", "3", "4", "5", "6", "7", "8",
+                    or "9".
+                    <br /> Each of these can be decoded to the strings "A", "B",
+                    "C", "D", "E", "F", "G", "H", and "I" respectively.
+                    <br /> Hence, there are a total of 9 ways to decode "*".
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "1*"
+                    <br /> Output: 18
+                    <br />
+                    Explanation: The encoded message can represent any of the
+                    encoded messages "11", "12", "13", "14", "15", "16", "17",
+                    "18", or "19".
+                    <br /> Each of these encoded messages have 2 ways to be
+                    decoded (e.g. "11" can be decoded to "AA" or "K").
+                    <br /> Hence, there are a total of 9 * 2 = 18 ways to decode
+                    "1*".
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "2*" <br />
+                    Output: 15 <br />
+                    <br /> Explanation: The encoded message can represent any of
+                    the encoded messages "21", "22", "23", "24", "25", "26",
+                    "27", "28", or "29".
+                    <br /> "21", "22", "23", "24", "25", and "26" have 2 ways of
+                    being decoded, but "27", "28", and "29" only have 1 way.
+                    <br /> Hence, there are a total of (6 * 2) + (3 * 1) = 12 +
+                    3 = 15 ways to decode "2*".
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= s.length &lt;= 10^5
+                <br />
+                s[i] is a digit or '*'.
               </>
             }
             tc="n"
