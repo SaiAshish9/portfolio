@@ -74273,6 +74273,7 @@ class Solution:
         title: "Q655. Print Binary Tree (Q525)",
         content: (
           <Comp
+            title="Q655. Print Binary Tree (Q525)"
             content1={
               <>
                 Given the root of a binary tree, construct a 0-indexed m x n
@@ -74335,9 +74336,75 @@ class Solution:
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `/**
+                * Definition for a binary tree node.
+                * public class TreeNode {
+                *     int val;
+                *     TreeNode left;
+                *     TreeNode right;
+                *     TreeNode() {}
+                *     TreeNode(int val) { this.val = val; }
+                *     TreeNode(int val, TreeNode left, TreeNode right) {
+                *         this.val = val;
+                *         this.left = left;
+                *         this.right = right;
+                *     }
+                * }
+                */
+               class Solution {
+                   public List<List<String>> printTree(TreeNode root) {
+                       int height = getHeight(root);
+                       int rows = height + 1;
+                       int cols = (int)Math.pow(2, height + 1) -1;
+                       List<List<String>> result = new ArrayList<>();
+                       for(int i = 0; i < rows; i++) {
+                           result.add(new ArrayList<>());
+                           for(int j = 0; j < cols; j++) 
+                               result.get(i).add("");
+                       }
+                       
+                       Queue<Pair> queue = new LinkedList<>();
+                       queue.offer(new Pair(root, 0, 0, cols -1));
+                       
+                       while(!queue.isEmpty()) {
+                           int size = queue.size();
+                           for(int i = 0; i < size; i++) {
+                               Pair pair = queue.poll();
+                               TreeNode node = pair.node;
+                       int middle = pair.colL + (pair.colR - pair.colL) /2;
+                               if(node.left != null) {
+                                   queue.offer(new Pair(node.left, pair.row + 1, pair.colL, middle -1));
+                               }
+                               if(node.right != null) {
+                                   queue.offer(new Pair(node.right, pair.row + 1, middle + 1, pair.colR));
+                               }
+                               result.get(pair.row).set(middle, node.val + "");
+                           }
+                       }
+                       return result;
+                   }
+                   
+                   private int getHeight(TreeNode root) {
+                       if(root == null || (root.left == null && root.right == null)) return 0;
+                       return 1 + Math.max(getHeight(root.left), getHeight(root.right));
+                   }
+                   
+                   class Pair {
+                       TreeNode node;
+                       int row;
+                       int colL;
+                       int colR;
+                       
+                       public Pair(TreeNode node, int row, int colL, int colR) {
+                           this.node = node;
+                           this.row = row;
+                           this.colL = colL;
+                           this.colR = colR;
+                       }
+                   }
+               }`,
+                output: `[["","1",""],["2","",""]]`,
               },
             }}
           />
