@@ -72062,6 +72062,7 @@ console.log(tree2str(t))`,
         title: "Q627. Swap Salary (Q503)",
         content: (
           <Comp
+            title="Q627. Swap Salary (Q503)"
             content1={
               <>
                 <b>SQL Schema</b>
@@ -72142,27 +72143,51 @@ console.log(tree2str(t))`,
         title: "Q628. Maximum Product of Three Numbers (Q504)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given an integer array nums, find three numbers whose product is
+                maximum and return the maximum product.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3]
+                    <br />
+                    Output: 6
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,4]]
+                    <br />
+                    Output: 24
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [-1,-2,-3]]
+                    <br />
+                    Output: -6
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                3 &lt;= nums.length &lt;= 10^4]
+                <br />
+                -1000 &lt;= nums[i] &lt;= 1000
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
