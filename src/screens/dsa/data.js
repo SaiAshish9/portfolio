@@ -72508,27 +72508,36 @@ console.log(tree2str(t))`,
         title: "Q633. Sum of Square Numbers (Q508)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q633. Sum of Square Numbers (Q508)"
+            content1={
+              <>
+                Given a non-negative integer c, decide whether there're two
+                integers a and b such that a^2 + b^2 = c.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: c = 5 <br />
+                    Output: true <br />
+                    Explanation: 1 * 1 + 2 * 2 = 5
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: c = 3 <br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
+            constraints={<>0 &lt;= c &lt;= 2^31 - 1</>}
+            tc="n^0.5"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
