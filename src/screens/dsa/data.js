@@ -73983,8 +73983,44 @@ class Solution:
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+              }
+              
+              /**
+               * @param {TreeNode} root
+               * @return {TreeNode[]}
+               */
+              var findDuplicateSubtrees = function(root) {
+                const res = [];
+                const count = {};
+                encode(root, count, res);
+                return res;
+              }
+              
+              function encode(root, count, res) {
+                if (!root)
+                  return "";
+                let left = encode(root.left, count, res);
+                let right = encode(root.right, count, res);
+                let encoding = root.val + "#" + left + "#" + right;
+                if ((count[encoding] || 0) == 1)
+                  res.push(root);
+                count[encoding] = (count[encoding] || 0) + 1 
+                return encoding;
+              }
+              
+              const t = new TreeNode(1)
+              t.left = new TreeNode(2)
+              t.left.left = new TreeNode(4)
+              t.right = new TreeNode(3)
+              t.right.left = new TreeNode(2)
+              t.right.left.left = new TreeNode(4)
+              t.right.left = new TreeNode(4)
+              console.log(findDuplicateSubtrees(t))`,
+                output: `[ TreeNode { val: 4, left: null, right: null } ]`,
               },
             }}
           />
