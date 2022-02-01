@@ -72878,8 +72878,40 @@ class Solution:
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} price
+                * @param {number[][]} special
+                * @param {number[]} needs
+                * @return {number}
+                */
+               var shoppingOffers = function(price, special, needs) {
+                 return dfs(price, special, needs, 0);
+               };
+               
+               function dfs(price, special, needs, s) {
+                 let ans = 0;
+                 for (let i = 0; i < price.length; ++i)
+                   ans += price[i] * needs[i];
+                 for (let i = s; i < special.length; ++i)
+                   if (isSafe(special[i], needs)) {
+                     for (let j = 0; j < needs.length; ++j)
+                       needs[j] -= special[i][j];
+                     ans = Math.min(ans, special[i].slice(-1)[0] + dfs(price, special, needs, i));
+                     for (let j = 0; j < needs.length; ++j)
+                       needs[j] += special[i][j];
+                   }
+                 return ans;
+               }
+               
+               function isSafe(offer, needs) {
+                 for (let i = 0; i < needs.length; ++i)
+                   if (needs[i] < offer[i])
+                     return false;
+                 return true;
+               }
+               
+               console.log(shoppingOffers([2,5],[[3,0,5],[1,2,10]],[3,2]))`,
+                output: `14`,
               },
             }}
           />
