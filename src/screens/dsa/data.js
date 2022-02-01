@@ -72408,27 +72408,50 @@ console.log(tree2str(t))`,
         title: "Q632. Smallest Range Covering Elements from K Lists (Q507)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                You have k lists of sorted integers in non-decreasing order.
+                Find the smallest range that includes at least one number from
+                each of the k lists.
+                <br />
+                We define the range [a, b] is smaller than range [c, d] if b - a
+                &lt; d - c or a &lt; c if b &lt; a == d - c.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [[4,10,15,24,26],[0,9,12,20],[5,18,22,30]]
+                    <br /> Output: [20,24] <br />
+                    Explanation: <br />
+                    List 1: [4, 10, 15, 24,26], 24 is in range [20,24]. <br />
+                    List 2: [0, 9, 12, 20], 20 is in range [20,24]. <br />
+                    List 3: [5, 18, 22, 30], 22 is in range [20,24].
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [[1,2,3],[1,2,3],[1,2,3]] <br />
+                    Output: [1,1]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                nums.length == k <br />
+                1 &lt;= k &lt;= 3500 <br />
+                1 &lt;= nums[i].length &lt;= 50 <br />
+                -10^5 &lt;= nums[i][j] &lt;= 10^5 <br />
+                nums[i] is sorted in non-decreasing order.
               </>
             }
-            tc="n"
-            sc="n"
+            tc="n^2.log k"
+            sc="k"
             codes={{
               Javascript: {
                 code: ``,
