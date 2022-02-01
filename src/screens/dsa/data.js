@@ -72540,8 +72540,27 @@ console.log(tree2str(t))`,
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} c
+                * @return {boolean}
+                */
+               var judgeSquareSum = function(c) {
+                 let l = 0;
+                 let r = parseInt(Math.sqrt(c));
+                 while (l <= r) {
+                   const sum = l * l + r * r;
+                   if (sum == c)
+                     return true;
+                   if (sum < c)
+                     ++l;
+                   else
+                     --r;
+                 }
+                 return false;   
+               };
+               
+               console.log(judgeSquareSum(5))`,
+                output: `true`,
               },
             }}
           />
