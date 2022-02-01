@@ -73472,6 +73472,7 @@ class Solution:
         title: "Q646. Maximum Length of Pair Chain (Q517)",
         content: (
           <Comp
+            title="Q646. Maximum Length of Pair Chain (Q517)"
             content1={
               <>
                 You are given an array of n pairs pairs where pairs[i] = [lefti,
@@ -73489,27 +73490,52 @@ class Solution:
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: pairs = [[1,2],[2,3],[3,4]]
+                    <br />
+                    Output: 2<br />
+                    Explanation: The longest chain is [1,2] -&gt; [3,4].
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: pairs = [[1,2],[2,3],[3,4]]
+                    <br />
+                    Output: 2<br />
+                    Explanation: The longest chain is [1,2] -&gt; [3,4].
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                n == pairs.length <br />
+                1 &lt;= n &lt;= 1000 <br />
+                -1000 &lt;= lefti &lt; righti &lt;= 1000
               </>
             }
-            tc="n"
-            sc="n"
+            tc="n.log n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `
+                var findLongestChain = function(pairs) {
+                  let res = 0;
+                  let prevEnd = Number.MIN_SAFE_INTEGER;
+                  pairs = pairs.sort((a,b)=> a[1] - b[1])
+                  for (let pair of pairs)
+                    if (pair[0] > prevEnd) {
+                      ++res;
+                      prevEnd = pair[1];
+                    }
+                  return res;
+                };
+                
+                console.log(findLongestChain([[1,2],[2,3],[3,4]]))`,
+                output: `2`,
               },
             }}
           />
@@ -73519,6 +73545,7 @@ class Solution:
         title: "Q647. Palindromic Substrings (Q518)",
         content: (
           <Comp
+            title="Q647. Palindromic Substrings (Q518)"
             content1={<></>}
             content2={null}
             examples={[
