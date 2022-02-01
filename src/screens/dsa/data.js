@@ -73171,6 +73171,7 @@ class Solution:
         title: "Q641. Design Circular Deque (Q514)",
         content: (
           <Comp
+            title="Q641. Design Circular Deque (Q514)"
             content1={
               <>
                 Design your implementation of the circular double-ended queue
