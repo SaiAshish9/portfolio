@@ -72805,27 +72805,77 @@ class Solution:
         title: "Q638. Shopping Offers (Q511)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q638. Shopping Offers (Q511)"
+            content1={
+              <>
+                In LeetCode Store, there are n items to sell. Each item has a
+                price. However, there are some special offers, and a special
+                offer consists of one or more different kinds of items with a
+                sale price.
+                <br />
+                You are given an integer array price where price[i] is the price
+                of the ith item, and an integer array needs where needs[i] is
+                the number of pieces of the ith item you want to buy.
+                <br />
+                You are also given an array special where special[i] is of size
+                n + 1 where special[i][j] is the number of pieces of the jth
+                item in the ith offer and special[i][n] (i.e., the last integer
+                in the array) is the price of the ith offer.
+                <br />
+                Return the lowest price you have to pay for exactly certain
+                items as given, where you could make optimal use of the special
+                offers. You are not allowed to buy more items than you want,
+                even if that would lower the overall price. You could use any of
+                the special offers as many times as you want.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: price = [2,5], special = [[3,0,5],[1,2,10]], needs =
+                    [3,2]
+                    <br /> Output: 14
+                    <br /> Explanation: There are two kinds of items, A and B.
+                    Their prices are $2 and $5 respectively.
+                    <br /> In special offer 1, you can pay $5 for 3A and 0B
+                    <br /> In special offer 2, you can pay $10 for 1A and 2B.
+                    <br /> You need to buy 3A and 2B, so you may pay $10 for 1A
+                    and 2B (special offer #2), and $4 for 2A.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: price = [2,5], special = [[3,0,5],[1,2,10]], needs =
+                    [3,2] <br />
+                    Output: 14 <br />
+                    Explanation: There are two kinds of items, A and B. Their
+                    prices are $2 and $5 respectively.
+                    <br /> In special offer 1, you can pay $5 for 3A and 0B{" "}
+                    <br />
+                    In special offer 2, you can pay $10 for 1A and 2B. <br />
+                    You need to buy 3A and 2B, so you may pay $10 for 1A and 2B
+                    (special offer #2), and $4 for 2A.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                n == price.length <br />
+                n == needs.length <br />
+                1 &lt;= n &lt;= 6 <br />
+                0 &lt;= price[i] &lt;= 10 <br />
+                0 &lt;= needs[i] &lt;= 10 <br />
+                1 &lt;= special.length &lt;= 100 <br />
+                special[i].length == n + 1 <br />0 &lt;= special[i][j] &lt;= 50
               </>
             }
-            tc="n"
-            sc="n"
+            tc="n^2"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
