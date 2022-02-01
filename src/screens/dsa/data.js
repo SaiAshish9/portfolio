@@ -73628,6 +73628,7 @@ class Solution:
         title: "Q648. Replace Words (Q519)",
         content: (
           <Comp
+            title="Q648. Replace Words (Q519)"
             content1={
               <>
                 In English, we have a concept called root, which can be followed
@@ -73683,9 +73684,56 @@ class Solution:
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // dictionary = ["a","b","c"], sentence = "aadsfasf absbs bbab cadsfafs"
+                class Solution {
+                  public String replaceWords(List<String> dict, String sentence) {
+                    String ans = "";
+                
+                    for (final String word : dict)
+                      insert(word);
+                
+                    final String[] words = sentence.split(" ");
+                    for (final String word : words)
+                      ans += ' ' + search(word);
+                
+                    return ans.substring(1);
+                  }
+                
+                  private class TrieNode {
+                    private TrieNode[] children = new TrieNode[26];
+                    private String word;
+                  }
+                
+                  private TrieNode root = new TrieNode();
+                
+                  private void insert(final String word) {
+                    TrieNode node = root;
+                    for (char c : word.toCharArray()) {
+                      int index = c - 'a';
+                      if (node.children[index] == null)
+                        node.children[index] = new TrieNode();
+                      node = node.children[index];
+                    }
+                    node.word = word;
+                  }
+                
+                  private String search(final String word) {
+                    TrieNode node = root;
+                    for (char c : word.toCharArray()) {
+                      if (node.word != null)
+                        return node.word;
+                      int index = c - 'a';
+                      if (node.children[index] == null)
+                        return word;
+                      node = node.children[index];
+                    }
+                    return word;
+                  }
+                }
+                `,
+                output: `a a b c`,
               },
             }}
           />
@@ -73695,23 +73743,89 @@ class Solution:
         title: "Q649. Dota2 Senate (Q520)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                In the world of Dota2, there are two parties: the Radiant and
+                the Dire.
+                <br />
+                The Dota2 senate consists of senators coming from two parties.
+                Now the Senate wants to decide on a change in the Dota2 game.
+                The voting for this change is a round-based procedure. In each
+                round, each senator can exercise one of the two rights:
+                <br />
+                <br /> Ban one senator's right: A senator can make another
+                senator lose all his rights in this and all the following
+                rounds.
+                <br /> Announce the victory: If this senator found the senators
+                who still have rights to vote are all from the same party, he
+                can announce the victory and decide on the change in the game.
+                <br /> Given a string senate representing each senator's party
+                belonging. The character 'R' and 'D' represent the Radiant party
+                and the Dire party. Then if there are n senators, the size of
+                the given string will be n.
+                <br />
+                The round-based procedure starts from the first senator to the
+                last senator in the given order. This procedure will last until
+                the end of voting. All the senators who have lost their rights
+                will be skipped during the procedure.
+                <br />
+                Suppose every senator is smart enough and will play the best
+                strategy for his own party. Predict which party will finally
+                announce the victory and change the Dota2 game. The output
+                should be "Radiant" or "Dire".
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: senate = "RD"
+                    <br />
+                    Output: "Radiant"
+                    <br />
+                    Explanation:
+                    <br />
+                    The first senator comes from Radiant and he can just ban the
+                    next senator's right in round 1.
+                    <br />
+                    And the second senator can't exercise any rights anymore
+                    since his right has been banned.
+                    <br />
+                    And in round 2, the first senator can just announce the
+                    victory since he is the only guy in the senate who can vote.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: senate = "RDD"
+                    <br />
+                    Output: "Dire"
+                    <br />
+                    Explanation:
+                    <br />
+                    The first senator comes from Radiant and he can just ban the
+                    next senator's right in round 1.
+                    <br />
+                    And the second senator can't exercise any rights anymore
+                    since his right has been banned.
+                    <br />
+                    And the third senator comes from Dire and he can ban the
+                    first senator's right in round 1.
+                    <br /> And in round 2, the third senator can just announce
+                    the victory since he is the only guy in the senate who can
+                    vote.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                n == senate.length <br />
+                1 &lt;= n &lt;= 10^4 <br />
+                senate[i] is either 'R' or 'D'.
               </>
             }
             tc="n"
