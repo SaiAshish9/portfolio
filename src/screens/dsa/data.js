@@ -72233,23 +72233,44 @@ console.log(tree2str(t))`,
         title: "Q629. K Inverse Pairs Array (Q505)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                For an integer array nums, an inverse pair is a pair of integers
+                [i, j] where 0 &lt;= i &lt; j &lt; nums.length and nums[i] &gt;
+                nums[j].
+                <br />
+                Given two integers n and k, return the number of different
+                arrays consist of numbers from 1 to n such that there are
+                exactly k inverse pairs. Since the answer can be huge, return it
+                modulo 109 + 7.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 3, k = 0 <br />
+                    Output: 1 <br />
+                    Explanation: Only the array [1,2,3] which consists of
+                    numbers from 1 to 3 has exactly 0 inverse pairs.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 3, k = 1<br />
+                    Output: 2<br />
+                    Explanation: The array [1,3,2] and [2,1,3] have exactly 1
+                    inverse pair.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= n &lt;= 1000 <br />0 &lt;= k &lt;= 1000
               </>
             }
             tc="m.n"
