@@ -74926,31 +74926,78 @@ class Solution:
         title: "Q664. Strange Printer (Q531)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q664. Strange Printer (Q531)"
+            content1={
+              <>
+                There is a strange printer with the following two special
+                properties:
+                <br />
+                The printer can only print a sequence of the same character each
+                time.
+                <br />
+                At each turn, the printer can print new characters starting from
+                and ending at any place and will cover the original existing
+                characters.
+                <br />
+                Given a string s, return the minimum number of turns the printer
+                needed to print it.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "aaabbb"
+                    <br />
+                    Output: 2<br />
+                    Explanation: Print "aaa" first and then print "bbb".
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "aba"
+                    <br />
+                    Output: 2<br />
+                    Explanation: Print "aaa" first and then print "b" from the
+                    second place of the string, which will cover the existing
+                    character 'a'.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= s.length &lt;= 100 <br />s consists of lowercase English
+                letters.
               </>
             }
-            tc="n"
-            sc="n"
+            tc="n^3"
+            sc="n^2"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {number}
+                */
+               var strangePrinter = function(s) {
+                 if (!s) return 0;
+                 const n = s.length;
+                 const dp = Array.from(Array(n),()=>Array(n).fill(n));
+                 for (let i = 0; i < n; ++i)
+                   dp[i][i] = 1;
+                 for (let j = 0; j < n; ++j)
+                   for (let i = j; i >= 0; --i)
+                     for (let k = i; k < j; ++k)
+                       dp[i][j] =
+                           Math.min(dp[i][j], dp[i][k] + dp[k + 1][j] - (s[k] == s[j] ? 1 : 0));
+                 return dp[0][n - 1];
+               };
+               
+               console.log(strangePrinter("aaabbb"))`,
+                output: `2`,
               },
             }}
           />
@@ -74960,31 +75007,76 @@ class Solution:
         title: "Q665. Non-decreasing Array (Q532)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q665. Non-decreasing Array (Q532)"
+            content1={
+              <>
+                Given an array nums with n integers, your task is to check if it
+                could become non-decreasing by modifying at most one element.
+                <br />
+                We define an array is non-decreasing if nums[i] &lt;= nums[i +
+                1] holds for every i (0-based) such that (0 &lt;= i &lt;= n -
+                2).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [4,2,3]
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation: You could modify the first 4 to 1 to get a
+                    non-decreasing array.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [4,2,1]
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation: You can't get a non-decreasing array by modify
+                    at most one element.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                n == nums.length
+                <br />
+                1 &lt;= n &lt;= 10^4
+                <br />
+                -10^5 &lt;= nums[i] &lt;= 10^5
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {boolean}
+                */
+               var checkPossibility = function(nums) {
+                 let j = -1;
+                 for (let i = 0; i + 1 < nums.length; ++i)
+                   if (nums[i] > nums[i + 1]) {
+                     if (j != -1)
+                       return false;
+                     j = i;
+                   }
+                 return j == -1 || j == 0 || j == nums.length - 2
+                       || nums[j - 1] <= nums[j + 1]
+                       || nums[j] <= nums[j + 2];   
+               };
+               
+               console.log(checkPossibility([4,2,3]))`,
+                output: `true`,
               },
             }}
           />
