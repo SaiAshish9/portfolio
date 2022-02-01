@@ -495,7 +495,7 @@ const CodeEditor = ({ options }) => {
             {outputCheck && (
               <>
                 <OutputEditorContainer>
-                  <OutputLabel>Output</OutputLabel>]{" "}
+                  <OutputLabel>Output</OutputLabel>{" "}
                   <Output
                     value={beautify.html_beautify(
                       options.codes[selected]?.output ?? options.output
