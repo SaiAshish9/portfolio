@@ -73833,8 +73833,32 @@ class Solution:
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} senate
+                * @return {string}
+                */
+               var predictPartyVictory = function(senate) {
+                 const n = senate.length;
+                 let qR = [];
+                 let qD = [];
+                 for (let i = 0; i < n; ++i)
+                   if (senate[i] == 'R')
+                     qR.push(i);
+                   else
+                     qD.push(i);
+                 while (qR.length && qD.length) {
+                   let indexR = qR.shift();
+                   let indexD = qD.shift();
+                   if (indexR < indexD)
+                     qR.push(indexR + n);
+                   else
+                     qD.push(indexD + n);
+                 }
+                 return !qR.length ? "Dire" : "Radiant";
+               };
+               
+               console.log(predictPartyVictory("RDD"))`,
+                output: `Dire`,
               },
             }}
           />
@@ -73844,25 +73868,44 @@ class Solution:
         title: "Q650. 2 Keys Keyboard (Q521)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                There is only one character 'A' on the screen of a notepad. You
+                can perform two operations on this notepad for each step:
+                <br />
+                Copy All: You can copy all the characters present on the screen
+                (a partial copy is not allowed).
+                <br />
+                Paste: You can paste the characters which are copied last time.
+                <br />
+                Given an integer n, return the minimum number of operations to
+                get the character 'A' exactly n times on the screen.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 3 <br />
+                    Output: 3 <br />
+                    Explanation: Intitally, we have one character 'A'. <br />
+                    In step 1, we use Copy All operation. <br />
+                    In step 2, we use Paste operation to get 'AA'. <br />
+                    In step 3, we use Paste operation to get 'AAA'.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1 <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
+            constraints={<>1 &lt;= n &lt;= 1000</>}
             tc="n"
             sc="n"
             codes={{
