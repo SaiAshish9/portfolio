@@ -74710,6 +74710,7 @@ class Solution:
         title: "Q661. Image Smoother (Q529)",
         content: (
           <Comp
+            title="Q661. Image Smoother (Q529)"
             content1={
               <>
                 An image smoother is a filter of the size 3 x 3 that can be
