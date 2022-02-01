@@ -244,6 +244,7 @@ import Leetcode617 from "assets/leetcode/617.png";
 import Leetcode623 from "assets/leetcode/623.png";
 import Leetcode637 from "assets/leetcode/637.png";
 import Leetcode652 from "assets/leetcode/652.png";
+import Leetcode653 from "assets/leetcode/653.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -74030,31 +74031,112 @@ class Solution:
         title: "Q653. Two Sum IV - Input is a BST (Q523)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q653. Two Sum IV - Input is a BST (Q523)"
+            content1={
+              <>
+                Given the root of a Binary Search Tree and a target number k,
+                return true if there exist two elements in the BST such that
+                their sum is equal to the given target.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode653,
+                content: (
+                  <>
+                    Input: root = [5,3,6,2,4,null,7], k = 9 <br />
+                    Output: true
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: <>Input: root = [5,3,6,2,4,null,7], k = 28<br />
+                Output: false</>,
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The number of nodes in the tree is in the range [1, 10^4].
+                <br />
+                -10^4 &lt;= Node.val &lt;= 10^4
+                <br />
+                root is guaranteed to be a valid binary search tree.
+                <br />
+                -10^5 &lt;= k &lt;= 10^5
               </>
             }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // root = [5,3,6,2,4,null,7], k = 9
+                /**
+                * Definition for a binary tree node.
+                * public class TreeNode {
+                *     int val;
+                *     TreeNode left;
+                *     TreeNode right;
+                *     TreeNode() {}
+                *     TreeNode(int val) { this.val = val; }
+                *     TreeNode(int val, TreeNode left, TreeNode right) {
+                *         this.val = val;
+                *         this.left = left;
+                *         this.right = right;
+                *     }
+                * }
+                */
+               class BSTIterator {
+                 public BSTIterator(TreeNode root, boolean leftToRight) {
+                   this.leftToRight = leftToRight;
+                   pushLeftsUntilNull(root);
+                 }
+               
+                 public int next() {
+                   TreeNode root = stack.pop();
+                   pushLeftsUntilNull(leftToRight ? root.right : root.left);
+                   return root.val;
+                 }
+               
+                 public boolean hasNext() {
+                   return !stack.isEmpty();
+                 }
+               
+                 private Stack<TreeNode> stack = new Stack<>();
+                 private boolean leftToRight;
+               
+                 private void pushLeftsUntilNull(TreeNode root) {
+                   while (root != null) {
+                     stack.push(root);
+                     root = leftToRight ? root.left : root.right;
+                   }
+                 }
+               }
+               
+               class Solution {
+                 public boolean findTarget(TreeNode root, int k) {
+                   if (root == null)
+                     return false;
+               
+                   BSTIterator left = new BSTIterator(root, true);
+                   BSTIterator right = new BSTIterator(root, false);
+               
+                   for (int l = left.next(), r = right.next(); l < r;) {
+                     final int sum = l + r;
+                     if (sum == k)
+                       return true;
+                     if (sum < k)
+                       l = left.next();
+                     else
+                       r = right.next();
+                   }
+               
+                   return false;
+                 }
+               }
+               `,
+                output: `9`,
               },
             }}
           />
