@@ -72570,6 +72570,7 @@ console.log(tree2str(t))`,
         title: "Q636. Exclusive Time of Functions (Q509)",
         content: (
           <Comp
+            title="Q636. Exclusive Time of Functions (Q509)"
             content1={
               <>
                 On a single-threaded CPU, we execute a program containing n
@@ -72714,6 +72715,7 @@ class Solution:
         title: "Q637. Average of Levels in Binary Tree (Q510)",
         content: (
           <Comp
+            title="Q637. Average of Levels in Binary Tree (Q510)"
             content1={<></>}
             content2={null}
             examples={[
