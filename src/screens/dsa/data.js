@@ -71973,27 +71973,74 @@ console.log(tree2str(t))`,
         title: "Q626. Exchange Seats (Q502)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                <b>SQL Schema</b>
+                <br />
+                <b>Table: Seat</b>
+                <pre>{`
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| name        | varchar |
++-------------+---------+
+                `}</pre>
+                id is the primary key column for this table. <br />
+                Each row of this table indicates the name and the ID of a
+                student. <br />
+                id is a continuous increment. <br />
+                Write an SQL query to swap the seat id of every two consecutive
+                students. If the number of students is odd, the id of the last
+                student is not swapped.
+                <br />
+                Return the result table ordered by id in ascending order.
+                <br />
+                The query result format is in the following example.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: <br />
+                    Seat table:
+                    <pre>
+                      {`
++----+---------+
+| id | student |
++----+---------+
+| 1  | Abbot   |
+| 2  | Doris   |
+| 3  | Emerson |
+| 4  | Green   |
+| 5  | Jeames  |
++----+---------+
+                  `}
+                    </pre>
+                    Output:
+                    <br />
+                    <pre>
+                      {`
++----+---------+
+| id | student |
++----+---------+
+| 1  | Doris   |
+| 2  | Abbot   |
+| 3  | Green   |
+| 4  | Emerson |
+| 5  | Jeames  |
++----+---------+  
+  `}
+                    </pre>
+                    Explanation: <br />
+                    Note that if the number of students is odd, there is no need
+                    to change the last one's seat.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
             codes={{
               Javascript: {
                 code: ``,
