@@ -73868,6 +73868,7 @@ class Solution:
         title: "Q650. 2 Keys Keyboard (Q521)",
         content: (
           <Comp
+            title="Q650. 2 Keys Keyboard (Q521)"
             content1={
               <>
                 There is only one character 'A' on the screen of a notepad. You
@@ -73910,8 +73911,25 @@ class Solution:
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @return {number}
+                */
+               var minSteps = function(n) {
+                 const dp = Array(n + 1).fill(0);
+                 for (let i = 2; i <= n; ++i) {
+                   dp[i] = i; 
+                   for (let j = parseInt(i / 2); j > 2; --j)
+                     if (i % j == 0) {
+                       dp[i] = dp[j] + parseInt(i / j); 
+                       break;
+                     }
+                 }
+                 return dp[n];
+               };
+               
+               console.log(minSteps(1))`,
+                output: `0`,
               },
             }}
           />
