@@ -72308,26 +72308,74 @@ console.log(tree2str(t))`,
         title: "Q630. Course Schedule III (Q506)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q630. Course Schedule III (Q506)"
+            content1={
+              <>
+                There are n different online courses numbered from 1 to n. You
+                are given an array courses where courses[i] = [durationi,
+                lastDayi] indicate that the ith course should be taken
+                continuously for durationi days and must be finished before or
+                on lastDayi.
+                <br />
+                You will start on the 1st day and you cannot take two or more
+                courses simultaneously.
+                <br />
+                Return the maximum number of courses that you can take.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: courses =
+                    [[100,200],[200,1300],[1000,1250],[2000,3200]] Output: 3
+                    <br />
+                    Explanation: <br />
+                    There are totally 4 courses, but you can take 3 courses at
+                    most:
+                    <br /> First, take the 1st course, it costs 100 days so you
+                    will finish it on the 100th day, and ready to take the next
+                    course on the 101st day.
+                    <br />
+                    Second, take the 3rd course, it costs 1000 days so you will
+                    finish it on the 1100th day, and ready to take the next
+                    course on the 1101st day.
+                    <br />
+                    Third, take the 2nd course, it costs 200 days so you will
+                    finish it on the 1300th day.
+                    <br />
+                    The 4th course cannot be taken now, since you will finish it
+                    on the 3300th day, which exceeds the closed date.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: courses = [[1,2]]
+                    <br />
+                    Output: 1
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: courses = [[3,2],[4,3]]
+                    <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= courses.length &lt;= 10^4 <br />1 &lt;= durationi,
+                lastDayi &lt;= 10^4
               </>
             }
-            tc="n"
+            tc="n.log n"
             sc="n"
             codes={{
               Javascript: {
