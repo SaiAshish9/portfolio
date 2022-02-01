@@ -247,6 +247,7 @@ import Leetcode652 from "assets/leetcode/652.png";
 import Leetcode653 from "assets/leetcode/653.png";
 import Leetcode654 from "assets/leetcode/654.png";
 import Leetcode655 from "assets/leetcode/655.png";
+import Leetcode661 from "assets/leetcode/661.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -74588,31 +74589,118 @@ class Solution:
         title: "Q659. Split Array into Consecutive Subsequences (Q528)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q659. Split Array into Consecutive Subsequences (Q528)"
+            content1={
+              <>
+                You are given an integer array nums that is sorted in
+                non-decreasing order.
+                <br />
+                Determine if it is possible to split nums into one or more
+                subsequences such that both of the following conditions are
+                true:
+                <br />
+                Each subsequence is a consecutive increasing sequence (i.e. each
+                integer is exactly one more than the previous integer).
+                <br />
+                All subsequences have a length of 3 or more.
+                <br />
+                Return true if you can split nums according to the above
+                conditions, or false otherwise.
+                <br />A subsequence of an array is a new array that is formed
+                from the original array by deleting some (can be none) of the
+                elements without disturbing the relative positions of the
+                remaining elements. (i.e., [1,3,5] is a subsequence of
+                [1,2,3,4,5] while [1,3,2] is not).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,3,4,5]
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation: nums can be split into the following
+                    subsequences:
+                    <br />
+                    [1,2,3,3,4,5] --&gt; 1, 2, 3<br />
+                    [1,2,3,3,4,5] --&gt; 3, 4, 5
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,3,4,4,5,5]
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation: nums can be split into the following
+                    subsequences:
+                    <br />
+                    [1,2,3,3,4,4,5,5] --&gt; 1, 2, 3, 4, 5<br />
+                    [1,2,3,3,4,4,5,5] --&gt; 3, 4, 5
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,4,4,5]
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation: It is impossible to split nums into consecutive
+                    increasing subsequences of length 3 or more.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= nums.length &lt;= 10^4
+                <br />
+                -1000 &lt;= nums[i] &lt;= 1000
+                <br />
+                nums is sorted in non-decreasing order.
               </>
             }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {boolean}
+                */
+               var isPossible = function(nums) {
+                 const count = {};
+                 const starts = []; 
+                 const ends = [];   
+                 for (let num of nums)
+                   count[num] = (count[num] || 0) + 1
+                 for (let i = 0; i < nums.length; ++i) {
+                   if (i > 0 && nums[i] == nums[i - 1])
+                     continue;
+                   let num = nums[i];
+                   let currCount = count[num];
+                   let prevCount = ((num-1) in count) ? count[num - 1] : 0;
+                   let nextCount = ((num+1) in count)  ? count[num + 1] : 0;
+                   for (let j = 0; j < currCount - prevCount; ++j)
+                     starts.push(num);
+                   for (let j = 0; j < currCount - nextCount; ++j)
+                     ends.push(num);
+                 }
+                 for (let i = 0; i < starts.length; ++i)
+                   if (ends[i] - starts[i] < 2)
+                     return false;
+                 return true;   
+               };
+               
+               console.log(isPossible([1,2,3,3,4,4,5,5]))`,
+                output: `true`,
               },
             }}
           />
@@ -74622,27 +74710,75 @@ class Solution:
         title: "Q661. Image Smoother (Q529)",
         content: (
           <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
+            content1={
               <>
-                <b>Follow up :</b>
+                An image smoother is a filter of the size 3 x 3 that can be
+                applied to each cell of an image by rounding down the average of
+                the cell and the eight surrounding cells (i.e., the average of
+                the nine cells in the blue smoother). If one or more of the
+                surrounding cells of a cell is not present, we do not consider
+                it in the average (i.e., the average of the four cells in the
+                red smoother).
               </>
             }
-            tc="n"
-            sc="n"
+            content2={
+              <>
+                Given an m x n integer matrix img representing the grayscale of
+                an image, return the image after applying the smoother on each
+                cell of it.
+              </>
+            }
+            img={Leetcode661}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: img = [[1,1,1],[1,0,1],[1,1,1]]
+                    <br />
+                    Output: [[0,0,0],[0,0,0],[0,0,0]]
+                    <br />
+                    Explanation:
+                    <br />
+                    For the points (0,0), (0,2), (2,0), (2,2): floor(3/4) =
+                    floor(0.75) = 0<br />
+                    For the points (0,1), (1,0), (1,2), (2,1): floor(5/6) =
+                    floor(0.83333333) = 0
+                    <br />
+                    For the point (1,1): floor(8/9) = floor(0.88888889) = 0
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: img = [[100,200,100],[200,50,200],[100,200,100]]
+                    <br />
+                    Output: [[137,141,137],[141,138,141],[137,141,137]]
+                    <br />
+                    Explanation:
+                    <br />
+                    For the points (0,0), (0,2), (2,0), (2,2):
+                    floor((100+200+200+50)/4) = floor(137.5) = 137
+                    <br />
+                    For the points (0,1), (1,0), (1,2), (2,1):
+                    floor((200+200+50+200+100+100)/6) = floor(141.666667) = 141
+                    <br />
+                    For the point (1,1):
+                    floor((50+200+200+200+200+100+100+100+100)/9) =
+                    floor(138.888889) = 138
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                m == img.length <br />
+                n == img[i].length <br />
+                1 &lt;= m, n &lt;= 200 <br />0 &lt;= img[i][j] &lt;= 255
+              </>
+            }
+            tc="m.n"
+            sc="m.n"
             codes={{
               Javascript: {
                 code: ``,
