@@ -74051,8 +74051,13 @@ class Solution:
                 ),
               },
               {
-                content: <>Input: root = [5,3,6,2,4,null,7], k = 28<br />
-                Output: false</>,
+                content: (
+                  <>
+                    Input: root = [5,3,6,2,4,null,7], k = 28
+                    <br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
             constraints={
@@ -74146,27 +74151,67 @@ class Solution:
         title: "Q654. Maximum Binary Tree (Q524)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q654. Maximum Binary Tree (Q524)"
+            content1={
+              <>
+                You are given an integer array nums with no duplicates. A
+                maximum binary tree can be built recursively from nums using the
+                following algorithm:
+                <br />
+                Create a root node whose value is the maximum value in nums.
+                <br />
+                Recursively build the left subtree on the subarray prefix to the
+                left of the maximum value.
+                <br />
+                Recursively build the right subtree on the subarray suffix to
+                the right of the maximum value.
+                <br />
+                Return the maximum binary tree built from nums.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [3,2,1,6,0,5] <br />
+                    Output: [6,3,5,null,2,0,null,null,1] <br />
+                    Explanation: The recursive calls are as follow: <br />
+                    - The largest value in [3,2,1,6,0,5] is 6. Left prefix is
+                    [3,2,1] and right suffix is [0,5].
+                    <br />
+                    - The largest value in [3,2,1] is 3. Left prefix is [] and
+                    right suffix is [2,1].
+                    <br />
+                    - Empty array, so no child.
+                    <br />
+                    - The largest value in [2,1] is 2. Left prefix is [] and
+                    right suffix is [1].
+                    <br />
+                    - Empty array, so no child.
+                    <br />
+                    - Only one element, so child is a node with value 1.
+                    <br />
+                    - The largest value in [0,5] is 5. Left prefix is [0] and
+                    right suffix is [].
+                    <br />
+                    - Only one element, so child is a node with value 0.
+                    <br />- Empty array, so no child.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [3,2,1] <br />
+                    Output: [3,null,2,null,1]
+                  </>
+                ),
               },
             ]}
             constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
+            tc="n^3"
+            sc="h"
             codes={{
               Javascript: {
                 code: ``,
