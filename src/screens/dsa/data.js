@@ -72839,7 +72839,7 @@ class Solution:
                     <br /> Output: 14
                     <br /> Explanation: There are two kinds of items, A and B.
                     Their prices are $2 and $5 respectively.
-                    <br /> In special offer 1, you can pay $5 for 3A and 0B
+                    <br /> In special offer 1, you can/ pay $5 for 3A and 0B
                     <br /> In special offer 2, you can pay $10 for 1A and 2B.
                     <br /> You need to buy 3A and 2B, so you may pay $10 for 1A
                     and 2B (special offer #2), and $4 for 2A.
