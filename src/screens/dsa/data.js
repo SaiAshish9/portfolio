@@ -248,6 +248,7 @@ import Leetcode653 from "assets/leetcode/653.png";
 import Leetcode654 from "assets/leetcode/654.png";
 import Leetcode655 from "assets/leetcode/655.png";
 import Leetcode661 from "assets/leetcode/661.png";
+import Leetcode662 from "assets/leetcode/662.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -74815,6 +74816,7 @@ class Solution:
         title: "Q665. Maximum Width of Binary Tree (Q530)",
         content: (
           <Comp
+            title="Q665. Maximum Width of Binary Tree (Q530)"
             content1={
               <>
                 Given the root of a binary tree, return the maximum width of the
@@ -74835,6 +74837,7 @@ class Solution:
             content2={null}
             examples={[
               {
+                img: Leetcode662,
                 content: (
                   <>
                     Input: root = [1,3,2,5,3,null,9] <br />
@@ -74877,8 +74880,43 @@ class Solution:
             sc="h"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+              }
+              
+              /**
+               * @param {TreeNode} root
+               * @return {number}
+               */
+              var widthOfBinaryTree = function(root) {
+                if(!root) return 0;
+                let res = 0;
+                const q = [];
+                q.push([root, 1]);
+                while (q.length) {
+                  let offset = q[0][1] * 2;
+                  res = Math.max(res, q[q.length-1][1] - q[0][1] + 1);
+                  for (let size = q.length; size > 0; --size) {
+                    let [curr,index] = q.shift()
+                    if (curr.left)
+                      q.push([curr.left, index * 2 - offset]);
+                    if (curr.right)
+                      q.push([curr.right, index * 2 + 1 - offset]);
+                  }
+                }
+                return res;
+              };
+              
+              const t = new TreeNode(1)
+              t.left = new TreeNode(3)
+              t.left.left = new TreeNode(5)
+              t.left.right = new TreeNode(3)
+              t.right = new TreeNode(2)
+              t.right.right = new TreeNode(9)
+              console.log(widthOfBinaryTree(t))`,
+                output: `4`,
               },
             }}
           />
