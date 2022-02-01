@@ -73062,23 +73062,57 @@ class Solution:
         title: "Q640. Solve the Equation (Q513)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Solve a given equation and return the value of 'x' in the form
+                of a string "x=#value". The equation contains only '+', '-'
+                operation, the variable 'x' and its coefficient. You should
+                return "No solution" if there is no solution for the equation,
+                or "Infinite solutions" if there are infinite solutions for the
+                equation.
+                <br />
+                If there is exactly one solution for the equation, we ensure
+                that the value of 'x' is an integer.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: equation = "x+5-3+x=6+x-2"
+                    <br />
+                    Output: "x=2"
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: equation = "x=x"
+                    <br />
+                    Output: "Infinite solutions"
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: equation = "2x=x"
+                    <br />
+                    Output: "x=0"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                3 &lt;= equation.length &lt;= 1000
+                <br />
+                equation has exactly one '='.
+                <br />
+                equation consists of integers with an absolute value in the
+                range [0, 100] without any leading zeros, and the variable 'x'.
               </>
             }
             tc="n"
