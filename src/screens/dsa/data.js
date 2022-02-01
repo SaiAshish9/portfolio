@@ -72378,9 +72378,27 @@ console.log(tree2str(t))`,
             tc="n.log n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `class Solution {
+                  // [[3,2],[4,3]]
+                  public int scheduleCourse(int[][] courses) {
+                    int time = 0;
+                    Arrays.sort(courses, (a, b) -> (a[1] - b[1]));
+                    PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
+                    for (int[] c : courses) {
+                      final int duration = c[0];
+                      final int lastDay = c[1];
+                      pq.offer(duration);
+                      time += c[0];
+                      if (time > lastDay)
+                        time -= pq.poll();
+                    }
+                
+                    return pq.size();
+                  }
+                }
+                `,
+                output: `0`,
               },
             }}
           />
