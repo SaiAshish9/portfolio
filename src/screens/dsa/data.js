@@ -73628,23 +73628,56 @@ class Solution:
         title: "Q648. Replace Words (Q519)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                In English, we have a concept called root, which can be followed
+                by some other word to form another longer word - let's call this
+                word successor. For example, when the root "an" is followed by
+                the successor word "other", we can form a new word "another".
+                <br />
+                Given a dictionary consisting of many roots and a sentence
+                consisting of words separated by spaces, replace all the
+                successors in the sentence with the root forming it. If a
+                successor can be replaced by more than one root, replace it with
+                the root that has the shortest length.
+                <br />
+                Return the sentence after the replacement.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: dictionary = ["cat","bat","rat"], sentence = "the
+                    cattle was rattled by the battery"
+                    <br /> Output: "the cat was rat by the bat"
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: dictionary = ["a","b","c"], sentence = "aadsfasf
+                    absbs bbab cadsfafs"
+                    <br /> Output: "a a b c"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= dictionary.length &lt;= 1000
+                <br /> 1 &lt;= dictionary[i].length &lt;= 100
+                <br /> dictionary[i] consists of only lower-case letters.
+                <br /> 1 &lt;= sentence.length &lt;= 106
+                <br /> sentence consists of only lower-case letters and spaces.
+                <br /> The number of words in sentence is in the range [1, 1000]
+                <br /> The length of each word in sentence is in the range [1,
+                1000]
+                <br /> Every two consecutive words in sentence will be separated
+                by exactly one space.
+                <br /> sentence does not have leading or trailing spaces.
               </>
             }
             tc="n"
