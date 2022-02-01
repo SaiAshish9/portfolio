@@ -72062,31 +72062,77 @@ console.log(tree2str(t))`,
         title: "Q627. Swap Salary (Q503)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                <b>SQL Schema</b>
+                <br />
+                <b>Table: Salary</b>
+                <pre>
+                  {`
++-------------+----------+
+| Column Name | Type     |
++-------------+----------+
+| id          | int      |
+| name        | varchar  |
+| sex         | ENUM     |
+| salary      | int      |
++-------------+----------+
+                  `}
+                </pre>
+                id is the primary key for this table. <br />
+                The sex column is ENUM value of type ('m', 'f'). <br />
+                The table contains information about an employee. <br />
+                Write an SQL query to swap all 'f' and 'm' values (i.e., change
+                all 'f' values to 'm' and vice versa) with a single update
+                statement and no intermediate temporary tables.
+                <br />
+                Note that you must write a single update statement, do not write
+                any select statement for this problem.
+                <br />
+                The query result format is in the following example.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: <br />
+                    Salary table: <br />
+                    <pre>
+                      {`
++----+------+-----+--------+
+| id | name | sex | salary |
++----+------+-----+--------+
+| 1  | A    | m   | 2500   |
+| 2  | B    | f   | 1500   |
+| 3  | C    | m   | 5500   |
+| 4  | D    | f   | 500    |
++----+------+-----+--------+  
+  `}
+                    </pre>
+                    Output: <br />
+                    <pre>{`
++----+------+-----+--------+
+| id | name | sex | salary |
++----+------+-----+--------+
+| 1  | A    | f   | 2500   |
+| 2  | B    | m   | 1500   |
+| 3  | C    | f   | 5500   |
+| 4  | D    | m   | 500    |
++----+------+-----+--------+
+`}</pre>
+                    Explanation: <br />
+                    (1, A) and (3, C) were changed from 'm' to 'f'. <br />
+                    (2, B) and (4, D) were changed from 'f' to 'm'.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Mysql: {
+                code: `update Salary set sex = case when sex='m' then 'f' else 'm' end                `,
+                output: `{"headers": ["id", "name", "sex", "salary"], "values": [[1, "A", "f", 2500], [2, "B", "m", 1500], [3, "C", "f", 5500], [4, "D", "m", 500]]}`,
               },
             }}
           />
