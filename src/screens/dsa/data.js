@@ -241,6 +241,7 @@ import Leetcode587 from "assets/leetcode/587.png";
 import Leetcode598 from "assets/leetcode/598.png";
 import Leetcode606 from "assets/leetcode/606.png";
 import Leetcode617 from "assets/leetcode/617.png";
+import Leetcode623 from "assets/leetcode/623.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -71708,6 +71709,7 @@ console.log(tree2str(t))`,
         title: "Q622. Design Circular Queue (Q500)",
         content: (
           <Comp
+            title="Q622. Design Circular Queue (Q500)"
             content1={
               <>
                 Design your implementation of the circular queue. The circular
@@ -71838,23 +71840,61 @@ console.log(tree2str(t))`,
         title: "Q623. Add One Row to Tree (Q501)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q623. Add One Row to Tree (Q501)"
+            content1={
+              <>
+                Given the root of a binary tree and two integers val and depth,
+                add a row of nodes with value val at the given depth depth.
+                <br />
+                Note that the root node is at depth 1.
+                <br />
+                The adding rule is:
+                <br />
+                Given the integer depth, for each not null tree node cur at the
+                depth depth - 1, create two tree nodes with value val as cur's
+                left subtree root and right subtree root.
+                <br /> cur's original left subtree should be the left subtree of
+                the new left subtree root.
+                <br /> cur's original right subtree should be the right subtree
+                of the new right subtree root.
+                <br /> If depth == 1 that means there is no depth depth - 1 at
+                all, then create a tree node with value val as the new root of
+                the whole original tree, and the original tree is the new root's
+                left subtree.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode623,
+                content: (
+                  <>
+                    Input: root = [4,2,6,3,1,5], val = 1,
+                    <br /> depth = 2<br />
+                    Output: [4,1,1,2,null,null,6,3,1,5]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [4,2,null,3,1], val = 1, <br />
+                    depth = 3<br />
+                    Output: [4,2,null,1,1,3,null,null,1]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The number of nodes in the tree is in the range [1, 10^4].
+                <br />
+                The depth of the tree is in the range [1, 10^4].
+                <br />
+                -100 &lt;= Node.val &lt;= 100
+                <br />
+                -10^5 &lt;= val &lt;= 10^5
+                <br />1 &lt;= depth &lt;= the depth of tree + 1
               </>
             }
             tc="n"
