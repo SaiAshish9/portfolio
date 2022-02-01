@@ -74209,7 +74209,15 @@ class Solution:
                 ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 1000
+                <br />
+                0 &lt;= nums[i] &lt;= 1000
+                <br />
+                All integers in nums are uniqu
+              </>
+            }
             tc="n^3"
             sc="h"
             codes={{
