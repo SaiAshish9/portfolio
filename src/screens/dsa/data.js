@@ -74474,8 +74474,34 @@ class Solution:
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} moves
+                * @return {boolean}
+                */
+               var judgeCircle = function(moves) {
+                 let right = 0;
+                 let up = 0;
+                 for (let move of moves) {
+                   switch (move) {
+                     case 'R':
+                       ++right;
+                       break;
+                     case 'L':
+                       --right;
+                       break;
+                     case 'U':
+                       ++up;
+                       break;
+                     case 'D':
+                       --up;
+                       break;
+                   }
+                 }
+                 return right == 0 && up == 0;
+               };
+               
+               console.log(judgeCircle("LL"))`,
+                output: `false`,
               },
             }}
           />
