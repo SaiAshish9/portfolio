@@ -242,6 +242,7 @@ import Leetcode598 from "assets/leetcode/598.png";
 import Leetcode606 from "assets/leetcode/606.png";
 import Leetcode617 from "assets/leetcode/617.png";
 import Leetcode623 from "assets/leetcode/623.png";
+import Leetcode637 from "assets/leetcode/637.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -72715,31 +72716,86 @@ class Solution:
         content: (
           <Comp
             title="Q637. Average of Levels in Binary Tree (Q510)"
-            content1={<></>}
+            content1={
+              <>
+                Given the root of a binary tree, return the average value of the
+                nodes on each level in the form of an array. Answers within 10-5
+                of the actual answer will be accepted.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode637,
+                content: (
+                  <>
+                    Input: root = [3,9,20,null,null,15,7]
+                    <br /> Output: [3.00000,14.50000,11.00000]
+                    <br /> Explanation: The average value of nodes on level 0 is
+                    3, on level 1 is 14.5, and on level 2 is 11.
+                    <br /> Hence return [3, 14.5, 11].
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [3,9,20,null,null,15,7]
+                    <br /> Output: [3.00000,14.50000,11.00000]
+                    <br /> Explanation: The average value of nodes on level 0 is
+                    3, on level 1 is 14.5, and on level 2 is 11. Hence return
+                    [3, 14.5, 11].
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The number of nodes in the tree is in the range [1, 10^4].{" "}
+                <br />
+                -2^31 &lt;= Node.val &lt;= 2^31 - 1
               </>
             }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+              }
+              
+              /**
+               * @param {TreeNode} root
+               * @return {number[]}
+               */
+              var averageOfLevels = function(root) {
+                const res = []
+                const q = [root];
+                while (q.length) {
+                let sum = 0;
+                let size = q.length;
+                for (let i = 0; i < size; ++i) {
+                  const node = q.shift();
+                  sum += node.val;
+                  if (node.left)
+                    q.push(node.left);
+                  if (node.right)
+                    q.push(node.right);
+                }
+                res.push(sum /size);
+                }
+                return res;
+              };
+              
+              const t = new TreeNode(3)
+              t.left = new TreeNode(9)
+              t.right = new TreeNode(20)
+              t.right.left = new TreeNode(15)
+              t.right.right = new TreeNode(7)
+              console.log(averageOfLevels(t))`,
+                output: `[ 3, 14.5, 11 ]`,
               },
             }}
           />
