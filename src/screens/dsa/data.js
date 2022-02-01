@@ -73472,7 +73472,20 @@ class Solution:
         title: "Q646. Maximum Length of Pair Chain (Q517)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                You are given an array of n pairs pairs where pairs[i] = [lefti,
+                righti] and lefti &lt; righti.
+                <br />
+                A pair p2 = [c, d] follows a pair p1 = [a, b] if b &lt; c. A
+                chain of pairs can be formed in this fashion.
+                <br />
+                Return the length longest chain which can be formed.
+                <br />
+                You do not need to use up all the given intervals. You can
+                select pairs in any order.
+              </>
+            }
             content2={null}
             examples={[
               {
