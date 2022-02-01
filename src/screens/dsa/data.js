@@ -72233,6 +72233,7 @@ console.log(tree2str(t))`,
         title: "Q629. K Inverse Pairs Array (Q505)",
         content: (
           <Comp
+            title="Q629. K Inverse Pairs Array (Q505)"
             content1={
               <>
                 For an integer array nums, an inverse pair is a pair of integers
@@ -72277,8 +72278,27 @@ console.log(tree2str(t))`,
             sc="m.n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @param {number} k
+                * @return {number}
+                */
+               var kInversePairs = function(n, k) {
+                 const kMod = 1e9 + 7;
+                 const dp = Array.from(Array(n + 1),()=>Array(k + 1).fill(0))
+                 for (let i = 0; i <= n; ++i)
+                 dp[i][0] = 1;
+                 for (let i = 1; i <= n; ++i)
+                   for (let j = 1; j <= k; ++j) {
+                     dp[i][j] = (dp[i][j - 1] + dp[i - 1][j]) % kMod;
+                     if (j - i >= 0)
+                       dp[i][j] = (dp[i][j] - dp[i - 1][j - i] + kMod) % kMod;
+                   }
+                 return dp[n][k];
+               };
+               
+               console.log(kInversePairs(3,0))`,
+                output: `1`,
               },
             }}
           />
