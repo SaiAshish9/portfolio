@@ -73327,6 +73327,7 @@ class Solution:
         title: "Q643. Maximum Average Subarray I (Q515)",
         content: (
           <Comp
+            title="Q643. Maximum Average Subarray I (Q515)"
             content1={
               <>
                 You are given an integer array nums consisting of n elements,
