@@ -72252,8 +72252,8 @@ console.log(tree2str(t))`,
                 <b>Follow up :</b>
               </>
             }
-            tc="n"
-            sc="n"
+            tc="m.n"
+            sc="m.n"
             codes={{
               Javascript: {
                 code: ``,
