@@ -74273,23 +74273,63 @@ class Solution:
         title: "Q655. Print Binary Tree (Q525)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given the root of a binary tree, construct a 0-indexed m x n
+                string matrix res that represents a formatted layout of the
+                tree. The formatted layout matrix should be constructed using
+                the following rules:
+                <br />
+                The height of the tree is height and the number of rows m should
+                be equal to height + 1.
+                <br />
+                The number of columns n should be equal to 2height+1 - 1.
+                <br />
+                Place the root node in the middle of the top row (more formally,
+                at location res[0][(n-1)/2]).
+                <br />
+                For each node that has been placed in the matrix at position
+                res[r][c], place its left child at res[r+1][c-2height-r-1] and
+                its right child at res[r+1][c+2height-r-1].
+                <br />
+                Continue this process until all the nodes in the tree have been
+                placed.
+                <br />
+                Any empty cells should contain the empty string "".
+                <br />
+                Return the constructed matrix res.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [1,2] Output: <br />
+                    [["","1",""], <br />
+                    ["2","",""]]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [1,2,3,null,4] <br />
+                    Output: <br />
+                    [["","","","1","","",""], <br />
+                    ["","2","","","","3",""], <br />
+                    ["","","4","","","",""]]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The number of nodes in the tree is in the range [1, 210].
+                <br />
+                -99 &lt;= Node.val &lt;= 99
+                <br />
+                The depth of the tree will be in the range [1, 10].
               </>
             }
             tc="n"
