@@ -73546,27 +73546,52 @@ class Solution:
         content: (
           <Comp
             title="Q647. Palindromic Substrings (Q518)"
-            content1={<></>}
+            content1={
+              <>
+                Given a string s, return the number of palindromic substrings in
+                it.
+                <br />
+                A string is a palindrome when it reads the same backward as
+                forward.
+                <br />A substring is a contiguous sequence of characters within
+                the string.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "abc"
+                    <br />
+                    Output: 3<br />
+                    Explanation: Three palindromic strings: "a", "b", "c".
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "aaa"
+                    <br />
+                    Output: 6<br />
+                    Explanation: Six palindromic strings: "a", "a", "a", "aa",
+                    "aa", "aaa".
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= s.length &lt;= 1000Input: s = "abc"
+                <br />
+                Output: 3<br />
+                Explanation: Three palindromic strings: "a", "b", "c".
+                <br />s consists of lowercase English letters.
               </>
             }
-            tc="n"
-            sc="n"
+            tc="n^2"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
