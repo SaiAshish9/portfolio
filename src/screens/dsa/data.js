@@ -74224,8 +74224,46 @@ class Solution:
             sc="h"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+                }
+                
+                /**
+                 * @param {number[]} nums
+                 * @return {TreeNode}
+                 */
+                var constructMaximumBinaryTree = function(nums) {
+                  return build(nums, 0, nums.length - 1);
+                };
+                
+                function build(nums, i, j) {
+                  if (i > j) return null;
+                  let maxIndex = i;
+                  for (let k = i + 1; k <= j; ++k)
+                      if (nums[k] > nums[maxIndex])
+                        maxIndex = k;
+                  const root = new TreeNode(nums[maxIndex]);
+                  root.left = build(nums, i, maxIndex - 1);
+                  root.right = build(nums, maxIndex + 1, j);
+                  return root; 
+                }
+                
+                console.log(constructMaximumBinaryTree([3,2,1,6,0,5]))`,
+                output: `TreeNode {
+                  val: 6,
+                  left: TreeNode {
+                    val: 3,
+                    left: null,
+                    right: TreeNode { val: 2, left: null, right: [TreeNode] }
+                  },
+                  right: TreeNode {
+                    val: 5,
+                    left: TreeNode { val: 0, left: null, right: null },
+                    right: null
+                  }
+                }`,
               },
             }}
           />
