@@ -113,6 +113,26 @@ import Paytm6 from "assets/interview/paytm6.png";
 import Paytm7 from "assets/interview/paytm7.png";
 import Paytm8 from "assets/interview/paytm8.png";
 import Paytm9 from "assets/interview/paytm9.png";
+import Uber1 from "assets/interview/uber/uber1.png";
+import Uber2 from "assets/interview/uber/uber2.png";
+import Uber3 from "assets/interview/uber/uber3.png";
+import Uber4 from "assets/interview/uber/uber4.png";
+import Uber5 from "assets/interview/uber/uber5.png";
+import Uber6 from "assets/interview/uber/uber6.png";
+import Uber7 from "assets/interview/uber/uber7.png";
+import Uber8 from "assets/interview/uber/uber8.png";
+import Uber9 from "assets/interview/uber/uber9.png";
+import Uber10 from "assets/interview/uber/uber10.png";
+import Uber11 from "assets/interview/uber/uber11.png";
+import Uber12 from "assets/interview/uber/uber12.png";
+import Uber13 from "assets/interview/uber/uber13.png";
+import Uber14 from "assets/interview/uber/uber14.png";
+import Uber15 from "assets/interview/uber/uber15.png";
+import Uber16 from "assets/interview/uber/uber16.png";
+import Uber17 from "assets/interview/uber/uber17.png";
+import Uber18 from "assets/interview/uber/uber18.png";
+import Uber19 from "assets/interview/uber/uber19.png";
+import Uber20 from "assets/interview/uber/uber20.png";
 import Oh1 from "assets/interview/oh1.png";
 import Oh2 from "assets/interview/oh2.png";
 import Oh3 from "assets/interview/oh3.png";
@@ -18225,9 +18245,57 @@ console.log(isPairSum(arr, arrSize, val));
             <Span>
               <b>Uber SDE Internship Interview Experience</b>
             </Span>
+            <Span>
+              I applied for the SDE off-campus internship opportunity via my
+              linked in profile via their career's page.
+            </Span>
+            <Span> Online test was conducted at codesignal. </Span>
             <Span>Total Number Of Questions Asked: 3</Span>
-            <Span>Duration: 1hr</Span>
-            <Span>[ Work In Progress ]</Span>
+            <Span>Test link was active for 6 hours.</Span>
+            <Span>Test Duration: 1hr</Span>
+            <p>
+              <b>Q1. Base 2 To Base 6 Conversion.</b>
+            </p>
+            <CodeEditor />
+            <Span>
+              <b>
+                Q2. Longest Increasing Common Subsequence Of Two Arrays Which
+                Consists of 1, -1 and 0 Only.
+              </b>
+            </Span>
+            <Span>
+              <b>
+                Q1. Longest Increasing Common Subsequence Of Two Arrays Which
+                Consists of 1, -1 and 0 Only.
+              </b>
+            </Span>
+            <Span>
+              <b>Screenshots:</b>
+            </Span>
+            {[
+              Uber1,
+              Uber2,
+              Uber3,
+              Uber4,
+              Uber5,
+              Uber6,
+              Uber7,
+              Uber8,
+              Uber9,
+              Uber10,
+              Uber11,
+              Uber12,
+              Uber13,
+              Uber14,
+              Uber15,
+              Uber16,
+              Uber17,
+              Uber18,
+              Uber19,
+              Uber20,
+            ].map((i, k) => (
+              <Img key={k} src={Vmware1Img} large />
+            ))}
           </>
         ),
       },
