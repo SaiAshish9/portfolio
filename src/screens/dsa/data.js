@@ -18282,7 +18282,50 @@ console.log(isPairSum(arr, arrSize, val));
                 title: "uber-q1(a)",
                 codes: {
                   Javascript: {
-                    code: ``,
+                    code: `function dec(s, base)
+                    {
+                      let len = s.length;
+                      let power = 1;
+                      let num = 0;
+                      for (let i = len - 1; i >= 0; i--) {
+                        num += +s[i] * power;
+                        power = power * base;
+                      }
+                      return num;
+                    }
+                    
+                    function val(num)
+                    {
+                      if (num >= 0 && num <= 9)
+                        return String.fromCharCode(num + 48);
+                      else
+                        return String.fromCharCode(num - 10 + 65);
+                    }
+                    
+                    function fromDec(base, inp)
+                    {
+                      let res = "";
+                      while (inp > 0) {
+                        res += val(inp % base);
+                        inp = Math.floor(inp/base);
+                      }
+                      res = res.split("").reverse().join("");
+                      return res;
+                    }
+                    
+                    function convertBase(s, a, b)
+                    {
+                      let num = dec(s, a);
+                      let res = fromDec(b, num);
+                      return res
+                    }
+                    
+                    function solution(base2){
+                      return convertBase(""+base2,2,6)
+                    }
+                    
+                    console.log(solution(1100)) // 12
+                    `,
                     output: `20`,
                   },
                 },
