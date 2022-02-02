@@ -78835,8 +78835,56 @@ class Solution:
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `const kSize= 10000
+
+                var MyHashMap = function() {
+                  this.lists = Array(kSize).fill([]);
+                };
+                
+                /** 
+                 * @param {number} key 
+                 * @param {number} value
+                 * @return {void}
+                 */
+                MyHashMap.prototype.put = function(key, value) {
+                  for (let pair of this.lists[key % kSize])
+                    if (pair[0] == key) {
+                      pair[1] = value;
+                      return;
+                    }
+                  this.lists[key % kSize].push([key, value]);
+                };
+                
+                /** 
+                 * @param {number} key
+                 * @return {number}
+                 */
+                MyHashMap.prototype.get = function(key) {
+                 for (let pair of this.lists[key % kSize])
+                      if (pair[0] == key)
+                        return pair[1];
+                    return -1;
+                };
+                
+                /** 
+                 * @param {number} key
+                 * @return {void}
+                 */
+                MyHashMap.prototype.remove = function(key) {
+                   for (let i = 0; i < this.lists[key % kSize].length; ++i)
+                  if (this.lists[key % kSize][i][0] == key) {
+                    this.lists[key % kSize].splice(i,1);
+                    return;
+                  }
+                };
+                
+                
+                var obj = new MyHashMap()
+                obj.put(1,2)
+                var param_2 = obj.get(1)
+                obj.remove(1)
+                console.log(param_2)`,
+                output: `2`,
               },
             }}
           />
