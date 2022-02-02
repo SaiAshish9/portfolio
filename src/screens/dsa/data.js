@@ -18303,14 +18303,14 @@ console.log(isPairSum(arr, arrSize, val));
                 },
               }}
             />
-            <p>
+            <Span>
               <b>
                 Q3. A travel agent sends couple's from one city to another via the shortest path
                 possible. If there are N cities and N - 1 highways connecting
                 them. Help him plan the trip for all the couples such that he
                 maximizes the total distance travelled by all couples.
               </b>
-            </p>
+            </Span>
             <Img left src={Uber20} reduceH />
             <CodeEditor
               options={{
