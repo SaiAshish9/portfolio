@@ -78505,6 +78505,7 @@ class Solution:
         title: "Q703. Kth Largest Element in a Stream (Q565)",
         content: (
           <Comp
+            title="Q703. Kth Largest Element in a Stream (Q565)"
             content1={<></>}
             content2={null}
             examples={[
