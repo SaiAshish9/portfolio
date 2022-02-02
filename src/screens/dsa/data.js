@@ -75988,27 +75988,53 @@ class Solution:
         title: "Q674. Longest Continuous Increasing Subsequence (Q540)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q674. Longest Continuous Increasing Subsequence (Q540)"
+            content1={
+              <>
+                Given an unsorted array of integers nums, return the length of
+                the longest continuous increasing subsequence (i.e. subarray).
+                The subsequence must be strictly increasing.
+                <br />A continuous increasing subsequence is defined by two
+                indices l and r (l &lt; r) such that it is [nums[l], nums[l +
+                1], ..., nums[r - 1], nums[r]] and for each l &lt;= i &lt; r,
+                nums[i] &lt; nums[i + 1].
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,3,5,4,7] Output: 3<br />
+                    <br /> Explanation: The longest continuous increasing
+                    subsequence is [1,3,5] with length 3. Even though [1,3,5,7]
+                    is an increasing subsequence, it is not continuous as
+                    elements 5 and 7 are separated by element 4.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [2,2,2,2,2]
+                    <br />
+                    Output: 1<br />
+                    Explanation: The longest continuous increasing subsequence
+                    is [2] with length 1. Note that it must be strictly
+                    increasing.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= nums.length &lt;= 10^4
+                <br />
+                -10^9 &lt;= nums[i] &lt;= 10^9
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
