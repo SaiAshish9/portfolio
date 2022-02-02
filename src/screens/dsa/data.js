@@ -75503,8 +75503,34 @@ class Solution:
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} m
+                * @param {number} n
+                * @param {number} k
+                * @return {number}
+                */
+               var findKthNumber = function(m, n, k) {
+                 let l = 1;
+                 let r = m * n;
+                 while (l < r) {
+                   const mid = l + parseInt((r - l) / 2);
+                   if (numsNoGreaterThan(m, n, mid) >= k)
+                     r = mid;
+                   else
+                     l = mid + 1;
+                 }
+                 return l; 
+               };
+               
+                 function numsNoGreaterThan(m, n, target) {
+                   let count = 0;
+                   for (let i = 1; i <= m; ++i)
+                     count += Math.min(parseInt(target / i), n);
+                   return count;
+                 }
+               
+               console.log(findKthNumber(2,3,6))`,
+                output: `6`,
               },
             }}
           />
@@ -75514,23 +75540,50 @@ class Solution:
         title: "Q669. Trim a Binary Search Tree (Q535)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q669. Trim a Binary Search Tree (Q535)"
+            content1={
+              <>
+                Given the root of a binary search tree and the lowest and
+                highest boundaries as low and high, trim the tree so that all
+                its elements lies in [low, high]. Trimming the tree should not
+                change the relative structure of the elements that will remain
+                in the tree (i.e., any node's descendant should remain a
+                descendant). It can be proven that there is a unique answer.
+                <br />
+                Return the root of the trimmed binary search tree. Note that the
+                root may change depending on the given bounds.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [1,0,2], low = 1, high = 2<br />
+                    Output: [1,null,2]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [3,0,4,null,2,null,null,1], low = 1, high = 3
+                    <br />
+                    Output: [3,2,null,1]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The number of nodes in the tree in the range [1, 10^4].
+                <br />
+                0 &lt;= Node.val &lt;= 10^4
+                <br />
+                The value of each node in the tree is unique.
+                <br />
+                root is guaranteed to be a valid binary search tree.
+                <br />0 &lt;= low &lt;= high &lt;= 10^4
               </>
             }
             tc="n"
