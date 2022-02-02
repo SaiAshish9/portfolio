@@ -18247,7 +18247,7 @@ console.log(isPairSum(arr, arrSize, val));
             </Span>
             <Span>
               I applied for the SDE off-campus internship opportunity via my
-              linked in profile via their career's page.
+              linked in profile and their career's dashboard.
             </Span>
             <Span> Online test was conducted at codesignal. </Span>
             <Span>Total Number Of Questions Asked: 3</Span>
