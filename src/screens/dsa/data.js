@@ -78138,8 +78138,42 @@ class Solution:
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} k
+                * @return {boolean}
+                */
+               var canPartitionKSubsets = function(nums, k) {
+                 let sum = nums.reduce((a,b)=>a+b,0);
+                 if (sum % k != 0)
+                   return false;
+                 const t = parseInt(sum / k); 
+                 const seen = Array(nums.length).fill(0);
+                 return dfs(nums, 0, k, t, t, seen);
+               };
+               
+               function dfs(nums, s, k, target, subsetTargetSum, seen) {
+                   if (k == 0)
+                     return true;
+                   if (target < 0)
+                     return false;
+                   if (target == 0)
+                     return dfs(nums, 0, k - 1, subsetTargetSum, subsetTargetSum, seen);
+               
+                   for (let i = s; i < nums.length; ++i) {
+                     if (seen[i])
+                       continue;
+                     seen[i] = true;
+                     if (dfs(nums, i + 1, k, target - nums[i], subsetTargetSum, seen))
+                       return true;
+                     seen[i] = false;
+                   }
+               
+                   return false;
+                 }
+               
+               console.log(canPartitionKSubsets([1,2,3,4],3))`,
+                output: `false`,
               },
             }}
           />
