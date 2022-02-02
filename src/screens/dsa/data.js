@@ -78861,11 +78861,6 @@ class Solution:
               },
             ]}
             constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
             tc="n"
             sc="n"
             codes={{
