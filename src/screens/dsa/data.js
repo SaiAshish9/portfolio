@@ -18383,10 +18383,12 @@ console.log(isPairSum(arr, arrSize, val));
             />
             <Span>
               <b>
-                Q3. A travel agent sends couple's from one city to another via the shortest path
-                possible. If there are N cities and N - 1 highways connecting
-                them. Help him plan the trip for all the couples such that he
-                maximizes the total distance travelled by all couples.
+                Q3. A travel agent sends couple's from one city to another via
+                the shortest path possible. If there are N cities and N - 1
+                highways connecting them. Help him plan the trip for all the
+                couples such that he maximizes the total distance travelled by
+                all couples. You must return to the same node from where you've
+                originated.
               </b>
             </Span>
             <Img left src={Uber20} reduceH />
@@ -18395,8 +18397,108 @@ console.log(isPairSum(arr, arrSize, val));
                 title: "uber-q3",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `class Graph {
+                      constructor(n, v) {
+                          this.n = n
+                          this.g = {}
+                      }
+                      addVertex(i) {
+                          this.g[i] = {}
+                      }
+                      addEdge(u, v, w) {
+                          this.g[u][v] = w
+                          this.g[v][u] = w
+                      }
+                  
+                      paths(source, destination) {
+                        let result = []
+                        const curr = []
+                        curr.push(source)
+                        this.pathsUsingDfs(source, destination, result, curr)
+                        return Math.max(...result)
+                      }
+                  
+                      pathsUsingDfs(s, d, result, curr = [], visited = {}) {
+                          if (s === d) {
+                            let path = curr.slice()
+                            let max = 0
+                            for(let i=0;i<path.length;i++){
+                               if(this.g[path[i+1]]){
+                                max+= this.g[path[i+1]][path[i]]
+                               }
+                            }
+                            result.push(max)
+                            return
+                          }
+                          visited[s] = true
+                          const list = Object.keys(this.g[s]).map(x=>+x)
+                          for (let i of list) {
+                              if (!visited[i]) {
+                                  curr.push(i)
+                                  this.pathsUsingDfs(i, d, result, curr, visited)
+                                  curr.splice(curr.indexOf(i), 1)
+                              }
+                          }
+                          visited[s] = false
+                      }
+                      
+                      solve(){
+                       let entriesL = Object.entries(this.g).map(x=>[+x[0],Object.entries(x[1]).length])
+                       const maxN = Math.max(...entriesL.map(x=>x[1]))
+                       entriesL = entriesL.filter(e=>e[1]===maxN)[0]
+                       const source = entriesL[0]
+                       let max = 0
+                       const neighbors = Object.entries(this.g[source])
+                       const keys = Object.keys(this.g[source]).map(x=>+x)
+                       for(let n of neighbors){
+                        max+= n[1]
+                       }
+                       const others = [...Array(this.n).keys()].map(x=>+x+1).filter(x=>!keys.includes(x) && x !== source)
+                       for(let i of others){
+                         max += this.paths(source,i)
+                       }
+                       return max * 2
+                      }
+                  }
+                  
+                  function solution(n,distances){
+                  const g = new Graph(n)
+                  for(let i=1;i<=n;i++)
+                  g.addVertex(i)
+                  for(let d of distances){
+                    g.addEdge(d[0],d[1],d[2])
+                  }
+                  console.log(g.g)
+                  return g.solve()
+                  }
+                  
+                  console.log(solution(4,[
+                  [1,2,3],
+                  [2,3,2],
+                  [4,3,2],
+                  ]));
+                  
+                  console.log(solution(5,[
+                  [1,2,1],
+                  [2,3,2],
+                  [2,4,3],
+                  [1,5,4]
+                  ]));`,
+                    output: `{
+                      '1': { '2': 3 },
+                      '2': { '1': 3, '3': 2 },
+                      '3': { '2': 2, '4': 2 },
+                      '4': { '3': 2 }
+                    }
+                    18
+                    {
+                      '1': { '2': 1, '5': 4 },
+                      '2': { '1': 1, '3': 2, '4': 3 },
+                      '3': { '2': 2 },
+                      '4': { '2': 3 },
+                      '5': { '1': 4 }
+                    }
+                    22`,
                   },
                 },
               }}
