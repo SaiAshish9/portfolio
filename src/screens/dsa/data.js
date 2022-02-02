@@ -278,6 +278,7 @@ import Leetcode687 from "assets/leetcode/687.png";
 import Leetcode688 from "assets/leetcode/688.png";
 import Leetcode690 from "assets/leetcode/690.png";
 import Leetcode695 from "assets/leetcode/695.png";
+import Leetcode699 from "assets/leetcode/699.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -78183,23 +78184,71 @@ class Solution:
         title: "Q699. Falling Squares (Q562)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q699. Falling Squares (Q562)"
+            content1={
+              <>
+                There are several squares being dropped onto the X-axis of a 2D
+                plane.
+                <br />
+                You are given a 2D integer array positions where positions[i] =
+                [lefti, sideLengthi] represents the ith square with a side
+                length of sideLengthi that is dropped with its left edge aligned
+                with X-coordinate lefti.
+                <br />
+                Each square is dropped one at a time from a height above any
+                landed squares. It then falls downward (negative Y direction)
+                until it either lands on the top side of another square or on
+                the X-axis. A square brushing the left/right side of another
+                square does not count as landing on it. Once it lands, it
+                freezes in place and cannot be moved.
+                <br />
+                After each square is dropped, you must record the height of the
+                current tallest stack of squares.
+                <br />
+                Return an integer array ans where ans[i] represents the height
+                described above after dropping the ith square.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode999,
+                content: (
+                  <>
+                    Input: positions = [[1,2],[2,3],[6,1]]
+                    <br /> Output: [2,5,5]
+                    <br /> Explanation:
+                    <br /> After the first drop, the tallest stack is square 1
+                    with a height of 2.
+                    <br /> After the second drop, the tallest stack is squares 1
+                    and 2 with a height of 5.
+                    <br /> After the third drop, the tallest stack is still
+                    squares 1 and 2 with a height of 5.
+                    <br /> Thus, we return an answer of [2, 5, 5].
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: positions = [[100,100],[200,100]]
+                    <br /> Output: [100,100]
+                    <br /> Explanation:
+                    <br /> After the first drop, the tallest stack is square 1
+                    with a height of 100.
+                    <br /> After the second drop, the tallest stack is either
+                    square 1 or square 2, both with heights of 100.
+                    <br /> Thus, we return an answer of [100, 100].
+                    <br /> Note that square 2 only brushes the right side of
+                    square 1, which does not count as landing on it.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= positions.length &lt;= 1000 <br />
+                1 &lt;= lefti &lt;= 108 <br />1 &lt;= sideLengthi &lt;= 106
               </>
             }
             tc="n"
