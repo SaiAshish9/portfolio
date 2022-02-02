@@ -77928,20 +77928,52 @@ class Solution:
         title: "Q696. Count Binary Substrings (Q559)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q696. Count Binary Substrings (Q559)"
+            content1={
+              <>
+                Give a binary string s, return the number of non-empty
+                substrings that have the same number of 0's and 1's, and all the
+                0's and all the 1's in these substrings are grouped
+                consecutively.
+                <br />
+                Substrings that occur multiple times are counted the number of
+                times they occur.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "00110011" <br />
+                    Output: 6 <br />
+                    Explanation: There are 6 substrings that have equal number
+                    of consecutive 1's and 0's: "0011", "01", "1100", "10",
+                    "0011", and "01". Notice that some of these substrings
+                    repeat and are counted the number of times they occur. Also,
+                    "00110011" is not a valid substring because all the 0's (and
+                    1's) are not grouped together.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "10101"
+                    <br />
+                    Output: 4<br />
+                    Explanation: There are 4 substrings: "10", "01", "10", "01"
+                    that have equal number of consecutive 1's and 0's.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 10^5 <br />
+                s[i] is either '0' or '1'.
+              </>
+            }
             tc="n"
             sc="1"
             codes={{
