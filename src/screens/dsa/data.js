@@ -77665,23 +77665,61 @@ class Solution:
         title: "Q692. Top K Frequent Words (Q556)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q692. Top K Frequent Words (Q556)"
+            content1={
+              <>
+                Given an array of strings words and an integer k, return the k
+                most frequent strings.
+                <br />
+                Return the answer sorted by the frequency from highest to
+                lowest. Sort the words with the same frequency by their
+                lexicographical order.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words = ["i","love","leetcode","i","love","coding"],
+                    k = 2
+                    <br />
+                    Output: ["i","love"]
+                    <br />
+                    Explanation: "i" and "love" are the two most frequent words.
+                    Note that "i" comes before "love" due to a lower
+                    alphabetical order.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words =
+                    ["the","day","is","sunny","the","the","the","sunny","is","is"],
+                    k = 4
+                    <br />
+                    Output: ["the","is","sunny","day"]
+                    <br />
+                    Explanation: "the", "is", "sunny" and "day" are the four
+                    most frequent words, with the number of occurrence being 4,
+                    3, 2 and 1 respectively.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= words.length &lt;= 500 <br />
+                1 &lt;= words[i] &lt;= 10 <br />
+                words[i] consists of lowercase English letters. <br />k is in
+                the range [1, The number of unique words[i]]
+              </>
+            }
             fp={
               <>
-                <b>Follow up :</b>
+                <b>Follow up :</b> Could you solve it in O(n log(k)) time and
+                O(n) extra space?
               </>
             }
             tc="n"
