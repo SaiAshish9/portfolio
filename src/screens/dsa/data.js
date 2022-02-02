@@ -18253,22 +18253,76 @@ console.log(isPairSum(arr, arrSize, val));
             <Span>Total Number Of Questions Asked: 3</Span>
             <Span>Test link was active for 6 hours.</Span>
             <Span>Test Duration: 1hr</Span>
-            <p>
+            <Span>
               <b>Q1. Base 2 To Base 6 Conversion.</b>
+            </Span>
+            <p>
+              <b>1(a) Method 1:</b>
             </p>
-            <Span>
+            <CodeEditor
+              options={{
+                title: "uber-q1(a)",
+                codes: {
+                  Javascript: {
+                    code: ``,
+                    output: ``,
+                  },
+                },
+              }}
+            />
+            <p>
+              <b>1(b) Method 2:</b>
+            </p>
+            <CodeEditor
+              options={{
+                title: "uber-q1(a)",
+                codes: {
+                  Javascript: {
+                    code: ``,
+                    output: ``,
+                  },
+                },
+              }}
+            />
+            <p>
               <b>
-                Q2. Longest Increasing Common Subsequence Of Two Arrays Which
-                Consists of 1, -1 and 0 Only.
+                Q2. Given a set of time intervals and scores , pick the
+                intervals in such a way that the score is maximum and their sum
+                will be equal or nearest to total duration provided. ( I exactly
+                don't remember this question )
               </b>
-            </Span>
-            <Span>
+            </p>
+            <CodeEditor
+              options={{
+                title: "uber-q2",
+                codes: {
+                  Javascript: {
+                    code: ``,
+                    output: ``,
+                  },
+                },
+              }}
+            />
+            <p>
               <b>
-                Q1. Longest Increasing Common Subsequence Of Two Arrays Which
-                Consists of 1, -1 and 0 Only.
+                Q3. A travel agent sends couple's from one city to another via the shortest path
+                possible. If there are N cities and N - 1 highways connecting
+                them. Help him plan the trip for all the couples such that he
+                maximizes the total distance travelled by all couples.
               </b>
-            </Span>
-            <Img left src={Uber20} />
+            </p>
+            <Img left src={Uber20} reduceH />
+            <CodeEditor
+              options={{
+                title: "uber-q3",
+                codes: {
+                  Javascript: {
+                    code: ``,
+                    output: ``,
+                  },
+                },
+              }}
+            />
             <Span>
               <b>Screenshots:</b>
             </Span>
