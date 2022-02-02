@@ -77768,24 +77768,44 @@ class Solution:
         content: (
           <Comp
             title="Q693. Binary Number with Alternating Bits (Q557)"
-            content1={<>Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.</>}
+            content1={
+              <>
+                Given a positive integer, check whether it has alternating bits:
+                namely, if two adjacent bits will always have different values.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <>Input: n = 5<br />
-                Output: true<br />
-                Explanation: The binary representation of 5 is: 101</>,
+                content: (
+                  <>
+                    Input: n = 5<br />
+                    Output: true
+                    <br />
+                    Explanation: The binary representation of 5 is: 101
+                  </>
+                ),
               },
               {
-                content: <>Input: n = 7<br />
-                Output: false<br />
-                Explanation: The binary representation of 7 is: 111.
-                </>,
+                content: (
+                  <>
+                    Input: n = 7<br />
+                    Output: false
+                    <br />
+                    Explanation: The binary representation of 7 is: 111.
+                  </>
+                ),
               },
               {
-                content: <>Input: n = 11<br />
-                Output: false<br />
-                Explanation: The binary representation of 11 is: 1011.</>,
+                content: (
+                  <>
+                    Input: n = 11
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation: The binary representation of 11 is: 1011.
+                  </>
+                ),
               },
             ]}
             constraints={<>1 &lt;= n &lt;= 2^31 - 1</>}
@@ -77820,7 +77840,7 @@ class Solution:
         title: "Q695. Max Area of Island (Q558)",
         content: (
           <Comp
-          title="Q695. Max Area of Island (Q558)"
+            title="Q695. Max Area of Island (Q558)"
             content1={<></>}
             content2={null}
             examples={[
