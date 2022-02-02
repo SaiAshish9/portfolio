@@ -18415,7 +18415,7 @@ console.log(isPairSum(arr, arrSize, val));
                         const curr = []
                         curr.push(source)
                         this.pathsUsingDfs(source, destination, result, curr)
-                        return Math.max(...result)
+                        return Math.min(...result)
                       }
                   
                       pathsUsingDfs(s, d, result, curr = [], visited = {}) {
