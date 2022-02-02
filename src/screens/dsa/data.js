@@ -272,6 +272,7 @@ import Leetcode662 from "assets/leetcode/662.png";
 import Leetcode668 from "assets/leetcode/668.png";
 import Leetcode669 from "assets/leetcode/669.png";
 import Leetcode671 from "assets/leetcode/671.png";
+import Leetcode684 from "assets/leetcode/684.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -76867,31 +76868,89 @@ class Solution:
         content: (
           <Comp
             title="Q684. Redundant Connection (Q548)"
-            content1={<></>}
+            content1={
+              <>
+                In this problem, a tree is an undirected graph that is connected
+                and has no cycles.
+                <br />
+                You are given a graph that started as a tree with n nodes
+                labeled from 1 to n, with one additional edge added. The added
+                edge has two different vertices chosen from 1 to n, and was not
+                an edge that already existed. The graph is represented as an
+                array edges of length n where edges[i] = [ai, bi] indicates that
+                there is an edge between nodes ai and bi in the graph.
+                <br />
+                Return an edge that can be removed so that the resulting graph
+                is a tree of n nodes. If there are multiple answers, return the
+                answer that occurs last in the input.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode684,
+                content: <>Input: edges = [[1,2],[1,3],[2,3]] Output: [2,3]</>,
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: edges = [[1,2],[2,3],[3,4],[1,4],[1,5]] Output: [1,4]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                n == edges.length 3 &lt;= n &lt;= 1000 <br />
+                edges[i].length == 2 <br />
+                1 &lt;= ai &lt; bi &lt;= edges.length <br />
+                ai != bi <br />
+                There are no repeated edges. <br />
+                The given graph is connected.
               </>
             }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // [[1,2],[1,3],[2,3]]
+                class UF {
+                  public UF(int n) {
+                    id = new int[n];
+                    for (int i = 0; i < n; ++i)
+                      id[i] = i;
+                  }
+                
+                  public boolean union(int u, int v) {
+                    final int i = find(u);
+                    final int j = find(v);
+                    if (i == j)
+                      return false;
+                    id[i] = j;
+                    return true;
+                  }
+                
+                  private int[] id;
+                
+                  private int find(int u) {
+                    return id[u] == u ? u : (id[u] = find(id[u]));
+                  }
+                }
+                
+                class Solution {
+                  public int[] findRedundantConnection(int[][] edges) {
+                    UF uf = new UF(edges.length + 1);
+                
+                    for (int[] edge : edges)
+                      if (!uf.union(edge[0], edge[1]))
+                        return edge;
+                
+                    throw new IllegalArgumentException();
+                  }
+                }
+                `,
+                output: `[2,3]`,
               },
             }}
           />
