@@ -270,6 +270,7 @@ import Leetcode655 from "assets/leetcode/655.png";
 import Leetcode661 from "assets/leetcode/661.png";
 import Leetcode662 from "assets/leetcode/662.png";
 import Leetcode668 from "assets/leetcode/668.png";
+import Leetcode669 from "assets/leetcode/669.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -75557,6 +75558,7 @@ class Solution:
             content2={null}
             examples={[
               {
+                img: Leetcode669,
                 content: (
                   <>
                     Input: root = [1,0,2], low = 1, high = 2<br />
@@ -75587,11 +75589,42 @@ class Solution:
               </>
             }
             tc="n"
-            sc="n"
+            sc="h"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+                }
+                
+                /**
+                 * @param {TreeNode} root
+                 * @param {number} low
+                 * @param {number} high
+                 * @return {TreeNode}
+                 */
+                var trimBST = function(root, low, high) {
+                  if (!root)
+                    return null;
+                  if (root.val < low)
+                    return trimBST(root.right, low, high);
+                  if (root.val > high)
+                    return trimBST(root.left, low, high);
+                  root.left = trimBST(root.left, low, high);
+                  root.right = trimBST(root.right, low, high);
+                  return root;  
+                };
+                
+                const t = new TreeNode(1)
+                t.left = new TreeNode(0)
+                t.right = new TreeNode(2)
+                console.log(trimBST(t,1,2))`,
+                output: `TreeNode {
+                  val: 1,
+                  left: null,
+                  right: TreeNode { val: 2, left: null, right: null }
+                }`,
               },
             }}
           />
