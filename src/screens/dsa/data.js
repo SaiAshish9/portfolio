@@ -77978,8 +77978,27 @@ class Solution:
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {number}
+                */
+               var countBinarySubstrings = function(s) {
+                 let res = 0;
+                 let prevEquals = 0;
+                 let currEquals = 1;
+                 for (let i = 0; i + 1 < s.length; ++i)
+                   if (s[i] == s[i + 1])
+                     ++currEquals;
+                   else {
+                     res += Math.min(prevEquals, currEquals);
+                     prevEquals = currEquals;
+                     currEquals = 1;
+                   }
+                 return res + Math.min(prevEquals, currEquals);
+               };
+               
+               console.log(countBinarySubstrings("10101"))`,
+                output: `4`,
               },
             }}
           />
@@ -77989,6 +78008,7 @@ class Solution:
         title: "Q697. Degree of an Array (Q560)",
         content: (
           <Comp
+            title="Q697. Degree of an Array (Q560)"
             content1={<></>}
             content2={null}
             examples={[
