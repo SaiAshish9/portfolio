@@ -77407,8 +77407,49 @@ class Solution:
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} k
+                * @return {number[]}
+                */
+               var maxSumOfThreeSubarrays = function(nums, k) {
+                 const n = nums.length - k + 1;
+                 let sums = Array(n).fill(0)
+                 let l = Array(n).fill(0)
+                 let r = Array(n).fill(0)
+                 let sum = 0;
+                 for (let i = 0; i < nums.length; ++i) {
+                   sum += nums[i];
+                   if (i >= k)
+                     sum -= nums[i - k];
+                   if (i >= k - 1)
+                     sums[i - k + 1] = sum;
+                 }
+                 let maxIndex = 0;
+                 for (let i = 0; i < n; ++i) {
+                   if (sums[i] > sums[maxIndex])
+                     maxIndex = i;
+                   l[i] = maxIndex;
+                 }
+                 maxIndex = n - 1;
+                 for (let i = n - 1; i >= 0; --i) {
+                   if (sums[i] >= sums[maxIndex])
+                     maxIndex = i;
+                   r[i] = maxIndex;
+                 }
+                 let res = [-1, -1, -1];
+                 for (let i = k; i + k < n; ++i)
+                   if (res[0] == -1 ||
+                       sums[res[0]] + sums[res[1]] + sums[res[2]] < sums[l[i - k]] + sums[i] + sums[r[i + k]]) {
+                     res[0] = l[i - k];
+                     res[1] = i;
+                     res[2] = r[i + k];
+                   }
+                 return res;    
+               };
+               
+               console.log(maxSumOfThreeSubarrays([1,2,1,2,1,2,1,2,1],2))`,
+                output: `[ 0, 2, 4 ]`,
               },
             }}
           />
