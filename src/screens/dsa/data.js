@@ -76699,8 +76699,26 @@ class Solution:
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {boolean}
+                */
+               var validPalindrome = function(s) {
+                 for (let l = 0, r = s.length - 1; l < r; ++l, --r)
+                 if(s[l] != s[r])
+                 return helper(s, l + 1, r) || helper(s, l, r - 1);
+                 return true;  
+               };
+               
+               function helper(s, l, r){
+                 while (l < r)
+                   if (s[l++] != s[r--])
+                     return false;
+                 return true;
+               }
+               
+               console.log(validPalindrome("abca"))`,
+                output: `true`,
               },
             }}
           />
@@ -76710,31 +76728,135 @@ class Solution:
         title: "Q682. Baseball Game (Q547)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q682. Baseball Game (Q547)"
+            content1={
+              <>
+                You are keeping score for a baseball game with strange rules.
+                The game consists of several rounds, where the scores of past
+                rounds may affect future rounds' scores.
+                <br />
+                At the beginning of the game, you start with an empty record.
+                You are given a list of strings ops, where ops[i] is the ith
+                operation you must apply to the record and is one of the
+                following:
+                <br />
+                An integer x - Record a new score of x.
+                <br /> "+" - Record a new score that is the sum of the previous
+                two scores. It is guaranteed there will always be two previous
+                scores.
+                <br /> "D" - Record a new score that is double the previous
+                score. It is guaranteed there will always be a previous score.
+                <br /> "C" - Invalidate the previous score, removing it from the
+                record. It is guaranteed there will always be a previous score.
+                <br /> Return the sum of all the scores on the record.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: ops = ["5","2","C","D","+"] <br />
+                    Output: 30 <br />
+                    Explanation: <br />
+                    "5" - Add 5 to the record, record is now [5]. <br />
+                    "2" - Add 2 to the record, record is now [5, 2]. <br />
+                    "C" - Invalidate and remove the previous score, record is
+                    now [5].
+                    <br /> "D" - Add 2 * 5 = 10 to the record, record is now [5,
+                    10].
+                    <br /> "+" - Add 5 + 10 = 15 to the record, record is now
+                    [5, 10, 15].
+                    <br /> The total sum is 5 + 10 + 15 = 30.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: ops = ["5","-2","4","C","D","9","+","+"] <br />
+                    Output: 27 <br />
+                    Explanation: <br />
+                    "5" - Add 5 to the record, record is now [5]. <br />
+                    "-2" - Add -2 to the record, record is now [5, -2]. <br />
+                    "4" - Add 4 to the record, record is now [5, -2, 4]. <br />
+                    "C" - Invalidate and remove the previous score, record is
+                    now [5, -2].
+                    <br /> "D" - Add 2 * -2 = -4 to the record, record is now
+                    [5, -2, -4].
+                    <br /> "9" - Add 9 to the record, record is now [5, -2, -4,
+                    9].
+                    <br /> "+" - Add -4 + 9 = 5 to the record, record is now [5,
+                    -2, -4, 9, 5].
+                    <br /> "+" - Add 9 + 5 = 14 to the record, record is now [5,
+                    -2, -4, 9, 5, 14].
+                    <br /> The total sum is 5 + -2 + -4 + 9 + 5 + 14 = 27.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: ops = ["1"] <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= ops.length &lt;= 1000 <br />
+                ops[i] is "C", "D", "+", or a string representing an integer in
+                the range [-3 * 10^4, 3 * 10^4]. <br />
+                For operation "+", there will always be at least two previous
+                scores on the record. <br />
+                For operations "C" and "D", there will always be at least one
+                previous score on the record.
               </>
             }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                class Solution {
+                  // ["5","2","C","D","+"]
+                  public int calPoints(String[] ops) {
+                   int count=0;
+                 ArrayList<Integer> res= new ArrayList<>();
+                 int sum=0;
+                 for(int i=0;i<ops.length;i++){
+                     if(ops[i].charAt(0)=='x'){
+                         int x=Integer.parseInt(ops[i]);
+                         System.out.println(x);
+                         res.add(x);
+                         count++;
+                     }else if(ops[i].charAt(0)=='+') {
+                       int y=res.get(count-1)+res.get(count-2);
+                       res.add(y);
+                       count++;
+                     }else if(ops[i].charAt(0)=='D') {
+                       res.add(res.get(count-1)*2);
+                       count++;
+                       
+                     }else if(ops[i].charAt(0)=='C') {
+                       res.remove(count-1);
+                       count--;
+                       
+                     }else {
+                       int z=Integer.parseInt(ops[i]);
+                       res.add(z);
+                       count++;
+                     }
+                 }
+                 
+                 for(int i:res) {
+                   sum=sum+i;
+                 }
+             return sum;   
+              }
+                  }`,
+                output: `30`,
               },
             }}
           />
@@ -76744,6 +76866,7 @@ class Solution:
         title: "Q684. Redundant Connection (Q548)",
         content: (
           <Comp
+            title="Q684. Redundant Connection (Q548)"
             content1={<></>}
             content2={null}
             examples={[
