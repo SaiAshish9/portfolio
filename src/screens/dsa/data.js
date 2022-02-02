@@ -277,6 +277,7 @@ import Leetcode685 from "assets/leetcode/685.png";
 import Leetcode687 from "assets/leetcode/687.png";
 import Leetcode688 from "assets/leetcode/688.png";
 import Leetcode690 from "assets/leetcode/690.png";
+import Leetcode695 from "assets/leetcode/695.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -77841,23 +77842,53 @@ class Solution:
         content: (
           <Comp
             title="Q695. Max Area of Island (Q558)"
-            content1={<></>}
+            content1={
+              <>
+                You are given an m x n binary matrix grid. An island is a group
+                of 1's (representing land) connected 4-directionally (horizontal
+                or vertical.) You may assume all four edges of the grid are
+                surrounded by water.
+                <br />
+                The area of an island is the number of cells with a value 1 in
+                the island.
+                <br />
+                Return the maximum area of an island in grid. If there is no
+                island, return 0.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode695,
+                content: (
+                  <>
+                    Input: grid =
+                    [[0,0,1,0,0,0,0,1,0,0,0,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,1,1,0,1,0,0,0,0,0,0,0,0],[0,1,0,0,1,1,0,0,1,0,1,0,0],[0,1,0,0,1,1,0,0,1,1,1,0,0],[0,0,0,0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,0,0,0,0,0,0,1,1,0,0,0,0]]
+                    <br /> Output: 6<br />
+                    Explanation: The answer is not 11, because the island must
+                    be connected 4-directionally.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid = [[0,0,0,0,0,0,0,0]]
+                    <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                m == grid.length
+                <br />
+                n == grid[i].length
+                <br />
+                1 &lt;= m, n &lt;= 50
+                <br />
+                grid[i][j] is either 0 or 1
               </>
             }
             tc="n"
