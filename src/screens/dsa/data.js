@@ -75984,7 +75984,7 @@ class Solution:
           />
         ),
       },
-      q450: {
+      q540: {
         title: "Q674. Longest Continuous Increasing Subsequence (Q540)",
         content: (
           <Comp
@@ -76037,8 +76037,22 @@ class Solution:
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var findLengthOfLCIS = function(nums) {
+                 let res = 0;
+                 for (let l = 0, r = 0; r < nums.length; ++r) {
+                 if (r > 0 && nums[r] <= nums[r - 1])
+                   l = r;
+                   res = Math.max(res, r - l + 1);
+                 }
+                 return res; 
+               };
+               
+               console.log(findLengthOfLCIS([1,3,5,4,7]))`,
+                output: `3`,
               },
             }}
           />
@@ -76048,31 +76062,154 @@ class Solution:
         title: "Q675. Cut Off Trees for Golf Event (Q541)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q675. Cut Off Trees for Golf Event (Q541)"
+            content1={
+              <>
+                You are asked to cut off all the trees in a forest for a golf
+                event. The forest is represented as an m x n matrix. In this
+                matrix:
+                <br />
+                0 means the cell cannot be walked through. <br />
+                1 represents an empty cell that can be walked through. <br />
+                A number greater than 1 represents a tree in a cell that can be
+                walked through, and this number is the tree's height.
+                <br />
+                In one step, you can walk in any of the four directions: north,
+                east, south, and west. If you are standing in a cell with a
+                tree, you can choose whether to cut it off.
+                <br />
+                You must cut off the trees in order from shortest to tallest.
+                When you cut off a tree, the value at its cell becomes 1 (an
+                empty cell).
+                <br />
+                Starting from the point (0, 0), return the minimum steps you
+                need to walk to cut off all the trees. If you cannot cut off all
+                the trees, return -1.
+                <br />
+                You are guaranteed that no two trees have the same height, and
+                there is at least one tree needs to be cut off.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: forest = [[1,2,3],[0,0,4],[7,6,5]] <br />
+                    Output: 6 <br />
+                    Explanation: Following the path above allows you to cut off
+                    the trees from shortest to tallest in 6 steps.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: forest = [[1,2,3],[0,0,0],[7,6,5]] <br />
+                    Output: -1 <br />
+                    Explanation: The trees in the bottom row cannot be accessed
+                    as the middle row is blocked.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: forest = [[2,3,4],[0,0,5],[8,7,6]] <br />
+                    Output: 6 <br />
+                    Explanation: You can follow the same path as Example 1 to
+                    cut off all the trees. Note that you can cut off the first
+                    tree at (0, 0) before making any steps.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                m == forest.length <br />
+                n == forest[i].length <br />
+                1 &lt;= m, n &lt;= 50 <br />0 &lt;= forest[i][j] &lt;= 109
               </>
             }
-            tc="n"
-            sc="n"
+            tc="m^2.n^2"
+            sc="m.n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// [[2,3,4],[0,0,5],[8,7,6]]
+                class T {
+                  public int i;
+                  public int j;
+                  public int height;
+                  public T(int i, int j, int height) {
+                    this.i = i;
+                    this.j = j;
+                    this.height = height;
+                  }
+                }
+                
+                class Solution {
+                  public int cutOffTree(List<List<Integer>> forest) {
+                    PriorityQueue<T> pq = new PriorityQueue<>((a, b) -> a.height - b.height);
+                
+                    for (int i = 0; i < forest.size(); ++i)
+                      for (int j = 0; j < forest.get(0).size(); ++j)
+                        if (forest.get(i).get(j) > 1)
+                          pq.offer(new T(i, j, forest.get(i).get(j)));
+                
+                    int ans = 0;
+                    int x = 0;
+                    int y = 0;
+                
+                    while (!pq.isEmpty()) {
+                      final int i = pq.peek().i;
+                      final int j = pq.poll().j;
+                      // walk from (x, y) to (i, j)
+                      final int steps = bfs(forest, x, y, i, j);
+                      if (steps < 0)
+                        return -1;
+                      ans += steps;
+                      x = i;
+                      y = j;
+                    }
+                
+                    return ans;
+                  }
+                
+                  private static final int[] dirs = {0, 1, 0, -1, 0};
+                
+                  private int bfs(List<List<Integer>> forest, int si, int sj, int ei, int ej) {
+                    final int m = forest.size();
+                    final int n = forest.get(0).size();
+                    int steps = 0;
+                    Queue<int[]> q = new LinkedList<>(Arrays.asList(new int[] {si, sj}));
+                    boolean[][] seen = new boolean[m][n];
+                    seen[si][sj] = true;
+                
+                    while (!q.isEmpty()) {
+                      for (int size = q.size(); size > 0; --size) {
+                        final int i = q.peek()[0];
+                        final int j = q.poll()[1];
+                        if (i == ei && j == ej)
+                          return steps;
+                        for (int k = 0; k < 4; ++k) {
+                          final int x = i + dirs[k];
+                          final int y = j + dirs[k + 1];
+                          if (x < 0 || x == m || y < 0 || y == n)
+                            continue;
+                          if (seen[x][y] || forest.get(x).get(y) == 0)
+                            continue;
+                          q.offer(new int[] {x, y});
+                          seen[x][y] = true;
+                        }
+                      }
+                      ++steps;
+                    }
+                
+                    return -1;
+                  };
+                }
+                `,
+                output: `6`,
               },
             }}
           />
