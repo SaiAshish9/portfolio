@@ -276,6 +276,7 @@ import Leetcode684 from "assets/leetcode/684.png";
 import Leetcode685 from "assets/leetcode/685.png";
 import Leetcode687 from "assets/leetcode/687.png";
 import Leetcode688 from "assets/leetcode/688.png";
+import Leetcode690 from "assets/leetcode/690.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -77522,9 +77523,37 @@ class Solution:
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `/*
+                // Definition for Employee.
+                class Employee {
+                    public int id;
+                    public int importance;
+                    public List<Integer> subordinates;
+                };
+                */
+                
+                class Solution {
+                  public int getImportance(List<Employee> employees, int id) {
+                    Map<Integer, Employee> idToEmployee = new HashMap<>();
+                
+                    for (Employee employee : employees)
+                      idToEmployee.put(employee.id, employee);
+                
+                    return dfs(id, idToEmployee);
+                  }
+                
+                  private int dfs(int id, Map<Integer, Employee> idToEmployee) {
+                    int values = 0;
+                
+                    for (final int subId : idToEmployee.get(id).subordinates)
+                      values += dfs(subId, idToEmployee);
+                
+                    return idToEmployee.get(id).importance + values;
+                  }
+                }
+                `,
+                output: `11`,
               },
             }}
           />
@@ -77534,23 +77563,62 @@ class Solution:
         title: "Q691. Stickers to Spell Word (Q555)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q691. Stickers to Spell Word (Q555)"
+            content1={
+              <>
+                We are given n different types of stickers. Each sticker has a
+                lowercase English word on it.
+                <br />
+                You would like to spell out the given string target by cutting
+                individual letters from your collection of stickers and
+                rearranging them. You can use each sticker more than once if you
+                want, and you have infinite quantities of each sticker.
+                <br />
+                Return the minimum number of stickers that you need to spell out
+                target. If the task is impossible, return -1.
+                <br />
+                Note: In all test cases, all words were chosen randomly from the
+                1000 most common US English words, and target was chosen as a
+                concatenation of two random words.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: stickers = ["with","example","science"], target =
+                    "thehat" Output: 3<br />
+                    Explanation:
+                    <br />
+                    We can use 2 "with" stickers, and 1 "example" sticker. After
+                    cutting and rearrange the letters of those stickers, we can
+                    form the target "thehat". Also, this is the minimum number
+                    of stickers necessary to form the target string.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: stickers = ["notice","possible"], target =
+                    "basicbasic" Output: -1
+                    <br />
+                    Explanation:
+                    <br />
+                    We cannot form the target "basicbasic" from cutting letters
+                    from the given stickers
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                n == stickers.length <br />
+                1 &lt;= n &lt;= 50 <br />
+                1 &lt;= stickers[i].length &lt;= 10 <br />
+                1 &lt;= target &lt;= 15 <br />
+                stickers[i] and target consist of lowercase English letters.
               </>
             }
             tc="n"
