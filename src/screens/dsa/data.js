@@ -78671,32 +78671,94 @@ class Solution:
         title: "Q705. Design HashSet (Q567)",
         content: (
           <Comp
-          title= "Q705. Design HashSet (Q567)"
-            content1={<></>}
+            title="Q705. Design HashSet (Q567)"
+            content1={
+              <>
+                Design a HashSet without using any built-in hash table
+                libraries.
+                <br />
+                Implement MyHashSet class:
+                <br />
+                void add(key) Inserts the value key into the HashSet. <br />
+                bool contains(key) Returns whether the value key exists in the
+                HashSet or not. <br />
+                void remove(key) Removes the value key in the HashSet. If key
+                does not exist in the HashSet, do nothing.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input <br />
+                    ["MyHashSet", "add", "add", "contains", "contains", "add",
+                    "contains", "remove", "contains"] <br />
+                    [[], [1], [2], [1], [3], [2], [2], [2], [2]] <br />
+                    Output <br />
+                    [null, null, null, true, false, null, true, null, false]{" "}
+                    <br />
+                    Explanation <br />
+                    MyHashSet myHashSet = new MyHashSet(); <br />
+                    myHashSet.add(1); // set = [1] <br />
+                    myHashSet.add(2); // set = [1, 2] <br />
+                    myHashSet.contains(1); // return True <br />
+                    myHashSet.contains(3); // return False, (not found) <br />
+                    myHashSet.add(2); // set = [1, 2] <br />
+                    myHashSet.contains(2); // return True <br />
+                    myHashSet.remove(2); // set = [1] <br />
+                    myHashSet.contains(2); // return False, (already removed)
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                0 &lt;= key &lt;= 10^6 <br />
+                At most 104 calls will be made to add, remove, and contains.
               </>
             }
-            tc="n"
+            tc="1"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `
+                var MyHashSet = function() {
+                  this.set = Array(1000001).fill(false); 
+                };
+                
+                /** 
+                 * @param {number} key
+                 * @return {void}
+                 */
+                MyHashSet.prototype.add = function(key) {
+                  this.set[key] = true;
+                };
+                
+                /** 
+                 * @param {number} key
+                 * @return {void}
+                 */
+                MyHashSet.prototype.remove = function(key) {
+                  this.set[key] = false;
+                };
+                
+                /** 
+                 * @param {number} key
+                 * @return {boolean}
+                 */
+                MyHashSet.prototype.contains = function(key) {
+                  return this.set[key];
+                };
+                
+                
+                var obj = new MyHashSet()
+                obj.add(1)
+                obj.add(8)
+                obj.remove(1)
+                var param_3 = obj.contains(8)
+                console.log(param_3)`,
+                output: `false`,
               },
             }}
           />
