@@ -18256,7 +18256,6 @@ console.log(isPairSum(arr, arrSize, val));
             <p>
               <b>Q1. Base 2 To Base 6 Conversion.</b>
             </p>
-            <CodeEditor />
             <Span>
               <b>
                 Q2. Longest Increasing Common Subsequence Of Two Arrays Which
