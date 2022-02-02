@@ -78595,31 +78595,73 @@ class Solution:
         title: "Q704. Binary Search (Q566)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q704. Binary Search (Q566)"
+            content1={
+              <>
+                Given an array of integers nums which is sorted in ascending
+                order, and an integer target, write a function to search target
+                in nums. If target exists, then return its index. Otherwise,
+                return -1.
+                <br />
+                You must write an algorithm with O(log n) runtime complexity.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [-1,0,3,5,9,12], target = 9 <br />
+                    Output: 4 <br />
+                    Explanation: 9 exists in nums and its index is 4
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [-1,0,3,5,9,12], target = 2 <br />
+                    Output: -1 <br />
+                    Explanation: 2 does not exist in nums so return -1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= nums.length &lt;= 10^4 <br />
+                -10^4 &lt; nums[i], target &lt; 10^4 <br />
+                All the integers in nums are unique. <br />
+                nums is sorted in ascending order.
               </>
             }
-            tc="n"
+            tc="log n -> 1"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} target
+                * @return {number}
+                */
+               var search = function(nums, target) {
+                  let l = 0;
+                 let r = nums.length - 1;
+                 let mid;
+                 while (r >= l) {
+                     mid = l + Math.floor((r - l) / 2);
+                     if (nums[mid] == target)
+                         return mid;
+                     if (nums[mid] > target)
+                         r = mid - 1;
+                     else
+                         l = mid + 1;
+                 }
+                 return -1;  
+               };
+               
+               console.log(search([-1,0,3,5,9,12],9))`,
+                output: `4`,
               },
             }}
           />
@@ -78629,6 +78671,7 @@ class Solution:
         title: "Q705. Design HashSet (Q567)",
         content: (
           <Comp
+          title= "Q705. Design HashSet (Q567)"
             content1={<></>}
             content2={null}
             examples={[
