@@ -76219,20 +76219,68 @@ class Solution:
         title: "Q676. Implement Magic Dictionary (Q542)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q676. Implement Magic Dictionary (Q542)"
+            content1={
+              <>
+                Design a data structure that is initialized with a list of
+                different words. Provided a string, you should determine if you
+                can change exactly one character in this string to match any
+                word in the data structure.
+                <br />
+                Implement the MagicDictionary class:
+                <br />
+                MagicDictionary() Initializes the object.
+                <br />
+                void buildDict(String[] dictionary) Sets the data structure with
+                an array of distinct strings dictionary.
+                <br /> bool search(String searchWord) Returns true if you can
+                change exactly one character in searchWord to match any string
+                in the data structure, otherwise returns false.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input
+                    <br />
+                    ["MagicDictionary", "buildDict", "search", "search",
+                    "search", "search"]
+                    <br />
+                    [[], [["hello", "leetcode"]], ["hello"], ["hhllo"],
+                    ["hell"], ["leetcoded"]]
+                    <br />
+                    Output
+                    <br />
+                    [null, null, false, true, false, false]
+                    <br />
+                    Explanation
+                    <br /> MagicDictionary magicDictionary = new
+                    MagicDictionary();
+                    <br /> magicDictionary.buildDict(["hello", "leetcode"]);
+                    <br /> magicDictionary.search("hello"); // return False
+                    <br /> magicDictionary.search("hhllo"); // We can change the
+                    second 'h' to 'e' to match "hello" so we return True
+                    <br /> magicDictionary.search("hell"); // return False
+                    <br /> magicDictionary.search("leetcoded"); // return False
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= dictionary.length &lt;= 100
+                <br /> 1 &lt;= dictionary[i].length &lt;= 100
+                <br /> dictionary[i] consists of only lower-case English
+                letters.
+                <br /> All the strings in dictionary are distinct.
+                <br /> 1 &lt;= searchWord.length &lt;= 100
+                <br /> searchWord consists of only lower-case English letters.
+                <br /> buildDict will be called only once before search.
+                <br /> At most 100 calls will be made to search.
+              </>
+            }
             tc="1"
             sc="n"
             codes={{
@@ -76279,31 +76327,119 @@ class Solution:
         title: "Q677. Map Sum Pairs (Q543)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q677. Map Sum Pairs (Q543)"
+            content1={
+              <>
+                Design a map that allows you to do the following:
+                <br />
+                Maps a string key to a given value.
+                <br />
+                Returns the sum of the values that have a key with a prefix
+                equal to a given string.
+                <br />
+                Implement the MapSum class:
+                <br />
+                MapSum() Initializes the MapSum object.
+                <br />
+                void insert(String key, int val) Inserts the key-val pair into
+                the map. If the key already existed, the original key-value pair
+                will be overridden to the new one.
+                <br /> int sum(string prefix) Returns the sum of all the pairs'
+                value whose key starts with the prefix.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input
+                    <br />
+                    ["MapSum", "insert", "sum", "insert", "sum"] [[], ["apple",
+                    3], ["ap"], ["app", 2], ["ap"]] Output
+                    <br />
+                    [null, null, 3, null, 5]
+                    <br />
+                    Explanation
+                    <br />
+                    MapSum mapSum = new MapSum();
+                    <br />
+                    mapSum.insert("apple", 3); <br />
+                    mapSum.sum("ap"); // return 3 (apple = 3)
+                    <br />
+                    mapSum.insert("app", 2); <br />
+                    mapSum.sum("ap"); // return 5 (apple + app = 3 + 2 = 5)
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= key.length, prefix.length &lt;= 50
+                <br />
+                key and prefix consist of only lowercase English letters.
+                <br />
+                1 &lt;= val &lt;= 1000
+                <br />
+                At most 50 calls will be made to insert and sum.
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `class MapSum {
+
+                  private class Node {
+                    final Node[] trie = new Node[26];
+                    int val = 0;
+                    int sum = 0;
+                    
+                    void put(String key, int newValue, int oldValue) {
+                      Node n = this;
+                      n.sum += newValue - oldValue;
+                      for (char c: key.toCharArray()) {
+                        n = n.trie[c-'a'] == null ? n.trie[c-'a'] = new Node() : n.trie[c-'a'] ;
+                        n.sum += newValue - oldValue;
+                      }
+                      n.val = newValue;
+                    }
+                    
+                    int get(String key) {
+                      Node n = search(key);       
+                      return n != null ? n.val : 0;
+                    }
+                    
+                    int sum(String prefix) {
+                      Node n = search(prefix);      
+                      return n != null ? n.sum : 0;      
+                    }
+                    
+                    Node search(String key) {
+                      Node n = this;
+                      for (char c: key.toCharArray()) if ((n = n.trie[c-'a']) == null) return null;        
+                      return n;
+                    }
+                        
+                  }
+                  
+                  private final Node trie = new Node();
+                
+                  public void insert(String key, int val) {
+                    trie.put(key, val, trie.get(key));
+                  }
+                    
+                  public int sum(String prefix) {
+                     return trie.sum(prefix);   
+                  }
+                }
+                /**
+                 * Your MapSum object will be instantiated and called as such:
+                 * MapSum obj = new MapSum();
+                 * obj.insert(key,val);
+                 * int param_2 = obj.sum(prefix);
+                 */`,
+                output: `[null,null,3,null,5]`,
               },
             }}
           />
@@ -76313,6 +76449,7 @@ class Solution:
         title: "Q678. Valid Parenthesis String (Q644)",
         content: (
           <Comp
+            title="Q678. Valid Parenthesis String (Q644)"
             content1={<></>}
             content2={null}
             examples={[
