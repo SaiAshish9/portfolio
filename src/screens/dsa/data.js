@@ -78768,6 +78768,7 @@ class Solution:
         title: "Q706. Design HashMap (Q568)",
         content: (
           <Comp
+            title="Q706. Design HashMap (Q568)"
             content1={
               <>
                 Design a HashMap without using any built-in hash table
@@ -78842,9 +78843,10 @@ class Solution:
         ),
       },
       q569: {
-        title: "Q707. Design Linked Listp (Q569)",
+        title: "Q707. Design Linked List (Q569)",
         content: (
           <Comp
+            title="Q707. Design Linked List (Q569)"
             content1={<></>}
             content2={null}
             examples={[
