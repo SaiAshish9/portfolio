@@ -280,6 +280,7 @@ import Leetcode690 from "assets/leetcode/690.png";
 import Leetcode695 from "assets/leetcode/695.png";
 import Leetcode699 from "assets/leetcode/699.png";
 import Leetcode700 from "assets/leetcode/700.png";
+import Leetcode701 from "assets/leetcode/701.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -78394,31 +78395,107 @@ class Solution:
         content: (
           <Comp
             title="Q701. Insert into a Binary Search Tree (Q564)"
-            content1={<></>}
+            content1={
+              <>
+                You are given the root node of a binary search tree (BST) and a
+                value to insert into the tree. Return the root node of the BST
+                after the insertion. It is guaranteed that the new value does
+                not exist in the original BST.
+                <br />
+                Notice that there may exist multiple valid ways for the
+                insertion, as long as the tree remains a BST after insertion.
+                You can return any of them.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode701,
+                content: (
+                  <>
+                    Input: root = [4,2,7,1,3], val = 5<br />
+                    Output: [4,2,7,1,3,5]
+                    <br />
+                    Explanation: Another accepted tree is:
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [40,20,60,10,30,50,70], val = 25
+                    <br />
+                    Output: [40,20,60,10,30,50,70,null,null,25]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [4,2,7,1,3,null,null,null,null,null,null], val
+                    = 5<br />
+                    Output: [4,2,7,1,3,5]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The number of nodes in the tree will be in the range [0, 10^4].
+                <br />
+                -10^8 &lt;= Node.val &lt;= 10^8
+                <br />
+                All the values Node.val are unique.
+                <br />
+                -10^8 &lt;= val &lt;= 10^8
+                <br />
+                It's guaranteed that val does not exist in the original BST.
               </>
             }
-            tc="n"
-            sc="n"
+            tc="log n -> n"
+            sc="log n -> n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+                }
+                
+                /**
+                 * @param {TreeNode} root
+                 * @param {number} val
+                 * @return {TreeNode}
+                 */
+                var insertIntoBST = function(root, val) {
+                  if (!root)
+                      return new TreeNode(val);
+                  if (root.val > val)
+                    root.left = insertIntoBST(root.left, val);
+                  else
+                    root.right = insertIntoBST(root.right, val);
+                  return root;
+                };
+                
+                const t = new TreeNode(4)
+                t.left = new TreeNode(2)
+                t.left.left = new TreeNode(1)
+                t.left.right = new TreeNode(3)
+                t.right  = new TreeNode(7)
+                console.log(insertIntoBST(t,5))`,
+                output: `TreeNode {
+                  val: 4,
+                  left: TreeNode {
+                    val: 2,
+                    left: TreeNode { val: 1, left: null, right: null },
+                    right: TreeNode { val: 3, left: null, right: null }
+                  },
+                  right: TreeNode {
+                    val: 7,
+                    left: TreeNode { val: 5, left: null, right: null },
+                    right: null
+                  }
+                }`,
               },
             }}
           />
