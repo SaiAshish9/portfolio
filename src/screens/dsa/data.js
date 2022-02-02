@@ -78212,7 +78212,7 @@ class Solution:
             content2={null}
             examples={[
               {
-                img: Leetcode999,
+                img: Leetcode699,
                 content: (
                   <>
                     Input: positions = [[1,2],[2,3],[6,1]]
@@ -78251,12 +78251,48 @@ class Solution:
                 1 &lt;= lefti &lt;= 108 <br />1 &lt;= sideLengthi &lt;= 106
               </>
             }
-            tc="n"
+            tc="n^2"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // [[1,2],[2,3],[6,1]]
+                class Solution {
+                  public List<Integer> fallingSquares(int[][] positions) {
+                      Set<Integer> unique = new TreeSet<>();
+              
+                      for (int[] square : positions) {
+                          unique.add(square[0]);
+                          unique.add(square[0] + square[1] - 1);
+                      }
+              
+                      List<Integer> sorted = new ArrayList<>(unique);   
+                  
+                      int[] heights = new int[sorted.size()];
+                  
+                      List<Integer> list = new ArrayList<>(positions.length); 
+                  
+                      int max = 0;
+                      for (int[] square : positions) {
+                          int x1 = Collections.binarySearch(sorted, square[0]);
+                          int x2 = Collections.binarySearch(sorted, square[0] + square[1] - 1);
+                          
+                          int current = 0;
+                          for (int i = x1; i <= x2; i++) {
+                              current = Math.max(current, heights[i]);
+                          }
+                          current += square[1];
+                          for (int i = x1; i <= x2; i++) {
+                              heights[i] = current;
+                          }        
+                          max = Math.max(max, current);
+                          list.add(max);
+                      }
+              
+                      return list;
+                  }   
+              }`,
+                output: `[2,5,5]`,
               },
             }}
           />
@@ -78266,6 +78302,7 @@ class Solution:
         title: "Q700. Search in a Binary Search Tree (Q563)",
         content: (
           <Comp
+            title="Q700. Search in a Binary Search Tree (Q563)"
             content1={<></>}
             content2={null}
             examples={[
