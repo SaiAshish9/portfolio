@@ -78895,6 +78895,170 @@ class Solution:
         content: (
           <Comp
             title="Q707. Design Linked List (Q569)"
+            content1={
+              <>
+                Design your implementation of the linked list. You can choose to
+                use a singly or doubly linked list.
+                <br /> A node in a singly linked list should have two
+                attributes: val and next. val is the value of the current node,
+                and next is a pointer/reference to the next node.
+                <br /> If you want to use the doubly linked list, you will need
+                one more attribute prev to indicate the previous node in the
+                linked list. Assume all nodes in the linked list are 0-indexed.
+                <br />
+                Implement the MyLinkedList class:
+                <br />
+                MyLinkedList() Initializes the MyLinkedList object. <br />
+                <br /> int get(int index) Get the value of the indexth node in
+                the linked list. If the index is invalid, return -1.
+                <br /> void addAtHead(int val) Add a node of value val before
+                the first element of the linked list. After the insertion, the
+                new node will be the first node of the linked list.
+                <br /> void addAtTail(int val) Append a node of value val as the
+                last element of the linked list.
+                <br /> void addAtIndex(int index, int val) Add a node of value
+                val before the indexth node in the linked list. If index equals
+                the length of the linked list, the node will be appended to the
+                end of the linked list. If index is greater than the length, the
+                node will not be inserted.
+                <br /> void deleteAtIndex(int index) Delete the indexth node in
+                the linked list, if the index is valid.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input ["MyLinkedList", "addAtHead", "addAtTail",
+                    "addAtIndex", "get", "deleteAtIndex", "get"] <br />
+                    [[], [1], [3], [1, 2], [1], [1], [1]] <br />
+                    Output <br />
+                    [null, null, null, null, 2, null, 3] <br />
+                    Explanation <br />
+                    MyLinkedList myLinkedList = new MyLinkedList(); <br />
+                    myLinkedList.addAtHead(1); <br />
+                    myLinkedList.addAtTail(3); <br />
+                    myLinkedList.addAtIndex(1, 2); // linked list becomes
+                    1-&gt;2-&gt;3 <br />
+                    myLinkedList.get(1); // return 2 <br />
+                    myLinkedList.deleteAtIndex(1); // now the linked list is
+                    1-&gt;3 <br />
+                    myLinkedList.get(1); // return 3
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                0 &lt;= index, val &lt;= 1000 <br />
+                Please do not use the built-in LinkedList library. <br />
+                At most 2000 calls will be made to get, addAtHead, addAtTail,
+                addAtIndex and deleteAtIndex.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `function ListNode(val,next){
+                  this.val = val
+                  this.next = next
+                }
+                
+                var MyLinkedList = function() {
+                  this.length = 0
+                  this.temp = new ListNode(0)
+                };
+                
+                /** 
+                 * @param {number} index
+                 * @return {number}
+                 */
+                MyLinkedList.prototype.get = function(index) {
+                  if (index < 0 || index >= this.length)
+                    return -1;
+                  let curr = this.temp.next;
+                  for (let i = 0; i < index; ++i)
+                    curr = curr.next;
+                  return curr.val;
+                };
+                
+                /** 
+                 * @param {number} val
+                 * @return {void}
+                 */
+                MyLinkedList.prototype.addAtHead = function(val) {
+                  let head = this.temp.next;
+                  let node = new ListNode(val);
+                  node.next = head;
+                  this.temp.next = node;
+                  ++this.length;
+                };
+                
+                /** 
+                 * @param {number} val
+                 * @return {void}
+                 */
+                MyLinkedList.prototype.addAtTail = function(val) {
+                  let curr = this.temp;
+                  while (curr.next)
+                    curr = curr.next;
+                  curr.next = new ListNode(val);
+                  ++this.length;
+                };
+                
+                /** 
+                 * @param {number} index 
+                 * @param {number} val
+                 * @return {void}
+                 */
+                MyLinkedList.prototype.addAtIndex = function(index, val) {
+                  if (index > this.length)
+                    return;
+                  let curr = this.temp;
+                  for (let i = 0; i < index; ++i)
+                    curr = curr.next;
+                  let cache = curr.next;
+                  let node = new ListNode(val);
+                  node.next = cache;
+                  curr.next = node;
+                  ++this.length;
+                };
+                
+                /** 
+                 * @param {number} index
+                 * @return {void}
+                 */
+                MyLinkedList.prototype.deleteAtIndex = function(index) {
+                  if (index < 0 || index >= this.length)
+                    return;
+                  let curr = this.temp;
+                  for (let i = 0; i < index; ++i)
+                    curr = curr.next;
+                  let cache = curr.next;
+                  curr.next = cache.next;
+                  --this.length;
+                };
+                
+                
+                var obj = new MyLinkedList()
+                obj.addAtHead(1)
+                obj.addAtTail(2)
+                obj.addAtIndex(2,1)
+                obj.deleteAtIndex(2)
+                var param_1 = obj.get(0)
+                console.log(param_1)`,
+                output: `1`,
+              },
+            }}
+          />
+        ),
+      },
+      q570: {
+        title: "Q (Q570)",
+        content: (
+          <Comp
             content1={<></>}
             content2={null}
             examples={[
