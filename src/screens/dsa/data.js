@@ -76450,27 +76450,61 @@ class Solution:
         content: (
           <Comp
             title="Q678. Valid Parenthesis String (Q644)"
-            content1={<></>}
+            content1={
+              <>
+                Given a string s containing only three types of characters: '(',
+                ')' and '*', return true if s is valid.
+                <br />
+                The following rules define a valid string:
+                <br />
+                Any left parenthesis '(' must have a corresponding right
+                parenthesis ')'.
+                <br />
+                Any right parenthesis ')' must have a corresponding left
+                parenthesis '('.
+                <br />
+                Left parenthesis '(' must go before the corresponding right
+                parenthesis ')'.
+                <br />
+                '*' could be treated as a single right parenthesis ')' or a
+                single left parenthesis '(' or an empty string "".
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "()" <br />
+                    Output: true
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "(*)" <br />
+                    Output: true
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "(*))" <br />
+                    Output: true
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= s.length &lt;= 100 <br />
+                s[i] is '(', ')' or '*'.
               </>
             }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
