@@ -77459,23 +77459,64 @@ class Solution:
         title: "Q690. Employee Importance (Q554)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q690. Employee Importance (Q554)"
+            content1={
+              <>
+                You have a data structure of employee information, including the
+                employee's unique ID, importance value, and direct subordinates'
+                IDs.
+                <br />
+                You are given an array of employees employees where:
+                <br />
+                employees[i].id is the ID of the ith employee.
+                <br />
+                employees[i].importance is the importance value of the ith
+                employee.
+                <br />
+                employees[i].subordinates is a list of the IDs of the direct
+                subordinates of the ith employee.
+                <br />
+                Given an integer id that represents an employee's ID, return the
+                total importance value of this employee and all their direct and
+                indirect subordinates.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode690,
+                content: (
+                  <>
+                    Input: employees = [[1,5,[2,3]],[2,3,[]],[3,3,[]]], id = 1
+                    <br /> Output: 11 <br />
+                    Explanation: Employee 1 has an importance value of 5 and has
+                    two direct subordinates: employee 2 and employee 3. They
+                    both have an importance value of 3. Thus, the total
+                    importance value of employee 1 is 5 + 3 + 3 = 11.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: employees = [[1,2,[5]],[5,-3,[]]], id = 5
+                    <br /> Output: -3 <br />
+                    Explanation: Employee 5 has an importance value of -3 and
+                    has no direct subordinates. Thus, the total importance value
+                    of employee 5 is -3.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= employees.length &lt;= 2000 <br />
+                1 &lt;= employees[i].id &lt;= 2000 <br />
+                All employees[i].id are unique. <br />
+                -100 &lt;= employees[i].importance &lt;= 100 <br />
+                One employee has at most one direct leader and may have several
+                subordinates.
+                <br /> The IDs in employees[i].subordinates are valid IDs.
               </>
             }
             tc="n"
