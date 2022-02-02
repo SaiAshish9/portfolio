@@ -75874,8 +75874,25 @@ class Solution:
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @param {number} presses
+                * @return {number}
+                */
+               var flipLights = function(n, presses) {
+                 n = Math.min(n, 3);
+                 let m = presses
+                 if (m == 0)
+                   return 1;
+                 if (m == 1)
+                   return [2, 3, 4][n - 1];
+                 if (m == 2)
+                   return [2, 4, 7][n - 1];
+                 return Math.pow(2, n);   
+               };
+               
+               console.log(flipLights(1,1))`,
+                output: `2`,
               },
             }}
           />
@@ -75885,26 +75902,48 @@ class Solution:
         title: "Q673. Number of Longest Increasing Subsequence (Q539)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given an integer array nums, return the number of longest
+                increasing subsequences.
+                <br />
+                Notice that the sequence has to be strictly increasing.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,3,5,4,7]
+                    <br />
+                    Output: 2<br />
+                    Explanation: The two longest increasing subsequences are [1,
+                    3, 4, 7] and [1, 3, 5, 7].
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [2,2,2,2,2]]
+                    <br />
+                    Output: 5]
+                    <br />
+                    Explanation: The length of longest continuous increasing
+                    subsequence is 1, and there are 5 subsequences' length is 1,
+                    so output 5.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= nums.length &lt;= 2000 <br />
+                -10^6 &lt;= nums[i] &lt;= 10^6
               </>
             }
-            tc="n"
+            tc="n^2"
             sc="n"
             codes={{
               Javascript: {
