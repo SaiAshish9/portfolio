@@ -78059,9 +78059,33 @@ class Solution:
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // [1,2,2,3,1,4,2]
+                class Solution {
+                  public int findShortestSubArray(int[] nums) {
+                    int ans = 0;
+                    int degree = 0;
+                    Map<Integer, Integer> debut = new HashMap<>();
+                    Map<Integer, Integer> count = new HashMap<>();
+                
+                    for (int i = 0; i < nums.length; ++i) {
+                      final int num = nums[i];
+                      debut.putIfAbsent(num, i);
+                      count.put(num, count.getOrDefault(num, 0) + 1);
+                      if (count.get(num) > degree) {
+                        degree = count.get(num);
+                        ans = i - debut.get(num) + 1;
+                      } else if (count.get(num) == degree) {
+                        ans = Math.min(ans, i - debut.get(num) + 1);
+                      }
+                    }
+                
+                    return ans;
+                  }
+                }
+                `,
+                output: `6`,
               },
             }}
           />
@@ -78071,26 +78095,46 @@ class Solution:
         title: "Q698. Partition to K Equal Sum Subsets (Q561)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q698. Partition to K Equal Sum Subsets (Q561)"
+            content1={
+              <>
+                Given an integer array nums and an integer k, return true if it
+                is possible to divide this array into k non-empty subsets whose
+                sums are all equal.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [4,3,2,3,5,2,1], k = 4<br />
+                    Output: true
+                    <br />
+                    Explanation: It is possible to divide it into 4 subsets (5),
+                    (1, 4), (2,3), (2,3) with equal sums.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,4], k = 3<br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= k &lt;= nums.length &lt;= 16
+                <br />
+                1 &lt;= nums[i] &lt;= 10^4
+                <br />
+                The frequency of each element is in the range [1, 4
               </>
             }
-            tc="n"
+            tc="2^n"
             sc="n"
             codes={{
               Javascript: {
