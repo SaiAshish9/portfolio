@@ -77203,8 +77203,46 @@ class Solution:
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+              }
+              
+              /**
+               * @param {TreeNode} root
+               * @return {number}
+               */
+              var longestUnivaluePath = function(root) {
+                const res = {val:0};
+                dfs(root,null,res);      
+                return res.val;   
+              };
+              
+              function dfs(node,parent,res){
+               if (!node) return 0;
+               let leftLen = dfs(node.left, node,res);
+               let rightLen = dfs(node.right, node,res);
+               let max1 = Math.max(leftLen, rightLen);
+               let max2 = Math.max(max1, leftLen + rightLen);       
+               res.val = Math.max(res.val, max2);       
+               if (parent) {
+                   if (parent.val == node.val) {
+                       return max1 + 1;
+                   }
+                   return 0;
+               }
+               return res.val;
+              }
+              
+              const t = new TreeNode(5)
+              t.left = new TreeNode(4)
+              t.left.left = new TreeNode(1)
+              t.left.right = new TreeNode(1) 
+              t.right = new TreeNode(5)
+              t.right.right = new TreeNode(5)
+              console.log(longestUnivaluePath(t))`,
+                output: `2`,
               },
             }}
           />
