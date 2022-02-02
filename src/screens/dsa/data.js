@@ -77134,8 +77134,23 @@ class Solution:
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} a
+                * @param {string} b
+                * @return {number}
+                */
+               var repeatedStringMatch = function(a, b) {
+                 let n = Math.ceil(b.length / a.length)
+                 let s = Array(n).fill(a).join("")
+                 if(s.includes(b))
+                     return n
+                 if((s + a).includes(b))
+                   return n + 1
+                 return -1
+               };
+               
+               console.log(repeatedStringMatch("a","aa"))`,
+                output: `2`,
               },
             }}
           />
