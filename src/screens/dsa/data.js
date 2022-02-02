@@ -78506,31 +78506,86 @@ class Solution:
         content: (
           <Comp
             title="Q703. Kth Largest Element in a Stream (Q565)"
-            content1={<></>}
+            content1={
+              <>
+                Design a class to find the kth largest element in a stream. Note
+                that it is the kth largest element in the sorted order, not the
+                kth distinct element.
+                <br />
+                Implement KthLargest class:
+                <br />
+                KthLargest(int k, int[] nums) Initializes the object with the
+                integer k and the stream of integers nums. int add(int val)
+                Appends the integer val to the stream and returns the element
+                representing the kth largest element in the stream.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input <br />
+                    ["KthLargest", "add", "add", "add", "add", "add"] <br />
+                    [[3, [4, 5, 8, 2]], [3], [5], [10], [9], [4]] <br />
+                    Output <br />
+                    [null, 4, 5, 5, 8, 8] <br />
+                    Explanation <br />
+                    KthLargest kthLargest = new KthLargest(3, [4, 5, 8, 2]);{" "}
+                    <br />
+                    kthLargest.add(3); // return 4 <br />
+                    kthLargest.add(5); // return 5 <br />
+                    kthLargest.add(10); // return 5 <br />
+                    kthLargest.add(9); // return 8 <br />
+                    kthLargest.add(4); // return 8
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= k &lt;= 10^4 <br />
+                0 &lt;= nums.length &lt;= 10^4 <br />
+                -10^4 &lt;= nums[i] &lt;= 10^4 <br />
+                -10^4 &lt;= val &lt;= 10^4 <br />
+                At most 104 calls will be made to add. <br />
+                It is guaranteed that there will be at least k elements in the
+                array when you search for the kth element.
               </>
             }
-            tc="n"
-            sc="n"
+            tc="n.log k"
+            sc="k"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `class KthLargest {
+                  public KthLargest(int k, int[] nums) {
+                    this.k = k;
+                    for (final int num : nums)
+                      heapify(num);
+                  }
+                
+                  public int add(int val) {
+                    heapify(val);
+                    return pq.peek();
+                  }
+                
+                  private final int k;
+                  private PriorityQueue<Integer> pq = new PriorityQueue<>();
+                
+                  private void heapify(int val) {
+                    pq.offer(val);
+                    if (pq.size() > k)
+                      pq.poll();
+                  }
+                }
+                
+                
+                /**
+                 * Your KthLargest object will be instantiated and called as such:
+                 * KthLargest obj = new KthLargest(k, nums);
+                 * int param_1 = obj.add(val);
+                 */`,
+                output: `[null,4,5,5,8,8]`,
               },
             }}
           />
