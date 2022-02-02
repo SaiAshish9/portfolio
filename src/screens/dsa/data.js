@@ -77726,8 +77726,38 @@ class Solution:
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string[]} words
+                * @param {number} k
+                * @return {string[]}
+                */
+               var topKFrequent = function(words, k) {
+                 const n = words.length;
+                 const res = [];
+                 const bucket = Array(n+1).fill(null);
+                 const count = {};
+                 for (let word of words)
+                   count[word] =  (count[word] || 0) + 1;
+                 for (let word of Object.keys(count)) {
+                   const freq = count[word];
+                   if (!bucket[freq])
+                     bucket[freq] = [];
+                   bucket[freq].push(word);
+                 }
+                 for (let freq = n; freq > 0; --freq)
+                   if (bucket[freq]) {
+                     bucket[freq] = bucket[freq].sort((a,b)=>a>b?1:-1)
+                     for (let word of bucket[freq]) {
+                       res.push(word);
+                       if (res.length == k)
+                         return res;
+                     }
+                   }    
+               };
+               
+               console.log(topKFrequent(["i","love","leetcode","i","love","coding"],
+               3))`,
+                output: `[ 'i', 'love', 'coding' ]`,
               },
             }}
           />
@@ -77737,6 +77767,7 @@ class Solution:
         title: "Q693. Binary Number with Alternating Bits (Q557)",
         content: (
           <Comp
+            title="Q693. Binary Number with Alternating Bits (Q557)"
             content1={<></>}
             content2={null}
             examples={[
