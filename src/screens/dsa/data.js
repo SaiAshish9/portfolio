@@ -77891,8 +77891,8 @@ class Solution:
                 grid[i][j] is either 0 or 1
               </>
             }
-            tc="n"
-            sc="n"
+            tc="m.n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
