@@ -279,6 +279,7 @@ import Leetcode688 from "assets/leetcode/688.png";
 import Leetcode690 from "assets/leetcode/690.png";
 import Leetcode695 from "assets/leetcode/695.png";
 import Leetcode699 from "assets/leetcode/699.png";
+import Leetcode700 from "assets/leetcode/700.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -78303,31 +78304,86 @@ class Solution:
         content: (
           <Comp
             title="Q700. Search in a Binary Search Tree (Q563)"
-            content1={<></>}
+            content1={
+              <>
+                You are given the root of a binary search tree (BST) and an
+                integer val.
+                <br />
+                Find the node in the BST that the node's value equals val and
+                return the subtree rooted with that node. If such a node does
+                not exist, return null.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode700,
+                content: (
+                  <>
+                    Input: root = [4,2,7,1,3], val = 2<br />
+                    Output: [2,1,3]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [4,2,7,1,3], val = 5<br />
+                    Output: []
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The number of nodes in the tree is in the range [1, 5000].
+                <br />
+                1 &lt;= Node.val &lt;= 10^7
+                <br />
+                root is a binary search tree.
+                <br />1 &lt;= val &lt;= 10^7
               </>
             }
             tc="n"
-            sc="n"
+            sc="h"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+                }
+                
+                /**
+                 * @param {TreeNode} root
+                 * @param {number} val
+                 * @return {TreeNode}
+                 */
+                var searchBST = function(root, val) {
+                  if (!root)
+                    return null;
+                  if (root.val == val)
+                    return root;
+                  if (root.val > val)
+                    return searchBST(root.left, val);
+                  return searchBST(root.right, val);
+                };
+                
+                const t = new TreeNode(4)
+                t.left = new TreeNode(2)
+                t.left.left = new TreeNode(1)
+                t.left.right = new TreeNode(3)
+                t.right  = new TreeNode(7)
+                console.log(searchBST(t,4))`,
+                output: `TreeNode {
+                  val: 4,
+                  left: TreeNode {
+                    val: 2,
+                    left: TreeNode { val: 1, left: null, right: null },
+                    right: TreeNode { val: 3, left: null, right: null }
+                  },
+                  right: TreeNode { val: 7, left: null, right: null }
+                }`,
               },
             }}
           />
@@ -78337,6 +78393,7 @@ class Solution:
         title: "Q701. Insert into a Binary Search Tree (Q564)",
         content: (
           <Comp
+            title="Q701. Insert into a Binary Search Tree (Q564)"
             content1={<></>}
             content2={null}
             examples={[
