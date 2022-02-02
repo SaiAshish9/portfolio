@@ -75387,6 +75387,7 @@ class Solution:
         title: "Q667. Beautiful Arrangement II (Q533)",
         content: (
           <Comp
+            title="Q667. Beautiful Arrangement II (Q533)"
             content1={
               <>
                 Given two integers n and k, construct a list answer that
@@ -75431,8 +75432,27 @@ class Solution:
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @param {number} k
+                * @return {number[]}
+                */
+               var constructArray = function(n, k) {
+                 const ans = Array(n).fill(0);
+                 for (let i = 0; i < n - k; ++i)
+                   ans[i] = i + 1;
+                 for (let i = 0; i < k; ++i) {
+                   if (i % 2 == 0)
+                     ans[n - k + i] = parseInt(n - i / 2);
+                   else
+                     ans[n - k + i] = n - k + parseInt((i + 1) / 2);
+                 }
+                 return ans;
+               };
+               
+               console.log(constructArray(3,1))
+               `,
+                output: `[ 1, 2, 3 ]`,
               },
             }}
           />
@@ -75442,6 +75462,7 @@ class Solution:
         title: "Q668. Kth Smallest Number in Multiplication Table (Q534)",
         content: (
           <Comp
+            title="Q668. Kth Smallest Number in Multiplication Table (Q534)"
             content1={<></>}
             content2={null}
             examples={[
@@ -75456,13 +75477,8 @@ class Solution:
               },
             ]}
             constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
+            tc="m.n log m.n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
