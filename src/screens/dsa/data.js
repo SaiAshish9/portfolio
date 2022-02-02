@@ -273,6 +273,7 @@ import Leetcode668 from "assets/leetcode/668.png";
 import Leetcode669 from "assets/leetcode/669.png";
 import Leetcode671 from "assets/leetcode/671.png";
 import Leetcode684 from "assets/leetcode/684.png";
+import Leetcode685 from "assets/leetcode/685.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -76961,23 +76962,56 @@ class Solution:
         content: (
           <Comp
             title="Q685. Redundant Connection II (Q549)"
-            content1={<></>}
+            content1={
+              <>
+                In this problem, a rooted tree is a directed graph such that,
+                there is exactly one node (the root) for which all other nodes
+                are descendants of this node, plus every node has exactly one
+                parent, except for the root node which has no parents.
+                <br />
+                The given input is a directed graph that started as a rooted
+                tree with n nodes (with distinct values from 1 to n), with one
+                additional directed edge added. The added edge has two different
+                vertices chosen from 1 to n, and was not an edge that already
+                existed.
+                <br />
+                The resulting graph is given as a 2D-array of edges. Each
+                element of edges is a pair [ui, vi] that represents a directed
+                edge connecting nodes ui and vi, where ui is a parent of child
+                vi.
+                <br />
+                Return an edge that can be removed so that the resulting graph
+                is a rooted tree of n nodes. If there are multiple answers,
+                return the answer that occurs last in the given 2D-array.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode685,
+                content: (
+                  <>
+                    Input: edges = [[1,2],[1,3],[2,3]] <br />
+                    Output: [2,3]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: edges = [[1,2],[2,3],[3,4],[4,1],[1,5]]
+                    <br /> Output: [4,1]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                n == edges.length <br />
+                3 &lt;= n &lt;= 1000 <br />
+                edges[i].length == 2 <br />
+                1 &lt;= ui, vi &lt;= n <br />
+                ui != vi
               </>
             }
             tc="n"
