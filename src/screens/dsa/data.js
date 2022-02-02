@@ -75902,6 +75902,7 @@ class Solution:
         title: "Q673. Number of Longest Increasing Subsequence (Q539)",
         content: (
           <Comp
+            title="Q673. Number of Longest Increasing Subsequence (Q539)"
             content1={
               <>
                 Given an integer array nums, return the number of longest
@@ -75947,8 +75948,37 @@ class Solution:
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var findNumberOfLIS = function(nums) {
+                 const n = nums.length;
+                 let res = 0;
+                 let maxLength = 0;
+                 const dp = Array(n).fill(1); 
+                 const count =  Array(n).fill(1);
+                 for (let i = 0; i < n; ++i)
+                   for (let j = 0; j < i; ++j)
+                     if (nums[j] < nums[i])
+                       if (dp[i] < dp[j] + 1) {
+                         dp[i] = dp[j] + 1;
+                         count[i] = count[j];
+                       } else if (dp[i] == dp[j] + 1) {
+                         count[i] += count[j];
+                       }
+                 for (let i = 0; i < n; ++i)
+                   if (dp[i] > maxLength) {
+                     maxLength = dp[i];
+                     res = count[i];
+                   } else if (dp[i] == maxLength) {
+                     res += count[i];
+                   }
+                 return res; 
+               };
+               
+               console.log(findNumberOfLIS([1,3,5,4,7]))`,
+                output: `2`,
               },
             }}
           />
