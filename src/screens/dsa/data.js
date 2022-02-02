@@ -271,6 +271,7 @@ import Leetcode661 from "assets/leetcode/661.png";
 import Leetcode662 from "assets/leetcode/662.png";
 import Leetcode668 from "assets/leetcode/668.png";
 import Leetcode669 from "assets/leetcode/669.png";
+import Leetcode671 from "assets/leetcode/671.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -75700,31 +75701,96 @@ class Solution:
         content: (
           <Comp
             title="Q671. Second Minimum Node In a Binary Tree (Q537)"
-            content1={<></>}
+            content1={
+              <>
+                Given a non-empty special binary tree consisting of nodes with
+                the non-negative value, where each node in this tree has exactly
+                two or zero sub-node. If the node has two sub-nodes, then this
+                node's value is the smaller value among its two sub-nodes. More
+                formally, the property root.val = min(root.left.val,
+                root.right.val) always holds.
+                <br />
+                Given such a binary tree, you need to output the second minimum
+                value in the set made of all the nodes' value in the whole tree.
+                <br />
+                If no such second minimum value exists, output -1 instead.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode671,
+                content: (
+                  <>
+                    Input: root = [2,2,5,null,null,5,7]
+                    <br />
+                    Output: 5<br />
+                    Explanation: The smallest value is 2, the second smallest
+                    value is 5.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [2,2,2]
+                    <br />
+                    Output: -1
+                    <br />
+                    Explanation: The smallest value is 2, but there isn't any
+                    second smallest value.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                The number of nodes in the tree is in the range [1, 25].
+                <br />
+                1 &lt;= Node.val &lt;= 231 - 1<br />
+                root.val == min(root.left.val, root.right.val) for each internal
+                node of the tree.
               </>
             }
             tc="n"
-            sc="n"
+            sc="h"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+                }
+                
+                /**
+                 * @param {TreeNode} root
+                 * @return {number}
+                 */
+                var findSecondMinimumValue = function(root) {
+                      if (!root)
+                      return -1;
+                    return helper(root, root.val); 
+                };
+                
+                function helper(root, min) {
+                  if (!root)
+                    return -1;
+                  if (root.val > min)
+                    return root.val;
+                  let leftMin = helper(root.left, min);
+                  let rightMin = helper(root.right, min);
+                  if (leftMin == -1 || rightMin == -1)
+                    return Math.max(leftMin, rightMin);
+                  return Math.min(leftMin, rightMin);
+                }
+                
+                const t = new TreeNode(2)
+                t.left = new TreeNode(2)
+                t.right = new TreeNode(5)
+                t.right.left = new TreeNode(5)
+                t.right.right = new TreeNode(7)
+                console.log(findSecondMinimumValue(t))`,
+                output: `5`,
               },
             }}
           />
@@ -75734,6 +75800,7 @@ class Solution:
         title: "Q672. Bulb Switcher II (Q538)",
         content: (
           <Comp
+            title="Q672. Bulb Switcher II (Q538)"
             content1={<></>}
             content2={null}
             examples={[
