@@ -18269,6 +18269,7 @@ console.log(isPairSum(arr, arrSize, val));
                 Consists of 1, -1 and 0 Only.
               </b>
             </Span>
+            <Img left src={Uber20} />
             <Span>
               <b>Screenshots:</b>
             </Span>
@@ -18292,7 +18293,6 @@ console.log(isPairSum(arr, arrSize, val));
               Uber17,
               Uber18,
               Uber19,
-              Uber20,
             ].map((i, k) => (
               <Img key={k} src={Vmware1Img} large />
             ))}
