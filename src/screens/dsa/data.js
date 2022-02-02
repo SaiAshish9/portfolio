@@ -77895,8 +77895,30 @@ class Solution:
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} grid
+                * @return {number}
+                */
+               
+               function dfs(grid, i, j) {
+                   if (i < 0 || i == grid.length || j < 0 || j == grid[0].length)
+                     return 0;
+                   if (grid[i][j] != 1)
+                     return 0;
+                   grid[i][j] = 2;
+                   return 1 + dfs(grid, i + 1, j) + dfs(grid, i - 1, j)
+                            + dfs(grid, i, j + 1) + dfs(grid, i, j - 1);
+                 }
+               var maxAreaOfIsland = function(grid) {
+                 let res = 0;
+                 for (let i = 0; i < grid.length; ++i)
+                   for (let j = 0; j < grid[0].length; ++j)
+                     res = Math.max(res, dfs(grid, i, j));
+                 return res;
+               };
+               
+               console.log(maxAreaOfIsland([[0,0,1,0,0,0,0,1,0,0,0,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,1,1,0,1,0,0,0,0,0,0,0,0],[0,1,0,0,1,1,0,0,1,0,1,0,0],[0,1,0,0,1,1,0,0,1,1,1,0,0],[0,0,0,0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,0,0,0,0,0,0,1,1,0,0,0,0]]))`,
+                output: `6`,
               },
             }}
           />
