@@ -77315,8 +77315,41 @@ class Solution:
             sc="n^2"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @param {number} k
+                * @param {number} row
+                * @param {number} column
+                * @return {number}
+                */
+               var knightProbability = function(n, k, row, column) {
+                 const kProb = 0.125;
+                 const dirs = [[-2, 1], [-1, 2], [1, 2], [2, 1], [2, -1], [1, -2], [-1, -2], [-2, -1]];
+                 let dp = Array.from(Array(n),()=>Array(n).fill(0));
+                 dp[row][column] = 1.0;
+                 for (let m = 0; m < k; ++m) {
+                   let newDp =  Array.from(Array(n),()=>Array(n).fill(0));
+                   for (let i = 0; i < n; ++i)
+                     for (let j = 0; j < n; ++j)
+                       if (dp[i][j] > 0.0) {
+                         for (let dir of dirs) {
+                           let x = i + dir[0];
+                           let y = j + dir[1];
+                           if (x < 0 || x >= n || y < 0 || y >= n)
+                             continue;
+                           newDp[x][y] += dp[i][j] * kProb;
+                         }
+                       }
+                   dp = newDp;
+                 }
+                 let res = 0.0;
+                 for (let row of dp)
+                   res += row.reduce((a,b)=>a+b,0);
+                 return res;   
+               };
+               
+               console.log(knightProbability(3,2,0,0))`,
+                output: `0.0625`,
               },
             }}
           />
@@ -77326,23 +77359,48 @@ class Solution:
         title: "Q689. Maximum Sum of 3 Non-Overlapping Subarrays (Q553)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q689. Maximum Sum of 3 Non-Overlapping Subarrays (Q553)"
+            content1={
+              <>
+                Given an integer array nums and an integer k, find three
+                non-overlapping subarrays of length k with maximum sum and
+                return them.
+                <br />
+                Return the result as a list of indices representing the starting
+                position of each interval (0-indexed). If there are multiple
+                answers, return the lexicographically smallest one.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,1,2,6,7,5,1], k = 2<br />
+                    Output: [0,3,5]
+                    <br />
+                    Explanation: Subarrays [1, 2], [2, 6], [7, 5] correspond to
+                    the starting indices [0, 3, 5]. We could have also taken [2,
+                    1], but an answer of [1, 3, 5] would be lexicographically
+                    larger.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,1,2,1,2,1,2,1], k = 2<br />
+                    Output: [0,2,4]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= nums.length &lt;= 2 * 10^4
+                <br />
+                1 &lt;= nums[i] &lt; 2^16
+                <br />1 &lt;= k &lt;= floor(nums.length / 3)
               </>
             }
             tc="n"
