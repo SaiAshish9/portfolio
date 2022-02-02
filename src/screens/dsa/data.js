@@ -275,6 +275,7 @@ import Leetcode671 from "assets/leetcode/671.png";
 import Leetcode684 from "assets/leetcode/684.png";
 import Leetcode685 from "assets/leetcode/685.png";
 import Leetcode687 from "assets/leetcode/687.png";
+import Leetcode688 from "assets/leetcode/688.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -77253,27 +77254,65 @@ class Solution:
         content: (
           <Comp
             title="Q688. Knight Probability in Chessboard (Q552)"
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            fp={
+            content1={
               <>
-                <b>Follow up :</b>
+                On an n x n chessboard, a knight starts at the cell (row,
+                column) and attempts to make exactly k moves. The rows and
+                columns are 0-indexed, so the top-left cell is (0, 0), and the
+                bottom-right cell is (n - 1, n - 1).
+                <br />A chess knight has eight possible moves it can make, as
+                illustrated below. Each move is two cells in a cardinal
+                direction, then one cell in an orthogonal direction.
               </>
             }
-            tc="n"
-            sc="n"
+            img={Leetcode688}
+            content2={
+              <>
+                Each time the knight is to move, it chooses one of eight
+                possible moves uniformly at random (even if the piece would go
+                off the chessboard) and moves there.
+                <br />
+                The knight continues moving until it has made exactly k moves or
+                has moved off the chessboard.
+                <br />
+                Return the probability that the knight remains on the board
+                after it has stopped moving.
+              </>
+            }
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: n = 3, k = 2, row = 0, column = 0<br />
+                    Output: 0.06250
+                    <br />
+                    Explanation: There are two moves (to (1,2), (2,1)) that will
+                    keep the knight on the board. From each of those positions,
+                    there are also two moves that will keep the knight on the
+                    board. The total probability the knight stays on the board
+                    is 0.0625.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: n = 1, k = 0, row = 0, column = 0<br />
+                    Output: 1.00000
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= n &lt;= 25
+                <br />
+                0 &lt;= k &lt;= 100
+                <br />0 &lt;= row, column &lt;= n
+              </>
+            }
+            tc="k.n^2"
+            sc="n^2"
             codes={{
               Javascript: {
                 code: ``,
