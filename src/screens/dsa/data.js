@@ -18264,8 +18264,12 @@ console.log(isPairSum(arr, arrSize, val));
                 title: "uber-q1(a)",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function solution(base2){
+                      return +parseInt(''+base2,2).toString(6)
+                     }
+                     
+                     console.log(solution(1100)) // 12`,
+                    output: `20`,
                   },
                 },
               }}
@@ -18279,7 +18283,7 @@ console.log(isPairSum(arr, arrSize, val));
                 codes: {
                   Javascript: {
                     code: ``,
-                    output: ``,
+                    output: `20`,
                   },
                 },
               }}
