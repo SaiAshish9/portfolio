@@ -75634,31 +75634,62 @@ class Solution:
         title: "Q670. Maximum Swap (Q536)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q670. Maximum Swap (Q536)"
+            content1={
+              <>
+                You are given an integer num. You can swap two digits at most
+                once to get the maximum valued number.
+                <br />
+                Return the maximum valued number you can get.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = 2736 <br />
+                    Output: 7236 <br />
+                    Explanation: Swap the number 2 and the number 7.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = 9973 <br />
+                    Output: 9973 <br />
+                    Explanation: No swap.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
+            constraints={<>0 &lt;= num &lt;= 108</>}
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} num
+                * @return {number}
+                */
+               var maximumSwap = function(num) {
+                 const s = String(num).split("");
+                 let lastIndex = Array(10).fill(0)
+                 for (let i = 0; i < s.length; ++i)
+                 lastIndex[+s[i]] = i;
+                 for (let i = 0; i < s.length; ++i)
+                   for (let d = 9; d > +s[i]; --d)
+                     if (lastIndex[d] > i) {
+                       s[lastIndex[d]] = s[i];
+                       s[i] = String(d);
+                       return +s.join("")
+                     }
+                 return num;    
+               };
+               
+               console.log(maximumSwap(2736))`,
+                output: `7326`,
               },
             }}
           />
@@ -75668,6 +75699,7 @@ class Solution:
         title: "Q671. Second Minimum Node In a Binary Tree (Q537)",
         content: (
           <Comp
+            title="Q671. Second Minimum Node In a Binary Tree (Q537)"
             content1={<></>}
             content2={null}
             examples={[
