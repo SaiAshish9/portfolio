@@ -18353,8 +18353,30 @@ console.log(isPairSum(arr, arrSize, val));
                 title: "uber-q2",
                 codes: {
                   Javascript: {
-                    code: ``,
-                    output: ``,
+                    code: `function weightedKnapsack(s, t, T) {
+                      const n = s.length;
+                      const dp = Array.from(Array(n + 1), () => Array(T + 1).fill(-1));
+                      for (let i = 0; i <= n; i++) {
+                          for (let w = 0; w <= T; w++) {
+                              if (i == 0 || w == 0) {
+                                  dp[i][w] = 0;
+                              } else if (t[i - 1] <= w)
+                                  dp[i][w] = Math.max(
+                                      s[i - 1] + dp[i - 1][w - t[i - 1]], 
+                                      dp[i - 1][w]
+                                  );
+                              else dp[i][w] = dp[i - 1][w];
+                          }
+                      }
+                      return dp[n][T];
+                    }
+                    
+                    function solution(score,intervals,duration){
+                      return weightedKnapsack(score,intervals,duration)
+                    }
+                    
+                    console.log(solution([10, 15, 40], [1, 2, 3], 6));`,
+                    output: `65`,
                   },
                 },
               }}
