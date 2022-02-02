@@ -75801,27 +75801,77 @@ class Solution:
         content: (
           <Comp
             title="Q672. Bulb Switcher II (Q538)"
-            content1={<></>}
+            content1={
+              <>
+                There is a room with n bulbs labeled from 1 to n that all are
+                turned on initially, and four buttons on the wall. Each of the
+                four buttons has a different functionality where:
+                <br />
+                <br /> Button 1: Flips the status of all the bulbs.
+                <br /> Button 2: Flips the status of all the bulbs with even
+                labels (i.e., 2, 4, ...).
+                <br /> Button 3: Flips the status of all the bulbs with odd
+                labels (i.e., 1, 3, ...).
+                <br /> Button 4: Flips the status of all the bulbs with a label
+                j = 3k + 1 where k = 0, 1, 2, ... (i.e., 1, 4, 7, 10, ...).
+                <br /> You must make exactly presses button presses in total.
+                For each press, you may pick any of the four buttons to press.
+                <br />
+                Given the two integers n and presses, return the number of
+                different possible statuses after performing all presses button
+                presses.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1, presses = 1<br />
+                    Output: 2<br />
+                    Explanation: Status can be:
+                    <br />
+                    - [off] by pressing button 1<br />- [on] by pressing button
+                    2
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 2, presses = 1<br />
+                    Output: 3<br />
+                    Explanation: Status can be:
+                    <br />
+                    - [off, off] by pressing button 1<br />
+                    - [on, off] by pressing button 2<br />- [off, on] by
+                    pressing button 3
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 3, presses = 1<br />
+                    Output: 4<br />
+                    Explanation: Status can be:
+                    <br />
+                    - [off, off, off] by pressing button 1<br />
+                    - [off, on, off] by pressing button 2<br />
+                    - [on, off, on] by pressing button 3<br />- [off, on, on] by
+                    pressing button 4
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                {" "}
+                1 &lt;= n &lt;= 1000 <br />0 &lt;= presses &lt;= 1000
               </>
             }
-            tc="n"
-            sc="n"
+            tc="1"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
