@@ -18293,7 +18293,7 @@ console.log(isPairSum(arr, arrSize, val));
               Uber18,
               Uber19,
             ].map((i, k) => (
-              <Img key={k} src={Vmware1Img} large />
+              <Img key={k} src={i} large />
             ))}
           </>
         ),
