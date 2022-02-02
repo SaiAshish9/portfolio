@@ -77252,6 +77252,7 @@ class Solution:
         title: "Q688. Knight Probability in Chessboard (Q552)",
         content: (
           <Comp
+            title="Q688. Knight Probability in Chessboard (Q552)"
             content1={<></>}
             content2={null}
             examples={[
