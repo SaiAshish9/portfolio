@@ -77091,23 +77091,43 @@ class Solution:
         title: "Q686. Repeated String Match (Q550)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q686. Repeated String Match (Q550)"
+            content1={
+              <>
+                Given two strings a and b, return the minimum number of times
+                you should repeat string a so that string b is a substring of
+                it. If it is impossible for b​​​​​​ to be a substring of a after
+                repeating it, return -1.
+                <br />
+                Notice: string "abc" repeated 0 times is "", repeated 1 time is
+                "abc" and repeated 2 times is "abcabc".
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: a = "abcd", b = "cdabcdab" <br />
+                    Output: 3 <br />
+                    Explanation: We return 3 because by repeating a three times
+                    "abcdabcdabcd", b is a substring of it.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: a = "a", b = "aa" <br />
+                    Output: 2
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            fp={
+            constraints={
               <>
-                <b>Follow up :</b>
+                1 &lt;= a.length, b.length &lt;= 10^4 <br />a and b consist of
+                lowercase English letters.
               </>
             }
             tc="n"
