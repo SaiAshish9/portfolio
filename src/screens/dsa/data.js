@@ -77768,31 +77768,49 @@ class Solution:
         content: (
           <Comp
             title="Q693. Binary Number with Alternating Bits (Q557)"
-            content1={<></>}
+            content1={<>Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.</>}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: <>Input: n = 5<br />
+                Output: true<br />
+                Explanation: The binary representation of 5 is: 101</>,
               },
               {
-                content: <></>,
+                content: <>Input: n = 7<br />
+                Output: false<br />
+                Explanation: The binary representation of 7 is: 111.
+                </>,
               },
               {
-                content: <></>,
+                content: <>Input: n = 11<br />
+                Output: false<br />
+                Explanation: The binary representation of 11 is: 1011.</>,
               },
             ]}
-            constraints={<></>}
-            fp={
-              <>
-                <b>Follow up :</b>
-              </>
-            }
-            tc="n"
-            sc="n"
+            constraints={<>1 &lt;= n &lt;= 2^31 - 1</>}
+            tc="1"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @return {boolean}
+                */
+               var hasAlternatingBits = function(n) {
+               while(n !=0)
+               {
+               let temp1 = n&1;
+               n = n >> 1;
+               let temp2 = n&1;
+               if(temp1 == temp2)
+               return false;
+               }
+               return true;
+               };
+               
+               console.log(hasAlternatingBits(5))`,
+                output: `true`,
               },
             }}
           />
@@ -77802,6 +77820,7 @@ class Solution:
         title: "Q695. Max Area of Island (Q558)",
         content: (
           <Comp
+          title="Q695. Max Area of Island (Q558)"
             content1={<></>}
             content2={null}
             examples={[
