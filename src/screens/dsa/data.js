@@ -269,6 +269,7 @@ import Leetcode654 from "assets/leetcode/654.png";
 import Leetcode655 from "assets/leetcode/655.png";
 import Leetcode661 from "assets/leetcode/661.png";
 import Leetcode662 from "assets/leetcode/662.png";
+import Leetcode668 from "assets/leetcode/668.png";
 import NotesImg from "assets/notes.png";
 import Comp from "./comp";
 
@@ -75463,20 +75464,41 @@ class Solution:
         content: (
           <Comp
             title="Q668. Kth Smallest Number in Multiplication Table (Q534)"
-            content1={<></>}
+            content1={
+              <>
+                Nearly everyone has used the Multiplication Table. The
+                multiplication table of size m x n is an integer matrix mat
+                where mat[i][j] == i * j (1-indexed).
+                <br />
+                Given three integers m, n, and k, return the kth smallest
+                element in the m x n multiplication table.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode668,
+                content: (
+                  <>
+                    Input: m = 3, n = 3, k = 5 Output: 3 Explanation: The 5th
+                    smallest number is 3.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: m = 2, n = 3, k = 6 Output: 6 Explanation: The 6th
+                    smallest number is 6.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= m, n &lt;= 3 * 10^4 <br />1 &lt;= k &lt;= m * n
+              </>
+            }
             tc="m.n log m.n"
             sc="1"
             codes={{
