@@ -76650,6 +76650,7 @@ class Solution:
         title: "Q680. Valid Palindrome II  (Q546)",
         content: (
           <Comp
+          title= "Q680. Valid Palindrome II  (Q546)"
             content1={<></>}
             content2={null}
             examples={[
