@@ -77621,12 +77621,41 @@ class Solution:
                 stickers[i] and target consist of lowercase English letters.
               </>
             }
-            tc="n"
+            tc="n^2"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string[]} stickers
+                * @param {string} target
+                * @return {number}
+                */
+               const MAX = Number.MAX_SAFE_INTEGER;
+               const minStickers = (stickers, target) => {
+                   let n = target.length;
+                   let dp = Array(1 << n).fill(MAX);
+                   dp[0] = 0;
+                   for (let i = 0; i < 1 << n; i++) { 
+                       if (dp[i] == MAX) continue;
+                       for (const s of stickers) {
+                           let cur = i;
+                           for (const c of s) {
+                               for (let j = 0; j < n; j++) {
+                                   if (cur & (1 << j)) continue;  
+                                   if (c == target[j]) {
+                                       cur |= 1 << j;  
+                                       break;
+                                   }
+                               }
+                           }
+                           dp[cur] = Math.min(dp[cur], dp[i] + 1);
+                       }
+                   }
+                   return dp[(1 << n) - 1] == MAX ? -1 : dp[(1 << n) - 1];
+               };
+               
+               console.log(minStickers(["with","example","science"],"thehat"))`,
+                output: `3`,
               },
             }}
           />
