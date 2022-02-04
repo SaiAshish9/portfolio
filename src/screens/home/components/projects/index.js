@@ -69,7 +69,7 @@ const Projects = () => {
     },
     {
       key: "teams",
-      link: "https://www.youtube.com/watch?v=sU1mwLUPT34",
+      link: "https://teams-sai.vercel.app/",
       label: <I18n t="teams" />,
       tab: <SiMicrosoftteams size={ICON_SIZE + 5} />,
       url: "https://www.youtube.com/watch?v=hztkTJnqWdI",
