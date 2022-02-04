@@ -33,6 +33,7 @@ import I18n from "common/I18n";
 import HeartComponent from "./components/heartComponent";
 import UVRobotsImg from "assets/home/uvrobots.png";
 import VelvetImg from "assets/home/velvet.svg";
+import ProboImg from "assets/home/probo.svg";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -130,8 +131,8 @@ const images = [
     link: "https://verizon.com",
   },
   {
-    img: VelvetImg,
-    link: "https://velvet.video",
+    img: ProboImg,
+    link: "https://probo.in",
   },
   {
     img: UVRobotsImg,
