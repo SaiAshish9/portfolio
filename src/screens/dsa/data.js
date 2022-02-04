@@ -4472,14 +4472,13 @@ pop_back() :
                           queue.push(this.root)
                           while (queue.length > 0)
                           {
-                          let curr = queue[0];
-                          queue.shift();
+                          let curr = queue.shift();;
                           let temp = curr.left;
                           curr.left = curr.right;
                           curr.right = temp;;
-                          if (curr.left != null)
+                          if (curr.left)
                             queue.push(curr.left);
-                          if (curr.right != null)
+                          if (curr.right)
                             queue.push(curr.right);
                           }
                         }
@@ -4574,9 +4573,9 @@ pop_back() :
                                   let curr = queue.shift();
                                   if(i==0)
                                   console.log(curr.data)
-                                  if (curr.left != null)
+                                  if (curr.left)
                                     queue.push(curr.left);
-                                  if (curr.right != null)
+                                  if (curr.right)
                                     queue.push(curr.right);
                                  }
                               }
@@ -4653,9 +4652,9 @@ pop_back() :
                                   let curr = queue.shift();
                                   if(i==n-1)
                                   console.log(curr.data)
-                                  if (curr.left != null)
+                                  if (curr.left)
                                     queue.push(curr.left);
-                                  if (curr.right != null)
+                                  if (curr.right)
                                     queue.push(curr.right);
                                  }
                               }
@@ -4746,12 +4745,11 @@ pop_back() :
                                   }
                                   let output = ""
                                   while (nodeCount > 0) {
-                                      let node = q[0];
+                                      let node =  q.shift();;
                                       output += node.data + " ";
-                                      q.shift();
-                                      if (node.left != null)
+                                      if (node.left)
                                           q.push(node.left);
-                                      if (node.right != null)
+                                      if (node.right)
                                           q.push(node.right);
                                       nodeCount--;
                                   }
