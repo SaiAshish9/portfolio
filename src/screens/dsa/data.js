@@ -80302,26 +80302,109 @@ a = b + c;
         title: "Q725. Split Linked List in Parts (Q583)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q725. Split Linked List in Parts (Q583)"
+            content1={
+              <>
+                Given the head of a singly linked list and an integer k, split
+                the linked list into k consecutive linked list parts.
+                <br />
+                The length of each part should be as equal as possible: no two
+                parts should have a size differing by more than one. This may
+                lead to some parts being null.
+                <br />
+                The parts should be in the order of occurrence in the input
+                list, and parts occurring earlier should always have a size
+                greater than or equal to parts occurring later.
+                <br />
+                Return an array of the k parts.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: head = [1,2,3], k = 5 <br />
+                    Output: [[1],[2],[3],[],[]] <br />
+                    Explanation: <br />
+                    The first element output[0] has output[0].val = 1,
+                    output[0].next = null.
+                    <br /> The last element output[4] is null, but its string
+                    representation as a ListNode is [].
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: head = [1,2,3,4,5,6,7,8,9,10], k = 3 <br />
+                    Output: [[1,2,3,4],[5,6,7],[8,9,10]] <br />
+                    Explanation: <br />
+                    The input has been split into consecutive parts with size
+                    difference at most 1, and earlier parts are a larger size
+                    than the later parts.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the list is in the range [0, 1000].
+                <br /> 0 &lt;= Node.val &lt;= 1000
+                <br />1 &lt;= k &lt;= 50
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function ListNode(val, next) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.next = (next===undefined ? null : next)
+                }
+                
+                /**
+                 * @param {ListNode} head
+                 * @param {number} k
+                 * @return {ListNode[]}
+                 */
+                var splitListToParts = function(head, k) {
+                  const res = [];
+                  const length = getLength(head);
+                  let subLength = parseInt(length / k);
+                  let remainder = length % k;
+                  let prev = null;
+                  let root = head;
+                  for (let i = 0; i < k; ++i, --remainder) {
+                    res[i] = root;
+                    for (let j = 0; j < subLength + (remainder > 0 ? 1 : 0); ++j) {
+                      prev = root;
+                      root = root.next;
+                    }
+                    if (prev)
+                      prev.next = null;
+                  }
+                  return res;
+                }
+                
+                function getLength(root) {
+                  let length = 0;
+                  for (let curr = root; curr; curr = curr.next)
+                    ++length;
+                  return length;
+                }
+                
+                const l = new ListNode(1)
+                l.next = new ListNode(2)
+                l.next.next = new ListNode(3) 
+                console.log(splitListToParts(l,5))`,
+                output: `[
+                  ListNode { val: 1, next: null },
+                  ListNode { val: 2, next: null },
+                  ListNode { val: 3, next: null },
+                  null,
+                  null
+                ]`,
               },
             }}
           />
@@ -80331,6 +80414,7 @@ a = b + c;
         title: "Q726. Number of Atoms (Q584)",
         content: (
           <Comp
+            title="Q726. Number of Atoms (Q584)"
             content1={<></>}
             content2={null}
             examples={[
@@ -81070,7 +81154,7 @@ a = b + c;
               >
                 www.mingw.org
               </a>{" "}
-              or {" "}
+              or{" "}
               <a
                 href="https://www.cygwin.com/"
                 target="blank"
