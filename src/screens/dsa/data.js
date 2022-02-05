@@ -79115,7 +79115,6 @@ class Solution:
                    res[i] = String.fromCharCode(res[i].charCodeAt(0) - diff);
                  return res.join("");
                };
-               
                console.log(toLowerCase("Hello"))`,
                 output: `hello`,
               },
@@ -79128,20 +79127,60 @@ class Solution:
         content: (
           <Comp
             title="Q710. Random Pick with Blacklist (Q571)"
-            content1={<></>}
+            content1={
+              <>
+                You are given an integer n and an array of unique integers
+                blacklist. Design an algorithm to pick a random integer in the
+                range [0, n - 1] that is not in blacklist. Any integer that is
+                in the mentioned range and not in blacklist should be equally
+                likely to be returned.
+                <br />
+                Optimize your algorithm such that it minimizes the number of
+                calls to the built-in random function of your language.
+                <br />
+                Implement the Solution class:
+                <br />
+                Solution(int n, int[] blacklist) Initializes the object with the
+                integer n and the blacklisted integers blacklist. int pick()
+                Returns a random integer in the range [0, n - 1] and not in
+                blacklist.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input ["Solution", "pick", "pick", "pick", "pick", "pick",
+                    "pick", "pick"]
+                    <br /> [[7, [2, 3, 5]], [], [], [], [], [], [], []]
+                    <br /> Output
+                    <br /> [null, 0, 4, 1, 6, 1, 0, 4]
+                    <br /> Explanation
+                    <br /> Solution solution = new Solution(7, [2, 3, 5]);
+                    <br /> solution.pick(); // return 0, any integer from
+                    [0,1,4,6] should be ok. Note that for every call of pick,
+                    <br /> // 0, 1, 4, and 6 must be equally likely to be
+                    returned (i.e., with probability 1/4). solution.pick(); //
+                    return 4 <br />
+                    solution.pick(); // return 1 <br />
+                    solution.pick(); // return 6 <br />
+                    solution.pick(); // return 1 <br />
+                    solution.pick(); // return 0 <br />
+                    solution.pick(); // return 4
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= n &lt;= 10^9 <br />
+                0 &lt;= blacklist.length &lt;- min(105, n - 1) <br />
+                0 &lt;= blacklist[i] &lt; n <br />
+                All the values of blacklist are unique. <br />
+                At most 2 * 104 calls will be made to pick.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
@@ -79531,37 +79570,8 @@ class Solution:
           />
         ),
       },
-      q570: {
-        title: "Q728. Self Dividing Numbers (Q570)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
       q585: {
-        title: "Q729. My Calendar I (Q585)",
+        title: "Q728. Self Dividing Numbers (Q585)",
         content: (
           <Comp
             content1={<></>}
@@ -79590,7 +79600,7 @@ class Solution:
         ),
       },
       q586: {
-        title: "Q730. Count Different Palindromic Subsequences (Q586)",
+        title: "Q729. My Calendar I (Q586)",
         content: (
           <Comp
             content1={<></>}
@@ -79619,7 +79629,7 @@ class Solution:
         ),
       },
       q587: {
-        title: "Q731. My Calendar II (Q587)",
+        title: "Q730. Count Different Palindromic Subsequences (Q587)",
         content: (
           <Comp
             content1={<></>}
@@ -79648,7 +79658,7 @@ class Solution:
         ),
       },
       q588: {
-        title: "Q732. My Calendar III (Q588)",
+        title: "Q731. My Calendar II (Q588)",
         content: (
           <Comp
             content1={<></>}
@@ -79677,7 +79687,7 @@ class Solution:
         ),
       },
       q589: {
-        title: "Q733. Flood Fill (Q589)",
+        title: "Q732. My Calendar III (Q589)",
         content: (
           <Comp
             content1={<></>}
@@ -79706,7 +79716,7 @@ class Solution:
         ),
       },
       q590: {
-        title: "Q735. Asteroid Collision (Q590)",
+        title: "Q733. Flood Fill (Q590)",
         content: (
           <Comp
             content1={<></>}
@@ -79735,7 +79745,7 @@ class Solution:
         ),
       },
       q591: {
-        title: "Q736. Parse Lisp Expression (Q591)",
+        title: "Q735. Asteroid Collision (Q591)",
         content: (
           <Comp
             content1={<></>}
@@ -79764,7 +79774,7 @@ class Solution:
         ),
       },
       q592: {
-        title: "Q738. Monotone Increasing Digits (Q592)",
+        title: "Q736. Parse Lisp Expression (Q592)",
         content: (
           <Comp
             content1={<></>}
@@ -79793,7 +79803,7 @@ class Solution:
         ),
       },
       q593: {
-        title: "Q739. Daily Temperatures (Q593)",
+        title: "Q738. Monotone Increasing Digits (Q593)",
         content: (
           <Comp
             content1={<></>}
@@ -79822,7 +79832,7 @@ class Solution:
         ),
       },
       q594: {
-        title: "Q740. Delete and Earn (Q594)",
+        title: "Q739. Daily Temperatures (Q594)",
         content: (
           <Comp
             content1={<></>}
@@ -79851,7 +79861,7 @@ class Solution:
         ),
       },
       q595: {
-        title: "Q741. Cherry Pickup (Q585)",
+        title: "Q740. Delete and Earn (Q595)",
         content: (
           <Comp
             content1={<></>}
@@ -79880,7 +79890,7 @@ class Solution:
         ),
       },
       q596: {
-        title: "Q743. Network Delay Time (Q596)",
+        title: "Q741. Cherry Pickup (Q596)",
         content: (
           <Comp
             content1={<></>}
@@ -79909,7 +79919,7 @@ class Solution:
         ),
       },
       q597: {
-        title: "Q744. Find Smallest Letter Greater Than Target (Q597)",
+        title: "Q743. Network Delay Time (Q597)",
         content: (
           <Comp
             content1={<></>}
@@ -79938,7 +79948,7 @@ class Solution:
         ),
       },
       q598: {
-        title: "Q745. Prefix and Suffix Search (Q598)",
+        title: "Q744. Find Smallest Letter Greater Than Target (Q598)",
         content: (
           <Comp
             content1={<></>}
@@ -79967,7 +79977,7 @@ class Solution:
         ),
       },
       q599: {
-        title: "Q746. Min Cost Climbing Stairs (Q599)",
+        title: "Q745. Prefix and Suffix Search (Q599)",
         content: (
           <Comp
             content1={<></>}
@@ -79996,7 +80006,7 @@ class Solution:
         ),
       },
       q600: {
-        title: "Q747. Largest Number At Least Twice of Others (Q600)",
+        title: "Q746. Min Cost Climbing Stairs (Q600)",
         content: (
           <Comp
             content1={<></>}
@@ -80025,7 +80035,7 @@ class Solution:
         ),
       },
       q601: {
-        title: "Q748. Shortest Completing Word (Q601)",
+        title: "Q747. Largest Number At Least Twice of Others (Q601)",
         content: (
           <Comp
             content1={<></>}
@@ -80054,7 +80064,7 @@ class Solution:
         ),
       },
       q602: {
-        title: "Q749. Contain Virus (Q602)",
+        title: "Q748. Shortest Completing Word (Q602)",
         content: (
           <Comp
             content1={<></>}
@@ -80083,7 +80093,7 @@ class Solution:
         ),
       },
       q603: {
-        title: "Q (Q603)",
+        title: "Q749. Contain Virus (Q603)",
         content: (
           <Comp
             content1={<></>}
