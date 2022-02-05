@@ -79277,8 +79277,30 @@ class Solution:
             sc="m.n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s1
+                * @param {string} s2
+                * @return {number}
+                */
+               var minimumDeleteSum = function(s1, s2) {
+                 const m = s1.length;
+                 const n = s2.length;
+                 const dp = Array.from(Array(m + 1),()=>Array(n + 1).fill(0));
+                 for (let i = 1; i <= m; ++i)
+                   dp[i][0] = dp[i - 1][0] + s1[i - 1].charCodeAt(0);
+                 for (let j = 1; j <= n; ++j)
+                   dp[0][j] = dp[0][j - 1] + s2[j - 1].charCodeAt(0);
+                 for (let i = 1; i <= m; ++i)
+                   for (let j = 1; j <= n; ++j)
+                     if (s1[i - 1].charCodeAt(0) == s2[j - 1].charCodeAt(0))
+                       dp[i][j] = dp[i - 1][j - 1];
+                     else
+                       dp[i][j] = Math.min(dp[i - 1][j] + s1[i - 1].charCodeAt(0), dp[i][j - 1] + s2[j - 1].charCodeAt(0));
+                 return dp[m][n];    
+               };
+               
+               console.log(minimumDeleteSum("delete","leet"))`,
+                output: `403`,
               },
             }}
           />
@@ -79288,6 +79310,7 @@ class Solution:
         title: "Q713. Subarray Product Less Than K (Q573)",
         content: (
           <Comp
+          title= "Q713. Subarray Product Less Than K (Q573)"
             content1={<></>}
             content2={null}
             examples={[
