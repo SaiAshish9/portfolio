@@ -79586,26 +79586,76 @@ class Solution:
         title: "Q717. 1-bit and 2-bit Characters (Q576)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q717. 1-bit and 2-bit Characters (Q576)"
+            content1={
+              <>
+                We have two special characters:
+                <br />
+                The first character can be represented by one bit 0.
+                <br />
+                The second character can be represented by two bits (10 or 11).
+                <br />
+                Given a binary array bits that ends with 0, return true if the
+                last character must be a one-bit character.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: bits = [1,0,0]
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation: The only way to decode it is two-bit character
+                    and one-bit character. So the last character is one-bit
+                    character.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: bits = [1,1,1,0]
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation: The only way to decode it is two-bit character
+                    and two-bit character. So the last character is not one-bit
+                    character.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= bits.length &lt;= 1000
+                <br />
+                bits[i] is either 0 or 1.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} bits
+                * @return {boolean}
+                */
+               var isOneBitCharacter = function(bits) {
+                 const n = bits.length;
+                 let i = 0;
+                 while (i < n - 1)
+                   if (bits[i] == 0)
+                     i += 1;
+                   else
+                     i += 2;
+                 return i == n - 1;
+               };
+               
+               console.log(isOneBitCharacter([1,1,1,0]))`,
+                output: `false`,
               },
             }}
           />
@@ -79615,26 +79665,64 @@ class Solution:
         title: "Q718. Maximum Length of Repeated Subarray (Q577)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q718. Maximum Length of Repeated Subarray (Q577)"
+            content1={
+              <>
+                Given two integer arrays nums1 and nums2, return the maximum
+                length of a subarray that appears in both arrays.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums1 = [1,2,3,2,1], nums2 = [3,2,1,4,7] <br />
+                    Output: 3 <br />
+                    Explanation: The repeated subarray with maximum length is
+                    [3,2,1].
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums1 = [0,0,0,0,0], nums2 = [0,0,0,0,0] <br />
+                    Output: 5
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                1 &lt;= nums1.length, nums2.length &lt;= 1000 <br />0 &lt;=
+                nums1[i], nums2[i] &lt;= 100
+              </>
+            }
+            tc="m.n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums1
+                * @param {number[]} nums2
+                * @return {number}
+                */
+               var findLength = function(nums1, nums2) {
+                 const m = nums1.length;
+                 const n = nums2.length;
+                 let res = 0;
+                 const dp = Array(n + 1).fill(0);
+                 for (let i = m - 1; i >= 0; --i)
+                   for (let j = 0; j < n; ++j) { 
+                     dp[j] = nums1[i] == nums2[j] ? dp[j + 1] + 1 : 0;
+                     res = Math.max(res, dp[j]);
+                   }
+                 return res;
+               };
+               
+               console.log(findLength([1,2,3,2,1],[3,2,1,4,7]))`,
+                output: `3`,
               },
             }}
           />
