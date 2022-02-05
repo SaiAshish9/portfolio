@@ -80230,22 +80230,52 @@ a = b + c;
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: <>Input: nums = [1,7,3,6,5,6]    <br />
+                Output: 3    <br />
+                Explanation:    <br />
+                The pivot index is 3.    <br />
+                Left sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11    <br />
+                Right sum = nums[4] + nums[5] = 5 + 6 = 11</>,
               },
               {
-                content: <></>,
+                content: <>Input: nums = [1,2,3]    <br />
+                Output: -1    <br />
+                Explanation:    <br />
+                There is no index that satisfies the conditions in the problem statement.
+                </>,
               },
               {
-                content: <></>,
+                content: <>Input: nums = [2,1,-1]    <br />
+                Output: 0    <br />
+                Explanation:    <br />
+                The pivot index is 0.    <br />
+                Left sum = 0 (no elements to the left of index 0)    <br />
+                Right sum = nums[1] + nums[2] = 1 + -1 = 0</>,
               },
             ]}
-            constraints={<></>}
+            constraints={<>1 &lt;= nums.length &lt;= 10^4    <br />
+              -1000 &lt;= nums[i] &lt;= 1000</>}
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var pivotIndex = function(nums) {
+                 const sum = nums.reduce((a,b)=>a+b,0)
+                 let prefix = 0;
+                 for (let i = 0; i < nums.length; ++i) {
+                   if (prefix == sum - prefix - nums[i])
+                     return i;
+                   prefix += nums[i];
+                 }
+                 return -1;
+               };
+               
+               console.log(pivotIndex([2,1,-1]))`,
+                output: `0`,
               },
             }}
           />
