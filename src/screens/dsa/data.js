@@ -79814,20 +79814,50 @@ class Solution:
         content: (
           <Comp
             title="Q720. Longest Word in Dictionary (Q579)"
-            content1={<></>}
+            content1={
+              <>
+                Given an array of strings words representing an English
+                Dictionary, return the longest word in words that can be built
+                one character at a time by other words in words.
+                <br />
+                If there is more than one possible answer, return the longest
+                word with the smallest lexicographical order. If there is no
+                answer, return the empty string.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words = ["w","wo","wor","worl","world"] <br />
+                    Output: "world" <br />
+                    Explanation: The word "world" can be built one character at
+                    a time by "w", "wo", "wor", and "worl".
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words =
+                    ["a","banana","app","appl","ap","apply","apple"] <br />
+                    Output: "apple" <br />
+                    Explanation: Both "apply" and "apple" can be built from
+                    other words in the dictionary. However, "apple" is
+                    lexicographically smaller than "apply".
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= words.length &lt;= 1000 <br />
+                1 &lt;= words[i].length &lt;= 30
+                <br />
+                words[i] consists of lowercase English letters.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
