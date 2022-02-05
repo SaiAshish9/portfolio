@@ -79184,7 +79184,7 @@ class Solution:
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
+              Java: {
                 code: `class Solution {
                   public Solution(int N, int[] blacklist) {
                     validRange = N - blacklist.length;
@@ -79400,18 +79400,26 @@ class Solution:
             content2={null}
             examples={[
               {
-                content: <>Input: prices = [1,3,2,8,4,9], fee = 2  <br />
-                Output: 8  <br />
-                Explanation: The maximum profit can be achieved by:  <br />
-                - Buying at prices[0] = 1  <br />
-                - Selling at prices[3] = 8  <br />
-                - Buying at prices[4] = 4  <br />
-                - Selling at prices[5] = 9  <br />
-                The total profit is ((8 - 1) - 2) + ((9 - 4) - 2) = 8.</>,
+                content: (
+                  <>
+                    Input: prices = [1,3,2,8,4,9], fee = 2 <br />
+                    Output: 8 <br />
+                    Explanation: The maximum profit can be achieved by: <br />
+                    - Buying at prices[0] = 1 <br />
+                    - Selling at prices[3] = 8 <br />
+                    - Buying at prices[4] = 4 <br />
+                    - Selling at prices[5] = 9 <br />
+                    The total profit is ((8 - 1) - 2) + ((9 - 4) - 2) = 8.
+                  </>
+                ),
               },
               {
-                content: <>Input: prices = [1,3,7,5,10,3], fee = 3  <br />
-                Output: 6</>,
+                content: (
+                  <>
+                    Input: prices = [1,3,7,5,10,3], fee = 3 <br />
+                    Output: 6
+                  </>
+                ),
               },
             ]}
             constraints={
@@ -79452,26 +79460,123 @@ class Solution:
         title: "Q715. Range Module (Q575)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q715. Range Module (Q575)"
+            content1={
+              <>
+                A Range Module is a module that tracks ranges of numbers. Design
+                a data structure to track the ranges represented as half-open
+                intervals and query about them.
+                <br />
+                A half-open interval [left, right) denotes all the real numbers
+                x where left &lt;= x &lt; right.
+                <br />
+                Implement the RangeModule class:
+                <br />
+                RangeModule() Initializes the object of the data structure.
+                <br />
+                void addRange(int left, int right) Adds the half-open interval
+                [left, right), tracking every real number in that interval.
+                Adding an interval that partially overlaps with currently
+                tracked numbers should add any numbers in the interval [left,
+                right) that are not already tracked.
+                <br />
+                boolean queryRange(int left, int right) Returns true if every
+                real number in the interval [left, right) is currently being
+                tracked, and false otherwise.
+                <br />
+                void removeRange(int left, int right) Stops tracking every real
+                number currently being tracked in the half-open interval [left,
+                right).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input ["RangeModule", "addRange", "removeRange",
+                    "queryRange", "queryRange", "queryRange"]
+                    <br />
+                    [[], [10, 20], [14, 16], [10, 14], [13, 15], [16, 17]]
+                    <br />
+                    Output
+                    <br />
+                    [null, null, null, true, false, true]
+                    <br />
+                    Explanation
+                    <br />
+                    RangeModule rangeModule = new RangeModule();
+                    <br />
+                    rangeModule.addRange(10, 20);
+                    <br />
+                    rangeModule.removeRange(14, 16);
+                    <br />
+                    rangeModule.queryRange(10, 14); // return True,(Every number
+                    in [10, 14) is being tracked)
+                    <br />
+                    rangeModule.queryRange(13, 15); // return False,(Numbers
+                    like 14, 14.03, 14.17 in [13, 15) are not being tracked)
+                    <br /> rangeModule.queryRange(16, 17); // return True, (The
+                    number 16 in [16, 17) is still being tracked, despite the
+                    remove operation)
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                1 &lt;= left &lt; right &lt;= 10^9 <br />
+                At most 104 calls will be made to addRange, queryRange, and
+                removeRange.
+              </>
+            }
+            tc="1"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `class RangeModule {
+                  public void addRange(int left, int right) {
+                    Integer l = ranges.floorKey(left);
+                    Integer r = ranges.floorKey(right);
+                
+                    if (l != null && ranges.get(l) >= left)
+                      left = l;
+                    if (r != null && ranges.get(r) > right)
+                      right = ranges.get(r);
+                
+                    ranges.subMap(left, right).clear();
+                    ranges.put(left, right);
+                  }
+                
+                  public boolean queryRange(int left, int right) {
+                    Integer l = ranges.floorKey(left);
+                    return l == null ? false : ranges.get(l) >= right;
+                  }
+                
+                  public void removeRange(int left, int right) {
+                    Integer l = ranges.floorKey(left);
+                    Integer r = ranges.floorKey(right);
+                
+                    if (r != null && ranges.get(r) > right)
+                      ranges.put(right, ranges.get(r));
+                    if (l != null && ranges.get(l) > left)
+                      ranges.put(l, left);
+                
+                    ranges.subMap(left, right).clear();
+                  }
+                
+                  private TreeMap<Integer, Integer> ranges = new TreeMap<>();
+                }
+                
+                
+                /**
+                 * Your RangeModule object will be instantiated and called as such:
+                 * RangeModule obj = new RangeModule();
+                 * obj.addRange(left,right);
+                 * boolean param_2 = obj.queryRange(left,right);
+                 * obj.removeRange(left,right);
+                 */`,
+                output: `[null,null,null,true,false,true]`,
               },
             }}
           />
