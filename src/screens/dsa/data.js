@@ -81070,7 +81070,7 @@ a = b + c;
               >
                 www.mingw.org
               </a>{" "}
-              or
+              or {" "}
               <a
                 href="https://www.cygwin.com/"
                 target="blank"
