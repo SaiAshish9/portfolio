@@ -79103,8 +79103,21 @@ class Solution:
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {string}
+                */
+               var toLowerCase = function(s) {
+                 let diff = 65 - 97;
+                 const res = s.split("");
+                 for (let i = 0; i < res.length; ++i)
+                 if (res[i].charCodeAt(0) >= 65 && res[i].charCodeAt(0) <= 90)
+                   res[i] = String.fromCharCode(res[i].charCodeAt(0) - diff);
+                 return res.join("");
+               };
+               
+               console.log(toLowerCase("Hello"))`,
+                output: `hello`,
               },
             }}
           />
@@ -79114,6 +79127,7 @@ class Solution:
         title: "Q710. Random Pick with Blacklist (Q571)",
         content: (
           <Comp
+            title="Q710. Random Pick with Blacklist (Q571)"
             content1={<></>}
             content2={null}
             examples={[
