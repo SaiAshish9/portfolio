@@ -81065,10 +81065,18 @@ a = b + c;
               Windows Users can make use of{" "}
               <a
                 href="https://www.mingw.org/"
-                targ="_blank"
+                target="blank"
                 rel="noreferrer noopener"
               >
                 www.mingw.org
+              </a>{" "}
+              or
+              <a
+                href="https://www.cygwin.com/"
+                target="blank"
+                rel="noreferrer noopener"
+              >
+                www.cygwin.com
               </a>{" "}
               for comipiling objective c
             </Span>
