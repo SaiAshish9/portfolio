@@ -80230,31 +80230,48 @@ a = b + c;
             content2={null}
             examples={[
               {
-                content: <>Input: nums = [1,7,3,6,5,6]    <br />
-                Output: 3    <br />
-                Explanation:    <br />
-                The pivot index is 3.    <br />
-                Left sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11    <br />
-                Right sum = nums[4] + nums[5] = 5 + 6 = 11</>,
+                content: (
+                  <>
+                    Input: nums = [1,7,3,6,5,6] <br />
+                    Output: 3 <br />
+                    Explanation: <br />
+                    The pivot index is 3. <br />
+                    Left sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11{" "}
+                    <br />
+                    Right sum = nums[4] + nums[5] = 5 + 6 = 11
+                  </>
+                ),
               },
               {
-                content: <>Input: nums = [1,2,3]    <br />
-                Output: -1    <br />
-                Explanation:    <br />
-                There is no index that satisfies the conditions in the problem statement.
-                </>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3] <br />
+                    Output: -1 <br />
+                    Explanation: <br />
+                    There is no index that satisfies the conditions in the
+                    problem statement.
+                  </>
+                ),
               },
               {
-                content: <>Input: nums = [2,1,-1]    <br />
-                Output: 0    <br />
-                Explanation:    <br />
-                The pivot index is 0.    <br />
-                Left sum = 0 (no elements to the left of index 0)    <br />
-                Right sum = nums[1] + nums[2] = 1 + -1 = 0</>,
+                content: (
+                  <>
+                    Input: nums = [2,1,-1] <br />
+                    Output: 0 <br />
+                    Explanation: <br />
+                    The pivot index is 0. <br />
+                    Left sum = 0 (no elements to the left of index 0) <br />
+                    Right sum = nums[1] + nums[2] = 1 + -1 = 0
+                  </>
+                ),
               },
             ]}
-            constraints={<>1 &lt;= nums.length &lt;= 10^4    <br />
-              -1000 &lt;= nums[i] &lt;= 1000</>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 10^4 <br />
+                -1000 &lt;= nums[i] &lt;= 1000
+              </>
+            }
             tc="n"
             sc="1"
             codes={{
@@ -81039,7 +81056,23 @@ a = b + c;
   },
   notes: {
     title: "Notes",
-    types: [],
+    types: {
+      "Obj-C": {
+        title: "Objective C",
+        content: <></>,
+        types: {},
+      },
+      "Swift-UI": {
+        title: "Swift UI",
+        content: <></>,
+        types: {},
+      },
+      Go: {
+        title: "Go",
+        content: <></>,
+        types: {},
+      },
+    },
     content: (
       <>
         <Img style={{ borderRadius: "0.4rem" }} src={NotesImg} />
