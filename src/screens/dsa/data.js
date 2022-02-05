@@ -79058,22 +79058,49 @@ class Solution:
         content: (
           <Comp
             title="Q709. To Lower Case (Q570)"
-            content1={<></>}
+            content1={
+              <>
+                Given a string s, return the string after replacing every
+                uppercase letter with the same lowercase letter.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "Hello" <br />
+                    Output: "hello"
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "here"
+                    <br />
+                    Output: "here"
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "LOVELY"
+                    <br />
+                    Output: "lovely"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 100
+                <br />s consists of printable ASCII characters.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
@@ -79171,7 +79198,8 @@ class Solution:
         ),
       },
       q574: {
-        title: "Q714. Best Time to Buy and Sell Stock with Transaction Fee (Q574)",
+        title:
+          "Q714. Best Time to Buy and Sell Stock with Transaction Fee (Q574)",
         content: (
           <Comp
             content1={<></>}
