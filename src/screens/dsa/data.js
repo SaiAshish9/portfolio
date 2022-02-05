@@ -80044,26 +80044,162 @@ class Solution:
         content: (
           <Comp
             title="Q722. Remove Comments (Q581)"
-            content1={<></>}
+            content1={
+              <>
+                Given a C++ program, remove comments from it. The program source
+                is an array of strings source where source[i] is the ith line of
+                the source code. This represents the result of splitting the
+                original source code string by the newline character '\n'.
+                <br />
+                In C++, there are two types of comments, line comments, and
+                block comments.
+                <br />
+                The string "//" denotes a line comment, which represents that it
+                and the rest of the characters to the right of it in the same
+                line should be ignored.
+                <br />
+                The string "/*" denotes a block comment, which represents that
+                all characters until the next (non-overlapping) occurrence of
+                "*/" should be ignored. (Here, occurrences happen in reading
+                order: line by line from left to right.) To be clear, the string
+                "/*/" does not yet end the block comment, as the ending would be
+                overlapping the beginning.
+                <br />
+                The first effective comment takes precedence over others.
+                <br />
+                For example, if the string "//" occurs in a block comment, it is
+                ignored.
+                <br />
+                Similarly, if the string "/*" occurs in a line or block comment,
+                it is also ignored.
+                <br />
+                If a certain line of code is empty after removing comments, you
+                must not output that line: each string in the answer list will
+                be non-empty.
+                <br />
+                There will be no control characters, single quote, or double
+                quote characters.
+                <br />
+                For example, source = "string s = "/* Not a comment. */";" will
+                not be a test case.
+                <br />
+                Also, nothing else such as defines or macros will interfere with
+                the comments.
+                <br />
+                It is guaranteed that every open block comment will eventually
+                be closed, so "/*" outside of a line or block comment always
+                starts a new comment.
+                <br />
+                Finally, implicit newline characters can be deleted by block
+                comments. Please see the examples below for details.
+                <br />
+                After removing the comments from the source code, return the
+                source code in the same format.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    {`
+Input: source = ["/*Test program */", "int main()", "{ ", "  // variable declaration ", "int a, b, c;", "/* This is a test", "   multiline  ", "   comment for ", "   testing */", "a = b + c;", "}"]
+Output: ["int main()","{ ","  ","int a, b, c;","a = b + c;","}"]
+Explanation: The line by line code is visualized as below:
+/*Test program */
+int main()
+{ 
+  // variable declaration 
+int a, b, c;
+/* This is a test
+   multiline  
+   comment for 
+   testing */
+a = b + c;
+}
+The string /* denotes a block comment, including line 1 and lines 6-9. The string // denotes line 4 as comments.
+The line by line output code is visualized as below:
+int main()
+{ 
+  
+int a, b, c;
+a = b + c;
+}
+                `}
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: source = ["a/*comment", "line", "more_comment*/b"]
+                    <br /> Output: ["ab"]
+                    <br /> Explanation: The original source string is
+                    "a/*comment\nline\nmore_comment*/b", where we have bolded
+                    the newline characters. After deletion, the implicit newline
+                    characters are deleted, leaving the string "ab", which when
+                    delimited by newline characters becomes ["ab"].
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                1 &lt;= source.length &lt;= 100 <br />
+                0 &lt;= source[i].length &lt;= 80 <br />
+                source[i] consists of printable ASCII characters. <br />
+                Every open block comment is eventually closed. <br />
+                There are no single-quote or double-quote in the input.
+              </>
+            }
+            tc="n^2"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string[]} source
+                * @return {string[]}
+                */
+               var removeComments = function(source) {
+                 const res = [];
+                 let commenting = false;
+                 let modified = "";
+                 for (let line of source) {
+                   for (let i = 0; i < line.length;) {
+                     if (i + 1 == line.length) {
+                       if (!commenting)
+                         modified += line[i];
+                       ++i;
+                       break;
+                     }
+                     const twoChars = line.substring(i, i+2);
+                     if (twoChars == "/*" && !commenting) {
+                       commenting = true;
+                       i += 2;
+                     } else if (twoChars == "*/" && commenting) {
+                       commenting = false;
+                       i += 2;
+                     } else if (twoChars == "//") {
+                       if (!commenting)
+                         break;
+                       else
+                         i += 2;
+                     } else {
+                       if (!commenting)
+                         modified += line[i];
+                       ++i;
+                     }
+                   }
+                   if (modified.length > 0 && !commenting) {
+                     res.push(modified);
+                     modified = "";
+                   }
+                 }
+                 return res;
+               };
+               
+               console.log(removeComments(["a/*comment", "line", "more_comment*/b"]))`,
+                output: `[ 'ab ]`,
               },
             }}
           />
@@ -80073,6 +80209,7 @@ class Solution:
         title: "Q724. Find Pivot Index (Q582)",
         content: (
           <Comp
+            title="Q724. Find Pivot Index (Q582)"
             content1={<></>}
             content2={null}
             examples={[
