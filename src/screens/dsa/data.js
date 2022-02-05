@@ -79732,26 +79732,78 @@ class Solution:
         title: "Q719. Find K-th Smallest Pair Distance (Q578)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q719. Find K-th Smallest Pair Distance (Q578)"
+            content1={
+              <>
+                The distance of a pair of integers a and b is defined as the
+                absolute difference between a and b.
+                <br />
+                Given an integer array nums and an integer k, return the kth
+                smallest distance among all the pairs nums[i] and nums[j] where
+                0 &lt;= i &lt; j &lt; nums.length.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,3,1], k = 1 Output: 0 Explanation: Here are
+                    all the pairs: (1,3) -&gt; 2 (1,1) -&gt; 0 (3,1) -&gt; 2
+                    Then the 1st smallest distance pair is (1,1), and its
+                    distance is 0.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: <>Input: nums = [1,1,1], k = 2 Output: 0</>,
               },
               {
-                content: <></>,
+                content: <>Input: nums = [1,6,1], k = 3 Output: 5</>,
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                n == nums.length 2 &lt;= n &lt;= 104 0 &lt;= nums[i] &lt;= 10^6
+                1 &lt;= k &lt;= n * (n - 1) / 2
+              </>
+            }
+            tc="n.log n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} k
+                * @return {number}
+                */
+               var smallestDistancePair = function(nums, k) {
+                 nums = nums.sort((a,b)=>a-b)
+                 let l = 0;
+                 let r = nums[nums.length - 1] - nums[0];
+                 while (l < r) {
+                   let m = l + parseInt((r - l) / 2);
+                   if (pairDistancesNoGreaterThan(nums, m) >= k)
+                     r = m;
+                   else
+                     l = m + 1;
+                 }
+                 return l;
+               };
+               
+               function pairDistancesNoGreaterThan(nums, m) {
+                 let count = 0;
+                 let j = 1;
+                 for (let i = 0; i < nums.length; ++i) {
+                   while (j < nums.length && nums[j] <= nums[i] + m)
+                     ++j;
+                   count += j - i - 1;
+                 }
+                 return count;
+               }
+               
+               console.log(smallestDistancePair([1,3,1],1))`,
+                output: `0`,
               },
             }}
           />
@@ -79761,6 +79813,7 @@ class Solution:
         title: "Q720. Longest Word in Dictionary (Q579)",
         content: (
           <Comp
+            title="Q720. Longest Word in Dictionary (Q579)"
             content1={<></>}
             content2={null}
             examples={[
