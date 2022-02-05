@@ -81059,7 +81059,21 @@ a = b + c;
     types: {
       "Obj-C": {
         title: "Objective C",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              Windows Users can make use of{" "}
+              <a
+                href="https://www.mingw.org/"
+                targ="_blank"
+                rel="noreferrer noopener"
+              >
+                www.mingw.org
+              </a>{" "}
+              for comipiling objective c
+            </Span>
+          </>
+        ),
         types: {},
       },
       "Swift-UI": {
