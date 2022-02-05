@@ -79883,6 +79883,7 @@ class Solution:
         title: "Q721. Accounts Merge (Q580)",
         content: (
           <Comp
+            title="Q721. Accounts Merge (Q580)"
             content1={<></>}
             content2={null}
             examples={[
