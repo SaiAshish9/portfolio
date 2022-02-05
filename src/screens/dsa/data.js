@@ -79310,27 +79310,68 @@ class Solution:
         title: "Q713. Subarray Product Less Than K (Q573)",
         content: (
           <Comp
-          title= "Q713. Subarray Product Less Than K (Q573)"
-            content1={<></>}
+            title="Q713. Subarray Product Less Than K (Q573)"
+            content1={
+              <>
+                Given an array of integers nums and an integer k, return the
+                number of contiguous subarrays where the product of all the
+                elements in the subarray is strictly less than k.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [10,5,2,6], k = 100 <br />
+                    Output: 8 <br />
+                    Explanation: The 8 subarrays that have product less than 100
+                    are: [10], [5], [2], [6], [10, 5], [5, 2], [2, 6], [5, 2, 6]
+                    Note that [10, 5, 2] is not included as the product of 100
+                    is not strictly less than k.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3], k = 0 <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 3 * 10^4 <br />
+                1 &lt;= nums[i] &lt;= 1000 <br />0 &lt;= k &lt;= 106
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} k
+                * @return {number}
+                */
+               var numSubarrayProductLessThanK = function(nums, k) {
+                 if (k <= 1)
+                     return 0;
+                 let res = 0;
+                 let prod = 1;
+                 for (let l = 0, r = 0; r < nums.length; ++r) {
+                   prod *= nums[r];
+                   while (prod >= k)
+                     prod /= nums[l++];
+                   res += r - l + 1;
+                 }
+                 return res;    
+               };
+               
+               console.log(numSubarrayProductLessThanK([1,2,3],0))`,
+                output: `0`,
               },
             }}
           />
@@ -79341,6 +79382,7 @@ class Solution:
           "Q714. Best Time to Buy and Sell Stock with Transaction Fee (Q574)",
         content: (
           <Comp
+            title="Q714. Best Time to Buy and Sell Stock with Transaction Fee (Q574)"
             content1={<></>}
             content2={null}
             examples={[
