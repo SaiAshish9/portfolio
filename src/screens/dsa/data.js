@@ -79228,7 +79228,8 @@ class Solution:
         title: "Q712. Minimum ASCII Delete Sum for Two Strings (Q572)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q712. Minimum ASCII Delete Sum for Two Strings (Q572)"
+            content1={<>Given two strings s1 and s2, return the lowest ASCII sum of deleted characters to make two strings equal.</>}
             content2={null}
             examples={[
               {
@@ -79242,8 +79243,8 @@ class Solution:
               },
             ]}
             constraints={<></>}
-            tc="n"
-            sc="n"
+            tc="m.n"
+            sc="m.n"
             codes={{
               Javascript: {
                 code: ``,
