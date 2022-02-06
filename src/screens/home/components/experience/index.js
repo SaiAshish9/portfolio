@@ -355,7 +355,14 @@ const Experience = () => {
             <Label>{i.label}</Label>
             <Title>{i.position}</Title>
             <Title>
-              {i.exp} {i.exp > 1 ? <I18n t="month's" /> : <I18n t="month" />}
+              {i.exp}{" "}
+              {i.exp > 1 ? (
+                <I18n t="month's" />
+              ) : i.yr ? (
+                <I18n t="year" />
+              ) : (
+                <I18n t="month" />
+              )}
             </Title>
           </Content>
         ))}
