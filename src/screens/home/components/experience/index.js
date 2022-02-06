@@ -337,7 +337,7 @@ const Experience = () => {
   const [selectedExp, setSelectedExp] = useState(0);
 
   function handleClick(k) {
-    if (k === 2) {
+    if (k === 0 || k === 2) {
       const win = window.open(data[k]["link"], "_blank");
       win.focus();
     } else {
@@ -355,7 +355,7 @@ const Experience = () => {
             <Label>{i.label}</Label>
             <Title>{i.position}</Title>
             <Title>
-              {i.exp > 11 ? parseInt(i.exp) : i.exp}{" "}
+              {i.exp > 11 ? parseInt(i.exp / 12) : i.exp}{" "}
               {i.exp > 1 ? (
                 i.yr ? (
                   <I18n t="year" />
