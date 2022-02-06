@@ -10,6 +10,8 @@ import UVRobotsImg from "assets/home/uvrobots.png";
 import VelvetImg from "assets/home/velvet.svg";
 import PayTMImg from "assets/home/paytm.jpeg";
 import SearchVaccinesImg from "assets/home/searchVaccines.png";
+import LambdaTestImg from "assets/home/lambda-test.png"
+import CareMedicoImg from "assets/home/care-medico.png"
 
 import I18n from "common/I18n";
 
@@ -17,11 +19,19 @@ import Overlay from "common/modal";
 
 const data = [
   {
+    img: LambdaTestImg,
+    label: <I18n t="paytm" />,
+    position: <I18n t="intern" />,
+    link:"https://www.lambdatest.com/",
+    exp:6,
+    id:0
+  },
+  {
     img: PayTMImg,
     label: <I18n t="paytm" />,
     position: <I18n t="intern" />,
     exp: 3,
-    id: 0,
+    id: 1,
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1633857822/WhatsApp_Image_2021-10-10_at_14.53.29_jlnfcb.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1633857709/WhatsApp_Image_2021-10-10_at_14.48.57_1_meqy86.jpg",
@@ -41,7 +51,7 @@ const data = [
     label: <I18n t="velvet" />,
     position: <I18n t="applicationDevIntern" />,
     exp: 11,
-    id: 1,
+    id: 2,
     link: "https://velvet.video",
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1627712155/Screenshot_from_2021-07-31_11-45-29_vz8jyd.png",
@@ -65,7 +75,7 @@ const data = [
     label: <I18n t="uvrobots" />,
     position: <I18n t="applicationDevIntern" />,
     exp: 5,
-    id: 2,
+    id: 3,
     link: "https://uvrobots.io",
   },
   {
@@ -73,7 +83,7 @@ const data = [
     label: <I18n t="inuvest" />,
     position: <I18n t="fullStackPyIntern" />,
     exp: 5,
-    id: 3,
+    id: 4,
     link: "https://inuvest.tech",
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1627679809/inuvest2_yqyqv0.png",
@@ -123,7 +133,7 @@ const data = [
     label: <I18n t="searchVaccines" />,
     position: <I18n t="applicationDevIntern" />,
     exp: 2,
-    id: 4,
+    id: 5,
     searchVaccinesImg: true,
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1639765449/Screenshot_from_2021-03-10_23-36-29_f4zst4.png",
@@ -186,7 +196,7 @@ const data = [
     label: <I18n t="appTown" />,
     position: <I18n t="reactIntern" />,
     exp: 8,
-    id: 5,
+    id: 6,
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1627675715/appTown1_r5y84v.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1627675715/appTown2_wd65xx.png",
@@ -239,8 +249,8 @@ const data = [
     img: PracifyImg,
     label: <I18n t="pracify" />,
     position: <I18n t="mernIntern" />,
-    exp: 3,
-    id: 6,
+    exp:3,
+    id: 7,
     link: "https://pracify.com",
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1627678325/pracify1_amuf2g.png",
@@ -272,7 +282,7 @@ const data = [
     label: <I18n t="nex2Me" />,
     position: <I18n t="javaIntern" />,
     exp: 1,
-    id: 7,
+    id: 8,
     link: "https://www.linkedin.com/company/nex2me-introtuce/",
     images:[
       "https://res.cloudinary.com/saiashish/image/upload/v1627679349/nex2Me_hy2jr9.png",
@@ -311,6 +321,13 @@ const data = [
       "https://res.cloudinary.com/saiashish/image/upload/v1640538291/WhatsApp_Image_2021-12-18_at_02.25.44_1_wmidd9.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1640538291/WhatsApp_Image_2021-12-18_at_02.25.45_1_nyrrrs.jpg"     
     ]
+  },
+  {
+    img: CareMedicoImg,
+    label: <I18n t="paytm" />,
+    position: <I18n t="intern" />,
+    exp:1,
+    id:9
   },
 ];
 
