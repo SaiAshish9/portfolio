@@ -13,13 +13,13 @@ import SearchVaccinesImg from "assets/home/searchVaccines.png";
 import LambdaTestImg from "assets/home/lambda-test.png";
 import CareMedicoImg from "assets/home/care-medico.png";
 import CMImg1 from "assets/home/cm1.jpeg"; 
-import CMImg2 from "assets/home/cm1.jpeg"; 
-import CMImg3 from "assets/home/cm1.jpeg"; 
-import CMImg4 from "assets/home/cm1.jpeg"; 
-import CMImg5 from "assets/home/cm1.jpeg"; 
-import CMImg6 from "assets/home/cm1.jpeg"; 
-import CMImg7 from "assets/home/cm1.jpeg"; 
-import CMImg8 from "assets/home/cm1.jpeg"; 
+import CMImg2 from "assets/home/cm2.jpeg"; 
+import CMImg3 from "assets/home/cm3.jpeg"; 
+import CMImg4 from "assets/home/cm4.jpeg"; 
+import CMImg5 from "assets/home/cm5.jpeg"; 
+import CMImg6 from "assets/home/cm6.jpeg"; 
+import CMImg7 from "assets/home/cm7.jpeg"; 
+import CMImg8 from "assets/home/cm8.jpeg"; 
 
 import I18n from "common/I18n";
 
