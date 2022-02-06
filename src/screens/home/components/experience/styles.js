@@ -58,16 +58,16 @@ export const Container = styled.div`
 export const Content = styled.div`
   cursor: pointer;
   ${({ id }) =>
-    id < 4 &&
+    id < 5 &&
     css`
       margin-bottom: 2.4rem;
     `};
   ${Styles.CBC}
-  width:25%;
+  width:20%;
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     width: 50%;
     ${({ id }) =>
-      id < 6 &&
+      id < 9 &&
       css`
         margin-bottom: 1rem;
       `};

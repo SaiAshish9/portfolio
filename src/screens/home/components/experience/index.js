@@ -10,8 +10,8 @@ import UVRobotsImg from "assets/home/uvrobots.png";
 import VelvetImg from "assets/home/velvet.svg";
 import PayTMImg from "assets/home/paytm.jpeg";
 import SearchVaccinesImg from "assets/home/searchVaccines.png";
-import LambdaTestImg from "assets/home/lambda-test.png"
-import CareMedicoImg from "assets/home/care-medico.png"
+import LambdaTestImg from "assets/home/lambda-test.png";
+import CareMedicoImg from "assets/home/care-medico.png";
 
 import I18n from "common/I18n";
 
@@ -22,9 +22,9 @@ const data = [
     img: LambdaTestImg,
     label: <I18n t="lambda-test" />,
     position: <I18n t="sde-intern" />,
-    link:"https://www.lambdatest.com/",
-    exp:6,
-    id:0
+    link: "https://www.lambdatest.com/",
+    exp: 6,
+    id: 0,
   },
   {
     img: PayTMImg,
@@ -42,7 +42,7 @@ const data = [
       "https://res.cloudinary.com/saiashish/image/upload/v1643580585/Screenshot_2022-01-31_at_3.38.32_AM_ich2pd.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1643580585/Screenshot_2022-01-31_at_3.38.20_AM_ryompq.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1643580585/Screenshot_2022-01-31_at_3.38.39_AM_yoalcn.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1643580585/Screenshot_2022-01-31_at_3.38.54_AM_uzfchh.png"
+      "https://res.cloudinary.com/saiashish/image/upload/v1643580585/Screenshot_2022-01-31_at_3.38.54_AM_uzfchh.png",
     ],
     link: "https://paytm.com/blog/engineering/plutus-a-cloud-cost-optimization-tool/",
   },
@@ -50,7 +50,8 @@ const data = [
     img: VelvetImg,
     label: <I18n t="velvet" />,
     position: <I18n t="applicationDevIntern" />,
-    exp: 11,
+    exp: 12,
+    yr: true,
     id: 2,
     link: "https://velvet.video",
     images: [
@@ -125,7 +126,7 @@ const data = [
       "https://res.cloudinary.com/saiashish/image/upload/v1639770930/Screenshot_from_2021-12-18_01-22-21_azdzv3.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639770930/Screenshot_from_2021-12-18_01-22-10_l0w5jk.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639770930/Screenshot_from_2021-12-18_01-22-00_ioj1ip.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1639770929/Screenshot_from_2021-12-18_01-20-47_wpvkuy.png"
+      "https://res.cloudinary.com/saiashish/image/upload/v1639770929/Screenshot_from_2021-12-18_01-20-47_wpvkuy.png",
     ],
   },
   {
@@ -141,12 +142,12 @@ const data = [
       "https://res.cloudinary.com/saiashish/image/upload/v1639768329/Screenshot_from_2021-04-07_18-19-16_mj3df6.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639768277/Screenshot_from_2021-04-07_16-12-22_wblzoa.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639768667/Screenshot_from_2021-04-10_21-26-30_onwxf0.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1639768757/Screenshot_from_2021-04-12_21-07-49_swws2l.png",         
+      "https://res.cloudinary.com/saiashish/image/upload/v1639768757/Screenshot_from_2021-04-12_21-07-49_swws2l.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639768467/Screenshot_from_2021-04-09_16-19-18_sdclo8.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639768458/Screenshot_from_2021-04-09_00-26-20_r7akvl.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639768456/Screenshot_from_2021-04-08_23-43-37_d9l9jp.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639768374/Screenshot_from_2021-04-08_15-38-54_w62dmu.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1639767998/Screenshot_from_2021-04-05_16-18-03_sx2kwh.png",   
+      "https://res.cloudinary.com/saiashish/image/upload/v1639767998/Screenshot_from_2021-04-05_16-18-03_sx2kwh.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639767703/Screenshot_from_2021-04-03_01-51-50_bmqurj.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639767699/Screenshot_from_2021-04-03_01-13-38_awnvfk.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639767538/Screenshot_from_2021-04-02_15-49-24_xwldpz.png",
@@ -159,7 +160,7 @@ const data = [
       "https://res.cloudinary.com/saiashish/image/upload/v1639766692/Screenshot_from_2021-04-02_03-35-50_bugi22.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639766621/Screenshot_from_2021-03-26_18-03-56_kjxyam.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639766577/Screenshot_from_2021-03-24_00-20-46_juyjf9.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1639766460/Screenshot_from_2021-03-19_21-46-42_vnzvc1.png",     
+      "https://res.cloudinary.com/saiashish/image/upload/v1639766460/Screenshot_from_2021-03-19_21-46-42_vnzvc1.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639764119/Screenshot_from_2021-03-15_15-11-13_cxuxuy.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639766110/Screenshot_from_2021-03-19_00-34-25_tqvf0m.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639763002/Screenshot_from_2021-03-07_21-50-20_mgoknv.png",
@@ -241,7 +242,7 @@ const data = [
       "https://res.cloudinary.com/saiashish/image/upload/v1640540144/WhatsApp_Image_2021-12-26_at_22.57.38_2_scv4ms.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1640540144/WhatsApp_Image_2021-12-26_at_22.57.39_nf5l7r.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1640540144/WhatsApp_Image_2021-12-26_at_22.57.40_1_rgaahk.jpg",
-      "https://res.cloudinary.com/saiashish/image/upload/v1640540143/WhatsApp_Image_2021-12-26_at_22.57.38_1_clx58a.jpg"
+      "https://res.cloudinary.com/saiashish/image/upload/v1640540143/WhatsApp_Image_2021-12-26_at_22.57.38_1_clx58a.jpg",
     ],
     link: "https://apptown.in",
   },
@@ -249,7 +250,7 @@ const data = [
     img: PracifyImg,
     label: <I18n t="pracify" />,
     position: <I18n t="mernIntern" />,
-    exp:3,
+    exp: 3,
     id: 7,
     link: "https://pracify.com",
     images: [
@@ -274,7 +275,7 @@ const data = [
       "https://res.cloudinary.com/saiashish/image/upload/v1627678322/pracify18_laejgl.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1627678322/pracify19_ds7gjw.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1627678322/pracify21_jx6g4p.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1639771264/Screenshot_from_2021-04-12_16-53-11_w7qs3q.png"
+      "https://res.cloudinary.com/saiashish/image/upload/v1639771264/Screenshot_from_2021-04-12_16-53-11_w7qs3q.png",
     ],
   },
   {
@@ -284,9 +285,9 @@ const data = [
     exp: 1,
     id: 8,
     link: "https://www.linkedin.com/company/nex2me-introtuce/",
-    images:[
+    images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1627679349/nex2Me_hy2jr9.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1639771365/Screenshot_from_2021-03-29_13-25-20_wjsx8n.png",     
+      "https://res.cloudinary.com/saiashish/image/upload/v1639771365/Screenshot_from_2021-03-29_13-25-20_wjsx8n.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639771594/Screenshot_from_2021-03-22_19-48-19_zjryql.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639771753/Screenshot_from_2021-03-22_13-59-49_kkggmn.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639771739/Screenshot_from_2021-03-22_14-10-10_yaznwr.png",
@@ -319,15 +320,15 @@ const data = [
       "https://res.cloudinary.com/saiashish/image/upload/v1640538291/WhatsApp_Image_2021-12-18_at_02.25.46_nhcrrj.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1640538291/WhatsApp_Image_2021-12-18_at_02.25.44_t0kerm.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1640538291/WhatsApp_Image_2021-12-18_at_02.25.44_1_wmidd9.jpg",
-      "https://res.cloudinary.com/saiashish/image/upload/v1640538291/WhatsApp_Image_2021-12-18_at_02.25.45_1_nyrrrs.jpg"     
-    ]
+      "https://res.cloudinary.com/saiashish/image/upload/v1640538291/WhatsApp_Image_2021-12-18_at_02.25.45_1_nyrrrs.jpg",
+    ],
   },
   {
     img: CareMedicoImg,
     label: <I18n t="care-medico" />,
     position: <I18n t="sde-intern" />,
-    exp:1,
-    id:9
+    exp: 1,
+    id: 9,
   },
 ];
 
