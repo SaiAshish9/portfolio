@@ -384,7 +384,7 @@ const Experience = () => {
           visible={visible}
           setVisible={setVisible}
           label={<I18n t="images" />}
-          site={data[selectedExp] !== 9}
+          site={data[selectedExp].id !== 9}
         />
       )}
     </div>
