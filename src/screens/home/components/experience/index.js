@@ -20,8 +20,8 @@ import Overlay from "common/modal";
 const data = [
   {
     img: LambdaTestImg,
-    label: <I18n t="paytm" />,
-    position: <I18n t="intern" />,
+    label: <I18n t="lambda-test" />,
+    position: <I18n t="sde-intern" />,
     link:"https://www.lambdatest.com/",
     exp:6,
     id:0
@@ -29,7 +29,7 @@ const data = [
   {
     img: PayTMImg,
     label: <I18n t="paytm" />,
-    position: <I18n t="intern" />,
+    position: <I18n t="sde-intern" />,
     exp: 3,
     id: 1,
     images: [
@@ -324,8 +324,8 @@ const data = [
   },
   {
     img: CareMedicoImg,
-    label: <I18n t="paytm" />,
-    position: <I18n t="intern" />,
+    label: <I18n t="care-medico" />,
+    position: <I18n t="sde-intern" />,
     exp:1,
     id:9
   },
