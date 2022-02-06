@@ -32,8 +32,8 @@ import EducativeImg from "assets/home/educative.png";
 import I18n from "common/I18n";
 import HeartComponent from "./components/heartComponent";
 import UVRobotsImg from "assets/home/uvrobots.png";
-import VelvetImg from "assets/home/velvet.svg";
 import ProboImg from "assets/home/probo.svg";
+import LambdaTestImg from "assets/home/lambda-test.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -49,6 +49,10 @@ const images = [
   {
     img: CREDImage,
     link: "https://cred.club/",
+  },
+  {
+    img: LambdaTestImg,
+    link: "https://www.lambdatest.com/",
   },
   {
     img: RazorpayImage,
@@ -123,10 +127,6 @@ const images = [
     link: "https://aviso.com",
   },
   {
-    img: MindbowserImg,
-    link: "https://mindbowser.com",
-  },
-  {
     img: VerizonImg,
     link: "https://verizon.com",
   },
@@ -135,8 +135,8 @@ const images = [
     link: "https://probo.in",
   },
   {
-    img: UVRobotsImg,
-    link: "https://uvrobots.io/",
+    img: MindbowserImg,
+    link: "https://mindbowser.com",
   },
 ];
 
