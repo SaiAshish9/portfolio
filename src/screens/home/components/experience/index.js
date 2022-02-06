@@ -12,14 +12,14 @@ import PayTMImg from "assets/home/paytm.jpeg";
 import SearchVaccinesImg from "assets/home/searchVaccines.png";
 import LambdaTestImg from "assets/home/lambda-test.png";
 import CareMedicoImg from "assets/home/care-medico.png";
-import CMImg1 from "assets/home/cm1.jpeg"; 
-import CMImg2 from "assets/home/cm2.jpeg"; 
-import CMImg3 from "assets/home/cm3.jpeg"; 
-import CMImg4 from "assets/home/cm4.jpeg"; 
-import CMImg5 from "assets/home/cm5.jpeg"; 
-import CMImg6 from "assets/home/cm6.jpeg"; 
-import CMImg7 from "assets/home/cm7.jpeg"; 
-import CMImg8 from "assets/home/cm8.jpeg"; 
+import CMImg1 from "assets/home/cm1.jpeg";
+import CMImg2 from "assets/home/cm2.jpeg";
+import CMImg3 from "assets/home/cm3.jpeg";
+import CMImg4 from "assets/home/cm4.jpeg";
+import CMImg5 from "assets/home/cm5.jpeg";
+import CMImg6 from "assets/home/cm6.jpeg";
+import CMImg7 from "assets/home/cm7.jpeg";
+import CMImg8 from "assets/home/cm8.jpeg";
 
 import I18n from "common/I18n";
 
@@ -337,16 +337,7 @@ const data = [
     position: <I18n t="sde-intern" />,
     exp: 1,
     id: 9,
-    images: [
-      CMImg1,
-      CMImg2,
-      CMImg3,
-      CMImg4,
-      CMImg5,
-      CMImg6,
-      CMImg7,
-      CMImg8,
-    ],
+    images: [CMImg1, CMImg2, CMImg3, CMImg4, CMImg5, CMImg6, CMImg7, CMImg8],
   },
 ];
 
@@ -393,7 +384,7 @@ const Experience = () => {
           visible={visible}
           setVisible={setVisible}
           label={<I18n t="images" />}
-          site
+          site={data[selectedExp] !== 9}
         />
       )}
     </div>
