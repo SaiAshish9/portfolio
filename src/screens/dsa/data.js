@@ -81364,6 +81364,11 @@ a = b + c;
               compare xcode ( using about tab at the top left corner) with ios
               version
             </Span>
+            <Span>XCode 11 corresponds to IOS 13.</Span>
+            <Span>
+              11.0 === 13.0 <br />
+              11.1 === 13.1
+            </Span>
           </>
         ),
         types: {},
