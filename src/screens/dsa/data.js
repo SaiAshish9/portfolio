@@ -81292,17 +81292,19 @@ a = b + c;
               IOS Manager (OS) will crash automatically when the device is
               switched off.
             </Span>
+            <Span>Steps to make an app :</Span>
             <Span>
-              Steps to make an app :
+              1. Idea <br />
+              2. Design <br />
+              3. Development <br />
+              4. Test <br />
+              5. Publish <br />
+              6. Market <br />
+              7. Update
             </Span>
             <Span>
-              1. Idea <br/>
-              2. Design <br/>
-              3. Development <br/>
-              4. Test <br/>
-              5. Publish <br/>
-              6. Market <br/>
-              7. Update
+              Xcode 12.4 === Minimum Catelina MacOS 10.15.4 <br />
+              Xcode Beta contains tetsing and is not to download.
             </Span>
           </>
         ),
