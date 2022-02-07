@@ -81283,6 +81283,11 @@ a = b + c;
             </Span>
             <Span>IOS Developer Program: $99k/year</Span>
             <Span>Mac Developer Program: $99k/year</Span>
+            <Span>
+              When the event is triggered on the surface of ios device, average
+              pressure and desired coordinates will be sent to the ios manager
+              (os) with the help of sensor. 
+            </Span>
           </>
         ),
         types: {},
