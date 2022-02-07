@@ -81440,6 +81440,8 @@ override func viewDidLoad(){
             <Span>{"File -> New -> Playground -> IOS -> Bundle"}</Span>
             <Span>{"Bottom Left -> Play Button -> Automatically Save"}</Span>
             <Span>{"Int Float Bool Double Array String Dictionary"}</Span>
+            <Span>Int.random(in: 0...5)</Span>
+            <Span>Float.random(in: 0...5)</Span>
           </>
         ),
         types: {},
