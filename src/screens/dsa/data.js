@@ -81393,6 +81393,12 @@ a = b + c;
             </View>
             <Span>Cmd + Option command allows us to replicate elements.</Span>
             <Span>Types: Aspect fit, Scale to fill (default), and Aspect Fill.</Span>
+            <View>
+              <b>Color Picker</b>
+            </View>
+            <Span>
+              Background =&gt; Custom =&gt; Color Dropper Tool
+            </Span>
           </>
         ),
         types: {},
