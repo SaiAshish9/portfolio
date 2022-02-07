@@ -81350,7 +81350,7 @@ a = b + c;
             <Span>Bottom Pane is called the debug area.</Span>
             <Span>
               <b>Note:</b>
-              We can generate app icons using the site: appicon.co
+              We can generate app icons using the site: <b>appicon.co</b>
             </Span>
             <Span>
               Apple wants us to upload icons of appropriate dimensions so as to
@@ -81400,6 +81400,13 @@ a = b + c;
             </Span>
             <Span>Background =&gt; Custom =&gt; Color Dropper Tool</Span>
             <Span>Make use of 2 fingers to move your storyboard.</Span>
+            <Span>
+              Main.storyboard is also known as interface builder as we're making
+              use of it to build a interface.
+            </Span>
+            <Span>Tab is used for autocompletion.</Span>
+            <Span>Drag components into the Interface Builder Outlet.</Span>
+            <Span>Example:</Span>
           </>
         ),
         types: {},
