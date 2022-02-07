@@ -81439,6 +81439,12 @@ override func viewDidLoad(){
             <Span>
               <b>Cocoapods:</b>
             </Span>
+            <Span>
+              Cocoapods is built with ruby, all xcode dependencies for a project
+              are specified in the podfile. Cocoapods will resolve dependencies
+              between libraries, fetch resulting source code then link it
+              together in xocde workspace to build the project.
+            </Span>
           </>
         ),
         types: {},
