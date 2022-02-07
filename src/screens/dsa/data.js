@@ -81438,6 +81438,8 @@ override func viewDidLoad(){
             </Span>
             <Span>// is used for comments.</Span>
             <Span>{"File -> New -> Playground -> IOS -> Bundle"}</Span>
+            <Span>{"Bottom Left -> Play Button -> Automatically Save"}</Span>
+            <Span>{"Int Float Bool Double Array String Dictionary"}</Span>
           </>
         ),
         types: {},
