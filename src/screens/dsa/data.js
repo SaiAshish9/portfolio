@@ -81321,6 +81321,16 @@ a = b + c;
             <Span>2. Signing And Capabilities </Span>
             <Span>3. Deployment Info</Span>
             <Span>4. Status BarStyle ( Light Content, Dark Content, Default And Hide )</Span>
+            <Span>Project Structure: </Span>
+            <Span>
+              1. AppDelegate.swift <br/>
+              2. SceneDelegate.swift <br/>
+              3. Main.storyboard <br/>
+              4. LaunchScreen.storyboard 
+              5. ViewController.swift <br/>
+              6. Assets.xcassets <br/>
+              7. Info.plist <br/>
+            </Span>
           </>
         ),
         types: {},
