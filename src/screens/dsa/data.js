@@ -81392,13 +81392,14 @@ a = b + c;
               <b>Image View</b>
             </Span>
             <Span>Cmd + Option command allows us to replicate elements.</Span>
-            <Span>Types: Aspect fit, Scale to fill (default), and Aspect Fill.</Span>
+            <Span>
+              Types: Aspect fit, Scale to fill (default), and Aspect Fill.
+            </Span>
             <Span>
               <b>Color Picker</b>
             </Span>
-            <Span>
-              Background =&gt; Custom =&gt; Color Dropper Tool
-            </Span>
+            <Span>Background =&gt; Custom =&gt; Color Dropper Tool</Span>
+            <Span>Make use of 2 fingers to move your storyboard.</Span>
           </>
         ),
         types: {},
