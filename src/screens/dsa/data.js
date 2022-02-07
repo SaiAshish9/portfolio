@@ -81427,21 +81427,18 @@ override func viewDidLoad(){
             <Span>
               <b>Naming Conventions:</b>
             </Span>
-            <Span>
-              Camel Case: aA 
-            </Span>
-            <Span>
-              Kebab Case: a-A 
-            </Span>
-            <Span>
-              Snake Case: a_A 
-            </Span>
+            <Span>Camel Case: aA</Span>
+            <Span>Kebab Case: a-A</Span>
+            <Span>Snake Case: a_A</Span>
             <Span>// is used for comments.</Span>
             <Span>{"File -> New -> Playground -> IOS -> Bundle"}</Span>
             <Span>{"Bottom Left -> Play Button -> Automatically Save"}</Span>
             <Span>{"Int Float Bool Double Array String Dictionary"}</Span>
             <Span>Int.random(in: 0...5)</Span>
             <Span>Float.random(in: 0...5)</Span>
+            <Span>
+              <b>Cocoapods:</b>
+            </Span>
           </>
         ),
         types: {},
