@@ -81286,7 +81286,11 @@ a = b + c;
             <Span>
               When the event is triggered on the surface of ios device, average
               pressure and desired coordinates will be sent to the ios manager
-              (os) with the help of sensor. 
+              (os) with the help of sensor.
+            </Span>
+            <Span>
+              IOS Manager (OS) will crash automatically when the device is
+              switched off.
             </Span>
           </>
         ),
