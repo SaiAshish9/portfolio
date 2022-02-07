@@ -81369,6 +81369,8 @@ a = b + c;
               11.0 === 13.0 <br />
               11.1 === 13.1
             </Span>
+            <Span>Add apple developer account</Span>
+            <Span>Sign in to the app.</Span>
           </>
         ),
         types: {},
