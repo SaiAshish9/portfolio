@@ -24,16 +24,16 @@ import MoonshotImg from "assets/home/moonshot.png";
 import AvisoImg from "assets/home/aviso.png";
 import MindbowserImg from "assets/home/minbowser.png";
 import VerizonImg from "assets/home/verizon.jpeg";
-import PromoImg from "assets/home/promo.png";
+// import PromoImg from "assets/home/promo.png";
 import IntuitImg from "assets/home/intuit.jpeg";
 import GrofersImg from "assets/home/grofers.png";
 import UberImg from "assets/home/uber.png";
 import EducativeImg from "assets/home/educative.png";
 import I18n from "common/I18n";
 import HeartComponent from "./components/heartComponent";
-import UVRobotsImg from "assets/home/uvrobots.png";
 import ProboImg from "assets/home/probo.svg";
 import LambdaTestImg from "assets/home/lambda-test.png";
+import WildsterImg from "assets/home/wildster.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -86,9 +86,13 @@ const images = [
     img: TcsImage,
     link: "https://www.tcs.com/",
   },
+  // {
+  //   img: PromoImg,
+  //   link: "https://www.promo.com/",
+  // },
   {
-    img: PromoImg,
-    link: "https://www.promo.com/",
+    img: WildsterImg,
+    link: "https://wildster.com",
   },
   {
     img: EducativeImg,
