@@ -81334,12 +81334,29 @@ a = b + c;
               6. Assets.xcassets <br />
               7. Info.plist
             </Span>
+            <View>
+              <b>View Controller Scene:</b>
+            </View>
+            <View>
+              We can place images from UIImageView into the view controller
+              scene.
+            </View>
+            <View>We can place app icon at Assets.xcassets</View>
             <Span>
               Inspector window inspectors =&gt; <br />
               Attribute Inspector ( Text, Color, Bg, Tint, etc. ) <br />
               Size Inspector ( Location at the screen )
             </Span>
             <Span>Bottom Pane is called the debug area.</Span>
+            <Span>
+              <b>Note:</b>
+              We can generate app icons using the site: appicon.co
+            </Span>
+            <Span>
+              Apple wants us to upload icons of appropriate dimensions so as to
+              display them at notification messages, app icon, spotlight, etc.
+              so as to keep the app as fast as possible.
+            </Span>
           </>
         ),
         types: {},
