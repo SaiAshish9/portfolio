@@ -81314,6 +81314,13 @@ a = b + c;
               Storyboard is used in modulud 2.15 and at Swift UI activity is
               placed at right side.
             </Span>
+            <Span>
+              At General Settings Tab, we can find following options:{" "}
+            </Span>
+            <Span>1. Device Orientation </Span>
+            <Span>2. Signing And Capabilities </Span>
+            <Span>3. Deployment Info</Span>
+            <Span>4. Status BarStyle ( Light Content, Dark Content, Default And Hide )</Span>
           </>
         ),
         types: {},
