@@ -81334,8 +81334,8 @@ a = b + c;
               7. Info.plist <br />
             </Span>
             <Span>
-              Inspector window inspectors =&gt; Attribute Inspector ( Text,
-              Color, Bg, Tint, etc. ) <br />
+              Inspector window inspectors =&gt; <br />
+              Attribute Inspector ( Text, Color, Bg, Tint, etc. ) <br />
               Size Inspector ( Location at the screen )
             </Span>
           </>
