@@ -81437,6 +81437,7 @@ override func viewDidLoad(){
               Snake Case: a_A 
             </Span>
             <Span>// is used for comments.</Span>
+            <Span>{"File -> New -> Playground -> IOS -> Bundle"}</Span>
           </>
         ),
         types: {},
