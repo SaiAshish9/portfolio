@@ -81273,7 +81273,18 @@ a = b + c;
       },
       "Swift-UI": {
         title: "Swift UI",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              Apple Developer Program offers a complete set of technical
+              resources, support and access to pre-release software with
+              everything they neee to create innovative apps for IOS and OS X,
+              extension for Safari and accessories for iPod , iPhone and iPad.
+            </Span>
+            <Span>IOS Developer Program: $99k/year</Span>
+            <Span>Mac Developer Program: $99k/year</Span>
+          </>
+        ),
         types: {},
       },
       Go: {
