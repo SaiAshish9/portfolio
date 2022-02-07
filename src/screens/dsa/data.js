@@ -81407,6 +81407,36 @@ a = b + c;
             <Span>Tab is used for autocompletion.</Span>
             <Span>Drag components into the Interface Builder Outlet.</Span>
             <Span>Example:</Span>
+            <pre>{`
+import UIKit
+class ViewController: UIViewController {
+
+@IBOutlet weak var diceImageView1: UIImageView1;
+@IBOutlet weak var diceImageView2: UIImageView2;
+
+override func viewDidLoad(){
+  super.viewDidLoad()
+  diceImageView1.image = _
+}
+
+@IBAction func <>(_ sender: Any){ print("A") }
+
+}
+`}</pre>
+            <Span>Swift</Span>
+            <Span>
+              <b>Naming Conventions:</b>
+            </Span>
+            <Span>
+              Camel Case: aA 
+            </Span>
+            <Span>
+              Kebab Case: a-A 
+            </Span>
+            <Span>
+              Snake Case: a_A 
+            </Span>
+            <Span>// is used for comments.</Span>
           </>
         ),
         types: {},
