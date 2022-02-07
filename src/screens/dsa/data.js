@@ -81292,6 +81292,18 @@ a = b + c;
               IOS Manager (OS) will crash automatically when the device is
               switched off.
             </Span>
+            <Span>
+              Steps to make an app :
+            </Span>
+            <Span>
+              1. Idea <br/>
+              2. Design <br/>
+              3. Development <br/>
+              4. Test <br/>
+              5. Publish <br/>
+              6. Market <br/>
+              7. Update
+            </Span>
           </>
         ),
         types: {},
