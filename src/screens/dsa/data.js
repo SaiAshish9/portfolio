@@ -81329,15 +81329,17 @@ a = b + c;
               1. AppDelegate.swift <br />
               2. SceneDelegate.swift <br />
               3. Main.storyboard <br />
-              4. LaunchScreen.storyboard 5. ViewController.swift <br />
+              4. LaunchScreen.storyboard <br />
+              5. ViewController.swift <br />
               6. Assets.xcassets <br />
-              7. Info.plist <br />
+              7. Info.plist
             </Span>
             <Span>
               Inspector window inspectors =&gt; <br />
               Attribute Inspector ( Text, Color, Bg, Tint, etc. ) <br />
               Size Inspector ( Location at the screen )
             </Span>
+            <Span>Bottom Pane is called the debug area.</Span>
           </>
         ),
         types: {},
