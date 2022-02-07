@@ -81334,14 +81334,14 @@ a = b + c;
               6. Assets.xcassets <br />
               7. Info.plist
             </Span>
-            <View>
+            <Span>
               <b>View Controller Scene:</b>
-            </View>
-            <View>
+            </Span>
+            <Span>
               We can place images from UIImageView into the view controller
               scene.
-            </View>
-            <View>We can place app icon at Assets.xcassets</View>
+            </Span>
+            <Span>We can place app icon at Assets.xcassets</Span>
             <Span>
               Inspector window inspectors =&gt; <br />
               Attribute Inspector ( Text, Color, Bg, Tint, etc. ) <br />
@@ -81388,14 +81388,14 @@ a = b + c;
               choose connect via network option at devices and simulators part
               of windows tab.
             </Span>
-            <View>
+            <Span>
               <b>Image View</b>
-            </View>
+            </Span>
             <Span>Cmd + Option command allows us to replicate elements.</Span>
             <Span>Types: Aspect fit, Scale to fill (default), and Aspect Fill.</Span>
-            <View>
+            <Span>
               <b>Color Picker</b>
-            </View>
+            </Span>
             <Span>
               Background =&gt; Custom =&gt; Color Dropper Tool
             </Span>
