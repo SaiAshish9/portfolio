@@ -81357,6 +81357,13 @@ a = b + c;
               display them at notification messages, app icon, spotlight, etc.
               so as to keep the app as fast as possible.
             </Span>
+            <Span>
+              <b>Running on real device:</b>
+            </Span>
+            <Span>
+              compare xcode ( using about tab at the top left corner) with ios
+              version
+            </Span>
           </>
         ),
         types: {},
