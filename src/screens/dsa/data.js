@@ -81369,8 +81369,30 @@ a = b + c;
               11.0 === 13.0 <br />
               11.1 === 13.1
             </Span>
-            <Span>Add apple developer account</Span>
-            <Span>Sign in to the app.</Span>
+            <Span>1. Add apple developer account</Span>
+            <Span>2. Sign in to the app.</Span>
+            <Span>3. Connect physical device</Span>
+            <Span>
+              4. Add Apple ID: Xcode =&lt; Preferences =&lt; Accounts =&lt;
+              Bottom Left =&lt; Apple ID
+            </Span>
+            <Span>5. Sign-in to the the app</Span>
+            <Span>6. Check automatically managed signing</Span>
+            <Span>7. Team =&gt; Account ( Developer Account )</Span>
+            <Span>8. Trust and complete the process.</Span>
+            <Span>
+              Auto Layout allows us to adjust positioning on all devices.
+            </Span>
+            <Span>
+              In order to run the app wirelessly using same wifi connection,
+              choose connect via network option at devices and simulators part
+              of windows tab.
+            </Span>
+            <View>
+              <b>Image View</b>
+            </View>
+            <Span>Cmd + Option command allows us to replicate elements.</Span>
+            <Span>Types: Aspect fit, Scale to fill (default), and Aspect Fill.</Span>
           </>
         ),
         types: {},
