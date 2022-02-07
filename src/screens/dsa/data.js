@@ -81306,7 +81306,14 @@ a = b + c;
               Xcode 12.4 === Minimum Catelina MacOS 10.15.4 <br />
               Xcode Beta contains tetsing and is not to download.
             </Span>
-            <Span>IOS == App == Storyboard</Span>
+            <Span>IOS =&gt; App =&gt; Storyboard</Span>
+            <Span>
+              Bundle Identifier : Organisation Identifier + '.' + Product Name
+            </Span>
+            <Span>
+              Storyboard is used in modulud 2.15 and at Swift UI activity is
+              placed at right side.
+            </Span>
           </>
         ),
         types: {},
