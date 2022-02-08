@@ -81589,7 +81589,10 @@ class ViewController: UIViewController {
             <Span>
               <b>Swift Fundamentsals:</b>
             </Span>
+            <Span>Dictionary:</Span>
             <Span>let x = ["a" : 3, "b": 4]</Span>
+            <Span>Array</Span>
+            <Span>["a","b","c"]</Span>
             <Span>
               if a =3 {"{}"} else {"{}"}
             </Span>
@@ -81600,6 +81603,41 @@ class ViewController: UIViewController {
             <Span>
               <b>Ranges:</b>
             </Span>
+            <Span>
+              <b>Closed Range:</b>
+            </Span>
+            <Span>
+              a...b <br />
+              a&lt;= &lt;=b <br /> a to b
+            </Span>
+            <Span>
+              <b>Left Open Range:</b>
+            </Span>
+            <Span>
+              a..&lt;b <br />
+              a&lt;= &lt;b <br />
+            </Span>
+            <Span>
+              <b>One Sided Range:</b>
+            </Span>
+            <Span>
+              ...b &lt;b <br />
+            </Span>
+            <Span>Defining and unwarpping optionals:</Span>
+            <Span>var pu1: String = nil is not correct.</Span>
+            <Span>var pu1: String = nil is correct.</Span>
+            <Span>a = nil print(a!) is not correct we can print(a)</Span>
+            <Span>
+              if a != nil {"{ print(a!) }"}
+            </Span>
+            <Span>
+              <b>Timer & Progress View</b>
+            </Span>
+<pre>
+  {`
+  
+  `}
+</pre>
           </>
         ),
         types: {},
