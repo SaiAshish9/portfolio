@@ -81972,9 +81972,7 @@ array.map{"\($0)"}
             </Span>
             <Span>Markers</Span>
             <Span>//MARK:</Span>
-            <Span>
-            DispatchQueue
-            </Span>
+            <Span>DispatchQueue</Span>
             <pre>
               {`
 let task = URLSession.shared.dataTask(with:url){
@@ -81985,10 +81983,7 @@ let task = URLSession.shared.dataTask(with:url){
 task.resume()  
               `}
             </pre>
-            <Span>
-            Extensions
-
-            </Span>
+            <Span>Extensions</Span>
             <pre>
               {`
 var x=3.1234
@@ -82008,6 +82003,216 @@ extension WeatherViewController: CLLocationManagerDelegate
 OR class WeatherViewController: UIViewController, WeatherManagerDelegate,CLLocationManagerDelegate             
               `}
             </pre>
+            <Span>Model Directory:</Span>
+            <Span>WeatherData.swift</Span>
+            <pre>{`
+import Foundation
+struct WeatherData: Codable {
+    let name: String
+    let main: Main
+    let weather: [Weather]
+}
+struct Main: Codable {
+    let temp: Double
+}
+struct Weather: Codable {
+    let description: String
+    let id: Int
+}
+            `}</pre>
+            <Span>WeatherModel.swift</Span>
+            <pre>
+              {`
+import Foundation
+
+struct WeatherModel {
+    let conditionId: Int
+    let cityName: String
+    let temperature: Double
+    
+    var temperatureString: String {
+        return String(format: "%.1f", temperature)
+    }
+    
+    var conditionName: String {
+        switch conditionId {
+        case 200...232:
+            return "cloud.bolt"
+        case 300...321:
+            return "cloud.drizzle"
+        case 500...531:
+            return "cloud.rain"
+        case 600...622:
+            return "cloud.snow"
+        case 701...781:
+            return "cloud.fog"
+        case 800:
+            return "sun.max"
+        case 801...804:
+            return "cloud.bolt"
+        default:
+            return "cloud"
+        }
+    }
+    
+}  
+  `}
+            </pre>
+            <Span>Controllers</Span>
+            <Span>WeatherManager.swift</Span>
+            <pre>
+              {`
+import Foundation
+import CoreLocation
+
+protocol WeatherManagerDelegate {
+    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel)
+    func didFailWithError(error: Error)
+}
+
+struct WeatherManager {
+    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=e72ca729af228beabd5d20e3b7749713&units=metric" 
+    var delegate: WeatherManagerDelegate?
+    func fetchWeather(cityName: String) {
+        let urlString = "\(weatherURL)&q=\(cityName)"
+        performRequest(with: urlString)
+    }
+    func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
+        performRequest(with: urlString)
+    }
+    func performRequest(with urlString: String) {
+        if let url = URL(string: urlString) {
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: url) { (data, response, error) in
+                if error != nil {
+                    self.delegate?.didFailWithError(error: error!)
+                    return
+                }
+                if let safeData = data {
+                    if let weather = self.parseJSON(safeData) {
+                        self.delegate?.didUpdateWeather(self, weather: weather)
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+    func parseJSON(_ weatherData: Data) -> WeatherModel? {
+        let decoder = JSONDecoder()
+        do {
+            let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
+            let id = decodedData.weather[0].id
+            let temp = decodedData.main.temp
+            let name = decodedData.name   
+            let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp)
+            return weather   
+        } catch {
+            delegate?.didFailWithError(error: error)
+            return nil
+        }
+    }   
+}              
+              `}
+            </pre>
+            <Span>WeatherViewController.swift</Span>
+            <pre>
+              {`
+import UIKit
+import CoreLocation
+
+class WeatherViewController: UIViewController {
+    @IBOutlet weak var conditionImageView: UIImageView!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var searchTextField: UITextField!
+    
+    var weatherManager = WeatherManager()
+    let locationManager = CLLocationManager()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        
+        weatherManager.delegate = self
+        searchTextField.delegate = self
+    }
+
+}
+//MARK: - UITextFieldDelegate
+extension WeatherViewController: UITextFieldDelegate {
+    
+    @IBAction func searchPressed(_ sender: UIButton) {
+        searchTextField.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchTextField.endEditing(true)
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField.text != "" {
+            return true
+        } else {
+            textField.placeholder = "Type something"
+            return false
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if let city = searchTextField.text {
+            weatherManager.fetchWeather(cityName: city)
+        }
+        
+        searchTextField.text = ""
+        
+    }
+}
+//MARK: - WeatherManagerDelegate
+
+extension WeatherViewController: WeatherManagerDelegate {
+    
+    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
+        DispatchQueue.main.async {
+            self.temperatureLabel.text = weather.temperatureString
+            self.conditionImageView.image = UIImage(systemName: weather.conditionName)
+            self.cityLabel.text = weather.cityName
+        }
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+}
+//MARK: - CLLocationManagerDelegate
+
+extension WeatherViewController: CLLocationManagerDelegate {
+    
+    @IBAction func locationPressed(_ sender: UIButton) {
+        locationManager.requestLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            locationManager.stopUpdatingLocation()
+            let lat = location.coordinate.latitude
+            let lon = location.coordinate.longitude
+            weatherManager.fetchWeather(latitude: lat, longitude: lon)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
+}
+`}
+            </pre>
+
           </>
         ),
         types: {},
