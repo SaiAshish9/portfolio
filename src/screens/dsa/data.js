@@ -81921,7 +81921,9 @@ class Surgeon:Doctor {
             <Span>UTF-8 is the standardized protocol to encode te xt</Span>
             <Span>
               Define a protocol , make use of it in class, subclass or the
-              struct. 
+              struct. Attach a handler with its delegate property and init
+              constructor ( handler.delegate = self ).Then, make us of this
+              handler at some other class.
             </Span>
           </>
         ),
