@@ -81446,8 +81446,8 @@ override func viewDidLoad(){
               together in xocde workspace to build the project.
             </Span>
             <Span>
-              Xcode =&gt; Preferences =&gt; Location Name =&gt; Install Command Line Tools
-              Line Tools
+              Xcode =&gt; Preferences =&gt; Location Name =&gt; Install Command
+              Line Tools Line Tools
             </Span>
             <Span>Xcode =&gt; Prefernces =&gt; Components</Span>
             <Span>
@@ -81469,6 +81469,26 @@ pod install
 rm -rf pods podfile podfile.txt
               `}
             </pre>
+            <Span>Github File Structure:</Span>
+            <Span>
+              {`
+.xcodeproj
+<> => Base.lproj => LaunchScreen.storyboard And Main.storyboard
+   => Assets.xcassets (AppIcon.co)
+   => AppDelegate.swift
+   => SwiftDelegate.swif=> ViewController.swift              
+              `}
+            </Span>
+            <Span>
+              <b>Constraints</b>
+            </Span>
+            <Span>
+              Click at the top and turn dashed lines into solid lines.
+            </Span>
+            <Span>
+              Types: Leading, Trailing, Bottom, Top, SuperView.CenterX,
+              SuperView.CenterY, SuperView.Bottom, SuperView.Top
+            </Span>
           </>
         ),
         types: {},
