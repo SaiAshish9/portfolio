@@ -81765,14 +81765,56 @@ if segue.identifier == "goToResult" {
 }
               `}
             </pre>
-            <Span>
-              Main.storyboard =&gt; new &gt; view controller
-            </Span>
+            <Span>Main.storyboard =&gt; new &gt; view controller</Span>
             <pre>
               {`
-              
+  import UIKit
+
+  class secondVC: UIViewController {
+    super.viewDidLoad()
+    let label = UILabel
+    label.text= "Sai"
+    label.frame = CGRect(x:0,y:0,x:100,y:100)
+    view.addSubView(label)
+  }
+
+  ViewController.swift
+
+  let secondVC = SecondViewController()
+  secondVC.bmi = "10"
+  self.presnt(secondVC,connected: true,completion: null)
               `}
             </pre>
+            <Span>
+              In order to link few ui controllers, connect them via cmd + click
+            </Span>
+            <Span>
+              <b>Swift Fundamentsals:</b>
+            </Span>
+            <Span>
+              <b>1. Force Unwrapping:</b>
+            </Span>
+            <Span>
+              let a = nil <br />
+              let b = a! <br />
+              Project will build successfully but during runtime it will crash
+            </Span>
+            <Span>
+              <b>2. Check for nil value:</b>
+            </Span>
+            <Span>if a!= nil {"{ a = b! }"}</Span>
+            <Span>
+              <b>3. Optional Binding:</b>
+            </Span>
+            <Span>if let a =b {"{ a }"}</Span>
+            <Span>
+              <b>4. Nil Coalescing Operator:</b>
+            </Span>
+            <Span>a ?? b</Span>
+            <Span>
+              <b>5. Optional Chaining:</b>
+            </Span>
+            <Span>op?.a()</Span>
           </>
         ),
         types: {},
