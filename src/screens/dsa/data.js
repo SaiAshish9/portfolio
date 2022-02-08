@@ -82718,6 +82718,7 @@ class WelcomeViewController: UIViewController {
               4. It wasn’t until iOS 14 and the introduction of the App and
               Scene protocols that SwiftUI became viable for building whole
               apps.
+              {/* https://bignerdranch.com/blog/learning-apples-swiftui-or-uikit-which-one-is-right-for-you-right-now/#:~:text=SwiftUI%20is%20Apple's%20new%20declarative,events%20and%20changes%20to%20presentation.&text=xib%20files%20are%20not%20used%20in%20SwiftUI. */}
             </Span>
           </>
         ),
