@@ -82798,6 +82798,262 @@ struct ContentView: View {
               At info.plist , update Fons provided by the application key (for
               e.g. Pacifico-Regular.ttf)
             </Span>
+            <Span>ContentView.swift</Span>
+            <Span>Example 1:</Span>
+            <pre>
+              {`
+import SwiftUI
+struct ContentView: View {
+    var body: some View {
+        ZStack {
+            Color(.systemTeal)
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                Text("I Am Rich")
+                    .font(.system(size: 40))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
+                Image("diamond")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 200, height: 200, alignment: .center)
+            }
+        }
+    }
+}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView().previewDevice(PreviewDevice(rawValue:"iPhone SE"))
+    }
+}
+`}
+            </pre>
+            <Span>Example 2:</Span>
+            <pre>{`
+import SwiftUI
+struct ContentView: View { 
+    @State var leftDiceNumber = 1
+    @State var rightDiceNumber = 1
+    var body: some View {
+        ZStack {
+            Image("background")
+                .resizable()
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                Image("diceeLogo")
+                Spacer()
+                HStack {
+                    DiceView(n: leftDiceNumber)
+                    DiceView(n: rightDiceNumber)
+                }
+                .padding(.horizontal)
+                Spacer()
+                Button(action: {
+                    self.leftDiceNumber = Int.random(in: 1...6)
+                    self.rightDiceNumber = Int.random(in: 1...6)
+                }) {
+                    Text("Roll")
+                        .font(.system(size: 50))
+                        .fontWeight(.heavy)
+                        .foregroundColor(.white)
+                        .padding(.horizontal)
+                }
+                .background(Color.red)
+            }
+        }
+    }
+}
+struct DiceView: View {
+    let n: Int   
+    var body: some View {
+        Image("dice\(n)")
+            .resizable()
+            .aspectRatio(1, contentMode: .fit)
+            .padding()
+    }
+}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}            
+            `}</pre>
+            <Span>Example 3:</Span>
+            <Span>Models:</Span>
+            <Span>
+              <b>NetworkManager.swift</b>
+            </Span>
+            <pre>{`import Foundation
+class NetworkManager: ObservableObject {
+    @Published var posts = [Post]()
+    func fetchData() {
+        if let url = URL(string: "https://hn.algolia.com/api/v1/search?tags=front_page") {
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: url) { (data, response, error) in
+                if error == nil {
+                    let decoder = JSONDecoder()
+                    if let safeData = data {
+                        do {
+                            let results = try decoder.decode(Results.self, from: safeData)
+                            DispatchQueue.main.async {
+                                self.posts = results.hits
+                            }
+                        } catch {
+                            print(error)
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+}`}</pre>
+            <Span>
+              <b>PostData.swift</b>
+            </Span>
+            <pre>{`import Foundation
+struct Results: Decodable {
+    let hits: [Post]
+}
+struct Post: Decodable, Identifiable {
+    var id: String {
+        return objectID
+    }
+    let objectID: String
+    let points: Int
+    let title: String
+    let url: String?
+}`}</pre>
+            <Span>Models:</Span>
+            <Span>ContentView.swift</Span>
+            <pre>
+              {`
+import SwiftUI
+struct ContentView: View {
+    @ObservedObject var networkManager = NetworkManager()
+    var body: some View {
+        NavigationView {
+            List(networkManager.posts) { post in
+                NavigationLink(destination: DetailView(url: post.url)) {
+                    HStack {
+                        Text(String(post.points))
+                        Text(post.title)
+                    }
+                }
+            }
+            .navigationBarTitle("H4X0R NEWS")
+        }
+        .onAppear {
+            self.networkManager.fetchData()
+        }
+    }
+}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}              
+//
+//let posts = [
+//    Post(id: "1", title: "Hello"),
+//    Post(id: "2", title: "Bonjour"),
+//    Post(id: "3", title: "Hola")
+//]
+              `}
+            </pre>
+            <Span>DetailView.swift</Span>
+            <pre>{`
+import SwiftUI
+struct DetailView: View {
+    let url: String?   
+    var body: some View {
+        WebView(urlString: url)
+    }
+}
+struct DetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        DetailView(url: "https://www.google.com")
+    }
+}
+
+              `}</pre>
+            <Span>WebView View.swift</Span>
+            <pre>{`
+import Foundation
+import WebKit
+import SwiftUI
+struct WebView: UIViewRepresentable {
+    let urlString: String?
+    func makeUIView(context: Context) -> WKWebView {
+        return WKWebView()
+    }
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        if let safeString = urlString {
+            if let url = URL(string: safeString) {
+                let request = URLRequest(url: url)
+                uiView.load(request)
+            }
+        }
+    }
+}            
+            `}</pre>
+            <Span>UITableView</Span>
+            <Span>
+              numberOfRowsInSelection <br />
+              cellForRowAt
+              <br />
+              didSelectRowAt
+              <br />
+              deselectRow
+              <br />
+              dequeueReusableCell
+              <br />
+              cellForRow
+            </Span>
+            <Span>Reload TableView Data</Span>
+            <Span>
+              self.tableView.reloadData()
+              <br />
+              App Launched -&gt; App Visible -&gt; App Receeds Into Background
+              -&gt; Resources Reclaimed
+            </Span>
+            <Span>Various Ways Of Storing Data</Span>
+            <Span>
+              UserDefaults -&gt; small piece of data <br />
+              Codable -&gt; plist <br />
+              KeyChain -&gt; passwords <br />
+              SQLite -&gt; large amount of data <br />
+              CoreData -&gt; object oriented database <br />
+              Realm -&gt;faster and easier to use
+            </Span>
+            <Span>CoreData Terminology</Span>
+            <Span>
+              Entity -&lt; Class -&lt; Taale
+              <br />
+              Property -&lt; Attribute -&lt; Field
+            </Span>
+            <Span>Colors : Chamelon</Span>
+            <Span>Execute code under main thread from separate thread</Span>
+            <pre>{`
+func searchBar(_ searchBar:UISearchBar,textDidChange searchText:String){
+  DispatchQueue.main.async{
+    searchBar.reassignFirstResponder()
+  }
+}
+            `}</pre>
+            <Span>Packages</Span>
+            <pre>
+              {`
+PropertyListEncoder
+PropertyListDecoder
+UserDefaults.standard
+NSSearchPathForDirectoriesInDomain
+NSPersistentContainer
+NSFetchRequest
+NSPredicate
+Item()
+  `}
+            </pre>
           </>
         ),
         types: {},
