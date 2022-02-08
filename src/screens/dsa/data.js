@@ -81271,8 +81271,8 @@ a = b + c;
         ),
         types: {},
       },
-      "Swift-UI": {
-        title: "Swift UI",
+      Swift: {
+        title: "Swift",
         content: (
           <>
             <Span>
@@ -82367,8 +82367,10 @@ TableViewCell xib file -> interactions -> disable
               <br />
               viewDidDisappear()
             </pre>
-            <br/>
-            <Span><b>App Life Cycle Methods</b></Span>
+            <br />
+            <Span>
+              <b>App Life Cycle Methods</b>
+            </Span>
             <pre>
               Upto ios 12 , all life cycle methods used to be at
               AppDelegate.swift but as of ios13 , especially ipadOS there may be
@@ -82612,6 +82614,66 @@ class WelcomeViewController: UIViewController {
         }  
     }
 }`}</pre>
+            <br />
+            <Span>
+              Swift UI is apple's brand new UI framework built with declarative
+              swift code.
+            </Span>
+            <Span>
+              Since SwiftUI uses UIkit and AppKit behind the scenes, this means
+              that rendering isn't any faster. However, in terms of development
+              build time, SwiftUI usually performs better than UIkit. That's
+              because the hierarchy of view resides in value-type structs stored
+              on the stack, which means no costly memory allocations.
+            </Span>
+            <Span>
+              <b>Imperative Vs Declarative Programming</b>
+            </Span>
+            <Span>
+              Declarative programming is a paradigm in which programmer defines
+              what needs to be accomplished w/o defining how it needs to be
+              implemented.
+              <br />
+              Types: Functional , Logic
+              <br />
+              Imperative programming is a programming paradigm that uses
+              statements that change a program’s state.
+              <br />
+              Types : Structural, Modular , Procedural
+            </Span>
+            <Span>
+              <b>SwiftUI or UIKit</b>
+            </Span>
+            <Span>
+              SwiftUI, Apple’s new declarative programming framework, was
+              introduced along with iOS 13 in September 2019.
+            </Span>
+            <Span>
+              <b>UIKit</b>
+            </Span>
+            <Span>
+              UIKit provides a variety of objects which you can use to develop
+              apps for iOS. These objects, such as UIView and its subclasses,
+              allow for the display and interaction of content within your app.
+              UIKit apps generally make use of the Model-View-Controller (MVC)
+              design pattern.
+              <br />
+              UIKit has been the backbone of UI development on iOS for over a
+              decade. It is a mature platform that sees use in just about every
+              iOS application in existence. Since it is well established, there
+              is an abundance of resources available in case you get stuck or
+              have questions.
+              <br />
+              UIKit apps can be built in a few different ways:
+              <br />
+              Leveraging Interface Builder in order to design a UI without
+              writing any code. Interface Builder is integrated into Xcode and
+              allows for editing of .storyboard and .xib files, both of which
+              describe layouts using XML.
+              <br />A code focused approach where views and layout constraints
+              are defined in Swift (or Objective-C).
+              <br />A mix of the above two approache
+            </Span>
           </>
         ),
         types: {},
