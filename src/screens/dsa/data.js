@@ -81267,6 +81267,358 @@ a = b + c;
               </a>{" "}
               for comipiling objective c
             </Span>
+            <Span>
+              <b>Example</b>
+            </Span>
+            <Span>Animal.m</Span>
+            <pre>
+              {`#import "Animal.h"
+#import "Animal+Vet.h"
+
+@implementation Animal
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.name = @"Sai";
+    }
+    return self;
+}
+
+- (instancetype)initWithName:(NSString *)defaultName
+{
+    self = [super init];
+    if (self) {
+        self.name = defaultName;
+    }
+    return self;
+}
+
+-(void) getInfo{
+NSLog(@"Random");
+[self getExamResults];
+}
+
+-(float) weightInKg:(float)weightInLbs {
+    return weightInLbs * 0.4535;
+}
+
+-(int) getSum:(int)num1 nextNumber:(int)num2 {
+    return num1 + num2;
+}
+
+-(NSString *)talkToMe:(NSString *)myName{
+    NSString *response = [NSString stringWithFormat:@"Hello %@", myName];
+    return response;
+}
+
+-(void) makeSound{
+    NSLog(@"Grrrr");
+}
+
+@end
+
+`}
+            </pre>
+            <Span>Animal.h</Span>
+            <pre>
+              {`#import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface Animal : NSObject
+
+//@property (readonly) NSString *name;
+@property NSString *name;
+@property NSString *favFood;
+@property NSString *sound;
+@property float weight;
+
+-(instancetype) initWithName:(NSString*) defaultName;
+-(void) getInfo;
+-(float) weightInKg : (float) weightInLbs;
+-(NSString *) talkToMe: (NSString *) myName;
+-(int) getSum: (int) num1
+   nextNumber: (int) num2;
+
+-(void) makeSound;
+
+@end
+
+NS_ASSUME_NONNULL_END
+
+`}
+            </pre>
+            <Span>Animal+Exam.h</Span>
+            <pre>
+              {`#import "Animal.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface Animal (Exam)
+
+- (BOOL) checkedByVet;
+- (void) getShots;
+
+@end
+
+NS_ASSUME_NONNULL_END
+
+`}
+            </pre>
+            <Span>Animal+Exam.m</Span>
+            <pre>
+              {`#import "Animal+Exam.h"
+
+@implementation Animal (Exam)
+
+-(BOOL) checkedByVet{
+    return 1;
+}
+
+-(void) getShots{
+    NSLog(@"%@ got its shots",self.name);
+}
+
+@end
+
+`}
+            </pre>
+            <Span>Animal+Vet.m</Span>
+            <pre>
+              {`#import "Animal+Vet.h"
+
+@implementation Animal (Vet)
+
+-(void) getExamResults{
+  NSLog(@"Exam is fine");
+}
+
+@end`}
+            </pre>
+            <Span>Animal+Vet.h</Span>
+            <pre>
+              {`#import "Animal.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface Animal (Protected)
+
+-(void) getExamResults;
+
+@end
+
+NS_ASSUME_NONNULL_END
+
+`}
+            </pre>
+            <Span>Dog.m</Span>
+            <pre>
+              {`#import "Dog.h"
+
+@implementation Dog
+
+-(void) makeSound{
+    NSLog(@"%@ says woof",self.name);
+}
+
+@end
+
+`}
+            </pre>
+            <Span>Dog.h</Span>
+            <pre>
+              {`#import "Animal.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface Dog : Animal
+
+@end
+
+NS_ASSUME_NONNULL_END
+
+`}
+            </pre>
+            <Span>Koala.m</Span>
+            <pre>
+              {`#import "Koala.h"
+@implementation Koala
+-(NSString *)talkToMe:(NSString *)myName{
+    NSString *response = [NSString stringWithFormat:@"Hello %@ says %@", myName, self.name];
+    return response;
+}
+-(void) performTrick{
+    NSLog(@"%@ perfoms", self.name);
+}
+-(void) lookCute{
+    NSLog(@")%@ acts super cute", self.name);
+}
+- (void)performCute {
+    
+}
+-(void) makeSound{
+    NSLog(@"%@ sounds", self.name);
+}
+@end
+
+`}
+            </pre>
+            <Span>Koala.h</Span>
+            <pre>
+              {`#import "Animal.h"
+#import "BeautyContest.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface Koala : Animal <BeautyContest>
+
+-(NSString *) talkToMe:(NSString *)myName;
+
+-(void) performTrick;
+-(void) makeSound;
+
+@end
+
+NS_ASSUME_NONNULL_END
+
+`}
+            </pre>
+            <Span>BeautyContest.h</Span>
+            <pre>
+              {`#import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@protocol BeautyContest <NSObject>
+
+- (void) lookCute;
+- (void) performCute;
+
+@end
+
+NS_ASSUME_NONNULL_END`}
+            </pre>
+            <Span>Main.m</Span>
+            <pre>{`#import <Foundation/Foundation.h>
+#import "Animal.h"
+#import "Koala.h"
+#import "Animal+Exam.h"
+#import "Dog.h"
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+//        It is used to remove unwanted objects and signals us when objects are no longer
+//        needed
+//        int char BOOL NSString NSMutableString NSLog NSRange NSMakeRange NSArray
+
+        NSLog(@"Hello, World!");
+        NSString *nothing = nil;
+        NSLog(@"Location of nil : %p, ",nothing);
+        NSLog(@"%@",nothing);
+        NSString *quote = @"abcdsjskladhkjsadhkjhsad";
+        NSLog(@"size %d",(int)[quote length]);
+        NSLog(@"%c",[quote characterAtIndex:5]);
+        char *name = "Sai";
+        NSString *myName = [NSString stringWithFormat:@"%s",name];
+//        immutable object
+        BOOL isStringEqual = [quote isEqualToString:myName];
+        printf("equal: %d\\n",isStringEqual);
+        const char *uCString = [[myName uppercaseString]UTF8String];
+        printf("%s\\n",uCString);
+        NSString *wholeQuote = [quote stringByAppendingString:myName];
+        NSRange searchResult = [wholeQuote rangeOfString:@"Sai"];
+        if(searchResult.location == NSNotFound){
+            NSLog(@"String not found");
+        }else{
+            printf("Sai is at index %lu and is %lu long\\n",searchResult.location,searchResult.length);
+        }
+//        NSRange range = NSMakeRange(42, 1);
+//        const char *newQuote = [[wholeQuote stringByReplacingCharactersInRange:range withString:@"Sai9" ]UTF8String];
+//        printf("%s",newQuote);
+
+        NSMutableString *groceryList = [NSMutableString stringWithCapacity:50];
+        [groceryList appendFormat:@"%s","ABCDEF"];
+        NSLog(@"%@",groceryList);
+        [groceryList deleteCharactersInRange:NSMakeRange(0, 2)];
+        NSLog(@"%@",groceryList);
+        [groceryList insertString:@" , Apple" atIndex:1];
+        NSLog(@"%@",groceryList);
+        [groceryList replaceCharactersInRange:NSMakeRange(1, 1) withString:@"Orange"];
+        NSLog(@"%@",groceryList);
+        NSArray *officeSupplies = @[@"A",@"B",@"C"];
+        NSLog(@"First: %@",officeSupplies[0]);
+        NSLog(@"Office Supplies: %@",officeSupplies);
+        BOOL containsItem = [officeSupplies containsObject:@"A"];
+        NSLog(@"Need Pencils : %d",containsItem);
+        NSLog(@"Total : %d",(int)[officeSupplies count]);
+        NSLog(@"Index of A is at %lu",(unsigned long)[officeSupplies indexOfObject:@"A"]);
+
+       NSMutableArray *heroes = [NSMutableArray arrayWithCapacity:5];
+       [heroes addObject:@"A"];
+       [heroes addObject:@"B"];
+       [heroes addObject:@"C"];
+       [heroes addObject:@"D"];
+       [heroes insertObject:@"E" atIndex:2];
+       NSLog(@"%@", heroes);
+       [heroes removeObject:@"D"];
+       [heroes removeObjectAtIndex:0];
+       [heroes removeObjectIdenticalTo:@"A" inRange:NSMakeRange(0,1)];
+       for(int i=0; i < [heroes count]; i++){
+           NSLog(@"%@",heroes[i]);
+       }
+        
+       Animal *dog = [[Animal alloc] init];
+       [dog getInfo];
+       NSLog(@"The dogs name is %@", [dog name]);
+       [dog setName:@"Spot"];
+        
+       Animal *cat = [[Animal alloc]initWithName:@"Meow"];
+        
+       NSLog(@"%@",cat.name);
+       NSLog(@"180 lbs = %.2f kg", [dog weightInKg:180]);
+       NSLog(@"3 + 5 = %d", [dog getSum:3 nextNumber:5 ]);
+       NSLog(@"%@", [dog talkToMe:@"Derek"]);
+        
+       Koala *herbie = [[Koala alloc]initWithName:@"Herbie"];
+       NSLog(@"%@",[herbie talkToMe:@"Derek"]);
+       NSLog(@"Did %@ receive shots: %d",herbie.name,[herbie checkedByVet]);
+       [herbie getShots];
+       [dog getInfo];
+       [herbie lookCute];
+       [herbie performTrick];
+        
+       float (^getArea) (float height, float width);
+        
+       getArea = ^float(float width, float height){
+           return width * height;
+       };
+    
+       NSLog(@"Area of 3 width and 50 height: %.1f", getArea(3,50));
+       
+        enum Ratings{
+            Poor = 1,
+            Ok = 2,
+            great = 5
+        };
+        
+        enum Ratings matrixRating = great;
+        
+        NSLog(@"Matrix : %u",matrixRating);
+        
+        Dog *grover = [[Dog alloc]initWithName:@"Grover"];
+        NSArray *animals = [[NSArray alloc]initWithObjects:herbie,grover, nil];
+        
+        id object1 = [animals objectAtIndex:0];
+        id object2 = [animals objectAtIndex:1];
+        
+        [object1 makeSound];
+        [object2 makeSound];
+
+    }
+    return 0;
+}`}</pre>
           </>
         ),
         types: {},
@@ -83125,7 +83477,25 @@ var a:Int = 10 {
       },
       Go: {
         title: "Go",
-        content: <></>,
+        content: (
+          <>
+            <Span>
+              <b>Installation Guide:</b>
+            </Span>
+            <Span>
+              Go to golang.org and choose download option. Then at the download
+              page, select appropriate arm based verison for m1 mac.
+            </Span>
+            <Span>After installatin, setup can be deleted</Span>
+            <Span>
+              Go to /usr/local/go
+            </Span>
+            <Span>Execute following command:</Span>
+            <Span>export GOROOT=/usr/local/go</Span>
+            <Span>export GOPATH=$HOME/Desktop/folders/projects/go-workspace</Span>
+            <Span>export PATH=$GOPATH/bin:$GOROOT/bin:$PATH</Span>
+          </>
+        ),
         types: {},
       },
     },
