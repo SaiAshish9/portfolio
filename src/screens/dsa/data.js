@@ -81961,7 +81961,14 @@ array.map{"\($0)"}
             <Span>
               <b>Code formatting</b>
             </Span>
-            <p>cmd + I</p>
+            <Span>cmd + I</Span>
+            <Span>Type alias & protocols (JSON encoding & decoding)</Span>
+            <Span>:Decodable :Encodable :Codable</Span>
+            <Span>External parameter names</Span>
+            <Span>
+              func a(x y :Int){"{print(y)}"} {"func a(x:2){} func a(_ y:Int){print(y)}{}"}
+              func a(2){}
+            </Span>
           </>
         ),
         types: {},
