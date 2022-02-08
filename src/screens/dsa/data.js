@@ -82343,6 +82343,46 @@ func tableView(.... cellForRowAtIndexPath
 func tableView(.... didSelectRowAtIndexPath
               `}
             </pre>
+            <b>Custom TableViewCell</b>
+            <pre>{`
+Views -> New Cocoa Touch Class -> Message Cell (Subclass of UITableViewCell)
+check allow create xib file
+            `}</pre>
+            <b>hackiftakhar/IQKeyboardManager</b>
+            <pre>
+              {`
+File ->Swift Packages -> Add Package Dependency
+Edit AppDelegate.swiift
+TableViewCell xib file -> interactions -> disable
+              `}
+            </pre>
+            <b>ViewControllerLifeCycle</b>
+            <pre>
+              viewDidLoad() <br />
+              viewWillAppear()
+              <br />
+              viewDidAppear()
+              <br />
+              viewWillUnappear()
+              <br />
+              viewDidDisappear()
+            </pre>
+            <b>App Life Cycle Methods</b>
+            <pre>
+              Upto ios 12 , all life cycle methods used to be at
+              AppDelegate.swift but as of ios13 , especially ipadOS there may be
+              multiple instances of the app. If one of the window goes in
+              background then scene delegate gets notified.
+              <br />
+              It treats each window as a separate screen.
+              <br />
+              N/W changes are handled by sceneDelegate.swift
+              <br />
+              Mutiple view controllers in one screne, multiple scenes in a app.
+              -&gt; SceneDelegate
+              <br />
+              func sceneWillResignActive( sceneDidEnterBackground(
+            </pre>
           </>
         ),
         types: {},
