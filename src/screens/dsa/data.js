@@ -82691,13 +82691,33 @@ class WelcomeViewController: UIViewController {
               As far as building apps with SwiftUI, things are a bit more
               streamlined when compared to UIKit:
               <br />
-              1. Xcode displays the visual editor alongside any file that contains
-              a SwiftUI view, displaying a live representation of the view you
-              are building. You can still interactively design on the canvas,
-              just like in Interface Builder.
+              1. Xcode displays the visual editor alongside any file that
+              contains a SwiftUI view, displaying a live representation of the
+              view you are building. You can still interactively design on the
+              canvas, just like in Interface Builder.
               <br />
-              2. .storyboard and .xib files are not used in SwiftUI. The Swift code
-              itself describes the layout rather than these opaque XML files.
+              2. .storyboard and .xib files are not used in SwiftUI. The Swift
+              code itself describes the layout rather than these opaque XML
+              files.
+            </Span>
+            <Span>
+              Here are some additional notes and caveats:
+              <br />
+              1. Widgets built using WidgetKit are required to use SwiftUI. This
+              is the only case as of now (iOS 14), but given Apple’s technology
+              and API history, we anticipate a time will come when you will need
+              to use SwiftUI in order to leverage the latest Apple features.
+              <br />
+              2. Swift developers can take advantage of Apple’s native libraries
+              and design elements across all of its platforms. For example, you
+              can’t do a native UI on watchOS if you don’t use SwiftUI.
+              <br />
+              3. SwiftUI requires iOS 13 or later. It might not be right for
+              apps where backwards compatibility is important.
+              <br />
+              4. It wasn’t until iOS 14 and the introduction of the App and
+              Scene protocols that SwiftUI became viable for building whole
+              apps.
             </Span>
           </>
         ),
