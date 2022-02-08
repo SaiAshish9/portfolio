@@ -82576,6 +82576,7 @@ class LoginViewController: UIViewController {
         }
     }
 }
+
            `}</pre>
             <b>RegisterViewController.swift</b>
             <pre>{`
@@ -82597,6 +82598,7 @@ class RegisterViewController: UIViewController {
         }
     }    
 }
+
 `}</pre>
             <b>WelcomeViewController.swift</b>
             <pre>{`
