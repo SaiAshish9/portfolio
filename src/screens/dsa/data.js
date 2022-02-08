@@ -81445,6 +81445,24 @@ override func viewDidLoad(){
               between libraries, fetch resulting source code then link it
               together in xocde workspace to build the project.
             </Span>
+            <Span>
+              {`
+sudo gem install cocoapods
+sudo arch -x86_64 gem install fi
+arch -x86_64 pod insatll              
+              `}
+            </Span>
+            <Span>
+              At React Native. we can install dependencies using following commands:
+            </Span>
+            <pre>
+              {`
+cd ios
+pod init
+pod install
+rm -rf pods podfile podfile.txt
+              `}
+            </pre>
           </>
         ),
         types: {},
