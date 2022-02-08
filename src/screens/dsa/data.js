@@ -81679,18 +81679,100 @@ class ViewController: UIViewController {
   `}
             </pre>
             <Span>
-              Design pattern allows us to organise and structure our code. ( MVC, MVP, MVVM, VIPER )
+              Design pattern allows us to organise and structure our code. (
+              MVC, MVP, MVVM, VIPER )
             </Span>
             <Span>
-              Apple, Spring =&gt; MVC ( Model View Controller ( it modifies model ad passed that to view and acts as a mediator ) )
+              Apple, Spring =&gt; MVC ( Model View Controller ( it modifies
+              model ad passed that to view and acts as a mediator ) )
             </Span>
             <Span>
-              Android MVP =&gt; MVP ( Model View Presenter )  ( presenter listens b/w view and model )
+              Android MVP =&gt; MVP ( Model View Presenter ) ( presenter listens
+              b/w view and model )
             </Span>
             <Span>
               MVVM : View Model only passed certain part of model to the view.
             </Span>
             <Span>Immutability</Span>
+            <Span>
+              By default, struct is immutable as every variable is provided the
+              keyword let. That's why we must use of a special keyword mutating.
+            </Span>
+            <Span>
+              We can't call a mutating function using a instance which was
+              declared with let declared. All its properties will become
+              immutable.
+            </Span>
+            <pre>
+              {`
+String(format: "%.2f", sender.value)
+Int(sender.value)
+heightSliderChanged(_ sender: UISlider)
+weightSliderChanged(_ sender: UISlider)
+`}
+            </pre>
+            <Span>
+              Project =&gt; MacOS =&gt;CommandLineTool =&gt; ProductName
+            </Span>
+            <pre>
+              {`
+let Skeleton = Empty()
+let dragon = Dragon()              
+dragon.move()
+class Enemy{
+var health = 0 
+func move(){
+
+}
+}
+class Dragon{
+var a = 12
+override func move(){
+  super.attack()
+  print();
+}
+}
+`}
+            </pre>
+            UIButton &gt; UIControl &gt; UIView &gt; UIResponder &gt; NSObject
+            <Span>Struct Vs Classes</Span>
+            <Span>struct does not inheritance and are immutable.</Span>
+            <pre>
+              {`
+struct {
+  var health: Int // let cannot be used
+  mutable func x(){
+    self.health = 10
+  }
+}              
+              `}
+            </pre>
+            <Span>Structs are passed by value</Span>
+            <Span>Classes are passed by reference</Span>
+            <pre>
+              {`
+import UIKit
+                         
+{
+  performSegue(withIdentifier: "goToResult", sender.self)
+}
+
+override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+if segue.identifier == "goToResult" {
+  let destination = segue.destination as !ResulttViewController
+  destination.color = calc.getColor()
+}
+}
+              `}
+            </pre>
+            <Span>
+              Main.storyboard =&gt; new &gt; view controller
+            </Span>
+            <pre>
+              {`
+              
+              `}
+            </pre>
           </>
         ),
         types: {},
