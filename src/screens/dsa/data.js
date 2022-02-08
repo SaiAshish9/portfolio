@@ -82059,7 +82059,7 @@ struct WeatherModel {
   `}
             </pre>
             <Span>Controllers</Span>
-            <Span>WeatherManager.swift</Span>
+            <b>WeatherManager.swift</b>
             <pre>
               {`
 import Foundation
@@ -82115,7 +82115,7 @@ struct WeatherManager {
 }              
               `}
             </pre>
-            <Span>WeatherViewController.swift</Span>
+            <b>WeatherViewController.swift</b>
             <pre>
               {`
 import UIKit
