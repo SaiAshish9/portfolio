@@ -82720,6 +82720,84 @@ class WelcomeViewController: UIViewController {
               apps.
               {/* https://bignerdranch.com/blog/learning-apples-swiftui-or-uikit-which-one-is-right-for-you-right-now/#:~:text=SwiftUI%20is%20Apple's%20new%20declarative,events%20and%20changes%20to%20presentation.&text=xib%20files%20are%20not%20used%20in%20SwiftUI. */}
             </Span>
+            <Span>
+              <b>Using SwiftUI and UIKit Together</b>
+            </Span>
+            <Span>
+              UIViewRepresentable is a protocol provided by the SwiftUI
+              framework. Using this protocol it is possible to wrap an instance
+              of a UIKit view so that it can be displayed with SwiftUI
+            </Span>
+            <Span>Defining a UIKit view wrapper with UIViewRepresentable:</Span>
+            <pre>{`
+@available(iOS 13, *)
+struct MyUIKitView: UIViewRepresentable {
+    func makeUIView(context: Context) -> UITextView {
+        let view = UIView()
+        view.backgroundColor = .blue
+        return view
+    }            
+    func updateUIView(_ uiView: UITextView, context: Context) {
+    }
+}
+            `}</pre>
+            <Span>Using the wrapped UIKit view in SwiftUI:</Span>
+            <pre>{`
+struct ContentView: View {
+  var body: some View {
+     VStack {
+        Text("Hello from UIKit!")
+        MyUIKitView()
+     }
+  }
+  
+            `}</pre>
+            <Span>
+              <b>Using SwiftUI in UIKit</b>
+            </Span>
+            <Span>
+              UIHostingController is a view controller which allows for the
+              display of SwiftUI views into a UIKit view hierarchy. It can be
+              used just like any other view controller in UIKit:
+            </Span>
+            <Span>
+              let hostingController = UIHostingController(rootView: Text("Hello
+              from SwiftUI!")) <br />
+              present(hostingController, animated: true)
+            </Span>
+            <Span>
+              <b>Overcome Immutability of struct in SwiftUI</b>
+            </Span>
+            <Span>
+              swift provides special wrapper @state to overcome immutability of
+              structs. <br />
+              struct ContentView:View {"{ @state var left = 1 }"}
+            </Span>
+            <Span>
+              <b>Running app on mac using product catalyst</b>
+            </Span>
+            <Span>
+              project -&lt; target -&lt; mac <br />
+              signing & capabilities -&lt; apple ID
+            </Span>
+            <Span>
+              <b>Update Preview</b>
+            </Span>
+            <Span>Command + Option + P</Span>
+            <Span>
+              <b>Network Handling</b>
+            </Span>
+            <Span>
+              @ObservedObject and @Published can be used along with
+              NetworkManager
+            </Span>
+            <Span>
+              <b>Custom Fonts</b>
+            </Span>
+            <Span>
+              At info.plist , update Fons provided by the application key (for
+              e.g. Pacifico-Regular.ttf)
+            </Span>
           </>
         ),
         types: {},
