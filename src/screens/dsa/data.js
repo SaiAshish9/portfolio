@@ -81422,8 +81422,11 @@ override func viewDidLoad(){
 @IBAction func <>(_ sender: Any){ print("A") }
 
 }
+
 `}</pre>
-            <Span>Swift</Span>
+            <Span>
+              <b>Swift</b>
+            </Span>
             <Span>
               <b>Naming Conventions:</b>
             </Span>
@@ -81436,6 +81439,28 @@ override func viewDidLoad(){
             <Span>{"Int Float Bool Double Array String Dictionary"}</Span>
             <Span>Int.random(in: 0...5)</Span>
             <Span>Float.random(in: 0...5)</Span>
+            <p>ViewController.swift</p>
+            <pre>
+              {`
+import UIKit
+class ViewController: UIViewController {
+    @IBOutlet weak var diceImageView1: UIImageView!
+    @IBOutlet weak var diceImageView2: UIImageView!
+    var leftDiceNumber = 1
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+   
+    @IBAction func rollButtonPressed(_ sender: Any) {
+        let diceArray =  [#imageLiteral(resourceName: "DiceOne"),#imageLiteral(resourceName: "DiceTwo"),#imageLiteral(resourceName: "DiceThree"),#imageLiteral(resourceName: "DiceFour"),#imageLiteral(resourceName: "DiceFive"),#imageLiteral(resourceName: "DiceSix")]
+        diceImageView1.image = diceArray[Int.random(in: 0...5)]
+        diceImageView2.image = diceArray[Int.random(in: 0...5)]
+    } 
+}
+              `}
+            </pre>
             <Span>
               <b>Cocoapods:</b>
             </Span>
@@ -81487,8 +81512,47 @@ rm -rf pods podfile podfile.txt
             </Span>
             <Span>
               Types: Leading, Trailing, Bottom, Top, SuperView.CenterX,
-              SuperView.CenterY, SuperView.Bottom, SuperView.Top
+              SuperView.CenterY, SuperView.Bottom, SuperView.Top,
+              First.trailing, Second.trailing, Relative to the margin
             </Span>
+            <Span>Alignment And Pinning:</Span>
+            <Span>
+              Alignment: Used to align center vertically or horizontally
+            </Span>
+            <Span>
+              Pin: Distance which our elements should be placed from the edge of
+              container view.
+            </Span>
+            <Span>
+              Container and subviews. We can place multiple containers inside
+              the main uiview and several subviews inside each container
+            </Span>
+            <Span>
+              In order to create a new view, click at + icon. Then select view
+              followed by uiview and drag container inside view.
+            </Span>
+            <Span>Stacks And Views</Span>
+            <Span>
+              We can stack views together either vertically or horizontally
+            </Span>
+            <Span>
+              <b>Stacks And Views</b>
+            </Span>
+            <Span>StackView ==&gt; Distrinution ==&gt; Fill Equally</Span>
+            <Span>Background ==&gt; System Background ==&gt; Default</Span>
+            <Span>
+              <b>AVFoundation Class</b>
+            </Span>
+            <Span>
+              Doucmentation can be found at
+              developer.apple.com/documentation/Audio/AudioPlayer
+            </Span>
+            <Span>Code:</Span>
+            <pre>
+              {`
+              
+              `}
+            </pre>
           </>
         ),
         types: {},
