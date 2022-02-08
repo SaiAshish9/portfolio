@@ -82558,11 +82558,72 @@ extension ChatViewController: UITableViewDataSource {
 }
             `}</pre>
             <b>LoginViewController.swift</b>
-            <pre>{``}</pre>
+            <pre>{`
+import UIKit
+import Firebase
+class LoginViewController: UIViewController {
+    @IBOutlet weak var emailTextfield: UITextField!
+    @IBOutlet weak var passwordTextfield: UITextField!
+    @IBAction func loginPressed(_ sender: UIButton) {
+        if let email = emailTextfield.text, let password = passwordTextfield.text {
+            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                if let e = error {
+                    print(e)
+                } else {
+                    self.performSegue(withIdentifier: K.loginSegue, sender: self)
+                }
+            }
+        }
+    }
+}
+           `}</pre>
             <b>RegisterViewController.swift</b>
-            <pre>{``}</pre>
+            <pre>{`
+import UIKit
+import Firebase
+class RegisterViewController: UIViewController {
+    @IBOutlet weak var emailTextfield: UITextField!
+    @IBOutlet weak var passwordTextfield: UITextField!
+    @IBAction func registerPressed(_ sender: UIButton) {
+        if let email = emailTextfield.text, let password = passwordTextfield.text {
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                if let e = error {
+                    print(e)
+                } else {
+                    //Navigate to the ChatViewController
+                    self.performSegue(withIdentifier: K.registerSegue, sender: self)
+                }
+            }
+        }
+    }    
+}
+`}</pre>
             <b>WelcomeViewController.swift</b>
-            <pre>{``}</pre>
+            <pre>{`
+import UIKit
+class WelcomeViewController: UIViewController {
+    @IBOutlet weak var titleLabel: UILabel!
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()                    
+        titleLabel.text = ""
+        var charIndex = 0.0
+        let titleText = K.appName
+        for letter in titleText {
+            Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { (timer) in
+                self.titleLabel.text?.append(letter)
+            }
+            charIndex += 1
+        }  
+    }
+}`}</pre>
           </>
         ),
         types: {},
