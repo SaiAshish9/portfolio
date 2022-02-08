@@ -81850,7 +81850,9 @@ if segue.identifier == "goToResult" {
               <br />
               textFieldShouldEndEditing
             </Span>
-            <Span>Swift Protocols</Span>
+            <Span>
+              <b>Swift Protocols</b>
+            </Span>
             <Span>
               <pre>{`
 protocol config(){
@@ -81925,6 +81927,41 @@ class Surgeon:Doctor {
               constructor ( handler.delegate = self ).Then, make us of this
               handler at some other class.
             </Span>
+            <Span>
+              <b>Closures</b>
+            </Span>
+            <pre>
+              {`
+import UIKit
+func calculator(n1:Int,n2:Int)->Int{
+  return n1 * n2
+}
+calculator(n1:2,n2:3) =>
+func calculator(n1:Int,n2:Int,operation:(Int,Int)->Int) -> Int {
+   return operator(n1,n2)
+}
+func add(no1:int,no2:Int)->Int {
+   return no1 + no2
+}
+calculator(n1:2,n2:3,operator:add) =>
+let result = calculator(n1:2,n2:3){$0*$1}
+import UI
+let array= [6,2,3,9,4,1]
+func addOne(n1:Int)->Int{ return n1+1 }
+array.map(addOne)
+array.map({(n1,n2)->Int in return n!+1})
+array.map{$0+1}
+array.map{"\($0)"}  
+  `}
+            </pre>
+            <Span>
+              <b>Conversion to closure</b>
+            </Span>
+            <Span>highlight and press enter</Span>
+            <Span>
+              <b>Code formatting</b>
+            </Span>
+            <p>cmd + I</p>
           </>
         ),
         types: {},
