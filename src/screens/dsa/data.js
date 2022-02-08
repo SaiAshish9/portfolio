@@ -81675,16 +81675,22 @@ class ViewController: UIViewController {
         }
     }
     
-}
-  
+} 
   `}
             </pre>
             <Span>
+              Design pattern allows us to organise and structure our code. ( MVC, MVP, MVVM, VIPER )
+            </Span>
+            <Span>
               Apple, Spring =&gt; MVC ( Model View Controller ( it modifies model ad passed that to view and acts as a mediator ) )
             </Span>
-            <SPan>
-              Android MVP =&gt; MVP ( Model View Presenter )  
-            </SPan>
+            <Span>
+              Android MVP =&gt; MVP ( Model View Presenter )  ( presenter listens b/w view and model )
+            </Span>
+            <Span>
+              MVVM : View Model only passed certain part of model to the view.
+            </Span>
+            <Span>Immutability</Span>
           </>
         ),
         types: {},
