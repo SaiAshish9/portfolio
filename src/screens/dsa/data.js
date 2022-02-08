@@ -81966,9 +81966,48 @@ array.map{"\($0)"}
             <Span>:Decodable :Encodable :Codable</Span>
             <Span>External parameter names</Span>
             <Span>
-              func a(x y :Int){"{print(y)}"} {"func a(x:2){} func a(_ y:Int){print(y)}{}"}
+              func a(x y :Int){"{print(y)}"}{" "}
+              {"func a(x:2){} func a(_ y:Int){print(y)}{}"}
               func a(2){}
             </Span>
+            <Span>Markers</Span>
+            <Span>//MARK:</Span>
+            <Span>
+            DispatchQueue
+            </Span>
+            <pre>
+              {`
+let task = URLSession.shared.dataTask(with:url){
+  (data,response,error) if let data = data {
+   self.label.text = "\(data.count)"
+  }
+  }
+task.resume()  
+              `}
+            </pre>
+            <Span>
+            Extensions
+
+            </Span>
+            <pre>
+              {`
+var x=3.1234
+x.round()
+extension Double{
+  func round(to places: Int){
+  let p = pow(10,places)
+  var n = self
+  n= n * p
+  n.round()
+  n/=p
+  return n
+  }
+}
+extension WeatherViewController: WeatherManagerDelegate
+extension WeatherViewController: CLLocationManagerDelegate
+OR class WeatherViewController: UIViewController, WeatherManagerDelegate,CLLocationManagerDelegate             
+              `}
+            </pre>
           </>
         ),
         types: {},
