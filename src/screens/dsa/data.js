@@ -83094,6 +83094,18 @@ var a:Int = 10 {
             <Span>
               <b>Swift Access Levels</b>
             </Span>
+            <Span>
+              1. private
+            </Span>
+            <Span>
+              2. filepointer
+            </Span>
+            <Span>
+              3. internal
+            </Span>
+            <Span>
+              4. public
+            </Span>
           </>
         ),
         types: {},
