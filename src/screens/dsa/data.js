@@ -81972,7 +81972,7 @@ array.map{"\($0)"}
             </Span>
             <Span>Markers</Span>
             <Span>//MARK:</Span>
-            <Span>DispatchQueue</Span>
+            <b>DispatchQueue</b>
             <pre>
               {`
 let task = URLSession.shared.dataTask(with:url){
@@ -81983,7 +81983,7 @@ let task = URLSession.shared.dataTask(with:url){
 task.resume()  
               `}
             </pre>
-            <Span>Extensions</Span>
+            <b>Extensions</b>
             <pre>
               {`
 var x=3.1234
@@ -82004,7 +82004,7 @@ OR class WeatherViewController: UIViewController, WeatherManagerDelegate,CLLocat
               `}
             </pre>
             <Span>Model Directory:</Span>
-            <Span>WeatherData.swift</Span>
+            <b>WeatherData.swift</b>
             <pre>{`
 import Foundation
 struct WeatherData: Codable {
@@ -82020,7 +82020,7 @@ struct Weather: Codable {
     let id: Int
 }
             `}</pre>
-            <Span>WeatherModel.swift</Span>
+            <b>WeatherModel.swift</b>
             <pre>
               {`
 import Foundation
