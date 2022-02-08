@@ -81815,6 +81815,55 @@ if segue.identifier == "goToResult" {
               <b>5. Optional Chaining:</b>
             </Span>
             <Span>op?.a()</Span>
+            <Span>
+              Alamofire (can be installed using cocoapods or swiftUIPackages)
+            </Span>
+            <Span>
+              portable network graphics gets pixelated when zoomed in
+              <br />
+              vector images doesn't get pixalated <br />
+              e.g. -&gt; .pdf
+              <br />
+              check preserve vector data at inspector window of Assests.xcassets
+            </Span>
+            <Span>
+              Useful textfield properties
+              <br />
+              ReturnKey -&gt; Go <br />
+              autoCapitalize : true (london -&gt; London)
+              <br />
+              secureKey : true *******
+              <br />
+              textFieldShouldReturn
+              <br />
+              textFieldDidBeginEditing
+              <br />
+              textFieldShouldbeginEditing
+              <br />
+              textFieldDidEndEditing
+              <br />
+              textFieldShouldEndEditing
+            </Span>
+            <Span>Swift Protocols</Span>
+            <Span>
+              <pre>{`
+protocol config(){
+  canFly()
+}
+
+class A:config{ func canFly(){} }
+class B:A,config{  override func canFly(){}  }
+
+struct C:canFly{}
+`}</pre>
+              <Span>
+                Protocols can be inherited via classes and structures.
+              </Span>
+              <Span>
+                String Interpolation <br />
+                print("ans:\(9+0)")
+              </Span>
+            </Span>
           </>
         ),
         types: {},
