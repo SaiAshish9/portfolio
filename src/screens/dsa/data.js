@@ -81627,14 +81627,13 @@ class ViewController: UIViewController {
             <Span>var pu1: String = nil is not correct.</Span>
             <Span>var pu1: String = nil is correct.</Span>
             <Span>a = nil print(a!) is not correct we can print(a)</Span>
-            <Span>
-              if a != nil {"{ print(a!) }"}
-            </Span>
+            <Span>if a != nil {"{ print(a!) }"}</Span>
+            <Span>5/2 = 2 , Float(5)/Float(2) = 2.5</Span>
             <Span>
               <b>Timer & Progress View</b>
             </Span>
-<pre>
-  {`
+            <pre>
+              {`
 import UIKit
 import AVFoundation
 
@@ -81679,7 +81678,13 @@ class ViewController: UIViewController {
 }
   
   `}
-</pre>
+            </pre>
+            <Span>
+              Apple, Spring =&gt; MVC ( Model View Controller ( it modifies model ad passed that to view and acts as a mediator ) )
+            </Span>
+            <SPan>
+              Android MVP =&gt; MVP ( Model View Presenter )  
+            </SPan>
           </>
         ),
         types: {},
