@@ -81918,7 +81918,11 @@ class Surgeon:Doctor {
               EmergencyCallHandler doesn't care about what delegate is
               associated with . It can be class , struct or subclass.
             </Span>
-            <Span>UTF-8 is the standardized protocol to encode text</Span>
+            <Span>UTF-8 is the standardized protocol to encode te xt</Span>
+            <Span>
+              Define a protocol , make use of it in class, subclass or the
+              struct. 
+            </Span>
           </>
         ),
         types: {},
