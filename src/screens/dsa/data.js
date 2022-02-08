@@ -82232,6 +82232,109 @@ extension WeatherViewController: CLLocationManagerDelegate {
               select left most icon of the screen and pick embed in navigation
               controller option.
             </Span>
+            <Span>
+              <b>Swift loops</b>
+            </Span>
+            <pre>
+              {`
+for _ in 1...5{print("s")}
+override func viewDidLoad(){
+   super.viewDidLoad()
+   Timer.scheduledTime(withTimeInterval:0.1*charIndex,repeats:false){
+     (timer) in self.titleLabel.text?.append(letter)
+   }
+}
+
+override func viewWillAppear(_ animated:Bool){
+   super.viewWillAppear(animated)
+   navigationController?.isNavigationBarHidden = true
+}
+
+override func viewDidAppear(_ animated:Bool){
+   super.viewDidAppear(animated)
+   navigationController?.isNavigationBarHidden = false
+}
+
+while now < s{
+ now = Date().timeIntervalsince1970
+ print("...")
+}
+           `}
+            </pre>
+            <Span>
+              <b>Third Party Libraries</b>
+            </Span>
+            <pre>
+              {`
+cocoapods.org
+package dependency manager
+
+Interface for ruby gems is a command line tool called gem which can install & manage libraries
+
+Cocoapods manages library dependencies for xcode projects. Dependencies for project are specified in a single text file called a podfile
+required ios version of a dependency can be checked at .podspecfile
+
+following statements will be present at such files:
+ios,'10.0'
+              `}
+            </pre>
+            <Span>pod commands</Span>
+            <Span>
+              pod init <br />
+              pod install
+              <br />
+              pod update
+              <br />
+              sudo arch -86_64x gem install fi
+              <br />
+              arch -86_64x pod install
+              <br />
+              when a line of code which defines a package is removed from
+              podfile , close the xcode , execute pod install and reopen it
+            </Span>
+            <Span>
+              <b>Package Manager Options</b>
+            </Span>
+            <Span>
+              Cocoapods , carthage and swift package manager.
+              <br />
+              as of now very few supports swift package manager
+              <br />
+              file -&lt; swift packages -&lt; add package dependency -&lt;
+              select project -&lt; github url
+              <br />
+              .podspec file -&lt; cocoapods <br />
+              Package.Swift -&lt; SPM
+            </Span>
+            <Span>
+              <b>Firebase Configuration</b>
+            </Span>
+            <Span>
+              add project -&gt;
+              <br />
+              request ios app bundle app id-&gt;
+              <br />
+              download GoogleService-Info.plist configuration file
+              <br />
+              Update AppDelegate.swift
+              <br />
+              pod 'Firebase/Auth'
+              <br />
+              pod 'Firebase/Firestore'
+              <br />
+              pod install
+            </Span>
+            <b>Global Constants</b>
+            <pre>
+              {`
+struct K {
+  static let a = "A"
+  static A {
+    static let b = "B"
+  }
+}  
+  `}
+            </pre>
           </>
         ),
         types: {},
