@@ -82219,6 +82219,19 @@ extension WeatherViewController: CLLocationManagerDelegate {
               select the left most icon of one screen at storyboard and drag it
               to other screen present in the same file.
             </Span>
+            <Span>
+              <b>Rebuild the app</b>
+            </Span>
+            <Span>
+              <b>cmd + B</b>
+            </Span>
+            <Span>
+              <b>Triggered segue and navigation controller</b>
+            </Span>
+            <Span>
+              select left most icon of the screen and pick embed in navigation
+              controller option.
+            </Span>
           </>
         ),
         types: {},
