@@ -82212,7 +82212,13 @@ extension WeatherViewController: CLLocationManagerDelegate {
 }
 `}
             </pre>
-
+            <Span>
+              <b>Linking two files at storyboard file</b>
+            </Span>
+            <Span>
+              select the left most icon of one screen at storyboard and drag it
+              to other screen present in the same file.
+            </Span>
           </>
         ),
         types: {},
