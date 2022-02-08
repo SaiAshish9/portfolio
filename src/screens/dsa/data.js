@@ -81583,8 +81583,23 @@ class ViewController: UIViewController {
     }
     
 }
-              `}
+             
+             `}
             </pre>
+            <Span>
+              <b>Swift Fundamentsals:</b>
+            </Span>
+            <Span>let x = ["a" : 3, "b": 4]</Span>
+            <Span>
+              if a =3 {"{}"} else {"{}"}
+            </Span>
+            <Span>
+              switch a {"{ case '3' : print(5) case '4' : print(9) }"}
+            </Span>
+            <Span>case 3 to 5</Span>
+            <Span>
+              <b>Ranges:</b>
+            </Span>
           </>
         ),
         types: {},
