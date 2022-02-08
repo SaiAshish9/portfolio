@@ -81446,6 +81446,11 @@ override func viewDidLoad(){
               together in xocde workspace to build the project.
             </Span>
             <Span>
+              Xcode =&gt; Preferneces =&gt; Location Name =&gt; Install Command
+              Line Tools
+            </Span>
+            <Span>Xcode =&gt; Prefernces =&gt; Components</Span>
+            <Span>
               {`
 sudo gem install cocoapods
 sudo arch -x86_64 gem install fi
@@ -81453,7 +81458,8 @@ arch -x86_64 pod insatll
               `}
             </Span>
             <Span>
-              At React Native. we can install dependencies using following commands:
+              At React Native. we can install dependencies using following
+              commands:
             </Span>
             <pre>
               {`
