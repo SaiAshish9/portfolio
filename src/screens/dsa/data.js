@@ -81446,7 +81446,7 @@ override func viewDidLoad(){
               together in xocde workspace to build the project.
             </Span>
             <Span>
-              Xcode =&gt; Preferneces =&gt; Location Name =&gt; Install Command
+              Xcode =&gt; Preferences =&gt; Location Name =&gt; Install Command Line Tools
               Line Tools
             </Span>
             <Span>Xcode =&gt; Prefernces =&gt; Components</Span>
