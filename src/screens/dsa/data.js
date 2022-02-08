@@ -83040,8 +83040,9 @@ func searchBar(_ searchBar:UISearchBar,textDidChange searchText:String){
     searchBar.reassignFirstResponder()
   }
 }
+
             `}</pre>
-            <Span>Packages</Span>
+            <p>Packages</p>
             <pre>
               {`
 PropertyListEncoder
@@ -83052,8 +83053,47 @@ NSPersistentContainer
 NSFetchRequest
 NSPredicate
 Item()
+
   `}
             </pre>
+            <p>Advanced Swift Operations:</p>
+            <pre>
+              {`
+
+var b:Int {
+  get { a - 4 }
+  set { print(newValue) }
+}            
+
+              `}
+            </pre>
+            <pre>
+              {`
+              
+var a:Int = 10 {
+  willSet {
+    print(newValue) 
+  }
+  didSet {
+    print(newValue) 
+  }
+}                     
+
+              `}
+            </pre>
+            <pre>{`
+            
+            if let a = b {
+              if c == true {
+                  
+              }
+              x = y
+            }
+            
+            `}</pre>
+            <Span>
+              <b>Swift Access Levels</b>
+            </Span>
           </>
         ),
         types: {},
