@@ -82367,7 +82367,8 @@ TableViewCell xib file -> interactions -> disable
               <br />
               viewDidDisappear()
             </pre>
-            <Span>App Life Cycle Methods</Span>
+            <br/>
+            <Span><b>App Life Cycle Methods</b></Span>
             <pre>
               Upto ios 12 , all life cycle methods used to be at
               AppDelegate.swift but as of ios13 , especially ipadOS there may be
