@@ -82335,6 +82335,14 @@ struct K {
 }  
   `}
             </pre>
+            <b>UITableView</b>
+            <pre>
+              {`
+func tableView(.... numOfRowsInSelection
+func tableView(.... cellForRowAtIndexPath
+func tableView(.... didSelectRowAtIndexPath
+              `}
+            </pre>
           </>
         ),
         types: {},
