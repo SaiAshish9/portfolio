@@ -81600,6 +81600,12 @@ class ViewController: UIViewController {
               switch a {"{ case '3' : print(5) case '4' : print(9) }"}
             </Span>
             <Span>case 3 to 5</Span>
+            <Span>for a in 1...5 {"{}"}</Span>
+            <Span>
+              Creating a new file <br />
+              File -&lt; New -&lt; Playground -&lt; ios -&lt; blank <br />
+              play -&lt; automatically save
+            </Span>
             <Span>
               <b>Ranges:</b>
             </Span>
@@ -81863,6 +81869,53 @@ struct C:canFly{}
                 String Interpolation <br />
                 print("ans:\(9+0)")
               </Span>
+              <Span>
+              Delegate design pattern
+
+              </Span>
+              <pre>
+                {`
+protocol AdvancedLifeSupport(){
+   func performCPR()
+}
+
+class EmergencyCallHandler{
+  var delegate:AdvancedLifeSupport?
+  func assessSituation(){printf("Can you tell me what happened?")}
+  func medicalEmergency(){ delegate?.performCPR() }  
+}
+
+struct Paramedic:AdvancedLifeSupport{
+
+init(handler: EmergencyCallHandler){
+   handler.delegate = self
+}
+
+func performCPR(){
+  print("T")
+}
+}
+let emilio = EmergencyCallback()
+let p = Paramedic(handler : emilio)
+emilio.assessSituation()
+
+class Doctor: AdvancedLifeSupport{
+   init(handler: EmergencyCallHandler){
+     handler.delegate = self
+   }
+   func performCPR(){
+     print("")
+   }
+}
+class Surgeon:Doctor {
+   override performCPR(){
+     super.performCPR()
+     print("")
+   }
+}
+}
+                `}
+              </pre>
             </Span>
           </>
         ),
