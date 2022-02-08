@@ -82666,13 +82666,38 @@ class WelcomeViewController: UIViewController {
               <br />
               UIKit apps can be built in a few different ways:
               <br />
-              Leveraging Interface Builder in order to design a UI without
+              1. Leveraging Interface Builder in order to design a UI without
               writing any code. Interface Builder is integrated into Xcode and
               allows for editing of .storyboard and .xib files, both of which
               describe layouts using XML.
-              <br />A code focused approach where views and layout constraints
-              are defined in Swift (or Objective-C).
-              <br />A mix of the above two approache
+              <br />
+              2. A code focused approach where views and layout constraints are
+              defined in Swift (or Objective-C).
+              <br />
+              3. A mix of the above two approaches
+            </Span>
+            <Span>
+              <b>SwiftUI</b>
+            </Span>
+            <Span>
+              SwiftUI is Apple’s new declarative programming framework used to
+              develop apps for iOS and Mac using Swift. The declarative approach
+              is the key differentiator when comparing SwiftUI to UIKit. In
+              UIKit you mediate the relationship between events and changes to
+              presentation. With SwiftUI the need to mediate that relationship
+              disappears since that is handled by the framework itself.
+            </Span>
+            <Span>
+              As far as building apps with SwiftUI, things are a bit more
+              streamlined when compared to UIKit:
+              <br />
+              1. Xcode displays the visual editor alongside any file that contains
+              a SwiftUI view, displaying a live representation of the view you
+              are building. You can still interactively design on the canvas,
+              just like in Interface Builder.
+              <br />
+              2. .storyboard and .xib files are not used in SwiftUI. The Swift code
+              itself describes the layout rather than these opaque XML files.
             </Span>
           </>
         ),
