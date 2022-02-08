@@ -83094,17 +83094,30 @@ var a:Int = 10 {
             <Span>
               <b>Swift Access Levels</b>
             </Span>
+            <Span>1. private</Span>
+            <Span>2. filepointer</Span>
+            <Span>3. internal</Span>
+            <Span>4. public</Span>
+            <Span>Swift Optionals</Span>
+            <Span>Guard</Span>
             <Span>
-              1. private
+              guard let number = Double(x.txt) else {"{ fatalError('')}"}
+            </Span>
+            <Span>Struct live on stack whereas classes live on heap.</Span>
+            <Span>tuples</Span>
+            <Span>
+              x: ("a",3) <br />
+              x: (a:"a",b:3) <br />
+              print("\(x.a)\(x.b)")
             </Span>
             <Span>
-              2. filepointer
+              if let n! = x?.n1, let 0 = y1?.n2 {"{ print('\\(n1) \\(n2)') }"}
             </Span>
             <Span>
-              3. internal
-            </Span>
-            <Span>
-              4. public
+              TestFlight makes it easy to invite users to test your apps and App
+              Clips and collect valuable feedback before releasing your apps on
+              the App Store. You can invite up to 10,000 testers using just
+              their email address or by sharing a public link.
             </Span>
           </>
         ),
