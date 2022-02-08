@@ -81869,10 +81869,7 @@ struct C:canFly{}
                 String Interpolation <br />
                 print("ans:\(9+0)")
               </Span>
-              <Span>
-              Delegate design pattern
-
-              </Span>
+              <Span>Delegate design pattern</Span>
               <pre>
                 {`
 protocol AdvancedLifeSupport(){
@@ -81917,6 +81914,11 @@ class Surgeon:Doctor {
                 `}
               </pre>
             </Span>
+            <Span>
+              EmergencyCallHandler doesn't care about what delegate is
+              associated with . It can be class , struct or subclass.
+            </Span>
+            <Span>UTF-8 is the standardized protocol to encode text</Span>
           </>
         ),
         types: {},
