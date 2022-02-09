@@ -284,6 +284,9 @@ import Leetcode701 from "assets/leetcode/701.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
+import WebRTCImg2 from "assets/webrtc2.png";
+import WebRTCImg3 from "assets/webrtc3.png";
+import WebRTCImg4 from "assets/webrtc4.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -83618,7 +83621,7 @@ func main() {
               media metadata, a process known as signaling. However, once
               signaling has taken place, video/audio/data is streamed directly
               between clients, avoiding the performance cost of streaming via an
-              intermediary server.
+              intermediary server. They're built on top of http.
               <br />
               WebSocket on the other hand is designed for bi-directional
               communication between client and server. It is possible to stream
@@ -83670,8 +83673,14 @@ func main() {
               describing itslef and the remote description describing the other
               end of the call
             </Span>
-            <Span>NAT, STUN & TURN Servers, ICE Candidates</Span>
+
+            <Span>
+              NAT, STUN ( Session Traversal Utilities for NAT(N/W Address Translation) ) & TURN Servers,
+              ICE ( Interactive Connective Establishment ) Candidates
+            </Span>
+            <Img left src={WebRTCImg3} />
             <Span>System Design</Span>
+            <Img left src={WebRTCImg4} large/>
           </>
         ),
         types: {},
