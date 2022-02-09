@@ -83487,13 +83487,115 @@ var a:Int = 10 {
               page, select appropriate arm based verison for m1 mac.
             </Span>
             <Span>After installatin, setup can be deleted</Span>
-            <Span>
-              Go to /usr/local/go
-            </Span>
+            <Span>Go to /usr/local/go</Span>
             <Span>Execute following command:</Span>
             <Span>export GOROOT=/usr/local/go</Span>
-            <Span>export GOPATH=$HOME/Desktop/folders/projects/go-workspace</Span>
+            <Span>
+              export GOPATH=$HOME/Desktop/folders/projects/go-workspace
+            </Span>
             <Span>export PATH=$GOPATH/bin:$GOROOT/bin:$PATH</Span>
+            <Span>
+              Go is very useful for multi-threading. It has lot of features that
+              are very simple.
+            </Span>
+            <Span>
+              <b>Goroutines</b>
+            </Span>
+            <Span>
+              They are light weight threads of execution managed by the go
+              runtime.
+            </Span>
+            <Span>They are just functions that can be run concurrently</Span>
+            <Span>
+              It's simple to start goroutine . That's it's used widely for
+              backend app that needs concurrency.
+            </Span>
+            <pre>
+              {`package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func spinner(delay time.Duration) {
+	for {
+		for _, x := range \`-\|/\` {
+			fmt.Printf("\r%c", x)
+			time.Sleep(delay)
+		}
+	}
+}
+
+func waitAndPrint(delay time.Duration) {
+	fmt.Println("Working")
+	time.Sleep(delay)
+	fmt.Println("Fn")
+}
+
+func main() {
+	go spinner(100 * time.Millisecond)
+	waitAndPrint(10 * time.Second)
+}`}
+            </pre>
+            <Span>
+              <b>Channels</b>
+            </Span>
+            <Span>
+              Imagine we have lot of go routines, Channels are used to
+              communicate between various goroutines. Each channel is a condult
+              for values of a particular type called the channel element type.
+            </Span>
+            <pre>{`
+            package main
+
+            import (
+              "fmt"
+              "time"
+            )
+            
+            func other(c chan string) {
+              time.Sleep(5 * time.Second)
+              c <- " i am a goroutine"
+            }
+            
+            func main() {
+              done := make(chan string)
+              defer close(done)
+              go other(done)
+              // wait for data to come
+              data := <-done
+              fmt.Println(data)
+            }            
+            `}</pre>
+            <Span>Mutex</Span>
+            <Span>
+              A Mutex is a method used as a locking mechanism to ensure that
+              only one Goroutine is accessing the critical section of code at
+              any point of time. This is done to prevent race conditions from
+              happening. Sync package contains the Mutex
+            </Span>
+            <Span>
+              WebRTC
+            </Span>
+            <Span>
+              https://webrtc.org
+            </Span>
+            <Span>
+
+            </Span>
+            <Span>
+              WebRTC Connection Cycle
+            </Span>
+            <Span>
+              SDP and Signalling using WebSockets
+            </Span>
+            <Span>
+              NAT, STUN & TURN Servers, ICE Candidates
+            </Span>
+            <Span>
+              System Design
+            </Span>
           </>
         ),
         types: {},
