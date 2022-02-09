@@ -83597,7 +83597,7 @@ func main() {
               world's most popular encoding scheme ) and UNIX OS contributed
               towards creation of go. Youtube is about all re-written in go.
               2009 =&gt; open sourced and first version was released at 2012. Go
-              is really popular in China beacuse its large population.
+              is really popular in China because its large population.
             </Span>
 
             <Span>
