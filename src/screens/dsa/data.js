@@ -83615,16 +83615,15 @@ func main() {
               with Go. Youtube is about all re-written in go
             </Span>
 
+            <Span>Commands :</Span>
+            <Span>go mod init _____</Span>
+            <Span>go build ___.go</Span>
+            <Span>go run ___.go</Span>
+            <Span>go build github.com/saiashish9/..... ./_____</Span>
             <Span>
-              Commands :
+              <b>Variables:</b>
             </Span>
-            <Span>
-              go build ___.go
-            </Span>
-            <Span>
-              go run ___.go
-            </Span>
-
+            <Span></Span>
 
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
