@@ -83575,27 +83575,22 @@ func main() {
               any point of time. This is done to prevent race conditions from
               happening. Sync package contains the Mutex
             </Span>
+            <Span>WebRTC</Span>
+            <Span>https://webrtc.org</Span>
             <Span>
-              WebRTC
+              An open framework for a wen that enables Real Time Communication
+              in the browser.
             </Span>
             <Span>
-              https://webrtc.org
+              WebRTC ( Web Real Time Communication ) is a technology which
+              enables web applications and sites to capture and optionaaly
+              stream audio/ or video as well as to exchange arbitrary data b/w
+              browsers w/o requiring an intermediary.
             </Span>
-            <Span>
-
-            </Span>
-            <Span>
-              WebRTC Connection Cycle
-            </Span>
-            <Span>
-              SDP and Signalling using WebSockets
-            </Span>
-            <Span>
-              NAT, STUN & TURN Servers, ICE Candidates
-            </Span>
-            <Span>
-              System Design
-            </Span>
+            <Span>WebRTC Connection Cycle</Span>
+            <Span>SDP and Signalling using WebSockets</Span>
+            <Span>NAT, STUN & TURN Servers, ICE Candidates</Span>
+            <Span>System Design</Span>
           </>
         ),
         types: {},
