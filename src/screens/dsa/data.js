@@ -83694,8 +83694,7 @@ func main() {
               export GOROOT=/usr/local/go <br />
               export GOPATH=$HOME/Desktop/folders/projects/go-workspace
               <br />
-              xport PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-              <br />
+              export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
             </Span>
             <Span>
               5. Afterwards go to golang workspace (i.e.,
