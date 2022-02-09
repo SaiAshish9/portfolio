@@ -83583,7 +83583,8 @@ func main() {
               WebRTC ( Web Real Time Communication ) is a technology which
               enables web applications and sites to capture and optionaaly
               stream audio/ or video as well as to exchange arbitrary data b/w
-              browsers w/o requiring an intermediary. We need js for webrtc at any browser.
+              browsers w/o requiring an intermediary. We need js for webrtc at
+              any browser.
             </Span>
             <Span>
               It makes use of peer to peer n/w to communicate and share this
@@ -83592,6 +83593,10 @@ func main() {
             </Span>
             <Span>WebRTC Connection Cycle</Span>
             <Img left src={WebRTCImg} />
+            <Span>
+              We can establish connection between two devices via a intermediate
+              called as signalling server.
+            </Span>
             <Span>SDP and Signalling using WebSockets</Span>
             <Span>NAT, STUN & TURN Servers, ICE Candidates</Span>
             <Span>System Design</Span>
