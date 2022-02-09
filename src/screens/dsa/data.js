@@ -83658,6 +83658,18 @@ func main() {
               The configuration of endpoint on a webRTC cction is called a
               session description.It is expressed using the SDp
             </Span>
+            <Span>
+              The description includes information about the kind of media being
+              sent, its format, the transfer protocol being used the enpoint's
+              IP address and port and other information needed to describe a
+              media transfer enpoint
+            </Span>
+            <Span>Offers and ansers are special descriptions.</Span>
+            <Span>
+              Each peers keeps two descriptions on hand, the local descripton,
+              describing itslef and the remote description describing the other
+              end of the call
+            </Span>
             <Span>NAT, STUN & TURN Servers, ICE Candidates</Span>
             <Span>System Design</Span>
           </>
