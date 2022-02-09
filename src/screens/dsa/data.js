@@ -83573,13 +83573,37 @@ func main() {
   fmt.Println(data)
 }            
             `}</pre>
-            <Span>Mutex</Span>
+            <Span>
+              <b>Mutex</b>
+            </Span>
             <Span>
               A Mutex is a method used as a locking mechanism to ensure that
               only one Goroutine is accessing the critical section of code at
               any point of time. This is done to prevent race conditions from
               happening. Sync package contains the Mutex
             </Span>
+
+            <Span>
+              In 2006, Intel released the first dual core processor. In 2007,
+              Google started creating the go programming language. They wanted
+              to advantage of multiple cores. Hence, Go is the first viable
+              language which was wriiten to take advantage of multiple cores.
+              It's statically typed, garbage compiled, to run on distributed
+              environments across multiple machines and easily take advantage of
+              that.It's built time is super fast. Google wanted fast build, fast
+              efficient compilation, efficient execution and easy programming
+              such as python but it has advantage of compiled time ans static
+              type checking. People who helped in creating c, UTF-8 ( world's
+              most popular encoding scheme ) and UNIX OS contributed towards
+              creation of go. Youtube is about all re-written in go. 2009 =&gt;
+              open sourced and first version was released at 2012
+            </Span>
+
+            <Span>
+              Go was built to do what google does. Google is rewriting Google
+              with Go. Youtube is about all re-written in go
+            </Span>
+
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
             <Span>
