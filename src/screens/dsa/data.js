@@ -287,6 +287,9 @@ import WebRTCImg1 from "assets/webrtc1.png";
 import WebRTCImg2 from "assets/webrtc2.png";
 import WebRTCImg3 from "assets/webrtc3.png";
 import WebRTCImg4 from "assets/webrtc4.png";
+import WebRTCImg5 from "assets/webrtc5.png";
+import WebRTCImg6 from "assets/webrtc6.png";
+import GoImg from "assets/go.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -83675,12 +83678,16 @@ func main() {
             </Span>
 
             <Span>
-              NAT, STUN ( Session Traversal Utilities for NAT(N/W Address Translation) ) & TURN Servers,
-              ICE ( Interactive Connective Establishment ) Candidates
+              NAT, STUN ( Session Traversal Utilities for NAT(N/W Address
+              Translation) ) & TURN Servers, ICE ( Interactive Connective
+              Establishment ) Candidates
             </Span>
             <Img left src={WebRTCImg3} />
             <Span>System Design</Span>
-            <Img left src={WebRTCImg4} large/>
+            <Img left src={WebRTCImg4} large />
+            <Img left src={GoImg} large />
+            <Img left src={WebRTCImg5} large />
+            <Img left src={WebRTCImg6} large />
           </>
         ),
         types: {},
