@@ -83607,6 +83607,25 @@ func main() {
               data. Earlier there was a central point to communicate and share
               this data.
             </Span>
+            <Span>
+              WebSockets are meant to enable bidirectional communication between
+              a browser and a web server and WebRTC is meant to offer real time
+              communication between browsers (predominantly voice and video
+              communications).
+            </Span>
+            <Span>
+              WebRTC apps need a service via which they can exchange network and
+              media metadata, a process known as signaling. However, once
+              signaling has taken place, video/audio/data is streamed directly
+              between clients, avoiding the performance cost of streaming via an
+              intermediary server.
+              <br />
+              WebSocket on the other hand is designed for bi-directional
+              communication between client and server. It is possible to stream
+              audio and video over WebSocket (see here for example), but the
+              technology and APIs are not inherently designed for efficient,
+              robust streaming in the way that WebRTC is.
+            </Span>
             <Span>WebRTC Connection Cycle</Span>
             <Img left src={WebRTCImg} large />
             <Img left src={WebRTCImg1} />
@@ -83618,7 +83637,27 @@ func main() {
               We can establish connection between two devices via a intermediate
               called as signalling server.
             </Span>
-            <Span>SDP and Signalling using WebSockets</Span>
+            <Span>SDP and Signalling</Span>
+            <Span>
+              The process of signalling can be done w/o any medium. Heck we can
+              even tweet the offer
+            </Span>
+            <Span>
+              But in serious terms, we usually use a websocket server beacuse of
+              its duplex communication capabilities.
+            </Span>
+            <Span>
+              We can use regular HTTP, but we'll have to use long polling
+            </Span>
+            <Span>
+              github.com/gorilla/websocket can use used to establish connection
+              in ho
+            </Span>
+            <Span>Session Description Protocol</Span>
+            <Span>
+              The configuration of endpoint on a webRTC cction is called a
+              session description.It is expressed using the SDp
+            </Span>
             <Span>NAT, STUN & TURN Servers, ICE Candidates</Span>
             <Span>System Design</Span>
           </>
