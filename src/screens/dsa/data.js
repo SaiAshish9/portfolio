@@ -83667,8 +83667,25 @@ fmt.Println(a, a[:2])
               <b>Map</b>
             </Span>
             <pre>{`
-            m := map[string]int{ "a" : 5 }
+m := map[string]int{ "a" : 5, "b" : 7}
             `}</pre>
+            <Span>
+              <b>Struct</b>
+            </Span>
+            <pre>
+              {`
+type ht int
+
+type person struct {
+
+}         
+
+func main(){
+
+
+}
+         `}
+            </pre>
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
             <Span>
