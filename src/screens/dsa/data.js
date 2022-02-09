@@ -83592,11 +83592,12 @@ func main() {
               environments across multiple machines and easily take advantage of
               that.It's built time is super fast. Google wanted fast build, fast
               efficient compilation, efficient execution and easy programming
-              such as python but it has advantage of compiled time, GC ans static
-              type checking. People who helped in creating c, UTF-8 ( world's
-              most popular encoding scheme ) and UNIX OS contributed towards
-              creation of go. Youtube is about all re-written in go. 2009 =&gt;
-              open sourced and first version was released at 2012
+              such as python but it has advantage of compiled time, GC ans
+              static type checking. People who helped in creating c, UTF-8 (
+              world's most popular encoding scheme ) and UNIX OS contributed
+              towards creation of go. Youtube is about all re-written in go.
+              2009 =&gt; open sourced and first version was released at 2012. Go
+              is really popular in China beacuse of large population.
             </Span>
 
             <Span>
