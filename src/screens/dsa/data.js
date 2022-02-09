@@ -83615,6 +83615,17 @@ func main() {
               with Go. Youtube is about all re-written in go
             </Span>
 
+            <Span>
+              Commands :
+            </Span>
+            <Span>
+              go build ___.go
+            </Span>
+            <Span>
+              go run ___.go
+            </Span>
+
+
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
             <Span>
@@ -83719,6 +83730,7 @@ func main() {
             </Span>
             <Img left src={WebRTCImg3} />
             <Span>System Design</Span>
+            <Img left src={WebRTCImg2} />
             <Span>
               <b>Configuration Steps:</b>
             </Span>
@@ -83755,7 +83767,6 @@ func main() {
               11. Copy and paste the link in a new tab. We'll be able to
               establish video chat
             </Span>
-            <Img left src={WebRTCImg2} />
             <Img left src={WebRTCImg4} large />
             <Img left src={GoImg} large />
             <Img left src={WebRTCImg5} large />
