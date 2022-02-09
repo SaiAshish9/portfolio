@@ -83684,6 +83684,43 @@ func main() {
             </Span>
             <Img left src={WebRTCImg3} />
             <Span>System Design</Span>
+            <Span>
+              <b>Configuration Steps:</b>
+            </Span>
+            <Span>1. Go to golang.org</Span>
+            <Span>2. Download arm based version for m1 mac</Span>
+            <Span>3. Execute following statements:</Span>
+            <Span>
+              export GOROOT=/usr/local/go <br />
+              export GOPATH=$HOME/Desktop/folders/projects/go-workspace
+              <br />
+              xport PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+              <br />
+            </Span>
+            <Span>
+              5. Afterwards go to golang workspace (i.e.,
+              $HOME/Desktop/folders/projects/go-workspace)
+            </Span>
+            <Span>6. Execute Following Commands:</Span>
+            <Span>
+              mkdir video-chat <br /> cd video-chat <br /> go mod init
+              video-chat-app
+            </Span>
+            <Span>
+              7. Place server directory and main.go except client directory
+            </Span>
+            <Span>
+              8. Then , excute go build main.go and then go run main.go
+            </Span>
+            <Span>
+              9. execute yarn create react-app client at root level. Make use of
+              existing files and execute yarn start.
+            </Span>
+            <Span>10. Open localhost:3000 and click at the button</Span>
+            <Span>
+              11. Copy and paste the link in a new tab. We'll be able to
+              establish video chat
+            </Span>
             <Img left src={WebRTCImg4} large />
             <Img left src={GoImg} large />
             <Img left src={WebRTCImg5} large />
