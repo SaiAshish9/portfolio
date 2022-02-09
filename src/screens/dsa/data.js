@@ -83664,9 +83664,11 @@ a := []int{1, 2, 3}
 fmt.Println(a, a[:2])
             `}</pre>
             <Span>
-              <b>Slice</b>
+              <b>Map</b>
             </Span>
-            <pre>{``}</pre>
+            <pre>{`
+            m := map[string]int{ "a" : 5 }
+            `}</pre>
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
             <Span>
