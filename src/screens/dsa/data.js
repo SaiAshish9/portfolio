@@ -83605,6 +83605,12 @@ func main() {
             </Span>
 
             <Span>
+              People such as Rob Pike ( UTF-8 ), Ken Thompson ( Unix OS, He
+              re-wrote the Unix kernel in C ), and Robert Griesemer ( V8 JS
+              Engine ) led the project.
+            </Span>
+
+            <Span>
               Go was built to do what google does. Google is rewriting Google
               with Go. Youtube is about all re-written in go
             </Span>
@@ -83749,6 +83755,7 @@ func main() {
               11. Copy and paste the link in a new tab. We'll be able to
               establish video chat
             </Span>
+            <Img left src={WebRTCImg2} />
             <Img left src={WebRTCImg4} large />
             <Img left src={GoImg} large />
             <Img left src={WebRTCImg5} large />
