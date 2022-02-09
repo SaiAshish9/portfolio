@@ -283,6 +283,7 @@ import Leetcode700 from "assets/leetcode/700.png";
 import Leetcode701 from "assets/leetcode/701.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
+import WebRTCImg1 from "assets/webrtc1.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -83579,6 +83580,21 @@ func main() {
               An open framework for a wen that enables Real Time Communication
               in the browser.
             </Span>
+            <Span>Web Sockets</Span>
+            <Span>
+              The WebSocket API is an advanced technology that makes it possible
+              to open a two-way interactive communication session between the
+              user's browser and a server. With this API, you can send messages
+              to a server and receive event-driven responses without having to
+              poll the server for a reply.
+            </Span>
+            <Span>
+              Unlike HTTP, where you have to constantly request updates, with
+              websockets, updates are sent immediately when they are available.
+              WebSockets keeps a single, persistent connection open while
+              eliminating latency problems that arise with HTTP
+              request/response-based methods.
+            </Span>
             <Span>
               WebRTC ( Web Real Time Communication ) is a technology which
               enables web applications and sites to capture and optionaaly
@@ -83592,7 +83608,12 @@ func main() {
               this data.
             </Span>
             <Span>WebRTC Connection Cycle</Span>
-            <Img left src={WebRTCImg} />
+            <Img left src={WebRTCImg} large />
+            <Img left src={WebRTCImg1} />
+            <Span>
+              Local description is used to describe itself, remote description
+              is used to describe the device on other end of the connection.
+            </Span>
             <Span>
               We can establish connection between two devices via a intermediate
               called as signalling server.
