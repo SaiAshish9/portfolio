@@ -282,6 +282,7 @@ import Leetcode699 from "assets/leetcode/699.png";
 import Leetcode700 from "assets/leetcode/700.png";
 import Leetcode701 from "assets/leetcode/701.png";
 import NotesImg from "assets/notes.png";
+import WebRTCImg from "assets/webrtc-go.png";
 import Comp from "./comp";
 
 export const DATA = {
@@ -83547,26 +83548,23 @@ func main() {
               for values of a particular type called the channel element type.
             </Span>
             <pre>{`
-            package main
-
-            import (
-              "fmt"
-              "time"
-            )
-            
-            func other(c chan string) {
-              time.Sleep(5 * time.Second)
-              c <- " i am a goroutine"
-            }
-            
-            func main() {
-              done := make(chan string)
-              defer close(done)
-              go other(done)
-              // wait for data to come
-              data := <-done
-              fmt.Println(data)
-            }            
+package main
+import (
+  "fmt"
+  "time"
+)
+func other(c chan string) {
+  time.Sleep(5 * time.Second)
+  c <- " i am a goroutine"
+}
+func main() {
+  done := make(chan string)
+  defer close(done)
+  go other(done)
+  // wait for data to come
+  data := <-done
+  fmt.Println(data)
+}            
             `}</pre>
             <Span>Mutex</Span>
             <Span>
@@ -83585,7 +83583,7 @@ func main() {
               WebRTC ( Web Real Time Communication ) is a technology which
               enables web applications and sites to capture and optionaaly
               stream audio/ or video as well as to exchange arbitrary data b/w
-              browsers w/o requiring an intermediary.
+              browsers w/o requiring an intermediary. We need js for webrtc at any browser.
             </Span>
             <Span>
               It makes use of peer to peer n/w to communicate and share this
@@ -83593,6 +83591,7 @@ func main() {
               this data.
             </Span>
             <Span>WebRTC Connection Cycle</Span>
+            <Img left src={WebRTCImg} />
             <Span>SDP and Signalling using WebSockets</Span>
             <Span>NAT, STUN & TURN Servers, ICE Candidates</Span>
             <Span>System Design</Span>
