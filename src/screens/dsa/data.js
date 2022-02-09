@@ -83587,6 +83587,11 @@ func main() {
               stream audio/ or video as well as to exchange arbitrary data b/w
               browsers w/o requiring an intermediary.
             </Span>
+            <Span>
+              It makes use of peer to peer n/w to communicate and share this
+              data. Earlier there was a central point to communicate and share
+              this data.
+            </Span>
             <Span>WebRTC Connection Cycle</Span>
             <Span>SDP and Signalling using WebSockets</Span>
             <Span>NAT, STUN & TURN Servers, ICE Candidates</Span>
