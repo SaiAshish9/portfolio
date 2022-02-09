@@ -83640,10 +83640,15 @@ func main(){
               {`
 package main
 
+import "fmt"
+
 var x = 10
+
+var y int
 
 func main(){
   fmt.Println(x)
+  fmt.Println(y) // 0
 }
               `}
             </pre>
