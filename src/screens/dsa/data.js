@@ -83655,6 +83655,18 @@ func main(){
             <Span>
               <b>Composite Literal</b>
             </Span>
+            <Span>
+              <b>Slice</b>
+            </Span>
+            <p>It is a datastructure used to hold a list of things.</p>
+            <pre>{`
+a := []int{1, 2, 3}
+fmt.Println(a, a[:2])
+            `}</pre>
+            <Span>
+              <b>Slice</b>
+            </Span>
+            <pre>{``}</pre>
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
             <Span>
