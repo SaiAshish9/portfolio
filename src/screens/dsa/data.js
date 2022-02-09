@@ -83623,8 +83623,30 @@ func main() {
             <Span>
               <b>Variables:</b>
             </Span>
-            <Span></Span>
+            <Span>Short Variable Declarator Operator:</Span>
+            <Span>x:= 7 fmt.Println(x)</Span>
+            <Span>fmt.Printf("%T",x)</Span>
+            <Span>Block Level Scope</Span>
+            <pre>
+              {`
+func main(){
+  x := 10
+  fmt.Println(x)
+}              
+              `}
+            </pre>
+            <Span>Package Level Scope</Span>
+            <pre>
+              {`
+package main
 
+var x = 10
+
+func main(){
+  fmt.Println(x)
+}
+              `}
+            </pre>
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
             <Span>
