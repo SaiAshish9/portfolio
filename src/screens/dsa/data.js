@@ -83675,16 +83675,15 @@ m := map[string]int{ "a" : 5, "b" : 7}
             <pre>
               {`
 type ht int
-
 type person struct {
   fn string
   ln string
 }         
-
 func main(){
 var t ht
 t = 7
 }
+p := person{"a","b"}
          `}
             </pre>
             <Span>WebRTC</Span>
