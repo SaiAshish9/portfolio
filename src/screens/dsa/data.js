@@ -85116,6 +85116,61 @@ func applyProcess(conn net.Conn) {
             `}</pre>
             <Span>The Dial function connects to a server:</Span>
             <Span>The Listen function creates servers:</Span>
+            <pre>{`
+package main
+import (
+	"html/template"
+	"log"
+	"net/http"
+	"net/url"
+)
+type hotdog int
+func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
+	err := req.ParseForm()
+	if err != nil {
+		log.Fatalln(err)
+	}
+	data := struct {
+		Method        string
+		URL           *url.URL
+		Submissions   map[string][]string
+		Header        http.Header
+		Host          string
+		ContentLength int64
+	}{
+		req.Method,
+		req.URL,
+		req.Form,
+		req.Header,
+		req.Host,
+		req.ContentLength,
+	}
+	tpl.ExecuteTemplate(w, "index.gohtml", data)
+}
+var tpl *template.Template
+func init() {
+	tpl = template.Must(template.ParseFiles("index.gohtml"))
+}
+func main() {
+	var d hotdog
+	http.ListenAndServe(":8080", d)
+}
+package main
+import (
+	"fmt"
+	"net/http"
+)
+type hotdog int
+func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
+	w.Header().Set("Mcleod-Key", "this is from mcleod")
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	fmt.Fprintln(w, "<h1>Any code you want in this func</h1>")
+}
+func main() {
+	var d hotdog
+	http.ListenAndServe(":8080", d)
+}            
+            `}</pre>
             <Span>
               <b>WebRTC</b>
             </Span>
