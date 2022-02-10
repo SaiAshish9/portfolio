@@ -83582,7 +83582,6 @@ func main() {
               any point of time. This is done to prevent race conditions from
               happening. Sync package contains the Mutex
             </Span>
-
             <Span>
               In 2006, Intel released the first dual core processor. In 2007,
               Google started creating the go programming language. They wanted
@@ -83599,22 +83598,18 @@ func main() {
               2009 =&gt; open sourced and first version was released at 2012. Go
               is really popular in China because of its large population.
             </Span>
-
             <Span>
               Server Side : Go &gt; Node.js &gt; Python &gt; Ruby &gt; PHP
             </Span>
-
             <Span>
               People such as Rob Pike ( UTF-8 ), Ken Thompson ( Unix OS, He
               re-wrote the Unix kernel in C ), and Robert Griesemer ( V8 JS
               Engine ) led the project.
             </Span>
-
             <Span>
               Go was built to do what google does. Google is rewriting Google
               with Go. Youtube is about all re-written in go
             </Span>
-
             <Span>Commands :</Span>
             <Span>go mod init _____</Span>
             <Span>go build ___.go</Span>
@@ -84209,7 +84204,6 @@ goroutine : 2
 done  
   `}
             </pre>
-
             <Span>Example 2</Span>
             <pre>{`
 package main
@@ -85554,7 +85548,6 @@ func foo(w http.ResponseWriter, req *http.Request) {
 }              
               `}
             </pre>
-
             <Span>Enctype (type="text/plain")</Span>
             <pre>{`
 	http.HandleFunc("/", foo)
@@ -85570,6 +85563,37 @@ func foo(w http.ResponseWriter, req *http.Request) {
   }            
             `}</pre>
             <Span>Enctype (type="application/x-www-form-urlencoded")</Span>
+            <pre>
+              {`
+<form method="POST" enctype="application/x-www-form-urlencoded">
+<label for="firstName">First Name</label>
+<input type="text" id="firstName" name="first">
+<br>
+<label for="lastName">Last Name</label>
+<input type="text" id="lastName" name="last">
+<br>
+<label for="sub">Subscribed</label>
+<input type="checkbox" id="sub" name="subscribe">
+<br>
+<input type="submit">
+</form>
+func main() {
+	http.HandleFunc("/", foo)
+	http.Handle("/favicon.ico", http.NotFoundHandler())
+	http.ListenAndServe(":8080", nil)
+}
+func foo(w http.ResponseWriter, req *http.Request) {
+	bs := make([]byte, req.ContentLength)
+	req.Body.Read(bs)
+	body := string(bs)
+	err := tpl.ExecuteTemplate(w, "index.gohtml", body)
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		log.Fatalln(err)
+	}
+}
+`}
+            </pre>
             <Span>Enctype (type="multipart/form-data")</Span>
             <pre>{`
 <form method="POST" enctype="multipart/form-data">
@@ -85584,12 +85608,70 @@ func foo(w http.ResponseWriter, req *http.Request) {
 <br>
 <input type="submit">
 </form>
-bs := make([]byte, req.ContentLength)
-req.Body.Read(bs)
-body := string(bs)
-err := tpl.ExecuteTemplate(w, "index.gohtml", body)
-if err != nil {
+func main() {
+	http.HandleFunc("/", foo)
+	http.Handle("/favicon.ico", http.NotFoundHandler())
+	http.ListenAndServe(":8080", nil)
+}
+func foo(w http.ResponseWriter, req *http.Request) {
+	bs := make([]byte, req.ContentLength)
+	req.Body.Read(bs)
+	body := string(bs)
+	err := tpl.ExecuteTemplate(w, "index.gohtml", body)
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		log.Fatalln(err)
+	}
+}
 `}</pre>
+            <Span>
+              <b>Redirect</b>
+            </Span>
+            <pre>{`
+	http.Redirect(w, req, "/", http.StatusSeeOther)
+	http.Redirect(w, req, "/", http.StatusTemporaryRedirect)
+	http.Redirect(w, req, "/", http.StatusMovedPermanently)
+  // --------
+  <form method="POST" action="/bar">
+    <input type="text" name="fname" title="fname">
+    <input type="submit">
+  </form>
+	w.Header().Set("Location", "/")
+	w.WriteHeader(http.StatusSeeOther)
+`}</pre>
+            <Span>
+              <b>Cookies</b>
+            </Span>{" "}
+            <pre>{`
+package main
+import (
+	"fmt"
+	"net/http"
+)
+func main() {
+	http.HandleFunc("/", set)
+	http.HandleFunc("/read", read)
+	http.Handle("/favicon.ico", http.NotFoundHandler())
+	http.ListenAndServe(":8080", nil)
+}
+func set(w http.ResponseWriter, req *http.Request) {
+	http.SetCookie(w, &http.Cookie{
+		Name:  "my-cookie",
+		Value: "some value",
+		Path: "/",
+	})
+	fmt.Fprintln(w, "COOKIE WRITTEN - CHECK YOUR BROWSER")
+	fmt.Fprintln(w, "in chrome go to: dev tools / application / cookies")
+}
+func read(w http.ResponseWriter, req *http.Request) {
+	c, err := req.Cookie("my-cookie")
+	if err != nil {
+		http.Error(w, http.StatusText(400), http.StatusBadRequest)
+		return
+	}
+	fmt.Fprintln(w, "YOUR COOKIE:", c)
+}
+            `}</pre>
             <Span>
               <b>WebRTC</b>
             </Span>
@@ -85688,7 +85770,6 @@ if err != nil {
               describing itslef and the remote description describing the other
               end of the call
             </Span>
-
             <Span>
               NAT, STUN ( Session Traversal Utilities for NAT(N/W Address
               Translation) ) & TURN Servers, ICE ( Interactive Connective
