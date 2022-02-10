@@ -84371,7 +84371,8 @@ func main() {
 	defer fmt.Println("world")
 	fmt.Println("hello")
 }
-
+hello
+world
 `}
             </pre>
             <Span>Mutexes</Span>
