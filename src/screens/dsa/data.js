@@ -83728,6 +83728,239 @@ saySonething(p1)
 saySonething(s1)
 
             `}</pre>
+            <Span>Fundamentals</Span>
+            <pre>{`
+// i:=42 is not valid here
+var i = 42 
+// i => local level access
+// I => global level access
+func main(){
+  var i int = 42
+  var j float32 = 27.6
+  fmt.Printf("%v ,%T", j, j)
+  var q string
+  q = string(i)
+  q = strconv.Itoa(p)
+  // variable blocks
+  var (
+	  i = 32
+  )
+  var (
+    x string = "A"
+    y string = "B"
+  )
+  fmt.Println(x, y)
+  var n bool = true
+  n = 1==1
+  var i int8 = 6
+  // 6 == 6 false
+  // int(6) == 6 true
+  // int8 +128 - 127
+  // int16 -32768 - 32767
+  // int32 int64
+  // var n uint16 = 42
+  // uint32 uint64 X
+  // uint8 -> byte common
+  var i complex64 = 1 + 2i
+  i = complex(5, 6)
+  fmt.Println(i)
+  fmt.Println(real(i), imag(i))
+  s := "abcd"
+  println("abcd"[2], s[2])
+  // s[2] = "j" is not valid
+  // & | ^ &^ xnor << >>
+  rune '' int32
+  r := 'a'
+  fmt.Println(r)
+  var r rune = 'i'
+  fmt.Println(r)
+  const myConst int = 42
+  const c float32 = math.Sin(1.57) X
+  const (
+    a = iota
+    b = iota
+    c = iota
+  )
+  const (
+    a2 = iota
+    b2
+  )
+  var c2 int = a2
+  fmt.Println(a2 == c2)
+  const (
+    _ = 5
+    a
+    b
+    c
+  )
+  // 5 5 5
+  println(a, b, c)
+  const (
+    _ = iota + 5
+    a
+    b
+    c
+  )
+  println(a, b, c)
+  // 6 7 8
+  const (
+    _  = iota
+    KB = 1 << (10 * iota)
+    MB
+    GB
+    TB
+    PB
+    EB
+    ZB
+    YB
+  )
+  fileSize := 4000000000.00
+  fmt.Printf("%.2fGB", fileSize/GB)
+  const (
+    a = 1 << iota
+    b
+    c
+    e
+  )
+  1 2 4 16
+  var d byte = a | b | c
+  println(d)
+  fmt.Printf("%b\\n", d)
+  fmt.Printf("%v\\n", a&d == a)
+  fmt.Printf("%v\\n", a&e == a)
+  _ = iota // write only value
+  grades := [3]int{97, 85}
+  g := [...]int{1, 2}
+  var students [3]string
+  fmt.Println(students)
+  students[0], students[1] = "a", "b"
+  fmt.Println(students, len(students))
+  fmt.Printf("%v \\n%v \\n", grades, g)
+  var a [3][3]int = [3][3]int{
+  	[3]int{1, 0, 1},
+  	[3]int{0, 0, 1},
+  	[3]int{1, 0, 0}}
+  fmt.Println(a)
+  a := [...]int{1, 2, 3}
+  b := a
+  c := &a
+  c[1] = 5
+  b[1] = 5
+  fmt.Println(a, b, c)
+  // slice
+  a := []int{1, 2, 3}
+  fmt.Println(a, a[:2])
+  a := make([]int, 3, 1000)
+  fmt.Println(len(a), cap(a))
+  a = append(a, 1, 2)
+  b := []int{}
+  b = append(b, []int{2, 3, 4}...)
+  fmt.Println(b)
+  fmt.Println(a)
+  a := []int{1, 2, 3, 4, 5}
+  fmt.Println(a)
+  b := a[:len(a)]
+  fmt.Println(b)
+  }            
+            `}</pre>
+            <Span>Constructs</Span>
+            <pre>{`
+for i := 0; i < 10; i++ {
+	if i%2 == 0 {
+		continue
+	}
+	fmt.Println(i)
+}
+s := []int{1, 2, 3}
+fmt.Println(s)
+for k, v := range s {
+	fmt.Println(k, v)
+}
+x := map[string]int{
+	"a": 1,
+}
+for _, p := range x {
+	fmt.Println(p)
+}
+for j := 7; j <= 9; j++ {
+	fmt.Println(j)
+}
+for {
+	fmt.Println("loop")
+	break
+}           
+s := []int{1, 2, 3}
+fmt.Println(s)
+for k, v := range s {
+  fmt.Println(k, v)
+}   
+for i, j := 0; i < 5; i, j = i+1, j+1 {
+  fmt.Println(i, j)
+}
+for i := 0; i < 10; i++ {
+  if i%2 == 0 {
+    continue
+  }
+  fmt.Println(i)
+}
+s := map[string]int{
+  "a": 1,
+  "b": 2,
+}
+if c, d := s["a"]; d {
+  fmt.Println(c)
+}
+myNum := 0.123
+if math.Abs(myNum/math.Pow(math.Sqrt(myNum), 2)-1) < 0.001 {
+  fmt.Println("same")
+} else if 0 == 0 {
+  fmt.Println("diff")
+}
+switch i := 2 + 3; i {
+case 1, 2:
+  fmt.Println("one")
+case 3:
+  fmt.Println("two")
+default:
+  fmt.Println("neither one nor two")
+}
+i := 2
+switch {
+case i <= 10:
+  fmt.Println("<=0")
+  fallthrough
+case i >= 20:
+  fmt.Println(">=0")
+}
+var i interface{} = 1
+i = 2.2
+i = true
+switch i.(type) {
+case int:
+  fmt.Println("i is an int")
+case string:
+  fmt.Println("string")
+case bool:
+  fmt.Println("bool")
+case float32:
+  fmt.Println("float32")
+  fmt.Println(i)
+}
+for i := 0; i < 5; i += 2 {
+  fmt.Println(i)
+}
+// i++ X
+// i=0 , j=0 X
+for i, j := 0; i < 5; i, j = i+1, j+1 {
+  fmt.Println(i, j)
+}
+for i := 0; i < 10; i++ {
+  if i%2 == 0 {
+    continue
+  }
+  fmt.Println(i)
+}
+            `}</pre>
             <Span>That's composition in go</Span>
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
