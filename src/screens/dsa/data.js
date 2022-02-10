@@ -85363,6 +85363,25 @@ func dogPic(w http.ResponseWriter, req *http.Request) {
 // serveFile serveContent 
             `}</pre>
             <Span>
+              <b>Not Found Handler:</b>
+            </Span>
+            <Span>{`
+package main
+import (
+	"fmt"
+	"net/http"
+)
+func main() {
+	http.HandleFunc("/", foo)
+	http.Handle("/favicon.ico", http.NotFoundHandler())
+	http.ListenAndServe(":8080", nil)
+}
+func foo(w http.ResponseWriter, req *http.Request) {
+	fmt.Println(req.URL.Path)
+	fmt.Fprintln(w, "go look at your terminal")
+}            
+            `}</Span>
+            <Span>
               <b>WebRTC</b>
             </Span>
             <Span>https://webrtc.org</Span>
