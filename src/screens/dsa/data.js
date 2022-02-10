@@ -84280,7 +84280,100 @@ func sayHello() {
 `}
             </pre>
             <Span>WaitGroups</Span>
-            <Span></Span>
+            <Span>
+              To wait for multiple goroutines to finish, we can use a wait
+              group.Sleep to simulate an expensive task. This WaitGroup is used
+              to wait for all the goroutines launched here to finish. Note: if a
+              WaitGroup is explicitly passed into functions, it should be done
+              by pointer.This WaitGroup is used to wait for all the goroutines
+              launched here to finish. Note: if a WaitGroup is explicitly passed
+              into functions, it should be done by pointer.
+              <br />
+              Wrap the worker call in a closure that makes sure to tell the
+              WaitGroup that this worker is done. This way the worker itself
+              does not have to be aware of the concurrency primitives involved
+              in its execution.
+            </Span>
+            <pre>
+              {`
+package main
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+func worker(id int) {
+	fmt.Printf("Worker %d starting\\n", id)
+	time.Sleep(time.Second)
+	fmt.Printf("Worker %d done\\n", id)
+}
+func main() {
+	var wg sync.WaitGroup
+	for i := 1; i <= 5; i++ {
+		wg.Add(1)
+		i := i
+		go func() {
+			defer wg.Done()
+			worker(i)
+		}()
+	}
+	// Block until the WaitGroup counter goes back to 0;
+	// all the workers notified they're done.
+	wg.Wait()
+}
+o/p
+Worker 4 starting
+Worker 1 starting
+Worker 5 starting
+Worker 3 starting
+Worker 2 starting
+Worker 2 done
+Worker 5 done
+Worker 4 done
+Worker 3 done
+Worker 1 done 
+
+// w/o defer
+Worker 5 starting
+Worker 2 starting
+Worker 1 starting
+Worker 4 starting
+Worker 3 starting
+              `}
+            </pre>
+            <Span>Defer</Span>
+            <Span>
+              A defer statement defers the execution of a function until the
+              surrounding function returns. The deferred call's arguments are
+              evaluated immediately, but the function call is not executed until
+              the surrounding function returns.
+            </Span>
+            <pre>
+              {`
+package main
+import "fmt"
+func main() {
+  fmt.Println("1")
+  defer fmt.Println("2")
+  fmt.Println("3")
+  defer fmt.Println("5")
+  // defer takes the value at the time defer is called
+  a := "5"
+  defer fmt.Println(a)
+  a = "6"
+}              
+// LIFO Stack
+// Example 2:
+
+package main
+import "fmt"
+func main() {
+	defer fmt.Println("world")
+	fmt.Println("hello")
+}
+
+`}
+            </pre>
             <Span>Mutexes</Span>
             <Span></Span>
             <Span>Channel</Span>
@@ -84288,8 +84381,6 @@ func sayHello() {
             <Span>Closure</Span>
             <Span></Span>
             <Span>Panic</Span>
-            <Span></Span>
-            <Span>Defer</Span>
             <Span></Span>
             <Span>Recover</Span>
             <Span></Span>
