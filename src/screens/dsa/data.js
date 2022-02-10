@@ -84637,7 +84637,7 @@ exit status 2
               for HTTP servers.
             </Span>
             <pre>
-{`package main
+              {`package main
 import "fmt"
 func mayPanic() {
     panic("a problem")
@@ -84645,7 +84645,6 @@ func mayPanic() {
 func main() {
     defer func() {
         if r := recover(); r != nil {
-
             fmt.Println("Recovered. Error:\\n", r)
         }
     }()
@@ -84657,7 +84656,12 @@ Recovered. Error:
  a problem
 `}
             </pre>
-            <Span>WebRTC</Span>
+            <Span>
+              <b>Templates:</b>
+            </Span>
+            <Span>
+              <b>WebRTC</b>
+            </Span>
             <Span>https://webrtc.org</Span>
             <Span>
               An open framework for a wen that enables Real Time Communication
