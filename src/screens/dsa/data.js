@@ -84252,6 +84252,17 @@ go run main.go
 2
 2
 3
+w/o mutexes
+0
+2
+3
+4
+4
+5
+6
+7
+8
+10
 `}</pre>
             <pre>
               {`
