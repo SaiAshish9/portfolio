@@ -84050,7 +84050,7 @@ import (
 	"reflect"
 )
 type Animal struct {
-	Name   string \`required max:"100"``
+	Name   string \`required max:"100"\`
 	Origin string
 }
 func main() {
