@@ -85500,6 +85500,96 @@ include-header.gohtml
 {{end}}
               `}
             </Span>
+            <Span>Form File</Span>
+            <pre>
+              {`
+package main
+import (
+	"fmt"
+	"html/template"
+	"io/ioutil"
+	"net/http"
+	"os"
+	"path/filepath"
+)
+var tpl *template.Template
+func init() {
+	tpl = template.Must(template.ParseGlob("templates/*"))
+}
+func main() {
+	http.HandleFunc("/", foo)
+	http.Handle("/favicon.ico", http.NotFoundHandler())
+	http.ListenAndServe(":8080", nil)
+}
+func foo(w http.ResponseWriter, req *http.Request) {
+	var s string
+	if req.Method == http.MethodPost {
+		f, h, err := req.FormFile("q")
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		defer f.Close()
+		fmt.Println("\\nfile:", f, "\\nheader:", h, "\\nerr", err)
+		bs, err := ioutil.ReadAll(f)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		s = string(bs)
+		dst, err := os.Create(filepath.Join("./user/", h.Filename))
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		defer dst.Close()
+		_, err = dst.Write(bs)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+	}
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	tpl.ExecuteTemplate(w, "index.gohtml", s)
+}              
+              `}
+            </pre>
+
+            <Span>Enctype (type="text/plain")</Span>
+            <pre>{`
+	http.HandleFunc("/", foo)
+  func foo(w http.ResponseWriter, req *http.Request) {
+    bs := make([]byte, req.ContentLength)
+    req.Body.Read(bs)
+    body := string(bs)
+    err := tpl.ExecuteTemplate(w, "index.gohtml", body)
+    if err != nil {
+      http.Error(w, err.Error(), 500)
+      log.Fatalln(err)
+    }
+  }            
+            `}</pre>
+            <Span>Enctype (type="application/x-www-form-urlencoded")</Span>
+            <Span>Enctype (type="multipart/form-data")</Span>
+            <pre>{`
+<form method="POST" enctype="multipart/form-data">
+<label for="firstName">First Name</label>
+<input type="text" id="firstName" name="first">
+<br>
+<label for="lastName">Last Name</label>
+<input type="text" id="lastName" name="last">
+<br>
+<label for="sub">Subscribed</label>
+<input type="checkbox" id="sub" name="subscribe">
+<br>
+<input type="submit">
+</form>
+bs := make([]byte, req.ContentLength)
+req.Body.Read(bs)
+body := string(bs)
+err := tpl.ExecuteTemplate(w, "index.gohtml", body)
+if err != nil {
+`}</pre>
             <Span>
               <b>WebRTC</b>
             </Span>
