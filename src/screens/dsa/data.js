@@ -84319,10 +84319,10 @@ func worker(id int) {
 func main() {
 	var wg sync.WaitGroup
 	for i := 1; i <= 5; i++ {
-		wg.Add(1)
+		wg.Add(1) // increases counter by 1 as we've 1 go routine
 		i := i
 		go func() {
-			defer wg.Done()
+			defer wg.Done() // decreases counter by 1
 			worker(i)
 		}()
 	}
