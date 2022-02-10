@@ -83686,6 +83686,48 @@ t = 7
 p := person{"a","b"}
          `}
             </pre>
+            <Span>
+              <b>Functions</b>
+            </Span>
+            <Span>{`func (receiver) identifier(parameters)`}</Span>
+            <pre>{`
+func (p person) speak(){
+  fmt.Println(p.fname,\`"1235"\`)
+}            
+p := person{"a","b"}
+p.speak()
+            `}</pre>
+            <Span>Nested Struct</Span>
+            <pre>
+              {`
+type struct secretAgent {
+  person
+  license bool
+}         
+s1:= secretAgent {
+  person {
+    "a",
+    "b"
+  },
+  true
+}
+s1.person.speak()
+              `}
+            </pre>
+            <Span>Interfaces And Polymorphism</Span>
+            <pre>{`
+type human innterface {
+  speak()
+}       
+
+func saySomething(h human){
+  h.speak()
+}
+
+saySonething(p1)
+saySonething(s1)
+
+            `}</pre>
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
             <Span>
