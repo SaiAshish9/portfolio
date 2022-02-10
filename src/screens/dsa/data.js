@@ -86032,6 +86032,434 @@ func bar(w http.ResponseWriter, req *http.Request) {
 }
 `}
             </pre>
+            <Span>HTTPS</Span>
+            <pre>{`
+package main
+import (
+	"crypto/tls"
+	"fmt"
+	"log"
+	"net/http"
+	"rsc.io/letsencrypt"
+)
+func main() {
+	http.HandleFunc("/", foo)
+	var m letsencrypt.Manager
+	if err := m.CacheFile("letsencrypt.cache"); err != nil {
+		log.Fatalln(err)
+	}
+	go http.ListenAndServe(":8080", http.HandlerFunc(letsencrypt.RedirectHTTP))
+	srv := &http.Server{
+		Addr: ":10443",
+		TLSConfig: &tls.Config{
+			GetCertificate: m.GetCertificate,
+		},
+	}
+	log.Fatalln(srv.ListenAndServeTLS("", ""))
+}
+func foo(res http.ResponseWriter, req *http.Request) {
+	fmt.Fprintln(res, "Hello TLS")
+}
+`}</pre>
+            <Span>JSON</Span>
+            <pre>
+              {`
+import (
+	"encoding/json"
+	"log"
+	"net/http"
+)
+type person struct {
+	Fname string
+	Lname string
+	Items []string
+}
+w.Header().Set("Content-Type", "application/json")
+p1 := person{
+  Fname: "James",
+  Lname: "Bond",
+  Items: []string{"Suit", "Gun", "Wry sense of humor"},
+}
+j, err := json.Marshal(p1)
+if err != nil {
+  log.Println(err)
+}
+w.Write(j)
+w.Header().Set("Content-Type", "application/json")
+p1 := person{
+  Fname: "James",
+  Lname: "Bond",
+  Items: []string{"Suit", "Gun", "Wry sense of humor"},
+}
+err := json.NewEncoder(w).Encode(p1)
+if err != nil {
+  log.Println(err)
+}
+
+package main
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+)
+type thumbnail struct {
+	URL           string
+	Height, Width int
+}
+type img struct {
+	Width, Height int
+	Title         string
+	Thumbnail     thumbnail
+	Animated      bool
+	IDs           []int
+}
+func main() {
+	var data img
+	rcvd := \`{"Width":800,"Height":600,"Title":"View from 15th Floor","Thumbnail":{"Url":"http://www.example.com/image/481989943","Height":125,"Width":100},"Animated":false,"IDs":[116,943,234,38793]}\`
+	err := json.Unmarshal([]byte(rcvd), &data)
+	if err != nil {
+		log.Fatalln("error unmarshalling", err)
+	}
+	fmt.Println(data)
+	for i, v := range data.IDs {
+		fmt.Println(i, v)
+	}
+	fmt.Println(data.Thumbnail.URL)
+}
+
+package main
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+)
+type city struct {
+	Bali       string  \`json:"Postal"\`
+	Kauai      float64 \`json:"Latitude"\`
+	Maui       float64 \`json:"Longitude"\`
+	Java       string  \`json:"Address"\`
+	NewZealand string  \`json:"City"\`
+	Skye       string  \`json:"State"\`
+	Oahu       string  \`json:"Zip"\`
+	Hawaii     string  \`json:"Country"\`
+}
+type cities []city
+func main() {
+	var data cities
+	rcvd := \`[{"Postal":"zip","Latitude":37.7668,"Longitude":-122.3959,"Address":"","City":"SAN FRANCISCO","State":"CA","Zip":"94107","Country":"US"},{"Postal":"zip","Latitude":37.371991,"Longitude":-122.02602,"Address":"","City":"SUNNYVALE","State":"CA","Zip":"94085","Country":"US"}]\`
+	err := json.Unmarshal([]byte(rcvd), &data)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	fmt.Println(data)
+	fmt.Println(data[1].Kauai)
+}
+rcvd := \`"Todd"\`
+rcvd := nil
+err := json.Unmarshal([]byte(rcvd), &data)
+              `}
+            </pre>
+            <Span>MongoDB</Span>
+            <pre>{`
+main.go
+package main
+import (
+	"github.com/julienschmidt/httprouter"
+	"gopkg.in/mgo.v2"
+	"net/http"
+	"github.com/GoesToEleven/golang-web-dev/042_mongodb/05_mongodb/05_update-user-controllers-delete/controllers"
+)
+func main() {
+	r := httprouter.New()
+	uc := controllers.NewUserController(getSession())
+	r.GET("/user/:id", uc.GetUser)
+	r.POST("/user", uc.CreateUser)
+	r.DELETE("/user/:id", uc.DeleteUser)
+	http.ListenAndServe("localhost:8080", r)
+}
+func getSession() *mgo.Session {
+	s, err := mgo.Dial("mongodb://localhost")
+	if err != nil {
+		panic(err)
+	}
+	return s
+}
+models/user.go
+
+package models
+import "gopkg.in/mgo.v2/bson"
+type User struct {
+	Id     bson.ObjectId \`json:"id" bson:"_id"\`
+	Name   string        \`json:"name" bson:"name"\`
+	Gender string        \`json:"gender" bson:"gender"\`
+	Age    int           \`json:"age" bson:"age"\`
+}
+
+controllers/user.go
+
+package controllers
+
+import (
+	"encoding/json"
+	"fmt"
+	"github.com/GoesToEleven/golang-web-dev/042_mongodb/05_mongodb/05_update-user-controllers-delete/models"
+	"github.com/julienschmidt/httprouter"
+	"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
+	"net/http"
+)
+type UserController struct {
+	session *mgo.Session
+}
+func NewUserController(s *mgo.Session) *UserController {
+	return &UserController{s}
+}
+func (uc UserController) GetUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	id := p.ByName("id")
+	if !bson.IsObjectIdHex(id) {
+		w.WriteHeader(http.StatusNotFound) // 404
+		return
+	}
+	oid := bson.ObjectIdHex(id)
+	u := models.User{}
+	if err := uc.session.DB("go-web-dev-db").C("users").FindId(oid).One(&u); err != nil {
+		w.WriteHeader(404)
+		return
+	}
+	uj, err := json.Marshal(u)
+	if err != nil {
+		fmt.Println(err)
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK) // 200
+	fmt.Fprintf(w, "%s\\n", uj)
+}
+func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	u := models.User{}
+	json.NewDecoder(r.Body).Decode(&u)
+	u.Id = bson.NewObjectId()
+	uc.session.DB("go-web-dev-db").C("users").Insert(u)
+	uj, err := json.Marshal(u)
+	if err != nil {
+		fmt.Println(err)
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated) // 201
+	fmt.Fprintf(w, "%s\\n", uj)
+}
+func (uc UserController) DeleteUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	id := p.ByName("id")
+	if !bson.IsObjectIdHex(id) {
+		w.WriteHeader(404)
+		return
+	}
+	oid := bson.ObjectIdHex(id)
+	if err := uc.session.DB("go-web-dev-db").C("users").RemoveId(oid); err != nil {
+		w.WriteHeader(404)
+		return
+	}
+	w.WriteHeader(http.StatusOK) // 200
+	fmt.Fprint(w, "Deleted user", oid, "\\n")
+}
+`}</pre>
+            <Span>
+              <b>Code Organisation</b>
+            </Span>
+            <pre>
+              {`
+package main
+import (
+	"database/sql"
+	"fmt"
+	_ "github.com/lib/pq"
+	"html/template"
+	"net/http"
+	"strconv"
+)
+var db *sql.DB
+var tpl *template.Template
+func init() {
+	var err error
+	db, err = sql.Open("postgres", "postgres://bond:password@localhost/bookstore?sslmode=disable")
+	if err != nil {
+		panic(err)
+	}
+	if err = db.Ping(); err != nil {
+		panic(err)
+	}
+	fmt.Println("You connected to your database.")
+	tpl = template.Must(template.ParseGlob("templates/*.gohtml"))
+}
+type Book struct {
+	Isbn   string
+	Title  string
+	Author string
+	Price  float32
+}
+func main() {
+	http.HandleFunc("/", index)
+	http.HandleFunc("/books", booksIndex)
+	http.HandleFunc("/books/show", booksShow)
+	http.HandleFunc("/books/create", booksCreateForm)
+	http.HandleFunc("/books/create/process", booksCreateProcess)
+	http.HandleFunc("/books/update", booksUpdateForm)
+	http.HandleFunc("/books/update/process", booksUpdateProcess)
+	http.HandleFunc("/books/delete/process", booksDeleteProcess)
+	http.ListenAndServe(":8080", nil)
+}
+func index(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "/books", http.StatusSeeOther)
+}
+func booksIndex(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "GET" {
+		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
+		return
+	}
+	rows, err := db.Query("SELECT * FROM books")
+	if err != nil {
+		http.Error(w, http.StatusText(500), 500)
+		return
+	}
+	defer rows.Close()
+	bks := make([]Book, 0)
+	for rows.Next() {
+		bk := Book{}
+		err := rows.Scan(&bk.Isbn, &bk.Title, &bk.Author, &bk.Price) // order matters
+		if err != nil {
+			http.Error(w, http.StatusText(500), 500)
+			return
+		}
+		bks = append(bks, bk)
+	}
+	if err = rows.Err(); err != nil {
+		http.Error(w, http.StatusText(500), 500)
+		return
+	}
+	tpl.ExecuteTemplate(w, "books.gohtml", bks)
+}
+func booksShow(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "GET" {
+		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
+		return
+	}
+	isbn := r.FormValue("isbn")
+	if isbn == "" {
+		http.Error(w, http.StatusText(400), http.StatusBadRequest)
+		return
+	}
+	row := db.QueryRow("SELECT * FROM books WHERE isbn = $1", isbn)
+	bk := Book{}
+	err := row.Scan(&bk.Isbn, &bk.Title, &bk.Author, &bk.Price)
+	switch {
+	case err == sql.ErrNoRows:
+		http.NotFound(w, r)
+		return
+	case err != nil:
+		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
+		return
+	}
+	tpl.ExecuteTemplate(w, "show.gohtml", bk)
+}
+func booksCreateForm(w http.ResponseWriter, r *http.Request) {
+	tpl.ExecuteTemplate(w, "create.gohtml", nil)
+}
+func booksCreateProcess(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
+		return
+	}
+	bk := Book{}
+	bk.Isbn = r.FormValue("isbn")
+	bk.Title = r.FormValue("title")
+	bk.Author = r.FormValue("author")
+	p := r.FormValue("price")
+	if bk.Isbn == "" || bk.Title == "" || bk.Author == "" || p == "" {
+		http.Error(w, http.StatusText(400), http.StatusBadRequest)
+		return
+	}
+	f64, err := strconv.ParseFloat(p, 32)
+	if err != nil {
+		http.Error(w, http.StatusText(406)+"Please hit back and enter a number for the price", http.StatusNotAcceptable)
+		return
+	}
+	bk.Price = float32(f64)
+	_, err = db.Exec("INSERT INTO books (isbn, title, author, price) VALUES ($1, $2, $3, $4)", bk.Isbn, bk.Title, bk.Author, bk.Price)
+	if err != nil {
+		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
+		return
+	}
+	tpl.ExecuteTemplate(w, "created.gohtml", bk)
+}
+func booksUpdateForm(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "GET" {
+		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
+		return
+	}
+	isbn := r.FormValue("isbn")
+	if isbn == "" {
+		http.Error(w, http.StatusText(400), http.StatusBadRequest)
+		return
+	}
+	row := db.QueryRow("SELECT * FROM books WHERE isbn = $1", isbn)
+	bk := Book{}
+	err := row.Scan(&bk.Isbn, &bk.Title, &bk.Author, &bk.Price)
+	switch {
+	case err == sql.ErrNoRows:
+		http.NotFound(w, r)
+		return
+	case err != nil:
+		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
+		return
+	}
+	tpl.ExecuteTemplate(w, "update.gohtml", bk)
+}
+func booksUpdateProcess(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
+		return
+	}
+	bk := Book{}
+	bk.Isbn = r.FormValue("isbn")
+	bk.Title = r.FormValue("title")
+	bk.Author = r.FormValue("author")
+	p := r.FormValue("price")
+	if bk.Isbn == "" || bk.Title == "" || bk.Author == "" || p == "" {
+		http.Error(w, http.StatusText(400), http.StatusBadRequest)
+		return
+	}
+	f64, err := strconv.ParseFloat(p, 32)
+	if err != nil {
+		http.Error(w, http.StatusText(406)+"Please hit back and enter a number for the price", http.StatusNotAcceptable)
+		return
+	}
+	bk.Price = float32(f64)
+	_, err = db.Exec("UPDATE books SET isbn = $1, title=$2, author=$3, price=$4 WHERE isbn=$1;", bk.Isbn, bk.Title, bk.Author, bk.Price)
+	if err != nil {
+		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
+		return
+	}
+	tpl.ExecuteTemplate(w, "updated.gohtml", bk)
+}
+func booksDeleteProcess(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "GET" {
+		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
+		return
+	}
+	isbn := r.FormValue("isbn")
+	if isbn == "" {
+		http.Error(w, http.StatusText(400), http.StatusBadRequest)
+		return
+	}
+	_, err := db.Exec("DELETE FROM books WHERE isbn=$1;", isbn)
+	if err != nil {
+		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
+		return
+	}
+	http.Redirect(w, r, "/books", http.StatusSeeOther)
+}
+Organise the above code in various sub packages
+  `}
+            </pre>
             <Span>
               <b>WebRTC</b>
             </Span>
