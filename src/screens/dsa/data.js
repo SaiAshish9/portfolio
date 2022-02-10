@@ -84006,7 +84006,9 @@ func sayMsg(msg string) {
 	fmt.Println(msg)
 }            
             `}</pre>
-            <Span><b>Interfaces:</b></Span>
+            <Span>
+              <b>Interfaces:</b>
+            </Span>
             <pre>{`
 package main
 import "fmt"
@@ -84043,6 +84045,59 @@ func (cw ConsoleWriter) Write(data []byte) (int, error) {
 	return n, err
 }            
             `}</pre>
+            <Span>
+              <b>Tags</b>
+            </Span>
+            <pre>{`
+package main
+import (
+	"fmt"
+	"reflect"
+)
+type Animal struct {
+	Name   string \`required max:"100"``
+	Origin string
+}
+func main() {
+	t := reflect.TypeOf(Animal{})
+	field, _ := t.FieldByName("Name")
+	fmt.Println(field.Tag)
+}
+            
+            `}</pre>
+            <Span>
+              <b>Pointers</b>
+            </Span>
+            <pre>{`
+package main
+import "fmt"
+func main() {
+	var a int = 42
+	b := a
+	fmt.Println(a, b)
+	a = 27
+	fmt.Println(a, b)
+	var a int = 42
+	var b *int = &a
+	fmt.Println(a, b, *b)
+	a = 27
+	fmt.Println(a, *b)
+	a := [3]int{1, 2, 3}
+	b := &a[0]
+	c := &a[1] - 4
+	fmt.Println("%v %p %p\\n", a, b, c)
+	var ms *myStruct
+	ms = new(myStruct)
+	ms = myStruct{foo: 42}
+	(*ms).foo = 42
+	// compiling helping us out
+	ms.foo = 42
+	fmt.Println(ms, ms.foo, (*ms).foo)
+}
+type myStruct struct {
+	foo int
+}
+`}</pre>
             <Span>That's composition in go</Span>
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
