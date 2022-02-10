@@ -85407,6 +85407,85 @@ func main(){
 
             `}</pre>
             <Span>
+              <pre>{`
+package main
+import (
+	"fmt"
+	"net/http"
+)
+func main() {
+	http.HandleFunc("/", foo)
+	http.Handle("/favicon.ico", http.NotFoundHandler())
+	http.ListenAndServe(":8080", nil)
+}
+func foo(w http.ResponseWriter, req *http.Request) {
+	v := req.FormValue("q")
+	fmt.Fprintln(w, "Do my search: "+v)
+}              
+              `}</pre>
+            </Span>
+            <Span>
+              {`
+package main
+import (
+	"html/template"
+	"log"
+	"net/http"
+)
+var tpl *template.Template
+func init() {
+	tpl = template.Must(template.ParseGlob("templates/*"))
+}
+type person struct {
+	FirstName  string
+	LastName   string
+	Subscribed bool
+}
+func main() {
+	http.HandleFunc("/", foo)
+	http.Handle("/favicon.ico", http.NotFoundHandler())
+	http.ListenAndServe(":8080", nil)
+}
+func foo(w http.ResponseWriter, req *http.Request) {
+	f := req.FormValue("first")
+	l := req.FormValue("last")
+	s := req.FormValue("subscribe") == "on"
+	err := tpl.ExecuteTemplate(w, "index.gohtml", person{f, l, s})
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		log.Fatalln(err)
+	}
+}
+
+templates/index.gohtml
+
+index.gohtml
+{{template "header"}}
+<form method="POST">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="first">
+    <br>
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="last">
+    <br>
+    <label for="sub">Subscribe</label>
+    <input type="checkbox" id="sub" name="subscribe">
+    <br>
+    <input type="submit">
+</form>
+<br>
+<h1>First: {{.FirstName}}</h1>
+<h1>Last: {{.LastName}}</h1>
+<h1>Subscribed: {{.Subscribed}}</h1>
+{{template "footer"}}
+
+include-footer.gohtml
+
+include-header.gohtml
+
+              `}
+            </Span>
+            <Span>
               <b>WebRTC</b>
             </Span>
             <Span>https://webrtc.org</Span>
