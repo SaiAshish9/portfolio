@@ -84172,8 +84172,43 @@ func main() {
             <Span>
               <b>Routines</b>
             </Span>
-            <pre>{
-`
+            <Span>A goroutine is a lightweight thread of execution used for concurrency.</Span>
+            <Span>Example 1</Span>
+<pre>
+  {`
+package main
+import (
+  "fmt"
+  "time"
+)
+func f(from string) {
+  for i := 0; i < 3; i++ {
+      fmt.Println(from, ":", i)
+  }
+}
+func main() {  
+  f("direct")
+  go f("goroutine")
+  go func(msg string) {
+      fmt.Println(msg)
+  }("going")  
+  time.Sleep(time.Second)
+  fmt.Println("done")
+}
+go run goroutines.go
+direct : 0
+direct : 1
+direct : 2
+goroutine : 0
+going
+goroutine : 1
+goroutine : 2
+done  
+  `}
+</pre>
+
+            <Span>Example 2</Span>
+            <pre>{`
 package main
 import (
 	"fmt"
@@ -84203,8 +84238,7 @@ func increment() {
 	a.Unlock()
 	wg.Done()
 }
-`              
-              }</pre>
+`}</pre>
             <Span>That's composition in go</Span>
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
