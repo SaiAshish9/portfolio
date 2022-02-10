@@ -84238,6 +84238,17 @@ func increment() {
 	a.Unlock()
 	wg.Done()
 }
+go run main.go
+1
+2
+2
+2
+2
+2
+2
+2
+2
+3
 `}</pre>
             <Span>That's composition in go</Span>
             <Span>WebRTC</Span>
