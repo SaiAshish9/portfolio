@@ -84721,6 +84721,132 @@ func main() {
 }              
               `}
             </pre>
+            <Span>Package Text Template ( text/template )</Span>
+            <pre>{`temp.go
+package main
+import (
+	"log"
+	"os"
+	"text/template"
+)
+var tpl *template.Template
+type a1 struct {
+	A string
+	B int
+}
+type b1 struct {
+	C []a1
+}
+func init() {
+	tpl = template.Must(template.ParseGlob("*"))
+	// templates/*.txt
+	// templates/*
+}
+func main() {
+	// every type implements the empty interface
+	err := tpl.Execute(os.Stdout, nil)
+	var data interface{}
+	data = []string{"a", "b", "c"}
+	data = map[string]string{
+		"a": "1"}
+	data = a1{A: "a", B: 1}
+	data = b1{
+		C []{data,data}
+	}
+	_ = data
+	var fm = template.FuncMap(
+		"us": strings.ToUpper,
+		"ft": firstThree
+	)
+	// err = tpl.ExecuteTemplate(os.Stdout, "a.txt", nil)
+	// err = tpl.ExecuteTemplate(os.Stdout, "tpl.gohtml", 42)
+	// err = tpl.ExecuteTemplate(os.Stdout, "tpl1.gohtml", \`test\`)
+	err = tpl.ExecuteTemplate(os.Stdout, "tpl1.gohtml", data)
+	if err != nil {
+		log.Fatalln(err)
+	}
+}
+tp1.gohtml
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+</head>
+<body>
+<h1>The meaning of life: {{.}}</h1>
+</body>
+</html>
+tp2.gohtml
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+</head>
+<body>
+{{ range .C }}
+  {{ .A }} - {{ .B }}
+{{ end }}
+</body>
+</html>
+{{/* {{$t := .}}
+<h1> {{$t}}</h1> */}}
+{{/* {{ range . }}
+   {{ . }}
+{{ end }}*/}}
+{{/* {{ range $index , $e := .  }}
+    {{ $index }} - {{ $e }}
+{{ end }}  */}}
+  {{/* {{ $x := .A }}
+  {{ $x }}
+  {{ .A }} - {{ .B }} */}}
+a.txt
+########
+a
+#######
+a.gohtml
+#########
+abcd
+########
+abc.txt
+b
+`}</pre>
+            <Span>Pipelines in templates</Span>
+            <pre>{`{{ . | fdbl | fsq | fsqrt }}`}</pre>
+            <Span>double , square, square root</Span>
+            <pre>{`
+package main
+import (
+  "log"
+  "os"
+  "text/template"
+)
+var tpl *template.Template
+func init() {
+  tpl = template.Must(template.ParseFiles("tpl.gohtml"))
+}
+func main() {
+  xs := []string{"zero", "one", "two", "three", "four", "five"}
+  err := tpl.Execute(os.Stdout, xs)
+  if err != nil {
+    log.Fatalln(err)
+  }
+}
+{{index . 2}}
+{{index . 0}}
+{{index . 1}}              
+              `}</pre>
+            <Span>Nested Template</Span>
+            <pre>{`
+index.gohtml
+<p>{{template "polarbear"}}</p>
+file 2:
+{{define "polarbear"}}
+Here is my polar bear template
+{{end}}
+              `}</pre>
+            <Span>Refer to https://github.dev/SaiAshish9/go-templates</Span>
             <Span>
               <b>WebRTC</b>
             </Span>
