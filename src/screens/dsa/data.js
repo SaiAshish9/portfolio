@@ -85192,7 +85192,60 @@ func main() {
   var d hotdog
   http.ListenAndServe(":8080", d)
 }            
+// -------------------------
+type hotdog int
+func (d hotdog) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+	io.WriteString(res, "dog dog dog")
+}
+type hotcat int
+func (c hotcat) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+	io.WriteString(res, "cat cat cat")
+}
+func main() {
+	var d hotdog
+	var c hotcat
+	mux := http.NewServeMux()
+	mux.Handle("/dog/", d)
+	mux.Handle("/cat", c)
+	http.ListenAndServe(":8080", mux)
+}
+// -------------------------
+type hotdog int
+func (d hotdog) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+	io.WriteString(res, "dog dog dog")
+}
+type hotcat int
+func (c hotcat) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+	io.WriteString(res, "cat cat cat")
+}
+func main() {
+	var d hotdog
+	var c hotcat
+	http.Handle("/dog", d)
+	http.Handle("/cat", c)
+	http.ListenAndServe(":8080", nil)
+}
+// -------------------------
+package main
+import (
+	"io"
+	"net/http"
+)
+func d(res http.ResponseWriter, req *http.Request) {
+	io.WriteString(res, "dog dog dog")
+}
+func c(res http.ResponseWriter, req *http.Request) {
+	io.WriteString(res, "cat cat cat")
+}
+func main() {
+	http.HandleFunc("/dog", d)
+	http.HandleFunc("/cat", c)
+	http.ListenAndServe(":8080", nil)
+}
             `}</pre>
+            <Span>
+
+            </Span>
             <Span>
               <b>WebRTC</b>
             </Span>
