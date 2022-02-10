@@ -85382,6 +85382,31 @@ func foo(w http.ResponseWriter, req *http.Request) {
 }            
             `}</Span>
             <Span>
+              <b>AppEngine Deploy</b>
+            </Span>
+            <pre>{`
+index.html + .css +.img
+
+app.yaml
+
+runtime: go113
+
+handlers:
+- url: /.*
+  script: auto
+  secure: always
+
+main.go
+
+package main
+import "net/http"
+func main(){
+	http.Handle("/", http.FileServer(http.Dir(".")))
+	http.ListenAndServe(":8080", nil)
+}
+
+            `}</pre>
+            <Span>
               <b>WebRTC</b>
             </Span>
             <Span>https://webrtc.org</Span>
