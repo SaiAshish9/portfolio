@@ -291,6 +291,7 @@ import WebRTCImg5 from "assets/webrtc5.png";
 import WebRTCImg6 from "assets/webrtc6.png";
 import GoImg from "assets/go.png";
 import Comp from "./comp";
+import { CgLoupe } from "react-icons/cg";
 
 export const DATA = {
   ds: {
@@ -86510,6 +86511,132 @@ func admin(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, \`Welcome ADMIN, %s! (<a href="%s">sign out</a>)\`, u, url)
 }
  `}</pre>
+            <Span>Memcache</Span>
+            <pre>{`
+app.yaml
+application: learning-1130
+version: 1
+runtime: go
+api_version: go1
+handlers:
+- url: /.*
+  script: _go_app
+
+main.go
+package main
+import (
+  "fmt"
+  "net/http"
+  "google.golang.org/appengine"
+  "google.golang.org/appengine/memcache"
+  "time"
+) 
+func init() {
+  http.HandleFunc("/", index)
+} 
+func index(w http.ResponseWriter, r *http.Request) {
+  ctx := appengine.NewContext(r)
+  item1 := memcache.Item{
+    Key:        "foo",
+    Value:      []byte("bar"),
+    Expiration: 10 * time.Second,
+  }
+  memcache.Set(ctx, &item1)
+  item, err := memcache.Get(ctx, "foo")
+  if err != nil {
+    http.Error(w, err.Error(), http.StatusInternalServerError)
+    return
+  }
+  fmt.Fprintln(w, string(item.Value))
+} 
+ `}</pre>
+            <Span>
+              <b>Datastore</b>
+            </Span>
+            <pre>{`
+ package evolved
+
+ import (
+   "fmt"
+   "net/http"
+ 
+   "google.golang.org/appengine"
+   "google.golang.org/appengine/datastore"
+ )
+ 
+ func init() {
+   http.HandleFunc("/", index)
+   http.HandleFunc("/tools", showTools)
+ }
+ 
+ type Tool struct {
+   Name        string
+   Description string
+ }
+
+ func index(res http.ResponseWriter, req *http.Request) {
+   if req.URL.Path == "/favicon.ico" {
+     http.NotFound(res, req)
+   }
+   res.Header().Set("Content-Type", "text/html")
+   if req.Method == "POST" {
+     putTool(res, req)
+   }
+   fmt.Fprintln(res, \`
+       <form method="POST" action="/">
+         <h1>Tool</h1>
+         <input type="text" name="name"><br>
+         <h1>Description</h1>
+         <textarea name="descrip"></textarea>
+         <input type="submit">
+       </form>\`)
+ }
+ 
+ func putTool(res http.ResponseWriter, req *http.Request) {
+   name := req.FormValue("name")
+   descrip := req.FormValue("descrip")
+   ctx := appengine.NewContext(req)
+   parentKey := datastore.NewKey(ctx, "House", "Garage", 0, nil)
+   key := datastore.NewKey(ctx, "Tools", name, 0, parentKey)
+   entity := &Tool{
+     Name:        name,
+     Description: descrip,
+   }
+   _, err := datastore.Put(ctx, key, entity)
+   if err != nil {
+     http.Error(res, err.Error(), 500)
+     return
+   }
+ }
+ 
+ func showTools(res http.ResponseWriter, req *http.Request) {
+   html := ""
+   ctx := appengine.NewContext(req)
+   parentKey := datastore.NewKey(ctx, "House", "Garage", 0, nil)
+   q := datastore.NewQuery("Tools").Ancestor(parentKey)
+   iterator := q.Run(ctx)
+   for {
+     var entity Tool
+     _, err := iterator.Next(&entity)
+     if err == datastore.Done {
+       break
+     } else if err != nil {
+       http.Error(res, err.Error(), 500)
+       return
+     }
+     html += \`
+       <dt>\` + entity.Name + \`</dt>
+       <dd>\` + entity.Description + \`</dd>
+     \`
+   }
+   res.Header().Set("Content-Type", "text/html")
+   fmt.Fprintln(res, \`<dl>\`+html+\`</dl>\`)
+ }
+ 
+ `}</pre>
+            <Span>
+              Cloud Storage: https://github.dev/saiashish9/golang-web-dev
+            </Span>
             <Span>
               <b>WebRTC</b>
             </Span>
