@@ -85481,8 +85481,23 @@ index.gohtml
 
 include-footer.gohtml
 
+{{define "header"}}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+{{end}}
+
 include-header.gohtml
 
+{{define "footer"}}
+<h1>copyright McLeod</h1>
+</body>
+</html>
+{{end}}
               `}
             </Span>
             <Span>
