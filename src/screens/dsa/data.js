@@ -85348,6 +85348,8 @@ func dogPic(w http.ResponseWriter, req *http.Request) {
 func main() {
 	http.HandleFunc("/", dog)
 	http.HandleFunc("/toby.jpg", dogPic)
+  http.Handle("/assets/", http.StripPrefix("/assets", http.FileServer(http.Dir("./assets"))))
+	io.WriteString(w, \`<img src="/assets/toby.jpg">\`)
 	http.ListenAndServe(":8080", nil)
 }
 func dog(w http.ResponseWriter, req *http.Request) {
@@ -85356,7 +85358,9 @@ func dog(w http.ResponseWriter, req *http.Request) {
 }
 func dogPic(w http.ResponseWriter, req *http.Request) {
 	http.ServeFile(w, req, "toby.jpg")
+	log.Fatal(http.ListenAndServe(":8080", http.FileServer(http.Dir("."))))
 }
+// serveFile serveContent 
             `}</pre>
             <Span>
               <b>WebRTC</b>
