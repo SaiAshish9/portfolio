@@ -84874,7 +84874,11 @@ func index(res http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		log.Fatalln("template didn't execute: ", err)
 	}
-}                       
+}  
+
+index.gohtml
+{{template "btf"}}
+{{template "footer"}}
             `}</pre>
             <Span>Refer to https://github.dev/SaiAshish9/go-templates</Span>
             <Span>
