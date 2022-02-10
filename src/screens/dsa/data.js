@@ -83728,6 +83728,7 @@ saySonething(p1)
 saySonething(s1)
 
             `}</pre>
+            <Span>That's composition in go</Span>
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
             <Span>
