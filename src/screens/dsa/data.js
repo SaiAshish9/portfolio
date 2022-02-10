@@ -84588,14 +84588,36 @@ O/P:
             <Span>Panic</Span>
             <Span>
               Occurs when program cannot continue at all cannot obtain TCP port
-              for web server if nothing handles panic, program will exit
+              for web server if nothing handles panic, program will exit. A
+              panic typically means something went unexpectedly wrong. Mostly we
+              use it to fail fast on errors that shouldn’t occur during normal
+              operation, or that we aren’t prepared to handle gracefully.
             </Span>
             <pre>
               {`
+// Example 1
 err := http.ListenAndServe(":8000",nill)
 if err != nill {
 panic(err.Error())
 }
+// Example 2
+package main
+import "os"
+func main() {
+    panic("a problem")
+    _, err := os.Create("/tmp/file")
+    if err != nil {
+        panic(err)
+    }
+}
+// O/P
+go run panic.go
+panic: a problem
+goroutine 1 [running]:
+main.main()
+    /.../panic.go:12 +0x47
+...
+exit status 2
               `}
             </pre>
             <Span>Recover</Span>
@@ -84604,8 +84626,37 @@ panic(err.Error())
               Current function will not attempt to continue , but higher
               functions in call stack will
             </Span>
+            <Span>
+              Go makes it possible to recover from a panic, by using the recover
+              built-in function. A recover can stop a panic from aborting the
+              program and let it continue with execution instead. An example of
+              where this can be useful: a server wouldn’t want to crash if one
+              of the client connections exhibits a critical error. Instead, the
+              server would want to close that connection and continue serving
+              other clients. In fact, this is what Go’s net/http does by default
+              for HTTP servers.
+            </Span>
+            <pre>
+{`package main
+import "fmt"
+func mayPanic() {
+    panic("a problem")
+}
+func main() {
+    defer func() {
+        if r := recover(); r != nil {
 
-            <Span>That's composition in go</Span>
+            fmt.Println("Recovered. Error:\\n", r)
+        }
+    }()
+    mayPanic()
+    fmt.Println("After mayPanic()")
+}
+O/P:
+Recovered. Error:
+ a problem
+`}
+            </pre>
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
             <Span>
