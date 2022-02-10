@@ -84098,6 +84098,9 @@ type myStruct struct {
 	foo int
 }
 `}</pre>
+            <Span>
+              <b>Structs</b>
+            </Span>
             <Span>That's composition in go</Span>
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
