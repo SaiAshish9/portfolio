@@ -84468,7 +84468,16 @@ worker 3 finished job 4
 worker 1 finished job 5            
             `}</pre>
             <Span>Mutexes</Span>
-            <Span></Span>
+            <Span>
+              In computer science, mutual exclusion is a property of concurrency
+              control, which is instituted for the purpose of preventing race
+              conditions. It is the requirement that one thread of execution
+              never enters a critical section while a concurrent thread of
+              execution is already accessing critical section, which refers to
+              an interval of time during which a thread of execution accesses a
+              shared resource, such as [Shared data objects, shared resources,
+              shared memory].
+            </Span>
             <Span>Closure</Span>
             <Span></Span>
             <Span>Panic</Span>
