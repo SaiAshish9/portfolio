@@ -85116,6 +85116,7 @@ func applyProcess(conn net.Conn) {
             `}</pre>
             <Span>The Dial function connects to a server:</Span>
             <Span>The Listen function creates servers:</Span>
+            <Span>Net Http</Span>
             <pre>{`
 package main
 import (
@@ -85170,6 +85171,10 @@ func main() {
 	var d hotdog
 	http.ListenAndServe(":8080", d)
 }            
+            `}</pre>
+            <Span>Net Http ServerMux</Span>
+            <pre>{`
+            
             `}</pre>
             <Span>
               <b>WebRTC</b>
