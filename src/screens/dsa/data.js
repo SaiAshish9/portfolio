@@ -84355,7 +84355,10 @@ Worker 3 starting
               A defer statement defers the execution of a function until the
               surrounding function returns. The deferred call's arguments are
               evaluated immediately, but the function call is not executed until
-              the surrounding function returns.
+              the surrounding function returns. Defer is used to delay execution
+              of a statement until function exits and is useful to group "open"
+              and "close" functions together Arguments evaluated at time defer
+              is executed, not at time of called function execution
             </Span>
             <pre>
               {`
@@ -84384,16 +84387,110 @@ hello
 world
 `}
             </pre>
-            <Span>Mutexes</Span>
-            <Span></Span>
             <Span>Channel</Span>
+            <Span>
+              Channels are the pipes that connect concurrent goroutines. You can
+              send values into channels from one goroutine and receive those
+              values into another goroutine.
+            </Span>
+            <pre>{`
+package main
+import "fmt"
+func main() {
+  // Create a new channel with \`make(chan val-type)\`.
+  messages := make(chan string)
+  go func() { messages <- "ping" }()
+  msg := <-messages
+  fmt.Println(msg, messages)
+}
+            `}</pre>
+            <Span>Worker Pools</Span>
+            <Span>
+              Here’s the worker, of which we’ll run several concurrent
+              instances. These workers will receive work on the jobs channel and
+              send the corresponding results on results. We’ll sleep a second
+              per job to simulate an expensive taskHere’s the worker, of which
+              we’ll run several concurrent instances. These workers will receive
+              work on the jobs channel and send the corresponding results on
+              results. We’ll sleep a second per job to simulate an expensive
+              task.In order to use our pool of workers we need to send them work
+              and collect their results. We make 2 channels for this. Here’s the
+              worker, of which we’ll run several concurrent instances. These
+              workers will receive work on the jobs channel and send the
+              corresponding results on results. We’ll sleep a second per job to
+              simulate an expensive task
+            </Span>
+            <Span>Atomic Counters</Span>
+            <Span>
+              The primary mechanism for managing state in Go is communication
+              over channels.{" "}
+            </Span>
+            <pre>{`
+package main
+import (
+	"fmt"
+	"time"
+)
+func worker(id int, jobs <-chan int, results chan<- int) {
+	for j := range jobs {
+		fmt.Println("worker", id, "started  job", j)
+		time.Sleep(time.Second)
+		fmt.Println("worker", id, "finished job", j)
+		results <- j * 2
+	}
+}
+
+func main() {
+	const numJobs = 5
+	jobs := make(chan int, numJobs)
+	results := make(chan int, numJobs)
+	for w := 1; w <= 3; w++ {
+		go worker(w, jobs, results)
+	}
+	for j := 1; j <= numJobs; j++ {
+		jobs <- j
+	}
+	close(jobs)
+	for a := 1; a <= numJobs; a++ {
+		<-results
+	}
+}
+O/P:
+worker 3 started  job 1
+worker 1 started  job 2
+worker 2 started  job 3
+worker 3 finished job 1
+worker 1 finished job 2
+worker 1 started  job 5
+worker 3 started  job 4
+worker 2 finished job 3
+worker 3 finished job 4
+worker 1 finished job 5            
+            `}</pre>
+            <Span>Mutexes</Span>
             <Span></Span>
             <Span>Closure</Span>
             <Span></Span>
             <Span>Panic</Span>
-            <Span></Span>
+            <Span>
+              Occurs when program cannot continue at all cannot obtain TCP port
+              for web server if nothing handles panic, program will exit
+            </Span>
+            <pre>
+              {`
+err := http.ListenAndServe(":8000",nill)
+if err != nill {
+panic(err.Error())
+}
+              `}
+            </pre>
             <Span>Recover</Span>
-            <Span></Span>
+            <Span>
+              Used to recover from panics Only useful in deferred functions
+              Current function will not attempt to continue , but higher
+              functions in call stack will
+            </Span>
+
             <Span>That's composition in go</Span>
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
