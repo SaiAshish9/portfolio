@@ -84172,10 +84172,13 @@ func main() {
             <Span>
               <b>Routines</b>
             </Span>
-            <Span>A goroutine is a lightweight thread of execution used for concurrency.</Span>
+            <Span>
+              A goroutine is a lightweight thread of execution used for
+              concurrency.
+            </Span>
             <Span>Example 1</Span>
-<pre>
-  {`
+            <pre>
+              {`
 package main
 import (
   "fmt"
@@ -84205,7 +84208,7 @@ goroutine : 1
 goroutine : 2
 done  
   `}
-</pre>
+            </pre>
 
             <Span>Example 2</Span>
             <pre>{`
@@ -84250,8 +84253,8 @@ go run main.go
 2
 3
 `}</pre>
-<pre>
-{`
+            <pre>
+              {`
 package main
 import (
 	"fmt"
@@ -84275,8 +84278,21 @@ func sayHello() {
 	fmt.Println("hello")
 }  
 `}
-</pre>
-
+            </pre>
+            <Span>WaitGroups</Span>
+            <Span></Span>
+            <Span>Mutexes</Span>
+            <Span></Span>
+            <Span>Channel</Span>
+            <Span></Span>
+            <Span>Closure</Span>
+            <Span></Span>
+            <Span>Panic</Span>
+            <Span></Span>
+            <Span>Defer</Span>
+            <Span></Span>
+            <Span>Recover</Span>
+            <Span></Span>
             <Span>That's composition in go</Span>
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
