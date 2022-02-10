@@ -84505,12 +84505,14 @@ ops: 50000
               shared memory].
             </Span>
             <Span>
-              Container holds a map of counters; since we want to update it
-              concurrently from multiple goroutines, we add a Mutex to
-              synchronize access. Note that mutexes must not be copied, so if
-              this struct is passed around, it should be done by pointer.Lock
-              the mutex before accessing counters; unlock it at the end of the
-              function using a defer statement.
+              {" "}
+              For more complex state we can use a mutex to safely access data
+              across multiple goroutines. Container holds a map of counters;
+              since we want to update it concurrently from multiple goroutines,
+              we add a Mutex to synchronize access. Note that mutexes must not
+              be copied, so if this struct is passed around, it should be done
+              by pointer.Lock the mutex before accessing counters; unlock it at
+              the end of the function using a defer statement.
             </Span>
             <pre>
               {`
@@ -84552,9 +84554,37 @@ func main() {
             </pre>
             <Span>Closure</Span>
             <Span>
-              For more complex state we can use a mutex to safely access data
-              across multiple goroutines.
+              Go supports anonymous functions, which can form closures.
+              Anonymous functions are useful when you want to define a function
+              inline without having to name it.This function intSeq returns
+              another function, which we define anonymously in the body of
+              intSeq. The returned function closes over the variable i to form a
+              closure.
             </Span>
+            <pre>{`
+package main
+import "fmt"
+func intSeq() func() int {
+	i := 0
+	return func() int {
+		i++
+		return i
+	}
+}
+func main() {
+	nextInt := intSeq()
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
+	newInts := intSeq()
+	fmt.Println(newInts())
+}
+O/P:
+1
+2
+3
+1            
+            `}</pre>
             <Span>Panic</Span>
             <Span>
               Occurs when program cannot continue at all cannot obtain TCP port
