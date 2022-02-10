@@ -85240,6 +85240,8 @@ func c(res http.ResponseWriter, req *http.Request) {
 func main() {
 	http.HandleFunc("/dog", d)
 	http.HandleFunc("/cat", c)
+	// http.Handle("/dog", http.HandlerFunc(d))
+	// http.Handle("/cat", http.HandlerFunc(c))
 	http.ListenAndServe(":8080", nil)
 }
             `}</pre>
