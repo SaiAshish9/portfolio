@@ -84285,9 +84285,7 @@ func sayHello() {
               group.Sleep to simulate an expensive task. This WaitGroup is used
               to wait for all the goroutines launched here to finish. Note: if a
               WaitGroup is explicitly passed into functions, it should be done
-              by pointer.This WaitGroup is used to wait for all the goroutines
-              launched here to finish. Note: if a WaitGroup is explicitly passed
-              into functions, it should be done by pointer.
+              by pointer.
               <br />
               Wrap the worker call in a closure that makes sure to tell the
               WaitGroup that this worker is done. This way the worker itself
