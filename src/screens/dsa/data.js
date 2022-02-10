@@ -83961,6 +83961,88 @@ for i := 0; i < 10; i++ {
   fmt.Println(i)
 }
             `}</pre>
+            <Span>
+              <b>Functions:</b>
+            </Span>
+            <pre>{`
+package main
+import "fmt"
+func main() {
+	sayMsg("Go")
+	greeting := "Hello"
+	name := "Sai"
+	sayGreeting(&greeting, &name)
+	fmt.Println(name)
+	sum(1, 2, 3, 4)
+	g := greeter{
+		"hi", "Go",
+	}
+	g.greet()
+	fmt.Println(g.name)
+}
+type greeter struct {
+	greeting string
+	name     string
+}
+
+func (g *greeter) greet() {
+	fmt.Println(g)
+	g.name = ""
+}
+func sum(values ...int) {
+	fmt.Println(values)
+	result := 0
+	for _, v := range values {
+		result += v
+	}
+	fmt.Println(result)
+}
+func sayGreeting(greeting, name *string) {
+	fmt.Println(*greeting, *name)
+	*name = "Sai9"
+	fmt.Println(*name)
+}
+func sayMsg(msg string) {
+	fmt.Println(msg)
+}            
+            `}</pre>
+            <Span><b>Interfaces:</b></Span>
+            <pre>{`
+package main
+import "fmt"
+func main() {
+	var w Writer = ConsoleWriter{}
+	w.Write([]byte("Hello Go!"))
+	myInt := IntCounter(0)
+	var inc Incrementer = &myInt
+	for i := 0; i < 10; i++ {
+		fmt.Println(inc.Increment())
+	}
+}
+func (ic *IntCounter) Increment() int {
+	*ic++
+	return int(*ic)
+}
+type IntCounter int
+type Incrementer interface {
+	Increment() int
+}
+type Writer interface {
+	Write([]byte) (int, error)
+}
+type Closer interface {
+	Close() error
+}
+type WriterCloser interface {
+	Writer
+	Closer
+}
+type ConsoleWriter struct{}
+func (cw ConsoleWriter) Write(data []byte) (int, error) {
+	n, err := fmt.Println(string(data))
+	return n, err
+}            
+            `}</pre>
             <Span>That's composition in go</Span>
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
