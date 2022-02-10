@@ -84250,6 +84250,33 @@ go run main.go
 2
 3
 `}</pre>
+<pre>
+{`
+package main
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+var wg = sync.WaitGroup{}
+func main() {
+	var msg = "hello"
+	wg.Add(1)
+	go func(msg string) {
+		fmt.Println(msg)
+		wg.Done()
+	}(msg)
+	msg = "Good Bye"
+	wg.Wait()
+	// closure's anonymous fns do have access to outer scope
+	time.Sleep(100 * time.Millisecond)
+}
+func sayHello() {
+	fmt.Println("hello")
+}  
+`}
+</pre>
+
             <Span>That's composition in go</Span>
             <Span>WebRTC</Span>
             <Span>https://webrtc.org</Span>
