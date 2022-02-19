@@ -34,7 +34,7 @@ export const Row = styled.div`
 export const Img = styled.img`
   height: 4rem;
   width: 4rem;
-  @media only screen and (max-width: ${BREAKPOINTS.md}) {
+  @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     height: 2.4rem;
     width: 2.4rem;
   }

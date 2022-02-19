@@ -18,6 +18,10 @@ import DartImg from "assets/home/dart.png";
 import GraphqlImg from "assets/home/graphql.png";
 import RedisImg from "assets/home/redis.png";
 import DockerImg from "assets/home/docker.png";
+import XmlImg from "assets/home/xml.png";
+import ObjCImg from "assets/home/objC.png";
+import CImg from "assets/home/c.png";
+import BashImg from "assets/home/bash.png";
 
 const images = [
   JsImg,
@@ -35,7 +39,11 @@ const images = [
   DartImg,
   GraphqlImg,
   RedisImg,
-  DockerImg
+  DockerImg,
+  XmlImg,
+  ObjCImg,
+  CImg,
+  BashImg,
 ];
 
 const Languages = () => {
@@ -43,34 +51,34 @@ const Languages = () => {
     <>
       <Container data-aos="flip-left">
         <Row>
-          {images.slice(0, 8).map((i, k) => (
+          {images.slice(0, 10).map((i, k) => (
             <Img alt="img" src={i} key={k} />
           ))}
         </Row>
         <Row>
-          {images.slice(8).map((i, k) => (
+          {images.slice(10).map((i, k) => (
             <Img alt="img" src={i} key={k} />
           ))}
         </Row>
       </Container>
       <MContainer>
         <Row>
-          {images.slice(0, 4).map((i, k) => (
+          {images.slice(0, 5).map((i, k) => (
             <Img alt="img" src={i} key={k} />
           ))}
         </Row>
         <Row>
-          {images.slice(4, 8).map((i, k) => (
+          {images.slice(5, 10).map((i, k) => (
             <Img alt="img" src={i} key={k} />
           ))}
         </Row>
         <Row>
-          {images.slice(8, 12).map((i, k) => (
+          {images.slice(10, 15).map((i, k) => (
             <Img alt="img" src={i} key={k} />
           ))}
         </Row>
         <Row>
-          {images.slice(12).map((i, k) => (
+          {images.slice(15).map((i, k) => (
             <Img alt="img" src={i} key={k} />
           ))}
         </Row>
