@@ -81628,8 +81628,9 @@ int main(int argc, const char * argv[]) {
     }
     return 0;
 }`}</pre>
-<Span>
-  {`
+            <Span>
+              <pre>
+                {`
 Categories, Objects , Protocols, Inheriatnce, Anonymous Functions And Garbage Collection
 
 #import <Foundation/Foundation.h>
@@ -81724,7 +81725,8 @@ ship.h
 @end
 https://code.tutsplus.com/tutorials/objective-c-succinctly-categories-and-extensions--mobile-22016  
   `}
-</Span>
+              </pre>
+            </Span>
           </>
         ),
         types: {},
