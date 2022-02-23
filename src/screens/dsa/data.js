@@ -81639,7 +81639,7 @@ int main(int argc, const char * argv[]) {
             <Span>
               Apple Developer Program offers a complete set of technical
               resources, support and access to pre-release software with
-              everything they neee to create innovative apps for IOS and OS X,
+              everything they need to create innovative apps for IOS and OS X,
               extension for Safari and accessories for iPod , iPhone and iPad.
             </Span>
             <Span>IOS Developer Program: $99k/year</Span>
