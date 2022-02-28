@@ -80629,21 +80629,67 @@ a = b + c;
         content: (
           <Comp
             title="Q729. My Calendar I (Q586)"
-            content1={<></>}
+            content1={
+              <>
+                You are implementing a program to use as your calendar. We can
+                add a new event if adding the event will not cause a double
+                booking.
+                <br />
+                A double booking happens when two events have some non-empty
+                intersection (i.e., some moment is common to both events.).
+                <br />
+                The event can be represented as a pair of integers start and end
+                that represents a booking on the half-open interval [start,
+                end), the range of real numbers x such that start &lt;= x &lt;
+                end.
+                <br />
+                Implement the MyCalendar class:
+                <br />
+                MyCalendar() Initializes the calendar object. <br />
+                boolean book(int start, int end) Returns true if the event can
+                be added to the calendar successfully without causing a double
+                booking. Otherwise, return false and do not add the event to the
+                calendar.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input
+                    <br />
+                    ["MyCalendar", "book", "book", "book"]
+                    <br />
+                    [[], [10, 20], [15, 25], [20, 30]]
+                    <br />
+                    Output
+                    <br />
+                    [null, true, false, true]
+                    <br />
+                    Explanation
+                    <br />
+                    MyCalendar myCalendar = new MyCalendar();
+                    <br />
+                    myCalendar.book(10, 20); // return True
+                    <br />
+                    myCalendar.book(15, 25); // return False, It can not be
+                    booked because time 15 is already booked by another event.
+                    <br /> myCalendar.book(20, 30); // return True, The event
+                    can be booked, as the first event takes every time less than
+                    20, but not including 20.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                0 &lt;= start &lt; end &lt;= 10^9
+                <br />
+                At most 1000 calls will be made to book.
+              </>
+            }
+            tc="n.log n"
             sc="n"
             codes={{
               Javascript: {
