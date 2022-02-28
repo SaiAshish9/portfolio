@@ -80556,26 +80556,69 @@ a = b + c;
         title: "Q728. Self Dividing Numbers (Q585)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q728. Self Dividing Numbers (Q585)"
+            content1={
+              <>
+                A self-dividing number is a number that is divisible by every
+                digit it contains.
+                <br />
+                For example, 128 is a self-dividing number because 128 % 1 == 0,
+                128 % 2 == 0, and 128 % 8 == 0.
+                <br />
+                A self-dividing number is not allowed to contain the digit zero.
+                <br />
+                Given two integers left and right, return a list of all the
+                self-dividing numbers in the range [left, right].
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: left = 1, <br /> right = 22 <br />
+                    Output: [1,2,3,4,5,6,7,8,9,11,12,15,22]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: left = 47,
+                    <br /> right = 85
+                    <br />
+                    Output: [48,55,66,77]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={<>1 &lt;= left &lt;= right &lt;= 10^4</>}
+            tc="n.log n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} left
+                * @param {number} right
+                * @return {number[]}
+                */
+               var selfDividingNumbers = function(left, right) {
+                 const res = [];
+                 for (let num = left; num <= right; ++num)
+                   if (dividingNumber(num))
+                     res.push(num);
+                 return res;
+               };
+               
+               function dividingNumber(num) {
+                 for (let n = num; n > 0; n = parseInt(n/10))
+                   if (n % 10 == 0 || num % (n % 10) != 0)
+                     return false;
+                 return true;
+               }
+               
+               console.log(selfDividingNumbers(47,85))`,
+                output: `[ 48, 55, 66, 77 ]`,
               },
             }}
           />
@@ -80585,6 +80628,7 @@ a = b + c;
         title: "Q729. My Calendar I (Q586)",
         content: (
           <Comp
+            title="Q729. My Calendar I (Q586)"
             content1={<></>}
             content2={null}
             examples={[
