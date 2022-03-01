@@ -80931,7 +80931,6 @@ a = b + c;
                   this.ranges = [];
                   this.overlaps = [];
                 };
-                
                 /** 
                  * @param {number} start 
                  * @param {number} end
@@ -80950,7 +80949,6 @@ a = b + c;
                   this.ranges.push([start, end]);
                   return true;
                 };
-                
                 var obj = new MyCalendarTwo()
                 var param_1 = obj.book(1,5)
                 console.log({param_1})`,
