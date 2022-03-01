@@ -282,6 +282,8 @@ import Leetcode699 from "assets/leetcode/699.png";
 import Leetcode700 from "assets/leetcode/700.png";
 import Leetcode701 from "assets/leetcode/701.png";
 import Leetcode733 from "assets/leetcode/q733.png";
+import Leetcode741 from "assets/leetcode/741.png";
+import Leetcode743 from "assets/leetcode/743.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -81688,6 +81690,7 @@ a = b + c;
             content2={null}
             examples={[
               {
+                img: Leetcode741,
                 content: (
                   <>
                     Input: grid = [[0,1,-1],[1,0,-1],[1,1,1]]
@@ -81771,26 +81774,116 @@ a = b + c;
         content: (
           <Comp
             title="Q743. Network Delay Time (Q597)"
-            content1={<></>}
+            content1={
+              <>
+                You are given a network of n nodes, labeled from 1 to n. You are
+                also given times, a list of travel times as directed edges
+                times[i] = (ui, vi, wi), where ui is the source node, vi is the
+                target node, and wi is the time it takes for a signal to travel
+                from source to target.
+                <br />
+                We will send a signal from a given node k. Return the time it
+                takes for all the n nodes to receive the signal. If it is
+                impossible for all the n nodes to receive the signal, return -1.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode743,
+                content: (
+                  <>
+                    Input: times = [[2,1,1],[2,3,1],[3,4,1]], <br /> n = 4, k =
+                    2 <br />
+                    Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: times = [[1,2,1]], <br /> n = 2, k = 1 <br />
+                    Output: 1
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: times = [[1,2,1]], <br />n = 2, k = 2 <br />
+                    Output: -1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                1 &lt;= k &lt;= n &lt;= 100
+                <br />
+                1 &lt;= times.length &lt;= 6000
+                <br />
+                times[i].length == 3<br />
+                1 &lt;= ui, vi &lt;= n<br />
+                ui != vi
+                <br />
+                0 &lt;= wi &lt;= 100
+                <br />
+                All the pairs (ui, vi) are unique. (i.e., no multiple edges.)
+              </>
+            }
+            tc="e + log v"
+            sc="v"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
+                class T {
+                  public int u;
+                  public int d;
+                  public T(int u, int d) {
+                    this.u = u;
+                    this.d = d;
+                  }
+                }
+                
+                class Solution {
+                  public int networkDelayTime(int[][] times, int n, int k) {
+                    List<Pair<Integer, Integer>>[] graph = new List[n];
+                    PriorityQueue<T> minHeap = new PriorityQueue<>((a, b) -> a.d - b.d);
+                    boolean[] seen = new boolean[n];
+                
+                    for (int i = 0; i < n; ++i)
+                      graph[i] = new ArrayList<>();
+                
+                    for (int[] t : times) {
+                      final int u = t[0] - 1;
+                      final int v = t[1] - 1;
+                      final int w = t[2];
+                      graph[u].add(new Pair<>(v, w));
+                    }
+                
+                    minHeap.offer(new T(k - 1, 0));
+                
+                    while (!minHeap.isEmpty()) {
+                      final int u = minHeap.peek().u;
+                      final int d = minHeap.poll().d;
+                      if (seen[u])
+                        continue;
+                      seen[u] = true;
+                      if (--n == 0)
+                        return d;
+                      for (var node : graph[u]) {
+                        final int v = node.getKey();
+                        final int w = node.getValue();
+                        minHeap.offer(new T(v, d + w));
+                      }
+                    }
+                
+                    return -1;
+                  }
+                }
+                `,
+                output: `2`,
               },
             }}
           />
