@@ -80693,8 +80693,59 @@ a = b + c;
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `var Node = function (start,end) {
+                  this.left = null
+                  this.right = null
+                  this.start = start
+                  this.end = end
+                }
+                class Tree {
+                  constructor(){
+                    this.root = null
+                  }
+                  insert(node,root=null){
+                    if(!root){
+                      if(!this.root){
+                        this.root = node
+                        return true
+                      }else{
+                        root = this.root
+                      }
+                    }
+                    if(node.start >= root.end){
+                      if(!root.right){
+                        root.right = node
+                        return true
+                      }
+                      return this.insert(node,root.right)
+                    }
+                    else if(node.end <= root.start){
+                      if(!root.left){
+                        root.left = node
+                        return true
+                      }
+                      return this.insert(node,root.left)
+                    }
+                    else{
+                      return false
+                    }
+                  }
+                }
+                var MyCalendar = function() {
+                    this.tree = new Tree()
+                };
+                /** 
+                 * @param {number} start 
+                 * @param {number} end
+                 * @return {boolean}
+                 */
+                MyCalendar.prototype.book = function(start, end) {
+                    return this.tree.insert(new Node(start,end))
+                };
+                 var obj = new MyCalendar()
+                 var param_1 = obj.book(1,5)
+                console.log({param_1})`,
+                output: `{ param_1: true }`,
               },
             }}
           />
