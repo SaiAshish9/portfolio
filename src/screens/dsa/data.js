@@ -81356,9 +81356,54 @@ a = b + c;
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // "(let x 3 x 2 x)"
+                class Solution {
+                  public int evaluate(String expression) {
+                    return evaluate(expression, new HashMap<>());
+                  }
+                  private int evaluate(final String e, Map<String, Integer> prevScope) {
+                    if (Character.isDigit(e.charAt(0)) || e.charAt(0) == '-')
+                      return Integer.parseInt(e);
+                    if (prevScope.containsKey(e))
+                      return prevScope.get(e);
+                    Map<String, Integer> scope = new HashMap<>();
+                    scope.putAll(prevScope);              
+                    final int spaceIndex = e.indexOf(' ');
+                    final String nextExpression = e.substring(spaceIndex + 1, e.length() - 1); // -2: "()"
+                    List<String> tokens = split(nextExpression);                
+                    if (e.startsWith("(m")) 
+                      return evaluate(tokens.get(0), scope) * evaluate(tokens.get(1), scope);
+                    if (e.startsWith("(a")) 
+                      return evaluate(tokens.get(0), scope) + evaluate(tokens.get(1), scope);
+                    for (int i = 0; i < tokens.size() - 2; i += 2)
+                      scope.put(tokens.get(i), evaluate(tokens.get(i + 1), scope));
+                    return evaluate(tokens.get(tokens.size() - 1), scope);
+                  }       
+                  private List<String> split(final String s) {
+                    List<String> tokens = new ArrayList<>();
+                    StringBuilder sb = new StringBuilder();
+                    int parenthesis = 0;
+                    for (char c : s.toCharArray()) {
+                      if (c == '(')
+                        ++parenthesis;
+                      else if (c == ')')
+                        --parenthesis;
+                      if (parenthesis == 0 && c == ' ') {
+                        tokens.add(sb.toString());
+                        sb.setLength(0);
+                      } else {
+                        sb.append(c);
+                      }
+                    }
+                    if (sb.length() > 0)
+                      tokens.add(sb.toString());
+                    return tokens;
+                  }
+                }
+                `,
+                output: `2`,
               },
             }}
           />
@@ -81368,20 +81413,47 @@ a = b + c;
         title: "Q738. Monotone Increasing Digits (Q593)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q738. Monotone Increasing Digits (Q593)"
+            content1={
+              <>
+                An integer has monotone increasing digits if and only if each
+                pair of adjacent digits x and y satisfy x &lt;= y.
+                <br />
+                Given an integer n, return the largest number that is less than
+                or equal to n with monotone increasing digits.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 10
+                    <br />
+                    Output: 9
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1234
+                    <br />
+                    Output: 1234
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 332
+                    <br />
+                    Output: 299
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={<>0 &lt;= n &lt;= 10^9</>}
             tc="n"
             sc="n"
             codes={{
