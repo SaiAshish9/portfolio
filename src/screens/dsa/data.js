@@ -81732,8 +81732,35 @@ a = b + c;
             sc="n^2"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} grid
+                * @return {number}
+                */
+               var cherryPickup = function(grid) {
+                 const n = grid.length;
+                 const dp = Array.from(Array(n + 1),()=>Array.from(Array(n + 1),()=>Array(n + 1).fill(-1)));
+                 dp[1][1][1] = grid[0][0];
+                 for (let x1 = 1; x1 <= n; ++x1)
+                   for (let y1 = 1; y1 <= n; ++y1)
+                     for (let x2 = 1; x2 <= n; ++x2) {
+                       let y2 = x1 + y1 - x2;
+                         if (y2 < 1 || y2 > n)
+                           continue;
+                         if (grid[x1 - 1][y1 - 1] == -1 || grid[x2 - 1][y2 - 1] == -1)
+                           continue;
+                         let ans = Math.max(Math.max(dp[x1 - 1][y1][x2], dp[x1 - 1][y1][x2 - 1]),
+                                                  Math.max(dp[x1][y1 - 1][x2], dp[x1][y1 - 1][x2 - 1]));
+                         if (ans < 0)
+                           continue;
+                         dp[x1][y1][x2] = ans + grid[x1 - 1][y1 - 1];
+                         if (x1 != x2)
+                           dp[x1][y1][x2] += grid[x2 - 1][y2 - 1];
+                       }
+                   return Math.max(0, dp[n][n][n]);
+               };
+               
+               console.log(cherryPickup([[1,1,-1],[1,-1,1],[-1,1,1]]))`,
+                output: `0`,
               },
             }}
           />
@@ -81743,6 +81770,7 @@ a = b + c;
         title: "Q743. Network Delay Time (Q597)",
         content: (
           <Comp
+            title="Q743. Network Delay Time (Q597)"
             content1={<></>}
             content2={null}
             examples={[
