@@ -81656,22 +81656,80 @@ a = b + c;
         content: (
           <Comp
             title="Q741. Cherry Pickup (Q596)"
-            content1={<></>}
+            content1={
+              <>
+                You are given an n x n grid representing a field of cherries,
+                each cell is one of three possible integers.
+                <br />
+                0 means the cell is empty, so you can pass through,
+                <br />
+                1 means the cell contains a cherry that you can pick up and pass
+                through, or
+                <br />
+                -1 means the cell contains a thorn that blocks your way.
+                <br />
+                Return the maximum number of cherries you can collect by
+                following the rules below:
+                <br />
+                Starting at the position (0, 0) and reaching (n - 1, n - 1) by
+                moving right or down through valid path cells (cells with value
+                0 or 1).
+                <br />
+                After reaching (n - 1, n - 1), returning to (0, 0) by moving
+                left or up through valid path cells.
+                <br />
+                When passing through a path cell containing a cherry, you pick
+                it up, and the cell becomes an empty cell 0.
+                <br />
+                If there is no valid path between (0, 0) and (n - 1, n - 1),
+                then no cherries can be collected.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid = [[0,1,-1],[1,0,-1],[1,1,1]]
+                    <br />
+                    Output: 5<br />
+                    Explanation: The player started at (0, 0) and went down,
+                    down, right right to reach (2, 2).
+                    <br /> 4 cherries were picked up during this single trip,
+                    and the matrix becomes [[0,1,-1],[0,0,-1],[0,0,0]].
+                    <br /> Then, the player went left, up, up, left to return
+                    home, picking up one more cherry.
+                    <br /> The total number of cherries picked up is 5, and this
+                    is the maximum possible.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid = [[1,1,-1],[1,-1,1],[-1,1,1]] <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                n == grid.length
+                <br />
+                n == grid[i].length
+                <br />
+                1 &lt;= n &lt;= 50
+                <br />
+                grid[i][j] is -1, 0, or 1.
+                <br />
+                grid[0][0] != -1
+                <br />
+                grid[n - 1][n - 1] != -1
+              </>
+            }
+            tc="n^2"
+            sc="n^2"
             codes={{
               Javascript: {
                 code: ``,
