@@ -81162,26 +81162,92 @@ a = b + c;
         content: (
           <Comp
             title="Q735. Asteroid Collision (Q591)"
-            content1={<></>}
+            content1={
+              <>
+                We are given an array asteroids of integers representing
+                asteroids in a row.
+                <br />
+                For each asteroid, the absolute value represents its size, and
+                the sign represents its direction (positive meaning right,
+                negative meaning left). Each asteroid moves at the same speed.
+                <br />
+                Find out the state of the asteroids after all collisions. If two
+                asteroids meet, the smaller one will explode. If both are the
+                same size, both will explode. Two asteroids moving in the same
+                direction will never meet.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: asteroids = [5,10,-5] <br />
+                    Output: [5,10] <br />
+                    Explanation: The 10 and -5 collide resulting in 10. The 5
+                    and 10 never collide.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: asteroids = [8,-8]
+                    <br />
+                    Output: []
+                    <br />
+                    Explanation: The 8 and -8 collide exploding each other.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: asteroids = [10,2,-5]
+                    <br />
+                    Output: [10]
+                    <br />
+                    Explanation: The 2 and -5 collide resulting in -5. The 10
+                    and -5 collide resulting in 10.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                2 &lt;= asteroids.length &lt;= 10^4 <br />
+                -1000 &lt;= asteroids[i] &lt;= 1000 <br />
+                asteroids[i] != 0
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// [5,10,-5]
+                class Solution {
+                  public int[] asteroidCollision(int[] asteroids) {
+                    Stack<Integer> stack = new Stack<>();
+                    for (final int a : asteroids)
+                      if (a > 0) {
+                        stack.push(a);
+                      } else {
+                        while (!stack.isEmpty() && stack.peek() > 0 && stack.peek() < -a)
+                          stack.pop();
+                        if (stack.isEmpty() || stack.peek() < 0)
+                          stack.push(a);
+                        else if (stack.peek() == -a)
+                          stack.pop(); 
+                        else ;            
+                      }
+                    int[] ans = new int[stack.size()];
+                    for (int i = ans.length - 1; i >= 0; --i)
+                      ans[i] = stack.pop();
+                    return ans;
+                  }
+                }
+                `,
+                output: `[5,10]`,
               },
             }}
           />
