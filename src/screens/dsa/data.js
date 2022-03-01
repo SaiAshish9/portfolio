@@ -80810,8 +80810,42 @@ a = b + c;
             sc="n^2"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {number}
+                */
+               var countPalindromicSubsequences = function(s) {
+                 const kMod = parseInt(1e9 + 7);
+                 const n = s.length;
+                 const dp = Array.from(Array(n),()=>Array(n).fill(0));
+                   for (let i = 0; i < n; ++i)
+                     dp[i][i] = 1;
+                   for (let d = 1; d < n; ++d)
+                     for (let i = 0; i + d < n; ++i) {
+                       const j = i + d;
+                       if (s[i] == s[j]) {
+                         let lo = i + 1;
+                         let hi = j - 1;
+                         while (lo <= hi && s[lo] != s[i])
+                           ++lo;
+                         while (lo <= hi && s[hi] != s[i])
+                           --hi;
+                         if (lo > hi)
+                           dp[i][j] = dp[i + 1][j - 1] * 2 + 2;
+                         else if (lo == hi)
+                           dp[i][j] = dp[i + 1][j - 1] * 2 + 1;
+                         else
+                           dp[i][j] = dp[i + 1][j - 1] * 2 - dp[lo + 1][hi - 1];
+                       } else {
+                         dp[i][j] = dp[i][j - 1] + dp[i + 1][j] - dp[i + 1][j - 1];
+                       }
+                       dp[i][j] = parseInt((dp[i][j] + kMod) % kMod);
+                     }
+                   return dp[0][n - 1];
+               };
+               
+               console.log(countPalindromicSubsequences("bccb"))`,
+                output: `6`,
               },
             }}
           />
