@@ -81568,26 +81568,85 @@ a = b + c;
         title: "Q740. Delete and Earn (Q595)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q740. Delete and Earn (Q595)"
+            content1={
+              <>
+                You are given an integer array nums. You want to maximize the
+                number of points you get by performing the following operation
+                any number of times:
+                <br />
+                Pick any nums[i] and delete it to earn nums[i] points.
+                Afterwards, you must delete every element equal to nums[i] - 1
+                and every element equal to nums[i] + 1.
+                <br />
+                Return the maximum number of points you can earn by applying the
+                above operation some number of times.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [3,4,2] <br />
+                    Output: 6 <br />
+                    Explanation: You can perform the following operations:{" "}
+                    <br />
+                    - Delete 4 to earn 4 points. Consequently, 3 is also
+                    deleted. nums = [2].
+                    <br /> - Delete 2 to earn 2 points. nums = []. <br />
+                    You earn a total of 6 points.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [2,2,3,3,3,4]
+                    <br />
+                    Output: 9<br />
+                    Explanation: You can perform the following operations:
+                    <br />
+                    - Delete a 3 to earn 3 points. All 2's and 4's are also
+                    deleted. nums = [3,3].
+                    <br /> - Delete a 3 again to earn 3 points. nums = [3].
+                    <br /> - Delete a 3 once more to earn 3 points. nums = [].
+                    <br />
+                    You earn a total of 9 points.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 2 * 10^4
+                <br />1 &lt;= nums[i] &lt;= 104
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var deleteAndEarn = function(nums) {
+                 const bucket = Array(10001).fill(0);
+                 for (let num of nums)
+                   bucket[num] += num;
+                 let prev1 = 0;
+                 let prev2 = 0;
+                   for (let num of bucket) {
+                     const dp = Math.max(prev1, prev2 + num);
+                     prev2 = prev1;
+                     prev1 = dp;
+                   }
+                   return prev1;
+               };
+               
+               console.log(deleteAndEarn([2,2,3,3,3,4]))`,
+                output: `9`,
               },
             }}
           />
@@ -81597,6 +81656,7 @@ a = b + c;
         title: "Q741. Cherry Pickup (Q596)",
         content: (
           <Comp
+            title="Q741. Cherry Pickup (Q596)"
             content1={<></>}
             content2={null}
             examples={[
