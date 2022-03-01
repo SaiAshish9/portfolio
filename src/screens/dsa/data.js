@@ -81644,7 +81644,6 @@ a = b + c;
                    }
                    return prev1;
                };
-               
                console.log(deleteAndEarn([2,2,3,3,3,4]))`,
                 output: `9`,
               },
