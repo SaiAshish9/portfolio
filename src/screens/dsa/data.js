@@ -80843,7 +80843,6 @@ a = b + c;
                      }
                    return dp[0][n - 1];
                };
-               
                console.log(countPalindromicSubsequences("bccb"))`,
                 output: `6`,
               },
@@ -80952,7 +80951,7 @@ a = b + c;
                 var obj = new MyCalendarTwo()
                 var param_1 = obj.book(1,5)
                 console.log({param_1})`,
-                output: `{ param_1: true `,
+                output: `{ param_1: true }`,
               },
             }}
           />
@@ -80962,6 +80961,7 @@ a = b + c;
         title: "Q732. My Calendar III (Q589)",
         content: (
           <Comp
+            title="Q732. My Calendar III (Q589)"
             content1={<></>}
             content2={null}
             examples={[
