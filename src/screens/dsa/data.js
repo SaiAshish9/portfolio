@@ -81458,8 +81458,26 @@ a = b + c;
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @return {number}
+                */
+               var monotoneIncreasingDigits = function(n) {
+                 let s = String(n).split('');
+                 let len = s.length;
+                 let k = len; 
+                 for (let i = len - 1; i > 0; --i)
+                   if (+s[i] < +s[i - 1]) {
+                     --s[i - 1]
+                     k = i;
+                   }
+                 for (let i = k; i < len; ++i)
+                   s[i] = '9';
+                 return parseInt(s.join(""));    
+               };
+               
+               console.log(monotoneIncreasingDigits(332))`,
+                output: `299`,
               },
             }}
           />
@@ -81469,6 +81487,7 @@ a = b + c;
         title: "Q739. Daily Temperatures (Q594)",
         content: (
           <Comp
+            title="Q739. Daily Temperatures (Q594)"
             content1={<></>}
             content2={null}
             examples={[
