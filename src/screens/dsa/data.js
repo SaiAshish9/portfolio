@@ -80855,26 +80855,106 @@ a = b + c;
         title: "Q731. My Calendar II (Q588)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q731. My Calendar II (Q588)"
+            content1={
+              <>
+                You are implementing a program to use as your calendar. We can
+                add a new event if adding the event will not cause a triple
+                booking.
+                <br />
+                A triple booking happens when three events have some non-empty
+                intersection (i.e., some moment is common to all the three
+                events.).
+                <br />
+                The event can be represented as a pair of integers start and end
+                that represents a booking on the half-open interval [start,
+                end), the range of real numbers x such that start &lt;= x &lt;
+                end.
+                <br />
+                Implement the MyCalendarTwo class:
+                <br />
+                MyCalendarTwo() Initializes the calendar object. <br />
+                boolean book(int start, int end) Returns true if the event can
+                be added to the calendar successfully without causing a triple
+                booking. Otherwise, return false and do not add the event to the
+                calendar.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input
+                    <br />
+                    ["MyCalendarTwo", "book", "book", "book", "book", "book",
+                    "book"]
+                    <br /> [[], [10, 20], [50, 60], [10, 40], [5, 15], [5, 10],
+                    [25, 55]]
+                    <br /> Output
+                    <br /> [null, true, true, true, false, true, true]
+                    <br /> Explanation
+                    <br /> MyCalendarTwo myCalendarTwo = new MyCalendarTwo();
+                    <br /> myCalendarTwo.book(10, 20); // return True, The event
+                    can be booked.
+                    <br /> myCalendarTwo.book(50, 60); // return True, The event
+                    can be booked.
+                    <br /> myCalendarTwo.book(10, 40); // return True, The event
+                    can be double booked.
+                    <br /> myCalendarTwo.book(5, 15); // return False, The event
+                    cannot be booked, because it would result in a triple
+                    booking.
+                    <br /> myCalendarTwo.book(5, 10); // return True, The event
+                    can be booked, as it does not use time 10 which is already
+                    double booked.
+                    <br /> myCalendarTwo.book(25, 55); // return True, The event
+                    can be booked, as the time in [25, 40) will be double booked
+                    with the third event, the time [40, 50) will be single
+                    booked, and the time [50, 55) will be double booked with the
+                    second event.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                0 &lt;= start &lt; end &lt;= 10^9 <br />
+                At most 1000 calls will be made to book
+              </>
+            }
+            tc="n^2"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `
+                var MyCalendarTwo = function() {
+                  this.ranges = [];
+                  this.overlaps = [];
+                };
+                
+                /** 
+                 * @param {number} start 
+                 * @param {number} end
+                 * @return {boolean}
+                 */
+                MyCalendarTwo.prototype.book = function(start, end) {
+                  for (let overlap of this.overlaps)
+                    if (Math.max(start, overlap[0]) < Math.min(end, overlap[1]))
+                      return false;
+                  for (let range of this.ranges) {
+                    const maxStart = Math.max(start, range[0]);
+                    const minEnd = Math.min(end, range[1]);
+                    if (maxStart < minEnd)
+                      this.overlaps.push([maxStart, minEnd]);
+                  }
+                  this.ranges.push([start, end]);
+                  return true;
+                };
+                
+                var obj = new MyCalendarTwo()
+                var param_1 = obj.book(1,5)
+                console.log({param_1})`,
+                output: `{ param_1: true `,
               },
             }}
           />
