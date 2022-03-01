@@ -281,6 +281,7 @@ import Leetcode695 from "assets/leetcode/695.png";
 import Leetcode699 from "assets/leetcode/699.png";
 import Leetcode700 from "assets/leetcode/700.png";
 import Leetcode701 from "assets/leetcode/701.png";
+import Leetcode733 from "assets/leetcode/q733.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -291,7 +292,6 @@ import WebRTCImg5 from "assets/webrtc5.png";
 import WebRTCImg6 from "assets/webrtc6.png";
 import GoImg from "assets/go.png";
 import Comp from "./comp";
-import { CgLoupe } from "react-icons/cg";
 
 export const DATA = {
   ds: {
@@ -81058,26 +81058,100 @@ a = b + c;
         content: (
           <Comp
             title="Q733. Flood Fill (Q590)"
-            content1={<></>}
+            content1={
+              <>
+                An image is represented by an m x n integer grid image where
+                image[i][j] represents the pixel value of the image.
+                <br />
+                You are also given three integers sr, sc, and newColor. You
+                should perform a flood fill on the image starting from the pixel
+                image[sr][sc].
+                <br />
+                To perform a flood fill, consider the starting pixel, plus any
+                pixels connected 4-directionally to the starting pixel of the
+                same color as the starting pixel, plus any pixels connected
+                4-directionally to those pixels (also with the same color), and
+                so on. Replace the color of all of the aforementioned pixels
+                with newColor.
+                <br />
+                Return the modified image after performing the flood fill.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode733,
+                content: (
+                  <>
+                    Input: image = [[1,1,1],[1,1,0],[1,0,1]],
+                    <br /> sr = 1, <br />
+                    sc = 1, <br />
+                    newColor = 2<br />
+                    Output: [[2,2,2],[2,2,0],[2,0,1]]
+                    <br />
+                    Explanation: From the center of the image with position (sr,
+                    sc) = (1, 1) (i.e., the red pixel), all pixels connected by
+                    a path of the same color as the starting pixel (i.e., the
+                    blue pixels) are colored with the new color.
+                    <br />
+                    Note the bottom corner is not colored 2, because it is not
+                    4-directionally connected to the starting pixel.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: image = [[0,0,0],[0,0,0]],
+                    <br /> sr = 0, <br />
+                    sc = 0, <br />
+                    newColor = 2<br />
+                    Output: [[2,2,2],[2,2,2]]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                m == image.length <br />
+                n == image[i].length <br />
+                1 &lt;= m, n &lt;= 50 <br />
+                0 &lt;= image[i][j], newColor &lt; 216 <br />
+                0 &lt;= sr &lt; m <br />0 &lt;= sc&lt; n
+              </>
+            }
+            tc="n^2"
+            sc="n^2"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} image
+                * @param {number} sr
+                * @param {number} sc
+                * @param {number} newColor
+                * @return {number[][]}
+                */
+               var floodFill = function(image, sr, sc, newColor) {
+                 const seen = Array.from(Array(image.length),()=>Array(image[0].length).fill(0));
+                 dfs(image, sr, sc, seen, image[sr][sc], newColor);
+                 return image;
+               };
+               
+               function dfs(image, i, j, seen, startColor, newColor){
+                 if (i < 0 || i == image.length || j < 0 || j == image[0].length)
+                   return;
+                 if (image[i][j] != startColor || seen[i][j])
+                   return;
+                 image[i][j] = newColor;
+                 seen[i][j] = true;
+                 dfs(image, i + 1, j, seen, startColor, newColor);
+                 dfs(image, i - 1, j, seen, startColor, newColor);
+                 dfs(image, i, j + 1, seen, startColor, newColor);
+                 dfs(image, i, j - 1, seen, startColor, newColor);
+               }
+               
+               console.log(floodFill([[1,1,1],[1,1,0],[1,0,1]],1,1,2))`,
+                output: `[ [ 2, 2, 2 ], [ 2, 2, 0 ], [ 2, 0, 1 ] ]`,
               },
             }}
           />
