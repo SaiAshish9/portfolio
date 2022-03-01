@@ -80983,22 +80983,71 @@ a = b + c;
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input <br />
+                    ["MyCalendarThree", "book", "book", "book", "book", "book",
+                    "book"]
+                    <br /> [[], [10, 20], [50, 60], [10, 40], [5, 15], [5, 10],
+                    [25, 55]] Output <br />
+                    [null, 1, 1, 2, 3, 3, 3]
+                    <br />
+                    Explanation <br />
+                    MyCalendarThree myCalendarThree = new MyCalendarThree();
+                    <br /> myCalendarThree.book(10, 20); // return 1, The first
+                    event can be booked and is disjoint, so the maximum
+                    k-booking is a 1-booking.
+                    <br /> myCalendarThree.book(50, 60); // return 1, The second
+                    event can be booked and is disjoint, so the maximum
+                    k-booking is a 1-booking.
+                    <br /> myCalendarThree.book(10, 40); // return 2, The third
+                    event [10, 40) intersects the first event, and the maximum
+                    k-booking is a 2-booking.
+                    <br /> myCalendarThree.book(5, 15); // return 3, The
+                    remaining events cause the maximum K-booking to be only a
+                    3-booking.
+                    <br /> myCalendarThree.book(5, 10); // return 3
+                    <br /> myCalendarThree.book(25, 55); // return 3
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                0 &lt;= start &lt;end &lt;= 109
+                <br />
+                At most 400 calls will be made to book.
+              </>
+            }
+            tc="n.log n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `var MyCalendarThree = function() {
+                  this.timeline = {};
+                };
+                
+                /** 
+                 * @param {number} start 
+                 * @param {number} end
+                 * @return {number}
+                 */
+                MyCalendarThree.prototype.book = function(start, end) {
+                  this.timeline[start] = (this.timeline[start] || 0) + 1;
+                  this.timeline[end] = (this.timeline[end] || 0) - 1;
+                  let ans = 0;
+                  let activeEvents = 0;
+                  for (let count of Object.values(this.timeline)) {
+                    activeEvents += +count;
+                    ans = Math.max(ans, activeEvents);
+                  }
+                  return ans;
+                };
+                
+                var obj = new MyCalendarThree()
+                var param_1 = obj.book(1,5)
+                console.log({ param_1 })`,
+                output: `1`,
               },
             }}
           />
@@ -81008,6 +81057,7 @@ a = b + c;
         title: "Q733. Flood Fill (Q590)",
         content: (
           <Comp
+            title="Q733. Flood Fill (Q590)"
             content1={<></>}
             content2={null}
             examples={[
