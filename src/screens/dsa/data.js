@@ -81257,6 +81257,7 @@ a = b + c;
         title: "Q736. Parse Lisp Expression (Q592)",
         content: (
           <Comp
+            title="Q736. Parse Lisp Expression (Q592)"
             content1={<></>}
             content2={null}
             examples={[
