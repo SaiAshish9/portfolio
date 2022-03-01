@@ -80755,22 +80755,59 @@ a = b + c;
         title: "Q730. Count Different Palindromic Subsequences (Q587)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q730. Count Different Palindromic Subsequences (Q587)"
+            content1={
+              <>
+                Given a string s, return the number of different non-empty
+                palindromic subsequences in s. Since the answer may be very
+                large, return it modulo 109 + 7.
+                <br />
+                A subsequence of a string is obtained by deleting zero or more
+                characters from the string.
+                <br />
+                A sequence is palindromic if it is equal to the sequence
+                reversed.
+                <br />
+                Two sequences a1, a2, ... and b1, b2, ... are different if there
+                is some i for which ai != bi.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "bccb"
+                    <br />
+                    Output: 6<br />
+                    Explanation: The 6 different non-empty palindromic
+                    subsequences are 'b', 'c', 'bb', 'cc', 'bcb', 'bccb'. Note
+                    that 'bcb' is counted only once, even though it occurs
+                    twice.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s =
+                    "abcdabcdabcdabcdabcdabcdabcdabcddcbadcbadcbadcbadcbadcbadcbadcba"
+                    <br /> Output: 104860361
+                    <br />
+                    Explanation: There are 3104860382 different non-empty
+                    palindromic subsequences, which is 104860361 modulo 109 + 7.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 1000 <br />
+                s[i] is either 'a', 'b', 'c', or 'd
+              </>
+            }
+            tc="n^2"
+            sc="n^2"
             codes={{
               Javascript: {
                 code: ``,
