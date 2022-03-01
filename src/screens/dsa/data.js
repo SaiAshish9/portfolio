@@ -81893,6 +81893,7 @@ a = b + c;
         title: "Q744. Find Smallest Letter Greater Than Target (Q598)",
         content: (
           <Comp
+            title="Q744. Find Smallest Letter Greater Than Target (Q598)"
             content1={<></>}
             content2={null}
             examples={[
