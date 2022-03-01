@@ -81161,6 +81161,7 @@ a = b + c;
         title: "Q735. Asteroid Collision (Q591)",
         content: (
           <Comp
+          title= "Q735. Asteroid Collision (Q591)"
             content1={<></>}
             content2={null}
             examples={[
