@@ -81488,26 +81488,77 @@ a = b + c;
         content: (
           <Comp
             title="Q739. Daily Temperatures (Q594)"
-            content1={<></>}
+            content1={
+              <>
+                Given an array of integers temperatures represents the daily
+                temperatures, return an array answer such that answer[i] is the
+                number of days you have to wait after the ith day to get a
+                warmer temperature. If there is no future day for which this is
+                possible, keep answer[i] == 0 instead.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: temperatures = [73,74,75,71,69,72,76,73]
+                    <br />
+                    Output: [1,1,4,2,1,1,0,0]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: temperatures = [30,40,50,60]
+                    <br />
+                    Output: [1,1,1,0]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: temperatures = [30,60,90]
+                    <br />
+                    Output: [1,1,0]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= temperatures.length &lt;= 10^5 <br />
+                30 &lt;= temperatures[i] &lt;= 100
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} temperatures
+                * @return {number[]}
+                */
+               var dailyTemperatures = function(temperatures) {
+                 const ans = Array(temperatures.length).fill(0);
+                 const stack = []; 
+                 for (let i = 0; i < temperatures.length; ++i) {
+                 while (stack.length && temperatures[stack.slice(-1)[0]] < temperatures[i]) {
+                   let index = stack.pop();
+                   ans[index] = i - index;
+                   }
+                   stack.push(i);
+                 }
+                 return ans;  
+               };
+               
+               console.log(dailyTemperatures([73,74,75,71,69,72,76,73]))`,
+                output: `[
+                  1, 1, 4, 2,
+                  1, 1, 0, 0
+                ]`,
               },
             }}
           />
