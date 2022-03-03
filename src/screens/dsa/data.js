@@ -81894,26 +81894,95 @@ a = b + c;
         content: (
           <Comp
             title="Q744. Find Smallest Letter Greater Than Target (Q598)"
-            content1={<></>}
+            content1={
+              <>
+                Given a characters array letters that is sorted in
+                non-decreasing order and a character target, return the smallest
+                character in the array that is larger than target.
+                <br />
+                Note that the letters wrap around.
+                <br />
+                For example, if target == 'z' and letters == ['a', 'b'], the
+                answer is 'a'.
+                <br />
+                <br />
+                Constraints:
+                <br />
+                2 &lt;= letters.length &lt;= 104
+                <br />
+                letters[i] is a lowercase English letter.
+                <br />
+                letters is sorted in non-decreasing order.
+                <br />
+                letters contains at least two different characters.
+                <br />
+                target is a lowercase English letter.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    {" "}
+                    Input: letters = ["c","f","j"],
+                    <br /> target = "a" <br />
+                    Output: "c"
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: letters = ["c","f","j"], <br />
+                    target = "c" <br />
+                    Output: "f"
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: letters = ["c","f","j"], <br />
+                    target = "d" <br />
+                    Output: "f"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                2 &lt;= letters.length &lt;= 10^4 <br />
+                letters[i] is a lowercase English letter. <br />
+                letters is sorted in non-decreasing order. <br />
+                letters contains at least two different characters. <br />
+                target is a lowercase English letter.
+              </>
+            }
+            tc="log n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {character[]} letters
+                * @param {character} target
+                * @return {character}
+                */
+               var nextGreatestLetter = function(letters, target) {
+                   let l = 0;
+                   let r = letters.length;
+                   while (l < r) {
+                     const m = l + parseInt((r - l) / 2);
+                     if (letters[m] > target)
+                       r = m;
+                     else
+                       l = m + 1;
+                   }
+                   return letters[l % letters.length];
+               };
+               
+               console.log(nextGreatestLetter(["c","f","j"],"a"))`,
+                output: `c`,
               },
             }}
           />
@@ -81923,26 +81992,91 @@ a = b + c;
         title: "Q745. Prefix and Suffix Search (Q599)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q745. Prefix and Suffix Search (Q599)"
+            content1={
+              <>
+                Design a special dictionary with some words that searchs the
+                words in it by a prefix and a suffix.
+                <br />
+                Implement the WordFilter class:
+                <br />
+                WordFilter(string[] words) Initializes the object with the words
+                in the dictionary. f(string prefix, string suffix) Returns the
+                index of the word in the dictionary, which has the prefix prefix
+                and the suffix suffix. If there is more than one valid index,
+                return the largest of them. If there is no such word in the
+                dictionary, return -1.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input <br />
+                    ["WordFilter", "f"] <br />
+                    [[["apple"]], ["a", "e"]] <br />
+                    Output <br />
+                    [null, 0]
+                    <br />
+                    Explanation <br />
+                    WordFilter wordFilter = new WordFilter(["apple"]); <br />
+                    wordFilter.f("a", "e"); // return 0, because the word at
+                    index 0 has prefix = "a" and suffix = 'e".
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                1 &lt;= words.length &lt;= 15000
+                <br />
+                1 &lt;= words[i].length &lt;= 10
+                <br />
+                1 &lt;= prefix.length, suffix.length &lt;= 10
+                <br />
+                words[i], prefix and suffix consist of lower-case English
+                letters only.
+                <br />
+                At most 15000 calls will be made to the function f.
+              </>
+            }
+            tc="n^4"
+            sc="n^4"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // ["WordFilter","f"]
+                // [[["apple"]],["a","e"]]
+                class WordFilter {
+                  public WordFilter(String[] words) {
+                    for (int i = 0; i < words.length; ++i) {
+                      final String word = words[i];
+                      List<String> prefixes = new ArrayList<>();
+                      List<String> suffixes = new ArrayList<>();
+                      for (int j = 0; j <= word.length(); ++j) {
+                        final String prefix = word.substring(0, j);
+                        final String suffix = word.substring(j);
+                        prefixes.add(prefix);
+                        suffixes.add(suffix);
+                      }
+                      for (final String prefix : prefixes)
+                        for (final String suffix : suffixes)
+                          keyToIndex.put(prefix + '_' + suffix, i);
+                    }
+                  }
+                
+                  public int f(String prefix, String suffix) {
+                    final String key = prefix + '_' + suffix;
+                    if (keyToIndex.containsKey(key))
+                      return keyToIndex.get(key);
+                    return -1;
+                  }
+                
+                  private Map<String, Integer> keyToIndex = new HashMap<>();
+                }
+                `,
+                output: `[null,0]`,
               },
             }}
           />
@@ -81952,22 +82086,60 @@ a = b + c;
         title: "Q746. Min Cost Climbing Stairs (Q600)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q746. Min Cost Climbing Stairs (Q600)"
+            content1={
+              <>
+                You are given an integer array cost where cost[i] is the cost of
+                ith step on a staircase. Once you pay the cost, you can either
+                climb one or two steps.
+                <br />
+                You can either start from the step with index 0, or the step
+                with index 1.
+                <br />
+                Return the minimum cost to reach the top of the floor.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: cost = [10,15,20]
+                    <br />
+                    Output: 15
+                    <br />
+                    Explanation: You will start at index 1.
+                    <br />
+                    - Pay 15 and climb two steps to reach the top.
+                    <br />
+                    The total cost is 15.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: cost = [10,15,20]
+                    <br />
+                    Output: 15
+                    <br />
+                    Explanation: You will start at index 1.
+                    <br />
+                    - Pay 15 and climb two steps to reach the top.
+                    <br />
+                    The total cost is 15.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                2 &lt;== cost.length &lt;= 1000 <br />0 &lt;== cost[i] &lt;==
+                999
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
