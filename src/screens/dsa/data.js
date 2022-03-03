@@ -82164,6 +82164,7 @@ a = b + c;
         title: "Q747. Largest Number At Least Twice of Others (Q601)",
         content: (
           <Comp
+            title="Q747. Largest Number At Least Twice of Others (Q601)"
             content1={<></>}
             content2={null}
             examples={[
