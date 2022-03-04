@@ -285,6 +285,7 @@ import Leetcode733 from "assets/leetcode/q733.png";
 import Leetcode741 from "assets/leetcode/741.png";
 import Leetcode743 from "assets/leetcode/743.png";
 import Leetcode749 from "assets/leetcode/749.png";
+import Leetcode756 from "assets/leetcode/q756.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -82852,26 +82853,126 @@ a = b + c;
         title: "Q756. Pyramid Transition Matrix(Q607)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q756. Pyramid Transition Matrix(Q607)"
+            content1={
+              <>
+                You are stacking blocks to form a pyramid. Each block has a
+                color, which is represented by a single letter. Each row of
+                blocks contains one less block than the row beneath it and is
+                centered on top.
+                <br />
+                To make the pyramid aesthetically pleasing, there are only
+                specific triangular patterns that are allowed. A triangular
+                pattern consists of a single block stacked on top of two blocks.
+                The patterns are given as a list of three-letter strings
+                allowed, where the first two characters of a pattern represent
+                the left and right bottom blocks respectively, and the third
+                character is the top block.
+                <br />
+                For example, "ABC" represents a triangular pattern with a 'C'
+                block stacked on top of an 'A' (left) and 'B' (right) block.
+                Note that this is different from "BAC" where 'B' is on the left
+                bottom and 'A' is on the right bottom.
+                <br />
+                You start with a bottom row of blocks bottom, given as a single
+                string, that you must use as the base of the pyramid.
+                <br />
+                Given bottom and allowed, return true if you can build the
+                pyramid all the way to the top such that every triangular
+                pattern in the pyramid is in allowed, or false otherwise.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode756,
+                content: (
+                  <>
+                    Input: bottom = "BCD", allowed = ["BCC","CDE","CEA","FFF"]
+                    Output: true <br />
+                    <br />
+                    Explanation: The allowed triangular patterns are shown on
+                    the right.
+                    <br />
+                    Starting from the bottom (level 3), we can build "CE" on
+                    level 2 and then build "E" on level 1.
+                    <br />
+                    There are three triangular patterns in the pyramid, which
+                    are "BCC", "CDE", and "CEA". All are allowed.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: bottom = "AAAA", allowed =
+                    ["AAB","AAC","BCD","BBE","DEF"] Output: false <br />
+                    <br />
+                    Explanation: The allowed triangular patterns are shown on
+                    the right.
+                    <br />
+                    Starting from the bottom (level 4), there are multiple ways
+                    to build level 3, but trying all the possibilites, you will
+                    get always stuck before building level 1.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                2 &lt;= bottom.length &lt;= 6 <br />
+                0 &lt;= allowed.length &lt;= 216 <br />
+                allowed[i].length == 3 <br />
+                The letters in all input strings are from the set{" "}
+                {("A", "B", "C", "D", "E", "F")}.
+                <br />
+                All the values of allowed are unique.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} bottom
+                * @param {string[]} allowed
+                * @return {boolean}
+                */
+              // bottom = "BCD", allowed = ["BCC","CDE","CEA","FFF"]
+               var pyramidTransition = function(bottom, allowed) {
+                   const set = new Set(allowed);
+                   const memo = new Map();
+                   const chars = ["A", "B", "C", "D", "E", "F"];                 
+                   return topDown(bottom, bottom.length - 1);
+                   function topDown(prev, row) {
+                       const key = \`${prev}#${row}\`;                       
+                       if (row === 0) return true;
+                       if (memo.has(key)) return memo.get(key);
+                       let pats = new Set();
+                       pats.add("");
+                       for (let i = 0; i < row; i++) {
+                           const tmp = new Set();               
+                           const leftBot = prev.charAt(i);
+                           const rightBot = prev.charAt(i + 1);  
+                           for (const char of chars) {
+                               const triadStr = leftBot + rightBot + char;
+                               if (set.has(triadStr)) {
+                                   for (const pat of pats) {
+                                       tmp.add(pat + char);
+                                   }                 
+                               }
+                           }
+                           pats = tmp;
+                       }
+                       for (const pat of pats) {
+                           if (topDown(pat, row - 1)) return true;
+                       }
+                       memo.set(key, false);
+                       return false;
+                   }
+               };
+                `,
+                output: `true`,
               },
             }}
           />
