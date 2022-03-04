@@ -82826,8 +82826,23 @@ a = b + c;
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} target
+                * @return {number}
+                */
+               var reachNumber = function(target) {
+                   const newTarget = Math.abs(target);
+                   let ans = 0;
+                   let pos = 0;
+                   while (pos < newTarget)
+                     pos += ++ans;
+                   while ((pos - newTarget) % 2 == 1)
+                     pos += ++ans;
+                   return ans;
+               };
+               
+               console.log(reachNumber(2))`,
+                output: `3`,
               },
             }}
           />
