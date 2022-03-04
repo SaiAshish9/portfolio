@@ -82831,14 +82831,14 @@ a = b + c;
                 * @return {number}
                 */
                var reachNumber = function(target) {
-                   const newTarget = Math.abs(target);
-                   let ans = 0;
-                   let pos = 0;
-                   while (pos < newTarget)
-                     pos += ++ans;
-                   while ((pos - newTarget) % 2 == 1)
-                     pos += ++ans;
-                   return ans;
+                  const newTarget = Math.abs(target);
+                  let ans = 0;
+                  let pos = 0;
+                  while (pos < newTarget)
+                    pos += ++ans;
+                  while ((pos - newTarget) % 2 == 1)
+                    pos += ++ans;
+                  return ans;
                };
                
                console.log(reachNumber(2))`,
