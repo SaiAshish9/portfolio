@@ -82982,26 +82982,89 @@ a = b + c;
         title: "Q757. Set Intersection Size At Least Two (Q608)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q757. Set Intersection Size At Least Two (Q608)"
+            content1={
+              <>
+                An integer interval [a, b] (for integers a &lt; b) is a set of
+                all consecutive integers from a to b, including a and b.
+                <br />
+                Find the minimum size of a set S such that for every integer
+                interval A in intervals, the intersection of S with A has a size
+                of at least two.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: intervals = [[1,3],[1,4],[2,5],[3,5]]
+                    <br />
+                    Output: 3<br />
+                    Explanation: Consider the set S = {"{"}2, 3, 4{"}"}. For
+                    each interval, there are at least 2 elements from S in the
+                    interval.
+                    <br />
+                    Also, there isn't a smaller size set that fulfills the above
+                    condition.
+                    <br />
+                    Thus, we output the size of this set, which is 3.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: intervals = [[1,2],[2,3],[2,4],[4,5]]
+                    <br />
+                    Output: 5<br />
+                    Explanation: An example of a minimum sized set is {"{"}1, 2,
+                    3, 4, 5{"}"}.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                1 &lt;= intervals.length &lt;= 3000
+                <br />
+                intervals[i].length == 2<br />0 &lt;= ai &lt; bi &lt;= 108
+              </>
+            }
+            tc="n.log n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} intervals
+                * @return {number}
+                */
+               var intersectionSizeTwo = function(intervals) { 
+                 let ans = 0;
+                 let max = -1;
+                 let secondMax = -1;
+               
+                 intervals = intervals.sort((a, b) => a[1] == b[1] ? b[0] - a[0] : a[1] - b[1]);
+                   for (let interval of intervals) {
+                     let a = interval[0];
+                     let b = interval[1];
+                     if (max >= a && secondMax >= a)
+                       continue;
+                     if (max >= a) {
+                       secondMax = max;
+                       max = b; 
+                       ans += 1;
+                     } else {             
+                       max = b;           
+                       secondMax = b - 1; 
+                       ans += 2;
+                     }
+                   }
+                   return ans;    
+               };
+               
+               console.log(intersectionSizeTwo([[1,2],[2,3],[2,4],[4,5]]))`,
+                output: `3`,
               },
             }}
           />
