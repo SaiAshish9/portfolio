@@ -82259,26 +82259,113 @@ a = b + c;
         content: (
           <Comp
             title="Q748. Shortest Completing Word (Q602)"
-            content1={<></>}
+            content1={
+              <>
+                Given a string licensePlate and an array of strings words, find
+                the shortest completing word in words.
+                <br />
+                A completing word is a word that contains all the letters in
+                licensePlate. Ignore numbers and spaces in licensePlate, and
+                treat letters as case insensitive. If a letter appears more than
+                once in licensePlate, then it must appear in the word the same
+                number of times or more.
+                <br />
+                For example, if licensePlate = "aBc 12c", then it contains
+                letters 'a', 'b' (ignoring case), and 'c' twice. Possible
+                completing words are "abccdef", "caaacab", and "cbca".
+                <br />
+                Return the shortest completing word in words. It is guaranteed
+                an answer exists. If there are multiple shortest completing
+                words, return the first one that occurs in words.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: licensePlate = "1s3 PSt", <br /> words =
+                    ["step","steps","stripe","stepple"]
+                    <br /> Output: "steps" <br />
+                    Explanation: licensePlate contains letters 's', 'p', 's'
+                    (ignoring case), and 't'.
+                    <br /> "step" contains 't' and 'p', but only contains 1 's'.
+                    <br /> "steps" contains 't', 'p', and both 's' characters.
+                    <br /> "stripe" is missing an 's'.
+                    <br /> "stepple" is missing an 's'.
+                    <br /> Since "steps" is the only word containing all the
+                    letters, that is the answer.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: licensePlate = "1s3 456", <br /> words =
+                    ["looks","pest","stew","show"]
+                    <br /> Output: "pest"
+                    <br /> Explanation: licensePlate only contains the letter
+                    's'. All the words contain 's', but among these "pest",
+                    "stew", and "show" are shortest. The answer is "pest"
+                    because it is the word that appears earliest of the 3.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= licensePlate.length &lt;= 7<br />
+                licensePlate contains digits, letters (uppercase or lowercase),
+                or space ' '.
+                <br /> 1 &lt;= words.length &lt;= 1000
+                <br />
+                1 &lt;= words[i].length &lt;= 15
+                <br />
+                words[i] consists of lower case English letters.
+              </>
+            }
             tc="n"
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} licensePlate
+                * @param {string[]} words
+                * @return {string}
+                */
+               
+               function isLetter(str) {
+                 return str.length === 1 && str.match(/[a-z]/i);
+               }
+               
+               var shortestCompletingWord = function(licensePlate, words) {
+                 let ans = "****************";
+                 const count = Array(26).fill(0);
+                 for (let c of licensePlate.split(""))
+                   if (isLetter(c))
+                     ++count[c.toLowerCase().charCodeAt(0) - 97];
+                 for (let word of words)
+                   if (word.length < ans.length && isComplete(count, getCount(word)))
+                   ans = word;
+                 return ans;
+               };
+               
+               function isComplete(c1, c2) {
+                 for (let i = 0; i < 26; ++i)
+                   if (c1[i] > c2[i])
+                     return false;
+                 return true;
+               }
+               
+               function getCount(word) {
+                 const count = Array(26).fill(0);
+                 for (let c of word)
+                   ++count[c.charCodeAt(0) - 97];
+                 return count;
+               }
+               
+               console.log(shortestCompletingWord("1s3 456",["looks","pest","stew","show"]))`,
+                output: `pest`,
               },
             }}
           />
@@ -82288,6 +82375,7 @@ a = b + c;
         title: "Q749. Contain Virus (Q603)",
         content: (
           <Comp
+            title="Q749. Contain Virus (Q603)"
             content1={<></>}
             content2={null}
             examples={[
