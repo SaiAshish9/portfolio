@@ -82660,22 +82660,72 @@ a = b + c;
         content: (
           <Comp
             title="Q753. Cracking the Safe (Q605)"
-            content1={<></>}
+            content1={
+              <>
+                There is a safe protected by a password. The password is a
+                sequence of n digits where each digit can be in the range [0, k
+                - 1].
+                <br />
+                The safe has a peculiar way of checking the password. When you
+                enter in a sequence, it checks the most recent n digits that
+                were entered each time you type a digit.
+                <br />
+                For example, the correct password is "345" and you enter in
+                "012345":
+                <br />
+                After typing 0, the most recent 3 digits is "0", which is
+                incorrect.
+                <br /> After typing 1, the most recent 3 digits is "01", which
+                is incorrect.
+                <br /> After typing 2, the most recent 3 digits is "012", which
+                is incorrect.
+                <br /> After typing 3, the most recent 3 digits is "123", which
+                is incorrect.
+                <br /> After typing 4, the most recent 3 digits is "234", which
+                is incorrect.
+                <br /> After typing 5, the most recent 3 digits is "345", which
+                is correct and the safe unlocks.
+                <br /> Return any string of minimum length that will unlock the
+                safe at some point of entering it.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1, k = 2 <br />
+                    Output: "10" <br />
+                    Explanation: The password is a single digit, so enter each
+                    digit. "01" would also unlock the safe.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 2, k = 2 <br />
+                    Output: "01100" <br />
+                    Explanation: For each possible password: <br />
+                    - "00" is typed in starting from the 4th digit. <br />
+                    - "01" is typed in starting from the 1st digit. <br />
+                    - "10" is typed in starting from the 3rd digit. <br />
+                    - "11" is typed in starting from the 2nd digit. <br />
+                    Thus "01100" will unlock the safe. "01100", "10011", and
+                    "11001" would also unlock the safe.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                1 &lt;= n &lt;= 4 <br />
+                1 &lt;= k &lt;= 10
+                <br />1 &lt;= k^n &lt;= 4096
+              </>
+            }
+            tc="k^n"
+            sc="k^n"
             codes={{
               Javascript: {
                 code: ``,
@@ -82689,6 +82739,7 @@ a = b + c;
         title: "Q754. Reach a Number (Q606)",
         content: (
           <Comp
+            title="Q754. Reach a Number (Q606)"
             content1={<></>}
             content2={null}
             examples={[
@@ -82703,8 +82754,8 @@ a = b + c;
               },
             ]}
             constraints={<></>}
-            tc="n"
-            sc="n"
+            tc="n^0.5"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
