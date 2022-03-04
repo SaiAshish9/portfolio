@@ -82165,26 +82165,90 @@ a = b + c;
         content: (
           <Comp
             title="Q747. Largest Number At Least Twice of Others (Q601)"
-            content1={<></>}
+            content1={
+              <>
+                You are given an integer array nums where the largest integer is
+                unique.
+                <br />
+                Determine whether the largest element in the array is at least
+                twice as much as every other number in the array. If it is,
+                return the index of the largest element, or return -1 otherwise.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [3,6,1,0]
+                    <br />
+                    Output: 1<br />
+                    Explanation: 6 is the largest integer.
+                    <br />
+                    For every other number in the array x, 6 is at least twice
+                    as big as x.
+                    <br /> The index of value 6 is 1, so we return 1.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,4]
+                    <br />
+                    Output: -1
+                    <br />
+                    Explanation: 4 is less than twice the value of 3, so we
+                    return -1.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1]
+                    <br />
+                    Output: 0<br />
+                    Explanation: 1 is trivially at least twice the value as any
+                    other number because there are no other numbers.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 50
+                <br />
+                0 &lt;= nums[i] &lt;= 100
+                <br />
+                The largest element in nums is unique.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var dominantIndex = function(nums) {
+                 let ans = 0;
+                 let max = 0;
+                 let secondMax = 0;
+                 for (let i = 0; i < nums.length; ++i)
+                   if (nums[i] > max) {
+                     secondMax = max;
+                     max = nums[i];
+                     ans = i;
+                   } else if (nums[i] > secondMax) {
+                     secondMax = nums[i];
+                   }
+                 return max >= 2 * secondMax ? ans : -1; 
+               };
+               
+               console.log(dominantIndex([1]))`,
+                output: `0`,
               },
             }}
           />
@@ -82194,6 +82258,7 @@ a = b + c;
         title: "Q748. Shortest Completing Word (Q602)",
         content: (
           <Comp
+            title="Q748. Shortest Completing Word (Q602)"
             content1={<></>}
             content2={null}
             examples={[
@@ -82209,7 +82274,7 @@ a = b + c;
             ]}
             constraints={<></>}
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
