@@ -284,6 +284,7 @@ import Leetcode701 from "assets/leetcode/701.png";
 import Leetcode733 from "assets/leetcode/q733.png";
 import Leetcode741 from "assets/leetcode/741.png";
 import Leetcode743 from "assets/leetcode/743.png";
+import Leetcode749 from "assets/leetcode/749.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -82376,26 +82377,153 @@ a = b + c;
         content: (
           <Comp
             title="Q749. Contain Virus (Q603)"
-            content1={<></>}
+            content1={
+              <>
+                A virus is spreading rapidly, and your task is to quarantine the
+                infected area by installing walls.
+                <br />
+                The world is modeled as an m x n binary grid isInfected, where
+                isInfected[i][j] == 0 represents uninfected cells, and
+                isInfected[i][j] == 1 represents cells contaminated with the
+                virus. A wall (and only one wall) can be installed between any
+                two 4-directionally adjacent cells, on the shared boundary.
+                <br />
+                Every night, the virus spreads to all neighboring cells in all
+                four directions unless blocked by a wall. Resources are limited.
+                Each day, you can install walls around only one region (i.e.,
+                the affected area (continuous block of infected cells) that
+                threatens the most uninfected cells the following night). There
+                will never be a tie.
+                <br />
+                Return the number of walls used to quarantine all the infected
+                regions. If the world will become fully infected, return the
+                number of walls used.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode749,
+                content: (
+                  <>
+                    Input: isInfected =
+                    [[0,1,0,0,0,0,0,1],[0,1,0,0,0,0,0,1],[0,0,0,0,0,0,0,1],[0,0,0,0,0,0,0,0]]
+                    <br /> Output: 10 <br />
+                    Explanation: There are 2 contaminated regions. <br />
+                    On the first day, add 5 walls to quarantine the viral region
+                    on the left. The board after the virus spreads is:
+                    <br />
+                    On the second day, add 5 walls to quarantine the viral
+                    region on the right. The virus is fully contained.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: isInfected = [[1,1,1],[1,0,1],[1,1,1]]
+                    <br />
+                    Output: 4<br />
+                    Explanation: Even though there is only one cell saved, there
+                    are 4 walls built. Notice that walls are only built on the
+                    shared boundary of two different cells.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: isInfected =
+                    [[1,1,1,0,0,0,0,0,0],[1,0,1,0,1,1,1,1,1],[1,1,1,0,0,0,0,0,0]]
+                    <br /> Output: 13
+                    <br />
+                    Explanation: The region on the left only builds two new
+                    walls.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                m == isInfected.length <br />
+                n == isInfected[i].length <br />
+                1 &lt;= m, n &lt;= 50 <br />
+                isInfected[i][j] is either 0 or 1. <br />
+                There is always a contiguous viral region throughout the
+                described process that will infect strictly more uncontaminated
+                squares in the next round.
+              </>
+            }
+            tc="n^4"
+            sc="n^4"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // [[0,1,0,0,0,0,0,1],[0,1,0,0,0,0,0,1],[0,0,0,0,0,0,0,1],[0,0,0,0,0,0,0,0]]
+                class Region {
+                  public Set<Integer> infected = new HashSet<>();
+                  public Set<Integer> noninfected = new HashSet<>();
+                  public int wallsRequired = 0;
+                };
+                
+                class Solution {
+                  public int containVirus(int[][] grid) {
+                    final int m = grid.length;
+                    final int n = grid[0].length;
+                    int ans = 0;
+                    while (true) {
+                      List<Region> regions = new ArrayList<>();
+                      boolean[][] seen = new boolean[m][n];
+                      for (int i = 0; i < m; ++i)
+                        for (int j = 0; j < n; ++j)
+                          if (grid[i][j] == 1 && !seen[i][j]) {
+                            Region region = new Region();
+                            dfs(grid, i, j, region, seen); 
+                            if (!region.noninfected.isEmpty())
+                              regions.add(region);
+                          }
+                      if (regions.isEmpty())
+                        break; 
+                      Collections.sort(regions, (a, b) -> a.noninfected.size() - b.noninfected.size());
+                      Region mostInfectedRegion = regions.get(regions.size() - 1);
+                      regions.remove(regions.size() - 1);
+                      ans += mostInfectedRegion.wallsRequired;
+                      for (final int neighbor : mostInfectedRegion.infected) {
+                        final int i = neighbor / n;
+                        final int j = neighbor % n;
+                        grid[i][j] = 2;
+                      }
+                
+                      for (final Region region : regions)
+                        for (final int neighbor : region.noninfected) {
+                          final int i = neighbor / n;
+                          final int j = neighbor % n;
+                          grid[i][j] = 1;
+                        }
+                    }
+                    return ans;
+                  }
+                
+                  private void dfs(int[][] grid, int i, int j, Region region, boolean[][] seen) {
+                    if (i < 0 || i == grid.length || j < 0 || j == grid[0].length)
+                      return;
+                    if (seen[i][j] || grid[i][j] == 2)
+                      return;
+                    if (grid[i][j] == 0) {
+                      region.noninfected.add(i * grid[0].length + j);
+                      ++region.wallsRequired;
+                      return;
+                    }
+                    seen[i][j] = true;
+                    region.infected.add(i * grid[0].length + j);
+                    dfs(grid, i + 1, j, region, seen);
+                    dfs(grid, i - 1, j, region, seen);
+                    dfs(grid, i, j + 1, region, seen);
+                    dfs(grid, i, j - 1, region, seen);
+                  }
+                }
+                `,
+                output: `10`,
               },
             }}
           />
@@ -82405,6 +82533,7 @@ a = b + c;
         title: "Q752. Open the Lock (Q604)",
         content: (
           <Comp
+            title="Q752. Open the Lock (Q604)"
             content1={<></>}
             content2={null}
             examples={[
