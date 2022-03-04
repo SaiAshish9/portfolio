@@ -82534,26 +82534,122 @@ a = b + c;
         content: (
           <Comp
             title="Q752. Open the Lock (Q604)"
-            content1={<></>}
+            content1={
+              <>
+                You have a lock in front of you with 4 circular wheels. Each
+                wheel has 10 slots: '0', '1', '2', '3', '4', '5', '6', '7', '8',
+                '9'. The wheels can rotate freely and wrap around: for example
+                we can turn '9' to be '0', or '0' to be '9'. Each move consists
+                of turning one wheel one slot.
+                <br />
+                The lock initially starts at '0000', a string representing the
+                state of the 4 wheels.
+                <br />
+                You are given a list of deadends dead ends, meaning if the lock
+                displays any of these codes, the wheels of the lock will stop
+                turning and you will be unable to open it.
+                <br />
+                Given a target representing the value of the wheels that will
+                unlock the lock, return the minimum total number of turns
+                required to open the lock, or -1 if it is impossible.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: deadends = ["0201","0101","0102","1212","2002"],
+                    target = "0202"
+                    <br /> Output: 6 Explanation: <br />
+                    A sequence of valid moves would be "0000" -&gt; "1000" -&gt;
+                    "1100" -&gt; "1200" -&gt; "1201" -&gt; "1202" -&gt; "0202".
+                    <br /> Note that a sequence like "0000" -&gt; "0001" -&gt;
+                    "0002" -&gt; "0102" -&gt; "0202" would be invalid,
+                    <br /> because the wheels of the lock become stuck after the
+                    display becomes the dead end "0102".
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: deadends = ["8888"], target = "0009" <br />
+                    Output: 1 <br />
+                    Explanation: We can turn the last wheel in reverse to move
+                    from "0000" -&gt; "0009".
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: deadends =
+                    ["8887","8889","8878","8898","8788","8988","7888","9888"],
+                    target = "8888"
+                    <br /> Output: -1 <br />
+                    Explanation: We cannot reach the target without getting
+                    stuck.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                1 &lt;= deadends.length &lt;= 500 <br />
+                deadends[i].length == 4 <br />
+                target.length == 4 <br />
+                target will not be in the list deadends. target and deadends[i]
+                consist of digits only.
+              </>
+            }
+            tc="1"
+            sc="1"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// deadends = ["0201","0101","0102","1212","2002"], target = "0202"
+                class Solution {
+                  public int openLock(String[] deadends, String target) {
+                    Set<String> seen = new HashSet<>(Arrays.asList(deadends));
+                    if (seen.contains("0000"))
+                      return -1;
+                    if (target.equals("0000"))
+                      return 0;
+                    int ans = 0;
+                    Queue<String> q = new LinkedList<>(Arrays.asList("0000"));
+                
+                    while (!q.isEmpty()) {
+                      ++ans;
+                      for (int sz = q.size(); sz > 0; --sz) {
+                        StringBuilder sb = new StringBuilder(q.poll());
+                        for (int i = 0; i < 4; ++i) {
+                          final char cache = sb.charAt(i);
+                          sb.setCharAt(i, sb.charAt(i) == '9' ? '0' : (char) (sb.charAt(i) + 1));
+                          String word = sb.toString();
+                          if (word.equals(target))
+                            return ans;
+                          if (!seen.contains(word)) {
+                            q.offer(word);
+                            seen.add(word);
+                          }
+                          sb.setCharAt(i, cache);
+                          sb.setCharAt(i, sb.charAt(i) == '0' ? '9' : (char) (sb.charAt(i) - 1));
+                          word = sb.toString();
+                          if (word.equals(target))
+                            return ans;
+                          if (!seen.contains(word)) {
+                            q.offer(word);
+                            seen.add(word);
+                          }
+                          sb.setCharAt(i, cache);
+                        }
+                      }
+                    }
+                    return -1;
+                  }
+                }
+                `,
+                output: `6`,
               },
             }}
           />
@@ -82563,6 +82659,7 @@ a = b + c;
         title: "Q753. Cracking the Safe (Q605)",
         content: (
           <Comp
+            title="Q753. Cracking the Safe (Q605)"
             content1={<></>}
             content2={null}
             examples={[
