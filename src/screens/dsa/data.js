@@ -83425,35 +83425,110 @@ a = b + c;
         content: (
           <Comp
             title="Q765. Couples Holding Hands  (Q613)"
-            content1={<></>}
+            content1={
+              <>
+                There are n couples sitting in 2n seats arranged in a row and
+                want to hold hands.
+                <br />
+                The people and seats are represented by an integer array row
+                where row[i] is the ID of the person sitting in the ith seat.
+                The couples are numbered in order, the first couple being (0,
+                1), the second couple being (2, 3), and so on with the last
+                couple being (2n - 2, 2n - 1).
+                <br />
+                Return the minimum number of swaps so that every couple is
+                sitting side by side. A swap consists of choosing any two
+                people, then they stand up and switch seats.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: row = [0,2,1,3] <br />
+                    Output: 1 <br />
+                    Explanation: We only need to swap the second (row[1]) and
+                    third (row[2]) person.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: row = [3,2,0,1] <br />
+                    Output: 0 <br />
+                    Explanation: All couples are already seated side by side.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                2n == row.length
+                <br />
+                2 &lt;= n &lt;= 30
+                <br />
+                n is even.
+                <br />
+                0 &lt;= row[i] &lt; 2n
+                <br />
+                All the elements of row are unique.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // [0,2,1,3]
+                class UF {
+                  public UF(int n) {
+                    count = n;
+                    id = new int[n];
+                    for (int i = 0; i < n; ++i)
+                      id[i] = i;
+                  }
+                  public void union(int u, int v) {
+                    final int i = find(u);
+                    final int j = find(v);
+                    if (i == j)
+                      return;
+                    id[i] = j;
+                    --count;
+                  }
+                  public int getCount() {
+                    return count;
+                  }
+                  private int count;
+                  private int[] id;
+                  private int find(int u) {
+                    return id[u] == u ? u : (id[u] = find(id[u]));
+                  }
+                }
+                class Solution {
+                  public int minSwapsCouples(int[] row) {
+                    final int n = row.length / 2;
+                    UF uf = new UF(n);
+                    for (int i = 0; i < n; ++i) {
+                      final int a = row[2 * i];
+                      final int b = row[2 * i + 1];
+                      uf.union(a / 2, b / 2);
+                    }
+                    return n - uf.getCount();
+                  }
+                }`,
+                output: `1`,
               },
             }}
           />
         ),
       },
       q614: {
-        title: "Q766.  (Q614)",
+        title: "Q766. Toeplitz Matrix (Q614)",
         content: (
           <Comp
+            title="Q766. Toeplitz Matrix (Q614)"
             content1={<></>}
             content2={null}
             examples={[
