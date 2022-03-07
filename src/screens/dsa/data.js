@@ -84337,25 +84337,71 @@ a = b + c;
         ),
       },
       q621: {
-        title: "Q774.  (Q621)",
+        title: "Q775. Global and Local Inversions (Q621)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q775. Global and Local Inversions (Q621)"
+            content1={
+              <>
+                You are given an integer array nums of length n which represents
+                a permutation of all the integers in the range [0, n - 1].
+                <br />
+                <br />
+                The number of global inversions is the number of the different
+                pairs (i, j) where:
+                <br />
+                <br />
+                0 &lt;= i &lt; &lt; &lt; n<br />
+                nums[i] &gt; nums[j]
+                <br />
+                The number of local inversions is the number of indices i where:
+                <br />
+                <br />
+                0 &lt;= i &lt; n - 1
+                <br />
+                nums[i] &gt; nums[i + 1]
+                <br />
+                Return true if the number of global inversions is equal to the
+                number of local inversions.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,0,2] <br />
+                    Output: true <br />
+                    Explanation: There is 1 global inversion and 1 local
+                    inversion.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,0] <br /> Output: false <br />
+                    Explanation: There are 2 global inversions and 1 local
+                    inversion.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                n == nums.length
+                <br />
+                1 &lt;= n &lt;= 10^5
+                <br />
+                0 &lt;= nums[i] &lt; n<br />
+                All the integers of nums are unique.
+                <br />
+                nums is a permutation of all the numbers in the range [0, n -
+                1].
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
@@ -84366,7 +84412,7 @@ a = b + c;
         ),
       },
       q622: {
-        title: "Q775.  (Q622)",
+        title: "Q776.  (Q622)",
         content: (
           <Comp
             content1={<></>}
@@ -84395,7 +84441,7 @@ a = b + c;
         ),
       },
       q623: {
-        title: "Q776.  (Q62)",
+        title: "Q777.  (Q62)",
         content: (
           <Comp
             content1={<></>}
@@ -84424,7 +84470,7 @@ a = b + c;
         ),
       },
       q624: {
-        title: "Q777.  (Q624)",
+        title: "Q778.  (Q624)",
         content: (
           <Comp
             content1={<></>}
@@ -84453,7 +84499,7 @@ a = b + c;
         ),
       },
       q625: {
-        title: "Q778.  (Q625)",
+        title: "Q779.  (Q625)",
         content: (
           <Comp
             content1={<></>}
@@ -84482,7 +84528,7 @@ a = b + c;
         ),
       },
       q626: {
-        title: "Q779.  (Q626)",
+        title: "Q780.  (Q626)",
         content: (
           <Comp
             content1={<></>}
@@ -84511,7 +84557,7 @@ a = b + c;
         ),
       },
       q627: {
-        title: "Q780.  (Q627)",
+        title: "Q781.  (Q627)",
         content: (
           <Comp
             content1={<></>}
@@ -84540,7 +84586,7 @@ a = b + c;
         ),
       },
       q628: {
-        title: "Q781.  (Q628)",
+        title: "Q782.  (Q628)",
         content: (
           <Comp
             content1={<></>}
@@ -84569,7 +84615,7 @@ a = b + c;
         ),
       },
       q629: {
-        title: "Q782.  (Q629)",
+        title: "Q783.  (Q629)",
         content: (
           <Comp
             content1={<></>}
@@ -84598,7 +84644,7 @@ a = b + c;
         ),
       },
       q630: {
-        title: "Q783.  (Q630)",
+        title: "Q784.  (Q630)",
         content: (
           <Comp
             content1={<></>}
@@ -84627,7 +84673,7 @@ a = b + c;
         ),
       },
       q631: {
-        title: "Q784.  (Q631)",
+        title: "Q785.  (Q631)",
         content: (
           <Comp
             content1={<></>}
@@ -84656,7 +84702,7 @@ a = b + c;
         ),
       },
       q632: {
-        title: "Q785.  (Q632)",
+        title: "Q786.  (Q632)",
         content: (
           <Comp
             content1={<></>}
@@ -84685,7 +84731,7 @@ a = b + c;
         ),
       },
       q633: {
-        title: "Q786.  (Q633)",
+        title: "Q787.  (Q633)",
         content: (
           <Comp
             content1={<></>}
@@ -84714,7 +84760,7 @@ a = b + c;
         ),
       },
       q634: {
-        title: "Q787.  (Q634)",
+        title: "Q788.  (Q634)",
         content: (
           <Comp
             content1={<></>}
@@ -84743,7 +84789,7 @@ a = b + c;
         ),
       },
       q635: {
-        title: "Q788.  (Q635)",
+        title: "Q789.  (Q635)",
         content: (
           <Comp
             content1={<></>}
@@ -84772,7 +84818,7 @@ a = b + c;
         ),
       },
       q636: {
-        title: "Q789.  (Q636)",
+        title: "Q790.  (Q636)",
         content: (
           <Comp
             content1={<></>}
@@ -84801,7 +84847,7 @@ a = b + c;
         ),
       },
       q637: {
-        title: "Q790.  (Q637)",
+        title: "Q791.  (Q637)",
         content: (
           <Comp
             content1={<></>}
@@ -84830,7 +84876,7 @@ a = b + c;
         ),
       },
       q638: {
-        title: "Q791.  (Q638)",
+        title: "Q792.  (Q638)",
         content: (
           <Comp
             content1={<></>}
@@ -84859,7 +84905,7 @@ a = b + c;
         ),
       },
       q639: {
-        title: "Q792.  (Q639)",
+        title: "Q793.  (Q639)",
         content: (
           <Comp
             content1={<></>}
@@ -84888,7 +84934,7 @@ a = b + c;
         ),
       },
       q640: {
-        title: "Q793.  (Q640)",
+        title: "Q794.  (Q640)",
         content: (
           <Comp
             content1={<></>}
@@ -84917,7 +84963,7 @@ a = b + c;
         ),
       },
       q641: {
-        title: "Q794.  (Q641)",
+        title: "Q795.  (Q641)",
         content: (
           <Comp
             content1={<></>}
@@ -84946,7 +84992,7 @@ a = b + c;
         ),
       },
       q642: {
-        title: "Q795.  (Q642)",
+        title: "Q796.  (Q642)",
         content: (
           <Comp
             content1={<></>}
@@ -84975,7 +85021,7 @@ a = b + c;
         ),
       },
       q643: {
-        title: "Q796.  (Q643)",
+        title: "Q797.  (Q643)",
         content: (
           <Comp
             content1={<></>}
@@ -85004,7 +85050,7 @@ a = b + c;
         ),
       },
       q644: {
-        title: "Q797.  (Q644)",
+        title: "Q798.  (Q644)",
         content: (
           <Comp
             content1={<></>}
@@ -85033,7 +85079,7 @@ a = b + c;
         ),
       },
       q645: {
-        title: "Q798.  (Q645)",
+        title: "Q799.  (Q645)",
         content: (
           <Comp
             content1={<></>}
@@ -85062,7 +85108,7 @@ a = b + c;
         ),
       },
       q646: {
-        title: "Q799.  (Q646)",
+        title: "Q801.  (Q646)",
         content: (
           <Comp
             content1={<></>}
@@ -85091,7 +85137,7 @@ a = b + c;
         ),
       },
       q647: {
-        title: "Q801.  (Q647)",
+        title: "Q802.  (Q647)",
         content: (
           <Comp
             content1={<></>}
@@ -85120,7 +85166,7 @@ a = b + c;
         ),
       },
       q648: {
-        title: "Q802.  (Q648)",
+        title: "Q803.  (Q648)",
         content: (
           <Comp
             content1={<></>}
@@ -85149,7 +85195,7 @@ a = b + c;
         ),
       },
       q649: {
-        title: "Q803.  (Q649)",
+        title: "Q804.  (Q649)",
         content: (
           <Comp
             content1={<></>}
