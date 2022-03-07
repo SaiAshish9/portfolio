@@ -83124,12 +83124,27 @@ a = b + c;
                 s[i] is either '0' or '1'. <br />s is a special binary string.
               </>
             }
-            tc="n"
+            tc="n.log n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `class Solution {
+                  public String makeLargestSpecial(String S) {
+                    List<String> specials = new ArrayList<>();
+                    int count = 0;
+                    for (int i = 0, j = 0; j < S.length(); ++j) {
+                      count += S.charAt(j) == '1' ? 1 : -1;
+                      if (count == 0) {
+                        specials.add("1" + makeLargestSpecial(S.substring(i + 1, j)) + "0");
+                        i = j + 1;
+                      }
+                    }
+                    Collections.sort(specials, Collections.reverseOrder());
+                    return String.join("", specials);
+                  }
+                }
+                `,
+                output: `11100100`,
               },
             }}
           />
