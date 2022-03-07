@@ -83708,23 +83708,56 @@ a = b + c;
         ),
       },
       q616: {
-        title: "Q768.  (Q616)",
+        title: "Q768. Max Chunks To Make Sorted II (Q616)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q768. Max Chunks To Make Sorted II (Q616)"
+            content1={
+              <>
+                You are given an integer array arr.
+                <br />
+                We split arr into some number of chunks (i.e., partitions), and
+                individually sort each chunk. After concatenating them, the
+                result should equal the sorted array.
+                <br />
+                Return the largest number of chunks we can make to sort the
+                array.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [5,4,3,2,1] <br />
+                    Output: 1 <br />
+                    Explanation: <br />
+                    Splitting into two or more chunks will not return the
+                    required result. <br />
+                    For example, splitting into [5, 4], [3, 2, 1] will result in
+                    [4, 5, 1, 2, 3], which isn't sorted.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [2,1,3,4,4] <br />
+                    Output: 4 <br />
+                    Explanation: <br />
+                    We can split into two chunks, such as [2, 1], [3, 4, 4].{" "}
+                    <br />
+                    However, splitting into [2, 1], [3], [4], [4] is the highest
+                    number of chunks possible.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= arr.length &lt;= 2000 <br />0 &lt;= arr[i] &lt;= 108
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
