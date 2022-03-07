@@ -286,6 +286,8 @@ import Leetcode741 from "assets/leetcode/741.png";
 import Leetcode743 from "assets/leetcode/743.png";
 import Leetcode749 from "assets/leetcode/749.png";
 import Leetcode756 from "assets/leetcode/q756.png";
+import Leetcode764a from "assets/leetcode/764a.png";
+import Leetcode764b from "assets/leetcode/764b.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -83074,6 +83076,7 @@ a = b + c;
         title: "Q761. Special Binary String (Q609)",
         content: (
           <Comp
+            title="Q761. Special Binary String (Q609)"
             content1={
               <>
                 {" "}
@@ -83154,6 +83157,7 @@ a = b + c;
         title: "Q762.Prime Number of Set Bits in Binary Representation  (Q610)",
         content: (
           <Comp
+            title="Q762.Prime Number of Set Bits in Binary Representation  (Q610)"
             content1={
               <>
                 Given two integers left and right, return the count of numbers
@@ -83238,67 +83242,189 @@ a = b + c;
         ),
       },
       q611: {
-        title: "Q762.  (Q611)",
+        title: "Q763. Partition Labels (Q611)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q763. Partition Labels (Q611)"
+            content1={
+              <>
+                You are given a string s. We want to partition the string into
+                as many parts as possible so that each letter appears in at most
+                one part.
+                <br />
+                Note that the partition is done so that after concatenating all
+                the parts in order, the resultant string should be s.
+                <br />
+                Return a list of integers representing the size of these parts.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "ababcbacadefegdehijhklij" <br />
+                    Output: [9,7,8] <br />
+                    Explanation: <br />
+                    The partition is "ababcbaca", "defegde", "hijhklij". <br />
+                    This is a partition so that each letter appears in at most
+                    one part.
+                    <br /> A partition like "ababcbacadefegde", "hijhklij" is
+                    incorrect, because it splits s into less parts.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "eccbbbbdec" <br />
+                    Output: [10]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 500
+                <br />s consists of lowercase English letters.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {number[]}
+                */
+               var partitionLabels = function(s) {
+                 const res = [];
+                 let rightmost = Array(128).fill(0);
+                 for (let i = 0; i < s.length; ++i)
+                 rightmost[s.charAt(i)] = i;
+                 let l = 0; 
+                 let r = 0; 
+                 for (let i = 0; i < s.length; ++i) {
+                 r = Math.max(r, rightmost[s[i]]);
+                 if (r == i) {
+                   res.push(i - l + 1);
+                   l = i + 1;
+                 }
+                 }
+                 return res;  
+               };
+               
+               console.log(partitionLabels("ababcbacadefegdehijhklij"))
+               `,
+                output: `[ 9, 7, 8 ]`,
               },
             }}
           />
         ),
       },
       q612: {
-        title: "Q763.  (Q612)",
+        title: "Q764. Largest Plus Sign (Q612)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q764. Largest Plus Sign (Q612)"
+            content1={
+              <>
+                You are given an integer n. You have an n x n binary grid grid
+                with all values initially 1's except for some indices given in
+                the array mines. The ith element of the array mines is defined
+                as mines[i] = [xi, yi] where grid[xi][yi] == 0.
+                <br />
+                Return the order of the largest axis-aligned plus sign of 1's
+                contained in grid. If there is none, return 0.
+                <br />
+                An axis-aligned plus sign of 1's of order k has some center
+                grid[r][c] == 1 along with four arms of length k - 1 going up,
+                down, left, and right, and made of 1's. Note that there could be
+                0's or 1's beyond the arms of the plus sign, only the relevant
+                area of the plus sign is checked for 1's.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode764a,
+                content: (
+                  <>
+                    Input: n = 5, mines = [[4,2]] <br />
+                    Output: 2 <br />
+                    Explanation: In the above grid, the largest plus sign can
+                    only be of order 2. One of them is shown.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                img: Leetcode764b,
+                content: (
+                  <>
+                    Input: n = 1, mines = [[0,0]] <br />
+                    Output: 0 <br />
+                    Explanation: There is no plus sign, so return 0.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                1 &lt;= n &lt;= 500 <br />
+                1 &lt;= mines.length &lt;= 5000 <br />
+                0 &lt;= xi, yi &lt; n <br />
+                All the pairs (xi, yi) are unique.
+              </>
+            }
+            tc="n^2"
+            sc="n^2"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @param {number[][]} mines
+                * @return {number}
+                */
+               var orderOfLargestPlusSign = function(n, mines) {
+                 let grid = Array.from(Array(n),()=>Array(n).fill(n));
+                 for (let mine of mines)
+                     grid[mine[0]][mine[1]] = 0;
+                   for (let i = 0; i < n; ++i) {
+                     for (let j = 0, leftToRight = 0; j < n; ++j) {
+                       leftToRight = (grid[i][j] == 0 ? 0 : leftToRight + 1);
+                       grid[i][j] = Math.min(grid[i][j], leftToRight);
+                     }
+                     for (let j = n - 1, rightToLeft = 0; j >= 0; --j) {
+                       rightToLeft = (grid[i][j] == 0 ? 0 : rightToLeft + 1);
+                       grid[i][j] = Math.min(grid[i][j], rightToLeft);
+                     }
+                     for (let j = 0, upToDown = 0; j < n; ++j) {
+                       upToDown = (grid[j][i] == 0 ? 0 : upToDown + 1);
+                       grid[j][i] = Math.min(grid[j][i], upToDown);
+                     }
+                     for (let j = n - 1, downToUp = 0; j >= 0; --j) {
+                       downToUp = (grid[j][i] == 0) ? 0 : downToUp + 1;
+                       grid[j][i] = Math.min(grid[j][i], downToUp);
+                     }
+                   }
+                   let res = 0;
+                   for (let row of grid)
+                     res = Math.max(res, Math.max(...row))
+                   return res;  
+               };
+               
+               console.log(orderOfLargestPlusSign(1,[[0,0]]))`,
+                output: `0`,
               },
             }}
           />
         ),
       },
       q613: {
-        title: "Q764.  (Q613)",
+        title: "Q765. Couples Holding Hands  (Q613)",
         content: (
           <Comp
+            title="Q765. Couples Holding Hands  (Q613)"
             content1={<></>}
             content2={null}
             examples={[
@@ -83325,7 +83451,7 @@ a = b + c;
         ),
       },
       q614: {
-        title: "Q765.  (Q614)",
+        title: "Q766.  (Q614)",
         content: (
           <Comp
             content1={<></>}
@@ -83354,7 +83480,7 @@ a = b + c;
         ),
       },
       q615: {
-        title: "Q766.  (Q615)",
+        title: "Q767.  (Q615)",
         content: (
           <Comp
             content1={<></>}
@@ -83383,7 +83509,7 @@ a = b + c;
         ),
       },
       q616: {
-        title: "Q767.  (Q616)",
+        title: "Q768.  (Q616)",
         content: (
           <Comp
             content1={<></>}
@@ -83412,7 +83538,7 @@ a = b + c;
         ),
       },
       q617: {
-        title: "Q768.  (Q617)",
+        title: "Q769.  (Q617)",
         content: (
           <Comp
             content1={<></>}
@@ -83441,7 +83567,7 @@ a = b + c;
         ),
       },
       q618: {
-        title: "Q769.  (Q618)",
+        title: "Q770.  (Q618)",
         content: (
           <Comp
             content1={<></>}
@@ -83470,7 +83596,7 @@ a = b + c;
         ),
       },
       q619: {
-        title: "Q770.  (Q619)",
+        title: "Q771.  (Q619)",
         content: (
           <Comp
             content1={<></>}
@@ -83499,7 +83625,7 @@ a = b + c;
         ),
       },
       q620: {
-        title: "Q771.  (Q620)",
+        title: "Q772.  (Q620)",
         content: (
           <Comp
             content1={<></>}
@@ -83528,7 +83654,7 @@ a = b + c;
         ),
       },
       q621: {
-        title: "Q772.  (Q621)",
+        title: "Q773.  (Q621)",
         content: (
           <Comp
             content1={<></>}
@@ -83557,7 +83683,7 @@ a = b + c;
         ),
       },
       q622: {
-        title: "Q773.  (Q622)",
+        title: "Q774.  (Q622)",
         content: (
           <Comp
             content1={<></>}
@@ -83586,7 +83712,7 @@ a = b + c;
         ),
       },
       q623: {
-        title: "Q774.  (Q623)",
+        title: "Q775.  (Q623)",
         content: (
           <Comp
             content1={<></>}
@@ -83615,7 +83741,7 @@ a = b + c;
         ),
       },
       q624: {
-        title: "Q775.  (Q624)",
+        title: "Q776.  (Q624)",
         content: (
           <Comp
             content1={<></>}
@@ -83644,7 +83770,7 @@ a = b + c;
         ),
       },
       q625: {
-        title: "Q776.  (Q625)",
+        title: "Q777.  (Q625)",
         content: (
           <Comp
             content1={<></>}
@@ -83673,7 +83799,7 @@ a = b + c;
         ),
       },
       q626: {
-        title: "Q777.  (Q626)",
+        title: "Q778.  (Q626)",
         content: (
           <Comp
             content1={<></>}
@@ -83702,7 +83828,7 @@ a = b + c;
         ),
       },
       q627: {
-        title: "Q778.  (Q627)",
+        title: "Q779.  (Q627)",
         content: (
           <Comp
             content1={<></>}
@@ -83731,7 +83857,7 @@ a = b + c;
         ),
       },
       q628: {
-        title: "Q779.  (Q628)",
+        title: "Q780.  (Q628)",
         content: (
           <Comp
             content1={<></>}
@@ -83760,7 +83886,7 @@ a = b + c;
         ),
       },
       q629: {
-        title: "Q780.  (Q629)",
+        title: "Q781.  (Q629)",
         content: (
           <Comp
             content1={<></>}
@@ -83789,7 +83915,7 @@ a = b + c;
         ),
       },
       q630: {
-        title: "Q781.  (Q630)",
+        title: "Q782.  (Q630)",
         content: (
           <Comp
             content1={<></>}
@@ -83818,7 +83944,7 @@ a = b + c;
         ),
       },
       q631: {
-        title: "Q782.  (Q631)",
+        title: "Q783.  (Q631)",
         content: (
           <Comp
             content1={<></>}
@@ -83847,7 +83973,7 @@ a = b + c;
         ),
       },
       q632: {
-        title: "Q783.  (Q632)",
+        title: "Q784.  (Q632)",
         content: (
           <Comp
             content1={<></>}
@@ -83876,7 +84002,7 @@ a = b + c;
         ),
       },
       q633: {
-        title: "Q784.  (Q633)",
+        title: "Q785.  (Q633)",
         content: (
           <Comp
             content1={<></>}
@@ -83905,7 +84031,7 @@ a = b + c;
         ),
       },
       q634: {
-        title: "Q785.  (Q634)",
+        title: "Q786.  (Q634)",
         content: (
           <Comp
             content1={<></>}
@@ -83934,7 +84060,7 @@ a = b + c;
         ),
       },
       q635: {
-        title: "Q786.  (Q635)",
+        title: "Q787.  (Q635)",
         content: (
           <Comp
             content1={<></>}
@@ -83963,7 +84089,7 @@ a = b + c;
         ),
       },
       q636: {
-        title: "Q787.  (Q636)",
+        title: "Q788.  (Q636)",
         content: (
           <Comp
             content1={<></>}
@@ -83992,7 +84118,7 @@ a = b + c;
         ),
       },
       q637: {
-        title: "Q788.  (Q637)",
+        title: "Q789.  (Q637)",
         content: (
           <Comp
             content1={<></>}
@@ -84021,7 +84147,7 @@ a = b + c;
         ),
       },
       q638: {
-        title: "Q789.  (Q638)",
+        title: "Q790.  (Q638)",
         content: (
           <Comp
             content1={<></>}
@@ -84050,7 +84176,7 @@ a = b + c;
         ),
       },
       q639: {
-        title: "Q790.  (Q639)",
+        title: "Q791.  (Q639)",
         content: (
           <Comp
             content1={<></>}
@@ -84079,7 +84205,7 @@ a = b + c;
         ),
       },
       q640: {
-        title: "Q791.  (Q640)",
+        title: "Q792.  (Q640)",
         content: (
           <Comp
             content1={<></>}
@@ -84108,7 +84234,7 @@ a = b + c;
         ),
       },
       q641: {
-        title: "Q792.  (Q641)",
+        title: "Q793.  (Q641)",
         content: (
           <Comp
             content1={<></>}
@@ -84137,7 +84263,7 @@ a = b + c;
         ),
       },
       q642: {
-        title: "Q793.  (Q642)",
+        title: "Q794.  (Q642)",
         content: (
           <Comp
             content1={<></>}
@@ -84166,7 +84292,7 @@ a = b + c;
         ),
       },
       q643: {
-        title: "Q794.  (Q643)",
+        title: "Q795.  (Q643)",
         content: (
           <Comp
             content1={<></>}
@@ -84195,7 +84321,7 @@ a = b + c;
         ),
       },
       q644: {
-        title: "Q795.  (Q644)",
+        title: "Q796.  (Q644)",
         content: (
           <Comp
             content1={<></>}
@@ -84224,7 +84350,7 @@ a = b + c;
         ),
       },
       q645: {
-        title: "Q796.  (Q645)",
+        title: "Q797.  (Q645)",
         content: (
           <Comp
             content1={<></>}
@@ -84253,7 +84379,7 @@ a = b + c;
         ),
       },
       q646: {
-        title: "Q797.  (Q646)",
+        title: "Q798.  (Q646)",
         content: (
           <Comp
             content1={<></>}
@@ -84282,7 +84408,7 @@ a = b + c;
         ),
       },
       q647: {
-        title: "Q798.  (Q647)",
+        title: "Q799.  (Q647)",
         content: (
           <Comp
             content1={<></>}
@@ -84311,7 +84437,7 @@ a = b + c;
         ),
       },
       q648: {
-        title: "Q799.  (Q648)",
+        title: "Q801.  (Q648)",
         content: (
           <Comp
             content1={<></>}
@@ -84340,7 +84466,7 @@ a = b + c;
         ),
       },
       q649: {
-        title: "Q801.  (Q649)",
+        title: "Q802.  (Q649)",
         content: (
           <Comp
             content1={<></>}
@@ -84369,7 +84495,7 @@ a = b + c;
         ),
       },
       q650: {
-        title: "Q802.  (Q650)",
+        title: "Q803.  (Q650)",
         content: (
           <Comp
             content1={<></>}
