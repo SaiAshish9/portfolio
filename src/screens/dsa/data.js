@@ -84404,44 +84404,124 @@ a = b + c;
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {boolean}
+                */
+               var isIdealPermutation = function(nums) {
+                 for (let i = 0; i < nums.length; ++i)
+                   if (Math.abs(nums[i] - i) > 1)
+                     return false;
+                 return true;    
+               };
+               
+               console.log(isIdealPermutation([1,2,0]))`,
+                output: `false`,
               },
             }}
           />
         ),
       },
       q622: {
-        title: "Q776.  (Q622)",
+        title: "Q777. Swap Adjacent in LR String (Q622)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q777. Swap Adjacent in LR String (Q622)"
+            content1={
+              <>
+                In a string composed of 'L', 'R', and 'X' characters, like
+                "RXXLRXRXL", a move consists of either replacing one occurrence
+                of "XL" with "LX", or replacing one occurrence of "RX" with
+                "XR". Given the starting string start and the ending string end,
+                return True if and only if there exists a sequence of moves to
+                transform one string to the other.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: start = "RXXLRXRXL",
+                    <br /> end = "XRLXXRRLX" <br />
+                    Output: true
+                    <br />
+                    Explanation: We can transform start to end following these
+                    steps:
+                    <br />
+                    RXXLRXRXL -&gt;
+                    <br />
+                    XRXLRXRXL -&gt;
+                    <br />
+                    XRLXRXRXL -&gt;
+                    <br />
+                    XRLXXRRXL -&gt;
+                    <br />
+                    XRLXXRRLX
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: start = "X", <br />
+                    end = "L"
+                    <br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= start.length &lt;= 10^4
+                <br />
+                start.length == end.length
+                <br />
+                Both start and end will only consist of characters in 'L', 'R',
+                and 'X'.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: start = "RXXLRXRXL", end = "XRLXXRRLX"
+                class Solution {
+                  public boolean canTransform(String start, String end) {
+                    if (!start.replace("X", "").equals(end.replace("X", "")))
+                      return false;
+                    int i = 0; 
+                    int j = 0; 
+                    while (i < start.length() && j < end.length()) {
+                      while (i < start.length() && start.charAt(i) == 'X')
+                        ++i;
+                      while (j < end.length() && end.charAt(j) == 'X')
+                        ++j;
+                      if (i == start.length() && j == end.length())
+                        return true;
+                      if (i == start.length() || j == end.length())
+                        return false;
+                      if (start.charAt(i) == 'L' && i < j)
+                        return false;
+                      if (start.charAt(i) == 'R' && i > j)
+                        return false;
+                      ++i;
+                      ++j;
+                    }
+                    return true;
+                  }
+                }
+                `,
+                output: `true`,
               },
             }}
           />
         ),
       },
       q623: {
-        title: "Q777.  (Q62)",
+        title: "Q778.  (Q62)",
         content: (
           <Comp
             content1={<></>}
