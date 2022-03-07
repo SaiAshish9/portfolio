@@ -84209,7 +84209,135 @@ a = b + c;
         ),
       },
       q620: {
-        title: "Q772.  (Q620)",
+        title: "Q773. Sliding Puzzle (Q620)",
+        content: (
+          <Comp
+            title="Q773. Sliding Puzzle (Q620)"
+            content1={
+              <>
+                On an 2 x 3 board, there are five tiles labeled from 1 to 5, and
+                an empty square represented by 0. A move consists of choosing 0
+                and a 4-directionally adjacent number and swapping it.
+                <br />
+                The state of the board is solved if and only if the board is
+                [[1,2,3],[4,5,0]].
+                <br />
+                Given the puzzle board board, return the least number of moves
+                required so that the state of the board is solved. If it is
+                impossible for the state of the board to be solved, return -1.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: board = [[1,2,3],[4,0,5]] <br />
+                    Output: 1 <br />
+                    Explanation: Swap the 0 and the 5 in one move.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: board = [[1,2,3],[5,4,0]] <br />
+                    Output: -1 <br />
+                    Explanation: No number of moves will make the board solved.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: board = [[4,1,2],[5,0,3]] <br />
+                    Output: 5 <br />
+                    Explanation: 5 is the smallest number of moves that solves
+                    the board. <br />
+                    An example path: <br />
+                    After move 0: [[4,1,2],[5,0,3]] <br />
+                    After move 1: [[4,1,2],[0,5,3]] <br />
+                    After move 2: [[0,1,2],[4,5,3]] <br />
+                    After move 3: [[1,0,2],[4,5,3]] <br />
+                    After move 4: [[1,2,0],[4,5,3]] <br />
+                    After move 5: [[1,2,3],[4,5,0]]
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                board.length == 2<br />
+                board[i].length == 3<br />
+                0 &lt;= board[i][j] &lt;= 5<br />
+                Each value board[i][j] is unique.
+              </>
+            }
+            tc="(m.n)!"
+            sc="(m.n)!"
+            codes={{
+              Java: {
+                code: `
+                // board = [[1,2,3],[4,0,5]]
+                class Solution {
+                  public int slidingPuzzle(int[][] board) {
+                    final int m = 2;
+                    final int n = 3;
+                    final int[] dirs = {0, 1, 0, -1, 0};
+                    final String goal = "123450";
+                    int steps = 0;
+                    StringBuilder startSb = new StringBuilder();
+                
+                    for (int i = 0; i < m; ++i)
+                      for (int j = 0; j < n; ++j)
+                        startSb.append((char) ('0' + board[i][j]));
+                
+                    final String start = startSb.toString();
+                
+                    if (start.equals(goal))
+                      return 0;
+                
+                    Queue<String> q = new LinkedList<>(Arrays.asList(start));
+                    Set<String> seen = new HashSet<>(Arrays.asList(start));
+                
+                    while (!q.isEmpty()) {
+                      ++steps;
+                      for (int sz = q.size(); sz > 0; --sz) {
+                        final String s = q.poll();
+                        final int zeroIndex = s.indexOf("0");
+                        final int i = zeroIndex / n;
+                        final int j = zeroIndex % n;
+                        for (int k = 0; k < 4; ++k) {
+                          final int x = i + dirs[k];
+                          final int y = j + dirs[k + 1];
+                          if (x < 0 || x == m || y < 0 || y == n)
+                            continue;
+                          final int swappedIndex = x * n + y;
+                          StringBuilder sb = new StringBuilder(s);
+                          sb.setCharAt(zeroIndex, s.charAt(swappedIndex));
+                          sb.setCharAt(swappedIndex, s.charAt(zeroIndex));
+                          final String t = sb.toString();
+                          if (t.equals(goal))
+                            return steps;
+                          if (!seen.contains(t)) {
+                            q.offer(t);
+                            seen.add(t);
+                          }
+                        }
+                      }
+                    }
+                
+                    return -1;
+                  }
+                }`,
+                output: `1`,
+              },
+            }}
+          />
+        ),
+      },
+      q621: {
+        title: "Q774.  (Q621)",
         content: (
           <Comp
             content1={<></>}
@@ -84237,38 +84365,8 @@ a = b + c;
           />
         ),
       },
-      q621: {
-        title: "Q773. Sliding Puzzle (Q621)",
-        content: (
-          <Comp
-            title="Q773. Sliding Puzzle (Q621)"
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            tc="(m.n)!"
-            sc="(m.n)!"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
       q622: {
-        title: "Q774.  (Q622)",
+        title: "Q775.  (Q622)",
         content: (
           <Comp
             content1={<></>}
@@ -84297,7 +84395,7 @@ a = b + c;
         ),
       },
       q623: {
-        title: "Q775.  (Q623)",
+        title: "Q776.  (Q62)",
         content: (
           <Comp
             content1={<></>}
@@ -84326,7 +84424,7 @@ a = b + c;
         ),
       },
       q624: {
-        title: "Q776.  (Q624)",
+        title: "Q777.  (Q624)",
         content: (
           <Comp
             content1={<></>}
@@ -84355,7 +84453,7 @@ a = b + c;
         ),
       },
       q625: {
-        title: "Q777.  (Q625)",
+        title: "Q778.  (Q625)",
         content: (
           <Comp
             content1={<></>}
@@ -84384,7 +84482,7 @@ a = b + c;
         ),
       },
       q626: {
-        title: "Q778.  (Q626)",
+        title: "Q779.  (Q626)",
         content: (
           <Comp
             content1={<></>}
@@ -84413,7 +84511,7 @@ a = b + c;
         ),
       },
       q627: {
-        title: "Q779.  (Q627)",
+        title: "Q780.  (Q627)",
         content: (
           <Comp
             content1={<></>}
@@ -84442,7 +84540,7 @@ a = b + c;
         ),
       },
       q628: {
-        title: "Q780.  (Q628)",
+        title: "Q781.  (Q628)",
         content: (
           <Comp
             content1={<></>}
@@ -84471,7 +84569,7 @@ a = b + c;
         ),
       },
       q629: {
-        title: "Q781.  (Q629)",
+        title: "Q782.  (Q629)",
         content: (
           <Comp
             content1={<></>}
@@ -84500,7 +84598,7 @@ a = b + c;
         ),
       },
       q630: {
-        title: "Q782.  (Q630)",
+        title: "Q783.  (Q630)",
         content: (
           <Comp
             content1={<></>}
@@ -84529,7 +84627,7 @@ a = b + c;
         ),
       },
       q631: {
-        title: "Q783.  (Q631)",
+        title: "Q784.  (Q631)",
         content: (
           <Comp
             content1={<></>}
@@ -84558,7 +84656,7 @@ a = b + c;
         ),
       },
       q632: {
-        title: "Q784.  (Q632)",
+        title: "Q785.  (Q632)",
         content: (
           <Comp
             content1={<></>}
@@ -84587,7 +84685,7 @@ a = b + c;
         ),
       },
       q633: {
-        title: "Q785.  (Q633)",
+        title: "Q786.  (Q633)",
         content: (
           <Comp
             content1={<></>}
@@ -84616,7 +84714,7 @@ a = b + c;
         ),
       },
       q634: {
-        title: "Q786.  (Q634)",
+        title: "Q787.  (Q634)",
         content: (
           <Comp
             content1={<></>}
@@ -84645,7 +84743,7 @@ a = b + c;
         ),
       },
       q635: {
-        title: "Q787.  (Q635)",
+        title: "Q788.  (Q635)",
         content: (
           <Comp
             content1={<></>}
@@ -84674,7 +84772,7 @@ a = b + c;
         ),
       },
       q636: {
-        title: "Q788.  (Q636)",
+        title: "Q789.  (Q636)",
         content: (
           <Comp
             content1={<></>}
@@ -84703,7 +84801,7 @@ a = b + c;
         ),
       },
       q637: {
-        title: "Q789.  (Q637)",
+        title: "Q790.  (Q637)",
         content: (
           <Comp
             content1={<></>}
@@ -84732,7 +84830,7 @@ a = b + c;
         ),
       },
       q638: {
-        title: "Q790.  (Q638)",
+        title: "Q791.  (Q638)",
         content: (
           <Comp
             content1={<></>}
@@ -84761,7 +84859,7 @@ a = b + c;
         ),
       },
       q639: {
-        title: "Q791.  (Q639)",
+        title: "Q792.  (Q639)",
         content: (
           <Comp
             content1={<></>}
@@ -84790,7 +84888,7 @@ a = b + c;
         ),
       },
       q640: {
-        title: "Q792.  (Q640)",
+        title: "Q793.  (Q640)",
         content: (
           <Comp
             content1={<></>}
@@ -84819,7 +84917,7 @@ a = b + c;
         ),
       },
       q641: {
-        title: "Q793.  (Q641)",
+        title: "Q794.  (Q641)",
         content: (
           <Comp
             content1={<></>}
@@ -84848,7 +84946,7 @@ a = b + c;
         ),
       },
       q642: {
-        title: "Q794.  (Q642)",
+        title: "Q795.  (Q642)",
         content: (
           <Comp
             content1={<></>}
@@ -84877,7 +84975,7 @@ a = b + c;
         ),
       },
       q643: {
-        title: "Q795.  (Q643)",
+        title: "Q796.  (Q643)",
         content: (
           <Comp
             content1={<></>}
@@ -84906,7 +85004,7 @@ a = b + c;
         ),
       },
       q644: {
-        title: "Q796.  (Q644)",
+        title: "Q797.  (Q644)",
         content: (
           <Comp
             content1={<></>}
@@ -84935,7 +85033,7 @@ a = b + c;
         ),
       },
       q645: {
-        title: "Q797.  (Q645)",
+        title: "Q798.  (Q645)",
         content: (
           <Comp
             content1={<></>}
@@ -84964,7 +85062,7 @@ a = b + c;
         ),
       },
       q646: {
-        title: "Q798.  (Q646)",
+        title: "Q799.  (Q646)",
         content: (
           <Comp
             content1={<></>}
@@ -84993,7 +85091,7 @@ a = b + c;
         ),
       },
       q647: {
-        title: "Q799.  (Q647)",
+        title: "Q801.  (Q647)",
         content: (
           <Comp
             content1={<></>}
@@ -85022,7 +85120,7 @@ a = b + c;
         ),
       },
       q648: {
-        title: "Q801.  (Q648)",
+        title: "Q802.  (Q648)",
         content: (
           <Comp
             content1={<></>}
@@ -85051,36 +85149,7 @@ a = b + c;
         ),
       },
       q649: {
-        title: "Q802.  (Q649)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q650: {
-        title: "Q803.  (Q650)",
+        title: "Q803.  (Q649)",
         content: (
           <Comp
             content1={<></>}
