@@ -83529,35 +83529,103 @@ a = b + c;
         content: (
           <Comp
             title="Q766. Toeplitz Matrix (Q614)"
-            content1={<></>}
+            content1={
+              <>
+                Given an m x n matrix, return true if the matrix is Toeplitz.
+                Otherwise, return false.
+                <br />A matrix is Toeplitz if every diagonal from top-left to
+                bottom-right has the same elements.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: matrix = [[1,2,3,4],[5,1,2,3],[9,5,1,2]]
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation:
+                    <br />
+                    In the above grid, the diagonals are:
+                    <br />
+                    "[9]", "[5, 5]", "[1, 1, 1]", "[2, 2, 2]", "[3, 3]", "[4]".
+                    <br />
+                    In each diagonal all elements are the same, so the answer is
+                    True.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: matrix = [[1,2],[2,2]]
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation:
+                    <br />
+                    The diagonal "[1, 2]" has different elements.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                m == matrix.length <br />
+                n == matrix[i].length <br />
+                1 &lt;= m, n &lt;= 20 <br />0 &lt;= matrix[i][j] &lt;= 99
+              </>
+            }
+            fp={
+              <>
+                <b>Follow up:</b> <br />
+                1. What if the matrix is stored on disk, and the memory is
+                limited such that you can only load at most one row of the
+                matrix into the memory at once?
+                <br />
+                2. What if the matrix is so large that you can only load up a
+                partial row into the memory at once?
+              </>
+            }
+            tc="m.n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} matrix
+                * @return {boolean}
+                */
+               var isToeplitzMatrix = function(matrix) {
+                 if (matrix.length == 0)
+                     return true;
+                   const m = matrix.length;
+                   const n = matrix[0].length;
+                   let buffer = Array(n).fill(0);
+                   for (let j = 0; j < n; ++j)
+                     buffer[j] = matrix[0][j];
+                   for (let i = 1; i < m; ++i) {
+                     for (let j = 0; j + 1 < n; ++j)
+                       if (buffer[j] != matrix[i][j + 1])
+                         return false;
+                     buffer = matrix[i];
+                   }
+                   return true;
+               };
+               
+               console.log(isToeplitzMatrix([[1,2],[2,2]]))`,
+                output: `false`,
               },
             }}
           />
         ),
       },
       q615: {
-        title: "Q767.  (Q615)",
+        title: "Q767. Reorganize String (Q615)",
         content: (
           <Comp
+            title="Q767. Reorganize String (Q615)"
             content1={<></>}
             content2={null}
             examples={[
@@ -83573,7 +83641,7 @@ a = b + c;
             ]}
             constraints={<></>}
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
