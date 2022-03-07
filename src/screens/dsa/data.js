@@ -83071,36 +83071,7 @@ a = b + c;
         ),
       },
       q609: {
-        title: "Q761.  (Q609)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q610: {
-        title: "Q762.  (Q610)",
+        title: "Q761. Special Binary String (Q609)",
         content: (
           <Comp
             content1={
@@ -83125,6 +83096,50 @@ a = b + c;
                 after applying the mentioned operations on the string.
               </>
             }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: s = "11011000" <br />
+                    Output: "11100100" <br />
+                    Explanation: The strings "10" [occuring at s[1]] and "1100"
+                    [at s[3]] are swapped. This is the lexicographically largest
+                    string possible after some number of swaps.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "10" <br />
+                    Output: "10"
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 50 <br />
+                s[i] is either '0' or '1'. <br />s is a special binary string.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q610: {
+        title: "Q762.  (Q610)",
+        content: (
+          <Comp
+            content1={<></>}
             content2={null}
             examples={[
               {
