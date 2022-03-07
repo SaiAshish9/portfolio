@@ -83789,87 +83789,420 @@ a = b + c;
         ),
       },
       q617: {
-        title: "Q769.  (Q617)",
+        title: "Q769. Max Chunks To Make Sorted  (Q617)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q769. Max Chunks To Make Sorted  (Q617)"
+            content1={
+              <>
+                You are given an integer array arr of length n that represents a
+                permutation of the integers in the range [0, n - 1].
+                <br />
+                We split arr into some number of chunks (i.e., partitions), and
+                individually sort each chunk. After concatenating them, the
+                result should equal the sorted array.
+                <br />
+                Return the largest number of chunks we can make to sort the
+                array.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [4,3,2,1,0] <br />
+                    Output: 1 <br />
+                    Explanation: <br />
+                    Splitting into two or more chunks will not return the
+                    required result. <br />
+                    For example, splitting into [4, 3], [2, 1, 0] will result in
+                    [3, 4, 0, 1, 2], which isn't{" "}
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [1,0,2,3,4] <br />
+                    Output: 4 <br />
+                    Explanation: <br />
+                    We can split into two chunks, such as [1, 0], [2, 3, 4].{" "}
+                    <br />
+                    However, splitting into [1, 0], [2], [3], [4] is the highest
+                    number of chunks possible.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                n == arr.length <br />
+                1 &lt;= n &lt;= 10 <br />
+                0 &lt;= arr[i] &lt; n <br />
+                All the elements of arr are unique.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} arr
+                * @return {number}
+                */
+               var maxChunksToSorted = function(arr) {
+                 let res = 0;
+                 let max = Number.MIN_SAFE_INTEGER;
+                 for (let i = 0; i < arr.length; ++i) {
+                    max = Math.max(max, arr[i]);
+                   if (max == i)
+                     ++res;
+                 }
+                 return res;
+               };
+               console.log(maxChunksToSorted([5,4,3,2,1]))`,
+                output: `1`,
               },
             }}
           />
         ),
       },
       q618: {
-        title: "Q770.  (Q618)",
+        title: "Q770. Basic Calculator IV (Q618)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q770. Basic Calculator IV (Q618)"
+            content1={
+              <>
+                Given an expression such as expression = "e + 8 - a + 5" and an
+                evaluation map such as {`{"e": 1}`} (given in terms of evalvars
+                = ["e"] and evalints = [1]), return a list of tokens
+                representing the simplified expression, such as ["-1*a","14"]
+                <br /> <br />
+                An expression alternates chunks and symbols, with a space
+                separating each chunk and symbol. <br />
+                <br /> A chunk is either an expression in parentheses, a
+                variable, or a non-negative integer. <br />
+                <br /> A variable is a string of lowercase letters (not
+                including digits.) Note that variables can be multiple letters,
+                and note that variables never have a leading coefficient or
+                unary operator like "2x" or "-x". <br />
+                <br /> Expressions are evaluated in the usual order: brackets
+                first, then multiplication, then addition and subtraction.
+                <br />
+                For example, expression = "1 + 2 * 3" has an answer of ["7"].
+                <br /> The format of the output is as follows:
+                <br />
+                For each term of free variables with a non-zero coefficient, we
+                write the free variables within a term in sorted order
+                lexicographically.
+                <br /> For example, we would never write a term like "b*a*c",
+                only "a*b*c".
+                <br /> Terms have degrees equal to the number of free variables
+                being multiplied, counting multiplicity. We write the largest
+                degree terms of our answer first, breaking ties by lexicographic
+                order ignoring the leading coefficient of the term.
+                <br /> For example, "a*a*b*c" has degree 4.
+                <br /> The leading coefficient of the term is placed directly to
+                the left with an asterisk separating it from the variables (if
+                they exist.) A leading coefficient of 1 is still printed.
+                <br /> An example of a well-formatted answer is ["-2*a*a*a",
+                "3*a*a*b", "3*b*b", "4*a", "5*c", "-6"].
+                <br /> Terms (including constant terms) with coefficient 0 are
+                not included.
+                <br /> For example, an expression of "0" has an output of [].
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: expression = "e + 8 - a + 5",
+                    <br /> evalvars = ["e"], <br /> evalints = [1]
+                    <br />
+                    Output: ["-1*a","14"]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: expression = "e - 8 + temperature - pressure",
+                    <br /> evalvars = ["e", "temperature"], evalints = [1, 12]
+                    Output: ["-1*pressure","5"]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: expression = "(e + 8) * (e - 8)",
+                    <br /> evalvars = [],
+                    <br /> evalints = [] Output: ["1*e*e","-64"]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &tl;= expression.length &tl;= 250 <br />
+                expression consists of lowercase English letters, digits, '+',
+                '-', '*', '(', ')', ' '. <br />
+                expression does not contain any leading or trailing spaces.{" "}
+                <br />
+                All the tokens in expression are separated by a single space.{" "}
+                <br />
+                0 &tl;= evalvars.length &tl;= 100 <br />
+                1 &tl;= evalvars[i].length &tl;= 20 <br />
+                evalvars[i] consists of lowercase English letters. <br />
+                evalints.length == evalvars.length <br />
+                -100 &tl;= evalints[i] &tl;= 100
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `
+                // Input: expression = "e + 8 - a + 5", evalvars = ["e"], evalints = [1]
+                class Poly {
+                  public Poly add(Poly o) {
+                    for (final String term : o.terms.keySet())
+                      terms.merge(term, o.terms.get(term), Integer::sum);
+                    return this;
+                  }
+                
+                  public Poly minus(Poly o) {
+                    for (final String term : o.terms.keySet())
+                      terms.merge(term, -o.terms.get(term), Integer::sum);
+                    return this;
+                  }
+                
+                  public Poly mult(Poly o) {
+                    Poly res = new Poly();
+                    for (final String a : terms.keySet())
+                      for (final String b : o.terms.keySet())
+                        res.terms.merge(merge(a, b), terms.get(a) * o.terms.get(b), Integer::sum);
+                    return res;
+                  }
+                
+                  public List<String> toList() {
+                    List<String> res = new ArrayList<>();
+                    List<String> keys = new ArrayList<>(terms.keySet());
+                    Collections.sort(keys, new Comparator<String>() {
+                      @Override
+                      public int compare(final String a, final String b) {
+                        if (a.equals("1"))
+                          return 1;
+                        if (b.equals("1"))
+                          return -1;
+                        String[] as = a.split("\\*");
+                        String[] bs = b.split("\\*");
+                        return as.length == bs.length ? a.compareTo(b) : bs.length - as.length;
+                      }
+                    });
+                    for (final String key : keys)
+                      if (terms.get(key) != 0)
+                        res.add(concat(key));
+                    return res;
+                  }
+                
+                  public Poly() {}
+                  public Poly(final String term, int coef) {
+                    terms.put(term, coef);
+                  }
+                
+                  private Map<String, Integer> terms = new HashMap<>();
+                
+                  private static String merge(final String a, final String b) {
+                    if (a.equals("1"))
+                      return b;
+                    if (b.equals("1"))
+                      return a;
+                    StringBuilder sb = new StringBuilder();
+                    String[] A = a.split("\\*");
+                    String[] B = b.split("\\*");
+                    int i = 0; 
+                    int j = 0;
+                    while (i < A.length && j < B.length)
+                      if (A[i].compareTo(B[j]) < 0)
+                        sb.append("*").append(A[i++]);
+                      else
+                        sb.append("*").append(B[j++]);
+                    while (i < A.length)
+                      sb.append("*").append(A[i++]);
+                    while (j < B.length)
+                      sb.append("*").append(B[j++]);
+                    return sb.substring(1).toString();
+                  }
+                  private String concat(final String term) {
+                    if (term.equals("1"))
+                      return String.valueOf(terms.get(term));
+                    return new StringBuilder().append(terms.get(term)).append('*').append(term).toString();
+                  }
+                }
+                class Solution {
+                  public List<String> basicCalculatorIV(String expression, String[] evalvars, int[] evalints) {
+                    List<String> tokens = getTokens(expression);
+                    Map<String, Integer> evalMap = new HashMap<>();
+                    for (int i = 0; i < evalvars.length; ++i)
+                      evalMap.put(evalvars[i], evalints[i]);
+                    for (int i = 0; i < tokens.size(); ++i)
+                      if (evalMap.containsKey(tokens.get(i)))
+                        tokens.set(i, String.valueOf(evalMap.get(tokens.get(i))));
+                
+                    List<String> postfix = infixToPostfix(tokens);
+                    return evaluate(postfix).toList();
+                  }
+                
+                  private List<String> getTokens(final String s) {
+                    List<String> tokens = new ArrayList<>();
+                    int i = 0;
+                    for (int j = 0; j < s.length(); ++j)
+                      if (s.charAt(j) == ' ') {
+                        if (i < j)
+                          tokens.add(s.substring(i, j));
+                        i = j + 1;
+                      } else if ("()+-*".contains(s.substring(j, j + 1))) {
+                        if (i < j)
+                          tokens.add(s.substring(i, j));
+                        tokens.add(s.substring(j, j + 1));
+                        i = j + 1;
+                      }
+                    if (i < s.length())
+                      tokens.add(s.substring(i));
+                    return tokens;
+                  }
+                
+                  private boolean isOperator(final String token) {
+                    return token.equals("+") || token.equals("-") || token.equals("*");
+                  }
+                
+                  private boolean precedes(final String prevOp, final String currOp) {
+                    if (prevOp.equals("("))
+                      return false;
+                    return prevOp.equals("*") || currOp.equals("+") || currOp.equals("-");
+                  }
+                
+                  private List<String> infixToPostfix(List<String> tokens) {
+                    List<String> postfix = new ArrayList<>();
+                    Deque<String> ops = new ArrayDeque<>();
+                
+                    for (final String token : tokens)
+                      if (token.equals("(")) {
+                        ops.push(token);
+                      } else if (token.equals(")")) {
+                        while (!ops.peek().equals("("))
+                          postfix.add(ops.pop());
+                        ops.pop();
+                      } else if (isOperator(token)) {
+                        while (!ops.isEmpty() && precedes(ops.peek(), token))
+                          postfix.add(ops.pop());
+                        ops.push(token);
+                      } else { // isOperand(token)
+                        postfix.add(token);
+                      }
+                
+                    while (!ops.isEmpty())
+                      postfix.add(ops.pop());
+                
+                    return postfix;
+                  }
+                
+                  private Poly evaluate(List<String> postfix) {
+                    LinkedList<Poly> polys = new LinkedList<>();
+                    for (final String token : postfix)
+                      if (isOperator(token)) {
+                        final Poly b = polys.removeLast();
+                        final Poly a = polys.removeLast();
+                        if (token.equals("+"))
+                          polys.add(a.add(b));
+                        else if (token.equals("-"))
+                          polys.add(a.minus(b));
+                        else 
+                          polys.add(a.mult(b));
+                      } else if (token.charAt(0) == '-' || token.chars().allMatch(c -> Character.isDigit(c))) {
+                        polys.add(new Poly("1", Integer.parseInt(token)));
+                      } else {
+                        polys.add(new Poly(token, 1));
+                      }
+                    return polys.getFirst();
+                  }
+                }`,
+                output: `["-1*a","14"]`,
               },
             }}
           />
         ),
       },
       q619: {
-        title: "Q771.  (Q619)",
+        title: "Q771. Jewels and Stones (Q619)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q771. Jewels and Stones (Q619)"
+            content1={
+              <>
+                <Span>
+                  You're given strings jewels representing the types of stones
+                  that are jewels, and stones representing the stones you have.
+                  Each character in stones is a type of stone you have. You want
+                  to know how many of the stones you have are also jewels.
+                </Span>
+                Letters are case sensitive, so "a" is considered a different
+                type of stone from "A".
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: jewels = "aA",
+                    <br /> stones = "aAAbbbb"
+                    <br />
+                    Output: 3
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: jewels = "z",
+                    <br /> stones = "ZZ"
+                    <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= jewels.length, stones.length &lt;= 50 <br />
+                jewels and stones consist of only English letters. <br />
+                All the characters of jewels are unique.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} jewels
+                * @param {string} stones
+                * @return {number}
+                */
+               var numJewelsInStones = function(jewels, stones) {
+                 let res = 0;
+                 const j = new Set(jewels);
+                 for (let s of stones.split(""))
+                   if (j.has(s))
+                     ++res;
+                 return res;    
+               };
+               console.log(numJewelsInStones("aA","aAAbbbb"))`,
+                output: `3`,
               },
             }}
           />
@@ -83905,9 +84238,10 @@ a = b + c;
         ),
       },
       q621: {
-        title: "Q773.  (Q621)",
+        title: "Q773. Sliding Puzzle (Q621)",
         content: (
           <Comp
+            title="Q773. Sliding Puzzle (Q621)"
             content1={<></>}
             content2={null}
             examples={[
@@ -83922,8 +84256,8 @@ a = b + c;
               },
             ]}
             constraints={<></>}
-            tc="n"
-            sc="n"
+            tc="(m.n)!"
+            sc="(m.n)!"
             codes={{
               Javascript: {
                 code: ``,
