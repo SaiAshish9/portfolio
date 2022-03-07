@@ -83151,29 +83151,87 @@ a = b + c;
         ),
       },
       q610: {
-        title: "Q762.  (Q610)",
+        title: "Q762.Prime Number of Set Bits in Binary Representation  (Q610)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given two integers left and right, return the count of numbers
+                in the inclusive range [left, right] having a prime number of
+                set bits in their binary representation.
+                <br />
+                Recall that the number of set bits an integer has is the number
+                of 1's present when written in binary.
+                <br />
+                For example, 21 written in binary is 10101, which has 3 set
+                bits.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: left = 6, right = 10 <br />
+                    Output: 4 <br />
+                    Explanation: <br />
+                    6 -&gt; 110 (2 set bits, 2 is prime) <br />
+                    7 -&gt; 111 (3 set bits, 3 is prime) <br />
+                    8 -&gt; 1000 (1 set bit, 1 is not prime) <br />
+                    9 -&gt; 1001 (2 set bits, 2 is prime) <br />
+                    10 -&gt; 1010 (2 set bits, 2 is prime) <br />4 numbers have
+                    a prime number of set bits.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: left = 10, right = 15 <br />
+                    Output: 5 <br />
+                    Explanation: <br />
+                    10 -&gt; 1010 (2 set bits, 2 is prime) <br />
+                    11 -&gt; 1011 (3 set bits, 3 is prime) <br />
+                    12 -&gt; 1100 (2 set bits, 2 is prime) <br />
+                    13 -&gt; 1101 (3 set bits, 3 is prime) <br />
+                    14 -&gt; 1110 (3 set bits, 3 is prime) <br />
+                    15 -&gt; 1111 (4 set bits, 4 is not prime) <br />5 numbers
+                    have a prime number of set bits.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= left &lt;= right &lt;= 10^6 <br />0 &lt;= right - left
+                &lt;= 104
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} left
+                * @param {number} right
+                * @return {number}
+                */
+               function bitCount (n) {
+                 n = n - ((n >> 1) & 0x55555555)
+                 n = (n & 0x33333333) + ((n >> 2) & 0x33333333)
+                 return ((n + (n >> 4) & 0xF0F0F0F) * 0x1010101) >> 24
+               }
+               var countPrimeSetBits = function(left, right) {
+                 const magic = 665772;
+                 let res = 0;
+                 for (let n = left; n <= right; ++n)
+                 if ((magic & 1 << bitCount(n)) > 0)
+                       ++res;
+                 return res;    
+               };
+               console.log(countPrimeSetBits(10,15))
+               `,
+                output: `5`,
               },
             }}
           />
