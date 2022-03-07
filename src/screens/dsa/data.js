@@ -83626,20 +83626,42 @@ a = b + c;
         content: (
           <Comp
             title="Q767. Reorganize String (Q615)"
-            content1={<></>}
+            content1={
+              <>
+                Given a string s, rearrange the characters of s so that any two
+                adjacent characters are not the same.
+                <br />
+                Return any possible rearrangement of s or return "" if not
+                possible.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "aab"
+                    <br />
+                    Output: "aba"
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "aaab"
+                    <br />
+                    Output: ""
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 500
+                <br />s consists of lowercase English letters.
+              </>
+            }
             tc="n"
             sc="1"
             codes={{
