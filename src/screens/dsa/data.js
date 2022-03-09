@@ -84766,51 +84766,119 @@ a = b + c;
                 ),
               },
             ]}
-            constraints={<>1 &lt;= sx, sy, tx, ty &lt;= 109</>}
-            tc="n"
-            sc="n"
+            constraints={<>1 &lt;= sx, sy, tx, ty &lt;= 10^9</>}
+            tc="log n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} sx
+                * @param {number} sy
+                * @param {number} tx
+                * @param {number} ty
+                * @return {boolean}
+                */
+               var reachingPoints = function(sx, sy, tx, ty) {
+                  while (sx < tx && sy < ty)
+                     if (tx > ty)
+                       tx %= ty;
+                     else
+                       ty %= tx;
+               
+                   return sx == tx && sy <= ty && (ty - sy) % tx == 0 ||
+                          sy == ty && sx <= tx && (tx - sx) % ty == 0;  
+               };
+               
+               console.log(reachingPoints(1,1,2,2))`,
+                output: `false`,
               },
             }}
           />
         ),
       },
       q626: {
-        title: "Q781.  (Q626)",
+        title: "Q781. Rabbits in Forest  (Q626)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q781. Rabbits in Forest  (Q626)"
+            content1={
+              <>
+                There is a forest with an unknown number of rabbits. We asked n
+                rabbits "How many rabbits have the same color as you?" and
+                collected the answers in an integer array answers where
+                answers[i] is the answer of the ith rabbit.
+                <br />
+                Given the array answers, return the minimum number of rabbits
+                that could be in the forest.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: answers = [1,1,2] <br />
+                    Output: 5 <br />
+                    Explanation: <br />
+                    The two rabbits that answered "1" could both be the same
+                    color, say red. <br />
+                    The rabbit that answered "2" can't be red or the answers
+                    would be inconsistent. <br />
+                    Say the rabbit that answered "2" was blue. <br />
+                    Then there should be 2 other blue rabbits in the forest that
+                    didn't answer into the array.
+                    <br /> The smallest possible number of rabbits in the forest
+                    is therefore 5: 3 that answered plus 2 that didn't.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: answers = [10,10,10] <br />
+                    Output: 11
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= answers.length &lt;= 1000
+                <br />0 &lt;= answers[i] &lt; 1000
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} answers
+                * @return {number}
+                */
+               var numRabbits = function(answers) {
+                 let res = 0;
+                 const count = Array(1000).fill(0);
+               
+                 for (let answer of answers) {
+                   if (count[answer] % (answer + 1) == 0)
+                     res += answer + 1;
+                     ++count[answer];
+                   }
+                 return res;    
+               };
+               
+               console.log(numRabbits([10,10,10]))`,
+                output: `11`,
               },
             }}
           />
         ),
       },
       q627: {
-        title: "Q782.  (Q627)",
+        title: "Q782. Transform to Chessboard  (Q627)",
         content: (
           <Comp
+            title="Q782. Transform to Chessboard  (Q627)"
             content1={<></>}
             content2={null}
             examples={[
@@ -84825,8 +84893,8 @@ a = b + c;
               },
             ]}
             constraints={<></>}
-            tc="n"
-            sc="n"
+            tc="n^2"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
