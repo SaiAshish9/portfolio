@@ -84521,29 +84521,117 @@ a = b + c;
         ),
       },
       q623: {
-        title: "Q778.  (Q62)",
+        title: "Q778. Swim in Rising Water (Q62)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q778. Swim in Rising Water (Q62)"
+            content1={
+              <>
+                You are given an n x n integer matrix grid where each value
+                grid[i][j] represents the elevation at that point (i, j).
+                <br />
+                The rain starts to fall. At time t, the depth of the water
+                everywhere is t. You can swim from a square to another
+                4-directionally adjacent square if and only if the elevation of
+                both squares individually are at most t. You can swim infinite
+                distances in zero time. Of course, you must stay within the
+                boundaries of the grid during your swim.
+                <br />
+                Return the least time until you can reach the bottom right
+                square (n - 1, n - 1) if you start at the top left square (0,
+                0).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid = [[0,2],[1,3]] <br />
+                    Output: 3<br />
+                    Explanation:
+                    <br />
+                    At time 0, you are in grid location (0, 0).
+                    <br />
+                    You cannot go anywhere else because 4-directionally adjacent
+                    neighbors have a higher elevation than t = 0.
+                    <br />
+                    You cannot reach point (1, 1) until time 3.
+                    <br />
+                    When the depth of water is 3, we can swim anywhere inside
+                    the grid.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid =
+                    [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]
+                    <br /> Output: 16 <br />
+                    Explanation: The final route is shown. <br />
+                    We need to wait until time 16 so that (0, 0) and (4, 4) are
+                    connected.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                n == grid.length <br />
+                n == grid[i].length <br />
+                1 &lt;= n &lt;= 50 <br />
+                0 &lt;= grid[i][j] &lt; n2 <br />
+                Each value grid[i][j] is unique.
+              </>
+            }
+            tc="m.n log m.n"
+            sc="m.n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // grid = [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]
+                class T {
+                  public int i;
+                  public int j;
+                  public int height; // grid[i][j]
+                  public T(int i, int j, int height) {
+                    this.i = i;
+                    this.j = j;
+                    this.height = height;
+                  }
+                }
+                class Solution {
+                  public int swimInWater(int[][] grid) {
+                    final int n = grid.length;
+                    final int[] dirs = {0, 1, 0, -1, 0};
+                    int ans = grid[0][0];
+                    PriorityQueue<T> minHeap = new PriorityQueue<>((a, b) -> a.height - b.height);
+                    boolean[][] seen = new boolean[n][n];
+                    minHeap.offer(new T(0, 0, grid[0][0]));
+                    seen[0][0] = true;
+                    while (!minHeap.isEmpty()) {
+                      final int i = minHeap.peek().i;
+                      final int j = minHeap.peek().j;
+                      final int height = minHeap.poll().height;
+                      ans = Math.max(ans, height);
+                      if (i == n - 1 && j == n - 1)
+                        break;
+                      for (int k = 0; k < 4; ++k) {
+                        final int x = i + dirs[k];
+                        final int y = j + dirs[k + 1];
+                        if (x < 0 || x == n || y < 0 || y == n)
+                          continue;
+                        if (seen[x][y])
+                          continue;
+                        minHeap.offer(new T(x, y, grid[x][y]));
+                        seen[x][y] = true;
+                      }
+                    }
+                    return ans;
+                  }
+                }`,
+                output: `16`,
               },
             }}
           />
