@@ -291,6 +291,8 @@ import Leetcode764b from "assets/leetcode/764b.png";
 import Leetcode782 from "assets/leetcode/782.png";
 import Leetcode783 from "assets/leetcode/783.png";
 import Leetcode785 from "assets/leetcode/785.png";
+import Leetcode790a from "assets/leetcode/790a.png";
+import Leetcode790b from "assets/leetcode/790b.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -85198,6 +85200,7 @@ a = b + c;
             content2={null}
             examples={[
               {
+                img: Leetcode785,
                 content: (
                   <>
                     Input: graph = [[1,2,3],[0,2],[0,1,3],[0,2]] <br />
@@ -85366,6 +85369,7 @@ a = b + c;
         title: "Q787. Cheapest Flights Within K Stops (Q632)",
         content: (
           <Comp
+            title="Q787. Cheapest Flights Within K Stops (Q632)"
             content1={
               <>
                 There are n cities connected by some number of flights. You are
@@ -85479,228 +85483,684 @@ a = b + c;
         ),
       },
       q633: {
-        title: "Q788.  (Q633)",
+        title: "Q788. Rotated Digits (Q633)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q788. Rotated Digits (Q633)"
+            content1={
+              <>
+                An integer x is a good if after rotating each digit individually
+                by 180 degrees, we get a valid number that is different from x.
+                Each digit must be rotated - we cannot choose to leave it alone.
+                <br />
+                A number is valid if each digit remains a digit after rotation.
+                For example:
+                <br />
+                0, 1, and 8 rotate to themselves,
+                <br />
+                2 and 5 rotate to each other (in this case they are rotated in a
+                different direction, in other words, 2 or 5 gets mirrored),
+                <br />
+                6 and 9 rotate to each other, and
+                <br />
+                the rest of the numbers do not rotate to any other number and
+                become invalid.
+                <br />
+                Given an integer n, return the number of good integers in the
+                range [1, n].
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 10 <br />
+                    Output: 4 <br />
+                    Explanation: There are four good numbers in the range [1,
+                    10] : 2, 5, 6, 9. Note that 1 and 10 are not good numbers,
+                    since they remain unchanged after rotating.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1 <br />
+                    Output: 0
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 2 <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={<>1 &lt;= n &lt;= 10^4</>}
+            tc="n.log n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @return {number}
+                */
+               var rotatedDigits = function(n) {
+                 let res = 0;
+                 for (let i = 1; i <= n; ++i)
+                   if (isGoodNumber(i))
+                     ++res;
+                 return res;
+               };
+               
+               function isGoodNumber(i) {
+                   let isRotated = false;
+                   for (let c of String(i)) {
+                     if (c == '0' || c == '1' || c == '8')
+                       continue;
+                     if (c == '2' || c == '5' || c == '6' || c == '9')
+                       isRotated = true;
+                     else
+                       return false;
+                   }
+                   return isRotated;
+               }
+               
+               console.log(rotatedDigits(1))`,
+                output: `0`,
               },
             }}
           />
         ),
       },
       q634: {
-        title: "Q789.  (Q634)",
+        title: "Q789. Escape The Ghosts (Q634)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q789. Escape The Ghosts (Q634)"
+            content1={
+              <>
+                You are playing a simplified PAC-MAN game on an infinite 2-D
+                grid. You start at the point [0, 0], and you are given a
+                destination point target = [xtarget, ytarget] that you are
+                trying to get to. There are several ghosts on the map with their
+                starting positions given as a 2D array ghosts, where ghosts[i] =
+                [xi, yi] represents the starting position of the ith ghost. All
+                inputs are integral coordinates.
+                <br />
+                Each turn, you and all the ghosts may independently choose to
+                either move 1 unit in any of the four cardinal directions:
+                north, east, south, or west, or stay still. All actions happen
+                simultaneously.
+                <br />
+                You escape if and only if you can reach the target before any
+                ghost reaches you. If you reach any square (including the
+                target) at the same time as a ghost, it does not count as an
+                escape.
+                <br />
+                Return true if it is possible to escape regardless of how the
+                ghosts move, otherwise return false.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: ghosts = [[1,0],[0,3]], target = [0,1]
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation: You can reach the destination (0, 1) after 1
+                    turn, while the ghosts located at (1, 0) and (0, 3) cannot
+                    catch up with you.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: ghosts = [[1,0]], target = [2,0]
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation: You need to reach the destination (2, 0), but
+                    the ghost at (1, 0) lies between you and the destination.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: ghosts = [[2,0]], target = [1,0]
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation: The ghost can reach the target at the same time
+                    as you.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= ghosts.length &lt;= 100 <br />
+                ghosts[i].length == 2 <br />
+                -10^4 &lt;= xi, yi &lt;= 10^4 <br />
+                There can be multiple ghosts in the same location. <br />
+                target.length == 2 <br />
+                -10^4 &lt;= xtarget, ytarget &lt;= 10^4
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} ghosts
+                * @param {number[]} target
+                * @return {boolean}
+                */
+               var escapeGhosts = function(ghosts, target) {
+                 const d = Math.abs(target[0]) + Math.abs(target[1]);
+                 for (let ghost of ghosts)
+                 if (d >= Math.abs(ghost[0] - target[0]) + Math.abs(ghost[1] - target[1]))
+                     return false;
+                 return true;
+               };
+               
+               console.log(escapeGhosts([[2,0]],[1,0]))`,
+                output: `false`,
               },
             }}
           />
         ),
       },
       q635: {
-        title: "Q790.  (Q635)",
+        title: "Q790. Domino and Tromino Tiling (Q635)",
         content: (
           <Comp
-            content1={<></>}
-            content2={null}
+            title="Q790. Domino and Tromino Tiling (Q635)"
+            content1={
+              <>
+                You have two types of tiles: a 2 x 1 domino shape and a tromino
+                shape. You may rotate these shape
+              </>
+            }
+            img={Leetcode790a}
+            content2={
+              <>
+                Given an integer n, return the number of ways to tile an 2 x n
+                board. Since the answer may be very large, return it modulo 109
+                + 7.
+                <br />
+                In a tiling, every square must be covered by a tile. Two tilings
+                are different if and only if there are two 4-directionally
+                adjacent cells on the board such that exactly one of the tilings
+                has both squares occupied by a tile.
+              </>
+            }
             examples={[
               {
-                content: <></>,
+                img: Leetcode790b,
+                content: (
+                  <>
+                    Input: n = 3 <br />
+                    Output: 5 <br />
+                    Explanation: The five different ways are show abov
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1<br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={<>1 &lt;= n &lt;= 1000</>}
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @return {number}
+                */
+               var numTilings = function(n) {
+                 const kMod = 1e9 + 7;
+                 const dp = Array(1001).fill(0);
+                 dp[1] = 1;
+                 dp[2] = 2;
+                 dp[3] = 5;
+                 for (let i = 4; i <= n; ++i)
+                   dp[i] = (2 * dp[i - 1] + dp[i - 3]) % kMod;
+                 return dp[n];
+               };
+               
+               console.log(numTilings(3))`,
+                output: `5`,
               },
             }}
           />
         ),
       },
       q636: {
-        title: "Q791.  (Q636)",
+        title: "Q791. Custom Sort String (Q636)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q791. Custom Sort String (Q636)"
+            content1={
+              <>
+                You are given two strings order and s. All the words of order
+                are unique and were sorted in some custom order previously.
+                <br />
+                Permute the characters of s so that they match the order that
+                order was sorted. More specifically, if a character x occurs
+                before a character y in order, then x should occur before y in
+                the permuted string.
+                <br />
+                Return any permutation of s that satisfies this property.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: order = "cba", s = "abcd" <br />
+                    Output: "cbad" <br />
+                    Explanation: <br />
+                    "a", "b", "c" appear in order, so the order of "a", "b", "c"
+                    should be "c", "b", and "a". Since "d" does not appear in
+                    order, it can be at any position in the returned string.
+                    "dcba", "cdba", "cbda" are also valid outputs.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: order = "cbafg", s = "abcd" <br />
+                    Output: "cbad"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= order.length &lt;= 26 <br />
+                1 &lt;= s.length &lt;= 200 <br />
+                order and s consist of lowercase English letters. <br />
+                All the characters of order are unique.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} order
+                * @param {string} s
+                * @return {string}
+                */
+               var customSortString = function(order, s) {
+                 const sb = [];
+                 const count = Array(128).fill(0);
+                 for (let c of s)
+                   ++count[c.charCodeAt(0)];
+                 for (let c of order)
+                   while (count[c.charCodeAt(0)]-- > 0)
+                     sb.push(c);
+                 for (let c = 'a'.charCodeAt(0); c <= 'z'.charCodeAt(0); ++c)
+                   while (count[c]-- > 0)
+                     sb.push(String.fromCharCode(c));
+                 return sb.join("");    
+               };
+               
+               console.log(customSortString("cba","abcd"))`,
+                output: `cbad`,
               },
             }}
           />
         ),
       },
       q637: {
-        title: "Q792.  (Q637)",
+        title: "Q792. Number of Matching Subsequences (Q637)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q792. Number of Matching Subsequences (Q637)"
+            content1={
+              <>
+                Given a string s and an array of strings words, return the
+                number of words[i] that is a subsequence of s.
+                <br />
+                A subsequence of a string is a new string generated from the
+                original string with some characters (can be none) deleted
+                without changing the relative order of the remaining characters.
+                <br />
+                For example, "ace" is a subsequence of "abcde".
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "abcde", <br />
+                    words = ["a","bb","acd","ace"]
+                    <br />
+                    Output: 3<br />
+                    Explanation: There are three strings in words that are a
+                    subsequence of s: "a", "acd", "ace".
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "dsahjpjauf", <br />
+                    words = ["ahjpjau","ja","ahbwzgqnuk","tnmlanowax"]
+                    <br />
+                    Output: 2
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 5 * 10^4 <br />
+                1 &lt;= words.length &lt;= 5000 <br />
+                1 &lt;= words[i].length &lt;= 50 <br />s and words[i] consist of
+                only lowercase English letters.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // s = "abcde", words = ["a","bb","acd","ace"]
+                class Solution {
+                  public int numMatchingSubseq(String s, String[] words) {
+                    int ans = 0;
+                    List<Pair<Integer, Integer>>[] bucket = new List[26];
+                    for (int i = 0; i < 26; ++i)
+                      bucket[i] = new ArrayList<>();
+                    for (int i = 0; i < words.length; ++i)
+                      bucket[words[i].charAt(0) - 'a'].add(new Pair<>(i, 0));
+                    for (final char c : s.toCharArray()) {
+                      List<Pair<Integer, Integer>> prevBucket = bucket[c - 'a'];
+                      bucket[c - 'a'] = new ArrayList<>();
+                      for (var pair : prevBucket) {
+                        final int i = pair.getKey();
+                        final int j = pair.getValue() + 1;
+                        if (j == words[i].length()) 
+                          ++ans;
+                        else
+                          bucket[words[i].charAt(j) - 'a'].add(new Pair<>(i, j));
+                      }
+                    }
+                    return ans;
+                  }
+                }`,
+                output: `3`,
               },
             }}
           />
         ),
       },
       q638: {
-        title: "Q793.  (Q638)",
+        title: "Q793. Preimage Size of Factorial Zeroes Function (Q638)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q793. Preimage Size of Factorial Zeroes Function (Q638)"
+            content1={
+              <>
+                Let f(x) be the number of zeroes at the end of x!. Recall that
+                x! = 1 * 2 * 3 * ... * x and by convention, 0! = 1.
+                <br />
+                For example, f(3) = 0 because 3! = 6 has no zeroes at the end,
+                while f(11) = 2 because 11! = 39916800 has two zeroes at the
+                end.
+                <br />
+                Given an integer k, return the number of non-negative integers x
+                have the property that f(x) = k.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: k = 0 <br />
+                    Output: 5 <br />
+                    Explanation: 0!, 1!, 2!, 3!, and 4! end with k = 0 zeroes.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: k = 5 <br />
+                    Output: 0 <br />
+                    Explanation: There is no x such that x! ends in k = 5
+                    zeroes.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: k = 3 <br />
+                    Output: 5
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={<>0 &lt;= k &lt;= 109</>}
+            tc="log n . log n"
+            sc="2^n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} k
+                * @return {number}
+                */
+               var preimageSizeFZF = function(k) {
+                 let l = 0;
+                 let r = 5 * k;
+                 while (l < r) {
+                   let m = l + parseInt((r - l) / 2);
+                   if (trailingZeroes(m) >= k)
+                     r = m;
+                   else
+                     l = m + 1;
+                 }
+                 return trailingZeroes(l) == k ? 5 : 0; 
+               };
+               
+               function trailingZeroes(n) {
+                 return n == 0 ? 0 : parseInt(parseInt(n / 5) + trailingZeroes(parseInt(n / 5)));
+               }
+               
+               console.log(preimageSizeFZF(3))`,
+                output: `5`,
               },
             }}
           />
         ),
       },
       q639: {
-        title: "Q794.  (Q639)",
+        title: "Q794. Valid Tic-Tac-Toe State (Q639)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q794. Valid Tic-Tac-Toe State (Q639)"
+            content1={
+              <>
+                Given a Tic-Tac-Toe board as a string array board, return true
+                if and only if it is possible to reach this board position
+                during the course of a valid tic-tac-toe game.
+                <br />
+                The board is a 3 x 3 array that consists of characters ' ', 'X',
+                and 'O'. The ' ' character represents an empty square.
+                <br />
+                Here are the rules of Tic-Tac-Toe:
+                <br />
+                Players take turns placing characters into empty squares ' '.
+                <br />
+                The first player always places 'X' characters, while the second
+                player always places 'O' characters.
+                <br /> 'X' and 'O' characters are always placed into empty
+                squares, never filled ones.
+                <br /> The game ends when there are three of the same
+                (non-empty) character filling any row, column, or diagonal.
+                <br /> The game also ends if all squares are non-empty. No more
+                moves can be played if the game is over.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: board = ["O "," "," "] <br />
+                    Output: false <br />
+                    Explanation: The first player always plays "X".
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: board = ["XOX"," X "," "] <br />
+                    Output: false <br />
+                    Explanation: Players take turns making moves.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: board = ["XOX","O O","XOX"] <br />
+                    Output: true
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                board.length == 3 <br />
+                board[i].length == 3 <br />
+                board[i][j] is either 'X', 'O', or{" "}
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: board = ["O  ","   ","   "]
+                class Solution {
+                  public boolean validTicTacToe(String[] board) {
+                    final int countX = sum(board, 'X');
+                    final int countO = sum(board, 'O');
+                
+                    if (countX < countO || countX - countO > 1)
+                      return false;
+                    if (isWinned(board, 'X') && countX == countO ||
+                        isWinned(board, 'O') && countX != countO)
+                      return false;
+                
+                    return true;
+                  }
+                
+                  private int sum(final String[] board, char c) {
+                    int ans = 0;
+                
+                    for (final String row : board)
+                      ans += row.chars().filter(i -> i == c).count();
+                
+                    return ans;
+                  }
+                
+                  private boolean isWinned(final String[] board, char c) {
+                    String[] rotated = rotate(board);
+                
+                    return Arrays.stream(board).anyMatch(row -> row.chars().filter(i -> i == c).count() == 3)
+                        || Arrays.stream(rotated).anyMatch(row -> row.chars().filter(i -> i == c).count() == 3)
+                        || board[0].charAt(0) == c && board[1].charAt(1) == c && board[2].charAt(2) == c
+                        || board[0].charAt(2) == c && board[1].charAt(1) == c && board[2].charAt(0) == c;
+                  }
+                
+                  private String[] rotate(final String[] board) {
+                    String[] rotated = new String[3];
+                
+                    for (final String row : board)
+                      for (int i = 0; i < 3; ++i)
+                        rotated[i] += row.charAt(i);
+                
+                    return rotated;
+                  }
+                }`,
+                output: `false`,
               },
             }}
           />
         ),
       },
       q640: {
-        title: "Q795.  (Q640)",
+        title: "Q795. Number of Subarrays with Bounded Maximum (Q640)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q795. Number of Subarrays with Bounded Maximum (Q640)"
+            content1={
+              <>
+                Given an integer array nums and two integers left and right,
+                return the number of contiguous non-empty subarrays such that
+                the value of the maximum array element in that subarray is in
+                the range [left, right].
+                <br />
+                The test cases are generated so that the answer will fit in a
+                32-bit integer.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [2,1,4,3], <br /> left = 2, right = 3 <br />
+                    Output: 3 <br />
+                    Explanation: There are three subarrays that meet the
+                    requirements: [2], [2, 1], [3].
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [2,9,2,5,6], <br /> left = 2, right = 8 <br />
+                    Output: 7
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 10^5 <br />
+                0 &lt;= nums[i] &lt;= 10^9 <br />0 &lt;= left &lt;= right &lt;=
+                10^9
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
