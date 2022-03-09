@@ -84638,37 +84638,88 @@ a = b + c;
         ),
       },
       q624: {
-        title: "Q778. K-th Symbol in Grammar (Q624)",
+        title: "Q779. K-th Symbol in Grammar (Q624)",
         content: (
           <Comp
-            title="Q778. K-th Symbol in Grammar (Q624)"
-            content1={<></>}
+            title="Q779. K-th Symbol in Grammar (Q624)"
+            content1={
+              <>
+                We build a table of n rows (1-indexed). We start by writing 0 in
+                the 1st row. Now in every subsequent row, we look at the
+                previous row and replace each occurrence of 0 with 01, and each
+                occurrence of 1 with 10.
+                <br />
+                For example, for n = 3, the 1st row is 0, the 2nd row is 01, and
+                the 3rd row is 0110.
+                <br />
+                Given two integer n and k, return the kth (1-indexed) symbol in
+                the nth row of a table of n rows.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1, k = 1 <br />
+                    Output: 0 <br />
+                    Explanation: row 1: 0
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 2, k = 1 <br />
+                    Output: 0 <br />
+                    Explanation: <br />
+                    row 1: 0 <br />
+                    row 2: 01
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 2, k = 2 <br />
+                    Output: 1 <br />
+                    Explanation: <br />
+                    row 1: 0 <br />
+                    row 2: 01
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= n &lt;= 30 <br />1 &lt;= k &lt;= 2n - 1
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @param {number} k
+                * @return {number}
+                */
+               var kthGrammar = function(n, k) {
+                 if (n == 1)
+                   return 0;
+                 if (k % 2 == 1)
+                   return kthGrammar(n - 1, parseInt(k + 1) / 2) == 0 ? 0 : 1; 
+                   return kthGrammar(n - 1, parseInt(k / 2)) == 0 ? 1 : 0;        
+               };
+               console.log(kthGrammar(2,1))`,
+                output: `0`,
               },
             }}
           />
         ),
       },
       q625: {
-        title: "Q779.  (Q625)",
+        title: "Q780.  (Q625)",
         content: (
           <Comp
             content1={<></>}
@@ -84697,7 +84748,7 @@ a = b + c;
         ),
       },
       q626: {
-        title: "Q780.  (Q626)",
+        title: "Q781.  (Q626)",
         content: (
           <Comp
             content1={<></>}
@@ -84726,7 +84777,7 @@ a = b + c;
         ),
       },
       q627: {
-        title: "Q781.  (Q627)",
+        title: "Q782.  (Q627)",
         content: (
           <Comp
             content1={<></>}
@@ -84755,7 +84806,7 @@ a = b + c;
         ),
       },
       q628: {
-        title: "Q782.  (Q628)",
+        title: "Q783.  (Q628)",
         content: (
           <Comp
             content1={<></>}
@@ -84784,7 +84835,7 @@ a = b + c;
         ),
       },
       q629: {
-        title: "Q783.  (Q629)",
+        title: "Q784.  (Q629)",
         content: (
           <Comp
             content1={<></>}
@@ -84813,7 +84864,7 @@ a = b + c;
         ),
       },
       q630: {
-        title: "Q784.  (Q630)",
+        title: "Q785.  (Q630)",
         content: (
           <Comp
             content1={<></>}
@@ -84842,7 +84893,7 @@ a = b + c;
         ),
       },
       q631: {
-        title: "Q785.  (Q631)",
+        title: "Q786.  (Q631)",
         content: (
           <Comp
             content1={<></>}
@@ -84871,7 +84922,7 @@ a = b + c;
         ),
       },
       q632: {
-        title: "Q786.  (Q632)",
+        title: "Q787.  (Q632)",
         content: (
           <Comp
             content1={<></>}
@@ -84900,7 +84951,7 @@ a = b + c;
         ),
       },
       q633: {
-        title: "Q787.  (Q633)",
+        title: "Q788.  (Q633)",
         content: (
           <Comp
             content1={<></>}
@@ -84929,7 +84980,7 @@ a = b + c;
         ),
       },
       q634: {
-        title: "Q788.  (Q634)",
+        title: "Q789.  (Q634)",
         content: (
           <Comp
             content1={<></>}
@@ -84958,7 +85009,7 @@ a = b + c;
         ),
       },
       q635: {
-        title: "Q789.  (Q635)",
+        title: "Q790.  (Q635)",
         content: (
           <Comp
             content1={<></>}
@@ -84987,7 +85038,7 @@ a = b + c;
         ),
       },
       q636: {
-        title: "Q790.  (Q636)",
+        title: "Q791.  (Q636)",
         content: (
           <Comp
             content1={<></>}
@@ -85016,7 +85067,7 @@ a = b + c;
         ),
       },
       q637: {
-        title: "Q791.  (Q637)",
+        title: "Q792.  (Q637)",
         content: (
           <Comp
             content1={<></>}
@@ -85045,7 +85096,7 @@ a = b + c;
         ),
       },
       q638: {
-        title: "Q792.  (Q638)",
+        title: "Q793.  (Q638)",
         content: (
           <Comp
             content1={<></>}
@@ -85074,7 +85125,7 @@ a = b + c;
         ),
       },
       q639: {
-        title: "Q793.  (Q639)",
+        title: "Q794.  (Q639)",
         content: (
           <Comp
             content1={<></>}
@@ -85103,7 +85154,7 @@ a = b + c;
         ),
       },
       q640: {
-        title: "Q794.  (Q640)",
+        title: "Q795.  (Q640)",
         content: (
           <Comp
             content1={<></>}
@@ -85132,7 +85183,7 @@ a = b + c;
         ),
       },
       q641: {
-        title: "Q795.  (Q641)",
+        title: "Q796.  (Q641)",
         content: (
           <Comp
             content1={<></>}
@@ -85161,7 +85212,7 @@ a = b + c;
         ),
       },
       q642: {
-        title: "Q796.  (Q642)",
+        title: "Q797.  (Q642)",
         content: (
           <Comp
             content1={<></>}
@@ -85190,7 +85241,7 @@ a = b + c;
         ),
       },
       q643: {
-        title: "Q797.  (Q643)",
+        title: "Q798.  (Q643)",
         content: (
           <Comp
             content1={<></>}
@@ -85219,7 +85270,7 @@ a = b + c;
         ),
       },
       q644: {
-        title: "Q798.  (Q644)",
+        title: "Q799.  (Q644)",
         content: (
           <Comp
             content1={<></>}
@@ -85248,7 +85299,7 @@ a = b + c;
         ),
       },
       q645: {
-        title: "Q799.  (Q645)",
+        title: "Q801.  (Q645)",
         content: (
           <Comp
             content1={<></>}
@@ -85277,7 +85328,7 @@ a = b + c;
         ),
       },
       q646: {
-        title: "Q801.  (Q646)",
+        title: "Q802.  (Q646)",
         content: (
           <Comp
             content1={<></>}
@@ -85306,7 +85357,7 @@ a = b + c;
         ),
       },
       q647: {
-        title: "Q802.  (Q647)",
+        title: "Q803.  (Q647)",
         content: (
           <Comp
             content1={<></>}
@@ -85335,7 +85386,7 @@ a = b + c;
         ),
       },
       q648: {
-        title: "Q803.  (Q648)",
+        title: "Q804.  (Q648)",
         content: (
           <Comp
             content1={<></>}
@@ -85364,7 +85415,7 @@ a = b + c;
         ),
       },
       q649: {
-        title: "Q804.  (Q649)",
+        title: "Q805.  (Q649)",
         content: (
           <Comp
             content1={<></>}
