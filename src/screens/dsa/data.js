@@ -84719,9 +84719,10 @@ a = b + c;
         ),
       },
       q625: {
-        title: "Q780.  (Q625)",
+        title: "Q780. Reaching Points (Q625)",
         content: (
           <Comp
+            title="Q780. Reaching Points (Q625)"
             content1={<></>}
             content2={null}
             examples={[
