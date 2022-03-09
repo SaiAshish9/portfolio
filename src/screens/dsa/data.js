@@ -295,6 +295,7 @@ import Leetcode790a from "assets/leetcode/790a.png";
 import Leetcode790b from "assets/leetcode/790b.png";
 import Leetcode797a from "assets/leetcode/797a.png";
 import Leetcode797b from "assets/leetcode/797b.png";
+import Leetcode799 from "assets/leetcode/799.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -86258,6 +86259,7 @@ a = b + c;
         title: "Q797. All Paths From Source to Target (Q642)",
         content: (
           <Comp
+            title="Q797. All Paths From Source to Target (Q642)"
             content1={
               <>
                 Given a directed acyclic graph (DAG) of n nodes labeled from 0
@@ -86343,96 +86345,303 @@ a = b + c;
         ),
       },
       q643: {
-        title: "Q798.  (Q643)",
+        title: "Q798. Smallest Rotation with Highest Score (Q643)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q798. Smallest Rotation with Highest Score (Q643)"
+            content1={
+              <>
+                You are given an array nums. You can rotate it by a non-negative
+                integer k so that the array becomes [nums[k], nums[k + 1], ...
+                nums[nums.length - 1], nums[0], nums[1], ..., nums[k-1]].
+                Afterward, any entries that are less than or equal to their
+                index are worth one point.
+                <br />
+                For example, if we have nums = [2,4,1,3,0], and we rotate by k =
+                2, it becomes [1,3,0,2,4]. This is worth 3 points because 1 &gt;
+                0 [no points], 3 &gt; 1 [no points], 0 &lt;= 2 [one point], 2
+                &lt;= 3 [one point], 4 &lt;= 4 [one point].
+                <br />
+                Return the rotation index k that corresponds to the highest
+                score we can achieve if we rotated nums by it. If there are
+                multiple answers, return the smallest such index k.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [2,3,1,4,0] <br />
+                    Output: 3 <br />
+                    Explanation: Scores for each k are listed below: <br />
+                    k = 0, nums = [2,3,1,4,0], score 2 <br />
+                    k = 1, nums = [3,1,4,0,2], score 3 <br />
+                    k = 2, nums = [1,4,0,2,3], score 3 <br />
+                    k = 3, nums = [4,0,2,3,1], score 4 <br />
+                    k = 4, nums = [0,2,3,1,4], score 3 <br />
+                    So we should choose k = 3, which has the highest score.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,3,0,2,4] Output: 0 <br />
+                    Explanation: nums will always have 3 points no matter how it
+                    shifts. <br />
+                    So we will choose the smallest k, which is 0.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 10^5 <br />0 &lt;= nums[i] &lt;
+                nums.length
+              </>
+            }
             tc="n"
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var bestRotation = function(nums) {
+                   const n = nums.length;
+                   const rotate = Array(n).fill(0);
+                   for (let i = 0; i < n; ++i)
+                     --rotate[(i - nums[i] + 1 + n) % n];
+                   for (let i = 1; i < n; ++i)
+                     rotate[i] += rotate[i - 1] + 1;
+                   let max = Number.MIN_SAFE_INTEGER;
+                   let maxIndex = 0;
+                   for (let i = 0; i < n; ++i)
+                     if (rotate[i] > max) {
+                       max = rotate[i];
+                       maxIndex = i;
+                     }
+                   return maxIndex;
+               };
+               
+               console.log(bestRotation([2,3,1,4,0]))`,
+                output: `3`,
               },
             }}
           />
         ),
       },
       q644: {
-        title: "Q799.  (Q644)",
+        title: "Q799. Champagne Tower (Q644)",
         content: (
           <Comp
-            content1={<></>}
-            content2={null}
+            title="Q799. Champagne Tower (Q644)"
+            content1={
+              <>
+                We stack glasses in a pyramid, where the first row has 1 glass,
+                the second row has 2 glasses, and so on until the 100th row.
+                Each glass holds one cup of champagne.
+                <br />
+                Then, some champagne is poured into the first glass at the top.
+                When the topmost glass is full, any excess liquid poured will
+                fall equally to the glass immediately to the left and right of
+                it. When those glasses become full, any excess champagne will
+                fall equally to the left and right of those glasses, and so on.
+                (A glass at the bottom row has its excess champagne fall on the
+                floor.)
+                <br />
+                For example, after one cup of champagne is poured, the top most
+                glass is full. After two cups of champagne are poured, the two
+                glasses on the second row are half full. After three cups of
+                champagne are poured, those two cups become full - there are 3
+                full glasses total now. After four cups of champagne are poured,
+                the third row has the middle glass half full, and the two
+                outside glasses are a quarter full, as pictured below.
+              </>
+            }
+            content2={
+              <>
+                Now after pouring some non-negative integer cups of champagne,
+                return how full the jth glass in the ith row is (both i and j
+                are 0-indexed.)
+              </>
+            }
+            img={Leetcode799}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: poured = 1, query_row = 1, query_glass = 1<br />
+                    Output: 0.00000
+                    <br />
+                    Explanation: We poured 1 cup of champange to the top glass
+                    of the tower (which is indexed as (0, 0)). There will be no
+                    excess liquid so all the glasses under the top glass will
+                    remain empty.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: poured = 2, query_row = 1, query_glass = 1<br />
+                    Output: 0.50000
+                    <br />
+                    Explanation: We poured 2 cups of champange to the top glass
+                    of the tower (which is indexed as (0, 0)). There is one cup
+                    of excess liquid. The glass indexed as (1, 0) and the glass
+                    indexed as (1, 1) will share the excess liquid equally, and
+                    each will get half cup of champange.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: poured = 100000009, query_row = 33, query_glass = 17
+                    <br />
+                    Output: 1.00000
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                0 &lt;= poured &lt;= 109
+                <br />0 &lt;= query_glass &lt;= query_row &lt; 100
+              </>
+            }
+            tc="n^2"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} poured
+                * @param {number} query_row
+                * @param {number} query_glass
+                * @return {number}
+                */
+               var champagneTower = function(poured, query_row, query_glass) {
+                  let dp = Array(query_row + 1).fill(0);
+                  dp[0] = poured;
+                   for (let i = 0; i < query_row; ++i) {
+                     const newDp = Array(query_row + 1).fill(0);
+                     for (let j = 0; j <= i; ++j)
+                       if (dp[j] > 1) {
+                         newDp[j] += (dp[j] - 1) / 2.0;
+                         newDp[j + 1] += (dp[j] - 1) / 2.0;
+                       }
+                     dp = newDp;
+                   }
+                   return Math.min(1.0, dp[query_glass]);    
+               };
+               
+               console.log(champagneTower(2,1,1))`,
+                output: `0.5`,
               },
             }}
           />
         ),
       },
       q645: {
-        title: "Q801.  (Q645)",
+        title: "Q801. Minimum Swaps To Make Sequences Increasing (Q645)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q801. Minimum Swaps To Make Sequences Increasing (Q645)"
+            content1={
+              <>
+                You are given two integer arrays of the same length nums1 and
+                nums2. In one operation, you are allowed to swap nums1[i] with
+                nums2[i].
+                <br />
+                For example, if nums1 = [1,2,3,8], and nums2 = [5,6,7,4], you
+                can swap the element at i = 3 to obtain nums1 = [1,2,3,4] and
+                nums2 = [5,6,7,8]. Return the minimum number of needed
+                operations to make nums1 and nums2 strictly increasing. The test
+                cases are generated so that the given input always makes it
+                possible.
+                <br />
+                An array arr is strictly increasing if and only if arr[0] &lt;
+                arr[1] &lt; arr[2] &lt; ... &lt; arr[arr.length - 1].
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums1 = [1,3,5,4], nums2 = [1,2,3,7] <br />
+                    Output: 1 <br />
+                    Explanation: <br />
+                    Swap nums1[3] and nums2[3]. Then the sequences are: <br />
+                    nums1 = [1, 3, 5, 7] and nums2 = [1, 2, 3, 4] <br />
+                    which are both strictly increasing.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums1 = [0,3,5,8,9], nums2 = [2,1,4,6,9] <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                2 &lt;= nums1.length &lt;= 10^5 <br />
+                nums2.length == nums1.length <br />0 &lt;= nums1[i], nums2[i]
+                &lt;= 2 * 10^5
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums1
+                * @param {number[]} nums2
+                * @return {number}
+                */
+               var minSwap = function(nums1, nums2) {
+                   let keepAt = 0;
+                   let swapAt = 1;
+                   let prevKeepAt = 0;
+                   let prevSwapAt = 1;
+               
+                   for (let i = 1; i < nums1.length; ++i) {
+                     keepAt = Number.MAX_SAFE_INTEGER;
+                     swapAt = Number.MAX_SAFE_INTEGER;
+                     if (nums1[i] > nums1[i - 1] && nums2[i] > nums2[i - 1]) {
+                       keepAt = prevKeepAt;
+                       swapAt = prevSwapAt + 1;
+                     }
+                     if (nums1[i] > nums2[i - 1] && nums2[i] > nums1[i - 1]) {
+                       keepAt = Math.min(keepAt, prevSwapAt);
+                       swapAt = Math.min(swapAt, prevKeepAt + 1);
+                     }
+                     prevKeepAt = keepAt;
+                     prevSwapAt = swapAt;
+                   }
+               
+                   return Math.min(keepAt, swapAt); 
+               };
+               
+               console.log(minSwap([0,3,5,8,9],[2,1,4,6,9]))`,
+                output: `1`,
               },
             }}
           />
         ),
       },
       q646: {
-        title: "Q802.  (Q646)",
+        title: "Q802. Find Eventual Safe States (Q646)",
         content: (
           <Comp
+            title="Q802. Find Eventual Safe States (Q646)"
             content1={<></>}
             content2={null}
             examples={[
@@ -86447,8 +86656,8 @@ a = b + c;
               },
             ]}
             constraints={<></>}
-            tc="n"
-            sc="n"
+            tc="v + e"
+            sc="v + e"
             codes={{
               Javascript: {
                 code: ``,
