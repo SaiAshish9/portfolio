@@ -288,6 +288,7 @@ import Leetcode749 from "assets/leetcode/749.png";
 import Leetcode756 from "assets/leetcode/q756.png";
 import Leetcode764a from "assets/leetcode/764a.png";
 import Leetcode764b from "assets/leetcode/764b.png";
+import Leetcode782 from "assets/leetcode/782.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -84879,26 +84880,115 @@ a = b + c;
         content: (
           <Comp
             title="Q782. Transform to Chessboard  (Q627)"
-            content1={<></>}
+            content1={
+              <>
+                You are given an n x n binary grid board. In each move, you can
+                swap any two rows with each other, or any two columns with each
+                other.
+                <br />
+                Return the minimum number of moves to transform the board into a
+                chessboard board. If the task is impossible, return -1.
+                <br />A chessboard board is a board where no 0's and no 1's are
+                4-directionally adjacent.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: board = [[0,1,1,0],[0,1,1,0],[1,0,0,1],[1,0,0,1]]
+                    <br />
+                    Output: 2<br />
+                    Explanation: One potential sequence of moves is shown.
+                    <br />
+                    The first move swaps the first and second column.
+                    <br />
+                    The second move swaps the second and third row.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: board = [[0,1],[1,0]]
+                    <br />
+                    Output: 0<br />
+                    Explanation: Also note that the board with 0 in the top left
+                    corner, is also a valid chessboard.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: board = [[1,0],[1,0]]
+                    <br />
+                    Output: -1
+                    <br />
+                    Explanation: No matter what sequence of moves you make, you
+                    cannot end with a valid chessboard.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                n == board.length
+                <br />
+                n == board[i].length
+                <br />
+                2 &lt;= n &lt;= 30
+                <br />
+                board[i][j] is either 0 or 1.
+              </>
+            }
             tc="n^2"
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} board
+                * @return {number}
+                */
+               var movesToChessboard = function(board) {
+                   const n = board.length;
+                   let rowSum = 0;
+                   let colSum = 0;
+                   let rowSwaps = 0;
+                   let colSwaps = 0;
+                   for (let i = 0; i < n; ++i)
+                     for (let j = 0; j < n; ++j)
+                       if ((board[0][0] ^ board[i][0] ^ board[0][j] ^ board[i][j]) == 1)
+                         return -1;
+                   for (let i = 0; i < n; ++i) {
+                     rowSum += board[0][i];
+                     colSum += board[i][0];
+                   }
+                   if (rowSum != parseInt(n / 2) && rowSum != parseInt((n + 1) / 2))
+                     return -1;
+                   if (colSum != parseInt(n / 2) && colSum != parseInt((n + 1) / 2))
+                     return -1;
+                   for (let i = 0; i < n; ++i) {
+                     if (board[i][0] == (i & 1))
+                       ++rowSwaps;
+                     if (board[0][i] == (i & 1))
+                       ++colSwaps;
+                   }
+                   if (n % 2 == 1) {
+                     if (rowSwaps % 2 == 1)
+                       rowSwaps = n - rowSwaps;
+                     if (colSwaps % 2 == 1)
+                       colSwaps = n - colSwaps;
+                   } else {
+                     rowSwaps = Math.min(rowSwaps, n - rowSwaps);
+                     colSwaps = Math.min(colSwaps, n - colSwaps);
+                   }
+                   return parseInt((rowSwaps + colSwaps) / 2); 
+               };
+               
+               console.log(movesToChessboard([[1,0],[1,0]]))`,
+                output: `-1`,
               },
             }}
           />
