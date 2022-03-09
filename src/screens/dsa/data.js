@@ -85263,58 +85263,216 @@ a = b + c;
         ),
       },
       q631: {
-        title: "Q786.  (Q631)",
+        title: "Q786. K-th Smallest Prime Fraction (Q631)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q786. K-th Smallest Prime Fraction (Q631)"
+            content1={
+              <>
+                You are given a sorted integer array arr containing 1 and prime
+                numbers, where all the integers of arr are unique. You are also
+                given an integer k.
+                <br />
+                For every i and j where 0 &lt;= i &lt; j &lt; arr.length, we
+                consider the fraction arr[i] / arr[j].
+                <br />
+                Return the kth smallest fraction considered. Return your answer
+                as an array of integers of size 2, where answer[0] == arr[i] and
+                answer[1] == arr[j].
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [1,2,3,5], k = 3 <br />
+                    Output: [2,5] <br />
+                    Explanation: The fractions to be considered in sorted order
+                    are:
+                    <br /> 1/5, 1/3, 2/5, 1/2, 3/5, and 2/3. <br />
+                    The third fraction is 2/5.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [1,7], k = 1 <br />
+                    Output: [1,7]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                2 &lt;= arr.length &lt;= 1000 <br />
+                1 &lt;= arr[i] &lt;= 3 * 104 <br />
+                arr[0] == 1 <br />
+                arr[i] is a prime number for i &gt; 0. <br />
+                All the numbers of arr are unique and sorted in strictly
+                increasing order.
+                <br /> 1 &lt;= k &lt;= arr.length * (arr.length - 1) / 2
+              </>
+            }
+            tc="n log max^2 arr"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} arr
+                * @param {number} k
+                * @return {number[]}
+                */
+               var kthSmallestPrimeFraction = function(arr, k) {
+                   const n = arr.length;
+                   let l = 0.0;
+                   let r = 1.0;
+                   while (l < r) {
+                     const m = (l + r) / 2.0;
+                     let fractionsNoGreaterThanM = 0;
+                     let p = 0;
+                     let q = 1;
+                     for (let i = 0, j = 1; i < n; ++i) {
+                       while (j < n && arr[i] > m * arr[j])
+                         ++j;
+                       if (j == n)
+                         break;
+                       fractionsNoGreaterThanM += n - j;
+                       if (p * arr[j] < q * arr[i]) {
+                         p = arr[i];
+                         q = arr[j];
+                       }
+                     }
+               
+                     if (fractionsNoGreaterThanM == k)
+                       return [p, q];
+                     if (fractionsNoGreaterThanM > k)
+                       r = m;
+                     else
+                       l = m;
+                   }
+                   
+               };
+               
+               console.log(kthSmallestPrimeFraction([1,7],1))`,
+                output: `[ 1, 7 ]`,
               },
             }}
           />
         ),
       },
       q632: {
-        title: "Q787.  (Q632)",
+        title: "Q787. Cheapest Flights Within K Stops (Q632)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                There are n cities connected by some number of flights. You are
+                given an array flights where flights[i] = [fromi, toi, pricei]
+                indicates that there is a flight from city fromi to city toi
+                with cost pricei.
+                <br />
+                You are also given three integers src, dst, and k, return the
+                cheapest price from src to dst with at most k stops. If there is
+                no such route, return -1.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 3, flights = [[0,1,100],[1,2,100],[0,2,500]], src
+                    = 0, dst = 2, k = 1
+                    <br /> Output: 200 <br />
+                    Explanation: The graph is shown. <br />
+                    The cheapest price from city 0 to city 2 with at most 1 stop
+                    costs 200, as marked red in the picture.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 3, flights = [[0,1,100],[1,2,100],[0,2,500]], src
+                    = 0, dst = 2, k = 0<br />
+                    Output: 500
+                    <br />
+                    Explanation: The graph is shown.
+                    <br />
+                    The cheapest price from city 0 to city 2 with at most 0 stop
+                    costs 500, as marked blue in the picture.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= n &lt;= 100 <br />
+                0 &lt;= flights.length &lt;= (n * (n - 1) / 2) <br />
+                flights[i].length == 3 <br />
+                0 &lt;= fromi, toi &lt; n <br />
+                fromi != toi <br />
+                1 &lt;= pricei &lt;= 104 <br />
+                There will not be any multiple flights between two cities.
+                <br /> 0 &lt;= src, dst, k &lt; n <br />
+                src != dst
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: n = 3, flights = [[0,1,100],[1,2,100],[0,2,500]], src = 0, dst = 2, k = 0
+                class T {
+                  public int u;
+                  public int d;
+                  public int stops;
+                  public T(int u, int d, int stops) {
+                    this.u = u;
+                    this.d = d;
+                    this.stops = stops;
+                  }
+                } 
+                class Solution {
+                  public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
+                    List<Pair<Integer, Integer>>[] graph = new List[n];
+                    PriorityQueue<T> minHeap = new PriorityQueue<>((a, b) -> a.d - b.d);
+                    int[][] dist = new int[n][k + 2];
+                    Arrays.stream(dist).forEach(A -> Arrays.fill(A, Integer.MAX_VALUE));
+                    for (int i = 0; i < n; ++i)
+                      graph[i] = new ArrayList<>();
+                    for (int[] f : flights) {
+                      final int u = f[0];
+                      final int v = f[1];
+                      final int w = f[2];
+                      graph[u].add(new Pair<>(v, w));
+                    }
+                    minHeap.offer(new T(src, 0, k + 1));
+                    dist[src][k + 1] = 0;
+                    while (!minHeap.isEmpty()) {
+                      final int u = minHeap.peek().u;
+                      final int d = minHeap.peek().d;
+                      final int stops = minHeap.poll().stops;
+                      if (u == dst)
+                        return d;
+                      if (stops > 0)
+                        for (var node : graph[u]) {
+                          final int v = node.getKey();
+                          final int w = node.getValue();
+                          final int newDist = d + w;
+                          if (newDist < dist[v][stops - 1]) {
+                            dist[v][stops - 1] = newDist;
+                            minHeap.offer(new T(v, d + w, stops - 1));
+                          }
+                        }
+                    }
+                    return -1;
+                  }
+                }`,
+                output: `500`,
               },
             }}
           />
