@@ -86163,17 +86163,38 @@ a = b + c;
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} left
+                * @param {number} right
+                * @return {number}
+                */
+               var numSubarrayBoundedMax = function(nums, left, right) {
+                   let res = 0;
+                   let l = -1;
+                   let r = -1;
+                   for (let i = 0; i < nums.length; ++i) {
+                     if (nums[i] > right) 
+                       l = i;
+                     if (nums[i] >= left) 
+                       r = i;
+                     res += r - l;
+                   }
+                   return res;    
+               };
+               
+               console.log(numSubarrayBoundedMax([2,9,2,5,6],2,8))`,
+                output: `7`,
               },
             }}
           />
         ),
       },
       q641: {
-        title: "Q796.  (Q641)",
+        title: "Q796. Rotate String (Q641)",
         content: (
           <Comp
+            title="Q796. Rotate String (Q641)"
             content1={<></>}
             content2={null}
             examples={[
@@ -86188,8 +86209,8 @@ a = b + c;
               },
             ]}
             constraints={<></>}
-            tc="n"
-            sc="n"
+            tc="n^2"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
