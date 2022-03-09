@@ -84723,20 +84723,50 @@ a = b + c;
         content: (
           <Comp
             title="Q780. Reaching Points (Q625)"
-            content1={<></>}
+            content1={
+              <>
+                Given four integers sx, sy, tx, and ty, return true if it is
+                possible to convert the point (sx, sy) to the point (tx, ty)
+                through some operations, or false otherwise.
+                <br />
+                The allowed operation on some point (x, y) is to convert it to
+                either (x, x + y) or (x + y, y).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: sx = 1, sy = 1, tx = 3, ty = 5 <br />
+                    Output: true <br />
+                    Explanation: <br />
+                    One series of moves that transforms the starting point to
+                    the target is: <br />
+                    (1, 1) -&gt; (1, 2) <br />
+                    (1, 2) -&gt; (3, 2) <br />
+                    (3, 2) -&gt; (3, 5)
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: sx = 1, sy = 1, tx = 2, ty = 2 <br />
+                    Output: false
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: sx = 1, sy = 1, tx = 1, ty = 1 <br />
+                    Output: true
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={<>1 &lt;= sx, sy, tx, ty &lt;= 109</>}
             tc="n"
             sc="n"
             codes={{
