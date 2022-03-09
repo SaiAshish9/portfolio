@@ -293,6 +293,8 @@ import Leetcode783 from "assets/leetcode/783.png";
 import Leetcode785 from "assets/leetcode/785.png";
 import Leetcode790a from "assets/leetcode/790a.png";
 import Leetcode790b from "assets/leetcode/790b.png";
+import Leetcode797a from "assets/leetcode/797a.png";
+import Leetcode797b from "assets/leetcode/797b.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -86195,55 +86197,146 @@ a = b + c;
         content: (
           <Comp
             title="Q796. Rotate String (Q641)"
-            content1={<></>}
+            content1={
+              <>
+                Given two strings s and goal, return true if and only if s can
+                become goal after some number of shifts on s.
+                <br />
+                A shift on s consists of moving the leftmost character of s to
+                the rightmost position.
+                <br />
+                For example, if s = "abcde", then it will be "bcdea" after one
+                shift.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "abcde", goal = "cdeab" <br />
+                    Output: true
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "abcde", goal = "abced" <br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= s.length, goal.length &lt;= 100
+                <br />s and goal consist of lowercase English letters.
+              </>
+            }
             tc="n^2"
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @param {string} goal
+                * @return {boolean}
+                */
+               var rotateString = function(s, goal) {
+                    return s.length == goal.length && (s + s).includes(goal);
+               };
+               
+               console.log(rotateString("abcde","cdeab"))`,
+                output: `true`,
               },
             }}
           />
         ),
       },
       q642: {
-        title: "Q797.  (Q642)",
+        title: "Q797. All Paths From Source to Target (Q642)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Given a directed acyclic graph (DAG) of n nodes labeled from 0
+                to n - 1, find all possible paths from node 0 to node n - 1 and
+                return them in any order.
+                <br />
+                The graph is given as follows: graph[i] is a list of all nodes
+                you can visit from node i (i.e., there is a directed edge from
+                node i to node graph[i][j]).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode797a,
+                content: (
+                  <>
+                    Input: graph = [[1,2],[3],[3],[]] <br />
+                    Output: [[0,1,3],[0,2,3]] <br />
+                    Explanation: There are two paths: 0 -&gt; 1 -&gt; 3 and 0
+                    -&gt; 2 -&gt; 3.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                img: Leetcode797b,
+                content: (
+                  <>
+                    Input: graph = [[4,3,1],[3,2,4],[3],[4],[]] <br />
+                    Output: [[0,4],[0,3,4],[0,1,3,4],[0,1,2,3,4],[0,1,4]]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                n == graph.length <br />
+                2 &gt;= n &gt;= 15 <br />
+                0 &gt;= graph[i][j] &gt; n <br />
+                graph[i][j] != i (i.e., there will be no self-loops). <br />
+                All the elements of graph[i] are unique. <br />
+                The input graph is guaranteed to be a DAG.
+              </>
+            }
+            tc="n.2^n"
+            sc="n.2^n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} graph
+                * @return {number[][]}
+                */
+               var allPathsSourceTarget = function(graph) {
+                 const res = [];
+                 dfs(graph, 0, [0], res);
+                 return res;
+               };
+               
+               function dfs(graph, u, curr, res) {
+                   if (u == graph.length - 1) {
+                     res.push(curr.slice());
+                     return;
+                   }
+                   for (let v of graph[u]) {
+                     curr.push(v);
+                     dfs(graph, v, curr, res);
+                     curr.pop()
+                   }
+                 }
+               
+               
+               console.log(allPathsSourceTarget([[4,3,1],[3,2,4],[3],[4],[]]))`,
+                output: `[
+                  [ 0, 4 ],
+                  [ 0, 3, 4 ],
+                  [ 0, 1, 3, 4 ],
+                  [ 0, 1, 2, 3, 4 ],
+                  [ 0, 1, 4 ]
+                ]`,
               },
             }}
           />
@@ -86268,7 +86361,7 @@ a = b + c;
             ]}
             constraints={<></>}
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
