@@ -289,6 +289,7 @@ import Leetcode756 from "assets/leetcode/q756.png";
 import Leetcode764a from "assets/leetcode/764a.png";
 import Leetcode764b from "assets/leetcode/764b.png";
 import Leetcode782 from "assets/leetcode/782.png";
+import Leetcode783 from "assets/leetcode/783.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -84895,6 +84896,7 @@ a = b + c;
             content2={null}
             examples={[
               {
+                img: Leetcode782,
                 content: (
                   <>
                     Input: board = [[0,1,1,0],[0,1,1,0],[1,0,0,1],[1,0,0,1]]
@@ -84995,58 +84997,166 @@ a = b + c;
         ),
       },
       q628: {
-        title: "Q783.  (Q628)",
+        title: "Q783. Minimum Distance Between BST Nodes (Q628)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q783. Minimum Distance Between BST Nodes (Q628)"
+            content1={
+              <>
+                Given the root of a Binary Search Tree (BST), return the minimum
+                difference between the values of any two different nodes in the
+                tree.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode783,
+                content: (
+                  <>
+                    Input: root = [4,2,6,1,3] <br />
+                    Output: 1
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [1,0,48,null,null,12,49]
+                    <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the tree is in the range [2, 100].
+                <br />0 &lt;= Node.val &lt;= 105
+              </>
+            }
+            fp={
+              <>
+                <b>Note: </b>
+                This question is the same as 530:
+                https://leetcode.com/problems/minimum-absolute-difference-in-bst/
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // root = [4,2,6,1,3]
+                /**
+                * Definition for a binary tree node.
+                * public class TreeNode {
+                *     int val;
+                *     TreeNode left;
+                *     TreeNode right;
+                *     TreeNode() {}
+                *     TreeNode(int val) { this.val = val; }
+                *     TreeNode(int val, TreeNode left, TreeNode right) {
+                *         this.val = val;
+                *         this.left = left;
+                *         this.right = right;
+                *     }
+                * }
+                */
+               class Solution {
+                 public int minDiffInBST(TreeNode root) {
+                   inorder(root);
+                   return ans;
+                 }
+               
+                 private int ans = Integer.MAX_VALUE;
+                 private Integer pred = null;
+               
+                 private void inorder(TreeNode root) {
+                   if (root == null)
+                     return;
+               
+                   inorder(root.left);
+                   if (pred != null)
+                     ans = Math.min(ans, root.val - pred);
+                   pred = root.val;
+                   inorder(root.right);
+                 }
+               }`,
+                output: `1`,
               },
             }}
           />
         ),
       },
       q629: {
-        title: "Q784.  (Q629)",
+        title: "Q784. Letter Case Permutation (Q629)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q784. Letter Case Permutation (Q629)"
+            content1={
+              <>
+                Given a string s, you can transform every letter individually to
+                be lowercase or uppercase to create another string.
+                <br />
+                Return a list of all possible strings we could create. Return
+                the output in any order.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "a1b2" <br />
+                    Output: ["a1b2","a1B2","A1b2","A1B2"]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "3z4" <br />
+                    Output: ["3z4","3Z4"]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 12 <br />s consists of lowercase English
+                letters, uppercase English letters, and digits.
+              </>
+            }
+            tc="2^n"
+            sc="2^n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // "a1b2"
+                class Solution {
+                  public List<String> letterCasePermutation(String S) {
+                    List<String> ans = new ArrayList<>();
+                    dfs(new StringBuilder(S), 0, ans);
+                    return ans;
+                  }
+                  private void dfs(StringBuilder sb, int i, List<String> ans) {
+                    if (i == sb.length()) {
+                      ans.add(sb.toString());
+                      return;
+                    }
+                    if (Character.isDigit(sb.charAt(i))) {
+                      dfs(sb, i + 1, ans);
+                      return;
+                    }
+                    sb.setCharAt(i, Character.toLowerCase(sb.charAt(i)));
+                    dfs(sb, i + 1, ans);
+                    sb.setCharAt(i, Character.toUpperCase(sb.charAt(i)));
+                    dfs(sb, i + 1, ans);
+                  }
+                }
+                `,
+                output: `["a1b2","a1B2","A1b2","A1B2"]`,
               },
             }}
           />
