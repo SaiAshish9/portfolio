@@ -84638,9 +84638,10 @@ a = b + c;
         ),
       },
       q624: {
-        title: "Q778.  (Q624)",
+        title: "Q778. K-th Symbol in Grammar (Q624)",
         content: (
           <Comp
+            title="Q778. K-th Symbol in Grammar (Q624)"
             content1={<></>}
             content2={null}
             examples={[
