@@ -290,6 +290,7 @@ import Leetcode764a from "assets/leetcode/764a.png";
 import Leetcode764b from "assets/leetcode/764b.png";
 import Leetcode782 from "assets/leetcode/782.png";
 import Leetcode783 from "assets/leetcode/783.png";
+import Leetcode785 from "assets/leetcode/785.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -85163,29 +85164,99 @@ a = b + c;
         ),
       },
       q630: {
-        title: "Q785.  (Q630)",
+        title: "Q785. Is Graph Bipartite? (Q630)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q785. Is Graph Bipartite? (Q630)"
+            content1={
+              <>
+                There is an undirected graph with n nodes, where each node is
+                numbered between 0 and n - 1. You are given a 2D array graph,
+                where graph[u] is an array of nodes that node u is adjacent to.
+                More formally, for each v in graph[u], there is an undirected
+                edge between node u and node v. The graph has the following
+                properties:
+                <br />
+                There are no self-edges (graph[u] does not contain u).
+                <br />
+                There are no parallel edges (graph[u] does not contain duplicate
+                values).
+                <br />
+                If v is in graph[u], then u is in graph[v] (the graph is
+                undirected).
+                <br />
+                The graph may not be connected, meaning there may be two nodes u
+                and v such that there is no path between them.
+                <br />
+                A graph is bipartite if the nodes can be partitioned into two
+                independent sets A and B such that every edge in the graph
+                connects a node in set A and a node in set B.
+                <br />
+                Return true if and only if it is bipartite.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: graph = [[1,2,3],[0,2],[0,1,3],[0,2]] <br />
+                    Output: false <br />
+                    Explanation: There is no way to partition the nodes into two
+                    independent sets such that every edge connects a node in one
+                    and a node in the other.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: graph = [[1,3],[0,2],[1,3],[0,2]] <br />
+                    Output: true <br />
+                    Explanation: We can partition the nodes into two sets: {"{"}
+                    0, 2{"}"} and {"{"}1, 3{"}"}.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                graph.length == n <br />
+                1 &lt;= n &lt;= 100 <br />
+                0 &lt;= graph[u].length &lt; n <br />
+                0 &lt;= graph[u][i] &lt;= n - 1 <br />
+                graph[u] does not contain u. <br />
+                All the values of graph[u] are unique. <br />
+                If graph[u] contains v, then graph[v] contains u.
+              </>
+            }
+            tc="v+e"
+            sc="v"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `enum Color { WHITE, RED, GREEN }
+
+                class Solution {
+                  public boolean isBipartite(int[][] graph) {
+                    Color[] colors = new Color[graph.length];
+                    Arrays.fill(colors, Color.WHITE);
+                    for (int i = 0; i < graph.length; ++i)
+                      if (colors[i] == Color.WHITE && !isValidColor(graph, i, colors, Color.RED))
+                        return false;
+                    return true;
+                  }
+                
+                  private boolean isValidColor(int[][] graph, int u, Color[] colors, Color color) {
+                    if (colors[u] != Color.WHITE)
+                      return colors[u] == color;
+                    colors[u] = color; 
+                    for (final int v : graph[u])
+                      if (!isValidColor(graph, v, colors, color == Color.RED ? Color.GREEN : Color.RED))
+                        return false;
+                    return true;
+                  }
+                }`,
+                output: `false`,
               },
             }}
           />
