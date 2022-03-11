@@ -87302,69 +87302,242 @@ a = b + c;
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} grid
+                * @return {number}
+                */
+               var maxIncreaseKeepingSkyline = function(grid) {
+                   const n = grid.length;
+                   let ans = 0;
+                   const rowMax = Array(n).fill(0);
+                   const colMax = Array(n).fill(0);
+                   for (let i = 0; i < n; ++i)
+                     for (let j = 0; j < n; ++j) {
+                       rowMax[i] = Math.max(rowMax[i], grid[i][j]);
+                       colMax[j] = Math.max(colMax[j], grid[i][j]);
+                     }
+                   for (let i = 0; i < n; ++i)
+                     for (let j = 0; j < n; ++j)
+                       ans += Math.min(rowMax[i], colMax[j]) - grid[i][j];
+                   return ans;    
+               };
+               
+               console.log(maxIncreaseKeepingSkyline([[0,0,0],[0,0,0],[0,0,0]]))`,
+                output: `0`,
               },
             }}
           />
         ),
       },
       q652: {
-        title: "Q808. (Q652)",
+        title: "Q808. Soup Servings (Q652)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q808. Soup Servings (Q652)"
+            content1={
+              <>
+                There are two types of soup: type A and type B. Initially, we
+                have n ml of each type of soup. There are four kinds of
+                operations:
+                <br />
+                Serve 100 ml of soup A and 0 ml of soup B,
+                <br />
+                Serve 75 ml of soup A and 25 ml of soup B,
+                <br />
+                Serve 50 ml of soup A and 50 ml of soup B, and
+                <br />
+                Serve 25 ml of soup A and 75 ml of soup B.
+                <br />
+                When we serve some soup, we give it to someone, and we no longer
+                have it. Each turn, we will choose from the four operations with
+                an equal probability 0.25. If the remaining volume of soup is
+                not enough to complete the operation, we will serve as much as
+                possible. We stop once we no longer have some quantity of both
+                types of soup.
+                <br />
+                Note that we do not have an operation where all 100 ml's of soup
+                B are used first.
+                <br />
+                Return the probability that soup A will be empty first, plus
+                half the probability that A and B become empty at the same time.
+                Answers within 10-5 of the actual answer will be accepted.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 50 <br />
+                    Output: 0.62500 <br />
+                    Explanation: If we choose the first two operations, A will
+                    become empty first.
+                    <br /> For the third operation, A and B will become empty at
+                    the same time.
+                    <br /> For the fourth operation, B will become empty first.
+                    <br /> So the total probability of A becoming empty first
+                    plus half the probability that A and B become empty at the
+                    same time, is 0.25 * (1 + 1 + 0.5 + 0) = 0.625.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 100 <br />
+                    Output: 0.71875
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={<>0 &lt;= n &lt;= 109</>}
+            tc="1"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @return {number}
+                */
+               
+               const memo = Array.from(Array(4800 / 25),()=>Array(4800 / 25).fill(0));
+               
+               function dfs(a, b) {
+                   if (a <= 0 && b <= 0)
+                     return 0.5;
+                   if (a <= 0)
+                     return 1.0;
+                   if (b <= 0)
+                     return 0.0;
+                   if (memo[a][b] > 0)
+                     return memo[a][b];
+                   return memo[a][b] = 0.25 * (dfs(a - 4, b) +
+                                               dfs(a - 3, b - 1) +
+                                               dfs(a - 2, b - 2) +
+                                               dfs(a - 1, b - 3));
+               }
+               
+               var soupServings = function(n) {
+                   return n >= 4800 ? 1.0 : dfs(parseInt((n + 24) / 25), parseInt((n + 24) / 25));
+               };
+               
+               console.log(soupServings(50))`,
+                output: `0.625`,
               },
             }}
           />
         ),
       },
       q653: {
-        title: "Q809. (Q653)",
+        title: "Q809. Expressive Words (Q653)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q809. Expressive Words (Q653)"
+            content1={
+              <>
+                Sometimes people repeat letters to represent extra feeling. For
+                example:
+                <br /> "hello" -&gt; "heeellooo"
+                <br /> "hi" -&gt; "hiiii" In these strings like "heeellooo", we
+                have groups of adjacent letters that are all the same: "h",
+                "eee", "ll", "ooo".
+                <br />
+                You are given a string s and an array of query strings words. A
+                query word is stretchy if it can be made to be equal to s by any
+                number of applications of the following extension operation:
+                choose a group consisting of characters c, and add some number
+                of characters c to the group so that the size of the group is
+                three or more.
+                <br />
+                For example, starting with "hello", we could do an extension on
+                the group "o" to get "hellooo", but we cannot get "helloo" since
+                the group "oo" has a size less than three. Also, we could do
+                another extension like "ll" -&gt; "lllll" to get "helllllooo".
+                If s = "helllllooo", then the query word "hello" would be
+                stretchy because of these two extension operations: query =
+                "hello" -&gt; "hellooo" -&gt; "helllllooo" = s.
+                <br /> Return the number of query strings that are stretchy.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "heeellooo",
+                    <br /> words = ["hello", "hi", "helo"] Output: 1<br />
+                    Explanation: <br />
+                    <br /> We can extend "e" and "o" in the word "hello" to get
+                    "heeellooo".
+                    <br /> We can't extend "helo" to get "heeellooo" because the
+                    group "ll" is not size 3 or more.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "zzzzzyyyyy", <br />
+                    words = ["zzyy","zy","zyy"]
+                    <br />
+                    Output: 3
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                1 &lt;= s.length, words.length &lt;= 100
+                <br />
+                1 &lt;= words[i].length &lt;= 100
+                <br />s and words[i] consist of lowercase letters
+              </>
+            }
+            tc="n^2"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @param {string[]} words
+                * @return {number}
+                */
+               var expressiveWords = function(s, words) {
+                 let res = 0;
+                 for (let word of words)
+                   if (isStretchy(s, word))
+                     ++res;
+                 return res;    
+               };
+               function isStretchy(s,word){
+                 let n = s.length;
+                 let m = word.length;
+                 let j = 0;
+                   for (let i = 0; i < n; ++i)
+                     if (j < m && s[i] == word[j])
+                       ++j;
+                     else if (i > 1 && s[i] == s[i - 1] && s[i - 1] == s[i - 2])
+                       continue;
+                     else if (0 < i && i + 1 < n &&
+                         s[i - 1] == s[i] &&
+                         s[i] == s[i + 1])
+                       continue;
+                     else
+                       return false;
+                   return j == m;  
+               }     
+               console.log(expressiveWords("heeellooo",["hello", "hi", "helo"]))`,
+                output: `1`,
               },
             }}
           />
         ),
       },
       q654: {
-        title: "Q810. (Q654)",
+        title: "Q810.  Chalkboard XOR Game (Q654)",
         content: (
           <Comp
+            title="Q810.  Chalkboard XOR Game (Q654)"
             content1={<></>}
             content2={null}
             examples={[
@@ -87377,7 +87550,7 @@ a = b + c;
             ]}
             constraints={<></>}
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
                 code: ``,
