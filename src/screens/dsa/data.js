@@ -296,6 +296,7 @@ import Leetcode790b from "assets/leetcode/790b.png";
 import Leetcode797a from "assets/leetcode/797a.png";
 import Leetcode797b from "assets/leetcode/797b.png";
 import Leetcode799 from "assets/leetcode/799.png";
+import Leetcode802 from "assets/leetcode/802.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -86642,55 +86643,281 @@ a = b + c;
         content: (
           <Comp
             title="Q802. Find Eventual Safe States (Q646)"
-            content1={<></>}
+            content1={
+              <>
+                There is a directed graph of n nodes with each node labeled from
+                0 to n - 1. The graph is represented by a 0-indexed 2D integer
+                array graph where graph[i] is an integer array of nodes adjacent
+                to node i, meaning there is an edge from node i to each node in
+                graph[i].
+                <br />
+                A node is a terminal node if there are no outgoing edges. A node
+                is a safe node if every possible path starting from that node
+                leads to a terminal node.
+                <br />
+                Return an array containing all the safe nodes of the graph. The
+                answer should be sorted in ascending order.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode802,
+                content: (
+                  <>
+                    Input: graph = [[1,2],[2,3],[5],[0],[5],[],[]]
+                    <br />
+                    Output: [2,4,5,6]
+                    <br />
+                    Explanation: The given graph is shown above.
+                    <br />
+                    Nodes 5 and 6 are terminal nodes as there are no outgoing
+                    edges from either of them.
+                    <br /> Every path starting at nodes 2, 4, 5, and 6 all lead
+                    to either node 5 or 6.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: graph = [[1,2,3,4],[1,2],[3,4],[0,4],[]]
+                    <br />
+                    Output: [4]
+                    <br />
+                    Explanation:
+                    <br />
+                    Only node 4 is a terminal node, and every path starting at
+                    node 4 leads to node 4.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                n == graph.length
+                <br />
+                1 &lt;= n &lt;= 10^4
+                <br />
+                0 &lt;= graph[i].length &lt;= n<br />
+                0 &lt;= graph[i][j] &lt;= n - 1<br />
+                graph[i] is sorted in a strictly increasing order.
+                <br />
+                The graph may contain self-loops.
+                <br />
+                The number of edges in the graph will be in the range [1, 4 *
+                104]
+              </>
+            }
             tc="v + e"
             sc="v + e"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // graph = [[1,2],[2,3],[5],[0],[5],[],[]]
+                enum State { INIT, VISITING, VISITED }
+                class Solution {
+                  public List<Integer> eventualSafeNodes(int[][] graph) {
+                    List<Integer> ans = new ArrayList<>();
+                    State[] state = new State[graph.length];
+                    for (int i = 0; i < graph.length; ++i)
+                      if (!hasCycle(graph, i, state))
+                        ans.add(i);
+                    return ans;
+                  }
+                  private boolean hasCycle(int[][] graph, int u, State[] state) {
+                    if (state[u] == State.VISITING)
+                      return true;
+                    if (state[u] == State.VISITED)
+                      return false;                
+                    state[u] = State.VISITING;
+                    for (final int v : graph[u])
+                      if (hasCycle(graph, v, state))
+                        return true;
+                    state[u] = State.VISITED;
+                    return false;
+                  }
+                }
+                `,
+                output: `[2,4,5,6]`,
               },
             }}
           />
         ),
       },
       q647: {
-        title: "Q803.  (Q647)",
+        title: "Q803. Bricks Falling When Hit (Q647)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q803. Bricks Falling When Hit (Q647)"
+            content1={
+              <>
+                You are given an m x n binary grid, where each 1 represents a
+                brick and 0 represents an empty space. A brick is stable if:
+                <br />
+                It is directly connected to the top of the grid, or
+                <br />
+                At least one other brick in its four adjacent cells is stable.
+                <br />
+                You are also given an array hits, which is a sequence of
+                erasures we want to apply. Each time we want to erase the brick
+                at the location hits[i] = (rowi, coli). The brick on that
+                location (if it exists) will disappear. Some other bricks may no
+                longer be stable because of that erasure and will fall. Once a
+                brick falls, it is immediately erased from the grid (i.e., it
+                does not land on other stable bricks).
+                <br />
+                Return an array result, where each result[i] is the number of
+                bricks that will fall after the ith erasure is applied.
+                <br />
+                Note that an erasure may refer to a location with no brick, and
+                if it does, no bricks drop.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid = [[1,0,0,0],[1,1,1,0]], hits = [[1,0]]
+                    <br /> Output: [2] <br />
+                    Explanation: Starting with the grid: <br />
+                    [[1,0,0,0], <br />
+                    [1,1,1,0]] <br />
+                    <br /> We erase the underlined brick at (1,0), resulting in
+                    the grid: [[1,0,0,0], <br />
+                    [0,1,1,0]] <br />
+                    <br /> The two underlined bricks are no longer stable as
+                    they are no longer connected to the top nor adjacent to
+                    another stable brick, so they will fall. The resulting grid
+                    is: [[1,0,0,0], <br />
+                    [0,0,0,0]] <br />
+                    Hence the result is [2].
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid = [[1,0,0,0],[1,1,0,0]], hits = [[1,1],[1,0]]
+                    <br /> Output: [0,0] <br />
+                    Explanation: Starting with the grid: <br />
+                    [[1,0,0,0], <br />
+                    [1,1,0,0]] <br />
+                    We erase the underlined brick at (1,1), resulting in the
+                    grid:
+                    <br /> [[1,0,0,0], <br />
+                    [1,0,0,0]] <br />
+                    <br /> All remaining bricks are still stable, so no bricks
+                    fall. The grid remains the same: [[1,0,0,0], <br />
+                    [1,0,0,0]] <br />
+                    <br /> Next, we erase the underlined brick at (1,0),
+                    resulting in the grid: [[1,0,0,0], <br />
+                    [0,0,0,0]] <br />
+                    <br /> Once again, all remaining bricks are still stable, so
+                    no bricks fall. Hence the result is [0,0].
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                m == grid.length <br />
+                n == grid[i].length <br />
+                1 &lt;= m, n &lt;= 200 <br />
+                grid[i][j] is 0 or 1. <br />
+                1 &lt;= hits.length &lt;= 4 * 10^4 <br />
+                hits[i].length == 2 <br />
+                0 &lt;= xi &lt;= m - 1 <br />
+                0 &lt;= yi &lt;= n - 1 <br />
+                All (xi, yi) are unique.
+              </>
+            }
+            tc="m.n.log m.n"
+            sc="m.n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // grid = [[1,0,0,0],[1,1,0,0]], hits = [[1,1],[1,0]]
+                class UF {
+                  public UF(int n) {
+                    id = new int[n];
+                    size = new int[n];
+                    for (int i = 0; i < n; ++i)
+                      id[i] = i;
+                    Arrays.fill(size, 1);
+                  }
+                  public void union(int u, int v) {
+                    final int i = find(u);
+                    final int j = find(v);
+                    if (i == j)
+                      return;
+                    id[i] = j;
+                    size[j] += size[i];
+                  }
+                  public int getStableSize() {
+                    return size[find(0)];
+                  }
+                  private int[] id;
+                  private int[] size;
+                  private int find(int u) {
+                    return id[u] == u ? u : (id[u] = find(id[u]));
+                  }
+                }
+                class Solution {
+                  public int[] hitBricks(int[][] grid, int[][] hits) {
+                    this.m = grid.length;
+                    this.n = grid[0].length;
+                    UF uf = new UF(m * n + 1); 
+                    for (int[] hit : hits) {
+                      final int i = hit[0];
+                      final int j = hit[1];
+                      if (grid[i][j] == 1)
+                        grid[i][j] = 2;
+                    }
+                    for (int i = 0; i < m; ++i)
+                      for (int j = 0; j < n; ++j)
+                        if (grid[i][j] == 1)
+                          unionNeighbors(grid, uf, i, j);
+                    int[] ans = new int[hits.length];
+                    int stableSize = uf.getStableSize();
+                    for (int i = hits.length - 1; i >= 0; --i) {
+                      final int x = hits[i][0];
+                      final int y = hits[i][1];
+                      if (grid[x][y] == 2) { 
+                        grid[x][y] = 1;     
+                        unionNeighbors(grid, uf, x, y);
+                        final int newStableSize = uf.getStableSize();
+                        if (newStableSize > stableSize)
+                          ans[i] = newStableSize - stableSize - 1; 
+                        stableSize = newStableSize;
+                      }
+                    }
+                
+                    return ans;
+                  }
+                  private int m;
+                  private int n;
+                  private static final int[] dirs = {0, 1, 0, -1, 0};
+                  private void unionNeighbors(int[][] grid, UF uf, int i, int j) {
+                    final int hashed = hash(i, j);
+                    for (int k = 0; k < 4; ++k) {
+                      final int x = i + dirs[k];
+                      final int y = j + dirs[k + 1];
+                      if (x < 0 || x == m || y < 0 || y == n)
+                        continue;
+                      if (grid[x][y] != 1)
+                        continue;
+                      uf.union(hashed, hash(x, y));
+                    }
+                    if (i == 0)
+                      uf.union(hashed, 0);
+                  }
+                  private int hash(int i, int j) {
+                    return i * n + j + 1;
+                  }
+                }`,
+                output: `[0,0]`,
               },
             }}
           />
