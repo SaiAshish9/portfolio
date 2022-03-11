@@ -87534,10 +87534,94 @@ a = b + c;
         ),
       },
       q654: {
-        title: "Q810.  Chalkboard XOR Game (Q654)",
+        title: "Q810. Chalkboard XOR Game (Q654)",
         content: (
           <Comp
-            title="Q810.  Chalkboard XOR Game (Q654)"
+            title="Q810. Chalkboard XOR Game (Q654)"
+            content1={
+              <>
+                You are given an array of integers nums represents the numbers
+                written on a chalkboard.
+                <br />
+                Alice and Bob take turns erasing exactly one number from the
+                chalkboard, with Alice starting first. If erasing a number
+                causes the bitwise XOR of all the elements of the chalkboard to
+                become 0, then that player loses. The bitwise XOR of one element
+                is that element itself, and the bitwise XOR of no elements is 0.
+                <br />
+                Also, if any player starts their turn with the bitwise XOR of
+                all the elements of the chalkboard equal to 0, then that player
+                wins.
+                <br />
+                Return true if and only if Alice wins the game, assuming both
+                players play optimally.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [1,1,2] <br />
+                    Output: false <br />
+                    Explanation: <br />
+                    Alice has two choices: erase 1 or erase 2. <br />
+                    If she erases 1, the nums array becomes [1, 2]. The bitwise
+                    XOR of all the elements of the chalkboard is 1 XOR 2 = 3.
+                    Now Bob can remove any element he wants, because Alice will
+                    be the one to erase the last element and she will lose.
+                    <br /> If Alice erases 2 first, now nums become [1, 1]. The
+                    bitwise XOR of all the elements of the chalkboard is 1 XOR 1
+                    = 0. Alice will lose.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [0,1] <br />
+                    Output: true
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [1,2,3] <br />
+                    Output: true
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 1000 <br />0 &lt;= nums[i] &lt; 216
+              </>
+            }
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} nums
+                * @return {boolean}
+                */
+               var xorGame = function(nums) {
+                 const xors = nums.reduce((a, b) => a ^ b,0)
+                 return xors == 0 || nums.length % 2 == 0; 
+               };
+               
+               console.log(xorGame([1,1,2]))`,
+                output: `false`,
+              },
+            }}
+          />
+        ),
+      },
+      q655: {
+        title: "Q811.  (Q655)",
+        content: (
+          <Comp
             content1={<></>}
             content2={null}
             examples={[
@@ -87551,6 +87635,552 @@ a = b + c;
             constraints={<></>}
             tc="n"
             sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q656: {
+        title: "Q812.  (Q656)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q657: {
+        title: "Q813.  (Q657)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q658: {
+        title: "Q814.  (Q658)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q659: {
+        title: "Q815.  (Q659)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q660: {
+        title: "Q816.  (Q660)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q661: {
+        title: "Q817.  (Q661)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q662: {
+        title: "Q818.  (Q662)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q663: {
+        title: "Q819.  (Q663)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q664: {
+        title: "Q820.  (Q664)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q665: {
+        title: "Q821.  (Q665)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q666: {
+        title: "Q822.  (Q666)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q667: {
+        title: "Q823.  (Q667)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q668: {
+        title: "Q824.  (Q668)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q669: {
+        title: "Q825.  (Q669)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q670: {
+        title: "Q826.  (Q670)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q671: {
+        title: "Q827.  (Q671)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q672: {
+        title: "Q828.  (Q672)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q673: {
+        title: "Q829.  (Q673)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q674: {
+        title: "Q830.  (Q674)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q675: {
+        title: "Q831.  (Q675)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q676: {
+        title: "Q832.  (Q676)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
             codes={{
               Javascript: {
                 code: ``,
