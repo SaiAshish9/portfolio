@@ -297,6 +297,7 @@ import Leetcode797a from "assets/leetcode/797a.png";
 import Leetcode797b from "assets/leetcode/797b.png";
 import Leetcode799 from "assets/leetcode/799.png";
 import Leetcode802 from "assets/leetcode/802.png";
+import Leetcode807 from "assets/leetcode/807.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -86924,15 +86925,397 @@ a = b + c;
         ),
       },
       q648: {
-        title: "Q804.  (Q648)",
+        title: "Q804. Unique Morse Code Words (Q648)",
+        content: (
+          <Comp
+            title="Q804. Unique Morse Code Words (Q648)"
+            content1={
+              <>
+                International Morse Code defines a standard encoding where each
+                letter is mapped to a series of dots and dashes, as follows:
+                <br />
+                'a' maps to ".-", <br />
+                'b' maps to "-...", <br />
+                'c' maps to "-.-.", and so on. <br />
+                For convenience, the full table for the 26 letters of the
+                English alphabet is given below:
+                <br />
+                <pre>
+                  {`
+[".-","-...","-.-.","-..",".","..-.","--."
+,"....","..",".---","-.-",".-..","--","-."
+,"---",".--.","--.-",".-.","...","-","..-"
+,"...-",".--","-..-","-.--","--.."]                  
+                  `}
+                </pre>
+                Given an array of strings words where each word can be written
+                as a concatenation of the Morse code of each letter.
+                <br />
+                For example, "cab" can be written as "-.-..--...", which is the
+                concatenation of "-.-.", ".-", and "-...". We will call such a
+                concatenation the transformation of a word.
+                <br />
+                Return the number of different transformations among all words
+                we have.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: words = ["gin","zen","gig","msg"]
+                    <br />
+                    Output: 2<br />
+                    Explanation: The transformation of each word is:
+                    <br />
+                    "gin" -&gt; "--...-."
+                    <br />
+                    "zen" -&gt; "--...-."
+                    <br />
+                    "gig" -&gt; "--...--."
+                    <br />
+                    "msg" -&gt; "--...--."
+                    <br />
+                    <br /> There are 2 different transformations: "--...-." and
+                    "--...--.".
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: words = ["a"]
+                    <br />
+                    Output: 1
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= words.length &lt;= 100
+                <br />
+                1 &lt;= words[i].length &lt;= 12
+                <br />
+                words[i] consists of lowercase English letters.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {string[]} words
+                * @return {number}
+                */
+               var uniqueMorseRepresentations = function(words) {
+                 const morse = [
+                       ".-",   "-...", "-.-.", "-..",  ".",   "..-.", "--.",  "....", "..",
+                       ".---", "-.-",  ".-..", "--",   "-.",  "---",  ".--.", "--.-", ".-.",
+                       "...",  "-",    "..-",  "...-", ".--", "-..-", "-.--", "--.."];
+                 const transformations = new Set();
+                 for (const word of words) {
+                   let transformation = '';
+                   for (const c of word)
+                     transformation += morse[c.charCodeAt(0) - 97];
+                   transformations.add(transformation);
+                 }
+                 return transformations.size;    
+               };
+               
+               console.log(uniqueMorseRepresentations(["a"]))`,
+                output: `1`,
+              },
+            }}
+          />
+        ),
+      },
+      q649: {
+        title: "Q805. Split Array With Same Average (Q649)",
+        content: (
+          <Comp
+            title="Q805. Split Array With Same Average (Q649)"
+            content1={
+              <>
+                You are given an integer array nums.
+                <br />
+                You should move each element of nums into one of the two arrays
+                A and B such that A and B are non-empty, and average(A) ==
+                average(B).
+                <br />
+                Return true if it is possible to achieve that and false
+                otherwise.
+                <br />
+                Note that for an array arr, average(arr) is the sum of all the
+                elements of arr over the length of arr.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [1,2,3,4,5,6,7,8] <br />
+                    Output: true <br />
+                    <br /> Explanation: We can split the array into [1,4,5,8]
+                    and [2,3,6,7], and both of them have an average of 4.5.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [3,1] <br />
+                    Output: false
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 30 <br />0 &lt;= nums[i] &lt;= 10^4
+              </>
+            }
+            tc="2^(0.5*n)"
+            sc="2^(0.5*n)"
+            codes={{
+              Java: {
+                code: `
+                // nums = [1,2,3,4,5,6,7,8]
+                class Solution {
+                  public boolean splitArraySameAverage(int[] A) {
+                    final int n = A.length;
+                    final int sum = Arrays.stream(A).sum();
+                    if (!isPossible(sum, n))
+                      return false;
+                
+                    List<Set<Integer>> sums = new ArrayList<>();
+                
+                    for (int i = 0; i < n / 2 + 1; ++i)
+                      sums.add(new HashSet<>());
+                    sums.get(0).add(0);
+                
+                    for (final int a : A)
+                      for (int i = n / 2; i > 0; --i)
+                        for (final int num : sums.get(i - 1))
+                          sums.get(i).add(a + num);
+                
+                    for (int i = 1; i < n / 2 + 1; ++i)
+                      if (i * sum % n == 0 && sums.get(i).contains(i * sum / n))
+                        return true;
+                
+                    return false;
+                  }
+                
+                  private boolean isPossible(int sum, int n) {
+                    for (int i = 1; i < n / 2 + 1; ++i)
+                      if (i * sum % n == 0)
+                        return true;
+                    return false;
+                  }
+                }
+                `,
+                output: `true`,
+              },
+            }}
+          />
+        ),
+      },
+      q650: {
+        title: "Q806. Number of Lines To Write String (Q650)",
+        content: (
+          <Comp
+            title="Q806. Number of Lines To Write String (Q650)"
+            content1={
+              <>
+                You are given a string s of lowercase English letters and an
+                array widths denoting how many pixels wide each lowercase
+                English letter is. Specifically, widths[0] is the width of 'a',
+                widths[1] is the width of 'b', and so on.
+                <br />
+                You are trying to write s across several lines, where each line
+                is no longer than 100 pixels. Starting at the beginning of s,
+                write as many letters on the first line such that the total
+                width does not exceed 100 pixels. Then, from where you stopped
+                in s, continue writing as many letters as you can on the second
+                line. Continue this process until you have written all of s.
+                <br />
+                Return an array result of length 2 where:
+                <br />
+                result[0] is the total number of lines.
+                <br />
+                result[1] is the width of the last line in pixels.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: widths =
+                    [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10],
+                    s = "abcdefghijklmnopqrstuvwxyz"
+                    <br /> Output: [3,60] <br />
+                    Explanation: You can write s as follows: <br />
+                    abcdefghij // 100 pixels wide <br />
+                    klmnopqrst // 100 pixels wide <br />
+                    uvwxyz // 60 pixels wide <br />
+                    There are a total of 3 lines, and the last line is 60 pixels
+                    wide.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: widths =
+                    [4,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10],
+                    s = "bbbcccdddaaa"
+                    <br /> Output: [2,4] <br />
+                    Explanation: You can write s as follows: <br />
+                    bbbcccdddaa // 98 pixels wide <br />
+                    a // 4 pixels wide <br />
+                    There are a total of 2 lines, and the last line is 4 pixels
+                    wide.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                widths.length == 26
+                <br />
+                2 &lt;= widths[i] &lt;= 10
+                <br />
+                1 &lt;= s.length &lt;= 1000
+                <br />s contains only lowercase English letters.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `
+                // widths = [10,10,10,10,10,10,10,10,10,10,10,10,10,
+                // 10,10,10,10,10,10,10,10,10,10,10,10,10], 
+                // s = "abcdefghijklmnopqrstuvwxyz"
+                class Solution {
+                  public int[] numberOfLines(int[] w, String s) {
+                      int line=0,sum=0;
+                      for(int i =0;i<s.length();i++){
+                              int m = s.charAt(i) - 97;
+                               System.out.println(m);
+                              if(sum+w[m]>100){
+                                  System.out.println(sum+w[m]);
+                                  sum=0;
+                                  line++;
+                                  System.out.println(s.charAt(i));
+                              }
+                              sum+=w[m];
+                          
+                      }
+                      int[] ans = new int[2];
+                      ans[0]=line+1;
+                      ans[1]=sum;
+                      return ans;   
+                  }
+              }`,
+                output: `[3,60]`,
+              },
+            }}
+          />
+        ),
+      },
+      q651: {
+        title: "Q807. Max Increase to Keep City Skyline (Q651)",
+        content: (
+          <Comp
+            title="Q807. Max Increase to Keep City Skyline (Q651)"
+            content1={
+              <>
+                There is a city composed of n x n blocks, where each block
+                contains a single building shaped like a vertical square prism.
+                You are given a 0-indexed n x n integer matrix grid where
+                grid[r][c] represents the height of the building located in the
+                block at row r and column c.
+                <br />
+                A city's skyline is the the outer contour formed by all the
+                building when viewing the side of the city from a distance. The
+                skyline from each cardinal direction north, east, south, and
+                west may be different.
+                <br />
+                We are allowed to increase the height of any number of buildings
+                by any amount (the amount can be different per building). The
+                height of a 0-height building can also be increased. However,
+                increasing the height of a building should not affect the city's
+                skyline from any cardinal direction.
+                <br />
+                Return the maximum total sum that the height of the buildings
+                can be increased by without changing the city's skyline from any
+                cardinal direction.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                img: Leetcode807,
+                content: (
+                  <>
+                    Input: grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]
+                    <br /> Output: 35 <br />
+                    Explanation: The building heights are shown in the center of
+                    the above image.
+                    <br /> The skylines when viewed from each cardinal direction
+                    are drawn in red.
+                    <br /> The grid after increasing the height of buildings
+                    without affecting skylines is:
+                    <br /> gridNew = [ [8, 4, 8, 7],
+                    <br /> [7, 4, 7, 7], <br />
+                    [9, 4, 8, 7], <br />
+                    [3, 3, 3, 3] ]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: grid = [[0,0,0],[0,0,0],[0,0,0]] <br />
+                    Output: 0 <br />
+                    Explanation: Increasing the height of any building will
+                    result in the skyline changing.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                n == grid.length
+                <br />
+                n == grid[r].length
+                <br />
+                2 &lt;= n &lt;= 50
+                <br />0 &lt;= grid[r][c] &lt;= 100
+              </>
+            }
+            tc="n^2"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q652: {
+        title: "Q808. (Q652)",
         content: (
           <Comp
             content1={<></>}
             content2={null}
             examples={[
-              {
-                content: <></>,
-              },
               {
                 content: <></>,
               },
@@ -86952,8 +87335,8 @@ a = b + c;
           />
         ),
       },
-      q649: {
-        title: "Q805.  (Q649)",
+      q653: {
+        title: "Q809. (Q653)",
         content: (
           <Comp
             content1={<></>}
@@ -86962,6 +87345,29 @@ a = b + c;
               {
                 content: <></>,
               },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q654: {
+        title: "Q810. (Q654)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
               {
                 content: <></>,
               },
