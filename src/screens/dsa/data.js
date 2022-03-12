@@ -87619,26 +87619,113 @@ a = b + c;
         ),
       },
       q655: {
-        title: "Q811.  (Q655)",
+        title: "Q811. Subdomain Visit Count (Q655)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q811. Subdomain Visit Count (Q655)"
+            content1={
+              <>
+                A website domain "discuss.leetcode.com" consists of various
+                subdomains. At the top level, we have "com", at the next level,
+                we have "leetcode.com" and at the lowest level,
+                "discuss.leetcode.com". When we visit a domain like
+                "discuss.leetcode.com", we will also visit the parent domains
+                "leetcode.com" and "com" implicitly.
+                <br />
+                A count-paired domain is a domain that has one of the two
+                formats "rep d1.d2.d3" or "rep d1.d2" where rep is the number of
+                visits to the domain and d1.d2.d3 is the domain itself.
+                <br />
+                For example, "9001 discuss.leetcode.com" is a count-paired
+                domain that indicates that discuss.leetcode.com was visited 9001
+                times.
+                <br />
+                Given an array of count-paired domains cpdomains, return an
+                array of the count-paired domains of each subdomain in the
+                input. You may return the answer in any order.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: cpdomains = ["9001 discuss.leetcode.com"]
+                    <br /> Output: ["9001 leetcode.com","9001
+                    discuss.leetcode.com","9001 com"]
+                    <br /> Explanation: We only have one website domain:
+                    "discuss.leetcode.com".
+                    <br /> As discussed above, the subdomain "leetcode.com" and
+                    "com" will also be visited. So they will all be visited 9001
+                    times.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: cpdomains = ["900 google.mail.com", "50 yahoo.com",
+                    "1 intel.mail.com", "5 wiki.org"]
+                    <br /> Output: ["901 mail.com","50 yahoo.com","900
+                    google.mail.com","5 wiki.org","5 org","1
+                    intel.mail.com","951 com"]
+                    <br /> Explanation: We will visit "google.mail.com" 900
+                    times, "yahoo.com" 50 times, "intel.mail.com" once and
+                    "wiki.org" 5 times.
+                    <br /> For the subdomains, we will visit "mail.com" 900 + 1
+                    = 901 times, "com" 900 + 50 + 1 = 951 times, and "org" 5
+                    times.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="1"
+            constraints={
+              <>
+                1 &lt;= cpdomain.length &lt;= 100 <br />
+                1 &lt;= cpdomain[i].length &lt;= 100 <br />
+                cpdomain[i] follows either the "repi d1i.d2i.d3i" format or the
+                "repi d1i.d2i" format.
+                <br /> repi is an integer in the range [1, 104].
+                <br /> d1i, d2i, and d3i consist of lowercase English letters.
+              </>
+            }
+            tc="n^2"
+            sc="n^2"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string[]} cpdomains
+                * @return {string[]}
+                */
+               var subdomainVisits = function(cpdomains) {
+                   const res = [];
+                   const count = [];
+                   for (let cpdomain of cpdomains) {
+                     let space = cpdomain.indexOf(' ');
+                     let num = +cpdomain.substring(0, space);
+                     let domain = cpdomain.substring(space + 1);
+                     count[domain] = ( count[domain] || 0 ) + num;
+                     for (let i = 0; i < domain.length; ++i)
+                       if (domain[i] == '.') {
+                         let subdomain = domain.substring(i + 1);
+                         count[subdomain] = ( count[subdomain] || 0 ) + num;
+                       }
+                   }
+                   for (let subdomain of Object.keys(count))
+                     res.push(String(count[subdomain]) + ' ' + subdomain);
+                   return res;    
+               };
+               
+               console.log(subdomainVisits(["900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"]))`,
+                output: `
+                '900 google.mail.com',
+                '901 mail.com',
+                '951 com',
+                '50 yahoo.com',
+                '1 intel.mail.com',
+                '5 wiki.org',
+                '5 org'
+              ]`,
               },
             }}
           />
