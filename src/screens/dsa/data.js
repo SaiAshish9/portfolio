@@ -298,6 +298,8 @@ import Leetcode797b from "assets/leetcode/797b.png";
 import Leetcode799 from "assets/leetcode/799.png";
 import Leetcode802 from "assets/leetcode/802.png";
 import Leetcode807 from "assets/leetcode/807.png";
+import Leetcode812 from "assets/leetcode/812.png";
+import Leetcode814 from "assets/leetcode/814.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -87732,78 +87734,255 @@ a = b + c;
         ),
       },
       q656: {
-        title: "Q812.  (Q656)",
+        title: "Q812. Largest Triangle Area (Q656)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q812. Largest Triangle Area (Q656)"
+            content1={
+              <>
+                Given an array of points on the X-Y plane points where points[i]
+                = [xi, yi], return the area of the largest triangle that can be
+                formed by any three different points. Answers within 10-5 of the
+                actual answer will be accepted.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode812,
+                content: (
+                  <>
+                    Input: points = [[0,0],[0,1],[1,0],[0,2],[2,0]]
+                    <br />
+                    Output: 2.00000
+                    <br />
+                    Explanation: The five points are shown in the above figure.
+                    The red triangle is the largest.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: points = [[1,0],[0,0],[0,1]] <br />
+                    Output: 0.50000
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                3 &lt;= points.length &lt;= 50
+                <br />
+                -50 &lt;= xi, yi &lt;= 50
+                <br />
+                All the given points are unique.
+              </>
+            }
+            tc="n^2"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} points
+                * @return {number}
+                */
+               var largestTriangleArea = function(points) {
+                 let res = 0;
+                   for (let A of points)
+                     for (let B of points)
+                       for (let C of points)
+                         res = Math.max(res, 0.5 * Math.abs(
+                             (B[0] - A[0]) * (C[1] - A[1]) -
+                             (C[0] - A[0]) * (B[1] - A[1])));
+                 return res;    
+               };
+               
+               console.log(largestTriangleArea([[1,0],[0,0],[0,1]]))`,
+                output: `0.5`,
               },
             }}
           />
         ),
       },
       q657: {
-        title: "Q813.  (Q657)",
+        title: "Q813. Largest Sum of Averages (Q657)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q813. Largest Sum of Averages (Q657)"
+            content1={
+              <>
+                You are given an integer array nums and an integer k. You can
+                partition the array into at most k non-empty adjacent subarrays.
+                The score of a partition is the sum of the averages of each
+                subarray.
+                <br />
+                Note that the partition must use every integer in nums, and that
+                the score is not necessarily an integer.
+                <br />
+                Return the maximum score you can achieve of all the possible
+                partitions. Answers within 10-6 of the actual answer will be
+                accepted.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [9,1,2,3,9],
+                    <br /> k = 3<br />
+                    Output: 20.00000
+                    <br />
+                    Explanation: <br />
+                    The best choice is to partition nums into [9], [1, 2, 3],
+                    [9]. The answer is 9 + (1 + 2 + 3) / 3 + 9 = 20.
+                    <br /> We could have also partitioned nums into [9, 1], [2],
+                    [3, 9], for example.
+                    <br /> That partition would lead to a score of 5 + 2 + 6 =
+                    13, which is worse.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,4,5,6,7], <br />k = 4<br />
+                    Output: 20.50000
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 100 <br />
+                1 &lt;= nums[i] &lt;= 10^4 <br />1 &lt;= k &lt;= nums.length
+              </>
+            }
+            tc="n^2"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} k
+                * @return {number}
+                */
+               var largestSumOfAverages = function(nums, k) {
+                 const n = nums.length
+                 const dp = Array.from(Array(n + 1),()=>Array(k + 1).fill(0));
+                 const prefix = Array(n + 1).fill(0);
+                 for (let i = 1; i <= n; ++i) {
+                   prefix[i] = nums[i - 1] + prefix[i - 1];
+                   dp[i][1] = prefix[i] / i;
+                 }
+                 for (let p = 2; p <= k; ++p)
+                   for (let i = p; i <= n; ++i)
+                     for (let j = p - 1; j < i; ++j) {
+                         let average = (prefix[i] - prefix[j]) / (i - j);
+                         dp[i][p] = Math.max(dp[i][p], dp[j][p - 1] + average);
+                       }
+                 return dp[n][k];   
+               };
+               
+               console.log(largestSumOfAverages([1,2,3,4,5,6,7],4))`,
+                output: `20.5`,
               },
             }}
           />
         ),
       },
       q658: {
-        title: "Q814.  (Q658)",
+        title: "Q814. Binary Tree Pruning (Q658)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q814. Binary Tree Pruning (Q658)"
+            content1={
+              <>
+                Given the root of a binary tree, return the same tree where
+                every subtree (of the given tree) not containing a 1 has been
+                removed.
+                <br />A subtree of a node node is node plus every node that is a
+                descendant of node.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode814,
+                content: (
+                  <>
+                    Input: root = [1,null,0,0,1] <br />
+                    Output: [1,null,0,null,1] <br />
+                    Explanation: <br />
+                    Only the red nodes satisfy the property "every subtree not
+                    containing a 1".
+                    <br /> The diagram on the right represents the answer.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [1,0,1,0,0,0,1] <br />
+                    Output: [1,null,1,null,1]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: root = [1,1,0,1,1,0,1,0]
+                    <br />
+                    Output: [1,1,0,1,1,null,1]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the tree is in the range [1, 200].
+                <br />
+                Node.val is either 0 or 1.
+              </>
+            }
             tc="n"
-            sc="1"
+            sc="h"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+                }
+                
+                /**
+                 * @param {TreeNode} root
+                 * @return {TreeNode}
+                 */
+                var pruneTree = function(root) {
+                    if (!root)
+                      return null;
+                    root.left = pruneTree(root.left);
+                    root.right = pruneTree(root.right);
+                    if (!root.left && !root.right && root.val == 0)
+                      return null;
+                    return root;
+                }; 
+                const t = new TreeNode(1)
+                t.right = new TreeNode(0)
+                t.right.left = new TreeNode(0)
+                t.right.right = new TreeNode(1)
+                console.log(pruneTree(t))`,
+                output: `TreeNode {
+                  val: 1,
+                  left: null,
+                  right: TreeNode {
+                    val: 0,
+                    left: null,
+                    right: TreeNode { val: 1, left: null, right: null }
+                  }
+                }`,
               },
             }}
           />
