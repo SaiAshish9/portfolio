@@ -87992,23 +87992,96 @@ a = b + c;
         title: "Q815.  (Q659)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                You are given an array routes representing bus routes where
+                routes[i] is a bus route that the ith bus repeats forever.
+                <br /> For example, if routes[0] = [1, 5, 7], this means that
+                the 0th bus travels in the sequence 1 -&gt; 5 -&gt; 7 -&gt; 1 -&gt; 5 -&gt; 7
+                -&gt; 1 -&gt; ... forever.
+                <br /> You will start at the bus stop source (You are not on any
+                bus initially), and you want to go to the bus stop target. You
+                can travel between bus stops by buses only.
+                <br />
+                Return the least number of buses you must take to travel from
+                source to target. Return -1 if it is not possible.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: routes = [[1,2,7],[3,6,7]],
+                    <br /> source = 1, <br />
+                    target = 6 Output: 2<br />
+                    Explanation: The best strategy is take the first bus to the
+                    bus stop 7, then take the second bus to the bus stop 6.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: routes = [[7,12],[4,5,15],[6],[15,19],[9,12,13]],
+                    <br /> source = 15, <br />
+                    target = 12
+                    <br />
+                    <br /> Output: -1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                1 &lt;= routes.length &lt;= 500.
+                <br />
+                1 &lt;= routes[i].length &lt;= 10^5
+                <br />
+                All the values of routes[i] are unique.
+                <br />
+                sum(routes[i].length) &lt;= 10^5
+                <br />
+                0 &lt;= routes[i][j] &lt; 10^6
+                <br />0 &lt;= source, target &lt; 10^6
+              </>
+            }
+            tc="n^2"
+            sc="n^2"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // routes = [[1,2,7],[3,6,7]], source = 1, target = 6
+                class Solution {
+                  public int numBusesToDestination(int[][] routes, int S, int T) {
+                    if (S == T)
+                      return 0;
+                    Map<Integer, List<Integer>> graph = new HashMap<>(); 
+                    Set<Integer> usedBuses = new HashSet<>();
+                    for (int i = 0; i < routes.length; ++i)
+                      for (final int route : routes[i]) {
+                        graph.putIfAbsent(route, new ArrayList<>());
+                        graph.get(route).add(i);
+                      }
+                    int ans = 0;
+                    Queue<Integer> q = new ArrayDeque<>(Arrays.asList(S));
+                    while (!q.isEmpty()) {
+                      ++ans;
+                      for (int sz = q.size(); sz > 0; --sz) {
+                        for (final int bus : graph.get(q.poll()))
+                          if (usedBuses.add(bus))
+                            for (final int nextRoute : routes[bus])
+                              if (nextRoute == T)
+                                return ans;
+                              else
+                                q.offer(nextRoute);
+                      }
+                    }
+                    return -1;
+                  }
+                }
+                `,
+                output: `2`,
               },
             }}
           />
@@ -88029,8 +88102,8 @@ a = b + c;
               },
             ]}
             constraints={<></>}
-            tc="n"
-            sc="n"
+            tc="n^3"
+            sc="n^3"
             codes={{
               Javascript: {
                 code: ``,
