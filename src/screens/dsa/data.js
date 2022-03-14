@@ -88839,52 +88839,194 @@ a = b + c;
         ),
       },
       q668: {
-        title: "Q824.  (Q668)",
+        title: "Q824. Goat Latin (Q668)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q824. Goat Latin (Q668)"
+            content1={
+              <>
+                You are given a string sentence that consist of words separated
+                by spaces. Each word consists of lowercase and uppercase letters
+                only.
+                <br />
+                We would like to convert the sentence to "Goat Latin" (a made-up
+                language similar to Pig Latin.) The rules of Goat Latin are as
+                follows:
+                <br />
+                If a word begins with a vowel ('a', 'e', 'i', 'o', or 'u'),
+                append "ma" to the end of the word. For example, the word
+                "apple" becomes "applema".
+                <br />
+                If a word begins with a consonant (i.e., not a vowel), remove
+                the first letter and append it to the end, then add "ma".
+                <br /> For example, the word "goat" becomes "oatgma".
+                <br />
+                <br /> Add one letter 'a' to the end of each word per its word
+                index in the sentence, starting with 1.
+                <br /> For example, the first word gets "a" added to the end,
+                the second word gets "aa" added to the end, and so on.
+                <br /> Return the final sentence representing the conversion
+                from sentence to Goat Latin.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: sentence = "I speak Goat Latin" <br />
+                    Output: "Imaa peaksmaaa oatGmaaaa atinLmaaaaa"
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: sentence = "The quick brown fox jumped over the lazy
+                    dog" <br />
+                    Output: "heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa
+                    overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= sentence.length &lt;= 150 <br />
+                sentence consists of English letters and spaces. <br />
+                sentence has no leading or trailing spaces. <br />
+                All the words in sentence are separated by a single space.
+              </>
+            }
             tc="n"
-            sc="1"
+            sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} sentence
+                * @return {string}
+                */
+               var toGoatLatin = function(sentence) {
+                   let res = "";
+                   const vowels = "aeiouAEIOU";
+                   const words = sentence.split(" ");
+                   let i = 1;
+                   for (let word of words) {
+                     if (i > 1)
+                       res += " ";
+                     if (vowels.includes("" + word.charAt(0)))
+                       res += word;
+                     else
+                       res += word.substring(1) + word.charAt(0);
+                     res += "ma"
+                            + "a".repeat(i++);
+                   }
+                   return res;
+               };
+               
+               console.log(toGoatLatin("The quick brown fox jumped over the lazy dog"))`,
+                output: `heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa`,
               },
             }}
           />
         ),
       },
       q669: {
-        title: "Q825.  (Q669)",
+        title: "Q825. Friends Of Appropriate Ages (Q669)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q825. Friends Of Appropriate Ages (Q669)"
+            content1={
+              <>
+                There are n persons on a social media website. You are given an
+                integer array ages where ages[i] is the age of the ith person.
+                <br />
+                A Person x will not send a friend request to a person y (x != y)
+                if any of the following conditions is true:
+                <br />
+                age[y] &lt;= 0.5 * age[x] + 7
+                <br />
+                age[y] &gt; age[x]
+                <br />
+                age[y] &gt; 100 && age[x] &lt; 100
+                <br />
+                Otherwise, x will send a friend request to y.
+                <br />
+                Note that if x sends a request to y, y will not necessarily send
+                a request to x. Also, a person will not send a friend request to
+                themself.
+                <br />
+                Return the total number of friend requests made.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: ages = [16,16] <br />
+                    Output: 2 <br />
+                    Explanation: 2 people friend request each other.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: ages = [16,17,18] <br />
+                    Output: 2 <br />
+                    Explanation: Friend requests are made 17 -&gt; 16, 18 -&gt;
+                    17.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: ages = [20,30,100,110,120] <br />
+                    Output: 3 <br />
+                    Explanation: Friend requests are made 110 -&gt; 100, 120
+                    -&gt; 110, 120 -&gt; 100.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="1"
+            constraints={
+              <>
+                n == ages.length <br />
+                1 &lt;= n &lt;= 2 * 10^4 <br />1 &lt;= ages[i] &lt;= 120
+              </>
+            }
+            tc="n^2"
+            sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: ages = [16,16]
+                class Solution {
+                  public int numFriendRequests(int[] ages) {
+                    int ans = 0;
+                    int[] count = new int[121];
+                    for (final int age : ages)
+                      ++count[age];
+                    for (int ageA = 1; ageA <= 120; ++ageA)
+                      for (int ageB = 1; ageB <= 120; ++ageB) {
+                        final int countA = count[ageA];
+                        final int countB = count[ageB];
+                        if (countA > 0 && countB > 0 && request(ageA, ageB))
+                          if (ageA == ageB)
+                            ans += countA * (countB - 1);
+                          else
+                            ans += countA * countB;
+                      }
+                    return ans;
+                  }
+                  private boolean request(int ageA, int ageB) {
+                    return !(ageB <= 0.5 * ageA + 7 || ageB > ageA || ageB > 100 && ageA < 100);
+                  }
+                }
+                `,
+                output: `2`,
               },
             }}
           />
