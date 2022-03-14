@@ -88662,9 +88662,10 @@ a = b + c;
         ),
       },
       q666: {
-        title: "Q822.  (Q666)",
+        title: "Q822. Card Flipping Game (Q666)",
         content: (
           <Comp
+            title="Q822. Card Flipping Game (Q666)"
             content1={<></>}
             content2={null}
             examples={[
@@ -88677,7 +88678,7 @@ a = b + c;
             ]}
             constraints={<></>}
             tc="n"
-            sc="1"
+            sc="n"
             codes={{
               Javascript: {
                 code: ``,
