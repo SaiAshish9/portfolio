@@ -88466,52 +88466,196 @@ a = b + c;
         ),
       },
       q664: {
-        title: "Q820.  (Q664)",
+        title: "Q820. Short Encoding of Words (Q664)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q820. Short Encoding of Words (Q664)"
+            content1={
+              <>
+                A valid encoding of an array of words is any reference string s
+                and array of indices indices such that:
+                <br />
+                words.length == indices.length <br />
+                The reference string s ends with the '#' character. <br />
+                For each index indices[i], the substring of s starting from
+                indices[i] and up to (but not including) the next '#' character
+                is equal to words[i].
+                <br /> Given an array of words, return the length of the
+                shortest reference string s possible of any valid encoding of
+                words.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words = ["time", "me", "bell"] <br />
+                    Output: 10 <br />
+                    Explanation: A valid encoding would be s = "time#bell#" and
+                    indices = [0, 2, 5]. <br />
+                    words[0] = "time", the substring of s starting from
+                    indices[0] = 0 to the next '#' is underlined in "time#bell#"
+                    <br /> words[1] = "me", the substring of s starting from
+                    indices[1] = 2 to the next '#' is underlined in "time#bell#"
+                    <br /> words[2] = "bell", the substring of s starting from
+                    indices[2] = 5 to the next '#' is underlined in "time#bell#"
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words = ["t"] <br />
+                    Output: 2 <br />
+                    Explanation: A valid encoding would be s = "t#" and indices
+                    = [0].
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= words.length &lt;= 2000
+                <br />
+                1 &lt;= words[i].length &lt;= 7<br />
+                words[i] consists of only lowercase letters.
+              </>
+            }
             tc="n"
-            sc="1"
+            sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: words = ["t"]
+                class TrieNode {
+                  public TrieNode[] children = new TrieNode[26];
+                  public int depth = 0;
+                }
+                class Solution {
+                  public int minimumLengthEncoding(String[] words) {
+                    int ans = 0;
+                    TrieNode root = new TrieNode();
+                    List<TrieNode> heads = new ArrayList<>();
+                    for (final String word : new HashSet<>(Arrays.asList(words)))
+                      heads.add(insert(root, word));
+                    for (TrieNode head : heads)
+                      if (Arrays.stream(head.children).allMatch(child -> child == null))
+                        ans += head.depth + 1;
+                    return ans;
+                  }
+                  private TrieNode insert(TrieNode root, final String word) {
+                    TrieNode node = root;
+                    for (final char c : new StringBuilder(word).reverse().toString().toCharArray()) {
+                      if (node.children[c - 'a'] == null)
+                        node.children[c - 'a'] = new TrieNode();
+                      node = node.children[c - 'a'];
+                    }
+                    node.depth = word.length();
+                    return node;
+                  }
+                }`,
+                output: `2`,
               },
             }}
           />
         ),
       },
       q665: {
-        title: "Q821.  (Q665)",
+        title: "Q821. 821. Shortest Distance to a Character (Q665)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q821. 821. Shortest Distance to a Character (Q665)"
+            content1={
+              <>
+                Given a string s and a character c that occurs in s, return an
+                array of integers answer where answer.length == s.length and
+                answer[i] is the distance from index i to the closest occurrence
+                of character c in s.
+                <br />
+                The distance between two indices i and j is abs(i - j), where
+                abs is the absolute value function.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "loveleetcode", c = "e" <br />
+                    Output: [3,2,1,0,1,0,0,1,2,2,1,0] <br />
+                    Explanation: The character 'e' appears at indices 3, 5, 6,
+                    and 11 (0-indexed). <br />
+                    The closest occurrence of 'e' for index 0 is at index 3, so
+                    the distance is abs(0 - 3) = 3. <br />
+                    The closest occurrence of 'e' for index 1 is at index 3, so
+                    the distance is abs(1 - 3) = 2. <br />
+                    For index 4, there is a tie between the 'e' at index 3 and
+                    the 'e' at index 5, but the distance is still the same:
+                    abs(4 - 3) == abs(4 - 5) = 1.
+                    <br /> The closest occurrence of 'e' for index 8 is at index
+                    6, so the distance is abs(8 - 6) = 2.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "aaab", c = "b" <br />
+                    Output: [3,2,1,0]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 10^4
+                <br />
+                s[i] and c are lowercase English letters.
+                <br />
+                It is guaranteed that c occurs at least once in s.
+              </>
+            }
             tc="n"
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `
+                // Input: s = "loveleetcode", c = "e"
+                /**
+                * @param {string} s
+                * @param {character} c
+                * @return {number[]}
+                */
+               var shortestToChar = function(s, c) {
+                  const arr = s.split("")
+                  let count = 0;
+                  const answer = []
+                   const newArr = arr.map( (item, index) => {
+                       if(item === c) { 
+                           count = count + 1;
+                          return arr[index] = count
+                       }else { 
+                           return arr[index] = item
+                       }
+                   })
+                   for(let i=0; i<arr.length; i++) { 
+                       let min = 0;
+                       for(let j=1; j<=count;j++) {
+                           const index = newArr.indexOf(j)
+                           const distance = Math.abs(i - index);
+                           if( arr[i] === j) { 
+                               min = 0;
+                               break;
+                           }else if(distance < min || min ===0) { 
+                               min = distance
+                           }
+                       }
+                       answer.push(min)   
+                   }
+                   return answer  
+               };`,
+                output: `[3,2,1,0,1,0,0,1,2,2,1,0]`,
               },
             }}
           />
