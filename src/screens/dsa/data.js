@@ -88562,7 +88562,7 @@ a = b + c;
         ),
       },
       q665: {
-        title: "Q821. 821. Shortest Distance to a Character (Q665)",
+        title: "Q821. Shortest Distance to a Character (Q665)",
         content: (
           <Comp
             title="Q821. 821. Shortest Distance to a Character (Q665)"
@@ -88666,49 +88666,173 @@ a = b + c;
         content: (
           <Comp
             title="Q822. Card Flipping Game (Q666)"
-            content1={<></>}
+            content1={
+              <>
+                You are given n cards, with a positive integer printed on the
+                front and back of each card (possibly different). You can flip
+                any number of cards (possibly zero).
+                <br />
+                After choosing the front and the back of each card, you will
+                pick each card, and if the integer printed on the back of this
+                card is not printed on the front of any other card, then this
+                integer is good.
+                <br />
+                You are given two integer array fronts and backs where fronts[i]
+                and backs[i] are the integers printer on the front and the back
+                of the ith card respectively.
+                <br />
+                Return the smallest good and integer after flipping the cards.
+                If there are no good integers, return 0.
+                <br />
+                Note that a flip swaps the front and back numbers, so the value
+                on the front is now on the back and vice versa.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: fronts = [1,2,4,4,7], <br />
+                    backs = [1,3,4,1,3]
+                    <br />
+                    Output: 2<br />
+                    Explanation: If we flip the second card, the fronts are
+                    [1,3,4,4,7] and the backs are [1,2,4,1,3].
+                    <br /> We choose the second card, which has the number 2 on
+                    the back, and it is not on the front of any card, so 2 is
+                    good.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: fronts = [1],
+                    <br /> backs = [1]
+                    <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                n == fronts.length <br />
+                n == backs.length <br />
+                1 &lt;= n &lt;= 1000 <br />1 &lt;= fronts[i], backs[i] &lt;=
+                2000
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} fronts
+                * @param {number[]} backs
+                * @return {number}
+                */
+               var flipgame = function(fronts, backs) {
+                 let res = 2001;
+                 const same = new Set();
+                 for (let i = 0; i < fronts.length; ++i)
+                     if (fronts[i] == backs[i])
+                       same.add(fronts[i]);
+                 for (let f of fronts)
+                     if (!same.has(f))
+                       res = Math.min(res, f);
+                  for (let b of backs)
+                     if (!same.has(b))
+                       res = Math.min(res, b);
+                   return res == 2001 ? 0 : res;  
+               };
+               console.log(flipgame([1,2,4,4,7],[1,3,4,1,3]))`,
+                output: `2`,
               },
             }}
           />
         ),
       },
       q667: {
-        title: "Q823.  (Q667)",
+        title: "Q823. Binary Trees With Factors (Q667)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q823. Binary Trees With Factors (Q667)"
+            content1={
+              <>
+                Given an array of unique integers, arr, where each integer
+                arr[i] is strictly greater than 1.
+                <br />
+                We make a binary tree using these integers, and each number may
+                be used for any number of times. Each non-leaf node's value
+                should be equal to the product of the values of its children.
+                <br />
+                Return the number of binary trees we can make. The answer may be
+                too large so return the answer modulo 109 + 7.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [2,4] <br />
+                    Output: 3 <br />
+                    Explanation: We can make these trees: [2], [4], [4, 2, 2]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [2,4,5,10] <br />
+                    Output: 7 <br />
+                    Explanation: We can make these trees: [2], [4], [5], [10],
+                    [4, 2, 2], [10, 2, 5], [10, 5, 2].
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="1"
+            constraints={
+              <>
+                1 &lt;= arr.length &lt;= 1000
+                <br />
+                2 &lt;= arr[i] &lt;= 10^9
+                <br />
+                All the values of arr are unique.
+              </>
+            }
+            tc="n^2"
+            sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: arr = [2,4,5,10]
+                class Solution {
+                  public int numFactoredBinaryTrees(int[] arr) {
+                    final int kMod = (int) 1e9 + 7;
+                    final int n = arr.length;
+                    long[] dp = new long[n];
+                    Map<Integer, Integer> m = new HashMap<>();
+                    Arrays.sort(arr);
+                    Arrays.fill(dp, 1);
+                    for (int i = 0; i < n; ++i)
+                      m.put(arr[i], i);
+                    for (int i = 0; i < n; ++i) 
+                      for (int j = 0; j < i; ++j)
+                        if (arr[i] % arr[j] == 0) { 
+                          final int right = arr[i] / arr[j];
+                          if (m.containsKey(right)) {
+                            dp[i] += dp[j] * dp[m.get(right)];
+                            dp[i] %= kMod;
+                          }
+                        }
+                    return (int) (Arrays.stream(dp).sum() % kMod);
+                  }
+                }
+                `,
+                output: `7`,
               },
             }}
           />
