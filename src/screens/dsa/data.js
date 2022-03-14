@@ -88192,78 +88192,274 @@ a = b + c;
         ),
       },
       q661: {
-        title: "Q817.  (Q661)",
+        title: "Q817. Linked List Components (Q661)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q817. Linked List Components (Q661)"
+            content1={
+              <>
+                You are given the head of a linked list containing unique
+                integer values and an integer array nums that is a subset of the
+                linked list values.
+                <br />
+                Return the number of connected components in nums where two
+                values are connected if they appear consecutively in the linked
+                list.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: head = [0,1,2,3], nums = [0,1,3] <br />
+                    Output: 2 <br />
+                    Explanation: 0 and 1 are connected, so [0, 1] and [3] are
+                    the two connected components.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: head = [0,1,2,3,4], nums = [0,3,1,4]
+                    <br />
+                    Output: 2<br />
+                    Explanation: 0 and 1 are connected, 3 and 4 are connected,
+                    so [0, 1] and [3, 4] are the two connected components.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the linked list is n. <br />
+                1 &lt;= n &lt;= 104 <br />
+                0 &lt;= Node.val &lt; n <br />
+                All the values Node.val are unique. <br />
+                1 &lt;= nums.length &lt;= n <br />
+                0 &lt;= nums[i] &lt; n <br />
+                All the values of nums are unique.
+              </>
+            }
             tc="n"
-            sc="1"
+            sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function ListNode(val, next) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.next = (next===undefined ? null : next)
+                 }
+                 
+                 /**
+                  * @param {ListNode} head
+                  * @param {number[]} nums
+                  * @return {number}
+                  */
+                 var numComponents = function(head, nums) {
+                   let res = 0;
+                   const setG = new Set();
+                   for (let g of nums)
+                     setG.add(g);
+                   for (; head; head = head.next)
+                     if (setG.has(head.val) && (!head.next || !setG.has(head.next.val)))
+                     ++res;
+                   return res;    
+                 };
+                 
+                 const l = new ListNode(0)
+                 l.next = new ListNode(1)
+                 l.next.next = new ListNode(2)
+                 l.next.next.next = new ListNode(3)
+                 console.log(numComponents(l,[0,1,3]))
+                 `,
+                output: `2`,
               },
             }}
           />
         ),
       },
       q662: {
-        title: "Q818.  (Q662)",
+        title: "Q818. Race Car (Q662)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q818. Race Car (Q662)"
+            content1={
+              <>
+                Your car starts at position 0 and speed +1 on an infinite number
+                line. Your car can go into negative positions. Your car drives
+                automatically according to a sequence of instructions 'A'
+                (accelerate) and 'R' (reverse):
+                <br />
+                When you get an instruction 'A', your car does the following:
+                <br />
+                position += speed
+                <br />
+                speed *= 2<br />
+                When you get an instruction 'R', your car does the following:
+                <br />
+                If your speed is positive then speed = -1
+                <br />
+                otherwise speed = 1<br />
+                Your position stays the same.
+                <br />
+                For example, after commands "AAR", your car goes to positions 0
+                --&gt; 1 --&gt; 3 --&gt; 3, and your speed goes to 1 --&gt; 2
+                --&gt; 4 --&gt; -1.
+                <br />
+                Given a target position target, return the length of the
+                shortest sequence of instructions to get there.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: target = 3 <br />
+                    Output: 2 <br />
+                    Explanation: <br />
+                    The shortest instruction sequence is "AA". <br />
+                    Your position goes from 0 --&gt; 1 --&gt; 3.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: target = 6 <br />
+                    Output: 5 <br />
+                    Explanation: <br />
+                    The shortest instruction sequence is "AAARA". <br />
+                    Your position goes from 0 --&gt; 1 --&gt; 3 --&gt; 7 --&gt;
+                    7 --&gt; 6.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={<>1 &lt;= target &lt;= 10^4</>}
             tc="n"
-            sc="1"
+            sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // target 3
+                class Solution {
+                  public int racecar(int target) {
+                    dp = new int[target + 1];
+                    Arrays.fill(dp, 1, dp.length, -1);
+                    return rc(target);
+                  }
+                  private int[] dp;
+                  private int rc(int i) {
+                    if (dp[i] >= 0)
+                      return dp[i];
+                    int ans = Integer.MAX_VALUE;
+                    int x = 1;          
+                    int j = (1 << x) - 1; 
+                    for (; j < i; j = (1 << ++x) - 1)
+                      for (int y = 0, k = 0; k < j; k = (1 << ++y) - 1)
+                        ans = Math.min(ans, (x + 1) + (y + 1) + rc(i - (j - k)));
+                    ans = Math.min(ans, i == j ? x : x + 1 + rc(j - i));
+                    return dp[i] = ans;
+                  }
+                }
+                `,
+                output: `2`,
               },
             }}
           />
         ),
       },
       q663: {
-        title: "Q819.  (Q663)",
+        title: "Q819. Most Common Word (Q663)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q819. Most Common Word (Q663)"
+            content1={
+              <>
+                Given a string paragraph and a string array of the banned words
+                banned, return the most frequent word that is not banned. It is
+                guaranteed there is at least one word that is not banned, and
+                that the answer is unique.
+                <br />
+                The words in paragraph are case-insensitive and the answer
+                should be returned in lowercase.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: paragraph = "Bob hit a ball, the hit BALL flew far
+                    after it was hit.", banned = ["hit"]
+                    <br /> Output: "ball"
+                    <br />
+                    Explanation: <br />
+                    "hit" occurs 3 times, but it is a banned word.
+                    <br />
+                    "ball" occurs twice (and no other word does), so it is the
+                    most frequent non-banned word in the paragraph.
+                    <br /> Note that words in the paragraph are not case
+                    sensitive,
+                    <br /> that punctuation is ignored (even if adjacent to
+                    words, such as "ball,"),
+                    <br />
+                    and that "hit" isn't the answer even though it occurs more
+                    because it is banned.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: paragraph = "a.",
+                    <br /> banned = []
+                    <br />
+                    Output: "a"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= paragraph.length &lt;= 1000
+                <br />
+                paragraph consists of English letters, space ' ', or one of the
+                symbols: "!?',;.".
+                <br />
+                0 &lt;= banned.length &lt;= 100
+                <br />
+                1 &lt;= banned[i].length &lt;= 10
+                <br />
+                banned[i] consists of only lowercase English letters.
+              </>
+            }
             tc="n"
-            sc="1"
+            sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: paragraph = "a.", banned = []
+                class Solution {
+                  public String mostCommonWord(String paragraph, String[] banned) {
+                    Pair<String, Integer> ans = new Pair<>("", 0);
+                    Set<String> bannedSet = new HashSet<>(Arrays.asList(banned));
+                    Map<String, Integer> count = new HashMap<>();
+                    String[] words = paragraph.replaceAll("\\W+", " ").toLowerCase().split("\\s+");
+                    for (final String word : words)
+                      if (!bannedSet.contains(word)) {
+                        count.put(word, count.getOrDefault(word, 0) + 1);
+                        if (count.get(word) > ans.getValue())
+                          ans = new Pair<>(word, count.get(word));
+                      }
+                
+                    return ans.getKey();
+                  }
+                }
+                `,
+                output: `a`,
               },
             }}
           />
