@@ -87989,16 +87989,17 @@ a = b + c;
         ),
       },
       q659: {
-        title: "Q815.  (Q659)",
+        title: "Q815. Bus Routes (Q659)",
         content: (
           <Comp
+            title="Q815. Bus Routes (Q659)"
             content1={
               <>
                 You are given an array routes representing bus routes where
                 routes[i] is a bus route that the ith bus repeats forever.
                 <br /> For example, if routes[0] = [1, 5, 7], this means that
-                the 0th bus travels in the sequence 1 -&gt; 5 -&gt; 7 -&gt; 1 -&gt; 5 -&gt; 7
-                -&gt; 1 -&gt; ... forever.
+                the 0th bus travels in the sequence 1 -&gt; 5 -&gt; 7 -&gt; 1
+                -&gt; 5 -&gt; 7 -&gt; 1 -&gt; ... forever.
                 <br /> You will start at the bus stop source (You are not on any
                 bus initially), and you want to go to the bus stop target. You
                 can travel between bus stops by buses only.
@@ -88088,26 +88089,103 @@ a = b + c;
         ),
       },
       q660: {
-        title: "Q816.  (Q660)",
+        title: "Q816. Ambiguous Coordinates (Q660)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q816. Ambiguous Coordinates (Q660)"
+            content1={
+              <>
+                We had some 2-dimensional coordinates, like "(1, 3)" or "(2,
+                0.5)". Then, we removed all commas, decimal points, and spaces
+                and ended up with the string s.
+                <br />
+                For example, "(1, 3)" becomes s = "(13)" and "(2, 0.5)" becomes
+                s = "(205)".
+                <br />
+                Return a list of strings representing all possibilities for what
+                our original coordinates could have been.
+                <br />
+                Our original representation never had extraneous zeroes, so we
+                never started with numbers like "00", "0.0", "0.00", "1.0",
+                "001", "00.01", or any other number that can be represented with
+                fewer digits. Also, a decimal point within a number never occurs
+                without at least one digit occurring before it, so we never
+                started with numbers like ".1".
+                <br />
+                The final answer list can be returned in any order. All
+                coordinates in the final answer have exactly one space between
+                them (occurring after the comma.)
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "(123)" <br />
+                    Output: ["(1, 2.3)","(1, 23)","(1.2, 3)","(12, 3)"]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "(0123)" <br />
+                    Output: ["(0, 1.23)","(0, 12.3)","(0, 123)","(0.1,
+                    2.3)","(0.1, 23)","(0.12, 3)"]
+                    <br /> Explanation: 0.0, 00, 0001 or 00.01 are not allowed.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "(00011)" <br />
+                    Output: ["(0, 0.011)","(0.001, 1)"]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                4 &lt;= s.length &lt;= 12 <br />
+                s[0] == '(' and s[s.length - 1] == ')'. <br />
+                The rest of s are digits.
+              </>
+            }
             tc="n^3"
             sc="n^3"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {string[]}
+                */
+               var ambiguousCoordinates = function(s) {
+                 const res = [];
+                 s = s.substring(1, s.length - 1);
+                 for (let i = 1; i < s.length; ++i)
+                   for (let x of splits(s.substring(0, i)))
+                     for (let y of splits(s.substring(i)))
+                       res.push("(" + x + ", " + y + ")");
+                 return res;    
+               };
+               
+               function splits(s){
+                 if (!s || s.length > 1 && s.charAt(0) == '0' && s.charAt(s.length - 1) == '0')
+                   return [];
+                 if (s.charAt(s.length - 1) == '0')
+                   return [s];
+                 if (s.charAt(0) == '0')
+                   return ["0." + s.substring(1)];
+                 const res = [s]
+                 for (let i = 1; i < s.length; ++i)
+                   res.push(s.substring(0, i) + "." + s.substring(i));
+                 return res; 
+               }
+               
+               console.log(ambiguousCoordinates("(123)"))`,
+                output: `[ '(1, 23)', '(1, 2.3)', '(12, 3)', '(1.2, 3)' ]`,
               },
             }}
           />
