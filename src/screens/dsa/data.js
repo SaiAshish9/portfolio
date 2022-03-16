@@ -300,6 +300,9 @@ import Leetcode802 from "assets/leetcode/802.png";
 import Leetcode807 from "assets/leetcode/807.png";
 import Leetcode812 from "assets/leetcode/812.png";
 import Leetcode814 from "assets/leetcode/814.png";
+import Leetcode833 from "assets/leetcode/833.png";
+import Leetcode834 from "assets/leetcode/834.png";
+import Leetcode838 from "assets/leetcode/838.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -89698,165 +89701,630 @@ a = b + c;
         ),
       },
       q677: {
-        title: "Q (Q677)",
+        title: "Q833. Find And Replace in String (Q677)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q833. Find And Replace in String (Q677)"
+            content1={
+              <>
+                You are given a 0-indexed string s that you must perform k
+                replacement operations on. The replacement operations are given
+                as three 0-indexed parallel arrays, indices, sources, and
+                targets, all of length k.
+                <br />
+                To complete the ith replacement operation:
+                <br />
+                Check if the substring sources[i] occurs at index indices[i] in
+                the original string s.
+                <br /> If it does not occur, do nothing.
+                <br />
+                Otherwise if it does occur, replace that substring with
+                targets[i].
+                <br />
+                For example, if s = "abcd", indices[i] = 0, sources[i] = "ab",
+                and targets[i] = "eee", then the result of this replacement will
+                be "eeecd".
+                <br />
+                All replacement operations must occur simultaneously, meaning
+                the replacement operations should not affect the indexing of
+                each other. The testcases will be generated such that the
+                replacements will not overlap.
+                <br />
+                For example, a testcase with s = "abc", indices = [0, 1], and
+                sources = ["ab","bc"] will not be generated because the "ab" and
+                "bc" replacements overlap.
+                <br />
+                Return the resulting string after performing all replacement
+                operations on s.
+                <br />A substring is a contiguous sequence of characters in a
+                string.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode833,
+                content: (
+                  <>
+                    Input: s = "abcd", indices = [0, 2], sources = ["a", "cd"],
+                    targets = ["eee", "ffff"]
+                    <br />
+                    Output: "eeebffff" <br />
+                    Explanation: <br />
+                    "a" occurs at index 0 in s, so we replace it with "eee".{" "}
+                    <br />
+                    "cd" occurs at index 2 in s, so we replace it with "ffff".
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "abcd", indices = [0, 2], sources = ["ab","ec"],
+                    targets = ["eee","ffff"]
+                    <br />
+                    Output: "eeecd" <br />
+                    Explanation: <br />
+                    "ab" occurs at index 0 in s, so we replace it with "eee".{" "}
+                    <br />
+                    "ec" does not occur at index 2 in s, so we do nothing.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 1000 <br />
+                k == indices.length == sources.length == targets.length <br />
+                1 &lt;= k &lt;= 100 <br />
+                0 &lt;= indexes[i] &lt; s.length <br />
+                1 &lt;= sources[i].length, targets[i].length &lt;= 50 <br />
+                s consists of only lowercase English letters. <br />
+                sources[i] and targets[i] consist of only lowercase English
+                letters.
+              </>
+            }
+            tc="n.log n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: s = "abcd", indices = [0, 2], sources = ["a", "cd"], targets = ["eee", "ffff"]
+                class Solution {
+                  public String findReplaceString(String S, int[] indexes, String[] sources, String[] targets) {
+                    List<Pair<Integer, Integer>> sortedIndexes = new ArrayList<>();
+                    for (int i = 0; i < indexes.length; ++i)
+                      sortedIndexes.add(new Pair<>(indexes[i], i));
+                    Collections.sort(sortedIndexes, (a, b) -> b.getKey() - a.getKey());
+                    for (var sortedIndex : sortedIndexes) {
+                      final int index = sortedIndex.getKey();
+                      final int i = sortedIndex.getValue();
+                      final String source = sources[i];
+                      final String target = targets[i];
+                      if (S.substring(index, index + source.length()).equals(source))
+                        S = S.substring(0, index) + target + S.substring(index + source.length());
+                    }
+                    return S;
+                  }
+                }
+                `,
+                output: `eeebffff`,
               },
             }}
           />
         ),
       },
       q678: {
-        title: "Q (Q678)",
+        title: "Q834. Sum of Distances in Tree (Q678)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q834. Sum of Distances in Tree (Q678)"
+            content1={
+              <>
+                There is an undirected connected tree with n nodes labeled from
+                0 to n - 1 and n - 1 edges.
+                <br />
+                You are given the integer n and the array edges where edges[i] =
+                [ai, bi] indicates that there is an edge between nodes ai and bi
+                in the tree.
+                <br />
+                Return an array answer of length n where answer[i] is the sum of
+                the distances between the ith node in the tree and all other
+                nodes.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode834,
+                content: (
+                  <>
+                    Input: n = 6, edges = [[0,1],[0,2],[2,3],[2,4],[2,5]]
+                    <br /> Output: [8,12,6,10,10,10]
+                    <br />
+                    Explanation: The tree is shown above.
+                    <br />
+                    <br /> We can see that dist(0,1) + dist(0,2) + dist(0,3) +
+                    dist(0,4) + dist(0,5) equals 1 + 1 + 2 + 2 + 2 = 8.
+                    <br />
+                    Hence, answer[0] = 8, and so on.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1, edges = []
+                    <br />
+                    Output: [0]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: n = 2, edges = [[1,0]]
+                    <br />
+                    Output: [1,1]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= n &lt;= 3 * 104 <br />
+                edges.length == n - 1 <br />
+                edges[i].length == 2 <br />
+                0 &lt;= ai, bi &lt; n <br />
+                ai != bi <br />
+                The given input represents a valid tree.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: n = 6, edges = [[0,1],[0,2],[2,3],[2,4],[2,5]]
+                class Solution {
+                  public int[] sumOfDistancesInTree(int N, int[][] edges) {
+                    int[] ans = new int[N];
+                    int[] count = new int[N];
+                    Set<Integer>[] tree = new Set[N];
+                    Arrays.fill(count, 1);
+                    for (int i = 0; i < N; ++i)
+                      tree[i] = new HashSet<>();
+                    for (int[] e : edges) {
+                      final int u = e[0];
+                      final int v = e[1];
+                      tree[u].add(v);
+                      tree[v].add(u);
+                    }
+                    postorder(tree, 0, -1, count, ans);
+                    preorder(tree, 0, -1, count, ans);
+                    return ans;
+                  }
+                  private void postorder(Set<Integer>[] tree, int node, int parent, int[] count, int[] ans) {
+                    for (final int child : tree[node]) {
+                      if (child == parent)
+                        continue;
+                      postorder(tree, child, node, count, ans);
+                      count[node] += count[child];
+                      ans[node] += ans[child] + count[child];
+                    }
+                  }
+                  private void preorder(Set<Integer>[] tree, int node, int parent, int[] count, int[] ans) {
+                    for (final int child : tree[node]) {
+                      if (child == parent)
+                        continue;
+                      ans[child] = ans[node] - count[child] + (tree.length - count[child]);
+                      preorder(tree, child, node, count, ans);
+                    }
+                  }
+                }`,
+                output: `[8,12,6,10,10,10]`,
               },
             }}
           />
         ),
       },
       q679: {
-        title: "Q (Q679)",
+        title: "Q835. Image Overlap (Q679)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q835. Image Overlap (Q679)"
+            content1={
+              <>
+                You are given two images, img1 and img2, represented as binary,
+                square matrices of size n x n. A binary matrix has only 0s and
+                1s as values.
+                <br />
+                We translate one image however we choose by sliding all the 1
+                bits left, right, up, and/or down any number of units. We then
+                place it on top of the other image. We can then calculate the
+                overlap by counting the number of positions that have a 1 in
+                both images.
+                <br />
+                Note also that a translation does not include any kind of
+                rotation. Any 1 bits that are translated outside of the matrix
+                borders are erased.
+                <br />
+                Return the largest possible overlap.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: img1 = [[1,1,0],[0,1,0],[0,1,0]], img2 =
+                    [[0,0,0],[0,1,1],[0,0,1]]
+                    <br />
+                    Output: 3<br />
+                    Explanation: We translate img1 to right by 1 unit and down
+                    by 1 unit.
+                    <br />
+                    The number of positions that have a 1 in both images is 3
+                    (shown in red).
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: img1 = [[1]], <br />
+                    img2 = [[1]]
+                    <br />
+                    Output: 1
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: img1 = [[0]],
+                    <br /> img2 = [[0]]
+                    <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                n == img1.length == img1[i].length <br />
+                n == img2.length == img2[i].length <br />
+                1 &lt;= n &lt;= 30 <br />
+                img1[i][j] is either 0 or 1. <br />
+                img2[i][j] is either 0 or 1.
+              </>
+            }
+            tc="n^2"
+            sc="n^2"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: img1 = [[1,1,0],[0,1,0],[0,1,0]], img2 = [[0,0,0],[0,1,1],[0,0,1]]
+                class Solution {
+                  public int largestOverlap(int[][] A, int[][] B) {
+                    final int n = A.length;
+                    final int magic = 100;
+                    int ans = 0;
+                    List<int[]> onesA = new ArrayList<>();
+                    List<int[]> onesB = new ArrayList<>();
+                    Map<Integer, Integer> map = new HashMap<>();
+                    for (int i = 0; i < n; ++i)
+                      for (int j = 0; j < n; ++j) {
+                        if (A[i][j] == 1)
+                          onesA.add(new int[] {i, j});
+                        if (B[i][j] == 1)
+                          onesB.add(new int[] {i, j});
+                      }  
+                    for (int[] a : onesA)
+                      for (int[] b : onesB) {
+                        final int key = (a[0] - b[0]) * magic + a[1] - b[1];
+                        map.put(key, map.getOrDefault(key, 0) + 1);
+                      }
+                    for (final int value : map.values())
+                      ans = Math.max(ans, value);
+                    return ans;
+                  }
+                }
+                `,
+                output: `3`,
               },
             }}
           />
         ),
       },
       q680: {
-        title: "Q (Q680)",
+        title: "Q836. Rectangle Overlap (Q680)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                An axis-aligned rectangle is represented as a list [x1, y1, x2,
+                y2], where (x1, y1) is the coordinate of its bottom-left corner,
+                and (x2, y2) is the coordinate of its top-right corner. Its top
+                and bottom edges are parallel to the X-axis, and its left and
+                right edges are parallel to the Y-axis.
+                <br />
+                Two rectangles overlap if the area of their intersection is
+                positive. To be clear, two rectangles that only touch at the
+                corner or edges do not overlap.
+                <br />
+                Given two axis-aligned rectangles rec1 and rec2, return true if
+                they overlap, otherwise return false.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: rec1 = [0,0,2,2], <br /> rec2 = [1,1,3,3] <br />
+                    Output: true
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: rec1 = [0,0,1,1], <br />
+                    rec2 = [1,0,2,1] <br />
+                    Output: false
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: rec1 = [0,0,1,1], <br />
+                    rec2 = [2,2,3,3] Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                rect1.length == 4<br />
+                rect2.length == 4<br />
+                -10^9 &lt;= rec1[i], rec2[i] &lt;= 10^9
+                <br />
+                rec1 and rec2 represent a valid rectangle with a non-zero area.
+              </>
+            }
+            tc="1"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} rec1
+                * @param {number[]} rec2
+                * @return {boolean}
+                */
+               var isRectangleOverlap = function(rec1, rec2) {
+                 return rec1[0] < rec2[2] && rec2[0] < rec1[2] &&
+                          rec1[1] < rec2[3] && rec2[1] < rec1[3];  
+               };
+               
+               console.log(isRectangleOverlap([0,0,2,2],[1,1,3,3]))`,
+                output: `true`,
               },
             }}
           />
         ),
       },
       q681: {
-        title: "Q (Q681)",
+        title: "Q837. New 21 Game (Q681)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                Alice plays the following game, loosely based on the card game
+                "21".
+                <br />
+                Alice starts with 0 points and draws numbers while she has less
+                than k points. During each draw, she gains an integer number of
+                points randomly from the range [1, maxPts], where maxPts is an
+                integer. Each draw is independent and the outcomes have equal
+                probabilities.
+                <br />
+                Alice stops drawing numbers when she gets k or more points.
+                <br />
+                Return the probability that Alice has n or fewer points.
+                <br />
+                Answers within 10-5 of the actual answer are considered
+                accepted.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 10, <br /> k = 1, <br /> maxPts = 10 <br />
+                    Output: 1.00000 <br />
+                    Explanation: Alice gets a single card, then stops.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 6, <br /> k = 1, <br /> maxPts = 10 <br />
+                    Output: 0.60000 <br />
+                    Explanation: Alice gets a single card, then stops. <br />
+                    In 6 out of 10 possibilities, she is at or below 6 points.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: n = 21, <br />k = 17, <br /> maxPts = 10 <br />
+                    Output: 0.73278
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                0 &lt;= k &lt;= n &lt;= 10^4 <br />1 &lt;= maxPts &lt;= 10^4
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @param {number} k
+                * @param {number} maxPts
+                * @return {number}
+                */
+               var new21Game = function(n, k, maxPts) {
+                 if (k == 0 || n >= k - 1 + maxPts)
+                     return 1.0;
+                 let ans = 0.0;
+                 const dp = Array(n + 1).fill(0); 
+                 dp[0] = 1.0;
+                 let windowSum = dp[0];
+                 for (let i = 1; i <= n; ++i) {
+                   dp[i] = windowSum / maxPts;
+                   if (i < k)
+                     windowSum += dp[i];
+                   else 
+                     ans += dp[i];
+                   if (i - maxPts >= 0)
+                     windowSum -= dp[i - maxPts];
+                 }
+                 return ans;  
+               };
+               
+               console.log(new21Game(10,1,10))`,
+                output: `1`,
               },
             }}
           />
         ),
       },
       q682: {
-        title: "Q (Q682)",
+        title: "Q838. Push Dominoes (Q682)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q838. Push Dominoes (Q682)"
+            content1={
+              <>
+                There are n dominoes in a line, and we place each domino
+                vertically upright. In the beginning, we simultaneously push
+                some of the dominoes either to the left or to the right.
+                <br />
+                After each second, each domino that is falling to the left
+                pushes the adjacent domino on the left. Similarly, the dominoes
+                falling to the right push their adjacent dominoes standing on
+                the right.
+                <br />
+                When a vertical domino has dominoes falling on it from both
+                sides, it stays still due to the balance of the forces.
+                <br />
+                For the purposes of this question, we will consider that a
+                falling domino expends no additional force to a falling or
+                already fallen domino.
+                <br />
+                You are given a string dominoes representing the initial state
+                where:
+                <br />
+                dominoes[i] = 'L', if the ith domino has been pushed to the
+                left,
+                <br />
+                dominoes[i] = 'R', if the ith domino has been pushed to the
+                right, and
+                <br />
+                dominoes[i] = '.', if the ith domino has not been pushed.
+                <br />
+                Return a string representing the final state.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: dominoes = "RR.L" <br />
+                    Output: "RR.L" <br />
+                    Explanation: The first domino expends no additional force on
+                    the second domino.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                img: Leetcode838,
+                content: (
+                  <>
+                    Input: dominoes = ".L.R...LR..L.." <br /> Output:
+                    "LL.RR.LLRRLL.."
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                n == dominoes.length <br />
+                1 &lt;= n &lt;= 10^5 <br />
+                dominoes[i] is either 'L', 'R', or '.'
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} dominoes
+                * @return {string}
+                */
+               var pushDominoes = function(dominoes) {
+                   let s = dominoes.split("")
+                   let L = -1;
+                   let R = -1;
+                   for (let i = 0; i <= dominoes.length; ++i)
+                     if (i == dominoes.length || s[i] == 'R') {
+                       if (L < R)
+                         while (R < i)
+                           s[R++] = 'R';
+                       R = i;
+                     } else if (s[i] == 'L') {
+                       if (R < L || L == -1 && R == -1) {
+                         if (L == -1 && R == -1)
+                           ++L;
+                         while (L < i)
+                           s[L++] = 'L';
+                       } else {
+                         let l = R + 1;
+                         let r = i - 1;
+                         while (l < r) {
+                           s[l++] = 'R';
+                           s[r--] = 'L';
+                         }
+                       }
+                       L = i;
+                     }
+               
+                   return s.join("")
+               };
+               
+               console.log(pushDominoes(".L.R...LR..L.."))`,
+                output: `LL.RR.LLRRLL..`,
               },
             }}
           />
         ),
       },
       q683: {
-        title: "Q (Q683)",
+        title: "Q839. Similar String Groups (Q683)",
         content: (
           <Comp
+            title="Q839. Similar String Groups (Q683)"
             content1={<></>}
             content2={null}
             examples={[
