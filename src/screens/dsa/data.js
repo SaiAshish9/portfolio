@@ -89033,52 +89033,199 @@ a = b + c;
         ),
       },
       q670: {
-        title: "Q826.  (Q670)",
+        title: "Q826. 826. Most Profit Assigning Work (Q670)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q826. 826. Most Profit Assigning Work (Q670)"
+            content1={
+              <>
+                You have n jobs and m workers. You are given three arrays:
+                difficulty, profit, and worker where:
+                <br />
+                difficulty[i] and profit[i] are the difficulty and the profit of
+                the ith job, and
+                <br /> worker[j] is the ability of jth worker (i.e., the jth
+                worker can only complete a job with difficulty at most
+                worker[j]).
+                <br /> Every worker can be assigned at most one job, but one job
+                can be completed multiple times.
+                <br />
+                For example, if three workers attempt the same job that pays $1,
+                then the total profit will be $3. If a worker cannot complete
+                any job, their profit is $0.
+                <br /> Return the maximum profit we can achieve after assigning
+                the workers to the jobs.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: difficulty = [2,4,6,8,10], <br />
+                    profit = [10,20,30,40,50], worker = [4,5,6,7]
+                    <br /> Output: 100 <br />
+                    Explanation: Workers are assigned jobs of difficulty
+                    [4,4,6,6] and they get a profit of [20,20,30,30] separately.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: difficulty = [85,47,57], <br />
+                    profit = [24,66,99], worker = [40,25,25]
+                    <br /> Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="1"
+            constraints={
+              <>
+                n == difficulty.length <br />
+                n == profit.length <br />
+                m == worker.length <br />
+                1 &lt;= n, m &lt;= 104 <br />1 &lt;= difficulty[i], profit[i],
+                worker[i] &lt;= 105
+              </>
+            }
+            tc="n.log n"
+            sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: difficulty = [2,4,6,8,10], profit = [10,20,30,40,50], worker = [4,5,6,7]
+                class Solution {
+                  public int maxProfitAssignment(int[] difficulty, int[] profit, int[] worker) {
+                    int ans = 0;
+                    List<Pair<Integer, Integer>> jobs = new ArrayList<>();
+                    for (int i = 0; i < difficulty.length; ++i)
+                      jobs.add(new Pair<>(difficulty[i], profit[i]));
+                    Collections.sort(jobs, Comparator.comparing(Pair::getKey));
+                    Arrays.sort(worker);
+                    int i = 0;
+                    int maxProfit = 0;
+                    for (final int w : worker) {
+                      for (; i < jobs.size() && w >= jobs.get(i).getKey(); ++i)
+                        maxProfit = Math.max(maxProfit, jobs.get(i).getValue());
+                      ans += maxProfit;
+                    }
+                    return ans;
+                  }
+                }
+                `,
+                output: `100`,
               },
             }}
           />
         ),
       },
       q671: {
-        title: "Q827.  (Q671)",
+        title: "Q827.  Making A Large Island (Q671)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q827.  Making A Large Island (Q671)"
+            content1={
+              <>
+                You are given an n x n binary matrix grid. You are allowed to
+                change at most one 0 to be 1.
+                <br />
+                Return the size of the largest island in grid after applying
+                this operation.
+                <br />
+                An island is a 4-directionally connected group of 1s.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid = [[1,0],[0,1]] <br />
+                    Output: 3 <br />
+                    Explanation: Change one 0 to 1 and connect two 1s, then we
+                    get an island with area = 3.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid = [[1,1],[1,0]] <br />
+                    Output: 4 <br />
+                    Explanation: Change the 0 to 1 and make the island bigger,
+                    only one island with area = 4.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: grid = [[1,1],[1,1]] <br />
+                    Output: 4 <br />
+                    Explanation: Can't change any 0 to 1, only one island with
+                    area = 4.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="1"
+            constraints={
+              <>
+                n == grid.length <br />
+                n == grid[i].length <br />
+                1 &lt;= n &lt;= 500 <br />
+                grid[i][j] is either 0 or 1.
+              </>
+            }
+            tc="n^2"
+            sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: grid = [[1,1],[1,1]]
+                class Solution {
+                  public int largestIsland(int[][] grid) {
+                    final int m = grid.length;
+                    final int n = grid[0].length;
+                    int maxSize = 0;
+                    List<Integer> sizes = new ArrayList<>(Arrays.asList(0, 0));
+                    for (int i = 0; i < m; ++i)
+                      for (int j = 0; j < n; ++j)
+                        if (grid[i][j] == 1) {
+                          sizes.add(paint(grid, i, j, sizes.size())); // paint 2, 3, ...
+                        }
+                    for (int i = 0; i < m; ++i)
+                      for (int j = 0; j < n; ++j)
+                        if (grid[i][j] == 0) {
+                          Set<Integer> neighborIds =
+                              new HashSet<>(Arrays.asList(getId(grid, i - 1, j), getId(grid, i + 1, j),
+                                                          getId(grid, i, j + 1), getId(grid, i, j - 1)));
+                          maxSize = Math.max(maxSize, 1 + getSize(grid, neighborIds, sizes));
+                        }
+                    return maxSize == 0 ? m * n : maxSize;
+                  }
+                  private int paint(int[][] grid, int i, int j, int id) {
+                    if (i < 0 || i == grid.length || j < 0 || j == grid[0].length)
+                      return 0;
+                    if (grid[i][j] != 1)
+                      return 0;
+                    grid[i][j] = id; 
+                    return 1 + paint(grid, i + 1, j, id) + paint(grid, i - 1, j, id) + paint(grid, i, j + 1, id) +
+                        paint(grid, i, j - 1, id);
+                  }
+                  private int getId(int[][] grid, int i, int j) {
+                    if (i < 0 || i == grid.length || j < 0 || j == grid[0].length)
+                      return 0; 
+                    return grid[i][j];
+                  }
+                  private int getSize(int[][] grid, Set<Integer> neighborIds, List<Integer> sizes) {
+                    int size = 0;
+                    for (final int neighborId : neighborIds)
+                      size += sizes.get(neighborId);
+                    return size;
+                  }
+                }`,
+                output: `4`,
               },
             }}
           />
