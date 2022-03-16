@@ -304,6 +304,7 @@ import Leetcode833 from "assets/leetcode/833.png";
 import Leetcode834 from "assets/leetcode/834.png";
 import Leetcode838 from "assets/leetcode/838.png";
 import Leetcode847 from "assets/leetcode/847.png";
+import Leetcode849 from "assets/leetcode/849.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -91243,52 +91244,215 @@ a = b + c;
         ),
       },
       q693: {
-        title: "Q (Q693)",
+        title: "Q849. Maximize Distance to Closest Person (Q693)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q849. Maximize Distance to Closest Person (Q693)"
+            content1={
+              <>
+                You are given an array representing a row of seats where
+                seats[i] = 1 represents a person sitting in the ith seat, and
+                seats[i] = 0 represents that the ith seat is empty (0-indexed).
+                <br />
+                There is at least one empty seat, and at least one person
+                sitting.
+                <br />
+                Alex wants to sit in the seat such that the distance between him
+                and the closest person to him is maximized.
+                <br />
+                Return that maximum distance to the closest person.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode849,
+                content: (
+                  <>
+                    Input: seats = [1,0,0,0,1,0,1] <br />
+                    Output: 2 <br />
+                    Explanation: <br />
+                    If Alex sits in the second open seat (i.e. seats[2]), then
+                    the closest person has distance 2.
+                    <br />
+                    If Alex sits in any other open seat, the closest person has
+                    distance 1. Thus, the maximum distance to the closest person
+                    is 2.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: seats = [1,0,0,0] <br />
+                    Output: 3 <br />
+                    Explanation: <br />
+                    If Alex sits in the last seat (i.e. seats[3]), the closest
+                    person is 3 seats away.
+                    <br /> This is the maximum distance possible, so the answer
+                    is 3.
+                  </>
+                ),
+              },
+              {
+                content: <>Input: seats = [0,1] Output: 1</>,
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                2 &lt;= seats.length &lt;= 2 * 10^4 <br />
+                seats[i] is 0 or 1. <br />
+                At least one seat is empty. <br />
+                At least one seat is occupied.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} seats
+                * @return {number}
+                */
+               var maxDistToClosest = function(seats) {
+                 const n = seats.length;
+                 let res = 0;
+                 let j = -1;
+                 for (let i = 0; i < n; ++i)
+                   if (seats[i] == 1) {
+                     res = j == -1 ? i : Math.max(res, parseInt((i - j) / 2));
+                     j = i;
+                 }
+                 return Math.max(res, n - j - 1);
+               };
+               
+               console.log(maxDistToClosest([1,0,0,0,1,0,1]))`,
+                output: `2`,
               },
             }}
           />
         ),
       },
       q694: {
-        title: "Q (Q694)",
+        title: "Q850. Rectangle Area II (Q694)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q850. Rectangle Area II (Q694)"
+            content1={
+              <>
+                You are given a 2D array of axis-aligned rectangles. Each
+                rectangle[i] = [xi1, yi1, xi2, yi2] denotes the ith rectangle
+                where (xi1, yi1) are the coordinates of the bottom-left corner,
+                and (xi2, yi2) are the coordinates of the top-right corner.
+                <br />
+                Calculate the total area covered by all rectangles in the plane.
+                Any area covered by two or more rectangles should only be
+                counted once.
+                <br />
+                Return the total area. Since the answer may be too large, return
+                it modulo 109 + 7.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: rectangles = [[0,0,2,2],[1,0,2,3],[1,0,3,1]]
+                    <br /> Output: 6<br />
+                    Explanation: A total area of 6 is covered by all three
+                    rectangales, as illustrated in the picture.
+                    <br /> From (1,1) to (2,2), the green and red rectangles
+                    overlap.
+                    <br /> From (1,0) to (2,3), all three rectangles overlap.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: rectangles = [[0,0,1000000000,1000000000]]
+                    <br /> Output: 49 <br />
+                    Explanation: The answer is 1018 modulo (109 + 7), which is
+                    49.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                1 &lt;= rectangles.length &lt;= 200 <br />
+                rectanges[i].length == 4 <br />0 &lt;= xi1, yi1, xi2, yi2 &lt;=
+                10^9
+              </>
+            }
+            tc="n^2.log n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: rectangles = [[0,0,1000000000,1000000000]]
+                class Event {
+                  public int x;
+                  public int y1;
+                  public int y2;
+                  public char type;
+                  public Event(int x, int y1, int y2, char type) {
+                    this.x = x;
+                    this.y1 = y1;
+                    this.y2 = y2;
+                    this.type = type;
+                  }
+                }
+                
+                class Solution {
+                  public int rectangleArea(int[][] rectangles) {
+                    final int kMod = (int) 1e9 + 7;
+                    List<Event> events = new ArrayList<>();
+                
+                    for (int[] r : rectangles) {
+                      events.add(new Event(r[0], r[1], r[3], 's'));
+                      events.add(new Event(r[2], r[1], r[3], 'e'));
+                    }
+                
+                    Collections.sort(events, (a, b) -> a.x - b.x);
+                
+                    long ans = 0;
+                    int prevX = 0;
+                    List<Pair<Integer, Integer>> yPairs = new ArrayList<>();
+                
+                    for (Event e : events) {
+                      if (e.x > prevX) {
+                        final int width = e.x - prevX;
+                        ans = (ans + width * getHeight(yPairs)) % kMod;
+                        prevX = e.x;
+                      }
+                      if (e.type == 's') {
+                        yPairs.add(new Pair<>(e.y1, e.y2));
+                        Collections.sort(yPairs, Comparator.comparing(Pair::getKey));
+                      } else { // type == 'e'
+                        yPairs.remove(new Pair<>(e.y1, e.y2));
+                      }
+                    }
+                    return (int) (ans % kMod);
+                  }
+                
+                  private long getHeight(List<Pair<Integer, Integer>> yPairs) {
+                    int height = 0;
+                    int prevY = 0;
+                    for (var pair : yPairs) {
+                      final int y1 = pair.getKey();
+                      final int y2 = pair.getValue();
+                      prevY = Math.max(prevY, y1);
+                      if (y2 > prevY) {
+                        height += y2 - prevY;
+                        prevY = y2;
+                      }
+                    }
+                    return height;
+                  }
+                }`,
+                output: `49`,
               },
             }}
           />
