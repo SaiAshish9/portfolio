@@ -91664,7 +91664,494 @@ a = b + c;
         title: "Q853. Car Fleet (Q697)",
         content: (
           <Comp
-          title= "Q853. Car Fleet (Q697)"
+            title="Q853. Car Fleet (Q697)"
+            content1={
+              <>
+                There are n cars going to the same destination along a one-lane
+                road. The destination is target miles away.
+                <br />
+                You are given two integer array position and speed, both of
+                length n, where position[i] is the position of the ith car and
+                speed[i] is the speed of the ith car (in miles per hour).
+                <br />
+                A car can never pass another car ahead of it, but it can catch
+                up to it and drive bumper to bumper at the same speed. The
+                faster car will slow down to match the slower car's speed. The
+                distance between these two cars is ignored (i.e., they are
+                assumed to have the same position).
+                <br />
+                A car fleet is some non-empty set of cars driving at the same
+                position and same speed. Note that a single car is also a car
+                fleet.
+                <br />
+                If a car catches up to a car fleet right at the destination
+                point, it will still be considered as one car fleet.
+                <br />
+                Return the number of car fleets that will arrive at the
+                destination.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: target = 12, <br /> position = [10,8,0,5,3], <br />{" "}
+                    speed = [2,4,1,1,3]
+                    <br />
+                    Output: 3 <br />
+                    Explanation: <br />
+                    The cars starting at 10 (speed 2) and 8 (speed 4) become a
+                    fleet, meeting each other at 12.
+                    <br />
+                    The car starting at 0 does not catch up to any other car, so
+                    it is a fleet by itself.
+                    <br />
+                    The cars starting at 5 (speed 1) and 3 (speed 3) become a
+                    fleet, meeting each other at 6. The fleet moves at speed 1
+                    until it reaches target.
+                    <br />
+                    Note that no other cars meet these fleets before the
+                    destination, so the answer is 3.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: target = 10, <br />
+                    position = [3], <br />
+                    speed = [3] <br />
+                    Output: 1 <br />
+                    Explanation: There is only one car, hence there is only one
+                    fleet.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: target = 100,
+                    <br /> position = [0,2,4],
+                    <br /> speed = [4,2,1]
+                    <br /> Output: 1<br />
+                    Explanation:
+                    <br />
+                    The cars starting at 0 (speed 4) and 2 (speed 2) become a
+                    fleet, meeting each other at 4. The fleet moves at speed 2.
+                    <br />
+                    Then, the fleet (speed 2) and the car starting at 4 (speed
+                    1) become one fleet, meeting each other at 6. The fleet
+                    moves at speed 1 until it reaches target.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                n == position.length == speed.length
+                <br />
+                1 &lt;= n &lt;= 10^5
+                <br />
+                0 &lt; target &lt;= 10^6
+                <br />
+                0 &lt;= position[i] &lt; target
+                <br />
+                All the values of position are unique.
+                <br />0 &lt; speed[i] &lt;= 106
+              </>
+            }
+            tc="n.log n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `
+                // Input: target = 100, position = [0,2,4], speed = [4,2,1]
+                class Car {
+                  public int pos;
+                  public double time;
+                  public Car(int pos, double time) {
+                    this.pos = pos;
+                    this.time = time;
+                  }
+                }
+                class Solution {
+                  public int carFleet(int target, int[] position, int[] speed) {
+                    int ans = 0;
+                    Car[] cars = new Car[position.length];
+                    for (int i = 0; i < position.length; ++i)
+                      cars[i] = new Car(position[i], (double) (target - position[i]) / speed[i]);
+                    Arrays.sort(cars, (a, b) -> b.pos - a.pos);
+                    double maxTime = 0;
+                    for (Car car : cars)
+                      if (car.time > maxTime) {
+                        maxTime = car.time;
+                        ++ans;
+                      }
+                    return ans;
+                  }
+                }
+                `,
+                output: `1`,
+              },
+            }}
+          />
+        ),
+      },
+      q698: {
+        title: "Q854. K-Similar Strings (Q698)",
+        content: (
+          <Comp
+            title="Q854. K-Similar Strings (Q698)"
+            content1={
+              <>
+                Strings s1 and s2 are k-similar (for some non-negative integer
+                k) if we can swap the positions of two letters in s1 exactly k
+                times so that the resulting string equals s2.
+                <br />
+                Given two anagrams s1 and s2, return the smallest k for which s1
+                and s2 are k-similar.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: s1 = "ab", s2 = "ba" <br />
+                    Output: 1
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s1 = "abc", s2 = "bca"
+                    <br />
+                    Output: 2
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= s1.length &lt;= 20
+                <br />
+                s2.length == s1.length
+                <br />
+                s1 and s2 contain only lowercase letters from the set{" "}
+                {"{'a', 'b', 'c', 'd', 'e', 'f'}"}.
+                <br /> s2 is an anagram of s1.
+              </>
+            }
+            tc="n^2"
+            sc="n^2"
+            codes={{
+              Java: {
+                code: `
+                // Input: s1 = "abc", s2 = "bca"
+                class Solution {
+                  public int kSimilarity(String s1, String s2) {
+                    int ans = 0;
+                    Queue<String> q = new ArrayDeque<>(Arrays.asList(s1));
+                    Set<String> seen = new HashSet<>(Arrays.asList(s1));
+                    while (!q.isEmpty()) {
+                      for (int sz = q.size(); sz > 0; --sz) {
+                        final String curr = q.poll();
+                        if (curr.equals(s2))
+                          return ans;
+                        for (final String child : getChildren(curr, s2)) {
+                          if (seen.contains(child))
+                            continue;
+                          q.offer(child);
+                          seen.add(child);
+                        }
+                      }
+                      ++ans;
+                    }
+                    return -1;
+                  }
+                  private List<String> getChildren(final String curr, final String target) {
+                    List<String> children = new ArrayList<>();
+                    char[] charArray = curr.toCharArray();
+                    int i = 0; 
+                    while (curr.charAt(i) == target.charAt(i))
+                      ++i;
+                
+                    for (int j = i + 1; j < charArray.length; ++j)
+                      if (curr.charAt(j) == target.charAt(i)) {
+                        swap(charArray, i, j);
+                        children.add(String.valueOf(charArray));
+                        swap(charArray, i, j);
+                      }
+                    return children;
+                  }
+                  private void swap(char[] charArray, int i, int j) {
+                    final char temp = charArray[i];
+                    charArray[i] = charArray[j];
+                    charArray[j] = temp;
+                  }
+                }`,
+                output: `2`,
+              },
+            }}
+          />
+        ),
+      },
+      q699: {
+        title: "Q855. Exam Room (Q699)",
+        content: (
+          <Comp
+            title="Q855. Exam Room (Q699)"
+            content1={
+              <>
+                There is an exam room with n seats in a single row labeled from
+                0 to n - 1.
+                <br />
+                When a student enters the room, they must sit in the seat that
+                maximizes the distance to the closest person. If there are
+                multiple such seats, they sit in the seat with the lowest
+                number. If no one is in the room, then the student sits at seat
+                number 0.
+                <br />
+                Design a class that simulates the mentioned exam room.
+                <br />
+                Implement the ExamRoom class:
+                <br />
+                ExamRoom(int n) Initializes the object of the exam room with the
+                number of the seats n.
+                <br />
+                int seat() Returns the label of the seat at which the next
+                student will set.
+                <br />
+                void leave(int p) Indicates that the student sitting at seat p
+                will leave the room. It is guaranteed that there will be a
+                student sitting at seat p.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input
+                    <br />
+                    ["ExamRoom", "seat", "seat", "seat", "seat", "leave",
+                    "seat"]
+                    <br />
+                    [[10], [], [], [], [], [4], []]
+                    <br />
+                    Output
+                    <br />
+                    [null, 0, 9, 4, 2, null, 5]
+                    <br />
+                    Explanation
+                    <br />
+                    ExamRoom examRoom = new ExamRoom(10);
+                    <br />
+                    examRoom.seat(); // return 0, no one is in the room, then
+                    the student sits at seat number 0.
+                    <br />
+                    examRoom.seat(); // return 9, the student sits at the last
+                    seat number 9.
+                    <br />
+                    examRoom.seat(); // return 4, the student sits at the last
+                    seat number 4.
+                    <br />
+                    examRoom.seat(); // return 2, the student sits at the last
+                    seat number 2.
+                    <br />
+                    examRoom.leave(4);
+                    <br />
+                    examRoom.seat(); // return 5, the student sits at the last
+                    seat number 5.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= n &lt;= 10^9
+                <br />
+                It is guaranteed that there is a student sitting at seat p.
+                <br />
+                At most 104 calls will be made to seat and leave
+              </>
+            }
+            tc="1"
+            sc="n"
+            codes={{
+              Java: {
+                code: `
+                // Input
+// ["ExamRoom", "seat", "seat", "seat", "seat", "leave", "seat"]
+// [[10], [], [], [], [], [4], []]
+                class Node {
+                  public Node prev;
+                  public Node next;
+                  public int value;
+                
+                  public Node(int value) {
+                    this.value = value;
+                  }
+                }
+                
+                class ExamRoom {
+                  public ExamRoom(int N) {
+                    this.N = N;
+                    join(head, tail);
+                  }
+                  public int seat() {
+                    if (head.next == tail) {
+                      Node node = new Node(0);
+                      join(head, node);
+                      join(node, tail);
+                      map.put(0, node);
+                      return 0;
+                    }
+                    int prevStudent = -1;
+                    int maxDistToClosest = 0;
+                    int val = 0;    
+                    Node pos = null; 
+                    for (Node node = head; node != tail; node = node.next) {
+                      if (prevStudent == -1) {         
+                        maxDistToClosest = node.value; 
+                        pos = node;
+                      } else if ((node.value - prevStudent) / 2 > maxDistToClosest) {
+                        maxDistToClosest = (node.value - prevStudent) / 2;
+                        val = (node.value + prevStudent) / 2;
+                        pos = node;
+                      }
+                      prevStudent = node.value;
+                    }
+                    if (N - 1 - tail.prev.value > maxDistToClosest) {
+                      pos = tail;
+                      val = N - 1;
+                    }
+                    Node insertedNode = new Node(val);
+                    join(pos.prev, insertedNode);
+                    join(insertedNode, pos);
+                    map.put(val, insertedNode);
+                    return val;
+                  }
+                
+                  public void leave(int p) {
+                    Node removedNode = map.get(p);
+                    join(removedNode.prev, removedNode.next);
+                  }
+                
+                  private int N;
+                  private Node head = new Node(-1);
+                  private Node tail = new Node(-1);
+                  private Map<Integer, Node> map = new HashMap<>(); 
+                
+                  private void join(Node node1, Node node2) {
+                    node1.next = node2;
+                    node2.prev = node1;
+                  }
+                
+                  private void remove(Node node) {
+                    join(node.prev, node.next);
+                  }
+                }`,
+                output: `[null, 0, 9, 4, 2, null, 5]`,
+              },
+            }}
+          />
+        ),
+      },
+      q700: {
+        title: "Q856. Score of Parentheses (Q700)",
+        content: (
+          <Comp
+            title="Q856. Score of Parentheses (Q700)"
+            content1={
+              <>
+                Given a balanced parentheses string s, return the score of the
+                string.
+                <br />
+                The score of a balanced parentheses string is based on the
+                following rule:
+                <br />
+                "()" has score 1.
+                <br />
+                AB has score A + B, where A and B are balanced parentheses
+                strings.
+                <br />
+                (A) has score 2 * A, where A is a balanced parentheses string.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: s = "()"
+                    <br />
+                    Output: 1
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "(())"
+                    <br />
+                    Output: 2
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "()()"
+                    <br />
+                    Output: 2
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                2 &lt;= s.length &lt;= 50
+                <br />
+                s consists of only '(' and ')'.
+                <br />s is a balanced parentheses string.
+              </>
+            }
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {string} s
+                * @return {number}
+                */
+               var scoreOfParentheses = function(s) {
+                 let res = 0;
+                 let layer = 0;
+                 for (let i = 0; i + 1 < s.length; ++i) {
+                 const a = s.charAt(i);
+                 const b = s.charAt(i + 1);
+                 if (a == '(' && b == ')')
+                 res += 1 << layer;
+                 layer += a == '(' ? 1 : -1;
+                 }
+                 return res;
+               };
+               
+               console.log("()")`,
+                output: `()`,
+              },
+            }}
+          />
+        ),
+      },
+      q701: {
+        title: "Q857. Minimum Cost to Hire K Workers (Q701)",
+        content: (
+          <Comp
+            title="Q857. Minimum Cost to Hire K Workers (Q701)"
             content1={<></>}
             content2={null}
             examples={[
@@ -91676,10 +92163,10 @@ a = b + c;
               },
             ]}
             constraints={<></>}
-            tc="n.log n"
+            tc="n"
             sc="n"
             codes={{
-              Java: {
+              Javascript: {
                 code: ``,
                 output: ``,
               },
@@ -91687,8 +92174,8 @@ a = b + c;
           />
         ),
       },
-      q698: {
-        title: "Q (Q698)",
+      q702: {
+        title: "Q (Q702)",
         content: (
           <Comp
             content1={<></>}
@@ -91705,7 +92192,33 @@ a = b + c;
             tc="n"
             sc="n"
             codes={{
-              Java: {
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q703: {
+        title: "Q (Q703)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
                 code: ``,
                 output: ``,
               },
