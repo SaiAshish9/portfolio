@@ -305,6 +305,7 @@ import Leetcode834 from "assets/leetcode/834.png";
 import Leetcode838 from "assets/leetcode/838.png";
 import Leetcode847 from "assets/leetcode/847.png";
 import Leetcode849 from "assets/leetcode/849.png";
+import Leetcode858 from "assets/leetcode/858.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -92152,32 +92153,170 @@ a = b + c;
         content: (
           <Comp
             title="Q857. Minimum Cost to Hire K Workers (Q701)"
-            content1={<></>}
+            content1={
+              <>
+                There are n workers. You are given two integer arrays quality
+                and wage where quality[i] is the quality of the ith worker and
+                wage[i] is the minimum wage expectation for the ith worker.
+                <br />
+                We want to hire exactly k workers to form a paid group. To hire
+                a group of k workers, we must pay them according to the
+                following rules:
+                <br />
+                Every worker in the paid group should be paid in the ratio of
+                their quality compared to other workers in the paid group.
+                <br />
+                Every worker in the paid group must be paid at least their
+                minimum wage expectation.
+                <br />
+                Given the integer k, return the least amount of money needed to
+                form a paid group satisfying the above conditions. Answers
+                within 10-5 of the actual answer will be accepted.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: quality = [10,20,5],
+                    <br /> wage = [70,50,30], k = 2<br />
+                    Output: 105.00000
+                    <br />
+                    Explanation: We pay 70 to 0th worker and 35 to 2nd worker.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: quality = [3,1,10,10,1], <br />
+                    wage = [4,8,2,2,7], k = 3<br />
+                    Output: 30.66667
+                    <br />
+                    Explanation: We pay 4 to 0th worker, 13.33333 to 2nd and 3rd
+                    workers separately.
+                  </>
+                ),
               },
             ]}
             constraints={<></>}
-            tc="n"
+            tc="n.log n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `class Solution {
+                  public double mincostToHireWorkers(int[] quality, int[] wage, int k) {
+                    double ans = Double.MAX_VALUE;
+                    Pair<Double, Integer>[] workers = new Pair[quality.length];
+                    PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);
+                    int qualitySum = 0;
+                    for (int i = 0; i < quality.length; ++i)
+                      workers[i] = new Pair<>((double) wage[i] / quality[i], quality[i]);
+                    Arrays.sort(workers, new Comparator<Pair<Double, Integer>>() {
+                      @Override
+                      public int compare(Pair<Double, Integer> a, Pair<Double, Integer> b) {
+                        return Double.compare(a.getKey(), b.getKey());
+                      }
+                    });
+                    for (var worker : workers) {
+                      final double wagePerQuality = worker.getKey();
+                      final int q = worker.getValue();
+                      maxHeap.offer(q);
+                      qualitySum += q;
+                      if (maxHeap.size() > k)
+                        qualitySum -= maxHeap.poll();
+                      if (maxHeap.size() == k)
+                        ans = Math.min(ans, qualitySum * wagePerQuality);
+                    }
+                    return ans;
+                  }
+                }`,
+                output: `30.66667`,
               },
             }}
           />
         ),
       },
       q702: {
-        title: "Q (Q702)",
+        title: "Q858. Mirror Reflection (Q702)",
         content: (
           <Comp
+            title="Q858. Mirror Reflection (Q702)"
+            content1={
+              <>
+                There is a special square room with mirrors on each of the four
+                walls. Except for the southwest corner, there are receptors on
+                each of the remaining corners, numbered 0, 1, and 2.
+                <br />
+                The square room has walls of length p and a laser ray from the
+                southwest corner first meets the east wall at a distance q from
+                the 0th receptor.
+                <br />
+                Given the two integers p and q, return the number of the
+                receptor that the ray meets first.
+                <br />
+                The test cases are guaranteed so that the ray will meet a
+                receptor eventually.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                img: Leetcode858,
+                content: (
+                  <>
+                    Input: p = 2, q = 1 <br />
+                    Output: 2 <br />
+                    Explanation: The ray meets receptor 2 the first time it gets
+                    reflected back to the left wall.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: p = 3, q = 1 <br />
+                    Output: 1
+                  </>
+                ),
+              },
+            ]}
+            constraints={<>1 &lt;= q &lt;= p &lt;= 1000</>}
+            tc="log n"
+            sc="1"
+            codes={{
+              "C++": {
+                code: `
+                // Input: p = 2, q = 1
+                class Solution {
+                  public:
+                   int mirrorReflection(int p, int q) {
+                     int m = 1;  
+                     int n = 1; 
+                     while (m * p != n * q)
+                       m = ++n * q / p;
+                     if (n % 2 == 0)
+                       return 2;
+                     if (m % 2 == 0)
+                       return 0;
+                     if (m % 2 == 1)
+                       return 1;
+                     throw;
+                   }
+                 };
+                 `,
+                output: `2`,
+              },
+            }}
+          />
+        ),
+      },
+      q703: {
+        title: "Q859. Buddy Strings (Q703)",
+        content: (
+          <Comp
+            title="Q859. Buddy Strings (Q703)"
             content1={<></>}
             content2={null}
             examples={[
@@ -92200,8 +92339,8 @@ a = b + c;
           />
         ),
       },
-      q703: {
-        title: "Q (Q703)",
+      q704: {
+        title: "Q (Q704)",
         content: (
           <Comp
             content1={<></>}
