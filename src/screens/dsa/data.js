@@ -91459,26 +91459,110 @@ a = b + c;
         ),
       },
       q695: {
-        title: "Q (Q695)",
+        title: "Q851. Loud and Rich (Q695)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q851. Loud and Rich (Q695)"
+            content1={
+              <>
+                There is a group of n people labeled from 0 to n - 1 where each
+                person has a different amount of money and a different level of
+                quietness.
+                <br />
+                You are given an array richer where richer[i] = [ai, bi]
+                indicates that ai has more money than bi and an integer array
+                quiet where quiet[i] is the quietness of the ith person. All the
+                given data in richer are logically correct (i.e., the data will
+                not lead you to a situation where x is richer than y and y is
+                richer than x at the same time).
+                <br />
+                Return an integer array answer where answer[x] = y if y is the
+                least quiet person (that is, the person y with the smallest
+                value of quiet[y]) among all people who definitely have equal to
+                or more money than the person x.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: richer = [[1,0],[2,1],[3,1],[3,7],[4,3],[5,3],[6,3]],
+                    <br /> quiet = [3,2,5,4,6,1,7,0]
+                    <br /> Output: [5,5,2,5,4,5,6,7]
+                    <br /> Explanation:
+                    <br /> answer[0] = 5.
+                    <br /> Person 5 has more money than 3, which has more money
+                    than 1, which has more money than 0.
+                    <br /> The only person who is quieter (has lower quiet[x])
+                    is person 7, but it is not clear if they have more money
+                    than person 0.
+                    <br /> answer[7] = 7.
+                    <br /> Among all people that definitely have equal to or
+                    more money than person 7 (which could be persons 3, 4, 5, 6,
+                    or 7), the person who is the quietest (has lower quiet[x])
+                    is person 7.
+                    <br /> The other answers can be filled out with similar
+                    reasoning.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: richer = [], <br />
+                    quiet = [0]
+                    <br />
+                    Output: [0]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                n == quiet.length <br />
+                1 &lt;= n &lt;= 500 <br />
+                0 &lt;= quiet[i] &lt; n <br />
+                All the values of quiet are unique. <br />
+                0 &lt;= richer.length &lt;= n * (n - 1) / 2 <br />
+                0 &lt;= ai, bi &lt; n <br />
+                ai != bi <br />
+                All the pairs of richer are unique. <br />
+                The observations in richer are all logically consistent.
+              </>
+            }
+            tc="v + e"
+            sc="v + e"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: richer = [[1,0],[2,1],[3,1],[3,7],[4,3],[5,3],[6,3]], quiet = [3,2,5,4,6,1,7,0]
+                class Solution {
+                  public int[] loudAndRich(int[][] richer, int[] quiet) {
+                    int[] ans = new int[quiet.length];
+                    List<Integer>[] graph = new List[quiet.length];
+                    Arrays.fill(ans, -1);
+                    for (int i = 0; i < graph.length; ++i)
+                      graph[i] = new ArrayList<>();
+                    for (int[] e : richer)
+                      graph[e[1]].add(e[0]);
+                    for (int i = 0; i < graph.length; ++i)
+                      dfs(graph, i, quiet, ans);
+                    return ans;
+                  }
+                  private int dfs(List<Integer>[] graph, int u, int[] quiet, int[] ans) {
+                    if (ans[u] != -1)
+                      return ans[u];
+                    ans[u] = u;
+                    for (final int v : graph[u]) {
+                      final int res = dfs(graph, v, quiet, ans);
+                      if (quiet[res] < quiet[ans[u]])
+                        ans[u] = res;
+                    }
+                    return ans[u];
+                  }
+                }`,
+                output: `[5,5,2,5,4,5,6,7]`,
               },
             }}
           />
