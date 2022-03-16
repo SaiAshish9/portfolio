@@ -91075,9 +91075,10 @@ a = b + c;
         ),
       },
       q691: {
-        title: "Q (Q691)",
+        title: "Q847. Shortest Path Visiting All Nodes (Q691)",
         content: (
           <Comp
+            title="Q847. Shortest Path Visiting All Nodes (Q691)"
             content1={<></>}
             content2={null}
             examples={[
@@ -91089,8 +91090,8 @@ a = b + c;
               },
             ]}
             constraints={<></>}
-            tc="n"
-            sc="n"
+            tc="n.2^n"
+            sc="n.2^n"
             codes={{
               Javascript: {
                 code: ``,
