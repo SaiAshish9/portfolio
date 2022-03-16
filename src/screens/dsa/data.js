@@ -89033,7 +89033,7 @@ a = b + c;
         ),
       },
       q670: {
-        title: "Q826. 826. Most Profit Assigning Work (Q670)",
+        title: "Q826. Most Profit Assigning Work (Q670)",
         content: (
           <Comp
             title="Q826. 826. Most Profit Assigning Work (Q670)"
@@ -89124,7 +89124,7 @@ a = b + c;
         title: "Q827.  Making A Large Island (Q671)",
         content: (
           <Comp
-            title="Q827.  Making A Large Island (Q671)"
+            title="Q827. Making A Large Island (Q671)"
             content1={
               <>
                 You are given an n x n binary matrix grid. You are allowed to
@@ -89232,85 +89232,473 @@ a = b + c;
         ),
       },
       q672: {
-        title: "Q828.  (Q672)",
+        title:
+          "Q828. Count Unique Characters of All Substrings of a Given String (Q672)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q828. Count Unique Characters of All Substrings of a Given String (Q672)"
+            content1={
+              <>
+                Let's define a function countUniqueChars(s) that returns the
+                number of unique characters on s.
+                <br />
+                For example, calling countUniqueChars(s) if s = "LEETCODE" then
+                "L", "T", "C", "O", "D" are the unique characters since they
+                appear only once in s, therefore countUniqueChars(s) = 5.
+                <br />
+                Given a string s, return the sum of countUniqueChars(t) where t
+                is a substring of s.
+                <br />
+                Notice that some substrings can be repeated so in this case you
+                have to count the repeated ones too.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "ABC" <br />
+                    Output: 10 <br />
+                    Explanation: All possible substrings are:
+                    "A","B","C","AB","BC" and "ABC".
+                    <br /> Evey substring is composed with only unique letters.
+                    <br /> Sum of lengths of all substring is 1 + 1 + 1 + 2 + 2
+                    + 3 = 10
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "ABA" <br />
+                    Output: 8 <br />
+                    Explanation: The same as example 1, except
+                    countUniqueChars("ABA") = 1.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "LEETCODE" <br />
+                    Output: 92
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 105
+                <br />s consists of uppercase English letters only.
+              </>
+            }
             tc="n"
-            sc="1"
+            sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {number}
+                */
+               var uniqueLetterString = function(s) {
+                 let ans = 0;
+                 let count = 0;
+                 const lastCount = Array(26).fill(0);
+                 const lastSeen = Array(26).fill(-1);
+                 for (let i = 0; i < s.length; ++i) {
+                   let c = s[i].charCodeAt(0) - 65;
+                   let currentCount = i - lastSeen[c];
+                   count = count - lastCount[c] + currentCount;
+                   lastCount[c] = currentCount;
+                   lastSeen[c] = i;
+                   ans += count;
+                 }
+                 return ans;  
+               };
+               console.log(uniqueLetterString("ABA"))`,
+                output: `8`,
               },
             }}
           />
         ),
       },
       q673: {
-        title: "Q829.  (Q673)",
+        title: "Q829. Consecutive Numbers Sum (Q673)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q829. Consecutive Numbers Sum (Q673)"
+            content1={
+              <>
+                Given an integer n, return the number of ways you can write n as
+                the sum of consecutive positive integers.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 5<br />
+                    Output: 2<br />
+                    Explanation: 5 = 2 + 3
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 9<br />
+                    Output: 3<br />
+                    Explanation: 9 = 4 + 5 = 2 + 3 + 4
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: n = 15
+                    <br />
+                    Output: 4<br />
+                    Explanation: 15 = 8 + 7 = 4 + 5 + 6 = 1 + 2 + 3 + 4 + 5
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={<>1 &lt;= n &lt;= 10^9</>}
             tc="n"
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @return {number}
+                */
+               var consecutiveNumbersSum = function(n) {
+                 let res = 0;
+                 for (let i = 1, triangleNum = i; triangleNum <= n; ++i, triangleNum += i)
+                 if ((n - triangleNum) % i == 0)
+                   ++res;
+                 return res;
+               };
+               
+               console.log(consecutiveNumbersSum(15))`,
+                output: `4`,
               },
             }}
           />
         ),
       },
       q674: {
-        title: "Q830.  (Q674)",
+        title: "Q830. Positions of Large Groups (Q674)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q830. Positions of Large Groups (Q674)"
+            content1={
+              <>
+                In a string s of lowercase letters, these letters form
+                consecutive groups of the same character.
+                <br />
+                For example, a string like s = "abbxxxxzyy" has the groups "a",
+                "bb", "xxxx", "z", and "yy".
+                <br />
+                A group is identified by an interval [start, end], where start
+                and end denote the start and end indices (inclusive) of the
+                group. In the above example, "xxxx" has the interval [3,6].
+                <br />
+                A group is considered large if it has 3 or more characters.
+                <br />
+                Return the intervals of every large group sorted in increasing
+                order by start index.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "abbxxxxzzy" <br />
+                    Output: [[3,6]] <br />
+                    Explanation: "xxxx" is the only large group with start index
+                    3 and end index 6.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "abc" <br />
+                    Output: [] <br />
+                    Explanation: We have groups "a", "b", and "c", none of which
+                    are large groups.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "abcdddeeeeaabbbcd" <br />
+                    Output: [[3,5],[6,9],[12,14]] <br />
+                    Explanation: The large groups are "ddd", "eeee", and "bbb".
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 1000
+                <br />s contains lowercase English letters only.
+              </>
+            }
             tc="n"
-            sc="1"
+            sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {number[][]}
+                */
+               var largeGroupPositions = function(s) {
+                 let n = s.length;
+                 const res = [];
+                   for (let i = 0, j = 0; i < n; i = j) {
+                     while (j < n && s[j] == s[i])
+                       ++j;
+                     if (j - i >= 3)
+                       res.push([i, j - 1]);
+                   }
+                 return res;   
+               };
+               console.log(largeGroupPositions("abcdddeeeeaabbbcd"))`,
+                output: `[ [ 3, 5 ], [ 6, 9 ], [ 12, 14 ] ]`,
               },
             }}
           />
         ),
       },
       q675: {
-        title: "Q831.  (Q675)",
+        title: "Q831. Masking Personal Information (Q675)",
+        content: (
+          <Comp
+            title="Q831. Masking Personal Information (Q675)"
+            content1={
+              <>
+                You are given a personal information string s, representing
+                either an email address or a phone number. Return the masked
+                personal information using the below rules.
+                <br />
+                Email address:
+                <br />
+                An email address is:
+                <br />
+                A name consisting of uppercase and lowercase English letters,
+                followed by
+                <br /> The '@' symbol, followed by
+                <br /> The domain consisting of uppercase and lowercase English
+                letters with a dot '.' somewhere in the middle (not the first or
+                last character).
+                <br /> To mask an email:
+                <br /> The uppercase letters in the name and domain must be
+                converted to lowercase letters.
+                <br /> The middle letters of the name (i.e., all but the first
+                and last letters) must be replaced by 5 asterisks "*****".
+                <br /> Phone number:
+                <br /> A phone number is formatted as follows:
+                <br /> The phone number contains 10-13 digits.
+                <br /> The last 10 digits make up the local number.
+                <br /> The remaining 0-3 digits, in the beginning, make up the
+                country code.
+                <br />
+                Separation characters from the set {
+                  "{'+', '-', '(', ')', ' '}"
+                }{" "}
+                separate the above digits in some way.
+                <br />
+                To mask a phone number:
+                <br /> Remove all separation characters.
+                <br /> The masked phone number should have the form:
+                <br /> "***-***-XXXX" if the country code has 0 digits.
+                <br /> "+*-***-***-XXXX" if the country code has 1 digit.
+                <br /> "+**-***-***-XXXX" if the country code has 2 digits.
+                <br /> "+***-***-***-XXXX" if the country code has 3 digits.
+                <br /> "XXXX" is the last 4 digits of the local number.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: s = "LeetCode@LeetCode.com"
+                    <br />
+                    Output: "l*****e@leetcode.com"
+                    <br />
+                    Explanation: s is an email address.
+                    <br />
+                    The name and domain are converted to lowercase, and the
+                    middle of the name is replaced by 5 asterisks.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "AB@qq.com"
+                    <br />
+                    Output: "a*****b@qq.com"
+                    <br />
+                    Explanation: s is an email address.
+                    <br />
+                    The name and domain are converted to lowercase, and the
+                    middle of the name is replaced by 5 asterisks.
+                    <br /> Note that even though "ab" is 2 characters, it still
+                    must have 5 asterisks in the middle.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "1(234)567-890"
+                    <br />
+                    Output: "***-***-7890"
+                    <br />
+                    Explanation: s is a phone number.
+                    <br />
+                    There are 10 digits, so the local number is 10 digits and
+                    the country code is 0 digits.
+                    <br /> Thus, the resulting masked number is "***-***-7890".
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                s is either a valid email or a phone number. <br />
+                If s is an email: <br />
+                8 &lt;= s.length &lt;== 40 <br />
+                s consists of uppercase and lowercase English letters and
+                exactly one '@' symbol and '.' symbol.
+                <br /> If s is a phone number: <br />
+                10 &lt;== s.length &lt;== 20 <br />s consists of digits, spaces,
+                and the symbols '(', ')', '-', and '+'.
+              </>
+            }
+            tc="1"
+            sc="1"
+            codes={{
+              Java: {
+                code: `
+                // Input: s = "1(234)567-890"
+                class Solution {
+                  public String maskPII(String S) {
+                    final int atIndex = S.indexOf('@');
+                    if (atIndex > 0) {
+                      S = S.toLowerCase();
+                      return S.charAt(0) + "*****" + S.substring(atIndex - 1);
+                    }
+                    StringBuilder sb = new StringBuilder();
+                    for (final char c : S.toCharArray())
+                      if (Character.isDigit(c))
+                        sb.append(c);
+                    if (sb.length() == 10)
+                      return "***-***-" + sb.substring(sb.length() - 4).toString();
+                    return '+' + "*".repeat(sb.length() - 10) + "-***-***-" +
+                        sb.substring(sb.length() - 4).toString();
+                  }
+                }
+                `,
+                output: `"***-***-7890"`,
+              },
+            }}
+          />
+        ),
+      },
+      q676: {
+        title: "Q832. Flipping an Image (Q676)",
+        content: (
+          <Comp
+            title="Q832. Flipping an Image (Q676)"
+            content1={
+              <>
+                Given an n x n binary matrix image, flip the image horizontally,
+                then invert it, and return the resulting image.
+                <br />
+                To flip an image horizontally means that each row of the image
+                is reversed.
+                <br />
+                For example, flipping [1,1,0] horizontally results in [0,1,1].
+                <br /> To invert an image means that each 0 is replaced by 1,
+                and each 1 is replaced by 0.
+                <br />
+                For example, inverting [0,1,1] results in [1,0,0].
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: image = [[1,1,0],[1,0,1],[0,0,0]] <br />
+                    Output: [[1,0,0],[0,1,0],[1,1,1]] <br />
+                    Explanation: First reverse each row:
+                    [[0,1,1],[1,0,1],[0,0,0]]. <br />
+                    Then, invert the image: [[1,0,0],[0,1,0],[1,1,1]]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: image = [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]{" "}
+                    <br />
+                    Output: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]] <br />
+                    Explanation: First reverse each row:
+                    [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]]. <br />
+                    Then invert the image: <br />
+                    [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                n == image.length
+                <br />
+                n == image[i].length
+                <br />
+                1 &lt;= n &lt;= 20
+                <br />
+                images[i][j] is either 0 or 1.
+              </>
+            }
+            tc="n^2"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[][]} image
+                * @return {number[][]}
+                */
+               var flipAndInvertImage = function(image) {
+                 const n = image.length;
+                   for (let i = 0; i < n; ++i)
+                     for (let j = 0; j < parseInt((n + 1) / 2); ++j) {
+                       const temp = image[i][j];
+                       image[i][j] = image[i][n - j - 1] ^ 1;
+                       image[i][n - j - 1] = temp ^ 1;
+                     }
+                   return image;
+               };
+               console.log(flipAndInvertImage([[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]))`,
+                output: `[ [ 1, 1, 0, 0 ], [ 0, 1, 1, 0 ], [ 0, 0, 0, 1 ], [ 1, 0, 1, 0 ] ]`,
+              },
+            }}
+          />
+        ),
+      },
+      q677: {
+        title: "Q (Q677)",
         content: (
           <Comp
             content1={<></>}
@@ -89325,7 +89713,7 @@ a = b + c;
             ]}
             constraints={<></>}
             tc="n"
-            sc="1"
+            sc="n"
             codes={{
               Javascript: {
                 code: ``,
@@ -89335,8 +89723,164 @@ a = b + c;
           />
         ),
       },
-      q676: {
-        title: "Q832.  (Q676)",
+      q678: {
+        title: "Q (Q678)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q679: {
+        title: "Q (Q679)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q680: {
+        title: "Q (Q680)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q681: {
+        title: "Q (Q681)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q682: {
+        title: "Q (Q682)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q683: {
+        title: "Q (Q683)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q684: {
+        title: "Q (Q684)",
         content: (
           <Comp
             content1={<></>}
