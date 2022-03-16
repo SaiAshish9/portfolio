@@ -90325,6 +90325,183 @@ a = b + c;
         content: (
           <Comp
             title="Q839. Similar String Groups (Q683)"
+            content1={
+              <>
+                Two strings X and Y are similar if we can swap two letters (in
+                different positions) of X, so that it equals Y. Also two strings
+                X and Y are similar if they are equal.
+                <br />
+                For example, "tars" and "rats" are similar (swapping at
+                positions 0 and 2), and "rats" and "arts" are similar, but
+                "star" is not similar to "tars", "rats", or "arts".
+                <br />
+                Together, these form two connected groups by similarity:{" "}
+                {
+                  '{"tars", "rats", "arts"} and {"star"}.  Notice that "tars" and "arts"'
+                }{" "}
+                are in the same group even though they are not similar.
+                Formally, each group is such that a word is in the group if and
+                only if it is similar to at least one other word in the group.
+                <br />
+                We are given a list strs of strings where every string in strs
+                is an anagram of every other string in strs. How many groups are
+                there?
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: strs = ["tars","rats","arts","star"] <br />
+                    Output: 2
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: strs = ["omv","ovm"]
+                    <br />
+                    Output: 1
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= strs.length &lt;= 300
+                <br />
+                1 &lt;= strs[i].length &lt;= 300
+                <br />
+                strs[i] consists of lowercase letters only.
+                <br />
+                All words in strs have the same length and are anagrams of each
+                other.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `
+                // Input: strs = ["omv","ovm"]
+                class Solution {
+                  public int numSimilarGroups(String[] A) {
+                    int ans = 0;
+                    boolean[] seen = new boolean[A.length];
+                    for (int i = 0; i < A.length; ++i)
+                      if (!seen[i]) {
+                        dfs(A, i, seen);
+                        ++ans;
+                      }
+                    return ans;
+                  }
+                  private void dfs(final String[] A, int i, boolean[] seen) {
+                    seen[i] = true;
+                    for (int j = 0; j < A.length; ++j)
+                      if (!seen[j] && isSimilar(A[i], A[j]))
+                        dfs(A, j, seen);
+                  }
+                  private boolean isSimilar(final String X, final String Y) {
+                    int diff = 0;
+                    for (int i = 0; i < X.length(); ++i)
+                      if (X.charAt(i) != Y.charAt(i) && ++diff > 2)
+                        return false;
+                    return true;
+                  }
+                }
+                `,
+                output: `1`,
+              },
+            }}
+          />
+        ),
+      },
+      q684: {
+        title: "Q840. Magic Squares In Grid (Q684)",
+        content: (
+          <Comp
+            title="Q840. Magic Squares In Grid (Q684)"
+            content1={
+              <>
+                A 3 x 3 magic square is a 3 x 3 grid filled with distinct
+                numbers from 1 to 9 such that each row, column, and both
+                diagonals all have the same sum.
+                <br />
+                Given a row x col grid of integers, how many 3 x 3 "magic
+                square" subgrids are there? (Each subgrid is contiguous).
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: grid = [[4,3,8,4],[9,5,1,9],[2,7,6,2]]
+                    <br />
+                    Output: 1 :
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: grid = [[8]]
+                    <br />
+                    Output: 0
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                row == grid.length]
+                <br />
+                col == grid[i].length]
+                <br />
+                1 &lt;= row, col &lt;= 10]
+                <br />0 &lt;= grid[i][j] &lt;= 15
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[][]} grid
+                * @return {number}
+                */
+               var numMagicSquaresInside = function(grid) {
+                 let res = 0;
+                 for (let i = 0; i + 2 < grid.length; ++i)
+                     for (let j = 0; j + 2 < grid[0].length; ++j)
+                       if (grid[i][j] % 2 == 0 && grid[i + 1][j + 1] == 5)
+                         if (isMagic(grid, i, j))
+                           ++res;
+                 return res;
+               };
+               
+               function isMagic(grid, i, j) {
+                   let s = "";
+                   for (let num of [0, 1, 2, 5, 8, 7, 6, 3])
+                     s += String(grid[i + parseInt(num / 3)][parseInt(j + num % 3)]);
+                   return new String("4381672943816729").includes(s) ||
+                          new String("9276183492761834").includes(s);
+                 }
+               
+               console.log(numMagicSquaresInside([[4,3,8,4],[9,5,1,9],[2,7,6,2]]))`,
+                output: `1`,
+              },
+            }}
+          />
+        ),
+      },
+      q685: {
+        title: "Q841. Keys and Rooms (Q685)",
+        content: (
+          <Comp
+            title="Q841. Keys and Rooms (Q685)"
             content1={<></>}
             content2={null}
             examples={[
@@ -90347,8 +90524,34 @@ a = b + c;
           />
         ),
       },
-      q684: {
-        title: "Q (Q684)",
+      q686: {
+        title: "Q (Q686)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q687: {
+        title: "Q (Q687)",
         content: (
           <Comp
             content1={<></>}
