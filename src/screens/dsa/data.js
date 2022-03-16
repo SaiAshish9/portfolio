@@ -303,6 +303,7 @@ import Leetcode814 from "assets/leetcode/814.png";
 import Leetcode833 from "assets/leetcode/833.png";
 import Leetcode834 from "assets/leetcode/834.png";
 import Leetcode838 from "assets/leetcode/838.png";
+import Leetcode847 from "assets/leetcode/847.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -91079,49 +91080,163 @@ a = b + c;
         content: (
           <Comp
             title="Q847. Shortest Path Visiting All Nodes (Q691)"
-            content1={<></>}
+            content1={
+              <>
+                You have an undirected, connected graph of n nodes labeled from
+                0 to n - 1. You are given an array graph where graph[i] is a
+                list of all the nodes connected with node i by an edge.
+                <br />
+                Return the length of the shortest path that visits every node.
+                You may start and stop at any node, you may revisit nodes
+                multiple times, and you may reuse edges.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode847,
+                content: (
+                  <>
+                    Input: graph = [[1,2,3],[0],[0],[0]] <br />
+                    Output: 4 <br />
+                    Explanation: One possible path is [1,0,2,0,3]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: graph = [[1],[0,2,4],[1,3,4],[2],[1,2]] <br />
+                    Output: 4 <br />
+                    Explanation: One possible path is [0,1,4,2,3]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                n == graph.length <br />
+                1 &lt;= n &lt;= 12 <br />
+                0 &lt;= graph[i].length &lt; n <br />
+                graph[i] does not contain i. <br />
+                If graph[a] contains b, then graph[b] contains a. <br />
+                The input graph is always connected.
+              </>
+            }
             tc="n.2^n"
             sc="n.2^n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: graph = [[1,2,3],[0],[0],[0]]
+                class Solution {
+                  public int shortestPathLength(int[][] graph) {
+                    final int n = graph.length;
+                    final int goal = (1 << n) - 1;
+                    int ans = 0;
+                    Queue<Pair<Integer, Integer>> q = new ArrayDeque<>(); // (u, state)
+                    boolean[][] seen = new boolean[n][1 << n];
+                    for (int i = 0; i < n; ++i)
+                      q.offer(new Pair<>(i, 1 << i));
+                    while (!q.isEmpty()) {
+                      for (int sz = q.size(); sz > 0; --sz) {
+                        final int u = q.peek().getKey();
+                        final int state = q.poll().getValue();
+                        if (state == goal)
+                          return ans;
+                        if (seen[u][state])
+                          continue;
+                        seen[u][state] = true;
+                        for (final int v : graph[u])
+                          q.offer(new Pair<>(v, state | (1 << v)));
+                      }
+                      ++ans;
+                    }
+                    return -1;
+                  }
+                }`,
+                output: `4`,
               },
             }}
           />
         ),
       },
       q692: {
-        title: "Q (Q692)",
+        title: "Q848. Shifting Letters (Q692)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q848. Shifting Letters (Q692)"
+            content1={
+              <>
+                You are given a string s of lowercase English letters and an
+                integer array shifts of the same length.
+                <br />
+                Call the shift() of a letter, the next letter in the alphabet,
+                (wrapping around so that 'z' becomes 'a').
+                <br />
+                For example, shift('a') = 'b', shift('t') = 'u', and shift('z')
+                = 'a'.
+                <br />
+                Now for each shifts[i] = x, we want to shift the first i + 1
+                letters of s, x times.
+                <br />
+                Return the final string after all such shifts to s are applied.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "abc", shifts = [3,5,9]
+                    <br />
+                    Output: "rpl"
+                    <br />
+                    Explanation: We start with "abc".
+                    <br />
+                    After shifting the first 1 letters of s by 3, we have "dbc".
+                    <br />
+                    After shifting the first 2 letters of s by 5, we have "igc".
+                    <br />
+                    After shifting the first 3 letters of s by 9, we have "rpl",
+                    the answer.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "aaa", shifts = [1,2,3] <br />
+                    Output: "gfd"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 10^5 <br />
+                s consists of lowercase English letters. <br />
+                shifts.length == s.length <br />0 &lt;= shifts[i] &lt;= 109
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: s = "aaa", shifts = [1,2,3]
+                class Solution {
+                  public String shiftingLetters(String s, int[] shifts) {
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = shifts.length - 2; i >= 0; --i)
+                      shifts[i] = (shifts[i] + shifts[i + 1]) % 26;
+                    for (int i = 0; i < s.length(); ++i)
+                      sb.append((char) ((s.charAt(i) - 'a' + shifts[i]) % 26 + 'a'));
+                    return sb.toString();
+                  }
+                }
+                `,
+                output: `gfd`,
               },
             }}
           />
