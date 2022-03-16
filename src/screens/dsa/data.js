@@ -90502,17 +90502,62 @@ a = b + c;
         content: (
           <Comp
             title="Q841. Keys and Rooms (Q685)"
-            content1={<></>}
+            content1={
+              <>
+                There are n rooms labeled from 0 to n - 1 and all the rooms are
+                locked except for room 0. Your goal is to visit all the rooms.
+                However, you cannot enter a locked room without having its key.
+                <br />
+                When you visit a room, you may find a set of distinct keys in
+                it. Each key has a number on it, denoting which room it unlocks,
+                and you can take all of them with you to unlock the other rooms.
+                <br />
+                Given an array rooms where rooms[i] is the set of keys that you
+                can obtain if you visited room i, return true if you can visit
+                all the rooms, or false otherwise.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: rooms = [[1],[2],[3],[]] <br />
+                    Output: true <br />
+                    Explanation: <br />
+                    We visit room 0 and pick up key 1. <br />
+                    We then visit room 1 and pick up key 2. <br />
+                    We then visit room 2 and pick up key 3. <br />
+                    We then visit room 3. <br />
+                    Since we were able to visit every room, we return true.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: rooms = [[1,3],[3,0,1],[2],[0]] <br />
+                    Output: false <br />
+                    Explanation: We can not enter room number 2 since the only
+                    key that unlocks it is in that room.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                n == rooms.length
+                <br />
+                2 &lt;= n &lt;= 1000
+                <br />
+                0 &lt;= rooms[i].length &lt;= 1000
+                <br />
+                1 &lt;= sum(rooms[i].length) &lt;= 3000
+                <br />
+                0 &lt;= rooms[i][j] &lt; n<br />
+                All the values of rooms[i] are unique.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
