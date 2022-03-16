@@ -90558,38 +90558,130 @@ a = b + c;
                 All the values of rooms[i] are unique.
               </>
             }
-            tc="n"
-            sc="n"
+            tc="v + e"
+            sc="v"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} rooms
+                * @return {boolean}
+                */
+               var canVisitAllRooms = function(rooms) {
+                 const seen = Array(rooms.length).fill(0);
+                 dfs(rooms, 0, seen);
+                 return seen.every(a => a == 1);
+               };
+               function dfs(rooms, node, seen) {
+                 seen[node] = 1;
+                 for (let child of rooms[node])
+                 if (seen[child] == 0)
+                 dfs(rooms, child, seen);
+               }
+               console.log(canVisitAllRooms([[1,3],[3,0,1],[2],[0]]))`,
+                output: `false`,
               },
             }}
           />
         ),
       },
       q686: {
-        title: "Q (Q686)",
+        title: "Q842. Split Array into Fibonacci Sequence (Q686)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q842. Split Array into Fibonacci Sequence (Q686)"
+            content1={
+              <>
+                You are given a string of digits num, such as "123456579". We
+                can split it into a Fibonacci-like sequence [123, 456, 579].
+                <br />
+                Formally, a Fibonacci-like sequence is a list f of non-negative
+                integers such that:
+                <br />
+                0 &lt;= f[i] &lt; 2^31, (that is, each integer fits in a 32-bit
+                signed integer type),
+                <br />
+                f.length &gt;= 3, and
+                <br />
+                f[i] + f[i + 1] == f[i + 2] for all 0 &lt;= i &lt; f.length - 2.
+                <br />
+                Note that when splitting the string into pieces, each piece must
+                not have extra leading zeroes, except if the piece is the number
+                0 itself.
+                <br />
+                Return any Fibonacci-like sequence split from num, or return []
+                if it cannot be done.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = "1101111" <br />
+                    Output: [11,0,11,11] <br />
+                    Explanation: The output [110, 1, 111] would also be
+                    accepted.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: num = "112358130" <br />
+                    Output: [] <br />
+                    Explanation: The task is impossible.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: num = "0123" <br />
+                    Output: [] <br />
+                    Explanation: Leading zeroes are not allowed, so "01", "2",
+                    "3" is not val
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                1 &lt;= num.length &lt;= 200 <br />
+                num contains only digits.
+              </>
+            }
+            tc="n^2"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `class Solution {
+                  public List<Integer> splitIntoFibonacci(String num) {
+                    List<Integer> ans = new ArrayList<>();
+                    dfs(num, 0, ans);
+                    return ans;
+                  }
+                  private boolean dfs(final String num, int s, List<Integer> ans) {
+                    if (s == num.length() && ans.size() >= 3)
+                      return true;
+                    for (int i = s; i < num.length(); ++i) {
+                      if (num.charAt(s) == '0' && i > s)
+                        break;
+                      final long val = Long.valueOf(num.substring(s, i + 1));
+                      if (val > Integer.MAX_VALUE)
+                        break;
+                      if (ans.size() >= 2 && val > ans.get(ans.size() - 2) + ans.get(ans.size() - 1))
+                        break;
+                      if (ans.size() <= 1 || val == ans.get(ans.size() - 2) + ans.get(ans.size() - 1)) {
+                        ans.add((int) val);
+                        if (dfs(num, i + 1, ans))
+                          return true;
+                        ans.remove(ans.size() - 1);
+                      }
+                    }
+                    return false;
+                  }
+                }`,
+                output: `[]`,
               },
             }}
           />
