@@ -90688,26 +90688,94 @@ a = b + c;
         ),
       },
       q687: {
-        title: "Q (Q687)",
+        title: "Q843. Guess the Word (Q687)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q843. Guess the Word (Q687)"
+            content1={
+              <>
+                This is an interactive problem.
+                <br />
+                You are given an array of unique strings wordlist where
+                wordlist[i] is 6 letters long, and one word in this list is
+                chosen as secret.
+                <br />
+                You may call Master.guess(word) to guess a word. The guessed
+                word should have type string and must be from the original list
+                with 6 lowercase letters.
+                <br />
+                This function returns an integer type, representing the number
+                of exact matches (value and position) of your guess to the
+                secret word. Also, if your guess is not in the given wordlist,
+                it will return -1 instead.
+                <br />
+                For each test case, you have exactly 10 guesses to guess the
+                word. At the end of any number of calls, if you have made 10 or
+                fewer calls to Master.guess and at least one of these guesses
+                was secret, then you pass the test case.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: <>Input: secret = "acckzz", wordlist = ["acckzz","ccbazz","eiowzz","abcczz"], numguesses = 10
+                   <br />   Output: You guessed the secret word correctly.      <br />
+                Explanation:      <br />
+                <br />   master.guess("aaaaaa") returns -1, because "aaaaaa" is not in wordlist.
+                <br />  master.guess("acckzz") returns 6, because "acckzz" is secret and has all 6 matches.
+                <br />   master.guess("ccbazz") returns 3, because "ccbazz" has 3 matches.
+                <br /> master.guess("eiowzz") returns 2, because "eiowzz" has 2 matches.
+                <br />master.guess("abcczz") returns 4, because "abcczz" has 4 matches.
+                <br />We made 5 calls to master.guess and one of them was the secret, so we pass the test case.</>,
               },
               {
-                content: <></>,
+                content: <>Input: secret = "hamada",      <br /> wordlist = ["hamada","khaled"], numguesses = 10
+                     <br /> Output: You guessed the secret word correctly</>,
               },
             ]}
-            constraints={<></>}
+            constraints={<>1 &lt;= wordlist.length &lt;= 100<br />
+              wordlist[i].length == 6<br />
+              wordlist[i] consist of lowercase English letters.<br />
+              All the strings of wordlist are unique.<br />
+              secret exists in wordlist.<br />
+              numguesses == 10</>}
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: secret = "hamada", wordlist = ["hamada","khaled"], numguesses = 10
+                /**
+                * // This is the Master's API interface.
+                * // You should not implement it, or speculate about its implementation
+                * interface Master {
+                *   public int guess(String word) {}
+                * }
+                */
+               class Solution {
+                 public void findSecretWord(String[] wordlist, Master master) {
+                   Random rand = new Random();     
+                   for (int i = 0; i < 10; ++i) {
+                     final String guessedWord = wordlist[rand.nextInt(wordlist.length)];
+                     final int matches = master.guess(guessedWord);
+                     if (matches == 6)
+                       break;
+                     List<String> updated = new ArrayList<>();
+                     for (final String word : wordlist)
+                       if (getMatches(guessedWord, word) == matches)
+                         updated.add(word);
+                     wordlist = updated.toArray(new String[0]);
+                   }
+                 }
+                 private int getMatches(final String s1, final String s2) {
+                   int matches = 0;
+                   for (int i = 0; i < s1.length(); ++i)
+                     if (s1.charAt(i) == s2.charAt(i))
+                       ++matches;
+                   return matches;
+                 }
+               }`,
+                output: `You guessed the secret word correctly.`,
               },
             }}
           />
