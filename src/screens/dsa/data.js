@@ -91568,6 +91568,151 @@ a = b + c;
           />
         ),
       },
+      q696: {
+        title: "Q852. Peak Index in a Mountain Array (Q696)",
+        content: (
+          <Comp
+            title="Q852. Peak Index in a Mountain Array (Q696)"
+            content1={
+              <>
+                Let's call an array arr a mountain if the following properties
+                hold:
+                <br />
+                arr.length &gt;= 3<br />
+                There exists some i with 0 &lt; i &lt; arr.length &lt; 1 such
+                that:
+                <br />
+                arr[0] &lt; arr[1] &lt; ... arr[i-1] &lt; arr[i]
+                <br />
+                arr[i] &gt; arr[i+1] &gt; ... &gt; arr[arr.length - 1]
+                <br />
+                Given an integer array arr that is guaranteed to be a mountain,
+                return any i such that arr[0] &lt; arr[1] &lt; ... arr[i - 1]
+                &lt; arr[i] &gt; arr[i + 1] &gt; ... &gt; arr[arr.length - 1].
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: arr = [0,1,0] <br />
+                    Output: 1
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: arr = [0,2,1,0] <br />
+                    Output: 1
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: arr = [0,10,5,2] <br />
+                    Output: 1
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                3 &lt;= arr.length &lt;= 10^4 <br />
+                0 &lt;= arr[i] &lt;= 106 <br />
+                arr is guaranteed to be a mountain array.
+              </>
+            }
+            fp={
+              <>
+                <b>Follow up: </b>: Finding the O(n) is straightforward, could
+                you find an O(log(n)) solution?
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `
+                // Input: arr = [0,1,0]
+                class Solution {
+                  public int peakIndexInMountainArray(int[] arr) {
+                      int s=0;
+                      int e=arr.length-1;
+                      while(s<=e){
+                          int m=(s+e)/2;
+                          if(m>0 && arr[m-1]<arr[m] && arr[m+1]<arr[m]){
+                              return m;
+                          }else if(arr[m+1]>arr[m]){
+                              s=m+1;
+                          }else if(arr[m+1]<arr[m]){
+                              e=m-1;
+                          }
+                      }
+                      return -1;
+                  }
+                  }`,
+                output: `1`,
+              },
+            }}
+          />
+        ),
+      },
+      q697: {
+        title: "Q853. Car Fleet (Q697)",
+        content: (
+          <Comp
+          title= "Q853. Car Fleet (Q697)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n.log n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q698: {
+        title: "Q (Q698)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
     },
   },
   notes: {
