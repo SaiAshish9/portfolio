@@ -90718,27 +90718,53 @@ a = b + c;
             content2={null}
             examples={[
               {
-                content: <>Input: secret = "acckzz", wordlist = ["acckzz","ccbazz","eiowzz","abcczz"], numguesses = 10
-                   <br />   Output: You guessed the secret word correctly.      <br />
-                Explanation:      <br />
-                <br />   master.guess("aaaaaa") returns -1, because "aaaaaa" is not in wordlist.
-                <br />  master.guess("acckzz") returns 6, because "acckzz" is secret and has all 6 matches.
-                <br />   master.guess("ccbazz") returns 3, because "ccbazz" has 3 matches.
-                <br /> master.guess("eiowzz") returns 2, because "eiowzz" has 2 matches.
-                <br />master.guess("abcczz") returns 4, because "abcczz" has 4 matches.
-                <br />We made 5 calls to master.guess and one of them was the secret, so we pass the test case.</>,
+                content: (
+                  <>
+                    Input: secret = "acckzz", wordlist =
+                    ["acckzz","ccbazz","eiowzz","abcczz"], numguesses = 10
+                    <br /> Output: You guessed the secret word correctly. <br />
+                    Explanation: <br />
+                    <br /> master.guess("aaaaaa") returns -1, because "aaaaaa"
+                    is not in wordlist.
+                    <br /> master.guess("acckzz") returns 6, because "acckzz" is
+                    secret and has all 6 matches.
+                    <br /> master.guess("ccbazz") returns 3, because "ccbazz"
+                    has 3 matches.
+                    <br /> master.guess("eiowzz") returns 2, because "eiowzz"
+                    has 2 matches.
+                    <br />
+                    master.guess("abcczz") returns 4, because "abcczz" has 4
+                    matches.
+                    <br />
+                    We made 5 calls to master.guess and one of them was the
+                    secret, so we pass the test case.
+                  </>
+                ),
               },
               {
-                content: <>Input: secret = "hamada",      <br /> wordlist = ["hamada","khaled"], numguesses = 10
-                     <br /> Output: You guessed the secret word correctly</>,
+                content: (
+                  <>
+                    Input: secret = "hamada", <br /> wordlist =
+                    ["hamada","khaled"], numguesses = 10
+                    <br /> Output: You guessed the secret word correctly
+                  </>
+                ),
               },
             ]}
-            constraints={<>1 &lt;= wordlist.length &lt;= 100<br />
-              wordlist[i].length == 6<br />
-              wordlist[i] consist of lowercase English letters.<br />
-              All the strings of wordlist are unique.<br />
-              secret exists in wordlist.<br />
-              numguesses == 10</>}
+            constraints={
+              <>
+                1 &lt;= wordlist.length &lt;= 100
+                <br />
+                wordlist[i].length == 6<br />
+                wordlist[i] consist of lowercase English letters.
+                <br />
+                All the strings of wordlist are unique.
+                <br />
+                secret exists in wordlist.
+                <br />
+                numguesses == 10
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
@@ -90782,9 +90808,10 @@ a = b + c;
         ),
       },
       q688: {
-        title: "Q (Q688)",
+        title: "Q844. Backspace String Compare (Q688)",
         content: (
           <Comp
+            title="Q844. Backspace String Compare (Q688)"
             content1={<></>}
             content2={null}
             examples={[
