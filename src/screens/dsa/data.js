@@ -90812,75 +90812,263 @@ a = b + c;
         content: (
           <Comp
             title="Q844. Backspace String Compare (Q688)"
-            content1={<></>}
+            content1={
+              <>
+                Given two strings s and t, return true if they are equal when
+                both are typed into empty text editors. '#' means a backspace
+                character.
+                <br />
+                Note that after backspacing an empty text, the text will
+                continue empty.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "ab#c", t = "ad#c" <br />
+                    Output: true <br />
+                    Explanation: Both s and t become "ac".
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "ab##", t = "c#d#" <br />
+                    Output: true <br />
+                    Explanation: Both s and t become "".
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "a#c", t = "b" <br />
+                    Output: false <br />
+                    Explanation: s becomes "c" while t becomes "b".
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up: </b>
+                Can you solve it in O(n) time and O(1) space?
+              </>
+            }
+            constraints={
+              <>
+                1 &lt;= s.length, t.length &lt;= 200 <br />s and t only contain
+                lowercase letters and '#' characters.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @param {string} t
+                * @return {boolean}
+                */
+               var backspaceCompare = function(s, t) {
+                 let i = s.length - 1;  
+                 let j = t.length - 1;
+                 while (true) {
+                     let back = 0;
+                     while (i >= 0 && (s[i] == '#' || back > 0)) {
+                       back += s[i] == '#' ? 1 : -1;
+                       --i;
+                     }
+                     back = 0;
+                     while (j >= 0 && (t[j] == '#' || back > 0)) {
+                       back += t[j] == '#' ? 1 : -1;
+                       --j;
+                     }
+                     if (i >= 0 && j >= 0 && s[i] == t[j]) {
+                       --i;
+                       --j;
+                     } else {
+                       break;
+                     }
+                   }
+                   return i == -1 && j == -1;
+               };
+               
+               console.log(backspaceCompare("a#c","b"))`,
+                output: `false`,
               },
             }}
           />
         ),
       },
       q689: {
-        title: "Q (Q689)",
+        title: "Q845. Longest Mountain in Array (Q689)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q845. Longest Mountain in Array (Q689)"
+            content1={
+              <>
+                You may recall that an array arr is a mountain array if and only
+                if:
+                <br />
+                arr.length &gt;= 3<br />
+                There exists some index i (0-indexed) with 0 &lt; i &lt;
+                arr.length - 1 such that:
+                <br /> arr[0] &lt; arr[1] &lt; ... &lt; arr[i - 1] &lt; arr[i]
+                <br /> arr[i] &gt; arr[i + 1] &gt; ... &gt; arr[arr.length - 1]
+                <br /> Given an integer array arr, return the length of the
+                longest subarray, which is a mountain. Return 0 if there is no
+                mountain subarray.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [2,1,4,7,3,2,5]
+                    <br />
+                    Output: 5<br />
+                    Explanation: The largest mountain is [1,4,7,3,2] which has
+                    length 5.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [2,2,2]
+                    <br />
+                    Output: 0<br />
+                    Explanation: There is no mountain.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            fp={
+              <>
+                <b>Follow up: </b>
+                Can you solve it using only one pass? <br />
+                Can you solve it in O(1) space?
+              </>
+            }
+            constraints={
+              <>
+                1 &lt;= arr.length &lt;= 10^4 <br />0 &lt;= arr[i] &lt;= 10^4
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} arr
+                * @return {number}
+                */
+               var longestMountain = function(arr) {
+                   let ans = 0;
+                   for (let i = 0; i + 1 < arr.length;) {
+                     while (i + 1 < arr.length && arr[i] == arr[i + 1])
+                       ++i;
+                     let increasing = 0;
+                     let decreasing = 0;
+                     while (i + 1 < arr.length && arr[i] < arr[i + 1]) {
+                       ++increasing;
+                       ++i;
+                     }
+                     while (i + 1 < arr.length && arr[i] > arr[i + 1]) {
+                       ++decreasing;
+                       ++i;
+                     }
+                     if (increasing > 0 && decreasing > 0)
+                       ans = Math.max(ans, increasing + decreasing + 1);
+                   }
+                   return ans;    
+               };
+               
+               console.log(longestMountain([2,1,4,7,3,2,5]))`,
+                output: `5`,
               },
             }}
           />
         ),
       },
       q690: {
-        title: "Q (Q690)",
+        title: "Q846. Hand of Straights (Q690)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q846. Hand of Straights (Q690)"
+            content1={
+              <>
+                Alice has some number of cards and she wants to rearrange the
+                cards into groups so that each group is of size groupSize, and
+                consists of groupSize consecutive cards.
+                <br />
+                Given an integer array hand where hand[i] is the value written
+                on the ith card and an integer groupSize, return true if she can
+                rearrange the cards, or false otherwise.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: hand = [1,2,3,6,2,3,4,7,8], groupSize = 3 <br />
+                    Output: true <br />
+                    Explanation: Alice's hand can be rearranged as
+                    [1,2,3],[2,3,4],[6,7,8]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: hand = [1,2,3,4,5], groupSize = 4<br />
+                    Output: false
+                    <br />
+                    Explanation: Alice's hand can not be rearranged into groups
+                    of 4.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                1 &lt;= hand.length &lt;= 104
+                <br />
+                0 &lt;= hand[i] &lt;= 109
+                <br />1 &lt;= groupSize &lt;= hand.length
+              </>
+            }
+            tc="n.log n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: hand = [1,2,3,6,2,3,4,7,8], groupSize = 3
+                class Solution {
+                  public boolean isNStraightHand(int[] hand, int W) {
+                    TreeMap<Integer, Integer> count = new TreeMap<>();
+                    for (final int card : hand)
+                      count.put(card, count.getOrDefault(card, 0) + 1);
+                    for (final int start : count.keySet()) {
+                      final int value = count.getOrDefault(start, 0);
+                      if (value > 0)
+                        for (int i = start; i < start + W; ++i) {
+                          count.put(i, count.getOrDefault(i, 0) - value);
+                          if (count.get(i) < 0)
+                            return false;
+                        }
+                    }
+                    return true;
+                  }
+                }
+                `,
+                output: `true`,
               },
             }}
           />
