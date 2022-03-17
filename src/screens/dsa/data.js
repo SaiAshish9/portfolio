@@ -310,6 +310,9 @@ import Leetcode863 from "assets/leetcode/863.png";
 import Leetcode864 from "assets/leetcode/864.png";
 import Leetcode872 from "assets/leetcode/872.png";
 import Leetcode872a from "assets/leetcode/872a.png";
+import Leetcode882 from "assets/leetcode/882.png";
+import Leetcode883 from "assets/leetcode/883.png";
+import Leetcode885 from "assets/leetcode/885.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -94199,153 +94202,570 @@ a = b + c;
         content: (
           <Comp
             title="Q879. Profitable Schemes (Q723)"
-            content1={<></>}
+            content1={
+              <>
+                There is a group of n members, and a list of various crimes they
+                could commit. The ith crime generates a profit[i] and requires
+                group[i] members to participate in it. If a member participates
+                in one crime, that member can't participate in another crime.
+                <br />
+                Let's call a profitable scheme any subset of these crimes that
+                generates at least minProfit profit, and the total number of
+                members participating in that subset of crimes is at most n.
+                <br />
+                Return the number of schemes that can be chosen. Since the
+                answer may be very large, return it modulo 109 + 7.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 5, minProfit = 3, group = [2,2], profit = [2,3]
+                    <br />
+                    Output: 2<br />
+                    Explanation: To make a profit of at least 3, the group could
+                    either commit crimes 0 and 1, or just crime 1.
+                    <br /> In total, there are 2 schemes.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 10, minProfit = 5, group = [2,3,5], profit =
+                    [6,7,8]
+                    <br />
+                    Output: 7<br />
+                    Explanation: To make a profit of at least 5, the group could
+                    commit any crimes, as long as they commit one.
+                    <br /> There are 7 possible schemes: (0), (1), (2), (0,1),
+                    (0,2), (1,2), and (0,1,2).
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                1 &lt;= n &lt;= 100 <br />
+                0 &lt;= minProfit &lt;= 100 <br />
+                1 &lt;= group.length &lt;= 100 <br />
+                1 &lt;= group[i] &lt;= 100 <br />
+                profit.length == group.length <br />0 &lt;= profit[i] &lt;= 100
+              </>
+            }
+            tc="n^3"
+            sc="n^2"
             codes={{
-              Java: {
-                code: ``,
-                output: ``,
+              Javascript: {
+                code: `/**
+                * @param {number} n
+                * @param {number} minProfit
+                * @param {number[]} group
+                * @param {number[]} profit
+                * @return {number}
+                */
+               var profitableSchemes = function(n, minProfit, group, profit) {
+                 let kMod =  1e9 + 7;
+                 const dp = Array.from(Array(n + 1),()=> Array(minProfit + 1).fill(0));
+                   for (let i = 0; i <= n; ++i)
+                     dp[i][0] = 1;
+                   for (let k = 1; k <= group.length; ++k) {
+                     const g = group[k - 1];
+                     const p = profit[k - 1];
+                     for (let i = n; i >= g; --i)
+                       for (let j = minProfit; j >= 0; --j) {
+                         dp[i][j] += dp[i - g][Math.max(0, j - p)];
+                         dp[i][j] %= kMod;
+                       }
+                   }
+                   return dp[n][minProfit];
+               };
+               console.log(profitableSchemes(10,5,[2,3,5],[6,7,8]))`,
+                output: `7`,
               },
             }}
           />
         ),
       },
       q724: {
-        title: "Q (Q724)",
+        title: "Q880. Decoded String at Index (Q724)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q880. Decoded String at Index (Q724)"
+            content1={
+              <>
+                You are given an encoded string s. To decode the string to a
+                tape, the encoded string is read one character at a time and the
+                following steps are taken:
+                <br />
+                If the character read is a letter, that letter is written onto
+                the tape.
+                <br /> If the character read is a digit d, the entire current
+                tape is repeatedly written d - 1 more times in total.
+                <br /> Given an integer k, return the kth letter (1-indexed) in
+                the decoded string.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "leet2code3", k = 10 <br />
+                    Output: "o" <br />
+                    Explanation: The decoded string is
+                    "leetleetcodeleetleetcodeleetleetcode".
+                    <br /> The 10th letter in the string is "o".
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "ha22", k = 5 <br />
+                    Output: "h" <br />
+                    Explanation: The decoded string is "hahahaha". <br />
+                    The 5th letter is "h".
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "a2345678999999999999999", k = 1 <br />
+                    Output: "a" <br />
+                    Explanation: The decoded string is "a" repeated
+                    8301530446056247680 times.
+                    <br />
+                    The 1st letter is "a".
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                2 &lt;= s.length &lt;= 100 <br />
+                s consists of lowercase English letters and digits 2 through 9.
+                <br />
+                s starts with a letter.
+                <br />
+                1 &lt;= k &lt;= 109
+                <br />
+                It is guaranteed that k is less than or equal to the length of
+                the decoded string.
+                <br /> The decoded string is guaranteed to have less than 263
+                letters.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Java: {
-                code: ``,
-                output: ``,
+                code: `
+                // Input: s = "ha22", k = 5
+                class Solution {
+                  public String decodeAtIndex(String s, int k) {
+                    long size = 0; 
+                    for (final char c : s.toCharArray())
+                      if (Character.isDigit(c))
+                        size *= c - '0';
+                      else
+                        ++size;
+                    for (int i = s.length() - 1; i >= 0; --i) {
+                      k %= size;
+                      if (k == 0 && Character.isAlphabetic(s.charAt(i)))
+                        return s.substring(i, i + 1);
+                      if (Character.isDigit(s.charAt(i)))
+                        size /= s.charAt(i) - '0';
+                      else
+                        --size;
+                    }
+                    throw new IllegalArgumentException();
+                  }
+                }
+                `,
+                output: `h`,
               },
             }}
           />
         ),
       },
       q725: {
-        title: "Q (Q725)",
+        title: "Q881. Boats to Save People (Q725)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q881. Boats to Save People (Q725)"
+            content1={
+              <>
+                You are given an array people where people[i] is the weight of
+                the ith person, and an infinite number of boats where each boat
+                can carry a maximum weight of limit. Each boat carries at most
+                two people at the same time, provided the sum of the weight of
+                those people is at most limit.
+                <br />
+                Return the minimum number of boats to carry every given person.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: people = [1,2], limit = 3 <br />
+                    Output: 1 <br />
+                    Explanation: 1 boat (1, 2)
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: people = [3,2,2,1], limit = 3 <br />
+                    Output: 3 <br />
+                    Explanation: 3 boats (1, 2), (2) and (3)
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: people = [3,5,3,4], limit = 5 <br />
+                    Output: 4 <br />
+                    Explanation: 4 boats (3), (3), (4), (5)
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= people.length &lt;= 5 * 10^4 <br />1 &lt;= people[i]
+                &lt;= limit &lt;= 3 * 10^4
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Java: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} people
+                * @param {number} limit
+                * @return {number}
+                */
+               var numRescueBoats = function(people, limit) {
+                 let res = 0;
+                 people.sort((a,b)=>a-b);
+                 for (let i = 0, j = people.length - 1; i <= j; ++res) {
+                   let remain = limit - people[j--];
+                   if (people[i] <= remain)
+                     ++i;
+                 }
+                 return res;
+               };
+               
+               console.log(numRescueBoats([1,2],3))`,
+                output: `1`,
               },
             }}
           />
         ),
       },
       q726: {
-        title: "Q (Q726)",
+        title: "Q882. Reachable Nodes In Subdivided Graph (Q726)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q882. Reachable Nodes In Subdivided Graph (Q726)"
+            content1={
+              <>
+                You are given an undirected graph (the "original graph") with n
+                nodes labeled from 0 to n - 1. You decide to subdivide each edge
+                in the graph into a chain of nodes, with the number of new nodes
+                varying between each edge.
+                <br />
+                The graph is given as a 2D array of edges where edges[i] = [ui,
+                vi, cnti] indicates that there is an edge between nodes ui and
+                vi in the original graph, and cnti is the total number of new
+                nodes that you will subdivide the edge into. Note that cnti == 0
+                means you will not subdivide the edge.
+                <br />
+                To subdivide the edge [ui, vi], replace it with (cnti + 1) new
+                edges and cnti new nodes. The new nodes are x1, x2, ..., xcnti,
+                and the new edges are [ui, x1], [x1, x2], [x2, x3], ...,
+                [xcnti-1, xcnti], [xcnti, vi].
+                <br />
+                In this new graph, you want to know how many nodes are reachable
+                from the node 0, where a node is reachable if the distance is
+                maxMoves or less.
+                <br />
+                Given the original graph and maxMoves, return the number of
+                nodes that are reachable from node 0 in the new graph.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode882,
+                content: (
+                  <>
+                    Input: edges = [[0,1,10],[0,2,1],[1,2,2]], maxMoves = 6, n =
+                    3
+                    <br /> Output: 13
+                    <br /> Explanation: The edge subdivisions are shown in the
+                    image above.
+                    <br /> The nodes that are reachable are highlighted in
+                    yellow.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: edges = [[0,1,4],[1,2,6],[0,2,8],[1,3,1]], maxMoves =
+                    10, n = 4
+                    <br /> Output: 23
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: edges = [[1,2,4],[1,4,5],[1,3,1],[2,3,4],[3,4,5]],
+                    maxMoves = 17, n = 5
+                    <br /> Output: 1
+                    <br /> Explanation: Node 0 is disconnected from the rest of
+                    the graph, so only node 0 is reachable.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                0 &lt;= edges.length &lt;= min(n * (n - 1) / 2, 104) <br />
+                edges[i].length == 3 <br />
+                0 &lt;= ui &lt; vi &lt; n <br />
+                There are no multiple edges in the graph. <br />
+                0 &lt;= cnti &lt;= 10^4 <br />
+                0 &lt;= maxMoves &lt;= 10^9 <br />1 &lt;= n &lt;= 3000
+              </>
+            }
+            tc="n.log n"
             sc="n"
             codes={{
               Java: {
-                code: ``,
-                output: ``,
+                code: `
+                // Input: edges = [[1,2,4],[1,4,5],[1,3,1],[2,3,4],[3,4,5]], maxMoves = 17, n = 5
+                class Solution {
+                  public int reachableNodes(int[][] edges, int maxMoves, int n) {
+                    List<Pair<Integer, Integer>>[] graph = new List[n];
+                    Queue<int[]> minHeap = new PriorityQueue<>((a, b) -> a[0] - b[0]); // (d, u)
+                    int[] dist = new int[n];
+                    Arrays.fill(dist, maxMoves + 1);
+                    for (int i = 0; i < n; ++i)
+                      graph[i] = new ArrayList<>();
+                    for (int[] e : edges) {
+                      final int u = e[0];
+                      final int v = e[1];
+                      final int cnt = e[2];
+                      graph[u].add(new Pair<>(v, cnt));
+                      graph[v].add(new Pair<>(u, cnt));
+                    }
+                    minHeap.offer(new int[] {0, 0});
+                    dist[0] = 0;
+                    while (!minHeap.isEmpty()) {
+                      final int d = minHeap.peek()[0];
+                      final int u = minHeap.poll()[1];
+                      if (d >= maxMoves)
+                        break;
+                      for (var node : graph[u]) {
+                        final int v = node.getKey();
+                        final int w = node.getValue();
+                        final int newDist = d + w + 1;
+                        if (newDist < dist[v]) {
+                          dist[v] = newDist;
+                          minHeap.offer(new int[] {newDist, v});
+                        }
+                      }
+                    }
+                    final int reachableNodes = (int) Arrays.stream(dist).filter(d -> d <= maxMoves).count();
+                    int reachableSubnodes = 0;
+                    for (int[] e : edges) {
+                      final int u = e[0];
+                      final int v = e[1];
+                      final int cnt = e[2];
+                      final int a = dist[u] > maxMoves ? 0 : Math.min(maxMoves - dist[u], cnt);
+                      final int b = dist[v] > maxMoves ? 0 : Math.min(maxMoves - dist[v], cnt);
+                      reachableSubnodes += Math.min(a + b, cnt);
+                    }
+                    return reachableNodes + reachableSubnodes;
+                  }
+                }`,
+                output: `1`,
               },
             }}
           />
         ),
       },
       q727: {
-        title: "Q (Q727)",
+        title: "Q883. Projection Area of 3D Shapes (Q727)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q883. Projection Area of 3D Shapes (Q727)"
+            content1={
+              <>
+                You are given an n x n grid where we place some 1 x 1 x 1 cubes
+                that are axis-aligned with the x, y, and z axes.
+                <br />
+                Each value v = grid[i][j] represents a tower of v cubes placed
+                on top of the cell (i, j).
+                <br />
+                We view the projection of these cubes onto the xy, yz, and zx
+                planes.
+                <br />
+                A projection is like a shadow, that maps our 3-dimensional
+                figure to a 2-dimensional plane. We are viewing the "shadow"
+                when looking at the cubes from the top, the front, and the side.
+                <br />
+                Return the total area of all three projections.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode883,
+                content: (
+                  <>
+                    Input: grid = [[1,2],[3,4]] <br />
+                    Output: 17 <br />
+                    Explanation: Here are the three projections ("shadows") of
+                    the shape made with each axis-aligned plane.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid = [[2]]
+                    <br />
+                    Output: 5
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: grid = [[1,0],[0,2]] <br />
+                    Output: 8
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                n == grid.length == grid[i].length
+                <br />
+                1 &lt;= n &lt;= 50
+                <br />0 &lt;= grid[i][j] &lt;= 50
+              </>
+            }
+            tc="n^2"
             sc="n"
             codes={{
-              Java: {
-                code: ``,
-                output: ``,
+              Javascript: {
+                code: `/**
+                * @param {number[][]} grid
+                * @return {number}
+                */
+               var projectionArea = function(grid) {
+                 let res = 0;
+                 for (let i = 0; i < grid.length; ++i) {
+                   let maxOfRow = 0;
+                   let maxOfCol = 0;
+                   for (let j = 0; j < grid.length; ++j) {
+                       maxOfRow = Math.max(maxOfRow, grid[i][j]);
+                       maxOfCol = Math.max(maxOfCol, grid[j][i]);
+                       if (grid[i][j] > 0)
+                         ++res;
+                     }
+                     res += maxOfRow + maxOfCol;
+                 }
+                 return res;  
+               };
+               console.log(projectionArea([[1,2],[3,4]]))`,
+                output: `17`,
               },
             }}
           />
         ),
       },
       q728: {
-        title: "Q (Q728)",
+        title: "Q884. Uncommon Words from Two Sentences (Q728)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q884. Uncommon Words from Two Sentences (Q728)"
+            content1={
+              <>
+                A sentence is a string of single-space separated words where
+                each word consists only of lowercase letters.
+                <br />
+                A word is uncommon if it appears exactly once in one of the
+                sentences, and does not appear in the other sentence.
+                <br />
+                Given two sentences s1 and s2, return a list of all the uncommon
+                words. You may return the answer in any order.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode885,
+                content: (
+                  <>
+                    Input: s1 = "this apple is sweet", <br /> s2 = "this apple
+                    is sour"
+                    <br /> Output: ["sweet","sour"]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s1 = "apple apple", <br /> s2 = "banana" <br />
+                    Output: ["banana"]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= s1.length, s2.length &lt;= 200 <br />
+                s1 and s2 consist of lowercase English letters and spaces.{" "}
+                <br />
+                s1 and s2 do not have leading or trailing spaces. <br />
+                All the words in s1 and s2 are separated by a single space.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Java: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s1
+                * @param {string} s2
+                * @return {string[]}
+                */
+               var uncommonFromSentences = function(s1, s2) {
+                const res = [];
+                const count = {}
+                for (let word of (s1 + ' ' + s2).split(" "))
+                  count[word] = (count[word] || 0) + 1;
+                for (let word in count)
+                  if (count[word] == 1)
+                    res.push(word);
+                return res;  
+               };
+               console.log(uncommonFromSentences("this apple is sweet","this apple is sour"))`,
+                output: `[ 'sweet', 'sour' ]`,
               },
             }}
           />
