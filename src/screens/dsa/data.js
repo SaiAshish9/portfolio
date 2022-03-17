@@ -308,6 +308,8 @@ import Leetcode849 from "assets/leetcode/849.png";
 import Leetcode858 from "assets/leetcode/858.png";
 import Leetcode863 from "assets/leetcode/863.png";
 import Leetcode864 from "assets/leetcode/864.png";
+import Leetcode872 from "assets/leetcode/872.png";
+import Leetcode872a from "assets/leetcode/872a.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -93516,23 +93518,22 @@ a = b + c;
                 code: `
                 // Input: target = 100, startFuel = 10, stations = [[10,60],[20,30],[30,30],[60,40]]
                 class Solution {
-                  public:
-                   int minRefuelStops(int target, int startFuel, vector<vector<int>>& stations) {
-                     int ans = 0;
-                     int i = 0;  
-                     int curr = startFuel;
-                     priority_queue<int> maxHeap;
-                     while (curr < target) {
-                       while (i < stations.size() && curr >= stations[i][0])
-                         maxHeap.push(stations[i++][1]);
-                       if (maxHeap.empty())  
-                         return -1;
-                       curr += maxHeap.top(), maxHeap.pop();  
-                       ++ans;                                
-                     }
-                     return ans;
-                   }
-                 };
+                  public int minRefuelStops(int target, int startFuel, int[][] stations) {
+                    int ans = 0;
+                    int i = 0; 
+                    int curr = startFuel;
+                    PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+                    while (curr < target) {
+                      while (i < stations.length && curr >= stations[i][0])
+                        maxHeap.offer(stations[i++][1]);
+                      if (maxHeap.isEmpty()) 
+                        return -1;
+                      curr += maxHeap.poll();
+                      ++ans;                 
+                    }
+                    return ans;
+                  }
+                }
                  `,
                 output: `2`,
               },
@@ -93541,26 +93542,99 @@ a = b + c;
         ),
       },
       q716: {
-        title: "Q (Q716)",
+        title: "Q872. Leaf-Similar Trees (Q716)",
         content: (
           <Comp
-            content1={<></>}
-            content2={null}
+            title="Q872. Leaf-Similar Trees (Q716)"
+            content1={
+              <>
+                Consider all the leaves of a binary tree, from left to right
+                order, the values of those leaves form a leaf value sequence.
+              </>
+            }
+            content2={
+              <>
+                For example, in the given tree above, the leaf value sequence is
+                (6, 7, 4, 9, 8).
+                <br />
+                Two binary trees are considered leaf-similar if their leaf value
+                sequence is the same.
+                <br />
+                Return true if and only if the two given trees with head nodes
+                root1 and root2 are leaf-similar.
+              </>
+            }
+            img={Leetcode872}
             examples={[
               {
-                content: <></>,
+                img: Leetcode872a,
+                content: (
+                  <>
+                    Input: root1 = [3,5,1,6,2,9,8,null,null,7,4],
+                    <br /> root2 =
+                    [3,5,1,6,7,4,2,null,null,null,null,null,null,9,8]
+                    <br /> Output: true
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root1 = [1,2,3], root2 = [1,3,2]
+                    <br /> Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in each tree will be in the range [1, 200].
+                <br /> Both of the given trees will have values in the range [0,
+                200].
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Java: {
-                code: ``,
-                output: ``,
+                code: `
+                // Input: root1 = [1,2,3], root2 = [1,3,2]
+                /**
+                * Definition for a binary tree node.
+                * public class TreeNode {
+                *     int val;
+                *     TreeNode left;
+                *     TreeNode right;
+                *     TreeNode() {}
+                *     TreeNode(int val) { this.val = val; }
+                *     TreeNode(int val, TreeNode left, TreeNode right) {
+                *         this.val = val;
+                *         this.left = left;
+                *         this.right = right;
+                *     }
+                * }
+                */
+               class Solution {
+                 public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+                   List<Integer> leaves1 = new ArrayList<>();
+                   List<Integer> leaves2 = new ArrayList<>();
+                   dfs(root1, leaves1);
+                   dfs(root2, leaves2);
+                   return leaves1.equals(leaves2);
+                 }
+                 public void dfs(TreeNode node, List<Integer> leaves) {
+                   if (node == null)
+                     return;
+                   if (node.left == null && node.right == null) {
+                     leaves.add(node.val);
+                     return;
+                   }
+                   dfs(node.left, leaves);
+                   dfs(node.right, leaves);
+                 }
+               }
+               `,
+                output: `false`,
               },
             }}
           />
