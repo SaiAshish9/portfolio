@@ -93433,26 +93433,108 @@ a = b + c;
         ),
       },
       q715: {
-        title: "Q (Q715)",
+        title: "Q871. Minimum Number of Refueling Stops  (Q715)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q871. Minimum Number of Refueling Stops  (Q715)"
+            content1={
+              <>
+                A car travels from a starting position to a destination which is
+                target miles east of the starting position. There are gas
+                stations along the way. The gas stations are represented as an
+                array stations where stations[i] = [positioni, fueli] indicates
+                that the ith gas station is positioni miles east of the starting
+                position and has fueli liters of gas.
+                <br />
+                The car starts with an infinite tank of gas, which initially has
+                startFuel liters of fuel in it. It uses one liter of gas per one
+                mile that it drives. When the car reaches a gas station, it may
+                stop and refuel, transferring all the gas from the station into
+                the car.
+                <br />
+                Return the minimum number of refueling stops the car must make
+                in order to reach its destination. If it cannot reach the
+                destination, return -1.
+                <br />
+                Note that if the car reaches a gas station with 0 fuel left, the
+                car can still refuel there. If the car reaches the destination
+                with 0 fuel left, it is still considered to have arrived.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: target = 1, startFuel = 1, stations = []
+                    <br /> Output: 0 <br />
+                    Explanation: We can reach the target without refueling.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: target = 100, startFuel = 1, stations = [[10,100]]
+                    <br /> Output: -1 <br />
+                    Explanation: We can not reach the target (or even the first
+                    gas station).
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: target = 100, startFuel = 10, stations =
+                    [[10,60],[20,30],[30,30],[60,40]]
+                    <br /> Output: 2 <br />
+                    Explanation: We start with 10 liters of fuel. <br />
+                    We drive to position 10, expending 10 liters of fuel. We
+                    refuel from 0 liters to 60 liters of gas.
+                    <br /> Then, we drive from position 10 to position 60
+                    (expending 50 liters of fuel),
+                    <br /> and refuel from 10 liters to 50 liters of gas. We
+                    then drive to and reach the target.
+                    <br /> We made 2 refueling stops along the way, so we return
+                    2.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                1 &lt;= target, startFuel &lt;= 10^9 <br />
+                0 &lt;= stations.length &lt;= 500 <br />
+                0 &lt;= positioni &lt;= positioni+1 &lt; target <br />1 &lt;=
+                fueli &lt; 10^9
+              </>
+            }
+            tc="n.log n"
             sc="n"
             codes={{
               Java: {
-                code: ``,
-                output: ``,
+                code: `
+                // Input: target = 100, startFuel = 10, stations = [[10,60],[20,30],[30,30],[60,40]]
+                class Solution {
+                  public:
+                   int minRefuelStops(int target, int startFuel, vector<vector<int>>& stations) {
+                     int ans = 0;
+                     int i = 0;  
+                     int curr = startFuel;
+                     priority_queue<int> maxHeap;
+                     while (curr < target) {
+                       while (i < stations.size() && curr >= stations[i][0])
+                         maxHeap.push(stations[i++][1]);
+                       if (maxHeap.empty())  
+                         return -1;
+                       curr += maxHeap.top(), maxHeap.pop();  
+                       ++ans;                                
+                     }
+                     return ans;
+                   }
+                 };
+                 `,
+                output: `2`,
               },
             }}
           />
