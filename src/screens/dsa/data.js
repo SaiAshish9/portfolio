@@ -93302,33 +93302,79 @@ a = b + c;
         content: (
           <Comp
             title="Q869. Reordered Power of 2 (Q713)"
-            content1={<></>}
+            content1={
+              <>
+                You are given an integer n. We reorder the digits in any order
+                (including the original order) such that the leading digit is
+                not zero.
+                <br />
+                Return true if and only if we can do this so that the resulting
+                number is a power of two.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1 <br />
+                    Output: true
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 10 <br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={<>1 &lt;= n &lt;= 10^9</>}
             tc="n"
             sc="n"
             codes={{
-              Java: {
-                code: ``,
-                output: ``,
+              Javascript: {
+                code: `/**
+                * @param {number} n
+                * @return {boolean}
+                */
+               var reorderedPowerOf2 = function(n) {
+                   let count = counter(n);
+                   for (let i = 0; i < 30; ++i)
+                     if (counter(1 << i) == count)
+                       return true;
+                   return false;
+               };
+               function counter(n) {
+                   let count = 0;
+                   for (; n > 0; n = parseInt(n/10))
+                     count += Math.pow(10, n % 10);
+                   return count;
+               }       
+               console.log(reorderedPowerOf2(2))`,
+                output: `true`,
               },
             }}
           />
         ),
       },
       q714: {
-        title: "Q (Q714)",
+        title: "Q870. Advantage Shuffle (Q714)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q870. Advantage Shuffle (Q714)"
+            content1={
+              <>
+                You are given two integer arrays nums1 and nums2 both of the
+                same length. The advantage of nums1 with respect to nums2 is the
+                number of indices i for which nums1[i] > nums2[i].
+                <br />
+                Return any permutation of nums1 that maximizes its advantage
+                with respect to nums2.
+              </>
+            }
             content2={null}
             examples={[
               {
