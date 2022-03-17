@@ -93220,32 +93220,88 @@ a = b + c;
         content: (
           <Comp
             title="Q868. Binary Gap (Q712)"
-            content1={<></>}
+            content1={
+              <>
+                Given a positive integer n, find and return the longest distance
+                between any two adjacent 1's in the binary representation of n.
+                If there are no two adjacent 1's, return 0.
+                <br />
+                Two 1's are adjacent if there are only 0's separating them
+                (possibly no 0's). The distance between two 1's is the absolute
+                difference between their bit positions. For example, the two 1's
+                in "1001" have a distance of 3.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 22 <br />
+                    Output: 2 <br />
+                    Explanation: 22 in binary is "10110". <br />
+                    The first adjacent pair of 1's is "10110" with a distance of
+                    2.
+                    <br /> The second adjacent pair of 1's is "10110" with a
+                    distance of 1.
+                    <br /> The answer is the largest of these two distances,
+                    which is 2.
+                    <br /> Note that "10110" is not a valid pair since there is
+                    a 1 separating the two 1's underlined.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 8 <br />
+                    Output: 0 <br />
+                    Explanation: 8 in binary is "1000". <br />
+                    There are not any adjacent pairs of 1's in the binary
+                    representation of 8, so we return 0.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: n = 5 <br />
+                    Output: 2 <br />
+                    Explanation: 5 in binary is "101".
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={<>1 &lt;= n &lt;= 10^9</>}
             tc="log n"
             sc="1"
             codes={{
-              Java: {
-                code: ``,
-                output: ``,
+              Javascript: {
+                code: `/**
+                * @param {number} n
+                * @return {number}
+                */
+               var binaryGap = function(n) {
+                   let res = 0;
+                   for (let d = -32; n > 0; n = parseInt(n/2), ++d)
+                     if ((n & 1) == 1) {
+                       res = Math.max(res, d);
+                       d = 0;
+                     }
+                   return res;  
+               };
+               console.log(binaryGap(22))`,
+                output: `2`,
               },
             }}
           />
         ),
       },
       q713: {
-        title: "Q (Q713)",
+        title: "Q869. Reordered Power of 2 (Q713)",
         content: (
           <Comp
+            title="Q869. Reordered Power of 2 (Q713)"
             content1={<></>}
             content2={null}
             examples={[
