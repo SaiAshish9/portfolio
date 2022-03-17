@@ -93378,17 +93378,34 @@ a = b + c;
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums1 = [2,7,11,15], <br />
+                    nums2 = [1,10,4,11]
+                    <br /> Output: [2,11,7,15]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums1 = [12,24,8,32], <br /> nums2 = [13,25,32,11]
+                    <br /> Output: [24,32,8,12]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                1 &lt;= nums1.length &lt;= 10^5 <br />
+                nums2.length == nums1.length <br />0 &lt;= nums1[i], nums2[i]
+                &lt;= 10^9
+              </>
+            }
+            tc="n.log n"
             sc="n"
             codes={{
-              Java: {
+              Javascript: {
                 code: ``,
                 output: ``,
               },
