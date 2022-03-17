@@ -94120,9 +94120,10 @@ a = b + c;
         ),
       },
       q722: {
-        title: "Q (Q722)",
+        title: "Q878. Nth Magical Number (Q722)",
         content: (
           <Comp
+            title="Q878. Nth Magical Number (Q722)"
             content1={<></>}
             content2={null}
             examples={[
