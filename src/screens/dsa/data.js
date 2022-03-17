@@ -92667,9 +92667,10 @@ a = b + c;
         ),
       },
       q707: {
-        title: "Q (Q707)",
+        title: "863. All Nodes Distance K in Binary Tree (Q707)",
         content: (
           <Comp
+            title="863. All Nodes Distance K in Binary Tree (Q707)"
             content1={<></>}
             content2={null}
             examples={[
