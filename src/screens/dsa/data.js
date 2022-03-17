@@ -94162,17 +94162,43 @@ a = b + c;
             sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @param {number} a
+                * @param {number} b
+                * @return {number}
+                */
+               var nthMagicalNumber = function(n, a, b) {
+                 const kMod = 1e9 + 7;
+                 let lcm = a * parseInt(b / gcd(a, b));
+                 let l = Math.min(a, b);
+                 let r = Math.min(a, b) * n;
+                   while (l < r) {
+                     let m = l + parseInt((r - l) / 2);
+                     if (parseInt(m / a) +parseInt(m / b) - parseInt(m / lcm) >= n)
+                       r = m;
+                     else
+                       l = m + 1;
+                   }
+                   return parseInt(l % kMod);
+               }
+               
+               function gcd(a, b) {
+                 return b == 0 ? a : gcd(b, a % b);
+               }
+               
+               console.log(nthMagicalNumber(1,2,3))`,
+                output: `2`,
               },
             }}
           />
         ),
       },
       q723: {
-        title: "Q (Q723)",
+        title: "Q879. Profitable Schemes (Q723)",
         content: (
           <Comp
+            title="Q879. Profitable Schemes (Q723)"
             content1={<></>}
             content2={null}
             examples={[
