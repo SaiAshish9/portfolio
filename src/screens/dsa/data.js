@@ -93155,32 +93155,71 @@ a = b + c;
         content: (
           <Comp
             title="Q867. Transpose Matrix (Q711)"
-            content1={<></>}
+            content1={
+              <>
+                Given a 2D integer array matrix, return the transpose of matrix.
+                <br />
+                The transpose of a matrix is the matrix flipped over its main
+                diagonal, switching the matrix's row and column indices.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+                    <br />
+                    Output: [[1,4,7],[2,5,8],[3,6,9]]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: matrix = [[1,2,3],[4,5,6]]
+                    <br />
+                    Output: [[1,4],[2,5],[3,6]]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                m == matrix.length <br />
+                n == matrix[i].length <br />
+                1 &lt;= m, n&lt;= 1000 <br />
+                1 &lt;= m * n &lt;= 10^5 <br />
+                -10^9 &lt;= matrix[i][j] &lt;= 10^9 <br />
+              </>
+            }
+            tc="n^2"
+            sc="n^2"
             codes={{
-              Java: {
-                code: ``,
-                output: ``,
+              Javascript: {
+                code: `/**
+                * @param {number[][]} matrix
+                * @return {number[][]}
+                */
+               var transpose = function(matrix) {
+                 const res = Array.from(Array(matrix[0].length),() => Array(matrix.length).fill(0));
+                 for (let i = 0; i < matrix.length; ++i)
+                   for (let j = 0; j < matrix[0].length; ++j)
+                     res[j][i] = matrix[i][j];
+                 return res;
+               };
+               console.log(transpose([[1,2,3],[4,5,6],[7,8,9]]))`,
+                output: `[ [ 1, 4, 7 ], [ 2, 5, 8 ], [ 3, 6, 9 ] ]`,
               },
             }}
           />
         ),
       },
       q712: {
-        title: "Q (Q712)",
+        title: "Q868. Binary Gap (Q712)",
         content: (
           <Comp
+            title="Q868. Binary Gap (Q712)"
             content1={<></>}
             content2={null}
             examples={[
@@ -93192,8 +93231,8 @@ a = b + c;
               },
             ]}
             constraints={<></>}
-            tc="n"
-            sc="n"
+            tc="log n"
+            sc="1"
             codes={{
               Java: {
                 code: ``,
