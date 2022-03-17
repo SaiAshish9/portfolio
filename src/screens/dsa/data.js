@@ -92317,49 +92317,198 @@ a = b + c;
         content: (
           <Comp
             title="Q859. Buddy Strings (Q703)"
-            content1={<></>}
+            content1={
+              <>
+                Given two strings s and goal, return true if you can swap two
+                letters in s so the result is equal to goal, otherwise, return
+                false.
+                <br />
+                Swapping letters is defined as taking two indices i and j
+                (0-indexed) such that i != j and swapping the characters at s[i]
+                and s[j].
+                <br />
+                For example, swapping at indices 0 and 2 in "abcd" results in
+                "cbad".
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "ab", goal = "ba" <br />
+                    Output: true <br />
+                    Explanation: You can swap s[0] = 'a' and s[1] = 'b' to get
+                    "ba", which is equal to goal.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "ab", goal = "ab" <br />
+                    Output: false <br />
+                    Explanation: The only letters you can swap are s[0] = 'a'
+                    and s[1] = 'b', which results in "ba" != goal.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "aa", goal = "aa" <br />
+                    Output: true <br />
+                    Explanation: You can swap s[0] = 'a' and s[1] = 'a' to get
+                    "aa", which is equal to goal.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= s.length, goal.length &lt;= 2 * 10^4 <br />s and goal
+                consist of lowercase letters.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @param {string} goal
+                * @return {boolean}
+                */
+               var buddyStrings = function(s, goal) {
+                  if (s.length != goal.length)
+                     return false;
+                   if (s===goal) {
+                   const set = new Set();
+                   for (let c of s.split(""))
+                       set.add(c);
+                     return set.size < s.length;
+                   }
+                 const diff = [];
+                   for (let i = 0; i < s.length; ++i)
+                     if (s[i] != goal[i])
+                       diff.push(i);
+                   return diff.length == 2 &&
+                          s[diff[0]] == goal[diff[1]] &&
+                          s[diff[1]] == goal[diff[0]]
+               };
+               
+               console.log(buddyStrings("ab","ba"))`,
+                output: `true`,
               },
             }}
           />
         ),
       },
       q704: {
-        title: "Q (Q704)",
+        title: "Q860. Lemonade Change (Q704)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q860. Lemonade Change (Q704)"
+            content1={
+              <>
+                At a lemonade stand, each lemonade costs $5. Customers are
+                standing in a queue to buy from you and order one at a time (in
+                the order specified by bills). Each customer will only buy one
+                lemonade and pay with either a $5, $10, or $20 bill. You must
+                provide the correct change to each customer so that the net
+                transaction is that the customer pays $5.
+                <br />
+                Note that you do not have any change in hand at first.
+                <br />
+                Given an integer array bills where bills[i] is the bill the ith
+                customer pays, return true if you can provide every customer
+                with the correct change, or false otherwise.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: bills = [5,5,5,10,20] <br />
+                    Output: true <br />
+                    Explanation: <br />
+                    From the first 3 customers, we collect three $5 bills in
+                    order.
+                    <br /> From the fourth customer, we collect a $10 bill and
+                    give back a $5.
+                    <br /> From the fifth customer, we give a $10 bill and a $5
+                    bill.
+                    <br /> Since all customers got correct change, we output
+                    true.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: bills = [5,5,10,10,20]
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation: <br />
+                    From the first two customers in order, we collect two $5
+                    bills.
+                    <br />
+                    For the next two customers in order, we collect a $10 bill
+                    and give back a $5 bill.
+                    <br /> For the last customer, we can not give the change of
+                    $15 back because we only have two $10 bills.
+                    <br /> Since not every customer received the correct change,
+                    the answer is false.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= bills.length &lt;= 10^5
+                <br />
+                bills[i] is either 5, 10, or 20.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: bills = [5,5,5,10,20]
+                class Solution {
+                  public boolean lemonadeChange(int[] bills) {
+                     int bill_5 = 0;
+                     int bill_10 = 0;
+                     for (int num : bills) {
+                         if (num == 5) {
+                             bill_5++;
+                             continue;
+                         } else if (num == 10) {
+                             if (bill_5 > 0) {
+                                 bill_5--;
+                                 bill_10++;
+                                 continue;
+                             } else {
+                                 return false;
+                             }
+                         } else if (num == 20) {
+                             if (bill_10 > 0 && bill_5 > 0) {
+                                 bill_10--;
+                                 bill_5--;
+                             } else if (bill_5 >= 3) {
+                                 bill_5 = bill_5 - 3;
+                             } else {
+                                 return false;
+                             }
+                         }
+                     }
+                     return true;
+                 }
+             }`,
+                output: `true`,
               },
             }}
           />
