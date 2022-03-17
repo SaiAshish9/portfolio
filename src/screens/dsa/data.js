@@ -306,6 +306,8 @@ import Leetcode838 from "assets/leetcode/838.png";
 import Leetcode847 from "assets/leetcode/847.png";
 import Leetcode849 from "assets/leetcode/849.png";
 import Leetcode858 from "assets/leetcode/858.png";
+import Leetcode863 from "assets/leetcode/863.png";
+import Leetcode864 from "assets/leetcode/864.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -92671,110 +92673,488 @@ a = b + c;
         content: (
           <Comp
             title="863. All Nodes Distance K in Binary Tree (Q707)"
-            content1={<></>}
+            content1={
+              <>
+                Given the root of a binary tree, the value of a target node
+                target, and an integer k, return an array of the values of all
+                nodes that have a distance k from the target node.
+                <br />
+                You can return the answer in any order.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode863,
+                content: (
+                  <>
+                    Input: root = [3,5,1,6,2,0,8,null,null,7,4], target = 5, k =
+                    2
+                    <br /> Output: [7,4,1] <br />
+                    Explanation: The nodes that are a distance 2 from the target
+                    node (with value 5) have values 7, 4, and 1.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [1], target = 1, k = 3 <br />
+                    Output: []
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the tree is in the range [1, 500]. <br />
+                0 &lt;= Node.val &lt;= 500 <br />
+                All the values Node.val are unique. <br />
+                target is the value of one of the nodes in the tree. <br />0
+                &lt;= k &lt;= 1000
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Java: {
-                code: ``,
-                output: ``,
+                code: `
+                // Input: root = [3,5,1,6,2,0,8,null,null,7,4], target = 5, k = 2
+                /**
+                * Definition for a binary tree node.
+                * public class TreeNode {
+                *     int val;
+                *     TreeNode left;
+                *     TreeNode right;
+                *     TreeNode(int x) { val = x; }
+                * }
+                */
+               class Solution {
+                 public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
+                   List<Integer> ans = new ArrayList<>();
+                   Map<TreeNode, Integer> nodeToDist = new HashMap<>(); // {node: distance to target}
+               
+                   getDists(root, target, nodeToDist);
+                   dfs(root, K, 0, nodeToDist, ans);
+               
+                   return ans;
+                 }
+                 private void getDists(TreeNode root, TreeNode target, Map<TreeNode, Integer> nodeToDist) {
+                   if (root == null)
+                     return;
+                   if (root == target) {
+                     nodeToDist.put(root, 0);
+                     return;
+                   }
+                   getDists(root.left, target, nodeToDist);
+                   if (nodeToDist.containsKey(root.left)) {
+                     nodeToDist.put(root, nodeToDist.get(root.left) + 1);
+                     return;
+                   }
+                   getDists(root.right, target, nodeToDist);
+                   if (nodeToDist.containsKey(root.right))
+                     nodeToDist.put(root, nodeToDist.get(root.right) + 1);
+                 }
+                 private void dfs(TreeNode root, int K, int dist, Map<TreeNode, Integer> nodeToDist,
+                                  List<Integer> ans) {
+                   if (root == null)
+                     return;
+                   if (nodeToDist.containsKey(root))
+                     dist = nodeToDist.get(root);
+                   if (dist == K)
+                     ans.add(root.val);
+                   dfs(root.left, K, dist + 1, nodeToDist, ans);
+                   dfs(root.right, K, dist + 1, nodeToDist, ans);
+                 }
+               }`,
+                output: `[7,4,1]`,
               },
             }}
           />
         ),
       },
       q708: {
-        title: "Q (Q708)",
+        title: "Q864. Shortest Path to Get All Keys (Q708)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q864. Shortest Path to Get All Keys (Q708)"
+            content1={
+              <>
+                You are given an m x n grid grid where:
+                <br />
+                '.' is an empty cell.
+                <br />
+                '#' is a wall.
+                <br />
+                '@' is the starting point.
+                <br />
+                Lowercase letters represent keys.
+                <br />
+                Uppercase letters represent locks.
+                <br />
+                You start at the starting point and one move consists of walking
+                one space in one of the four cardinal directions. You cannot
+                walk outside the grid, or walk into a wall.
+                <br />
+                If you walk over a key, you can pick it up and you cannot walk
+                over a lock unless you have its corresponding key.
+                <br />
+                For some 1 &lt;= k &lt;= 6, there is exactly one lowercase and
+                one uppercase letter of the first k letters of the English
+                alphabet in the grid. This means that there is exactly one key
+                for each lock, and one lock for each key; and also that the
+                letters used to represent the keys and locks were chosen in the
+                same order as the English alphabet.
+                <br />
+                Return the lowest number of moves to acquire all keys. If it is
+                impossible, return -1.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode864,
+                content: (
+                  <>
+                    Input: grid = ["@.a.#","###.#","b.A.B"] <br />
+                    Output: 8 <br />
+                    Explanation: Note that the goal is to obtain all the keys
+                    not to open all the locks.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid = ["@..aA","..B#.","....b"]
+                    <br /> Output: 6
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: grid = ["@Aa"] <br />
+                    Output: -1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                m == grid.length <br />
+                n == grid[i].length <br />
+                1 &lt;= m, n &lt;= 30 <br />
+                grid[i][j] is either an English letter, '.', '#', or '@'.
+                <br /> The number of keys in the grid is in the range [1, 6].
+                <br /> Each key in the grid is unique.
+                <br /> Each key in the grid has a matching loc
+              </>
+            }
+            tc="mn.2^n"
+            sc="mn.2^n"
             codes={{
               Java: {
-                code: ``,
-                output: ``,
+                code: `
+                // Input: grid = ["@Aa"]
+                class T {
+                  public int i;
+                  public int j;
+                  public int keys; // keys in bitmask
+                  public T(int i, int j, int keys) {
+                    this.i = i;
+                    this.j = j;
+                    this.keys = keys;
+                  }
+                }
+                
+                class Solution {
+                  public int shortestPathAllKeys(String[] grid) {
+                    final int m = grid.length;
+                    final int n = grid[0].length();
+                    final int keysCount = getKeysCount(grid);
+                    final int kKeys = (1 << keysCount) - 1;
+                    final int[] dirs = {0, 1, 0, -1, 0};
+                    final int[] start = getStart(grid);
+                    int ans = 0;
+                    Queue<T> q = new ArrayDeque<>(Arrays.asList(new T(start[0], start[1], 0)));
+                    boolean[][][] seen = new boolean[m][n][kKeys];
+                    seen[start[0]][start[1]][0] = true;
+                
+                    while (!q.isEmpty()) {
+                      ++ans;
+                      for (int sz = q.size(); sz > 0; --sz) {
+                        final int i = q.peek().i;
+                        final int j = q.peek().j;
+                        final int keys = q.poll().keys;
+                        for (int k = 0; k < 4; ++k) {
+                          final int x = i + dirs[k];
+                          final int y = j + dirs[k + 1];
+                          if (x < 0 || x == m || y < 0 || y == n)
+                            continue;
+                          final char c = grid[x].charAt(y);
+                          if (c == '#')
+                            continue;
+                          final int newKeys = 'a' <= c && c <= 'f' ? keys | 1 << c - 'a' : keys;
+                          if (newKeys == kKeys)
+                            return ans;
+                          if (seen[x][y][newKeys])
+                            continue;
+                          if ('A' <= c && c <= 'F' && (newKeys >> c - 'A' & 1) == 0)
+                            continue;
+                          q.offer(new T(x, y, newKeys));
+                          seen[x][y][newKeys] = true;
+                        }
+                      }
+                    }
+                
+                    return -1;
+                  }
+                  private int getKeysCount(String[] grid) {
+                    int count = 0;
+                    for (final String s : grid)
+                      count += (int) s.chars().filter(c -> 'a' <= c && c <= 'f').count();
+                    return count;
+                  }
+                  private int[] getStart(String[] grid) {
+                    for (int i = 0; i < grid.length; ++i)
+                      for (int j = 0; j < grid[0].length(); ++j)
+                        if (grid[i].charAt(j) == '@')
+                          return new int[] {i, j};
+                    throw new IllegalArgumentException();
+                  }
+                }`,
+                output: `-1`,
               },
             }}
           />
         ),
       },
       q709: {
-        title: "Q (Q709)",
+        title: "Q865. Smallest Subtree with all the Deepest Nodes (Q709)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q865. Smallest Subtree with all the Deepest Nodes (Q709)"
+            content1={
+              <>
+                Given the root of a binary tree, the depth of each node is the
+                shortest distance to the root.
+                <br />
+                Return the smallest subtree such that it contains all the
+                deepest nodes in the original tree.
+                <br />
+                A node is called the deepest if it has the largest depth
+                possible among any node in the entire tree.
+                <br />
+                The subtree of a node is a tree consisting of that node, plus
+                the set of all descendants of that node.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [3,5,1,6,2,0,8,null,null,7,4]
+                    <br /> Output: [2,7,4] <br />
+                    Explanation: We return the node with value 2, colored in
+                    yellow in the diagram.
+                    <br /> The nodes coloured in blue are the deepest nodes of
+                    the tree.
+                    <br /> Notice that nodes 5, 3 and 2 contain the deepest
+                    nodes in the tree but node 2 is the smallest subtree among
+                    them, so we return it.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [1] <br />
+                    Output: [1] <br />
+                    Explanation: The root is the deepest node in the tree.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: root = [0,1,3,null,2] <br />
+                    Output: [2] <br />
+                    Explanation: The deepest node in the tree is 2, the valid
+                    subtrees are the subtrees of nodes 2, 1 and 0 but the
+                    subtree of node 2 is the smallest.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the tree will be in the range [1, 500].
+                <br /> 0 &lt;= Node.val &lt;= 500
+                <br />
+                The values of the nodes in the tree are unique.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Java: {
-                code: ``,
-                output: ``,
+                code: `
+                // Input: root = [0,1,3,null,2]
+                /**
+                * Definition for a binary tree node.
+                * public class TreeNode {
+                *     int val;
+                *     TreeNode left;
+                *     TreeNode right;
+                *     TreeNode() {}
+                *     TreeNode(int val) { this.val = val; }
+                *     TreeNode(int val, TreeNode left, TreeNode right) {
+                *         this.val = val;
+                *         this.left = left;
+                *         this.right = right;
+                *     }
+                * }
+                */
+               class T {
+                 public TreeNode lca;
+                 public int depth;              
+                 public T(TreeNode lca, int depth) {
+                   this.lca = lca;
+                   this.depth = depth;
+                 }
+               };
+               class Solution {
+                 public TreeNode subtreeWithAllDeepest(TreeNode root) {
+                   return dfs(root).lca;
+                 }
+                 private T dfs(TreeNode root) {
+                   if (root == null)
+                     return new T(null, 0);
+                   T l = dfs(root.left);
+                   T r = dfs(root.right);
+                   if (l.depth > r.depth)
+                     return new T(l.lca, l.depth + 1);
+                   if (l.depth < r.depth)
+                     return new T(r.lca, r.depth + 1);
+                   return new T(root, l.depth + 1);
+                 }
+               }
+               `,
+                output: `[2]`,
               },
             }}
           />
         ),
       },
       q710: {
-        title: "Q (Q710)",
+        title: "Q866. Prime Palindrome (Q710)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q866. Prime Palindrome (Q710)"
+            content1={
+              <>
+                Given an integer n, return the smallest prime palindrome greater
+                than or equal to n.
+                <br />
+                An integer is prime if it has exactly two divisors: 1 and
+                itself. Note that 1 is not a prime number.
+                <br />
+                For example, 2, 3, 5, 7, 11, and 13 are all primes.
+                <br />
+                An integer is a palindrome if it reads the same from left to
+                right as it does from right to left.
+                <br />
+                For example, 101 and 12321 are palindromes.
+                <br />
+                The test cases are generated so that the answer always exists
+                and is in the range [2, 2 * 108].
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 6 <br />
+                    Output: 7
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 8 <br />
+                    Output: 11
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: n = 13 <br />
+                    Output: 101
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={<>1 &lt;= n &lt;= 10^8</>}
+            tc="n^2"
             sc="n"
             codes={{
               Java: {
-                code: ``,
-                output: ``,
+                code: `
+                // 8
+                class Solution {
+                  public int primePalindrome(int N) {
+                    if (N <= 2)
+                      return 2;
+                    if (N == 3)
+                      return 3;
+                    if (N <= 5)
+                      return 5;
+                    if (N <= 7)
+                      return 7;
+                    if (N <= 11)
+                      return 11;
+                    int n = String.valueOf(N).length();
+                    while (true) {
+                      for (int num : getPalindromes(n))
+                        if (num >= N && isPrime(num))
+                          return num;
+                      ++n;
+                    }
+                  }
+                  private List<Integer> getPalindromes(int n) {
+                    List<Integer> palindromes = new ArrayList<>();
+                    int length = n / 2;
+                    for (int i = (int) Math.pow(10, length - 1); i < (int) Math.pow(10, length); ++i) {
+                      String s = String.valueOf(i);
+                      String reversedS = new StringBuilder(s).reverse().toString();
+                      for (int j = 0; j < 10; ++j)
+                        palindromes.add(Integer.valueOf(s + String.valueOf(j) + reversedS));
+                    }
+                    return palindromes;
+                  }
+                  private boolean isPrime(int num) {
+                    for (int i = 2; i < (int) Math.sqrt(num) + 1; ++i)
+                      if (num % i == 0)
+                        return false;
+                    return true;
+                  }
+                }`,
+                output: `11`,
               },
             }}
           />
         ),
       },
       q711: {
-        title: "Q (Q711)",
+        title: "Q867. Transpose Matrix (Q711)",
         content: (
           <Comp
+            title="Q867. Transpose Matrix (Q711)"
             content1={<></>}
             content2={null}
             examples={[
