@@ -94124,21 +94124,44 @@ a = b + c;
         content: (
           <Comp
             title="Q878. Nth Magical Number (Q722)"
-            content1={<></>}
+            content1={
+              <>
+                A positive integer is magical if it is divisible by either a or
+                b.
+                <br />
+                Given the three integers n, a, and b, return the nth magical
+                number. Since the answer may be very large, return it modulo 109
+                + 7.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 1, a = 2, b = 3 <br />
+                    Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 4, a = 2, b = 3<br />
+                    Output: 6
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                1 &lt;= n &lt;= 10^9 <br />2 &lt;= a, b &lt;= 4 * 10^4
+              </>
+            }
+            tc="log n"
+            sc="1"
             codes={{
-              Java: {
+              Javascript: {
                 code: ``,
                 output: ``,
               },
