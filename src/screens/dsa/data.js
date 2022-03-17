@@ -93641,35 +93641,94 @@ a = b + c;
         ),
       },
       q717: {
-        title: "Q (Q717)",
+        title: "Q873. Length of Longest Fibonacci Subsequence (Q717)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q873. Length of Longest Fibonacci Subsequence (Q717)"
+            content1={
+              <>
+                A sequence x1, x2, ..., xn is Fibonacci-like if:
+                <br />
+                n &gt;= 3<br />
+                xi + xi+1 == xi+2 for all i + 2 &lt;= n<br />
+                Given a strictly increasing array arr of positive integers
+                forming a sequence, return the length of the longest
+                Fibonacci-like subsequence of arr. If one does not exist, return
+                0.
+                <br />A subsequence is derived from another sequence arr by
+                deleting any number of elements (including none) from arr,
+                without changing the order of the remaining elements. For
+                example, [3, 5, 8] is a subsequence of [3, 4, 5, 6, 7, 8].
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [1,2,3,4,5,6,7,8] <br />
+                    Output: 5 <br />
+                    Explanation: The longest subsequence that is fibonacci-like:
+                    [1,2,3,5,8].
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [1,3,7,11,12,14,18] <br />
+                    Output: 3 <br />
+                    Explanation: The longest subsequence that is fibonacci-like:
+                    [1,11,12], [3,11,14] or [7,11,18].
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                3 &lt;= arr.length &lt;= 1000 <br />1 &lt;= arr[i] &lt; arr[i +
+                1] &lt;= 109
+              </>
+            }
+            tc="n^2"
+            sc="n^2"
             codes={{
               Java: {
-                code: ``,
-                output: ``,
+                code: `
+                // Input: arr = [1,2,3,4,5,6,7,8]
+                class Solution {
+                  public int lenLongestFibSubseq(int[] A) {
+                    final int n = A.length;
+                    int ans = 0;
+                    int[][] dp = new int[n][n];
+                    Arrays.stream(dp).forEach(row -> Arrays.fill(row, 2));
+                    Map<Integer, Integer> m = new HashMap<>();
+                    for (int i = 0; i < n; ++i)
+                      m.put(A[i], i);
+                    for (int j = 0; j < n; ++j)
+                      for (int k = j + 1; k < n; ++k) {
+                        final int ai = A[k] - A[j];
+                        if (ai < A[j] && m.containsKey(ai)) {
+                          final int i = m.get(ai);
+                          dp[j][k] = dp[i][j] + 1;
+                          ans = Math.max(ans, dp[j][k]);
+                        }
+                      }
+                    return ans;
+                  }
+                }
+                `,
+                output: `5`,
               },
             }}
           />
         ),
       },
       q718: {
-        title: "Q (Q718)",
+        title: "Q874. Walking Robot Simulation (Q718)",
         content: (
           <Comp
+            title="Q874. Walking Robot Simulation (Q718)"
             content1={<></>}
             content2={null}
             examples={[
