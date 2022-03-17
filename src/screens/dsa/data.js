@@ -92515,7 +92515,497 @@ a = b + c;
         ),
       },
       q705: {
-        title: "Q (Q705)",
+        title: "Q861. Score After Flipping Matrix (Q705)",
+        content: (
+          <Comp
+            title="Q861. Score After Flipping Matrix (Q705)"
+            content1={
+              <>
+                A move consists of choosing any row or column and toggling each
+                value in that row or column (i.e., changing all 0's to 1's, and
+                all 1's to 0's).
+                <br />
+                Every row of the matrix is interpreted as a binary number, and
+                the score of the matrix is the sum of these numbers.
+                <br />
+                Return the highest possible score after making any number of
+                moves (including zero moves).
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: grid = [[0,0,1,1],[1,0,1,0],[1,1,0,0]]
+                    <br /> Output: 39 <br />
+                    <br /> Explanation: 0b1111 + 0b1001 + 0b1111 = 15 + 9 + 15 =
+                    39
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: grid = [[0]] <br />
+                    Output: 1
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                m == grid.length <br />
+                n == grid[i].length <br />
+                1 &lt;= m, n &lt;= 20 <br />
+                grid[i][j] is either 0 or 1.
+              </>
+            }
+            tc="m.n"
+            sc="m.n"
+            codes={{
+              Java: {
+                code: `/**
+                * @param {number[][]} grid
+                * @return {number}
+                */
+               var matrixScore = function(grid) {
+                   const m = grid.length;
+                   const n = grid[0].length;
+                   let res = m;
+                   for (let j = 1; j < n; ++j) {
+                     let onesCount = 0;
+                     for (let i = 0; i < m; ++i)
+                       onesCount += grid[i][j] == grid[i][0] ? 1 : 0;
+                     res = res * 2 + Math.max(onesCount, m - onesCount);
+                   }
+                   return res;
+               };
+               console.log(matrixScore([[0,0,1,1],[1,0,1,0],[1,1,0,0]]))`,
+                output: `39`,
+              },
+            }}
+          />
+        ),
+      },
+      q706: {
+        title: "Q862. Shortest Subarray with Sum at Least K (Q706)",
+        content: (
+          <Comp
+            title="Q862. Shortest Subarray with Sum at Least K (Q706)"
+            content1={
+              <>
+                Given an integer array nums and an integer k, return the length
+                of the shortest non-empty subarray of nums with a sum of at
+                least k. If there is no such subarray, return -1.
+                <br />A subarray is a contiguous part of an array.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [1], k = 1<br />
+                    Output: 1
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [1,2], k = 4<br />
+                    Output: -1
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [2,-1,2], k = 3<br />
+                    Output: 3
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 10^5 <br />
+                -10^5 &lt;= nums[i] &lt;= 10^5
+                <br />1 &lt;= k &lt;= 10^9
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `
+                // A = [1] , k = 1
+                class Solution {
+                  public int shortestSubarray(int[] A, int K) {
+                    final int n = A.length;
+                    int ans = n + 1;
+                    Deque<Integer> q = new ArrayDeque<>();
+                    long[] prefix = new long[n + 1];
+                    for (int i = 0; i < n; ++i)
+                      prefix[i + 1] = (long) A[i] + prefix[i];
+                    for (int i = 0; i < n + 1; ++i) {
+                      while (!q.isEmpty() && prefix[i] - prefix[q.getFirst()] >= K)
+                        ans = Math.min(ans, i - q.pollFirst());
+                      while (!q.isEmpty() && prefix[i] <= prefix[q.getLast()])
+                        q.pollLast();
+                      q.addLast(i);
+                    }
+                    return ans <= n ? ans : -1;
+                  }
+                }
+                `,
+                output: `1`,
+              },
+            }}
+          />
+        ),
+      },
+      q707: {
+        title: "Q (Q707)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q708: {
+        title: "Q (Q708)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q709: {
+        title: "Q (Q709)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q710: {
+        title: "Q (Q710)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q711: {
+        title: "Q (Q711)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q712: {
+        title: "Q (Q712)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q713: {
+        title: "Q (Q713)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q714: {
+        title: "Q (Q714)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q715: {
+        title: "Q (Q715)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q716: {
+        title: "Q (Q716)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q717: {
+        title: "Q (Q717)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q718: {
+        title: "Q (Q718)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q719: {
+        title: "Q (Q719)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q720: {
+        title: "Q (Q720)",
         content: (
           <Comp
             content1={<></>}
