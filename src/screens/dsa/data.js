@@ -93748,57 +93748,379 @@ a = b + c;
                 <br />
                 Return the maximum Euclidean distance that the robot ever gets
                 from the origin squared (i.e. if the distance is 5, return 25).
+                <br />
+                Note:
+                <br />
+                North means +Y direction. <br />
+                East means +X direction. <br />
+                South means -Y direction. <br />
+                West means -X direction.
               </>
             }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: commands = [4,-1,3], obstacles = []
+                    <br /> Output: 25 <br />
+                    Explanation: The robot starts at (0, 0): <br />
+                    1. Move north 4 units to (0, 4). <br />
+                    2. Turn right. <br />
+                    3. Move east 3 units to (3, 4). <br />
+                    The furthest point the robot ever gets from the origin is
+                    (3, 4), which squared is 32 + 42 = 25 units away.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: commands = [4,-1,4,-2,4], obstacles = [[2,4]] <br />
+                    Output: 65 <br />
+                    Explanation: The robot starts at (0, 0): <br />
+                    1. Move north 4 units to (0, 4). <br />
+                    2. Turn right. <br />
+                    3. Move east 1 unit and get blocked by the obstacle at (2,
+                    4), robot is at (1, 4).
+                    <br />
+                    4. Turn left. <br />
+                    5. Move north 4 units to (1, 8). <br />
+                    The furthest point the robot ever gets from the origin is
+                    (1, 8), which squared is 12 + 82 = 65 units away.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: commands = [6,-1,-1,6], obstacles = []
+                    <br /> Output: 36
+                    <br /> Explanation: The robot starts at (0, 0):
+                    <br /> 1. Move north 6 units to (0, 6).
+                    <br /> 2. Turn right.
+                    <br /> 3. Turn right.
+                    <br /> 4. Move south 6 units to (0, 0).
+                    <br /> The furthest point the robot ever gets from the
+                    origin is (0, 6), which squared is 62 = 36 units away.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= commands.length &lt;= 10^4 <br />
+                commands[i] is either -2, -1, or an integer in the range [1, 9].
+                <br /> 0 &lt;= obstacles.length &lt;= 10^4
+                <br /> -3 * 10^4 &lt;= xi, yi &lt;= 3 * 10^4
+                <br /> The answer is guaranteed to be less than 231.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Java: {
-                code: ``,
-                output: ``,
+                code:
+                  // Input: commands = [4,-1,4,-2,4], obstacles = [[2,4]]
+                  `class Solution {
+                  public int robotSim(int[] commands, int[][] obstacles) {
+                    final int[] dirs = {0, 1, 0, -1, 0};
+                    int ans = 0;
+                    int d = 0; 
+                    int x = 0;
+                    int y = 0; 
+                    Set<Pair<Integer, Integer>> set = new HashSet<>();
+                    for (int[] o : obstacles)
+                      set.add(new Pair<>(o[0], o[1]));
+                    for (final int c : commands) {
+                      if (c == -1) {
+                        d = (d + 1) % 4;
+                      } else if (c == -2) {
+                        d = (d + 3) % 4;
+                      } else {
+                        for (int step = 0; step < c; ++step) {
+                          if (set.contains(new Pair<>(x + dirs[d], y + dirs[d + 1])))
+                            break;
+                          x += dirs[d];
+                          y += dirs[d + 1];
+                        }
+                      }
+                      ans = Math.max(ans, x * x + y * y);
+                    }
+                    return ans;
+                  }
+                }
+                `,
+                output: `65`,
               },
             }}
           />
         ),
       },
       q719: {
-        title: "Q (Q719)",
+        title: "Q875. Koko Eating Bananas (Q719)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q875. Koko Eating Bananas (Q719)"
+            content1={
+              <>
+                Koko loves to eat bananas. There are n piles of bananas, the ith
+                pile has piles[i] bananas. The guards have gone and will come
+                back in h hours.
+                <br />
+                Koko can decide her bananas-per-hour eating speed of k. Each
+                hour, she chooses some pile of bananas and eats k bananas from
+                that pile. If the pile has less than k bananas, she eats all of
+                them instead and will not eat any more bananas during this hour.
+                <br />
+                Koko likes to eat slowly but still wants to finish eating all
+                the bananas before the guards return.
+                <br />
+                Return the minimum integer k such that she can eat all the
+                bananas within h hours.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: piles = [3,6,7,11], h = 8<br />
+                    Output: 4
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: piles = [30,11,23,4,20], h = 5<br />
+                    Output: 30
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: piles = [30,11,23,4,20], h = 6<br />
+                    Output: 23
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                1 &lt;= piles.length &lt;= 10^4 <br />
+                piles.length &lt;= h &lt;= 10^9
+                <br />1 &lt;= piles[i] &lt;= 109
+              </>
+            }
+            tc="n.log n"
+            sc="1"
             codes={{
-              Java: {
-                code: ``,
-                output: ``,
+              Javascript: {
+                code: `/**
+                * @param {number[]} piles
+                * @param {number} h
+                * @return {number}
+                */
+               var minEatingSpeed = function(piles, h) {
+                 let l = 1;
+                 let r = Math.max(...piles)
+                 while (l < r) {
+                   let m = l + parseInt((r - l) / 2);
+                   if (eatHours(piles, m) <= h)
+                     r = m;
+                   else
+                     l = m + 1;
+                 }
+                 return l;  
+               };            
+               function eatHours(piles, k) {
+                   let hours = 0;
+                   for (let pile of piles)
+                     hours += parseInt((pile - 1) / k) + 1; 
+                   return hours;
+                 }
+               console.log(minEatingSpeed([3,6,7,11],8))`,
+                output: `4`,
               },
             }}
           />
         ),
       },
       q720: {
-        title: "Q (Q720)",
+        title: "Q876. Middle of the Linked List (Q720)",
+        content: (
+          <Comp
+            title="Q876. Middle of the Linked List (Q720)"
+            content1={
+              <>
+                Given the head of a singly linked list, return the middle node
+                of the linked list.
+                <br />
+                If there are two middle nodes, return the second middle node.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: head = [1,2,3,4,5]
+                    <br />
+                    Output: [3,4,5]
+                    <br />
+                    Explanation: The middle node of the list is node 3.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: head = [1,2,3,4,5,6]
+                    <br />
+                    Output: [4,5,6]
+                    <br />
+                    Explanation: Since the list has two middle nodes with values
+                    3 and 4, we return the second one.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                The number of nodes in the list is in the range [1, 100].
+                <br /> 1 &lt;= Node.val &lt;= 100
+              </>
+            }
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: ` function ListNode(val, next) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.next = (next===undefined ? null : next)
+            }
+             
+            /**
+             * @param {ListNode} head
+             * @return {ListNode}
+             */
+            var middleNode = function(head) {
+              let slow = head;
+              let fast = head;
+              while (fast && fast.next) {
+                slow = slow.next;
+                fast = fast.next.next;
+              }
+              return slow;
+            };
+            
+            const l = new ListNode(1)
+            l.next =  new ListNode(2)
+            l.next.next =  new ListNode(3)
+            l.next.next.next  =  new ListNode(4)
+            l.next.next.next.next =    new ListNode(5)
+            console.log(middleNode(l))`,
+                output: `ListNode {
+                  val: 3,
+                  next: ListNode { val: 4, next: ListNode { val: 5, next: null } }
+                }`,
+              },
+            }}
+          />
+        ),
+      },
+      q721: {
+        title: "Q877. Stone Game (Q721)",
+        content: (
+          <Comp
+            title="Q877. Stone Game (Q721)"
+            content1={
+              <>
+                Alice and Bob play a game with piles of stones. There are an
+                even number of piles arranged in a row, and each pile has a
+                positive integer number of stones piles[i].
+                <br />
+                The objective of the game is to end with the most stones. The
+                total number of stones across all the piles is odd, so there are
+                no ties.
+                <br />
+                Alice and Bob take turns, with Alice starting first. Each turn,
+                a player takes the entire pile of stones either from the
+                beginning or from the end of the row. This continues until there
+                are no more piles left, at which point the person with the most
+                stones wins.
+                <br />
+                Assuming Alice and Bob play optimally, return true if Alice wins
+                the game, or false if Bob wins.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: piles = [5,3,4,5] <br />
+                    Output: true <br />
+                    Explanation: <br />
+                    Alice starts first, and can only take the first 5 or the
+                    last 5. <br />
+                    Say she takes the first 5, so that the row becomes [3, 4,
+                    5]. <br />
+                    If Bob takes 3, then the board is [4, 5], and Alice takes 5
+                    to win with 10 points. <br />
+                    If Bob takes the last 5, then the board is [3, 4], and Alice
+                    takes 4 to win with 9 points. <br />
+                    This demonstrated that taking the first 5 was a winning move
+                    for Alice, so we return true.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: piles = [3,7,2,3] <br />
+                    Output: true
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                2 &lt;= piles.length &lt;= 500 <br />
+                piles.length is even. <br />
+                1 &lt;= piles[i] &lt;= 500 <br />
+                sum(piles[i]) is odd.
+              </>
+            }
+            tc="n^2"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} piles
+                * @return {boolean}
+                */
+               var stoneGame = function(piles) {
+                 const n = piles.length;
+                 const dp = piles.slice();
+                 for (let d = 1; d < n; ++d)
+                   for (let j = n - 1; j - d >= 0; --j) {
+                     const i = j - d;
+                       dp[j] = Math.max(piles[i] - dp[j], piles[j] - dp[j - 1]);
+                     }
+                 return dp[n - 1] > 0;  
+               };
+               console.log(stoneGame([5,3,4,5]))`,
+                output: `true`,
+              },
+            }}
+          />
+        ),
+      },
+      q722: {
+        title: "Q (Q722)",
         content: (
           <Comp
             content1={<></>}
@@ -93823,6 +94145,214 @@ a = b + c;
           />
         ),
       },
+      q723: {
+        title: "Q (Q723)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q724: {
+        title: "Q (Q724)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q725: {
+        title: "Q (Q725)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q726: {
+        title: "Q (Q726)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q727: {
+        title: "Q (Q727)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q728: {
+        title: "Q (Q728)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q729: {
+        title: "Q (Q729)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+    },
+    q730: {
+      title: "Q (Q730)",
+      content: (
+        <Comp
+          content1={<></>}
+          content2={null}
+          examples={[
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+          ]}
+          constraints={<></>}
+          tc="n"
+          sc="n"
+          codes={{
+            Java: {
+              code: ``,
+              output: ``,
+            },
+          }}
+        />
+      ),
     },
   },
   notes: {
