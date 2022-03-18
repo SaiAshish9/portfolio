@@ -97079,87 +97079,271 @@ a = b + c;
       ),
     },
     q754: {
-      title: "Q (Q754)",
+      title: "Q910. Smallest Range II (Q754)",
       content: (
         <Comp
-          content1={<></>}
+          title="Q910. Smallest Range II (Q754)"
+          content1={
+            <>
+              You are given an integer array nums and an integer k.
+              <br />
+              For each index i where 0 &lt;= i &lt; nums.length, change nums[i]
+              to be either nums[i] + k or nums[i] - k.
+              <br />
+              The score of nums is the difference between the maximum and
+              minimum elements in nums.
+              <br />
+              Return the minimum score of nums after changing the values at each
+              index.
+            </>
+          }
           content2={null}
           examples={[
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: nums = [1], k = 0 <br />
+                  Output: 0 <br />
+                  Explanation: The score is max(nums) - min(nums) = 1 - 1 = 0.
+                </>
+              ),
             },
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: nums = [0,10], k = 2 <br />
+                  Output: 6 <br />
+                  Explanation: Change nums to be [2, 8]. The score is max(nums)
+                  - min(nums) = 8 - 2 = 6.
+                </>
+              ),
             },
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: nums = [1,3,6], k = 3 <br />
+                  Output: 3 <br />
+                  Explanation: Change nums to be [4, 6, 3]. The score is
+                  max(nums) - min(nums) = 6 - 3 = 3.
+                </>
+              ),
             },
           ]}
-          constraints={<></>}
+          constraints={
+            <>
+              1 &lt;= nums.length &lt;= 10^4 <br />
+              0 &lt;= nums[i] &lt;= 10^4 <br />0 &lt;= k &lt;= 10^4
+            </>
+          }
           tc="n"
           sc="n"
           codes={{
             Javascript: {
-              code: ``,
-              output: ``,
+              code: `/**
+              * @param {number[]} nums
+              * @param {number} k
+              * @return {number}
+              */
+             var smallestRangeII = function(nums, k) {
+               nums = nums.sort((a,b)=>a-b) 
+               let ans = nums[nums.length - 1] - nums[0];
+               let left = nums[0] + k;
+               let right = nums[nums.length - 1] - k;
+               for (let i = 0; i + 1 < nums.length; ++i) {
+                 let min = Math.min(left, nums[i + 1] - k);
+                 let max = Math.max(right, nums[i] + k);
+                 ans = Math.min(ans, max - min);
+               }
+               return ans; 
+             };
+             
+             console.log(smallestRangeII([1],0))`,
+              output: `0`,
             },
           }}
         />
       ),
     },
     q755: {
-      title: "Q (Q755)",
+      title: "Q911. Online Election (Q755)",
       content: (
         <Comp
-          content1={<></>}
+          title="Q911. Online Election (Q755)"
+          content1={
+            <>
+              You are given two integer arrays persons and times. In an
+              election, the ith vote was cast for persons[i] at time times[i].
+              <br />
+              For each query at a time t, find the person that was leading the
+              election at time t. Votes cast at time t will count towards our
+              query. In the case of a tie, the most recent vote (among tied
+              candidates) wins.
+              <br />
+              Implement the TopVotedCandidate class:
+              <br />
+              TopVotedCandidate(int[] persons, int[] times) Initializes the
+              object with the persons and times arrays.
+              <br />
+              int q(int t) Returns the number of the person that was leading the
+              election at time t according to the mentioned rules.
+            </>
+          }
           content2={null}
           examples={[
             {
-              content: <></>,
-            },
-            {
-              content: <></>,
-            },
-            {
-              content: <></>,
+              content: (
+                <>
+                  Input <br />
+                  ["TopVotedCandidate", "q", "q", "q", "q", "q", "q"] <br />
+                  [[[0, 1, 1, 0, 0, 1, 0], [0, 5, 10, 15, 20, 25, 30]], [3],
+                  [12], [25], [15], [24], [8]] Output <br />
+                  [null, 0, 1, 1, 0, 0, 1]
+                  <br />
+                  Explanation
+                  <br /> TopVotedCandidate topVotedCandidate = new
+                  TopVotedCandidate([0, 1, 1, 0, 0, 1, 0], [0, 5, 10, 15, 20,
+                  25, 30]);
+                  <br /> topVotedCandidate.q(3); // return 0, At time 3, the
+                  votes are [0], and 0 is leading.
+                  <br /> topVotedCandidate.q(12); // return 1, At time 12, the
+                  votes are [0,1,1], and 1 is leading.
+                  <br /> topVotedCandidate.q(25); // return 1, At time 25, the
+                  votes are [0,1,1,0,0,1], and 1 is leading (as ties go to the
+                  most recent vote.)
+                  <br /> topVotedCandidate.q(15); // return 0
+                  <br /> topVotedCandidate.q(24); // return 0
+                  <br /> topVotedCandidate.q(8); // return 1
+                </>
+              ),
             },
           ]}
-          constraints={<></>}
-          tc="n"
+          constraints={
+            <>
+              1 &lt;= persons.length &lt;= 5000 <br />
+              times.length == persons.length <br />
+              0 &lt;= persons[i] &lt; persons.length <br />
+              0 &lt;= times[i] &lt;= 10^9 <br />
+              times is sorted in a strictly increasing order. <br />
+              times[0] &lt;= t &lt;= 10^9 <br />
+              At most 104 calls will be made to q.
+            </>
+          }
+          tc="log n"
           sc="n"
           codes={{
-            Javascript: {
-              code: ``,
-              output: ``,
+            Java: {
+              code: `
+// Input
+// ["TopVotedCandidate", "q", "q", "q", "q", "q", "q"]
+// [[[0, 1, 1, 0, 0, 1, 0], [0, 5, 10, 15, 20, 25, 30]], [3], [12], [25], [15], [24], [8]]
+              class TopVotedCandidate {
+                public TopVotedCandidate(int[] persons, int[] times) {
+                  this.times = times;
+                  int lead = -1;
+                  Map<Integer, Integer> count = new HashMap<>(); 
+                  for (int i = 0; i < persons.length; ++i) {
+                    count.merge(persons[i], 1, Integer::sum);
+                    if (count.get(persons[i]) >= count.getOrDefault(lead, 0))
+                      lead = persons[i];
+                    timeToLead.put(times[i], lead);
+                  }
+                }
+                public int q(int t) {
+                  final int i = Arrays.binarySearch(times, t);
+                  return i < 0 ? timeToLead.get(times[-i - 2]) : timeToLead.get(times[i]);
+                }
+                private final int[] times;
+                private Map<Integer, Integer> timeToLead = new HashMap<>();
+              }
+              /**
+               * Your TopVotedCandidate object will be instantiated and called as such:
+               * TopVotedCandidate obj = new TopVotedCandidate(persons, times);
+               * int param_1 = obj.q(t);
+               */`,
+              output: `[null, 0, 1, 1, 0, 0, 1]`,
             },
           }}
         />
       ),
     },
     q756: {
-      title: "Q (Q756)",
+      title: "Q912. Sort an Array (Q756)",
       content: (
         <Comp
-          content1={<></>}
+          title="Q912. Sort an Array (Q756)"
+          content1={
+            <>
+              Given an array of integers nums, sort the array in ascending
+              order.
+            </>
+          }
           content2={null}
           examples={[
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: nums = [5,2,3,1]
+                  <br />
+                  Output: [1,2,3,5]
+                </>
+              ),
             },
             {
-              content: <></>,
-            },
-            {
-              content: <></>,
+              content: (
+                <>
+                  Input: nums = [5,1,1,2,0,0] <br />
+                  Output: [0,0,1,1,2,5]
+                </>
+              ),
             },
           ]}
-          constraints={<></>}
-          tc="n"
+          constraints={
+            <>
+              1 &lt;= nums.length &lt;= 5 * 10^4 -5 * 10^4 &lt;= nums[i] &lt;= 5
+              * 10^4
+            </>
+          }
+          tc="n.log n"
           sc="n"
           codes={{
-            Javascript: {
-              code: ``,
-              output: ``,
+            Java: {
+              code: `
+              // Input: nums = [5,2,3,1]
+              class Solution {
+                public int[] sortArray(int[] nums) {
+                  quickSort(nums, 0, nums.length - 1);
+                  return nums;
+                }
+              
+                private void quickSort(int[] A, int l, int r) {
+                  if (l >= r)
+                    return;
+              
+                  final int m = partition(A, l, r);
+                  quickSort(A, l, m - 1);
+                  quickSort(A, m + 1, r);
+                }
+              
+                private int partition(int[] A, int l, int r) {
+                  final int randIndex = new Random().nextInt(r - l + 1) + l;
+                  swap(A, randIndex, r);
+                  final int pivot = A[r];
+                  int nextSwapped = l;
+                  for (int i = l; i < r; ++i)
+                    if (A[i] <= pivot)
+                      swap(A, nextSwapped++, i);
+                  swap(A, nextSwapped, r);
+                  return nextSwapped;
+                }
+              
+                private void swap(int[] A, int i, int j) {
+                  final int temp = A[i];
+                  A[i] = A[j];
+                  A[j] = temp;
+                }
+              }
+              `,
+              output: `[1,2,3,5]`,
             },
           }}
         />
