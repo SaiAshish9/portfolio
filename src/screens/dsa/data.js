@@ -96123,6 +96123,196 @@ a = b + c;
       content: (
         <Comp
           title="Q900. RLE Iterator (Q744)"
+          content1={
+            <>
+              We can use run-length encoding (i.e., RLE) to encode a sequence of
+              integers. In a run-length encoded array of even length encoding
+              (0-indexed), for all even i, encoding[i] tells us the number of
+              times that the non-negative integer value encoding[i + 1] is
+              repeated in the sequence.
+              <br />
+              For example, the sequence arr = [8,8,8,5,5] can be encoded to be
+              encoding = [3,8,2,5]. encoding = [3,8,0,9,2,5] and encoding =
+              [2,8,1,8,2,5] are also valid RLE of arr.
+              <br />
+              Given a run-length encoded array, design an iterator that iterates
+              through it.
+              <br />
+              Implement the RLEIterator class:
+              <br />
+              RLEIterator(int[] encoded) Initializes the object with the encoded
+              array encoded.
+              <br />
+              int next(int n) Exhausts the next n elements and returns the last
+              element exhausted in this way. If there is no element left to
+              exhaust, return -1 instead.
+            </>
+          }
+          content2={null}
+          examples={[
+            {
+              content: (
+                <>
+                  Input <br />
+                  ["RLEIterator", "next", "next", "next", "next"] <br />
+                  [[[3, 8, 0, 9, 2, 5]], [2], [1], [1], [2]] <br />
+                  Output <br />
+                  [null, 8, 8, 5, -1] <br />
+                  Explanation
+                  <br /> RLEIterator rLEIterator = new RLEIterator([3, 8, 0, 9,
+                  2, 5]); // This maps to the sequence [8,8,8,5,5].
+                  <br /> rLEIterator.next(2); // exhausts 2 terms of the
+                  sequence, returning 8. The remaining sequence is now [8, 5,
+                  5].
+                  <br /> rLEIterator.next(1); // exhausts 1 term of the
+                  sequence, returning 8. The remaining sequence is now [5, 5].
+                  <br /> rLEIterator.next(1); // exhausts 1 term of the
+                  sequence, returning 5. The remaining sequence is now [5].
+                  <br /> rLEIterator.next(2); // exhausts 2 terms, returning -1.
+                  This is because the first term exhausted was 5,
+                  <br /> but the second term did not exist. Since the last term
+                  exhausted does not exist, we return -1.
+                </>
+              ),
+            },
+          ]}
+          constraints={
+            <>
+              2 &lt;= encoding.length &lt;= 1000 <br />
+              encoding.length is even. <br />
+              0 &lt;= encoding[i] &lt;= 109 <br />
+              1 &lt;= n &lt;= 109 <br />
+              At most 1000 calls will be made to next.
+            </>
+          }
+          tc="n"
+          sc="n"
+          codes={{
+            Java: {
+              code: `// Input
+              // ["RLEIterator", "next", "next", "next", "next"]
+              // [[[3, 8, 0, 9, 2, 5]], [2], [1], [1], [2]]
+              class RLEIterator {
+                public RLEIterator(int[] A) {
+                  this.A = A;
+                }    
+                public int next(int n) {
+                  while (index < A.length && A[index] < n) {
+                    n -= A[index];
+                    index += 2;
+                  }
+                  if (index == A.length)
+                    return -1;
+                  A[index] -= n;
+                  return A[index + 1];
+                }
+                private int index = 0;
+                private int[] A;
+              }
+              /**
+               * Your RLEIterator object will be instantiated and called as such:
+               * RLEIterator obj = new RLEIterator(encoding);
+               * int param_1 = obj.next(n);
+               */`,
+              output: `[null, 8, 8, 5, -1]`,
+            },
+          }}
+        />
+      ),
+    },
+    q745: {
+      title: "Q901. Online Stock Span (Q745)",
+      content: (
+        <Comp
+          title="Q901. Online Stock Span (Q745)"
+          content1={
+            <>
+              Design an algorithm that collects daily price quotes for some
+              stock and returns the span of that stock's price for the current
+              day.
+              <br />
+              The span of the stock's price today is defined as the maximum
+              number of consecutive days (starting from today and going
+              backward) for which the stock price was less than or equal to
+              today's price.
+              <br />
+              For example, if the price of a stock over the next 7 days were
+              [100,80,60,70,60,75,85], then the stock spans would be
+              [1,1,1,2,1,4,6].
+              <br />
+              Implement the StockSpanner class:
+              <br />
+              StockSpanner() Initializes the object of the class.
+              <br />
+              int next(int price) Returns the span of the stock's price given
+              that today's price is price.
+            </>
+          }
+          content2={null}
+          examples={[
+            {
+              content: (
+                <>
+                  Input <br />
+                  ["StockSpanner", "next", "next", "next", "next", "next",
+                  "next", "next"] [[], [100], [80], [60], [70], [60], [75],
+                  [85]] <br />
+                  Output <br />
+                  [null, 1, 1, 1, 2, 1, 4, 6] <br />
+                  Explanation
+                  <br /> StockSpanner stockSpanner = new StockSpanner();
+                  <br /> stockSpanner.next(100); // return 1
+                  <br /> stockSpanner.next(80); // return 1
+                  <br /> stockSpanner.next(60); // return 1
+                  <br /> stockSpanner.next(70); // return 2
+                  <br /> stockSpanner.next(60); // return 1
+                  <br /> stockSpanner.next(75); // return 4, because the last 4
+                  prices (including today's price of 75) were less than or equal
+                  to today's price.
+                  <br /> stockSpanner.next(85); // return 6
+                </>
+              ),
+            },
+          ]}
+          constraints={
+            <>
+              1 &lt;= price &lt;= 10^5
+              <br />
+              At most 10^4 calls will be made to next.
+            </>
+          }
+          tc="n"
+          sc="n"
+          codes={{
+            Java: {
+              code: `// Input
+              // ["StockSpanner", "next", "next", "next", "next", "next", "next", "next"]
+              // [[], [100], [80], [60], [70], [60], [75], [85]]
+              class StockSpanner {
+                public int next(int price) {
+                  int span = 1;
+                  while (!stack.isEmpty() && stack.peek().getKey() <= price)
+                    span += stack.pop().getValue();
+                  stack.push(new Pair<>(price, span));
+                  return span;
+                }
+                private Stack<Pair<Integer, Integer>> stack = new Stack<>();
+              }
+              /**
+               * Your StockSpanner object will be instantiated and called as such:
+               * StockSpanner obj = new StockSpanner();
+               * int param_1 = obj.next(price);
+               */`,
+              output: `[null, 1, 1, 1, 2, 1, 4, 6]`,
+            },
+          }}
+        />
+      ),
+    },
+    q746: {
+      title: "Q (Q746)",
+      content: (
+        <Comp
           content1={<></>}
           content2={null}
           examples={[
@@ -96148,8 +96338,356 @@ a = b + c;
         />
       ),
     },
-    q745: {
-      title: "Q (Q745)",
+    q747: {
+      title: "Q (Q747)",
+      content: (
+        <Comp
+          content1={<></>}
+          content2={null}
+          examples={[
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+          ]}
+          constraints={<></>}
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: ``,
+              output: ``,
+            },
+          }}
+        />
+      ),
+    },
+    q748: {
+      title: "Q (Q748)",
+      content: (
+        <Comp
+          content1={<></>}
+          content2={null}
+          examples={[
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+          ]}
+          constraints={<></>}
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: ``,
+              output: ``,
+            },
+          }}
+        />
+      ),
+    },
+    q749: {
+      title: "Q (Q749)",
+      content: (
+        <Comp
+          content1={<></>}
+          content2={null}
+          examples={[
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+          ]}
+          constraints={<></>}
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: ``,
+              output: ``,
+            },
+          }}
+        />
+      ),
+    },
+    q750: {
+      title: "Q (Q750)",
+      content: (
+        <Comp
+          content1={<></>}
+          content2={null}
+          examples={[
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+          ]}
+          constraints={<></>}
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: ``,
+              output: ``,
+            },
+          }}
+        />
+      ),
+    },
+    q751: {
+      title: "Q (Q751)",
+      content: (
+        <Comp
+          content1={<></>}
+          content2={null}
+          examples={[
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+          ]}
+          constraints={<></>}
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: ``,
+              output: ``,
+            },
+          }}
+        />
+      ),
+    },
+    q752: {
+      title: "Q (Q752)",
+      content: (
+        <Comp
+          content1={<></>}
+          content2={null}
+          examples={[
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+          ]}
+          constraints={<></>}
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: ``,
+              output: ``,
+            },
+          }}
+        />
+      ),
+    },
+    q753: {
+      title: "Q (Q753)",
+      content: (
+        <Comp
+          content1={<></>}
+          content2={null}
+          examples={[
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+          ]}
+          constraints={<></>}
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: ``,
+              output: ``,
+            },
+          }}
+        />
+      ),
+    },
+    q754: {
+      title: "Q (Q754)",
+      content: (
+        <Comp
+          content1={<></>}
+          content2={null}
+          examples={[
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+          ]}
+          constraints={<></>}
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: ``,
+              output: ``,
+            },
+          }}
+        />
+      ),
+    },
+    q755: {
+      title: "Q (Q755)",
+      content: (
+        <Comp
+          content1={<></>}
+          content2={null}
+          examples={[
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+          ]}
+          constraints={<></>}
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: ``,
+              output: ``,
+            },
+          }}
+        />
+      ),
+    },
+    q756: {
+      title: "Q (Q756)",
+      content: (
+        <Comp
+          content1={<></>}
+          content2={null}
+          examples={[
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+          ]}
+          constraints={<></>}
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: ``,
+              output: ``,
+            },
+          }}
+        />
+      ),
+    },
+    q757: {
+      title: "Q (Q757)",
+      content: (
+        <Comp
+          content1={<></>}
+          content2={null}
+          examples={[
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+          ]}
+          constraints={<></>}
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: ``,
+              output: ``,
+            },
+          }}
+        />
+      ),
+    },
+    q758: {
+      title: "Q (Q758)",
+      content: (
+        <Comp
+          content1={<></>}
+          content2={null}
+          examples={[
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+          ]}
+          constraints={<></>}
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: ``,
+              output: ``,
+            },
+          }}
+        />
+      ),
+    },
+    q759: {
+      title: "Q (Q759)",
       content: (
         <Comp
           content1={<></>}
