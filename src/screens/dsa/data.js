@@ -94772,26 +94772,84 @@ a = b + c;
         ),
       },
       q729: {
-        title: "Q (Q729)",
+        title: "Q885. Spiral Matrix III (Q729)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q885. Spiral Matrix III (Q729)"
+            content1={
+              <>
+                You start at the cell (rStart, cStart) of an rows x cols grid
+                facing east. The northwest corner is at the first row and column
+                in the grid, and the southeast corner is at the last row and
+                column.
+                <br />
+                You will walk in a clockwise spiral shape to visit every
+                position in this grid. Whenever you move outside the grid's
+                boundary, we continue our walk outside the grid (but may return
+                to the grid boundary later.). Eventually, we reach all rows *
+                cols spaces of the grid.
+                <br />
+                Return an array of coordinates representing the positions of the
+                grid in the order you visited them.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode885,
+                content: (
+                  <>
+                    Input: rows = 1, <br /> cols = 4, <br /> rStart = 0, <br />{" "}
+                    cStart = 0
+                    <br /> Output: [[0,0],[0,1],[0,2],[0,3]]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: rows = 5, <br /> cols = 6, <br /> rStart = 1, <br />{" "}
+                    cStart = 4
+                    <br /> Output:
+                    [[1,4],[1,5],[2,5],[2,4],[2,3],[1,3],[0,3],[0,4],[0,5],[3,5],[3,4],[3,3],[3,2],[2,2],[1,2],[0,2],[4,5],[4,4],[4,3],[4,2],[4,1],[3,1],[2,1],[1,1],[0,1],[4,0],[3,0],[2,0],[1,0],[0,0]]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                1 &lt;= rows, cols &lt;= 100 <br />
+                0 &lt;= rStart &lt; rows <br />0 &lt;= cStart &lt; cols
+              </>
+            }
+            tc="n^2"
+            sc="n^2"
             codes={{
-              Java: {
-                code: ``,
-                output: ``,
+              Javascript: {
+                code: `/**
+                * @param {number} R
+                * @param {number} C
+                * @param {number} r0
+                * @param {number} c0
+                * @return {number[][]}
+                */
+               var spiralMatrixIII = function(R, C, r0, c0){
+                 const res = [];
+                 const dx = [1, 0, -1, 0];
+                 const dy = [0, 1, 0, -1];
+                 res.push([r0, c0]);
+                 for (let i = 0; res.length < R * C; ++i)
+                     for (let step = 0; step < parseInt(i / 2) + 1; ++step) {
+                       r0 += dy[i % 4];
+                       c0 += dx[i % 4];
+                       if (0 <= r0 && r0 < R && 0 <= c0 && c0 < C)
+                            res.push([r0, c0]);
+                 }
+                 return res;
+               };
+               
+               console.log(spiralMatrixIII(1,4,0,0))`,
+                output: `[ [ 0, 0 ], [ 0, 1 ], [ 0, 2 ], [ 0, 3 ] ]`,
               },
             }}
           />
@@ -94799,12 +94857,114 @@ a = b + c;
       },
     },
     q730: {
-      title: "Q (Q730)",
+      title: "Q886. Possible Bipartition (Q730)",
+      content: (
+        <Comp
+          title="Q886. Possible Bipartition (Q730)"
+          content1={
+            <>
+              We want to split a group of n people (labeled from 1 to n) into
+              two groups of any size. Each person may dislike some other people,
+              and they should not go into the same group.
+              <br />
+              Given the integer n and the array dislikes where dislikes[i] =
+              [ai, bi] indicates that the person labeled ai does not like the
+              person labeled bi, return true if it is possible to split everyone
+              into two groups in this way.
+            </>
+          }
+          content2={null}
+          examples={[
+            {
+              content: (
+                <>
+                  Input: n = 4, dislikes = [[1,2],[1,3],[2,4]]
+                  <br />
+                  Output: true
+                  <br />
+                  Explanation: group1 [1,4] and group2 [2,3].
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: n = 3, dislikes = [[1,2],[1,3],[2,3]]
+                  <br />
+                  Output: false
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: n = 5, dislikes = [[1,2],[2,3],[3,4],[4,5],[1,5]]
+                  <br /> Output: false
+                </>
+              ),
+            },
+          ]}
+          constraints={
+            <>
+              1 &lt;= n &lt;= 2000 <br />
+              0 &lt;= dislikes.length &lt;= 104 <br />
+              dislikes[i].length == 2 <br />
+              1 &lt;= dislikes[i][j] &lt;= n <br />
+              ai &lt; bi <br />
+              All the pairs of dislikes are unique.
+            </>
+          }
+          tc="v+e"
+          sc="v"
+          codes={{
+            Java: {
+              code: `
+              // Input: n = 4, dislikes = [[1,2],[1,3],[2,4]]
+              enum Color { WHITE, RED, GREEN }
+              class Solution {
+                public boolean possibleBipartition(int n, int[][] dislikes) {
+                  List<Integer>[] graph = new List[n + 1];
+                  Color[] colors = new Color[n + 1];
+                  Arrays.fill(colors, Color.WHITE);
+                  for (int i = 1; i <= n; ++i)
+                    graph[i] = new ArrayList<>();
+                  for (int[] d : dislikes) {
+                    final int u = d[0];
+                    final int v = d[1];
+                    graph[u].add(v);
+                    graph[v].add(u);
+                  }
+                  for (int i = 1; i <= n; ++i)
+                    if (colors[i] == Color.WHITE && !isValidColor(graph, i, colors, Color.RED))
+                      return false;
+                  return true;
+                }
+                private boolean isValidColor(List<Integer>[] graph, int u, Color[] colors, Color color) {
+                  if (colors[u] != Color.WHITE)
+                    return colors[u] == color;
+                  colors[u] = color; 
+                  for (final int v : graph[u])
+                    if (!isValidColor(graph, v, colors, color == Color.RED ? Color.GREEN : Color.RED))
+                      return false;
+                  return true;
+                }
+              }`,
+              output: `true`,
+            },
+          }}
+        />
+      ),
+    },
+    q731: {
+      title: "Q (Q731)",
       content: (
         <Comp
           content1={<></>}
           content2={null}
           examples={[
+            {
+              content: <></>,
+            },
             {
               content: <></>,
             },
