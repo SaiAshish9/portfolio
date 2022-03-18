@@ -96043,35 +96043,86 @@ a = b + c;
       content: (
         <Comp
           title="Q899. Orderly Queue (Q743)"
-          content1={<></>}
+          content1={
+            <>
+              You are given a string s and an integer k. You can choose one of
+              the first k letters of s and append it at the end of the string..
+              <br />
+              Return the lexicographically smallest string you could have after
+              applying the mentioned step any number of moves.
+            </>
+          }
           content2={null}
           examples={[
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: s = "cba", k = 1 <br />
+                  Output: "acb" <br />
+                  Explanation: <br />
+                  In the first move, we move the 1st character 'c' to the end,
+                  obtaining the string "bac".
+                  <br /> In the second move, we move the 1st character 'b' to
+                  the end, obtaining the final result "acb".
+                </>
+              ),
             },
             {
-              content: <></>,
-            },
-            {
-              content: <></>,
+              content: (
+                <>
+                  Input: s = "baaca", k = 3 <br />
+                  Output: "aaabc" <br />
+                  Explanation: <br />
+                  In the first move, we move the 1st character 'b' to the end,
+                  obtaining the string "aacab".
+                  <br /> In the second move, we move the 3rd character 'c' to
+                  the end, obtaining the final result "aaabc".
+                </>
+              ),
             },
           ]}
-          constraints={<></>}
+          constraints={
+            <>
+              1 &lt;= k &lt;= s.length &lt;= 1000 <br />s consist of lowercase
+              English letters.
+            </>
+          }
           tc="n"
           sc="n"
           codes={{
             Javascript: {
-              code: ``,
-              output: ``,
+              code: `/**
+              * @param {string} s
+              * @param {number} k
+              * @return {string}
+              */
+             var orderlyQueue = function(s, k) {
+               if (k > 1) {
+                 const chars = s.split("");
+                 chars.sort((a,b)=>a>b?1:-1);
+                 return chars.join("");
+               }
+               let ans = s;
+               for (let i = 1; i < s.length; ++i) {
+                   let s2 = s.substring(i) + s.substring(0, i);
+                   if (ans > s2)
+                     ans = s2;
+                 }
+               return ans;  
+             };
+             
+             console.log(orderlyQueue("cba",1))`,
+              output: `acb`,
             },
           }}
         />
       ),
     },
     q744: {
-      title: "Q (Q744)",
+      title: "Q900. RLE Iterator (Q744)",
       content: (
         <Comp
+          title="Q900. RLE Iterator (Q744)"
           content1={<></>}
           content2={null}
           examples={[
