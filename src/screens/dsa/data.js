@@ -313,6 +313,8 @@ import Leetcode872a from "assets/leetcode/872a.png";
 import Leetcode882 from "assets/leetcode/882.png";
 import Leetcode883 from "assets/leetcode/883.png";
 import Leetcode885 from "assets/leetcode/885.png";
+import Leetcode889 from "assets/leetcode/889.png";
+import Leetcode897 from "assets/leetcode/897.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -94956,7 +94958,1118 @@ a = b + c;
       ),
     },
     q731: {
-      title: "Q (Q731)",
+      title: "Q887. Super Egg Drop (Q731)",
+      content: (
+        <Comp
+          title="Q887. Super Egg Drop (Q731)"
+          content1={
+            <>
+              You are given k identical eggs and you have access to a building
+              with n floors labeled from 1 to n.
+              <br />
+              You know that there exists a floor f where 0 &lt;= f &lt;= n such
+              that any egg dropped at a floor higher than f will break, and any
+              egg dropped at or below floor f will not break.
+              <br />
+              Each move, you may take an unbroken egg and drop it from any floor
+              x (where 1 &lt;= x &lt;= n). If the egg breaks, you can no longer
+              use it. However, if the egg does not break, you may reuse it in
+              future moves.
+              <br />
+              Return the minimum number of moves that you need to determine with
+              certainty what the value of f is.
+            </>
+          }
+          content2={null}
+          examples={[
+            {
+              content: (
+                <>
+                  Input: k = 1, n = 2 <br />
+                  Output: 2 <br />
+                  Explanation: <br />
+                  Drop the egg from floor 1. If it breaks, we know that f = 0.{" "}
+                  <br />
+                  Otherwise, drop the egg from floor 2. If it breaks, we know
+                  that f = 1. <br />
+                  If it does not break, then we know f = 2. <br />
+                  Hence, we need at minimum 2 moves to determine with certainty
+                  what the value of f is.
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: k = 2, n = 6 <br />
+                  Output: 3
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: k = 3, n = 14 <br />
+                  Output: 4
+                </>
+              ),
+            },
+          ]}
+          constraints={
+            <>
+              1 &lt;= k &lt;= 100
+              <br />1 &lt;= n &lt;= 10^4
+            </>
+          }
+          tc="n.log n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: `/**
+              * @param {number} k
+              * @param {number} n
+              * @return {number}
+              */
+             var superEggDrop = function(k, n) {
+               let moves = 0;
+               const dp = Array.from(Array(n+1),()=>Array(k+1).fill(0));
+                 while (dp[moves][k] < n) {
+                   ++moves;
+                   for (let eggs = 1; eggs <= k; ++eggs)
+                     dp[moves][eggs] = dp[moves - 1][eggs - 1] + dp[moves - 1][eggs] + 1;
+                 }
+                 return moves;
+             };
+             
+             console.log(superEggDrop(3,14))`,
+              output: `4`,
+            },
+          }}
+        />
+      ),
+    },
+    q732: {
+      title: "Q888. Fair Candy Swap (Q732)",
+      content: (
+        <Comp
+          title="Q888. Fair Candy Swap (Q732)"
+          content1={
+            <>
+              Alice and Bob have a different total number of candies. You are
+              given two integer arrays aliceSizes and bobSizes where
+              aliceSizes[i] is the number of candies of the ith box of candy
+              that Alice has and bobSizes[j] is the number of candies of the jth
+              box of candy that Bob has.
+              <br />
+              Since they are friends, they would like to exchange one candy box
+              each so that after the exchange, they both have the same total
+              amount of candy. The total amount of candy a person has is the sum
+              of the number of candies in each box they have.
+              <br />
+              Return an integer array answer where answer[0] is the number of
+              candies in the box that Alice must exchange, and answer[1] is the
+              number of candies in the box that Bob must exchange. If there are
+              multiple answers, you may return any one of them. It is guaranteed
+              that at least one answer exists.
+            </>
+          }
+          content2={null}
+          examples={[
+            {
+              content: (
+                <>
+                  Input: aliceSizes = [1,1], bobSizes = [2,2]
+                  <br />
+                  Output: [1,2]
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: aliceSizes = [1,2], bobSizes = [2,3]
+                  <br />
+                  Output: [1,2]
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: aliceSizes = [2], bobSizes = [1,3]
+                  <br />
+                  Output: [2,3]
+                </>
+              ),
+            },
+          ]}
+          constraints={
+            <>
+              1 &lt;= aliceSizes.length, bobSizes.length &lt;= 104
+              <br />
+              1 &lt;= aliceSizes[i], bobSizes[j] &lt;= 10^5
+              <br />
+              Alice and Bob have a different total number of candies.
+              <br />
+              There will be at least one valid answer for the given input.
+            </>
+          }
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: `/**
+              * @param {number[]} aliceSizes
+              * @param {number[]} bobSizes
+              * @return {number[]}
+              */
+             var fairCandySwap = function(aliceSizes, bobSizes) {
+               const A = aliceSizes
+               const B = bobSizes
+               let diff = parseInt((A.reduce((a,b)=>a+b,0) - B.reduce((a,b)=>a+b,0)) / 2);
+               const set = new Set();
+               for (let b of B)
+                 set.add(b);
+               for (let a of A)
+                 if (set.has(a - diff))
+                   return [a, a - diff];
+             };
+             
+             console.log(fairCandySwap([1,2],[2,3]))`,
+              output: `[ 1, 2 ]`,
+            },
+          }}
+        />
+      ),
+    },
+    q733: {
+      title:
+        "Q889. Construct Binary Tree from Preorder and Postorder Traversal (Q733)",
+      content: (
+        <Comp
+          title="Q889. Construct Binary Tree from Preorder and Postorder Traversal (Q733)"
+          content1={
+            <>
+              Given two integer arrays, preorder and postorder where preorder is
+              the preorder traversal of a binary tree of distinct values and
+              postorder is the postorder traversal of the same tree, reconstruct
+              and return the binary tree.
+              <br />
+              If there exist multiple answers, you can return any of them.
+            </>
+          }
+          content2={null}
+          examples={[
+            {
+              img: Leetcode889,
+              content: (
+                <>
+                  Input: preorder = [1,2,4,5,3,6,7], <br /> postorder =
+                  [4,5,2,6,7,3,1]
+                  <br /> Output: [1,2,3,4,5,6,7]
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: preorder = [1], <br />
+                  postorder = [1] <br />
+                  Output: [1]
+                </>
+              ),
+            },
+          ]}
+          constraints={
+            <>
+              1 &lt;= preorder.length &lt;== 30 <br />
+              1 &lt;== preorder[i] &lt;== preorder.length <br />
+              All the values of preorder are unique. <br />
+              postorder.length == preorder.length <br />
+              1 &lt;== postorder[i] &lt;== postorder.length <br />
+              All the values of postorder are unique. <br />
+              It is guaranteed that preorder and postorder are the preorder
+              traversal and postorder traversal of the same binary tree.
+            </>
+          }
+          tc="n"
+          sc="n"
+          codes={{
+            Java: {
+              code: `/**
+              * Definition for a binary tree node.
+              * public class TreeNode {
+              *     int val;
+              *     TreeNode left;
+              *     TreeNode right;
+              *     TreeNode() {}
+              *     TreeNode(int val) { this.val = val; }
+              *     TreeNode(int val, TreeNode left, TreeNode right) {
+              *         this.val = val;
+              *         this.left = left;
+              *         this.right = right;
+              *     }
+              * }
+              */
+             class Solution {
+               public TreeNode constructFromPrePost(int[] pre, int[] post) {
+                 Map<Integer, Integer> postToIndex = new HashMap<>();        
+                 for (int i = 0; i < post.length; ++i)
+                   postToIndex.put(post[i], i);
+                 return build(pre, 0, pre.length - 1, post, 0, post.length - 1, postToIndex);
+               }
+             
+               private TreeNode build(int[] pre, int preStart, int preEnd, int[] post, int postStart,
+                                      int postEnd, Map<Integer, Integer> postToIndex) {
+                 if (preStart > preEnd)
+                   return null;
+                 if (preStart == preEnd)
+                   return new TreeNode(pre[preStart]);
+                 final int rootVal = pre[preStart];
+                 final int leftRootVal = pre[preStart + 1];
+                 final int leftRootPostIndex = postToIndex.get(leftRootVal);
+                 final int leftSize = leftRootPostIndex - postStart + 1;
+                 TreeNode root = new TreeNode(rootVal);
+                 root.left = build(pre, preStart + 1, preStart + leftSize, post, postStart, leftRootPostIndex,
+                                   postToIndex);
+                 root.right = build(pre, preStart + leftSize + 1, preEnd, post, leftRootPostIndex + 1,
+                                    postEnd - 1, postToIndex);
+                 return root;
+               }
+             }
+             `,
+              output: `[ 1 ]`,
+            },
+          }}
+        />
+      ),
+    },
+    q734: {
+      title: "Q890. Find and Replace Pattern (Q734)",
+      content: (
+        <Comp
+          title="Q890. Find and Replace Pattern (Q734)"
+          content1={
+            <>
+              Given a list of strings words and a string pattern, return a list
+              of words[i] that match pattern. You may return the answer in any
+              order.
+              <br />
+              A word matches the pattern if there exists a permutation of
+              letters p so that after replacing every letter x in the pattern
+              with p(x), we get the desired word.
+              <br />
+              Recall that a permutation of letters is a bijection from letters
+              to letters: every letter maps to another letter, and no two
+              letters map to the same letter.
+            </>
+          }
+          content2={null}
+          examples={[
+            {
+              content: (
+                <>
+                  Input: words = ["abc","deq","mee","aqq","dkd","ccc"], pattern
+                  = "abb"
+                  <br /> Output: ["mee","aqq"] <br />
+                  <br /> Explanation: "mee" matches the pattern because there is
+                  a permutation {"{a -> m, b -> e, ...}"}. "ccc" does not match
+                  the pattern because {"{a -> c, b -> c, ...}"} is not a
+                  permutation, since a and b map to the same letter.
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: words = ["a","b","c"], pattern = "a" <br />
+                  Output: ["a","b","c"]
+                </>
+              ),
+            },
+          ]}
+          constraints={
+            <>
+              1 &lt;= pattern.length &lt;= 20
+              <br />
+              1 &lt;= words.length &lt;= 50
+              <br />
+              words[i].length == pattern.length
+              <br />
+              pattern and words[i] are lowercase English letters.
+            </>
+          }
+          tc="n"
+          sc="n"
+          codes={{
+            Java: {
+              code: `// Input: words = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb"
+              class Solution {
+                public List<String> findAndReplacePattern(String[] words, String pattern) {
+                  List<String> ans = new ArrayList<>();
+                  for (final String word : words)
+                    if (isIsomorphic(word, pattern))
+                      ans.add(word);
+                  return ans;
+                }
+              
+                private boolean isIsomorphic(final String w, final String p) {
+                  Map<Character, Integer> map_w = new HashMap<>();
+                  Map<Character, Integer> map_p = new HashMap<>();
+                  for (Integer i = 0; i < w.length(); ++i)
+                    if (map_w.put(w.charAt(i), i) != map_p.put(p.charAt(i), i))
+                      return false;
+                  return true;
+                }
+              }
+              `,
+              output: `["mee","aqq"]`,
+            },
+          }}
+        />
+      ),
+    },
+    q735: {
+      title: "Q891. Sum of Subsequence Widths (Q735)",
+      content: (
+        <Comp
+          title="Q891. Sum of Subsequence Widths (Q735)"
+          content1={
+            <>
+              The width of a sequence is the difference between the maximum and
+              minimum elements in the sequence.
+              <br />
+              Given an array of integers nums, return the sum of the widths of
+              all the non-empty subsequences of nums. Since the answer may be
+              very large, return it modulo 109 + 7.
+              <br />A subsequence is a sequence that can be derived from an
+              array by deleting some or no elements without changing the order
+              of the remaining elements. For example, [3,6,2,7] is a subsequence
+              of the array [0,3,1,6,2,2,7].
+            </>
+          }
+          content2={null}
+          examples={[
+            {
+              content: (
+                <>
+                  Input: nums = [2,1,3] <br />
+                  Output: 6 <br />
+                  Explanation: The subsequences are [1], [2], [3], [2,1], [2,3],
+                  [1,3], [2,1,3].
+                  <br /> The corresponding widths are 0, 0, 0, 1, 1, 2, 2.
+                  <br /> The sum of these widths is 6.
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: nums = [2] <br />
+                  Output: 0
+                </>
+              ),
+            },
+          ]}
+          constraints={
+            <>
+              1 &lt;= nums.length &lt;= 10^5
+              <br />1 &lt;= nums[i] &lt;= 10^5
+            </>
+          }
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: `/**
+              * @param {number[]} nums
+              * @return {number}
+              */
+             var sumSubseqWidths = function(nums) {
+               const kMod = 1e9 + 7;
+               const n = nums.length;
+               let ans = 0;
+               let exp = 1;
+               nums = nums.sort((a,b)=>a-b);
+               for (let i = 0; i < n; ++i, exp = exp * 2 % kMod) {
+                 ans += (nums[i] - nums[n - i - 1]) * exp;
+                 ans %= kMod;
+               }
+               return parseInt(ans);
+             };
+             
+             console.log(sumSubseqWidths([2,1,3]))`,
+              output: `6`,
+            },
+          }}
+        />
+      ),
+    },
+    q736: {
+      title: "Q892. Surface Area of 3D Shapes (Q736)",
+      content: (
+        <Comp
+          title="Q892. Surface Area of 3D Shapes (Q736)"
+          content1={
+            <>
+              You are given an n x n grid where you have placed some 1 x 1 x 1
+              cubes. Each value v = grid[i][j] represents a tower of v cubes
+              placed on top of cell (i, j).
+              <br />
+              After placing these cubes, you have decided to glue any directly
+              adjacent cubes to each other, forming several irregular 3D shapes.
+              <br />
+              Return the total surface area of the resulting shapes.
+              <br />
+              Note: The bottom face of each shape counts toward its surface
+              area.
+            </>
+          }
+          content2={null}
+          examples={[
+            {
+              content: (
+                <>
+                  Input: grid = [[1,2],[3,4]] <br />
+                  Output: 34
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: grid = [[1,1,1],[1,0,1],[1,1,1]] <br />
+                  Output: 32
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: grid = [[2,2,2],[2,1,2],[2,2,2]] <br />
+                  Output: 46
+                </>
+              ),
+            },
+          ]}
+          constraints={
+            <>
+              n == grid.length == grid[i].length <br />
+              1 &lt;= n &lt;= 50 <br />0 &lt;= grid[i][j] &lt;= 50
+            </>
+          }
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: `/**
+              * @param {number[][]} grid
+              * @return {number}
+              */
+             var surfaceArea = function(grid) {
+               let ans = 0;
+               for (let i = 0; i < grid.length; ++i)
+                   for (let j = 0; j < grid.length; ++j) {
+                     if (grid[i][j] > 0)
+                       ans += grid[i][j] * 4 + 2;
+                     if (i > 0)
+                       ans -= Math.min(grid[i][j], grid[i - 1][j]) * 2;
+                     if (j > 0)
+                       ans -= Math.min(grid[i][j], grid[i][j - 1]) * 2;
+                   }
+                 return ans;   
+             };
+             console.log(surfaceArea([[1,2],[3,4]]))`,
+              output: `34`,
+            },
+          }}
+        />
+      ),
+    },
+    q737: {
+      title: "Q893. Groups of Special-Equivalent Strings (Q737)",
+      content: (
+        <Comp
+          title="Q893. Groups of Special-Equivalent Strings (Q737)"
+          content1={
+            <>
+              You are given an array of strings of the same length words.
+              <br />
+              In one move, you can swap any two even indexed characters or any
+              two odd indexed characters of a string words[i].
+              <br />
+              Two strings words[i] and words[j] are special-equivalent if after
+              any number of moves, words[i] == words[j].
+              <br />
+              For example, words[i] = "zzxy" and words[j] = "xyzz" are
+              special-equivalent because we may make the moves "zzxy" -&gt;
+              "xzzy" -&gt; "xyzz". A group of special-equivalent strings from
+              words is a non-empty subset of words such that:
+              <br />
+              Every pair of strings in the group are special equivalent, and The
+              group is the largest size possible (i.e., there is not a string
+              words[i] not in the group such that words[i] is special-equivalent
+              to every string in the group). Return the number of groups of
+              special-equivalent strings from words.
+            </>
+          }
+          content2={null}
+          examples={[
+            {
+              content: (
+                <>
+                  Input: words = ["abcd","cdab","cbad","xyzz","zzxy","zzyx"]
+                  <br />
+                  Output: 3 <br />
+                  Explanation: <br />
+                  One group is ["abcd", "cdab", "cbad"], since they are all
+                  pairwise special equivalent, and none of the other strings is
+                  all pairwise special equivalent to these.
+                  <br /> The other two groups are ["xyzz", "zzxy"] and ["zzyx"].
+                  <br /> Note that in particular, "zzxy" is not special
+                  equivalent to "zzyx".
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: words = ["abc","acb","bac","bca","cab","cba"]
+                  <br /> Output: 3
+                </>
+              ),
+            },
+          ]}
+          constraints={
+            <>
+              1 &lt;= words.length &lt;= 1000
+              <br />
+              1 &lt;= words[i].length &lt;= 20
+              <br />
+              words[i] consist of lowercase English letters.
+              <br />
+              All the strings are of the same length.
+            </>
+          }
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: `/**
+              * @param {string[]} words
+              * @return {number}
+              */
+             var numSpecialEquivGroups = function(words) {
+               const set = new Set();
+               for (let s of words) {
+                   let even = "";
+                   let odd = "";
+                   for (let i = 0; i < s.length; ++i)
+                     if (i % 2 == 0)
+                       even += s[i];
+                     else
+                       odd += s[i];
+                   const evenCharArray = even.split("");
+                   const oddCharArray = odd.split("");
+                   evenCharArray.sort((a,b)=>a<b?1:-1)
+                   oddCharArray.sort((a,b)=>a<b?1:-1)
+                   set.add(evenCharArray.join("") + oddCharArray.join(""));
+                 }
+                 return set.size;   
+             };
+             
+             console.log(numSpecialEquivGroups(["abc","acb","bac","bca","cab","cba"]))`,
+              output: `3`,
+            },
+          }}
+        />
+      ),
+    },
+    q738: {
+      title: "Q894. All Possible Full Binary Trees (Q738)",
+      content: (
+        <Comp
+          title="Q894. All Possible Full Binary Trees (Q738)"
+          content1={
+            <>
+              Given an integer n, return a list of all possible full binary
+              trees with n nodes. Each node of each tree in the answer must have
+              Node.val == 0.
+              <br />
+              Each element of the answer is the root node of one possible tree.
+              You may return the final list of trees in any order.
+              <br />A full binary tree is a binary tree where each node has
+              exactly 0 or 2 children.
+            </>
+          }
+          content2={null}
+          examples={[
+            {
+              content: (
+                <>
+                  Input: n = 7 <br />
+                  Output: [[0,0,0,null,null,0,0,null,null,0,0], <br />
+                  [0,0,0,null,null,0,0,0,0], <br />
+                  [0,0,0,0,0,0,0], <br />
+                  [0,0,0,0,0,null,null,null,null,0,0], <br />
+                  [0,0,0,0,0,null,null,0,0]]
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: n = 3 <br />
+                  Output: [[0,0,0]]
+                </>
+              ),
+            },
+          ]}
+          constraints={<>1 &lt;= n &lt;= 20</>}
+          tc="n"
+          sc="n"
+          codes={{
+            Java: {
+              code: `
+              // n = 7
+              /**
+              * Definition for a binary tree node.
+              * public class TreeNode {
+              *     int val;
+              *     TreeNode left;
+              *     TreeNode right;
+              *     TreeNode() {}
+              *     TreeNode(int val) { this.val = val; }
+              *     TreeNode(int val, TreeNode left, TreeNode right) {
+              *         this.val = val;
+              *         this.left = left;
+              *         this.right = right;
+              *     }
+              * }
+              */
+             
+             class Solution {
+               public List<TreeNode> allPossibleFBT(int n) {
+                 if (n % 2 == 0)
+                   return new ArrayList<>();
+                 if (n == 1)
+                   return Arrays.asList(new TreeNode(0));
+                 if (memo.containsKey(n))
+                   return memo.get(n);
+             
+                 List<TreeNode> ans = new ArrayList<>();
+             
+                 for (int leftCount = 0; leftCount < n; ++leftCount) {
+                   final int rightCount = n - 1 - leftCount;
+                   for (TreeNode left : allPossibleFBT(leftCount))
+                     for (TreeNode right : allPossibleFBT(rightCount)) {
+                       ans.add(new TreeNode(0));
+                       ans.get(ans.size() - 1).left = left;
+                       ans.get(ans.size() - 1).right = right;
+                     }
+                 }
+             
+                 memo.put(n, ans);
+                 return ans;
+               }
+               private Map<Integer, List<TreeNode>> memo = new HashMap<>();
+             }`,
+              output: `[[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,null,null,null,null,0,0],[0,0,0,0,0,null,null,0,0]]`,
+            },
+          }}
+        />
+      ),
+    },
+    q739: {
+      title: "Q895. Maximum Frequency Stack (Q739)",
+      content: (
+        <Comp
+          title="Q895. Maximum Frequency Stack (Q739)"
+          content1={
+            <>
+              Design a stack-like data structure to push elements to the stack
+              and pop the most frequent element from the stack.
+              <br />
+              Implement the FreqStack class:
+              <br />
+              FreqStack() constructs an empty frequency stack.
+              <br />
+              void push(int val) pushes an integer val onto the top of the
+              stack.
+              <br />
+              int pop() removes and returns the most frequent element in the
+              stack.
+              <br />
+              If there is a tie for the most frequent element, the element
+              closest to the stack's top is removed and returned.
+            </>
+          }
+          content2={null}
+          examples={[
+            {
+              content: (
+                <>
+                  Input
+                  <br /> ["FreqStack", "push", "push", "push", "push", "push",
+                  "push", "pop", "pop", "pop", "pop"] [[], [5], [7], [5], [7],
+                  [4], [5], [], [], [], []] <br />
+                  Output <br />
+                  [null, null, null, null, null, null, null, 5, 7, 5, 4] <br />
+                  Explanation
+                  <br /> FreqStack freqStack = new FreqStack();
+                  <br /> freqStack.push(5); // The stack is [5]
+                  <br /> freqStack.push(7); // The stack is [5,7]
+                  <br /> freqStack.push(5); // The stack is [5,7,5]
+                  <br /> freqStack.push(7); // The stack is [5,7,5,7]
+                  <br /> freqStack.push(4); // The stack is [5,7,5,7,4]
+                  <br /> freqStack.push(5); // The stack is [5,7,5,7,4,5]
+                  <br /> freqStack.pop(); // return 5, as 5 is the most
+                  frequent. The stack becomes [5,7,5,7,4].
+                  <br /> freqStack.pop(); // return 7, as 5 and 7 is the most
+                  frequent, but 7 is closest to the top. The stack becomes
+                  [5,7,5,4].
+                  <br /> freqStack.pop(); // return 5, as 5 is the most
+                  frequent. The stack becomes [5,7,4].
+                  <br /> freqStack.pop(); // return 4, as 4, 5 and 7 is the most
+                  frequent, but 4 is closest to the top. The stack becomes
+                  [5,7].
+                  <br />{" "}
+                </>
+              ),
+            },
+          ]}
+          constraints={
+            <>
+              0 &lt;= val &lt;= 10^9 <br />
+              At most 2 * 10^4 calls will be made to push and pop. <br />
+              It is guaranteed that there will be at least one element in the
+              stack before calling pop.
+            </>
+          }
+          tc="n"
+          sc="n"
+          codes={{
+            Java: {
+              code: `
+// Input
+// ["FreqStack", "push", "push", "push", "push", "push", "push", "pop", "pop", "pop", "pop"]
+// [[], [5], [7], [5], [7], [4], [5], [], [], [], []]
+              class FreqStack {
+                public void push(int val) {
+                  count.merge(val, 1, Integer::sum);
+                  st.putIfAbsent(count.get(val), new ArrayDeque<>());
+                  st.get(count.get(val)).push(val);
+                  maxFreq = Math.max(maxFreq, count.get(val));
+                }
+              
+                public int pop() {
+                  final int val = st.get(maxFreq).pop();
+                  count.merge(val, -1, Integer::sum);
+                  if (st.get(maxFreq).isEmpty())
+                    --maxFreq;
+                  return val;
+                }
+              
+                private int maxFreq = 0;
+                private Map<Integer, Integer> count = new HashMap<>();
+                private Map<Integer, Deque<Integer>> st = new HashMap<>();
+              }
+              
+              /**
+               * Your FreqStack object will be instantiated and called as such:
+               * FreqStack obj = new FreqStack();
+               * obj.push(val);
+               * int param_2 = obj.pop();
+               */`,
+              output: `[null, null, null, null, null, null, null, 5, 7, 5, 4]`,
+            },
+          }}
+        />
+      ),
+    },
+    q740: {
+      title: "Q896. Monotonic Array (Q740)",
+      content: (
+        <Comp
+          title="Q896. Monotonic Array (Q740)"
+          content1={
+            <>
+              An array is monotonic if it is either monotone increasing or
+              monotone decreasing.
+              <br />
+              An array nums is monotone increasing if for all i &lt;= j, nums[i]
+              &lt;= nums[j]. An array nums is monotone decreasing if for all i
+              &lt;= j, nums[i] &gt;= nums[j].
+              <br />
+              Given an integer array nums, return true if the given array is
+              monotonic, or false otherwise.
+            </>
+          }
+          content2={null}
+          examples={[
+            {
+              content: (
+                <>
+                  Input: nums = [1,2,2,3]
+                  <br />
+                  Output: true
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: nums = [6,5,4,4]
+                  <br />
+                  Output: true
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: nums = [1,3,2]
+                  <br />
+                  Output: false
+                </>
+              ),
+            },
+          ]}
+          constraints={
+            <>
+              1 &lt;= nums.length &lt;= 10^5 <br />
+              -10^5 &lt;= nums[i] &lt;= 10^5
+            </>
+          }
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: `/**
+              * @param {number[]} nums
+              * @return {boolean}
+              */
+             var isMonotonic = function(nums) {
+               let increasing = true;
+               let decreasing = true;
+               for (let i = 1; i < nums.length; ++i) {
+                 increasing &= nums[i] >= nums[i - 1];
+                 decreasing &= nums[i] <= nums[i - 1];
+               }
+               return increasing || decreasing;  
+             };
+             
+             console.log(isMonotonic([1,2,2,3]))`,
+              output: `1`,
+            },
+          }}
+        />
+      ),
+    },
+    q741: {
+      title: "Q897. Increasing Order Search Tree (Q741)",
+      content: (
+        <Comp
+          title="Q897. Increasing Order Search Tree (Q741)"
+          content1={
+            <>
+              Given the root of a binary search tree, rearrange the tree in
+              in-order so that the leftmost node in the tree is now the root of
+              the tree, and every node has no left child and only one right
+              child.
+            </>
+          }
+          content2={null}
+          examples={[
+            {
+              img: Leetcode897,
+              content: (
+                <>
+                  Input: root = [5,3,6,2,4,null,8,1,null,null,null,7,9]
+                  <br />
+                  Output: <br />
+                  [1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: root = [5,1,7] <br />
+                  Output: [1,null,5,null,7]
+                </>
+              ),
+            },
+          ]}
+          constraints={
+            <>
+              The number of nodes in the given tree will be in the range [1,
+              100].
+              <br /> 0 &lt;= Node.val &lt;= 1000
+            </>
+          }
+          tc="n"
+          sc="h"
+          codes={{
+            Javascript: {
+              code: `function TreeNode(val, left, right) {
+                this.val = (val===undefined ? 0 : val)
+                this.left = (left===undefined ? null : left)
+                this.right = (right===undefined ? null : right)
+              }
+              /**
+               * @param {TreeNode} root
+               * @return {TreeNode}
+               */
+              var increasingBST = function(root) {
+                return helper(root);
+              };
+              function helper(root, tail=null) {
+                if (!root) return tail;
+                let ans = helper(root.left, root);
+                root.left = null
+                root.right = helper(root.right, tail);
+                return ans;
+              }
+              const t = new TreeNode(5)
+              t.left = new TreeNode(1)
+              t.right = new TreeNode(7)
+              console.log(increasingBST(t))`,
+              output: `TreeNode {
+                val: 1,
+                left: null,
+                right: TreeNode {
+                  val: 5,
+                  left: null,
+                  right: TreeNode { val: 7, left: null, right: null }
+                }
+              }`,
+            },
+          }}
+        />
+      ),
+    },
+    q742: {
+      title: "Q898. Bitwise ORs of Subarrays (Q742)",
+      content: (
+        <Comp
+          title="Q898. Bitwise ORs of Subarrays (Q742)"
+          content1={
+            <>
+              We have an array arr of non-negative integers.
+              <br />
+              For every (contiguous) subarray sub = [arr[i], arr[i + 1], ...,
+              arr[j]] (with i &lt;= j), we take the bitwise OR of all the
+              elements in sub, obtaining a result arr[i] | arr[i + 1] | ... |
+              arr[j].
+              <br />
+              Return the number of possible results. Results that occur more
+              than once are only counted once in the final answer
+            </>
+          }
+          content2={null}
+          examples={[
+            {
+              content: (
+                <>
+                  Input: arr = [1,1,2] <br />
+                  Output: 3 <br />
+                  Explanation: The possible subarrays are [1], [1], [2], [1, 1],
+                  [1, 2], [1, 1, 2].
+                  <br /> These yield the results 1, 1, 2, 1, 3, 3.
+                  <br /> There are 3 unique values, so the answer is 3.
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: arr = [1,1,2] <br />
+                  Output: 3 <br />
+                  Explanation: The possible subarrays are [1], [1], [2], [1, 1],
+                  [1, 2], [1, 1, 2]. These yield the results 1, 1, 2, 1, 3, 3.{" "}
+                  <br />
+                  There are 3 unique values, so the answer is 3.
+                </>
+              ),
+            },
+            {
+              content: (
+                <>
+                  Input: arr = [1,2,4] <br />
+                  Output: 6 <br />
+                  Explanation: The possible results are 1, 2, 3, 4, 6, and 7.
+                </>
+              ),
+            },
+          ]}
+          constraints={
+            <>
+              1 &lt;= nums.length &lt;= 5 * 10^4 <br />0 &lt;= nums[i] &lt;=
+              10^9
+            </>
+          }
+          tc="n.log n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: `/**
+              * @param {number[]} arr
+              * @return {number}
+              */
+             var subarrayBitwiseORs = function(arr) {
+               const s = [];
+               let l = 0;
+               for (let a of arr) {
+                 let r = s.length;
+                 s.push(a);
+                 for (let i = l; i < r; ++i)
+                   if (s[s.length - 1] != (s[i] | a))
+                       s.push(s[i] | a);
+                 l = r;
+               }
+               return new Set(s).size;
+             };
+             
+             console.log(subarrayBitwiseORs([1,2,4]))`,
+              output: `6`,
+            },
+          }}
+        />
+      ),
+    },
+    q743: {
+      title: "Q899. Orderly Queue (Q743)",
+      content: (
+        <Comp
+          title="Q899. Orderly Queue (Q743)"
+          content1={<></>}
+          content2={null}
+          examples={[
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+          ]}
+          constraints={<></>}
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
+              code: ``,
+              output: ``,
+            },
+          }}
+        />
+      ),
+    },
+    q744: {
+      title: "Q (Q744)",
       content: (
         <Comp
           content1={<></>}
@@ -94976,7 +96089,36 @@ a = b + c;
           tc="n"
           sc="n"
           codes={{
-            Java: {
+            Javascript: {
+              code: ``,
+              output: ``,
+            },
+          }}
+        />
+      ),
+    },
+    q745: {
+      title: "Q (Q745)",
+      content: (
+        <Comp
+          content1={<></>}
+          content2={null}
+          examples={[
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+            {
+              content: <></>,
+            },
+          ]}
+          constraints={<></>}
+          tc="n"
+          sc="n"
+          codes={{
+            Javascript: {
               code: ``,
               output: ``,
             },
