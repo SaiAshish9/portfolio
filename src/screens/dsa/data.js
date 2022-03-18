@@ -316,6 +316,7 @@ import Leetcode885 from "assets/leetcode/885.png";
 import Leetcode889 from "assets/leetcode/889.png";
 import Leetcode897 from "assets/leetcode/897.png";
 import Leetcode909 from "assets/leetcode/909.png";
+import Leetcode913 from "assets/leetcode/913.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -97350,16 +97351,15 @@ a = b + c;
       ),
     },
     q757: {
-      title: "Q (Q757)",
+      title: "Q913. Cat and Mouse (Q757)",
       content: (
         <Comp
+          title="Q913. Cat and Mouse (Q757)"
           content1={<></>}
           content2={null}
           examples={[
             {
-              content: <></>,
-            },
-            {
+              img: Leetcode913,
               content: <></>,
             },
             {
@@ -97367,8 +97367,8 @@ a = b + c;
             },
           ]}
           constraints={<></>}
-          tc="n"
-          sc="n"
+          tc="n^3"
+          sc="n^3"
           codes={{
             Javascript: {
               code: ``,
