@@ -96310,67 +96310,214 @@ a = b + c;
       ),
     },
     q746: {
-      title: "Q (Q746)",
+      title: "Q902. Numbers At Most N Given Digit Set (Q746)",
       content: (
         <Comp
-          content1={<></>}
+          title="Q902. Numbers At Most N Given Digit Set (Q746)"
+          content1={
+            <>
+              Given an array of digits which is sorted in non-decreasing order.
+              You can write numbers using each digits[i] as many times as we
+              want. For example, if digits = ['1','3','5'], we may write numbers
+              such as '13', '551', and '1351315'.
+              <br />
+              Return the number of positive integers that can be generated that
+              are less than or equal to a given integer n.
+            </>
+          }
           content2={null}
           examples={[
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: digits = ["1","3","5","7"], n = 100
+                  <br /> Output: 20
+                  <br /> Explanation:
+                  <br /> The 20 numbers that can be written are:
+                  <br /> 1, 3, 5, 7, 11, 13, 15, 17, 31, 33, 35, 37, 51, 53, 55,
+                  57, 71, 73, 75, 77.
+                </>
+              ),
             },
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: digits = ["1","4","9"], n = 1000000000
+                  <br />
+                  Output: 29523
+                  <br /> Explanation:
+                  <br /> We can write 3 one digit numbers, 9 two digit numbers,
+                  27 three digit numbers,
+                  <br /> 81 four digit numbers, 243 five digit numbers, 729 six
+                  digit numbers,
+                  <br /> 2187 seven digit numbers, 6561 eight digit numbers, and
+                  19683 nine digit numbers.
+                  <br /> In total, this is 29523 integers that can be written
+                  using the digits array.
+                </>
+              ),
             },
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: digits = ["7"], n = 8 <br />
+                  Output: 1
+                </>
+              ),
             },
           ]}
-          constraints={<></>}
-          tc="n"
-          sc="n"
+          constraints={
+            <>
+              1 &lt;= digits.length &lt;= 9 <br />
+              digits[i].length == 1 <br />
+              digits[i] is a digit from '1' to '9'. <br />
+              All the values in digits are unique. <br />
+              digits is sorted in non-decreasing order. <br />1 &lt;= n &lt;=
+              109
+            </>
+          }
+          tc="log n"
+          sc="log n"
           codes={{
             Javascript: {
-              code: ``,
-              output: ``,
+              code: `/**
+              * @param {string[]} digits
+              * @param {number} n
+              * @return {number}
+              */
+             var atMostNGivenDigitSet = function(digits, n) {
+               let ans = 0;
+               let num = String(n);
+             
+                 for (let i = 1; i < num.length; ++i)
+                   ans += Math.pow(digits.length, i);
+             
+                 for (let i = 0; i < num.length; ++i) {
+                   let dHasSameNum = false;
+                   for (let digit of digits) {
+                     if (digit.charAt(0) < num.charAt(i))
+                       ans += Math.pow(digits.length, num.length - i - 1);
+                     else if (digit[0] == num.charAt(i))
+                       dHasSameNum = true;
+                   }
+                   if (!dHasSameNum)
+                     return ans;
+                 }
+             
+                 return ans + 1;   
+             };
+             
+             console.log(atMostNGivenDigitSet(["1","3","5","7"],100))`,
+              output: `20`,
             },
           }}
         />
       ),
     },
     q747: {
-      title: "Q (Q747)",
+      title: "Q903. Valid Permutations for DI Sequence (Q747)",
       content: (
         <Comp
-          content1={<></>}
+          title="Q903. Valid Permutations for DI Sequence (Q747)"
+          content1={
+            <>
+              You are given a string s of length n where s[i] is either:
+              <br />
+              'D' means decreasing, or
+              <br />
+              'I' means increasing.
+              <br />
+              A permutation perm of n + 1 integers of all the integers in the
+              range [0, n] is called a valid permutation if for all valid i:
+              <br />
+              If s[i] == 'D', then perm[i] &gt; perm[i + 1], and
+              <br />
+              If s[i] == 'I', then perm[i] &lt; perm[i + 1]. Return the number
+              of valid permutations perm. Since the answer may be large, return
+              it modulo 109 + 7.
+            </>
+          }
           content2={null}
           examples={[
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: s = "DID" <br />
+                  Output: 5 <br />
+                  Explanation: The 5 valid permutations of (0, 1, 2, 3) are:{" "}
+                  <br />
+                  (1, 0, 3, 2) <br />
+                  (2, 0, 3, 1) <br />
+                  (2, 1, 3, 0) <br />
+                  (3, 0, 2, 1) <br />
+                  (3, 1, 2, 0)
+                </>
+              ),
             },
             {
-              content: <></>,
-            },
-            {
-              content: <></>,
+              content: (
+                <>
+                  Input: s = "D" <br />
+                  Output: 1
+                </>
+              ),
             },
           ]}
-          constraints={<></>}
-          tc="n"
+          constraints={
+            <>
+              n == s.length <br />
+              1 &lt;= n &lt;= 200 <br />
+              s[i] is either 'I' or 'D'.
+            </>
+          }
+          tc="n^2"
           sc="n"
           codes={{
             Javascript: {
-              code: ``,
-              output: ``,
+              code: `/**
+              * @param {string} s
+              * @return {number}
+              */
+             var numPermsDISequence = function(s) {
+               const kMod = 1e9 + 7;
+               let n = s.length;
+               let dp = Array(n + 1).fill(0);
+             
+               for (let j = 0; j <= n; ++j)
+                   dp[j] = 1;
+             
+               for (let i = 1; i <= n; ++i) {
+                 const newDp = Array(n + 1).fill(0);
+                   if (s[i - 1] == 'I') { 
+                     let postfixsum = 0;
+                     for (let j = n - i; j >= 0; --j) {
+                       postfixsum = (postfixsum + dp[j + 1]) % kMod;
+                       newDp[j] = postfixsum;
+                     }
+                   } else {
+                     let prefix = 0;
+                     for (let j = 0; j <= n - i; ++j) {
+                       prefix = (prefix + dp[j]) % kMod;
+                       newDp[j] = prefix;
+                     }
+                   }
+                   dp = newDp;
+                 }
+             
+                 return dp[0]; 
+             };
+             console.log(numPermsDISequence("DID"))`,
+              output: `5`,
             },
           }}
         />
       ),
     },
     q748: {
-      title: "Q (Q748)",
+      title: "Q904. Fruit Into Baskets (Q748)",
       content: (
         <Comp
+          title="Q904. Fruit Into Baskets (Q748)"
           content1={<></>}
           content2={null}
           examples={[
