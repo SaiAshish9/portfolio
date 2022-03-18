@@ -96518,107 +96518,321 @@ a = b + c;
       content: (
         <Comp
           title="Q904. Fruit Into Baskets (Q748)"
-          content1={<></>}
+          content1={
+            <>
+              You are visiting a farm that has a single row of fruit trees
+              arranged from left to right. The trees are represented by an
+              integer array fruits where fruits[i] is the type of fruit the ith
+              tree produces.
+              <br />
+              You want to collect as much fruit as possible. However, the owner
+              has some strict rules that you must follow:
+              <br />
+              You only have two baskets, and each basket can only hold a single
+              type of fruit. There is no limit on the amount of fruit each
+              basket can hold.
+              <br />
+              Starting from any tree of your choice, you must pick exactly one
+              fruit from every tree (including the start tree) while moving to
+              the right. The picked fruits must fit in one of your baskets.
+              <br />
+              Once you reach a tree with fruit that cannot fit in your baskets,
+              you must stop.
+              <br />
+              Given the integer array fruits, return the maximum number of
+              fruits you can pick.
+            </>
+          }
           content2={null}
           examples={[
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: fruits = [1,2,1] <br />
+                  Output: 3 <br />
+                  Explanation: We can pick from all 3 trees.
+                </>
+              ),
             },
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: fruits = [0,1,2,2] <br />
+                  Output: 3 <br />
+                  Explanation: We can pick from trees [1,2,2]. <br />
+                  If we had started at the first tree, we would only pick from
+                  trees [0,1].
+                </>
+              ),
             },
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: fruits = [1,2,3,2,2] <br />
+                  Output: 4 <br />
+                  Explanation: We can pick from trees [2,3,2,2]. <br />
+                  If we had started at the first tree, we would only pick from
+                  trees [1,2].
+                </>
+              ),
             },
           ]}
-          constraints={<></>}
+          constraints={
+            <>
+              1 &lt;= fruits.length &lt;= 10^5 <br />0 &lt;= fruits[i] &lt;
+              fruits.length
+            </>
+          }
           tc="n"
           sc="n"
           codes={{
             Javascript: {
-              code: ``,
-              output: ``,
+              code: `/**
+              * @param {number[]} fruits
+              * @return {number}
+              */
+             var totalFruit = function(fruits) {
+               let ans = 0;
+               const count = {};
+               for (let l = 0, r = 0; r < fruits.length; ++r) {
+                   count[fruits[r]] = (count[fruits[r]] || 0) + 1;
+                   while (Object.keys(count).length > 2) {
+                     count[fruits[l]] = count[fruits[l]] - 1;
+                     if(count[fruits[l]]==0)
+                     delete count[fruits[l]]
+                     ++l;
+                   }
+                   ans = Math.max(ans, r - l + 1);
+                 }
+                 return ans;   
+             };
+             console.log(totalFruit([1,2,1]))`,
+              output: `3`,
             },
           }}
         />
       ),
     },
     q749: {
-      title: "Q (Q749)",
+      title: "Q905. Sort Array By Parity (Q749)",
       content: (
         <Comp
-          content1={<></>}
+          title="Q905. Sort Array By Parity (Q749)"
+          content1={
+            <>
+              Given an integer array nums, move all the even integers at the
+              beginning of the array followed by all the odd integers.
+              <br />
+              Return any array that satisfies this condition.
+            </>
+          }
           content2={null}
           examples={[
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: nums = [3,1,2,4] <br />
+                  Output: [2,4,3,1] <br />
+                  Explanation: The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3]
+                  would also be accepted.
+                </>
+              ),
             },
             {
-              content: <></>,
-            },
-            {
-              content: <></>,
+              content: (
+                <>
+                  Input: nums = [0] <br />
+                  Output: [0]
+                </>
+              ),
             },
           ]}
-          constraints={<></>}
+          constraints={
+            <>
+              1 &lt;= nums.length &lt;= 5000 <br />0 &lt;= nums[i] &lt;= 5000
+            </>
+          }
           tc="n"
           sc="n"
           codes={{
             Javascript: {
-              code: ``,
-              output: ``,
+              code: `/**
+              * @param {number[]} nums
+              * @return {number[]}
+              */
+             var sortArrayByParity = function(nums) {
+               let l = 0;
+               let r = nums.length - 1;
+               while (l < r) {
+                 if (nums[l] % 2 == 1 && nums[r] % 2 == 0) {
+                   let temp = nums[l];
+                   nums[l] = nums[r];
+                   nums[r] = temp;
+                 }
+                 if (nums[l] % 2 == 0)
+                   ++l;
+                 if (nums[r] % 2 == 1)
+                   --r;
+               }
+               return nums;
+             };
+             
+             console.log(sortArrayByParity([3,1,2,4]))`,
+              output: `[ 4, 2, 1, 3 `,
             },
           }}
         />
       ),
     },
     q750: {
-      title: "Q (Q750)",
+      title: "Q906. Super Palindromes (Q750)",
       content: (
         <Comp
-          content1={<></>}
+          title="Q906. Super Palindromes (Q750)"
+          content1={
+            <>
+              Let's say a positive integer is a super-palindrome if it is a
+              palindrome, and it is also the square of a palindrome.
+              <br />
+              Given two positive integers left and right represented as strings,
+              return the number of super-palindromes integers in the inclusive
+              range [left, right].
+            </>
+          }
           content2={null}
           examples={[
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: left = "4", right = "1000"
+                  <br />
+                  Output: 4<br />
+                  Explanation: 4, 9, 121, and 484 are superpalindromes.
+                  <br />
+                  Note that 676 is not a superpalindrome: 26 * 26 = 676, but 26
+                  is not a palindrome.
+                </>
+              ),
             },
             {
-              content: <></>,
-            },
-            {
-              content: <></>,
+              content: (
+                <>
+                  Input: left = "1", right = "2"
+                  <br />
+                  Output: 1
+                </>
+              ),
             },
           ]}
-          constraints={<></>}
+          constraints={
+            <>
+              1 &lt;= left.length, right.length &lt;= 18
+              <br />
+              left and right consist of only digits.
+              <br />
+              left and right cannot have leading zeros.
+              <br />
+              left and right represent integers in the range [1, 1018 - 1].
+              <br />
+              left is less than or equal to right.
+            </>
+          }
           tc="n"
           sc="n"
           codes={{
-            Javascript: {
-              code: ``,
-              output: ``,
+            Java: {
+              code: `class Solution {
+                public int superpalindromesInRange(String left, String right) {
+                  int ans = 0;
+                  Long l = Long.valueOf(left);
+                  Long r = Long.valueOf(right);
+                  for (long i = (long) Math.sqrt(l); i * i <= r;) {
+                    long palindrome = nextPalindrome(i);
+                    long squared = palindrome * palindrome;
+                    if (squared <= r && isPalindrome(squared))
+                      ++ans;
+                    i = palindrome + 1;
+                  }
+              
+                  return ans;
+                }
+              
+                private long nextPalindrome(long num) {
+                  final String s = String.valueOf(num);
+                  final int n = s.length();
+                  String half = s.substring(0, (n + 1) / 2);
+                  String reversedHalf = new StringBuilder(half.substring(0, n / 2)).reverse().toString();
+                  final long candidate = Long.valueOf(half + reversedHalf);
+                  if (candidate >= num)
+                    return candidate;
+                  half = String.valueOf(Long.valueOf(half) + 1);
+                  reversedHalf = new StringBuilder(half.substring(0, n / 2)).reverse().toString();
+                  return Long.valueOf(half + reversedHalf);
+                }
+              
+                private boolean isPalindrome(long num) {
+                  final String s = String.valueOf(num);
+                  int l = 0;
+                  int r = s.length() - 1;
+                  while (l < r)
+                    if (s.charAt(l++) != s.charAt(r--))
+                      return false;
+                  return true;
+                }
+              }`,
+              output: `4`,
             },
           }}
         />
       ),
     },
     q751: {
-      title: "Q (Q751)",
+      title: "Q907. Sum of Subarray Minimums (Q751)",
       content: (
         <Comp
-          content1={<></>}
+          title="Q907. Sum of Subarray Minimums (Q751)"
+          content1={
+            <>
+              3252 209 Add to List Share Given an array of integers arr, find
+              the sum of min(b), where b ranges over every (contiguous) subarray
+              of arr. Since the answer may be large, return the answer modulo
+              10^9 + 7.
+            </>
+          }
           content2={null}
           examples={[
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: arr = [3,1,2,4]
+                  <br />
+                  Output: 17
+                  <br />
+                  Explanation: <br />
+                  Subarrays are [3], [1], [2], [4], [3,1], [1,2], [2,4],
+                  [3,1,2], [1,2,4], [3,1,2,4].
+                  <br /> Minimums are 3, 1, 2, 4, 1, 1, 2, 1, 1, 1.
+                  <br />
+                  Sum is 17.
+                </>
+              ),
             },
             {
-              content: <></>,
-            },
-            {
-              content: <></>,
+              content: (
+                <>
+                  Input: arr = [11,81,94,43,3]
+                  <br />
+                  Output: 444
+                </>
+              ),
             },
           ]}
-          constraints={<></>}
+          constraints={
+            <>
+              1 &lt;= arr.length &lt;= 3 * 10^4
+              <br />1 &lt;= arr[i] &lt;= 3 * 104
+            </>
+          }
           tc="n"
           sc="n"
           codes={{
