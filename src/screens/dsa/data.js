@@ -315,6 +315,7 @@ import Leetcode883 from "assets/leetcode/883.png";
 import Leetcode885 from "assets/leetcode/885.png";
 import Leetcode889 from "assets/leetcode/889.png";
 import Leetcode897 from "assets/leetcode/897.png";
+import Leetcode909 from "assets/leetcode/909.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -96837,53 +96838,135 @@ a = b + c;
           sc="n"
           codes={{
             Javascript: {
-              code: ``,
-              output: ``,
+              code: `/**
+              * @param {number[]} arr
+              * @return {number}
+              */
+             var sumSubarrayMins = function(arr) {
+               const kMod = 1e9 + 7;
+               let n = arr.length;
+               let ans = 0;
+               const prev = Array(n).fill(-1);
+               const next = Array(n).fill(n);
+               const stack = [];
+             
+               for (let i = 0; i < arr.length; ++i) {
+                   while (stack.length && arr[stack[stack.length-1]] > arr[i]) {
+                     const index = stack.pop();
+                     next[index] = i;
+                   }
+                   if (stack.length)
+                     prev[i] = stack[stack.length-1]
+                   stack.push(i);
+                 }
+                 for (let i = 0; i < arr.length; ++i) {
+                   ans += arr[i] * (i - prev[i]) * (next[i] - i);
+                   ans %= kMod;
+                 }
+             
+                 return parseInt(ans);  
+             };
+             
+             console.log(sumSubarrayMins([3,1,2,4]))`,
+              output: `17`,
             },
           }}
         />
       ),
     },
     q752: {
-      title: "Q (Q752)",
+      title: "Q908. Smallest Range I (Q752)",
       content: (
         <Comp
-          content1={<></>}
+          title="Q908. Smallest Range I (Q752)"
+          content1={
+            <>
+              You are given an integer array nums and an integer k.
+              <br />
+              In one operation, you can choose any index i where 0 &lt; = i &lt;
+              nums.length and change nums[i] to nums[i] + x where x is an
+              integer from the range [-k, k]. You can apply this operation at
+              most once for each index i.
+              <br />
+              The score of nums is the difference between the maximum and
+              minimum elements in nums.
+              <br />
+              Return the minimum score of nums after applying the mentioned
+              operation at most once for each index in it.
+            </>
+          }
           content2={null}
           examples={[
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: nums = [1], k = 0<br />
+                  Output: 0<br />
+                  Explanation: The score is max(nums) - min(nums) = 1 - 1 = 0.
+                </>
+              ),
             },
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: nums = [0,10], k = 2<br />
+                  Output: 6<br />
+                  Explanation: Change nums to be [2, 8]. The score is max(nums)
+                  - min(nums) = 8 - 2 = 6.
+                </>
+              ),
             },
             {
-              content: <></>,
+              content: (
+                <>
+                  Input: nums = [1,3,6], k = 3<br />
+                  Output: 0<br />
+                  Explanation: Change nums to be [4, 4, 4]. The score is
+                  max(nums) - min(nums) = 4 - 4 = 0.
+                </>
+              ),
             },
           ]}
-          constraints={<></>}
+          constraints={
+            <>
+              1 &lt;= nums.length &lt;= 10^4
+              <br />
+              0 &lt;= nums[i] &lt;= 10^4
+              <br />0 &lt;= k &lt;= 10^4
+            </>
+          }
           tc="n"
           sc="n"
           codes={{
             Javascript: {
-              code: ``,
-              output: ``,
+              code: `/**
+              * @param {number[]} nums
+              * @param {number} k
+              * @return {number}
+              */
+             var smallestRangeI = function(nums, k) {
+               let max = Math.max(...nums)
+               let min = Math.min(...nums)
+               return Math.max(0, max - min - 2 * k);
+             };
+             
+             console.log(smallestRangeI([1],0))`,
+              output: `0`,
             },
           }}
         />
       ),
     },
     q753: {
-      title: "Q (Q753)",
+      title: "Q909. Snakes and Ladders (Q753)",
       content: (
         <Comp
+          title="Q909. Snakes and Ladders (Q753)"
           content1={<></>}
           content2={null}
           examples={[
             {
-              content: <></>,
-            },
-            {
+              img: Leetcode909,
               content: <></>,
             },
             {
@@ -96891,12 +96974,43 @@ a = b + c;
             },
           ]}
           constraints={<></>}
-          tc="n"
-          sc="n"
+          tc="n^2"
+          sc="n^2"
           codes={{
-            Javascript: {
-              code: ``,
-              output: ``,
+            Java: {
+              code: `// Input: board = [[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,35,-1,-1,13,-1],[-1,-1,-1,-1,-1,-1],[-1,15,-1,-1,-1,-1]]
+              class Solution {
+                public int snakesAndLadders(int[][] board) {
+                  final int n = board.length;
+                  int ans = 0;
+                  Queue<Integer> q = new ArrayDeque<>(Arrays.asList(1));
+                  boolean[] seen = new boolean[1 + n * n];
+                  int[] A = new int[1 + n * n];
+                  for (int i = 0; i < n; ++i)
+                    for (int j = 0; j < n; ++j)
+                      A[(n - 1 - i) * n + ((n - i & 1) == 1 ? j + 1 : n - j)] = board[i][j];
+              
+                  while (!q.isEmpty()) {
+                    ++ans;
+                    for (int sz = q.size(); sz > 0; --sz) {
+                      final int curr = q.poll();
+                      for (int next = curr + 1; next <= Math.min(curr + 6, n * n); ++next) {
+                        final int dest = A[next] > 0 ? A[next] : next;
+                        if (dest == n * n)
+                          return ans;
+                        if (seen[dest])
+                          continue;
+                        q.offer(dest);
+                        seen[dest] = true;
+                      }
+                    }
+                  }
+              
+                  return -1;
+                }
+              }
+              `,
+              output: `4`,
             },
           }}
         />
