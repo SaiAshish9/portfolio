@@ -98304,75 +98304,283 @@ a = b + c;
         content: (
           <Comp
             title="Q923. 3Sum With Multiplicity (Q767)"
-            content1={<></>}
+            content1={
+              <>
+                Given an integer array arr, and an integer target, return the
+                number of tuples i, j, k such that i &lt; j &lt; k and arr[i] +
+                arr[j] + arr[k] == target.
+                <br />
+                As the answer can be very large, return it modulo 10^9 + 7.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [1,1,2,2,3,3,4,4,5,5], target = 8 <br />
+                    Output: 20 <br />
+                    Explanation: <br />
+                    Enumerating by the values (arr[i], arr[j], arr[k]): <br />
+                    (1, 2, 5) occurs 8 times; <br />
+                    (1, 3, 4) occurs 8 times; <br />
+                    (2, 2, 4) occurs 2 times; <br />
+                    (2, 3, 3) occurs 2 times.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    put: arr = [1,1,2,2,2,2], target = 5 <br />
+                    Output: 12 <br />
+                    Explanation: <br />
+                    arr[i] = 1, arr[j] = arr[k] = 2 occurs 12 times: <br />
+                    We choose one 1 from [1,1] in 2 ways, <br />
+                    and two 2s from [2,2,2,2] in 6 ways.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                3 &lt;= arr.length &lt;= 3000 <br />
+                0 &lt;= arr[i] &lt;= 100 <br />0 &lt;= target &lt;= 300
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              "C++": {
+                code: `
+                // Input: arr = [1,1,2,2,3,3,4,4,5,5], target = 8
+                class Solution {
+                  public:
+                   int threeSumMulti(vector<int>& A, int target) {
+                     constexpr int kMod = 1e9 + 7;
+                     int ans = 0;
+                     unordered_map<int, long> count;
+                     for (const int a : A)
+                       ++count[a];
+                     for (const auto& [i, x] : count)
+                       for (const auto& [j, y] : count) {
+                         int k = target - i - j;
+                         if (!count.count(k))
+                           continue;
+                         if (i == j && j == k)
+                           ans = (ans + x * (x - 1) * (x - 2) / 6) % kMod;
+                         else if (i == j && j != k)
+                           ans = (ans + x * (x - 1) / 2 * count[k]) % kMod;
+                         else if (i < j && j < k)
+                           ans = (ans + x * y * count[k]) % kMod;
+                       }
+                     return ans;
+                   }
+                 };
+                 `,
+                output: `20`,
               },
             }}
           />
         ),
       },
       q768: {
-        title: "Q (Q768)",
+        title: "Q924. Minimize Malware Spread (Q768)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q924. Minimize Malware Spread (Q768)"
+            content1={
+              <>
+                You are given a network of n nodes represented as an n x n
+                adjacency matrix graph, where the ith node is directly connected
+                to the jth node if graph[i][j] == 1.
+                <br />
+                Some nodes initial are initially infected by malware. Whenever
+                two nodes are directly connected, and at least one of those two
+                nodes is infected by malware, both nodes will be infected by
+                malware. This spread of malware will continue until no more
+                nodes can be infected in this manner.
+                <br />
+                Suppose M(initial) is the final number of nodes infected with
+                malware in the entire network after the spread of malware stops.
+                We will remove exactly one node from initial.
+                <br />
+                Return the node that, if removed, would minimize M(initial). If
+                multiple nodes could be removed to minimize M(initial), return
+                such a node with the smallest index.
+                <br />
+                Note that if a node was removed from the initial list of
+                infected nodes, it might still be infected later due to the
+                malware spread.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: graph = [[1,1,0],[1,1,0],[0,0,1]], <br /> initial =
+                    [0,1]
+                    <br /> Output: 0
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: graph = [[1,0,0],[0,1,0],[0,0,1]], <br />
+                    initial = [0,2]
+                    <br /> Output: 0
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: graph = [[1,1,1],[1,1,1],[1,1,1]], <br />
+                    initial = [1,2]
+                    <br /> Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                n == graph.length <br />
+                n == graph[i].length <br />
+                2 &lt;= n &lt;= 300 <br />
+                graph[i][j] is 0 or 1. <br />
+                graph[i][j] == graph[j][i] <br />
+                graph[i][i] == 1 <br />
+                1 &lt;= initial.length &lt;= n <br />
+                0 &lt;= initial[i] &lt;= n - 1 <br />
+                All the integers in initial are unique
+              </>
+            }
+            tc="n^2"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input: graph = [[1,1,0],[1,1,0],[0,0,1]], initial = [0,1]
+                class UF {
+                  public UF(int n) {
+                    id = new int[n];
+                    for (int i = 0; i < n; ++i)
+                      id[i] = i;
+                  }
+                  public void union(int u, int v) {
+                    id[find(u)] = find(v);
+                  }
+                  public int find(int u) {
+                    return id[u] == u ? u : (id[u] = find(id[u]));
+                  }
+                  private int[] id;
+                }
+                
+                class Solution {
+                  public int minMalwareSpread(int[][] graph, int[] initial) {
+                    final int n = graph.length;
+                    UF uf = new UF(n);
+                    int[] ufSize = new int[n];
+                    int[] malwareCount = new int[n];
+                    for (int i = 0; i < n; ++i)
+                      for (int j = i + 1; j < n; ++j)
+                        if (graph[i][j] == 1)
+                          uf.union(i, j);
+                    for (int i = 0; i < n; ++i)
+                      ++ufSize[uf.find(i)];
+                    for (final int i : initial)
+                      ++malwareCount[uf.find(i)];
+                    Arrays.sort(initial);
+                    int ans = initial[0];
+                    int maxUfSize = 0;
+                    for (final int i : initial) {
+                      final int id = uf.find(i);
+                      if (ufSize[id] > maxUfSize && malwareCount[id] == 1) {
+                        maxUfSize = ufSize[id];
+                        ans = i;
+                      }
+                    }
+                
+                    return ans;
+                  }
+                }`,
+                output: `0`,
               },
             }}
           />
         ),
       },
       q769: {
-        title: "Q (Q769)",
+        title: "Q925. Long Pressed Name (Q769)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q925. Long Pressed Name (Q769)"
+            content1={
+              <>
+                Your friend is typing his name into a keyboard. Sometimes, when
+                typing a character c, the key might get long pressed, and the
+                character will be typed 1 or more times.
+                <br />
+                You examine the typed characters of the keyboard. Return True if
+                it is possible that it was your friends name, with some
+                characters (possibly none) being long pressed.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    nput: name = "alex", typed = "aaleex"
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation: 'a' and 'e' in 'alex' were long pressed.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: name = "saeed", typed = "ssaaedd"
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation: 'e' must have been pressed twice, but it was
+                    not in the typed output.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= name.length, typed.length &lt;= 1000
+                <br />
+                name and typed consist of only lowercase English letters.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} name
+                * @param {string} typed
+                * @return {boolean}
+                */
+               var isLongPressedName = function(name, typed) {
+                 let i = 0;
+                 for (let j = 0; j < typed.length; ++j)
+                   if (i < name.length && name[i] == typed[j])
+                       ++i;
+                   else if (j == 0 || typed[j] != typed[j - 1])
+                     return false;
+                 return i == name.length;    
+               };
+               
+               console.log(isLongPressedName("alex","aaleex"))`,
+                output: `true`,
               },
             }}
           />
