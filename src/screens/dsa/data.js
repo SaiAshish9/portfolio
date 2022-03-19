@@ -319,6 +319,7 @@ import Leetcode909 from "assets/leetcode/909.png";
 import Leetcode913 from "assets/leetcode/913.png";
 import Leetcode919 from "assets/leetcode/919.png";
 import Leetcode931 from "assets/leetcode/931.png";
+import Leetcode935 from "assets/leetcode/935.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -99443,6 +99444,349 @@ a = b + c;
         content: (
           <Comp
             title="Q935. Knight Dialer (Q779)"
+            content1={
+              <>
+                The chess knight has a unique movement, it may move two squares
+                vertically and one square horizontally, or two squares
+                horizontally and one square vertically (with both forming the
+                shape of an L). The possible movements of chess knight are shown
+                in this diagaram:
+                <br />A chess knight can move as indicated in the chess diagram
+                below:
+              </>
+            }
+            img={Leetcode935}
+            content2={
+              <>
+                We have a chess knight and a phone pad as shown below, the
+                knight can only stand on a numeric cell (i.e. blue cell).
+                <br />
+                Given an integer n, return how many distinct phone numbers of
+                length n we can dial.
+                <br />
+                You are allowed to place the knight on any numeric cell
+                initially and then you should perform n - 1 jumps to dial a
+                number of length n. All jumps should be valid knight jumps.
+                <br />
+                As the answer may be very large, return the answer modulo 109 +
+                7.
+              </>
+            }
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: n = 1 <br />
+                    Output: 10 <br />
+                    Explanation: We need to dial a number of length 1, so
+                    placing the knight over any numeric cell of the 10 cells is
+                    sufficient.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: n = 2 <br />
+                    Output: 20 <br />
+                    Explanation: All the valid number we can dial are [04, 06,
+                    16, 18, 27, 29, 34, 38, 40, 43, 49, 60, 61, 67, 72, 76, 81,
+                    83, 92, 94]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: n = 3131 <br />
+                    Output: 136006598 <br />
+                    Explanation: Please take care of the mod.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= n &lt;= 5000 <br />
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number} n
+                * @return {number}
+                */
+               var knightDialer = function(n) {
+                 const kMod = 1e9 + 7;
+                 const dirs = [[-2, 1], [-1, 2], [1, 2], [2, 1], [2, -1], [1, -2], [-1, -2], [-2, -1]];
+                 let dp = Array.from(Array(4),()=>Array(3).fill(1));
+                 dp[3][0] = dp[3][2] = 0;
+                 for (let k = 0; k < n - 1; ++k) {
+                     const newDp = Array.from(Array(4),()=>Array(3).fill(0));
+                     for (let i = 0; i < 4; ++i)
+                       for (let j = 0; j < 3; ++j) {
+                         if (isNotNumericCell(i, j))
+                           continue;
+                         for (let dir of dirs) {
+                           const x = i + dir[0];
+                           const y = j + dir[1];
+                           if (x < 0 || x >= 4 || y < 0 || y >= 3)
+                             continue;
+                           if (isNotNumericCell(x, y))
+                             continue;
+                           newDp[i][j] = (newDp[i][j] + dp[x][y]) % kMod;
+                         }
+                       }
+                     dp = newDp;
+                   }
+                   let ans = 0;
+                   for (let row of dp)
+                     for (let a of row)
+                       ans = (ans + a) % kMod;
+                   return ans;    
+               };
+               
+               function isNotNumericCell(i, j) {
+                 return i == 3 && (j == 0 || j == 2);
+               }
+               
+               console.log(knightDialer(1))`,
+                output: `10`,
+              },
+            }}
+          />
+        ),
+      },
+      q780: {
+        title: "Q936. Stamping The Sequence (Q780)",
+        content: (
+          <Comp
+            title="Q936. Stamping The Sequence (Q780)"
+            content1={
+              <>
+                You are given two strings stamp and target. Initially, there is
+                a string s of length target.length with all s[i] == '?'.
+                <br />
+                In one turn, you can place stamp over s and replace every letter
+                in the s with the corresponding letter from stamp.
+                <br />
+                For example, if stamp = "abc" and target = "abcba", then s is
+                "?????" initially. In one turn you can:
+                <br />
+                place stamp at index 0 of s to obtain "abc??",
+                <br />
+                place stamp at index 1 of s to obtain "?abc?", or
+                <br />
+                place stamp at index 2 of s to obtain "??abc".
+                <br />
+                Note that stamp must be fully contained in the boundaries of s
+                in order to stamp (i.e., you cannot place stamp at index 3 of
+                s).
+                <br />
+                We want to convert s to target using at most 10 * target.length
+                turns. Return an array of the index of the left-most letter
+                being stamped at each turn. If we cannot obtain target from s
+                within 10 * target.length turns, return an empty array.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: stamp = "abc", target = "ababc" <br />
+                    Output: [0,2] <br />
+                    Explanation: Initially s = "?????". <br />
+                    - Place stamp at index 0 to get "abc??". <br />
+                    - Place stamp at index 2 to get "ababc". <br />
+                    [1,0,2] would also be accepted as an answer, as well as some
+                    other answers.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: stamp = "abca", target = "aabcaca" <br />
+                    Output: [3,0,1] <br />
+                    Explanation: Initially s = "???????". <br />
+                    - Place stamp at index 3 to get "???abca". <br />
+                    - Place stamp at index 0 to get "abcabca". <br />- Place
+                    stamp at index 1 to get "aabcaca".
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= stamp.length &lt;= target.length &lt;= 1000 <br />
+                stamp and target consist of lowercase English letters.
+              </>
+            }
+            tc="n^2"
+            sc="n"
+            codes={{
+              Java: {
+                code: `// Input: stamp = "abc", target = "ababc"
+                class Solution {
+                  public int[] movesToStamp(String stamp, String target) {
+                    List<Integer> ans = new ArrayList<>();
+                    char[] T = target.toCharArray();
+                    boolean[] stamped = new boolean[target.length()];
+                    int stampedCount = 0;
+                
+                    while (stampedCount < T.length) {
+                      boolean isStamped = false;
+                      for (int i = 0; i <= T.length - stamp.length(); ++i) {
+                        if (stamped[i])
+                          continue;
+                        final int stampified = stampify(stamp, T, i);
+                        if (stampified == 0)
+                          continue;
+                        stampedCount += stampified;
+                        isStamped = true;
+                        stamped[i] = true;
+                        ans.add(i);
+                      }
+                      if (!isStamped)
+                        return new int[] {};
+                    }
+                    Collections.reverse(ans);
+                    return ans.stream().mapToInt(i -> i).toArray();
+                  }
+                
+                  private int stampify(final String stamp, char[] T, int s) {
+                    int stampified = stamp.length();
+                    for (int i = 0; i < stamp.length(); ++i)
+                      if (T[s + i] == '*') 
+                        --stampified;
+                      else if (T[s + i] != stamp.charAt(i))
+                        return 0; 
+                    Arrays.fill(T, s, s + stamp.length(), '*');
+                    return stampified;
+                  }
+                }`,
+                output: `[0,2]`,
+              },
+            }}
+          />
+        ),
+      },
+      q781: {
+        title: "Q937. Reorder Data in Log Files (Q781)",
+        content: (
+          <Comp
+            title="Q937. Reorder Data in Log Files (Q781)"
+            content1={
+              <>
+                You are given an array of logs. Each log is a space-delimited
+                string of words, where the first word is the identifier.
+                <br />
+                There are two types of logs:
+                <br />
+                Letter-logs: All words (except the identifier) consist of
+                lowercase English letters.
+                <br />
+                Digit-logs: All words (except the identifier) consist of digits.
+                <br />
+                Reorder these logs so that:
+                <br />
+                The letter-logs come before all digit-logs.
+                <br />
+                The letter-logs are sorted lexicographically by their contents.
+                If their contents are the same, then sort them lexicographically
+                by their identifiers.
+                <br />
+                The digit-logs maintain their relative ordering.
+                <br />
+                Return the final order of the logs.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: logs = ["dig1 8 1 5 1","let1 art can","dig2 3
+                    6","let2 own kit dig","let3 art zero"]
+                    <br /> Output: ["let1 art can","let3 art zero","let2 own kit
+                    dig","dig1 8 1 5 1","dig2 3 6"]
+                    <br /> Explanation:
+                    <br /> The letter-log contents are all different, so their
+                    ordering is "art can", "art zero", "own kit dig".
+                    <br /> The digit-logs have a relative order of "dig1 8 1 5
+                    1", "dig2 3 6".
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: logs = ["a1 9 2 3 1","g1 act car","zo4 4 7","ab1 off
+                    key dog","a8 act zoo"]
+                    <br /> Output: ["g1 act car","a8 act zoo","ab1 off key
+                    dog","a1 9 2 3 1","zo4 4 7"]
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= logs.length &lt;= 100 <br />
+                3 &lt;= logs[i].length &lt;= 100 <br />
+                All the tokens of logs[i] are separated by a single space.{" "}
+                <br />
+                logs[i] is guaranteed to have an identifier and at least one
+                word after the identifier.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `// Input: logs = ["dig1 8 1 5 1","let1 art can","dig2 3 6","let2 own kit dig","let3 art zero"]
+                class Solution {
+                  public String[] reorderLogFiles(String[] logs) {
+                    List<String> ans = new ArrayList<>();
+                    List<String> digitLogs = new ArrayList<>();
+                    List<String[]> letterLogs = new ArrayList<>();
+                
+                    for (final String log : logs) {
+                      final int i = log.indexOf(' ');
+                      if (Character.isDigit(log.charAt(i + 1)))
+                        digitLogs.add(log);
+                      else
+                        letterLogs.add(new String[] {log.substring(0, i), log.substring(i + 1)});
+                    }
+                
+                    Collections.sort(letterLogs, new Comparator<String[]>() {
+                      @Override
+                      public int compare(String[] l1, String[] l2) {
+                        return l1[1].compareTo(l2[1]) == 0 ? l1[0].compareTo(l2[0]) : l1[1].compareTo(l2[1]);
+                      }
+                    });
+                
+                    for (String[] letterLog : letterLogs)
+                      ans.add(letterLog[0] + " " + letterLog[1]);
+                
+                    for (final String digitLog : digitLogs)
+                      ans.add(digitLog);
+                
+                    return ans.toArray(new String[0]);
+                  }
+                }`,
+                output: `["let1 art can","let3 art zero","let2 own kit dig","dig1 8 1 5 1","dig2 3 6"]`,
+              },
+            }}
+          />
+        ),
+      },
+      q782: {
+        title: "Q (Q782)",
+        content: (
+          <Comp
             content1={<></>}
             content2={null}
             examples={[
@@ -99465,8 +99809,190 @@ a = b + c;
           />
         ),
       },
-      q780: {
-        title: "Q (Q780)",
+      q783: {
+        title: "Q (Q783)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q784: {
+        title: "Q (Q784)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q785: {
+        title: "Q (Q785)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q786: {
+        title: "Q (Q786)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q787: {
+        title: "Q (Q787)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q788: {
+        title: "Q (Q788)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q789: {
+        title: "Q (Q789)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q790: {
+        title: "Q (Q790)",
         content: (
           <Comp
             content1={<></>}
