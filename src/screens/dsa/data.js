@@ -318,6 +318,7 @@ import Leetcode897 from "assets/leetcode/897.png";
 import Leetcode909 from "assets/leetcode/909.png";
 import Leetcode913 from "assets/leetcode/913.png";
 import Leetcode919 from "assets/leetcode/919.png";
+import Leetcode931 from "assets/leetcode/931.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -98587,43 +98588,143 @@ a = b + c;
         ),
       },
       q770: {
-        title: "Q (Q770)",
+        title: "Q926. Flip String to Monotone Increasing (Q770)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q926. Flip String to Monotone Increasing (Q770)"
+            content1={
+              <>
+                A binary string is monotone increasing if it consists of some
+                number of 0's (possibly none), followed by some number of 1's
+                (also possibly none).
+                <br />
+                You are given a binary string s. You can flip s[i] changing it
+                from 0 to 1 or from 1 to 0.
+                <br />
+                Return the minimum number of flips to make s monotone
+                increasing.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "00110"
+                    <br />
+                    Output: 1<br />
+                    Explanation: We flip the last digit to get 00111.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "010110"
+                    <br />
+                    Output: 2<br />
+                    Explanation: We flip to get 011111, or alternatively 000111.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "00011000"
+                    <br />
+                    Output: 2<br />
+                    Explanation: We flip to get 00000000.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 10^5
+                <br />
+                s[i] is either '0' or '1'.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {number}
+                */
+               var minFlipsMonoIncr = function(s) {
+                 const dp = Array(2).fill(0);
+                 for (let i = 0; i < s.length; ++i) {
+                   let temp = dp[0] + (s[i] == '1' ? 1 : 0);
+                   dp[1] = Math.min(dp[0], dp[1]) + (s[i] == '0' ? 1 : 0);
+                   dp[0] = temp;
+                 }
+                 return Math.min(dp[0], dp[1])    
+               };
+               
+               console.log(minFlipsMonoIncr("00110"))`,
+                output: `1`,
               },
             }}
           />
         ),
       },
       q771: {
-        title: "Q (Q771)",
+        title: "Q927. Three Equal Parts (Q771)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q927. Three Equal Parts (Q771)"
+            content1={
+              <>
+                You are given an array arr which consists of only zeros and
+                ones, divide the array into three non-empty parts such that all
+                of these parts represent the same binary value.
+                <br />
+                If it is possible, return any [i, j] with i + 1 &lt; j, such
+                that:
+                <br />
+                arr[0], arr[1], ..., arr[i] is the first part,
+                <br />
+                arr[i + 1], arr[i + 2], ..., arr[j - 1] is the second part, and
+                <br />
+                arr[j], arr[j + 1], ..., arr[arr.length - 1] is the third part.
+                <br />
+                All three parts have equal binary values.
+                <br />
+                If it is not possible, return [-1, -1].
+                <br />
+                Note that the entire part is used when considering what binary
+                value it represents. For example, [1,1,0] represents 6 in
+                decimal, not 3. Also, leading zeros are allowed, so [0,1,1] and
+                [1,1] represent the same value.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [1,0,1,0,1] <br />
+                    Output: [0,3]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [1,1,0,1,1] <br />
+                    Output: [-1,-1]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: arr = [1,1,0,0,1] <br />
+                    Output: [0,2]
+                  </>
+                ),
               },
             ]}
             constraints={<></>}
@@ -98631,138 +98732,512 @@ a = b + c;
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} arr
+                * @return {number[]}
+                */
+               var threeEqualParts = function(arr) {
+                 let ones = 0;
+                 for (let a of arr)
+                     if (a == 1)
+                       ++ones;
+                   if (ones == 0)
+                     return [0, arr.length - 1];
+                   if (ones % 3 != 0)
+                     return [-1, -1];
+                   let k = parseInt(ones / 3);
+                   let i = 0;
+                   let j = 0;
+                   let first = 0;
+                   let second = 0;
+                   let third = 0;
+                   for (i = 0; i < arr.length; ++i)
+                     if (arr[i] == 1) {
+                       first = i;
+                       break;
+                     }
+                   let gapOnes = k;
+                   for (j = i + 1; j < arr.length; ++j)
+                     if (arr[j] == 1 && --gapOnes == 0) {
+                       second = j;
+                       break;
+                     }
+                   gapOnes = k;
+                   for (i = j + 1; i < arr.length; ++i)
+                     if (arr[i] == 1 && --gapOnes == 0) {
+                       third = i;
+                       break;
+                     }
+                   while (third < arr.length && arr[first] == arr[second] && arr[second] == arr[third]) {
+                     ++first;
+                     ++second;
+                     ++third;
+                   }
+                   if (third == arr.length)
+                     return [first - 1, second];
+                   return [-1, -1]; 
+               };
+               
+               console.log(threeEqualParts([1,0,1,0,1]))`,
+                output: `[ 0, 3 `,
               },
             }}
           />
         ),
       },
       q772: {
-        title: "Q (Q772)",
+        title: "Q928. Minimize Malware Spread II (Q772)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q928. Minimize Malware Spread II (Q772)"
+            content1={
+              <>
+                You are given a network of n nodes represented as an n x n
+                adjacency matrix graph, where the ith node is directly connected
+                to the jth node if graph[i][j] == 1.
+                <br />
+                Some nodes initial are initially infected by malware. Whenever
+                two nodes are directly connected, and at least one of those two
+                nodes is infected by malware, both nodes will be infected by
+                malware. This spread of malware will continue until no more
+                nodes can be infected in this manner.
+                <br />
+                Suppose M(initial) is the final number of nodes infected with
+                malware in the entire network after the spread of malware stops.
+                <br />
+                We will remove exactly one node from initial, completely
+                removing it and any connections from this node to any other
+                node.
+                <br />
+                Return the node that, if removed, would minimize M(initial). If
+                multiple nodes could be removed to minimize M(initial), return
+                such a node with the smallest index.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: graph = [[1,1,0],[1,1,0],[0,0,1]], <br /> initial =
+                    [0,1]
+                    <br /> Output: 0
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: graph = [[1,1,0],[1,1,1],[0,1,1]], <br />
+                    initial = [0,1]
+                    <br /> Output: 1
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: graph = [[1,1,0,0],[1,1,1,0],[0,1,1,1],[0,0,1,1]],{" "}
+                    <br /> initial = [0,1]
+                    <br /> Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                n == graph.length <br />
+                n == graph[i].length <br />
+                2 &lt;= n &lt;= 300 <br />
+                graph[i][j] is 0 or 1. <br />
+                graph[i][j] == graph[j][i] <br />
+                graph[i][i] == 1 <br />
+                1 &lt;= initial.length &lt; n <br />
+                0 &lt;= initial[i] &lt;= n - 1 <br />
+                All the integers in initial are unique.
+              </>
+            }
+            tc="n^2"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} graph
+                * @param {number[]} initial
+                * @return {number}
+                */
+               var minMalwareSpread = function(graph, initial) {
+                 let ans = 0;
+                 let minCount = graph.length;
+                 initial = initial.sort((a,b)=>a-b)
+                 for (let i of initial) {
+                   const count = bfs(graph, i, initial);
+                   if (count < minCount) {
+                     minCount = count;
+                     ans = i;
+                   }
+                 }
+                 return ans;   
+               };
+               
+               function bfs(graph, removed, initial) {
+                 const q = [];
+                 const seen = Array(graph.length).fill(false);
+                 seen[removed] = true;
+                 let count = 0;
+                 for (const i of initial)
+                     if (i != removed) {
+                       q.push(i);
+                       seen[i] = true;
+                     }
+                   while (q.length) {
+                     const u = q.shift();
+                     ++count;
+                     for (let i = 0; i < graph.length; ++i) {
+                       if (seen[i])
+                         continue;
+                       if (i != u && graph[i][u] == 1) {
+                         q.push(i);
+                         seen[i] = true;
+                       }
+                     }
+                   }
+                   return count;
+               }
+               console.log(minMalwareSpread([[1,1,0],[1,1,0],[0,0,1]],[0,1]))`,
+                output: `0`,
               },
             }}
           />
         ),
       },
       q773: {
-        title: "Q (Q773)",
+        title: "Q929. Unique Email Addresses (Q773)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q929. Unique Email Addresses (Q773)"
+            content1={
+              <>
+                Every valid email consists of a local name and a domain name,
+                separated by the '@' sign. Besides lowercase letters, the email
+                may contain one or more '.' or '+'.
+                <br />
+                For example, in "alice@leetcode.com", "alice" is the local name,
+                and "leetcode.com" is the domain name.
+                <br />
+                If you add periods '.' between some characters in the local name
+                part of an email address, mail sent there will be forwarded to
+                the same address without dots in the local name. Note that this
+                rule does not apply to domain names.
+                <br />
+                For example, "alice.z@leetcode.com" and "alicez@leetcode.com"
+                forward to the same email address.
+                <br />
+                If you add a plus '+' in the local name, everything after the
+                first plus sign will be ignored. This allows certain emails to
+                be filtered. Note that this rule does not apply to domain names.
+                <br />
+                For example, "m.y+name@email.com" will be forwarded to
+                "my@email.com".
+                <br />
+                It is possible to use both of these rules at the same time.
+                <br />
+                Given an array of strings emails where we send one email to each
+                emails[i], return the number of different addresses that
+                actually receive mails.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: emails =
+                    ["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]
+                    <br />
+                    Output: 2
+                    <br />
+                    Explanation: "testemail@leetcode.com" and
+                    "testemail@lee.tcode.com" actually receive mails.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: emails =
+                    ["a@leetcode.com","b@leetcode.com","c@leetcode.com"]
+                    <br />
+                    Output: 3
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= emails.length &lt;= 100
+                <br />
+                1 &lt;= emails[i].length &lt;= 100
+                <br />
+                emails[i] consist of lowercase English letters, '+', '.' and
+                '@'.
+                <br />
+                Each emails[i] contains exactly one '@' character.
+                <br />
+                All local and domain names are non-empty.
+                <br />
+                Local names do not start with a '+' character.
+                <br />
+                Domain names end with the ".com" suffix.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string[]} emails
+                * @return {number}
+                */
+               var numUniqueEmails = function(emails) {
+                 const seen = new Set();
+                 for (let email of emails) {
+                   let [local,domain] = email.split("@");
+                   local = local.split('+')[0].split('.').join('')
+                   seen.add(local + '@' + domain)
+                 }
+                 return seen.size;    
+               };
+               
+               console.log(numUniqueEmails(["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]))`,
+                output: `2`,
               },
             }}
           />
         ),
       },
       q774: {
-        title: "Q (Q774)",
+        title: "Q930. Binary Subarrays With Sum (Q774)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q930. Binary Subarrays With Sum (Q774)"
+            content1={
+              <>
+                Given a binary array nums and an integer goal, return the number
+                of non-empty subarrays with a sum goal.
+                <br />A subarray is a contiguous part of the array.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Given a binary array nums and an integer goal, return the
+                    number of non-empty subarrays with a sum goal.
+                    <br />A subarray is a contiguous part of the array.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [0,0,0,0,0], goal = 0<br />
+                    Output: 15
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 3 * 10^4
+                <br />
+                nums[i] is either 0 or 1.
+                <br />0 &lt;= goal &lt;= nums.length
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} goal
+                * @return {number}
+                */
+               var numSubarraysWithSum = function(nums, goal) {
+                 let ans = 0;
+                 let prefix = 0;
+                 const count = {}
+                 count[0] = 1
+               
+                 for (let a of nums) {
+                   prefix += a;
+                   if ((prefix - goal) in count)
+                     ans += count[prefix - goal];
+                 count[prefix] = (count[prefix] || 0) + 1;
+                 }
+                 return ans;    
+               };
+               
+               console.log(numSubarraysWithSum([1,0,1,0,1],2))`,
+                output: `4`,
               },
             }}
           />
         ),
       },
       q775: {
-        title: "Q (Q775)",
+        title: "Q931. Minimum Falling Path Sum (Q775)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q931. Minimum Falling Path Sum (Q775)"
+            content1={
+              <>
+                Given an n x n array of integers matrix, return the minimum sum
+                of any falling path through matrix.
+                <br />A falling path starts at any element in the first row and
+                chooses the element in the next row that is either directly
+                below or diagonally left/right. Specifically, the next element
+                from position (row, col) will be (row + 1, col - 1), (row + 1,
+                col), or (row + 1, col + 1).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode931,
+                content: (
+                  <>
+                    Input: matrix = [[2,1,3],[6,5,4],[7,8,9]] <br />
+                    Output: 13 <br />
+                    Explanation: There are two falling paths with a minimum sum
+                    as shown.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: matrix = [[-19,57],[-40,-5]] <br />
+                    Output: -59 <br />
+                    Explanation: The falling path with a minimum sum is shown.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                n == matrix.length == matrix[i].length
+                <br />
+                1 &lt;= n &lt;= 100
+                <br />
+                -100 &lt;= matrix[i][j] &lt;= 100
+              </>
+            }
+            tc="n^2"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} matrix
+                * @return {number}
+                */
+               var minFallingPathSum = function(matrix) {
+                 const n = matrix.length;
+                   for (let i = 1; i < n; ++i)
+                     for (let j = 0; j < n; ++j) {
+                       let min = Number.MAX_SAFE_INTEGER;
+                       for (let k = Math.max(0, j - 1); k < Math.min(n, j + 2); ++k)
+                         min = Math.min(min, matrix[i - 1][k]);
+                       matrix[i][j] += min;
+                     }
+                   return Math.min(...matrix[n-1])
+               };
+               console.log(minFallingPathSum([[2,1,3],[6,5,4],[7,8,9]]))`,
+                output: `13`,
               },
             }}
           />
         ),
       },
       q776: {
-        title: "Q (Q776)",
+        title: "Q932. Beautiful Array (Q776)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q932. Beautiful Array (Q776)"
+            content1={
+              <>
+                An array nums of length n is beautiful if:
+                <br />
+                nums is a permutation of the integers in the range [1, n].
+                <br />
+                For every 0 &lt;= i &lt; j &lt; n, there is no index k with i
+                &lt; k &lt; j where 2 * nums[k] == nums[i] + nums[j].
+                <br />
+                Given the integer n, return any beautiful array nums of length
+                n. There will be at least one valid answer for the given n.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 4<br />
+                    Output: [2,1,4,3]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 5<br />
+                    Output: [3,1,2,5,4]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={<>1 &lt;= n &lt;= 1000</>}
+            tc="n.log n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @return {number[]}
+                */
+               var beautifulArray = function(n) {
+                 const A = Array(n).fill(0)
+                 for (let i = 0; i < n; ++i)
+                   A[i] = i + 1;
+                 divide(A, 0, n - 1, 1);
+                 return A;    
+               };
+               
+               function divide(A, l, r, mask) {
+                 if (l >= r) return;
+                 const m = partition(A, l, r, mask);
+                 divide(A, l, m, mask << 1);
+                 divide(A, m + 1, r, mask << 1);
+               }
+               
+               function partition(A, l, r, mask) {
+                 let nextSwapped = l;
+                 for (let i = l; i <= r; ++i)
+                   if ((A[i] & mask) > 0)
+                     swap(A, i, nextSwapped++);
+                 return nextSwapped - 1;
+               }
+               
+               function swap(A, i, j) {
+                 const temp = A[i];
+                 A[i] = A[j];
+                 A[j] = temp;
+               }
+               
+               console.log(beautifulArray(4))`,
+                output: `[ 3, 1, 2, 4 ]`,
               },
             }}
           />
