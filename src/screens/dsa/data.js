@@ -99244,61 +99244,205 @@ a = b + c;
         ),
       },
       q777: {
-        title: "Q (Q777)",
+        title: "Q933. Number of Recent Calls (Q777)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q933. Number of Recent Calls (Q777)"
+            content1={
+              <>
+                You have a RecentCounter class which counts the number of recent
+                requests within a certain time frame.
+                <br />
+                Implement the RecentCounter class:
+                <br />
+                RecentCounter() Initializes the counter with zero recent
+                requests.
+                <br />
+                int ping(int t) Adds a new request at time t, where t represents
+                some time in milliseconds, and returns the number of requests
+                that has happened in the past 3000 milliseconds (including the
+                new request). Specifically, return the number of requests that
+                have happened in the inclusive range [t - 3000, t].
+                <br />
+                It is guaranteed that every call to ping uses a strictly larger
+                value of t than the previous call.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input <br />
+                    ["RecentCounter", "ping", "ping", "ping", "ping"] <br />
+                    [[], [1], [100], [3001], [3002]] <br />
+                    Output <br />
+                    [null, 1, 2, 3, 3] <br />
+                    Explanation <br />
+                    RecentCounter recentCounter = new RecentCounter();
+                    <br /> recentCounter.ping(1); // requests = [1], range is
+                    [-2999,1], return 1
+                    <br /> recentCounter.ping(100); // requests = [1, 100],
+                    range is [-2900,100], return 2
+                    <br /> recentCounter.ping(3001); // requests = [1, 100,
+                    3001], range is [1,3001], return 3
+                    <br /> recentCounter.ping(3002); // requests = [1, 100,
+                    3001, 3002], range is [2,3002], return 3
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= t &lt;= 109 <br />
+                Each test case will call ping with strictly increasing values of
+                t.
+                <br /> At most 104 calls will be made to ping.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input
+                // ["RecentCounter", "ping", "ping", "ping", "ping"]
+                // [[], [1], [100], [3001], [3002]]
+                class RecentCounter {
+                    List<Integer> list;
+                    public RecentCounter() {
+                        list = new LinkedList<>();
+                    }
+                    
+                    public int ping(int t) {
+                        list.add(t);
+                        while(list.get(0) < t-3000) list.remove(0);
+                        return list.size();
+                    }
+                }
+                
+                /**
+                 * Your RecentCounter object will be instantiated and called as such:
+                 * RecentCounter obj = new RecentCounter();
+                 * int param_1 = obj.ping(t);
+                 */`,
+                output: `[null, 1, 2, 3, 3]`,
               },
             }}
           />
         ),
       },
       q778: {
-        title: "Q (Q778)",
+        title: "Q934. Shortest Bridge (Q778)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q934. Shortest Bridge (Q778)"
+            content1={
+              <>
+                You are given an n x n binary matrix grid where 1 represents
+                land and 0 represents water.
+                <br />
+                An island is a 4-directionally connected group of 1's not
+                connected to any other 1's. There are exactly two islands in
+                grid.
+                <br />
+                You may change 0's to 1's to connect the two islands to form one
+                island.
+                <br />
+                Return the smallest number of 0's you must flip to connect the
+                two islands.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid = [[0,1],[1,0]] <br />
+                    Output: 1
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid = [[0,1,0],[0,0,0],[0,0,1]] <br />
+                    Output: 2
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: grid =
+                    [[1,1,1,1,1],[1,0,0,0,1],[1,0,1,0,1],[1,0,0,0,1],[1,1,1,1,1]]
+                    <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                n == grid.length == grid[i].length <br />
+                2 &lt;= n &lt;= 100 <br />
+                grid[i][j] is either 0 or 1. <br />
+                There are exactly two islands in grid.
+              </>
+            }
+            tc="n^2"
+            sc="n^2"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input: grid = [[0,1],[1,0]]
+                class Solution {
+                  public int shortestBridge(int[][] grid) {
+                    markGridTwo(grid);
+                    for (int color = 2;; ++color)
+                      for (int i = 0; i < grid.length; ++i)
+                        for (int j = 0; j < grid[0].length; ++j)
+                          if (grid[i][j] == color)
+                            if (expand(grid, i + 1, j, color) || expand(grid, i - 1, j, color) ||
+                                expand(grid, i, j + 1, color) || expand(grid, i, j - 1, color))
+                              return color - 2;
+                  }
+                  private void markGridTwo(int[][] grid) {
+                    for (int i = 0; i < grid.length; ++i)
+                      for (int j = 0; j < grid[0].length; ++j)
+                        if (grid[i][j] == 1) {
+                          markGridTwo(grid, i, j);
+                          return;
+                        }
+                  }
+                  private void markGridTwo(int[][] grid, int i, int j) {
+                    if (i < 0 || i == grid.length || j < 0 || j == grid[0].length)
+                      return;
+                    if (grid[i][j] != 1)
+                      return;
+                    grid[i][j] = 2;
+                    markGridTwo(grid, i + 1, j);
+                    markGridTwo(grid, i - 1, j);
+                    markGridTwo(grid, i, j + 1);
+                    markGridTwo(grid, i, j - 1);
+                  }
+                  private boolean expand(int[][] grid, int i, int j, int color) {
+                    if (i < 0 || i == grid.length || j < 0 || j == grid[0].length)
+                      return false;
+                    if (grid[i][j] == 0)
+                      grid[i][j] = color + 1;
+                    return grid[i][j] == 1; 
+                  }
+                }`,
+                output: `1`,
               },
             }}
           />
         ),
       },
       q779: {
-        title: "Q (Q779)",
+        title: "Q935. Knight Dialer (Q779)",
         content: (
           <Comp
+            title="Q935. Knight Dialer (Q779)"
             content1={<></>}
             content2={null}
             examples={[
