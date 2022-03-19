@@ -317,6 +317,7 @@ import Leetcode889 from "assets/leetcode/889.png";
 import Leetcode897 from "assets/leetcode/897.png";
 import Leetcode909 from "assets/leetcode/909.png";
 import Leetcode913 from "assets/leetcode/913.png";
+import Leetcode919 from "assets/leetcode/919.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -97915,7 +97916,7 @@ a = b + c;
                  return maxSum < 0 ? maxSum : Math.max(maxSum, totalSum - minSum);  
                };
                
-               console.log(maxSubarraySumCircular([1,-2,3,-2]))`,
+                console.log(maxSubarraySumCircular([1,-2,3,-2]))`,
                 output: `3`,
               },
             }}
@@ -97927,110 +97928,382 @@ a = b + c;
         content: (
           <Comp
             title="Q919. Complete Binary Tree Inserter (Q763)"
-            content1={<></>}
+            content1={
+              <>
+                A complete binary tree is a binary tree in which every level,
+                except possibly the last, is completely filled, and all nodes
+                are as far left as possible.
+                <br />
+                Design an algorithm to insert a new node to a complete binary
+                tree keeping it complete after the insertion.
+                <br />
+                Implement the CBTInserter class:
+                <br />
+                CBTInserter(TreeNode root) Initializes the data structure with
+                the root of the complete binary tree.
+                <br />
+                int insert(int v) Inserts a TreeNode into the tree with value
+                Node.val == val so that the tree remains complete, and returns
+                the value of the parent of the inserted TreeNode.
+                <br />
+                TreeNode get_root() Returns the root node of the tree.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                img: Leetcode919,
+                content: (
+                  <>
+                    Input <br />
+                    ["CBTInserter", "insert", "insert", "get_root"] <br />
+                    [[[1, 2]], [3], [4], []] <br />
+                    Output <br />
+                    [null, 1, 2, [1, 2, 3, 4]] <br />
+                    Explanation <br />
+                    CBTInserter cBTInserter = new CBTInserter([1, 2]); <br />
+                    cBTInserter.insert(3); // return 1 <br />
+                    cBTInserter.insert(4); // return 2 <br />
+                    cBTInserter.get_root(); // return [1, 2, 3, 4]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the tree will be in the range [1, 1000].
+                <br />
+                0 &lt;= Node.val &lt;= 5000
+                <br />
+                root is a complete binary tree.
+                <br />0 &lt;= val &lt;= 5000 At most 104 calls will be made to
+                insert and get_root.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input
+                // ["CBTInserter", "insert", "insert", "get_root"]
+                // [[[1, 2]], [3], [4], []]
+                /**
+                 * Definition for a binary tree node.
+                 * public class TreeNode {
+                 *     int val;
+                 *     TreeNode left;
+                 *     TreeNode right;
+                 *     TreeNode() {}
+                 *     TreeNode(int val) { this.val = val; }
+                 *     TreeNode(int val, TreeNode left, TreeNode right) {
+                 *         this.val = val;
+                 *         this.left = left;
+                 *         this.right = right;
+                 *     }
+                 * }
+                 */
+                /**
+                 * Definition for a binary tree node.
+                 * public class TreeNode {
+                 *     int val;
+                 *     TreeNode left;
+                 *     TreeNode right;
+                 *     TreeNode() {}
+                 *     TreeNode(int val) { this.val = val; }
+                 *     TreeNode(int val, TreeNode left, TreeNode right) {
+                 *         this.val = val;
+                 *         this.left = left;
+                 *         this.right = right;
+                 *     }
+                 * }
+                 */
+                class CBTInserter {
+                  public CBTInserter(TreeNode root) {
+                    tree.add(root);
+                    for (int i = 0; i < tree.size(); ++i) {
+                      TreeNode node = tree.get(i);
+                      if (node.left != null)
+                        tree.add(node.left);
+                      if (node.right != null)
+                        tree.add(node.right);
+                    }
+                  }
+                
+                  public int insert(int v) {
+                    final int n = tree.size();
+                    TreeNode node = new TreeNode(v);
+                    TreeNode parent = tree.get((n - 1) / 2);
+                    tree.add(node);
+                    if (n % 2 == 1)
+                      parent.left = node;
+                    else
+                      parent.right = node;
+                    return parent.val;
+                  }
+                
+                  public TreeNode get_root() {
+                    return tree.get(0);
+                  }
+                
+                  private List<TreeNode> tree = new ArrayList<>();
+                }
+                /**
+                 * Your CBTInserter object will be instantiated and called as such:
+                 * CBTInserter obj = new CBTInserter(root);
+                 * int param_1 = obj.insert(val);
+                 * TreeNode param_2 = obj.get_root();
+                 */`,
+                output: `[null, 1, 2, [1, 2, 3, 4]]`,
               },
             }}
           />
         ),
       },
       q764: {
-        title: "Q (Q764)",
+        title: "Q920. Number of Music Playlists (Q764)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q920. Number of Music Playlists (Q764)"
+            content1={
+              <>
+                Your music player contains n different songs. You want to listen
+                to goal songs (not necessarily different) during your trip. To
+                avoid boredom, you will create a playlist so that:
+                <br />
+                Every song is played at least once.
+                <br />
+                A song can only be played again only if k other songs have been
+                played.
+                <br />
+                Given n, goal, and k, return the number of possible playlists
+                that you can create. Since the answer can be very large, return
+                it modulo 109 + 7.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 3, goal = 3, k = 1<br />
+                    Output: 6<br />
+                    Explanation: There are 6 possible playlists: [1, 2, 3], [1,
+                    3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], and [3, 2, 1].
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 2, goal = 3, k = 0<br />
+                    Output: 6<br />
+                    Explanation: There are 6 possible playlists: [1, 1, 2], [1,
+                    2, 1], [2, 1, 1], [2, 2, 1], [2, 1, 2], and [1, 2, 2].
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: n = 2, goal = 3, k = 1<br />
+                    Output: 2<br />
+                    Explanation: There are 2 possible playlists: [1, 2, 1] and
+                    [2, 1, 2].
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={<>0 &lt;= k &lt; n &lt;= goal &lt;= 100</>}
+            tc="n.l"
+            sc="n.l"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @param {number} goal
+                * @param {number} k
+                * @return {number}
+                */
+               var numMusicPlaylists = function(n, goal, k) {
+                   const kMod = 1e9 + 7;
+                   const dp = Array.from(Array(goal+1),()=>Array(n+1).fill(0))
+                   dp[0][0] = 1;
+                   for (let i = 1; i <= goal; ++i)
+                     for (let j = 1; j <= n; ++j) {
+                       dp[i][j] += dp[i - 1][j - 1] * (n - (j - 1)); 
+                       dp[i][j] += dp[i - 1][j] * Math.max(0, j - k); 
+                       dp[i][j] %= kMod;
+                     }
+                   return parseInt(dp[goal][n])  
+               };
+               
+               console.log(numMusicPlaylists(3,3,1))`,
+                output: `6`,
               },
             }}
           />
         ),
       },
       q765: {
-        title: "Q (Q765)",
+        title: "Q921. Minimum Add to Make Parentheses Valid (Q765)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q921. Minimum Add to Make Parentheses Valid (Q765)"
+            content1={
+              <>
+                A parentheses string is valid if and only if:
+                <br />
+                It is the empty string,
+                <br />
+                It can be written as AB (A concatenated with B), where A and B
+                are valid strings, or
+                <br />
+                It can be written as (A), where A is a valid string.
+                <br />
+                You are given a parentheses string s. In one move, you can
+                insert a parenthesis at any position of the string.
+                <br />
+                For example, if s = "()))", you can insert an opening
+                parenthesis to be "(()))" or a closing parenthesis to be
+                "())))".
+                <br />
+                Return the minimum number of moves required to make s valid.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "())" <br />
+                    Output: 1
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "(((" <br />
+                    Output: 3
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 1000 <br />
+                s[i] is either '(' or ')'.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {number}
+                */
+               var minAddToMakeValid = function(s) {
+                 let l = 0;
+                 let r = 0;
+                 for (const c of s)
+                   if (c == '(') {
+                     ++l;
+                   } else {
+                     if (l == 0)
+                       ++r;
+                     else
+                       --l;
+                   }
+                 return l + r;   
+               };
+               
+               console.log(minAddToMakeValid("())"))`,
+                output: `1`,
               },
             }}
           />
         ),
       },
       q766: {
-        title: "Q (Q766)",
+        title: "Q922. Sort Array By Parity II (Q766)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q922. Sort Array By Parity II (Q766)"
+            content1={
+              <>
+                Given an array of integers nums, half of the integers in nums
+                are odd, and the other half are even.
+                <br />
+                Sort the array so that whenever nums[i] is odd, i is odd, and
+                whenever nums[i] is even, i is even.
+                <br />
+                Return any answer array that satisfies this condition.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [4,2,5,7]
+                    <br />
+                    Output: [4,5,2,7]
+                    <br />
+                    Explanation: [4,7,2,5], [2,5,4,7], [2,7,4,5] would also have
+                    been accepted.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: <>Input: nums = [2,3] Output: [2,3]</>,
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                2 &lt;= nums.length &lt;= 2 * 10^4
+                <br />
+                nums.length is even.
+                <br />
+                Half of the integers in nums are even.
+                <br />0 &lt;= nums[i] &lt;= 1000
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number[]}
+                */
+               var sortArrayByParityII = function(nums) {
+                 const n = nums.length;
+                 for (let i = 0, j = 1; i < n; i += 2, j += 2) {
+                   while (i < n && nums[i] % 2 == 0)
+                     i += 2;
+                   while (j < n && nums[j] % 2 == 1)
+                     j += 2;
+                   if (i < n) {
+                     let temp = nums[i];
+                     nums[i] = nums[j];
+                     nums[j] = temp;
+                   }
+                 }
+                 return nums;    
+               };
+               console.log(sortArrayByParityII([4,2,5,7]))`,
+                output: `[ 4, 5, 2, 7 ]`,
               },
             }}
           />
         ),
       },
       q767: {
-        title: "Q (Q767)",
+        title: "Q923. 3Sum With Multiplicity (Q767)",
         content: (
           <Comp
+            title="Q923. 3Sum With Multiplicity (Q767)"
             content1={<></>}
             content2={null}
             examples={[
