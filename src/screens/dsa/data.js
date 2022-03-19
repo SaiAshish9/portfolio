@@ -320,6 +320,8 @@ import Leetcode913 from "assets/leetcode/913.png";
 import Leetcode919 from "assets/leetcode/919.png";
 import Leetcode931 from "assets/leetcode/931.png";
 import Leetcode935 from "assets/leetcode/935.png";
+import Leetcode938 from "assets/leetcode/938.png";
+import Leetcode939 from "assets/leetcode/939.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -99784,47 +99786,134 @@ a = b + c;
         ),
       },
       q782: {
-        title: "Q (Q782)",
+        title: "Q938. Range Sum of BST (Q782)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q938. Range Sum of BST (Q782)"
+            content1={
+              <>
+                Given the root node of a binary search tree and two integers low
+                and high, return the sum of values of all nodes with a value in
+                the inclusive range [low, high].
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode938,
+                content: (
+                  <>
+                    Input: root = [10,5,15,3,7,null,18], low = 7, high = 15
+                    <br /> Output: 32 <br />
+                    Explanation: Nodes 7, 10, and 15 are in the range [7, 15]. 7
+                    + 10 + 15 = 32.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [10,5,15,3,7,13,18,1,null,6], low = 6, high =
+                    10
+                    <br />
+                    Output: 23
+                    <br />
+                    Explanation: Nodes 6, 7, and 10 are in the range [6, 10]. 6
+                    + 7 + 10 = 23.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the tree is in the range [1, 2 * 104].
+                <br /> 1 &lt;= Node.val &lt;= 10^5
+                <br /> 1 &lt;= low &lt;= high &lt;= 10^5
+                <br /> All Node.val are unique.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="h"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+              }
+             
+             /**
+              * @param {TreeNode} root
+              * @param {number} low
+              * @param {number} high
+              * @return {number}
+              */
+             var rangeSumBST = function(root, low, high) {
+               if (!root) return 0;
+               if (root.val < low)
+                 return rangeSumBST(root.right, low, high);
+               if (root.val > high)
+                 return rangeSumBST(root.left, low, high);
+               return root.val + rangeSumBST(root.left, low, high) + rangeSumBST(root.right, low, high);   
+             };
+             
+             const t = new TreeNode(10)
+             t.left = new TreeNode(5)
+             t.left.left = new TreeNode(3)
+             t.left.right = new TreeNode(7)
+             t.right = new TreeNode(15)
+             t.right.right = new TreeNode(18)
+             console.log(rangeSumBST(t,7,15))`,
+                output: `32`,
               },
             }}
           />
         ),
       },
       q783: {
-        title: "Q (Q783)",
+        title: "939. Minimum Area Rectangle (Q783)",
         content: (
           <Comp
-            content1={<></>}
+            title="939. Minimum Area Rectangle (Q783)"
+            content1={
+              <>
+                You are given an array of points in the X-Y plane points where
+                points[i] = [xi, yi].
+                <br />
+                Return the minimum area of a rectangle formed from these points,
+                with sides parallel to the X and Y axes. If there is not any
+                such rectangle, return 0.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode939,
+                content: (
+                  <>
+                    Input: points = [[1,1],[1,3],[3,1],[3,3],[2,2]]
+                    <br /> Output: 4
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: points = [[1,1],[1,3],[3,1],[3,3],[4,1],[4,3]]
+                    <br /> Output: 2
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                1 &lt;= points.length &lt;= 500 <br />
+                points[i].length == 2 <br />
+                0 &lt;= xi, yi &lt;= 4 * 10^4 <br />
+                All the given points are unique.
+              </>
+            }
+            tc="n^2"
             sc="n"
             codes={{
               Javascript: {
