@@ -322,6 +322,7 @@ import Leetcode931 from "assets/leetcode/931.png";
 import Leetcode935 from "assets/leetcode/935.png";
 import Leetcode938 from "assets/leetcode/938.png";
 import Leetcode939 from "assets/leetcode/939.png";
+import Leetcode941 from "assets/leetcode/941.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -99916,146 +99917,668 @@ a = b + c;
             tc="n^2"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input: points = [[1,1],[1,3],[3,1],[3,3],[2,2]]
+                class Solution {
+                  public int minAreaRect(int[][] points) {
+                    int ans = Integer.MAX_VALUE;
+                    Map<Integer, Set<Integer>> xToYs = new HashMap<>();
+                    for (int[] p : points) {
+                      xToYs.putIfAbsent(p[0], new HashSet<>());
+                      xToYs.get(p[0]).add(p[1]);
+                    }
+                    for (int i = 1; i < points.length; ++i)
+                      for (int j = 0; j < i; ++j) {
+                        int[] p = points[i];
+                        int[] q = points[j];
+                        if (p[0] == q[0] || p[1] == q[1])
+                          continue;
+                        if (xToYs.get(p[0]).contains(q[1]) && xToYs.get(q[0]).contains(p[1]))
+                          ans = Math.min(ans, Math.abs(p[0] - q[0]) * Math.abs(p[1] - q[1]));
+                      }
+                    return ans == Integer.MAX_VALUE ? 0 : ans;
+                  }
+                }
+                `,
+                output: `4`,
               },
             }}
           />
         ),
       },
       q784: {
-        title: "Q (Q784)",
+        title: "Q940. Distinct Subsequences II (Q784)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q940. Distinct Subsequences II (Q784)"
+            content1={
+              <>
+                Given a string s, return the number of distinct non-empty
+                subsequences of s. Since the answer may be very large, return it
+                modulo 10^9 + 7.
+                <br />A subsequence of a string is a new string that is formed
+                from the original string by deleting some (can be none) of the
+                characters without disturbing the relative positions of the
+                remaining characters. (i.e., "ace" is a subsequence of "abcde"
+                while "aec" is not.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "abc" <br />
+                    Output: 7 <br />
+                    Explanation: The 7 distinct subsequences are "a", "b", "c",
+                    "ab", "ac", "bc", and "abc".
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "aba" <br />
+                    Output: 6 <br />
+                    Explanation: The 6 distinct subsequences are "a", "b", "ab",
+                    "aa", "ba", and "aba".
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "aaa" <br />
+                    Output: 3 <br />
+                    Explanation: The 3 distinct subsequences are "a", "aa" and
+                    "aaa".
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;== s.length &lt;= 2000 <br />s consists of lowercase
+                English letters.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {number}
+                */
+               var distinctSubseqII = function(s) {
+                 const kMod = 1e9 + 7;
+                 const endsWith= Array(26).fill(0);
+                 for (let c of s)
+                     endsWith[c.charCodeAt(0) - 97] = (endsWith.reduce((a,b)=>a+b,0) + 1) % kMod;
+                   return endsWith.reduce((a,b)=>a+b,0) % kMod;   
+               };
+               
+               console.log(distinctSubseqII("abc"))`,
+                output: `7`,
               },
             }}
           />
         ),
       },
       q785: {
-        title: "Q (Q785)",
+        title: "Q941. Valid Mountain Array (Q785)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q941. Valid Mountain Array (Q785)"
+            content1={
+              <>
+                Given an array of integers arr, return true if and only if it is
+                a valid mountain array.
+                <br />
+                Recall that arr is a mountain array if and only if:
+                <br />
+                arr.length &gt;= 3<br />
+                There exists some i with 0 &lt; i &lt; arr.length - 1 such that:
+                <br />
+                <br />
+                arr[0] &lt; arr[1] &lt; ... &lt; arr[i - 1] &lt; arr[i]
+                <br />
+                arr[i] &gt; arr[i + 1] &gt; ... &gt; arr[arr.length - 1]
+              </>
+            }
+            img={Leetcode941}
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [2,1]
+                    <br />
+                    Output: false
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [3,5,5]
+                    <br />
+                    Output: false
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: arr = [0,3,2,1]
+                    <br />
+                    Output: true
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= arr.length &lt;= 10^4
+                <br />0 &lt;= arr[i] &lt;= 10^4
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} arr
+                * @return {boolean}
+                */
+               var validMountainArray = function(arr) {
+                 if (arr.length < 3) return false;
+                 let l = 0;
+                 let r = arr.length - 1;
+                 while (l + 1 < arr.length && arr[l] < arr[l + 1])
+                   ++l;
+                 while (r > 0 && arr[r] < arr[r - 1])
+                   --r;
+                 return l > 0 && r < arr.length - 1 && l == r;    
+               };
+               
+               console.log(validMountainArray([2,1]))`,
+                output: `false`,
               },
             }}
           />
         ),
       },
       q786: {
-        title: "Q (Q786)",
+        title: "Q942. DI String Match (Q786)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q942. DI String Match (Q786)"
+            content1={
+              <>
+                A permutation perm of n + 1 integers of all the integers in the
+                range [0, n] can be represented as a string s of length n where:
+                <br />
+                s[i] == 'I' if perm[i] &lt; perm[i + 1], and <br />
+                s[i] == 'D' if perm[i] &gt; perm[i + 1]. <br />
+                Given a string s, reconstruct the permutation perm and return
+                it. If there are multiple valid permutations perm, return any of
+                them.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "IDID"
+                    <br />
+                    Output: [0,4,1,3,2]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "III"
+                    <br />
+                    Output: [0,1,2,3]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "DDI"
+                    <br />
+                    Output: [3,2,0,1]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 10^5
+                <br />
+                s[i] is either 'I' or 'D'.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {number[]}
+                */
+               var diStringMatch = function(s) {
+                 const n = s.length;
+                 const ans = Array(n + 1).fill(0);
+                 let min = 0;
+                 let max = n;
+                 for (let i = 0; i < n; ++i)
+                   ans[i] = s[i] == 'I' ? min++ : max--;
+                 ans[n] = min;
+                 return ans;    
+               };
+               
+               console.log(diStringMatch("IDID"))`,
+                output: `[0,4,1,3,2]`,
               },
             }}
           />
         ),
       },
       q787: {
-        title: "Q (Q787)",
+        title: "Q943. Find the Shortest Superstring (Q787)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q943. Find the Shortest Superstring (Q787)"
+            content1={
+              <>
+                Given an array of strings words, return the smallest string that
+                contains each string in words as a substring. If there are
+                multiple valid strings of the smallest length, return any of
+                them.
+                <br />
+                You may assume that no string in words is a substring of another
+                string in words.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words = ["alex","loves","leetcode"]
+                    <br />
+                    Output: "alexlovesleetcode"
+                    <br />
+                    Explanation: All permutations of "alex","loves","leetcode"
+                    would also be accepted.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words = ["catg","ctaagt","gcta","ttca","atgcatc"]
+                    <br />
+                    Output: "gctaagttcatgcatc"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                1 &lt;= words.length &lt;= 12
+                <br />
+                1 &lt;= words[i].length &lt;= 20
+                <br />
+                words[i] consists of lowercase English letters.
+                <br />
+                All the strings of words are unique.
+              </>
+            }
+            tc="n!"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input: words = ["alex","loves","leetcode"]
+                class Solution {
+                    
+                    public String shortestSuperstring(String[] words) {
+                        
+                        int n = words.length;
+                        int[][] distance = new int[n][n];
+                        for(int i=0; i<n; i++){
+                            for(int j=0; j<n; j++){
+                                int min = Math.min(words[i].length(), words[j].length());
+                                for(int k=min; k>=0; k--){
+                                    if(words[i].endsWith(words[j].substring(0,k))) {
+                                        distance[i][j] = words[j].length() - k;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        
+                        int dp[][] = new int[(1<<n)][n];
+                        int path[][] =  new int[(1<<n)][n];
+                        String ans = "";
+                        int len = Integer.MAX_VALUE;
+                        for(int i = 0; i<n; i++){
+                           for(int j=0; j< ( 1<<n); j++){
+                                Arrays.fill(dp[j], -1);
+                                Arrays.fill(path[j], -1);
+                            }
+                            int tsp = tsp(i, 0, distance, dp, path, n);
+                            String str = createPath(words, i, distance, path);
+                            if(str.length() < len){
+                                ans = str;
+                                len = str.length();
+                            }
+                            
+                        }
+                        return ans;
+                
+                    }
+                    
+                    private int tsp(int city, int mask, int[][] distance, int[][] dp, int[][] path, int n){
+                        if(mask == ((1<<n) - 1)) return 0; 
+                        if(dp[mask][city] != -1){
+                            return dp[mask][city];
+                        }
+                        int ans = Integer.MAX_VALUE;
+                        int nextCity = -1;
+                        
+                        for(int i = 0; i<n; i++){
+                            if((mask & (1<<i)) == 0 ){
+                                int dis = distance[city][i] + tsp(i, (mask | (1<<i)), distance, dp, path, n);
+                                if(dis < ans){
+                                    ans = dis;
+                                    nextCity = i;
+                                }
+                            }
+                        }
+                        path[mask][city] = nextCity;
+                        dp[mask][city] = ans;
+                        return ans;
+                    }
+                    
+                    private String createPath(String[] words, int start, int[][] distance, int[][] path){
+                        int c = start;
+                        StringBuilder sb = new StringBuilder(words[c]);
+                        int mask = (1<<start);
+                        int x = path[mask][c];
+                        while(x != -1){
+                            sb.append(words[x].substring(words[x].length() - distance[c][x]));
+                            mask |= (1<<x);
+                            c = x;
+                            x = path[mask][x];
+                        }
+                        return sb.toString();
+                    }
+                }`,
+                output: `"alexlovesleetcode"`,
               },
             }}
           />
         ),
       },
       q788: {
-        title: "Q (Q788)",
+        title: "Q944. Delete Columns to Make Sorted (Q788)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q944. Delete Columns to Make Sorted (Q788)"
+            content1={
+              <>
+                You are given an array of n strings strs, all of the same
+                length.
+                <br />
+                The strings can be arranged such that there is one on each line,
+                making a grid. For example, strs = ["abc", "bce", "cae"] can be
+                arranged as:
+                <br />
+                abc <br />
+                bce <br />
+                cae <br />
+                You want to delete the columns that are not sorted
+                lexicographically. In the above example (0-indexed), columns 0
+                ('a', 'b', 'c') and 2 ('c', 'e', 'e') are sorted while column 1
+                ('b', 'c', 'a') is not, so you would delete column 1.
+                <br />
+                Return the number of columns that you will delete.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: strs = ["cba","daf","ghi"] <br />
+                    Output: 1 <br />
+                    Explanation: The grid looks as follows: <br />
+                    cba <br />
+                    daf <br />
+                    ghi <br />
+                    Columns 0 and 2 are sorted, but column 1 is not, so you only
+                    need to delete 1 column.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: strs = ["a","b"] <br />
+                    Output: 0 <br />
+                    Explanation: The grid looks as follows: <br />
+                    a <br />
+                    b <br />
+                    Column 0 is the only column and is sorted, so you will not
+                    delete any columns.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: strs = ["zyx","wvu","tsr"] Output: 3 <br />
+                    Explanation: The grid looks as follows: <br />
+                    zyx <br />
+                    wvu <br />
+                    tsr <br />
+                    All 3 columns are not sorted, so you will delete all 3.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                n == strs.length <br />
+                1 &lt;= n &lt;= 100 <br />
+                1 &lt;= strs[i].length &lt;= 1000 <br />
+                strs[i] consists of lowercase English letters.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string[]} strs
+                * @return {number}
+                */
+               var minDeletionSize = function(strs) {
+                 const n = strs[0].length;
+                 let ans = 0;
+                 for (let j = 0; j < n; ++j)
+                   for (let i = 0; i + 1 < strs.length; ++i)
+                     if (strs[i].charAt(j) > strs[i + 1].charAt(j)) {
+                       ++ans;
+                       break;
+                     }
+                 return ans;   
+               };
+               
+               console.log(minDeletionSize(["cba","daf","ghi"]))`,
+                output: `1`,
               },
             }}
           />
         ),
       },
       q789: {
-        title: "Q (Q789)",
+        title: "Q945. Minimum Increment to Make Array Unique (Q789)",
+        content: (
+          <Comp
+            title="Q945. Minimum Increment to Make Array Unique (Q789)"
+            content1={
+              <>
+                You are given an integer array nums. In one move, you can pick
+                an index i where 0 &lt;= i &lt; nums.length and increment
+                nums[i] by 1.
+                <br />
+                Return the minimum number of moves to make every value in nums
+                unique.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [1,2,2]
+                    <br />
+                    Output: 1<br />
+                    Explanation: After 1 move, the array could be [1, 2, 3].
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [3,2,1,2,1,7]
+                    <br />
+                    Output: 6<br />
+                    Explanation: After 6 moves, the array could be [3, 4, 1, 2,
+                    5, 7].
+                    <br /> It can be shown with 5 or less moves that it is
+                    impossible for the array to have all unique values.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 10^5 <br />0 &lt;= nums[i] &lt;= 10^5
+              </>
+            }
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var minIncrementForUnique = function(nums) {
+                 let ans = 0;
+                 let minAvailable = 0;
+                 nums = nums.sort((a,b)=>a-b)
+                 for (let a of nums) {
+                   ans += Math.max(minAvailable - a, 0);
+                   minAvailable = Math.max(minAvailable, a) + 1;
+                 }
+                 return ans;  
+               };
+               
+               console.log(minIncrementForUnique([3,2,1,2,1,7]))`,
+                output: `6`,
+              },
+            }}
+          />
+        ),
+      },
+      q790: {
+        title: "Q946. Validate Stack Sequences (Q790)",
+        content: (
+          <Comp
+            title="Q946. Validate Stack Sequences (Q790)"
+            content1={
+              <>
+                Given two integer arrays pushed and popped each with distinct
+                values, return true if this could have been the result of a
+                sequence of push and pop operations on an initially empty stack,
+                or false otherwise.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: pushed = [1,2,3,4,5], popped = [4,5,3,2,1]
+                    <br /> Output: true
+                    <br /> Explanation: We might do the following sequence:
+                    <br /> push(1), push(2), push(3), push(4),
+                    <br /> pop() -&gt; 4,
+                    <br /> push(5),
+                    <br /> pop() -&gt; 5, pop() -&gt; 3, pop() -&gt; 2, pop()
+                    -&gt; 1
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: pushed = [1,2,3,4,5], popped = [4,3,5,1,2]
+                    <br /> Output: false
+                    <br /> Explanation: 1 cannot be popped before 2.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= pushed.length &lt;= 1000
+                <br /> 0 &lt;= pushed[i] &lt;= 1000
+                <br /> All the elements of pushed are unique.
+                <br /> popped.length == pushed.length
+                <br /> popped is a permutation of pushed.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} pushed
+                * @param {number[]} popped
+                * @return {boolean}
+                */
+               var validateStackSequences = function(pushed, popped) {
+                 const stack = [];
+                 let i = 0; 
+                 for (let x of pushed) {
+                     stack.push(x);
+                     while (stack.length && stack[stack.length-1] == popped[i]) {
+                       stack.pop();
+                       ++i;
+                     }
+                 }
+                 return !stack.length;  
+               };
+               
+               console.log(validateStackSequences([1,2,3,4,5],[4,5,3,2,1]))`,
+                output: `true`,
+              },
+            }}
+          />
+        ),
+      },
+      q791: {
+        title: "Q (Q791)",
         content: (
           <Comp
             content1={<></>}
@@ -100080,8 +100603,216 @@ a = b + c;
           />
         ),
       },
-      q790: {
-        title: "Q (Q790)",
+      q792: {
+        title: "Q (Q792)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q793: {
+        title: "Q (Q793)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q794: {
+        title: "Q (Q794)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q795: {
+        title: "Q (Q795)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q796: {
+        title: "Q (Q796)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q797: {
+        title: "Q (Q797)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q798: {
+        title: "Q (Q798)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q799: {
+        title: "Q (Q799)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q800: {
+        title: "Q (Q800)",
         content: (
           <Comp
             content1={<></>}
