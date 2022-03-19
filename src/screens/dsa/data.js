@@ -100828,9 +100828,10 @@ a = b + c;
         ),
       },
       q793: {
-        title: "Q (Q793)",
+        title: "Q949. Largest Time for Given Digits (Q793)",
         content: (
           <Comp
+            title="Q949. Largest Time for Given Digits (Q793)"
             content1={<></>}
             content2={null}
             examples={[
@@ -100842,7 +100843,7 @@ a = b + c;
               },
             ]}
             constraints={<></>}
-            tc="n"
+            tc="n^3"
             sc="n"
             codes={{
               Javascript: {
