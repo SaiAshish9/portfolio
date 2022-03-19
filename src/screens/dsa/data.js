@@ -92678,10 +92678,10 @@ a = b + c;
         ),
       },
       q707: {
-        title: "863. All Nodes Distance K in Binary Tree (Q707)",
+        title: "Q863. All Nodes Distance K in Binary Tree (Q707)",
         content: (
           <Comp
-            title="863. All Nodes Distance K in Binary Tree (Q707)"
+            title="Q863. All Nodes Distance K in Binary Tree (Q707)"
             content1={
               <>
                 Given the root of a binary tree, the value of a target node
@@ -94859,2582 +94859,3252 @@ a = b + c;
           />
         ),
       },
-    },
-    q730: {
-      title: "Q886. Possible Bipartition (Q730)",
-      content: (
-        <Comp
-          title="Q886. Possible Bipartition (Q730)"
-          content1={
-            <>
-              We want to split a group of n people (labeled from 1 to n) into
-              two groups of any size. Each person may dislike some other people,
-              and they should not go into the same group.
-              <br />
-              Given the integer n and the array dislikes where dislikes[i] =
-              [ai, bi] indicates that the person labeled ai does not like the
-              person labeled bi, return true if it is possible to split everyone
-              into two groups in this way.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: n = 4, dislikes = [[1,2],[1,3],[2,4]]
-                  <br />
-                  Output: true
-                  <br />
-                  Explanation: group1 [1,4] and group2 [2,3].
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: n = 3, dislikes = [[1,2],[1,3],[2,3]]
-                  <br />
-                  Output: false
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: n = 5, dislikes = [[1,2],[2,3],[3,4],[4,5],[1,5]]
-                  <br /> Output: false
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= n &lt;= 2000 <br />
-              0 &lt;= dislikes.length &lt;= 104 <br />
-              dislikes[i].length == 2 <br />
-              1 &lt;= dislikes[i][j] &lt;= n <br />
-              ai &lt; bi <br />
-              All the pairs of dislikes are unique.
-            </>
-          }
-          tc="v+e"
-          sc="v"
-          codes={{
-            Java: {
-              code: `
-              // Input: n = 4, dislikes = [[1,2],[1,3],[2,4]]
-              enum Color { WHITE, RED, GREEN }
-              class Solution {
-                public boolean possibleBipartition(int n, int[][] dislikes) {
-                  List<Integer>[] graph = new List[n + 1];
-                  Color[] colors = new Color[n + 1];
-                  Arrays.fill(colors, Color.WHITE);
-                  for (int i = 1; i <= n; ++i)
-                    graph[i] = new ArrayList<>();
-                  for (int[] d : dislikes) {
-                    final int u = d[0];
-                    final int v = d[1];
-                    graph[u].add(v);
-                    graph[v].add(u);
+      q730: {
+        title: "Q886. Possible Bipartition (Q730)",
+        content: (
+          <Comp
+            title="Q886. Possible Bipartition (Q730)"
+            content1={
+              <>
+                We want to split a group of n people (labeled from 1 to n) into
+                two groups of any size. Each person may dislike some other
+                people, and they should not go into the same group.
+                <br />
+                Given the integer n and the array dislikes where dislikes[i] =
+                [ai, bi] indicates that the person labeled ai does not like the
+                person labeled bi, return true if it is possible to split
+                everyone into two groups in this way.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: n = 4, dislikes = [[1,2],[1,3],[2,4]]
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation: group1 [1,4] and group2 [2,3].
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: n = 3, dislikes = [[1,2],[1,3],[2,3]]
+                    <br />
+                    Output: false
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: n = 5, dislikes = [[1,2],[2,3],[3,4],[4,5],[1,5]]
+                    <br /> Output: false
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= n &lt;= 2000 <br />
+                0 &lt;= dislikes.length &lt;= 104 <br />
+                dislikes[i].length == 2 <br />
+                1 &lt;= dislikes[i][j] &lt;= n <br />
+                ai &lt; bi <br />
+                All the pairs of dislikes are unique.
+              </>
+            }
+            tc="v+e"
+            sc="v"
+            codes={{
+              Java: {
+                code: `
+                // Input: n = 4, dislikes = [[1,2],[1,3],[2,4]]
+                enum Color { WHITE, RED, GREEN }
+                class Solution {
+                  public boolean possibleBipartition(int n, int[][] dislikes) {
+                    List<Integer>[] graph = new List[n + 1];
+                    Color[] colors = new Color[n + 1];
+                    Arrays.fill(colors, Color.WHITE);
+                    for (int i = 1; i <= n; ++i)
+                      graph[i] = new ArrayList<>();
+                    for (int[] d : dislikes) {
+                      final int u = d[0];
+                      final int v = d[1];
+                      graph[u].add(v);
+                      graph[v].add(u);
+                    }
+                    for (int i = 1; i <= n; ++i)
+                      if (colors[i] == Color.WHITE && !isValidColor(graph, i, colors, Color.RED))
+                        return false;
+                    return true;
                   }
-                  for (int i = 1; i <= n; ++i)
-                    if (colors[i] == Color.WHITE && !isValidColor(graph, i, colors, Color.RED))
-                      return false;
-                  return true;
-                }
-                private boolean isValidColor(List<Integer>[] graph, int u, Color[] colors, Color color) {
-                  if (colors[u] != Color.WHITE)
-                    return colors[u] == color;
-                  colors[u] = color; 
-                  for (final int v : graph[u])
-                    if (!isValidColor(graph, v, colors, color == Color.RED ? Color.GREEN : Color.RED))
-                      return false;
-                  return true;
-                }
-              }`,
-              output: `true`,
-            },
-          }}
-        />
-      ),
-    },
-    q731: {
-      title: "Q887. Super Egg Drop (Q731)",
-      content: (
-        <Comp
-          title="Q887. Super Egg Drop (Q731)"
-          content1={
-            <>
-              You are given k identical eggs and you have access to a building
-              with n floors labeled from 1 to n.
-              <br />
-              You know that there exists a floor f where 0 &lt;= f &lt;= n such
-              that any egg dropped at a floor higher than f will break, and any
-              egg dropped at or below floor f will not break.
-              <br />
-              Each move, you may take an unbroken egg and drop it from any floor
-              x (where 1 &lt;= x &lt;= n). If the egg breaks, you can no longer
-              use it. However, if the egg does not break, you may reuse it in
-              future moves.
-              <br />
-              Return the minimum number of moves that you need to determine with
-              certainty what the value of f is.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: k = 1, n = 2 <br />
-                  Output: 2 <br />
-                  Explanation: <br />
-                  Drop the egg from floor 1. If it breaks, we know that f = 0.{" "}
-                  <br />
-                  Otherwise, drop the egg from floor 2. If it breaks, we know
-                  that f = 1. <br />
-                  If it does not break, then we know f = 2. <br />
-                  Hence, we need at minimum 2 moves to determine with certainty
-                  what the value of f is.
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: k = 2, n = 6 <br />
-                  Output: 3
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: k = 3, n = 14 <br />
-                  Output: 4
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= k &lt;= 100
-              <br />1 &lt;= n &lt;= 10^4
-            </>
-          }
-          tc="n.log n"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: `/**
-              * @param {number} k
-              * @param {number} n
-              * @return {number}
-              */
-             var superEggDrop = function(k, n) {
-               let moves = 0;
-               const dp = Array.from(Array(n+1),()=>Array(k+1).fill(0));
-                 while (dp[moves][k] < n) {
-                   ++moves;
-                   for (let eggs = 1; eggs <= k; ++eggs)
-                     dp[moves][eggs] = dp[moves - 1][eggs - 1] + dp[moves - 1][eggs] + 1;
-                 }
-                 return moves;
-             };
-             
-             console.log(superEggDrop(3,14))`,
-              output: `4`,
-            },
-          }}
-        />
-      ),
-    },
-    q732: {
-      title: "Q888. Fair Candy Swap (Q732)",
-      content: (
-        <Comp
-          title="Q888. Fair Candy Swap (Q732)"
-          content1={
-            <>
-              Alice and Bob have a different total number of candies. You are
-              given two integer arrays aliceSizes and bobSizes where
-              aliceSizes[i] is the number of candies of the ith box of candy
-              that Alice has and bobSizes[j] is the number of candies of the jth
-              box of candy that Bob has.
-              <br />
-              Since they are friends, they would like to exchange one candy box
-              each so that after the exchange, they both have the same total
-              amount of candy. The total amount of candy a person has is the sum
-              of the number of candies in each box they have.
-              <br />
-              Return an integer array answer where answer[0] is the number of
-              candies in the box that Alice must exchange, and answer[1] is the
-              number of candies in the box that Bob must exchange. If there are
-              multiple answers, you may return any one of them. It is guaranteed
-              that at least one answer exists.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: aliceSizes = [1,1], bobSizes = [2,2]
-                  <br />
-                  Output: [1,2]
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: aliceSizes = [1,2], bobSizes = [2,3]
-                  <br />
-                  Output: [1,2]
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: aliceSizes = [2], bobSizes = [1,3]
-                  <br />
-                  Output: [2,3]
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= aliceSizes.length, bobSizes.length &lt;= 104
-              <br />
-              1 &lt;= aliceSizes[i], bobSizes[j] &lt;= 10^5
-              <br />
-              Alice and Bob have a different total number of candies.
-              <br />
-              There will be at least one valid answer for the given input.
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: `/**
-              * @param {number[]} aliceSizes
-              * @param {number[]} bobSizes
-              * @return {number[]}
-              */
-             var fairCandySwap = function(aliceSizes, bobSizes) {
-               const A = aliceSizes
-               const B = bobSizes
-               let diff = parseInt((A.reduce((a,b)=>a+b,0) - B.reduce((a,b)=>a+b,0)) / 2);
-               const set = new Set();
-               for (let b of B)
-                 set.add(b);
-               for (let a of A)
-                 if (set.has(a - diff))
-                   return [a, a - diff];
-             };
-             
-             console.log(fairCandySwap([1,2],[2,3]))`,
-              output: `[ 1, 2 ]`,
-            },
-          }}
-        />
-      ),
-    },
-    q733: {
-      title:
-        "Q889. Construct Binary Tree from Preorder and Postorder Traversal (Q733)",
-      content: (
-        <Comp
-          title="Q889. Construct Binary Tree from Preorder and Postorder Traversal (Q733)"
-          content1={
-            <>
-              Given two integer arrays, preorder and postorder where preorder is
-              the preorder traversal of a binary tree of distinct values and
-              postorder is the postorder traversal of the same tree, reconstruct
-              and return the binary tree.
-              <br />
-              If there exist multiple answers, you can return any of them.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              img: Leetcode889,
-              content: (
-                <>
-                  Input: preorder = [1,2,4,5,3,6,7], <br /> postorder =
-                  [4,5,2,6,7,3,1]
-                  <br /> Output: [1,2,3,4,5,6,7]
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: preorder = [1], <br />
-                  postorder = [1] <br />
-                  Output: [1]
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= preorder.length &lt;== 30 <br />
-              1 &lt;== preorder[i] &lt;== preorder.length <br />
-              All the values of preorder are unique. <br />
-              postorder.length == preorder.length <br />
-              1 &lt;== postorder[i] &lt;== postorder.length <br />
-              All the values of postorder are unique. <br />
-              It is guaranteed that preorder and postorder are the preorder
-              traversal and postorder traversal of the same binary tree.
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Java: {
-              code: `/**
-              * Definition for a binary tree node.
-              * public class TreeNode {
-              *     int val;
-              *     TreeNode left;
-              *     TreeNode right;
-              *     TreeNode() {}
-              *     TreeNode(int val) { this.val = val; }
-              *     TreeNode(int val, TreeNode left, TreeNode right) {
-              *         this.val = val;
-              *         this.left = left;
-              *         this.right = right;
-              *     }
-              * }
-              */
-             class Solution {
-               public TreeNode constructFromPrePost(int[] pre, int[] post) {
-                 Map<Integer, Integer> postToIndex = new HashMap<>();        
-                 for (int i = 0; i < post.length; ++i)
-                   postToIndex.put(post[i], i);
-                 return build(pre, 0, pre.length - 1, post, 0, post.length - 1, postToIndex);
-               }
-             
-               private TreeNode build(int[] pre, int preStart, int preEnd, int[] post, int postStart,
-                                      int postEnd, Map<Integer, Integer> postToIndex) {
-                 if (preStart > preEnd)
-                   return null;
-                 if (preStart == preEnd)
-                   return new TreeNode(pre[preStart]);
-                 final int rootVal = pre[preStart];
-                 final int leftRootVal = pre[preStart + 1];
-                 final int leftRootPostIndex = postToIndex.get(leftRootVal);
-                 final int leftSize = leftRootPostIndex - postStart + 1;
-                 TreeNode root = new TreeNode(rootVal);
-                 root.left = build(pre, preStart + 1, preStart + leftSize, post, postStart, leftRootPostIndex,
-                                   postToIndex);
-                 root.right = build(pre, preStart + leftSize + 1, preEnd, post, leftRootPostIndex + 1,
-                                    postEnd - 1, postToIndex);
-                 return root;
-               }
-             }
-             `,
-              output: `[ 1 ]`,
-            },
-          }}
-        />
-      ),
-    },
-    q734: {
-      title: "Q890. Find and Replace Pattern (Q734)",
-      content: (
-        <Comp
-          title="Q890. Find and Replace Pattern (Q734)"
-          content1={
-            <>
-              Given a list of strings words and a string pattern, return a list
-              of words[i] that match pattern. You may return the answer in any
-              order.
-              <br />
-              A word matches the pattern if there exists a permutation of
-              letters p so that after replacing every letter x in the pattern
-              with p(x), we get the desired word.
-              <br />
-              Recall that a permutation of letters is a bijection from letters
-              to letters: every letter maps to another letter, and no two
-              letters map to the same letter.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: words = ["abc","deq","mee","aqq","dkd","ccc"], pattern
-                  = "abb"
-                  <br /> Output: ["mee","aqq"] <br />
-                  <br /> Explanation: "mee" matches the pattern because there is
-                  a permutation {"{a -> m, b -> e, ...}"}. "ccc" does not match
-                  the pattern because {"{a -> c, b -> c, ...}"} is not a
-                  permutation, since a and b map to the same letter.
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: words = ["a","b","c"], pattern = "a" <br />
-                  Output: ["a","b","c"]
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= pattern.length &lt;= 20
-              <br />
-              1 &lt;= words.length &lt;= 50
-              <br />
-              words[i].length == pattern.length
-              <br />
-              pattern and words[i] are lowercase English letters.
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Java: {
-              code: `// Input: words = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb"
-              class Solution {
-                public List<String> findAndReplacePattern(String[] words, String pattern) {
-                  List<String> ans = new ArrayList<>();
-                  for (final String word : words)
-                    if (isIsomorphic(word, pattern))
-                      ans.add(word);
-                  return ans;
-                }
-              
-                private boolean isIsomorphic(final String w, final String p) {
-                  Map<Character, Integer> map_w = new HashMap<>();
-                  Map<Character, Integer> map_p = new HashMap<>();
-                  for (Integer i = 0; i < w.length(); ++i)
-                    if (map_w.put(w.charAt(i), i) != map_p.put(p.charAt(i), i))
-                      return false;
-                  return true;
-                }
-              }
-              `,
-              output: `["mee","aqq"]`,
-            },
-          }}
-        />
-      ),
-    },
-    q735: {
-      title: "Q891. Sum of Subsequence Widths (Q735)",
-      content: (
-        <Comp
-          title="Q891. Sum of Subsequence Widths (Q735)"
-          content1={
-            <>
-              The width of a sequence is the difference between the maximum and
-              minimum elements in the sequence.
-              <br />
-              Given an array of integers nums, return the sum of the widths of
-              all the non-empty subsequences of nums. Since the answer may be
-              very large, return it modulo 109 + 7.
-              <br />A subsequence is a sequence that can be derived from an
-              array by deleting some or no elements without changing the order
-              of the remaining elements. For example, [3,6,2,7] is a subsequence
-              of the array [0,3,1,6,2,2,7].
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: nums = [2,1,3] <br />
-                  Output: 6 <br />
-                  Explanation: The subsequences are [1], [2], [3], [2,1], [2,3],
-                  [1,3], [2,1,3].
-                  <br /> The corresponding widths are 0, 0, 0, 1, 1, 2, 2.
-                  <br /> The sum of these widths is 6.
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: nums = [2] <br />
-                  Output: 0
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= nums.length &lt;= 10^5
-              <br />1 &lt;= nums[i] &lt;= 10^5
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: `/**
-              * @param {number[]} nums
-              * @return {number}
-              */
-             var sumSubseqWidths = function(nums) {
-               const kMod = 1e9 + 7;
-               const n = nums.length;
-               let ans = 0;
-               let exp = 1;
-               nums = nums.sort((a,b)=>a-b);
-               for (let i = 0; i < n; ++i, exp = exp * 2 % kMod) {
-                 ans += (nums[i] - nums[n - i - 1]) * exp;
-                 ans %= kMod;
-               }
-               return parseInt(ans);
-             };
-             
-             console.log(sumSubseqWidths([2,1,3]))`,
-              output: `6`,
-            },
-          }}
-        />
-      ),
-    },
-    q736: {
-      title: "Q892. Surface Area of 3D Shapes (Q736)",
-      content: (
-        <Comp
-          title="Q892. Surface Area of 3D Shapes (Q736)"
-          content1={
-            <>
-              You are given an n x n grid where you have placed some 1 x 1 x 1
-              cubes. Each value v = grid[i][j] represents a tower of v cubes
-              placed on top of cell (i, j).
-              <br />
-              After placing these cubes, you have decided to glue any directly
-              adjacent cubes to each other, forming several irregular 3D shapes.
-              <br />
-              Return the total surface area of the resulting shapes.
-              <br />
-              Note: The bottom face of each shape counts toward its surface
-              area.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: grid = [[1,2],[3,4]] <br />
-                  Output: 34
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: grid = [[1,1,1],[1,0,1],[1,1,1]] <br />
-                  Output: 32
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: grid = [[2,2,2],[2,1,2],[2,2,2]] <br />
-                  Output: 46
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              n == grid.length == grid[i].length <br />
-              1 &lt;= n &lt;= 50 <br />0 &lt;= grid[i][j] &lt;= 50
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: `/**
-              * @param {number[][]} grid
-              * @return {number}
-              */
-             var surfaceArea = function(grid) {
-               let ans = 0;
-               for (let i = 0; i < grid.length; ++i)
-                   for (let j = 0; j < grid.length; ++j) {
-                     if (grid[i][j] > 0)
-                       ans += grid[i][j] * 4 + 2;
-                     if (i > 0)
-                       ans -= Math.min(grid[i][j], grid[i - 1][j]) * 2;
-                     if (j > 0)
-                       ans -= Math.min(grid[i][j], grid[i][j - 1]) * 2;
-                   }
-                 return ans;   
-             };
-             console.log(surfaceArea([[1,2],[3,4]]))`,
-              output: `34`,
-            },
-          }}
-        />
-      ),
-    },
-    q737: {
-      title: "Q893. Groups of Special-Equivalent Strings (Q737)",
-      content: (
-        <Comp
-          title="Q893. Groups of Special-Equivalent Strings (Q737)"
-          content1={
-            <>
-              You are given an array of strings of the same length words.
-              <br />
-              In one move, you can swap any two even indexed characters or any
-              two odd indexed characters of a string words[i].
-              <br />
-              Two strings words[i] and words[j] are special-equivalent if after
-              any number of moves, words[i] == words[j].
-              <br />
-              For example, words[i] = "zzxy" and words[j] = "xyzz" are
-              special-equivalent because we may make the moves "zzxy" -&gt;
-              "xzzy" -&gt; "xyzz". A group of special-equivalent strings from
-              words is a non-empty subset of words such that:
-              <br />
-              Every pair of strings in the group are special equivalent, and The
-              group is the largest size possible (i.e., there is not a string
-              words[i] not in the group such that words[i] is special-equivalent
-              to every string in the group). Return the number of groups of
-              special-equivalent strings from words.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: words = ["abcd","cdab","cbad","xyzz","zzxy","zzyx"]
-                  <br />
-                  Output: 3 <br />
-                  Explanation: <br />
-                  One group is ["abcd", "cdab", "cbad"], since they are all
-                  pairwise special equivalent, and none of the other strings is
-                  all pairwise special equivalent to these.
-                  <br /> The other two groups are ["xyzz", "zzxy"] and ["zzyx"].
-                  <br /> Note that in particular, "zzxy" is not special
-                  equivalent to "zzyx".
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: words = ["abc","acb","bac","bca","cab","cba"]
-                  <br /> Output: 3
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= words.length &lt;= 1000
-              <br />
-              1 &lt;= words[i].length &lt;= 20
-              <br />
-              words[i] consist of lowercase English letters.
-              <br />
-              All the strings are of the same length.
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: `/**
-              * @param {string[]} words
-              * @return {number}
-              */
-             var numSpecialEquivGroups = function(words) {
-               const set = new Set();
-               for (let s of words) {
-                   let even = "";
-                   let odd = "";
-                   for (let i = 0; i < s.length; ++i)
-                     if (i % 2 == 0)
-                       even += s[i];
-                     else
-                       odd += s[i];
-                   const evenCharArray = even.split("");
-                   const oddCharArray = odd.split("");
-                   evenCharArray.sort((a,b)=>a<b?1:-1)
-                   oddCharArray.sort((a,b)=>a<b?1:-1)
-                   set.add(evenCharArray.join("") + oddCharArray.join(""));
-                 }
-                 return set.size;   
-             };
-             
-             console.log(numSpecialEquivGroups(["abc","acb","bac","bca","cab","cba"]))`,
-              output: `3`,
-            },
-          }}
-        />
-      ),
-    },
-    q738: {
-      title: "Q894. All Possible Full Binary Trees (Q738)",
-      content: (
-        <Comp
-          title="Q894. All Possible Full Binary Trees (Q738)"
-          content1={
-            <>
-              Given an integer n, return a list of all possible full binary
-              trees with n nodes. Each node of each tree in the answer must have
-              Node.val == 0.
-              <br />
-              Each element of the answer is the root node of one possible tree.
-              You may return the final list of trees in any order.
-              <br />A full binary tree is a binary tree where each node has
-              exactly 0 or 2 children.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: n = 7 <br />
-                  Output: [[0,0,0,null,null,0,0,null,null,0,0], <br />
-                  [0,0,0,null,null,0,0,0,0], <br />
-                  [0,0,0,0,0,0,0], <br />
-                  [0,0,0,0,0,null,null,null,null,0,0], <br />
-                  [0,0,0,0,0,null,null,0,0]]
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: n = 3 <br />
-                  Output: [[0,0,0]]
-                </>
-              ),
-            },
-          ]}
-          constraints={<>1 &lt;= n &lt;= 20</>}
-          tc="n"
-          sc="n"
-          codes={{
-            Java: {
-              code: `
-              // n = 7
-              /**
-              * Definition for a binary tree node.
-              * public class TreeNode {
-              *     int val;
-              *     TreeNode left;
-              *     TreeNode right;
-              *     TreeNode() {}
-              *     TreeNode(int val) { this.val = val; }
-              *     TreeNode(int val, TreeNode left, TreeNode right) {
-              *         this.val = val;
-              *         this.left = left;
-              *         this.right = right;
-              *     }
-              * }
-              */
-             
-             class Solution {
-               public List<TreeNode> allPossibleFBT(int n) {
-                 if (n % 2 == 0)
-                   return new ArrayList<>();
-                 if (n == 1)
-                   return Arrays.asList(new TreeNode(0));
-                 if (memo.containsKey(n))
-                   return memo.get(n);
-             
-                 List<TreeNode> ans = new ArrayList<>();
-             
-                 for (int leftCount = 0; leftCount < n; ++leftCount) {
-                   final int rightCount = n - 1 - leftCount;
-                   for (TreeNode left : allPossibleFBT(leftCount))
-                     for (TreeNode right : allPossibleFBT(rightCount)) {
-                       ans.add(new TreeNode(0));
-                       ans.get(ans.size() - 1).left = left;
-                       ans.get(ans.size() - 1).right = right;
-                     }
-                 }
-             
-                 memo.put(n, ans);
-                 return ans;
-               }
-               private Map<Integer, List<TreeNode>> memo = new HashMap<>();
-             }`,
-              output: `[[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,null,null,null,null,0,0],[0,0,0,0,0,null,null,0,0]]`,
-            },
-          }}
-        />
-      ),
-    },
-    q739: {
-      title: "Q895. Maximum Frequency Stack (Q739)",
-      content: (
-        <Comp
-          title="Q895. Maximum Frequency Stack (Q739)"
-          content1={
-            <>
-              Design a stack-like data structure to push elements to the stack
-              and pop the most frequent element from the stack.
-              <br />
-              Implement the FreqStack class:
-              <br />
-              FreqStack() constructs an empty frequency stack.
-              <br />
-              void push(int val) pushes an integer val onto the top of the
-              stack.
-              <br />
-              int pop() removes and returns the most frequent element in the
-              stack.
-              <br />
-              If there is a tie for the most frequent element, the element
-              closest to the stack's top is removed and returned.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input
-                  <br /> ["FreqStack", "push", "push", "push", "push", "push",
-                  "push", "pop", "pop", "pop", "pop"] [[], [5], [7], [5], [7],
-                  [4], [5], [], [], [], []] <br />
-                  Output <br />
-                  [null, null, null, null, null, null, null, 5, 7, 5, 4] <br />
-                  Explanation
-                  <br /> FreqStack freqStack = new FreqStack();
-                  <br /> freqStack.push(5); // The stack is [5]
-                  <br /> freqStack.push(7); // The stack is [5,7]
-                  <br /> freqStack.push(5); // The stack is [5,7,5]
-                  <br /> freqStack.push(7); // The stack is [5,7,5,7]
-                  <br /> freqStack.push(4); // The stack is [5,7,5,7,4]
-                  <br /> freqStack.push(5); // The stack is [5,7,5,7,4,5]
-                  <br /> freqStack.pop(); // return 5, as 5 is the most
-                  frequent. The stack becomes [5,7,5,7,4].
-                  <br /> freqStack.pop(); // return 7, as 5 and 7 is the most
-                  frequent, but 7 is closest to the top. The stack becomes
-                  [5,7,5,4].
-                  <br /> freqStack.pop(); // return 5, as 5 is the most
-                  frequent. The stack becomes [5,7,4].
-                  <br /> freqStack.pop(); // return 4, as 4, 5 and 7 is the most
-                  frequent, but 4 is closest to the top. The stack becomes
-                  [5,7].
-                  <br />{" "}
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              0 &lt;= val &lt;= 10^9 <br />
-              At most 2 * 10^4 calls will be made to push and pop. <br />
-              It is guaranteed that there will be at least one element in the
-              stack before calling pop.
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Java: {
-              code: `
-// Input
-// ["FreqStack", "push", "push", "push", "push", "push", "push", "pop", "pop", "pop", "pop"]
-// [[], [5], [7], [5], [7], [4], [5], [], [], [], []]
-              class FreqStack {
-                public void push(int val) {
-                  count.merge(val, 1, Integer::sum);
-                  st.putIfAbsent(count.get(val), new ArrayDeque<>());
-                  st.get(count.get(val)).push(val);
-                  maxFreq = Math.max(maxFreq, count.get(val));
-                }
-              
-                public int pop() {
-                  final int val = st.get(maxFreq).pop();
-                  count.merge(val, -1, Integer::sum);
-                  if (st.get(maxFreq).isEmpty())
-                    --maxFreq;
-                  return val;
-                }
-              
-                private int maxFreq = 0;
-                private Map<Integer, Integer> count = new HashMap<>();
-                private Map<Integer, Deque<Integer>> st = new HashMap<>();
-              }
-              
-              /**
-               * Your FreqStack object will be instantiated and called as such:
-               * FreqStack obj = new FreqStack();
-               * obj.push(val);
-               * int param_2 = obj.pop();
-               */`,
-              output: `[null, null, null, null, null, null, null, 5, 7, 5, 4]`,
-            },
-          }}
-        />
-      ),
-    },
-    q740: {
-      title: "Q896. Monotonic Array (Q740)",
-      content: (
-        <Comp
-          title="Q896. Monotonic Array (Q740)"
-          content1={
-            <>
-              An array is monotonic if it is either monotone increasing or
-              monotone decreasing.
-              <br />
-              An array nums is monotone increasing if for all i &lt;= j, nums[i]
-              &lt;= nums[j]. An array nums is monotone decreasing if for all i
-              &lt;= j, nums[i] &gt;= nums[j].
-              <br />
-              Given an integer array nums, return true if the given array is
-              monotonic, or false otherwise.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: nums = [1,2,2,3]
-                  <br />
-                  Output: true
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: nums = [6,5,4,4]
-                  <br />
-                  Output: true
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: nums = [1,3,2]
-                  <br />
-                  Output: false
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= nums.length &lt;= 10^5 <br />
-              -10^5 &lt;= nums[i] &lt;= 10^5
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: `/**
-              * @param {number[]} nums
-              * @return {boolean}
-              */
-             var isMonotonic = function(nums) {
-               let increasing = true;
-               let decreasing = true;
-               for (let i = 1; i < nums.length; ++i) {
-                 increasing &= nums[i] >= nums[i - 1];
-                 decreasing &= nums[i] <= nums[i - 1];
-               }
-               return increasing || decreasing;  
-             };
-             
-             console.log(isMonotonic([1,2,2,3]))`,
-              output: `1`,
-            },
-          }}
-        />
-      ),
-    },
-    q741: {
-      title: "Q897. Increasing Order Search Tree (Q741)",
-      content: (
-        <Comp
-          title="Q897. Increasing Order Search Tree (Q741)"
-          content1={
-            <>
-              Given the root of a binary search tree, rearrange the tree in
-              in-order so that the leftmost node in the tree is now the root of
-              the tree, and every node has no left child and only one right
-              child.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              img: Leetcode897,
-              content: (
-                <>
-                  Input: root = [5,3,6,2,4,null,8,1,null,null,null,7,9]
-                  <br />
-                  Output: <br />
-                  [1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: root = [5,1,7] <br />
-                  Output: [1,null,5,null,7]
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              The number of nodes in the given tree will be in the range [1,
-              100].
-              <br /> 0 &lt;= Node.val &lt;= 1000
-            </>
-          }
-          tc="n"
-          sc="h"
-          codes={{
-            Javascript: {
-              code: `function TreeNode(val, left, right) {
-                this.val = (val===undefined ? 0 : val)
-                this.left = (left===undefined ? null : left)
-                this.right = (right===undefined ? null : right)
-              }
-              /**
-               * @param {TreeNode} root
-               * @return {TreeNode}
-               */
-              var increasingBST = function(root) {
-                return helper(root);
-              };
-              function helper(root, tail=null) {
-                if (!root) return tail;
-                let ans = helper(root.left, root);
-                root.left = null
-                root.right = helper(root.right, tail);
-                return ans;
-              }
-              const t = new TreeNode(5)
-              t.left = new TreeNode(1)
-              t.right = new TreeNode(7)
-              console.log(increasingBST(t))`,
-              output: `TreeNode {
-                val: 1,
-                left: null,
-                right: TreeNode {
-                  val: 5,
-                  left: null,
-                  right: TreeNode { val: 7, left: null, right: null }
-                }
-              }`,
-            },
-          }}
-        />
-      ),
-    },
-    q742: {
-      title: "Q898. Bitwise ORs of Subarrays (Q742)",
-      content: (
-        <Comp
-          title="Q898. Bitwise ORs of Subarrays (Q742)"
-          content1={
-            <>
-              We have an array arr of non-negative integers.
-              <br />
-              For every (contiguous) subarray sub = [arr[i], arr[i + 1], ...,
-              arr[j]] (with i &lt;= j), we take the bitwise OR of all the
-              elements in sub, obtaining a result arr[i] | arr[i + 1] | ... |
-              arr[j].
-              <br />
-              Return the number of possible results. Results that occur more
-              than once are only counted once in the final answer
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: arr = [1,1,2] <br />
-                  Output: 3 <br />
-                  Explanation: The possible subarrays are [1], [1], [2], [1, 1],
-                  [1, 2], [1, 1, 2].
-                  <br /> These yield the results 1, 1, 2, 1, 3, 3.
-                  <br /> There are 3 unique values, so the answer is 3.
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: arr = [1,1,2] <br />
-                  Output: 3 <br />
-                  Explanation: The possible subarrays are [1], [1], [2], [1, 1],
-                  [1, 2], [1, 1, 2]. These yield the results 1, 1, 2, 1, 3, 3.{" "}
-                  <br />
-                  There are 3 unique values, so the answer is 3.
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: arr = [1,2,4] <br />
-                  Output: 6 <br />
-                  Explanation: The possible results are 1, 2, 3, 4, 6, and 7.
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= nums.length &lt;= 5 * 10^4 <br />0 &lt;= nums[i] &lt;=
-              10^9
-            </>
-          }
-          tc="n.log n"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: `/**
-              * @param {number[]} arr
-              * @return {number}
-              */
-             var subarrayBitwiseORs = function(arr) {
-               const s = [];
-               let l = 0;
-               for (let a of arr) {
-                 let r = s.length;
-                 s.push(a);
-                 for (let i = l; i < r; ++i)
-                   if (s[s.length - 1] != (s[i] | a))
-                       s.push(s[i] | a);
-                 l = r;
-               }
-               return new Set(s).size;
-             };
-             
-             console.log(subarrayBitwiseORs([1,2,4]))`,
-              output: `6`,
-            },
-          }}
-        />
-      ),
-    },
-    q743: {
-      title: "Q899. Orderly Queue (Q743)",
-      content: (
-        <Comp
-          title="Q899. Orderly Queue (Q743)"
-          content1={
-            <>
-              You are given a string s and an integer k. You can choose one of
-              the first k letters of s and append it at the end of the string..
-              <br />
-              Return the lexicographically smallest string you could have after
-              applying the mentioned step any number of moves.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: s = "cba", k = 1 <br />
-                  Output: "acb" <br />
-                  Explanation: <br />
-                  In the first move, we move the 1st character 'c' to the end,
-                  obtaining the string "bac".
-                  <br /> In the second move, we move the 1st character 'b' to
-                  the end, obtaining the final result "acb".
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: s = "baaca", k = 3 <br />
-                  Output: "aaabc" <br />
-                  Explanation: <br />
-                  In the first move, we move the 1st character 'b' to the end,
-                  obtaining the string "aacab".
-                  <br /> In the second move, we move the 3rd character 'c' to
-                  the end, obtaining the final result "aaabc".
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= k &lt;= s.length &lt;= 1000 <br />s consist of lowercase
-              English letters.
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: `/**
-              * @param {string} s
-              * @param {number} k
-              * @return {string}
-              */
-             var orderlyQueue = function(s, k) {
-               if (k > 1) {
-                 const chars = s.split("");
-                 chars.sort((a,b)=>a>b?1:-1);
-                 return chars.join("");
-               }
-               let ans = s;
-               for (let i = 1; i < s.length; ++i) {
-                   let s2 = s.substring(i) + s.substring(0, i);
-                   if (ans > s2)
-                     ans = s2;
-                 }
-               return ans;  
-             };
-             
-             console.log(orderlyQueue("cba",1))`,
-              output: `acb`,
-            },
-          }}
-        />
-      ),
-    },
-    q744: {
-      title: "Q900. RLE Iterator (Q744)",
-      content: (
-        <Comp
-          title="Q900. RLE Iterator (Q744)"
-          content1={
-            <>
-              We can use run-length encoding (i.e., RLE) to encode a sequence of
-              integers. In a run-length encoded array of even length encoding
-              (0-indexed), for all even i, encoding[i] tells us the number of
-              times that the non-negative integer value encoding[i + 1] is
-              repeated in the sequence.
-              <br />
-              For example, the sequence arr = [8,8,8,5,5] can be encoded to be
-              encoding = [3,8,2,5]. encoding = [3,8,0,9,2,5] and encoding =
-              [2,8,1,8,2,5] are also valid RLE of arr.
-              <br />
-              Given a run-length encoded array, design an iterator that iterates
-              through it.
-              <br />
-              Implement the RLEIterator class:
-              <br />
-              RLEIterator(int[] encoded) Initializes the object with the encoded
-              array encoded.
-              <br />
-              int next(int n) Exhausts the next n elements and returns the last
-              element exhausted in this way. If there is no element left to
-              exhaust, return -1 instead.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input <br />
-                  ["RLEIterator", "next", "next", "next", "next"] <br />
-                  [[[3, 8, 0, 9, 2, 5]], [2], [1], [1], [2]] <br />
-                  Output <br />
-                  [null, 8, 8, 5, -1] <br />
-                  Explanation
-                  <br /> RLEIterator rLEIterator = new RLEIterator([3, 8, 0, 9,
-                  2, 5]); // This maps to the sequence [8,8,8,5,5].
-                  <br /> rLEIterator.next(2); // exhausts 2 terms of the
-                  sequence, returning 8. The remaining sequence is now [8, 5,
-                  5].
-                  <br /> rLEIterator.next(1); // exhausts 1 term of the
-                  sequence, returning 8. The remaining sequence is now [5, 5].
-                  <br /> rLEIterator.next(1); // exhausts 1 term of the
-                  sequence, returning 5. The remaining sequence is now [5].
-                  <br /> rLEIterator.next(2); // exhausts 2 terms, returning -1.
-                  This is because the first term exhausted was 5,
-                  <br /> but the second term did not exist. Since the last term
-                  exhausted does not exist, we return -1.
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              2 &lt;= encoding.length &lt;= 1000 <br />
-              encoding.length is even. <br />
-              0 &lt;= encoding[i] &lt;= 109 <br />
-              1 &lt;= n &lt;= 109 <br />
-              At most 1000 calls will be made to next.
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Java: {
-              code: `// Input
-              // ["RLEIterator", "next", "next", "next", "next"]
-              // [[[3, 8, 0, 9, 2, 5]], [2], [1], [1], [2]]
-              class RLEIterator {
-                public RLEIterator(int[] A) {
-                  this.A = A;
-                }    
-                public int next(int n) {
-                  while (index < A.length && A[index] < n) {
-                    n -= A[index];
-                    index += 2;
+                  private boolean isValidColor(List<Integer>[] graph, int u, Color[] colors, Color color) {
+                    if (colors[u] != Color.WHITE)
+                      return colors[u] == color;
+                    colors[u] = color; 
+                    for (final int v : graph[u])
+                      if (!isValidColor(graph, v, colors, color == Color.RED ? Color.GREEN : Color.RED))
+                        return false;
+                    return true;
                   }
-                  if (index == A.length)
-                    return -1;
-                  A[index] -= n;
-                  return A[index + 1];
-                }
-                private int index = 0;
-                private int[] A;
-              }
-              /**
-               * Your RLEIterator object will be instantiated and called as such:
-               * RLEIterator obj = new RLEIterator(encoding);
-               * int param_1 = obj.next(n);
-               */`,
-              output: `[null, 8, 8, 5, -1]`,
-            },
-          }}
-        />
-      ),
-    },
-    q745: {
-      title: "Q901. Online Stock Span (Q745)",
-      content: (
-        <Comp
-          title="Q901. Online Stock Span (Q745)"
-          content1={
-            <>
-              Design an algorithm that collects daily price quotes for some
-              stock and returns the span of that stock's price for the current
-              day.
-              <br />
-              The span of the stock's price today is defined as the maximum
-              number of consecutive days (starting from today and going
-              backward) for which the stock price was less than or equal to
-              today's price.
-              <br />
-              For example, if the price of a stock over the next 7 days were
-              [100,80,60,70,60,75,85], then the stock spans would be
-              [1,1,1,2,1,4,6].
-              <br />
-              Implement the StockSpanner class:
-              <br />
-              StockSpanner() Initializes the object of the class.
-              <br />
-              int next(int price) Returns the span of the stock's price given
-              that today's price is price.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input <br />
-                  ["StockSpanner", "next", "next", "next", "next", "next",
-                  "next", "next"] [[], [100], [80], [60], [70], [60], [75],
-                  [85]] <br />
-                  Output <br />
-                  [null, 1, 1, 1, 2, 1, 4, 6] <br />
-                  Explanation
-                  <br /> StockSpanner stockSpanner = new StockSpanner();
-                  <br /> stockSpanner.next(100); // return 1
-                  <br /> stockSpanner.next(80); // return 1
-                  <br /> stockSpanner.next(60); // return 1
-                  <br /> stockSpanner.next(70); // return 2
-                  <br /> stockSpanner.next(60); // return 1
-                  <br /> stockSpanner.next(75); // return 4, because the last 4
-                  prices (including today's price of 75) were less than or equal
-                  to today's price.
-                  <br /> stockSpanner.next(85); // return 6
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= price &lt;= 10^5
-              <br />
-              At most 10^4 calls will be made to next.
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Java: {
-              code: `// Input
-              // ["StockSpanner", "next", "next", "next", "next", "next", "next", "next"]
-              // [[], [100], [80], [60], [70], [60], [75], [85]]
-              class StockSpanner {
-                public int next(int price) {
-                  int span = 1;
-                  while (!stack.isEmpty() && stack.peek().getKey() <= price)
-                    span += stack.pop().getValue();
-                  stack.push(new Pair<>(price, span));
-                  return span;
-                }
-                private Stack<Pair<Integer, Integer>> stack = new Stack<>();
-              }
-              /**
-               * Your StockSpanner object will be instantiated and called as such:
-               * StockSpanner obj = new StockSpanner();
-               * int param_1 = obj.next(price);
-               */`,
-              output: `[null, 1, 1, 1, 2, 1, 4, 6]`,
-            },
-          }}
-        />
-      ),
-    },
-    q746: {
-      title: "Q902. Numbers At Most N Given Digit Set (Q746)",
-      content: (
-        <Comp
-          title="Q902. Numbers At Most N Given Digit Set (Q746)"
-          content1={
-            <>
-              Given an array of digits which is sorted in non-decreasing order.
-              You can write numbers using each digits[i] as many times as we
-              want. For example, if digits = ['1','3','5'], we may write numbers
-              such as '13', '551', and '1351315'.
-              <br />
-              Return the number of positive integers that can be generated that
-              are less than or equal to a given integer n.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: digits = ["1","3","5","7"], n = 100
-                  <br /> Output: 20
-                  <br /> Explanation:
-                  <br /> The 20 numbers that can be written are:
-                  <br /> 1, 3, 5, 7, 11, 13, 15, 17, 31, 33, 35, 37, 51, 53, 55,
-                  57, 71, 73, 75, 77.
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: digits = ["1","4","9"], n = 1000000000
-                  <br />
-                  Output: 29523
-                  <br /> Explanation:
-                  <br /> We can write 3 one digit numbers, 9 two digit numbers,
-                  27 three digit numbers,
-                  <br /> 81 four digit numbers, 243 five digit numbers, 729 six
-                  digit numbers,
-                  <br /> 2187 seven digit numbers, 6561 eight digit numbers, and
-                  19683 nine digit numbers.
-                  <br /> In total, this is 29523 integers that can be written
-                  using the digits array.
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: digits = ["7"], n = 8 <br />
-                  Output: 1
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= digits.length &lt;= 9 <br />
-              digits[i].length == 1 <br />
-              digits[i] is a digit from '1' to '9'. <br />
-              All the values in digits are unique. <br />
-              digits is sorted in non-decreasing order. <br />1 &lt;= n &lt;=
-              109
-            </>
-          }
-          tc="log n"
-          sc="log n"
-          codes={{
-            Javascript: {
-              code: `/**
-              * @param {string[]} digits
-              * @param {number} n
-              * @return {number}
-              */
-             var atMostNGivenDigitSet = function(digits, n) {
-               let ans = 0;
-               let num = String(n);
-             
-                 for (let i = 1; i < num.length; ++i)
-                   ans += Math.pow(digits.length, i);
-             
-                 for (let i = 0; i < num.length; ++i) {
-                   let dHasSameNum = false;
-                   for (let digit of digits) {
-                     if (digit.charAt(0) < num.charAt(i))
-                       ans += Math.pow(digits.length, num.length - i - 1);
-                     else if (digit[0] == num.charAt(i))
-                       dHasSameNum = true;
+                }`,
+                output: `true`,
+              },
+            }}
+          />
+        ),
+      },
+      q731: {
+        title: "Q887. Super Egg Drop (Q731)",
+        content: (
+          <Comp
+            title="Q887. Super Egg Drop (Q731)"
+            content1={
+              <>
+                You are given k identical eggs and you have access to a building
+                with n floors labeled from 1 to n.
+                <br />
+                You know that there exists a floor f where 0 &lt;= f &lt;= n
+                such that any egg dropped at a floor higher than f will break,
+                and any egg dropped at or below floor f will not break.
+                <br />
+                Each move, you may take an unbroken egg and drop it from any
+                floor x (where 1 &lt;= x &lt;= n). If the egg breaks, you can no
+                longer use it. However, if the egg does not break, you may reuse
+                it in future moves.
+                <br />
+                Return the minimum number of moves that you need to determine
+                with certainty what the value of f is.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: k = 1, n = 2 <br />
+                    Output: 2 <br />
+                    Explanation: <br />
+                    Drop the egg from floor 1. If it breaks, we know that f = 0.{" "}
+                    <br />
+                    Otherwise, drop the egg from floor 2. If it breaks, we know
+                    that f = 1. <br />
+                    If it does not break, then we know f = 2. <br />
+                    Hence, we need at minimum 2 moves to determine with
+                    certainty what the value of f is.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: k = 2, n = 6 <br />
+                    Output: 3
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: k = 3, n = 14 <br />
+                    Output: 4
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= k &lt;= 100
+                <br />1 &lt;= n &lt;= 10^4
+              </>
+            }
+            tc="n.log n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number} k
+                * @param {number} n
+                * @return {number}
+                */
+               var superEggDrop = function(k, n) {
+                 let moves = 0;
+                 const dp = Array.from(Array(n+1),()=>Array(k+1).fill(0));
+                   while (dp[moves][k] < n) {
+                     ++moves;
+                     for (let eggs = 1; eggs <= k; ++eggs)
+                       dp[moves][eggs] = dp[moves - 1][eggs - 1] + dp[moves - 1][eggs] + 1;
                    }
-                   if (!dHasSameNum)
-                     return ans;
+                   return moves;
+               };
+               
+               console.log(superEggDrop(3,14))`,
+                output: `4`,
+              },
+            }}
+          />
+        ),
+      },
+      q732: {
+        title: "Q888. Fair Candy Swap (Q732)",
+        content: (
+          <Comp
+            title="Q888. Fair Candy Swap (Q732)"
+            content1={
+              <>
+                Alice and Bob have a different total number of candies. You are
+                given two integer arrays aliceSizes and bobSizes where
+                aliceSizes[i] is the number of candies of the ith box of candy
+                that Alice has and bobSizes[j] is the number of candies of the
+                jth box of candy that Bob has.
+                <br />
+                Since they are friends, they would like to exchange one candy
+                box each so that after the exchange, they both have the same
+                total amount of candy. The total amount of candy a person has is
+                the sum of the number of candies in each box they have.
+                <br />
+                Return an integer array answer where answer[0] is the number of
+                candies in the box that Alice must exchange, and answer[1] is
+                the number of candies in the box that Bob must exchange. If
+                there are multiple answers, you may return any one of them. It
+                is guaranteed that at least one answer exists.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: aliceSizes = [1,1], bobSizes = [2,2]
+                    <br />
+                    Output: [1,2]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: aliceSizes = [1,2], bobSizes = [2,3]
+                    <br />
+                    Output: [1,2]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: aliceSizes = [2], bobSizes = [1,3]
+                    <br />
+                    Output: [2,3]
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= aliceSizes.length, bobSizes.length &lt;= 104
+                <br />
+                1 &lt;= aliceSizes[i], bobSizes[j] &lt;= 10^5
+                <br />
+                Alice and Bob have a different total number of candies.
+                <br />
+                There will be at least one valid answer for the given input.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} aliceSizes
+                * @param {number[]} bobSizes
+                * @return {number[]}
+                */
+               var fairCandySwap = function(aliceSizes, bobSizes) {
+                 const A = aliceSizes
+                 const B = bobSizes
+                 let diff = parseInt((A.reduce((a,b)=>a+b,0) - B.reduce((a,b)=>a+b,0)) / 2);
+                 const set = new Set();
+                 for (let b of B)
+                   set.add(b);
+                 for (let a of A)
+                   if (set.has(a - diff))
+                     return [a, a - diff];
+               };
+               
+               console.log(fairCandySwap([1,2],[2,3]))`,
+                output: `[ 1, 2 ]`,
+              },
+            }}
+          />
+        ),
+      },
+      q733: {
+        title:
+          "Q889. Construct Binary Tree from Preorder and Postorder Traversal (Q733)",
+        content: (
+          <Comp
+            title="Q889. Construct Binary Tree from Preorder and Postorder Traversal (Q733)"
+            content1={
+              <>
+                Given two integer arrays, preorder and postorder where preorder
+                is the preorder traversal of a binary tree of distinct values
+                and postorder is the postorder traversal of the same tree,
+                reconstruct and return the binary tree.
+                <br />
+                If there exist multiple answers, you can return any of them.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                img: Leetcode889,
+                content: (
+                  <>
+                    Input: preorder = [1,2,4,5,3,6,7], <br /> postorder =
+                    [4,5,2,6,7,3,1]
+                    <br /> Output: [1,2,3,4,5,6,7]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: preorder = [1], <br />
+                    postorder = [1] <br />
+                    Output: [1]
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= preorder.length &lt;== 30 <br />
+                1 &lt;== preorder[i] &lt;== preorder.length <br />
+                All the values of preorder are unique. <br />
+                postorder.length == preorder.length <br />
+                1 &lt;== postorder[i] &lt;== postorder.length <br />
+                All the values of postorder are unique. <br />
+                It is guaranteed that preorder and postorder are the preorder
+                traversal and postorder traversal of the same binary tree.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `/**
+                * Definition for a binary tree node.
+                * public class TreeNode {
+                *     int val;
+                *     TreeNode left;
+                *     TreeNode right;
+                *     TreeNode() {}
+                *     TreeNode(int val) { this.val = val; }
+                *     TreeNode(int val, TreeNode left, TreeNode right) {
+                *         this.val = val;
+                *         this.left = left;
+                *         this.right = right;
+                *     }
+                * }
+                */
+               class Solution {
+                 public TreeNode constructFromPrePost(int[] pre, int[] post) {
+                   Map<Integer, Integer> postToIndex = new HashMap<>();        
+                   for (int i = 0; i < post.length; ++i)
+                     postToIndex.put(post[i], i);
+                   return build(pre, 0, pre.length - 1, post, 0, post.length - 1, postToIndex);
                  }
-             
-                 return ans + 1;   
-             };
-             
-             console.log(atMostNGivenDigitSet(["1","3","5","7"],100))`,
-              output: `20`,
-            },
-          }}
-        />
-      ),
-    },
-    q747: {
-      title: "Q903. Valid Permutations for DI Sequence (Q747)",
-      content: (
-        <Comp
-          title="Q903. Valid Permutations for DI Sequence (Q747)"
-          content1={
-            <>
-              You are given a string s of length n where s[i] is either:
-              <br />
-              'D' means decreasing, or
-              <br />
-              'I' means increasing.
-              <br />
-              A permutation perm of n + 1 integers of all the integers in the
-              range [0, n] is called a valid permutation if for all valid i:
-              <br />
-              If s[i] == 'D', then perm[i] &gt; perm[i + 1], and
-              <br />
-              If s[i] == 'I', then perm[i] &lt; perm[i + 1]. Return the number
-              of valid permutations perm. Since the answer may be large, return
-              it modulo 109 + 7.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: s = "DID" <br />
-                  Output: 5 <br />
-                  Explanation: The 5 valid permutations of (0, 1, 2, 3) are:{" "}
-                  <br />
-                  (1, 0, 3, 2) <br />
-                  (2, 0, 3, 1) <br />
-                  (2, 1, 3, 0) <br />
-                  (3, 0, 2, 1) <br />
-                  (3, 1, 2, 0)
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: s = "D" <br />
-                  Output: 1
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              n == s.length <br />
-              1 &lt;= n &lt;= 200 <br />
-              s[i] is either 'I' or 'D'.
-            </>
-          }
-          tc="n^2"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: `/**
-              * @param {string} s
-              * @return {number}
-              */
-             var numPermsDISequence = function(s) {
-               const kMod = 1e9 + 7;
-               let n = s.length;
-               let dp = Array(n + 1).fill(0);
-             
-               for (let j = 0; j <= n; ++j)
-                   dp[j] = 1;
-             
-               for (let i = 1; i <= n; ++i) {
-                 const newDp = Array(n + 1).fill(0);
-                   if (s[i - 1] == 'I') { 
-                     let postfixsum = 0;
-                     for (let j = n - i; j >= 0; --j) {
-                       postfixsum = (postfixsum + dp[j + 1]) % kMod;
-                       newDp[j] = postfixsum;
-                     }
-                   } else {
-                     let prefix = 0;
-                     for (let j = 0; j <= n - i; ++j) {
-                       prefix = (prefix + dp[j]) % kMod;
-                       newDp[j] = prefix;
-                     }
-                   }
-                   dp = newDp;
+               
+                 private TreeNode build(int[] pre, int preStart, int preEnd, int[] post, int postStart,
+                                        int postEnd, Map<Integer, Integer> postToIndex) {
+                   if (preStart > preEnd)
+                     return null;
+                   if (preStart == preEnd)
+                     return new TreeNode(pre[preStart]);
+                   final int rootVal = pre[preStart];
+                   final int leftRootVal = pre[preStart + 1];
+                   final int leftRootPostIndex = postToIndex.get(leftRootVal);
+                   final int leftSize = leftRootPostIndex - postStart + 1;
+                   TreeNode root = new TreeNode(rootVal);
+                   root.left = build(pre, preStart + 1, preStart + leftSize, post, postStart, leftRootPostIndex,
+                                     postToIndex);
+                   root.right = build(pre, preStart + leftSize + 1, preEnd, post, leftRootPostIndex + 1,
+                                      postEnd - 1, postToIndex);
+                   return root;
                  }
-             
-                 return dp[0]; 
-             };
-             console.log(numPermsDISequence("DID"))`,
-              output: `5`,
-            },
-          }}
-        />
-      ),
-    },
-    q748: {
-      title: "Q904. Fruit Into Baskets (Q748)",
-      content: (
-        <Comp
-          title="Q904. Fruit Into Baskets (Q748)"
-          content1={
-            <>
-              You are visiting a farm that has a single row of fruit trees
-              arranged from left to right. The trees are represented by an
-              integer array fruits where fruits[i] is the type of fruit the ith
-              tree produces.
-              <br />
-              You want to collect as much fruit as possible. However, the owner
-              has some strict rules that you must follow:
-              <br />
-              You only have two baskets, and each basket can only hold a single
-              type of fruit. There is no limit on the amount of fruit each
-              basket can hold.
-              <br />
-              Starting from any tree of your choice, you must pick exactly one
-              fruit from every tree (including the start tree) while moving to
-              the right. The picked fruits must fit in one of your baskets.
-              <br />
-              Once you reach a tree with fruit that cannot fit in your baskets,
-              you must stop.
-              <br />
-              Given the integer array fruits, return the maximum number of
-              fruits you can pick.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: fruits = [1,2,1] <br />
-                  Output: 3 <br />
-                  Explanation: We can pick from all 3 trees.
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: fruits = [0,1,2,2] <br />
-                  Output: 3 <br />
-                  Explanation: We can pick from trees [1,2,2]. <br />
-                  If we had started at the first tree, we would only pick from
-                  trees [0,1].
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: fruits = [1,2,3,2,2] <br />
-                  Output: 4 <br />
-                  Explanation: We can pick from trees [2,3,2,2]. <br />
-                  If we had started at the first tree, we would only pick from
-                  trees [1,2].
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= fruits.length &lt;= 10^5 <br />0 &lt;= fruits[i] &lt;
-              fruits.length
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: `/**
-              * @param {number[]} fruits
-              * @return {number}
-              */
-             var totalFruit = function(fruits) {
-               let ans = 0;
-               const count = {};
-               for (let l = 0, r = 0; r < fruits.length; ++r) {
-                   count[fruits[r]] = (count[fruits[r]] || 0) + 1;
-                   while (Object.keys(count).length > 2) {
-                     count[fruits[l]] = count[fruits[l]] - 1;
-                     if(count[fruits[l]]==0)
-                     delete count[fruits[l]]
-                     ++l;
-                   }
-                   ans = Math.max(ans, r - l + 1);
-                 }
-                 return ans;   
-             };
-             console.log(totalFruit([1,2,1]))`,
-              output: `3`,
-            },
-          }}
-        />
-      ),
-    },
-    q749: {
-      title: "Q905. Sort Array By Parity (Q749)",
-      content: (
-        <Comp
-          title="Q905. Sort Array By Parity (Q749)"
-          content1={
-            <>
-              Given an integer array nums, move all the even integers at the
-              beginning of the array followed by all the odd integers.
-              <br />
-              Return any array that satisfies this condition.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: nums = [3,1,2,4] <br />
-                  Output: [2,4,3,1] <br />
-                  Explanation: The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3]
-                  would also be accepted.
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: nums = [0] <br />
-                  Output: [0]
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= nums.length &lt;= 5000 <br />0 &lt;= nums[i] &lt;= 5000
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: `/**
-              * @param {number[]} nums
-              * @return {number[]}
-              */
-             var sortArrayByParity = function(nums) {
-               let l = 0;
-               let r = nums.length - 1;
-               while (l < r) {
-                 if (nums[l] % 2 == 1 && nums[r] % 2 == 0) {
-                   let temp = nums[l];
-                   nums[l] = nums[r];
-                   nums[r] = temp;
-                 }
-                 if (nums[l] % 2 == 0)
-                   ++l;
-                 if (nums[r] % 2 == 1)
-                   --r;
                }
-               return nums;
-             };
-             
-             console.log(sortArrayByParity([3,1,2,4]))`,
-              output: `[ 4, 2, 1, 3 `,
-            },
-          }}
-        />
-      ),
-    },
-    q750: {
-      title: "Q906. Super Palindromes (Q750)",
-      content: (
-        <Comp
-          title="Q906. Super Palindromes (Q750)"
-          content1={
-            <>
-              Let's say a positive integer is a super-palindrome if it is a
-              palindrome, and it is also the square of a palindrome.
-              <br />
-              Given two positive integers left and right represented as strings,
-              return the number of super-palindromes integers in the inclusive
-              range [left, right].
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: left = "4", right = "1000"
-                  <br />
-                  Output: 4<br />
-                  Explanation: 4, 9, 121, and 484 are superpalindromes.
-                  <br />
-                  Note that 676 is not a superpalindrome: 26 * 26 = 676, but 26
-                  is not a palindrome.
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: left = "1", right = "2"
-                  <br />
-                  Output: 1
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= left.length, right.length &lt;= 18
-              <br />
-              left and right consist of only digits.
-              <br />
-              left and right cannot have leading zeros.
-              <br />
-              left and right represent integers in the range [1, 1018 - 1].
-              <br />
-              left is less than or equal to right.
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Java: {
-              code: `class Solution {
-                public int superpalindromesInRange(String left, String right) {
-                  int ans = 0;
-                  Long l = Long.valueOf(left);
-                  Long r = Long.valueOf(right);
-                  for (long i = (long) Math.sqrt(l); i * i <= r;) {
-                    long palindrome = nextPalindrome(i);
-                    long squared = palindrome * palindrome;
-                    if (squared <= r && isPalindrome(squared))
-                      ++ans;
-                    i = palindrome + 1;
+               `,
+                output: `[ 1 ]`,
+              },
+            }}
+          />
+        ),
+      },
+      q734: {
+        title: "Q890. Find and Replace Pattern (Q734)",
+        content: (
+          <Comp
+            title="Q890. Find and Replace Pattern (Q734)"
+            content1={
+              <>
+                Given a list of strings words and a string pattern, return a
+                list of words[i] that match pattern. You may return the answer
+                in any order.
+                <br />
+                A word matches the pattern if there exists a permutation of
+                letters p so that after replacing every letter x in the pattern
+                with p(x), we get the desired word.
+                <br />
+                Recall that a permutation of letters is a bijection from letters
+                to letters: every letter maps to another letter, and no two
+                letters map to the same letter.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: words = ["abc","deq","mee","aqq","dkd","ccc"],
+                    pattern = "abb"
+                    <br /> Output: ["mee","aqq"] <br />
+                    <br /> Explanation: "mee" matches the pattern because there
+                    is a permutation {"{a -> m, b -> e, ...}"}. "ccc" does not
+                    match the pattern because {"{a -> c, b -> c, ...}"} is not a
+                    permutation, since a and b map to the same letter.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: words = ["a","b","c"], pattern = "a" <br />
+                    Output: ["a","b","c"]
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= pattern.length &lt;= 20
+                <br />
+                1 &lt;= words.length &lt;= 50
+                <br />
+                words[i].length == pattern.length
+                <br />
+                pattern and words[i] are lowercase English letters.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `// Input: words = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb"
+                class Solution {
+                  public List<String> findAndReplacePattern(String[] words, String pattern) {
+                    List<String> ans = new ArrayList<>();
+                    for (final String word : words)
+                      if (isIsomorphic(word, pattern))
+                        ans.add(word);
+                    return ans;
                   }
-              
-                  return ans;
+                
+                  private boolean isIsomorphic(final String w, final String p) {
+                    Map<Character, Integer> map_w = new HashMap<>();
+                    Map<Character, Integer> map_p = new HashMap<>();
+                    for (Integer i = 0; i < w.length(); ++i)
+                      if (map_w.put(w.charAt(i), i) != map_p.put(p.charAt(i), i))
+                        return false;
+                    return true;
+                  }
                 }
-              
-                private long nextPalindrome(long num) {
-                  final String s = String.valueOf(num);
-                  final int n = s.length();
-                  String half = s.substring(0, (n + 1) / 2);
-                  String reversedHalf = new StringBuilder(half.substring(0, n / 2)).reverse().toString();
-                  final long candidate = Long.valueOf(half + reversedHalf);
-                  if (candidate >= num)
-                    return candidate;
-                  half = String.valueOf(Long.valueOf(half) + 1);
-                  reversedHalf = new StringBuilder(half.substring(0, n / 2)).reverse().toString();
-                  return Long.valueOf(half + reversedHalf);
-                }
-              
-                private boolean isPalindrome(long num) {
-                  final String s = String.valueOf(num);
-                  int l = 0;
-                  int r = s.length() - 1;
-                  while (l < r)
-                    if (s.charAt(l++) != s.charAt(r--))
-                      return false;
-                  return true;
-                }
-              }`,
-              output: `4`,
-            },
-          }}
-        />
-      ),
-    },
-    q751: {
-      title: "Q907. Sum of Subarray Minimums (Q751)",
-      content: (
-        <Comp
-          title="Q907. Sum of Subarray Minimums (Q751)"
-          content1={
-            <>
-              3252 209 Add to List Share Given an array of integers arr, find
-              the sum of min(b), where b ranges over every (contiguous) subarray
-              of arr. Since the answer may be large, return the answer modulo
-              10^9 + 7.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: arr = [3,1,2,4]
-                  <br />
-                  Output: 17
-                  <br />
-                  Explanation: <br />
-                  Subarrays are [3], [1], [2], [4], [3,1], [1,2], [2,4],
-                  [3,1,2], [1,2,4], [3,1,2,4].
-                  <br /> Minimums are 3, 1, 2, 4, 1, 1, 2, 1, 1, 1.
-                  <br />
-                  Sum is 17.
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: arr = [11,81,94,43,3]
-                  <br />
-                  Output: 444
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= arr.length &lt;= 3 * 10^4
-              <br />1 &lt;= arr[i] &lt;= 3 * 104
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: `/**
-              * @param {number[]} arr
-              * @return {number}
-              */
-             var sumSubarrayMins = function(arr) {
-               const kMod = 1e9 + 7;
-               let n = arr.length;
-               let ans = 0;
-               const prev = Array(n).fill(-1);
-               const next = Array(n).fill(n);
-               const stack = [];
-             
-               for (let i = 0; i < arr.length; ++i) {
-                   while (stack.length && arr[stack[stack.length-1]] > arr[i]) {
-                     const index = stack.pop();
-                     next[index] = i;
-                   }
-                   if (stack.length)
-                     prev[i] = stack[stack.length-1]
-                   stack.push(i);
-                 }
-                 for (let i = 0; i < arr.length; ++i) {
-                   ans += arr[i] * (i - prev[i]) * (next[i] - i);
+                `,
+                output: `["mee","aqq"]`,
+              },
+            }}
+          />
+        ),
+      },
+      q735: {
+        title: "Q891. Sum of Subsequence Widths (Q735)",
+        content: (
+          <Comp
+            title="Q891. Sum of Subsequence Widths (Q735)"
+            content1={
+              <>
+                The width of a sequence is the difference between the maximum
+                and minimum elements in the sequence.
+                <br />
+                Given an array of integers nums, return the sum of the widths of
+                all the non-empty subsequences of nums. Since the answer may be
+                very large, return it modulo 109 + 7.
+                <br />A subsequence is a sequence that can be derived from an
+                array by deleting some or no elements without changing the order
+                of the remaining elements. For example, [3,6,2,7] is a
+                subsequence of the array [0,3,1,6,2,2,7].
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [2,1,3] <br />
+                    Output: 6 <br />
+                    Explanation: The subsequences are [1], [2], [3], [2,1],
+                    [2,3], [1,3], [2,1,3].
+                    <br /> The corresponding widths are 0, 0, 0, 1, 1, 2, 2.
+                    <br /> The sum of these widths is 6.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [2] <br />
+                    Output: 0
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 10^5
+                <br />1 &lt;= nums[i] &lt;= 10^5
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var sumSubseqWidths = function(nums) {
+                 const kMod = 1e9 + 7;
+                 const n = nums.length;
+                 let ans = 0;
+                 let exp = 1;
+                 nums = nums.sort((a,b)=>a-b);
+                 for (let i = 0; i < n; ++i, exp = exp * 2 % kMod) {
+                   ans += (nums[i] - nums[n - i - 1]) * exp;
                    ans %= kMod;
                  }
-             
-                 return parseInt(ans);  
-             };
-             
-             console.log(sumSubarrayMins([3,1,2,4]))`,
-              output: `17`,
-            },
-          }}
-        />
-      ),
-    },
-    q752: {
-      title: "Q908. Smallest Range I (Q752)",
-      content: (
-        <Comp
-          title="Q908. Smallest Range I (Q752)"
-          content1={
-            <>
-              You are given an integer array nums and an integer k.
-              <br />
-              In one operation, you can choose any index i where 0 &lt; = i &lt;
-              nums.length and change nums[i] to nums[i] + x where x is an
-              integer from the range [-k, k]. You can apply this operation at
-              most once for each index i.
-              <br />
-              The score of nums is the difference between the maximum and
-              minimum elements in nums.
-              <br />
-              Return the minimum score of nums after applying the mentioned
-              operation at most once for each index in it.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: nums = [1], k = 0<br />
-                  Output: 0<br />
-                  Explanation: The score is max(nums) - min(nums) = 1 - 1 = 0.
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: nums = [0,10], k = 2<br />
-                  Output: 6<br />
-                  Explanation: Change nums to be [2, 8]. The score is max(nums)
-                  - min(nums) = 8 - 2 = 6.
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: nums = [1,3,6], k = 3<br />
-                  Output: 0<br />
-                  Explanation: Change nums to be [4, 4, 4]. The score is
-                  max(nums) - min(nums) = 4 - 4 = 0.
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= nums.length &lt;= 10^4
-              <br />
-              0 &lt;= nums[i] &lt;= 10^4
-              <br />0 &lt;= k &lt;= 10^4
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: `/**
-              * @param {number[]} nums
-              * @param {number} k
-              * @return {number}
-              */
-             var smallestRangeI = function(nums, k) {
-               let max = Math.max(...nums)
-               let min = Math.min(...nums)
-               return Math.max(0, max - min - 2 * k);
-             };
-             
-             console.log(smallestRangeI([1],0))`,
-              output: `0`,
-            },
-          }}
-        />
-      ),
-    },
-    q753: {
-      title: "Q909. Snakes and Ladders (Q753)",
-      content: (
-        <Comp
-          title="Q909. Snakes and Ladders (Q753)"
-          content1={
-            <>
-              You are given an n x n integer matrix board where the cells are
-              labeled from 1 to n2 in a Boustrophedon style starting from the
-              bottom left of the board (i.e. board[n - 1][0]) and alternating
-              direction each row.
-              <br />
-              You start on square 1 of the board. In each move, starting from
-              square curr, do the following:
-              <br />
-              <br /> Choose a destination square next with a label in the range
-              [curr + 1, min(curr + 6, n2)].
-              <br /> This choice simulates the result of a standard 6-sided die
-              roll: i.e., there are always at most 6 destinations, regardless of
-              the size of the board.
-              <br /> If next has a snake or ladder, you must move to the
-              destination of that snake or ladder. Otherwise, you move to next.
-              <br /> The game ends when you reach the square n2.
-              <br /> A board square on row r and column c has a snake or ladder
-              if board[r][c] != -1. The destination of that snake or ladder is
-              board[r][c]. Squares 1 and n2 do not have a snake or ladder.
-              <br />
-              Note that you only take a snake or ladder at most once per move.
-              If the destination to a snake or ladder is the start of another
-              snake or ladder, you do not follow the subsequent snake or ladder.
-              <br />
-              For example, suppose the board is [[-1,4],[-1,3]], and on the
-              first move, your destination square is 2. You follow the ladder to
-              square 3, but do not follow the subsequent ladder to 4.
-              <br /> Return the least number of moves required to reach the
-              square n2. If it is not possible to reach the square, return -1.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              img: Leetcode909,
-              content: (
-                <>
-                  Input: board =
-                  [[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,35,-1,-1,13,-1],[-1,-1,-1,-1,-1,-1],[-1,15,-1,-1,-1,-1]]
-                  <br /> Output: 4
-                  <br /> Explanation:
-                  <br /> In the beginning, you start at square 1 (at row 5,
-                  column 0).
-                  <br /> You decide to move to square 2 and must take the ladder
-                  to square 15.
-                  <br /> You then decide to move to square 17 and must take the
-                  snake to square 13.
-                  <br /> You then decide to move to square 14 and must take the
-                  ladder to square 35.
-                  <br /> You then decide to move to square 36, ending the game.
-                  <br /> This is the lowest possible number of moves to reach
-                  the last square, so return 4.
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: board = [[-1,-1],[-1,3]] <br />
-                  Output: 1
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              n == board.length == board[i].length <br />
-              2 &lt;= n &lt;= 20 <br />
-              grid[i][j] is either -1 or in the range [1, n2]. <br />
-              The squares labeled 1 and n2 do not have any ladders or snakes.
-            </>
-          }
-          tc="n^2"
-          sc="n^2"
-          codes={{
-            Java: {
-              code: `// Input: board = [[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,35,-1,-1,13,-1],[-1,-1,-1,-1,-1,-1],[-1,15,-1,-1,-1,-1]]
-              class Solution {
-                public int snakesAndLadders(int[][] board) {
-                  final int n = board.length;
-                  int ans = 0;
-                  Queue<Integer> q = new ArrayDeque<>(Arrays.asList(1));
-                  boolean[] seen = new boolean[1 + n * n];
-                  int[] A = new int[1 + n * n];
-                  for (int i = 0; i < n; ++i)
-                    for (int j = 0; j < n; ++j)
-                      A[(n - 1 - i) * n + ((n - i & 1) == 1 ? j + 1 : n - j)] = board[i][j];
-              
-                  while (!q.isEmpty()) {
-                    ++ans;
-                    for (int sz = q.size(); sz > 0; --sz) {
-                      final int curr = q.poll();
-                      for (int next = curr + 1; next <= Math.min(curr + 6, n * n); ++next) {
-                        final int dest = A[next] > 0 ? A[next] : next;
-                        if (dest == n * n)
-                          return ans;
-                        if (seen[dest])
-                          continue;
-                        q.offer(dest);
-                        seen[dest] = true;
+                 return parseInt(ans);
+               };
+               
+               console.log(sumSubseqWidths([2,1,3]))`,
+                output: `6`,
+              },
+            }}
+          />
+        ),
+      },
+      q736: {
+        title: "Q892. Surface Area of 3D Shapes (Q736)",
+        content: (
+          <Comp
+            title="Q892. Surface Area of 3D Shapes (Q736)"
+            content1={
+              <>
+                You are given an n x n grid where you have placed some 1 x 1 x 1
+                cubes. Each value v = grid[i][j] represents a tower of v cubes
+                placed on top of cell (i, j).
+                <br />
+                After placing these cubes, you have decided to glue any directly
+                adjacent cubes to each other, forming several irregular 3D
+                shapes.
+                <br />
+                Return the total surface area of the resulting shapes.
+                <br />
+                Note: The bottom face of each shape counts toward its surface
+                area.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: grid = [[1,2],[3,4]] <br />
+                    Output: 34
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: grid = [[1,1,1],[1,0,1],[1,1,1]] <br />
+                    Output: 32
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: grid = [[2,2,2],[2,1,2],[2,2,2]] <br />
+                    Output: 46
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                n == grid.length == grid[i].length <br />
+                1 &lt;= n &lt;= 50 <br />0 &lt;= grid[i][j] &lt;= 50
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[][]} grid
+                * @return {number}
+                */
+               var surfaceArea = function(grid) {
+                 let ans = 0;
+                 for (let i = 0; i < grid.length; ++i)
+                     for (let j = 0; j < grid.length; ++j) {
+                       if (grid[i][j] > 0)
+                         ans += grid[i][j] * 4 + 2;
+                       if (i > 0)
+                         ans -= Math.min(grid[i][j], grid[i - 1][j]) * 2;
+                       if (j > 0)
+                         ans -= Math.min(grid[i][j], grid[i][j - 1]) * 2;
+                     }
+                   return ans;   
+               };
+               console.log(surfaceArea([[1,2],[3,4]]))`,
+                output: `34`,
+              },
+            }}
+          />
+        ),
+      },
+      q737: {
+        title: "Q893. Groups of Special-Equivalent Strings (Q737)",
+        content: (
+          <Comp
+            title="Q893. Groups of Special-Equivalent Strings (Q737)"
+            content1={
+              <>
+                You are given an array of strings of the same length words.
+                <br />
+                In one move, you can swap any two even indexed characters or any
+                two odd indexed characters of a string words[i].
+                <br />
+                Two strings words[i] and words[j] are special-equivalent if
+                after any number of moves, words[i] == words[j].
+                <br />
+                For example, words[i] = "zzxy" and words[j] = "xyzz" are
+                special-equivalent because we may make the moves "zzxy" -&gt;
+                "xzzy" -&gt; "xyzz". A group of special-equivalent strings from
+                words is a non-empty subset of words such that:
+                <br />
+                Every pair of strings in the group are special equivalent, and
+                The group is the largest size possible (i.e., there is not a
+                string words[i] not in the group such that words[i] is
+                special-equivalent to every string in the group). Return the
+                number of groups of special-equivalent strings from words.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: words = ["abcd","cdab","cbad","xyzz","zzxy","zzyx"]
+                    <br />
+                    Output: 3 <br />
+                    Explanation: <br />
+                    One group is ["abcd", "cdab", "cbad"], since they are all
+                    pairwise special equivalent, and none of the other strings
+                    is all pairwise special equivalent to these.
+                    <br /> The other two groups are ["xyzz", "zzxy"] and
+                    ["zzyx"].
+                    <br /> Note that in particular, "zzxy" is not special
+                    equivalent to "zzyx".
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: words = ["abc","acb","bac","bca","cab","cba"]
+                    <br /> Output: 3
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= words.length &lt;= 1000
+                <br />
+                1 &lt;= words[i].length &lt;= 20
+                <br />
+                words[i] consist of lowercase English letters.
+                <br />
+                All the strings are of the same length.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {string[]} words
+                * @return {number}
+                */
+               var numSpecialEquivGroups = function(words) {
+                 const set = new Set();
+                 for (let s of words) {
+                     let even = "";
+                     let odd = "";
+                     for (let i = 0; i < s.length; ++i)
+                       if (i % 2 == 0)
+                         even += s[i];
+                       else
+                         odd += s[i];
+                     const evenCharArray = even.split("");
+                     const oddCharArray = odd.split("");
+                     evenCharArray.sort((a,b)=>a<b?1:-1)
+                     oddCharArray.sort((a,b)=>a<b?1:-1)
+                     set.add(evenCharArray.join("") + oddCharArray.join(""));
+                   }
+                   return set.size;   
+               };
+               
+               console.log(numSpecialEquivGroups(["abc","acb","bac","bca","cab","cba"]))`,
+                output: `3`,
+              },
+            }}
+          />
+        ),
+      },
+      q738: {
+        title: "Q894. All Possible Full Binary Trees (Q738)",
+        content: (
+          <Comp
+            title="Q894. All Possible Full Binary Trees (Q738)"
+            content1={
+              <>
+                Given an integer n, return a list of all possible full binary
+                trees with n nodes. Each node of each tree in the answer must
+                have Node.val == 0.
+                <br />
+                Each element of the answer is the root node of one possible
+                tree. You may return the final list of trees in any order.
+                <br />A full binary tree is a binary tree where each node has
+                exactly 0 or 2 children.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: n = 7 <br />
+                    Output: [[0,0,0,null,null,0,0,null,null,0,0], <br />
+                    [0,0,0,null,null,0,0,0,0], <br />
+                    [0,0,0,0,0,0,0], <br />
+                    [0,0,0,0,0,null,null,null,null,0,0], <br />
+                    [0,0,0,0,0,null,null,0,0]]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: n = 3 <br />
+                    Output: [[0,0,0]]
+                  </>
+                ),
+              },
+            ]}
+            constraints={<>1 &lt;= n &lt;= 20</>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `
+                // n = 7
+                /**
+                * Definition for a binary tree node.
+                * public class TreeNode {
+                *     int val;
+                *     TreeNode left;
+                *     TreeNode right;
+                *     TreeNode() {}
+                *     TreeNode(int val) { this.val = val; }
+                *     TreeNode(int val, TreeNode left, TreeNode right) {
+                *         this.val = val;
+                *         this.left = left;
+                *         this.right = right;
+                *     }
+                * }
+                */
+               
+               class Solution {
+                 public List<TreeNode> allPossibleFBT(int n) {
+                   if (n % 2 == 0)
+                     return new ArrayList<>();
+                   if (n == 1)
+                     return Arrays.asList(new TreeNode(0));
+                   if (memo.containsKey(n))
+                     return memo.get(n);
+               
+                   List<TreeNode> ans = new ArrayList<>();
+               
+                   for (int leftCount = 0; leftCount < n; ++leftCount) {
+                     final int rightCount = n - 1 - leftCount;
+                     for (TreeNode left : allPossibleFBT(leftCount))
+                       for (TreeNode right : allPossibleFBT(rightCount)) {
+                         ans.add(new TreeNode(0));
+                         ans.get(ans.size() - 1).left = left;
+                         ans.get(ans.size() - 1).right = right;
+                       }
+                   }
+               
+                   memo.put(n, ans);
+                   return ans;
+                 }
+                 private Map<Integer, List<TreeNode>> memo = new HashMap<>();
+               }`,
+                output: `[[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,null,null,null,null,0,0],[0,0,0,0,0,null,null,0,0]]`,
+              },
+            }}
+          />
+        ),
+      },
+      q739: {
+        title: "Q895. Maximum Frequency Stack (Q739)",
+        content: (
+          <Comp
+            title="Q895. Maximum Frequency Stack (Q739)"
+            content1={
+              <>
+                Design a stack-like data structure to push elements to the stack
+                and pop the most frequent element from the stack.
+                <br />
+                Implement the FreqStack class:
+                <br />
+                FreqStack() constructs an empty frequency stack.
+                <br />
+                void push(int val) pushes an integer val onto the top of the
+                stack.
+                <br />
+                int pop() removes and returns the most frequent element in the
+                stack.
+                <br />
+                If there is a tie for the most frequent element, the element
+                closest to the stack's top is removed and returned.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input
+                    <br /> ["FreqStack", "push", "push", "push", "push", "push",
+                    "push", "pop", "pop", "pop", "pop"] [[], [5], [7], [5], [7],
+                    [4], [5], [], [], [], []] <br />
+                    Output <br />
+                    [null, null, null, null, null, null, null, 5, 7, 5, 4]{" "}
+                    <br />
+                    Explanation
+                    <br /> FreqStack freqStack = new FreqStack();
+                    <br /> freqStack.push(5); // The stack is [5]
+                    <br /> freqStack.push(7); // The stack is [5,7]
+                    <br /> freqStack.push(5); // The stack is [5,7,5]
+                    <br /> freqStack.push(7); // The stack is [5,7,5,7]
+                    <br /> freqStack.push(4); // The stack is [5,7,5,7,4]
+                    <br /> freqStack.push(5); // The stack is [5,7,5,7,4,5]
+                    <br /> freqStack.pop(); // return 5, as 5 is the most
+                    frequent. The stack becomes [5,7,5,7,4].
+                    <br /> freqStack.pop(); // return 7, as 5 and 7 is the most
+                    frequent, but 7 is closest to the top. The stack becomes
+                    [5,7,5,4].
+                    <br /> freqStack.pop(); // return 5, as 5 is the most
+                    frequent. The stack becomes [5,7,4].
+                    <br /> freqStack.pop(); // return 4, as 4, 5 and 7 is the
+                    most frequent, but 4 is closest to the top. The stack
+                    becomes [5,7].
+                    <br />{" "}
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                0 &lt;= val &lt;= 10^9 <br />
+                At most 2 * 10^4 calls will be made to push and pop. <br />
+                It is guaranteed that there will be at least one element in the
+                stack before calling pop.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `
+  // Input
+  // ["FreqStack", "push", "push", "push", "push", "push", "push", "pop", "pop", "pop", "pop"]
+  // [[], [5], [7], [5], [7], [4], [5], [], [], [], []]
+                class FreqStack {
+                  public void push(int val) {
+                    count.merge(val, 1, Integer::sum);
+                    st.putIfAbsent(count.get(val), new ArrayDeque<>());
+                    st.get(count.get(val)).push(val);
+                    maxFreq = Math.max(maxFreq, count.get(val));
+                  }
+                
+                  public int pop() {
+                    final int val = st.get(maxFreq).pop();
+                    count.merge(val, -1, Integer::sum);
+                    if (st.get(maxFreq).isEmpty())
+                      --maxFreq;
+                    return val;
+                  }
+                
+                  private int maxFreq = 0;
+                  private Map<Integer, Integer> count = new HashMap<>();
+                  private Map<Integer, Deque<Integer>> st = new HashMap<>();
+                }
+                
+                /**
+                 * Your FreqStack object will be instantiated and called as such:
+                 * FreqStack obj = new FreqStack();
+                 * obj.push(val);
+                 * int param_2 = obj.pop();
+                 */`,
+                output: `[null, null, null, null, null, null, null, 5, 7, 5, 4]`,
+              },
+            }}
+          />
+        ),
+      },
+      q740: {
+        title: "Q896. Monotonic Array (Q740)",
+        content: (
+          <Comp
+            title="Q896. Monotonic Array (Q740)"
+            content1={
+              <>
+                An array is monotonic if it is either monotone increasing or
+                monotone decreasing.
+                <br />
+                An array nums is monotone increasing if for all i &lt;= j,
+                nums[i] &lt;= nums[j]. An array nums is monotone decreasing if
+                for all i &lt;= j, nums[i] &gt;= nums[j].
+                <br />
+                Given an integer array nums, return true if the given array is
+                monotonic, or false otherwise.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [1,2,2,3]
+                    <br />
+                    Output: true
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [6,5,4,4]
+                    <br />
+                    Output: true
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [1,3,2]
+                    <br />
+                    Output: false
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 10^5 <br />
+                -10^5 &lt;= nums[i] &lt;= 10^5
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} nums
+                * @return {boolean}
+                */
+               var isMonotonic = function(nums) {
+                 let increasing = true;
+                 let decreasing = true;
+                 for (let i = 1; i < nums.length; ++i) {
+                   increasing &= nums[i] >= nums[i - 1];
+                   decreasing &= nums[i] <= nums[i - 1];
+                 }
+                 return increasing || decreasing;  
+               };
+               
+               console.log(isMonotonic([1,2,2,3]))`,
+                output: `1`,
+              },
+            }}
+          />
+        ),
+      },
+      q741: {
+        title: "Q897. Increasing Order Search Tree (Q741)",
+        content: (
+          <Comp
+            title="Q897. Increasing Order Search Tree (Q741)"
+            content1={
+              <>
+                Given the root of a binary search tree, rearrange the tree in
+                in-order so that the leftmost node in the tree is now the root
+                of the tree, and every node has no left child and only one right
+                child.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                img: Leetcode897,
+                content: (
+                  <>
+                    Input: root = [5,3,6,2,4,null,8,1,null,null,null,7,9]
+                    <br />
+                    Output: <br />
+                    [1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: root = [5,1,7] <br />
+                    Output: [1,null,5,null,7]
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                The number of nodes in the given tree will be in the range [1,
+                100].
+                <br /> 0 &lt;= Node.val &lt;= 1000
+              </>
+            }
+            tc="n"
+            sc="h"
+            codes={{
+              Javascript: {
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+                }
+                /**
+                 * @param {TreeNode} root
+                 * @return {TreeNode}
+                 */
+                var increasingBST = function(root) {
+                  return helper(root);
+                };
+                function helper(root, tail=null) {
+                  if (!root) return tail;
+                  let ans = helper(root.left, root);
+                  root.left = null
+                  root.right = helper(root.right, tail);
+                  return ans;
+                }
+                const t = new TreeNode(5)
+                t.left = new TreeNode(1)
+                t.right = new TreeNode(7)
+                console.log(increasingBST(t))`,
+                output: `TreeNode {
+                  val: 1,
+                  left: null,
+                  right: TreeNode {
+                    val: 5,
+                    left: null,
+                    right: TreeNode { val: 7, left: null, right: null }
+                  }
+                }`,
+              },
+            }}
+          />
+        ),
+      },
+      q742: {
+        title: "Q898. Bitwise ORs of Subarrays (Q742)",
+        content: (
+          <Comp
+            title="Q898. Bitwise ORs of Subarrays (Q742)"
+            content1={
+              <>
+                We have an array arr of non-negative integers.
+                <br />
+                For every (contiguous) subarray sub = [arr[i], arr[i + 1], ...,
+                arr[j]] (with i &lt;= j), we take the bitwise OR of all the
+                elements in sub, obtaining a result arr[i] | arr[i + 1] | ... |
+                arr[j].
+                <br />
+                Return the number of possible results. Results that occur more
+                than once are only counted once in the final answer
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: arr = [1,1,2] <br />
+                    Output: 3 <br />
+                    Explanation: The possible subarrays are [1], [1], [2], [1,
+                    1], [1, 2], [1, 1, 2].
+                    <br /> These yield the results 1, 1, 2, 1, 3, 3.
+                    <br /> There are 3 unique values, so the answer is 3.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: arr = [1,1,2] <br />
+                    Output: 3 <br />
+                    Explanation: The possible subarrays are [1], [1], [2], [1,
+                    1], [1, 2], [1, 1, 2]. These yield the results 1, 1, 2, 1,
+                    3, 3. <br />
+                    There are 3 unique values, so the answer is 3.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: arr = [1,2,4] <br />
+                    Output: 6 <br />
+                    Explanation: The possible results are 1, 2, 3, 4, 6, and 7.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 5 * 10^4 <br />0 &lt;= nums[i] &lt;=
+                10^9
+              </>
+            }
+            tc="n.log n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} arr
+                * @return {number}
+                */
+               var subarrayBitwiseORs = function(arr) {
+                 const s = [];
+                 let l = 0;
+                 for (let a of arr) {
+                   let r = s.length;
+                   s.push(a);
+                   for (let i = l; i < r; ++i)
+                     if (s[s.length - 1] != (s[i] | a))
+                         s.push(s[i] | a);
+                   l = r;
+                 }
+                 return new Set(s).size;
+               };
+               
+               console.log(subarrayBitwiseORs([1,2,4]))`,
+                output: `6`,
+              },
+            }}
+          />
+        ),
+      },
+      q743: {
+        title: "Q899. Orderly Queue (Q743)",
+        content: (
+          <Comp
+            title="Q899. Orderly Queue (Q743)"
+            content1={
+              <>
+                You are given a string s and an integer k. You can choose one of
+                the first k letters of s and append it at the end of the
+                string..
+                <br />
+                Return the lexicographically smallest string you could have
+                after applying the mentioned step any number of moves.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: s = "cba", k = 1 <br />
+                    Output: "acb" <br />
+                    Explanation: <br />
+                    In the first move, we move the 1st character 'c' to the end,
+                    obtaining the string "bac".
+                    <br /> In the second move, we move the 1st character 'b' to
+                    the end, obtaining the final result "acb".
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "baaca", k = 3 <br />
+                    Output: "aaabc" <br />
+                    Explanation: <br />
+                    In the first move, we move the 1st character 'b' to the end,
+                    obtaining the string "aacab".
+                    <br /> In the second move, we move the 3rd character 'c' to
+                    the end, obtaining the final result "aaabc".
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= k &lt;= s.length &lt;= 1000 <br />s consist of lowercase
+                English letters.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {string} s
+                * @param {number} k
+                * @return {string}
+                */
+               var orderlyQueue = function(s, k) {
+                 if (k > 1) {
+                   const chars = s.split("");
+                   chars.sort((a,b)=>a>b?1:-1);
+                   return chars.join("");
+                 }
+                 let ans = s;
+                 for (let i = 1; i < s.length; ++i) {
+                     let s2 = s.substring(i) + s.substring(0, i);
+                     if (ans > s2)
+                       ans = s2;
+                   }
+                 return ans;  
+               };
+               
+               console.log(orderlyQueue("cba",1))`,
+                output: `acb`,
+              },
+            }}
+          />
+        ),
+      },
+      q744: {
+        title: "Q900. RLE Iterator (Q744)",
+        content: (
+          <Comp
+            title="Q900. RLE Iterator (Q744)"
+            content1={
+              <>
+                We can use run-length encoding (i.e., RLE) to encode a sequence
+                of integers. In a run-length encoded array of even length
+                encoding (0-indexed), for all even i, encoding[i] tells us the
+                number of times that the non-negative integer value encoding[i +
+                1] is repeated in the sequence.
+                <br />
+                For example, the sequence arr = [8,8,8,5,5] can be encoded to be
+                encoding = [3,8,2,5]. encoding = [3,8,0,9,2,5] and encoding =
+                [2,8,1,8,2,5] are also valid RLE of arr.
+                <br />
+                Given a run-length encoded array, design an iterator that
+                iterates through it.
+                <br />
+                Implement the RLEIterator class:
+                <br />
+                RLEIterator(int[] encoded) Initializes the object with the
+                encoded array encoded.
+                <br />
+                int next(int n) Exhausts the next n elements and returns the
+                last element exhausted in this way. If there is no element left
+                to exhaust, return -1 instead.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input <br />
+                    ["RLEIterator", "next", "next", "next", "next"] <br />
+                    [[[3, 8, 0, 9, 2, 5]], [2], [1], [1], [2]] <br />
+                    Output <br />
+                    [null, 8, 8, 5, -1] <br />
+                    Explanation
+                    <br /> RLEIterator rLEIterator = new RLEIterator([3, 8, 0,
+                    9, 2, 5]); // This maps to the sequence [8,8,8,5,5].
+                    <br /> rLEIterator.next(2); // exhausts 2 terms of the
+                    sequence, returning 8. The remaining sequence is now [8, 5,
+                    5].
+                    <br /> rLEIterator.next(1); // exhausts 1 term of the
+                    sequence, returning 8. The remaining sequence is now [5, 5].
+                    <br /> rLEIterator.next(1); // exhausts 1 term of the
+                    sequence, returning 5. The remaining sequence is now [5].
+                    <br /> rLEIterator.next(2); // exhausts 2 terms, returning
+                    -1. This is because the first term exhausted was 5,
+                    <br /> but the second term did not exist. Since the last
+                    term exhausted does not exist, we return -1.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                2 &lt;= encoding.length &lt;= 1000 <br />
+                encoding.length is even. <br />
+                0 &lt;= encoding[i] &lt;= 109 <br />
+                1 &lt;= n &lt;= 109 <br />
+                At most 1000 calls will be made to next.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `// Input
+                // ["RLEIterator", "next", "next", "next", "next"]
+                // [[[3, 8, 0, 9, 2, 5]], [2], [1], [1], [2]]
+                class RLEIterator {
+                  public RLEIterator(int[] A) {
+                    this.A = A;
+                  }    
+                  public int next(int n) {
+                    while (index < A.length && A[index] < n) {
+                      n -= A[index];
+                      index += 2;
+                    }
+                    if (index == A.length)
+                      return -1;
+                    A[index] -= n;
+                    return A[index + 1];
+                  }
+                  private int index = 0;
+                  private int[] A;
+                }
+                /**
+                 * Your RLEIterator object will be instantiated and called as such:
+                 * RLEIterator obj = new RLEIterator(encoding);
+                 * int param_1 = obj.next(n);
+                 */`,
+                output: `[null, 8, 8, 5, -1]`,
+              },
+            }}
+          />
+        ),
+      },
+      q745: {
+        title: "Q901. Online Stock Span (Q745)",
+        content: (
+          <Comp
+            title="Q901. Online Stock Span (Q745)"
+            content1={
+              <>
+                Design an algorithm that collects daily price quotes for some
+                stock and returns the span of that stock's price for the current
+                day.
+                <br />
+                The span of the stock's price today is defined as the maximum
+                number of consecutive days (starting from today and going
+                backward) for which the stock price was less than or equal to
+                today's price.
+                <br />
+                For example, if the price of a stock over the next 7 days were
+                [100,80,60,70,60,75,85], then the stock spans would be
+                [1,1,1,2,1,4,6].
+                <br />
+                Implement the StockSpanner class:
+                <br />
+                StockSpanner() Initializes the object of the class.
+                <br />
+                int next(int price) Returns the span of the stock's price given
+                that today's price is price.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input <br />
+                    ["StockSpanner", "next", "next", "next", "next", "next",
+                    "next", "next"] [[], [100], [80], [60], [70], [60], [75],
+                    [85]] <br />
+                    Output <br />
+                    [null, 1, 1, 1, 2, 1, 4, 6] <br />
+                    Explanation
+                    <br /> StockSpanner stockSpanner = new StockSpanner();
+                    <br /> stockSpanner.next(100); // return 1
+                    <br /> stockSpanner.next(80); // return 1
+                    <br /> stockSpanner.next(60); // return 1
+                    <br /> stockSpanner.next(70); // return 2
+                    <br /> stockSpanner.next(60); // return 1
+                    <br /> stockSpanner.next(75); // return 4, because the last
+                    4 prices (including today's price of 75) were less than or
+                    equal to today's price.
+                    <br /> stockSpanner.next(85); // return 6
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= price &lt;= 10^5
+                <br />
+                At most 10^4 calls will be made to next.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `// Input
+                // ["StockSpanner", "next", "next", "next", "next", "next", "next", "next"]
+                // [[], [100], [80], [60], [70], [60], [75], [85]]
+                class StockSpanner {
+                  public int next(int price) {
+                    int span = 1;
+                    while (!stack.isEmpty() && stack.peek().getKey() <= price)
+                      span += stack.pop().getValue();
+                    stack.push(new Pair<>(price, span));
+                    return span;
+                  }
+                  private Stack<Pair<Integer, Integer>> stack = new Stack<>();
+                }
+                /**
+                 * Your StockSpanner object will be instantiated and called as such:
+                 * StockSpanner obj = new StockSpanner();
+                 * int param_1 = obj.next(price);
+                 */`,
+                output: `[null, 1, 1, 1, 2, 1, 4, 6]`,
+              },
+            }}
+          />
+        ),
+      },
+      q746: {
+        title: "Q902. Numbers At Most N Given Digit Set (Q746)",
+        content: (
+          <Comp
+            title="Q902. Numbers At Most N Given Digit Set (Q746)"
+            content1={
+              <>
+                Given an array of digits which is sorted in non-decreasing
+                order. You can write numbers using each digits[i] as many times
+                as we want. For example, if digits = ['1','3','5'], we may write
+                numbers such as '13', '551', and '1351315'.
+                <br />
+                Return the number of positive integers that can be generated
+                that are less than or equal to a given integer n.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: digits = ["1","3","5","7"], n = 100
+                    <br /> Output: 20
+                    <br /> Explanation:
+                    <br /> The 20 numbers that can be written are:
+                    <br /> 1, 3, 5, 7, 11, 13, 15, 17, 31, 33, 35, 37, 51, 53,
+                    55, 57, 71, 73, 75, 77.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: digits = ["1","4","9"], n = 1000000000
+                    <br />
+                    Output: 29523
+                    <br /> Explanation:
+                    <br /> We can write 3 one digit numbers, 9 two digit
+                    numbers, 27 three digit numbers,
+                    <br /> 81 four digit numbers, 243 five digit numbers, 729
+                    six digit numbers,
+                    <br /> 2187 seven digit numbers, 6561 eight digit numbers,
+                    and 19683 nine digit numbers.
+                    <br /> In total, this is 29523 integers that can be written
+                    using the digits array.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: digits = ["7"], n = 8 <br />
+                    Output: 1
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= digits.length &lt;= 9 <br />
+                digits[i].length == 1 <br />
+                digits[i] is a digit from '1' to '9'. <br />
+                All the values in digits are unique. <br />
+                digits is sorted in non-decreasing order. <br />1 &lt;= n &lt;=
+                109
+              </>
+            }
+            tc="log n"
+            sc="log n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {string[]} digits
+                * @param {number} n
+                * @return {number}
+                */
+               var atMostNGivenDigitSet = function(digits, n) {
+                 let ans = 0;
+                 let num = String(n);
+               
+                   for (let i = 1; i < num.length; ++i)
+                     ans += Math.pow(digits.length, i);
+               
+                   for (let i = 0; i < num.length; ++i) {
+                     let dHasSameNum = false;
+                     for (let digit of digits) {
+                       if (digit.charAt(0) < num.charAt(i))
+                         ans += Math.pow(digits.length, num.length - i - 1);
+                       else if (digit[0] == num.charAt(i))
+                         dHasSameNum = true;
+                     }
+                     if (!dHasSameNum)
+                       return ans;
+                   }
+               
+                   return ans + 1;   
+               };
+               
+               console.log(atMostNGivenDigitSet(["1","3","5","7"],100))`,
+                output: `20`,
+              },
+            }}
+          />
+        ),
+      },
+      q747: {
+        title: "Q903. Valid Permutations for DI Sequence (Q747)",
+        content: (
+          <Comp
+            title="Q903. Valid Permutations for DI Sequence (Q747)"
+            content1={
+              <>
+                You are given a string s of length n where s[i] is either:
+                <br />
+                'D' means decreasing, or
+                <br />
+                'I' means increasing.
+                <br />
+                A permutation perm of n + 1 integers of all the integers in the
+                range [0, n] is called a valid permutation if for all valid i:
+                <br />
+                If s[i] == 'D', then perm[i] &gt; perm[i + 1], and
+                <br />
+                If s[i] == 'I', then perm[i] &lt; perm[i + 1]. Return the number
+                of valid permutations perm. Since the answer may be large,
+                return it modulo 109 + 7.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: s = "DID" <br />
+                    Output: 5 <br />
+                    Explanation: The 5 valid permutations of (0, 1, 2, 3) are:{" "}
+                    <br />
+                    (1, 0, 3, 2) <br />
+                    (2, 0, 3, 1) <br />
+                    (2, 1, 3, 0) <br />
+                    (3, 0, 2, 1) <br />
+                    (3, 1, 2, 0)
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "D" <br />
+                    Output: 1
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                n == s.length <br />
+                1 &lt;= n &lt;= 200 <br />
+                s[i] is either 'I' or 'D'.
+              </>
+            }
+            tc="n^2"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {string} s
+                * @return {number}
+                */
+               var numPermsDISequence = function(s) {
+                 const kMod = 1e9 + 7;
+                 let n = s.length;
+                 let dp = Array(n + 1).fill(0);
+               
+                 for (let j = 0; j <= n; ++j)
+                     dp[j] = 1;
+               
+                 for (let i = 1; i <= n; ++i) {
+                   const newDp = Array(n + 1).fill(0);
+                     if (s[i - 1] == 'I') { 
+                       let postfixsum = 0;
+                       for (let j = n - i; j >= 0; --j) {
+                         postfixsum = (postfixsum + dp[j + 1]) % kMod;
+                         newDp[j] = postfixsum;
+                       }
+                     } else {
+                       let prefix = 0;
+                       for (let j = 0; j <= n - i; ++j) {
+                         prefix = (prefix + dp[j]) % kMod;
+                         newDp[j] = prefix;
+                       }
+                     }
+                     dp = newDp;
+                   }
+               
+                   return dp[0]; 
+               };
+               console.log(numPermsDISequence("DID"))`,
+                output: `5`,
+              },
+            }}
+          />
+        ),
+      },
+      q748: {
+        title: "Q904. Fruit Into Baskets (Q748)",
+        content: (
+          <Comp
+            title="Q904. Fruit Into Baskets (Q748)"
+            content1={
+              <>
+                You are visiting a farm that has a single row of fruit trees
+                arranged from left to right. The trees are represented by an
+                integer array fruits where fruits[i] is the type of fruit the
+                ith tree produces.
+                <br />
+                You want to collect as much fruit as possible. However, the
+                owner has some strict rules that you must follow:
+                <br />
+                You only have two baskets, and each basket can only hold a
+                single type of fruit. There is no limit on the amount of fruit
+                each basket can hold.
+                <br />
+                Starting from any tree of your choice, you must pick exactly one
+                fruit from every tree (including the start tree) while moving to
+                the right. The picked fruits must fit in one of your baskets.
+                <br />
+                Once you reach a tree with fruit that cannot fit in your
+                baskets, you must stop.
+                <br />
+                Given the integer array fruits, return the maximum number of
+                fruits you can pick.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: fruits = [1,2,1] <br />
+                    Output: 3 <br />
+                    Explanation: We can pick from all 3 trees.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: fruits = [0,1,2,2] <br />
+                    Output: 3 <br />
+                    Explanation: We can pick from trees [1,2,2]. <br />
+                    If we had started at the first tree, we would only pick from
+                    trees [0,1].
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: fruits = [1,2,3,2,2] <br />
+                    Output: 4 <br />
+                    Explanation: We can pick from trees [2,3,2,2]. <br />
+                    If we had started at the first tree, we would only pick from
+                    trees [1,2].
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= fruits.length &lt;= 10^5 <br />0 &lt;= fruits[i] &lt;
+                fruits.length
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} fruits
+                * @return {number}
+                */
+               var totalFruit = function(fruits) {
+                 let ans = 0;
+                 const count = {};
+                 for (let l = 0, r = 0; r < fruits.length; ++r) {
+                     count[fruits[r]] = (count[fruits[r]] || 0) + 1;
+                     while (Object.keys(count).length > 2) {
+                       count[fruits[l]] = count[fruits[l]] - 1;
+                       if(count[fruits[l]]==0)
+                       delete count[fruits[l]]
+                       ++l;
+                     }
+                     ans = Math.max(ans, r - l + 1);
+                   }
+                   return ans;   
+               };
+               console.log(totalFruit([1,2,1]))`,
+                output: `3`,
+              },
+            }}
+          />
+        ),
+      },
+      q749: {
+        title: "Q905. Sort Array By Parity (Q749)",
+        content: (
+          <Comp
+            title="Q905. Sort Array By Parity (Q749)"
+            content1={
+              <>
+                Given an integer array nums, move all the even integers at the
+                beginning of the array followed by all the odd integers.
+                <br />
+                Return any array that satisfies this condition.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [3,1,2,4] <br />
+                    Output: [2,4,3,1] <br />
+                    Explanation: The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3]
+                    would also be accepted.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [0] <br />
+                    Output: [0]
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 5000 <br />0 &lt;= nums[i] &lt;= 5000
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} nums
+                * @return {number[]}
+                */
+               var sortArrayByParity = function(nums) {
+                 let l = 0;
+                 let r = nums.length - 1;
+                 while (l < r) {
+                   if (nums[l] % 2 == 1 && nums[r] % 2 == 0) {
+                     let temp = nums[l];
+                     nums[l] = nums[r];
+                     nums[r] = temp;
+                   }
+                   if (nums[l] % 2 == 0)
+                     ++l;
+                   if (nums[r] % 2 == 1)
+                     --r;
+                 }
+                 return nums;
+               };
+               
+               console.log(sortArrayByParity([3,1,2,4]))`,
+                output: `[ 4, 2, 1, 3 `,
+              },
+            }}
+          />
+        ),
+      },
+      q750: {
+        title: "Q906. Super Palindromes (Q750)",
+        content: (
+          <Comp
+            title="Q906. Super Palindromes (Q750)"
+            content1={
+              <>
+                Let's say a positive integer is a super-palindrome if it is a
+                palindrome, and it is also the square of a palindrome.
+                <br />
+                Given two positive integers left and right represented as
+                strings, return the number of super-palindromes integers in the
+                inclusive range [left, right].
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: left = "4", right = "1000"
+                    <br />
+                    Output: 4<br />
+                    Explanation: 4, 9, 121, and 484 are superpalindromes.
+                    <br />
+                    Note that 676 is not a superpalindrome: 26 * 26 = 676, but
+                    26 is not a palindrome.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: left = "1", right = "2"
+                    <br />
+                    Output: 1
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= left.length, right.length &lt;= 18
+                <br />
+                left and right consist of only digits.
+                <br />
+                left and right cannot have leading zeros.
+                <br />
+                left and right represent integers in the range [1, 1018 - 1].
+                <br />
+                left is less than or equal to right.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `class Solution {
+                  public int superpalindromesInRange(String left, String right) {
+                    int ans = 0;
+                    Long l = Long.valueOf(left);
+                    Long r = Long.valueOf(right);
+                    for (long i = (long) Math.sqrt(l); i * i <= r;) {
+                      long palindrome = nextPalindrome(i);
+                      long squared = palindrome * palindrome;
+                      if (squared <= r && isPalindrome(squared))
+                        ++ans;
+                      i = palindrome + 1;
+                    }
+                
+                    return ans;
+                  }
+                
+                  private long nextPalindrome(long num) {
+                    final String s = String.valueOf(num);
+                    final int n = s.length();
+                    String half = s.substring(0, (n + 1) / 2);
+                    String reversedHalf = new StringBuilder(half.substring(0, n / 2)).reverse().toString();
+                    final long candidate = Long.valueOf(half + reversedHalf);
+                    if (candidate >= num)
+                      return candidate;
+                    half = String.valueOf(Long.valueOf(half) + 1);
+                    reversedHalf = new StringBuilder(half.substring(0, n / 2)).reverse().toString();
+                    return Long.valueOf(half + reversedHalf);
+                  }
+                
+                  private boolean isPalindrome(long num) {
+                    final String s = String.valueOf(num);
+                    int l = 0;
+                    int r = s.length() - 1;
+                    while (l < r)
+                      if (s.charAt(l++) != s.charAt(r--))
+                        return false;
+                    return true;
+                  }
+                }`,
+                output: `4`,
+              },
+            }}
+          />
+        ),
+      },
+      q751: {
+        title: "Q907. Sum of Subarray Minimums (Q751)",
+        content: (
+          <Comp
+            title="Q907. Sum of Subarray Minimums (Q751)"
+            content1={
+              <>
+                3252 209 Add to List Share Given an array of integers arr, find
+                the sum of min(b), where b ranges over every (contiguous)
+                subarray of arr. Since the answer may be large, return the
+                answer modulo 10^9 + 7.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: arr = [3,1,2,4]
+                    <br />
+                    Output: 17
+                    <br />
+                    Explanation: <br />
+                    Subarrays are [3], [1], [2], [4], [3,1], [1,2], [2,4],
+                    [3,1,2], [1,2,4], [3,1,2,4].
+                    <br /> Minimums are 3, 1, 2, 4, 1, 1, 2, 1, 1, 1.
+                    <br />
+                    Sum is 17.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: arr = [11,81,94,43,3]
+                    <br />
+                    Output: 444
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= arr.length &lt;= 3 * 10^4
+                <br />1 &lt;= arr[i] &lt;= 3 * 104
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} arr
+                * @return {number}
+                */
+               var sumSubarrayMins = function(arr) {
+                 const kMod = 1e9 + 7;
+                 let n = arr.length;
+                 let ans = 0;
+                 const prev = Array(n).fill(-1);
+                 const next = Array(n).fill(n);
+                 const stack = [];
+               
+                 for (let i = 0; i < arr.length; ++i) {
+                     while (stack.length && arr[stack[stack.length-1]] > arr[i]) {
+                       const index = stack.pop();
+                       next[index] = i;
+                     }
+                     if (stack.length)
+                       prev[i] = stack[stack.length-1]
+                     stack.push(i);
+                   }
+                   for (let i = 0; i < arr.length; ++i) {
+                     ans += arr[i] * (i - prev[i]) * (next[i] - i);
+                     ans %= kMod;
+                   }
+               
+                   return parseInt(ans);  
+               };
+               
+               console.log(sumSubarrayMins([3,1,2,4]))`,
+                output: `17`,
+              },
+            }}
+          />
+        ),
+      },
+      q752: {
+        title: "Q908. Smallest Range I (Q752)",
+        content: (
+          <Comp
+            title="Q908. Smallest Range I (Q752)"
+            content1={
+              <>
+                You are given an integer array nums and an integer k.
+                <br />
+                In one operation, you can choose any index i where 0 &lt; = i
+                &lt; nums.length and change nums[i] to nums[i] + x where x is an
+                integer from the range [-k, k]. You can apply this operation at
+                most once for each index i.
+                <br />
+                The score of nums is the difference between the maximum and
+                minimum elements in nums.
+                <br />
+                Return the minimum score of nums after applying the mentioned
+                operation at most once for each index in it.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [1], k = 0<br />
+                    Output: 0<br />
+                    Explanation: The score is max(nums) - min(nums) = 1 - 1 = 0.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [0,10], k = 2<br />
+                    Output: 6<br />
+                    Explanation: Change nums to be [2, 8]. The score is
+                    max(nums) - min(nums) = 8 - 2 = 6.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [1,3,6], k = 3<br />
+                    Output: 0<br />
+                    Explanation: Change nums to be [4, 4, 4]. The score is
+                    max(nums) - min(nums) = 4 - 4 = 0.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 10^4
+                <br />
+                0 &lt;= nums[i] &lt;= 10^4
+                <br />0 &lt;= k &lt;= 10^4
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} k
+                * @return {number}
+                */
+               var smallestRangeI = function(nums, k) {
+                 let max = Math.max(...nums)
+                 let min = Math.min(...nums)
+                 return Math.max(0, max - min - 2 * k);
+               };
+               
+               console.log(smallestRangeI([1],0))`,
+                output: `0`,
+              },
+            }}
+          />
+        ),
+      },
+      q753: {
+        title: "Q909. Snakes and Ladders (Q753)",
+        content: (
+          <Comp
+            title="Q909. Snakes and Ladders (Q753)"
+            content1={
+              <>
+                You are given an n x n integer matrix board where the cells are
+                labeled from 1 to n2 in a Boustrophedon style starting from the
+                bottom left of the board (i.e. board[n - 1][0]) and alternating
+                direction each row.
+                <br />
+                You start on square 1 of the board. In each move, starting from
+                square curr, do the following:
+                <br />
+                <br /> Choose a destination square next with a label in the
+                range [curr + 1, min(curr + 6, n2)].
+                <br /> This choice simulates the result of a standard 6-sided
+                die roll: i.e., there are always at most 6 destinations,
+                regardless of the size of the board.
+                <br /> If next has a snake or ladder, you must move to the
+                destination of that snake or ladder. Otherwise, you move to
+                next.
+                <br /> The game ends when you reach the square n2.
+                <br /> A board square on row r and column c has a snake or
+                ladder if board[r][c] != -1. The destination of that snake or
+                ladder is board[r][c]. Squares 1 and n2 do not have a snake or
+                ladder.
+                <br />
+                Note that you only take a snake or ladder at most once per move.
+                If the destination to a snake or ladder is the start of another
+                snake or ladder, you do not follow the subsequent snake or
+                ladder.
+                <br />
+                For example, suppose the board is [[-1,4],[-1,3]], and on the
+                first move, your destination square is 2. You follow the ladder
+                to square 3, but do not follow the subsequent ladder to 4.
+                <br /> Return the least number of moves required to reach the
+                square n2. If it is not possible to reach the square, return -1.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                img: Leetcode909,
+                content: (
+                  <>
+                    Input: board =
+                    [[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,35,-1,-1,13,-1],[-1,-1,-1,-1,-1,-1],[-1,15,-1,-1,-1,-1]]
+                    <br /> Output: 4
+                    <br /> Explanation:
+                    <br /> In the beginning, you start at square 1 (at row 5,
+                    column 0).
+                    <br /> You decide to move to square 2 and must take the
+                    ladder to square 15.
+                    <br /> You then decide to move to square 17 and must take
+                    the snake to square 13.
+                    <br /> You then decide to move to square 14 and must take
+                    the ladder to square 35.
+                    <br /> You then decide to move to square 36, ending the
+                    game.
+                    <br /> This is the lowest possible number of moves to reach
+                    the last square, so return 4.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: board = [[-1,-1],[-1,3]] <br />
+                    Output: 1
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                n == board.length == board[i].length <br />
+                2 &lt;= n &lt;= 20 <br />
+                grid[i][j] is either -1 or in the range [1, n2]. <br />
+                The squares labeled 1 and n2 do not have any ladders or snakes.
+              </>
+            }
+            tc="n^2"
+            sc="n^2"
+            codes={{
+              Java: {
+                code: `// Input: board = [[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,35,-1,-1,13,-1],[-1,-1,-1,-1,-1,-1],[-1,15,-1,-1,-1,-1]]
+                class Solution {
+                  public int snakesAndLadders(int[][] board) {
+                    final int n = board.length;
+                    int ans = 0;
+                    Queue<Integer> q = new ArrayDeque<>(Arrays.asList(1));
+                    boolean[] seen = new boolean[1 + n * n];
+                    int[] A = new int[1 + n * n];
+                    for (int i = 0; i < n; ++i)
+                      for (int j = 0; j < n; ++j)
+                        A[(n - 1 - i) * n + ((n - i & 1) == 1 ? j + 1 : n - j)] = board[i][j];
+                
+                    while (!q.isEmpty()) {
+                      ++ans;
+                      for (int sz = q.size(); sz > 0; --sz) {
+                        final int curr = q.poll();
+                        for (int next = curr + 1; next <= Math.min(curr + 6, n * n); ++next) {
+                          final int dest = A[next] > 0 ? A[next] : next;
+                          if (dest == n * n)
+                            return ans;
+                          if (seen[dest])
+                            continue;
+                          q.offer(dest);
+                          seen[dest] = true;
+                        }
                       }
                     }
+                
+                    return -1;
                   }
-              
-                  return -1;
                 }
-              }
-              `,
-              output: `4`,
-            },
-          }}
-        />
-      ),
-    },
-    q754: {
-      title: "Q910. Smallest Range II (Q754)",
-      content: (
-        <Comp
-          title="Q910. Smallest Range II (Q754)"
-          content1={
-            <>
-              You are given an integer array nums and an integer k.
-              <br />
-              For each index i where 0 &lt;= i &lt; nums.length, change nums[i]
-              to be either nums[i] + k or nums[i] - k.
-              <br />
-              The score of nums is the difference between the maximum and
-              minimum elements in nums.
-              <br />
-              Return the minimum score of nums after changing the values at each
-              index.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: nums = [1], k = 0 <br />
-                  Output: 0 <br />
-                  Explanation: The score is max(nums) - min(nums) = 1 - 1 = 0.
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: nums = [0,10], k = 2 <br />
-                  Output: 6 <br />
-                  Explanation: Change nums to be [2, 8]. The score is max(nums)
-                  - min(nums) = 8 - 2 = 6.
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: nums = [1,3,6], k = 3 <br />
-                  Output: 3 <br />
-                  Explanation: Change nums to be [4, 6, 3]. The score is
-                  max(nums) - min(nums) = 6 - 3 = 3.
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= nums.length &lt;= 10^4 <br />
-              0 &lt;= nums[i] &lt;= 10^4 <br />0 &lt;= k &lt;= 10^4
-            </>
-          }
-          tc="n"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: `/**
-              * @param {number[]} nums
-              * @param {number} k
-              * @return {number}
-              */
-             var smallestRangeII = function(nums, k) {
-               nums = nums.sort((a,b)=>a-b) 
-               let ans = nums[nums.length - 1] - nums[0];
-               let left = nums[0] + k;
-               let right = nums[nums.length - 1] - k;
-               for (let i = 0; i + 1 < nums.length; ++i) {
-                 let min = Math.min(left, nums[i + 1] - k);
-                 let max = Math.max(right, nums[i] + k);
-                 ans = Math.min(ans, max - min);
+                `,
+                output: `4`,
+              },
+            }}
+          />
+        ),
+      },
+      q754: {
+        title: "Q910. Smallest Range II (Q754)",
+        content: (
+          <Comp
+            title="Q910. Smallest Range II (Q754)"
+            content1={
+              <>
+                You are given an integer array nums and an integer k.
+                <br />
+                For each index i where 0 &lt;= i &lt; nums.length, change
+                nums[i] to be either nums[i] + k or nums[i] - k.
+                <br />
+                The score of nums is the difference between the maximum and
+                minimum elements in nums.
+                <br />
+                Return the minimum score of nums after changing the values at
+                each index.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [1], k = 0 <br />
+                    Output: 0 <br />
+                    Explanation: The score is max(nums) - min(nums) = 1 - 1 = 0.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [0,10], k = 2 <br />
+                    Output: 6 <br />
+                    Explanation: Change nums to be [2, 8]. The score is
+                    max(nums) - min(nums) = 8 - 2 = 6.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [1,3,6], k = 3 <br />
+                    Output: 3 <br />
+                    Explanation: Change nums to be [4, 6, 3]. The score is
+                    max(nums) - min(nums) = 6 - 3 = 3.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 10^4 <br />
+                0 &lt;= nums[i] &lt;= 10^4 <br />0 &lt;= k &lt;= 10^4
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} k
+                * @return {number}
+                */
+               var smallestRangeII = function(nums, k) {
+                 nums = nums.sort((a,b)=>a-b) 
+                 let ans = nums[nums.length - 1] - nums[0];
+                 let left = nums[0] + k;
+                 let right = nums[nums.length - 1] - k;
+                 for (let i = 0; i + 1 < nums.length; ++i) {
+                   let min = Math.min(left, nums[i + 1] - k);
+                   let max = Math.max(right, nums[i] + k);
+                   ans = Math.min(ans, max - min);
+                 }
+                 return ans; 
+               };
+               
+               console.log(smallestRangeII([1],0))`,
+                output: `0`,
+              },
+            }}
+          />
+        ),
+      },
+      q755: {
+        title: "Q911. Online Election (Q755)",
+        content: (
+          <Comp
+            title="Q911. Online Election (Q755)"
+            content1={
+              <>
+                You are given two integer arrays persons and times. In an
+                election, the ith vote was cast for persons[i] at time times[i].
+                <br />
+                For each query at a time t, find the person that was leading the
+                election at time t. Votes cast at time t will count towards our
+                query. In the case of a tie, the most recent vote (among tied
+                candidates) wins.
+                <br />
+                Implement the TopVotedCandidate class:
+                <br />
+                TopVotedCandidate(int[] persons, int[] times) Initializes the
+                object with the persons and times arrays.
+                <br />
+                int q(int t) Returns the number of the person that was leading
+                the election at time t according to the mentioned rules.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input <br />
+                    ["TopVotedCandidate", "q", "q", "q", "q", "q", "q"] <br />
+                    [[[0, 1, 1, 0, 0, 1, 0], [0, 5, 10, 15, 20, 25, 30]], [3],
+                    [12], [25], [15], [24], [8]] Output <br />
+                    [null, 0, 1, 1, 0, 0, 1]
+                    <br />
+                    Explanation
+                    <br /> TopVotedCandidate topVotedCandidate = new
+                    TopVotedCandidate([0, 1, 1, 0, 0, 1, 0], [0, 5, 10, 15, 20,
+                    25, 30]);
+                    <br /> topVotedCandidate.q(3); // return 0, At time 3, the
+                    votes are [0], and 0 is leading.
+                    <br /> topVotedCandidate.q(12); // return 1, At time 12, the
+                    votes are [0,1,1], and 1 is leading.
+                    <br /> topVotedCandidate.q(25); // return 1, At time 25, the
+                    votes are [0,1,1,0,0,1], and 1 is leading (as ties go to the
+                    most recent vote.)
+                    <br /> topVotedCandidate.q(15); // return 0
+                    <br /> topVotedCandidate.q(24); // return 0
+                    <br /> topVotedCandidate.q(8); // return 1
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= persons.length &lt;= 5000 <br />
+                times.length == persons.length <br />
+                0 &lt;= persons[i] &lt; persons.length <br />
+                0 &lt;= times[i] &lt;= 10^9 <br />
+                times is sorted in a strictly increasing order. <br />
+                times[0] &lt;= t &lt;= 10^9 <br />
+                At most 104 calls will be made to q.
+              </>
+            }
+            tc="log n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `
+  // Input
+  // ["TopVotedCandidate", "q", "q", "q", "q", "q", "q"]
+  // [[[0, 1, 1, 0, 0, 1, 0], [0, 5, 10, 15, 20, 25, 30]], [3], [12], [25], [15], [24], [8]]
+                class TopVotedCandidate {
+                  public TopVotedCandidate(int[] persons, int[] times) {
+                    this.times = times;
+                    int lead = -1;
+                    Map<Integer, Integer> count = new HashMap<>(); 
+                    for (int i = 0; i < persons.length; ++i) {
+                      count.merge(persons[i], 1, Integer::sum);
+                      if (count.get(persons[i]) >= count.getOrDefault(lead, 0))
+                        lead = persons[i];
+                      timeToLead.put(times[i], lead);
+                    }
+                  }
+                  public int q(int t) {
+                    final int i = Arrays.binarySearch(times, t);
+                    return i < 0 ? timeToLead.get(times[-i - 2]) : timeToLead.get(times[i]);
+                  }
+                  private final int[] times;
+                  private Map<Integer, Integer> timeToLead = new HashMap<>();
+                }
+                /**
+                 * Your TopVotedCandidate object will be instantiated and called as such:
+                 * TopVotedCandidate obj = new TopVotedCandidate(persons, times);
+                 * int param_1 = obj.q(t);
+                 */`,
+                output: `[null, 0, 1, 1, 0, 0, 1]`,
+              },
+            }}
+          />
+        ),
+      },
+      q756: {
+        title: "Q912. Sort an Array (Q756)",
+        content: (
+          <Comp
+            title="Q912. Sort an Array (Q756)"
+            content1={
+              <>
+                Given an array of integers nums, sort the array in ascending
+                order.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [5,2,3,1]
+                    <br />
+                    Output: [1,2,3,5]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [5,1,1,2,0,0] <br />
+                    Output: [0,0,1,1,2,5]
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 5 * 10^4 -5 * 10^4 &lt;= nums[i] &lt;=
+                5 * 10^4
+              </>
+            }
+            tc="n.log n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `
+                // Input: nums = [5,2,3,1]
+                class Solution {
+                  public int[] sortArray(int[] nums) {
+                    quickSort(nums, 0, nums.length - 1);
+                    return nums;
+                  }
+                
+                  private void quickSort(int[] A, int l, int r) {
+                    if (l >= r)
+                      return;
+                
+                    final int m = partition(A, l, r);
+                    quickSort(A, l, m - 1);
+                    quickSort(A, m + 1, r);
+                  }
+                
+                  private int partition(int[] A, int l, int r) {
+                    final int randIndex = new Random().nextInt(r - l + 1) + l;
+                    swap(A, randIndex, r);
+                    final int pivot = A[r];
+                    int nextSwapped = l;
+                    for (int i = l; i < r; ++i)
+                      if (A[i] <= pivot)
+                        swap(A, nextSwapped++, i);
+                    swap(A, nextSwapped, r);
+                    return nextSwapped;
+                  }
+                
+                  private void swap(int[] A, int i, int j) {
+                    final int temp = A[i];
+                    A[i] = A[j];
+                    A[j] = temp;
+                  }
+                }
+                `,
+                output: `[1,2,3,5]`,
+              },
+            }}
+          />
+        ),
+      },
+      q757: {
+        title: "Q913. Cat and Mouse (Q757)",
+        content: (
+          <Comp
+            title="Q913. Cat and Mouse (Q757)"
+            content1={
+              <>
+                A game on an undirected graph is played by two players, Mouse
+                and Cat, who alternate turns.
+                <br />
+                The graph is given as follows: graph[a] is a list of all nodes b
+                such that ab is an edge of the graph.
+                <br />
+                The mouse starts at node 1 and goes first, the cat starts at
+                node 2 and goes second, and there is a hole at node 0.
+                <br />
+                During each player's turn, they must travel along one edge of
+                the graph that meets where they are. For example, if the Mouse
+                is at node 1, it must travel to any node in graph[1].
+                <br />
+                Additionally, it is not allowed for the Cat to travel to the
+                Hole (node 0.)
+                <br />
+                Then, the game can end in three ways:
+                <br />
+                If ever the Cat occupies the same node as the Mouse, the Cat
+                wins.
+                <br />
+                If ever the Mouse reaches the Hole, the Mouse wins.
+                <br />
+                If ever a position is repeated (i.e., the players are in the
+                same position as a previous turn, and it is the same player's
+                turn to move), the game is a draw.
+                <br />
+                Given a graph, and assuming both players play optimally, return
+                <br />
+                1 if the mouse wins the game,
+                <br />
+                2 if the cat wins the game, or
+                <br />0 if the game is a draw.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                img: Leetcode913,
+                content: (
+                  <>
+                    Input: graph = [[2,5],[3],[0,4,5],[1,4,5],[2,3],[0,2,3]]
+                    <br /> Output: 0
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: graph = [[1,3],[0],[3],[0,2]] <br />
+                    Output: 1
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                3 &lt;= graph.length &lt;= 50
+                <br />
+                1 &lt;= graph[i].length &lt; graph.length
+                <br />
+                0 &lt;= graph[i][j] &lt; graph.length <br />
+                graph[i][j] != i <br />
+                graph[i] is unique. <br />
+                The mouse and the cat can always move.{" "}
+              </>
+            }
+            tc="n^3"
+            sc="n^3"
+            codes={{
+              Java: {
+                code: `// Input: graph = [[1,3],[0],[3],[0,2]]
+                enum State { DRAW, MOUSE_WIN, CAT_WIN }
+                
+                class Solution {
+                  public int catMouseGame(int[][] graph) {
+                    final int n = graph.length;
+                    int[][][] states = new int[n][n][2];
+                    int[][][] outDegree = new int[n][n][2];
+                    Queue<int[]> q = new ArrayDeque<>();
+                
+                    for (int cat = 0; cat < n; ++cat)
+                      for (int mouse = 0; mouse < n; ++mouse) {
+                        outDegree[cat][mouse][0] = graph[mouse].length;
+                        outDegree[cat][mouse][1] =
+                            graph[cat].length - (Arrays.stream(graph[cat]).anyMatch(v -> v == 0) ? 1 : 0);
+                      }
+                    for (int cat = 1; cat < n; ++cat)
+                      for (int move = 0; move < 2; ++move) {
+                        states[cat][0][move] = State.MOUSE_WIN.ordinal();
+                        q.offer(new int[] {cat, 0, move, State.MOUSE_WIN.ordinal()});
+                        states[cat][cat][move] = State.CAT_WIN.ordinal();
+                        q.offer(new int[] {cat, cat, move, State.CAT_WIN.ordinal()});
+                      }
+                    while (!q.isEmpty()) {
+                      final int cat = q.peek()[0];
+                      final int mouse = q.peek()[1];
+                      final int move = q.peek()[2];
+                      final int state = q.poll()[3];
+                      if (cat == 2 && mouse == 1 && move == 0)
+                        return state;
+                      final int prevMove = move ^ 1;
+                      for (final int prev : graph[prevMove == 0 ? mouse : cat]) {
+                        final int prevCat = prevMove == 0 ? cat : prev;
+                        if (prevCat == 0) 
+                          continue;
+                        final int prevMouse = prevMove == 0 ? prev : mouse;
+                        if (states[prevCat][prevMouse][prevMove] > 0)
+                          continue;
+                        if (prevMove == 0 && state == State.MOUSE_WIN.ordinal() ||
+                            prevMove == 1 && state == State.CAT_WIN.ordinal() ||
+                            --outDegree[prevCat][prevMouse][prevMove] == 0) {
+                          states[prevCat][prevMouse][prevMove] = state;
+                          q.offer(new int[] {prevCat, prevMouse, prevMove, state});
+                        }
+                      }
+                    }
+                    return states[2][1][0];
+                  }
+                }`,
+                output: `1`,
+              },
+            }}
+          />
+        ),
+      },
+      q758: {
+        title: "Q914. X of a Kind in a Deck of Cards (Q758)",
+        content: (
+          <Comp
+            title="Q914. X of a Kind in a Deck of Cards (Q758)"
+            content1={
+              <>
+                In a deck of cards, each card has an integer written on it.
+                <br />
+                Return true if and only if you can choose X &gt;= 2 such that it
+                is possible to split the entire deck into 1 or more groups of
+                cards, where:
+                <br />
+                Each group has exactly X cards.
+                <br />
+                All the cards in each group have the same integer.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: deck = [1,1,1,2,2,2,3,3]
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation: No possible partition.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: deck = [1,1,1,2,2,2,3,3]
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation: No possible partition.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &gt;= deck.length &gt;= 10^4 <br />0 &gt;= deck[i] &gt; 10^4
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} deck
+                * @return {boolean}
+                */
+               var hasGroupsSizeX = function(deck) {
+                 const count = {};
+                 let gcd = 0;
+                 for (let d of deck)
+                   count[d] = (count[d] || 0) + 1;
+                 for (let value of Object.values(count))
+                   gcd = __gcd(gcd, value);
+                 return gcd >= 2; 
+               };
+               
+               function __gcd(a, b) {
+                 return b > 0 ? __gcd(b, a % b) : a;
                }
-               return ans; 
-             };
-             
-             console.log(smallestRangeII([1],0))`,
-              output: `0`,
-            },
-          }}
-        />
-      ),
-    },
-    q755: {
-      title: "Q911. Online Election (Q755)",
-      content: (
-        <Comp
-          title="Q911. Online Election (Q755)"
-          content1={
-            <>
-              You are given two integer arrays persons and times. In an
-              election, the ith vote was cast for persons[i] at time times[i].
-              <br />
-              For each query at a time t, find the person that was leading the
-              election at time t. Votes cast at time t will count towards our
-              query. In the case of a tie, the most recent vote (among tied
-              candidates) wins.
-              <br />
-              Implement the TopVotedCandidate class:
-              <br />
-              TopVotedCandidate(int[] persons, int[] times) Initializes the
-              object with the persons and times arrays.
-              <br />
-              int q(int t) Returns the number of the person that was leading the
-              election at time t according to the mentioned rules.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input <br />
-                  ["TopVotedCandidate", "q", "q", "q", "q", "q", "q"] <br />
-                  [[[0, 1, 1, 0, 0, 1, 0], [0, 5, 10, 15, 20, 25, 30]], [3],
-                  [12], [25], [15], [24], [8]] Output <br />
-                  [null, 0, 1, 1, 0, 0, 1]
-                  <br />
-                  Explanation
-                  <br /> TopVotedCandidate topVotedCandidate = new
-                  TopVotedCandidate([0, 1, 1, 0, 0, 1, 0], [0, 5, 10, 15, 20,
-                  25, 30]);
-                  <br /> topVotedCandidate.q(3); // return 0, At time 3, the
-                  votes are [0], and 0 is leading.
-                  <br /> topVotedCandidate.q(12); // return 1, At time 12, the
-                  votes are [0,1,1], and 1 is leading.
-                  <br /> topVotedCandidate.q(25); // return 1, At time 25, the
-                  votes are [0,1,1,0,0,1], and 1 is leading (as ties go to the
-                  most recent vote.)
-                  <br /> topVotedCandidate.q(15); // return 0
-                  <br /> topVotedCandidate.q(24); // return 0
-                  <br /> topVotedCandidate.q(8); // return 1
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= persons.length &lt;= 5000 <br />
-              times.length == persons.length <br />
-              0 &lt;= persons[i] &lt; persons.length <br />
-              0 &lt;= times[i] &lt;= 10^9 <br />
-              times is sorted in a strictly increasing order. <br />
-              times[0] &lt;= t &lt;= 10^9 <br />
-              At most 104 calls will be made to q.
-            </>
-          }
-          tc="log n"
-          sc="n"
-          codes={{
-            Java: {
-              code: `
-// Input
-// ["TopVotedCandidate", "q", "q", "q", "q", "q", "q"]
-// [[[0, 1, 1, 0, 0, 1, 0], [0, 5, 10, 15, 20, 25, 30]], [3], [12], [25], [15], [24], [8]]
-              class TopVotedCandidate {
-                public TopVotedCandidate(int[] persons, int[] times) {
-                  this.times = times;
-                  int lead = -1;
-                  Map<Integer, Integer> count = new HashMap<>(); 
-                  for (int i = 0; i < persons.length; ++i) {
-                    count.merge(persons[i], 1, Integer::sum);
-                    if (count.get(persons[i]) >= count.getOrDefault(lead, 0))
-                      lead = persons[i];
-                    timeToLead.put(times[i], lead);
+               
+               console.log(hasGroupsSizeX([1,2,3,4,4,3,2,1]))`,
+                output: `true`,
+              },
+            }}
+          />
+        ),
+      },
+      q759: {
+        title: "Q915. Partition Array into Disjoint Intervals (Q759)",
+        content: (
+          <Comp
+            title="Q915. Partition Array into Disjoint Intervals (Q759)"
+            content1={
+              <>
+                Given an integer array nums, partition it into two (contiguous)
+                subarrays left and right so that:
+                <br />
+                Every element in left is less than or equal to every element in
+                right.
+                <br />
+                left and right are non-empty.
+                <br />
+                left has the smallest possible size.
+                <br />
+                Return the length of left after such a partitioning.
+                <br />
+                Test cases are generated such that partitioning exists.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [5,0,3,8,6]
+                    <br />
+                    Output: 3<br />
+                    Explanation: left = [5,0,3], right = [8,6]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [1,1,1,0,6,12]
+                    <br />
+                    Output: 4<br />
+                    Explanation: left = [1,1,1,0], right = [6,12]
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                2 &lt;= nums.length &lt;= 10^5
+                <br />
+                0 &lt;= nums[i] &lt;= 10^6
+                <br />
+                There is at least one valid answer for the given input.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var partitionDisjoint = function(nums) {
+                 const n = nums.length;
+                 const min = Array(n).fill(0)
+                 min[n - 1] = nums[n - 1];
+                 let max = Number.MIN_SAFE_INTEGER;
+               
+                 for (let i = n - 2; i >= 0; --i)
+                   min[i] = Math.min(min[i + 1], nums[i]);
+               
+                 for (let i = 0; i < n; ++i) {
+                   max = Math.max(max, nums[i]);
+                   if (max <= min[i + 1])
+                     return i + 1;
+                 }
+               };
+               
+               console.log(partitionDisjoint([5,0,3,8,6]))`,
+                output: `3`,
+              },
+            }}
+          />
+        ),
+      },
+      q760: {
+        title: "Q916. Word Subsets (Q760)",
+        content: (
+          <Comp
+            title="Q916. Word Subsets (Q760)"
+            content1={
+              <>
+                You are given two string arrays words1 and words2.
+                <br />
+                A string b is a subset of string a if every letter in b occurs
+                in a including multiplicity.
+                <br />
+                For example, "wrr" is a subset of "warrior" but is not a subset
+                of "world".
+                <br />
+                A string a from words1 is universal if for every string b in
+                words2, b is a subset of a.
+                <br />
+                Return an array of all the universal strings in words1. You may
+                return the answer in any order.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: words1 =
+                    ["amazon","apple","facebook","google","leetcode"], words2 =
+                    ["e","o"]
+                    <br />
+                    Output: ["facebook","google","leetcode"]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: words1 =
+                    ["amazon","apple","facebook","google","leetcode"], words2 =
+                    ["l","e"]
+                    <br /> Output: ["apple","google","leetcode"]
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= words1.length, words2.length &lt;= 104
+                <br /> 1 &lt;= words1[i].length, words2[i].length &lt;= 10
+                <br /> words1[i] and words2[i] consist only of lowercase English
+                letters.
+                <br /> All the strings of words1 are unique.
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {string[]} words1
+                * @param {string[]} words2
+                * @return {string[]}
+                */
+               var wordSubsets = function(words1, words2) {
+                 const res = [];
+                 const countB = Array(26).fill(0);
+                 for (let b of words2) {
+                   const temp = counter(b);
+                   for (let i = 0; i < 26; ++i)
+                     countB[i] = Math.max(countB[i], temp[i]);
+                 }
+                 for (let a of words1)
+                   if (isUniversal(counter(a), countB))
+                      res.push(a);
+                  return res;   
+               };
+               
+               function counter(s) {
+                 const count = Array(26).fill(0);
+                 for (let c of s)
+                   ++count[c.charCodeAt(0) - 97];
+                 return count;
+               }
+               
+               function isUniversal(countA, countB) {
+                 for (let i = 0; i < 26; ++i)
+                   if (countA[i] < countB[i])
+                     return false;
+                 return true;
+               }
+               
+               console.log(wordSubsets(["amazon","apple","facebook","google","leetcode"],["l","e"]))`,
+                output: `[ 'apple', 'google', 'leetcode' ]`,
+              },
+            }}
+          />
+        ),
+      },
+      q761: {
+        title: "Q917. Reverse Only Letters (Q761)",
+        content: (
+          <Comp
+            title="Q917. Reverse Only Letters (Q761)"
+            content1={
+              <>
+                Given a string s, reverse the string according to the following
+                rules:
+                <br />
+                All the characters that are not English letters remain in the
+                same position.
+                <br />
+                All the English letters (lowercase or uppercase) should be
+                reversed.
+                <br />
+                Return s after reversing it.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: s = "ab-cd" <br />
+                    Output: "dc-ba"
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "a-bC-dEf-ghIj" <br />
+                    Output: "j-Ih-gfE-dCba"
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "Test1ng-Leet=code-Q!" <br />
+                    Output: "Qedo1ct-eeLg=ntse-T!"
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 100 <br />
+                s consists of characters with ASCII values in the range [33,
+                122].
+                <br /> s does not contain '\"' or '\\'.
+              </>
+            }
+            tc="n^2"
+            sc="n"
+            codes={{
+              Java: {
+                code: `
+                // Input: s = "ab-cd"
+                class Solution {
+                  public String reverseOnlyLetters(String S) {
+                    StringBuilder sb = new StringBuilder(S);
+                
+                    for (int i = 0, j = S.length() - 1; i < j; ++i, --j) {
+                      while (i < j && !Character.isLetter(S.charAt(i)))
+                        ++i;
+                      while (i < j && !Character.isLetter(S.charAt(j)))
+                        --j;
+                      sb.setCharAt(i, S.charAt(j));
+                      sb.setCharAt(j, S.charAt(i));
+                    }
+                
+                    return sb.toString();
                   }
                 }
-                public int q(int t) {
-                  final int i = Arrays.binarySearch(times, t);
-                  return i < 0 ? timeToLead.get(times[-i - 2]) : timeToLead.get(times[i]);
-                }
-                private final int[] times;
-                private Map<Integer, Integer> timeToLead = new HashMap<>();
-              }
-              /**
-               * Your TopVotedCandidate object will be instantiated and called as such:
-               * TopVotedCandidate obj = new TopVotedCandidate(persons, times);
-               * int param_1 = obj.q(t);
-               */`,
-              output: `[null, 0, 1, 1, 0, 0, 1]`,
-            },
-          }}
-        />
-      ),
-    },
-    q756: {
-      title: "Q912. Sort an Array (Q756)",
-      content: (
-        <Comp
-          title="Q912. Sort an Array (Q756)"
-          content1={
-            <>
-              Given an array of integers nums, sort the array in ascending
-              order.
-            </>
-          }
-          content2={null}
-          examples={[
-            {
-              content: (
-                <>
-                  Input: nums = [5,2,3,1]
-                  <br />
-                  Output: [1,2,3,5]
-                </>
-              ),
-            },
-            {
-              content: (
-                <>
-                  Input: nums = [5,1,1,2,0,0] <br />
-                  Output: [0,0,1,1,2,5]
-                </>
-              ),
-            },
-          ]}
-          constraints={
-            <>
-              1 &lt;= nums.length &lt;= 5 * 10^4 -5 * 10^4 &lt;= nums[i] &lt;= 5
-              * 10^4
-            </>
-          }
-          tc="n.log n"
-          sc="n"
-          codes={{
-            Java: {
-              code: `
-              // Input: nums = [5,2,3,1]
-              class Solution {
-                public int[] sortArray(int[] nums) {
-                  quickSort(nums, 0, nums.length - 1);
-                  return nums;
-                }
-              
-                private void quickSort(int[] A, int l, int r) {
-                  if (l >= r)
-                    return;
-              
-                  final int m = partition(A, l, r);
-                  quickSort(A, l, m - 1);
-                  quickSort(A, m + 1, r);
-                }
-              
-                private int partition(int[] A, int l, int r) {
-                  final int randIndex = new Random().nextInt(r - l + 1) + l;
-                  swap(A, randIndex, r);
-                  final int pivot = A[r];
-                  int nextSwapped = l;
-                  for (int i = l; i < r; ++i)
-                    if (A[i] <= pivot)
-                      swap(A, nextSwapped++, i);
-                  swap(A, nextSwapped, r);
-                  return nextSwapped;
-                }
-              
-                private void swap(int[] A, int i, int j) {
-                  final int temp = A[i];
-                  A[i] = A[j];
-                  A[j] = temp;
-                }
-              }
-              `,
-              output: `[1,2,3,5]`,
-            },
-          }}
-        />
-      ),
-    },
-    q757: {
-      title: "Q913. Cat and Mouse (Q757)",
-      content: (
-        <Comp
-          title="Q913. Cat and Mouse (Q757)"
-          content1={<></>}
-          content2={null}
-          examples={[
-            {
-              img: Leetcode913,
-              content: <></>,
-            },
-            {
-              content: <></>,
-            },
-          ]}
-          constraints={<></>}
-          tc="n^3"
-          sc="n^3"
-          codes={{
-            Javascript: {
-              code: ``,
-              output: ``,
-            },
-          }}
-        />
-      ),
-    },
-    q758: {
-      title: "Q (Q758)",
-      content: (
-        <Comp
-          content1={<></>}
-          content2={null}
-          examples={[
-            {
-              content: <></>,
-            },
-            {
-              content: <></>,
-            },
-            {
-              content: <></>,
-            },
-          ]}
-          constraints={<></>}
-          tc="n"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: ``,
-              output: ``,
-            },
-          }}
-        />
-      ),
-    },
-    q759: {
-      title: "Q (Q759)",
-      content: (
-        <Comp
-          content1={<></>}
-          content2={null}
-          examples={[
-            {
-              content: <></>,
-            },
-            {
-              content: <></>,
-            },
-            {
-              content: <></>,
-            },
-          ]}
-          constraints={<></>}
-          tc="n"
-          sc="n"
-          codes={{
-            Javascript: {
-              code: ``,
-              output: ``,
-            },
-          }}
-        />
-      ),
+                `,
+                output: `dc-ba`,
+              },
+            }}
+          />
+        ),
+      },
+      q762: {
+        title: "Q918. Maximum Sum Circular Subarray (Q762)",
+        content: (
+          <Comp
+            title="Q918. Maximum Sum Circular Subarray (Q762)"
+            content1={
+              <>
+                Given a circular integer array nums of length n, return the
+                maximum possible sum of a non-empty subarray of nums.
+                <br />
+                A circular array means the end of the array connects to the
+                beginning of the array. Formally, the next element of nums[i] is
+                nums[(i + 1) % n] and the previous element of nums[i] is nums[(i
+                - 1 + n) % n].
+                <br />A subarray may only include each element of the fixed
+                buffer nums at most once. Formally, for a subarray nums[i],
+                nums[i + 1], ..., nums[j], there does not exist i &lt;= k1, k2
+                &lt;= j with k1 % n == k2 % n.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [1,-2,3,-2] <br />
+                    Output: 3 <br />
+                    Explanation: Subarray [3] has maximum sum 3.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [5,-3,5] <br />
+                    Output: 10 <br />
+                    Explanation: Subarray [5,5] has maximum sum 5 + 5 = 10.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [-3,-2,-3] <br />
+                    Output: -2 <br />
+                    Explanation: Subarray [-2] has maximum sum -2.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                n == nums.length <br />
+                1 &lt;= n &lt;= 3 * 10^4 <br />
+                -3 * 10^4 &lt;= nums[i] &lt;= 3 * 10^4
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var maxSubarraySumCircular = function(nums) {
+                 let totalSum = 0;
+                 let currMaxSum = 0;
+                 let currMinSum = 0;
+                 let maxSum = Number.MIN_SAFE_INTEGER;
+                 let minSum = Number.MAX_SAFE_INTEGER;
+                 for (let a of nums) {
+                   totalSum += a;
+                   currMaxSum = Math.max(currMaxSum + a, a);
+                   currMinSum = Math.min(currMinSum + a, a);
+                   maxSum = Math.max(maxSum, currMaxSum);
+                   minSum = Math.min(minSum, currMinSum);
+                 }
+                 return maxSum < 0 ? maxSum : Math.max(maxSum, totalSum - minSum);  
+               };
+               
+               console.log(maxSubarraySumCircular([1,-2,3,-2]))`,
+                output: `3`,
+              },
+            }}
+          />
+        ),
+      },
+      q763: {
+        title: "Q919. Complete Binary Tree Inserter (Q763)",
+        content: (
+          <Comp
+            title="Q919. Complete Binary Tree Inserter (Q763)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q764: {
+        title: "Q (Q764)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q765: {
+        title: "Q (Q765)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q766: {
+        title: "Q (Q766)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q767: {
+        title: "Q (Q767)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q768: {
+        title: "Q (Q768)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q769: {
+        title: "Q (Q769)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
     },
   },
   notes: {
