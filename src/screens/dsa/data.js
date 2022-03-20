@@ -99872,10 +99872,10 @@ a = b + c;
         ),
       },
       q783: {
-        title: "939. Minimum Area Rectangle (Q783)",
+        title: "Q939. Minimum Area Rectangle (Q783)",
         content: (
           <Comp
-            title="939. Minimum Area Rectangle (Q783)"
+            title="Q939. Minimum Area Rectangle (Q783)"
             content1={
               <>
                 You are given an array of points in the X-Y plane points where
@@ -100832,32 +100832,94 @@ a = b + c;
         content: (
           <Comp
             title="Q949. Largest Time for Given Digits (Q793)"
-            content1={<></>}
+            content1={
+              <>
+                Given an array arr of 4 digits, find the latest 24-hour time
+                that can be made using each digit exactly once.
+                <br />
+                24-hour times are formatted as "HH:MM", where HH is between 00
+                and 23, and MM is between 00 and 59. The earliest 24-hour time
+                is 00:00, and the latest is 23:59.
+                <br />
+                Return the latest 24-hour time in "HH:MM" format. If no valid
+                time can be made, return an empty string.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [1,2,3,4] <br />
+                    Output: "23:41" <br />
+                    Explanation: The valid 24-hour times are "12:34", "12:43",
+                    "13:24", "13:42", "14:23", "14:32", "21:34", "21:43",
+                    "23:14", and "23:41". Of these times, "23:41" is the latest.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [5,5,5,5] <br />
+                    Output: "" <br />
+                    Explanation: There are no valid 24-hour times as "55:55" is
+                    not valid.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: arr = [5,5,5,5] <br />
+                    Output: "" <br />
+                    Explanation: There are no valid 24-hour times as "55:55" is
+                    not valid.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                arr.length == 4 <br />0 &lt;= arr[i] &lt;= 9
+              </>
+            }
             tc="n^3"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} arr
+                * @return {string}
+                */
+               var largestTimeFromDigits = function(arr) {
+                 let ans = "";
+                 for (let i = 0; i < 4; ++i)
+                   for (let j = 0; j < 4; ++j)
+                       for (let k = 0; k < 4; ++k) {
+                         if (i == j || i == k || j == k)
+                           continue;
+                         let hours = "" + arr[i] + arr[j];
+                         let minutes = "" + arr[k] + arr[6 - i - j - k];
+                         let time = hours + ':' + minutes;
+                         if (hours.localeCompare("24") < 0 && minutes.localeCompare("60") < 0 && ans.localeCompare(time) < 0)
+                           ans = time;
+                       }
+                 return ans;    
+               };
+               
+               console.log(largestTimeFromDigits([1,2,3,4]))`,
+                output: `23:41`,
               },
             }}
           />
         ),
       },
       q794: {
-        title: "Q (Q794)",
+        title: "Q950. Reveal Cards In Increasing Order (Q794)",
         content: (
           <Comp
+            title="Q950. Reveal Cards In Increasing Order (Q794)"
             content1={<></>}
             content2={null}
             examples={[
