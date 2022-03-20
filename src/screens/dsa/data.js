@@ -102873,139 +102873,507 @@ a = b + c;
         ),
       },
       q814: {
-        title: "Q (Q814)",
+        title: "Q970. Powerful Integers (Q814)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q970. Powerful Integers (Q814)"
+            content1={
+              <>
+                Given three integers x, y, and bound, return a list of all the
+                powerful integers that have a value less than or equal to bound.
+                <br />
+                An integer is powerful if it can be represented as xi + yj for
+                some integers i &gt;= 0 and j &gt;= 0.
+                <br />
+                You may return the answer in any order. In your answer, each
+                value should occur at most once.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: x = 2, y = 3, bound = 10 <br />
+                    Output: [2,3,4,5,7,9,10] <br />
+                    Explanation: <br />
+                    2 = 20 + 3^0 <br />
+                    3 = 21 + 3^0 <br />
+                    4 = 20 + 3^1 <br />
+                    5 = 21 + 3^1 <br />
+                    7 = 22 + 3^1 <br />
+                    9 = 23 + 3^0 <br />
+                    10 = 20 + 3^2
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: x = 3, y = 5, bound = 15 <br />
+                    Output: [2,4,6,8,10,14]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= x, y &lt;= 100 <br />0 &lt;= bound &lt;= 10^6
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} x
+                * @param {number} y
+                * @param {number} bound
+                * @return {number[]}
+                */
+               var powerfulIntegers = function(x, y, bound) {
+                 const ans = new Set();
+                 for (let i = 1; i < bound; i *= x) {
+                   for (let j = 1; i + j <= bound; j *= y) {
+                       ans.add(i + j);
+                       if (y == 1)
+                         break;
+                     }
+                     if (x == 1)
+                       break;
+                   }
+                   return Array.from(ans);   
+               };
+               
+               console.log(powerfulIntegers(3,5,15))`,
+                output: `[ 2, 6, 4, 8, 10, 14 ]`,
               },
             }}
           />
         ),
       },
       q815: {
-        title: "Q (Q815)",
+        title: "Q971. Flip Binary Tree To Match Preorder Traversal (Q815)",
         content: (
           <Comp
-            content1={<></>}
-            content2={null}
+            title="Q971. Flip Binary Tree To Match Preorder Traversal (Q815)"
+            content1={
+              <>
+                You are given the root of a binary tree with n nodes, where each
+                node is uniquely assigned a value from 1 to n. You are also
+                given a sequence of n values voyage, which is the desired
+                pre-order traversal of the binary tree.
+                <br />
+                Any node in the binary tree can be flipped by swapping its left
+                and right subtrees. For example, flipping node 1 will have the
+                following effect:
+              </>
+            }
+            img="https://assets.leetcode.com/uploads/2021/02/15/fliptree.jpg"
+            content2={
+              <>
+                Flip the smallest number of nodes so that the pre-order
+                traversal of the tree matches voyage.
+                <br />
+                Return a list of the values of all flipped nodes. You may return
+                the answer in any order. If it is impossible to flip the nodes
+                in the tree to make the pre-order traversal match voyage, return
+                the list [-1].
+              </>
+            }
             examples={[
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2019/01/02/1219-01.png",
+                content: (
+                  <>
+                    Input: root = [1,2], voyage = [2,1] <br />
+                    Output: [-1] <br />
+                    Explanation: It is impossible to flip the nodes such that
+                    the pre-order traversal matches voyage.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2019/01/02/1219-02.png",
+                content: (
+                  <>
+                    Input: root = [1,2,3], voyage = [1,3,2]
+                    <br />
+                    Output: [1]
+                    <br />
+                    Explanation: Flipping node 1 swaps nodes 2 and 3, so the
+                    pre-order traversal matches voyage.
+                  </>
+                ),
+              },
+              {
+                img: "https://assets.leetcode.com/uploads/2019/01/02/1219-02.png",
+                content: (
+                  <>
+                    Input: root = [1,2,3], voyage = [1,2,3] <br />
+                    Output: [] <br />
+                    Explanation: The tree's pre-order traversal already matches
+                    voyage, so no nodes need to be flipped.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the tree is n.
+                <br />
+                n == voyage.length
+                <br />
+                1 &lt;= n &lt;= 100
+                <br />
+                1 &lt;= Node.val, voyage[i] &lt;= n<br />
+                All the values in the tree are unique.
+                <br />
+                All the values in voyage are unique.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="h"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: root = [1,2], voyage = [2,1]
+                /**
+                * Definition for a binary tree node.
+                * public class TreeNode {
+                *     int val;
+                *     TreeNode left;
+                *     TreeNode right;
+                *     TreeNode() {}
+                *     TreeNode(int val) { this.val = val; }
+                *     TreeNode(int val, TreeNode left, TreeNode right) {
+                *         this.val = val;
+                *         this.left = left;
+                *         this.right = right;
+                *     }
+                * }
+                */
+               
+               class Solution {
+                   public List<Integer> flipMatchVoyage(TreeNode root, int[] voyage) {
+                       List<Integer> ans = new ArrayList<>();
+                       Queue<Integer> queue = new ArrayDeque<>();
+                       for (int v : voyage) queue.offer(v);
+                       dfs(root, queue, ans);
+                       return queue.isEmpty()? ans : List.of(-1);
+                   }
+               
+                   private boolean dfs(TreeNode root, Queue<Integer> queue, List<Integer> ans){
+                       if (root == null) return true;
+                       if (root.val != queue.peek()) return false;
+                       queue.poll();
+               
+                       if (!dfs(root.left, queue, ans)){
+                           ans.add(root.val);
+                           flip(root); 
+                           if (!dfs(root.left, queue, ans)) return false; 
+                       }
+                       if (!dfs(root.right, queue, ans)){ 
+                           ans.add(root.val);
+                           flip(root);
+                           if (dfs(root.right, queue, ans)) return false;
+                       }
+                       return true;
+                   }
+               
+                   private void flip(TreeNode root){
+                       TreeNode tmp = root.right;
+                       root.right = root.left;
+                       root.left  = tmp;
+                   }
+               }
+               `,
+                output: `[-1]`,
               },
             }}
           />
         ),
       },
       q816: {
-        title: "Q (Q816)",
+        title: "Q972. Equal Rational Numbers (Q816)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q972. Equal Rational Numbers (Q816)"
+            content1={
+              <>
+                Given two strings s and t, each of which represents a
+                non-negative rational number, return true if and only if they
+                represent the same number. The strings may use parentheses to
+                denote the repeating part of the rational number.
+                <br />A rational number can be represented using up to three
+                parts:{" "}
+                {"<IntegerPart>, <NonRepeatingPart>, and a <RepeatingPart>"}.
+                The number will be represented in one of the following three
+                ways:
+                <br />
+                {"<IntegerPart>"}
+                <br />
+                For example, 12, 0, and 123.
+                <br />
+                {"<IntegerPart><.><NonRepeatingPart>"}
+                <br />
+                For example, 0.5, 1., 2.12, and 123.0001.
+                <br />
+                {"<IntegerPart><.><NonRepeatingPart><(><RepeatingPart><)>"}
+                <br />
+                For example, 0.1(6), 1.(9), 123.00(1212).
+                <br />
+                The repeating portion of a decimal expansion is conventionally
+                denoted within a pair of round brackets. For example:
+                <br />
+                1/6 = 0.16666666... = 0.1(6) = 0.1666(6) = 0.166(66)
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "0.(52)", t = "0.5(25)" <br />
+                    Output: true <br />
+                    Explanation: Because "0.(52)" represents 0.52525252..., and
+                    "0.5(25)" represents 0.52525252525..... , the strings
+                    represent the same number.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "0.1666(6)", t = "0.166(66)" <br />
+                    Output: true
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "0.9(9)", t = "1." <br />
+                    Output: true <br />
+                    Explanation: "0.9(9)" represents 0.999999999... repeated
+                    forever, which equals 1. [See this link for an explanation.]
+                    <br /> "1." represents the number 1, which is formed
+                    correctly: (IntegerPart) = "1" and (NonRepeatingPart) = "".
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                Each part consists only of digits. <br />
+                The {"<IntegerPart>"} does not have leading zeros (except for
+                the zero itself).
+                <br /> 1 &lt;= {"<IntegerPart>"}.length &lt;= 4 <br />0 &lt;={" "}
+                {"<NonRepeatingPart>"}.length &lt;= 4 <br />1 &lt;={" "}
+                {"<RepeatingPart>"}.length &lt;= 4
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input: s = "0.(52)", t = "0.5(25)"
+                class Solution {
+                  public boolean isRationalEqual(String S, String T) {
+                    return Math.abs(valueOf(S) - valueOf(T)) < 1e-9;
+                  }
+                
+                  private double[] ratios = new double[] {1.0, 1.0 / 9, 1.0 / 99, 1.0 / 999, 1.0 / 9999};
+                
+                  private double valueOf(final String s) {
+                    if (!s.contains("("))
+                      return Double.valueOf(s);
+                    double integer_nonRepeating = Double.valueOf(s.substring(0, s.indexOf('(')));
+                    int nonRepeatingLength = s.indexOf('(') - s.indexOf('.') - 1;
+                    int repeating = Integer.parseInt(s.substring(s.indexOf('(') + 1, s.indexOf(')')));
+                    int repeatingLength = s.indexOf(')') - s.indexOf('(') - 1;
+                    return integer_nonRepeating +
+                        repeating * Math.pow(0.1, nonRepeatingLength) * ratios[repeatingLength];
+                  }
+                }
+                `,
+                output: `true`,
               },
             }}
           />
         ),
       },
       q817: {
-        title: "Q (Q817)",
+        title: "Q973. K Closest Points to Origin (Q817)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q973. K Closest Points to Origin (Q817)"
+            content1={
+              <>
+                Given an array of points where points[i] = [xi, yi] represents a
+                point on the X-Y plane and an integer k, return the k closest
+                points to the origin (0, 0).
+                <br />
+                The distance between two points on the X-Y plane is the
+                Euclidean distance (i.e., √(x1 - x2)2 + (y1 - y2)2).
+                <br />
+                You may return the answer in any order. The answer is guaranteed
+                to be unique (except for the order that it is in)
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2021/03/03/closestplane1.jpg",
+                content: (
+                  <>
+                    Input: points = [[1,3],[-2,2]], k = 1 <br />
+                    Output: [[-2,2]] <br />
+                    Explanation: <br />
+                    The distance between (1, 3) and the origin i <br />s
+                    sqrt(10). The distance between (-2, 2) and the origin is
+                    sqrt(8). <br />
+                    Since sqrt(8) &lt; sqrt(10), (-2, 2) is closer to the
+                    origin. <br />
+                    We only want the closest k = 1 points from the origin, so
+                    the answer is just [[-2,2]].
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: points = [[3,3],[5,-1],[-2,4]], k = 2 <br />
+                    Output: [[3,3],[-2,4]] <br />
+                    Explanation: The answer [[-2,4],[3,3]] would also be
+                    accepted.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= k &lt;= points.length &lt;= 10^4
+                <br />
+                -10^4 &lt; xi, yi &lt; 10^4
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input: points = [[1,3],[-2,2]], k = 1
+                class Solution {
+                  public int[][] kClosest(int[][] points, int K) {
+                    quickSelect(points, 0, points.length - 1, K);
+                    return Arrays.copyOfRange(points, 0, K);
+                  }
+                  private void quickSelect(int[][] points, int l, int r, int K) {
+                    final int randIndex = new Random().nextInt(r - l + 1) + l;
+                    swap(points, randIndex, r);
+                    final int[] pivot = points[r];
+                    int nextSwapped = l;
+                    for (int i = l; i < r; ++i)
+                      if (squareDist(points[i]) <= squareDist(pivot))
+                        swap(points, nextSwapped++, i);
+                    swap(points, nextSwapped, r);
+                    final int count = nextSwapped - l + 1; // # of points <= pivot
+                    if (count == K)
+                      return;
+                    if (count > K)
+                      quickSelect(points, l, nextSwapped - 1, K);
+                    else
+                      quickSelect(points, nextSwapped + 1, r, K - count);
+                  }
+                  private int squareDist(int[] p) {
+                    return p[0] * p[0] + p[1] * p[1];
+                  }
+                  private void swap(int[][] points, int i, int j) {
+                    final int[] temp = points[i];
+                    points[i] = points[j];
+                    points[j] = temp;
+                  }
+                }`,
+                output: `[[-2,2]]`,
               },
             }}
           />
         ),
       },
       q818: {
-        title: "Q (Q818)",
+        title: "Q974. Subarray Sums Divisible by K (Q818)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q974. Subarray Sums Divisible by K (Q818)"
+            content1={
+              <>
+                Given an integer array nums and an integer k, return the number
+                of non-empty subarrays that have a sum divisible by k.
+                <br />A subarray is a contiguous part of an array.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [4,5,0,-2,-3,1], k = 5 <br />
+                    Output: 7 <br />
+                    Explanation: There are 7 subarrays with a sum divisible by k
+                    = 5: [4, 5, 0, -2, -3, 1], [5], [5, 0], [5, 0, -2, -3], [0],
+                    [0, -2, -3], [-2, -3]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [5], k = 9 <br />
+                    Output: 0
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 3 * 10^4 <br />
+                -10^4 &lt;= nums[i] &lt;= 10^4 2 &lt;= k &lt;= 10^4
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} k
+                * @return {number}
+                */
+               var subarraysDivByK = function(nums, k) {
+                 let ans = 0;
+                 let prefix = 0;
+                 const count = Array(k).fill(0);
+                 count[0] = 1;
+                   for (let a of nums) {
+                     prefix = (prefix + a % k + k) % k;
+                     ans += count[prefix];
+                     ++count[prefix];
+                   }
+                 return ans;    
+               };
+               
+               console.log(subarraysDivByK([4,5,0,-2,-3,1],5))`,
+                output: `7`,
               },
             }}
           />
         ),
       },
       q819: {
-        title: "Q (Q819)",
+        title: "Q975. Odd Even Jump (Q819)",
         content: (
           <Comp
+            title="Q975. Odd Even Jump (Q819)"
             content1={<></>}
             content2={null}
             examples={[
