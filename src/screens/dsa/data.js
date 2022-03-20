@@ -105653,87 +105653,374 @@ a = b + c;
         ),
       },
       q842: {
-        title: "Q (Q842)",
+        title: "Q998. Maximum Binary Tree II (Q842)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q998. Maximum Binary Tree II (Q842)"
+            content1={
+              <>
+                A maximum tree is a tree where every node has a value greater
+                than any other value in its subtree.
+                <br />
+                You are given the root of a maximum binary tree and an integer
+                val.
+                <br />
+                Just as in the previous problem, the given tree was constructed
+                from a list a (root = Construct(a)) recursively with the
+                following Construct(a) routine:
+                <br />
+                If a is empty, return null.
+                <br />
+                Otherwise, let a[i] be the largest element of a. Create a root
+                node with the value a[i].
+                <br />
+                The left child of root will be Construct([a[0], a[1], ..., a[i -
+                1]]).
+                <br />
+                The right child of root will be Construct([a[i + 1], a[i + 2],
+                ..., a[a.length - 1]]).
+                <br />
+                Return root. Note that we were not given a directly, only a root
+                node root = Construct(a).
+                <br />
+                Suppose b is a copy of a with the value val appended to it. It
+                is guaranteed that b has unique values.
+                <br />
+                Return Construct(b).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2021/08/09/maxtree1.JPG",
+                content: (
+                  <>
+                    Input: root = [4,1,3,null,null,2], val = 5
+                    <br /> Output: [5,4,null,1,3,null,null,2] <br />
+                    Explanation: a = [1,4,2,3], b = [1,4,2,3,5]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2021/08/09/maxtree21.JPG",
+                content: (
+                  <>
+                    Input: root = [5,2,4,null,1], val = 3
+                    <br /> Output: [5,2,4,null,1,null,3] <br />
+                    Explanation: a = [2,1,5,4], b = [2,1,5,4,3]
+                  </>
+                ),
+              },
+              {
+                img: "https://assets.leetcode.com/uploads/2021/08/09/maxtree3.JPG",
+                content: (
+                  <>
+                    Input: root = [5,2,3,null,1], val = 4
+                    <br /> Output: [5,2,4,null,1,3] <br />
+                    Explanation: a = [2,1,5,3], b = [2,1,5,3,4]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the tree is in the range [1, 100].
+                <br /> 1 &lt;= Node.val &lt;= 100
+                <br />
+                All the values of the tree are unique.
+                <br />1 &lt;= val &lt;= 100
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `/**
+                // Input: root = [5,2,3,null,1], val = 4
+                * Definition for a binary tree node.
+                 * public class TreeNode {
+                 *     int val;
+                 *     TreeNode left;
+                 *     TreeNode right;
+                 *     TreeNode() {}
+                 *     TreeNode(int val) { this.val = val; }
+                 *     TreeNode(int val, TreeNode left, TreeNode right) {
+                 *         this.val = val;
+                 *         this.left = left;
+                 *         this.right = right;
+                 *     }
+                 * }
+                 */
+                class Solution {
+                  public TreeNode insertIntoMaxTree(TreeNode root, int val) {
+                    if (root.val < val)
+                      return new TreeNode(val, root, null);
+                    TreeNode curr = root;
+                    while (curr.right != null && curr.right.val > val)
+                      curr = curr.right;
+                    TreeNode inserted = new TreeNode(val, curr.right, null);
+                    curr.right = inserted;
+                    return root;
+                  }
+                }
+                `,
+                output: `[5,2,4,null,1,3]`,
               },
             }}
           />
         ),
       },
       q843: {
-        title: "Q (Q843)",
+        title: "Q999. Available Captures for Rook (Q843)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q999. Available Captures for Rook (Q843)"
+            content1={
+              <>
+                On an 8 x 8 chessboard, there is exactly one white rook 'R' and
+                some number of white bishops 'B', black pawns 'p', and empty
+                squares '.'.
+                <br />
+                When the rook moves, it chooses one of four cardinal directions
+                (north, east, south, or west), then moves in that direction
+                until it chooses to stop, reaches the edge of the board,
+                captures a black pawn, or is blocked by a white bishop. A rook
+                is considered attacking a pawn if the rook can capture the pawn
+                on the rook's turn. The number of available captures for the
+                white rook is the number of pawns that the rook is attacking.
+                <br />
+                Return the number of available captures for the white rook.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2019/02/20/1253_example_1_improved.PNG",
+                content: (
+                  <>
+                    Input: board =
+                    [[".",".",".",".",".",".",".","."],[".",".",".","p",".",".",".","."],[".",".",".","R",".",".",".","p"],[".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".","."],[".",".",".","p",".",".",".","."],[".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".","."]]
+                    <br /> Output: 3 <br />
+                    Explanation: In this example, the rook is attacking all the
+                    pawns.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2019/02/19/1253_example_2_improved.PNG",
+                content: (
+                  <>
+                    Input: board = [[".",".",".",".",".",".",".","."],
+                    <br />
+                    [".","p","p","p","p","p",".","."],[".","p","p","B","p","p",".","."],
+                    <br />
+                    [".","p","B","R","B","p",".","."],
+                    <br />
+                    [".","p","p","B","p","p",".","."],[".","p","p","p","p","p",".","."],[".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".","."]]
+                    <br /> Output: 0 <br />
+                    Explanation: The bishops are blocking the rook from
+                    attacking any of the pawns.
+                  </>
+                ),
+              },
+              {
+                img: "https://assets.leetcode.com/uploads/2019/02/20/1253_example_3_improved.PNG",
+                content: (
+                  <>
+                    Input: board = [[".",".",".",".",".",".",".","."],
+                    <br />
+                    [".",".",".","p",".",".",".","."],[".",".",".","p",".",".",".","."],
+                    <br />
+                    ["p","p",".","R",".","p","B","."],
+                    <br />
+                    [".",".",".",".",".",".",".","."],[".",".",".","B",".",".",".","."],[".",".",".","p",".",".",".","."],[".",".",".",".",".",".",".","."]]
+                    <br /> Output: 3 <br />
+                    Explanation: The rook is attacking the pawns at positions
+                    b5, d6, and f5.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                board.length == 8 <br />
+                board[i].length == 8 <br />
+                board[i][j] is either 'R', '.', 'B', or 'p' <br />
+                There is exactly one cell with board[i][j] == 'R'
+              </>
+            }
+            tc="n^2"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {character[][]} board
+                * @return {number}
+                */
+               var numRookCaptures = function(board) {
+                 let ans = 0;
+                 let i0 = 0;
+                 let j0 = 0;
+               
+                   for (let i = 0; i < 8; ++i)
+                     for (let j = 0; j < 8; ++j)
+                       if (board[i][j] == 'R') {
+                         i0 = i;
+                         j0 = j;
+                       }
+               
+                   for (let d of [[1, 0], [0, 1], [-1, 0], [0, -1]])
+                     for (let i = i0 + d[0], j = j0 + d[1]; 0 <= i && i < 8 && 0 <= j && j < 8;
+                          i += d[0], j += d[1]) {
+                       if (board[i][j] == 'p')
+                         ++ans;
+                       if (board[i][j] != '.')
+                         break;
+                     }
+               
+                   return ans;  
+               };
+               
+               console.log(numRookCaptures([[".",".",".",".",".",".",".","."],
+               [".",".",".","p",".",".",".","."],
+               [".",".",".","R",".",".",".","p"],
+               [".",".",".",".",".",".",".","."],
+               [".",".",".",".",".",".",".","."],
+               [".",".",".","p",".",".",".","."],
+               [".",".",".",".",".",".",".","."],
+               [".",".",".",".",".",".",".","."]]))`,
+                output: `3`,
               },
             }}
           />
         ),
       },
       q844: {
-        title: "Q (Q844)",
+        title: "Q1000. Minimum Cost to Merge Stones (Q844)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q1000. Minimum Cost to Merge Stones (Q844)"
+            content1={
+              <>
+                There are n piles of stones arranged in a row. The ith pile has
+                stones[i] stones.
+                <br />
+                A move consists of merging exactly k consecutive piles into one
+                pile, and the cost of this move is equal to the total number of
+                stones in these k piles.
+                <br />
+                Return the minimum cost to merge all piles of stones into one
+                pile. If it is impossible, return -1.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: stones = [3,2,4,1], k = 2 Output: 20
+                    <br />
+                    Explanation: We start with [3, 2, 4, 1].
+                    <br />
+                    We merge [3, 2] for a cost of 5, and we are left with [5, 4,
+                    1].
+                    <br />
+                    We merge [4, 1] for a cost of 5, and we are left with [5,
+                    5].
+                    <br />
+                    We merge [5, 5] for a cost of 10, and we are left with [10].
+                    <br />
+                    The total cost was 20, and this is the minimum possible.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: stones = [3,2,4,1], k = 3<br />
+                    Output: -1
+                    <br />
+                    Explanation: After any merge operation, there are 2 piles
+                    left, and we can't merge anymore. So the task is impossible.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: stones = [3,5,1,2,6], k = 3<br />
+                    Output: 25
+                    <br />
+                    Explanation: We start with [3, 5, 1, 2, 6].
+                    <br />
+                    We merge [5, 1, 2] for a cost of 8, and we are left with [3,
+                    8, 6].
+                    <br />
+                    We merge [3, 8, 6] for a cost of 17, and we are left with
+                    [17].
+                    <br />
+                    The total cost was 25, and this is the minimum possible.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                n == stones.length
+                <br />
+                1 &lt;= n &lt;= 30
+                <br />
+                1 &lt;= stones[i] &lt;= 100
+                <br />2 &lt;= k &lt;= 30
+              </>
+            }
+            tc="n^3"
+            sc="n^2"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {character[][]} board
+                * @return {number}
+                */
+               /**
+                * @param {number[]} stones
+                * @param {number} k
+                * @return {number}
+                */
+               var mergeStones = function(stones, k) {
+                 const n =stones.length;
+                 if ((n - 1) % (k - 1) != 0)
+                   return -1;
+                 const kMax = 1e9;
+                 const dp = Array.from(Array(n),()=>Array(n).fill(kMax));
+                 const prefix = Array(n + 1).fill(0);
+                   for (let i = 0; i < n; ++i)
+                     dp[i][i] = 0;
+                   for (let i = 0; i < n; ++i)
+                     prefix[i + 1] = prefix[i] + stones[i];
+                   for (let d = 1; d < n; ++d)
+                     for (let i = 0; i + d < n; ++i) {
+                       const j = i + d;
+                       for (let m = i; m < j; m += k - 1)
+                         dp[i][j] = Math.min(dp[i][j], dp[i][m] + dp[m + 1][j]);
+                       if (d % (k - 1) == 0)
+                         dp[i][j] += prefix[j + 1] - prefix[i];
+                     }
+                   return dp[0][n - 1];   
+               };
+               
+               console.log(mergeStones([3,2,4,1],2))`,
+                output: `20`,
               },
             }}
           />
         ),
       },
       q845: {
-        title: "Q (Q845)",
+        title: "Q1001. Grid Illumination (Q845)",
         content: (
           <Comp
+            title="Q1001. Grid Illumination (Q845)"
             content1={<></>}
             content2={null}
             examples={[
