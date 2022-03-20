@@ -105142,58 +105142,424 @@ a = b + c;
         content: (
           <Comp
             title="Q993. Cousins in Binary Tree (Q837)"
-            content1={<></>}
+            content1={
+              <>
+                Given the root of a binary tree with unique values and the
+                values of two different nodes of the tree x and y, return true
+                if the nodes corresponding to the values x and y in the tree are
+                cousins, or false otherwise.
+                <br />
+                Two nodes of a binary tree are cousins if they have the same
+                depth with different parents.
+                <br />
+                Note that in a binary tree, the root node is at the depth 0, and
+                children of each depth k node are at the depth k + 1.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2019/02/12/q1248-01.png",
+                content: (
+                  <>
+                    Input: root = [1,2,3,4], x = 4, y = 3
+                    <br />
+                    Output: false
+                  </>
+                ),
               },
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2019/02/12/q1248-01.png",
+                content: (
+                  <>
+                    Input: root = [1,2,3,null,4,null,5], x = 5, y = 4
+                    <br />
+                    Output: true
+                  </>
+                ),
+              },
+              {
+                img: "https://assets.leetcode.com/uploads/2019/02/12/q1248-02.png",
+                content: (
+                  <>
+                    Input: root = [1,2,3,null,4], x = 2, y = 3
+                    <br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the tree is in the range [2, 100].
+                <br />
+                1 &lt;= Node.val &lt;= 100
+                <br />
+                Each node has a unique value.
+                <br />
+                x != y<br />x and y are exist in the tree.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              "C++": {
+                code: `// Input: root = [1,2,3,4], x = 4, y = 3
+                /**
+                 * Definition for a binary tree node.
+                 * struct TreeNode {
+                 *     int val;
+                 *     TreeNode *left;
+                 *     TreeNode *right;
+                 *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+                 *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+                 *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+                 * };
+                 */
+                class Solution {
+                 public:
+                  bool isCousins(TreeNode* root, int x, int y) {
+                    if (!root)
+                      return false;
+                    queue<TreeNode*> queue{{root}};
+                    while (!queue.empty()) {
+                      bool isFindX = false;
+                      bool isFindY = false;
+                      for (int i = queue.size(); i > 0; --i) {
+                        root = queue.front(), queue.pop();
+                        if (root->val == x)
+                          isFindX = true;
+                        else if (root->val == y)
+                          isFindY = true;
+                        else if (root->left && root->right) {
+                          if (root->left->val == x && root->right->val == y)
+                            return false;
+                          if (root->left->val == y && root->right->val == x)
+                            return false;
+                        }
+                        if (root->left)
+                          queue.push(root->left);
+                        if (root->right)
+                          queue.push(root->right);
+                      }
+                      if (isFindX && isFindY)
+                        return true;
+                      else if (isFindX || isFindY)
+                        return false;
+                    }
+                    return false;
+                  }
+                };`,
+                output: `false`,
               },
             }}
           />
         ),
       },
       q838: {
-        title: "Q (Q838)",
+        title: "Q994. Rotting Oranges (Q838)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q994. Rotting Oranges (Q838)"
+            content1={
+              <>
+                You are given an m x n grid where each cell can have one of
+                three values: ,<br />
+                0 representing an empty cell,
+                <br />
+                1 representing a fresh orange, or,
+                <br />
+                2 representing a rotten orange.,
+                <br />
+                Every minute, any fresh orange that is 4-directionally adjacent
+                to a rotten orange becomes rotten. ,<br />
+                Return the minimum number of minutes that must elapse until no
+                cell has a fresh orange. If this is impossible, return -1.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2019/02/16/oranges.png",
+                content: (
+                  <>
+                    Input: grid = [[2,1,1],[1,1,0],[0,1,1]]
+                    <br />
+                    Output: 4
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: grid = [[2,1,1],[0,1,1],[1,0,1]]
+                    <br />
+                    Output: -1
+                    <br />
+                    Explanation: The orange in the bottom left corner (row 2,
+                    column 0) is never rotten, because rotting only happens
+                    4-directionally.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: grid = [[0,2]]
+                    <br />
+                    Output: 0<br />0 Explanation: Since there are already no
+                    fresh oranges at minute 0, the answer is just 0.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                m == grid.length
+                <br />
+                n == grid[i].length
+                <br />
+                1 &lt;= m, n &lt;= 10
+                <br />
+                grid[i][j] is 0, 1, or 2.
+              </>
+            }
+            tc="m.n"
+            sc="m.n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              "C++": {
+                code: `// Input: grid = [[2,1,1],[1,1,0],[0,1,1]]
+                class Solution {
+                 public:
+                  int orangesRotting(vector<vector<int>>& grid) {
+                    const int m = grid.size();
+                    const int n = grid[0].size();
+                    const vector<int> dirs{0, 1, 0, -1, 0};
+                    int ans = 0;
+                    int countFresh = 0;
+                    queue<pair<int, int>> q;
+                    for (int i = 0; i < m; ++i)
+                      for (int j = 0; j < n; ++j)
+                        if (grid[i][j] == 1)
+                          ++countFresh;
+                        else if (grid[i][j] == 2)
+                          q.emplace(i, j);
+                    if (countFresh == 0)
+                      return 0;
+                    while (!q.empty()) {
+                      ++ans;
+                      for (int sz = q.size(); sz > 0; --sz) {
+                        const auto [i, j] = q.front();
+                        q.pop();
+                        for (int k = 0; k < 4; ++k) {
+                          const int x = i + dirs[k];
+                          const int y = j + dirs[k + 1];
+                          if (x < 0 || x == m || y < 0 || y == n)
+                            continue;
+                          if (grid[x][y] != 1)
+                            continue;
+                          grid[x][y] = 2;   
+                          q.emplace(x, y);  
+                          --countFresh;    
+                        }
+                      }
+                    }
+                
+                    return countFresh == 0 ? ans - 1 : -1;
+                  }
+                };`,
+                output: `1`,
               },
             }}
           />
         ),
       },
       q839: {
-        title: "Q (Q839)",
+        title: "Q995. Minimum Number of K Consecutive Bit Flips (Q839)",
         content: (
           <Comp
+            title="Q995. Minimum Number of K Consecutive Bit Flips (Q839)"
+            content1={
+              <>
+                You are given a binary array nums and an integer k.
+                <br />
+                A k-bit flip is choosing a subarray of length k from nums and
+                simultaneously changing every 0 in the subarray to 1, and every
+                1 in the subarray to 0.
+                <br />
+                Return the minimum number of k-bit flips required so that there
+                is no 0 in the array. If it is not possible, return -1.
+                <br />A subarray is a contiguous part of an array.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [0,1,0], k = 1 <br />
+                    Output: 2 <br />
+                    Explanation: Flip nums[0], then flip nums[2].
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [1,1,0], k = 2 <br />
+                    Output: -1 <br />
+                    Explanation: No matter how we flip subarrays of size 2, we
+                    cannot make the array become [1,1,1].
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [0,0,0,1,0,1,1,0], k = 3 Output: 3 <br />
+                    Explanation: <br />
+                    Flip nums[0],nums[1],nums[2]: nums becomes [1,1,1,1,0,1,1,0]
+                    <br /> Flip nums[4],nums[5],nums[6]: nums becomes
+                    [1,1,1,1,1,0,0,0]
+                    <br /> Flip nums[5],nums[6],nums[7]: nums becomes
+                    [1,1,1,1,1,1,1,1]
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 10^5 <br />1 &lt;= k &lt;= nums.length
+              </>
+            }
+            tc="n"
+            sc="1"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} k
+                * @return {number}
+                */
+               var minKBitFlips = function(nums, k) {
+                 let ans = 0;
+                 let flippedTime = 0;
+                 for (let r = 0; r < nums.length; ++r) {
+                   if (r >= k && nums[r - k] == 2)
+                     --flippedTime;
+                   if (flippedTime % 2 == nums[r]) {
+                     if (r + k > nums.length)
+                       return -1;
+                     ++ans;
+                     ++flippedTime;
+                     nums[r] = 2;
+                   }
+                 }
+                 return ans;    
+               };
+               
+               console.log(minKBitFlips([0,1,0],1))`,
+                output: `2`,
+              },
+            }}
+          />
+        ),
+      },
+      q840: {
+        title: "Q996. Number of Squareful Arrays (Q840)",
+        content: (
+          <Comp
+            title="Q996. Number of Squareful Arrays (Q840)"
+            content1={
+              <>
+                An array is squareful if the sum of every pair of adjacent
+                elements is a perfect square.
+                <br />
+                Given an integer array nums, return the number of permutations
+                of nums that are squareful.
+                <br />
+                Two permutations perm1 and perm2 are different if there is some
+                index i such that perm1[i] != perm2[i].
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [1,17,8]
+                    <br />
+                    Output: 2<br />
+                    Explanation: [1,8,17] and [17,8,1] are the valid
+                    permutations.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [2,2,2]
+                    <br />
+                    Output: 1
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 12
+                <br />0 &lt;= nums[i] &lt;= 10^9
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `// Input: nums = [1,17,8]
+                class Solution {
+                  public int numSquarefulPerms(int[] A) {
+                    boolean[] used = new boolean[A.length];
+                    Arrays.sort(A);
+                    dfs(A, used, new ArrayList<>());
+                    return ans;
+                  }
+                  private int ans = 0;
+                  private void dfs(int[] A, boolean[] used, List<Integer> path) {
+                    if (path.size() > 1 && !isSquare(path.get(path.size() - 1) + path.get(path.size() - 2)))
+                      return;
+                    if (path.size() == A.length) {
+                      ++ans;
+                      return;
+                    }
+                    for (int i = 0; i < A.length; ++i) {
+                      if (used[i])
+                        continue;
+                      if (i > 0 && A[i] == A[i - 1] && !used[i - 1])
+                        continue;
+                      used[i] = true;
+                      path.add(A[i]);
+                      dfs(A, used, path);
+                      path.remove(path.size() - 1);
+                      used[i] = false;
+                    }
+                  }
+                  private boolean isSquare(int num) {
+                    int root = (int) Math.sqrt(num);
+                    return root * root == num;
+                  }
+                }
+                `,
+                output: `2`,
+              },
+            }}
+          />
+        ),
+      },
+      q841: {
+        title: "Q997. Find the Town Judge (Q841)",
+        content: (
+          <Comp
+            title="Q997. Find the Town Judge (Q841)"
             content1={<></>}
             content2={null}
             examples={[
@@ -105208,7 +105574,7 @@ a = b + c;
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
+              Java: {
                 code: ``,
                 output: ``,
               },
@@ -105216,8 +105582,8 @@ a = b + c;
           />
         ),
       },
-      q840: {
-        title: "Q (Q840)",
+      q842: {
+        title: "Q (Q842)",
         content: (
           <Comp
             content1={<></>}
@@ -105234,7 +105600,293 @@ a = b + c;
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q843: {
+        title: "Q (Q843)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q844: {
+        title: "Q (Q844)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q845: {
+        title: "Q (Q845)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q846: {
+        title: "Q (Q846)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q847: {
+        title: "Q (Q847)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q848: {
+        title: "Q (Q848)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q849: {
+        title: "Q (Q849)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q850: {
+        title: "Q (Q850)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q851: {
+        title: "Q (Q851)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q852: {
+        title: "Q (Q852)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q853: {
+        title: "Q (Q853)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
                 code: ``,
                 output: ``,
               },
