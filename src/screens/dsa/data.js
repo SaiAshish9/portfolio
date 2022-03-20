@@ -105560,23 +105560,93 @@ a = b + c;
         content: (
           <Comp
             title="Q997. Find the Town Judge (Q841)"
-            content1={<></>}
+            content1={
+              <>
+                In a town, there are n people labeled from 1 to n. There is a
+                rumor that one of these people is secretly the town judge.
+                <br />
+                If the town judge exists, then:
+                <br />
+                The town judge trusts nobody.
+                <br />
+                Everybody (except for the town judge) trusts the town judge.
+                <br />
+                There is exactly one person that satisfies properties 1 and 2.
+                <br />
+                You are given an array trust where trust[i] = [ai, bi]
+                representing that the person labeled ai trusts the person
+                labeled bi.
+                <br />
+                Return the label of the town judge if the town judge exists and
+                can be identified, or return -1 otherwise.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 2, trust = [[1,2]]
+                    <br />
+                    Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 3, trust = [[1,3],[2,3]]
+                    <br />
+                    Output: 3
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: n = 3, trust = [[1,3],[2,3],[3,1]]
+                    <br />
+                    Output: -1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= n &lt;= 1000
+                <br />
+                0 &lt;= trust.length &lt;= 10^4
+                <br />
+                trust[i].length == 2<br />
+                All the pairs of trust are unique.
+                <br />
+                ai != bi
+                <br />1 &lt;= ai, bi &lt;= n
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Java: {
-                code: ``,
-                output: ``,
+              Javascript: {
+                code: `/**
+                * @param {number} n
+                * @param {number[][]} trust
+                * @return {number}
+                */
+               var findJudge = function(n, trust) {
+                 const count = Array(n + 1).fill(0);
+                 for (let t of trust) {
+                   --count[t[0]];
+                   ++count[t[1]];
+                 }
+                 for (let i = 1; i < n + 1; ++i)
+                   if (count[i] == n - 1)
+                     return i;
+                 return -1;    
+               };
+               
+               console.log(findJudge(2,[[1,2]]))`,
+                output: `2`,
               },
             }}
           />
@@ -105600,7 +105670,7 @@ a = b + c;
             tc="n"
             sc="n"
             codes={{
-              Java: {
+              Javascript: {
                 code: ``,
                 output: ``,
               },
@@ -105626,7 +105696,7 @@ a = b + c;
             tc="n"
             sc="n"
             codes={{
-              Java: {
+              Javascript: {
                 code: ``,
                 output: ``,
               },
@@ -105652,7 +105722,7 @@ a = b + c;
             tc="n"
             sc="n"
             codes={{
-              Java: {
+              Javascript: {
                 code: ``,
                 output: ``,
               },
@@ -105678,7 +105748,7 @@ a = b + c;
             tc="n"
             sc="n"
             codes={{
-              Java: {
+              Javascript: {
                 code: ``,
                 output: ``,
               },
@@ -105704,7 +105774,7 @@ a = b + c;
             tc="n"
             sc="n"
             codes={{
-              Java: {
+              Javascript: {
                 code: ``,
                 output: ``,
               },
@@ -105730,7 +105800,7 @@ a = b + c;
             tc="n"
             sc="n"
             codes={{
-              Java: {
+              Javascript: {
                 code: ``,
                 output: ``,
               },
@@ -105756,7 +105826,7 @@ a = b + c;
             tc="n"
             sc="n"
             codes={{
-              Java: {
+              Javascript: {
                 code: ``,
                 output: ``,
               },
@@ -105782,7 +105852,7 @@ a = b + c;
             tc="n"
             sc="n"
             codes={{
-              Java: {
+              Javascript: {
                 code: ``,
                 output: ``,
               },
@@ -105808,7 +105878,7 @@ a = b + c;
             tc="n"
             sc="n"
             codes={{
-              Java: {
+              Javascript: {
                 code: ``,
                 output: ``,
               },
@@ -105834,7 +105904,7 @@ a = b + c;
             tc="n"
             sc="n"
             codes={{
-              Java: {
+              Javascript: {
                 code: ``,
                 output: ``,
               },
@@ -105860,7 +105930,7 @@ a = b + c;
             tc="n"
             sc="n"
             codes={{
-              Java: {
+              Javascript: {
                 code: ``,
                 output: ``,
               },
@@ -105886,7 +105956,7 @@ a = b + c;
             tc="n"
             sc="n"
             codes={{
-              Java: {
+              Javascript: {
                 code: ``,
                 output: ``,
               },
