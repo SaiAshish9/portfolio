@@ -102377,6 +102377,7 @@ a = b + c;
         title: "Q965. Univalued Binary Tree (Q809)",
         content: (
           <Comp
+            title="Q965. Univalued Binary Tree (Q809)"
             content1={
               <>
                 A binary tree is uni-valued if every node in the tree has the
@@ -102390,51 +102391,203 @@ a = b + c;
             examples={[
               {
                 img: "https://assets.leetcode.com/uploads/2018/12/28/unival_bst_1.png",
-                content: <></>,
+                content: (
+                  <>
+                    Input: root = [1,1,1,1,1,null,1]
+                    <br />
+                    Output: true
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2018/12/28/unival_bst_2.png",
+                content: (
+                  <>
+                    Input: root = [2,2,2,5,2] <br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the tree is in the range [1, 100].
+                <br /> 0 &lt;= Node.val &lt; 100
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right) {
+                  this.val = (val=== undefined ? 0 : val)
+                  this.left = (left=== undefined ? null : left)
+                  this.right = (right=== undefined ? null : right)
+                }
+                
+                /**
+                 * @param {TreeNode} root
+                 * @return {boolean}
+                 */
+                var isUnivalTree = function(root) {
+                  let val = root.val;
+                  return treeTraverse(root, val);   
+                };
+                
+                function treeTraverse(root, val){
+                    if(root == null){
+                        return true;
+                    }
+                
+                    let left = treeTraverse(root.left, val);
+                    let right = treeTraverse(root.right, val);
+                    return root.val == val && left && right;
+                }
+                
+                const t = new TreeNode(1)
+                t.left = new TreeNode(1)
+                t.left.left = new TreeNode(1)
+                t.left.right = new TreeNode(1)
+                t.right = new TreeNode(1)
+                t.right.right = new TreeNode(1)
+                console.log(isUnivalTree(t))`,
+                output: `true`,
               },
             }}
           />
         ),
       },
       q810: {
-        title: "Q(Q810)",
+        title: "Q966. Vowel Spellchecker (Q810)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q966. Vowel Spellchecker (Q810)"
+            content1={
+              <>
+                Given a wordlist, we want to implement a spellchecker that
+                converts a query word into a correct word.
+                <br />
+                For a given query word, the spell checker handles two categories
+                of spelling mistakes:
+                <br />
+                Capitalization: If the query matches a word in the wordlist
+                (case-insensitive), then the query word is returned with the
+                same case as the case in the wordlist.
+                <br />
+                Example: wordlist = ["yellow"], query = "YellOw": correct =
+                "yellow"
+                <br />
+                Example: wordlist = ["Yellow"], query = "yellow": correct =
+                "Yellow"
+                <br />
+                Example: wordlist = ["yellow"], query = "yellow": correct =
+                "yellow"
+                <br />
+                Vowel Errors: If after replacing the vowels ('a', 'e', 'i', 'o',
+                'u') of the query word with any vowel individually, it matches a
+                word in the wordlist (case-insensitive), then the query word is
+                returned with the same case as the match in the wordlist.
+                <br />
+                Example: wordlist = ["YellOw"], query = "yollow": correct =
+                "YellOw"
+                <br />
+                Example: wordlist = ["YellOw"], query = "yeellow": correct = ""
+                (no match)
+                <br />
+                Example: wordlist = ["YellOw"], query = "yllw": correct = "" (no
+                match) In addition, the spell checker operates under the
+                following precedence rules:
+                <br />
+                When the query exactly matches a word in the wordlist
+                (case-sensitive), you should return the same word back.
+                <br />
+                When the query matches a word up to capitlization, you should
+                return the first such match in the wordlist.
+                <br />
+                When the query matches a word up to vowel errors, you should
+                return the first such match in the wordlist.
+                <br />
+                If the query has no matches in the wordlist, you should return
+                the empty string.
+                <br />
+                Given some queries, return a list of words answer, where
+                answer[i] is the correct word for query = queries[i].
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: wordlist = ["KiTe","kite","hare","Hare"], queries =
+                    ["kite","Kite","KiTe","Hare","HARE","Hear","hear","keti","keet","keto"]
+                    <br /> Output:
+                    ["kite","KiTe","KiTe","Hare","hare","","","KiTe","","KiTe"]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: wordlist = ["yellow"], queries = ["YellOw"] <br />
+                    Output: ["yellow"]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= wordlist.length, queries.length &lt;= 5000 <br />
+                1 &lt;= wordlist[i].length, queries[i].length &lt;= 7 <br />
+                wordlist[i] and queries[i] consist only of only English letters.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input: wordlist = ["KiTe","kite","hare","Hare"], queries = ["kite","Kite","KiTe","Hare","HARE","Hear","hear","keti","keet","keto"]
+                class Solution {
+                  public String[] spellchecker(String[] wordlist, String[] queries) {
+                    List<String> ans = new ArrayList<>();
+                    Map<String, String> dict = new HashMap<>();
+                
+                    for (final String word : wordlist) {
+                      dict.putIfAbsent(word, word);
+                      dict.putIfAbsent(lowerKey(word), word);
+                      dict.putIfAbsent(vowelKey(word), word);
+                    }
+                
+                    for (final String q : queries)
+                      if (dict.containsKey(q))
+                        ans.add(dict.get(q));
+                      else if (dict.containsKey(lowerKey(q)))
+                        ans.add(dict.get(lowerKey(q)));
+                      else if (dict.containsKey(vowelKey(q)))
+                        ans.add(dict.get(vowelKey(q)));
+                      else
+                        ans.add("");
+                
+                    return ans.toArray(new String[0]);
+                  }
+                
+                  private String lowerKey(final String word) {
+                    return "$" + word.toLowerCase();
+                  }
+                
+                  private String vowelKey(final String word) {
+                    String s = "";
+                    for (char c : word.toCharArray())
+                      s += isVowel(c) ? '*' : Character.toLowerCase(c);
+                    return s;
+                  }
+                
+                  private boolean isVowel(char c) {
+                    c = Character.toLowerCase(c);
+                    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+                  }
+                }`,
+                output: `["kite","KiTe","KiTe","Hare","hare","","","KiTe","","KiTe"]`,
               },
             }}
           />
