@@ -102593,6 +102593,32 @@ a = b + c;
           />
         ),
       },
+      q811: {
+        title: "Q (Q811)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
     },
   },
   notes: {
