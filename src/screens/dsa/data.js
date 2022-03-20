@@ -323,6 +323,7 @@ import Leetcode935 from "assets/leetcode/935.png";
 import Leetcode938 from "assets/leetcode/938.png";
 import Leetcode939 from "assets/leetcode/939.png";
 import Leetcode941 from "assets/leetcode/941.png";
+import Leetcode951 from "assets/leetcode/951.png";
 import NotesImg from "assets/notes.png";
 import WebRTCImg from "assets/webrtc-go.png";
 import WebRTCImg1 from "assets/webrtc1.png";
@@ -100920,162 +100921,605 @@ a = b + c;
         content: (
           <Comp
             title="Q950. Reveal Cards In Increasing Order (Q794)"
-            content1={<></>}
+            content1={
+              <>
+                You are given an integer array deck. There is a deck of cards
+                where every card has a unique integer. The integer on the ith
+                card is deck[i].
+                <br />
+                You can order the deck in any order you want. Initially, all the
+                cards start face down (unrevealed) in one deck.
+                <br />
+                You will do the following steps repeatedly until all cards are
+                revealed:
+                <br />
+                1. Take the top card of the deck, reveal it, and take it out of
+                the deck.
+                <br />
+                2. If there are still cards in the deck then put the next top
+                card of the deck at the bottom of the deck.
+                <br />
+                3. If there are still unrevealed cards, go back to step 1.
+                Otherwise, stop.
+                <br />
+                Return an ordering of the deck that would reveal the cards in
+                increasing order.
+                <br />
+                Note that the first entry in the answer is considered to be the
+                top of the deck.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: deck = [17,13,11,2,3,5,7] <br />
+                    Output: [2,13,3,11,5,17,7] <br />
+                    Explanation: <br />
+                    We get the deck in the order [17,13,11,2,3,5,7] (this order
+                    does not matter), and reorder it.
+                    <br /> After reordering, the deck starts as
+                    [2,13,3,11,5,17,7], where 2 is the top of the deck.
+                    <br /> We reveal 2, and move 13 to the bottom. The deck is
+                    now [3,11,5,17,7,13].
+                    <br /> We reveal 3, and move 11 to the bottom. The deck is
+                    now [5,17,7,13,11].
+                    <br /> We reveal 5, and move 17 to the bottom. The deck is
+                    now [7,13,11,17].
+                    <br /> We reveal 7, and move 13 to the bottom. The deck is
+                    now [11,17,13].
+                    <br /> We reveal 11, and move 17 to the bottom. The deck is
+                    now [13,17].
+                    <br /> We reveal 13, and move 17 to the bottom. The deck is
+                    now [17].
+                    <br /> We reveal 17.
+                    <br /> Since all the cards revealed are in increasing order,
+                    the answer is correct.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: deck = [1,1000] <br />
+                    Output: [1,1000]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                1 &lt;= deck.length &lt;= 1000 <br />
+                1 &lt;= deck[i] &lt;= 10^6 <br />
+                All the values of deck are unique.
+              </>
+            }
+            tc="n^3"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} deck
+                * @return {number[]}
+                */
+               var deckRevealedIncreasing = function(deck) {
+                 const n = deck.length;
+                 deck = deck.sort((a,b)=>a-b)
+                 const q = [];
+                 q.push(deck[n - 1]);
+                 for (let i = n - 2; i >= 0; --i) {
+                     q.unshift(q[q.length-1]);
+                     q.pop();
+                     q.unshift(deck[i]);
+                   }
+                   for (let i = 0; i < n; ++i)
+                     deck[i] = q.shift();
+                   return deck; 
+               };
+               
+               console.log(deckRevealedIncreasing([17,13,11,2,3,5,7]))`,
+                output: `[
+                  2, 13, 3, 11,
+                  5, 17, 7
+                ]`,
               },
             }}
           />
         ),
       },
       q795: {
-        title: "Q (Q795)",
+        title: "Q951. Flip Equivalent Binary Trees (Q795)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q951. Flip Equivalent Binary Trees (Q795)"
+            content1={
+              <>
+                For a binary tree T, we can define a flip operation as follows:
+                choose any node, and swap the left and right child subtrees.
+                <br />
+                A binary tree X is flip equivalent to a binary tree Y if and
+                only if we can make X equal to Y after some number of flip
+                operations.
+                <br />
+                Given the roots of two binary trees root1 and root2, return true
+                if the two trees are flip equivalent or false otherwise.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: Leetcode951,
+                content: (
+                  <>
+                    Input: root1 = [1,2,3,4,5,6,null,null,null,7,8], root2 =
+                    [1,3,2,null,6,4,5,null,null,null,null,8,7]
+                    <br /> Output: true
+                    <br /> Explanation: We flipped at nodes with values 1, 3,
+                    and 5.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: root1 = [], root2 = [] <br />
+                    Output: true
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: root1 = [], root2 = [1] <br />
+                    Output: false
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in each tree is in the range [0, 100]. Each
+                tree will have unique node values in the range [0, 99].
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="h"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `function TreeNode(val, left, right){
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+                }
+                
+                /**
+                 * @param {TreeNode} root1
+                 * @param {TreeNode} root2
+                 * @return {boolean}
+                 */
+                var flipEquiv = function(root1, root2) {
+                     if (!root1)
+                      return !root2;
+                    if (!root2)
+                      return !root1;
+                    if (root1.val != root2.val)
+                      return false;
+                    return flipEquiv(root1.left, root2.left) &&
+                           flipEquiv(root1.right, root2.right) ||
+                           flipEquiv(root1.left, root2.right) &&
+                           flipEquiv(root1.right, root2.left); 
+                };
+                
+                const t1 = new TreeNode()
+                const t2 = new TreeNode(1)
+                console.log(flipEquiv(t1,t2))`,
+                output: `false`,
               },
             }}
           />
         ),
       },
       q796: {
-        title: "Q (Q796)",
+        title: "Q952. Largest Component Size by Common Factor (Q796)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q952. Largest Component Size by Common Factor (Q796)"
+            content1={
+              <>
+                You are given an integer array of unique positive integers nums.
+                Consider the following graph:
+                <br />
+                There are nums.length nodes, labeled nums[0] to nums[nums.length
+                - 1],
+                <br />
+                There is an undirected edge between nums[i] and nums[j] if
+                nums[i] and nums[j] share a common factor greater than 1.
+                <br />
+                Return the size of the largest connected component in the graph.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2018/12/01/ex1.png",
+                content: (
+                  <>
+                    Input: nums = [4,6,15,35] <br />
+                    Output: 4
+                  </>
+                ),
               },
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2018/12/01/ex2.png",
+                content: (
+                  <>
+                    Input: nums = [20,50,9,63]
+                    <br />
+                    Output: 2
+                  </>
+                ),
+              },
+              {
+                img: "https://assets.leetcode.com/uploads/2018/12/01/ex3.png",
+                content: (
+                  <>
+                    Input: nums = [2,3,6,7,4,12,21,39]
+                    <br />
+                    Output: 8
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;== 2 * 10^4
+                <br />
+                1 &lt;== nums[i] &lt;== 10^5
+                <br />
+                All the values of nums are unique.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input: nums = [4,6,15,35]
+                class UF {
+                  public UF(int n) {
+                    id = new int[n + 1];
+                    for (int i = 0; i < id.length; ++i)
+                      id[i] = i;
+                  }
+                  public void union(int u, int v) {
+                    id[find(u)] = find(v);
+                  }
+                  public int find(int u) {
+                    return id[u] == u ? u : (id[u] = find(id[u]));
+                  }
+                  private int[] id;
+                }
+                
+                class Solution {
+                  public int largestComponentSize(int[] A) {
+                    final int n = Arrays.stream(A).max().getAsInt();
+                    int ans = 0;
+                    UF uf = new UF(n);
+                    Map<Integer, Integer> count = new HashMap<>();
+                    for (int a : A)
+                      for (int num = 2; num <= (int) Math.sqrt(a); ++num)
+                        if (a % num == 0) {
+                          uf.union(a, num);
+                          uf.union(a, a / num);
+                        }
+                    for (int a : A) {
+                      int pa = uf.find(a);
+                      count.put(pa, count.getOrDefault(pa, 0) + 1);
+                      ans = Math.max(ans, count.get(pa));
+                    }
+                    return ans;
+                  }
+                }`,
+                output: `4`,
               },
             }}
           />
         ),
       },
       q797: {
-        title: "Q (Q797)",
+        title: "Q953. Verifying an Alien Dictionary (Q797)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q953. Verifying an Alien Dictionary (Q797)"
+            content1={
+              <>
+                In an alien language, surprisingly, they also use English
+                lowercase letters, but possibly in a different order. The order
+                of the alphabet is some permutation of lowercase letters.
+                <br />
+                Given a sequence of words written in the alien language, and the
+                order of the alphabet, return true if and only if the given
+                words are sorted lexicographically in this alien language.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words = ["hello","leetcode"], order =
+                    "hlabcdefgijkmnopqrstuvwxyz"
+                    <br /> Output: true
+                    <br /> Explanation: As 'h' comes before 'l' in this
+                    language, then the sequence is sorted.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words = ["word","world","row"], order =
+                    "worldabcefghijkmnpqstuvxyz"
+                    <br /> Output: false
+                    <br /> Explanation: As 'd' comes after 'l' in this language,
+                    then words[0] &gt; words[1], hence the sequence is unsorted.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: words = ["apple","app"], order =
+                    "abcdefghijklmnopqrstuvwxyz"
+                    <br /> Output: false
+                    <br /> Explanation: The first three characters "app" match,
+                    and the second string is shorter (in size.) According to
+                    lexicographical rules "apple" > "app", because 'l' > '∅',
+                    where '∅' is defined as the blank character which is less
+                    than any other character (More info).
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= words.length &lt;= 100
+                <br /> 1 &lt;= words[i].length &lt;= 20
+                <br /> order.length == 26
+                <br /> All characters in words[i] and order are English
+                lowercase letters.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string[]} words
+                * @param {string} order
+                * @return {boolean}
+                */
+               var isAlienSorted = function(words, order) {
+                 const map = Array(26).fill(0); 
+                 for (let i = 0; i < 26; ++i)
+                     map[order[i].charCodeAt(0) - 97] =  String.fromCharCode(i + 97);
+                   for (let i = 0; i + 1 < words.length; ++i)
+                     if (bigger(words[i], words[i + 1], map))
+                       return false;
+                   return true; 
+               };
+               
+               function bigger(s1, s2, map) {
+                   for (let i = 0; i < s1.length && i < s2.length; ++i)
+                     if (s1[i] != s2[i])
+                       return map[s1[i].charCodeAt(0) - 97] > map[s2[i].charCodeAt(0) - 97];
+                   return s1.length > s2.length;
+                 }
+               
+               console.log(isAlienSorted(["hello","leetcode"],"hlabcdefgijkmnopqrstuvwxyz"))`,
+                output: `true`,
               },
             }}
           />
         ),
       },
       q798: {
-        title: "Q (Q798)",
+        title: "Q954. Array of Doubled Pairs (Q798)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q954. Array of Doubled Pairs (Q798)"
+            content1={
+              <>
+                Given an integer array of even length arr, return true if it is
+                possible to reorder arr such that arr[2 * i + 1] = 2 * arr[2 *
+                i] for every 0 &lt;= i &lt; len(arr) / 2, or false otherwise.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [3,1,3,6] <br />
+                    Output: false
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [2,1,2,6] <br />
+                    Output: false
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: arr = [4,-2,2,-4] <br />
+                    Output: true <br />
+                    Explanation: We can take two groups, [-2,-4] and [2,4] to
+                    form [-2,-4,2,4] or [2,4,-2,-4].
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                2 &lt;= arr.length &lt;= 3 * 10^4
+                <br />
+                arr.length is even.
+                <br />
+                -10^5 &lt;= arr[i] &lt;= 10^5
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input: arr = [3,1,3,6]
+                class Solution {
+                  public boolean canReorderDoubled(int[] A) {
+                    Map<Integer, Integer> count = new HashMap<>();
+                
+                    for (final int a : A)
+                      count.merge(a, 1, Integer::sum);
+                
+                    A = Arrays.stream(A)
+                            .boxed()
+                            .sorted((a, b) -> Math.abs(a) - Math.abs(b))
+                            .mapToInt(i -> i)
+                            .toArray();
+                
+                    for (final int a : A) {
+                      if (count.get(a) == 0)
+                        continue;
+                      if (count.getOrDefault(2 * a, 0) == 0)
+                        return false;
+                      count.merge(a, -1, Integer::sum);
+                      count.merge(2 * a, -1, Integer::sum);
+                    }
+                
+                    return true;
+                  }
+                }
+                `,
+                output: `false`,
               },
             }}
           />
         ),
       },
       q799: {
-        title: "Q (Q799)",
+        title: "Q955. Delete Columns to Make Sorted II (Q799)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q955. Delete Columns to Make Sorted II (Q799)"
+            content1={
+              <>
+                You are given an array of n strings strs, all of the same
+                length.
+                <br />
+                We may choose any deletion indices, and we delete all the
+                characters in those indices for each string.
+                <br />
+                For example, if we have strs = ["abcdef","uvwxyz"] and deletion
+                indices {(0, 2, 3)}, then the final array after deletions is
+                ["bef", "vyz"].
+                <br />
+                Suppose we chose a set of deletion indices answer such that
+                after deletions, the final array has its elements in
+                lexicographic order (i.e., strs[0] &lt;= strs[1] &lt;= strs[2]
+                &lt;= ... &lt;= strs[n - 1]). Return the minimum possible value
+                of answer.length.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: strs = ["ca","bb","ac"] <br />
+                    Output: 1 <br />
+                    Explanation: <br />
+                    After deleting the first column, strs = ["a", "b", "c"]. Now
+                    strs is in lexicographic order (ie. strs[0] &lt;= strs[1]
+                    &lt;= strs[2]). We require at least 1 deletion since
+                    initially strs was not in lexicographic order, so the answer
+                    is 1.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: strs = ["xc","yb","za"] <br />
+                    Output: 0 <br />
+                    Explanation: <br />
+                    strs is already in lexicographic order, so we do not need to
+                    delete anything. Note that the rows of strs are not
+                    necessarily in lexicographic order: i.e., it is NOT
+                    necessarily true that (strs[0][0] &lt;= strs[0][1] &lt;=
+                    ...)
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: strs = ["zyx","wvu","tsr"] <br />
+                    Output: 3 <br />
+                    Explanation: We have to delete every column.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                n == strs.length <br />
+                1 &lt;= n &lt;= 100 <br />
+                1 &lt;= strs[i].length &lt;= 100 <br />
+                strs[i] consists of lowercase English letters.
+              </>
+            }
+            tc="n^2"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string[]} strs
+                * @return {number}
+                */
+               var minDeletionSize = function(strs) {
+                 const n = strs[0].length;
+                 let ans = 0;
+                 const sorted = Array(strs.length - 1).fill(0);
+                 for (let j = 0; j < n; ++j) {
+                   let i;
+                   for (i = 0; i + 1 < strs.length; ++i)
+                     if (!sorted[i] && strs[i].charAt(j) > strs[i + 1].charAt(j)) {
+                         ++ans;
+                         break;
+                       }
+                     if (i + 1 == strs.length)
+                       for (i = 0; i + 1 < strs.length; ++i)
+                         sorted[i] = sorted[i] || strs[i].charAt(j) < strs[i + 1].charAt(j);
+                   }
+                   return ans;    
+               };
+               
+               console.log(minDeletionSize(["ca","bb","ac"]))`,
+                output: `1`,
               },
             }}
           />
         ),
       },
       q800: {
-        title: "Q (Q800)",
+        title: "Q956. Tallest Billboard (Q800)",
         content: (
           <Comp
+            title="Q956. Tallest Billboard (Q800)"
             content1={<></>}
             content2={null}
             examples={[
