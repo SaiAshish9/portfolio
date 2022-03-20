@@ -106488,101 +106488,277 @@ a = b + c;
         content: (
           <Comp
             title="Q1006. Clumsy Factorial (Q850)"
-            content1={<></>}
+            content1={
+              <>
+                The factorial of a positive integer n is the product of all
+                positive integers less than or equal to n.
+                <br />
+                For example, factorial(10) = 10 * 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2
+                * 1. We make a clumsy factorial using the integers in decreasing
+                order by swapping out the multiply operations for a fixed
+                rotation of operations with multiply '*', divide '/', add '+',
+                and subtract '-' in this order.
+                <br />
+                For example, clumsy(10) = 10 * 9 / 8 + 7 - 6 * 5 / 4 + 3 - 2 *
+                1. However, these operations are still applied using the usual
+                order of operations of arithmetic. We do all multiplication and
+                division steps before any addition or subtraction steps, and
+                multiplication and division steps are processed left to right.
+                <br />
+                Additionally, the division that we use is floor division such
+                that 10 * 9 / 8 = 90 / 8 = 11.
+                <br />
+                Given an integer n, return the clumsy factorial of n.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 4 <br />
+                    Output: 7 <br />
+                    Explanation: 7 = 4 * 3 / 2 + 1
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 10 <br />
+                    Output: 12 <br />
+                    Explanation: 12 = 10 * 9 / 8 + 7 - 6 * 5 / 4 + 3 - 2 * 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={<>1 &lt;= n &lt;= 10^4</>}
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number} n
+                * @return {number}
+                */
+               var clumsy = function(n) {
+                   if (n == 1)
+                     return 1;
+                   if (n == 2)
+                     return 2;
+                   if (n == 3)
+                     return 6;
+                   if (n == 4)
+                     return 7;
+                   if (n % 4 == 1)
+                     return n + 2;
+                   if (n % 4 == 2)
+                     return n + 2;
+                   if (n % 4 == 3)
+                     return n - 1;
+                   return n + 1;  
+               };
+               
+               console.log(clumsy(4))`,
+                output: `7`,
               },
             }}
           />
         ),
       },
       q851: {
-        title: "Q (Q851)",
+        title: "Q1007. Minimum Domino Rotations For Equal Row (Q851)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q1007. Minimum Domino Rotations For Equal Row (Q851)"
+            content1={
+              <>
+                In a row of dominoes, tops[i] and bottoms[i] represent the top
+                and bottom halves of the ith domino. (A domino is a tile with
+                two numbers from 1 to 6 - one on each half of the tile.)
+                <br />
+                We may rotate the ith domino, so that tops[i] and bottoms[i]
+                swap values.
+                <br />
+                Return the minimum number of rotations so that all the values in
+                tops are the same, or all the values in bottoms are the same.
+                <br />
+                If it cannot be done, return -1.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2021/05/14/domino.png",
+                content: (
+                  <>
+                    Input: tops = [2,1,2,4,2,2], bottoms = [5,2,6,2,3,2]
+                    <br />
+                    Output: 2<br />
+                    Explanation: <br />
+                    The first figure represents the dominoes as given by tops
+                    and bottoms: before we do any rotations. If we rotate the
+                    second and fourth dominoes, we can make every value in the
+                    top row equal to 2, as indicated by the second figure.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: tops = [3,5,1,2,3], bottoms = [3,6,3,3,4]
+                    <br />
+                    Output: -1
+                    <br />
+                    Explanation: <br />
+                    In this case, it is not possible to rotate the dominoes to
+                    make one row of values equal.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                2 &lt;= tops.length &lt;= 2 * 10^4
+                <br />
+                bottoms.length == tops.length
+                <br />1 &lt;= tops[i], bottoms[i] &lt;= 6
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} tops
+                * @param {number[]} bottoms
+                * @return {number}
+                */
+               var minDominoRotations = function(tops, bottoms){
+                 const n = tops.length;
+                 const countA = Array(7).fill(0);
+                 const countB = Array(7).fill(0);
+                 const countBoth = Array(7).fill(0);
+                 for (let i = 0; i < n; ++i) {
+                   ++countA[tops[i]];
+                   ++countB[bottoms[i]];
+                   if (tops[i] == bottoms[i])
+                     ++countBoth[tops[i]];
+                 }
+                 for (let i = 1; i <= 6; ++i)
+                   if (countA[i] + countB[i] - countBoth[i] == n)
+                     return n - Math.max(countA[i], countB[i]);
+                 return -1;  
+               };
+               
+               console.log(minDominoRotations([2,1,2,4,2,2],[5,2,6,2,3,2]))`,
+                output: `2`,
               },
             }}
           />
         ),
       },
       q852: {
-        title: "Q (Q852)",
+        title:
+          "Q1008. Construct Binary Search Tree from Preorder Traversal (Q852)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q1008. Construct Binary Search Tree from Preorder Traversal (Q852)"
+            content1={
+              <>
+                Given an array of integers preorder, which represents the
+                preorder traversal of a BST (i.e., binary search tree),
+                construct the tree and return its root.
+                <br />
+                It is guaranteed that there is always possible to find a binary
+                search tree with the given requirements for the given test
+                cases.
+                <br />
+                A binary search tree is a binary tree where for every node, any
+                descendant of Node.left has a value strictly less than Node.val,
+                and any descendant of Node.right has a value strictly greater
+                than Node.val.
+                <br />A preorder traversal of a binary tree displays the value
+                of the node first, then traverses Node.left, then traverses
+                Node.right.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2019/03/06/1266.png",
+                content: (
+                  <>
+                    Input: preorder = [8,5,1,7,10,12]
+                    <br />
+                    Output: [8,5,10,1,7,null,12]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: preorder = [8,5,1,7,10,12]
+                    <br />
+                    Output: [8,5,10,1,7,null,12]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= preorder.length &lt;= 100
+                <br />
+                1 &lt;= preorder[i] &lt;= 1000
+                <br />
+                All the values of preorder are unique.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="h"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
-              },
-            }}
-          />
-        ),
-      },
-      q853: {
-        title: "Q (Q853)",
-        content: (
-          <Comp
-            content1={<></>}
-            content2={null}
-            examples={[
-              {
-                content: <></>,
-              },
-              {
-                content: <></>,
-              },
-            ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
-            codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+                code: ` function TreeNode(val, left, right) {
+                  this.val = (val===undefined ? 0 : val)
+                  this.left = (left===undefined ? null : left)
+                  this.right = (right===undefined ? null : right)
+             }
+             
+             /**
+              * @param {number[]} preorder
+              * @return {TreeNode}
+              */
+             var bstFromPreorder = function(preorder) {
+               const root = new TreeNode(preorder[0]);
+               const stack = [root];
+               for (let i = 1; i < preorder.length; ++i) {
+                 let parent = stack[stack.length-1];
+                 let child = new TreeNode(preorder[i]);
+                   while (stack.length && stack[stack.length-1].val < child.val)
+                     parent = stack.pop();
+                   if (parent.val > child.val)
+                     parent.left = child;
+                   else
+                     parent.right = child;
+                   stack.push(child);
+                 }
+                 return root;    
+             };
+             
+             console.log(bstFromPreorder([8,5,1,7,10,12]))`,
+                output: `TreeNode {
+                  val: 8,
+                  left: TreeNode {
+                    val: 5,
+                    left: TreeNode { val: 1, left: null, right: null },
+                    right: TreeNode { val: 7, left: null, right: null }
+                  },
+                  right: TreeNode {
+                    val: 10,
+                    left: null,
+                    right: TreeNode { val: 12, left: null, right: null }
+                  }
+                }`,
               },
             }}
           />
