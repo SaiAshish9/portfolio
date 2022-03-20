@@ -104547,6 +104547,701 @@ a = b + c;
           />
         ),
       },
+      q831: {
+        title: "Q987. Vertical Order Traversal of a Binary Tree (Q831)",
+        content: (
+          <Comp
+            title="Q987. Vertical Order Traversal of a Binary Tree (Q831)"
+            content1={
+              <>
+                Given the root of a binary tree, calculate the vertical order
+                traversal of the binary tree.
+                <br />
+                For each node at position (row, col), its left and right
+                children will be at positions (row + 1, col - 1) and (row + 1,
+                col + 1) respectively. The root of the tree is at (0, 0).
+                <br />
+                The vertical order traversal of a binary tree is a list of
+                top-to-bottom orderings for each column index starting from the
+                leftmost column and ending on the rightmost column. There may be
+                multiple nodes in the same row and same column. In such a case,
+                sort these nodes by their values.
+                <br />
+                Return the vertical order traversal of the binary tree.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                img: "https://assets.leetcode.com/uploads/2021/01/29/vtree1.jpg",
+                content: (
+                  <>
+                    Input: root = [3,9,20,null,null,15,7]
+                    <br /> Output: [[9],[3,15],[20],[7]]
+                    <br /> Explanation:
+                    <br /> Column -1: Only node 9 is in this column.
+                    <br /> Column 0: Nodes 3 and 15 are in this column in that
+                    order from top to bottom.
+                    <br /> Column 1: Only node 20 is in this column.
+                    <br /> Column 2: Only node 7 is in this column.
+                  </>
+                ),
+              },
+              {
+                img: "https://assets.leetcode.com/uploads/2021/01/29/vtree2.jpg",
+                content: (
+                  <>
+                    Input: root = [1,2,3,4,5,6,7]
+                    <br /> Output: [[4],[2],[1,5,6],[3],[7]]
+                    <br /> Explanation:
+                    <br /> Column -2: Only node 4 is in this column.
+                    <br /> Column -1: Only node 2 is in this column.
+                    <br /> Column 0: Nodes 1, 5, and 6 are in this column.
+                    <br /> 1 is at the top, so it comes first.
+                    <br /> 5 and 6 are at the same position (2, 0), so we order
+                    them by their value, 5 before 6.
+                    <br /> Column 1: Only node 3 is in this column.
+                    <br /> Column 2: Only node 7 is in this column.
+                  </>
+                ),
+              },
+              {
+                img: "https://assets.leetcode.com/uploads/2021/01/29/vtree3.jpg",
+                content: (
+                  <>
+                    Input: root = [1,2,3,4,6,5,7]
+                    <br /> Output: [[4],[2],[1,5,6],[3],[7]]
+                    <br /> Explanation:
+                    <br /> This case is the exact same as example 2, but with
+                    nodes 5 and 6 swapped.
+                    <br /> Note that the solution remains the same since 5 and 6
+                    are in the same location and should be ordered by their
+                    values.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                The number of nodes in the tree is in the range [1, 1000].
+                <br /> 0 &lt;= Node.val &lt;= 1000
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `// Input: root = [3,9,20,null,null,15,7]
+                /**
+                 * Definition for a binary tree node.
+                 * public class TreeNode {
+                 *     int val;
+                 *     TreeNode left;
+                 *     TreeNode right;
+                 *     TreeNode() {}
+                 *     TreeNode(int val) { this.val = val; }
+                 *     TreeNode(int val, TreeNode left, TreeNode right) {
+                 *         this.val = val;
+                 *         this.left = left;
+                 *         this.right = right;
+                 *     }
+                 * }
+                 */
+                class Solution {
+                  public List<List<Integer>> verticalTraversal(TreeNode root) {
+                    List<List<Integer>> ans = new ArrayList<>();
+                    TreeMap<Integer, List<int[]>> xToSortedPairs = new TreeMap<>(); 
+                    dfs(root, 0, 0, xToSortedPairs);
+                    for (List<int[]> pairs : xToSortedPairs.values()) {
+                      Collections.sort(pairs, (a, b) -> a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);
+                      List<Integer> vals = new ArrayList<>();
+                      for (int[] pair : pairs)
+                        vals.add(pair[1]);
+                      ans.add(vals);
+                    }
+                    return ans;
+                  }
+                
+                  private void dfs(TreeNode root, int x, int y, TreeMap<Integer, List<int[]>> xToSortedPairs) {
+                    if (root == null)
+                      return;
+                    xToSortedPairs.putIfAbsent(x, new ArrayList<>());
+                    xToSortedPairs.get(x).add(new int[] {y, root.val});
+                    dfs(root.left, x - 1, y + 1, xToSortedPairs);
+                    dfs(root.right, x + 1, y + 1, xToSortedPairs);
+                  }
+                }`,
+                output: `[[9],[3,15],[20],[7]]`,
+              },
+            }}
+          />
+        ),
+      },
+      q832: {
+        title: "Q988. Smallest String Starting From Leaf (Q832)",
+        content: (
+          <Comp
+            title="Q988. Smallest String Starting From Leaf (Q832)"
+            content1={
+              <>
+                You are given the root of a binary tree where each node has a
+                value in the range [0, 25] representing the letters 'a' to 'z'.
+                <br />
+                Return the lexicographically smallest string that starts at a
+                leaf of this tree and ends at the root.
+                <br />
+                As a reminder, any shorter prefix of a string is
+                lexicographically smaller.
+                <br />
+                For example, "ab" is lexicographically smaller than "aba".
+                <br /> A leaf of a node is a node that has no children.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: root = [0,1,2,3,4,3,4] <br />
+                    Output: "dba"
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: root = [25,1,3,1,3,0,2] <br />
+                    Output: "adz"
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: root = [2,2,1,null,1,0,null,0] <br />
+                    Output: "abc"
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                The number of nodes in the tree is in the range [1, 8500].
+                <br /> 0 &lt;= Node.val &lt;= 25
+              </>
+            }
+            tc="n.log n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `// Input: root = [0,1,2,3,4,3,4]
+                /**
+                 * Definition for a binary tree node.
+                 * public class TreeNode {
+                 *     int val;
+                 *     TreeNode left;
+                 *     TreeNode right;
+                 *     TreeNode() {}
+                 *     TreeNode(int val) { this.val = val; }
+                 *     TreeNode(int val, TreeNode left, TreeNode right) {
+                 *         this.val = val;
+                 *         this.left = left;
+                 *         this.right = right;
+                 *     }
+                 * }
+                 */
+                class Solution {
+                  public String smallestFromLeaf(TreeNode root) {
+                    dfs(root, new StringBuilder());
+                    return ans;
+                  }
+                
+                  private String ans = null;
+                
+                  private void dfs(TreeNode root, StringBuilder sb) {
+                    if (root == null)
+                      return;
+                    sb.append((char) (root.val + 'a'));
+                    if (root.left == null && root.right == null) {
+                      final String path = sb.reverse().toString();
+                      sb.reverse(); // roll back
+                      if (ans == null || ans.compareTo(path) > 0)
+                        ans = path;
+                    }
+                    dfs(root.left, sb);
+                    dfs(root.right, sb);
+                    sb.deleteCharAt(sb.length() - 1);
+                  }
+                }`,
+                output: `dba`,
+              },
+            }}
+          />
+        ),
+      },
+      q833: {
+        title: "Q989. Add to Array-Form of Integer (Q833)",
+        content: (
+          <Comp
+            title="Q989. Add to Array-Form of Integer (Q833)"
+            content1={
+              <>
+                The array-form of an integer num is an array representing its
+                digits in left to right order.
+                <br />
+                For example, for num = 1321, the array form is [1,3,2,1]. Given
+                num, the array-form of an integer, and an integer k, return the
+                array-form of the integer num + k.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: num = [1,2,0,0], k = 34
+                    <br />
+                    Output: [1,2,3,4]
+                    <br />
+                    Explanation: 1200 + 34 = 1234
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: num = [2,7,4], k = 181
+                    <br />
+                    Output: [4,5,5]
+                    <br />
+                    Explanation: 274 + 181 = 455
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: num = [2,1,5], k = 806
+                    <br />
+                    Output: [1,0,2,1]
+                    <br />
+                    Explanation: 215 + 806 = 1021
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= num.length &lt;= 10^4
+                <br />
+                0 &lt;= num[i] &lt;= 9<br />
+                num does not contain any leading zeros except for the zero
+                itself.
+                <br />1 &lt;= k &lt;= 10^4
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} num
+                * @param {number} k
+                * @return {number[]}
+                */
+               var addToArrayForm = function(num, k) {
+                const ans = [];
+                   for (let i = num.length - 1; i >= 0; --i) {
+                   ans.unshift((num[i] + k) % 10);
+                   k = parseInt((num[i] + k) / 10);
+                   }
+                 while (k > 0) {
+                   ans.unshift(k % 10);
+                   k = parseInt(k/10);
+                 }
+                 return ans;   
+               };
+               
+               console.log(addToArrayForm([1,2,0,0],34))`,
+                output: `[ 1, 2, 3, 4 `,
+              },
+            }}
+          />
+        ),
+      },
+      q834: {
+        title: "Q990. Satisfiability of Equality Equations (Q834)",
+        content: (
+          <Comp
+            title="Q990. Satisfiability of Equality Equations (Q834)"
+            content1={
+              <>
+                You are given an array of strings equations that represent
+                relationships between variables where each string equations[i]
+                is of length 4 and takes one of two different forms: "xi==yi" or
+                "xi!=yi".Here, xi and yi are lowercase letters (not necessarily
+                different) that represent one-letter variable names.
+                <br />
+                Return true if it is possible to assign integers to variable
+                names so as to satisfy all the given equations, or false
+                otherwise.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: equations = ["a==b","b!=a"]
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation: If we assign say, a = 1 and b = 1, then the
+                    first equation is satisfied, but not the second. There is no
+                    way to assign the variables to satisfy both equations.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: equations = ["b==a","a==b"]
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation: We could assign a = 1 and b = 1 to satisfy both
+                    equations.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= equations.length &lt;= 500
+                <br />
+                equations[i].length == 4
+                <br />
+                equations[i][0] is a lowercase letter.
+                <br />
+                equations[i][1] is either '=' or '!'.
+                <br />
+                equations[i][2] is '='.
+                <br />
+                equations[i][3] is a lowercase letter.
+              </>
+            }
+            tc="n.log n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `// Input: equations = ["a==b","b!=a"]
+                class UF {
+                  public int[] id;
+                
+                  public UF(int n) {
+                    id = new int[n];
+                    for (int i = 0; i < n; ++i)
+                      id[i] = i;
+                  }
+                
+                  public void union(int u, int v) {
+                    id[find(u)] = find(v);
+                  }
+                
+                  public int find(int u) {
+                    return id[u] == u ? u : (id[u] = find(id[u]));
+                  }
+                }
+                class Solution {
+                  public boolean equationsPossible(String[] equations) {
+                    UF uf = new UF(26);
+                    for (final String e : equations)
+                      if (e.charAt(1) == '=') {
+                        final int x = e.charAt(0) - 'a';
+                        final int y = e.charAt(3) - 'a';
+                        uf.union(x, y);
+                      }
+                    for (final String e : equations)
+                      if (e.charAt(1) == '!') {
+                        final int x = e.charAt(0) - 'a';
+                        final int y = e.charAt(3) - 'a';
+                        if (uf.find(x) == uf.find(y))
+                          return false;
+                      }
+                    return true;
+                  }
+                }`,
+                output: `false`,
+              },
+            }}
+          />
+        ),
+      },
+      q835: {
+        title: "Q991. Broken Calculator (Q835)",
+        content: (
+          <Comp
+            title="Q991. Broken Calculator (Q835)"
+            content1={
+              <>
+                There is a broken calculator that has the integer startValue on
+                its display initially. In one operation, you can:
+                <br />
+                multiply the number on display by 2, or
+                <br />
+                subtract 1 from the number on display.
+                <br />
+                Given two integers startValue and target, return the minimum
+                number of operations needed to display target on the calculator.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: startValue = 2, target = 3<br />
+                    Output: 2<br />
+                    Explanation: Use double operation and then decrement
+                    operation {"{2 -> 4 -> 3}"}.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: startValue = 5, target = 8<br />
+                    Output: 2<br />
+                    Explanation: Use decrement and then double {"{5 -> 4 -> 8}"}
+                    .
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: startValue = 3, target = 10
+                    <br />
+                    Output: 3<br />
+                    Explanation: Use double, decrement and double{" "}
+                    {"{3 -> 6 -> 5 -> 10}"}.
+                  </>
+                ),
+              },
+            ]}
+            constraints={<>1 &lt;= x, y &lt;= 109</>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number} startValue
+                * @param {number} target
+                * @return {number}
+                */
+               var brokenCalc = function(startValue, target){
+                 let ops = 0;
+                 while (startValue < target) {
+                   if (target % 2 == 0)
+                     target = parseInt(target/2);
+                   else
+                     target += 1;
+                   ++ops;
+                 }
+                 return ops + startValue - target;   
+               };
+               
+               console.log(brokenCalc(2,3))`,
+                output: `2`,
+              },
+            }}
+          />
+        ),
+      },
+      q836: {
+        title: "Q992. Subarrays with K Different Integers  (Q836)",
+        content: (
+          <Comp
+            title="Q992. Subarrays with K Different Integers  (Q836)"
+            content1={
+              <>
+                Given an integer array nums and an integer k, return the number
+                of good subarrays of nums.
+                <br />
+                A good array is an array where the number of different integers
+                in that array is exactly k.
+                <br />
+                For example, [1,2,3,1,2] has 3 different integers: 1, 2, and 3.
+                A subarray is a contiguous part of an array.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [1,2,1,2,3], k = 2<br />
+                    Output: 7<br />
+                    Explanation: Subarrays formed with exactly 2 different
+                    integers: [1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2],
+                    [1,2,1,2]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [1,2,1,3,4], k = 3<br />
+                    Output: 3<br />
+                    Explanation: Subarrays formed with exactly 3 different
+                    integers: [1,2,1,3], [2,1,3], [1,3,4].
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 2 * 10^4
+                <br />1 &lt;= nums[i], k &lt;= nums.length
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} k
+                * @return {number}
+                */
+               var subarraysWithKDistinct = function(nums, k) {
+                 return subarraysWithAtMostKDistinct(nums, k) - subarraysWithAtMostKDistinct(nums, k - 1);   
+               };
+               function subarraysWithAtMostKDistinct(A, K) {
+                   let ans = 0;
+                   const count = Array(A.length + 1).fill(0);
+                   for (let l = 0, r = 0; r < A.length; ++r) {
+                     if (++count[A[r]] == 1)
+                       --K;
+                     while (K == -1)
+                       if (--count[A[l++]] == 0)
+                         ++K;
+                     ans += r - l + 1; 
+                   }
+                   return ans;
+               }
+               console.log(subarraysWithKDistinct([1,2,1,2,3],2))`,
+                output: `7`,
+              },
+            }}
+          />
+        ),
+      },
+      q837: {
+        title: "Q993. Cousins in Binary Tree (Q837)",
+        content: (
+          <Comp
+            title="Q993. Cousins in Binary Tree (Q837)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q838: {
+        title: "Q (Q838)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q839: {
+        title: "Q (Q839)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q840: {
+        title: "Q (Q840)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
     },
   },
   notes: {
