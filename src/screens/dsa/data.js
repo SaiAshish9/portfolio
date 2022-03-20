@@ -106099,7 +106099,7 @@ a = b + c;
                 queries[j].length == 2<br />0 &lt;= rowj, colj &lt; n
               </>
             }
-            tc="n"
+            tc="n^3"
             sc="n"
             codes={{
               Java: {
@@ -106153,78 +106153,243 @@ a = b + c;
         ),
       },
       q846: {
-        title: "Q (Q846)",
+        title: "Q1002. Find Common Characters (Q846)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q1002. Find Common Characters (Q846)"
+            content1={
+              <>
+                Given a string array words, return an array of all characters
+                that show up in all strings within the words (including
+                duplicates). You may return the answer in any order.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words = ["bella","label","roller"]
+                    <br /> Output: ["e","l","l"]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: words = ["cool","lock","cook"]
+                    <br /> Output: ["c","o"]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                1 &lt;= words.length &lt;= 100 <br />
+                1 &lt;= words[i].length &lt;= 100
+                <br />
+                words[i] consists of lowercase English letter
+              </>
+            }
+            tc="n^2"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input: words = ["bella","label","roller"]
+                class Solution {
+                  public List<String> commonChars(String[] A) {
+                    List<String> ans = new ArrayList<>();
+                    int[] commonCount = new int[26];
+                    Arrays.fill(commonCount, Integer.MAX_VALUE);
+                    for (String a : A) {
+                      int[] count = new int[26];
+                      for (char c : a.toCharArray())
+                        ++count[c - 'a'];
+                      for (int i = 0; i < 26; ++i)
+                        commonCount[i] = Math.min(commonCount[i], count[i]);
+                    }
+                    for (char c = 'a'; c <= 'z'; ++c)
+                      for (int i = 0; i < commonCount[c - 'a']; ++i)
+                        ans.add(String.valueOf(c));
+                    return ans;
+                  }
+                }`,
+                output: `["e","l","l"]`,
               },
             }}
           />
         ),
       },
       q847: {
-        title: "Q (Q847)",
+        title: "Q1003. Check If Word Is Valid After Substitutions (Q847)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q1003. Check If Word Is Valid After Substitutions (Q847)"
+            content1={
+              <>
+                Given a string s, determine if it is valid.
+                <br />
+                A string s is valid if, starting with an empty string t = "",
+                you can transform t into s after performing the following
+                operation any number of times:
+                <br />
+                Insert string "abc" into any position in t. More formally, t
+                becomes tleft + "abc" + tright, where t == tleft + tright. Note
+                that tleft and tright may be empty. Return true if s is a valid
+                string, otherwise, return false.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "aabcbc" Output: true
+                    <br />
+                    Explanation:
+                    <br />
+                    "" -&gt; "abc" -&gt; "aabcbc"
+                    <br />
+                    Thus, "aabcbc" is valid.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: s = "abcabcababcc"
+                    <br />
+                    Output: true
+                    <br />
+                    Explanation:
+                    <br />
+                    "" -&gt; "abc" -&gt; "abcabc" -&gt; "abcabcabc" -&gt;
+                    "abcabcababcc" Thus, "abcabcababcc" is valid.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: s = "abccba"
+                    <br />
+                    Output: false
+                    <br />
+                    Explanation: It is impossible to get "abccba" using the
+                    operation.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= s.length &lt;= 2 * 10^4
+                <br />s consists of letters 'a', 'b', and 'c'
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string} s
+                * @return {boolean}
+                */
+               var isValid = function(s) {
+                 const stack = [];
+                   for (let c of s)
+                     if (c == 'c') {
+                       if (stack.length < 2)
+                         return false;
+                       if (stack[stack.length-1] != 'b')
+                         return false;
+                       stack.pop();
+                       if (stack[stack.length-1] != 'a')
+                         return false;
+                       stack.pop();
+                     } else {
+                       stack.push(c);
+                     }
+                   return !stack.length;    
+               };
+               
+               console.log(isValid("aabcbc"))`,
+                output: `true`,
               },
             }}
           />
         ),
       },
       q848: {
-        title: "Q (Q848)",
+        title: "Q1004. Max Consecutive Ones III (Q848)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q1004. Max Consecutive Ones III (Q848)"
+            content1={
+              <>
+                Given a binary array nums and an integer k, return the maximum
+                number of consecutive 1's in the array if you can flip at most k
+                0's.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
+                    <br /> Output: 6<br />
+                    Explanation: [1,1,1,0,0,1,1,1,1,1,1]
+                    <br />
+                    Bolded numbers were flipped from 0 to 1. The longest
+                    subarray is underlined.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], k = 3
+                    <br /> Output: 10
+                    <br />
+                    Explanation: [0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1] Bolded
+                    numbers were flipped from 0 to 1. The longest subarray is
+                    underlined.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 10^5
+                <br />
+                nums[i] is either 0 or 1.
+                <br />0 &lt;= k &lt;= nums.length
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} k
+                * @return {number}
+                */
+               var longestOnes = function(nums, k) {
+                 let ans = 0;
+                 for (let l = 0, r = 0; r < nums.length; ++r) {
+                     if (nums[r] == 0)
+                       --k;
+                     while (k < 0)
+                       if (nums[l++] == 0)
+                         ++k;
+                     ans = Math.max(ans, r - l + 1);
+                   }
+                   return ans;    
+               };
+               console.log(longestOnes([1,1,1,0,0,0,1,1,1,1,0],2))`,
+                output: `6`,
               },
             }}
           />
