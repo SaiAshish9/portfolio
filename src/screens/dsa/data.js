@@ -102674,6 +102674,386 @@ a = b + c;
           />
         ),
       },
+      q812: {
+        title: "Q968. Binary Tree Cameras (Q812)",
+        content: (
+          <Comp
+            title="Q968. Binary Tree Cameras (Q812)"
+            content1={
+              <>
+                You are given the root of a binary tree. We install cameras on
+                the tree nodes where each camera at a node can monitor its
+                parent, itself, and its immediate children.
+                <br />
+                Return the minimum number of cameras needed to monitor all nodes
+                of the tree.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                img: "https://assets.leetcode.com/uploads/2018/12/29/bst_cameras_01.png",
+                content: (
+                  <>
+                    Input: root = [0,0,null,0,0]
+                    <br />
+                    Output: 1<br />
+                    Explanation: One camera is enough to monitor all nodes if
+                    placed as shown.
+                  </>
+                ),
+              },
+              {
+                img: "https://assets.leetcode.com/uploads/2018/12/29/bst_cameras_02.png",
+                content: (
+                  <>
+                    Input: root = [0,0,null,0,null,0,null,null,0]
+                    <br />
+                    Output: 2<br />
+                    Explanation: At least two cameras are needed to monitor all
+                    nodes of the tree. The above image shows one of the valid
+                    configurations of camera placement.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                The number of nodes in the tree is in the range [1, 1000].
+                <br />
+                Node.val == 0
+              </>
+            }
+            tc="n"
+            sc="h"
+            codes={{
+              Java: {
+                code: `// Input: root = [0,0,null,0,null,0,null,null,0]
+                /**
+                 * Definition for a binary tree node.
+                 * public class TreeNode {
+                 *     int val;
+                 *     TreeNode left;
+                 *     TreeNode right;
+                 *     TreeNode() {}
+                 *     TreeNode(int val) { this.val = val; }
+                 *     TreeNode(int val, TreeNode left, TreeNode right) {
+                 *         this.val = val;
+                 *         this.left = left;
+                 *         this.right = right;
+                 *     }
+                 * }
+                 */
+                class Solution {
+                  public int minCameraCover(TreeNode root) {
+                    int[] ans = dfs(root);
+                    return Math.min(ans[1], ans[2]);
+                  }
+                  private int[] dfs(TreeNode root) {
+                    if (root == null)
+                      return new int[] {0, 0, 1000};
+                    int[] l = dfs(root.left);
+                    int[] r = dfs(root.right);
+                    final int s0 = l[1] + r[1];
+                    final int s1 = Math.min(l[2] + Math.min(r[1], r[2]),
+                                            r[2] + Math.min(l[1], l[2]));
+                    final int s2 = 1 + Math.min(l[0], Math.min(l[1], l[2])) +
+                                       Math.min(r[0], Math.min(r[1], r[2]));
+                    return new int[] { s0, s1, s2 };
+                  }
+                }`,
+                output: `2`,
+              },
+            }}
+          />
+        ),
+      },
+      q813: {
+        title: "Q969. Pancake Sorting (Q813)",
+        content: (
+          <Comp
+            title="Q969. Pancake Sorting (Q813)"
+            content1={
+              <>
+                Given an array of integers arr, sort the array by performing a
+                series of pancake flips.
+                <br />
+                In one pancake flip we do the following steps:
+                <br />
+                Choose an integer k where 1 &lt;= k &lt;= arr.length.
+                <br />
+                Reverse the sub-array arr[0...k-1] (0-indexed).
+                <br />
+                For example, if arr = [3,2,1,4] and we performed a pancake flip
+                choosing k = 3, we reverse the sub-array [3,2,1], so arr =
+                [1,2,3,4] after the pancake flip at k = 3.
+                <br />
+                Return an array of the k-values corresponding to a sequence of
+                pancake flips that sort arr. Any valid answer that sorts the
+                array within 10 * arr.length flips will be judged as correct.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: arr = [3,2,4,1] <br />
+                    Output: [4,2,4,3] <br />
+                    Explanation: <br />
+                    We perform 4 pancake flips, with k values 4, 2, 4, and 3.{" "}
+                    <br />
+                    Starting state: arr = [3, 2, 4, 1] <br />
+                    After 1st flip (k = 4): arr = [1, 4, 2, 3] <br />
+                    After 2nd flip (k = 2): arr = [4, 1, 2, 3] <br />
+                    After 3rd flip (k = 4): arr = [3, 2, 1, 4] <br />
+                    After 4th flip (k = 3): arr = [1, 2, 3, 4], which is sorted.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: arr = [1,2,3] <br />
+                    Output: [] <br />
+                    Explanation: The input is already sorted, so there is no
+                    need to flip anything.
+                    <br /> Note that other answers, such as [3, 3], would also
+                    be accepted.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= arr.length &lt;= 100 <br />
+                1 &lt;= arr[i] &lt;= arr.length <br />
+                All integers in arr are unique (i.e. arr is a permutation of the
+                integers from 1 to arr.length).
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Java: {
+                code: `// Input: arr = [3,2,4,1]
+                class Solution {
+                  public List<Integer> pancakeSort(int[] A) {
+                    List<Integer> ans = new ArrayList<>();
+                    for (int target = A.length; target >= 1; --target) {
+                      int index = find(A, target);
+                      reverse(A, 0, index);
+                      reverse(A, 0, target - 1);
+                      ans.add(index + 1);
+                      ans.add(target);
+                    }
+                    return ans;
+                  }
+                  private int find(int[] A, int target) {
+                    for (int i = 0; i < A.length; ++i)
+                      if (A[i] == target)
+                        return i;
+                    throw new IllegalArgumentException();
+                  }
+                  private void reverse(int[] A, int l, int r) {
+                    while (l < r)
+                      swap(A, l++, r--);
+                  }
+                  private void swap(int[] A, int l, int r) {
+                    int temp = A[l];
+                    A[l] = A[r];
+                    A[r] = temp;
+                  }
+                }
+                `,
+                output: `[4,2,4,3]`,
+              },
+            }}
+          />
+        ),
+      },
+      q814: {
+        title: "Q (Q814)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q815: {
+        title: "Q (Q815)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q816: {
+        title: "Q (Q816)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q817: {
+        title: "Q (Q817)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q818: {
+        title: "Q (Q818)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q819: {
+        title: "Q (Q819)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q820: {
+        title: "Q (Q820)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
     },
   },
   notes: {
