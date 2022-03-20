@@ -106021,23 +106021,132 @@ a = b + c;
         content: (
           <Comp
             title="Q1001. Grid Illumination (Q845)"
-            content1={<></>}
+            content1={
+              <>
+                There is a 2D grid of size n x n where each cell of this grid
+                has a lamp that is initially turned off.
+                <br />
+                You are given a 2D array of lamp positions lamps, where lamps[i]
+                = [rowi, coli] indicates that the lamp at grid[rowi][coli] is
+                turned on. Even if the same lamp is listed more than once, it is
+                turned on.
+                <br />
+                When a lamp is turned on, it illuminates its cell and all other
+                cells in the same row, column, or diagonal.
+                <br />
+                You are also given another 2D array queries, where queries[j] =
+                [rowj, colj]. For the jth query, determine whether
+                grid[rowj][colj] is illuminated or not. After answering the jth
+                query, turn off the lamp at grid[rowj][colj] and its 8 adjacent
+                lamps if they exist. A lamp is adjacent if its cell shares
+                either a side or corner with grid[rowj][colj].
+                <br />
+                Return an array of integers ans, where ans[j] should be 1 if the
+                cell in the jth query was illuminated, or 0 if the lamp was not.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2020/08/19/illu_1.jpg",
+                content: (
+                  <>
+                    Input: n = 5, lamps = [[0,0],[4,4]], queries = [[1,1],[1,0]]
+                    <br /> Output: [1,0] <br />
+                    Explanation: We have the initial grid with all lamps turned
+                    off. In the above picture we see the grid after turning on
+                    the lamp at grid[0][0] then turning on the lamp at
+                    grid[4][4].
+                    <br /> The 0th query asks if the lamp at grid[1][1] is
+                    illuminated or not (the blue square). It is illuminated, so
+                    set ans[0] = 1. Then, we turn off all lamps in the red
+                    square.
+                    <br /> The 1st query asks if the lamp at grid[1][0] is
+                    illuminated or not (the blue square). It is not illuminated,
+                    so set ans[1] = 0. Then, we turn off all lamps in the red
+                    rectangle.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: n = 5, lamps = [[0,0],[4,4]], queries = [[1,1],[1,1]]
+                    <br /> Output: [1,1]
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: n = 5, lamps = [[0,0],[0,4]], queries =
+                    [[0,4],[0,1],[1,4]]
+                    <br /> Output: [1,1,0]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= n &lt;= 109
+                <br />
+                0 &lt;= lamps.length &lt;= 20000
+                <br />
+                0 &lt;= queries.length &lt;= 20000
+                <br />
+                lamps[i].length == 2<br />
+                0 &lt;= rowi, coli &lt; n<br />
+                queries[j].length == 2<br />0 &lt;= rowj, colj &lt; n
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input: n = 5, lamps = [[0,0],[4,4]], queries = [[1,1],[1,0]]
+                class Solution {
+                  public int[] gridIllumination(int N, int[][] lamps, int[][] queries) {
+                    List<Integer> ans = new ArrayList<>();
+                    Map<Integer, Integer> rows = new HashMap<>();
+                    Map<Integer, Integer> cols = new HashMap<>();
+                    Map<Integer, Integer> diag1 = new HashMap<>();
+                    Map<Integer, Integer> diag2 = new HashMap<>();
+                    Set<Long> lampsSet = new HashSet<>();
+                    for (int[] lamp : lamps) {
+                      int i = lamp[0];
+                      int j = lamp[1];
+                      if (lampsSet.add(hash(i, j))) {
+                        rows.put(i, rows.getOrDefault(i, 0) + 1);
+                        cols.put(j, cols.getOrDefault(j, 0) + 1);
+                        diag1.put(i + j, diag1.getOrDefault(i + j, 0) + 1);
+                        diag2.put(i - j, diag2.getOrDefault(i - j, 0) + 1);
+                      }
+                    }
+                    for (int[] q : queries) {
+                      int i = q[0];
+                      int j = q[1];
+                      if (rows.getOrDefault(i, 0) > 0 || cols.getOrDefault(j, 0) > 0 ||
+                          diag1.getOrDefault(i + j, 0) > 0 || diag2.getOrDefault(i - j, 0) > 0) {
+                        ans.add(1);
+                        for (int y = Math.max(0, i - 1); y < Math.min(N, i + 2); ++y)
+                          for (int x = Math.max(0, j - 1); x < Math.min(N, j + 2); ++x)
+                            if (lampsSet.remove(hash(y, x))) {
+                              rows.put(y, rows.getOrDefault(y, 0) - 1);
+                              cols.put(x, cols.getOrDefault(x, 0) - 1);
+                              diag1.put(y + x, diag1.getOrDefault(y + x, 0) - 1);
+                              diag2.put(y - x, diag2.getOrDefault(y - x, 0) - 1);
+                            }
+                      } else
+                        ans.add(0);
+                    }
+                    return ans.stream().mapToInt(i -> i).toArray();
+                  }
+                
+                  private long hash(int i, int j) {
+                    return ((long) i << 32) + j;
+                  }
+                }`,
+                output: `[1,0]`,
               },
             }}
           />
