@@ -102374,13 +102374,22 @@ a = b + c;
         ),
       },
       q809: {
-        title: "Q(Q809)",
+        title: "Q965. Univalued Binary Tree (Q809)",
         content: (
           <Comp
-            content1={<></>}
+            content1={
+              <>
+                A binary tree is uni-valued if every node in the tree has the
+                same value.
+                <br />
+                Given the root of a binary tree, return true if the given tree
+                is uni-valued, or false otherwise.
+              </>
+            }
             content2={null}
             examples={[
               {
+                img: "https://assets.leetcode.com/uploads/2018/12/28/unival_bst_1.png",
                 content: <></>,
               },
               {
