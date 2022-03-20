@@ -101968,124 +101968,406 @@ a = b + c;
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string[]} strs
+                * @return {number}
+                */
+               var minDeletionSize = function(strs) {
+                 const n = strs[0].length;
+                 const dp = Array(n).fill(1);
+                 for (let i = 1; i < n; ++i)
+                 for (let j = 0; j < i; ++j)
+                   if (isSorted(strs, j, i))
+                     dp[i] = Math.max(dp[i], dp[j] + 1);
+                   return n - Math.max(...dp)  
+               };
+               
+               function isSorted(A, j, i) {
+                   for (let a of A)
+                     if (a.charAt(j) > a.charAt(i))
+                       return false;
+                   return true;
+               }
+               
+               console.log(minDeletionSize(["babca","bbazb"]))`,
+                output: `3`,
               },
             }}
           />
         ),
       },
       q805: {
-        title: "Q(Q805)",
+        title: "Q961. N-Repeated Element in Size 2N Array (Q805)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q961. N-Repeated Element in Size 2N Array (Q805)"
+            content1={
+              <>
+                You are given an integer array nums with the following
+                properties:
+                <br />
+                nums.length == 2 * n.
+                <br />
+                nums contains n + 1 unique elements.
+                <br />
+                Exactly one element of nums is repeated n times.
+                <br />
+                Return the element that is repeated n times.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,3]
+                    <br />
+                    Output: 3
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [2,1,2,5,3,2]
+                    <br />
+                    Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [5,1,5,2,5,3,5,4]
+                    <br />
+                    Output: 5
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                2 &lt;= n &lt;= 5000
+                <br />
+                nums.length == 2 * n<br />
+                0 &lt;= nums[i] &lt;= 10^4
+                <br />
+                nums contains n + 1 unique elements and one of them is repeated
+                exactly n times.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var repeatedNTimes = function(nums) {
+                for (let i = 0; i + 2 < nums.length; ++i)
+                     if (nums[i] == nums[i + 1] || nums[i] == nums[i + 2])
+                   return nums[i];
+                 return nums[nums.length - 1];   
+               };
+               
+               console.log(repeatedNTimes([1,2,3,3]))`,
+                output: `3`,
               },
             }}
           />
         ),
       },
       q806: {
-        title: "Q(Q806)",
+        title: "Q962. Maximum Width Ramp (Q806)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q962. Maximum Width Ramp (Q806)"
+            content1={
+              <>
+                A ramp in an integer array nums is a pair (i, j) for which i
+                &lt; j and nums[i] &lt;= nums[j]. The width of such a ramp is j
+                - i.
+                <br />
+                Given an integer array nums, return the maximum width of a ramp
+                in nums. If there is no ramp in nums, return 0.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [6,0,8,2,1,5] <br />
+                    Output: 4 <br />
+                    Explanation: The maximum width ramp is achieved at (i, j) =
+                    (1, 5): nums[1] = 0 and nums[5] = 5.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [9,8,1,0,1,9,4,0,4,1] <br />
+                    Output: 7 <br />
+                    Explanation: The maximum width ramp is achieved at (i, j) =
+                    (2, 9): nums[2] = 1 and nums[9] = 1.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                2 &lt;= nums.length &lt;= 5 * 10^4 <br />0 &lt;= nums[i] &lt;= 5
+                * 10^4
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `
+                // Input: nums = [6,0,8,2,1,5]
+                class Solution {
+                  public int maxWidthRamp(int[] nums) {
+                    int ans = 0;
+                    Deque<Integer> stack = new ArrayDeque<>();
+                    for (int i = 0; i < nums.length; ++i)
+                      if (stack.isEmpty() || nums[i] < nums[stack.peek()])
+                        stack.push(i);
+                    for (int i = nums.length - 1; i > ans; --i)
+                      while (!stack.isEmpty() && nums[i] >= nums[stack.peek()])
+                        ans = Math.max(ans, i - stack.pop());
+                    return ans;
+                  }
+                }
+                `,
+                output: `4`,
               },
             }}
           />
         ),
       },
       q807: {
-        title: "Q(Q807)",
+        title: "Q963. Minimum Area Rectangle II (Q807)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q963. Minimum Area Rectangle II (Q807)"
+            content1={
+              <>
+                You are given an array of points in the X-Y plane points where
+                points[i] = [xi, yi].
+                <br />
+                Return the minimum area of any rectangle formed from these
+                points, with sides not necessarily parallel to the X and Y axes.
+                If there is not any such rectangle, return 0.
+                <br />
+                Answers within 10-5 of the actual answer will be accepted.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2018/12/21/1a.png",
+                content: (
+                  <>
+                    Input: points = [[1,2],[2,1],[1,0],[0,1]] <br />
+                    Output: 2.00000
+                    <br />
+                    Explanation: The minimum area rectangle occurs at
+                    [1,2],[2,1],[1,0],[0,1], with an area of 2.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2018/12/22/2.png",
+                content: (
+                  <>
+                    Input: points = [[0,1],[2,1],[1,1],[1,0],[2,0]]
+                    <br />
+                    Output: 1.00000
+                    <br />
+                    Explanation: The minimum area rectangle occurs at
+                    [1,0],[1,1],[2,1],[2,0], with an area of 1.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2018/12/22/3.png",
+                content: (
+                  <>
+                    Input: points = [[0,3],[1,2],[3,1],[1,3],[2,1]]
+                    <br />
+                    Output: 0<br />
+                    Explanation: There is no possible rectangle to form from
+                    these points.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                1 &lt;= points.length &lt;= 50
+                <br />
+                points[i].length == 2<br />
+                0 &lt;= xi, yi &lt;= 4 * 10^4
+                <br />
+                All the given points are unique.
+              </>
+            }
+            tc="n^2"
+            sc="n^2"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input: points = [[1,2],[2,1],[1,0],[0,1]]
+                class Solution {
+                  public double minAreaFreeRect(int[][] points) {
+                    Long ans = Long.MAX_VALUE;
+                    Map<Integer, List<int[]>> centerToPoints = new HashMap<>();
+                
+                    for (int[] A : points)
+                      for (int[] B : points) {
+                        int center = hash(A, B);
+                        if (centerToPoints.get(center) == null)
+                          centerToPoints.put(center, new ArrayList<>());
+                        centerToPoints.get(center).add(new int[] {A[0], A[1], B[0], B[1]});
+                      }
+                
+                    for (List<int[]> pointPairs : centerToPoints.values())
+                      for (int[] ab : pointPairs)
+                        for (int[] cd : pointPairs) {
+                          final int ax = ab[0], ay = ab[1];
+                          final int cx = cd[0], cy = cd[1];
+                          final int dx = cd[2], dy = cd[3];
+                          if ((cx - ax) * (dx - ax) + (cy - ay) * (dy - ay) == 0) {
+                            Long squaredArea = dist(ax, ay, cx, cy) * dist(ax, ay, dx, dy);
+                            if (squaredArea > 0)
+                              ans = Math.min(ans, squaredArea);
+                          }
+                        }
+                    return ans == Long.MAX_VALUE ? 0 : Math.sqrt(ans);
+                  }
+                
+                  private int hash(int[] p, int[] q) {
+                    return ((p[0] + q[0]) << 16) + (p[1] + q[1]);
+                  }
+                
+                  private Long dist(long px, long py, long qx, long qy) {
+                    return (px - qx) * (px - qx) + (py - qy) * (py - qy);
+                  }
+                }`,
+                output: `2.00000`,
               },
             }}
           />
         ),
       },
       q808: {
-        title: "Q(Q808)",
+        title: "Q964. Least Operators to Express Number (Q808)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q964. Least Operators to Express Number (Q808)"
+            content1={
+              <>
+                Given a single positive integer x, we will write an expression
+                of the form x (op1) x (op2) x (op3) x ... where each operator
+                op1, op2, etc. is either addition, subtraction, multiplication,
+                or division (+, -, *, or /). For example, with x = 3, we might
+                write 3 * 3 / 3 + 3 - 3 which is a value of 3.
+                <br />
+                When writing such an expression, we adhere to the following
+                conventions:
+                <br />
+                The division operator (/) returns rational numbers.
+                <br />
+                There are no parentheses placed anywhere.
+                <br />
+                We use the usual order of operations: multiplication and
+                division happen before addition and subtraction.
+                <br />
+                It is not allowed to use the unary negation operator (-). For
+                example, "x - x" is a valid expression as it only uses
+                subtraction, but "-x + x" is not because it uses negation.
+                <br />
+                We would like to write an expression with the least number of
+                operators such that the expression equals the given target.
+                Return the least number of operators used.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: x = 3, target = 19 <br />
+                    Output: 5 <br />
+                    Explanation: 3 * 3 + 3 * 3 + 3 / 3. <br />
+                    The expression contains 5 operations.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: x = 5, target = 501 <br />
+                    Output: 8 <br />
+                    Explanation: 5 * 5 * 5 * 5 - 5 * 5 * 5 + 5 / 5. <br />
+                    The expression contains 8 operations.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: x = 100, target = 100000000 <br />
+                    Output: 3 <br />
+                    Explanation: 100 * 100 * 100 * 100. <br />
+                    The expression contains 3 operations.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                2 &lt;= x &lt;= 10^0 <br />1 &lt;= target &lt;= 2 * 10^8
+              </>
+            }
+            tc="log n"
+            sc="log n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input: x = 3, target = 19
+                class Solution {
+                  public int leastOpsExpressTarget(int x, int target) {
+                    return dfs(x, target);
+                  }
+                  private Map<Integer, Integer> memo = new HashMap<>();
+                  private int dfs(int x, int target) {
+                    if (memo.containsKey(target))
+                      return memo.get(target);
+                    if (x > target)
+                      return Math.min(2 * target - 1, 2 * (x - target));
+                    if (x == target)
+                      return 0;
+                    long prod = x;
+                    int n = 0;
+                    while (prod < target) {
+                      prod *= x;
+                      ++n;
+                    }
+                    if (prod == target) {
+                      memo.put(target, n);
+                      return memo.get(target);
+                    }
+                    int ans = dfs(x, target - (int) (prod / (long) x)) + n;
+                    if (prod < 2 * target)
+                      ans = Math.min(ans, dfs(x, (int) (prod - (long) target)) + n + 1);
+                    memo.put(target, ans);
+                    return ans;
+                  }
+                }
+                `,
+                output: `5`,
               },
             }}
           />
