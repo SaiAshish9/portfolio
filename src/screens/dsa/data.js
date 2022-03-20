@@ -103515,7 +103515,355 @@ a = b + c;
         ),
       },
       q820: {
-        title: "Q (Q820)",
+        title: "Q976. Largest Perimeter Triangle (Q820)",
+        content: (
+          <Comp
+            title="Q976. Largest Perimeter Triangle (Q820)"
+            content1={
+              <>
+                Given an integer array nums, return the largest perimeter of a
+                triangle with a non-zero area, formed from three of these
+                lengths. If it is impossible to form any triangle of a non-zero
+                area, return 0.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [2,1,2] <br />
+                    Output: 5
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [1,2,1] <br />
+                    Output: 0
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                3 &lt;= nums.length &lt;= 10^4 <br />1 &lt;= nums[i] &lt;= 10^6
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var largestPerimeter = function(nums) {
+                 nums = nums.sort((a,b)=>a-b)
+                 for (let i = nums.length - 1; i > 1; --i)
+                     if (nums[i - 2] + nums[i - 1] > nums[i])
+                       return nums[i - 2] + nums[i - 1] + nums[i];
+                 return 0;    
+               };
+               console.log(largestPerimeter([2,1,2]))`,
+                output: `5`,
+              },
+            }}
+          />
+        ),
+      },
+      q821: {
+        title: "Q977. Squares of a Sorted Array (Q821)",
+        content: (
+          <Comp
+            title="Q977. Squares of a Sorted Array (Q821)"
+            content1={
+              <>
+                Given an integer array nums sorted in non-decreasing order,
+                return an array of the squares of each number sorted in
+                non-decreasing order.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: nums = [-4,-1,0,3,10] <br />
+                    Output: [0,1,9,16,100]
+                    <br />
+                    Explanation: After squaring, the array becomes
+                    [16,1,0,9,100].
+                    <br />
+                    After sorting, it becomes [0,1,9,16,100].
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [-7,-3,2,3,11]
+                    <br />
+                    Output: [4,9,9,49,121]
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 10^4
+                <br />
+                -10^4 &lt;= nums[i] &lt;= 10^4
+                <br />
+                nums is sorted in non-decreasing order.
+              </>
+            }
+            fp={
+              <>
+                <b>Follow up: </b>Squaring each element and sorting the new
+                array is very trivial, could you find an O(n) solution using a
+                different approach?
+              </>
+            }
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} nums
+                * @return {number[]}
+                */
+               var sortedSquares = function(nums) {
+                 const n = nums.length;
+                 const ans = Array(n).fill(0);
+                 let i = n - 1;
+                 for (let l = 0, r = n - 1; l <= r;)
+                   if (Math.abs(nums[l]) > Math.abs(nums[r]))
+                     ans[i--] = nums[l] * nums[l++];
+                   else
+                     ans[i--] = nums[r] * nums[r--];
+                 return ans;    
+               };
+               
+               console.log(sortedSquares([-4,-1,0,3,10]))`,
+                output: `[ 0, 1, 9, 16, 100 ]`,
+              },
+            }}
+          />
+        ),
+      },
+      q822: {
+        title: "Q978. Longest Turbulent Subarray (Q822)",
+        content: (
+          <Comp
+            title="Q978. Longest Turbulent Subarray (Q822)"
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q823: {
+        title: "Q (Q823)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q824: {
+        title: "Q (Q824)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q825: {
+        title: "Q (Q825)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q826: {
+        title: "Q (Q826)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q827: {
+        title: "Q (Q827)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q828: {
+        title: "Q (Q828)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q829: {
+        title: "Q (Q829)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q830: {
+        title: "Q (Q830)",
         content: (
           <Comp
             content1={<></>}
