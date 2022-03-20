@@ -101603,29 +101603,90 @@ a = b + c;
         ),
       },
       q801: {
-        title: "Q(Q801)",
+        title: "Q957. Prison Cells After N Days (Q801)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q957. Prison Cells After N Days (Q801)"
+            content1={
+              <>
+                There are 8 prison cells in a row and each cell is either
+                occupied or vacant.
+                <br />
+                Each day, whether the cell is occupied or vacant changes
+                according to the following rules:
+                <br />
+                If a cell has two adjacent neighbors that are both occupied or
+                both vacant, then the cell becomes occupied.
+                <br />
+                Otherwise, it becomes vacant.
+                <br />
+                Note that because the prison is a row, the first and the last
+                cells in the row can't have two adjacent neighbors.
+                <br />
+                You are given an integer array cells where cells[i] == 1 if the
+                ith cell is occupied and cells[i] == 0 if the ith cell is
+                vacant, and you are given an integer n.
+                <br />
+                Return the state of the prison after n days (i.e., n such
+                changes described above).
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: cells = [0,1,0,1,1,0,0,1], n = 7 <br />
+                    Output: [0,0,1,1,0,0,0,0] <br />
+                    Explanation: The following table summarizes the state of the
+                    prison on each day: Day 0: [0, 1, 0, 1, 1, 0, 0, 1] <br />
+                    Day 1: [0, 1, 1, 0, 0, 0, 0, 0] <br />
+                    Day 2: [0, 0, 0, 0, 1, 1, 1, 0] <br />
+                    Day 3: [0, 1, 1, 0, 0, 1, 0, 0] <br />
+                    Day 4: [0, 0, 0, 0, 0, 1, 0, 0] <br />
+                    Day 5: [0, 1, 1, 1, 0, 1, 0, 0] <br />
+                    Day 6: [0, 0, 1, 0, 1, 1, 0, 0] <br />
+                    Day 7: [0, 0, 1, 1, 0, 0, 0, 0]
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input: cells = [1,0,0,1,0,0,1,0], n = 1000000000
+                    <br /> Output: [0,0,1,1,1,1,1,0]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                cells.length == 8 <br />
+                cells[i] is either 0 or 1. <br />1 &lt;= n &lt;= 10^9
+              </>
+            }
+            tc="n^2"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `
+                // Input: cells = [0,1,0,1,1,0,0,1], n = 7
+                class Solution {
+                  public int[] prisonAfterNDays(int[] cells, int N) {
+                    int[] firstDayCells = new int[cells.length];
+                    int[] nextDayCells = new int[cells.length];
+                    for (int day = 0; N-- > 0; cells = nextDayCells.clone(), ++day) {
+                      for (int i = 1; i + 1 < cells.length; ++i)
+                        nextDayCells[i] = cells[i - 1] == cells[i + 1] ? 1 : 0;
+                      if (day == 0)
+                        firstDayCells = nextDayCells.clone();
+                      else if (Arrays.equals(nextDayCells, firstDayCells))
+                        N %= day;
+                    }
+                    return cells;
+                  }
+                }`,
+                output: `[0,0,1,1,0,0,0,0]`,
               },
             }}
           />
