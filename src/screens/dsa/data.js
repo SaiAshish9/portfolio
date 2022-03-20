@@ -103852,147 +103852,582 @@ a = b + c;
         content: (
           <Comp
             title="Q980. Unique Paths III (Q824)"
-            content1={<></>}
+            content1={
+              <>
+                You are given an m x n integer array grid where grid[i][j] could
+                be:
+                <br />
+                1 representing the starting square. There is exactly one
+                starting square.
+                <br />
+                2 representing the ending square. There is exactly one ending
+                square.
+                <br />
+                0 representing empty squares we can walk over.
+                <br />
+                -1 representing obstacles that we cannot walk over.
+                <br />
+                Return the number of 4-directional walks from the starting
+                square to the ending square, that walk over every non-obstacle
+                square exactly once.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2021/08/02/lc-unique1.jpg",
+                content: (
+                  <>
+                    Input: grid = [[1,0,0,0],[0,0,0,0],[0,0,2,-1]]
+                    <br /> Output: 2 <br />
+                    Explanation: We have the following two paths: <br />
+                    1.
+                    (0,0),(0,1),(0,2),(0,3),(1,3),(1,2),(1,1),(1,0),(2,0),(2,1),(2,2)
+                    <br /> 2.
+                    (0,0),(1,0),(2,0),(2,1),(1,1),(0,1),(0,2),(0,3),(1,3),(1,2),(2,2)
+                  </>
+                ),
               },
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2021/08/02/lc-unique2.jpg",
+                content: (
+                  <>
+                    Input: grid = [[1,0,0,0],[0,0,0,0],[0,0,0,2]]
+                    <br />
+                    Output: 4<br />
+                    Explanation: We have the following four paths: <br />
+                    <br /> 1.
+                    (0,0),(0,1),(0,2),(0,3),(1,3),(1,2),(1,1),(1,0),(2,0),(2,1),(2,2),(2,3)
+                    <br /> 2.
+                    (0,0),(0,1),(1,1),(1,0),(2,0),(2,1),(2,2),(1,2),(0,2),(0,3),(1,3),(2,3)
+                    <br /> 3.
+                    (0,0),(1,0),(2,0),(2,1),(2,2),(1,2),(1,1),(0,1),(0,2),(0,3),(1,3),(2,3)
+                    <br /> 4.
+                    (0,0),(1,0),(2,0),(2,1),(1,1),(0,1),(0,2),(0,3),(1,3),(1,2),(2,2),(2,3)
+                  </>
+                ),
+              },
+              {
+                img: "https://assets.leetcode.com/uploads/2021/08/02/lc-unique3-.jpg",
+                content: (
+                  <>
+                    Input: grid = [[0,1],[2,0]]
+                    <br /> Output: 0
+                    <br /> Explanation: There is no path that walks over every
+                    empty square exactly once.
+                    <br /> Note that the starting and ending square can be
+                    anywhere in the grid.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                m == grid.length <br />
+                n == grid[i].length <br />
+                1 &lt;= m, n &lt;= 20 <br />
+                1 &lt;= m * n &lt;= 20 <br />
+                -1 &lt;= grid[i][j] &lt;= 2 <br />
+                There is exactly one starting cell and one ending cell.
+              </>
+            }
+            tc="3^m.n"
+            sc="m.n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input: grid = [[1,0,0,0],[0,0,0,0],[0,0,2,-1]]
+                class Solution {
+                  public int uniquePathsIII(int[][] grid) {
+                    int empty = 1;
+                    int sx = -1;
+                    int sy = -1;
+                    int ex = -1;
+                    int ey = -1;
+                    for (int i = 0; i < grid.length; ++i)
+                      for (int j = 0; j < grid[0].length; ++j)
+                        if (grid[i][j] == 0) {
+                          ++empty;
+                        } else if (grid[i][j] == 1) {
+                          sx = i;
+                          sy = j;
+                        } else if (grid[i][j] == 2) {
+                          ex = i;
+                          ey = j;
+                        }
+                    dfs(grid, empty, sx, sy, ex, ey);
+                    return ans;
+                  }
+                
+                  private int ans = 0;
+                
+                  private void dfs(int[][] grid, int empty, int i, int j, int ex, int ey) {
+                    if (i < 0 || i == grid.length || j < 0 || j == grid[0].length)
+                      return;
+                    if (grid[i][j] < 0)
+                      return;
+                    if (i == ex && j == ey) {
+                      if (empty == 0)
+                        ++ans;
+                      return;
+                    }
+                    grid[i][j] = -2;
+                    dfs(grid, empty - 1, i + 1, j, ex, ey);
+                    dfs(grid, empty - 1, i - 1, j, ex, ey);
+                    dfs(grid, empty - 1, i, j + 1, ex, ey);
+                    dfs(grid, empty - 1, i, j - 1, ex, ey);
+                    grid[i][j] = 0;
+                  }
+                }`,
+                output: `2`,
               },
             }}
           />
         ),
       },
       q825: {
-        title: "Q (Q825)",
+        title: "Q981. Time Based Key-Value Store (Q825)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q981. Time Based Key-Value Store (Q825)"
+            content1={
+              <>
+                Design a time-based key-value data structure that can store
+                multiple values for the same key at different time stamps and
+                retrieve the key's value at a certain timestamp.
+                <br />
+                Implement the TimeMap class:
+                <br />
+                TimeMap() Initializes the object of the data structure.
+                <br />
+                void set(String key, String value, int timestamp) Stores the key
+                key with the value value at the given time timestamp.
+                <br />
+                String get(String key, int timestamp) Returns a value such that
+                set was called previously, with timestamp_prev &lt;= timestamp.
+                If there are multiple such values, it returns the value
+                associated with the largest timestamp_prev. If there are no
+                values, it returns "".
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                content: (
+                  <>
+                    Input <br />
+                    ["TimeMap", "set", "get", "get", "set", "get", "get"]
+                    <br /> [[], ["foo", "bar", 1], ["foo", 1], ["foo", 3],
+                    ["foo", "bar2", 4], ["foo", 4], ["foo", 5]] Output <br />
+                    [null, null, "bar", "bar", null, "bar2", "bar2"]
+                    <br />
+                    Explanation <br />
+                    TimeMap timeMap = new TimeMap(); <br />
+                    timeMap.set("foo", "bar", 1); // store the key "foo" and
+                    value "bar" along with timestamp = 1.
+                    <br /> timeMap.get("foo", 1); // return "bar"
+                    <br /> timeMap.get("foo", 3); // return "bar", since there
+                    is no value corresponding to foo at timestamp 3 and
+                    timestamp 2, then the only value is at timestamp 1 is "bar".
+                    <br /> timeMap.set("foo", "bar2", 4); // store the key "foo"
+                    and value "bar2" along with timestamp = 4.
+                    <br /> timeMap.get("foo", 4); // return "bar2"
+                    <br /> timeMap.get("foo", 5); // return "bar2"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                1 &lt;= key.length, value.length &lt;= 100
+                <br /> key and value consist of lowercase English letters and
+                digits.
+                <br /> 1 &lt;= timestamp &lt;= 10^7
+                <br /> All the timestamps timestamp of set are strictly
+                increasing.
+                <br /> At most 2 * 105 calls will be made to set and get.
+              </>
+            }
+            tc="1"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input
+                // ["TimeMap", "set", "get", "get", "set", "get", "get"]
+                // [[], ["foo", "bar", 1], ["foo", 1], ["foo", 3], ["foo", "bar2", 4], ["foo", 4], ["foo", 5]]
+                class T {
+                  public String value;
+                  public int timestamp;
+                  public T(String value, int timestamp) {
+                    this.value = value;
+                    this.timestamp = timestamp;
+                  }
+                }
+                
+                class TimeMap {
+                  public void set(String key, String value, int timestamp) {
+                    map.putIfAbsent(key, new ArrayList<>());
+                    map.get(key).add(new T(value, timestamp));
+                  }
+                
+                  public String get(String key, int timestamp) {
+                    List<T> A = map.get(key);
+                    if (A == null)
+                      return "";
+                
+                    int l = 0;
+                    int r = A.size();
+                
+                    while (l < r) {
+                      final int m = l + (r - l) / 2;
+                      if (A.get(m).timestamp > timestamp)
+                        r = m;
+                      else
+                        l = m + 1;
+                    }
+                
+                    return l == 0 ? "" : A.get(l - 1).value;
+                  }
+                
+                  private Map<String, List<T>> map = new HashMap<>();
+                }`,
+                output: `[null, null, "bar", "bar", null, "bar2", "bar2"]`,
               },
             }}
           />
         ),
       },
       q826: {
-        title: "Q (Q826)",
+        title: "Q982. Triples with Bitwise AND Equal To Zero (Q826)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q982. Triples with Bitwise AND Equal To Zero (Q826)"
+            content1={
+              <>
+                Given an integer array nums, return the number of AND triples.
+                <br />
+                An AND triple is a triple of indices (i, j, k) such that:
+                <br />
+                0 &lt;= i &lt; nums.length
+                <br />
+                0 &lt;= j &lt; nums.length
+                <br />
+                0 &lt;= k &lt; nums.length
+                <br />
+                nums[i] & nums[j] & nums[k] == 0, where & represents the
+                bitwise-AND operator.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [2,1,3]
+                    <br />
+                    Output: 12
+                    <br />
+                    Explanation: We could choose the following i, j, k triples:
+                    <br /> (i=0, j=0, k=1) : 2 & 2 & 1
+                    <br /> (i=0, j=1, k=0) : 2 & 1 & 2
+                    <br /> (i=0, j=1, k=1) : 2 & 1 & 1
+                    <br /> (i=0, j=1, k=2) : 2 & 1 & 3
+                    <br /> (i=0, j=2, k=1) : 2 & 3 & 1
+                    <br /> (i=1, j=0, k=0) : 1 & 2 & 2
+                    <br /> (i=1, j=0, k=1) : 1 & 2 & 1
+                    <br /> (i=1, j=0, k=2) : 1 & 2 & 3
+                    <br /> (i=1, j=1, k=0) : 1 & 1 & 2
+                    <br /> (i=1, j=2, k=0) : 1 & 3 & 2
+                    <br /> (i=2, j=0, k=1) : 3 & 2 & 1
+                    <br /> (i=2, j=1, k=0) : 3 & 1 & 2
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [0,0,0] <br />
+                    Output: 27
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 1000
+                <br />0 &lt;= nums[i] &lt; 2^16
+              </>
+            }
+            tc="n^2"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @return {number}
+                */
+               var countTriplets = function(nums) {
+                 const kMax = 1 << 16;
+                 let ans = 0;
+                 const count = Array(kMax).fill(0); 
+                 for (let a of nums)
+                 for (let b of nums)
+                   ++count[a & b];
+                 for (let a of nums)
+                   for (let i = 0; i < kMax; ++i)
+                     if ((a & i) == 0)
+                       ans += count[i];
+                 return ans; 
+               };
+               console.log(countTriplets([2,1,3]))`,
+                output: `12`,
               },
             }}
           />
         ),
       },
       q827: {
-        title: "Q (Q827)",
+        title: "Q983. Minimum Cost For Tickets (Q827)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q983. Minimum Cost For Tickets (Q827)"
+            content1={
+              <>
+                You have planned some train traveling one year in advance. The
+                days of the year in which you will travel are given as an
+                integer array days. Each day is an integer from 1 to 365.
+                <br />
+                Train tickets are sold in three different ways:
+                <br />
+                a 1-day pass is sold for costs[0] dollars,
+                <br />
+                a 7-day pass is sold for costs[1] dollars, and
+                <br />
+                a 30-day pass is sold for costs[2] dollars. The passes allow
+                that many days of consecutive travel.
+                <br />
+                For example, if we get a 7-day pass on day 2, then we can travel
+                for 7 days: 2, 3, 4, 5, 6, 7, and 8. Return the minimum number
+                of dollars you need to travel every day in the given list of
+                days.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: days = [1,4,6,7,8,20], costs = [2,7,15]
+                    <br />
+                    Output: 11
+                    <br />
+                    Explanation: For example, here is one way to buy passes that
+                    lets you travel your travel plan:
+                    <br />
+                    On day 1, you bought a 1-day pass for costs[0] = $2, which
+                    covered day 1.
+                    <br />
+                    On day 3, you bought a 7-day pass for costs[1] = $7, which
+                    covered days 3, 4, ..., 9.
+                    <br />
+                    On day 20, you bought a 1-day pass for costs[0] = $2, which
+                    covered day 20.
+                    <br />
+                    In total, you spent $11 and covered all the days of your
+                    travel.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: days = [1,2,3,4,5,6,7,8,9,10,30,31], costs = [2,7,15]
+                    <br />
+                    Output: 17
+                    <br />
+                    Explanation: For example, here is one way to buy passes that
+                    lets you travel your travel plan:
+                    <br />
+                    On day 1, you bought a 30-day pass for costs[2] = $15 which
+                    covered days 1, 2, ..., 30.
+                    <br />
+                    On day 31, you bought a 1-day pass for costs[0] = $2 which
+                    covered day 31.
+                    <br />
+                    In total, you spent $17 and covered all the days of your
+                    travel.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= days.length &lt;= 365
+                <br />
+                1 &lt;= days[i] &lt;= 365
+                <br />
+                days is in strictly increasing order.
+                <br />
+                costs.length == 3<br />1 &lt;= costs[i] &lt;= 1000
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input: days = [1,4,6,7,8,20], costs = [2,7,15]
+
+                class Solution {
+                  public int mincostTickets(int[] days, int[] costs) {
+                    int ans = 0;
+                    Queue<int[]> last7 = new ArrayDeque<>(); 
+                    Queue<int[]> last30 = new ArrayDeque<>();
+                    for (int day : days) {
+                      while (!last7.isEmpty() && last7.peek()[0] + 7 <= day)
+                        last7.poll();
+                      while (!last30.isEmpty() && last30.peek()[0] + 30 <= day)
+                        last30.poll();
+                      last7.offer(new int[] {day, ans + costs[1]});
+                      last30.offer(new int[] {day, ans + costs[2]});
+                      ans = Math.min(ans + costs[0], Math.min(last7.peek()[1], last30.peek()[1]));
+                    }
+                    return ans;
+                  }
+                }
+                `,
+                output: `11`,
               },
             }}
           />
         ),
       },
       q828: {
-        title: "Q (Q828)",
+        title: "Q984. String Without AAA or BBB (Q828)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q984. String Without AAA or BBB (Q828)"
+            content1={
+              <>
+                Given two integers a and b, return any string s such that:
+                <br />
+                s has length a + b and contains exactly a 'a' letters, and
+                exactly b 'b' letters, The substring 'aaa' does not occur in s,
+                and
+                <br />
+                <br /> The substring 'bbb' does not occur in s.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: a = 1, b = 2<br />
+                    Output: "abb"
+                    <br />
+                    Explanation: "abb", "bab" and "bba" are all correct answers.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: a = 4, b = 1<br />
+                    Output: "aabaa"
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                0 &lt;= a, b &lt;= 100 <br />
+                It is guaranteed such an s exists for the given a and b.
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              "C++": {
+                code: `// Input: a = 1, b = 2
+                class Solution {
+                 public:
+                  string strWithout3a3b(int A, int B, char a = 'a', char b = 'b') {
+                    if (A < B)
+                      return strWithout3a3b(B, A, b, a);
+                    if (B == 0)
+                      return string(min(A, 2), a);
+                
+                    const int useA = min(A, 2);
+                    const int useB = (A - useA >= B) ? 1 : 0;
+                    return string(useA, a) + string(useB, b) +
+                           strWithout3a3b(A - useA, B - useB, a, b);
+                  }
+                };
+                `,
+                output: `abb`,
               },
             }}
           />
         ),
       },
       q829: {
-        title: "Q (Q829)",
+        title: "Q985. Sum of Even Numbers After Queries (Q829)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q985. Sum of Even Numbers After Queries (Q829)"
+            content1={
+              <>
+                You are given an integer array nums and an array queries where
+                queries[i] = [vali, indexi].
+                <br />
+                For each query i, first, apply nums[indexi] = nums[indexi] +
+                vali, then print the sum of the even values of nums.
+                <br />
+                Return an integer array answer where answer[i] is the answer to
+                the ith query.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1,2,3,4], queries =
+                    [[1,0],[-3,1],[-4,0],[2,3]]
+                    <br /> Output: [8,6,2,4]
+                    <br /> Explanation: At the beginning, the array is
+                    [1,2,3,4].
+                    <br /> After adding 1 to nums[0], the array is [2,2,3,4],
+                    and the sum of even values is 2 + 2 + 4 = 8.
+                    <br /> After adding -3 to nums[1], the array is [2,-1,3,4],
+                    and the sum of even values is 2 + 4 = 6.
+                    <br /> After adding -4 to nums[0], the array is [-2,-1,3,4],
+                    and the sum of even values is -2 + 4 = 2.
+                    <br /> After adding 2 to nums[3], the array is [-2,-1,3,6],
+                    and the sum of even values is -2 + 6 = 4.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [1], queries = [[4,0]]
+                    <br /> Output: [0]
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 10^4
+                <br />
+                -10^4 &lt;= nums[i] &lt;= 10^4
+                <br />
+                1 &lt;= queries.length &lt;= 10^4
+                <br />
+                -10^4 &lt;= vali &lt;= 10^4
+                <br />0 &lt;= indexi &lt; nums.length
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
