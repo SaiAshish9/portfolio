@@ -103374,23 +103374,141 @@ a = b + c;
         content: (
           <Comp
             title="Q975. Odd Even Jump (Q819)"
-            content1={<></>}
+            content1={
+              <>
+                You are given an integer array arr. From some starting index,
+                you can make a series of jumps. The (1st, 3rd, 5th, ...) jumps
+                in the series are called odd-numbered jumps, and the (2nd, 4th,
+                6th, ...) jumps in the series are called even-numbered jumps.
+                Note that the jumps are numbered, not the indices.
+                <br />
+                You may jump forward from index i to index j (with i &lt; j) in
+                the following way:
+                <br />
+                During odd-numbered jumps (i.e., jumps 1, 3, 5, ...), you jump
+                to the index j such that arr[i] &lt;= arr[j] and arr[j] is the
+                smallest possible value. If there are multiple such indices j,
+                you can only jump to the smallest such index j.
+                <br />
+                During even-numbered jumps (i.e., jumps 2, 4, 6, ...), you jump
+                to the index j such that arr[i] &gt;= arr[j] and arr[j] is the
+                largest possible value. If there are multiple such indices j,
+                you can only jump to the smallest such index j.
+                <br />
+                It may be the case that for some index i, there are no legal
+                jumps.
+                <br />
+                A starting index is good if, starting from that index, you can
+                reach the end of the array (index arr.length - 1) by jumping
+                some number of times (possibly 0 or more than once).
+                <br />
+                Return the number of good starting indices.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [10,13,12,14,15]
+                    <br /> Output: 2
+                    <br /> Explanation:
+                    <br /> From starting index i = 0, we can make our 1st jump
+                    to i = 2 (since arr[2] is the smallest among arr[1], arr[2],
+                    arr[3], arr[4] that is greater or equal to arr[0]), then we
+                    cannot jump any more.
+                    <br /> From starting index i = 1 and i = 2, we can make our
+                    1st jump to i = 3, then we cannot jump any more.
+                    <br /> From starting index i = 3, we can make our 1st jump
+                    to i = 4, so we have reached the end.
+                    <br /> From starting index i = 4, we have reached the end
+                    already.
+                    <br /> In total, there are 2 different starting indices i =
+                    3 and i = 4, where we can reach the end with some number of
+                    <br /> jumps.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [2,3,1,1,4]
+                    <br /> Output: 3
+                    <br /> Explanation:
+                    <br /> From starting index i = 0, we make jumps to i = 1, i
+                    = 2, i = 3:
+                    <br /> During our 1st jump (odd-numbered), we first jump to
+                    i = 1 because arr[1] is the smallest value in [arr[1],
+                    arr[2], arr[3], arr[4]] that is greater than or equal to
+                    arr[0].
+                    <br /> During our 2nd jump (even-numbered), we jump from i =
+                    1 to i = 2 because arr[2] is the largest value in [arr[2],
+                    arr[3], arr[4]] that is less than or equal to arr[1]. arr[3]
+                    is also the largest value, but 2 is a smaller index, so we
+                    can only jump to i = 2 and not i = 3
+                    <br /> During our 3rd jump (odd-numbered), we jump from i =
+                    2 to i = 3 because arr[3] is the smallest value in [arr[3],
+                    arr[4]] that is greater than or equal to arr[2].
+                    <br /> We can't jump from i = 3 to i = 4, so the starting
+                    index i = 0 is not good.
+                    <br /> In a similar manner, we can deduce that:
+                    <br /> From starting index i = 1, we jump to i = 4, so we
+                    reach the end.
+                    <br /> From starting index i = 2, we jump to i = 3, and then
+                    we can't jump anymore.
+                    <br /> From starting index i = 3, we jump to i = 4, so we
+                    reach the end.
+                    <br /> From starting index i = 4, we are already at the end.
+                    <br /> In total, there are 3 different starting indices i =
+                    1, i = 3, and i = 4, where we can reach the end with some
+                    <br /> number of jumps.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: arr = [5,1,3,4,2]
+                    <br /> Output: 3
+                    <br /> Explanation: We can reach the end from starting
+                    indices 1, 2, and 4.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
+            constraints={
+              <>
+                1 &lt;= arr.length &lt;= 2 * 10^4 <br />0 &lt;= arr[i] &lt; 10^5
+              </>
+            }
+            tc="n.log n"
             sc="n"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `// Input: arr = [10,13,12,14,15]
+                class Solution {
+                  public int oddEvenJumps(int[] A) {
+                    final int n = A.length;
+                    TreeMap<Integer, Integer> map = new TreeMap<>(); 
+                    int[] inc = new int[n];
+                    int[] dec = new int[n]; 
+                    map.put(A[n - 1], n - 1);
+                    inc[n - 1] = 1;
+                    dec[n - 1] = 1;
+                    for (int i = n - 2; i >= 0; --i) {
+                      Map.Entry<Integer, Integer> lo = map.ceilingEntry(A[i]);
+                      Map.Entry<Integer, Integer> hi = map.floorEntry(A[i]); 
+                      if (lo != null)
+                        inc[i] = dec[(int) lo.getValue()];
+                      if (hi != null)
+                        dec[i] = inc[(int) hi.getValue()];
+                      map.put(A[i], i);
+                    }
+                    return Arrays.stream(inc).sum();
+                  }
+                }
+                `,
+                output: `2`,
               },
             }}
           />
