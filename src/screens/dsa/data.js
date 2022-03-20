@@ -103848,9 +103848,10 @@ a = b + c;
         ),
       },
       q824: {
-        title: "Q (Q824)",
+        title: "Q980. Unique Paths III (Q824)",
         content: (
           <Comp
+            title="Q980. Unique Paths III (Q824)"
             content1={<></>}
             content2={null}
             examples={[
