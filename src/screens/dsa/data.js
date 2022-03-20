@@ -104432,34 +104432,116 @@ a = b + c;
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number[][]} queries
+                * @return {number[]}
+                */
+               var sumEvenAfterQueries = function(nums, queries) {
+                 let ans = Array(queries.length).fill(0);
+                 let sum = 0;
+                 for (let a of nums)
+                   sum += a % 2 == 0 ? a : 0;
+                 for (let i = 0; i < queries.length; ++i) {
+                   if (nums[queries[i][1]] % 2 == 0)
+                     sum -= nums[queries[i][1]];
+                   nums[queries[i][1]] += queries[i][0];
+                   if (nums[queries[i][1]] % 2 == 0)
+                     sum += nums[queries[i][1]];
+                   ans[i] = sum;
+                 }
+                 return ans;  
+               };
+               
+               console.log(sumEvenAfterQueries([1,2,3,4],[[1,0],[-3,1],[-4,0],[2,3]]))`,
+                output: `[ 8, 6, 2, 4 ]`,
               },
             }}
           />
         ),
       },
       q830: {
-        title: "Q (Q830)",
+        title: "Q986. Interval List Intersections (Q830)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q986. Interval List Intersections (Q830)"
+            content1={
+              <>
+                You are given two lists of closed intervals, firstList and
+                secondList, where firstList[i] = [starti, endi] and
+                secondList[j] = [startj, endj]. Each list of intervals is
+                pairwise disjoint and in sorted order.
+                <br />
+                Return the intersection of these two interval lists.
+                <br />
+                A closed interval [a, b] (with a &lt;= b) denotes the set of
+                real numbers x with a &lt;= x &lt;= b.
+                <br />
+                The intersection of two closed intervals is a set of real
+                numbers that are either empty or represented as a closed
+                interval. For example, the intersection of [1, 3] and [2, 4] is
+                [2, 3].
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2019/01/30/interval1.png",
+                content: (
+                  <>
+                    Input: firstList = [[0,2],[5,10],[13,23],[24,25]],
+                    secondList = [[1,5],[8,12],[15,24],[25,26]]
+                    <br /> Output: [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: firstList = [[1,3],[5,9]], secondList = []
+                    <br /> Output: []
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                0 &lt;= firstList.length, secondList.length &lt;= 1000
+                firstList.length + secondList.length &gt;= 1 <br />
+                0 &lt;= starti &lt; endi &lt;= 10^9 <br />
+                endi &lt; starti+1 <br />
+                0 &lt;= startj &lt; endj &lt;= 10^9 <br />
+                endj &lt; startj+1
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[][]} firstList
+                * @param {number[][]} secondList
+                * @return {number[][]}
+                */
+               var intervalIntersection = function(firstList, secondList) {
+                 const ans = [];
+                 let i = 0;
+                 let j = 0;
+                 while (i < firstList.length && j < secondList.length) {
+                   const maxL = Math.max(firstList[i][0], secondList[j][0]);
+                   const minR = Math.min(firstList[i][1], secondList[j][1]);
+                   if (maxL <= minR)
+                     ans.push([maxL, minR]);
+                   if (firstList[i][1] < secondList[j][1])
+                     ++i;
+                   else
+                     ++j;
+                 }
+                 return ans
+               };
+               
+               console.log(intervalIntersection([[0,2],[5,10],[13,23],[24,25]],[[1,5],[8,12],[15,24],[25,26]]))`,
+                output: `[ [ 1, 2 ], [ 5, 5 ], [ 8, 10 ], [ 15, 23 ], [ 24, 24 ], [ 25, 25 ] ]`,
               },
             }}
           />
