@@ -103658,49 +103658,190 @@ a = b + c;
         content: (
           <Comp
             title="Q978. Longest Turbulent Subarray (Q822)"
-            content1={<></>}
+            content1={
+              <>
+                Given an integer array arr, return the length of a maximum size
+                turbulent subarray of arr.
+                <br />
+                A subarray is turbulent if the comparison sign flips between
+                each adjacent pair of elements in the subarray.
+                <br />
+                More formally, a subarray [arr[i], arr[i + 1], ..., arr[j]] of
+                arr is said to be turbulent if and only if:
+                <br />
+                For i &lt;= k &lt; j:
+                <br />
+                arr[k] &gt; arr[k + 1] when k is odd, and
+                <br />
+                arr[k] &lt; arr[k + 1] when k is even.
+                <br />
+                Or, for i &lt;= k &lt; j:
+                <br />
+                arr[k] &gt; arr[k + 1] when k is even, and
+                <br />
+                arr[k] &lt; arr[k + 1] when k is odd.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [9,4,2,10,7,8,8,1,9] <br />
+                    Output: 5 <br />
+                    Explanation: arr[1] &gt; arr[2] &lt; arr[3] &gt; arr[4] &lt;
+                    arr[5]
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: arr = [4,8,12,16] <br />
+                    Output: 2
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: arr = [100] <br />
+                    Output: 1
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= arr.length &lt;= 4 * 10^4
+                <br />0 &lt;= arr[i] &lt;= 10^9
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="1"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} arr
+                * @return {number}
+                */
+               var maxTurbulenceSize = function(arr) {
+                 let ans = 1;
+                 let increasing = 1;
+                 let decreasing = 1;
+                   for (let i = 1; i < arr.length; ++i) {
+                     if (arr[i] > arr[i - 1]) {
+                       increasing = decreasing + 1;
+                       decreasing = 1;
+                     } else if (arr[i] < arr[i - 1]) {
+                       decreasing = increasing + 1;
+                       increasing = 1;
+                     } else {
+                       increasing = 1;
+                       decreasing = 1;
+                     }
+                     ans = Math.max(ans, Math.max(increasing, decreasing));
+                   }
+                   return ans;    
+               };
+               
+               console.log(maxTurbulenceSize([9,4,2,10,7,8,8,1,9]
+               ))`,
+                output: `5`,
               },
             }}
           />
         ),
       },
       q823: {
-        title: "Q (Q823)",
+        title: "Q979. Distribute Coins in Binary Tree (Q823)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q979. Distribute Coins in Binary Tree (Q823)"
+            content1={
+              <>
+                You are given the root of a binary tree with n nodes where each
+                node in the tree has node.val coins. There are n coins in total
+                throughout the whole tree.
+                <br />
+                In one move, we may choose two adjacent nodes and move one coin
+                from one node to another. A move may be from parent to child, or
+                from child to parent.
+                <br />
+                Return the minimum number of moves required to make every node
+                have exactly one coin.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2019/01/18/tree1.png",
+                content: (
+                  <>
+                    Input: root = [3,0,0] <br />
+                    Output: 2 <br />
+                    Explanation: From the root of the tree, we move one coin to
+                    its left child, and one coin to its right child.
+                  </>
+                ),
               },
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2019/01/18/tree2.png",
+                content: (
+                  <>
+                    Input: root = [0,3,0] <br />
+                    Output: 3 <br />
+                    Explanation: From the left child of the root, we move two
+                    coins to the root [taking two moves]. Then, we move one coin
+                    from the root of the tree to the right child.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the tree is n. <br />
+                1 &lt;= n &lt;= 100 <br />
+                0 &lt;= Node.val &lt;= n <br />
+                The sum of all Node.val is n.
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="h"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `/**
+                // Input: root = [3,0,0]
+                * Definition for a binary tree node.
+                * public class TreeNode {
+                *     int val;
+                *     TreeNode left;
+                *     TreeNode right;
+                *     TreeNode() {}
+                *     TreeNode(int val) { this.val = val; }
+                *     TreeNode(int val, TreeNode left, TreeNode right) {
+                *         this.val = val;
+                *         this.left = left;
+                *         this.right = right;
+                *     }
+                * }
+                */
+               class Solution {
+                 public int distributeCoins(TreeNode root) {
+                   dfs(root);
+                   return ans;
+                 }
+                 private int ans = 0;
+                 private int dfs(TreeNode root) {
+                   if (root == null)
+                     return 0;
+                   final int l = dfs(root.left);
+                   final int r = dfs(root.right);
+                   ans += Math.abs(l) + Math.abs(r);
+                   return (root.val - 1) + l + r;
+                 }
+               }`,
+                output: `2`,
               },
             }}
           />
