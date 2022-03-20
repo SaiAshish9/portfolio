@@ -101520,9 +101520,359 @@ a = b + c;
         content: (
           <Comp
             title="Q956. Tallest Billboard (Q800)"
+            content1={
+              <>
+                You are installing a billboard and want it to have the largest
+                height. The billboard will have two steel supports, one on each
+                side. Each steel support must be an equal height.
+                <br />
+                You are given a collection of rods that can be welded together.
+                For example, if you have rods of lengths 1, 2, and 3, you can
+                weld them together to make a support of length 6.
+                <br />
+                Return the largest possible height of your billboard
+                installation. If you cannot support the billboard, return 0.
+              </>
+            }
+            content2={null}
+            examples={[
+              {
+                content: (
+                  <>
+                    Input: rods = [1,2,3,6] Output: 6 Explanation: We have two
+                    disjoint subsets {"{1,2,3} and {6}"}, which have the same
+                    sum = 6.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: rods = [1,2,3,4,5,6] Output: 10 Explanation: We have
+                    two disjoint subsets {"{2,3,5} and {4,6}"}, which have the
+                    same sum = 10.
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: rods = [1,2] Output: 0 Explanation: The billboard
+                    cannot be supported, so we return 0.
+                  </>
+                ),
+              },
+            ]}
+            constraints={
+              <>
+                1 &lt;= rods.length &lt;= 20 <br />
+                1 &lt;= rods[i] &lt;= 1000 <br />
+                sum(rods[i]) &lt;= 5000
+              </>
+            }
+            tc="n^2"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: `/**
+                * @param {number[]} rods
+                * @return {number}
+                */
+               var tallestBillboard = function(rods) {
+                 const sum = rods.reduce((a,b)=>a+b,0);
+                 const dp = Array(sum + 1).fill(-1);
+                 dp[0] = 0;
+                 for (let h of rods) {
+                     const prev = dp.slice();
+                     for (let i = 0; i <= sum - h; ++i) {
+                       if (prev[i] < 0)
+                         continue;
+                       dp[i] = Math.max(dp[i], prev[i]);
+                       dp[i + h] = Math.max(dp[i + h], prev[i]);
+                       dp[Math.abs(i - h)] = Math.max(dp[Math.abs(i - h)], prev[i] + Math.min(i, h));
+                     }
+                   }
+                   return dp[0];
+               };
+               
+               console.log(tallestBillboard([1,2,3,6]))`,
+                output: `6`,
+              },
+            }}
+          />
+        ),
+      },
+      q801: {
+        title: "Q(Q801)",
+        content: (
+          <Comp
             content1={<></>}
             content2={null}
             examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q802: {
+        title: "Q(Q802)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q803: {
+        title: "Q(Q803)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q804: {
+        title: "Q(Q804)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q805: {
+        title: "Q(Q805)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q806: {
+        title: "Q(Q806)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q807: {
+        title: "Q(Q807)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q808: {
+        title: "Q(Q808)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q809: {
+        title: "Q(Q809)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+              {
+                content: <></>,
+              },
+            ]}
+            constraints={<></>}
+            tc="n"
+            sc="n"
+            codes={{
+              Javascript: {
+                code: ``,
+                output: ``,
+              },
+            }}
+          />
+        ),
+      },
+      q810: {
+        title: "Q(Q810)",
+        content: (
+          <Comp
+            content1={<></>}
+            content2={null}
+            examples={[
+              {
+                content: <></>,
+              },
               {
                 content: <></>,
               },
