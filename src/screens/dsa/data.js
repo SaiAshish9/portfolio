@@ -101693,67 +101693,213 @@ a = b + c;
         ),
       },
       q802: {
-        title: "Q(Q802)",
+        title: "Q958. Check Completeness of a Binary Tree (Q802)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q958. Check Completeness of a Binary Tree (Q802)"
+            content1={
+              <>
+                Given the root of a binary tree, determine if it is a complete
+                binary tree.
+                <br />
+                In a complete binary tree, every level, except possibly the
+                last, is completely filled, and all nodes in the last level are
+                as far left as possible. It can have between 1 and 2h nodes
+                inclusive at the last level h.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2018/12/15/complete-binary-tree-1.png",
+                content: (
+                  <>
+                    Input: root = [1,2,3,4,5,6] <br />
+                    Output: true <br />
+                    Explanation: Every level before the last is full (ie. levels
+                    with node-values {"{1} and {2, 3}"}), and all nodes in the
+                    last level ({"{(4, 5, 6)}"}) are as far left as possible.
+                  </>
+                ),
               },
               {
-                content: <></>,
-              },
-              {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2018/12/15/complete-binary-tree-2.png",
+                content: (
+                  <>
+                    Input: root = [1,2,3,4,5,null,7] <br />
+                    Output: false <br />
+                    Explanation: The node with value 7 isn't as far left as
+                    possible.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                The number of nodes in the tree is in the range [1, 100].
+                <br /> 1 &lt;= Node.val &lt;= 1000
+              </>
+            }
             tc="n"
-            sc="n"
+            sc="h"
             codes={{
-              Javascript: {
-                code: ``,
-                output: ``,
+              Java: {
+                code: `/**
+                * Definition for a binary tree node.
+                * public class TreeNode {
+                *     int val;
+                *     TreeNode left;
+                *     TreeNode right;
+                *     TreeNode() {}
+                *     TreeNode(int val) { this.val = val; }
+                *     TreeNode(int val, TreeNode left, TreeNode right) {
+                *         this.val = val;
+                *         this.left = left;
+                *         this.right = right;
+                *     }
+                * }
+                */
+               // Input: root = [1,2,3,4,5,6]
+               class Solution {
+                 public boolean isCompleteTree(TreeNode root) {
+                   final int nNodes = count(root);
+                   return isValidIndex(root, 1, nNodes);
+                 }
+                 private int count(TreeNode root) {
+                   if (root == null)
+                     return 0;
+                   return 1 + count(root.left) + count(root.right);
+                 }
+                 private boolean isValidIndex(TreeNode root, int i, int nNodes) {
+                   if (root == null)
+                     return true;
+                   if (i > nNodes)
+                     return false;
+                   return isValidIndex(root.left, i * 2, nNodes) &&
+                          isValidIndex(root.right, i * 2 + 1, nNodes);
+                 }
+               }`,
+                output: `true`,
               },
             }}
           />
         ),
       },
       q803: {
-        title: "Q(Q803)",
+        title: "Q959. Regions Cut By Slashes (Q803)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q959. Regions Cut By Slashes (Q803)"
+            content1={
+              <>
+                An n x n grid is composed of 1 x 1 squares where each 1 x 1
+                square consists of a '/', '\', or blank space ' '. These
+                characters divide the square into contiguous regions.
+                <br />
+                Given the grid grid represented as a string array, return the
+                number of regions.
+                <br />
+                Note that backslash characters are escaped, so a '\' is
+                represented as '\\'.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2018/12/15/1.png",
+                content: (
+                  <>
+                    Input: grid = [" /","/ "] <br />
+                    Output: 2
+                  </>
+                ),
               },
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2018/12/15/2.png",
+                content: (
+                  <>
+                    Input: grid = [" /"," "]] <br />
+                    Output: 1
+                  </>
+                ),
               },
               {
-                content: <></>,
+                img: "https://assets.leetcode.com/uploads/2018/12/15/4.png",
+                content: (
+                  <>
+                    Input: grid = ["/\\","\\/"] <br />
+                    Output: 5 <br />
+                    Explanation: Recall that because \ characters are escaped,
+                    "\\/" refers to \/, and "/\\" refers to /\.
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
-            tc="n"
-            sc="n"
+            constraints={
+              <>
+                n == grid.length == grid[i].length
+                <br />
+                1 &lt;= n &lt;= 30
+                <br />
+                grid[i][j] is either '/', '\', or '
+              </>
+            }
+            tc="n^2"
+            sc="n^2"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {string[]} grid
+                * @return {number}
+                */
+               var regionsBySlashes = function(grid) {
+                 const n = grid.length;
+                 const g = Array.from(Array(n * 3),()=>Array(n * 3).fill(0));
+                   for (let i = 0; i < n; ++i)
+                     for (let j = 0; j < n; ++j)
+                       if (grid[i].charAt(j) == '/') {
+                         g[i * 3][j * 3 + 2] = 1;
+                         g[i * 3 + 1][j * 3 + 1] = 1;
+                         g[i * 3 + 2][j * 3] = 1;
+                       } else if (grid[i].charAt(j) == '\\') {
+                         g[i * 3][j * 3] = 1;
+                         g[i * 3 + 1][j * 3 + 1] = 1;
+                         g[i * 3 + 2][j * 3 + 2] = 1;
+                       }
+                   let ans = 0;
+                   for (let i = 0; i < n * 3; ++i)
+                     for (let j = 0; j < n * 3; ++j)
+                       if (g[i][j] == 0) {
+                         dfs(g, i, j);
+                         ++ans;
+                       }
+                   return ans;    
+               };
+               
+               function dfs(g, i, j) {
+                   if (i < 0 || i == g.length || j < 0 || j == g[0].length)
+                     return;
+                   if (g[i][j] != 0)
+                     return;
+                   g[i][j] = 2; 
+                   dfs(g, i + 1, j);
+                   dfs(g, i - 1, j);
+                   dfs(g, i, j + 1);
+                   dfs(g, i, j - 1);
+               }
+               
+               console.log(regionsBySlashes([" /","/ "]))`,
+                output: `2`,
               },
             }}
           />
         ),
       },
       q804: {
-        title: "Q(Q804)",
+        title: "Q960. Delete Columns to Make Sorted III (Q804)",
         content: (
           <Comp
+            title="Q960. Delete Columns to Make Sorted III (Q804)"
             content1={<></>}
             content2={null}
             examples={[
