@@ -106396,35 +106396,98 @@ a = b + c;
         ),
       },
       q849: {
-        title: "Q (Q849)",
+        title: "Q1005. Maximize Sum Of Array After K Negations (Q849)",
         content: (
           <Comp
-            content1={<></>}
+            title="Q1005. Maximize Sum Of Array After K Negations (Q849)"
+            content1={
+              <>
+                Given an integer array nums and an integer k, modify the array
+                in the following way:
+                <br />
+                choose an index i and replace nums[i] with -nums[i].
+                <br />
+                You should apply this process exactly k times. You may choose
+                the same index i multiple times.
+                <br />
+                Return the largest possible sum of the array after modifying it
+                in this way.
+              </>
+            }
             content2={null}
             examples={[
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [4,2,3], k = 1<br />
+                    Output: 5<br />
+                    Explanation: Choose index 1 and nums becomes [4,-2,3].
+                  </>
+                ),
               },
               {
-                content: <></>,
+                content: (
+                  <>
+                    Input: nums = [3,-1,0,2], k = 3<br />
+                    Output: 6<br />
+                    Explanation: Choose indices (1, 2, 2) and nums becomes
+                    [3,1,0,2].
+                  </>
+                ),
+              },
+              {
+                content: (
+                  <>
+                    Input: nums = [2,-3,-1,5,-4], k = 2<br />
+                    Output: 13
+                    <br />
+                    Explanation: Choose indices (1, 4) and nums becomes
+                    [2,3,-1,5,4].
+                  </>
+                ),
               },
             ]}
-            constraints={<></>}
+            constraints={
+              <>
+                1 &lt;= nums.length &lt;= 10^4
+                <br />
+                -100 &lt;= nums[i] &lt;= 100
+                <br />1 &lt;= k &lt;= 10^4
+              </>
+            }
             tc="n"
             sc="n"
             codes={{
               Javascript: {
-                code: ``,
-                output: ``,
+                code: `/**
+                * @param {number[]} nums
+                * @param {number} k
+                * @return {number}
+                */
+               var largestSumAfterKNegations = function(nums, k) {
+                 nums = nums.sort((a,b)=>a-b)
+                 for (let i = 0; i < nums.length; ++i) {
+                     if (nums[i] > 0 || k == 0)
+                       break;
+                     nums[i] = -nums[i];
+                     --k;
+                   }
+                   return nums.reduce((a,b)=>a+b,0) -
+                          (k % 2) * Math.min(...nums) * 2;  
+               };
+               
+               console.log(largestSumAfterKNegations([4,2,3],1))`,
+                output: `5`,
               },
             }}
           />
         ),
       },
       q850: {
-        title: "Q (Q850)",
+        title: "Q1006. Clumsy Factorial (Q850)",
         content: (
           <Comp
+            title="Q1006. Clumsy Factorial (Q850)"
             content1={<></>}
             content2={null}
             examples={[
