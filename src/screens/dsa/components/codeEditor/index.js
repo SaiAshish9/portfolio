@@ -52,6 +52,11 @@ const CodeEditor = ({ options }) => {
     return () => cleanup();
   }, [options]);
 
+  useEffect(() => {
+    const keys = Object.keys(options ? options.codes : []);
+    setSelected(keys ? keys[0] : null);
+  }, [options, selected]);
+
   async function executeCode() {
     try {
       // https://ce.judge0.com/submissions/?base64_encoded=false&wait=false
@@ -386,6 +391,184 @@ const CodeEditor = ({ options }) => {
 
   const outputCheck = options.codes[selected]?.output || options.output;
 
+  function PythonEditor() {
+    return (
+      <>
+        <Editor
+          value={options.codes["Python"]?.code}
+          options={{
+            mode: "python",
+            theme:
+              theme === Theme.dark
+                ? "material"
+                : [Theme.light, Theme.highContrast].includes(theme)
+                ? "neat"
+                : "light",
+            lineNumbers: true,
+            json: true,
+          }}
+        />
+        <SEditor
+          value={options.codes["Python"]?.code}
+          options={{
+            mode: "python",
+            theme:
+              theme === Theme.dark
+                ? "material"
+                : [Theme.light, Theme.highContrast].includes(theme)
+                ? "neat"
+                : "light",
+            lineNumbers: true,
+            json: true,
+          }}
+        />
+      </>
+    );
+  }
+
+  function JSEditor() {
+    return (
+      <>
+        <Editor
+          value={beautify.js_beautify(options.codes[selected]?.code)}
+          options={{
+            mode: "javascript",
+            theme:
+              theme === Theme.dark
+                ? "material"
+                : [Theme.light, Theme.highContrast].includes(theme)
+                ? "neat"
+                : "light",
+            lineNumbers: true,
+            json: true,
+          }}
+        />
+        <SEditor
+          value={beautify.js_beautify(options.codes[selected]?.code)}
+          options={{
+            mode: "javascript",
+            theme:
+              theme === Theme.dark
+                ? "material"
+                : [Theme.light, Theme.highContrast].includes(theme)
+                ? "neat"
+                : "light",
+            lineNumbers: true,
+            json: true,
+          }}
+        />
+      </>
+    );
+  }
+
+  function CLikeEditor() {
+    return (
+      <>
+        {" "}
+        <Editor
+          value={beautify.js_beautify(options.codes[selected]?.code)}
+          options={{
+            mode: "clike",
+            theme:
+              theme === Theme.dark
+                ? "material"
+                : [Theme.light, Theme.highContrast].includes(theme)
+                ? "neat"
+                : "light",
+            lineNumbers: true,
+            json: true,
+          }}
+        />
+        <SEditor
+          value={beautify.js_beautify(options.codes[selected]?.code)}
+          options={{
+            mode: "clike",
+            theme:
+              theme === Theme.dark
+                ? "material"
+                : [Theme.light, Theme.highContrast].includes(theme)
+                ? "neat"
+                : "light",
+            lineNumbers: true,
+            json: true,
+          }}
+        />
+      </>
+    );
+  }
+
+  function MySqlEditor() {
+    return (
+      <>
+        {" "}
+        <Editor
+          value={beautify.js_beautify(options.codes[selected]?.code)}
+          options={{
+            mode: "sql",
+            theme:
+              theme === Theme.dark
+                ? "material"
+                : [Theme.light, Theme.highContrast].includes(theme)
+                ? "neat"
+                : "light",
+            lineNumbers: true,
+            json: true,
+          }}
+        />
+        <SEditor
+          value={beautify.js_beautify(options.codes[selected]?.code)}
+          options={{
+            mode: "sql",
+            theme:
+              theme === Theme.dark
+                ? "material"
+                : [Theme.light, Theme.highContrast].includes(theme)
+                ? "neat"
+                : "light",
+            lineNumbers: true,
+            json: true,
+          }}
+        />
+      </>
+    );
+  }
+
+  function ShellEditor() {
+    return (
+      <>
+        {" "}
+        <Editor
+          value={beautify.js_beautify(options.codes[selected]?.code)}
+          options={{
+            mode: "shell",
+            theme:
+              theme === Theme.dark
+                ? "material"
+                : [Theme.light, Theme.highContrast].includes(theme)
+                ? "neat"
+                : "light",
+            lineNumbers: true,
+            json: true,
+          }}
+        />
+        <SEditor
+          value={beautify.js_beautify(options.codes[selected]?.code)}
+          options={{
+            mode: "shell",
+            theme:
+              theme === Theme.dark
+                ? "material"
+                : [Theme.light, Theme.highContrast].includes(theme)
+                ? "neat"
+                : "light",
+            lineNumbers: true,
+            json: true,
+          }}
+        />
+      </>
+    );
+  }
+
   return (
     <Span>
       {options && (
@@ -436,79 +619,15 @@ const CodeEditor = ({ options }) => {
           </TagsContainer>
 
           <StyledRow>
-            {selected !== "Python" ? (
+            {selected && (
               <>
-                <Editor
-                  value={beautify.js_beautify(options.codes[selected]?.code)}
-                  options={{
-                    mode: ["Java", "Kotlin", "C++", "C"].includes(selected)
-                      ? "clike"
-                      : selected === "Javascript"
-                      ? "javascript"
-                      : selected === "Mysql"
-                      ? "sql"
-                      : "shell",
-                    theme:
-                      theme === Theme.dark
-                        ? "material"
-                        : [Theme.light, Theme.highContrast].includes(theme)
-                        ? "neat"
-                        : "light",
-                    lineNumbers: true,
-                    json: true,
-                  }}
-                />
-                <SEditor
-                  value={beautify.js_beautify(options.codes[selected]?.code)}
-                  options={{
-                    mode: ["Java", "Kotlin", "C++", "C"].includes(selected)
-                      ? "clike"
-                      : selected === "Javascript"
-                      ? "javascript"
-                      : selected === "Mysql"
-                      ? "sql"
-                      : "shell",
-                    theme:
-                      theme === Theme.dark
-                        ? "material"
-                        : [Theme.light, Theme.highContrast].includes(theme)
-                        ? "neat"
-                        : "light",
-                    lineNumbers: true,
-                    json: true,
-                  }}
-                />
-              </>
-            ) : (
-              <>
-                <Editor
-                  value={options.codes["Python"]?.code}
-                  options={{
-                    mode: "python",
-                    theme:
-                      theme === Theme.dark
-                        ? "material"
-                        : [Theme.light, Theme.highContrast].includes(theme)
-                        ? "neat"
-                        : "light",
-                    lineNumbers: true,
-                    json: true,
-                  }}
-                />
-                <SEditor
-                  value={options.codes["Python"]?.code}
-                  options={{
-                    mode: "python",
-                    theme:
-                      theme === Theme.dark
-                        ? "material"
-                        : [Theme.light, Theme.highContrast].includes(theme)
-                        ? "neat"
-                        : "light",
-                    lineNumbers: true,
-                    json: true,
-                  }}
-                />
+                {selected === "Python" && <PythonEditor />}
+                {selected === "Javascript" && <JSEditor />}
+                {["Java", "Kotlin", "C++", "C"].includes(selected) && (
+                  <CLikeEditor />
+                )}
+                {selected === "Mysql" && <MySqlEditor />}
+                {selected === "Shell" && <ShellEditor />}
               </>
             )}
 
