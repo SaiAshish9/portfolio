@@ -436,62 +436,82 @@ const CodeEditor = ({ options }) => {
           </TagsContainer>
 
           <StyledRow>
-            <Editor
-              value={
-                selected !== "Python"
-                  ? beautify.js_beautify(
-                      options.codes[selected]?.code ?? "Reload the page"
-                    )
-                  : options.codes["Python"]?.code ?? "Reload the page"
-              }
-              options={{
-                mode: ["Java", "Kotlin", "C++", "C"].includes(selected)
-                  ? "clike"
-                  : selected === "Javascript"
-                  ? "javascript"
-                  : selected === "Mysql"
-                  ? "sql"
-                  : selected === "Shell"
-                  ? "shell"
-                  : "python",
-                theme:
-                  theme === Theme.dark
-                    ? "material"
-                    : [Theme.light, Theme.highContrast].includes(theme)
-                    ? "neat"
-                    : "light",
-                lineNumbers: true,
-                json: true,
-              }}
-            />
-            <SEditor
-              value={
-                selected !== "Python"
-                  ? beautify.js_beautify(
-                      options.codes[selected]?.code ?? "Reload the page"
-                    )
-                  : options.codes["Python"]?.code ?? "Reload the page"
-              }
-              options={{
-                mode: ["Java", "Kotlin", "C++", "C"].includes(selected)
-                  ? "clike"
-                  : selected === "Javascript"
-                  ? "javascript"
-                  : selected === "Mysql"
-                  ? "sql"
-                  : selected === "Shell"
-                  ? "shell"
-                  : "python",
-                theme:
-                  theme === Theme.dark
-                    ? "material"
-                    : [Theme.light, Theme.highContrast].includes(theme)
-                    ? "neat"
-                    : "light",
-                lineNumbers: true,
-                json: true,
-              }}
-            />
+            {selected !== "Python" ? (
+              <>
+                <Editor
+                  value={beautify.js_beautify(options.codes[selected]?.code)}
+                  options={{
+                    mode: ["Java", "Kotlin", "C++", "C"].includes(selected)
+                      ? "clike"
+                      : selected === "Javascript"
+                      ? "javascript"
+                      : selected === "Mysql"
+                      ? "sql"
+                      : "shell",
+                    theme:
+                      theme === Theme.dark
+                        ? "material"
+                        : [Theme.light, Theme.highContrast].includes(theme)
+                        ? "neat"
+                        : "light",
+                    lineNumbers: true,
+                    json: true,
+                  }}
+                />
+                <SEditor
+                  value={beautify.js_beautify(options.codes[selected]?.code)}
+                  options={{
+                    mode: ["Java", "Kotlin", "C++", "C"].includes(selected)
+                      ? "clike"
+                      : selected === "Javascript"
+                      ? "javascript"
+                      : selected === "Mysql"
+                      ? "sql"
+                      : "shell",
+                    theme:
+                      theme === Theme.dark
+                        ? "material"
+                        : [Theme.light, Theme.highContrast].includes(theme)
+                        ? "neat"
+                        : "light",
+                    lineNumbers: true,
+                    json: true,
+                  }}
+                />
+              </>
+            ) : (
+              <>
+                <Editor
+                  value={options.codes["Python"]?.code}
+                  options={{
+                    mode: "python",
+                    theme:
+                      theme === Theme.dark
+                        ? "material"
+                        : [Theme.light, Theme.highContrast].includes(theme)
+                        ? "neat"
+                        : "light",
+                    lineNumbers: true,
+                    json: true,
+                  }}
+                />
+                <SEditor
+                  value={options.codes["Python"]?.code}
+                  options={{
+                    mode: "python",
+                    theme:
+                      theme === Theme.dark
+                        ? "material"
+                        : [Theme.light, Theme.highContrast].includes(theme)
+                        ? "neat"
+                        : "light",
+                    lineNumbers: true,
+                    json: true,
+                  }}
+                />
+              </>
+            )}
+
             {outputCheck && (
               <>
                 <OutputEditorContainer>
