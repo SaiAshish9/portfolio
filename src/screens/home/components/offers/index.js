@@ -34,6 +34,7 @@ import HeartComponent from "./components/heartComponent";
 import ProboImg from "assets/home/probo.svg";
 import LambdaTestImg from "assets/home/lambda-test.png";
 import WildsterImg from "assets/home/wildster.png";
+import MindTickleImg from "assets/home/mindtickle.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -134,9 +135,13 @@ const images = [
     img: VerizonImg,
     link: "https://verizon.com",
   },
+  // {
+  //   img: ProboImg,
+  //   link: "https://probo.in",
+  // },
   {
-    img: ProboImg,
-    link: "https://probo.in",
+    img: MindTickleImg,
+    link: "http://mindtickle.com/",
   },
   {
     img: MindbowserImg,
