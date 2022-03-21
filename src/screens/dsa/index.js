@@ -84,7 +84,7 @@ const LeetCodeQuestions = ({ entries, selectedOption, history }) => {
     setInitialEntriesData(entriesData);
     const resultantEntriesData = [
       ...entriesData,
-      ...Array(1008 - entriesData?.length).keys(),
+      // ...Array(1008 - entriesData?.length).keys(),
     ];
     setData(resultantEntriesData);
     if (initialData.length === 0) setInitialData(resultantEntriesData);

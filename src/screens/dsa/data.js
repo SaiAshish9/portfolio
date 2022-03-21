@@ -19397,9 +19397,6 @@ console.log(isPairSum(arr, arrSize, val));
               <b>Q1. Two Sum</b>
             </Span>
             <Span>
-              <b>Problem Statement</b>
-            </Span>
-            <Span>
               Given an array of integers nums and an integer target, return
               indices of the two numbers such that they add up to target.
               <br />
