@@ -171,7 +171,7 @@ const Header = ({ scrolled, history }) => {
       subTitle: "04:15",
       id: 8,
       songUrl:
-        "https://res.cloudinary.com/saiashish/video/upload/v1643038596/Bekhayali_-_Kabir_Singh_128_Kbps_hjvkdp.mp3"
+        "https://res.cloudinary.com/saiashish/video/upload/v1643038596/Bekhayali_-_Kabir_Singh_128_Kbps_hjvkdp.mp3",
     },
     {
       img: "https://a10.gaanacdn.com/gn_img/albums/koMWQ7BKqL/oMWQA4MAWq/size_l_1535609228.webp",
@@ -179,7 +179,7 @@ const Header = ({ scrolled, history }) => {
       subTitle: "04:15",
       id: 9,
       songUrl:
-        "https://res.cloudinary.com/saiashish/video/upload/v1643038789/Sun-Saathiya-Priya-Saraiya-Divya-Kumar_hyvplu.mp3"
+        "https://res.cloudinary.com/saiashish/video/upload/v1643038789/Sun-Saathiya-Priya-Saraiya-Divya-Kumar_hyvplu.mp3",
     },
     {
       img: "https://a10.gaanacdn.com/gn_img/song/qaLKY623pO/LKYjxnZx3p/size_l_1516001095.webp",
@@ -187,7 +187,7 @@ const Header = ({ scrolled, history }) => {
       subTitle: "03:10",
       id: 10,
       songUrl:
-        "https://res.cloudinary.com/saiashish/video/upload/v1643039185/Suit_Suit_-_Hindi_Medium_Guru_n_Arjun_320Kbps_wudh2v.mp3"
+        "https://res.cloudinary.com/saiashish/video/upload/v1643039185/Suit_Suit_-_Hindi_Medium_Guru_n_Arjun_320Kbps_wudh2v.mp3",
     },
     {
       img: "http://a10.gaanacdn.com/images/albums/27/2207027/crop_480x480_2207027.jpg",
@@ -361,6 +361,7 @@ const Header = ({ scrolled, history }) => {
         {visible && !history.location.pathname.includes("dsa") && (
           <Drawer
             data={languages}
+            language
             selected={selectedLanguage}
             visible={visible}
             setVisible={setVisible}

@@ -16,11 +16,20 @@ import {
 
 import I18n from "common/I18n";
 
-const Modal = ({ label, visible, setVisible, data, selected, onClick }) => {
+const Modal = ({
+  label,
+  visible,
+  setVisible,
+  data,
+  selected,
+  onClick,
+  language,
+}) => {
   return (
     <StyledDrawer
       placement="bottom"
       closable={false}
+      onClose={() => setVisible(false)}
       // onClose={onClose}
       visible={visible}
     >
@@ -37,10 +46,10 @@ const Modal = ({ label, visible, setVisible, data, selected, onClick }) => {
               active={selected === i.id ? 1 : 0}
             >
               {i.img && <Img src={i.img} alt="img" />}
-              <Icon>{i.icon}</Icon>
+              {<Icon>{i.icon}</Icon>}
               <Row>
                 <Title>
-                  {selected === i.id && <StyledMusicIcon />}
+                  {selected === i.id && !language && <StyledMusicIcon />}
                   {i.title}
                 </Title>
               </Row>
