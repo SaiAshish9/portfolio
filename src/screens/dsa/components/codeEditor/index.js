@@ -55,7 +55,7 @@ const CodeEditor = ({ options }) => {
   useEffect(() => {
     const keys = Object.keys(options ? options.codes : []);
     setSelected(keys ? keys[0] : null);
-  }, [options, selected]);
+  }, [options]);
 
   async function executeCode() {
     try {
