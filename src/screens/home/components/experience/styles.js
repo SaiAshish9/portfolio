@@ -67,7 +67,7 @@ export const Content = styled.div`
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     width: 50%;
     ${({ id }) =>
-      id < 9 &&
+      id < 8 &&
       css`
         margin-bottom: 1rem;
       `};
