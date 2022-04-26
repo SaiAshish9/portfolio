@@ -6058,7 +6058,7 @@ class BTreeNode
                     title: "B+ Tree",
                     output: null,
                     codes: {
-                      python: {
+                      Python: {
                         code: `MAX = 3
                         
 class Node :
