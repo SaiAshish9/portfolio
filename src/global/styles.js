@@ -7,6 +7,9 @@ const { white, veryDarkGray, blue, yellow, orange, red, darkGrey } = Colors;
 const genericStyles = css`
   body {
     overflow-x: hidden !important;
+    pre {
+      white-space: pre-wrap;
+    }
     font-family: ${FontFamily.roboto}, sans-serif !important;
     background: ${({ theme: { current } }) =>
       current === Theme.dark
