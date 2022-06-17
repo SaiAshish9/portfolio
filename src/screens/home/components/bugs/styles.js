@@ -35,6 +35,21 @@ export const Row = styled.div`
   }
 `;
 
+export const RowSA = styled.div`
+  ${Styles.RAC}
+  width: 70vw;
+  margin: 0rem auto 1rem;
+  @media only screen and (max-width: ${BREAKPOINTS.lg}) {
+    width: 80vw;
+  }
+  @media only screen and (max-width: ${BREAKPOINTS.md}) {
+    width: 90vw;
+  }
+  @media only screen and (max-width: ${BREAKPOINTS.xs}) {
+    width: 90%;
+  }
+`;
+
 export const Img = styled.img`
   height: 4rem;
   cursor: pointer;

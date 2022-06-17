@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Img, Row, MContainer } from "./styles";
+import { Container, Img, Row, MContainer, RowSA } from "./styles";
 
 import FirebaseImg from "assets/bugs/firebase.png";
 import LinkedInImg from "assets/bugs/linked-in.png";
@@ -10,6 +10,7 @@ import StripeImg from "assets/bugs/stripe1.png";
 import WhatsappImg from "assets/bugs/whatsapp.png";
 import SentryImg from "assets/bugs/sentry.png";
 import CREDImg from "assets/home/cred1.png";
+import RazorpayImg from "assets/home/razorpay.png";
 import I18n from "common/I18n";
 import { Label } from "../offers/styles";
 import { goTo } from "utils";
@@ -47,6 +48,10 @@ const images = [
     img: WhatsappImg,
     link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_whatsappbusiness-whatsapp-meta-activity-6870017467322912768-kr9V",
   },
+  {
+    img: RazorpayImg,
+    link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_razorpay-activity-6942313584399900672-WQZT?utm_source=linkedin_share&utm_medium=member_desktop_web",
+  },
 ];
 // https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_geeksforgeeks-activity-6871923789240913920-CRqp
 
@@ -64,7 +69,7 @@ const Bugs = () => {
       </Label>
       <Container data-aos="flip-right">
         <Row>
-          {images.slice(0, 8).map((i, k) => (
+          {images.slice(0, 9).map((i, k) => (
             <Img
               alt="img"
               onClick={(e) => handleClick(e, i)}
@@ -74,7 +79,7 @@ const Bugs = () => {
           ))}
         </Row>
         <Row>
-          {images.slice(8).map((i, k) => (
+          {images.slice(9).map((i, k) => (
             <Img
               alt="img"
               onClick={(e) => handleClick(e, i)}
@@ -86,7 +91,7 @@ const Bugs = () => {
       </Container>
       <MContainer>
         <Row>
-          {images.slice(0, 4).map((i, k) => (
+          {images.slice(0, 5).map((i, k) => (
             <Img
               alt="img"
               onClick={(e) => handleClick(e, i)}
@@ -95,8 +100,8 @@ const Bugs = () => {
             />
           ))}
         </Row>
-        <Row>
-          {images.slice(4, 8).map((i, k) => (
+        <RowSA>
+          {images.slice(5, 10).map((i, k) => (
             <Img
               alt="img"
               onClick={(e) => handleClick(e, i)}
@@ -104,27 +109,8 @@ const Bugs = () => {
               key={k}
             />
           ))}
-        </Row>
-        <Row>
-          {images.slice(8, 12).map((i, k) => (
-            <Img
-              alt="img"
-              onClick={(e) => handleClick(e, i)}
-              src={i.img}
-              key={k}
-            />
-          ))}
-        </Row>
-        <Row>
-          {images.slice(12).map((i, k) => (
-            <Img
-              alt="img"
-              onClick={(e) => handleClick(e, i)}
-              src={i.img}
-              key={k}
-            />
-          ))}
-        </Row>
+        </RowSA>
+        <br />
       </MContainer>
     </div>
   );
