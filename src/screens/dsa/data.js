@@ -19385,7 +19385,6 @@ console.log(isPairSum(arr, arrSize, val));
       </>
     ),
   },
-  //
   leetcode: {
     title: "Leetcode Questions (1008+)",
     types: {
@@ -106762,6 +106761,14 @@ a = b + c;
         ),
       },
     },
+  },
+  systemDesign: {
+    title: "System Design",
+    types: {},
+  },
+  designPatterns: {
+    title: "Design Patterns",
+    types: {},
   },
   notes: {
     title: "Notes",
