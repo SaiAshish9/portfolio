@@ -8238,6 +8238,31 @@ Key doesn't exist
           1. Time <br /> 2. Space <br /> 3. N/W Consumption <br /> 4. Power
           Consumption <br /> 5. CPU Registers Consumption
         </Span>
+
+        <Span>
+          <b>STAR Method</b>
+        </Span>
+        <Span>
+          The STAR method is a technique used to answer behavioral interview
+          questions in a structured and compelling way. Behavioral questions
+          prompt job candidates to give specific examples of how they’ve handled
+          past situations or challenges.
+          <br />
+          The acronym STAR stands for –– situation, task, action, result. Each
+          pillar helps you tell a well-thought-out short story that has a
+          beginning, middle, and end. Let’s take a closer look at each one:
+          <br />
+          Situation: Set the scene by briefly describing the situation,
+          challenge, or event you faced
+          <br />
+          Task: Explain what your responsibilities were in that situation. What
+          role did you play?
+          <br />
+          Action: Describe what steps you took to overcome the challenge or
+          address the situation
+          <br />
+          Result: Share what you achieved through your actions
+        </Span>
       </>
     ),
     types: {
