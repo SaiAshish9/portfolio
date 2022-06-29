@@ -9382,6 +9382,89 @@ console.log(isPairSum(arr, arrSize, val));
               }}
             />
             <Span>
+              <b>Window slicing method:</b>
+            </Span>
+            <Span>
+              Window Sliding Technique is a computational technique which aims
+              to reduce the use of nested loop and replace it with a single
+              loop, thereby reducing the time complexity.
+            </Span>
+            <Span>
+              Consider a long chain connected together. Suppose you want to
+              apply oil in the complete chain with your hands, without pouring
+              the oil from above.
+              <br />
+              One way to do so is to:
+              <br />
+              pick some oil, <br />
+              apply onto a section of chain, <br />
+              then again pick some oil
+              <br />
+              then apply it to the next section where oil is not applied yet
+              <br />
+              and so on till the complete chain is oiled.
+              <br />
+              Another way to do so, is to use a cloth, dip it in oil, and then
+              hold onto one end of the chain with this cloth. Then instead of
+              re-dipping it again and again, just slide the cloth with hand onto
+              the next section, and next, and so on till the other end.
+              <br />
+              The second way is known as the Sliding window technique and the
+              portion which is slided from one end to end, is known as Sliding
+              Window.
+              <br />
+              The use of Sliding Window technique can be done in a very specific
+              scenario, where the size of window for computation is fixed
+              throughout the complete nested loop. Only then the time complexity
+              can be reduced.
+            </Span>
+            <Span>
+              Example: Given an array of integers of size ‘n’, Our aim is to
+              calculate the maximum sum of ‘k’ consecutive elements in the
+              array.
+            </Span>
+            <Span>
+              Input : arr[] = {"{(100, 200, 300, 400)}"}, k = 2 <br />
+              Output : 700
+            </Span>
+            <p>
+              <b>Naive Method</b>
+            </p>
+            <pre>
+              {`
+function maxSum( arr, n, k){
+  let max_sum = Number.MIN_VALUE;
+  for (let i = 0; i < n - k + 1; i++) {
+      let current_sum = 0;
+      for (let j = 0; j < k; j++)
+          current_sum = current_sum + arr[i + j];
+      max_sum = Math.max(current_sum, max_sum);
+  }
+  return max_sum;
+}              
+              `}
+            </pre>
+            <p>
+              <b>Slicing Window Technique</b>
+            </p>
+            <pre>{`
+             function maxSum(arr, n, k) {
+              let max = 0;
+              let sum = 0;
+              for (let i = 0; i < k; i++) {
+                  sum += arr[i];
+                  max = sum;
+              }
+              for (let i = k; i < n; i++) {
+                  sum += arr[i] - arr[i - k];
+                  if (sum > max) {
+                      max = sum;
+                  }
+              }
+              return max;
+          }
+            `}</pre>
+            <Span>
               <b>BFS and DFS</b>
             </Span>
             <Span>
@@ -9546,14 +9629,14 @@ console.log(isPairSum(arr, arrSize, val));
               defines exact asymptotic behavior. A simple way to get the Theta
               notation of an expression is to drop low-order terms and ignore
               leading constants. For example, consider the following expression.
-              3n3 + 6n2 + 6000 = Θ(n3) Dropping lower order terms is always fine
-              because there will always be a number(n) after which Θ(n3) has
-              higher values than Θ(n2) irrespective of the constants involved.
-              For a given function g(n), we denote Θ(g(n)) is following set of
-              functions. Θ(g(n)) = [f(n): there exist positive constants c1, c2
-              and n0 such that 0 less than or equal to c1*g(n) less than or
-              equal to f(n) less than or equal to c2*g(n) for all n greater than
-              or equal to n0]
+              3n3 + 6n2 + 6000 = Θ{"(n3)"} Dropping lower order terms is always
+              fine because there will always be a number(n) after which Θ(n3)
+              has higher values than Θ(n2) irrespective of the constants
+              involved. For a given function g(n), we denote Θ(g(n)) is
+              following set of functions. Θ{"(g(n))"} = {"[f(n):"} there exist
+              positive constants c1, c2 and n0 such that 0 less than or equal to
+              c1*g(n) less than or equal to f(n) less than or equal to c2*g(n)
+              for all n greater than or equal to n0{"]"}
             </Span>
             <Span>2. Big O notation:</Span>
             <Span>
