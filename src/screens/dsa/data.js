@@ -10824,7 +10824,7 @@ printJobScheduling(arr, 3)`,
                         arr.push(new Item(60, 10 ), new Item(100, 20), new Item(120, 30))
                          
                         console.log(fractionalKnapsack(W, arr, arr.length))`,
-                        output: `240`,
+                        output: `220`,
                       },
                       Java: {
                         code: `import java.util.Arrays;
