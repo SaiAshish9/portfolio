@@ -18,13 +18,14 @@ import {
   AiOutlineAmazon,
   AiFillGithub,
   AiOutlineLink,
+  AiOutlineWhatsApp,
 } from "react-icons/ai";
 
 import { FaUserShield } from "react-icons/fa";
 
 import { BsPlayFill } from "react-icons/bs";
 
-import { SiMicrosoftteams } from "react-icons/si";
+import { SiMicrosoftteams, SiRazorpay } from "react-icons/si";
 
 import ReactPlayer from "react-player";
 
@@ -45,6 +46,20 @@ const Projects = () => {
       tab: <AiFillInstagram size={ICON_SIZE + 5} />,
       // url: "https://www.youtube.com/watch?v=gO_1CeJ2vT8",
       url: "https://res.cloudinary.com/saiashish/video/upload/v1627472940/Instagram_Clone_Using_React_Native_Postgres_Docker_And_Golang_bqznpc.mp4",
+    },
+    {
+      key: "whatsApp",
+      link: "https://github.com/saiashish9",
+      label: <I18n t="whatsappBusiness" />,
+      tab: <AiOutlineWhatsApp size={ICON_SIZE + 5} />,
+      url: "https://youtu.be/LTbq136e_Tc",
+    },
+    {
+      key: "razorpay",
+      link: "https://github.com/saiashish9",
+      label: <I18n t="razorpay" />,
+      tab: <SiRazorpay size={ICON_SIZE + 5} />,
+      url: "https://youtu.be/fZUDUKjGOwU",
     },
     {
       key: "amazon",
@@ -79,7 +94,7 @@ const Projects = () => {
       link: "https://github.com/saiashish9",
       label: <I18n t="github" />,
       tab: <AiFillGithub size={ICON_SIZE + 5} />,
-      url: "https://youtu.be/LeUUn7BJQ2I",
+      url: "https://youtu.be/BOjigJpvoDo",
     },
   ];
 
