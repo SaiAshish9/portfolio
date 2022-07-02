@@ -107616,6 +107616,13 @@ SubClass
 @implementation A {}
 @interface A : B
 
+Delegates And Protocols
+
+A delegate is just a class that does some work for another class. 
+Read the following code for a somewhat silly (but hopefully enlightening) Playground 
+example that shows how this is done in Swift. // A protocol is just a list of methods (and/or properties) 
+that must // be used by any class that adopts the protocol.
+
 Extensions
 Extensions (also called class extensions) are a special type of category that requires their methods to be defined in the main implementation block for the associated class, as opposed to an implementation defined in a category. This can be used to override publicly declared property attributes. For example, it is sometimes convenient to change a read-only property to a read-write property within a class' implementation.
 ship.h
