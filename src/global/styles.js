@@ -7,6 +7,12 @@ const { white, veryDarkGray, blue, yellow, orange, red, darkGrey } = Colors;
 const genericStyles = css`
   body {
     overflow-x: hidden !important;
+    .ant-tabs-nav-list {
+      overflow-x: hidden !important;
+      ::-webkit-scrollbar {
+        display: none !important;
+      }
+    }
     pre {
       white-space: pre-wrap;
     }
