@@ -112816,7 +112816,122 @@ func index(w http.ResponseWriter, r *http.Request) {
       },
       React: {
         title: "React",
-        content: <></>,
+        content: (
+          <>
+            <Span>Protected Route</Span>
+            <pre>{`
+      const A = ({ a : Component ,...rest }) => {
+        const { state } = useStore()
+        return (
+            <Route
+            render={
+              props => !state.isAdmin ? <Redirect to="/login /> : <Component {...props} />
+            }
+            {...rest}
+            />
+        )
+      }                    
+            `}</pre>
+            <Span>Suspense</Span>
+            <pre>
+              {`
+<Suspense fallback={}></Suspense>              
+              `}
+            </pre>
+            <Span>lazy</Span>
+            <pre>{`
+            lazy(()=>k)
+            `}</pre>
+            <Span>PropTypes</Span>
+            <pre>
+              {`
+import PropTypes from "prop-types"
+
+static PropTypes = {
+  onDelete : Proptypes.func.isRequired
+}
+
+static defaultProps = { onClose(){} }
+              `}
+            </pre>
+            <Span>
+              Redux, React-Redux, Redux-Thunk, Redux-Logger, Reselect,
+              Redux-Saga, Redux-Persist, Redux-Devtools-Extension
+            </Span>
+            <pre>
+              {`
+import { createStore, combineReducers, applyMiddleware } from "redux"
+import { Provider } from "react-redux"
+import { createLogger } from "redux-logger"
+import { createSelector } from "reselect
+import thunk from "redux-thunk"
+logger = createLogger()
+reducers = combineReducers({
+  reducerA
+})
+reducerA = (state=initialState, action = {}) {
+  switch(action.type){
+      case : 
+  }
+} 
+mapStateToProps
+mapDispatchToProps
+connect(mapStateToProps,mapDispatchToProps)
+              `}
+            </pre>
+            <Span>
+              bind() menthod
+            </Span>
+            <pre>
+              {`
+class A extends Component {
+constructor(props){
+  super(props)
+  this.state = {}
+  this.onSave = this.onSave.bind(this)
+}
+}              
+
+this.A = this.A.bind(this)
+this.A.bind(this)
+this.A.bind(this,id)
+              `}
+            </pre>
+            <Span>useContext & createContext</Span>
+          </>
+        ),
+      },
+      React: {
+        title: "React Native",
+        content: (
+          <>
+            <Span>
+              expo install react-native-gesture-handler react-native-reanimated
+              react-native-screens react-native-safe-area-context
+              @react-native-community/masked-view react-navigation
+              react-navigation/stack react-navigation/native
+            </Span>
+            <Span>
+              CreateAppContainer <br />
+              CreateStackNavigator <br />
+              CreateDrawerNavigator <br />
+              CreateBottomTabNavigator <br />
+              CreateBottomTabNavigator
+            </Span>
+            <Span>Animated</Span>
+            <Span>Animated.(Spring,Delay,Timing,Value,ValueXY)</Span>
+            <Span>Pan Responder</Span>
+            <Span>Flatlist</Span>
+            <Span>
+              data <br />
+              renderItem <br />
+              horizontal
+              <br />
+              keyExtractor <br />
+              showsHorizontalIndicator
+            </Span>
+          </>
+        ),
       },
     },
     content: (
