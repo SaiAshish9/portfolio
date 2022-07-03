@@ -67,7 +67,7 @@ const data = [
   },
   // {
   //   title: "Leetcode Profile",
-  //   subTitle: "400+ repo's",
+  //   subTitle: "450+ repo's",
   //   img: GithubImg,
   // },
   {

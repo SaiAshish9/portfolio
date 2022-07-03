@@ -31,6 +31,8 @@ import MLSA2 from "assets/home/microsoft2.jpeg";
 import Tier1Img from "assets/home/tier1.png";
 import IncImg from "assets/home/100xvc.png";
 
+import MsTeamsImg from "assets/home/ms-teams.jpeg";
+
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
 import I18n from "common/I18n";
@@ -75,6 +77,11 @@ const data = [
     title: <I18n t="class11" />,
     subTitle: <I18n t="topper" />,
     img: CollegeImg,
+  },
+  {
+    title: <I18n t="msTeamsChallenge" />,
+    subTitle: <I18n t="outstandingProject" />,
+    img: MsTeamsImg,
   },
   {
     title: <I18n t="hackBVP" />,
@@ -162,20 +169,20 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 1,
   swipeToSlide: true,
-  nextArrow: <NextArrow curr={10} />,
+  nextArrow: <NextArrow curr={11} />,
   prevArrow: <PrevArrow />,
 };
 
 const mSettings = {
   ...settings,
   slidesToShow: 3,
-  nextArrow: <NextArrow curr={11} />,
+  nextArrow: <NextArrow curr={12} />,
 };
 
 const sSettings = {
   ...settings,
   slidesToShow: 2,
-  nextArrow: <NextArrow curr={12} />,
+  nextArrow: <NextArrow curr={13} />,
 };
 
 const Achievements = () => {

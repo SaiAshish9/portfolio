@@ -19,6 +19,7 @@ import {
   AiFillGithub,
   AiOutlineLink,
   AiOutlineWhatsApp,
+  AiOutlineCreditCard
 } from "react-icons/ai";
 
 import { FaUserShield } from "react-icons/fa";
@@ -49,14 +50,14 @@ const Projects = () => {
     },
     {
       key: "whatsApp",
-      link: "https://github.com/saiashish9",
+      link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_whatsapp-whatsappbusiness-meta-activity-6946370400566022144-aCK4?utm_source=linkedin_share&utm_medium=member_desktop_web",
       label: <I18n t="whatsappBusiness" />,
       tab: <AiOutlineWhatsApp size={ICON_SIZE + 5} />,
       url: "https://youtu.be/LTbq136e_Tc",
     },
     {
       key: "razorpay",
-      link: "https://github.com/saiashish9",
+      link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_razorpay-activity-6947766565572341760-wJI1?utm_source=linkedin_share&utm_medium=member_desktop_web",
       label: <I18n t="razorpay" />,
       tab: <SiRazorpay size={ICON_SIZE + 5} />,
       url: "https://youtu.be/fZUDUKjGOwU",
@@ -96,6 +97,13 @@ const Projects = () => {
       tab: <AiFillGithub size={ICON_SIZE + 5} />,
       url: "https://youtu.be/BOjigJpvoDo",
     },
+    // {
+    //   key: "cred",
+    //   link: "https://www.linkedin.com/posts/%F0%9F%9A%80-sai-ashish-237784188_i-just-tried-to-implement-the-animated-splash-activity-6946018268151197696-3OCa?utm_source=linkedin_share&utm_medium=member_desktop_web",
+    //   label: <I18n t="github" />,
+    //   tab: <AiOutlineCreditCard size={ICON_SIZE + 5} />,
+    //   url: "https://youtube.com/shorts/r0gg1sFFROg",
+    // },
   ];
 
   const [playing, isPlaying] = useState(false);
