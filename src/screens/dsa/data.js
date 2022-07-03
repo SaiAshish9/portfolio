@@ -112814,6 +112814,10 @@ func index(w http.ResponseWriter, r *http.Request) {
         ),
         types: {},
       },
+      React: {
+        title: "React",
+        content: <></>,
+      },
     },
     content: (
       <>
