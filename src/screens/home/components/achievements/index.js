@@ -28,6 +28,8 @@ import AmazonImg3 from "assets/home/amazon3.jpeg";
 import MLSA1 from "assets/home/microsoft1.jpeg";
 import MLSA2 from "assets/home/microsoft2.jpeg";
 
+import BuildableImg from "assets/offer.jpeg";
+
 import Tier1Img from "assets/home/tier1.png";
 import IncImg from "assets/home/100xvc.png";
 
@@ -74,11 +76,6 @@ const data = [
     ],
   },
   {
-    title: <I18n t="class11" />,
-    subTitle: <I18n t="topper" />,
-    img: CollegeImg,
-  },
-  {
     title: <I18n t="msTeamsChallenge" />,
     subTitle: <I18n t="outstandingProject" />,
     img: MsTeamsImg,
@@ -115,6 +112,27 @@ const data = [
     img: IEMISImg,
   },
   {
+    title: "Buildable",
+    subTitle: <><I18n t="github" /> ❤️</>,
+    img: BuildableImg,
+  },
+  {
+    title: <I18n t="srm" />,
+    subTitle: <I18n t="srmDesc" />,
+    img: MLSA1,
+    images: [MLSA1, MLSA2],
+  },
+  {
+    title: <I18n t="100xvc" />,
+    subTitle: <I18n t="collaboration" />,
+    img: IncImg,
+  },
+  {
+    title: <I18n t="class11" />,
+    subTitle: <I18n t="topper" />,
+    img: CollegeImg,
+  },
+  {
     title: <I18n t="class12" />,
     subTitle: <I18n t="awardWinner" />,
     img: "https://res.cloudinary.com/saiashish/image/upload/v1636813139/class_12th_dz9j9q.jpg",
@@ -124,21 +142,11 @@ const data = [
     subTitle: <I18n t="topper" />,
     img: Class8AwardImg,
   },
-  {
-    title: <I18n t="srm" />,
-    subTitle: <I18n t="srmDesc" />,
-    img: MLSA1,
-    images: [MLSA1, MLSA2],
-  },
+
   {
     title: <I18n t="tier1" />,
     subTitle: <I18n t="tier1Desc" />,
     img: Tier1Img,
-  },
-  {
-    title: <I18n t="100xvc" />,
-    subTitle: <I18n t="collaboration" />,
-    img: IncImg,
   },
 ];
 

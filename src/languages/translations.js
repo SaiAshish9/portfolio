@@ -1110,4 +1110,15 @@ export const translations = [
     fr: "Projet exceptionnel ✨",
     ru: "Выдающийся проект ✨",
   },
+  {
+    text: "buildable",
+    en: "Buildable",
+    pt: "Edificável",
+    hi: "बनाने योग्य",
+    te: "నిర్మించదగినది",
+    de: "Baubar",
+    zh: "可建造",
+    fr: "Constructible",
+    ru: "Сборный",
+  },
 ];
