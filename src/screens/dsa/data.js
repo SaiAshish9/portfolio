@@ -113011,6 +113011,81 @@ function Countdown({ seconds }) {
 }              
               `}
             </pre>
+            <pre>
+              {`
+import React, {useReducer, createContext} from 'react';
+export default (reducer, actions, initialState) => {
+  const Context = createContext();
+  const Provider = ({children}) => {
+    const [state, dispatch] = useReducer(reducer, initialState);              
+    const boundActions = {};
+    for (let key in actions) {
+      boundActions[key] = actions[key](dispatch);
+    }
+    return (
+      <Context.Provider value={{state, ...boundActions}}>
+        {children}
+      </Context.Provider>
+    );
+  };
+  return {Context, Provider};
+};
+              `}
+            </pre>
+            <pre>
+              {`
+import axios from "axios";
+const instance = axios.create({
+  baseURL: "https://sheet.best/api/sheets/",
+});
+instance.interceptors.request.use(
+  async (config) => {
+      config.headers['Content-Type'] = 'application/json';
+      return config;
+  },
+  (err) => {
+    return Promise.reject(err);
+  }
+);
+export default instance;              
+              `}
+            </pre>
+            <pre>
+              {`
+export const { Context, Provider } = createDataContext(
+  reducer,
+  {
+    fetchTexts,
+  },
+  {
+    texts: null,
+  }
+);              
+
+import Cookie from "js-cookie"
+const generatePDF = (dispatch) => async ({ child, file, type }) => {
+  try {
+    const email = Cookie.get("email");
+    console.log(url);
+    await firebase.storage().ref().child(child).put(file, "application/pdf");
+    const url = await firebase
+      .storage()
+      .ref(type)
+      .getDownloadURL();
+    let obj = {};
+    obj[type] = url;
+    await db.collection("dev-users").doc(email).update(obj);
+  } catch (e) {
+    throw new Error(e);
+  }
+};
+              `}
+            </pre>
+            <Span>
+              Sagas enable numerous approaches to tackling parallel execution,
+              task concurrency, task racing, task cancellation, and more. Keep
+              total control over the flow of your code.
+            </Span>
           </>
         ),
       },
