@@ -112865,6 +112865,9 @@ import { Provider } from "react-redux"
 import { createLogger } from "redux-logger"
 import { createSelector } from "reselect
 import thunk from "redux-thunk"
+import { PersistGate } from "redux-persist/integration/react
+import { PersistStore, persistReducer } from "redux-persist"
+import storage from "redux-persist/integration/react"
 logger = createLogger()
 reducers = combineReducers({
   reducerA
@@ -112879,9 +112882,16 @@ mapDispatchToProps
 connect(mapStateToProps,mapDispatchToProps)
               `}
             </pre>
-            <Span>
-              bind() menthod
-            </Span>
+            <br />
+            <pre>
+              {`
+import { composeWithDevTools } from "redux-devtools-extension"
+composeWithDevTools(applyMiddleware(...middlewares))
+import { compose } from "redux" 
+(window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose)(applyMiddleware(...middlewares))
+              `}
+            </pre>
+            <Span>bind() menthod</Span>
             <pre>
               {`
 class A extends Component {
@@ -112897,26 +112907,130 @@ this.A.bind(this)
 this.A.bind(this,id)
               `}
             </pre>
-            <Span>useContext & createContext</Span>
+            <Span>
+              useContext , createContext, useSelector, useDispatch, useMemo,
+              useCallback , useRef, createRef,
+            </Span>
+            <Span>Counter</Span>
+            <pre>
+              {`
+import React, { useState, useCallback } from 'react'
+
+const Counter = () => {
+  const [count, setCount] = useState(0)
+  const [otherCounter, setOtherCounter] = useState(0)
+
+  const increment = () => {
+    setCount(count + 1)
+  }
+  const decrement = () => {
+    setCount(count - 1)
+  }
+  const incrementOtherCounter = () => {
+    setOtherCounter(otherCounter + 1)
+  }
+
+  return (
+    <>
+      Count: {count}
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+      <button onClick={incrementOtherCounter}>incrementOtherCounter</button>
+    </>
+  )
+}
+
+ReactDOM.render(<Counter />, document.getElementById('app'))
+The problem here is that any time the counter is updated, all the 3 functions are re-created again.
+
+You can visualize this by instantiating a Set data structure, and 
+adding each function to it. Why Set? because it only stores unique elements, which in our case means different (uniquely instantiated) functions.              
+
+const { useState, useCallback } = React
+const functionsCounter = new Set()
+
+const Counter = () => {
+  const [count, setCount] = useState(0)
+  const [otherCounter, setOtherCounter] = useState(0)
+  
+  const increment = useCallback(() => {
+    setCount(count + 1)
+  }, [count])
+  const decrement = useCallback(() => {
+    setCount(count - 1)
+  }, [count])
+  const incrementOtherCounter = useCallback(() => {
+    setOtherCounter(otherCounter + 1)
+  }, [otherCounter])
+
+  /*
+  const increment = (() => {
+    setCount(count + 1)
+  })
+  const decrement = (() => {
+    setCount(count - 1)
+  })
+  const incrementOtherCounter = (() => {
+    setOtherCounter(otherCounter + 1)
+  })
+  */
+
+  functionsCounter.add(increment)
+  functionsCounter.add(decrement)
+  functionsCounter.add(incrementOtherCounter)
+
+  console.log(functionsCounter.size)
+  
+  return (
+    <>
+      Count: {count}
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+      <button onClick={incrementOtherCounter}>incrementOtherCounter</button>
+    </>
+  )
+}
+
+ReactDOM.render(<Counter />, document.getElementById('app'))
+`}
+            </pre>
+            <Span>Countdown Timer</Span>
+            <pre>
+              {`
+function Countdown({ seconds }) {
+  const [timeLeft, setTimeLeft] = useState(seconds);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTimeLeft((t) => t - 1);
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
+
+  return <div>{timeLeft}s</div>;
+}              
+              `}
+            </pre>
           </>
         ),
       },
-      React: {
+      ReactNative: {
         title: "React Native",
         content: (
           <>
             <Span>
               expo install react-native-gesture-handler react-native-reanimated
               react-native-screens react-native-safe-area-context
-              @react-native-community/masked-view react-navigation
-              react-navigation/stack react-navigation/native
+              @react-native-community/masked-view @react-navigation/native
+              @react-navigation/stack @react-navigation/native
+              @react-navigation/bottom-tabs
             </Span>
             <Span>
               CreateAppContainer <br />
               CreateStackNavigator <br />
               CreateDrawerNavigator <br />
               CreateBottomTabNavigator <br />
-              CreateBottomTabNavigator
+              CreateMaterialTopBarNavigator <br />
             </Span>
             <Span>Animated</Span>
             <Span>Animated.(Spring,Delay,Timing,Value,ValueXY)</Span>
@@ -112929,6 +113043,32 @@ this.A.bind(this,id)
               <br />
               keyExtractor <br />
               showsHorizontalIndicator
+            </Span>
+            <Span>react-native-config.js</Span>
+            <Span>
+              react-native-splashscreen <br />
+              react-native-bootsplash <br />
+              react-native-elements <br />
+              latlng-to-zip <br />
+              react-native-contacts <br />
+              react-native-get-location <br />
+              react-native-image-picker <br />
+              react-native-sound <br />
+              react-native-video <br />
+              react-native-youtube <br />
+              react-native-device-info <br />
+              react-native-countup <br />
+              react-native-svg <br />
+              react-native-linear-gradient <br />
+              @react-native-community/google-signin <br />
+              @react-native-community/async-storage <br />
+              react-native-debugger <br />
+              @react-native-community/datetimepicker
+              <br /> ngrok http 3000 <br />
+              json-server -w db.json <br />
+              nodemon src/index.json
+              <br />
+              react-native-modalize
             </Span>
           </>
         ),
