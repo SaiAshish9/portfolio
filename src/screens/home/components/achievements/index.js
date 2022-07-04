@@ -112,8 +112,12 @@ const data = [
     img: IEMISImg,
   },
   {
-    title: "Buildable",
-    subTitle: <><I18n t="github" /> ❤️</>,
+    title: <I18n t="buildable" />,
+    subTitle: (
+      <>
+        <I18n t="github" /> ❤️
+      </>
+    ),
     img: BuildableImg,
   },
   {
