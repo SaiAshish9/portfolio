@@ -113086,6 +113086,47 @@ const generatePDF = (dispatch) => async ({ child, file, type }) => {
               task concurrency, task racing, task cancellation, and more. Keep
               total control over the flow of your code.
             </Span>
+            <Span>
+              Babel is a JavaScript transpiler, meaning it converts a newer
+              version of ECMAScript, such as ES9, to a standard version (ES5).
+            </Span>
+            <Span>
+              ECMAScript is a Standard for scripting languages such as
+              JavaScript, JScript, etc. It is a trademark scripting language
+              specification. JavaScript is a language based on ECMAScript. A
+              standard for scripting languages like JavaScript, JScript is
+              ECMAScript.
+            </Span>
+            <Span>
+              Ecma International (formally European Computer Manufacturers
+              Association) is a non-profit organization that develops standards
+              in computer hardware, communications, and programming languages
+            </Span>
+            <Span>
+              Webpack is a module bundler. Its main purpose is to bundle
+              JavaScript files for usage in a browser, yet it is also capable of
+              transforming, bundling, or packaging just about any resource or
+              asset.
+            </Span>
+            <Span>
+              A polyfill is a piece of code (usually JavaScript on the Web) used
+              to provide modern functionality on older browsers that do not
+              natively support it.
+            </Span>
+            <Span>
+              The Document Object Model (DOM) is a programming interface for web
+              documents. It represents the page so that programs can change the
+              document structure, style, and content. The DOM represents the
+              document as nodes and objects; that way, programming languages can
+              interact with the page
+            </Span>
+            <Span>
+              Debouncing in JavaScript is a practice used to improve browser
+              performance. There might be some functionality in a web page which
+              requires time-consuming computations. If such a method is invoked
+              frequently, it might greatly affect the performance of the
+              browser, as JavaScript is a single threaded language.26-Jul-2021
+            </Span>
           </>
         ),
       },
