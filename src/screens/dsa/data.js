@@ -113189,6 +113189,10 @@ const generatePDF = (dispatch) => async ({ child, file, type }) => {
           </>
         ),
       },
+      Regex: {
+        title: "Regex",
+        content: <></>,
+      },
     },
     content: (
       <>
