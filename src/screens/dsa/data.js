@@ -113228,7 +113228,7 @@ const generatePDF = (dispatch) => async ({ child, file, type }) => {
               These symbols act as repeaters and tell the computer that the
               preceding character is to be used for more than just one time.
             </Span>
-            <Span>The asterisk symbol ( * ):</Span>
+            <Span>1. The asterisk symbol ( * ):</Span>
             <Span>
               It tells the computer to match the preceding character (or set of
               characters) for 0 or more times (upto infinite).
@@ -113239,7 +113239,7 @@ const generatePDF = (dispatch) => async ({ child, file, type }) => {
               abbbc….ans so on 
               `}
             </pre>
-            <Span>The Plus symbol ( + ):</Span>
+            <Span>2. The Plus symbol ( + ):</Span>
             <Span>
               It tells the computer to repeat the preceding character (or set of
               characters) for atleast one or more times(upto infinite).
@@ -113250,7 +113250,7 @@ const generatePDF = (dispatch) => async ({ child, file, type }) => {
               abbc, … and so on.
               `}
             </pre>
-            <Span>The curly braces {"{…}"}</Span>
+            <Span>3. The curly braces {"{…}"}</Span>
             <Span>
               It tells the computer to repeat the preceding character (or set of
               characters) for as many times as the value inside this bracket.
@@ -113263,7 +113263,7 @@ const generatePDF = (dispatch) => async ({ child, file, type }) => {
               least min & at most max times.
               `}
             </pre>
-            <Span>Wildcard – ( . )</Span>
+            <Span>4. Wildcard – ( . )</Span>
             <Span>
               The dot symbol can take place of any other symbol, that is why it
               is called the wildcard character.
@@ -113275,7 +113275,7 @@ const generatePDF = (dispatch) => async ({ child, file, type }) => {
               can be used any number of times.
               `}
             </pre>
-            <Span>Optional character – ( ? )</Span>
+            <Span>5. Optional character – ( ? )</Span>
             <Span>
               This symbol tells the computer that the preceding character may or
               may not be present in the string to be matched.
@@ -113288,7 +113288,7 @@ const generatePDF = (dispatch) => async ({ child, file, type }) => {
                 present in the name of file format. 
                 `}
             </pre>
-            <Span>The caret ( ^ ) symbol:</Span>
+            <Span>6. The caret ( ^ ) symbol:</Span>
             <Span>
               Setting position for match :tells the computer that the match must
               start at the beginning of the string or line.
@@ -113298,7 +113298,7 @@ const generatePDF = (dispatch) => async ({ child, file, type }) => {
               Example : ^\d{3} will match with patterns like "901" in "901-333-".
               `}
             </pre>
-            <Span>The dollar ( $ ) symbol</Span>
+            <Span>7. The dollar ( $ ) symbol</Span>
             <Span>
               It tells the computer that the match must occur at the end of the
               string or before \n at the end of the line or string.
@@ -113306,7 +113306,7 @@ const generatePDF = (dispatch) => async ({ child, file, type }) => {
             <pre>{`
             Example : -\d{3}$  will match with patterns like "-333" in "-901-333".
             `}</pre>
-            <Span>Character Classes</Span>
+            <Span>8. Character Classes</Span>
             <Span>
               A character class matches any one of a set of characters. It is
               used to match the most basic element of a language like a letter,
@@ -113323,7 +113323,7 @@ const generatePDF = (dispatch) => async ({ child, file, type }) => {
               /b : matches any word boundary (this would include spaces, dashes,
               commas, semi-colons, etc)
             </Span>
-            <Span>{"[set_of_characters]"}</Span>
+            <Span>9. {"[set_of_characters]"}</Span>
             <Span>
               Matches any single character in set_of_characters. By default, the
               match is case-sensitive.
@@ -113333,13 +113333,13 @@ const generatePDF = (dispatch) => async ({ child, file, type }) => {
 Example : [abc] will match characters a,b and c in any string.              
               `}
             </pre>
-            <Span>{"[^set_of_characters]"}</Span>
+            <Span>10. {"[^set_of_characters]"}</Span>
             <pre>
               {`
 Negation: Matches any single character that is not in set_of_characters. By default, the match is case sensitive.              
               `}
             </pre>
-            <Span>{"[first-last]"}</Span>
+            <Span>11. {"[first-last]"}</Span>
             <Span>
               Character range: Matches any single character in the range from
               first to last.
@@ -113349,7 +113349,7 @@ Negation: Matches any single character that is not in set_of_characters. By defa
               Example : [a-zA-z] will match any character from a to z or A to Z.
               `}
             </pre>
-            <Span>The Escape Symbol : \</Span>
+            <Span>12. The Escape Symbol : \</Span>
             <Span>
               If you want to match for the actual ‘+’, ‘.’ etc characters, add a
               backslash( \ ) before that character. This will tell the computer
@@ -113362,7 +113362,7 @@ Negation: Matches any single character that is not in set_of_characters. By defa
               and "3*9" in "(2+2) * 3*9".
               `}
             </pre>
-            <Span>Grouping Characters ( )</Span>
+            <Span>13. Grouping Characters ( )</Span>
             <Span>
               A set of different symbols of a regular expression can be grouped
               together to act as a single unit and behave as a block, for this,
@@ -113375,7 +113375,7 @@ Negation: Matches any single character that is not in set_of_characters. By defa
               containing uppercase letter followed by any character.
               `}
             </pre>
-            <Span>Vertical Bar ( | )</Span>
+            <Span>14. Vertical Bar ( | )</Span>
             <Span>
               Matches any one element separated by the vertical bar (|)
               character.
@@ -113383,7 +113383,7 @@ Negation: Matches any single character that is not in set_of_characters. By defa
             <pre>{`
             Example :  th(e|is|at) will match words - the, this and that.
             `}</pre>
-            <Span>\number :</Span>
+            <Span>15. \number ( Backrefernce ) :</Span>
             <Span>
               Backreference: allows a previously matched
               sub-expression(expression captured or enclosed within circular
@@ -113393,11 +113393,21 @@ Negation: Matches any single character that is not in set_of_characters. By defa
             </Span>
             <pre>
               {`
-              Example : ([a-z])\1 will match “ee” in Geek because the character 
+              Example : ([a-z])\\1 will match “ee” in Geek because the character 
               at second position is same as character at position 1 of the match.
               `}
             </pre>
-            <Span>Comment : (?# comment) </Span>
+            <Span>16. Comment : (?# comment) </Span>
+            <Span>
+              Inline comment: The comment ends at the first closing parenthesis.
+            </Span>
+            <pre>{`Example : \\bA(?#This is an inline comment)\\w+\\b`}</pre>
+            <Span># [to end of line]</Span>
+            <Span>
+              X-mode comment. The comment starts at an unescaped # and continues
+              to the end of the line.
+            </Span>
+            <pre>{`Example :  (?x)\\bA\\w+\\b#Matches words starting with A`}</pre>
           </>
         ),
       },

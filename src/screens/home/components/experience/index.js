@@ -30,7 +30,7 @@ const data = [
     img: LambdaTestImg,
     label: <I18n t="lambda-test" />,
     position: <I18n t="sde-intern" />,
-    link: "https://www.lambdatest.com/",
+    link: "https://www.lambdatest.com/xcuitest-app-testing",
     exp: 6,
     id: 0,
   },
