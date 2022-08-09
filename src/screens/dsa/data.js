@@ -14398,6 +14398,69 @@ SC O(N*W)
             ),
           },
           {
+            title: "Longest Common Substring",
+            content: (
+              <>
+                <Span>
+                  <b>Longest Common Substrin Problem Statement:</b>
+                </Span>
+                <Span>
+                  Given two strings ‘X’ and ‘Y’, find the length of the longest
+                  common substring.
+                </Span>
+                <CodeEditor
+                  options={{
+                    title: "Longest Common Substring",
+                    codes: {
+                      Javascript: {
+                        code: `function lcs(s1,s2){ 
+  
+                          const m = s1.length;
+                          const n = s2.length;
+                          let row=0 
+                          let col=0;
+                          let len=0;
+                          const dp = Array.from(Array(m + 1), () => Array(n + 1).fill(0));
+                          let result = 0
+                          for (let i = 0; i <= m; i++) {
+                            for (let j = 0; j <= n; j++) {
+                              if (i == 0 || j == 0) dp[i][j] = 0;
+                              else if (s1[i - 1] == s2[j - 1]){
+                                dp[i][j] = 1 + dp[i - 1][j - 1];
+                                result = Math.max(result , dp[i][j]) 
+                                if (len < dp[i][j]) {
+                                     len = dp[i][j];
+                                     row = i;
+                                     col = j;
+                        }
+                        }
+                              else dp[i][j] = 0
+                            }
+                          }
+                           if(len==0) {
+                           console.log("no substring present")
+                           return 0   
+                           }
+                             let resultStr = "";  
+                                while (dp[row][col] != 0) {
+                                    resultStr = s1[row-1] + resultStr; // or Y[col-1]
+                                    --len;
+                                    --row;
+                                    --col;
+                                } 
+                        console.log(resultStr)
+                           return result
+                        }
+                        
+                        lcs("sai","sai9")`,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
+          },
+          {
             title: "LCS",
             content: (
               <>
