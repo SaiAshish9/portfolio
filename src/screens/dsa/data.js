@@ -14453,6 +14453,8 @@ SC O(N*W)
                         }
                         
                         lcs("sai","sai9")`,
+                        output: `sai
+                        3`,
                       },
                     },
                   }}
