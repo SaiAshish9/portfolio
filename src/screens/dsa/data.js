@@ -9455,40 +9455,58 @@ console.log(isPairSum(arr, arrSize, val));
             <p>
               <b>Naive Method</b>
             </p>
-            <pre>
-              {`
-function maxSum( arr, n, k){
-  let max_sum = Number.MIN_VALUE;
-  for (let i = 0; i < n - k + 1; i++) {
-      let current_sum = 0;
-      for (let j = 0; j < k; j++)
-          current_sum = current_sum + arr[i + j];
-      max_sum = Math.max(current_sum, max_sum);
-  }
-  return max_sum;
-}              
-              `}
-            </pre>
+            <CodeEditor
+              options={{
+                title: "Window slicing naive method",
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `
+                    function maxSum( arr, n, k){
+                      let max_sum = Number.MIN_VALUE;
+                      for (let i = 0; i < n - k + 1; i++) {
+                          let current_sum = 0;
+                          for (let j = 0; j < k; j++)
+                              current_sum = current_sum + arr[i + j];
+                          max_sum = Math.max(current_sum, max_sum);
+                      }
+                      return max_sum;
+                    }              
+                                  `,
+                  },
+                },
+              }}
+            />
             <p>
               <b>Slicing Window Technique</b>
             </p>
-            <pre>{`
-             function maxSum(arr, n, k) {
-              let max = 0;
-              let sum = 0;
-              for (let i = 0; i < k; i++) {
-                  sum += arr[i];
-                  max = sum;
-              }
-              for (let i = k; i < n; i++) {
-                  sum += arr[i] - arr[i - k];
-                  if (sum > max) {
-                      max = sum;
-                  }
-              }
-              return max;
-          }
-            `}</pre>
+            <CodeEditor
+              options={{
+                title: "Window slicing naive method",
+                output: null,
+                codes: {
+                  Javascript: {
+                    code: `
+                    function maxSum(arr, n, k) {
+                     let max = 0;
+                     let sum = 0;
+                     for (let i = 0; i < k; i++) {
+                         sum += arr[i];
+                         max = sum;
+                     }
+                     for (let i = k; i < n; i++) {
+                         sum += arr[i] - arr[i - k];
+                         if (sum > max) {
+                             max = sum;
+                         }
+                     }
+                     return max;
+                 }
+                   `,
+                  },
+                },
+              }}
+            />
             <Span>
               <b>BFS and DFS</b>
             </Span>
