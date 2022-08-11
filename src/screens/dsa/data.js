@@ -14450,7 +14450,7 @@ SC O(N*W)
             content: (
               <>
                 <Span>
-                  <b>Longest Common Substrin Problem Statement:</b>
+                  <b>Longest Common Substring Problem Statement:</b>
                 </Span>
                 <Span>
                   Given two strings ‘X’ and ‘Y’, find the length of the longest
