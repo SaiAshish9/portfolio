@@ -4736,6 +4736,54 @@ pop_back() :
                   }}
                 />
                 <Span>
+                  <b>A program to check if a binary tree is BST or not</b>
+                </Span>
+                <CodeEditor
+                  options={{
+                    title: "A program to check if a binary tree is BST or not",
+                    codes: {
+                      Javascript: {
+                        code: `class Node
+                        {
+                            constructor(data)
+                            {
+                               this.left = null;
+                               this.right = null;
+                               this.data = data;
+                            }
+                        }
+                        let prev;
+                        function isBSTUtil(root)
+                        {
+                            if (root != null){
+                                if (!isBSTUtil(root.left))
+                                    return false;
+                                if (prev && root.data <= prev.data)
+                                    return false;
+                                prev = root;                     
+                                return isBSTUtil(root.right);
+                            }
+                            return true;
+                        }
+                        function isBST(root)
+                        {
+                            return isBSTUtil(root);
+                        }
+                        let root = new Node(3);
+                        root.left = new Node(2);
+                        root.right = new Node(5);
+                        root.left.left = new Node(1);
+                        root.left.right = new Node(4);
+                        if (isBST(root))
+                            console.log("Is BST");
+                        else
+                            console.log("Not a BST");`,
+                        output: `Not a BST`,
+                      },
+                    },
+                  }}
+                />
+                <Span>
                   <b>Flip binary tree</b>
                 </Span>
                 <Img
