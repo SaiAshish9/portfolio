@@ -33,8 +33,9 @@ import I18n from "common/I18n";
 import HeartComponent from "./components/heartComponent";
 import ProboImg from "assets/home/probo.svg";
 import LambdaTestImg from "assets/home/lambda-test.png";
-import WildsterImg from "assets/home/wildster.png";
+// import WildsterImg from "assets/home/wildster.png";
 import MindTickleImg from "assets/home/mindtickle.png";
+import HotstarImg from "assets/home/hotstar.jpeg";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -64,6 +65,10 @@ const images = [
     link: "https://paytm.com/",
   },
   {
+    img: HotstarImg,
+    link: "https://hotstar.com",
+  },
+  {
     img: BrowserStackImage,
     link: "https://www.browserstack.com/",
   },
@@ -91,10 +96,10 @@ const images = [
   //   img: PromoImg,
   //   link: "https://www.promo.com/",
   // },
-  {
-    img: WildsterImg,
-    link: "https://wildster.com",
-  },
+  // {
+  //   img: WildsterImg,
+  //   link: "https://wildster.com",
+  // },
   {
     img: EducativeImg,
     link: "https://www.educative.io/",
