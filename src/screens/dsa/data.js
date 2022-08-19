@@ -15223,6 +15223,49 @@ SC O(N*W)
             ),
           },
           {
+            title: "Russian Doll Envelope",
+            content: (
+              <>
+                <Span>
+                  <b>Problem Statement</b>
+                </Span>
+                <Span>
+                  You are given a 2D array of integers envelopes where
+                  envelopes[i] = [wi, hi] represents the width and the height of
+                  an envelope.
+                  <br />
+                  One envelope can fit into another if and only if both the
+                  width and height of one envelope are greater than the other
+                  envelope's width and height.
+                  <br />
+                  Return the maximum number of envelopes you can Russian doll
+                  (i.e., put one inside the other).
+                  <br />
+                  Note: You cannot rotate an envelope.
+                </Span>
+                <p>
+                  Example 1:
+                  <br />
+                  Input: envelopes = {`[[5,4],[6,4],[6,7],[2,3]]`} <br />
+                  Output: 3 <br />
+                  Explanation: The maximum number of envelopes you can Russian
+                  doll is 3 {`([2,3] => [5,4] => [6,7])`}.{" "}
+                </p>
+                <CodeEditor
+                  options={{
+                    title: "Russian Doll Envelope",
+                    codes: {
+                      Javascript: {
+                        code: ``,
+                        output: ``,
+                      },
+                    },
+                  }}
+                />
+              </>
+            ),
+          },
+          {
             title: "(MCL (maxChainLength)) Maximum Length Chain Of Pairs",
             content: (
               <>
