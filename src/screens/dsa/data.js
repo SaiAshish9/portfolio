@@ -4735,9 +4735,9 @@ pop_back() :
                     },
                   }}
                 />
-                <Span>
+                <p>
                   <b>Print all paths from root to leaf</b>
-                </Span>
+                </p>
                 <CodeEditor
                   options={{
                     title: "Print all paths from root to leaf",
@@ -4770,9 +4770,9 @@ pop_back() :
                     },
                   }}
                 />
-                <Span>
+                <p>
                   <b>Sum of all tree nodes</b>
-                </Span>
+                </p>
                 <CodeEditor
                   options={{
                     title: "Print all paths from root to leaf",
@@ -4800,12 +4800,12 @@ pop_back() :
                     },
                   }}
                 />
-                <Span>
+                <p>
                   <b>delete node when sum &lt;=k</b>
-                </Span>
+                </p>
                 <CodeEditor
                   options={{
-                    title: "delete node when sum &lt;=k",
+                    title: "delete nodes when sum &lt;=k",
                     codes: {
                       Javascript: {
                         code: `function dfsH(root, k, sum = 0) {
