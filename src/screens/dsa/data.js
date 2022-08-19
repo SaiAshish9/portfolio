@@ -4801,6 +4801,40 @@ pop_back() :
                   }}
                 />
                 <Span>
+                  <b>delete node when sum &lt;=k</b>
+                </Span>
+                <CodeEditor
+                  options={{
+                    title: "delete node when sum &lt;=k",
+                    codes: {
+                      Javascript: {
+                        code: `function dfsH(root, k, sum = 0) {
+                          if (root) {
+                            let lsum = sum + root.data;
+                            let rsum = lsum;
+                            root.left = dfsH(root.left, k, lsum);
+                            root.right = dfsH(root.right, k, rsum);
+                            sum = Math.max(lsum, rsum);
+                            if (sum < k) root = null;
+                            return root;
+                          }
+                        }
+                        function sumLK(t) {
+                          const k = 4;
+                          dfsH(t, k);
+                          console.log(t);
+                        }
+                        const t = new TreeNode(2);
+                        t.left = new TreeNode(1);
+                        t.right = new TreeNode(3);
+                        sumLK(t);
+                        `,
+                        output: `[ 3, 5 ]`,
+                      },
+                    },
+                  }}
+                />
+                <Span>
                   <b>A program to check if a binary tree is BST or not</b>
                 </Span>
                 <CodeEditor
