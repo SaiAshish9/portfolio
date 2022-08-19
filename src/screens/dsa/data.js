@@ -4736,6 +4736,41 @@ pop_back() :
                   }}
                 />
                 <Span>
+                  <b>Print all paths from root to leaf</b>
+                </Span>
+                <CodeEditor
+                  options={{
+                    title: "Print all paths from root to leaf",
+                    codes: {
+                      Javascript: {
+                        code: `function dfs(root, result, curr = [], pathLen = 0) {
+                          if (root) {
+                            curr[pathLen] = root.data;
+                            pathLen++;
+                            if (!root.left && !root.right) {
+                              result.push(curr.slice());
+                              return;
+                            }
+                            dfs(root.left, result, curr, pathLen);
+                            dfs(root.right, result, curr, pathLen);
+                          }
+                        }
+                        function paths(t) {
+                          const result = [];
+                          dfs(t, result);
+                          console.log(result);
+                        }
+                        const t = new TreeNode(2);
+                        t.left = new TreeNode(1);
+                        t.right = new TreeNode(3);
+                        paths(t);
+                        `,
+                        output: `[ [ 2, 1 ], [ 2, 3 ] ]`,
+                      },
+                    },
+                  }}
+                />
+                <Span>
                   <b>A program to check if a binary tree is BST or not</b>
                 </Span>
                 <CodeEditor
