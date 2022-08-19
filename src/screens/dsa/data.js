@@ -4771,6 +4771,36 @@ pop_back() :
                   }}
                 />
                 <Span>
+                  <b>Sum of all tree nodes</b>
+                </Span>
+                <CodeEditor
+                  options={{
+                    title: "Print all paths from root to leaf",
+                    codes: {
+                      Javascript: {
+                        code: `function dfs(root, result, sum = 0) {
+                          if (root) {
+                            sum += root.data;
+                            if (!root.left && !root.right) {
+                              result.push(sum);
+                              return;
+                            }
+                            dfs(root.left, result, sum);
+                            dfs(root.right, result, sum);
+                          }
+                        }
+                        function sum(t) {
+                          const result = [];
+                          dfs(t, result);
+                          console.log(result);
+                        }
+                        `,
+                        output: `[ 3, 5 ]`,
+                      },
+                    },
+                  }}
+                />
+                <Span>
                   <b>A program to check if a binary tree is BST or not</b>
                 </Span>
                 <CodeEditor
