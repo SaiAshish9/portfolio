@@ -4838,9 +4838,9 @@ pop_back() :
                     },
                   }}
                 />
-                <Span>
+                <p>
                   <b>A program to check if a binary tree is BST or not</b>
-                </Span>
+                </p>
                 <CodeEditor
                   options={{
                     title: "A program to check if a binary tree is BST or not",
