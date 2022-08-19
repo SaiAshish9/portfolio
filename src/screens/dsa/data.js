@@ -4829,7 +4829,11 @@ pop_back() :
                         t.right = new TreeNode(3);
                         sumLK(t);
                         `,
-                        output: `[ 3, 5 ]`,
+                        output: `TreeNode {
+                          data: 2,
+                          left: null,
+                          right: TreeNode { data: 3, left: undefined, right: undefined }
+                        }`,
                       },
                     },
                   }}
