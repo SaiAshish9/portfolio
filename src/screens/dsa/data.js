@@ -20214,6 +20214,25 @@ if __name__ == '__main__':
                     * @return {number}
                     */
                    
+                  // slicing window technique
+                  
+                  function lengthOfLongestSubstring(s) {
+                    const n = s.length;
+                    let maxL = 0;
+                    for (let i = 0; i < n; i++) {
+                      const visited = Array(256);
+                      for (let j = i; j < n; j++) {
+                        if (visited[s.charCodeAt(j)]) break;
+                        maxL = Math.max(maxL, j - i + 1);
+                        visited[s.charCodeAt(j)] = true;
+                      }
+                    }
+                    return maxL;
+                  }                  
+                  console.log(lengthOfLongestSubstring("abcbbcab"));
+                  
+
+
                    // method -> a
                    
                    var lengthOfLongestSubstring = function(s) {
