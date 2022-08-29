@@ -114,16 +114,18 @@ export const PlayerContainer = styled.div`
 export const StreamsTab = styled(Tabs)`
   margin: 30px 0;
   padding: 0;
-  padding-right: 15px;
 
-  .ant-tabs-nav-list {
-    width: 80vw;
+  .ant-tabs-tab + .ant-tabs-tab {
+    margin: 0 0 0 18px;
   }
 
-  .ant-tabs-nav::before {
-    width: 80vw;
-    margin: auto;
-  }
+  // .ant-tabs-nav-list {
+  //   width: 80vw;
+  // }
+  // .ant-tabs-nav::before {
+  //   width: 80vw;
+  //   margin: auto;
+  // }
 
   .ant-tabs-tab {
     color: ${({ theme: { current } }) =>
@@ -137,7 +139,7 @@ export const StreamsTab = styled(Tabs)`
         ? "#FF7600"
         : white};
     font-size: 1rem;
-    width: 27vw;
+    // width: 27vw;
     text-align: center;
     display: grid;
     place-items: center;
@@ -205,7 +207,6 @@ export const StreamsTab = styled(Tabs)`
     .ant-tabs-nav::before {
       width: 30vw;
     }
-
     .ant-tabs-tab {
       width: 10vw;
     }
