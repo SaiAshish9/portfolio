@@ -100,7 +100,7 @@ const Intro = () => {
               <InfoLabel>{i.label}</InfoLabel>
             ) : (
               <InfoLink
-                href={i === 0 ? "tel:" + i.label : i.label}
+                href={(k === 0 ? "tel:" : k === 3 ? "mailto:" : "") + i.label}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
