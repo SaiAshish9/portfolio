@@ -33,9 +33,11 @@ import I18n from "common/I18n";
 import HeartComponent from "./components/heartComponent";
 import ProboImg from "assets/home/probo.svg";
 import LambdaTestImg from "assets/home/lambda-test.png";
-// import WildsterImg from "assets/home/wildster.png";
+import WildsterImg from "assets/home/wildster.png";
 import MindTickleImg from "assets/home/mindtickle.png";
 import HotstarImg from "assets/home/hotstar.jpeg";
+import InstahyreImg from "assets/home/instahyre.png";
+import GoogleImg from "assets/home/google.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -44,10 +46,13 @@ function handleClick(link) {
 
 const images = [
   {
+    img: GoogleImg,
+    link: "https://www.google.com/",
+  },
+  {
     img: UberImg,
     link: "https://www.uber.com/in/en/",
   },
-
   {
     img: CREDImage,
     link: "https://cred.club/",
@@ -96,10 +101,10 @@ const images = [
   //   img: PromoImg,
   //   link: "https://www.promo.com/",
   // },
-  // {
-  //   img: WildsterImg,
-  //   link: "https://wildster.com",
-  // },
+  {
+    img: WildsterImg,
+    link: "https://wildster.com",
+  },
   {
     img: EducativeImg,
     link: "https://www.educative.io/",
@@ -129,6 +134,10 @@ const images = [
     link: "https://zeeve.io",
   },
   {
+    img: InstahyreImg,
+    link: "https://www.instahyre.com/",
+  },
+  {
     img: MoonshotImg,
     link: "https://moonshotjr.com",
   },
@@ -140,10 +149,10 @@ const images = [
     img: VerizonImg,
     link: "https://verizon.com",
   },
-  // {
-  //   img: ProboImg,
-  //   link: "https://probo.in",
-  // },
+  {
+    img: ProboImg,
+    link: "https://probo.in",
+  },
   {
     img: MindTickleImg,
     link: "http://mindtickle.com/",
