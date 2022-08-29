@@ -16,10 +16,6 @@ import {
 
 import LightAvatar from "assets/home/avatar.png";
 
-import { useStore } from "store";
-
-import { Colors } from "constants/index";
-
 import { IoCall } from "react-icons/io5";
 import { FiMapPin } from "react-icons/fi";
 import {
@@ -35,12 +31,6 @@ import { SiGmail } from "react-icons/si";
 import I18n from "common/I18n";
 
 const Intro = () => {
-  const {
-    state: { theme },
-  } = useStore();
-
-  const { veryDarkGray, white } = Colors;
-
   const ICON_SIZE = 16;
 
   //  phone no. , linked in , github , email , location , medium ,
@@ -52,7 +42,6 @@ const Intro = () => {
     {
       label: <I18n t="tel" />,
       icon: <IoCall size={ICON_SIZE} />,
-      text: true,
     },
     {
       label: "https://www.linkedin.com/in/%F0%9F%9A%80-sai-ashish-237784188/",
@@ -65,12 +54,10 @@ const Intro = () => {
     {
       label: "saiashish7777@gmail.com",
       icon: <SiGmail size={ICON_SIZE - 1} />,
-      text: true,
     },
     {
       label: <I18n t="location" />,
       icon: <FiMapPin size={ICON_SIZE} />,
-      text: true,
     },
     {
       label: "https://medium.com/@saiashish3760",
@@ -84,10 +71,6 @@ const Intro = () => {
       label: "https://www.instagram.com/saiashish99/",
       icon: <AiFillInstagram size={ICON_SIZE + 5} />,
     },
-    // {
-    //   label: "https://leetcode.com/SaiAshish/",
-    //   icon: <IoCall size={ICON_SIZE} />,
-    // },
   ];
 
   return (
@@ -117,7 +100,7 @@ const Intro = () => {
               <InfoLabel>{i.label}</InfoLabel>
             ) : (
               <InfoLink
-                href={i.label}
+                href={i === 0 ? "tel:" + i.label : i.label}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
