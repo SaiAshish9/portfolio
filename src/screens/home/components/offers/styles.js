@@ -69,14 +69,14 @@ export const SmallImgContainer = styled.div`
 `;
 
 export const Img = styled.img`
-  height: 4.5rem;
-  width: 4.5rem;
+  height: 4.2rem;
+  width: 4.2rem;
   border-radius: 0.2rem;
   cursor: pointer;
   margin: 0 0.2rem;
   @media only screen and (max-width: ${BREAKPOINTS.xl}) {
-    height: 4.2rem;
-    width: 4.2rem;
+    height: 3.6rem;
+    width: 3.6rem;
   }
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     height: 3.2rem;

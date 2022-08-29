@@ -38,6 +38,8 @@ import MindTickleImg from "assets/home/mindtickle.png";
 import HotstarImg from "assets/home/hotstar.jpeg";
 import InstahyreImg from "assets/home/instahyre.png";
 import GoogleImg from "assets/home/google.png";
+import ExpediaGroupImg from "assets/home/expedia_group.jpeg";
+import AptyImg from "assets/home/apty.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -94,6 +96,10 @@ const images = [
     link: "https://intuit.com",
   },
   {
+    img: ExpediaGroupImg,
+    link: "https://www.expediagroup.com/home/default.aspx",
+  },
+  {
     img: TcsImage,
     link: "https://www.tcs.com/",
   },
@@ -104,6 +110,10 @@ const images = [
   {
     img: WildsterImg,
     link: "https://wildster.com",
+  },
+  {
+    img: AptyImg,
+    link: "https://apty.io",
   },
   {
     img: EducativeImg,
@@ -174,7 +184,7 @@ const OffersComponent = () => {
         <I18n t="messages" />
       </Label>
       <ImgContainer>
-        {images.slice(0, 14).map((i, k) => (
+        {images.slice(0, 15).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -184,7 +194,7 @@ const OffersComponent = () => {
         ))}
       </ImgContainer>
       <ImgContainer>
-        {images.slice(14).map((i, k) => (
+        {images.slice(15).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -194,7 +204,7 @@ const OffersComponent = () => {
         ))}
       </ImgContainer>
       <MediumImgContainer>
-        {images.slice(0, 8).map((i, k) => (
+        {images.slice(0, 10).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -204,7 +214,7 @@ const OffersComponent = () => {
         ))}
       </MediumImgContainer>
       <MediumImgContainer>
-        {images.slice(8, 16).map((i, k) => (
+        {images.slice(10, 20).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -214,7 +224,7 @@ const OffersComponent = () => {
         ))}
       </MediumImgContainer>
       <MediumImgContainer>
-        {images.slice(16).map((i, k) => (
+        {images.slice(20).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -254,7 +264,17 @@ const OffersComponent = () => {
         ))}
       </SmallImgContainer>
       <SmallImgContainer>
-        {images.slice(18).map((i, k) => (
+        {images.slice(18, 24).map((i, k) => (
+          <Img
+            key={k}
+            alt="img"
+            src={i.img}
+            onClick={() => handleClick(i.link)}
+          />
+        ))}
+      </SmallImgContainer>
+      <SmallImgContainer>
+        {images.slice(24).map((i, k) => (
           <Img
             key={k}
             alt="img"
