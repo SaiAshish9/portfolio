@@ -174,7 +174,7 @@ const OffersComponent = () => {
         <I18n t="messages" />
       </Label>
       <ImgContainer>
-        {images.slice(0, 12).map((i, k) => (
+        {images.slice(0, 14).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -184,7 +184,7 @@ const OffersComponent = () => {
         ))}
       </ImgContainer>
       <ImgContainer>
-        {images.slice(12).map((i, k) => (
+        {images.slice(14).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -194,7 +194,7 @@ const OffersComponent = () => {
         ))}
       </ImgContainer>
       <MediumImgContainer>
-        {images.slice(0, 6).map((i, k) => (
+        {images.slice(0, 8).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -204,7 +204,7 @@ const OffersComponent = () => {
         ))}
       </MediumImgContainer>
       <MediumImgContainer>
-        {images.slice(6, 12).map((i, k) => (
+        {images.slice(8, 16).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -214,17 +214,7 @@ const OffersComponent = () => {
         ))}
       </MediumImgContainer>
       <MediumImgContainer>
-        {images.slice(12, 18).map((i, k) => (
-          <Img
-            key={k}
-            alt="img"
-            src={i.img}
-            onClick={() => handleClick(i.link)}
-          />
-        ))}
-      </MediumImgContainer>
-      <MediumImgContainer>
-        {images.slice(18).map((i, k) => (
+        {images.slice(16).map((i, k) => (
           <Img
             key={k}
             alt="img"
