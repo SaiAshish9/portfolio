@@ -7,7 +7,6 @@ import { AiFillHeart } from "react-icons/ai";
 export const Container = styled.div`
   width: 100%;
   margin-top: 4.5rem;
-  cursor: pointer;
 `;
 
 export const Label = styled.p(
@@ -90,6 +89,7 @@ export const Center = styled.div`
   ${Styles.RCC};
   position: relative;
   height: 14rem;
+  cursor: pointer;
   width: 14rem;
   @media only screen and (max-width: ${BREAKPOINTS.xs}) {
     margin: 4.23rem auto 2.7rem;
