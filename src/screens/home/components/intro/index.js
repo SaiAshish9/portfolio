@@ -100,7 +100,15 @@ const Intro = () => {
               <InfoLabel>{i.label}</InfoLabel>
             ) : (
               <InfoLink
-                href={(k === 0 ? "tel:" : k === 3 ? "mailto:" : "") + i.label}
+                href={
+                  (k === 0
+                    ? "tel:"
+                    : k === 3
+                    ? "mailto:"
+                    : k === 4
+                    ? "https://www.google.com/maps/place/New+Delhi,+Delhi/@28.5272803,77.0688992,11z"
+                    : "") + i.label
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
