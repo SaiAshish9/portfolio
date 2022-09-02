@@ -315,7 +315,10 @@ const Header = ({ scrolled, history }) => {
 
       <Row className="animate__animated animate__fadeInRight">
         {history.location.pathname.includes("dsa") ? (
-          <Tooltip placement="bottomLeft" title={<I18n t="dsa" />}>
+          <Tooltip
+            placement="bottomLeft"
+            title={<I18n t="dsa" />}
+          >
             <DsaIcon
               onClick={() => {
                 history.push(`/en/dsa`);
@@ -327,6 +330,7 @@ const Header = ({ scrolled, history }) => {
           <Tooltip
             className="animate__animated animate__heartBeat animate__infinite"
             placement="bottomLeft"
+            visible
             title={<I18n t="dsa" />}
           >
             <DsaIcon
