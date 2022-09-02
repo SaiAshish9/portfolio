@@ -48,6 +48,8 @@ const Header = ({ scrolled, history }) => {
 
   const vsRef = useRef(null);
 
+  const [codeVisible, setCodeVisible] = useState(false);
+
   function handleIconClick() {
     const themes = ["dark", "light", "love", "highContrast", "fire"];
     const t = themes[(themes.indexOf(theme) + 1) % 5];
@@ -302,8 +304,8 @@ const Header = ({ scrolled, history }) => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      console.log(vsRef.current.props.visible, vsRef.current.props);
-    }, 2000);
+      setCodeVisible(true);
+    }, 1000);
     () => clearTimeout(timeout);
   }, []);
 
@@ -333,19 +335,22 @@ const Header = ({ scrolled, history }) => {
             />
           </Tooltip>
         ) : (
-          <Tooltip
-            className="animate__animated animate__heartBeat animate__infinite"
-            placement="bottomLeft"
-            ref={vsRef}
-            title={<I18n t="dsa" />}
-          >
-            <DsaIcon
-              onClick={() => {
-                history.push(`/en/dsa`);
-                setSelectedLanguage(0);
-              }}
-            />
-          </Tooltip>
+          codeVisible && (
+            <Tooltip
+              className="animate__animated animate__heartBeat animate__infinite"
+              placement="bottomLeft"
+              defaultVisible
+              ref={vsRef}
+              title={<I18n t="dsa" />}
+            >
+              <DsaIcon
+                onClick={() => {
+                  history.push(`/en/dsa`);
+                  setSelectedLanguage(0);
+                }}
+              />
+            </Tooltip>
+          )
         )}
 
         {muteIconContent}
