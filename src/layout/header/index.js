@@ -305,7 +305,7 @@ const Header = ({ scrolled, history }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setCodeVisible(true);
-    }, 1000);
+    }, 1500);
     () => clearTimeout(timeout);
   }, []);
 
