@@ -31,7 +31,7 @@ const data = [
     label: <I18n t="lambda-test" />,
     position: <I18n t="sde-intern" />,
     link: "https://www.lambdatest.com/xcuitest-app-testing",
-    exp: 6,
+    exp: 5,
     id: 0,
   },
   {
