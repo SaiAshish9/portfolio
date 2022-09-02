@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import { Tooltip } from "antd";
 
@@ -45,6 +45,8 @@ const Header = ({ scrolled, history }) => {
     state: { theme, count },
     actions: { setTheme },
   } = useStore();
+
+  const vsRef = useRef(null);
 
   function handleIconClick() {
     const themes = ["dark", "light", "love", "highContrast", "fire"];
@@ -298,6 +300,13 @@ const Header = ({ scrolled, history }) => {
     },
   ];
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      console.log(vsRef.current.props.visible, vsRef.current.props);
+    }, 2000);
+    () => clearTimeout(timeout);
+  }, []);
+
   return (
     <Container scrolled={scrolled}>
       <Tooltip
@@ -315,10 +324,7 @@ const Header = ({ scrolled, history }) => {
 
       <Row className="animate__animated animate__fadeInRight">
         {history.location.pathname.includes("dsa") ? (
-          <Tooltip
-            placement="bottomLeft"
-            title={<I18n t="dsa" />}
-          >
+          <Tooltip placement="bottomLeft" title={<I18n t="dsa" />}>
             <DsaIcon
               onClick={() => {
                 history.push(`/en/dsa`);
@@ -330,7 +336,7 @@ const Header = ({ scrolled, history }) => {
           <Tooltip
             className="animate__animated animate__heartBeat animate__infinite"
             placement="bottomLeft"
-            visible
+            ref={vsRef}
             title={<I18n t="dsa" />}
           >
             <DsaIcon
