@@ -40,6 +40,7 @@ import InstahyreImg from "assets/home/instahyre.png";
 import GoogleImg from "assets/home/google.png";
 import ExpediaGroupImg from "assets/home/expedia_group.jpeg";
 import AptyImg from "assets/home/apty.png";
+import JioImg from "assets/jio.jpeg";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -159,9 +160,13 @@ const images = [
     img: VerizonImg,
     link: "https://verizon.com",
   },
+  // {
+  //   img: ProboImg,
+  //   link: "https://probo.in",
+  // },
   {
-    img: ProboImg,
-    link: "https://probo.in",
+    img: JioImg,
+    link: "https://jio.com",
   },
   {
     img: MindTickleImg,
