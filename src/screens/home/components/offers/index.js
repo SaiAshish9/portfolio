@@ -31,7 +31,7 @@ import UberImg from "assets/home/uber.png";
 import EducativeImg from "assets/home/educative.png";
 import I18n from "common/I18n";
 import HeartComponent from "./components/heartComponent";
-import ProboImg from "assets/home/probo.svg";
+// import ProboImg from "assets/home/probo.svg";
 import LambdaTestImg from "assets/home/lambda-test.png";
 import WildsterImg from "assets/home/wildster.png";
 import MindTickleImg from "assets/home/mindtickle.png";
@@ -41,6 +41,7 @@ import GoogleImg from "assets/home/google.png";
 import ExpediaGroupImg from "assets/home/expedia_group.jpeg";
 import AptyImg from "assets/home/apty.png";
 import JioImg from "assets/jio.jpeg";
+import QualcommImg from "assets/qualcomm.jpeg";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -140,9 +141,13 @@ const images = [
     img: NetSkopeImg,
     link: "https://netskope.com",
   },
+  // {
+  //   img: ZeeveImg,
+  //   link: "https://zeeve.io",
+  // },
   {
-    img: ZeeveImg,
-    link: "https://zeeve.io",
+    img: QualcommImg,
+    link: "https://qualcomm.com/",
   },
   {
     img: InstahyreImg,
