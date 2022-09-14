@@ -340,6 +340,8 @@ const Header = ({ scrolled, history }) => {
               className="animate__animated animate__heartBeat animate__infinite"
               placement="bottomLeft"
               defaultVisible
+              // visible={false}
+              destroyTooltipOnHide
               ref={vsRef}
               title={<I18n t="dsa" />}
             >
