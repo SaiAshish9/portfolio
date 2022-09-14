@@ -78,6 +78,7 @@ const data = [
   {
     title: <I18n t="msTeamsChallenge" />,
     subTitle: <I18n t="outstandingProject" />,
+    // url: "https://devpost.com/software/teams-by-sai",
     img: MsTeamsImg,
   },
   {
