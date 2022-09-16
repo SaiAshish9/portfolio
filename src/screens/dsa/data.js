@@ -28182,7 +28182,7 @@ removeElement([3,2,2,3],3)`,
                 title: "Q38: Count And Say",
                 output: `1211`,
                 codes: {
-                  Javscript: {
+                  Javascript: {
                     code: `/**
                     * @param {number} n
                     * @return {string}
