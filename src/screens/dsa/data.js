@@ -7366,7 +7366,7 @@ if __name__=='__main__':
                     title: "Detect Cycle in a Directed Graph",
                     codes: {
                       Javascript: {
-                        output: `class Graph {
+                        code: `class Graph {
                           constructor(n, v) {
                             this.n = n;
                             this.g = {};
@@ -7414,7 +7414,7 @@ if __name__=='__main__':
                         g.addEdge(4, 2);
                         g.addEdge(2, 5);
                         console.log(g.hasCycle())`,
-                        code: `true`,
+                        output: `true`,
                       },
                     },
                   }}
