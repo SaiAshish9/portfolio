@@ -7366,8 +7366,55 @@ if __name__=='__main__':
                     title: "Detect Cycle in a Directed Graph",
                     codes: {
                       Javascript: {
-                        output: ``,
-                        code: ``,
+                        output: `class Graph {
+                          constructor(n, v) {
+                            this.n = n;
+                            this.g = {};
+                            this.v = v;
+                          }
+                        
+                          addVertex(i) {
+                            this.g[i] = [];
+                          }
+                        
+                          addEdge(u, v) {
+                            this.g[u].push(v);
+                          }
+                        
+                          hasCycleUtil(v, visited, stack) {
+                            if (stack[v]) return true;
+                            if (visited[v]) return false;
+                            visited[v] = true;
+                            stack[v] = true;
+                            let list = this.g[v];
+                            for (let i = 0; i < list.length; i++)
+                              if (this.hasCycleUtil(i, visited, stack)) return true;
+                            stack[v] = false;
+                            return false;
+                          }
+                        
+                          hasCycle() {
+                            const visited = {};
+                            const stack = {};
+                            for (let i = 0; i < this.n; i++)
+                              if (this.hasCycleUtil(i, visited, stack)) return true;
+                            return false;
+                          }
+                        }
+                        
+                        const v = ["A", "B", "C", "D", "E", "F"];
+                        const g = new Graph(6, v);
+                        for (let i in v) g.addVertex(i);
+                        g.addEdge(0, 1);
+                        g.addEdge(0, 3);
+                        g.addEdge(0, 4);
+                        g.addEdge(1, 2);
+                        g.addEdge(3, 4);
+                        g.addEdge(4, 5);
+                        g.addEdge(4, 2);
+                        g.addEdge(2, 5);
+                        console.log(g.hasCycle())`,
+                        code: `true`,
                       },
                     },
                   }}
