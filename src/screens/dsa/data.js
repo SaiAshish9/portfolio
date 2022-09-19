@@ -7358,6 +7358,20 @@ if __name__=='__main__':
                     },
                   }}
                 />
+                <p>
+                  <b>Detect Cycle in a Directed Graph</b>
+                </p>
+                <CodeEditor
+                  options={{
+                    title: "Detect Cycle in a Directed Graph",
+                    codes: {
+                      Javascript: {
+                        output: ``,
+                        code: ``,
+                      },
+                    },
+                  }}
+                />
                 <Span>
                   <b>Trie</b>
                 </Span>
