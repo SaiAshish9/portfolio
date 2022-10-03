@@ -61,7 +61,7 @@ const data = [
     exp: 16,
     yr: true,
     id: 2,
-    link: "https://velvet.video",
+    link: "https://dev.velvet.video",
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1627712155/Screenshot_from_2021-07-31_11-45-29_vz8jyd.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1627712156/Screenshot_from_2021-07-31_11-45-17_x53zed.png",
