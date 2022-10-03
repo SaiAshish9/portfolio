@@ -42,6 +42,7 @@ import ExpediaGroupImg from "assets/home/expedia_group.jpeg";
 import AptyImg from "assets/home/apty.png";
 import JioImg from "assets/jio.jpeg";
 import QualcommImg from "assets/qualcomm.jpeg";
+import MasterCardImg from "assets/mastercard.jpeg";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -154,9 +155,13 @@ const images = [
     link: "https://www.instahyre.com/",
   },
   {
-    img: MoonshotImg,
-    link: "https://moonshotjr.com",
+    img: MasterCardImg,
+    link: "https://www.mastercard.com/",
   },
+  // {
+  //   img: MoonshotImg,
+  //   link: "https://moonshotjr.com",
+  // },
   {
     img: AvisoImg,
     link: "https://aviso.com",
