@@ -40,9 +40,11 @@ import InstahyreImg from "assets/home/instahyre.png";
 import GoogleImg from "assets/home/google.png";
 import ExpediaGroupImg from "assets/home/expedia_group.jpeg";
 import AptyImg from "assets/home/apty.png";
-import JioImg from "assets/jio.jpeg";
+import JioImg from "assets/jio.png";
 import QualcommImg from "assets/qualcomm.jpeg";
 import MasterCardImg from "assets/mastercard.jpeg";
+import TekionImg from "assets/tekion.jpeg"; 
+import IxigoImg from "assets/ixigo.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -53,6 +55,10 @@ const images = [
   {
     img: GoogleImg,
     link: "https://www.google.com/",
+  },
+  {
+    img: TekionImg,
+    link: "https://www.tekion.com/",
   },
   {
     img: UberImg,
@@ -114,10 +120,10 @@ const images = [
     img: WildsterImg,
     link: "https://wildster.com",
   },
-  {
-    img: AptyImg,
-    link: "https://apty.io",
-  },
+  // {
+  //   img: AptyImg,
+  //   link: "https://apty.io",
+  // },
   {
     img: EducativeImg,
     link: "https://www.educative.io/",
@@ -130,9 +136,13 @@ const images = [
     img: UnluImage,
     link: "https://unlu.io/",
   },
+  // {
+  //   img: OpenHouseImage,
+  //   link: "https://openhouse.study/",
+  // },
   {
-    img: OpenHouseImage,
-    link: "https://openhouse.study/",
+    img: IxigoImg,
+    link: "https://www.ixigo.com/",
   },
   {
     img: TuringImage,
