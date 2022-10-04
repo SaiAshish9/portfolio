@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 
-import { Container, Img, Label, Content, Title } from "./styles";
+import {
+  Container,
+  Img,
+  Label,
+  Content,
+  Title,
+  Parent,
+  MParent,
+  SParent,
+} from "./styles";
 
 import AppTownImg from "assets/home/appTown.png";
 import PracifyImg from "assets/home/pracify.png";
@@ -9,7 +18,7 @@ import Nex2MeImg from "assets/home/nex2me.png";
 import UVRobotsImg from "assets/home/uvrobots.png";
 import VelvetImg from "assets/home/velvet.svg";
 import PayTMImg from "assets/home/paytm.jpeg";
-import SearchVaccinesImg from "assets/home/searchVaccines.png";
+import SearchVaccinesImg from "assets/searchVaccines.png";
 import LambdaTestImg from "assets/home/lambda-test.png";
 import CareMedicoImg from "assets/home/care-medico.png";
 import CMImg1 from "assets/home/cm1.jpeg";
@@ -20,6 +29,9 @@ import CMImg5 from "assets/home/cm5.jpeg";
 import CMImg6 from "assets/home/cm6.jpeg";
 import CMImg7 from "assets/home/cm7.jpeg";
 import CMImg8 from "assets/home/cm8.jpeg";
+import SwiftRoboticsImg from "assets/swiftRobotics.jpeg";
+import SwiftShopsImg from "assets/swiftShops.png";
+import FeelAtHomeImg from "assets/feelAtHome.png";
 
 import I18n from "common/I18n";
 
@@ -339,6 +351,30 @@ const data = [
     id: 9,
     images: [CMImg1, CMImg2, CMImg3, CMImg4, CMImg5, CMImg6, CMImg7, CMImg8],
   },
+  {
+    img: SwiftRoboticsImg,
+    label: <I18n t="lambda-test" />,
+    position: <I18n t="sde-intern" />,
+    link: "https://www.lambdatest.com/xcuitest-app-testing",
+    exp: 3,
+    id: 10,
+  },
+  {
+    img: SwiftShopsImg,
+    label: <I18n t="lambda-test" />,
+    position: <I18n t="sde-intern" />,
+    link: "https://www.lambdatest.com/xcuitest-app-testing",
+    exp: 3,
+    id: 11,
+  },
+  // {
+  //   img: FeelAtHomeImg,
+  //   label: <I18n t="lambda-test" />,
+  //   position: <I18n t="sde-intern" />,
+  //   link: "https://www.lambdatest.com/xcuitest-app-testing",
+  //   exp: 3,
+  //   id: 11,
+  // },
 ];
 
 const Experience = () => {
@@ -358,25 +394,153 @@ const Experience = () => {
   return (
     <div data-aos="zoom-in">
       <Container>
-        {data.map((i, k) => (
-          <Content id={k} key={k} onClick={() => handleClick(i.id)}>
-            <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
-            <Label>{i.label}</Label>
-            <Title>{i.position}</Title>
-            <Title>
-              {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
-              {i.exp > 1 ? (
-                i.yr ? (
-                  <I18n t="year" />
+        <Parent>
+          {data.slice(0, 6).map((i, k) => (
+            <Content key={k} id={k} onClick={() => handleClick(i.id)}>
+              <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
+              <Label>{i.label}</Label>
+              <Title>{i.position}</Title>
+              <Title>
+                {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
+                {i.exp > 1 ? (
+                  i.yr ? (
+                    <I18n t="year" />
+                  ) : (
+                    <I18n t="month's" />
+                  )
                 ) : (
-                  <I18n t="month's" />
-                )
-              ) : (
-                <I18n t="month" />
-              )}
-            </Title>
-          </Content>
-        ))}
+                  <I18n t="month" />
+                )}
+              </Title>
+            </Content>
+          ))}
+        </Parent>
+        <Parent>
+          {data.slice(6).map((i, k) => (
+            <Content key={k} id={6 + k} onClick={() => handleClick(i.id)}>
+              <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
+              <Label>{i.label}</Label>
+              <Title>{i.position}</Title>
+              <Title>
+                {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
+                {i.exp > 1 ? (
+                  i.yr ? (
+                    <I18n t="year" />
+                  ) : (
+                    <I18n t="month's" />
+                  )
+                ) : (
+                  <I18n t="month" />
+                )}
+              </Title>
+            </Content>
+          ))}
+        </Parent>
+        <MParent>
+          {data.slice(0, 3).map((i, k) => (
+            <Content key={k} id={k} onClick={() => handleClick(i.id)}>
+              <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
+              <Label>{i.label}</Label>
+              <Title>{i.position}</Title>
+              <Title>
+                {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
+                {i.exp > 1 ? (
+                  i.yr ? (
+                    <I18n t="year" />
+                  ) : (
+                    <I18n t="month's" />
+                  )
+                ) : (
+                  <I18n t="month" />
+                )}
+              </Title>
+            </Content>
+          ))}
+        </MParent>
+        <MParent>
+          {data.slice(3, 6).map((i, k) => (
+            <Content key={k} id={3 + k} onClick={() => handleClick(i.id)}>
+              <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
+              <Label>{i.label}</Label>
+              <Title>{i.position}</Title>
+              <Title>
+                {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
+                {i.exp > 1 ? (
+                  i.yr ? (
+                    <I18n t="year" />
+                  ) : (
+                    <I18n t="month's" />
+                  )
+                ) : (
+                  <I18n t="month" />
+                )}
+              </Title>
+            </Content>
+          ))}
+        </MParent>
+        <MParent>
+          {data.slice(6, 9).map((i, k) => (
+            <Content key={k} id={6 + k} onClick={() => handleClick(i.id)}>
+              <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
+              <Label>{i.label}</Label>
+              <Title>{i.position}</Title>
+              <Title>
+                {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
+                {i.exp > 1 ? (
+                  i.yr ? (
+                    <I18n t="year" />
+                  ) : (
+                    <I18n t="month's" />
+                  )
+                ) : (
+                  <I18n t="month" />
+                )}
+              </Title>
+            </Content>
+          ))}
+        </MParent>
+        <MParent>
+          {data.slice(9).map((i, k) => (
+            <Content key={k} id={9 + k} onClick={() => handleClick(i.id)}>
+              <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
+              <Label>{i.label}</Label>
+              <Title>{i.position}</Title>
+              <Title>
+                {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
+                {i.exp > 1 ? (
+                  i.yr ? (
+                    <I18n t="year" />
+                  ) : (
+                    <I18n t="month's" />
+                  )
+                ) : (
+                  <I18n t="month" />
+                )}
+              </Title>
+            </Content>
+          ))}
+        </MParent>
+        <SParent>
+          {data.map((i, k) => (
+            <Content key={k} id={k} onClick={() => handleClick(i.id)}>
+              <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
+              <Label>{i.label}</Label>
+              <Title>{i.position}</Title>
+              <Title>
+                {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
+                {i.exp > 1 ? (
+                  i.yr ? (
+                    <I18n t="year" />
+                  ) : (
+                    <I18n t="month's" />
+                  )
+                ) : (
+                  <I18n t="month" />
+                )}
+              </Title>
+            </Content>
+          ))}
+        </SParent>
       </Container>
       {visible && (
         <Overlay

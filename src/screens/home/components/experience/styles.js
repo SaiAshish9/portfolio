@@ -51,14 +51,37 @@ export const Container = styled.div`
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     padding: 3rem 3rem 2rem !important;
   }
+`;
+
+export const Parent = styled.div`
+  ${Styles.RBC}
+  @media only screen and (max-width: ${BREAKPOINTS.lg}) {
+    display: none;
+  }
+`;
+
+export const MParent = styled.div`
+  ${Styles.RBC}
+  @media only screen and (min-width: ${BREAKPOINTS.lg}) {
+    display: none;
+  }
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    display: none;
+  }
+`;
+
+export const SParent = styled.div`
   ${Styles.RBC}
   flex-wrap:wrap;
+  @media only screen and (min-width: ${BREAKPOINTS.sm}) {
+    display: none;
+  }
 `;
 
 export const Content = styled.div`
   cursor: pointer;
   ${({ id }) =>
-    id < 5 &&
+    id < 6 &&
     css`
       margin-bottom: 2.4rem;
     `};
@@ -67,7 +90,15 @@ export const Content = styled.div`
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     width: 50%;
     ${({ id }) =>
-      id < 8 &&
+      id < 10 &&
+      css`
+        margin-bottom: 1rem;
+      `};
+  }
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    width: 50%;
+    ${({ id }) =>
+      id < 12 &&
       css`
         margin-bottom: 1rem;
       `};
@@ -75,28 +106,32 @@ export const Content = styled.div`
 `;
 
 export const Img = styled.img`
-  width: 7rem;
+  width: 4rem;
   ${({ svImg }) =>
     svImg === 1 &&
     css`
   object-fit:contain;̦  
   `};
   border-radius: 6px;
-  min-height: 7rem;
+  height: 4rem;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
-    width: 5.4rem;
-    min-height: 5.4rem;
+    width: 4.5rem;
+    height: 4.5rem;
   }
 `;
 
 export const Label = styled.p`
   text-align: center;
   margin-top: 1.5rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   padding: 0px;
   line-height: 0px;
   margin-bottom: 0.8rem;
   font-weight: ${FontWeight.regular};
+  @media only screen and (max-width: ${BREAKPOINTS.md}) {
+    font-size: 0.6rem;
+    margin-bottom: 0.7rem;
+  }
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     font-size: 0.54rem;
   }
@@ -105,11 +140,11 @@ export const Label = styled.p`
 export const Title = styled.p`
   text-align: center;
   margin-top: 0.1rem;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   padding: 0rem 0.4rem;
   font-weight: ${FontWeight.light};
   opacity: 0.8;
-  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+  @media only screen and (max-width: ${BREAKPOINTS.md}) {
     font-size: 0.5rem;
     overflow: hidden;
     word-wrap: break-word;
