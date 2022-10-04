@@ -45,6 +45,7 @@ import QualcommImg from "assets/qualcomm.jpeg";
 import MasterCardImg from "assets/mastercard.jpeg";
 import TekionImg from "assets/tekion.jpeg"; 
 import IxigoImg from "assets/ixigo.png";
+import DunzoImg from "assets/dunzo.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -117,9 +118,13 @@ const images = [
   //   link: "https://www.promo.com/",
   // },
   {
-    img: WildsterImg,
-    link: "https://wildster.com",
+    img: DunzoImg,
+    link: "https://dunzo.com",
   },
+  // {
+  //   img: WildsterImg,
+  //   link: "https://wildster.com",
+  // },
   // {
   //   img: AptyImg,
   //   link: "https://apty.io",
