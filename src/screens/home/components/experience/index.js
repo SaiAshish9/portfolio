@@ -353,7 +353,7 @@ const data = [
   },
   {
     img: SwiftRoboticsImg,
-    label: <I18n t="lambda-test" />,
+    label: <I18n t="swiftRobotics" />,
     position: <I18n t="sde-intern" />,
     link: "https://www.lambdatest.com/xcuitest-app-testing",
     exp: 3,
@@ -361,7 +361,7 @@ const data = [
   },
   {
     img: SwiftShopsImg,
-    label: <I18n t="lambda-test" />,
+    label: <I18n t="swiftShops" />,
     position: <I18n t="sde-intern" />,
     link: "https://www.lambdatest.com/xcuitest-app-testing",
     exp: 3,
