@@ -106,18 +106,14 @@ export const Content = styled.div`
 `;
 
 export const Img = styled.img`
-  width: 4rem;
+  width: 4.5rem;
   ${({ svImg }) =>
     svImg === 1 &&
     css`
   object-fit:contain;̦  
   `};
   border-radius: 6px;
-  height: 4rem;
-  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
-    width: 4.5rem;
-    height: 4.5rem;
-  }
+  height: 4.5rem;
 `;
 
 export const Label = styled.p`
