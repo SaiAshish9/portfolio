@@ -43,9 +43,10 @@ import AptyImg from "assets/home/apty.png";
 import JioImg from "assets/jio.png";
 import QualcommImg from "assets/qualcomm.jpeg";
 import MasterCardImg from "assets/mastercard.jpeg";
-import TekionImg from "assets/tekion.jpeg"; 
+import TekionImg from "assets/tekion.jpeg";
 import IxigoImg from "assets/ixigo.png";
 import DunzoImg from "assets/dunzo.png";
+import NaviImg from "assets/navi.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -133,9 +134,13 @@ const images = [
     img: EducativeImg,
     link: "https://www.educative.io/",
   },
+  // {
+  //   img: GrofersImg,
+  //   link: "https://www.grofers.com/",
+  // },
   {
-    img: GrofersImg,
-    link: "https://www.grofers.com/",
+    img: NaviImg,
+    link: "https://navi.com/",
   },
   {
     img: UnluImage,
