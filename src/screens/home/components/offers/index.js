@@ -47,6 +47,8 @@ import TekionImg from "assets/tekion.jpeg";
 import IxigoImg from "assets/ixigo.png";
 import DunzoImg from "assets/dunzo.png";
 import NaviImg from "assets/navi.png";
+import GrabImg from "assets/grab.jpeg";
+import VoyceImg from "assets/voyce.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -110,10 +112,7 @@ const images = [
     img: ExpediaGroupImg,
     link: "https://www.expediagroup.com/home/default.aspx",
   },
-  {
-    img: TcsImage,
-    link: "https://www.tcs.com/",
-  },
+
   // {
   //   img: PromoImg,
   //   link: "https://www.promo.com/",
@@ -141,6 +140,18 @@ const images = [
   {
     img: NaviImg,
     link: "https://navi.com/",
+  },
+  {
+    img: GrabImg,
+    link: "https://grab.com",
+  },
+  {
+    img: VoyceImg,
+    link: "https://voyce.com",
+  },
+  {
+    img: TcsImage,
+    link: "https://www.tcs.com/",
   },
   {
     img: UnluImage,
@@ -219,7 +230,7 @@ const OffersComponent = () => {
         <I18n t="messages" />
       </Label>
       <ImgContainer>
-        {images.slice(0, 15).map((i, k) => (
+        {images.slice(0, 16).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -229,7 +240,7 @@ const OffersComponent = () => {
         ))}
       </ImgContainer>
       <ImgContainer>
-        {images.slice(15).map((i, k) => (
+        {images.slice(16).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -239,7 +250,7 @@ const OffersComponent = () => {
         ))}
       </ImgContainer>
       <MediumImgContainer>
-        {images.slice(0, 10).map((i, k) => (
+        {images.slice(0, 8).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -249,7 +260,7 @@ const OffersComponent = () => {
         ))}
       </MediumImgContainer>
       <MediumImgContainer>
-        {images.slice(10, 20).map((i, k) => (
+        {images.slice(8, 16).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -259,7 +270,17 @@ const OffersComponent = () => {
         ))}
       </MediumImgContainer>
       <MediumImgContainer>
-        {images.slice(20).map((i, k) => (
+        {images.slice(16, 24).map((i, k) => (
+          <Img
+            key={k}
+            alt="img"
+            src={i.img}
+            onClick={() => handleClick(i.link)}
+          />
+        ))}
+      </MediumImgContainer>
+      <MediumImgContainer>
+        {images.slice(24).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -269,7 +290,7 @@ const OffersComponent = () => {
         ))}
       </MediumImgContainer>
       <SmallImgContainer>
-        {images.slice(0, 6).map((i, k) => (
+        {images.slice(0, 8).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -279,7 +300,7 @@ const OffersComponent = () => {
         ))}
       </SmallImgContainer>
       <SmallImgContainer>
-        {images.slice(6, 12).map((i, k) => (
+        {images.slice(8, 16).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -289,7 +310,7 @@ const OffersComponent = () => {
         ))}
       </SmallImgContainer>
       <SmallImgContainer>
-        {images.slice(12, 18).map((i, k) => (
+        {images.slice(16, 24).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -298,7 +319,7 @@ const OffersComponent = () => {
           />
         ))}
       </SmallImgContainer>
-      <SmallImgContainer>
+      {/* <SmallImgContainer>
         {images.slice(18, 24).map((i, k) => (
           <Img
             key={k}
@@ -307,7 +328,7 @@ const OffersComponent = () => {
             onClick={() => handleClick(i.link)}
           />
         ))}
-      </SmallImgContainer>
+      </SmallImgContainer> */}
       <SmallImgContainer>
         {images.slice(24).map((i, k) => (
           <Img

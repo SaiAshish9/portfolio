@@ -82,6 +82,11 @@ export const Img = styled.img`
     width: 3.2rem;
     margin: 0 0.2rem;
   }
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin: 0 0.2rem;
+  }
 `;
 
 export const Center = styled.div`
