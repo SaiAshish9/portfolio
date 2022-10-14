@@ -48,6 +48,10 @@ export const SubTitle = styled.p`
   opacity: 0.7;
   font-weight: ${FontWeight.light};
   font-size: 0.8rem;
+  word-wrap: break-word;
+  @media only screen and (max-width: ${BREAKPOINTS.sm}) {
+    font-size: 0.72rem;
+  }
 `;
 
 export const ImgContainer = styled.div`
