@@ -31,9 +31,10 @@ import CMImg7 from "assets/home/cm7.jpeg";
 import CMImg8 from "assets/home/cm8.jpeg";
 import SwiftRoboticsImg from "assets/swiftRobotics.jpeg";
 import SwiftShopsImg from "assets/swiftShops.png";
-// import FeelAtHomeImg from "assets/feelAtHome.png";
-import TekionImg from "assets/tekion.jpeg"
+import FeelAtHomeImg from "assets/feelAtHome.png";
+import TekionImg from "assets/tekion-green.jpeg"
 import RGSOCImg from "assets/rgsoc.jpeg"
+import MsftDevChallengeImg from "assets/msftdevchallenge.jpeg"
 
 import I18n from "common/I18n";
 
@@ -393,6 +394,22 @@ const data = [
     exp: 1,
     id: 13,
   },
+  {
+    img: FeelAtHomeImg,
+    label: <I18n t="feelAtHome" />,
+    position: <I18n t="contributor" />,
+    link: "https://devfolio.co/projects/feel-at-home-1",
+    exp: 1,
+    id: 14,
+  },
+  {
+    img: MsftDevChallengeImg,
+    label: <I18n t="teamsDevC" />,
+    position: <I18n t="contributor" />,
+    link: "hhttps://devpost.com/software/teams-by-sai",
+    exp: 1,
+    id: 15,
+  },
 ];
 
 const Experience = () => {
@@ -413,7 +430,7 @@ const Experience = () => {
     <div data-aos="zoom-in">
       <Container>
         <Parent>
-          {data.slice(0, 6).map((i, k) => (
+          {data.slice(0, 8).map((i, k) => (
             <Content key={k} id={k} onClick={() => handleClick(i.id)}>
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
@@ -434,8 +451,8 @@ const Experience = () => {
           ))}
         </Parent>
         <Parent>
-          {data.slice(6).map((i, k) => (
-            <Content key={k} id={6 + k} onClick={() => handleClick(i.id)}>
+          {data.slice(8).map((i, k) => (
+            <Content key={k} id={8 + k} onClick={() => handleClick(i.id)}>
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
@@ -455,7 +472,7 @@ const Experience = () => {
           ))}
         </Parent>
         <MParent>
-          {data.slice(0, 3).map((i, k) => (
+          {data.slice(0, 4).map((i, k) => (
             <Content key={k} id={k} onClick={() => handleClick(i.id)}>
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
@@ -476,8 +493,8 @@ const Experience = () => {
           ))}
         </MParent>
         <MParent>
-          {data.slice(3, 6).map((i, k) => (
-            <Content key={k} id={3 + k} onClick={() => handleClick(i.id)}>
+          {data.slice(4, 8).map((i, k) => (
+            <Content key={k} id={4 + k} onClick={() => handleClick(i.id)}>
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
@@ -497,8 +514,8 @@ const Experience = () => {
           ))}
         </MParent>
         <MParent>
-          {data.slice(6, 9).map((i, k) => (
-            <Content key={k} id={6 + k} onClick={() => handleClick(i.id)}>
+          {data.slice(8, 12).map((i, k) => (
+            <Content key={k} id={8 + k} onClick={() => handleClick(i.id)}>
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
@@ -518,8 +535,8 @@ const Experience = () => {
           ))}
         </MParent>
         <MParent>
-          {data.slice(9).map((i, k) => (
-            <Content key={k} id={9 + k} onClick={() => handleClick(i.id)}>
+          {data.slice(12).map((i, k) => (
+            <Content key={k} id={12 + k} onClick={() => handleClick(i.id)}>
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
