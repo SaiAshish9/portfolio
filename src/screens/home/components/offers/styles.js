@@ -83,8 +83,13 @@ export const Img = styled.img`
     margin: 0 0.2rem;
   }
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 2.4rem;
+    width: 2.4rem;
+    margin: 0 0.2rem;
+  }
+  @media only screen and (max-width: ${BREAKPOINTS.xs}) {
+    height: 2.05rem;
+    width: 2.05rem;
     margin: 0 0.2rem;
   }
 `;
