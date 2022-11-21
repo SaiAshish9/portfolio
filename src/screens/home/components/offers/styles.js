@@ -88,8 +88,23 @@ export const Img = styled.img`
     margin: 0 0.2rem;
   }
   @media only screen and (max-width: ${BREAKPOINTS.xs}) {
-    height: 2.05rem;
-    width: 2.05rem;
+    height: 2.4rem;
+    width: 2.4rem;
+    margin: 0 0.2rem;
+  }
+  @media only screen and (max-width: 400px) {
+    height: 2.1rem;
+    width: 2.1rem;
+    margin: 0 0.2rem;
+  }
+  @media only screen and (max-width: 350px) {
+    height: 1.8rem;
+    width: 1.8rem;
+    margin: 0 0.2rem;
+  }
+  @media only screen and (max-width: 300px) {
+    height: 1.6rem;
+    width: 1.6rem;
     margin: 0 0.2rem;
   }
 `;
