@@ -32,9 +32,9 @@ import CMImg8 from "assets/home/cm8.jpeg";
 import SwiftRoboticsImg from "assets/swiftRobotics.jpeg";
 import SwiftShopsImg from "assets/swiftShops.png";
 import FeelAtHomeImg from "assets/feelAtHome.png";
-import TekionImg from "assets/tekion-green.jpeg"
-import RGSOCImg from "assets/rgsoc.jpeg"
-import MsftDevChallengeImg from "assets/msftdevchallenge.jpeg"
+import TekionImg from "assets/tekion-green.jpeg";
+import RGSOCImg from "assets/rgsoc.jpeg";
+import MsftDevChallengeImg from "assets/msftdevchallenge.jpeg";
 
 import I18n from "common/I18n";
 
@@ -417,7 +417,7 @@ const Experience = () => {
   const [selectedExp, setSelectedExp] = useState(0);
 
   function handleClick(k) {
-    if (k === 0 || k === 3) {
+    if (k === 0 || k == 1 || k === 4) {
       const win = window.open(data[k]["link"], "_blank");
       win.focus();
     } else {
@@ -452,7 +452,11 @@ const Experience = () => {
         </Parent>
         <Parent>
           {data.slice(8).map((i, k) => (
-            <Content key={k} id={8 + k} onClick={() => handleClick(i.id + 8)}>
+            <Content
+              key={k + 8}
+              id={8 + k}
+              onClick={() => handleClick(i.id + 8)}
+            >
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
@@ -494,7 +498,11 @@ const Experience = () => {
         </MParent>
         <MParent>
           {data.slice(4, 8).map((i, k) => (
-            <Content key={k} id={4 + k} onClick={() => handleClick(i.id + 4)}>
+            <Content
+              key={k + 4}
+              id={4 + k}
+              onClick={() => handleClick(i.id + 4)}
+            >
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
@@ -515,7 +523,11 @@ const Experience = () => {
         </MParent>
         <MParent>
           {data.slice(8, 12).map((i, k) => (
-            <Content key={k} id={8 + k} onClick={() => handleClick(i.id + 8)}>
+            <Content
+              key={k + 8}
+              id={8 + k}
+              onClick={() => handleClick(i.id + 8)}
+            >
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
@@ -536,7 +548,11 @@ const Experience = () => {
         </MParent>
         <MParent>
           {data.slice(12).map((i, k) => (
-            <Content key={k} id={12 + k} onClick={() => handleClick(i.id + 12)}>
+            <Content
+              key={k + 12}
+              id={12 + k}
+              onClick={() => handleClick(i.id + 12)}
+            >
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
