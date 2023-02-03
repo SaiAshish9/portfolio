@@ -452,7 +452,7 @@ const Experience = () => {
         </Parent>
         <Parent>
           {data.slice(8).map((i, k) => (
-            <Content key={k} id={8 + k} onClick={() => handleClick(i.id)}>
+            <Content key={k} id={8 + k} onClick={() => handleClick(i.id + 8)}>
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
@@ -494,7 +494,7 @@ const Experience = () => {
         </MParent>
         <MParent>
           {data.slice(4, 8).map((i, k) => (
-            <Content key={k} id={4 + k} onClick={() => handleClick(i.id)}>
+            <Content key={k} id={4 + k} onClick={() => handleClick(i.id + 4)}>
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
@@ -515,7 +515,7 @@ const Experience = () => {
         </MParent>
         <MParent>
           {data.slice(8, 12).map((i, k) => (
-            <Content key={k} id={8 + k} onClick={() => handleClick(i.id)}>
+            <Content key={k} id={8 + k} onClick={() => handleClick(i.id + 8)}>
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
@@ -536,7 +536,7 @@ const Experience = () => {
         </MParent>
         <MParent>
           {data.slice(12).map((i, k) => (
-            <Content key={k} id={12 + k} onClick={() => handleClick(i.id)}>
+            <Content key={k} id={12 + k} onClick={() => handleClick(i.id + 12)}>
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
