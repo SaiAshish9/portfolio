@@ -60,7 +60,7 @@ const App = () => {
           setCount(value);
         })
         .catch((e) => {
-          setCount(1);
+          setCount(4000);
         });
     }
   }
