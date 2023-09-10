@@ -501,7 +501,7 @@ const Experience = () => {
             <Content
               key={k + 4}
               id={4 + k}
-              onClick={() => handleClick(i.id + 4)}
+              onClick={() => handleClick(i.id)}
             >
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
@@ -526,7 +526,7 @@ const Experience = () => {
             <Content
               key={k + 8}
               id={8 + k}
-              onClick={() => handleClick(i.id + 8)}
+              onClick={() => handleClick(i.id)}
             >
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
@@ -551,7 +551,7 @@ const Experience = () => {
             <Content
               key={k + 12}
               id={12 + k}
-              onClick={() => handleClick(i.id + 12)}
+              onClick={() => handleClick(i.id)}
             >
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
