@@ -317,6 +317,15 @@ const data = [
     id: 9,
     link: "https://www.linkedin.com/company/nex2me-introtuce/",
     images: [
+      "https://res.cloudinary.com/saiashish/image/upload/v1639780030/Screenshot_from_2021-12-18_03-52-59_rlzlpm.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1639780029/Screenshot_from_2021-12-18_03-53-38_memtkx.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1639780029/Screenshot_from_2021-12-18_03-53-21_zv4qg5.png",
+      "https://res.cloudinary.com/saiashish/image/upload/v1640538293/WhatsApp_Image_2021-12-18_at_02.25.45_2_nrjkhx.jpg",
+      "https://res.cloudinary.com/saiashish/image/upload/v1640538292/WhatsApp_Image_2021-12-18_at_02.25.45_svbm4o.jpg",
+      "https://res.cloudinary.com/saiashish/image/upload/v1640538291/WhatsApp_Image_2021-12-18_at_02.25.46_nhcrrj.jpg",
+      "https://res.cloudinary.com/saiashish/image/upload/v1640538291/WhatsApp_Image_2021-12-18_at_02.25.44_t0kerm.jpg",
+      "https://res.cloudinary.com/saiashish/image/upload/v1640538291/WhatsApp_Image_2021-12-18_at_02.25.44_1_wmidd9.jpg",
+      "https://res.cloudinary.com/saiashish/image/upload/v1640538291/WhatsApp_Image_2021-12-18_at_02.25.45_1_nyrrrs.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1627679349/nex2Me_hy2jr9.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639771365/Screenshot_from_2021-03-29_13-25-20_wjsx8n.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639771594/Screenshot_from_2021-03-22_19-48-19_zjryql.png",
@@ -342,16 +351,7 @@ const data = [
       "https://res.cloudinary.com/saiashish/image/upload/v1639772622/Screenshot_from_2021-03-06_17-48-23_knyjri.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639774022/Screenshot_from_2021-03-19_14-58-55_hul2uf.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639780030/Screenshot_from_2021-12-18_03-52-51_jmhdjn.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1639780030/Screenshot_from_2021-12-18_03-53-08_eexmt5.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1639780030/Screenshot_from_2021-12-18_03-52-59_rlzlpm.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1639780029/Screenshot_from_2021-12-18_03-53-38_memtkx.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1639780029/Screenshot_from_2021-12-18_03-53-21_zv4qg5.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1640538293/WhatsApp_Image_2021-12-18_at_02.25.45_2_nrjkhx.jpg",
-      "https://res.cloudinary.com/saiashish/image/upload/v1640538292/WhatsApp_Image_2021-12-18_at_02.25.45_svbm4o.jpg",
-      "https://res.cloudinary.com/saiashish/image/upload/v1640538291/WhatsApp_Image_2021-12-18_at_02.25.46_nhcrrj.jpg",
-      "https://res.cloudinary.com/saiashish/image/upload/v1640538291/WhatsApp_Image_2021-12-18_at_02.25.44_t0kerm.jpg",
-      "https://res.cloudinary.com/saiashish/image/upload/v1640538291/WhatsApp_Image_2021-12-18_at_02.25.44_1_wmidd9.jpg",
-      "https://res.cloudinary.com/saiashish/image/upload/v1640538291/WhatsApp_Image_2021-12-18_at_02.25.45_1_nyrrrs.jpg",
+      "https://res.cloudinary.com/saiashish/image/upload/v1639780030/Screenshot_from_2021-12-18_03-53-08_eexmt5.png"
     ],
   },
   {
@@ -406,7 +406,7 @@ const data = [
     img: MsftDevChallengeImg,
     label: <I18n t="teamsDevC" />,
     position: <I18n t="contributor" />,
-    link: "hhttps://devpost.com/software/teams-by-sai",
+    link: "https://devpost.com/software/teams-by-sai",
     exp: 1,
     id: 15,
   },
@@ -417,7 +417,7 @@ const Experience = () => {
   const [selectedExp, setSelectedExp] = useState(0);
 
   function handleClick(k) {
-    if (k === 0 || k == 1 || k === 4) {
+    if (k === 0 || k == 1 || k === 4 || k > 10) {
       const win = window.open(data[k]["link"], "_blank");
       win.focus();
     } else {
@@ -455,7 +455,7 @@ const Experience = () => {
             <Content
               key={k + 8}
               id={8 + k}
-              onClick={() => handleClick(i.id + 8)}
+              onClick={() => handleClick(i.id)}
             >
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
@@ -593,7 +593,7 @@ const Experience = () => {
           ))}
         </SParent>
       </Container>
-      {visible && (
+      {visible && data[selectedExp] && (
         <Overlay
           data={data[selectedExp]}
           visible={visible}
