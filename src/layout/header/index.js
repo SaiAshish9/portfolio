@@ -368,7 +368,7 @@ const Header = ({ scrolled, history }) => {
         <Tooltip placement="bottomRight" title={<I18n t="viewersCount" />}>
           <ViewCountContainer>
             <Eye />
-            <ContainerLabel>{count}</ContainerLabel>
+            <ContainerLabel>{count ?? 4000}</ContainerLabel>
           </ViewCountContainer>
         </Tooltip>
 
