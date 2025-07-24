@@ -82,19 +82,19 @@ const HeartComponent = () => {
     setSeconds(seconds + 1);
   }, 18);
 
-  function onLableClick(link) {
-    const win = window.open(link, "_blank");
-    win.focus();
-  }
+  // function onLableClick(link) {
+  //   const win = window.open(link, "_blank");
+  //   win.focus();
+  // }
 
   return (
     <Center
       data-aos="zoom-in"
-      onClick={() =>
-        onLableClick(
-          "https://www.linkedin.com/feed/update/urn:li:activity:6865016711754715136/"
-        )
-      }
+      // onClick={() =>
+      //   onLableClick(
+      //     "https://www.linkedin.com/feed/update/urn:li:activity:6865016711754715136/"
+      //   )
+      // }
     >
       <HeartSubImage alt="img" src={GoogleImg} />
       {theme !== Theme.fire &&
