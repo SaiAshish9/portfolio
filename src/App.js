@@ -8,20 +8,20 @@ import { Container } from "./styles";
 
 import { useStore } from "store";
 
-import axios from "axios";
+// import axios from "axios";
 
 import { Header, Footer } from "layout";
 import { locales } from "common/I18n";
 
-require('codemirror/lib/codemirror.css');
-require('codemirror/theme/material.css');
-require('codemirror/theme/xq-light.css');
-require('codemirror/theme/neat.css');
-require('codemirror/mode/javascript/javascript.js');
-require('codemirror/mode/clike/clike.js');
-require('codemirror/mode/python/python.js');
-require('codemirror/mode/shell/shell.js');
-require('codemirror/mode/sql/sql.js');
+require("codemirror/lib/codemirror.css");
+require("codemirror/theme/material.css");
+require("codemirror/theme/xq-light.css");
+require("codemirror/theme/neat.css");
+require("codemirror/mode/javascript/javascript.js");
+require("codemirror/mode/clike/clike.js");
+require("codemirror/mode/python/python.js");
+require("codemirror/mode/shell/shell.js");
+require("codemirror/mode/sql/sql.js");
 
 const App = () => {
   const [scrolled, isScrolled] = useState(null);
@@ -47,22 +47,22 @@ const App = () => {
   } = useStore();
 
   async function checkCount() {
-    if (!localStorage.getItem("first")) {
-      localStorage.setItem("first", true);
-      axios("https://api.countapi.xyz/update/saiashish9/portfolio/?amount=1")
-        .then(({ data: { value } }) => setCount(value > 1 ? value : 1))
-        .catch((e) => {
-          setCount(1);
-        });
-    } else {
-      axios("https://api.countapi.xyz/get/saiashish9/portfolio")
-        .then(({ data: { value } }) => {
-          setCount(value);
-        })
-        .catch((e) => {
-          setCount(4000);
-        });
-    }
+    // if (!localStorage.getItem("first")) {
+    //   localStorage.setItem("first", true);
+    //   axios("https://api.countapi.xyz/update/saiashish9/portfolio/?amount=1")
+    //     .then(({ data: { value } }) => setCount(value > 1 ? value : 1))
+    //     .catch((e) => {
+    //       setCount(1);
+    //     });
+    // } else {
+    //   axios("https://api.countapi.xyz/get/saiashish9/portfolio")
+    //     .then(({ data: { value } }) => {
+    //       setCount(value);
+    //     })
+    //     .catch((e) => {
+    setCount(4000);
+    // });
+    // }
   }
 
   useEffect(() => {

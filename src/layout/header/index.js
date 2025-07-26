@@ -339,7 +339,7 @@ const Header = ({ scrolled, history }) => {
             <Tooltip
               className="animate__animated animate__heartBeat animate__infinite"
               placement="bottomLeft"
-              defaultVisible
+              defaultOpen
               // visible={false}
               destroyTooltipOnHide
               ref={vsRef}
