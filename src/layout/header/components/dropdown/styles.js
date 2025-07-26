@@ -36,6 +36,10 @@ export const Container = styled.div(
     @media only screen and (max-width: ${BREAKPOINTS.sm}) {
       display: none;
     }
+    .ant-dropdown-menu-item:hover,
+    .ant-dropdown-menu-item.ant-dropdown-menu-item-active {
+      background-color: transparent !important;
+    }
   `
 );
 
@@ -93,17 +97,17 @@ export const StyledMenuItem = styled(Menu.Item)`
         ? darkGrey
         : current === Theme.highContrast
         ? blue
-        : lightBluishGrey};
+        : lightBluishGrey} !important;
     ${({ theme: { current } }) =>
       current === Theme.fire &&
       css`
-        background: ${orange};
+        background: ${orange} !important;
         color: #fff;
       `}
     ${({ theme: { current } }) =>
       current === Theme.love &&
       css`
-        background: ${red};
+        background: ${red} !important;
         color: #fff;
       `}
       ${({ theme: { current } }) =>
