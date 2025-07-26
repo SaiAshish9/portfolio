@@ -35,7 +35,8 @@
     "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
     "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src --fix"
   },
   "babel": {
     "plugins": [
@@ -94,12 +95,19 @@
     "@babel/helper-simple-access": "^7.27.1",
     "@babel/helper-split-export-declaration": "^7.24.7",
     "@babel/runtime": "^7.14.8",
+    "@eslint/js": "^9.32.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-dynamic-import-node": "^2.3.3",
     "babel-plugin-module-resolver": "^5.0.2",
     "eslint": "^9.32.0",
     "eslint-import-resolver-babel-module": "^5.3.1",
     "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-module-resolver": "^1.4.0"
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-module-resolver": "^1.4.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "globals": "^16.3.0",
+    "strip-ansi": "6",
+    "text-table": "0.2.0"
   }
 }

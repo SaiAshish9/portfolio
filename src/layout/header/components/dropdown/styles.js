@@ -32,14 +32,19 @@ export const Container = styled.div(
     ${!isPathDsa &&
     `    cursor: pointer;
     `};
-    ${Styles.RBC}
+    .ant-dropdown-menu-item:hover,
+    .ant-dropdown-menu-submenu-title:hover,
+    .ant-dropdown-menu-item.ant-dropdown-menu-item-active,
+    .ant-dropdown-menu-item.ant-dropdown-menu-submenu-title-active,
+    .ant-dropdown-menu-submenu-title.ant-dropdown-menu-item-active,
+    .ant-dropdown-menu-submenu-title.ant-dropdown-menu-submenu-title-active {
+      background-color: transparent !important;
+    }
+
     @media only screen and (max-width: ${BREAKPOINTS.sm}) {
       display: none;
     }
-    .ant-dropdown-menu-item:hover,
-    .ant-dropdown-menu-item.ant-dropdown-menu-item-active {
-      background-color: transparent !important;
-    }
+    ${Styles.RBC}
   `
 );
 
