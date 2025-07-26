@@ -29,7 +29,7 @@ import pdfFonts from "pdfmake/build/vfs_fonts";
 
 import axios from "axios";
 
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+pdfMake.vfs = pdfFonts.vfs;
 
 const CodeEditor = ({ options }) => {
   const {
