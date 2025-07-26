@@ -46,7 +46,7 @@ const Header = ({ scrolled, history }) => {
     actions: { setTheme },
   } = useStore();
 
-  const vsRef = useRef(null);
+  // const vsRef = useRef(null);
 
   const [codeVisible, setCodeVisible] = useState(false);
 
@@ -326,32 +326,31 @@ const Header = ({ scrolled, history }) => {
 
       <Row className="animate__animated animate__fadeInRight">
         {history.location.pathname.includes("dsa") ? (
-          <Tooltip placement="bottomLeft" title={<I18n t="dsa" />}>
-            <DsaIcon
-              onClick={() => {
-                history.push(`/en/dsa`);
-                setSelectedLanguage(0);
-              }}
-            />
-          </Tooltip>
+          // <Tooltip placement="bottomLeft" title={<I18n t="dsa" />}>
+          <DsaIcon
+            onClick={() => {
+              history.push(`/en/dsa`);
+              setSelectedLanguage(0);
+            }}
+          />
         ) : (
+          // </Tooltip>
           codeVisible && (
-            <Tooltip
-              className="animate__animated animate__heartBeat animate__infinite"
-              placement="bottomLeft"
-              defaultOpen
-              // visible={false}
-              destroyTooltipOnHide
-              ref={vsRef}
-              title={<I18n t="dsa" />}
-            >
+            // <Tooltip
+            //   placement="bottomLeft"
+            //   open={true}
+            //   destroyTooltipOnHide
+            //   title={<I18n t="dsa" />}
+            // >
+            <span className="animate__animated animate__heartBeat animate__infinite">
               <DsaIcon
                 onClick={() => {
                   history.push(`/en/dsa`);
                   setSelectedLanguage(0);
                 }}
               />
-            </Tooltip>
+            </span>
+            // </Tooltip>
           )
         )}
 
