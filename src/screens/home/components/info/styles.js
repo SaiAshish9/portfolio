@@ -2,9 +2,9 @@ import styled, { css } from "styled-components";
 
 import { Styles, Colors, Theme, BREAKPOINTS } from "constants/index";
 
-const { darkGrey, lightBluishGrey } = Colors;
-
 import Slider from "react-slick";
+
+const { darkGrey, lightBluishGrey } = Colors;
 
 export const StyledSlider = styled(Slider)`
   width: 72vw;
