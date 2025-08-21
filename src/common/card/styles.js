@@ -65,14 +65,14 @@ export const Container = styled.div`
           : white};
   }
   @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
-    width: 16rem;
+    width: 14rem;
   }
   @media only screen and (max-width: ${BREAKPOINTS.xl}) {
-    width: 14.5rem;
+    width: 14rem;
     height: 18rem;
   }
   @media only screen and (max-width: ${BREAKPOINTS.md}) {
-    width: 11.5rem;
+    width: 10rem;
     height: 16rem;
   }
 `;
