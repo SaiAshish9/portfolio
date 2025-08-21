@@ -8,8 +8,6 @@ import { Container } from "./styles";
 
 import { useStore } from "store";
 
-// import axios from "axios";
-
 import { Header, Footer } from "layout";
 import { locales } from "common/I18n";
 
