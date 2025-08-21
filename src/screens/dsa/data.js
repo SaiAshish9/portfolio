@@ -18123,1733 +18123,1731 @@ if __name__ == '__main__':
       },
     },
   },
-  interview: {
-    title: "Interview Questions",
-    types: {
-      amazon: {
-        title: "Amazon",
-        content: (
-          <>
-            <Span>
-              <b>Amazon Interview Experience</b>
-            </Span>
-            <Span>
-              I was invited to complete an online assessment at hacker rank in 2
-              hours ( 4 sections ) . There were a total of 2 questions ( 2
-              sections ). I had to solve those two questions and explain my
-              approach in two separate sections . They were easy. Video was kept
-              off during the test. I don't exactly remember those questions but
-              they were based on amazon internal tools. Maybe they were made by
-              amazon employees itself.
-            </Span>
-            <Span>
-              I was invited to complete an online assessment at hacker rank.
-              There were a total of 2 questions. I had to solve those two
-              questions and expalin my approach. They were easy.
-            </Span>
-            <Span>
-              After the exam, I had to fill-up the survey form for about 15
-              minutes. I applied for this exam when I was 20 ( 5th Semester ) .
-            </Span>
-            <Span>
-              Note: While solving a question , don't move to the next question
-              without submitting the previous question. Past changes can be
-              modified.
-            </Span>
-            <Span>
-              Screenshots of sample coding assessment are provided below.
-            </Span>
-            <Span>
-              <b>Initial mail from hr</b>
-            </Span>
-            <Img src={Amazon1Img} large left />
-            <Span>
-              <b>Screenshots for online assessment:</b>
-            </Span>
-            <Img src={Amazon2Img} left large />
-            <Img src={Amazon3Img} left large />
-            <Img src={Amazon4Img} left large />
-            <Span>
-              <b>Coding Assessment Demo:</b>
-            </Span>
-            <Img src={Amazon5Img} left large />
-            <Img src={Amazon6Img} left large />
-            <Img src={Amazon7Img} left large />
-            <Img src={Amazon8Img} left large />
-            <Img src={Amazon9Img} left large />
-            <Img src={Amazon10Img} left large />
-            <Img src={Amazon11Img} left large />
-            <Img src={Amazon12Img} left large />
-            <Img src={Amazon13Img} left large />
-            <Img src={Amazon14Img} left large />
-          </>
-        ),
-      },
-      paytm: {
-        title: "Paytm",
-        content: (
-          <>
-            <Span>
-              <b>Paytm Interview Experience:</b>
-            </Span>
-            <Span>
-              I applied for a software development internship with a referral.{" "}
-            </Span>
-            <Span>Note: It's always better to switch your video on.</Span>
-            <Span>
-              <b>Round 1 ( 45 minutes ): </b>
-            </Span>
-            <Span>
-              Senior developer of paytm asked me a few questions based on my
-              internship work such as ACID vs BASE, aws services , celery and he
-              asked me about how I'm gonna implement a few things. He later
-              asked me a few problem solving questions. At last , I asked him
-              about the feedback and he said he's 95% sure that I'll receive the
-              call for the next round soon.{" "}
-            </Span>
-            <Img src={Paytm1} left large />
-            <p>
-              <b>
-                Problem Solving Q1: Search element in a sorted array using
-                recursion ( Basic Test , obviously we should use binary search )
-              </b>
-            </p>
-            <CodeEditor
-              options={{
-                title: "paytm-q1",
-                output: null,
-                codes: {
-                  Javascript: {
-                    code: `function recBinarySearch(arr, l, r, x){
-                      if (r >= l) {
-                          let mid = l + Math.floor((r - l) / 2);
-                          if (arr[mid] == x)
-                              return mid;
-                          if (arr[mid] > x)
-                              return binarySearch(arr, l, mid - 1, x);
-                          return binarySearch(arr, mid + 1, r, x);
-                      }
-                      return -1;
-                  }
+//   interview: {
+//     title: "Interview Questions",
+//     types: {
+//       amazon: {
+//         title: "Amazon",
+//         content: (
+//           <>
+//             <Span>
+//               <b>Amazon Interview Experience</b>
+//             </Span>
+//             <Span>
+//               I was invited to complete an online assessment at hacker rank in 2
+//               hours ( 4 sections ) . There were a total of 2 questions ( 2
+//               sections ). I had to solve those two questions and explain my
+//               approach in two separate sections . They were easy. Video was kept
+//               off during the test. I don't exactly remember those questions but
+//               they were based on amazon internal tools. Maybe they were made by
+//               amazon employees itself.
+//             </Span>
+//             <Span>
+//               I was invited to complete an online assessment at hacker rank.
+//               There were a total of 2 questions. I had to solve those two
+//               questions and expalin my approach. They were easy.
+//             </Span>
+//             <Span>
+//               After the exam, I had to fill-up the survey form for about 15
+//               minutes. I applied for this exam when I was 20 ( 5th Semester ) .
+//             </Span>
+//             <Span>
+//               Note: While solving a question , don't move to the next question
+//               without submitting the previous question. Past changes can be
+//               modified.
+//             </Span>
+//             <Span>
+//               Screenshots of sample coding assessment are provided below.
+//             </Span>
+//             <Span>
+//               <b>Initial mail from hr</b>
+//             </Span>
+//             <Img src={Amazon1Img} large left />
+//             <Span>
+//               <b>Screenshots for online assessment:</b>
+//             </Span>
+//             <Img src={Amazon2Img} left large />
+//             <Img src={Amazon3Img} left large />
+//             <Img src={Amazon4Img} left large />
+//             <Span>
+//               <b>Coding Assessment Demo:</b>
+//             </Span>
+//             <Img src={Amazon5Img} left large />
+//             <Img src={Amazon6Img} left large />
+//             <Img src={Amazon7Img} left large />
+//             <Img src={Amazon8Img} left large />
+//             <Img src={Amazon9Img} left large />
+//             <Img src={Amazon10Img} left large />
+//             <Img src={Amazon11Img} left large />
+//             <Img src={Amazon12Img} left large />
+//             <Img src={Amazon13Img} left large />
+//             <Img src={Amazon14Img} left large />
+//           </>
+//         ),
+//       },
+//       paytm: {
+//         title: "Paytm",
+//         content: (
+//           <>
+//             <Span>
+//               <b>Paytm Interview Experience:</b>
+//             </Span>
+//             <Span>
+//               I applied for a software development internship with a referral.{" "}
+//             </Span>
+//             <Span>Note: It's always better to switch your video on.</Span>
+//             <Span>
+//               <b>Round 1 ( 45 minutes ): </b>
+//             </Span>
+//             <Span>
+//               Senior developer of paytm asked me a few questions based on my
+//               internship work such as ACID vs BASE, aws services , celery and he
+//               asked me about how I'm gonna implement a few things. He later
+//               asked me a few problem solving questions. At last , I asked him
+//               about the feedback and he said he's 95% sure that I'll receive the
+//               call for the next round soon.{" "}
+//             </Span>
+//             <Img src={Paytm1} left large />
+//             <p>
+//               <b>
+//                 Problem Solving Q1: Search element in a sorted array using
+//                 recursion ( Basic Test , obviously we should use binary search )
+//               </b>
+//             </p>
+//             <CodeEditor
+//               options={{
+//                 title: "paytm-q1",
+//                 output: null,
+//                 codes: {
+//                   Javascript: {
+//                     code: `function recBinarySearch(arr, l, r, x){
+//                       if (r >= l) {
+//                           let mid = l + Math.floor((r - l) / 2);
+//                           if (arr[mid] == x)
+//                               return mid;
+//                           if (arr[mid] > x)
+//                               return binarySearch(arr, l, mid - 1, x);
+//                           return binarySearch(arr, mid + 1, r, x);
+//                       }
+//                       return -1;
+//                   }
                   
-                  // every number can be represented as the sum of powers of 2.
-                  // Hence it can solved using bitwise approach
+//                   // every number can be represented as the sum of powers of 2.
+//                   // Hence it can solved using bitwise approach
                   
-                  function binarySearch(arr, x)
-                  {
-                    let l = 0;
-                    let r = arr.length - 1;
-                    let mid;
-                    while (r >= l) {
-                      mid = l + Math.floor((r - l) / 2);
-                      if (arr[mid] == x)
-                        return mid;
-                      if (arr[mid] > x)
-                        r = mid - 1;
-                      else
-                        l = mid + 1;
-                    }
-                    return -1;
-                  }
+//                   function binarySearch(arr, x)
+//                   {
+//                     let l = 0;
+//                     let r = arr.length - 1;
+//                     let mid;
+//                     while (r >= l) {
+//                       mid = l + Math.floor((r - l) / 2);
+//                       if (arr[mid] == x)
+//                         return mid;
+//                       if (arr[mid] > x)
+//                         r = mid - 1;
+//                       else
+//                         l = mid + 1;
+//                     }
+//                     return -1;
+//                   }
                   
-                  const	arr =new Array(2, 3, 4, 10, 40);
-                  const	x = 10;
-                  const	n = arr.length;
-                  const	result = binarySearch(arr, x);
-                  console.log(result)
-                  `,
-                    output: `3`,
-                  },
-                },
-              }}
-            />
-            <p>
-              <b>
-                Problem Solving Q2: Longest Common Increasing Subsequence Of Two
-                Strings
-              </b>
-            </p>
-            <CodeEditor
-              options={{
-                title: "LCIS",
-                codes: {
-                  Javascript: {
-                    code: `function lcis(str11,str2){
-                      let m = str1.length
-                      let n = str2.length
-                      let lookupTab = Array(n).fill(0)
-                      // tab represents table
-                      let parent = Array(n).fill(0)
+//                   const	arr =new Array(2, 3, 4, 10, 40);
+//                   const	x = 10;
+//                   const	n = arr.length;
+//                   const	result = binarySearch(arr, x);
+//                   console.log(result)
+//                   `,
+//                     output: `3`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <p>
+//               <b>
+//                 Problem Solving Q2: Longest Common Increasing Subsequence Of Two
+//                 Strings
+//               </b>
+//             </p>
+//             <CodeEditor
+//               options={{
+//                 title: "LCIS",
+//                 codes: {
+//                   Javascript: {
+//                     code: `function lcis(str11,str2){
+//                       let m = str1.length
+//                       let n = str2.length
+//                       let lookupTab = Array(n).fill(0)
+//                       // tab represents table
+//                       let parent = Array(n).fill(0)
                       
-                      for(let i=0;i<m;i++){
-                        let current = 0, last = -1
-                        for(let j=0;j<n;j++){
-                          // if both elements are same
-                          if (str1[i] == str2[j] && current + 1 > lookupTab[j]){
-                              lookupTab[j] = current + 1; 
-                              parent[j] = last
-                          }  
+//                       for(let i=0;i<m;i++){
+//                         let current = 0, last = -1
+//                         for(let j=0;j<n;j++){
+//                           // if both elements are same
+//                           if (str1[i] == str2[j] && current + 1 > lookupTab[j]){
+//                               lookupTab[j] = current + 1; 
+//                               parent[j] = last
+//                           }  
                       
-                          // if first element is greater than second
-                          if (str1[i] > str2[j] && lookupTab[j] > current){
-                              current = lookupTab[j];
-                              last = j
-                          } 
-                        }
-                      }
+//                           // if first element is greater than second
+//                           if (str1[i] > str2[j] && lookupTab[j] > current){
+//                               current = lookupTab[j];
+//                               last = j
+//                           } 
+//                         }
+//                       }
                       
-                      const max = Math.max(...lookupTab)
-                      let index = lookupTab.indexOf(max);
-                      let result=Array(max).fill(null),i=0;
-                      while(index!=-1){
-                        result[i] = str2[index]; 
-                        index = parent[index]; 
-                        i+=1
-                      }
-                      result = result.reverse()
-                      console.log(result.join(""))
-                      return max
-                      }
+//                       const max = Math.max(...lookupTab)
+//                       let index = lookupTab.indexOf(max);
+//                       let result=Array(max).fill(null),i=0;
+//                       while(index!=-1){
+//                         result[i] = str2[index]; 
+//                         index = parent[index]; 
+//                         i+=1
+//                       }
+//                       result = result.reverse()
+//                       console.log(result.join(""))
+//                       return max
+//                       }
                       
-                      const str1 = "b3sak"
-                      const str2 = "baejkl"
-                      console.log(lcis(str1,str2));                                                                                     
-                          `,
-                    output: `bk
-                    2`,
-                  },
-                },
-              }}
-            />
-            <Span>
-              <b>Round 2 ( 45 minutes ): </b>
-            </Span>
+//                       const str1 = "b3sak"
+//                       const str2 = "baejkl"
+//                       console.log(lcis(str1,str2));                                                                                     
+//                           `,
+//                     output: `bk
+//                     2`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <Span>
+//               <b>Round 2 ( 45 minutes ): </b>
+//             </Span>
 
-            <Span>
-              Senior developer of paytm ( who owns paytm.com ) asked me several
-              questions. I showed him my code style. He asked me about my
-              approach towards developing a few things.This round was purely
-              based on development.
-            </Span>
+//             <Span>
+//               Senior developer of paytm ( who owns paytm.com ) asked me several
+//               questions. I showed him my code style. He asked me about my
+//               approach towards developing a few things.This round was purely
+//               based on development.
+//             </Span>
 
-            <Img src={Paytm2} left large />
-            <Span>
-              <b>Round 3 ( 45 minutes ): </b>
-            </Span>
-            <Span>
-              My manager asked me several questions based on development skills
-              at this round.
-            </Span>
-            <Img src={Paytm3} left large />
-            <Span>
-              <b>Round 4 ( HR ): </b>
-            </Span>
-            <Span>
-              I discussed with my hr regarding stipend and she later provided me
-              with the onboarding guide.
-            </Span>
-            <Img src={Paytm4} left large />
-            <Img src={Paytm5} left />
-            <Img src={Paytm6} left />
-            <Img src={Paytm7} left />
-            <Img src={Paytm8} left />
-            <Img src={Paytm9} left />
-          </>
-        ),
-      },
-      cred: {
-        title: "CRED",
-        content: (
-          <>
-            <Span>
-              <b>CRED Interview Experience:</b>
-            </Span>
-            <Span>
-              I applied for mobile development internship where the stack was:
-              Flutter, Kotlin , Android and Swift
-            </Span>
-            <Span>
-              During the first call from a member who belongs to the talent
-              team, I was asked to complete the assignment within the first
-              week.
-            </Span>
-            <Span>
-              I completed the task in 4 hours and sent them an attached zip file
-              as well as a drive link which consists of my resume , cover
-              letter, source code, app screenshot and screen record.
-            </Span>
-            <Span>
-              They were happy with my application and invited me for the second
-              round. Two developers asked me several problem solving questions
-              including a puzzle for about 2 hours, after proper introduction. I
-              showed the interviewers my projects.
-            </Span>
-            <Span>
-              <b>First Email Screenshot:</b>
-            </Span>
-            <Img src={CRED1} large />
-            <Span>
-              <b>Task Screenshots:</b>
-            </Span>
-            <Img src={CRED2} left />
-            <Img src={CRED3} left />
-            <Img src={CRED4} left large />
-            <PlayerContainer
-              style={{
-                display: "flex",
-                height: "auto",
-                alignItems: "flex-start",
-                width: "auto",
-              }}
-            >
-              <ReactPlayer
-                loop
-                muted
-                height="32rem"
-                style={{
-                  margin: "auto 0",
-                }}
-                width="auto"
-                controls
-                playing
-                url="https://res.cloudinary.com/saiashish/video/upload/v1641297009/screen_record_krviny.mp4"
-              />
-            </PlayerContainer>
-            <Span>
-              <b>Interview Call Invitation:</b>
-            </Span>
-            <Img src={CRED5} left large />
-            <p>
-              <b>Problem Solving Q1: Valid Parenthesis</b>
-            </p>
-            <CodeEditor
-              options={{
-                title: "cred-q1",
-                codes: {
-                  Javascript: {
-                    code: `var isValid = function(s) {
-                      var match = {
-                          ')': '(',
-                          '}': '{',
-                          ']': '['
-                      }
-                      var stack = []
-                      for (let i in s) {
-                          if (Object.values(match).includes(s[i])) {
-                              stack.push(s[i])
-                              continue
-                          }
-                          if (stack.length === 0 || match[s[i]] != stack.pop()) {
-                              return false
-                          }
-                      }
-                      return stack.length === 0
-                  };
+//             <Img src={Paytm2} left large />
+//             <Span>
+//               <b>Round 3 ( 45 minutes ): </b>
+//             </Span>
+//             <Span>
+//               My manager asked me several questions based on development skills
+//               at this round.
+//             </Span>
+//             <Img src={Paytm3} left large />
+//             <Span>
+//               <b>Round 4 ( HR ): </b>
+//             </Span>
+//             <Span>
+//               I discussed with my hr regarding stipend and she later provided me
+//               with the onboarding guide.
+//             </Span>
+//             <Img src={Paytm4} left large />
+//             <Img src={Paytm5} left />
+//             <Img src={Paytm6} left />
+//             <Img src={Paytm7} left />
+//             <Img src={Paytm8} left />
+//             <Img src={Paytm9} left />
+//           </>
+//         ),
+//       },
+//       cred: {
+//         title: "CRED",
+//         content: (
+//           <>
+//             <Span>
+//               <b>CRED Interview Experience:</b>
+//             </Span>
+//             <Span>
+//               I applied for mobile development internship where the stack was:
+//               Flutter, Kotlin , Android and Swift
+//             </Span>
+//             <Span>
+//               During the first call from a member who belongs to the talent
+//               team, I was asked to complete the assignment within the first
+//               week.
+//             </Span>
+//             <Span>
+//               I completed the task in 4 hours and sent them an attached zip file
+//               as well as a drive link which consists of my resume , cover
+//               letter, source code, app screenshot and screen record.
+//             </Span>
+//             <Span>
+//               They were happy with my application and invited me for the second
+//               round. Two developers asked me several problem solving questions
+//               including a puzzle for about 2 hours, after proper introduction. I
+//               showed the interviewers my projects.
+//             </Span>
+//             <Span>
+//               <b>First Email Screenshot:</b>
+//             </Span>
+//             <Img src={CRED1} large />
+//             <Span>
+//               <b>Task Screenshots:</b>
+//             </Span>
+//             <Img src={CRED2} left />
+//             <Img src={CRED3} left />
+//             <Img src={CRED4} left large />
+//             <PlayerContainer
+//               style={{
+//                 display: "flex",
+//                 height: "auto",
+//                 alignItems: "flex-start",
+//                 width: "auto",
+//               }}
+//             >
+//               <ReactPlayer
+//                 loop
+//                 muted
+//                 height="32rem"
+//                 style={{
+//                   margin: "auto 0",
+//                 }}
+//                 width="auto"
+//                 controls
+//                 playing
+//                 url="https://res.cloudinary.com/saiashish/video/upload/v1641297009/screen_record_krviny.mp4"
+//               />
+//             </PlayerContainer>
+//             <Span>
+//               <b>Interview Call Invitation:</b>
+//             </Span>
+//             <Img src={CRED5} left large />
+//             <p>
+//               <b>Problem Solving Q1: Valid Parenthesis</b>
+//             </p>
+//             <CodeEditor
+//               options={{
+//                 title: "cred-q1",
+//                 codes: {
+//                   Javascript: {
+//                     code: `var isValid = function(s) {
+//                       var match = {
+//                           ')': '(',
+//                           '}': '{',
+//                           ']': '['
+//                       }
+//                       var stack = []
+//                       for (let i in s) {
+//                           if (Object.values(match).includes(s[i])) {
+//                               stack.push(s[i])
+//                               continue
+//                           }
+//                           if (stack.length === 0 || match[s[i]] != stack.pop()) {
+//                               return false
+//                           }
+//                       }
+//                       return stack.length === 0
+//                   };
                   
-                  console.log(isValid('()()'))`,
-                    output: `true`,
-                  },
-                },
-              }}
-            />
-            <Span>
-              <b>
-                Problem Solving Q2: What is n in O(n)? How time complexity and
-                space complexity is related to n. At Q1, what will be complexity
-                of Object.values(match).includes(s[i])?
-              </b>
-            </Span>
-            <Span>n represents input size in O(n)</Span>
-            <Span>
-              In Asynmptotic analysis, we calculate, how the time (or space)
-              taken by an algorithm increases with the input size.
-              <br />
-              The complexity of an algorithm is a function describing the
-              efficiency of the algorithm in terms of the amount of data the
-              algorithm must process.
-              <br />
-              Time Complexity of algorithm/code is not equal to the actual time
-              required to execute a particular code but the number of times a
-              statement executes.
-              <br />
-              Space Complexity of an algorithm is the total space taken by the
-              algorithm with respect to the input size.
-            </Span>
-            <Span>
-              Time Complexity of Object.values(match).includes(s[i]) will be
-              O(1) since match is a constant. Object.values(match) should always
-              be fixed.
-            </Span>
-            <p>
-              <b>
-                Problem Solving Q3: There are 5 given cities : Mumbai, Chennai,
-                Delhi, Hyderabad, Bangalore and Kolkata. Start from any of the
-                cities and traverse all cities without returning back to any
-                city in between.
-              </b>
-            </p>
-            <CodeEditor
-              options={{
-                title: "cred-q3",
-                codes: {
-                  Javascript: {
-                    code: `class Graph {
+//                   console.log(isValid('()()'))`,
+//                     output: `true`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <Span>
+//               <b>
+//                 Problem Solving Q2: What is n in O(n)? How time complexity and
+//                 space complexity is related to n. At Q1, what will be complexity
+//                 of Object.values(match).includes(s[i])?
+//               </b>
+//             </Span>
+//             <Span>n represents input size in O(n)</Span>
+//             <Span>
+//               In Asynmptotic analysis, we calculate, how the time (or space)
+//               taken by an algorithm increases with the input size.
+//               <br />
+//               The complexity of an algorithm is a function describing the
+//               efficiency of the algorithm in terms of the amount of data the
+//               algorithm must process.
+//               <br />
+//               Time Complexity of algorithm/code is not equal to the actual time
+//               required to execute a particular code but the number of times a
+//               statement executes.
+//               <br />
+//               Space Complexity of an algorithm is the total space taken by the
+//               algorithm with respect to the input size.
+//             </Span>
+//             <Span>
+//               Time Complexity of Object.values(match).includes(s[i]) will be
+//               O(1) since match is a constant. Object.values(match) should always
+//               be fixed.
+//             </Span>
+//             <p>
+//               <b>
+//                 Problem Solving Q3: There are 5 given cities : Mumbai, Chennai,
+//                 Delhi, Hyderabad, Bangalore and Kolkata. Start from any of the
+//                 cities and traverse all cities without returning back to any
+//                 city in between.
+//               </b>
+//             </p>
+//             <CodeEditor
+//               options={{
+//                 title: "cred-q3",
+//                 codes: {
+//                   Javascript: {
+//                     code: `class Graph {
 
-                      constructor(n, v) {
-                          this.n = n
-                          this.g = {}
-                          this.v = v
-                      }
+//                       constructor(n, v) {
+//                           this.n = n
+//                           this.g = {}
+//                           this.v = v
+//                       }
                   
-                      addVertex(i) {
-                          this.g[i] = []
-                      }
+//                       addVertex(i) {
+//                           this.g[i] = []
+//                       }
                   
-                      addEdge(u, v) {
-                          this.g[u].push(v)
-                          this.g[v].push(u)
-                      }
+//                       addEdge(u, v) {
+//                           this.g[u].push(v)
+//                           this.g[v].push(u)
+//                       }
                   
-                      print() {
-                          let res = {}
-                          Object.entries(this.g).forEach((i, k) => {
-                              res[this.v[i[0]]] = i[1].map(x => this.v[x])
-                          })
-                          console.log(res)
-                      }
+//                       print() {
+//                           let res = {}
+//                           Object.entries(this.g).forEach((i, k) => {
+//                               res[this.v[i[0]]] = i[1].map(x => this.v[x])
+//                           })
+//                           console.log(res)
+//                       }
                   
-                      dfs(v = 0, visited = {}) {
-                          visited[v] = true
-                          console.log(this.v[v])
-                          const list = this.g[v]
-                          for (let i of list) {
-                              if (!visited[i]) this.dfs(i, visited)
-                          }
-                      }
+//                       dfs(v = 0, visited = {}) {
+//                           visited[v] = true
+//                           console.log(this.v[v])
+//                           const list = this.g[v]
+//                           for (let i of list) {
+//                               if (!visited[i]) this.dfs(i, visited)
+//                           }
+//                       }
                   
-                  }
+//                   }
                   
-                  const v = ['Mumbai', 'Chennai', 'Delhi', 'Hyderabad', 'Kolkata', 'Bangalore']
-                  const g = new Graph(6, v)
-                  for (let i in v)
-                      g.addVertex(i)
-                  g.addEdge(0, 1);
-                  g.addEdge(1, 2);
-                  g.addEdge(2, 3);
-                  g.addEdge(3, 4);
-                  g.addEdge(4, 5);
-                  console.log("Graph ( with no cycles ):")
-                  g.print()
-                  console.log("DFS:")
-                  g.dfs()
-                      `,
-                    output: `Graph ( with no cycles ):
-                    {
-                      Mumbai: [ 'Chennai' ],
-                      Chennai: [ 'Mumbai', 'Delhi' ],
-                      Delhi: [ 'Chennai', 'Hyderabad' ],
-                      Hyderabad: [ 'Delhi', 'Kolkata' ],
-                      Kolkata: [ 'Hyderabad', 'Bangalore' ],
-                      Bangalore: [ 'Kolkata' ]
-                    }
-                    DFS:
-                    Mumbai
-                    Chennai
-                    Delhi
-                    Hyderabad
-                    Kolkata
-                    Bangalore`,
-                  },
-                },
-              }}
-            />
-            <p>
-              <b>
-                Problem Solving Q4: Detection Of Loop In A Singly Linked List.
-              </b>
-            </p>
-            <CodeEditor
-              options={{
-                title: "cred-q4",
-                codes: {
-                  Javascript: {
-                    code: `class Node {
-                          constructor(data) {
-                              this.data = data
-                              this.next = null
-                          }
-                      }
-                      class LinkedList {
-                          constructor() {
-                              this.head = null
-                          }
-                          push(data) {
-                              let node = new Node(data)
-                              if (this.head == null) {
-                                  this.head = node
-                              } else {
-                                  let temp = this.head
-                                  while (temp.next) {
-                                      temp = temp.next
-                                  }
-                                  temp.next = node
-                              }
-                          }
-                          print() {
-                              let temp = this.head
-                              let output = ""
-                              while (temp != null) {
-                                  output += temp.data + " "
-                                  temp = temp.next
-                              }
-                              console.log(output)
-                          }
+//                   const v = ['Mumbai', 'Chennai', 'Delhi', 'Hyderabad', 'Kolkata', 'Bangalore']
+//                   const g = new Graph(6, v)
+//                   for (let i in v)
+//                       g.addVertex(i)
+//                   g.addEdge(0, 1);
+//                   g.addEdge(1, 2);
+//                   g.addEdge(2, 3);
+//                   g.addEdge(3, 4);
+//                   g.addEdge(4, 5);
+//                   console.log("Graph ( with no cycles ):")
+//                   g.print()
+//                   console.log("DFS:")
+//                   g.dfs()
+//                       `,
+//                     output: `Graph ( with no cycles ):
+//                     {
+//                       Mumbai: [ 'Chennai' ],
+//                       Chennai: [ 'Mumbai', 'Delhi' ],
+//                       Delhi: [ 'Chennai', 'Hyderabad' ],
+//                       Hyderabad: [ 'Delhi', 'Kolkata' ],
+//                       Kolkata: [ 'Hyderabad', 'Bangalore' ],
+//                       Bangalore: [ 'Kolkata' ]
+//                     }
+//                     DFS:
+//                     Mumbai
+//                     Chennai
+//                     Delhi
+//                     Hyderabad
+//                     Kolkata
+//                     Bangalore`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <p>
+//               <b>
+//                 Problem Solving Q4: Detection Of Loop In A Singly Linked List.
+//               </b>
+//             </p>
+//             <CodeEditor
+//               options={{
+//                 title: "cred-q4",
+//                 codes: {
+//                   Javascript: {
+//                     code: `class Node {
+//                           constructor(data) {
+//                               this.data = data
+//                               this.next = null
+//                           }
+//                       }
+//                       class LinkedList {
+//                           constructor() {
+//                               this.head = null
+//                           }
+//                           push(data) {
+//                               let node = new Node(data)
+//                               if (this.head == null) {
+//                                   this.head = node
+//                               } else {
+//                                   let temp = this.head
+//                                   while (temp.next) {
+//                                       temp = temp.next
+//                                   }
+//                                   temp.next = node
+//                               }
+//                           }
+//                           print() {
+//                               let temp = this.head
+//                               let output = ""
+//                               while (temp != null) {
+//                                   output += temp.data + " "
+//                                   temp = temp.next
+//                               }
+//                               console.log(output)
+//                           }
                       
-                          loop(){
-                           let temp = this.head
-                           let s = new Set()
-                           while(temp !== null){
-                             if(s.has(temp))
-                             return true
-                             s.add(temp)
-                             temp = temp.next
-                           }
-                           return false
-                          }
+//                           loop(){
+//                            let temp = this.head
+//                            let s = new Set()
+//                            while(temp !== null){
+//                              if(s.has(temp))
+//                              return true
+//                              s.add(temp)
+//                              temp = temp.next
+//                            }
+//                            return false
+//                           }
                       
-                      }
+//                       }
                       
-                      const l = new LinkedList();
+//                       const l = new LinkedList();
                       
-                      console.log("Push:")
-                      l.push(9);
-                      l.push(8);
-                      l.push(10);
-                      l.print()
-                      l.head.next = l.head
-                      console.log(l.loop())
-                      `,
-                    output: `Push:
-                        9 8 10 
-                        true`,
-                  },
-                },
-              }}
-            />
-            <p>
-              <b>Problem Solving Q5: Two Pointers Technique.</b>
-            </p>
-            <CodeEditor
-              options={{
-                title: "cred-q5",
-                output: null,
-                codes: {
-                  Javascript: {
-                    code: `
-                    function isPairSum(A, N, X)
-{
-	var i = 0;
-	var j = N - 1;
+//                       console.log("Push:")
+//                       l.push(9);
+//                       l.push(8);
+//                       l.push(10);
+//                       l.print()
+//                       l.head.next = l.head
+//                       console.log(l.loop())
+//                       `,
+//                     output: `Push:
+//                         9 8 10 
+//                         true`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <p>
+//               <b>Problem Solving Q5: Two Pointers Technique.</b>
+//             </p>
+//             <CodeEditor
+//               options={{
+//                 title: "cred-q5",
+//                 output: null,
+//                 codes: {
+//                   Javascript: {
+//                     code: `
+//                     function isPairSum(A, N, X)
+// {
+// 	var i = 0;
+// 	var j = N - 1;
 
-	while (i < j) {
+// 	while (i < j) {
 
-		if (A[i] + A[j] == X)
-    {
-      console.log({
-        i,
-        j,
-        l: A[i],r:A[j] , X
-      })
-			return true;
-    }
-		else if (A[i] + A[j] < X)
-			i++;
-		else
-			j--;
-	}
-	return false;
-}
+// 		if (A[i] + A[j] == X)
+//     {
+//       console.log({
+//         i,
+//         j,
+//         l: A[i],r:A[j] , X
+//       })
+// 			return true;
+//     }
+// 		else if (A[i] + A[j] < X)
+// 			i++;
+// 		else
+// 			j--;
+// 	}
+// 	return false;
+// }
 
-var arr = [ 3, 5, 9, 2, 8, 10, 11 ];
-var val = 17;
-var arrSize =7;
+// var arr = [ 3, 5, 9, 2, 8, 10, 11 ];
+// var val = 17;
+// var arrSize =7;
 
-console.log(isPairSum(arr, arrSize, val));
-                    `,
-                    output: `{ i: 2, j: 4, l: 9, r: 8, X: 17 }
-                    true`,
-                  },
-                },
-              }}
-            />
-            <Span>
-              <b>
-                Problem Solving Q6: Implement your own custom data structure.
-              </b>
-            </Span>
-            <Span>
-              <b>Min Stack</b>
-            </Span>
-            <p>
-              MinStack() initializes the stack object.
-              <br />
-              void push(int val) pushes the element val onto the stack.
-              <br />
-              void pop() removes the element on the top of the stack.
-              <br />
-              int top() gets the top element of the stack.
-              <br />
-              int getMin() retrieves the minimum element in the stack.
-            </p>
-            <CodeEditor
-              options={{
-                title: "cred-q6",
-                codes: {
-                  Javascript: {
-                    code: `var MinStack = function() {
-                      this.stack = []
-                    };
+// console.log(isPairSum(arr, arrSize, val));
+//                     `,
+//                     output: `{ i: 2, j: 4, l: 9, r: 8, X: 17 }
+//                     true`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <Span>
+//               <b>
+//                 Problem Solving Q6: Implement your own custom data structure.
+//               </b>
+//             </Span>
+//             <Span>
+//               <b>Min Stack</b>
+//             </Span>
+//             <p>
+//               MinStack() initializes the stack object.
+//               <br />
+//               void push(int val) pushes the element val onto the stack.
+//               <br />
+//               void pop() removes the element on the top of the stack.
+//               <br />
+//               int top() gets the top element of the stack.
+//               <br />
+//               int getMin() retrieves the minimum element in the stack.
+//             </p>
+//             <CodeEditor
+//               options={{
+//                 title: "cred-q6",
+//                 codes: {
+//                   Javascript: {
+//                     code: `var MinStack = function() {
+//                       this.stack = []
+//                     };
                     
-                    /** 
-                     * @param {number} val
-                     * @return {void}
-                     */
-                    MinStack.prototype.push = function(val) {
-                      let min = val
-                      if(this.stack.length) min = Math.min(this.stack.slice(-1)[0][1],val)
-                      this.stack.push([val,min])
-                    };
+//                     /** 
+//                      * @param {number} val
+//                      * @return {void}
+//                      */
+//                     MinStack.prototype.push = function(val) {
+//                       let min = val
+//                       if(this.stack.length) min = Math.min(this.stack.slice(-1)[0][1],val)
+//                       this.stack.push([val,min])
+//                     };
                     
-                    /**
-                     * @return {void}
-                     */
-                    MinStack.prototype.pop = function() {
-                      this.stack.pop()  
-                    };
+//                     /**
+//                      * @return {void}
+//                      */
+//                     MinStack.prototype.pop = function() {
+//                       this.stack.pop()  
+//                     };
                     
-                    /**
-                     * @return {number}
-                     */
-                    MinStack.prototype.top = function() {
-                      return this.stack.slice(-1)[0][0] 
-                    };
+//                     /**
+//                      * @return {number}
+//                      */
+//                     MinStack.prototype.top = function() {
+//                       return this.stack.slice(-1)[0][0] 
+//                     };
                     
-                    /**
-                     * @return {number}
-                     */
-                    MinStack.prototype.getMin = function() {
-                      return this.stack.slice(-1)[0][1]
-                    };
+//                     /**
+//                      * @return {number}
+//                      */
+//                     MinStack.prototype.getMin = function() {
+//                       return this.stack.slice(-1)[0][1]
+//                     };
                     
-                    var obj = new MinStack()
-                    obj.push(1)
-                    obj.push(2)
-                    console.log(obj.top())
-                    obj.pop()
-                    console.log(obj.getMin())
-                    `,
-                    output: `2
-                    1`,
-                  },
-                },
-              }}
-            />
-            <Span>
-              <b>
-                Problem Solving Q7 ( Puzzle ): Divide a cake into 8 pieces using
-                3 cuts.
-              </b>
-            </Span>
-            <Img src={CRED6} left />
-          </>
-        ),
-      },
-      uber: {
-        title: "Uber",
-        content: (
-          <>
-            <Span>
-              <b>Uber SDE Internship Interview Experience</b>
-            </Span>
-            <Span>
-              I applied for the SDE off-campus internship opportunity via my
-              linked in profile and their career's dashboard.
-            </Span>
-            <Span> Online test was conducted at codesignal. </Span>
-            <Span>Total Number Of Questions Asked: 3</Span>
-            <Span>Test link was active for 6 hours.</Span>
-            <Span>Test Duration: 1hr</Span>
-            <Span>
-              <b>Q1. Base 2 To Base 6 Conversion.</b>
-            </Span>
-            <p>
-              <b>1(a) Method 1:</b>
-            </p>
-            <CodeEditor
-              options={{
-                title: "uber-q1(a)",
-                codes: {
-                  Javascript: {
-                    code: `function solution(base2){
-                      return +parseInt(''+base2,2).toString(6)
-                     }
+//                     var obj = new MinStack()
+//                     obj.push(1)
+//                     obj.push(2)
+//                     console.log(obj.top())
+//                     obj.pop()
+//                     console.log(obj.getMin())
+//                     `,
+//                     output: `2
+//                     1`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <Span>
+//               <b>
+//                 Problem Solving Q7 ( Puzzle ): Divide a cake into 8 pieces using
+//                 3 cuts.
+//               </b>
+//             </Span>
+//             <Img src={CRED6} left />
+//           </>
+//         ),
+//       },
+//       uber: {
+//         title: "Uber",
+//         content: (
+//           <>
+//             <Span>
+//               <b>Uber SDE Internship Interview Experience</b>
+//             </Span>
+//             <Span>
+//               I applied for the SDE off-campus internship opportunity via my
+//               linked in profile and their career's dashboard.
+//             </Span>
+//             <Span> Online test was conducted at codesignal. </Span>
+//             <Span>Total Number Of Questions Asked: 3</Span>
+//             <Span>Test link was active for 6 hours.</Span>
+//             <Span>Test Duration: 1hr</Span>
+//             <Span>
+//               <b>Q1. Base 2 To Base 6 Conversion.</b>
+//             </Span>
+//             <p>
+//               <b>1(a) Method 1:</b>
+//             </p>
+//             <CodeEditor
+//               options={{
+//                 title: "uber-q1(a)",
+//                 codes: {
+//                   Javascript: {
+//                     code: `function solution(base2){
+//                       return +parseInt(''+base2,2).toString(6)
+//                      }
                      
-                     console.log(solution(1100)) // 12`,
-                    output: `20`,
-                  },
-                },
-              }}
-            />
-            <p>
-              <b>1(b) Method 2:</b>
-            </p>
-            <CodeEditor
-              options={{
-                title: "uber-q1(a)",
-                codes: {
-                  Javascript: {
-                    code: `function val(c)
-                    {
-                      if (c >= '0' && c <= '9')
-                          return c.charCodeAt(0) - 48;
-                      else
-                          return c.charCodeAt(0) - 65 + 10;
-                    }
+//                      console.log(solution(1100)) // 12`,
+//                     output: `20`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <p>
+//               <b>1(b) Method 2:</b>
+//             </p>
+//             <CodeEditor
+//               options={{
+//                 title: "uber-q1(a)",
+//                 codes: {
+//                   Javascript: {
+//                     code: `function val(c)
+//                     {
+//                       if (c >= '0' && c <= '9')
+//                           return c.charCodeAt(0) - 48;
+//                       else
+//                           return c.charCodeAt(0) - 65 + 10;
+//                     }
                      
                     
-                    function dec(s, base)
-                    {
-                      let len = s.length;
-                      let power = 1;
-                      let num = 0;
-                      for (let i = len - 1; i >= 0; i--) {
-                        num += val(s[i]) * power;
-                        power = power * base;
-                      }
-                      return num;
-                    }
+//                     function dec(s, base)
+//                     {
+//                       let len = s.length;
+//                       let power = 1;
+//                       let num = 0;
+//                       for (let i = len - 1; i >= 0; i--) {
+//                         num += val(s[i]) * power;
+//                         power = power * base;
+//                       }
+//                       return num;
+//                     }
                     
-                    function reVal(num)
-                    {
-                      if (num >= 0 && num <= 9)
-                        return String.fromCharCode(num + 48);
-                      else
-                        return String.fromCharCode(num - 10 + 65);
-                    }
+//                     function reVal(num)
+//                     {
+//                       if (num >= 0 && num <= 9)
+//                         return String.fromCharCode(num + 48);
+//                       else
+//                         return String.fromCharCode(num - 10 + 65);
+//                     }
                     
-                    function fromDec(base, inp)
-                    {
-                      let res = "";
-                      while (inp > 0) {
-                        res += reVal(inp % base);
-                        inp = Math.floor(inp/base);
-                      }
-                      res = res.split("").reverse().join("");
-                      return res;
-                    }
+//                     function fromDec(base, inp)
+//                     {
+//                       let res = "";
+//                       while (inp > 0) {
+//                         res += reVal(inp % base);
+//                         inp = Math.floor(inp/base);
+//                       }
+//                       res = res.split("").reverse().join("");
+//                       return res;
+//                     }
                     
-                    function convertBase(s, a, b)
-                    {
-                      let num = dec(s, a);
-                      let res = fromDec(b, num);
-                      return res
-                    }
+//                     function convertBase(s, a, b)
+//                     {
+//                       let num = dec(s, a);
+//                       let res = fromDec(b, num);
+//                       return res
+//                     }
                     
-                    function solution(base2){
-                      return convertBase(""+base2,2,6)
-                    }
+//                     function solution(base2){
+//                       return convertBase(""+base2,2,6)
+//                     }
                     
-                    console.log(solution(1100)) // 12                    
-                    `,
-                    output: `20`,
-                  },
-                },
-              }}
-            />
-            <p>
-              <b>
-                Q2. Given a set of time intervals and scores , pick the
-                intervals in such a way that the score is maximum and their sum
-                will be equal or nearest to total duration provided. ( I exactly
-                don't remember this question )
-              </b>
-            </p>
-            <CodeEditor
-              options={{
-                title: "uber-q2",
-                codes: {
-                  Javascript: {
-                    code: `function weightedKnapsack(s, t, T) {
-                      const n = s.length;
-                      const dp = Array.from(Array(n + 1), () => Array(T + 1).fill(-1));
-                      for (let i = 0; i <= n; i++) {
-                          for (let w = 0; w <= T; w++) {
-                              if (i == 0 || w == 0) {
-                                  dp[i][w] = 0;
-                              } else if (t[i - 1] <= w)
-                                  dp[i][w] = Math.max(
-                                      s[i - 1] + dp[i - 1][w - t[i - 1]], 
-                                      dp[i - 1][w]
-                                  );
-                              else dp[i][w] = dp[i - 1][w];
-                          }
-                      }
-                      return dp[n][T];
-                    }
-                    
-                    function solution(score,intervals,duration){
-                      return weightedKnapsack(score,intervals,duration)
-                    }
-                    
-                    console.log(solution([10, 15, 40], [1, 2, 3], 6));`,
-                    output: `65`,
-                  },
-                },
-              }}
-            />
-            <Span>
-              <b>
-                Q3. A travel agent sends couple's from one city to another via
-                the shortest path possible. If there are N cities and N - 1
-                highways connecting them. Help him plan the trip for all the
-                couples such that he maximizes the total distance travelled by
-                all couples. You must return to the same node from where you've
-                originated.
-              </b>
-            </Span>
-            <Img left src={Uber20} reduceH />
-            <CodeEditor
-              options={{
-                title: "uber-q3",
-                codes: {
-                  Javascript: {
-                    code: `class Graph {
-                      constructor(n, v) {
-                          this.n = n
-                          this.g = {}
-                      }
-                      addVertex(i) {
-                          this.g[i] = {}
-                      }
-                      addEdge(u, v, w) {
-                          this.g[u][v] = w
-                          this.g[v][u] = w
-                      }
+//                     console.log(solution(1100)) // 12                    
+//                     `,
+//                     output: `20`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <p>
+//               <b>
+//                 Q2. Given a set of time intervals and scores , pick the
+//                 intervals in such a way that the score is maximum and their sum
+//                 will be equal or nearest to total duration provided. ( I exactly
+//                 don't remember this question )
+//               </b>
+//             </p>
+//             <CodeEditor
+//               options={{
+//                 title: "uber-q2",
+//                 codes: {
+//                   Javascript: {
+//                     code: `function weightedKnapsack(s, t, T) {
+//                       const n = s.length;
+//                       const dp = Array.from(Array(n + 1), () => Array(T + 1).fill(-1));
+//                       for (let i = 0; i <= n; i++) {
+//                           for (let w = 0; w <= T; w++) {
+//                               if (i == 0 || w == 0) {
+//                                   dp[i][w] = 0;
+//                               } else if (t[i - 1] <= w)
+//                                   dp[i][w] = Math.max(
+//                                       s[i - 1] + dp[i - 1][w - t[i - 1]], 
+//                                       dp[i - 1][w]
+//                                   );
+//                               else dp[i][w] = dp[i - 1][w];
+//                           }
+//                       }
+//                       return dp[n][T];
+//                     }
+//                     function solution(score,intervals,duration){
+//                       return weightedKnapsack(score,intervals,duration)
+//                     }          
+//                     console.log(solution([10, 15, 40], [1, 2, 3], 6));`,
+//                     output: `65`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <Span>
+//               <b>
+//                 Q3. A travel agent sends couple's from one city to another via
+//                 the shortest path possible. If there are N cities and N - 1
+//                 highways connecting them. Help him plan the trip for all the
+//                 couples such that he maximizes the total distance travelled by
+//                 all couples. You must return to the same node from where you've
+//                 originated.
+//               </b>
+//             </Span>
+//             <Img left src={Uber20} reduceH />
+//             <CodeEditor
+//               options={{
+//                 title: "uber-q3",
+//                 codes: {
+//                   Javascript: {
+//                     code: `class Graph {
+//                       constructor(n, v) {
+//                           this.n = n
+//                           this.g = {}
+//                       }
+//                       addVertex(i) {
+//                           this.g[i] = {}
+//                       }
+//                       addEdge(u, v, w) {
+//                           this.g[u][v] = w
+//                           this.g[v][u] = w
+//                       }
                   
-                      paths(source, destination) {
-                        let result = []
-                        const curr = []
-                        curr.push(source)
-                        this.pathsUsingDfs(source, destination, result, curr)
-                        return Math.min(...result)
-                      }
+//                       paths(source, destination) {
+//                         let result = []
+//                         const curr = []
+//                         curr.push(source)
+//                         this.pathsUsingDfs(source, destination, result, curr)
+//                         return Math.min(...result)
+//                       }
                   
-                      pathsUsingDfs(s, d, result, curr = [], visited = {}) {
-                          if (s === d) {
-                            let path = curr.slice()
-                            let max = 0
-                            for(let i=0;i<path.length;i++){
-                               if(this.g[path[i+1]]){
-                                max+= this.g[path[i+1]][path[i]]
-                               }
-                            }
-                            result.push(max)
-                            return
-                          }
-                          visited[s] = true
-                          const list = Object.keys(this.g[s]).map(x=>+x)
-                          for (let i of list) {
-                              if (!visited[i]) {
-                                  curr.push(i)
-                                  this.pathsUsingDfs(i, d, result, curr, visited)
-                                  curr.splice(curr.indexOf(i), 1)
-                              }
-                          }
-                          visited[s] = false
-                      }
+//                       pathsUsingDfs(s, d, result, curr = [], visited = {}) {
+//                           if (s === d) {
+//                             let path = curr.slice()
+//                             let max = 0
+//                             for(let i=0;i<path.length;i++){
+//                                if(this.g[path[i+1]]){
+//                                 max+= this.g[path[i+1]][path[i]]
+//                                }
+//                             }
+//                             result.push(max)
+//                             return
+//                           }
+//                           visited[s] = true
+//                           const list = Object.keys(this.g[s]).map(x=>+x)
+//                           for (let i of list) {
+//                               if (!visited[i]) {
+//                                   curr.push(i)
+//                                   this.pathsUsingDfs(i, d, result, curr, visited)
+//                                   curr.splice(curr.indexOf(i), 1)
+//                               }
+//                           }
+//                           visited[s] = false
+//                       }
                       
-                      solve(){
-                       let entriesL = Object.entries(this.g).map(x=>[+x[0],Object.entries(x[1]).length])
-                       const maxN = Math.max(...entriesL.map(x=>x[1]))
-                       entriesL = entriesL.filter(e=>e[1]===maxN)[0]
-                       const source = entriesL[0]
-                       let max = 0
-                       const neighbors = Object.entries(this.g[source])
-                       const keys = Object.keys(this.g[source]).map(x=>+x)
-                       for(let n of neighbors){
-                        max+= n[1]
-                       }
-                       const others = [...Array(this.n).keys()].map(x=>+x+1).filter(x=>!keys.includes(x) && x !== source)
-                       for(let i of others){
-                         max += this.paths(source,i)
-                       }
-                       return max * 2
-                      }
-                  }
+//                       solve(){
+//                        let entriesL = Object.entries(this.g).map(x=>[+x[0],Object.entries(x[1]).length])
+//                        const maxN = Math.max(...entriesL.map(x=>x[1]))
+//                        entriesL = entriesL.filter(e=>e[1]===maxN)[0]
+//                        const source = entriesL[0]
+//                        let max = 0
+//                        const neighbors = Object.entries(this.g[source])
+//                        const keys = Object.keys(this.g[source]).map(x=>+x)
+//                        for(let n of neighbors){
+//                         max+= n[1]
+//                        }
+//                        const others = [...Array(this.n).keys()].map(x=>+x+1).filter(x=>!keys.includes(x) && x !== source)
+//                        for(let i of others){
+//                          max += this.paths(source,i)
+//                        }
+//                        return max * 2
+//                       }
+//                   }
                   
-                  function solution(n,distances){
-                  const g = new Graph(n)
-                  for(let i=1;i<=n;i++)
-                  g.addVertex(i)
-                  for(let d of distances){
-                    g.addEdge(d[0],d[1],d[2])
-                  }
-                  console.log(g.g)
-                  return g.solve()
-                  }
+//                   function solution(n,distances){
+//                   const g = new Graph(n)
+//                   for(let i=1;i<=n;i++)
+//                   g.addVertex(i)
+//                   for(let d of distances){
+//                     g.addEdge(d[0],d[1],d[2])
+//                   }
+//                   console.log(g.g)
+//                   return g.solve()
+//                   }
                   
-                  console.log(solution(4,[
-                  [1,2,3],
-                  [2,3,2],
-                  [4,3,2],
-                  ]));
+//                   console.log(solution(4,[
+//                   [1,2,3],
+//                   [2,3,2],
+//                   [4,3,2],
+//                   ]));
                   
-                  console.log(solution(5,[
-                  [1,2,1],
-                  [2,3,2],
-                  [2,4,3],
-                  [1,5,4]
-                  ]));`,
-                    output: `{
-                      '1': { '2': 3 },
-                      '2': { '1': 3, '3': 2 },
-                      '3': { '2': 2, '4': 2 },
-                      '4': { '3': 2 }
-                    }
-                    18
-                    {
-                      '1': { '2': 1, '5': 4 },
-                      '2': { '1': 1, '3': 2, '4': 3 },
-                      '3': { '2': 2 },
-                      '4': { '2': 3 },
-                      '5': { '1': 4 }
-                    }
-                    22`,
-                  },
-                },
-              }}
-            />
-            <Span>
-              <b>Screenshots:</b>
-            </Span>
-            {[
-              Uber1,
-              Uber2,
-              Uber3,
-              Uber4,
-              Uber5,
-              Uber6,
-              Uber7,
-              Uber8,
-              Uber9,
-              Uber10,
-              Uber11,
-              Uber12,
-              Uber13,
-              Uber14,
-              Uber15,
-              Uber16,
-              Uber17,
-              Uber18,
-              Uber19,
-            ].map((i, k) => (
-              <Img key={k} src={i} large />
-            ))}
-          </>
-        ),
-      },
-      vmware: {
-        title: "VMWare",
-        content: (
-          <>
-            <Span>
-              <b>
-                VMWare Member Of Technical Staff Internship Interview Experience
-              </b>
-            </Span>
-            <Span>
-              I received the mail from VMWare for an off campus{" "}
-              <b>MTS internship</b> opportunity because of my professional
-              network.
-            </Span>
-            <Span>
-              I choosed a slot out of many using a form link provided by them.
-            </Span>
-            <Span>
-              The Hackerrank test was mailed to me 30 min prior to the exam.
-            </Span>
-            <Span>
-              There were a total of two questions and the video was kept on.
-            </Span>
-            <Span>
-              <b>Test duration was 1 hour.</b>
-            </Span>
-            <Span>
-              <b>
-                Q1. Longest Increasing Common Subsequence Of Two Arrays Which
-                Consists of 1, -1 and 0 Only.
-              </b>
-            </Span>
-            <p>
-              Given two arrays, find length of the longest common increasing
-              subsequence [LCIS] and print one of such sequences (multiple
-              sequences may exist). Suppose we consider two arrays – arr1[] =
-              [-1, 0, 1, 0] and arr2[] = [1, -1, -1, 0, 1, 0, 1] Our answer
-              would be 3 [-1,0,1] as this is the longest common subsequence
-              which is increasing also.
-            </p>
-            <CodeEditor
-              options={{
-                title: `vmware-q1`,
-                codes: {
-                  Javascript: {
-                    code: `function lcis(arr1, arr2) {
-                      let m = arr1.length
-                      let n = arr2.length
-                      let lookupTab = Array(n).fill(0)
-                      // tab represents table
-                      let parent = Array(n).fill(0)
+//                   console.log(solution(5,[
+//                   [1,2,1],
+//                   [2,3,2],
+//                   [2,4,3],
+//                   [1,5,4]
+//                   ]));`,
+//                     output: `{
+//                       '1': { '2': 3 },
+//                       '2': { '1': 3, '3': 2 },
+//                       '3': { '2': 2, '4': 2 },
+//                       '4': { '3': 2 }
+//                     }
+//                     18
+//                     {
+//                       '1': { '2': 1, '5': 4 },
+//                       '2': { '1': 1, '3': 2, '4': 3 },
+//                       '3': { '2': 2 },
+//                       '4': { '2': 3 },
+//                       '5': { '1': 4 }
+//                     }
+//                     22`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <Span>
+//               <b>Screenshots:</b>
+//             </Span>
+//             {[
+//               Uber1,
+//               Uber2,
+//               Uber3,
+//               Uber4,
+//               Uber5,
+//               Uber6,
+//               Uber7,
+//               Uber8,
+//               Uber9,
+//               Uber10,
+//               Uber11,
+//               Uber12,
+//               Uber13,
+//               Uber14,
+//               Uber15,
+//               Uber16,
+//               Uber17,
+//               Uber18,
+//               Uber19,
+//             ].map((i, k) => (
+//               <Img key={k} src={i} large />
+//             ))}
+//           </>
+//         ),
+//       },
+//       vmware: {
+//         title: "VMWare",
+//         content: (
+//           <>
+//             <Span>
+//               <b>
+//                 VMWare Member Of Technical Staff Internship Interview Experience
+//               </b>
+//             </Span>
+//             <Span>
+//               I received the mail from VMWare for an off campus{" "}
+//               <b>MTS internship</b> opportunity because of my professional
+//               network.
+//             </Span>
+//             <Span>
+//               I choosed a slot out of many using a form link provided by them.
+//             </Span>
+//             <Span>
+//               The Hackerrank test was mailed to me 30 min prior to the exam.
+//             </Span>
+//             <Span>
+//               There were a total of two questions and the video was kept on.
+//             </Span>
+//             <Span>
+//               <b>Test duration was 1 hour.</b>
+//             </Span>
+//             <Span>
+//               <b>
+//                 Q1. Longest Increasing Common Subsequence Of Two Arrays Which
+//                 Consists of 1, -1 and 0 Only.
+//               </b>
+//             </Span>
+//             <p>
+//               Given two arrays, find length of the longest common increasing
+//               subsequence [LCIS] and print one of such sequences (multiple
+//               sequences may exist). Suppose we consider two arrays – arr1[] =
+//               [-1, 0, 1, 0] and arr2[] = [1, -1, -1, 0, 1, 0, 1] Our answer
+//               would be 3 [-1,0,1] as this is the longest common subsequence
+//               which is increasing also.
+//             </p>
+//             <CodeEditor
+//               options={{
+//                 title: `vmware-q1`,
+//                 codes: {
+//                   Javascript: {
+//                     code: `function lcis(arr1, arr2) {
+//                       let m = arr1.length
+//                       let n = arr2.length
+//                       let lookupTab = Array(n).fill(0)
+//                       // tab represents table
+//                       let parent = Array(n).fill(0)
                   
-                      for (let i = 0; i < m; i++) {
-                          let current = 0,
-                              last = -1
-                          for (let j = 0; j < n; j++) {
-                              // if both elements are same
-                              if (arr1[i] == arr2[j] && current + 1 > lookupTab[j]) {
-                                  lookupTab[j] = current + 1;
-                                  parent[j] = last
-                              }
+//                       for (let i = 0; i < m; i++) {
+//                           let current = 0,
+//                               last = -1
+//                           for (let j = 0; j < n; j++) {
+//                               // if both elements are same
+//                               if (arr1[i] == arr2[j] && current + 1 > lookupTab[j]) {
+//                                   lookupTab[j] = current + 1;
+//                                   parent[j] = last
+//                               }
                   
-                              // if first element is greater than second
-                              if (arr1[i] > arr2[j] && lookupTab[j] > current) {
-                                  current = lookupTab[j];
-                                  last = j
-                              }
-                          }
-                      }
+//                               // if first element is greater than second
+//                               if (arr1[i] > arr2[j] && lookupTab[j] > current) {
+//                                   current = lookupTab[j];
+//                                   last = j
+//                               }
+//                           }
+//                       }
                   
-                      const max = Math.max(...lookupTab)
-                      let index = lookupTab.indexOf(max);
-                      let result = Array(max).fill(null),
-                          i = 0;
-                      while (index != -1) {
-                          result[i] = arr2[index];
-                          index = parent[index];
-                          i += 1
-                      }
-                      result = result.reverse()
-                      console.log(result)
-                      return max
-                  }
+//                       const max = Math.max(...lookupTab)
+//                       let index = lookupTab.indexOf(max);
+//                       let result = Array(max).fill(null),
+//                           i = 0;
+//                       while (index != -1) {
+//                           result[i] = arr2[index];
+//                           index = parent[index];
+//                           i += 1
+//                       }
+//                       result = result.reverse()
+//                       console.log(result)
+//                       return max
+//                   }
                   
-                  const arr1 = [-1,0, 1, 0]
-                  const arr2 = [1, -1, -1, 0, 1, 0, 1]
-                  console.log(lcis(arr1, arr2));                                                                                          
-                      `,
-                    output: `[ -1, 0, 1 ]
-                    3`,
-                  },
-                },
-              }}
-            />
-            <Span>
-              <b>Q2. Knight Tour Problem (Backtracking)(dfs)(stack)</b>
-            </Span>
-            <Span>
-              <b> Problem Statement</b>
-            </Span>
-            <Span>
-              Given a N*N board with the Knight placed on the first block of an
-              empty board. Moving according to the rules of chess knight must
-              visit each square exactly once. Print the order of each the cell
-              in which they are visited. ( horse should visite all the cells
-              exactly once )
-            </Span>
-            <Img left src={KnightImg} alt="img" />
-            <p>Note -&lt; board[7][4] will be 53 at above pic.</p>
-            <CodeEditor
-              options={{
-                title: `vmware-q2`,
-                codes: {
-                  Javascript: {
-                    code: `const print = b => b.forEach(x=>console.log(x.join(" ")))
+//                   const arr1 = [-1,0, 1, 0]
+//                   const arr2 = [1, -1, -1, 0, 1, 0, 1]
+//                   console.log(lcis(arr1, arr2));                                                                                          
+//                       `,
+//                     output: `[ -1, 0, 1 ]
+//                     3`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <Span>
+//               <b>Q2. Knight Tour Problem (Backtracking)(dfs)(stack)</b>
+//             </Span>
+//             <Span>
+//               <b> Problem Statement</b>
+//             </Span>
+//             <Span>
+//               Given a N*N board with the Knight placed on the first block of an
+//               empty board. Moving according to the rules of chess knight must
+//               visit each square exactly once. Print the order of each the cell
+//               in which they are visited. ( horse should visite all the cells
+//               exactly once )
+//             </Span>
+//             <Img left src={KnightImg} alt="img" />
+//             <p>Note -&lt; board[7][4] will be 53 at above pic.</p>
+//             <CodeEditor
+//               options={{
+//                 title: `vmware-q2`,
+//                 codes: {
+//                   Javascript: {
+//                     code: `const print = b => b.forEach(x=>console.log(x.join(" ")))
 
-                    function isSafe(x,y,board){
-                      // coordinate should lie within the board
-                       return x >=0 && x<n && y >= 0 && y<n && board[x][y] == -1
-                    }
+//                     function isSafe(x,y,board){
+//                       // coordinate should lie within the board
+//                        return x >=0 && x<n && y >= 0 && y<n && board[x][y] == -1
+//                     }
                     
-                    function knightTour(board,xMove,yMove,n){
-                      // place knight at (0,0) first
-                      board[0][0] = 0
-                      if(!knightTourGuide(0,0,1,board,xMove,yMove,n)){
-                         return false
-                      }
-                      return true
-                    }
+//                     function knightTour(board,xMove,yMove,n){
+//                       // place knight at (0,0) first
+//                       board[0][0] = 0
+//                       if(!knightTourGuide(0,0,1,board,xMove,yMove,n)){
+//                          return false
+//                       }
+//                       return true
+//                     }
                     
-                    function knightTourGuide(x,y,move,board,xMove,yMove,n){
-                      let next_x, next_y;
-                      if(move == n*n) return true
-                      for(let k=0;k<n;k++){
-                        // find next move using array
-                        next_x = x + xMove[k];
-                        next_y = y + yMove[k];
-                        if(isSafe(next_x,next_y,board)){
-                          board[next_x][next_y] = move
-                        // check for next move
-                        if(knightTourGuide(next_x, next_y, move + 1, board, xMove, yMove,n)) 
-                          return true
-                        else
-                          board[next_x][next_y] = -1 // backtrack
-                      }
-                      }
-                      return false
-                    }
+//                     function knightTourGuide(x,y,move,board,xMove,yMove,n){
+//                       let next_x, next_y;
+//                       if(move == n*n) return true
+//                       for(let k=0;k<n;k++){
+//                         // find next move using array
+//                         next_x = x + xMove[k];
+//                         next_y = y + yMove[k];
+//                         if(isSafe(next_x,next_y,board)){
+//                           board[next_x][next_y] = move
+//                         // check for next move
+//                         if(knightTourGuide(next_x, next_y, move + 1, board, xMove, yMove,n)) 
+//                           return true
+//                         else
+//                           board[next_x][next_y] = -1 // backtrack
+//                       }
+//                       }
+//                       return false
+//                     }
                     
                     
-                    const n = 8
-                    // A Knight can make maximum eight moves
+//                     const n = 8
+//                     // A Knight can make maximum eight moves
                     
-                    console.log("Initial Board")
-                    const board = Array.from(Array(n),()=>Array(n).fill(-1))
+//                     console.log("Initial Board")
+//                     const board = Array.from(Array(n),()=>Array(n).fill(-1))
                     
-                    // we need to memorize below two arrays:
-                    const xMove = [ 2, 1, -1, -2, -2, -1, 1, 2 ];
-                    // 2 -> move 2 cells right
-                    const yMove = [ 1, 2, 2, 1, -1, -2, -2, -1 ];
-                    // -1 -> move one cell downwards
+//                     // we need to memorize below two arrays:
+//                     const xMove = [ 2, 1, -1, -2, -2, -1, 1, 2 ];
+//                     // 2 -> move 2 cells right
+//                     const yMove = [ 1, 2, 2, 1, -1, -2, -2, -1 ];
+//                     // -1 -> move one cell downwards
                     
-                    print(board)
-                    console.log("Total No. Of Cells : " + n*n)
-                    const start = new Date().getTime()
-                    knightTour(board,xMove,yMove,n)
-                    const end = new Date().getTime()
-                    console.log("Solved Board")
-                    print(board)
-                    console.log("Time Required For Execution: "+ (end-start)/1000 + "s")`,
-                    output: `Initial Board
-                    -1 -1 -1 -1 -1 -1 -1 -1
-                    -1 -1 -1 -1 -1 -1 -1 -1
-                    -1 -1 -1 -1 -1 -1 -1 -1
-                    -1 -1 -1 -1 -1 -1 -1 -1
-                    -1 -1 -1 -1 -1 -1 -1 -1
-                    -1 -1 -1 -1 -1 -1 -1 -1
-                    -1 -1 -1 -1 -1 -1 -1 -1
-                    -1 -1 -1 -1 -1 -1 -1 -1
-                    Total No. Of Cells : 64
-                    Solved Board
-                    0 59 38 33 30 17 8 63
-                    37 34 31 60 9 62 29 16
-                    58 1 36 39 32 27 18 7
-                    35 48 41 26 61 10 15 28
-                    42 57 2 49 40 23 6 19
-                    47 50 45 54 25 20 11 14
-                    56 43 52 3 22 13 24 5
-                    51 46 55 44 53 4 21 12
-                    Time Required For Execution: 23.616s`,
-                  },
-                },
-              }}
-            />
-            <Span>
-              <b>Screenshots:</b>
-            </Span>
-            <Img src={Vmware1Img} large />
-            <Img src={Vmware2Img} large />
-            <Img src={Vmware3Img} large />
-            <Img src={Vmware4Img} large />
-            <Img src={Vmware5Img} large />
-            <Img src={Vmware6Img} large />
-            <Img src={Vmware7Img} large />
-            <Img src={Vmware8Img} large />
-            <Img src={Vmware9Img} large />
-            <Img src={Vmware10Img} large />
-            <Img src={Vmware11Img} large />
-            <Img src={Vmware12Img} large />
-          </>
-        ),
-      },
-      razorpay: {
-        title: "Razorpay",
-        content: (
-          <>
-            <Span>
-              <b>Razorpay Interview Experience (call) :</b>
-            </Span>
-            <Span>
-              I got the call from razorpay . They asked me questions regarding
-              ci/cd , graphql and various important libraries and
-              frameworks,etc. I was able to answer all of them.
-            </Span>
-            <Span>They're ready to provide me full time employment.</Span>
-            <Span>
-              At the same time, I got the internship opportunity from paytm.{" "}
-            </Span>
-          </>
-        ),
-      },
-      browserstack: {
-        title: "Browserstack",
-        content: (
-          <>
-            <Span>
-              <b>Browserstack Interview Experience :</b>
-            </Span>
-            <Span>
-              I got messages from their talent team for full time employment.
-            </Span>
-            <Span>
-              My <b>friend</b> who earlier worked as a intern at CodeNation
-              called me during the interview.
-            </Span>
-            <Span>
-              He wanted me to explain how to continuously take input from a file
-              and perform operations on it using javascript.
-            </Span>
-          </>
-        ),
-      },
-      turing: {
-        title: "Turing",
-        content: (
-          <>
-            <Span>
-              <b>Turing Interview Experience :</b>
-            </Span>
-            <Span>
-              I updated my profile and passed multiple tests. Due to which I was
-              able to attempt the live coding contest. My video was kept on.
-            </Span>
-            <Span>
-              <b>Test duration was 30 minutes.</b>
-            </Span>
-            <Span>
-              I was suggested to solve the first few ( ~20-30 ) leetcode
-              questions before attempting the test.
-            </Span>
-            <Span>
-              I received emails for remote jobs from the Turing afterwards.
-            </Span>
-            <Span>
-              I don't remember second question but the first question was
-              longest palindromic subsequence of two strings
-            </Span>
-            <p>
-              <b>Q1. Longest Palindromic Subsequence Of Two Strings:</b>
-            </p>
-            <CodeEditor
-              options={{
-                title: "turing-q1",
-                codes: {
-                  Javascript: {
-                    code: `const lcs = function(str1, str2) {
-                      const m = str1.length
-                      const n = str2.length
-                      const lookupTab = Array.from(Array(m + 1), () => Array(n + 1).fill(n + 1))
-                      for (let i = 0; i <= m; i++) {
-                          for (let j = 0; j <= n; j++) {
-                              if (i === 0 || j === 0) lookupTab[i][j] = 0
-                              else if (str1[i - 1] === str2[j - 1])
-                                  lookupTab[i][j] = lookupTab[i - 1][j - 1] + 1
-                              else
-                                  lookupTab[i][j] = Math.max(lookupTab[i - 1][j], lookupTab[i][j - 1])
-                          }
-                      }
-                      const result = lookupTab[m][n]
-                      let subsequence = Array(result).fill(null)
-                      let len = result
-                      let i = m,
-                          j = n;
-                      while (i > 0 && j > 0) {
-                          if (str1[i - 1] == str2[j - 1]) {
-                              subsequence[len - 1] = str1[i - 1]
-                              i -= 1
-                              j -= 1
-                              len -= 1
-                          }
-                          else if (lookupTab[i - 1][j] > lookupTab[i][j - 1]) {
-                              i -= 1
-                          } else {
-                              j -= 1
-                          }
-                      }
-                      console.log(typeof str === "string"? subsequence.join("") : subsequence )
-                      return result
-                  }
+//                     print(board)
+//                     console.log("Total No. Of Cells : " + n*n)
+//                     const start = new Date().getTime()
+//                     knightTour(board,xMove,yMove,n)
+//                     const end = new Date().getTime()
+//                     console.log("Solved Board")
+//                     print(board)
+//                     console.log("Time Required For Execution: "+ (end-start)/1000 + "s")`,
+//                     output: `Initial Board
+//                     -1 -1 -1 -1 -1 -1 -1 -1
+//                     -1 -1 -1 -1 -1 -1 -1 -1
+//                     -1 -1 -1 -1 -1 -1 -1 -1
+//                     -1 -1 -1 -1 -1 -1 -1 -1
+//                     -1 -1 -1 -1 -1 -1 -1 -1
+//                     -1 -1 -1 -1 -1 -1 -1 -1
+//                     -1 -1 -1 -1 -1 -1 -1 -1
+//                     -1 -1 -1 -1 -1 -1 -1 -1
+//                     Total No. Of Cells : 64
+//                     Solved Board
+//                     0 59 38 33 30 17 8 63
+//                     37 34 31 60 9 62 29 16
+//                     58 1 36 39 32 27 18 7
+//                     35 48 41 26 61 10 15 28
+//                     42 57 2 49 40 23 6 19
+//                     47 50 45 54 25 20 11 14
+//                     56 43 52 3 22 13 24 5
+//                     51 46 55 44 53 4 21 12
+//                     Time Required For Execution: 23.616s`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <Span>
+//               <b>Screenshots:</b>
+//             </Span>
+//             <Img src={Vmware1Img} large />
+//             <Img src={Vmware2Img} large />
+//             <Img src={Vmware3Img} large />
+//             <Img src={Vmware4Img} large />
+//             <Img src={Vmware5Img} large />
+//             <Img src={Vmware6Img} large />
+//             <Img src={Vmware7Img} large />
+//             <Img src={Vmware8Img} large />
+//             <Img src={Vmware9Img} large />
+//             <Img src={Vmware10Img} large />
+//             <Img src={Vmware11Img} large />
+//             <Img src={Vmware12Img} large />
+//           </>
+//         ),
+//       },
+//       razorpay: {
+//         title: "Razorpay",
+//         content: (
+//           <>
+//             <Span>
+//               <b>Razorpay Interview Experience (call) :</b>
+//             </Span>
+//             <Span>
+//               I got the call from razorpay . They asked me questions regarding
+//               ci/cd , graphql and various important libraries and
+//               frameworks,etc. I was able to answer all of them.
+//             </Span>
+//             <Span>They're ready to provide me full time employment.</Span>
+//             <Span>
+//               At the same time, I got the internship opportunity from paytm.{" "}
+//             </Span>
+//           </>
+//         ),
+//       },
+//       browserstack: {
+//         title: "Browserstack",
+//         content: (
+//           <>
+//             <Span>
+//               <b>Browserstack Interview Experience :</b>
+//             </Span>
+//             <Span>
+//               I got messages from their talent team for full time employment.
+//             </Span>
+//             <Span>
+//               My <b>friend</b> who earlier worked as a intern at CodeNation
+//               called me during the interview.
+//             </Span>
+//             <Span>
+//               He wanted me to explain how to continuously take input from a file
+//               and perform operations on it using javascript.
+//             </Span>
+//           </>
+//         ),
+//       },
+//       turing: {
+//         title: "Turing",
+//         content: (
+//           <>
+//             <Span>
+//               <b>Turing Interview Experience :</b>
+//             </Span>
+//             <Span>
+//               I updated my profile and passed multiple tests. Due to which I was
+//               able to attempt the live coding contest. My video was kept on.
+//             </Span>
+//             <Span>
+//               <b>Test duration was 30 minutes.</b>
+//             </Span>
+//             <Span>
+//               I was suggested to solve the first few ( ~20-30 ) leetcode
+//               questions before attempting the test.
+//             </Span>
+//             <Span>
+//               I received emails for remote jobs from the Turing afterwards.
+//             </Span>
+//             <Span>
+//               I don't remember second question but the first question was
+//               longest palindromic subsequence of two strings
+//             </Span>
+//             <p>
+//               <b>Q1. Longest Palindromic Subsequence Of Two Strings:</b>
+//             </p>
+//             <CodeEditor
+//               options={{
+//                 title: "turing-q1",
+//                 codes: {
+//                   Javascript: {
+//                     code: `const lcs = function(str1, str2) {
+//                       const m = str1.length
+//                       const n = str2.length
+//                       const lookupTab = Array.from(Array(m + 1), () => Array(n + 1).fill(n + 1))
+//                       for (let i = 0; i <= m; i++) {
+//                           for (let j = 0; j <= n; j++) {
+//                               if (i === 0 || j === 0) lookupTab[i][j] = 0
+//                               else if (str1[i - 1] === str2[j - 1])
+//                                   lookupTab[i][j] = lookupTab[i - 1][j - 1] + 1
+//                               else
+//                                   lookupTab[i][j] = Math.max(lookupTab[i - 1][j], lookupTab[i][j - 1])
+//                           }
+//                       }
+//                       const result = lookupTab[m][n]
+//                       let subsequence = Array(result).fill(null)
+//                       let len = result
+//                       let i = m,
+//                           j = n;
+//                       while (i > 0 && j > 0) {
+//                           if (str1[i - 1] == str2[j - 1]) {
+//                               subsequence[len - 1] = str1[i - 1]
+//                               i -= 1
+//                               j -= 1
+//                               len -= 1
+//                           }
+//                           else if (lookupTab[i - 1][j] > lookupTab[i][j - 1]) {
+//                               i -= 1
+//                           } else {
+//                               j -= 1
+//                           }
+//                       }
+//                       console.log(typeof str === "string"? subsequence.join("") : subsequence )
+//                       return result
+//                   }
                   
-                    function lps(str) {
-                      return lcs(str, typeof str === "string"? str.split("").reverse().join(): str.reverse());
-                    }
+//                     function lps(str) {
+//                       return lcs(str, typeof str === "string"? str.split("").reverse().join(): str.reverse());
+//                     }
                   
                     
-                    let str = "abs123abs";
-                    console.log(lps(str));
-                  `,
-                    output: `sbs
-                  3`,
-                  },
-                },
-              }}
-            />
-            <Span>
-              <b>Screenshots:</b>
-            </Span>
-            <Img src={Turing1} left large />
-            <Img src={Turing2} left />
-            <Img src={Turing3} left large />
-            <Img src={Turing4} left large />
-          </>
-        ),
-      },
-      stewards: {
-        title: "Stewards ❤️",
-        content: (
-          <>
-            <Span>
-              <b>Stewards Internship Interview Experience :</b>
-            </Span>
-            <Span>This internship really changed my life.</Span>
-            <Span>
-              After completion of the first two tasks, I showed the CTO of the
-              company ( Ukraine ) multiple projects during a interview call. He
-              asked me questions about ACID and BASE , various concepts which I
-              made use of in my projects, batch transactions, and recycler views
-              in android,etc.
-            </Span>
-            <Span>
-              Then I made a project with the CEO of the company ( London ), and
-              someone who belongs to Brazil Government. My work was presented at
-              Brazil media.
-            </Span>
-            <Span>
-              My work can be found at the experience section of the home section
-              by simply clicking at the desired logos. ( uvrobots + velvet.video
-              + searchvaccines ) .
-            </Span>
-            <Span>
-              <b>Interview Task 1:</b>
-            </Span>
-            <Span>
-              <b>Input Formatter</b>
-            </Span>
-            <Span>
-              const input1 = 12345.12 <br />
-              const input2 = 3.12 <br />
-              const input3 = 123456789
-              <br />
-              <br />
-              function formatter(input){"{"}
-              <br />
-              <br />
-              {"}"}
-              <br />
-              <br />
-              // formatter(input1) === 12,345.12 <br />
-              // formatter(input2) === 3.12 <br />
-              // formatter(input3) === 123,456,789 //implement formatter. // Do
-              not use Regex:
-            </Span>
-            <Img left large src={Stewards1} reduceH />
-            <CodeEditor
-              options={{
-                title: "Stewards ❤️",
-                codes: {
-                  Javascript: {
-                    code: `function convert(x){
-                      const y=String(parseInt(x)).split("").reverse()
-                      var z= []
-                      for(let i=0;i<y.length;i+=3){
-                         let u=y[i]
-                         if(y[i+1])
-                         u+= y[i+1]
-                         if(y[i+2])
-                         u+=y[i+2]
-                         z.push(u)
-                      }
-                      var ans = z.join(",").split("").reverse().join("")
-                      const diff = String(x-parseInt(x)).substring(2,String(x).length-String(parseInt(x)).length+1)
-                      if(diff.length>0) ans+="."+ diff
-                      return ans
-                      }
-                      console.log(convert(16.14))`,
-                    output: `16.14`,
-                  },
-                },
-              }}
-            />
-            <Span>
-              <b>Interview Task 2:</b>
-            </Span>
-            <Span>
-              <b>TikTok Clone ( Rs. 5000 for completion ): </b>
-            </Span>
-            <Img src={Stewards2} left large />
-            <Span>
-              <b>
-                I showed the CEO, my instagram clone, he was impressed and I got
-                selected after a final interview call, which I mentioned above
-                with the CTO.
-              </b>
-            </Span>
-            <Span>
-              <b>Screenshots:</b>
-            </Span>
-            <Img src={Stewards3} left />
-            <Img src={Stewards4} left />
-          </>
-        ),
-      },
-      inuvest: {
-        title: "Inuvest",
-        content: (
-          <>
-            <Span>
-              <b>Inuvest Internship Interview Experience ( 3rd Semester ) :</b>
-            </Span>
-            <Span>
-              I applied for a full stack python ( Django + Flask + Angular + ML
-              + Postgres + AI + + AWS + Docker + Digital Ocean + Redis )
-              internship via internshala.
-            </Span>
-            <Span>
-              After completing the task, they called me . And three interviewers
-              asked me questions on linked list operations, tricky questions on
-              angular and various aws services. I still remember , the founder
-              of this start-up was impressed with what I'm doing at this age.
-            </Span>
-            <Span>
-              My work can be found at the experience section of the home section
-              by simply clicking at the desired logo.
-            </Span>
-            <Span>Screenshots:</Span>
-            <Img left src={Inuvest1} />
-            <Img left src={Inuvest2} />
-            <Span>Task Screenshots:</Span>
-            <Img left src={Inuvest3} />
-            <Img left src={Inuvest4} />
-            <Img left src={Inuvest5} />
-            <Img left src={Inuvest6} />
-            <Img left src={Inuvest7} />
-            <Img left src={Inuvest8} />
-          </>
-        ),
-      },
-      nex2Me: {
-        title: "Nex2Me",
-        content: (
-          <>
-            <Span>
-              <b>Nex2Me Internship Interview Experience ( 3rd Semester ) :</b>
-            </Span>
-            <Span>
-              I applied for a full stack java ( MongoDB + Express + React +
-              Node.js + AWS + Docker ) internship via internshala. I showed them
-              my amazon clone and I was given a task. They're impressed by it .
-              Then,someone from NIT Raipur took my interview. After the
-              interview, I was invited to be the interviewer of two candidates
-              much older than me because of my knowledge.
-            </Span>
-            <Span>
-              My work can be found at the experience section of the home section
-              by simply clicking at the desired logo.
-            </Span>
-            <Span>
-              <b>Screenshots:</b>
-            </Span>
-            <Span>
-              <b>
-                During the interview, I was asked one problem solving question:
-              </b>
-            </Span>
-            <p>
-              <b>
-                Q. Return length of longest subarray of continuos 0s from an
-                array which consists of 0s and 1s only
-              </b>
-            </p>
-            <CodeEditor
-              options={{
-                title: "nex2me",
-                codes: {
-                  Java: {
-                    code: `import java.io.*;
-                    import java.util.*;
+//                     let str = "abs123abs";
+//                     console.log(lps(str));
+//                   `,
+//                     output: `sbs
+//                   3`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <Span>
+//               <b>Screenshots:</b>
+//             </Span>
+//             <Img src={Turing1} left large />
+//             <Img src={Turing2} left />
+//             <Img src={Turing3} left large />
+//             <Img src={Turing4} left large />
+//           </>
+//         ),
+//       },
+//       stewards: {
+//         title: "Stewards ❤️",
+//         content: (
+//           <>
+//             <Span>
+//               <b>Stewards Internship Interview Experience :</b>
+//             </Span>
+//             <Span>This internship really changed my life.</Span>
+//             <Span>
+//               After completion of the first two tasks, I showed the CTO of the
+//               company ( Ukraine ) multiple projects during a interview call. He
+//               asked me questions about ACID and BASE , various concepts which I
+//               made use of in my projects, batch transactions, and recycler views
+//               in android,etc.
+//             </Span>
+//             <Span>
+//               Then I made a project with the CEO of the company ( London ), and
+//               someone who belongs to Brazil Government. My work was presented at
+//               Brazil media.
+//             </Span>
+//             <Span>
+//               My work can be found at the experience section of the home section
+//               by simply clicking at the desired logos. ( uvrobots + velvet.video
+//               + searchvaccines ) .
+//             </Span>
+//             <Span>
+//               <b>Interview Task 1:</b>
+//             </Span>
+//             <Span>
+//               <b>Input Formatter</b>
+//             </Span>
+//             <Span>
+//               const input1 = 12345.12 <br />
+//               const input2 = 3.12 <br />
+//               const input3 = 123456789
+//               <br />
+//               <br />
+//               function formatter(input){"{"}
+//               <br />
+//               <br />
+//               {"}"}
+//               <br />
+//               <br />
+//               // formatter(input1) === 12,345.12 <br />
+//               // formatter(input2) === 3.12 <br />
+//               // formatter(input3) === 123,456,789 //implement formatter. // Do
+//               not use Regex:
+//             </Span>
+//             <Img left large src={Stewards1} reduceH />
+//             <CodeEditor
+//               options={{
+//                 title: "Stewards ❤️",
+//                 codes: {
+//                   Javascript: {
+//                     code: `function convert(x){
+//                       const y=String(parseInt(x)).split("").reverse()
+//                       var z= []
+//                       for(let i=0;i<y.length;i+=3){
+//                          let u=y[i]
+//                          if(y[i+1])
+//                          u+= y[i+1]
+//                          if(y[i+2])
+//                          u+=y[i+2]
+//                          z.push(u)
+//                       }
+//                       var ans = z.join(",").split("").reverse().join("")
+//                       const diff = String(x-parseInt(x)).substring(2,String(x).length-String(parseInt(x)).length+1)
+//                       if(diff.length>0) ans+="."+ diff
+//                       return ans
+//                       }
+//                       console.log(convert(16.14))`,
+//                     output: `16.14`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <Span>
+//               <b>Interview Task 2:</b>
+//             </Span>
+//             <Span>
+//               <b>TikTok Clone ( Rs. 5000 for completion ): </b>
+//             </Span>
+//             <Img src={Stewards2} left large />
+//             <Span>
+//               <b>
+//                 I showed the CEO, my instagram clone, he was impressed and I got
+//                 selected after a final interview call, which I mentioned above
+//                 with the CTO.
+//               </b>
+//             </Span>
+//             <Span>
+//               <b>Screenshots:</b>
+//             </Span>
+//             <Img src={Stewards3} left />
+//             <Img src={Stewards4} left />
+//           </>
+//         ),
+//       },
+//       inuvest: {
+//         title: "Inuvest",
+//         content: (
+//           <>
+//             <Span>
+//               <b>Inuvest Internship Interview Experience ( 3rd Semester ) :</b>
+//             </Span>
+//             <Span>
+//               I applied for a full stack python ( Django + Flask + Angular + ML
+//               + Postgres + AI + + AWS + Docker + Digital Ocean + Redis )
+//               internship via internshala.
+//             </Span>
+//             <Span>
+//               After completing the task, they called me . And three interviewers
+//               asked me questions on linked list operations, tricky questions on
+//               angular and various aws services. I still remember , the founder
+//               of this start-up was impressed with what I'm doing at this age.
+//             </Span>
+//             <Span>
+//               My work can be found at the experience section of the home section
+//               by simply clicking at the desired logo.
+//             </Span>
+//             <Span>Screenshots:</Span>
+//             <Img left src={Inuvest1} />
+//             <Img left src={Inuvest2} />
+//             <Span>Task Screenshots:</Span>
+//             <Img left src={Inuvest3} />
+//             <Img left src={Inuvest4} />
+//             <Img left src={Inuvest5} />
+//             <Img left src={Inuvest6} />
+//             <Img left src={Inuvest7} />
+//             <Img left src={Inuvest8} />
+//           </>
+//         ),
+//       },
+//       nex2Me: {
+//         title: "Nex2Me",
+//         content: (
+//           <>
+//             <Span>
+//               <b>Nex2Me Internship Interview Experience ( 3rd Semester ) :</b>
+//             </Span>
+//             <Span>
+//               I applied for a full stack java ( MongoDB + Express + React +
+//               Node.js + AWS + Docker ) internship via internshala. I showed them
+//               my amazon clone and I was given a task. They're impressed by it .
+//               Then,someone from NIT Raipur took my interview. After the
+//               interview, I was invited to be the interviewer of two candidates
+//               much older than me because of my knowledge.
+//             </Span>
+//             <Span>
+//               My work can be found at the experience section of the home section
+//               by simply clicking at the desired logo.
+//             </Span>
+//             <Span>
+//               <b>Screenshots:</b>
+//             </Span>
+//             <Span>
+//               <b>
+//                 During the interview, I was asked one problem solving question:
+//               </b>
+//             </Span>
+//             <p>
+//               <b>
+//                 Q. Return length of longest subarray of continuos 0s from an
+//                 array which consists of 0s and 1s only
+//               </b>
+//             </p>
+//             <CodeEditor
+//               options={{
+//                 title: "nex2me",
+//                 codes: {
+//                   Java: {
+//                     code: `import java.io.*;
+//                     import java.util.*;
                     
-                    class Main{
-                      static PrintStream ps = System.out;
-                      public static void main(String ...s){
-                        int[] arr = {0,1,0,0};
-                        // Map<Integer,Integer> map = new HashMap();
-                        // for(int i:arr){
-                        //   if(map.containsKey(i)){
-                        //     map.put(i,map.get(i)+1);
-                        //   }else{
-                        //     map.put(i,1);
-                        //   }
-                        // }
-                        // int max_count = map.get(0); 
-                        int max = 0;
-                        int count = 0;
-                        for(int i=0;i<arr.length;i++){
-                        // if(max_count == 0) break;    
-                        if(arr[i]==1){
-                          // max_count--;
-                          count = 0;
-                        }else {
-                          count++;
-                          max = Math.max(max,count);
-                        }
-                        }
-                        ps.println(max);
-                      }
-                    }`,
-                    output: `2`,
-                  },
-                },
-              }}
-            />
-            <p>
-              <b>Largest subarray with equal number of 0s and 1s</b>
-            </p>
-            <CodeEditor
-              options={{
-                title: "nex2me",
-                codes: {
-                  Java: {
-                    code: `import java.util.HashMap;
-                    import java.io.*;
+//                     class Main{
+//                       static PrintStream ps = System.out;
+//                       public static void main(String ...s){
+//                         int[] arr = {0,1,0,0};
+//                         // Map<Integer,Integer> map = new HashMap();
+//                         // for(int i:arr){
+//                         //   if(map.containsKey(i)){
+//                         //     map.put(i,map.get(i)+1);
+//                         //   }else{
+//                         //     map.put(i,1);
+//                         //   }
+//                         // }
+//                         // int max_count = map.get(0); 
+//                         int max = 0;
+//                         int count = 0;
+//                         for(int i=0;i<arr.length;i++){
+//                         // if(max_count == 0) break;    
+//                         if(arr[i]==1){
+//                           // max_count--;
+//                           count = 0;
+//                         }else {
+//                           count++;
+//                           max = Math.max(max,count);
+//                         }
+//                         }
+//                         ps.println(max);
+//                       }
+//                     }`,
+//                     output: `2`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <p>
+//               <b>Largest subarray with equal number of 0s and 1s</b>
+//             </p>
+//             <CodeEditor
+//               options={{
+//                 title: "nex2me",
+//                 codes: {
+//                   Java: {
+//                     code: `import java.util.HashMap;
+//                     import java.io.*;
                     
-                    class Main {
+//                     class Main {
                     
-                      static PrintStream ps = System.out;
+//                       static PrintStream ps = System.out;
                     
-                      int maxLen(int arr[], int n)
-                      {
+//                       int maxLen(int arr[], int n)
+//                       {
                     
-                        HashMap<Integer, Integer> map
-                          = new HashMap<Integer, Integer>();
+//                         HashMap<Integer, Integer> map
+//                           = new HashMap<Integer, Integer>();
                     
-                        int sum = 0;
+//                         int sum = 0;
                     
-                        int max_len = 0;
-                        int ending_index = -1;
-                        int start_index = 0;
+//                         int max_len = 0;
+//                         int ending_index = -1;
+//                         int start_index = 0;
                     
-                        for (int i = 0; i < n; i++) {
-                          arr[i] = (arr[i] == 0) ? -1 : 1;
-                        }
+//                         for (int i = 0; i < n; i++) {
+//                           arr[i] = (arr[i] == 0) ? -1 : 1;
+//                         }
                     
-                        for (int i = 0; i < n; i++) {
-                          sum += arr[i];
-                          if (sum == 0) {
-                            max_len = i + 1;
-                            ending_index = i;
-                          }
-                          if (map.containsKey(sum)) {
-                            if (max_len < i - map.get(sum)) {
-                              max_len = i - map.get(sum);
-                              ending_index = i;
-                            }
-                          }
-                            map.put(sum, i);
-                        }
+//                         for (int i = 0; i < n; i++) {
+//                           sum += arr[i];
+//                           if (sum == 0) {
+//                             max_len = i + 1;
+//                             ending_index = i;
+//                           }
+//                           if (map.containsKey(sum)) {
+//                             if (max_len < i - map.get(sum)) {
+//                               max_len = i - map.get(sum);
+//                               ending_index = i;
+//                             }
+//                           }
+//                             map.put(sum, i);
+//                         }
                     
-                        for (int i = 0; i < n; i++) {
-                          arr[i] = (arr[i] == -1) ? 0 : 1;
-                        }
+//                         for (int i = 0; i < n; i++) {
+//                           arr[i] = (arr[i] == -1) ? 0 : 1;
+//                         }
                     
-                        int end = ending_index - max_len + 1;
-                        System.out.println(end + " to " + ending_index);
-                        return max_len;
-                      }
+//                         int end = ending_index - max_len + 1;
+//                         System.out.println(end + " to " + ending_index);
+//                         return max_len;
+//                       }
                     
-                      public static void main(String[] args)
-                      {
-                        Main sub = new Main();
-                        int arr[] = { 1, 0, 0, 1, 0, 1, 1 };
-                        int n = arr.length;
-                        ps.println(sub.maxLen(arr, n));
-                      }
-                    }
-                    `,
-                    output: `0 to 5
-                    6`,
-                  },
-                },
-              }}
-            />
-            <Img src={Nex2Me1} left />
-            <Img src={Nex2Me2} left />
-            <Img src={Nex2Me3} left />
-            <Img src={Nex2Me4} left />
-            <Img src={Nex2Me5} left />
-            <Img src={Nex2Me6} left />
-            <Img src={Nex2Me7} left />
-            <Img src={Nex2Me8} left />
-            <Img src={Nex2Me9} left />
-            <Img src={Nex2Me10} left />
-          </>
-        ),
-      },
-      pracify: {
-        title: "Pracify ( Mauka )",
-        content: (
-          <>
-            <Span>
-              <b>Pracify Internship Interview Experience ( 3rd Semester ) :</b>
-            </Span>
-            <Span>
-              I applied for MERN ( MongoDB + Express + React + Node.js + AWS +
-              Docker ) stack internship via internshala. I was invited to the
-              office.
-            </Span>
-            <Span>
-              This was later selected for 100x.vc and inc42 collaboration. My
-              work can be found at the experience section of the home section by
-              simply clicking at the desired logo.
-            </Span>
-            <Span>
-              <b>Screenshots:</b>
-            </Span>
-            <Img src={Pracify5Img} left />
-            <Img src={Pracify6Img} left />
-            <Span>
-              <b>Internship Task:</b>
-            </Span>
-            <Img src={Pracify1Img} left />
-            <Img src={Pracify2Img} left />
-            <Span>
-              <b>Solution:</b>
-            </Span>
-            <Img src={Pracify3Img} left />
-            <Img src={Pracify4Img} left />
-          </>
-        ),
-      },
-      appTown: {
-        title: "App Town",
-        content: (
-          <>
-            <Span>
-              <b>App Town Technologies In-office Interview Experience:</b>
-            </Span>
-            <Span>
-              I applied for a react and react native internship via internshala.
-              I was invited to the office.And I was given a task to make a
-              calculator with a provided UI. And picked on the basis of my
-              resume.
-            </Span>
-            <Span>I worked on 5 react and react native projects.</Span>
-            <Span>
-              My work can be found at the experience section of the home section
-              by simply clicking at the desired logo.
-            </Span>
-            <Span>
-              <b>Screenshots:</b>
-            </Span>
-            <Img src={AppTown1} left />
-            <Img src={AppTown2} left />
-            <Img src={AppTown3} left />
-            <Img src={AppTown4} left />
-            <Img src={AppTown5} left />
-            <Img src={AppTown6} left />
-            <Img src={AppTown7} left />
-            <Img src={AppTown8} left />
-            <Img src={AppTown9} left />
-          </>
-        ),
-      },
-      openHouse: {
-        title: "OpenHouse",
-        content: (
-          <>
-            <Span>
-              <b>OpenHouse Offer:</b>
-            </Span>{" "}
-            <Span>
-              I got the invitation for a python / django developer opportunity
-              along with several other offers.
-            </Span>
-            <Span>Screenshots:</Span>
-            <Img src={Oh1} left />
-            <Img src={Oh2} left />
-            <Img src={Oh3} left />
-          </>
-        ),
-      },
-    },
-    content: (
-      <>
-        <Span>
-          I specified some of the start-ups and companies who took my interview
-          above.
-        </Span>
-        <Span>
-          Resume, projects, knowledge and quality of work matters a lot in order
-          to get the call for round 1 from hr. Be confident, try to interact
-          with interviewers friendly. Just don't lose your confidence in
-          between.
-        </Span>
-        <Span>
-          I insist you to go through data structures and algorithms sections
-          before the interview. If you're smart enough, you can do that in a
-          maximum of 2 days. And solve ( or understand ) ( with code complexity
-          ) atleast first 50 leetcode questions using any language. You'll be
-          able to crack problem solving rounds of any interview by solving first
-          108 leetcode questions for beginner positions ( + internships ).
-        </Span>
-        <Span>Atmost there will be four rounds:</Span>
-        <Span>
-          <b>Round 1 ( Important ):</b>
-        </Span>
-        <Span>
-          This round is mainly based on problem solving skills of the
-          individual. There can be an online test of duration 30min - 1hr or
-          online meeting with interviewers at zoom or google meet for the
-          duration of 45min to 2hrs. In case of online meeting rounds, you'll be
-          asked to pick your slot. At max 4 dsa ( Data Structures And Algorithms
-          ) questions will be asked. At max. 2 senior employees will come in
-          order to take your interview. They may or may not ask questions based
-          on development skills. You can ask for feedback from the interviewers
-          at the end.
-        </Span>
-        <Span>
-          You'll be asked to write the code in a paper or in an online editor
-          while sharing your screen. It's better to switch on your camera for a
-          nice impression otherwise it's upon the interviewer. One puzzle can
-          also be asked with the help of canvas tool.
-        </Span>
-        <Span>
-          <b>Round 2 ( Very Important ) :</b>
-        </Span>
-        <Span>
-          This will be based on your development skills and you might need to
-          explain code of your previous projects. Interview will ask a few
-          tricky questions based on development skills. They might even give a
-          few tasks to implement. Duration will be between 45 min and 2 hours.
-          You can ask the feedback from interviewers at the end.
-        </Span>
-        <Span>
-          <b>Round 3 ( Congrats 🥳 you're selected ) :</b>
-        </Span>
-        <Span>
-          This round may or may not happen. This will be similar to the second
-          round. This round may be held with your manager.
-        </Span>
-        <Span>
-          <b>Round 4:</b>
-        </Span>
-        <Span>
-          This will be held with your hiring manager. You need to discuss the
-          stipend or package with your hr. And you'll be provided with an
-          instruction guide. In some cases, Hr will try to provide as less
-          stipend as possible so beware of that.
-        </Span>
-        <Span>All the best ❤️. You'll make it 🤝.</Span>
-      </>
-    ),
-  },
+//                       public static void main(String[] args)
+//                       {
+//                         Main sub = new Main();
+//                         int arr[] = { 1, 0, 0, 1, 0, 1, 1 };
+//                         int n = arr.length;
+//                         ps.println(sub.maxLen(arr, n));
+//                       }
+//                     }
+//                     `,
+//                     output: `0 to 5
+//                     6`,
+//                   },
+//                 },
+//               }}
+//             />
+//             <Img src={Nex2Me1} left />
+//             <Img src={Nex2Me2} left />
+//             <Img src={Nex2Me3} left />
+//             <Img src={Nex2Me4} left />
+//             <Img src={Nex2Me5} left />
+//             <Img src={Nex2Me6} left />
+//             <Img src={Nex2Me7} left />
+//             <Img src={Nex2Me8} left />
+//             <Img src={Nex2Me9} left />
+//             <Img src={Nex2Me10} left />
+//           </>
+//         ),
+//       },
+//       pracify: {
+//         title: "Pracify ( Mauka )",
+//         content: (
+//           <>
+//             <Span>
+//               <b>Pracify Internship Interview Experience ( 3rd Semester ) :</b>
+//             </Span>
+//             <Span>
+//               I applied for MERN ( MongoDB + Express + React + Node.js + AWS +
+//               Docker ) stack internship via internshala. I was invited to the
+//               office.
+//             </Span>
+//             <Span>
+//               This was later selected for 100x.vc and inc42 collaboration. My
+//               work can be found at the experience section of the home section by
+//               simply clicking at the desired logo.
+//             </Span>
+//             <Span>
+//               <b>Screenshots:</b>
+//             </Span>
+//             <Img src={Pracify5Img} left />
+//             <Img src={Pracify6Img} left />
+//             <Span>
+//               <b>Internship Task:</b>
+//             </Span>
+//             <Img src={Pracify1Img} left />
+//             <Img src={Pracify2Img} left />
+//             <Span>
+//               <b>Solution:</b>
+//             </Span>
+//             <Img src={Pracify3Img} left />
+//             <Img src={Pracify4Img} left />
+//           </>
+//         ),
+//       },
+//       appTown: {
+//         title: "App Town",
+//         content: (
+//           <>
+//             <Span>
+//               <b>App Town Technologies In-office Interview Experience:</b>
+//             </Span>
+//             <Span>
+//               I applied for a react and react native internship via internshala.
+//               I was invited to the office.And I was given a task to make a
+//               calculator with a provided UI. And picked on the basis of my
+//               resume.
+//             </Span>
+//             <Span>I worked on 5 react and react native projects.</Span>
+//             <Span>
+//               My work can be found at the experience section of the home section
+//               by simply clicking at the desired logo.
+//             </Span>
+//             <Span>
+//               <b>Screenshots:</b>
+//             </Span>
+//             <Img src={AppTown1} left />
+//             <Img src={AppTown2} left />
+//             <Img src={AppTown3} left />
+//             <Img src={AppTown4} left />
+//             <Img src={AppTown5} left />
+//             <Img src={AppTown6} left />
+//             <Img src={AppTown7} left />
+//             <Img src={AppTown8} left />
+//             <Img src={AppTown9} left />
+//           </>
+//         ),
+//       },
+//       openHouse: {
+//         title: "OpenHouse",
+//         content: (
+//           <>
+//             <Span>
+//               <b>OpenHouse Offer:</b>
+//             </Span>{" "}
+//             <Span>
+//               I got the invitation for a python / django developer opportunity
+//               along with several other offers.
+//             </Span>
+//             <Span>Screenshots:</Span>
+//             <Img src={Oh1} left />
+//             <Img src={Oh2} left />
+//             <Img src={Oh3} left />
+//           </>
+//         ),
+//       },
+//     },
+//     content: (
+//       <>
+//         <Span>
+//           I specified some of the start-ups and companies who took my interview
+//           above.
+//         </Span>
+//         <Span>
+//           Resume, projects, knowledge and quality of work matters a lot in order
+//           to get the call for round 1 from hr. Be confident, try to interact
+//           with interviewers friendly. Just don't lose your confidence in
+//           between.
+//         </Span>
+//         <Span>
+//           I insist you to go through data structures and algorithms sections
+//           before the interview. If you're smart enough, you can do that in a
+//           maximum of 2 days. And solve ( or understand ) ( with code complexity
+//           ) atleast first 50 leetcode questions using any language. You'll be
+//           able to crack problem solving rounds of any interview by solving first
+//           108 leetcode questions for beginner positions ( + internships ).
+//         </Span>
+//         <Span>Atmost there will be four rounds:</Span>
+//         <Span>
+//           <b>Round 1 ( Important ):</b>
+//         </Span>
+//         <Span>
+//           This round is mainly based on problem solving skills of the
+//           individual. There can be an online test of duration 30min - 1hr or
+//           online meeting with interviewers at zoom or google meet for the
+//           duration of 45min to 2hrs. In case of online meeting rounds, you'll be
+//           asked to pick your slot. At max 4 dsa ( Data Structures And Algorithms
+//           ) questions will be asked. At max. 2 senior employees will come in
+//           order to take your interview. They may or may not ask questions based
+//           on development skills. You can ask for feedback from the interviewers
+//           at the end.
+//         </Span>
+//         <Span>
+//           You'll be asked to write the code in a paper or in an online editor
+//           while sharing your screen. It's better to switch on your camera for a
+//           nice impression otherwise it's upon the interviewer. One puzzle can
+//           also be asked with the help of canvas tool.
+//         </Span>
+//         <Span>
+//           <b>Round 2 ( Very Important ) :</b>
+//         </Span>
+//         <Span>
+//           This will be based on your development skills and you might need to
+//           explain code of your previous projects. Interview will ask a few
+//           tricky questions based on development skills. They might even give a
+//           few tasks to implement. Duration will be between 45 min and 2 hours.
+//           You can ask the feedback from interviewers at the end.
+//         </Span>
+//         <Span>
+//           <b>Round 3 ( Congrats 🥳 you're selected ) :</b>
+//         </Span>
+//         <Span>
+//           This round may or may not happen. This will be similar to the second
+//           round. This round may be held with your manager.
+//         </Span>
+//         <Span>
+//           <b>Round 4:</b>
+//         </Span>
+//         <Span>
+//           This will be held with your hiring manager. You need to discuss the
+//           stipend or package with your hr. And you'll be provided with an
+//           instruction guide. In some cases, Hr will try to provide as less
+//           stipend as possible so beware of that.
+//         </Span>
+//         <Span>All the best ❤️. You'll make it 🤝.</Span>
+//       </>
+//     ),
+//   },
   leetcode: {
     title: "Leetcode Questions (1008+)",
     types: {
@@ -107548,6256 +107546,6255 @@ a = b + c;
       </>
     ),
   },
-  notes: {
-    title: "Notes",
-    types: {
-      "Obj-C": {
-        title: "Objective C",
-        content: (
-          <>
-            <Span>
-              Windows Users can make use of{" "}
-              <a
-                href="https://www.mingw.org/"
-                target="blank"
-                rel="noreferrer noopener"
-              >
-                www.mingw.org
-              </a>{" "}
-              or{" "}
-              <a
-                href="https://www.cygwin.com/"
-                target="blank"
-                rel="noreferrer noopener"
-              >
-                www.cygwin.com
-              </a>{" "}
-              for comipiling objective c
-            </Span>
-            <Span>
-              <b>Example</b>
-            </Span>
-            <Span>Animal.m</Span>
-            <pre>
-              {`#import "Animal.h"
-#import "Animal+Vet.h"
+//   notes: {
+//     title: "Notes",
+//     types: {
+//       "Obj-C": {
+//         title: "Objective C",
+//         content: (
+//           <>
+//             <Span>
+//               Windows Users can make use of{" "}
+//               <a
+//                 href="https://www.mingw.org/"
+//                 target="blank"
+//                 rel="noreferrer noopener"
+//               >
+//                 www.mingw.org
+//               </a>{" "}
+//               or{" "}
+//               <a
+//                 href="https://www.cygwin.com/"
+//                 target="blank"
+//                 rel="noreferrer noopener"
+//               >
+//                 www.cygwin.com
+//               </a>{" "}
+//               for comipiling objective c
+//             </Span>
+//             <Span>
+//               <b>Example</b>
+//             </Span>
+//             <Span>Animal.m</Span>
+//             <pre>
+//               {`#import "Animal.h"
+// #import "Animal+Vet.h"
 
-@implementation Animal
+// @implementation Animal
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.name = @"Sai";
-    }
-    return self;
-}
+// - (instancetype)init
+// {
+//     self = [super init];
+//     if (self) {
+//         self.name = @"Sai";
+//     }
+//     return self;
+// }
 
-- (instancetype)initWithName:(NSString *)defaultName
-{
-    self = [super init];
-    if (self) {
-        self.name = defaultName;
-    }
-    return self;
-}
+// - (instancetype)initWithName:(NSString *)defaultName
+// {
+//     self = [super init];
+//     if (self) {
+//         self.name = defaultName;
+//     }
+//     return self;
+// }
 
--(void) getInfo{
-NSLog(@"Random");
-[self getExamResults];
-}
+// -(void) getInfo{
+// NSLog(@"Random");
+// [self getExamResults];
+// }
 
--(float) weightInKg:(float)weightInLbs {
-    return weightInLbs * 0.4535;
-}
+// -(float) weightInKg:(float)weightInLbs {
+//     return weightInLbs * 0.4535;
+// }
 
--(int) getSum:(int)num1 nextNumber:(int)num2 {
-    return num1 + num2;
-}
+// -(int) getSum:(int)num1 nextNumber:(int)num2 {
+//     return num1 + num2;
+// }
 
--(NSString *)talkToMe:(NSString *)myName{
-    NSString *response = [NSString stringWithFormat:@"Hello %@", myName];
-    return response;
-}
+// -(NSString *)talkToMe:(NSString *)myName{
+//     NSString *response = [NSString stringWithFormat:@"Hello %@", myName];
+//     return response;
+// }
 
--(void) makeSound{
-    NSLog(@"Grrrr");
-}
+// -(void) makeSound{
+//     NSLog(@"Grrrr");
+// }
 
-@end
+// @end
 
-`}
-            </pre>
-            <Span>Animal.h</Span>
-            <pre>
-              {`#import <Foundation/Foundation.h>
+// `}
+//             </pre>
+//             <Span>Animal.h</Span>
+//             <pre>
+//               {`#import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
+// NS_ASSUME_NONNULL_BEGIN
 
-@interface Animal : NSObject
+// @interface Animal : NSObject
 
-//@property (readonly) NSString *name;
-@property NSString *name;
-@property NSString *favFood;
-@property NSString *sound;
-@property float weight;
+// //@property (readonly) NSString *name;
+// @property NSString *name;
+// @property NSString *favFood;
+// @property NSString *sound;
+// @property float weight;
 
--(instancetype) initWithName:(NSString*) defaultName;
--(void) getInfo;
--(float) weightInKg : (float) weightInLbs;
--(NSString *) talkToMe: (NSString *) myName;
--(int) getSum: (int) num1
-   nextNumber: (int) num2;
+// -(instancetype) initWithName:(NSString*) defaultName;
+// -(void) getInfo;
+// -(float) weightInKg : (float) weightInLbs;
+// -(NSString *) talkToMe: (NSString *) myName;
+// -(int) getSum: (int) num1
+//    nextNumber: (int) num2;
 
--(void) makeSound;
+// -(void) makeSound;
 
-@end
+// @end
 
-NS_ASSUME_NONNULL_END
+// NS_ASSUME_NONNULL_END
 
-`}
-            </pre>
-            <Span>Animal+Exam.h</Span>
-            <pre>
-              {`#import "Animal.h"
+// `}
+//             </pre>
+//             <Span>Animal+Exam.h</Span>
+//             <pre>
+//               {`#import "Animal.h"
 
-NS_ASSUME_NONNULL_BEGIN
+// NS_ASSUME_NONNULL_BEGIN
 
-@interface Animal (Exam)
+// @interface Animal (Exam)
 
-- (BOOL) checkedByVet;
-- (void) getShots;
+// - (BOOL) checkedByVet;
+// - (void) getShots;
 
-@end
+// @end
 
-NS_ASSUME_NONNULL_END
+// NS_ASSUME_NONNULL_END
 
-`}
-            </pre>
-            <Span>Animal+Exam.m</Span>
-            <pre>
-              {`#import "Animal+Exam.h"
+// `}
+//             </pre>
+//             <Span>Animal+Exam.m</Span>
+//             <pre>
+//               {`#import "Animal+Exam.h"
 
-@implementation Animal (Exam)
+// @implementation Animal (Exam)
 
--(BOOL) checkedByVet{
-    return 1;
-}
+// -(BOOL) checkedByVet{
+//     return 1;
+// }
 
--(void) getShots{
-    NSLog(@"%@ got its shots",self.name);
-}
+// -(void) getShots{
+//     NSLog(@"%@ got its shots",self.name);
+// }
 
-@end
+// @end
 
-`}
-            </pre>
-            <Span>Animal+Vet.m</Span>
-            <pre>
-              {`#import "Animal+Vet.h"
+// `}
+//             </pre>
+//             <Span>Animal+Vet.m</Span>
+//             <pre>
+//               {`#import "Animal+Vet.h"
 
-@implementation Animal (Vet)
+// @implementation Animal (Vet)
 
--(void) getExamResults{
-  NSLog(@"Exam is fine");
-}
+// -(void) getExamResults{
+//   NSLog(@"Exam is fine");
+// }
 
-@end`}
-            </pre>
-            <Span>Animal+Vet.h</Span>
-            <pre>
-              {`#import "Animal.h"
+// @end`}
+//             </pre>
+//             <Span>Animal+Vet.h</Span>
+//             <pre>
+//               {`#import "Animal.h"
 
-NS_ASSUME_NONNULL_BEGIN
+// NS_ASSUME_NONNULL_BEGIN
 
-@interface Animal (Protected)
+// @interface Animal (Protected)
 
--(void) getExamResults;
+// -(void) getExamResults;
 
-@end
+// @end
 
-NS_ASSUME_NONNULL_END
+// NS_ASSUME_NONNULL_END
 
-`}
-            </pre>
-            <Span>Dog.m</Span>
-            <pre>
-              {`#import "Dog.h"
+// `}
+//             </pre>
+//             <Span>Dog.m</Span>
+//             <pre>
+//               {`#import "Dog.h"
 
-@implementation Dog
+// @implementation Dog
 
--(void) makeSound{
-    NSLog(@"%@ says woof",self.name);
-}
+// -(void) makeSound{
+//     NSLog(@"%@ says woof",self.name);
+// }
 
-@end
+// @end
 
-`}
-            </pre>
-            <Span>Dog.h</Span>
-            <pre>
-              {`#import "Animal.h"
+// `}
+//             </pre>
+//             <Span>Dog.h</Span>
+//             <pre>
+//               {`#import "Animal.h"
 
-NS_ASSUME_NONNULL_BEGIN
+// NS_ASSUME_NONNULL_BEGIN
 
-@interface Dog : Animal
+// @interface Dog : Animal
 
-@end
+// @end
 
-NS_ASSUME_NONNULL_END
+// NS_ASSUME_NONNULL_END
 
-`}
-            </pre>
-            <Span>Koala.m</Span>
-            <pre>
-              {`#import "Koala.h"
-@implementation Koala
--(NSString *)talkToMe:(NSString *)myName{
-    NSString *response = [NSString stringWithFormat:@"Hello %@ says %@", myName, self.name];
-    return response;
-}
--(void) performTrick{
-    NSLog(@"%@ perfoms", self.name);
-}
--(void) lookCute{
-    NSLog(@")%@ acts super cute", self.name);
-}
-- (void)performCute {
+// `}
+//             </pre>
+//             <Span>Koala.m</Span>
+//             <pre>
+//               {`#import "Koala.h"
+// @implementation Koala
+// -(NSString *)talkToMe:(NSString *)myName{
+//     NSString *response = [NSString stringWithFormat:@"Hello %@ says %@", myName, self.name];
+//     return response;
+// }
+// -(void) performTrick{
+//     NSLog(@"%@ perfoms", self.name);
+// }
+// -(void) lookCute{
+//     NSLog(@")%@ acts super cute", self.name);
+// }
+// - (void)performCute {
     
-}
--(void) makeSound{
-    NSLog(@"%@ sounds", self.name);
-}
-@end
+// }
+// -(void) makeSound{
+//     NSLog(@"%@ sounds", self.name);
+// }
+// @end
 
-`}
-            </pre>
-            <Span>Koala.h</Span>
-            <pre>
-              {`#import "Animal.h"
-#import "BeautyContest.h"
+// `}
+//             </pre>
+//             <Span>Koala.h</Span>
+//             <pre>
+//               {`#import "Animal.h"
+// #import "BeautyContest.h"
 
-NS_ASSUME_NONNULL_BEGIN
+// NS_ASSUME_NONNULL_BEGIN
 
-@interface Koala : Animal <BeautyContest>
+// @interface Koala : Animal <BeautyContest>
 
--(NSString *) talkToMe:(NSString *)myName;
+// -(NSString *) talkToMe:(NSString *)myName;
 
--(void) performTrick;
--(void) makeSound;
+// -(void) performTrick;
+// -(void) makeSound;
 
-@end
+// @end
 
-NS_ASSUME_NONNULL_END
+// NS_ASSUME_NONNULL_END
 
-`}
-            </pre>
-            <Span>BeautyContest.h</Span>
-            <pre>
-              {`#import <Foundation/Foundation.h>
+// `}
+//             </pre>
+//             <Span>BeautyContest.h</Span>
+//             <pre>
+//               {`#import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
+// NS_ASSUME_NONNULL_BEGIN
 
-@protocol BeautyContest <NSObject>
+// @protocol BeautyContest <NSObject>
 
-- (void) lookCute;
-- (void) performCute;
+// - (void) lookCute;
+// - (void) performCute;
 
-@end
+// @end
 
-NS_ASSUME_NONNULL_END`}
-            </pre>
-            <Span>Main.m</Span>
-            <pre>{`#import <Foundation/Foundation.h>
-#import "Animal.h"
-#import "Koala.h"
-#import "Animal+Exam.h"
-#import "Dog.h"
+// NS_ASSUME_NONNULL_END`}
+//             </pre>
+//             <Span>Main.m</Span>
+//             <pre>{`#import <Foundation/Foundation.h>
+// #import "Animal.h"
+// #import "Koala.h"
+// #import "Animal+Exam.h"
+// #import "Dog.h"
 
-int main(int argc, const char * argv[]) {
-    @autoreleasepool {
-//        It is used to remove unwanted objects and signals us when objects are no longer
-//        needed
-//        int char BOOL NSString NSMutableString NSLog NSRange NSMakeRange NSArray
+// int main(int argc, const char * argv[]) {
+//     @autoreleasepool {
+// //        It is used to remove unwanted objects and signals us when objects are no longer
+// //        needed
+// //        int char BOOL NSString NSMutableString NSLog NSRange NSMakeRange NSArray
 
-        NSLog(@"Hello, World!");
-        NSString *nothing = nil;
-        NSLog(@"Location of nil : %p, ",nothing);
-        NSLog(@"%@",nothing);
-        NSString *quote = @"abcdsjskladhkjsadhkjhsad";
-        NSLog(@"size %d",(int)[quote length]);
-        NSLog(@"%c",[quote characterAtIndex:5]);
-        char *name = "Sai";
-        NSString *myName = [NSString stringWithFormat:@"%s",name];
-//        immutable object
-        BOOL isStringEqual = [quote isEqualToString:myName];
-        printf("equal: %d\\n",isStringEqual);
-        const char *uCString = [[myName uppercaseString]UTF8String];
-        printf("%s\\n",uCString);
-        NSString *wholeQuote = [quote stringByAppendingString:myName];
-        NSRange searchResult = [wholeQuote rangeOfString:@"Sai"];
-        if(searchResult.location == NSNotFound){
-            NSLog(@"String not found");
-        }else{
-            printf("Sai is at index %lu and is %lu long\\n",searchResult.location,searchResult.length);
-        }
-//        NSRange range = NSMakeRange(42, 1);
-//        const char *newQuote = [[wholeQuote stringByReplacingCharactersInRange:range withString:@"Sai9" ]UTF8String];
-//        printf("%s",newQuote);
+//         NSLog(@"Hello, World!");
+//         NSString *nothing = nil;
+//         NSLog(@"Location of nil : %p, ",nothing);
+//         NSLog(@"%@",nothing);
+//         NSString *quote = @"abcdsjskladhkjsadhkjhsad";
+//         NSLog(@"size %d",(int)[quote length]);
+//         NSLog(@"%c",[quote characterAtIndex:5]);
+//         char *name = "Sai";
+//         NSString *myName = [NSString stringWithFormat:@"%s",name];
+// //        immutable object
+//         BOOL isStringEqual = [quote isEqualToString:myName];
+//         printf("equal: %d\\n",isStringEqual);
+//         const char *uCString = [[myName uppercaseString]UTF8String];
+//         printf("%s\\n",uCString);
+//         NSString *wholeQuote = [quote stringByAppendingString:myName];
+//         NSRange searchResult = [wholeQuote rangeOfString:@"Sai"];
+//         if(searchResult.location == NSNotFound){
+//             NSLog(@"String not found");
+//         }else{
+//             printf("Sai is at index %lu and is %lu long\\n",searchResult.location,searchResult.length);
+//         }
+// //        NSRange range = NSMakeRange(42, 1);
+// //        const char *newQuote = [[wholeQuote stringByReplacingCharactersInRange:range withString:@"Sai9" ]UTF8String];
+// //        printf("%s",newQuote);
 
-        NSMutableString *groceryList = [NSMutableString stringWithCapacity:50];
-        [groceryList appendFormat:@"%s","ABCDEF"];
-        NSLog(@"%@",groceryList);
-        [groceryList deleteCharactersInRange:NSMakeRange(0, 2)];
-        NSLog(@"%@",groceryList);
-        [groceryList insertString:@" , Apple" atIndex:1];
-        NSLog(@"%@",groceryList);
-        [groceryList replaceCharactersInRange:NSMakeRange(1, 1) withString:@"Orange"];
-        NSLog(@"%@",groceryList);
-        NSArray *officeSupplies = @[@"A",@"B",@"C"];
-        NSLog(@"First: %@",officeSupplies[0]);
-        NSLog(@"Office Supplies: %@",officeSupplies);
-        BOOL containsItem = [officeSupplies containsObject:@"A"];
-        NSLog(@"Need Pencils : %d",containsItem);
-        NSLog(@"Total : %d",(int)[officeSupplies count]);
-        NSLog(@"Index of A is at %lu",(unsigned long)[officeSupplies indexOfObject:@"A"]);
+//         NSMutableString *groceryList = [NSMutableString stringWithCapacity:50];
+//         [groceryList appendFormat:@"%s","ABCDEF"];
+//         NSLog(@"%@",groceryList);
+//         [groceryList deleteCharactersInRange:NSMakeRange(0, 2)];
+//         NSLog(@"%@",groceryList);
+//         [groceryList insertString:@" , Apple" atIndex:1];
+//         NSLog(@"%@",groceryList);
+//         [groceryList replaceCharactersInRange:NSMakeRange(1, 1) withString:@"Orange"];
+//         NSLog(@"%@",groceryList);
+//         NSArray *officeSupplies = @[@"A",@"B",@"C"];
+//         NSLog(@"First: %@",officeSupplies[0]);
+//         NSLog(@"Office Supplies: %@",officeSupplies);
+//         BOOL containsItem = [officeSupplies containsObject:@"A"];
+//         NSLog(@"Need Pencils : %d",containsItem);
+//         NSLog(@"Total : %d",(int)[officeSupplies count]);
+//         NSLog(@"Index of A is at %lu",(unsigned long)[officeSupplies indexOfObject:@"A"]);
 
-       NSMutableArray *heroes = [NSMutableArray arrayWithCapacity:5];
-       [heroes addObject:@"A"];
-       [heroes addObject:@"B"];
-       [heroes addObject:@"C"];
-       [heroes addObject:@"D"];
-       [heroes insertObject:@"E" atIndex:2];
-       NSLog(@"%@", heroes);
-       [heroes removeObject:@"D"];
-       [heroes removeObjectAtIndex:0];
-       [heroes removeObjectIdenticalTo:@"A" inRange:NSMakeRange(0,1)];
-       for(int i=0; i < [heroes count]; i++){
-           NSLog(@"%@",heroes[i]);
-       }
-        
-       Animal *dog = [[Animal alloc] init];
-       [dog getInfo];
-       NSLog(@"The dogs name is %@", [dog name]);
-       [dog setName:@"Spot"];
-        
-       Animal *cat = [[Animal alloc]initWithName:@"Meow"];
-        
-       NSLog(@"%@",cat.name);
-       NSLog(@"180 lbs = %.2f kg", [dog weightInKg:180]);
-       NSLog(@"3 + 5 = %d", [dog getSum:3 nextNumber:5 ]);
-       NSLog(@"%@", [dog talkToMe:@"Derek"]);
-        
-       Koala *herbie = [[Koala alloc]initWithName:@"Herbie"];
-       NSLog(@"%@",[herbie talkToMe:@"Derek"]);
-       NSLog(@"Did %@ receive shots: %d",herbie.name,[herbie checkedByVet]);
-       [herbie getShots];
-       [dog getInfo];
-       [herbie lookCute];
-       [herbie performTrick];
-        
-       float (^getArea) (float height, float width);
-        
-       getArea = ^float(float width, float height){
-           return width * height;
-       };
-    
-       NSLog(@"Area of 3 width and 50 height: %.1f", getArea(3,50));
-       
-        enum Ratings{
-            Poor = 1,
-            Ok = 2,
-            great = 5
-        };
-        
-        enum Ratings matrixRating = great;
-        
-        NSLog(@"Matrix : %u",matrixRating);
-        
-        Dog *grover = [[Dog alloc]initWithName:@"Grover"];
-        NSArray *animals = [[NSArray alloc]initWithObjects:herbie,grover, nil];
-        
-        id object1 = [animals objectAtIndex:0];
-        id object2 = [animals objectAtIndex:1];
-        
-        [object1 makeSound];
-        [object2 makeSound];
-
-    }
-    return 0;
-}`}</pre>
-            <Span>
-              <pre>
-                {`
-Categories, Objects , Protocols, Inheriatnce, Anonymous Functions And Garbage Collection
-
-#import <Foundation/Foundation.h>
-
-@protocol PrintProtocolDelegate
-- (void)processCompleted;
-
-@end
-
-@interface PrintClass :NSObject {
-   id delegate;
-}
-
-- (void) printDetails;
-- (void) setDelegate:(id)newDelegate;
-@end
-
-@implementation PrintClass
-- (void)printDetails {
-   NSLog(@"Printing Details");
-   [delegate processCompleted];
-}
-
-- (void) setDelegate:(id)newDelegate {
-   delegate = newDelegate;
-}
-
-@end
-
-@interface SampleClass:NSObject<PrintProtocolDelegate>
-- (void)startAction;
-
-@end
-
-@implementation SampleClass
-- (void)startAction {
-   PrintClass *printClass = [[PrintClass alloc]init];
-   [printClass setDelegate:self];
-   [printClass printDetails];
-}
-
--(void)processCompleted {
-   NSLog(@"Printing Process Completed");
-}
-
-@end
-
-int main(int argc, const char * argv[]) {
-   NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-   SampleClass *sampleClass = [[SampleClass alloc]init];
-   [sampleClass startAction];
-   [pool drain];
-   return 0;
-}
-Categories
-A category is a group of related methods for a class, and all of the methods defined in a category are available through the class as if they were defined in the main interface file. As an example, take the Person class that we've been working with throughout this book. If this were a large project, Person may have dozens of methods ranging from basic behaviors to interactions with other people to identity checking. The API might call for all of these methods to be available through a single class, but it's much easier for developers to maintain if each group is stored in a separate file. In addition, categories eliminate the need to recompile the entire class every time you change a single method, which can be a time-saver for very large projects.
-#import "Person+Relations.h"
-@implementation Person (Relations)
-@interface Person (Relations)
-SubClass
-@implementation A {}
-@interface A : B
-
-Delegates And Protocols
-
-A delegate is just a class that does some work for another class. 
-A protocol is just a list of methods (and/or properties) 
-that must be used by any class that adopts the protocol.
-
-Extensions
-Extensions (also called class extensions) are a special type of category that requires their methods to be defined in the main implementation block for the associated class, as opposed to an implementation defined in a category. This can be used to override publicly declared property attributes. For example, it is sometimes convenient to change a read-only property to a read-write property within a class' implementation.
-ship.h
-
-#import <Foundation/Foundation.h>
-#import "Person.h"
-@interface Ship : NSObject
-@property (strong, readonly) Person *captain;
-- (id)initWithCaptain:(Person *)captain;
-@end
-// Ship.m
-#import "Ship.h"
- 
- 
-// The class extension.
-@interface Ship()
-@property (strong, readwrite) Person *captain;
-@end
- 
-@implementation Ship
-@synthesize captain = _captain;
-- (id)initWithCaptain:(Person *)captain {
-    self = [super init];
-    if (self) {
-        [self setCaptain:captain];
-    }
-    return self;
-}
-@end
-https://code.tutsplus.com/tutorials/objective-c-succinctly-categories-and-extensions--mobile-22016  
-  `}
-              </pre>
-            </Span>
-          </>
-        ),
-        types: {},
-      },
-      Swift: {
-        title: "Swift",
-        content: (
-          <>
-            <Span>
-              Apple Developer Program offers a complete set of technical
-              resources, support and access to pre-release software with
-              everything they need to create innovative apps for IOS and OS X,
-              extension for Safari and accessories for iPod , iPhone and iPad.
-            </Span>
-            <Span>IOS Developer Program: $99k/year</Span>
-            <Span>Mac Developer Program: $99k/year</Span>
-            <Span>
-              When the event is triggered on the surface of ios device, average
-              pressure and desired coordinates will be sent to the ios manager
-              (os) with the help of sensor.
-            </Span>
-            <Span>
-              IOS Manager (OS) will crash automatically when the device is
-              switched off.
-            </Span>
-            <Span>Steps to make an app :</Span>
-            <Span>
-              1. Idea <br />
-              2. Design <br />
-              3. Development <br />
-              4. Test <br />
-              5. Publish <br />
-              6. Market <br />
-              7. Update
-            </Span>
-            <Span>
-              Xcode 12.4 === Minimum Catelina MacOS 10.15.4 <br />
-              Xcode Beta contains tetsing and is not to download.
-            </Span>
-            <Span>IOS =&gt; App =&gt; Storyboard</Span>
-            <Span>
-              Bundle Identifier : Organisation Identifier + '.' + Product Name
-            </Span>
-            <Span>
-              Storyboard is used in modulud 2.15 and at Swift UI activity is
-              placed at right side.
-            </Span>
-            <Span>
-              At General Settings Tab, we can find following options:{" "}
-            </Span>
-            <Span>1. Device Orientation </Span>
-            <Span>2. Signing And Capabilities </Span>
-            <Span>3. Deployment Info</Span>
-            <Span>
-              4. Status BarStyle ( Light Content, Dark Content, Default And Hide
-              )
-            </Span>
-            <Span>Project Structure: </Span>
-            <Span>
-              1. AppDelegate.swift <br />
-              2. SceneDelegate.swift <br />
-              3. Main.storyboard <br />
-              4. LaunchScreen.storyboard <br />
-              5. ViewController.swift <br />
-              6. Assets.xcassets <br />
-              7. Info.plist
-            </Span>
-            <Span>
-              <b>View Controller Scene:</b>
-            </Span>
-            <Span>
-              We can place images from UIImageView into the view controller
-              scene.
-            </Span>
-            <Span>We can place app icon at Assets.xcassets</Span>
-            <Span>
-              Inspector window inspectors =&gt; <br />
-              Attribute Inspector ( Text, Color, Bg, Tint, etc. ) <br />
-              Size Inspector ( Location at the screen )
-            </Span>
-            <Span>Bottom Pane is called the debug area.</Span>
-            <Span>
-              <b>Note:</b>
-              We can generate app icons using the site: <b>appicon.co</b>
-            </Span>
-            <Span>
-              Apple wants us to upload icons of appropriate dimensions so as to
-              display them at notification messages, app icon, spotlight, etc.
-              so as to keep the app as fast as possible.
-            </Span>
-            <Span>
-              <b>Running on real device:</b>
-            </Span>
-            <Span>
-              compare xcode ( using about tab at the top left corner) with ios
-              version
-            </Span>
-            <Span>XCode 11 corresponds to IOS 13.</Span>
-            <Span>
-              11.0 === 13.0 <br />
-              11.1 === 13.1
-            </Span>
-            <Span>1. Add apple developer account</Span>
-            <Span>2. Sign in to the app.</Span>
-            <Span>3. Connect physical device</Span>
-            <Span>
-              4. Add Apple ID: Xcode =&lt; Preferences =&lt; Accounts =&lt;
-              Bottom Left =&lt; Apple ID
-            </Span>
-            <Span>5. Sign-in to the the app</Span>
-            <Span>6. Check automatically managed signing</Span>
-            <Span>7. Team =&gt; Account ( Developer Account )</Span>
-            <Span>8. Trust and complete the process.</Span>
-            <Span>
-              Auto Layout allows us to adjust positioning on all devices.
-            </Span>
-            <Span>
-              In order to run the app wirelessly using same wifi connection,
-              choose connect via network option at devices and simulators part
-              of windows tab.
-            </Span>
-            <Span>
-              <b>Image View</b>
-            </Span>
-            <Span>Cmd + Option command allows us to replicate elements.</Span>
-            <Span>
-              Types: Aspect fit, Scale to fill (default), and Aspect Fill.
-            </Span>
-            <Span>
-              <b>Color Picker</b>
-            </Span>
-            <Span>Background =&gt; Custom =&gt; Color Dropper Tool</Span>
-            <Span>Make use of 2 fingers to move your storyboard.</Span>
-            <Span>
-              Main.storyboard is also known as interface builder as we're making
-              use of it to build a interface.
-            </Span>
-            <Span>Tab is used for autocompletion.</Span>
-            <Span>Drag components into the Interface Builder Outlet.</Span>
-            <Span>Example:</Span>
-            <pre>{`
-import UIKit
-class ViewController: UIViewController {
-
-@IBOutlet weak var diceImageView1: UIImageView1;
-@IBOutlet weak var diceImageView2: UIImageView2;
-
-override func viewDidLoad(){
-  super.viewDidLoad()
-  diceImageView1.image = _
-}
-
-@IBAction func <>(_ sender: Any){ print("A") }
-
-}
-
-`}</pre>
-            <Span>
-              <b>Swift</b>
-            </Span>
-            <Span>
-              <b>Naming Conventions:</b>
-            </Span>
-            <Span>Camel Case: aA</Span>
-            <Span>Kebab Case: a-A</Span>
-            <Span>Snake Case: a_A</Span>
-            <Span>// is used for comments.</Span>
-            <Span>{"File -> New -> Playground -> IOS -> Bundle"}</Span>
-            <Span>{"Bottom Left -> Play Button -> Automatically Save"}</Span>
-            <Span>{"Int Float Bool Double Array String Dictionary"}</Span>
-            <Span>Int.random(in: 0...5)</Span>
-            <Span>Float.random(in: 0...5)</Span>
-            <p>ViewController.swift</p>
-            <pre>
-              {`
-import UIKit
-class ViewController: UIViewController {
-    @IBOutlet weak var diceImageView1: UIImageView!
-    @IBOutlet weak var diceImageView2: UIImageView!
-    var leftDiceNumber = 1
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-   
-    @IBAction func rollButtonPressed(_ sender: Any) {
-        let diceArray =  [#imageLiteral(resourceName: "DiceOne"),#imageLiteral(resourceName: "DiceTwo"),#imageLiteral(resourceName: "DiceThree"),#imageLiteral(resourceName: "DiceFour"),#imageLiteral(resourceName: "DiceFive"),#imageLiteral(resourceName: "DiceSix")]
-        diceImageView1.image = diceArray[Int.random(in: 0...5)]
-        diceImageView2.image = diceArray[Int.random(in: 0...5)]
-    } 
-}
-              `}
-            </pre>
-            <Span>
-              <b>Cocoapods:</b>
-            </Span>
-            <Span>
-              Cocoapods is built with ruby, all xcode dependencies for a project
-              are specified in the podfile. Cocoapods will resolve dependencies
-              between libraries, fetch resulting source code then link it
-              together in xocde workspace to build the project.
-            </Span>
-            <Span>
-              Xcode =&gt; Preferences =&gt; Location Name =&gt; Install Command
-              Line Tools Line Tools
-            </Span>
-            <Span>Xcode =&gt; Prefernces =&gt; Components</Span>
-            <Span>
-              {`
-sudo gem install cocoapods
-sudo arch -x86_64 gem install fi
-arch -x86_64 pod insatll              
-              `}
-            </Span>
-            <Span>
-              At React Native. we can install dependencies using following
-              commands:
-            </Span>
-            <pre>
-              {`
-cd ios
-pod init
-pod install
-rm -rf pods podfile podfile.txt
-              `}
-            </pre>
-            <Span>Github File Structure:</Span>
-            <Span>
-              {`
-.xcodeproj
-<> => Base.lproj => LaunchScreen.storyboard And Main.storyboard
-   => Assets.xcassets (AppIcon.co)
-   => AppDelegate.swift
-   => SwiftDelegate.swif=> ViewController.swift              
-              `}
-            </Span>
-            <Span>
-              <b>Constraints</b>
-            </Span>
-            <Span>
-              Click at the top and turn dashed lines into solid lines.
-            </Span>
-            <Span>
-              Types: Leading, Trailing, Bottom, Top, SuperView.CenterX,
-              SuperView.CenterY, SuperView.Bottom, SuperView.Top,
-              First.trailing, Second.trailing, Relative to the margin
-            </Span>
-            <Span>Alignment And Pinning:</Span>
-            <Span>
-              Alignment: Used to align center vertically or horizontally
-            </Span>
-            <Span>
-              Pin: Distance which our elements should be placed from the edge of
-              container view.
-            </Span>
-            <Span>
-              Container and subviews. We can place multiple containers inside
-              the main uiview and several subviews inside each container
-            </Span>
-            <Span>
-              In order to create a new view, click at + icon. Then select view
-              followed by uiview and drag container inside view.
-            </Span>
-            <Span>Stacks And Views</Span>
-            <Span>
-              We can stack views together either vertically or horizontally
-            </Span>
-            <Span>
-              <b>Stacks And Views</b>
-            </Span>
-            <Span>StackView ==&gt; Distrinution ==&gt; Fill Equally</Span>
-            <Span>Background ==&gt; System Background ==&gt; Default</Span>
-            <Span>
-              <b>AVFoundation Class</b>
-            </Span>
-            <Span>
-              Doucmentation can be found at
-              developer.apple.com/documentation/Audio/AudioPlayer
-            </Span>
-            <Span>Code:</Span>
-            <pre>
-              {`
-import UIKit
-import AVFoundation
-
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    var player: AVAudioPlayer?
-
-    @IBAction func keyPressed(_ sender: UIButton) {
-//        guard let url = Bundle.main.url(forResource: "C", withExtension: "wav") else {return}
-//
-//        do{
-//            try AVAudioSession.sharedInstance().setCategory(.playback,mode: .default)
-//            try AVAudioSession.sharedInstance().setActive(true)
-//            player = try AVAudioPlayer(contentsOf:url,fileTypeHint: AVFileType.mp3.rawValue)
-//            guard let player = player else { return }
-//            player.play()
-//        }catch let error{
-//            print(error.localizedDescription)
+//        NSMutableArray *heroes = [NSMutableArray arrayWithCapacity:5];
+//        [heroes addObject:@"A"];
+//        [heroes addObject:@"B"];
+//        [heroes addObject:@"C"];
+//        [heroes addObject:@"D"];
+//        [heroes insertObject:@"E" atIndex:2];
+//        NSLog(@"%@", heroes);
+//        [heroes removeObject:@"D"];
+//        [heroes removeObjectAtIndex:0];
+//        [heroes removeObjectIdenticalTo:@"A" inRange:NSMakeRange(0,1)];
+//        for(int i=0; i < [heroes count]; i++){
+//            NSLog(@"%@",heroes[i]);
 //        }
-        playSound(soundName:sender.currentTitle!);
-    }
+        
+//        Animal *dog = [[Animal alloc] init];
+//        [dog getInfo];
+//        NSLog(@"The dogs name is %@", [dog name]);
+//        [dog setName:@"Spot"];
+        
+//        Animal *cat = [[Animal alloc]initWithName:@"Meow"];
+        
+//        NSLog(@"%@",cat.name);
+//        NSLog(@"180 lbs = %.2f kg", [dog weightInKg:180]);
+//        NSLog(@"3 + 5 = %d", [dog getSum:3 nextNumber:5 ]);
+//        NSLog(@"%@", [dog talkToMe:@"Derek"]);
+        
+//        Koala *herbie = [[Koala alloc]initWithName:@"Herbie"];
+//        NSLog(@"%@",[herbie talkToMe:@"Derek"]);
+//        NSLog(@"Did %@ receive shots: %d",herbie.name,[herbie checkedByVet]);
+//        [herbie getShots];
+//        [dog getInfo];
+//        [herbie lookCute];
+//        [herbie performTrick];
+        
+//        float (^getArea) (float height, float width);
+        
+//        getArea = ^float(float width, float height){
+//            return width * height;
+//        };
     
-    func playSound(soundName:String){
-        let url = Bundle.main.url(forResource: soundName, withExtension: "wav")
-        player = try! AVAudioPlayer(contentsOf: url!)
-        player?.play()
-    }
+//        NSLog(@"Area of 3 width and 50 height: %.1f", getArea(3,50));
+       
+//         enum Ratings{
+//             Poor = 1,
+//             Ok = 2,
+//             great = 5
+//         };
+        
+//         enum Ratings matrixRating = great;
+        
+//         NSLog(@"Matrix : %u",matrixRating);
+        
+//         Dog *grover = [[Dog alloc]initWithName:@"Grover"];
+//         NSArray *animals = [[NSArray alloc]initWithObjects:herbie,grover, nil];
+        
+//         id object1 = [animals objectAtIndex:0];
+//         id object2 = [animals objectAtIndex:1];
+        
+//         [object1 makeSound];
+//         [object2 makeSound];
+
+//     }
+//     return 0;
+// }`}</pre>
+//             <Span>
+//               <pre>
+//                 {`
+// Categories, Objects , Protocols, Inheriatnce, Anonymous Functions And Garbage Collection
+
+// #import <Foundation/Foundation.h>
+
+// @protocol PrintProtocolDelegate
+// - (void)processCompleted;
+
+// @end
+
+// @interface PrintClass :NSObject {
+//    id delegate;
+// }
+
+// - (void) printDetails;
+// - (void) setDelegate:(id)newDelegate;
+// @end
+
+// @implementation PrintClass
+// - (void)printDetails {
+//    NSLog(@"Printing Details");
+//    [delegate processCompleted];
+// }
+
+// - (void) setDelegate:(id)newDelegate {
+//    delegate = newDelegate;
+// }
+
+// @end
+
+// @interface SampleClass:NSObject<PrintProtocolDelegate>
+// - (void)startAction;
+
+// @end
+
+// @implementation SampleClass
+// - (void)startAction {
+//    PrintClass *printClass = [[PrintClass alloc]init];
+//    [printClass setDelegate:self];
+//    [printClass printDetails];
+// }
+
+// -(void)processCompleted {
+//    NSLog(@"Printing Process Completed");
+// }
+
+// @end
+
+// int main(int argc, const char * argv[]) {
+//    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+//    SampleClass *sampleClass = [[SampleClass alloc]init];
+//    [sampleClass startAction];
+//    [pool drain];
+//    return 0;
+// }
+// Categories
+// A category is a group of related methods for a class, and all of the methods defined in a category are available through the class as if they were defined in the main interface file. As an example, take the Person class that we've been working with throughout this book. If this were a large project, Person may have dozens of methods ranging from basic behaviors to interactions with other people to identity checking. The API might call for all of these methods to be available through a single class, but it's much easier for developers to maintain if each group is stored in a separate file. In addition, categories eliminate the need to recompile the entire class every time you change a single method, which can be a time-saver for very large projects.
+// #import "Person+Relations.h"
+// @implementation Person (Relations)
+// @interface Person (Relations)
+// SubClass
+// @implementation A {}
+// @interface A : B
+
+// Delegates And Protocols
+
+// A delegate is just a class that does some work for another class. 
+// A protocol is just a list of methods (and/or properties) 
+// that must be used by any class that adopts the protocol.
+
+// Extensions
+// Extensions (also called class extensions) are a special type of category that requires their methods to be defined in the main implementation block for the associated class, as opposed to an implementation defined in a category. This can be used to override publicly declared property attributes. For example, it is sometimes convenient to change a read-only property to a read-write property within a class' implementation.
+// ship.h
+
+// #import <Foundation/Foundation.h>
+// #import "Person.h"
+// @interface Ship : NSObject
+// @property (strong, readonly) Person *captain;
+// - (id)initWithCaptain:(Person *)captain;
+// @end
+// // Ship.m
+// #import "Ship.h"
+ 
+ 
+// // The class extension.
+// @interface Ship()
+// @property (strong, readwrite) Person *captain;
+// @end
+ 
+// @implementation Ship
+// @synthesize captain = _captain;
+// - (id)initWithCaptain:(Person *)captain {
+//     self = [super init];
+//     if (self) {
+//         [self setCaptain:captain];
+//     }
+//     return self;
+// }
+// @end
+// https://code.tutsplus.com/tutorials/objective-c-succinctly-categories-and-extensions--mobile-22016  
+//   `}
+//               </pre>
+//             </Span>
+//           </>
+//         ),
+//         types: {},
+//       },
+//       Swift: {
+//         title: "Swift",
+//         content: (
+//           <>
+//             <Span>
+//               Apple Developer Program offers a complete set of technical
+//               resources, support and access to pre-release software with
+//               everything they need to create innovative apps for IOS and OS X,
+//               extension for Safari and accessories for iPod , iPhone and iPad.
+//             </Span>
+//             <Span>IOS Developer Program: $99k/year</Span>
+//             <Span>Mac Developer Program: $99k/year</Span>
+//             <Span>
+//               When the event is triggered on the surface of ios device, average
+//               pressure and desired coordinates will be sent to the ios manager
+//               (os) with the help of sensor.
+//             </Span>
+//             <Span>
+//               IOS Manager (OS) will crash automatically when the device is
+//               switched off.
+//             </Span>
+//             <Span>Steps to make an app :</Span>
+//             <Span>
+//               1. Idea <br />
+//               2. Design <br />
+//               3. Development <br />
+//               4. Test <br />
+//               5. Publish <br />
+//               6. Market <br />
+//               7. Update
+//             </Span>
+//             <Span>
+//               Xcode 12.4 === Minimum Catelina MacOS 10.15.4 <br />
+//               Xcode Beta contains tetsing and is not to download.
+//             </Span>
+//             <Span>IOS =&gt; App =&gt; Storyboard</Span>
+//             <Span>
+//               Bundle Identifier : Organisation Identifier + '.' + Product Name
+//             </Span>
+//             <Span>
+//               Storyboard is used in modulud 2.15 and at Swift UI activity is
+//               placed at right side.
+//             </Span>
+//             <Span>
+//               At General Settings Tab, we can find following options:{" "}
+//             </Span>
+//             <Span>1. Device Orientation </Span>
+//             <Span>2. Signing And Capabilities </Span>
+//             <Span>3. Deployment Info</Span>
+//             <Span>
+//               4. Status BarStyle ( Light Content, Dark Content, Default And Hide
+//               )
+//             </Span>
+//             <Span>Project Structure: </Span>
+//             <Span>
+//               1. AppDelegate.swift <br />
+//               2. SceneDelegate.swift <br />
+//               3. Main.storyboard <br />
+//               4. LaunchScreen.storyboard <br />
+//               5. ViewController.swift <br />
+//               6. Assets.xcassets <br />
+//               7. Info.plist
+//             </Span>
+//             <Span>
+//               <b>View Controller Scene:</b>
+//             </Span>
+//             <Span>
+//               We can place images from UIImageView into the view controller
+//               scene.
+//             </Span>
+//             <Span>We can place app icon at Assets.xcassets</Span>
+//             <Span>
+//               Inspector window inspectors =&gt; <br />
+//               Attribute Inspector ( Text, Color, Bg, Tint, etc. ) <br />
+//               Size Inspector ( Location at the screen )
+//             </Span>
+//             <Span>Bottom Pane is called the debug area.</Span>
+//             <Span>
+//               <b>Note:</b>
+//               We can generate app icons using the site: <b>appicon.co</b>
+//             </Span>
+//             <Span>
+//               Apple wants us to upload icons of appropriate dimensions so as to
+//               display them at notification messages, app icon, spotlight, etc.
+//               so as to keep the app as fast as possible.
+//             </Span>
+//             <Span>
+//               <b>Running on real device:</b>
+//             </Span>
+//             <Span>
+//               compare xcode ( using about tab at the top left corner) with ios
+//               version
+//             </Span>
+//             <Span>XCode 11 corresponds to IOS 13.</Span>
+//             <Span>
+//               11.0 === 13.0 <br />
+//               11.1 === 13.1
+//             </Span>
+//             <Span>1. Add apple developer account</Span>
+//             <Span>2. Sign in to the app.</Span>
+//             <Span>3. Connect physical device</Span>
+//             <Span>
+//               4. Add Apple ID: Xcode =&lt; Preferences =&lt; Accounts =&lt;
+//               Bottom Left =&lt; Apple ID
+//             </Span>
+//             <Span>5. Sign-in to the the app</Span>
+//             <Span>6. Check automatically managed signing</Span>
+//             <Span>7. Team =&gt; Account ( Developer Account )</Span>
+//             <Span>8. Trust and complete the process.</Span>
+//             <Span>
+//               Auto Layout allows us to adjust positioning on all devices.
+//             </Span>
+//             <Span>
+//               In order to run the app wirelessly using same wifi connection,
+//               choose connect via network option at devices and simulators part
+//               of windows tab.
+//             </Span>
+//             <Span>
+//               <b>Image View</b>
+//             </Span>
+//             <Span>Cmd + Option command allows us to replicate elements.</Span>
+//             <Span>
+//               Types: Aspect fit, Scale to fill (default), and Aspect Fill.
+//             </Span>
+//             <Span>
+//               <b>Color Picker</b>
+//             </Span>
+//             <Span>Background =&gt; Custom =&gt; Color Dropper Tool</Span>
+//             <Span>Make use of 2 fingers to move your storyboard.</Span>
+//             <Span>
+//               Main.storyboard is also known as interface builder as we're making
+//               use of it to build a interface.
+//             </Span>
+//             <Span>Tab is used for autocompletion.</Span>
+//             <Span>Drag components into the Interface Builder Outlet.</Span>
+//             <Span>Example:</Span>
+//             <pre>{`
+// import UIKit
+// class ViewController: UIViewController {
+
+// @IBOutlet weak var diceImageView1: UIImageView1;
+// @IBOutlet weak var diceImageView2: UIImageView2;
+
+// override func viewDidLoad(){
+//   super.viewDidLoad()
+//   diceImageView1.image = _
+// }
+
+// @IBAction func <>(_ sender: Any){ print("A") }
+
+// }
+
+// `}</pre>
+//             <Span>
+//               <b>Swift</b>
+//             </Span>
+//             <Span>
+//               <b>Naming Conventions:</b>
+//             </Span>
+//             <Span>Camel Case: aA</Span>
+//             <Span>Kebab Case: a-A</Span>
+//             <Span>Snake Case: a_A</Span>
+//             <Span>// is used for comments.</Span>
+//             <Span>{"File -> New -> Playground -> IOS -> Bundle"}</Span>
+//             <Span>{"Bottom Left -> Play Button -> Automatically Save"}</Span>
+//             <Span>{"Int Float Bool Double Array String Dictionary"}</Span>
+//             <Span>Int.random(in: 0...5)</Span>
+//             <Span>Float.random(in: 0...5)</Span>
+//             <p>ViewController.swift</p>
+//             <pre>
+//               {`
+// import UIKit
+// class ViewController: UIViewController {
+//     @IBOutlet weak var diceImageView1: UIImageView!
+//     @IBOutlet weak var diceImageView2: UIImageView!
+//     var leftDiceNumber = 1
     
-}
+//     override func viewDidLoad() {
+//         super.viewDidLoad()
+//         // Do any additional setup after loading the view.
+//     }
+   
+//     @IBAction func rollButtonPressed(_ sender: Any) {
+//         let diceArray =  [#imageLiteral(resourceName: "DiceOne"),#imageLiteral(resourceName: "DiceTwo"),#imageLiteral(resourceName: "DiceThree"),#imageLiteral(resourceName: "DiceFour"),#imageLiteral(resourceName: "DiceFive"),#imageLiteral(resourceName: "DiceSix")]
+//         diceImageView1.image = diceArray[Int.random(in: 0...5)]
+//         diceImageView2.image = diceArray[Int.random(in: 0...5)]
+//     } 
+// }
+//               `}
+//             </pre>
+//             <Span>
+//               <b>Cocoapods:</b>
+//             </Span>
+//             <Span>
+//               Cocoapods is built with ruby, all xcode dependencies for a project
+//               are specified in the podfile. Cocoapods will resolve dependencies
+//               between libraries, fetch resulting source code then link it
+//               together in xocde workspace to build the project.
+//             </Span>
+//             <Span>
+//               Xcode =&gt; Preferences =&gt; Location Name =&gt; Install Command
+//               Line Tools Line Tools
+//             </Span>
+//             <Span>Xcode =&gt; Prefernces =&gt; Components</Span>
+//             <Span>
+//               {`
+// sudo gem install cocoapods
+// sudo arch -x86_64 gem install fi
+// arch -x86_64 pod insatll              
+//               `}
+//             </Span>
+//             <Span>
+//               At React Native. we can install dependencies using following
+//               commands:
+//             </Span>
+//             <pre>
+//               {`
+// cd ios
+// pod init
+// pod install
+// rm -rf pods podfile podfile.txt
+//               `}
+//             </pre>
+//             <Span>Github File Structure:</Span>
+//             <Span>
+//               {`
+// .xcodeproj
+// <> => Base.lproj => LaunchScreen.storyboard And Main.storyboard
+//    => Assets.xcassets (AppIcon.co)
+//    => AppDelegate.swift
+//    => SwiftDelegate.swif=> ViewController.swift              
+//               `}
+//             </Span>
+//             <Span>
+//               <b>Constraints</b>
+//             </Span>
+//             <Span>
+//               Click at the top and turn dashed lines into solid lines.
+//             </Span>
+//             <Span>
+//               Types: Leading, Trailing, Bottom, Top, SuperView.CenterX,
+//               SuperView.CenterY, SuperView.Bottom, SuperView.Top,
+//               First.trailing, Second.trailing, Relative to the margin
+//             </Span>
+//             <Span>Alignment And Pinning:</Span>
+//             <Span>
+//               Alignment: Used to align center vertically or horizontally
+//             </Span>
+//             <Span>
+//               Pin: Distance which our elements should be placed from the edge of
+//               container view.
+//             </Span>
+//             <Span>
+//               Container and subviews. We can place multiple containers inside
+//               the main uiview and several subviews inside each container
+//             </Span>
+//             <Span>
+//               In order to create a new view, click at + icon. Then select view
+//               followed by uiview and drag container inside view.
+//             </Span>
+//             <Span>Stacks And Views</Span>
+//             <Span>
+//               We can stack views together either vertically or horizontally
+//             </Span>
+//             <Span>
+//               <b>Stacks And Views</b>
+//             </Span>
+//             <Span>StackView ==&gt; Distrinution ==&gt; Fill Equally</Span>
+//             <Span>Background ==&gt; System Background ==&gt; Default</Span>
+//             <Span>
+//               <b>AVFoundation Class</b>
+//             </Span>
+//             <Span>
+//               Doucmentation can be found at
+//               developer.apple.com/documentation/Audio/AudioPlayer
+//             </Span>
+//             <Span>Code:</Span>
+//             <pre>
+//               {`
+// import UIKit
+// import AVFoundation
+
+// class ViewController: UIViewController {
+
+//     override func viewDidLoad() {
+//         super.viewDidLoad()
+//     }
+    
+//     var player: AVAudioPlayer?
+
+//     @IBAction func keyPressed(_ sender: UIButton) {
+// //        guard let url = Bundle.main.url(forResource: "C", withExtension: "wav") else {return}
+// //
+// //        do{
+// //            try AVAudioSession.sharedInstance().setCategory(.playback,mode: .default)
+// //            try AVAudioSession.sharedInstance().setActive(true)
+// //            player = try AVAudioPlayer(contentsOf:url,fileTypeHint: AVFileType.mp3.rawValue)
+// //            guard let player = player else { return }
+// //            player.play()
+// //        }catch let error{
+// //            print(error.localizedDescription)
+// //        }
+//         playSound(soundName:sender.currentTitle!);
+//     }
+    
+//     func playSound(soundName:String){
+//         let url = Bundle.main.url(forResource: soundName, withExtension: "wav")
+//         player = try! AVAudioPlayer(contentsOf: url!)
+//         player?.play()
+//     }
+    
+// }
              
-             `}
-            </pre>
-            <Span>
-              <b>Swift Fundamentsals:</b>
-            </Span>
-            <Span>Dictionary:</Span>
-            <Span>let x = ["a" : 3, "b": 4]</Span>
-            <Span>Array</Span>
-            <Span>["a","b","c"]</Span>
-            <Span>
-              if a =3 {"{}"} else {"{}"}
-            </Span>
-            <Span>
-              switch a {"{ case '3' : print(5) case '4' : print(9) }"}
-            </Span>
-            <Span>case 3 to 5</Span>
-            <Span>for a in 1...5 {"{}"}</Span>
-            <Span>
-              Creating a new file <br />
-              File -&lt; New -&lt; Playground -&lt; ios -&lt; blank <br />
-              play -&lt; automatically save
-            </Span>
-            <Span>
-              <b>Ranges:</b>
-            </Span>
-            <Span>
-              <b>Closed Range:</b>
-            </Span>
-            <Span>
-              a...b <br />
-              a&lt;= &lt;=b <br /> a to b
-            </Span>
-            <Span>
-              <b>Left Open Range:</b>
-            </Span>
-            <Span>
-              a..&lt;b <br />
-              a&lt;= &lt;b <br />
-            </Span>
-            <Span>
-              <b>One Sided Range:</b>
-            </Span>
-            <Span>
-              ...b &lt;b <br />
-            </Span>
-            <Span>Defining and unwarpping optionals:</Span>
-            <Span>var pu1: String = nil is not correct.</Span>
-            <Span>var pu1: String = nil is correct.</Span>
-            <Span>a = nil print(a!) is not correct we can print(a)</Span>
-            <Span>if a != nil {"{ print(a!) }"}</Span>
-            <Span>5/2 = 2 , Float(5)/Float(2) = 2.5</Span>
-            <Span>
-              <b>Timer & Progress View</b>
-            </Span>
-            <pre>
-              {`
-import UIKit
-import AVFoundation
+//              `}
+//             </pre>
+//             <Span>
+//               <b>Swift Fundamentsals:</b>
+//             </Span>
+//             <Span>Dictionary:</Span>
+//             <Span>let x = ["a" : 3, "b": 4]</Span>
+//             <Span>Array</Span>
+//             <Span>["a","b","c"]</Span>
+//             <Span>
+//               if a =3 {"{}"} else {"{}"}
+//             </Span>
+//             <Span>
+//               switch a {"{ case '3' : print(5) case '4' : print(9) }"}
+//             </Span>
+//             <Span>case 3 to 5</Span>
+//             <Span>for a in 1...5 {"{}"}</Span>
+//             <Span>
+//               Creating a new file <br />
+//               File -&lt; New -&lt; Playground -&lt; ios -&lt; blank <br />
+//               play -&lt; automatically save
+//             </Span>
+//             <Span>
+//               <b>Ranges:</b>
+//             </Span>
+//             <Span>
+//               <b>Closed Range:</b>
+//             </Span>
+//             <Span>
+//               a...b <br />
+//               a&lt;= &lt;=b <br /> a to b
+//             </Span>
+//             <Span>
+//               <b>Left Open Range:</b>
+//             </Span>
+//             <Span>
+//               a..&lt;b <br />
+//               a&lt;= &lt;b <br />
+//             </Span>
+//             <Span>
+//               <b>One Sided Range:</b>
+//             </Span>
+//             <Span>
+//               ...b &lt;b <br />
+//             </Span>
+//             <Span>Defining and unwarpping optionals:</Span>
+//             <Span>var pu1: String = nil is not correct.</Span>
+//             <Span>var pu1: String = nil is correct.</Span>
+//             <Span>a = nil print(a!) is not correct we can print(a)</Span>
+//             <Span>if a != nil {"{ print(a!) }"}</Span>
+//             <Span>5/2 = 2 , Float(5)/Float(2) = 2.5</Span>
+//             <Span>
+//               <b>Timer & Progress View</b>
+//             </Span>
+//             <pre>
+//               {`
+// import UIKit
+// import AVFoundation
 
-class ViewController: UIViewController {
+// class ViewController: UIViewController {
     
-    @IBOutlet weak var progressBar: UIProgressView!
-    @IBOutlet weak var titleLabel: UILabel!
-    let eggTimes = ["Soft": 3, "Medium": 4, "Hard": 7]
-    var timer = Timer()
-    var player: AVAudioPlayer!
-    var totalTime = 0
-    var secondsPassed = 0
+//     @IBOutlet weak var progressBar: UIProgressView!
+//     @IBOutlet weak var titleLabel: UILabel!
+//     let eggTimes = ["Soft": 3, "Medium": 4, "Hard": 7]
+//     var timer = Timer()
+//     var player: AVAudioPlayer!
+//     var totalTime = 0
+//     var secondsPassed = 0
     
-    @IBAction func hardnessSelected(_ sender: UIButton) {
+//     @IBAction func hardnessSelected(_ sender: UIButton) {
         
-        timer.invalidate()
-        let hardness = sender.currentTitle!
-        totalTime = eggTimes[hardness]!
+//         timer.invalidate()
+//         let hardness = sender.currentTitle!
+//         totalTime = eggTimes[hardness]!
 
-        progressBar.progress = 0.0
-        secondsPassed = 0
-        titleLabel.text = hardness
+//         progressBar.progress = 0.0
+//         secondsPassed = 0
+//         titleLabel.text = hardness
 
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target:self, selector: #selector(updateTimer), userInfo:nil, repeats: true)
-    }
+//         timer = Timer.scheduledTimer(timeInterval: 1.0, target:self, selector: #selector(updateTimer), userInfo:nil, repeats: true)
+//     }
     
-    @objc func updateTimer() {
-        if secondsPassed < totalTime {
-            secondsPassed += 1
-            progressBar.progress = Float(secondsPassed) / Float(totalTime)
-            print(Float(secondsPassed) / Float(totalTime))
-        } else {
-            timer.invalidate()
-            titleLabel.text = "DONE!"
+//     @objc func updateTimer() {
+//         if secondsPassed < totalTime {
+//             secondsPassed += 1
+//             progressBar.progress = Float(secondsPassed) / Float(totalTime)
+//             print(Float(secondsPassed) / Float(totalTime))
+//         } else {
+//             timer.invalidate()
+//             titleLabel.text = "DONE!"
             
-            let url = Bundle.main.url(forResource: "alarm_sound", withExtension: "mp3")
-            player = try! AVAudioPlayer(contentsOf: url!)
-            player.play()
-        }
-    }
+//             let url = Bundle.main.url(forResource: "alarm_sound", withExtension: "mp3")
+//             player = try! AVAudioPlayer(contentsOf: url!)
+//             player.play()
+//         }
+//     }
     
-} 
-  `}
-            </pre>
-            <Span>
-              Design pattern allows us to organise and structure our code. (
-              MVC, MVP, MVVM, VIPER )
-            </Span>
-            <Span>
-              Apple, Spring =&gt; MVC ( Model View Controller ( it modifies
-              model ad passed that to view and acts as a mediator ) )
-            </Span>
-            <Span>
-              Android MVP =&gt; MVP ( Model View Presenter ) ( presenter listens
-              b/w view and model )
-            </Span>
-            <Span>
-              MVVM : View Model only passed certain part of model to the view.
-            </Span>
-            <Span>Immutability</Span>
-            <Span>
-              By default, struct is immutable as every variable is provided the
-              keyword let. That's why we must use of a special keyword mutating.
-            </Span>
-            <Span>
-              We can't call a mutating function using a instance which was
-              declared with let declared. All its properties will become
-              immutable.
-            </Span>
-            <pre>
-              {`
-String(format: "%.2f", sender.value)
-Int(sender.value)
-heightSliderChanged(_ sender: UISlider)
-weightSliderChanged(_ sender: UISlider)
-`}
-            </pre>
-            <Span>
-              Project =&gt; MacOS =&gt;CommandLineTool =&gt; ProductName
-            </Span>
-            <pre>
-              {`
-let Skeleton = Empty()
-let dragon = Dragon()              
-dragon.move()
-class Enemy{
-var health = 0 
-func move(){
+// } 
+//   `}
+//             </pre>
+//             <Span>
+//               Design pattern allows us to organise and structure our code. (
+//               MVC, MVP, MVVM, VIPER )
+//             </Span>
+//             <Span>
+//               Apple, Spring =&gt; MVC ( Model View Controller ( it modifies
+//               model ad passed that to view and acts as a mediator ) )
+//             </Span>
+//             <Span>
+//               Android MVP =&gt; MVP ( Model View Presenter ) ( presenter listens
+//               b/w view and model )
+//             </Span>
+//             <Span>
+//               MVVM : View Model only passed certain part of model to the view.
+//             </Span>
+//             <Span>Immutability</Span>
+//             <Span>
+//               By default, struct is immutable as every variable is provided the
+//               keyword let. That's why we must use of a special keyword mutating.
+//             </Span>
+//             <Span>
+//               We can't call a mutating function using a instance which was
+//               declared with let declared. All its properties will become
+//               immutable.
+//             </Span>
+//             <pre>
+//               {`
+// String(format: "%.2f", sender.value)
+// Int(sender.value)
+// heightSliderChanged(_ sender: UISlider)
+// weightSliderChanged(_ sender: UISlider)
+// `}
+//             </pre>
+//             <Span>
+//               Project =&gt; MacOS =&gt;CommandLineTool =&gt; ProductName
+//             </Span>
+//             <pre>
+//               {`
+// let Skeleton = Empty()
+// let dragon = Dragon()              
+// dragon.move()
+// class Enemy{
+// var health = 0 
+// func move(){
 
-}
-}
-class Dragon{
-var a = 12
-override func move(){
-  super.attack()
-  print();
-}
-}
-`}
-            </pre>
-            UIButton &gt; UIControl &gt; UIView &gt; UIResponder &gt; NSObject
-            <Span>Struct Vs Classes</Span>
-            <Span>struct does not inheritance and are immutable.</Span>
-            <pre>
-              {`
-struct {
-  var health: Int // let cannot be used
-  mutable func x(){
-    self.health = 10
-  }
-}              
-              `}
-            </pre>
-            <Span>Structs are passed by value</Span>
-            <Span>Classes are passed by reference</Span>
-            <pre>
-              {`
-import UIKit
+// }
+// }
+// class Dragon{
+// var a = 12
+// override func move(){
+//   super.attack()
+//   print();
+// }
+// }
+// `}
+//             </pre>
+//             UIButton &gt; UIControl &gt; UIView &gt; UIResponder &gt; NSObject
+//             <Span>Struct Vs Classes</Span>
+//             <Span>struct does not inheritance and are immutable.</Span>
+//             <pre>
+//               {`
+// struct {
+//   var health: Int // let cannot be used
+//   mutable func x(){
+//     self.health = 10
+//   }
+// }              
+//               `}
+//             </pre>
+//             <Span>Structs are passed by value</Span>
+//             <Span>Classes are passed by reference</Span>
+//             <pre>
+//               {`
+// import UIKit
                          
-{
-  performSegue(withIdentifier: "goToResult", sender.self)
-}
+// {
+//   performSegue(withIdentifier: "goToResult", sender.self)
+// }
 
-override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-if segue.identifier == "goToResult" {
-  let destination = segue.destination as !ResulttViewController
-  destination.color = calc.getColor()
-}
-}
-              `}
-            </pre>
-            <Span>Main.storyboard =&gt; new &gt; view controller</Span>
-            <pre>
-              {`
-  import UIKit
+// override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+// if segue.identifier == "goToResult" {
+//   let destination = segue.destination as !ResulttViewController
+//   destination.color = calc.getColor()
+// }
+// }
+//               `}
+//             </pre>
+//             <Span>Main.storyboard =&gt; new &gt; view controller</Span>
+//             <pre>
+//               {`
+//   import UIKit
 
-  class secondVC: UIViewController {
-    super.viewDidLoad()
-    let label = UILabel
-    label.text= "Sai"
-    label.frame = CGRect(x:0,y:0,x:100,y:100)
-    view.addSubView(label)
-  }
+//   class secondVC: UIViewController {
+//     super.viewDidLoad()
+//     let label = UILabel
+//     label.text= "Sai"
+//     label.frame = CGRect(x:0,y:0,x:100,y:100)
+//     view.addSubView(label)
+//   }
 
-  ViewController.swift
+//   ViewController.swift
 
-  let secondVC = SecondViewController()
-  secondVC.bmi = "10"
-  self.presnt(secondVC,connected: true,completion: null)
-              `}
-            </pre>
-            <Span>
-              In order to link few ui controllers, connect them via cmd + click
-            </Span>
-            <Span>
-              <b>Swift Fundamentsals:</b>
-            </Span>
-            <Span>
-              <b>1. Force Unwrapping:</b>
-            </Span>
-            <Span>
-              let a = nil <br />
-              let b = a! <br />
-              Project will build successfully but during runtime it will crash
-            </Span>
-            <Span>
-              <b>2. Check for nil value:</b>
-            </Span>
-            <Span>if a!= nil {"{ a = b! }"}</Span>
-            <Span>
-              <b>3. Optional Binding:</b>
-            </Span>
-            <Span>if let a =b {"{ a }"}</Span>
-            <Span>
-              <b>4. Nil Coalescing Operator:</b>
-            </Span>
-            <Span>a ?? b</Span>
-            <Span>
-              <b>5. Optional Chaining:</b>
-            </Span>
-            <Span>op?.a()</Span>
-            <Span>
-              Alamofire (can be installed using cocoapods or swiftUIPackages)
-            </Span>
-            <Span>
-              portable network graphics gets pixelated when zoomed in
-              <br />
-              vector images doesn't get pixalated <br />
-              e.g. -&gt; .pdf
-              <br />
-              check preserve vector data at inspector window of Assests.xcassets
-            </Span>
-            <Span>
-              Useful textfield properties
-              <br />
-              ReturnKey -&gt; Go <br />
-              autoCapitalize : true (london -&gt; London)
-              <br />
-              secureKey : true *******
-              <br />
-              textFieldShouldReturn
-              <br />
-              textFieldDidBeginEditing
-              <br />
-              textFieldShouldbeginEditing
-              <br />
-              textFieldDidEndEditing
-              <br />
-              textFieldShouldEndEditing
-            </Span>
-            <Span>
-              <b>Swift Protocols</b>
-            </Span>
-            <Span>
-              <pre>{`
-protocol config(){
-  canFly()
-}
+//   let secondVC = SecondViewController()
+//   secondVC.bmi = "10"
+//   self.presnt(secondVC,connected: true,completion: null)
+//               `}
+//             </pre>
+//             <Span>
+//               In order to link few ui controllers, connect them via cmd + click
+//             </Span>
+//             <Span>
+//               <b>Swift Fundamentsals:</b>
+//             </Span>
+//             <Span>
+//               <b>1. Force Unwrapping:</b>
+//             </Span>
+//             <Span>
+//               let a = nil <br />
+//               let b = a! <br />
+//               Project will build successfully but during runtime it will crash
+//             </Span>
+//             <Span>
+//               <b>2. Check for nil value:</b>
+//             </Span>
+//             <Span>if a!= nil {"{ a = b! }"}</Span>
+//             <Span>
+//               <b>3. Optional Binding:</b>
+//             </Span>
+//             <Span>if let a =b {"{ a }"}</Span>
+//             <Span>
+//               <b>4. Nil Coalescing Operator:</b>
+//             </Span>
+//             <Span>a ?? b</Span>
+//             <Span>
+//               <b>5. Optional Chaining:</b>
+//             </Span>
+//             <Span>op?.a()</Span>
+//             <Span>
+//               Alamofire (can be installed using cocoapods or swiftUIPackages)
+//             </Span>
+//             <Span>
+//               portable network graphics gets pixelated when zoomed in
+//               <br />
+//               vector images doesn't get pixalated <br />
+//               e.g. -&gt; .pdf
+//               <br />
+//               check preserve vector data at inspector window of Assests.xcassets
+//             </Span>
+//             <Span>
+//               Useful textfield properties
+//               <br />
+//               ReturnKey -&gt; Go <br />
+//               autoCapitalize : true (london -&gt; London)
+//               <br />
+//               secureKey : true *******
+//               <br />
+//               textFieldShouldReturn
+//               <br />
+//               textFieldDidBeginEditing
+//               <br />
+//               textFieldShouldbeginEditing
+//               <br />
+//               textFieldDidEndEditing
+//               <br />
+//               textFieldShouldEndEditing
+//             </Span>
+//             <Span>
+//               <b>Swift Protocols</b>
+//             </Span>
+//             <Span>
+//               <pre>{`
+// protocol config(){
+//   canFly()
+// }
 
-class A:config{ func canFly(){} }
-class B:A,config{  override func canFly(){}  }
+// class A:config{ func canFly(){} }
+// class B:A,config{  override func canFly(){}  }
 
-struct C:canFly{}
-`}</pre>
-              <Span>
-                Protocols can be inherited via classes and structures.
-              </Span>
-              <Span>
-                String Interpolation <br />
-                print("ans:\(9+0)")
-              </Span>
-              <Span>Delegate design pattern</Span>
-              <pre>
-                {`
-protocol AdvancedLifeSupport(){
-   func performCPR()
-}
+// struct C:canFly{}
+// `}</pre>
+//               <Span>
+//                 Protocols can be inherited via classes and structures.
+//               </Span>
+//               <Span>
+//                 String Interpolation <br />
+//                 print("ans:\(9+0)")
+//               </Span>
+//               <Span>Delegate design pattern</Span>
+//               <pre>
+//                 {`
+// protocol AdvancedLifeSupport(){
+//    func performCPR()
+// }
 
-class EmergencyCallHandler{
-  var delegate:AdvancedLifeSupport?
-  func assessSituation(){printf("Can you tell me what happened?")}
-  func medicalEmergency(){ delegate?.performCPR() }  
-}
+// class EmergencyCallHandler{
+//   var delegate:AdvancedLifeSupport?
+//   func assessSituation(){printf("Can you tell me what happened?")}
+//   func medicalEmergency(){ delegate?.performCPR() }  
+// }
 
-struct Paramedic:AdvancedLifeSupport{
+// struct Paramedic:AdvancedLifeSupport{
 
-init(handler: EmergencyCallHandler){
-   handler.delegate = self
-}
+// init(handler: EmergencyCallHandler){
+//    handler.delegate = self
+// }
 
-func performCPR(){
-  print("T")
-}
-}
-let emilio = EmergencyCallback()
-let p = Paramedic(handler : emilio)
-emilio.assessSituation()
+// func performCPR(){
+//   print("T")
+// }
+// }
+// let emilio = EmergencyCallback()
+// let p = Paramedic(handler : emilio)
+// emilio.assessSituation()
 
-class Doctor: AdvancedLifeSupport{
-   init(handler: EmergencyCallHandler){
-     handler.delegate = self
-   }
-   func performCPR(){
-     print("")
-   }
-}
-class Surgeon:Doctor {
-   override performCPR(){
-     super.performCPR()
-     print("")
-   }
-}
-}
-                `}
-              </pre>
-            </Span>
-            <Span>
-              EmergencyCallHandler doesn't care about what delegate is
-              associated with . It can be class , struct or subclass.
-            </Span>
-            <Span>UTF-8 is the standardized protocol to encode te xt</Span>
-            <Span>
-              Define a protocol , make use of it in class, subclass or the
-              struct. Attach a handler with its delegate property and init
-              constructor ( handler.delegate = self ).Then, make us of this
-              handler at some other class.
-            </Span>
-            <Span>
-              <b>Closures</b>
-            </Span>
-            <pre>
-              {`
-import UIKit
-func calculator(n1:Int,n2:Int)->Int{
-  return n1 * n2
-}
-calculator(n1:2,n2:3) =>
-func calculator(n1:Int,n2:Int,operation:(Int,Int)->Int) -> Int {
-   return operator(n1,n2)
-}
-func add(no1:int,no2:Int)->Int {
-   return no1 + no2
-}
-calculator(n1:2,n2:3,operator:add) =>
-let result = calculator(n1:2,n2:3){$0*$1}
-import UI
-let array= [6,2,3,9,4,1]
-func addOne(n1:Int)->Int{ return n1+1 }
-array.map(addOne)
-array.map({(n1,n2)->Int in return n!+1})
-array.map{$0+1}
-array.map{"\($0)"}  
-  `}
-            </pre>
-            <Span>
-              <b>Conversion to closure</b>
-            </Span>
-            <Span>highlight and press enter</Span>
-            <Span>
-              <b>Code formatting</b>
-            </Span>
-            <Span>cmd + I</Span>
-            <Span>Type alias & protocols (JSON encoding & decoding)</Span>
-            <Span>:Decodable :Encodable :Codable</Span>
-            <Span>External parameter names</Span>
-            <Span>
-              func a(x y :Int){"{print(y)}"}{" "}
-              {"func a(x:2){} func a(_ y:Int){print(y)}{}"}
-              func a(2){}
-            </Span>
-            <Span>Markers</Span>
-            <Span>//MARK:</Span>
-            <b>DispatchQueue</b>
-            <pre>
-              {`
-let task = URLSession.shared.dataTask(with:url){
-  (data,response,error) if let data = data {
-   self.label.text = "\(data.count)"
-  }
-  }
-task.resume()  
-              `}
-            </pre>
-            <b>Extensions</b>
-            <pre>
-              {`
-var x=3.1234
-x.round()
-extension Double{
-  func round(to places: Int){
-  let p = pow(10,places)
-  var n = self
-  n= n * p
-  n.round()
-  n/=p
-  return n
-  }
-}
-extension WeatherViewController: WeatherManagerDelegate
-extension WeatherViewController: CLLocationManagerDelegate
-OR class WeatherViewController: UIViewController, WeatherManagerDelegate,CLLocationManagerDelegate             
-              `}
-            </pre>
-            <Span>Model Directory:</Span>
-            <b>WeatherData.swift</b>
-            <pre>{`
-import Foundation
-struct WeatherData: Codable {
-    let name: String
-    let main: Main
-    let weather: [Weather]
-}
-struct Main: Codable {
-    let temp: Double
-}
-struct Weather: Codable {
-    let description: String
-    let id: Int
-}
-            `}</pre>
-            <b>WeatherModel.swift</b>
-            <pre>
-              {`
-import Foundation
+// class Doctor: AdvancedLifeSupport{
+//    init(handler: EmergencyCallHandler){
+//      handler.delegate = self
+//    }
+//    func performCPR(){
+//      print("")
+//    }
+// }
+// class Surgeon:Doctor {
+//    override performCPR(){
+//      super.performCPR()
+//      print("")
+//    }
+// }
+// }
+//                 `}
+//               </pre>
+//             </Span>
+//             <Span>
+//               EmergencyCallHandler doesn't care about what delegate is
+//               associated with . It can be class , struct or subclass.
+//             </Span>
+//             <Span>UTF-8 is the standardized protocol to encode te xt</Span>
+//             <Span>
+//               Define a protocol , make use of it in class, subclass or the
+//               struct. Attach a handler with its delegate property and init
+//               constructor ( handler.delegate = self ).Then, make us of this
+//               handler at some other class.
+//             </Span>
+//             <Span>
+//               <b>Closures</b>
+//             </Span>
+//             <pre>
+//               {`
+// import UIKit
+// func calculator(n1:Int,n2:Int)->Int{
+//   return n1 * n2
+// }
+// calculator(n1:2,n2:3) =>
+// func calculator(n1:Int,n2:Int,operation:(Int,Int)->Int) -> Int {
+//    return operator(n1,n2)
+// }
+// func add(no1:int,no2:Int)->Int {
+//    return no1 + no2
+// }
+// calculator(n1:2,n2:3,operator:add) =>
+// let result = calculator(n1:2,n2:3){$0*$1}
+// import UI
+// let array= [6,2,3,9,4,1]
+// func addOne(n1:Int)->Int{ return n1+1 }
+// array.map(addOne)
+// array.map({(n1,n2)->Int in return n!+1})
+// array.map{$0+1}
+// array.map{"\($0)"}  
+//   `}
+//             </pre>
+//             <Span>
+//               <b>Conversion to closure</b>
+//             </Span>
+//             <Span>highlight and press enter</Span>
+//             <Span>
+//               <b>Code formatting</b>
+//             </Span>
+//             <Span>cmd + I</Span>
+//             <Span>Type alias & protocols (JSON encoding & decoding)</Span>
+//             <Span>:Decodable :Encodable :Codable</Span>
+//             <Span>External parameter names</Span>
+//             <Span>
+//               func a(x y :Int){"{print(y)}"}{" "}
+//               {"func a(x:2){} func a(_ y:Int){print(y)}{}"}
+//               func a(2){}
+//             </Span>
+//             <Span>Markers</Span>
+//             <Span>//MARK:</Span>
+//             <b>DispatchQueue</b>
+//             <pre>
+//               {`
+// let task = URLSession.shared.dataTask(with:url){
+//   (data,response,error) if let data = data {
+//    self.label.text = "\(data.count)"
+//   }
+//   }
+// task.resume()  
+//               `}
+//             </pre>
+//             <b>Extensions</b>
+//             <pre>
+//               {`
+// var x=3.1234
+// x.round()
+// extension Double{
+//   func round(to places: Int){
+//   let p = pow(10,places)
+//   var n = self
+//   n= n * p
+//   n.round()
+//   n/=p
+//   return n
+//   }
+// }
+// extension WeatherViewController: WeatherManagerDelegate
+// extension WeatherViewController: CLLocationManagerDelegate
+// OR class WeatherViewController: UIViewController, WeatherManagerDelegate,CLLocationManagerDelegate             
+//               `}
+//             </pre>
+//             <Span>Model Directory:</Span>
+//             <b>WeatherData.swift</b>
+//             <pre>{`
+// import Foundation
+// struct WeatherData: Codable {
+//     let name: String
+//     let main: Main
+//     let weather: [Weather]
+// }
+// struct Main: Codable {
+//     let temp: Double
+// }
+// struct Weather: Codable {
+//     let description: String
+//     let id: Int
+// }
+//             `}</pre>
+//             <b>WeatherModel.swift</b>
+//             <pre>
+//               {`
+// import Foundation
 
-struct WeatherModel {
-    let conditionId: Int
-    let cityName: String
-    let temperature: Double
+// struct WeatherModel {
+//     let conditionId: Int
+//     let cityName: String
+//     let temperature: Double
     
-    var temperatureString: String {
-        return String(format: "%.1f", temperature)
-    }
+//     var temperatureString: String {
+//         return String(format: "%.1f", temperature)
+//     }
     
-    var conditionName: String {
-        switch conditionId {
-        case 200...232:
-            return "cloud.bolt"
-        case 300...321:
-            return "cloud.drizzle"
-        case 500...531:
-            return "cloud.rain"
-        case 600...622:
-            return "cloud.snow"
-        case 701...781:
-            return "cloud.fog"
-        case 800:
-            return "sun.max"
-        case 801...804:
-            return "cloud.bolt"
-        default:
-            return "cloud"
-        }
-    }
+//     var conditionName: String {
+//         switch conditionId {
+//         case 200...232:
+//             return "cloud.bolt"
+//         case 300...321:
+//             return "cloud.drizzle"
+//         case 500...531:
+//             return "cloud.rain"
+//         case 600...622:
+//             return "cloud.snow"
+//         case 701...781:
+//             return "cloud.fog"
+//         case 800:
+//             return "sun.max"
+//         case 801...804:
+//             return "cloud.bolt"
+//         default:
+//             return "cloud"
+//         }
+//     }
     
-}  
-  `}
-            </pre>
-            <Span>Controllers</Span>
-            <b>WeatherManager.swift</b>
-            <pre>
-              {`
-import Foundation
-import CoreLocation
+// }  
+//   `}
+//             </pre>
+//             <Span>Controllers</Span>
+//             <b>WeatherManager.swift</b>
+//             <pre>
+//               {`
+// import Foundation
+// import CoreLocation
 
-protocol WeatherManagerDelegate {
-    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel)
-    func didFailWithError(error: Error)
-}
+// protocol WeatherManagerDelegate {
+//     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel)
+//     func didFailWithError(error: Error)
+// }
 
-struct WeatherManager {
-    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=e72ca729af228beabd5d20e3b7749713&units=metric" 
-    var delegate: WeatherManagerDelegate?
-    func fetchWeather(cityName: String) {
-        let urlString = "\(weatherURL)&q=\(cityName)"
-        performRequest(with: urlString)
-    }
-    func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-        let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
-        performRequest(with: urlString)
-    }
-    func performRequest(with urlString: String) {
-        if let url = URL(string: urlString) {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { (data, response, error) in
-                if error != nil {
-                    self.delegate?.didFailWithError(error: error!)
-                    return
-                }
-                if let safeData = data {
-                    if let weather = self.parseJSON(safeData) {
-                        self.delegate?.didUpdateWeather(self, weather: weather)
-                    }
-                }
-            }
-            task.resume()
-        }
-    }
-    func parseJSON(_ weatherData: Data) -> WeatherModel? {
-        let decoder = JSONDecoder()
-        do {
-            let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
-            let id = decodedData.weather[0].id
-            let temp = decodedData.main.temp
-            let name = decodedData.name   
-            let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp)
-            return weather   
-        } catch {
-            delegate?.didFailWithError(error: error)
-            return nil
-        }
-    }   
-}              
-              `}
-            </pre>
-            <b>WeatherViewController.swift</b>
-            <pre>
-              {`
-import UIKit
-import CoreLocation
+// struct WeatherManager {
+//     let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=e72ca729af228beabd5d20e3b7749713&units=metric" 
+//     var delegate: WeatherManagerDelegate?
+//     func fetchWeather(cityName: String) {
+//         let urlString = "\(weatherURL)&q=\(cityName)"
+//         performRequest(with: urlString)
+//     }
+//     func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+//         let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
+//         performRequest(with: urlString)
+//     }
+//     func performRequest(with urlString: String) {
+//         if let url = URL(string: urlString) {
+//             let session = URLSession(configuration: .default)
+//             let task = session.dataTask(with: url) { (data, response, error) in
+//                 if error != nil {
+//                     self.delegate?.didFailWithError(error: error!)
+//                     return
+//                 }
+//                 if let safeData = data {
+//                     if let weather = self.parseJSON(safeData) {
+//                         self.delegate?.didUpdateWeather(self, weather: weather)
+//                     }
+//                 }
+//             }
+//             task.resume()
+//         }
+//     }
+//     func parseJSON(_ weatherData: Data) -> WeatherModel? {
+//         let decoder = JSONDecoder()
+//         do {
+//             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
+//             let id = decodedData.weather[0].id
+//             let temp = decodedData.main.temp
+//             let name = decodedData.name   
+//             let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp)
+//             return weather   
+//         } catch {
+//             delegate?.didFailWithError(error: error)
+//             return nil
+//         }
+//     }   
+// }              
+//               `}
+//             </pre>
+//             <b>WeatherViewController.swift</b>
+//             <pre>
+//               {`
+// import UIKit
+// import CoreLocation
 
-class WeatherViewController: UIViewController {
-    @IBOutlet weak var conditionImageView: UIImageView!
-    @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var searchTextField: UITextField!
+// class WeatherViewController: UIViewController {
+//     @IBOutlet weak var conditionImageView: UIImageView!
+//     @IBOutlet weak var temperatureLabel: UILabel!
+//     @IBOutlet weak var cityLabel: UILabel!
+//     @IBOutlet weak var searchTextField: UITextField!
     
-    var weatherManager = WeatherManager()
-    let locationManager = CLLocationManager()
+//     var weatherManager = WeatherManager()
+//     let locationManager = CLLocationManager()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+//     override func viewDidLoad() {
+//         super.viewDidLoad()
         
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
+//         locationManager.delegate = self
+//         locationManager.requestWhenInUseAuthorization()
+//         locationManager.requestLocation()
         
-        weatherManager.delegate = self
-        searchTextField.delegate = self
-    }
+//         weatherManager.delegate = self
+//         searchTextField.delegate = self
+//     }
 
-}
-//MARK: - UITextFieldDelegate
-extension WeatherViewController: UITextFieldDelegate {
+// }
+// //MARK: - UITextFieldDelegate
+// extension WeatherViewController: UITextFieldDelegate {
     
-    @IBAction func searchPressed(_ sender: UIButton) {
-        searchTextField.endEditing(true)
-    }
+//     @IBAction func searchPressed(_ sender: UIButton) {
+//         searchTextField.endEditing(true)
+//     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchTextField.endEditing(true)
-        return true
-    }
+//     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//         searchTextField.endEditing(true)
+//         return true
+//     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if textField.text != "" {
-            return true
-        } else {
-            textField.placeholder = "Type something"
-            return false
-        }
-    }
+//     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+//         if textField.text != "" {
+//             return true
+//         } else {
+//             textField.placeholder = "Type something"
+//             return false
+//         }
+//     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+//     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        if let city = searchTextField.text {
-            weatherManager.fetchWeather(cityName: city)
-        }
+//         if let city = searchTextField.text {
+//             weatherManager.fetchWeather(cityName: city)
+//         }
         
-        searchTextField.text = ""
+//         searchTextField.text = ""
         
-    }
-}
-//MARK: - WeatherManagerDelegate
+//     }
+// }
+// //MARK: - WeatherManagerDelegate
 
-extension WeatherViewController: WeatherManagerDelegate {
+// extension WeatherViewController: WeatherManagerDelegate {
     
-    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
-        DispatchQueue.main.async {
-            self.temperatureLabel.text = weather.temperatureString
-            self.conditionImageView.image = UIImage(systemName: weather.conditionName)
-            self.cityLabel.text = weather.cityName
-        }
-    }
+//     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
+//         DispatchQueue.main.async {
+//             self.temperatureLabel.text = weather.temperatureString
+//             self.conditionImageView.image = UIImage(systemName: weather.conditionName)
+//             self.cityLabel.text = weather.cityName
+//         }
+//     }
     
-    func didFailWithError(error: Error) {
-        print(error)
-    }
-}
-//MARK: - CLLocationManagerDelegate
+//     func didFailWithError(error: Error) {
+//         print(error)
+//     }
+// }
+// //MARK: - CLLocationManagerDelegate
 
-extension WeatherViewController: CLLocationManagerDelegate {
+// extension WeatherViewController: CLLocationManagerDelegate {
     
-    @IBAction func locationPressed(_ sender: UIButton) {
-        locationManager.requestLocation()
-    }
+//     @IBAction func locationPressed(_ sender: UIButton) {
+//         locationManager.requestLocation()
+//     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            locationManager.stopUpdatingLocation()
-            let lat = location.coordinate.latitude
-            let lon = location.coordinate.longitude
-            weatherManager.fetchWeather(latitude: lat, longitude: lon)
-        }
-    }
+//     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//         if let location = locations.last {
+//             locationManager.stopUpdatingLocation()
+//             let lat = location.coordinate.latitude
+//             let lon = location.coordinate.longitude
+//             weatherManager.fetchWeather(latitude: lat, longitude: lon)
+//         }
+//     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-    }
-}
-`}
-            </pre>
-            <Span>
-              <b>Linking two files at storyboard file</b>
-            </Span>
-            <Span>
-              select the left most icon of one screen at storyboard and drag it
-              to other screen present in the same file.
-            </Span>
-            <Span>
-              <b>Rebuild the app</b>
-            </Span>
-            <Span>
-              <b>cmd + B</b>
-            </Span>
-            <Span>
-              <b>Triggered segue and navigation controller</b>
-            </Span>
-            <Span>
-              select left most icon of the screen and pick embed in navigation
-              controller option.
-            </Span>
-            <Span>
-              <b>Swift loops</b>
-            </Span>
-            <pre>
-              {`
-for _ in 1...5{print("s")}
-override func viewDidLoad(){
-   super.viewDidLoad()
-   Timer.scheduledTime(withTimeInterval:0.1*charIndex,repeats:false){
-     (timer) in self.titleLabel.text?.append(letter)
-   }
-}
+//     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+//         print(error)
+//     }
+// }
+// `}
+//             </pre>
+//             <Span>
+//               <b>Linking two files at storyboard file</b>
+//             </Span>
+//             <Span>
+//               select the left most icon of one screen at storyboard and drag it
+//               to other screen present in the same file.
+//             </Span>
+//             <Span>
+//               <b>Rebuild the app</b>
+//             </Span>
+//             <Span>
+//               <b>cmd + B</b>
+//             </Span>
+//             <Span>
+//               <b>Triggered segue and navigation controller</b>
+//             </Span>
+//             <Span>
+//               select left most icon of the screen and pick embed in navigation
+//               controller option.
+//             </Span>
+//             <Span>
+//               <b>Swift loops</b>
+//             </Span>
+//             <pre>
+//               {`
+// for _ in 1...5{print("s")}
+// override func viewDidLoad(){
+//    super.viewDidLoad()
+//    Timer.scheduledTime(withTimeInterval:0.1*charIndex,repeats:false){
+//      (timer) in self.titleLabel.text?.append(letter)
+//    }
+// }
 
-override func viewWillAppear(_ animated:Bool){
-   super.viewWillAppear(animated)
-   navigationController?.isNavigationBarHidden = true
-}
+// override func viewWillAppear(_ animated:Bool){
+//    super.viewWillAppear(animated)
+//    navigationController?.isNavigationBarHidden = true
+// }
 
-override func viewDidAppear(_ animated:Bool){
-   super.viewDidAppear(animated)
-   navigationController?.isNavigationBarHidden = false
-}
+// override func viewDidAppear(_ animated:Bool){
+//    super.viewDidAppear(animated)
+//    navigationController?.isNavigationBarHidden = false
+// }
 
-while now < s{
- now = Date().timeIntervalsince1970
- print("...")
-}
-           `}
-            </pre>
-            <Span>
-              <b>Third Party Libraries</b>
-            </Span>
-            <pre>
-              {`
-cocoapods.org
-package dependency manager
+// while now < s{
+//  now = Date().timeIntervalsince1970
+//  print("...")
+// }
+//            `}
+//             </pre>
+//             <Span>
+//               <b>Third Party Libraries</b>
+//             </Span>
+//             <pre>
+//               {`
+// cocoapods.org
+// package dependency manager
 
-Interface for ruby gems is a command line tool called gem which can install & manage libraries
+// Interface for ruby gems is a command line tool called gem which can install & manage libraries
 
-Cocoapods manages library dependencies for xcode projects. Dependencies for project are specified in a single text file called a podfile
-required ios version of a dependency can be checked at .podspecfile
+// Cocoapods manages library dependencies for xcode projects. Dependencies for project are specified in a single text file called a podfile
+// required ios version of a dependency can be checked at .podspecfile
 
-following statements will be present at such files:
-ios,'10.0'
-              `}
-            </pre>
-            <Span>pod commands</Span>
-            <Span>
-              pod init <br />
-              pod install
-              <br />
-              pod update
-              <br />
-              sudo arch -86_64x gem install fi
-              <br />
-              arch -86_64x pod install
-              <br />
-              when a line of code which defines a package is removed from
-              podfile , close the xcode , execute pod install and reopen it
-            </Span>
-            <Span>
-              <b>Package Manager Options</b>
-            </Span>
-            <Span>
-              Cocoapods , carthage and swift package manager.
-              <br />
-              as of now very few supports swift package manager
-              <br />
-              file -&lt; swift packages -&lt; add package dependency -&lt;
-              select project -&lt; github url
-              <br />
-              .podspec file -&lt; cocoapods <br />
-              Package.Swift -&lt; SPM
-            </Span>
-            <Span>
-              <b>Firebase Configuration</b>
-            </Span>
-            <Span>
-              add project -&gt;
-              <br />
-              request ios app bundle app id-&gt;
-              <br />
-              download GoogleService-Info.plist configuration file
-              <br />
-              Update AppDelegate.swift
-              <br />
-              pod 'Firebase/Auth'
-              <br />
-              pod 'Firebase/Firestore'
-              <br />
-              pod install
-            </Span>
-            <b>Global Constants</b>
-            <pre>
-              {`
-struct K {
-  static let a = "A"
-  static A {
-    static let b = "B"
-  }
-}  
-  `}
-            </pre>
-            <b>UITableView</b>
-            <pre>
-              {`
-func tableView(.... numOfRowsInSelection
-func tableView(.... cellForRowAtIndexPath
-func tableView(.... didSelectRowAtIndexPath
-              `}
-            </pre>
-            <b>Custom TableViewCell</b>
-            <pre>{`
-Views -> New Cocoa Touch Class -> Message Cell (Subclass of UITableViewCell)
-check allow create xib file
-            `}</pre>
-            <b>hackiftakhar/IQKeyboardManager</b>
-            <pre>
-              {`
-File ->Swift Packages -> Add Package Dependency
-Edit AppDelegate.swiift
-TableViewCell xib file -> interactions -> disable
-              `}
-            </pre>
-            <b>ViewControllerLifeCycle</b>
-            <pre>
-              viewDidLoad() <br />
-              viewWillAppear()
-              <br />
-              viewDidAppear()
-              <br />
-              viewWillUnappear()
-              <br />
-              viewDidDisappear()
-            </pre>
-            <br />
-            <Span>
-              <b>App Life Cycle Methods</b>
-            </Span>
-            <pre>
-              Upto ios 12 , all life cycle methods used to be at
-              AppDelegate.swift but as of ios13 , especially ipadOS there may be
-              multiple instances of the app. If one of the window goes in
-              background then scene delegate gets notified.
-              <br />
-              It treats each window as a separate screen.
-              <br />
-              N/W changes are handled by sceneDelegate.swift
-              <br />
-              Mutiple view controllers in one screne, multiple scenes in a app.
-              -&gt; SceneDelegate
-              <br />
-              func sceneWillResignActive( sceneDidEnterBackground(
-            </pre>
-            <Span>constants.swift</Span>
-            <pre>
-              {`
-struct K {
-  static let appName = "⚡️FlashChat"
-  static let cellIdentifier = "ReusableCell"
-  static let cellNibName = "MessageCell"
-  static let registerSegue = "RegisterToChat"
-  static let loginSegue = "LoginToChat"
-  struct BrandColors {
-      static let purple = "BrandPurple"
-      static let lightPurple = "BrandLightPurple"
-      static let blue = "BrandBlue"
-      static let lighBlue = "BrandLightBlue"
-  }
-  struct FStore {
-      static let collectionName = "messages"
-      static let senderField = "sender"
-      static let bodyField = "body"
-      static let dateField = "date"
-  }
-}              
-              `}
-            </pre>
-            <Span>
-              <b>Views</b>
-            </Span>
-            <p>MessageCell.swift</p>
-            <pre>{`
-       import UIKit
-       class MessageCell: UITableViewCell {
-           @IBOutlet weak var messageBubble: UIView!
-           @IBOutlet weak var label: UILabel!
-           @IBOutlet weak var rightImageView: UIImageView!
-           @IBOutlet weak var leftImageView: UIImageView!
-           override func awakeFromNib() {
-               super.awakeFromNib()
-               messageBubble.layer.cornerRadius = messageBubble.frame.size.height / 5
-           }      
-           override func setSelected(_ selected: Bool, animated: Bool) {
-               super.setSelected(selected, animated: animated)
-           }
-       }     
-            `}</pre>
-            <p>We do have MessageCell.xlb as well</p>
-            <Span>
-              <b>Models</b>
-            </Span>
-            <b>Message.swift</b>
-            <pre>{`
-import Foundation
-struct Message {
-    let sender: String
-    let body: String
-}           
-            `}</pre>
-            <Span>
-              <b>Controllers</b>
-            </Span>
-            <b>ChatViewController.swift</b>
-            <pre>{`
-import UIKit
-import Firebase
-class ChatViewController: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var messageTextfield: UITextField!
+// following statements will be present at such files:
+// ios,'10.0'
+//               `}
+//             </pre>
+//             <Span>pod commands</Span>
+//             <Span>
+//               pod init <br />
+//               pod install
+//               <br />
+//               pod update
+//               <br />
+//               sudo arch -86_64x gem install fi
+//               <br />
+//               arch -86_64x pod install
+//               <br />
+//               when a line of code which defines a package is removed from
+//               podfile , close the xcode , execute pod install and reopen it
+//             </Span>
+//             <Span>
+//               <b>Package Manager Options</b>
+//             </Span>
+//             <Span>
+//               Cocoapods , carthage and swift package manager.
+//               <br />
+//               as of now very few supports swift package manager
+//               <br />
+//               file -&lt; swift packages -&lt; add package dependency -&lt;
+//               select project -&lt; github url
+//               <br />
+//               .podspec file -&lt; cocoapods <br />
+//               Package.Swift -&lt; SPM
+//             </Span>
+//             <Span>
+//               <b>Firebase Configuration</b>
+//             </Span>
+//             <Span>
+//               add project -&gt;
+//               <br />
+//               request ios app bundle app id-&gt;
+//               <br />
+//               download GoogleService-Info.plist configuration file
+//               <br />
+//               Update AppDelegate.swift
+//               <br />
+//               pod 'Firebase/Auth'
+//               <br />
+//               pod 'Firebase/Firestore'
+//               <br />
+//               pod install
+//             </Span>
+//             <b>Global Constants</b>
+//             <pre>
+//               {`
+// struct K {
+//   static let a = "A"
+//   static A {
+//     static let b = "B"
+//   }
+// }  
+//   `}
+//             </pre>
+//             <b>UITableView</b>
+//             <pre>
+//               {`
+// func tableView(.... numOfRowsInSelection
+// func tableView(.... cellForRowAtIndexPath
+// func tableView(.... didSelectRowAtIndexPath
+//               `}
+//             </pre>
+//             <b>Custom TableViewCell</b>
+//             <pre>{`
+// Views -> New Cocoa Touch Class -> Message Cell (Subclass of UITableViewCell)
+// check allow create xib file
+//             `}</pre>
+//             <b>hackiftakhar/IQKeyboardManager</b>
+//             <pre>
+//               {`
+// File ->Swift Packages -> Add Package Dependency
+// Edit AppDelegate.swiift
+// TableViewCell xib file -> interactions -> disable
+//               `}
+//             </pre>
+//             <b>ViewControllerLifeCycle</b>
+//             <pre>
+//               viewDidLoad() <br />
+//               viewWillAppear()
+//               <br />
+//               viewDidAppear()
+//               <br />
+//               viewWillUnappear()
+//               <br />
+//               viewDidDisappear()
+//             </pre>
+//             <br />
+//             <Span>
+//               <b>App Life Cycle Methods</b>
+//             </Span>
+//             <pre>
+//               Upto ios 12 , all life cycle methods used to be at
+//               AppDelegate.swift but as of ios13 , especially ipadOS there may be
+//               multiple instances of the app. If one of the window goes in
+//               background then scene delegate gets notified.
+//               <br />
+//               It treats each window as a separate screen.
+//               <br />
+//               N/W changes are handled by sceneDelegate.swift
+//               <br />
+//               Mutiple view controllers in one screne, multiple scenes in a app.
+//               -&gt; SceneDelegate
+//               <br />
+//               func sceneWillResignActive( sceneDidEnterBackground(
+//             </pre>
+//             <Span>constants.swift</Span>
+//             <pre>
+//               {`
+// struct K {
+//   static let appName = "⚡️FlashChat"
+//   static let cellIdentifier = "ReusableCell"
+//   static let cellNibName = "MessageCell"
+//   static let registerSegue = "RegisterToChat"
+//   static let loginSegue = "LoginToChat"
+//   struct BrandColors {
+//       static let purple = "BrandPurple"
+//       static let lightPurple = "BrandLightPurple"
+//       static let blue = "BrandBlue"
+//       static let lighBlue = "BrandLightBlue"
+//   }
+//   struct FStore {
+//       static let collectionName = "messages"
+//       static let senderField = "sender"
+//       static let bodyField = "body"
+//       static let dateField = "date"
+//   }
+// }              
+//               `}
+//             </pre>
+//             <Span>
+//               <b>Views</b>
+//             </Span>
+//             <p>MessageCell.swift</p>
+//             <pre>{`
+//        import UIKit
+//        class MessageCell: UITableViewCell {
+//            @IBOutlet weak var messageBubble: UIView!
+//            @IBOutlet weak var label: UILabel!
+//            @IBOutlet weak var rightImageView: UIImageView!
+//            @IBOutlet weak var leftImageView: UIImageView!
+//            override func awakeFromNib() {
+//                super.awakeFromNib()
+//                messageBubble.layer.cornerRadius = messageBubble.frame.size.height / 5
+//            }      
+//            override func setSelected(_ selected: Bool, animated: Bool) {
+//                super.setSelected(selected, animated: animated)
+//            }
+//        }     
+//             `}</pre>
+//             <p>We do have MessageCell.xlb as well</p>
+//             <Span>
+//               <b>Models</b>
+//             </Span>
+//             <b>Message.swift</b>
+//             <pre>{`
+// import Foundation
+// struct Message {
+//     let sender: String
+//     let body: String
+// }           
+//             `}</pre>
+//             <Span>
+//               <b>Controllers</b>
+//             </Span>
+//             <b>ChatViewController.swift</b>
+//             <pre>{`
+// import UIKit
+// import Firebase
+// class ChatViewController: UIViewController {
+//     @IBOutlet weak var tableView: UITableView!
+//     @IBOutlet weak var messageTextfield: UITextField!
     
-    let db = Firestore.firestore()
+//     let db = Firestore.firestore()
     
-    var messages: [Message] = []
+//     var messages: [Message] = []
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.dataSource = self
-        title = K.appName
-        navigationItem.hidesBackButton = true
-        tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
-        loadMessages()
-    }
-    func loadMessages() {                    
-        db.collection(K.FStore.collectionName)
-            .order(by: K.FStore.dateField)
-            .addSnapshotListener { (querySnapshot, error) in
-            self.messages = []
-            if let e = error {
-                print("There was an issue retrieving data from Firestore. \(e)")
-            } else {
-                if let snapshotDocuments = querySnapshot?.documents {
-                    for doc in snapshotDocuments {
-                        let data = doc.data()
-                        if let messageSender = data[K.FStore.senderField] as? String, let messageBody = data[K.FStore.bodyField] as? String {
-                            let newMessage = Message(sender: messageSender, body: messageBody)
-                            self.messages.append(newMessage)
+//     override func viewDidLoad() {
+//         super.viewDidLoad()
+//         tableView.dataSource = self
+//         title = K.appName
+//         navigationItem.hidesBackButton = true
+//         tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
+//         loadMessages()
+//     }
+//     func loadMessages() {                    
+//         db.collection(K.FStore.collectionName)
+//             .order(by: K.FStore.dateField)
+//             .addSnapshotListener { (querySnapshot, error) in
+//             self.messages = []
+//             if let e = error {
+//                 print("There was an issue retrieving data from Firestore. \(e)")
+//             } else {
+//                 if let snapshotDocuments = querySnapshot?.documents {
+//                     for doc in snapshotDocuments {
+//                         let data = doc.data()
+//                         if let messageSender = data[K.FStore.senderField] as? String, let messageBody = data[K.FStore.bodyField] as? String {
+//                             let newMessage = Message(sender: messageSender, body: messageBody)
+//                             self.messages.append(newMessage)
                             
-                            DispatchQueue.main.async {
-                                   self.tableView.reloadData()
-                                let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
-                                self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    @IBAction func sendPressed(_ sender: UIButton) { 
-        if let messageBody = messageTextfield.text, let messageSender = Auth.auth().currentUser?.email {
-            db.collection(K.FStore.collectionName).addDocument(data: [
-                K.FStore.senderField: messageSender,
-                K.FStore.bodyField: messageBody,
-                K.FStore.dateField: Date().timeIntervalSince1970
-            ]) { (error) in
-                if let e = error {
-                    print("There was an issue saving data to firestore, \(e)")
-                } else {
-                    print("Successfully saved data.")
+//                             DispatchQueue.main.async {
+//                                    self.tableView.reloadData()
+//                                 let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+//                                 self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     @IBAction func sendPressed(_ sender: UIButton) { 
+//         if let messageBody = messageTextfield.text, let messageSender = Auth.auth().currentUser?.email {
+//             db.collection(K.FStore.collectionName).addDocument(data: [
+//                 K.FStore.senderField: messageSender,
+//                 K.FStore.bodyField: messageBody,
+//                 K.FStore.dateField: Date().timeIntervalSince1970
+//             ]) { (error) in
+//                 if let e = error {
+//                     print("There was an issue saving data to firestore, \(e)")
+//                 } else {
+//                     print("Successfully saved data.")
                     
-                    DispatchQueue.main.async {
-                         self.messageTextfield.text = ""
-                    }
-                }
-            }
-        }
-    }
-    @IBAction func logOutPressed(_ sender: UIBarButtonItem) {    
-        do {
-            try Auth.auth().signOut()
-            navigationController?.popToRootViewController(animated: true)
-        } catch let signOutError as NSError {
-          print ("Error signing out: %@", signOutError)
-        }
-    }
-}
-extension ChatViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = messages[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! MessageCell
-        cell.label.text = message.body
-        //This is a message from the current user.
-        if message.sender == Auth.auth().currentUser?.email {
-            cell.leftImageView.isHidden = true
-            cell.rightImageView.isHidden = false
-            cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.lightPurple)
-            cell.label.textColor = UIColor(named: K.BrandColors.purple)
-        }
-        //This is a message from another sender.
-        else {
-            cell.leftImageView.isHidden = false
-            cell.rightImageView.isHidden = true
-            cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.purple)
-            cell.label.textColor = UIColor(named: K.BrandColors.lightPurple)
-        }        
-     return cell
-    }
-}
-            `}</pre>
-            <b>LoginViewController.swift</b>
-            <pre>{`
-import UIKit
-import Firebase
-class LoginViewController: UIViewController {
-    @IBOutlet weak var emailTextfield: UITextField!
-    @IBOutlet weak var passwordTextfield: UITextField!
-    @IBAction func loginPressed(_ sender: UIButton) {
-        if let email = emailTextfield.text, let password = passwordTextfield.text {
-            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-                if let e = error {
-                    print(e)
-                } else {
-                    self.performSegue(withIdentifier: K.loginSegue, sender: self)
-                }
-            }
-        }
-    }
-}
+//                     DispatchQueue.main.async {
+//                          self.messageTextfield.text = ""
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     @IBAction func logOutPressed(_ sender: UIBarButtonItem) {    
+//         do {
+//             try Auth.auth().signOut()
+//             navigationController?.popToRootViewController(animated: true)
+//         } catch let signOutError as NSError {
+//           print ("Error signing out: %@", signOutError)
+//         }
+//     }
+// }
+// extension ChatViewController: UITableViewDataSource {
+//     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//         return messages.count
+//     }
+//     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//         let message = messages[indexPath.row]
+//         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! MessageCell
+//         cell.label.text = message.body
+//         //This is a message from the current user.
+//         if message.sender == Auth.auth().currentUser?.email {
+//             cell.leftImageView.isHidden = true
+//             cell.rightImageView.isHidden = false
+//             cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.lightPurple)
+//             cell.label.textColor = UIColor(named: K.BrandColors.purple)
+//         }
+//         //This is a message from another sender.
+//         else {
+//             cell.leftImageView.isHidden = false
+//             cell.rightImageView.isHidden = true
+//             cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.purple)
+//             cell.label.textColor = UIColor(named: K.BrandColors.lightPurple)
+//         }        
+//      return cell
+//     }
+// }
+//             `}</pre>
+//             <b>LoginViewController.swift</b>
+//             <pre>{`
+// import UIKit
+// import Firebase
+// class LoginViewController: UIViewController {
+//     @IBOutlet weak var emailTextfield: UITextField!
+//     @IBOutlet weak var passwordTextfield: UITextField!
+//     @IBAction func loginPressed(_ sender: UIButton) {
+//         if let email = emailTextfield.text, let password = passwordTextfield.text {
+//             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+//                 if let e = error {
+//                     print(e)
+//                 } else {
+//                     self.performSegue(withIdentifier: K.loginSegue, sender: self)
+//                 }
+//             }
+//         }
+//     }
+// }
 
-           `}</pre>
-            <b>RegisterViewController.swift</b>
-            <pre>{`
-import UIKit
-import Firebase
-class RegisterViewController: UIViewController {
-    @IBOutlet weak var emailTextfield: UITextField!
-    @IBOutlet weak var passwordTextfield: UITextField!
-    @IBAction func registerPressed(_ sender: UIButton) {
-        if let email = emailTextfield.text, let password = passwordTextfield.text {
-            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-                if let e = error {
-                    print(e)
-                } else {
-                    //Navigate to the ChatViewController
-                    self.performSegue(withIdentifier: K.registerSegue, sender: self)
-                }
-            }
-        }
-    }    
-}
+//            `}</pre>
+//             <b>RegisterViewController.swift</b>
+//             <pre>{`
+// import UIKit
+// import Firebase
+// class RegisterViewController: UIViewController {
+//     @IBOutlet weak var emailTextfield: UITextField!
+//     @IBOutlet weak var passwordTextfield: UITextField!
+//     @IBAction func registerPressed(_ sender: UIButton) {
+//         if let email = emailTextfield.text, let password = passwordTextfield.text {
+//             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+//                 if let e = error {
+//                     print(e)
+//                 } else {
+//                     //Navigate to the ChatViewController
+//                     self.performSegue(withIdentifier: K.registerSegue, sender: self)
+//                 }
+//             }
+//         }
+//     }    
+// }
 
-`}</pre>
-            <b>WelcomeViewController.swift</b>
-            <pre>{`
-import UIKit
-class WelcomeViewController: UIViewController {
-    @IBOutlet weak var titleLabel: UILabel!
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.isNavigationBarHidden = false
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()                    
-        titleLabel.text = ""
-        var charIndex = 0.0
-        let titleText = K.appName
-        for letter in titleText {
-            Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { (timer) in
-                self.titleLabel.text?.append(letter)
-            }
-            charIndex += 1
-        }  
-    }
-}`}</pre>
-            <br />
-            <Span>
-              Swift UI is apple's brand new UI framework built with declarative
-              swift code.
-            </Span>
-            <Span>
-              Since SwiftUI uses UIkit and AppKit behind the scenes, this means
-              that rendering isn't any faster. However, in terms of development
-              build time, SwiftUI usually performs better than UIkit. That's
-              because the hierarchy of view resides in value-type structs stored
-              on the stack, which means no costly memory allocations.
-            </Span>
-            <Span>
-              <b>Imperative Vs Declarative Programming</b>
-            </Span>
-            <Span>
-              Declarative programming is a paradigm in which programmer defines
-              what needs to be accomplished w/o defining how it needs to be
-              implemented.
-              <br />
-              Types: Functional , Logic
-              <br />
-              Imperative programming is a programming paradigm that uses
-              statements that change a program’s state.
-              <br />
-              Types : Structural, Modular , Procedural
-            </Span>
-            <Span>
-              <b>SwiftUI or UIKit</b>
-            </Span>
-            <Span>
-              SwiftUI, Apple’s new declarative programming framework, was
-              introduced along with iOS 13 in September 2019.
-            </Span>
-            <Span>
-              <b>UIKit</b>
-            </Span>
-            <Span>
-              UIKit provides a variety of objects which you can use to develop
-              apps for iOS. These objects, such as UIView and its subclasses,
-              allow for the display and interaction of content within your app.
-              UIKit apps generally make use of the Model-View-Controller (MVC)
-              design pattern.
-              <br />
-              UIKit has been the backbone of UI development on iOS for over a
-              decade. It is a mature platform that sees use in just about every
-              iOS application in existence. Since it is well established, there
-              is an abundance of resources available in case you get stuck or
-              have questions.
-              <br />
-              UIKit apps can be built in a few different ways:
-              <br />
-              1. Leveraging Interface Builder in order to design a UI without
-              writing any code. Interface Builder is integrated into Xcode and
-              allows for editing of .storyboard and .xib files, both of which
-              describe layouts using XML.
-              <br />
-              2. A code focused approach where views and layout constraints are
-              defined in Swift (or Objective-C).
-              <br />
-              3. A mix of the above two approaches
-            </Span>
-            <Span>
-              <b>SwiftUI</b>
-            </Span>
-            <Span>
-              SwiftUI is Apple’s new declarative programming framework used to
-              develop apps for iOS and Mac using Swift. The declarative approach
-              is the key differentiator when comparing SwiftUI to UIKit. In
-              UIKit you mediate the relationship between events and changes to
-              presentation. With SwiftUI the need to mediate that relationship
-              disappears since that is handled by the framework itself.
-            </Span>
-            <Span>
-              As far as building apps with SwiftUI, things are a bit more
-              streamlined when compared to UIKit:
-              <br />
-              1. Xcode displays the visual editor alongside any file that
-              contains a SwiftUI view, displaying a live representation of the
-              view you are building. You can still interactively design on the
-              canvas, just like in Interface Builder.
-              <br />
-              2. .storyboard and .xib files are not used in SwiftUI. The Swift
-              code itself describes the layout rather than these opaque XML
-              files.
-            </Span>
-            <Span>
-              Here are some additional notes and caveats:
-              <br />
-              1. Widgets built using WidgetKit are required to use SwiftUI. This
-              is the only case as of now (iOS 14), but given Apple’s technology
-              and API history, we anticipate a time will come when you will need
-              to use SwiftUI in order to leverage the latest Apple features.
-              <br />
-              2. Swift developers can take advantage of Apple’s native libraries
-              and design elements across all of its platforms. For example, you
-              can’t do a native UI on watchOS if you don’t use SwiftUI.
-              <br />
-              3. SwiftUI requires iOS 13 or later. It might not be right for
-              apps where backwards compatibility is important.
-              <br />
-              4. It wasn’t until iOS 14 and the introduction of the App and
-              Scene protocols that SwiftUI became viable for building whole
-              apps.
-              {/* https://bignerdranch.com/blog/learning-apples-swiftui-or-uikit-which-one-is-right-for-you-right-now/#:~:text=SwiftUI%20is%20Apple's%20new%20declarative,events%20and%20changes%20to%20presentation.&text=xib%20files%20are%20not%20used%20in%20SwiftUI. */}
-            </Span>
-            <Span>
-              <b>Using SwiftUI and UIKit Together</b>
-            </Span>
-            <Span>
-              UIViewRepresentable is a protocol provided by the SwiftUI
-              framework. Using this protocol it is possible to wrap an instance
-              of a UIKit view so that it can be displayed with SwiftUI
-            </Span>
-            <Span>Defining a UIKit view wrapper with UIViewRepresentable:</Span>
-            <pre>{`
-@available(iOS 13, *)
-struct MyUIKitView: UIViewRepresentable {
-    func makeUIView(context: Context) -> UITextView {
-        let view = UIView()
-        view.backgroundColor = .blue
-        return view
-    }            
-    func updateUIView(_ uiView: UITextView, context: Context) {
-    }
-}
-            `}</pre>
-            <Span>Using the wrapped UIKit view in SwiftUI:</Span>
-            <pre>{`
-struct ContentView: View {
-  var body: some View {
-     VStack {
-        Text("Hello from UIKit!")
-        MyUIKitView()
-     }
-  }
+// `}</pre>
+//             <b>WelcomeViewController.swift</b>
+//             <pre>{`
+// import UIKit
+// class WelcomeViewController: UIViewController {
+//     @IBOutlet weak var titleLabel: UILabel!
+//     override func viewWillAppear(_ animated: Bool) {
+//         super.viewWillAppear(animated)
+//         navigationController?.isNavigationBarHidden = true
+//     }
+//     override func viewWillDisappear(_ animated: Bool) {
+//         super.viewWillDisappear(animated)
+//         navigationController?.isNavigationBarHidden = false
+//     }
+//     override func viewDidLoad() {
+//         super.viewDidLoad()                    
+//         titleLabel.text = ""
+//         var charIndex = 0.0
+//         let titleText = K.appName
+//         for letter in titleText {
+//             Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { (timer) in
+//                 self.titleLabel.text?.append(letter)
+//             }
+//             charIndex += 1
+//         }  
+//     }
+// }`}</pre>
+//             <br />
+//             <Span>
+//               Swift UI is apple's brand new UI framework built with declarative
+//               swift code.
+//             </Span>
+//             <Span>
+//               Since SwiftUI uses UIkit and AppKit behind the scenes, this means
+//               that rendering isn't any faster. However, in terms of development
+//               build time, SwiftUI usually performs better than UIkit. That's
+//               because the hierarchy of view resides in value-type structs stored
+//               on the stack, which means no costly memory allocations.
+//             </Span>
+//             <Span>
+//               <b>Imperative Vs Declarative Programming</b>
+//             </Span>
+//             <Span>
+//               Declarative programming is a paradigm in which programmer defines
+//               what needs to be accomplished w/o defining how it needs to be
+//               implemented.
+//               <br />
+//               Types: Functional , Logic
+//               <br />
+//               Imperative programming is a programming paradigm that uses
+//               statements that change a program’s state.
+//               <br />
+//               Types : Structural, Modular , Procedural
+//             </Span>
+//             <Span>
+//               <b>SwiftUI or UIKit</b>
+//             </Span>
+//             <Span>
+//               SwiftUI, Apple’s new declarative programming framework, was
+//               introduced along with iOS 13 in September 2019.
+//             </Span>
+//             <Span>
+//               <b>UIKit</b>
+//             </Span>
+//             <Span>
+//               UIKit provides a variety of objects which you can use to develop
+//               apps for iOS. These objects, such as UIView and its subclasses,
+//               allow for the display and interaction of content within your app.
+//               UIKit apps generally make use of the Model-View-Controller (MVC)
+//               design pattern.
+//               <br />
+//               UIKit has been the backbone of UI development on iOS for over a
+//               decade. It is a mature platform that sees use in just about every
+//               iOS application in existence. Since it is well established, there
+//               is an abundance of resources available in case you get stuck or
+//               have questions.
+//               <br />
+//               UIKit apps can be built in a few different ways:
+//               <br />
+//               1. Leveraging Interface Builder in order to design a UI without
+//               writing any code. Interface Builder is integrated into Xcode and
+//               allows for editing of .storyboard and .xib files, both of which
+//               describe layouts using XML.
+//               <br />
+//               2. A code focused approach where views and layout constraints are
+//               defined in Swift (or Objective-C).
+//               <br />
+//               3. A mix of the above two approaches
+//             </Span>
+//             <Span>
+//               <b>SwiftUI</b>
+//             </Span>
+//             <Span>
+//               SwiftUI is Apple’s new declarative programming framework used to
+//               develop apps for iOS and Mac using Swift. The declarative approach
+//               is the key differentiator when comparing SwiftUI to UIKit. In
+//               UIKit you mediate the relationship between events and changes to
+//               presentation. With SwiftUI the need to mediate that relationship
+//               disappears since that is handled by the framework itself.
+//             </Span>
+//             <Span>
+//               As far as building apps with SwiftUI, things are a bit more
+//               streamlined when compared to UIKit:
+//               <br />
+//               1. Xcode displays the visual editor alongside any file that
+//               contains a SwiftUI view, displaying a live representation of the
+//               view you are building. You can still interactively design on the
+//               canvas, just like in Interface Builder.
+//               <br />
+//               2. .storyboard and .xib files are not used in SwiftUI. The Swift
+//               code itself describes the layout rather than these opaque XML
+//               files.
+//             </Span>
+//             <Span>
+//               Here are some additional notes and caveats:
+//               <br />
+//               1. Widgets built using WidgetKit are required to use SwiftUI. This
+//               is the only case as of now (iOS 14), but given Apple’s technology
+//               and API history, we anticipate a time will come when you will need
+//               to use SwiftUI in order to leverage the latest Apple features.
+//               <br />
+//               2. Swift developers can take advantage of Apple’s native libraries
+//               and design elements across all of its platforms. For example, you
+//               can’t do a native UI on watchOS if you don’t use SwiftUI.
+//               <br />
+//               3. SwiftUI requires iOS 13 or later. It might not be right for
+//               apps where backwards compatibility is important.
+//               <br />
+//               4. It wasn’t until iOS 14 and the introduction of the App and
+//               Scene protocols that SwiftUI became viable for building whole
+//               apps.
+//               {/* https://bignerdranch.com/blog/learning-apples-swiftui-or-uikit-which-one-is-right-for-you-right-now/#:~:text=SwiftUI%20is%20Apple's%20new%20declarative,events%20and%20changes%20to%20presentation.&text=xib%20files%20are%20not%20used%20in%20SwiftUI. */}
+//             </Span>
+//             <Span>
+//               <b>Using SwiftUI and UIKit Together</b>
+//             </Span>
+//             <Span>
+//               UIViewRepresentable is a protocol provided by the SwiftUI
+//               framework. Using this protocol it is possible to wrap an instance
+//               of a UIKit view so that it can be displayed with SwiftUI
+//             </Span>
+//             <Span>Defining a UIKit view wrapper with UIViewRepresentable:</Span>
+//             <pre>{`
+// @available(iOS 13, *)
+// struct MyUIKitView: UIViewRepresentable {
+//     func makeUIView(context: Context) -> UITextView {
+//         let view = UIView()
+//         view.backgroundColor = .blue
+//         return view
+//     }            
+//     func updateUIView(_ uiView: UITextView, context: Context) {
+//     }
+// }
+//             `}</pre>
+//             <Span>Using the wrapped UIKit view in SwiftUI:</Span>
+//             <pre>{`
+// struct ContentView: View {
+//   var body: some View {
+//      VStack {
+//         Text("Hello from UIKit!")
+//         MyUIKitView()
+//      }
+//   }
   
-            `}</pre>
-            <Span>
-              <b>Using SwiftUI in UIKit</b>
-            </Span>
-            <Span>
-              UIHostingController is a view controller which allows for the
-              display of SwiftUI views into a UIKit view hierarchy. It can be
-              used just like any other view controller in UIKit:
-            </Span>
-            <Span>
-              let hostingController = UIHostingController(rootView: Text("Hello
-              from SwiftUI!")) <br />
-              present(hostingController, animated: true)
-            </Span>
-            <Span>
-              <b>Overcome Immutability of struct in SwiftUI</b>
-            </Span>
-            <Span>
-              swift provides special wrapper @state to overcome immutability of
-              structs. <br />
-              struct ContentView:View {"{ @state var left = 1 }"}
-            </Span>
-            <Span>
-              <b>Running app on mac using product catalyst</b>
-            </Span>
-            <Span>
-              project -&lt; target -&lt; mac <br />
-              signing & capabilities -&lt; apple ID
-            </Span>
-            <Span>
-              <b>Update Preview</b>
-            </Span>
-            <Span>Command + Option + P</Span>
-            <Span>
-              <b>Network Handling</b>
-            </Span>
-            <Span>
-              @ObservedObject and @Published can be used along with
-              NetworkManager
-            </Span>
-            <Span>
-              <b>Custom Fonts</b>
-            </Span>
-            <Span>
-              At info.plist , update Fons provided by the application key (for
-              e.g. Pacifico-Regular.ttf)
-            </Span>
-            <Span>ContentView.swift</Span>
-            <Span>Example 1:</Span>
-            <pre>
-              {`
-import SwiftUI
-struct ContentView: View {
-    var body: some View {
-        ZStack {
-            Color(.systemTeal)
-                .edgesIgnoringSafeArea(.all)
-            VStack {
-                Text("I Am Rich")
-                    .font(.system(size: 40))
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-                Image("diamond")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 200, height: 200, alignment: .center)
-            }
-        }
-    }
-}
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().previewDevice(PreviewDevice(rawValue:"iPhone SE"))
-    }
-}
-`}
-            </pre>
-            <Span>Example 2:</Span>
-            <pre>{`
-import SwiftUI
-struct ContentView: View { 
-    @State var leftDiceNumber = 1
-    @State var rightDiceNumber = 1
-    var body: some View {
-        ZStack {
-            Image("background")
-                .resizable()
-                .edgesIgnoringSafeArea(.all)
-            VStack {
-                Image("diceeLogo")
-                Spacer()
-                HStack {
-                    DiceView(n: leftDiceNumber)
-                    DiceView(n: rightDiceNumber)
-                }
-                .padding(.horizontal)
-                Spacer()
-                Button(action: {
-                    self.leftDiceNumber = Int.random(in: 1...6)
-                    self.rightDiceNumber = Int.random(in: 1...6)
-                }) {
-                    Text("Roll")
-                        .font(.system(size: 50))
-                        .fontWeight(.heavy)
-                        .foregroundColor(.white)
-                        .padding(.horizontal)
-                }
-                .background(Color.red)
-            }
-        }
-    }
-}
-struct DiceView: View {
-    let n: Int   
-    var body: some View {
-        Image("dice\(n)")
-            .resizable()
-            .aspectRatio(1, contentMode: .fit)
-            .padding()
-    }
-}
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}            
-            `}</pre>
-            <Span>Example 3:</Span>
-            <Span>Models:</Span>
-            <Span>
-              <b>NetworkManager.swift</b>
-            </Span>
-            <pre>{`import Foundation
-class NetworkManager: ObservableObject {
-    @Published var posts = [Post]()
-    func fetchData() {
-        if let url = URL(string: "https://hn.algolia.com/api/v1/search?tags=front_page") {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { (data, response, error) in
-                if error == nil {
-                    let decoder = JSONDecoder()
-                    if let safeData = data {
-                        do {
-                            let results = try decoder.decode(Results.self, from: safeData)
-                            DispatchQueue.main.async {
-                                self.posts = results.hits
-                            }
-                        } catch {
-                            print(error)
-                        }
-                    }
-                }
-            }
-            task.resume()
-        }
-    }
-}`}</pre>
-            <Span>
-              <b>PostData.swift</b>
-            </Span>
-            <pre>{`import Foundation
-struct Results: Decodable {
-    let hits: [Post]
-}
-struct Post: Decodable, Identifiable {
-    var id: String {
-        return objectID
-    }
-    let objectID: String
-    let points: Int
-    let title: String
-    let url: String?
-}`}</pre>
-            <Span>Models:</Span>
-            <Span>ContentView.swift</Span>
-            <pre>
-              {`
-import SwiftUI
-struct ContentView: View {
-    @ObservedObject var networkManager = NetworkManager()
-    var body: some View {
-        NavigationView {
-            List(networkManager.posts) { post in
-                NavigationLink(destination: DetailView(url: post.url)) {
-                    HStack {
-                        Text(String(post.points))
-                        Text(post.title)
-                    }
-                }
-            }
-            .navigationBarTitle("H4X0R NEWS")
-        }
-        .onAppear {
-            self.networkManager.fetchData()
-        }
-    }
-}
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}              
-//
-//let posts = [
-//    Post(id: "1", title: "Hello"),
-//    Post(id: "2", title: "Bonjour"),
-//    Post(id: "3", title: "Hola")
-//]
-              `}
-            </pre>
-            <Span>DetailView.swift</Span>
-            <pre>{`
-import SwiftUI
-struct DetailView: View {
-    let url: String?   
-    var body: some View {
-        WebView(urlString: url)
-    }
-}
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView(url: "https://www.google.com")
-    }
-}
+//             `}</pre>
+//             <Span>
+//               <b>Using SwiftUI in UIKit</b>
+//             </Span>
+//             <Span>
+//               UIHostingController is a view controller which allows for the
+//               display of SwiftUI views into a UIKit view hierarchy. It can be
+//               used just like any other view controller in UIKit:
+//             </Span>
+//             <Span>
+//               let hostingController = UIHostingController(rootView: Text("Hello
+//               from SwiftUI!")) <br />
+//               present(hostingController, animated: true)
+//             </Span>
+//             <Span>
+//               <b>Overcome Immutability of struct in SwiftUI</b>
+//             </Span>
+//             <Span>
+//               swift provides special wrapper @state to overcome immutability of
+//               structs. <br />
+//               struct ContentView:View {"{ @state var left = 1 }"}
+//             </Span>
+//             <Span>
+//               <b>Running app on mac using product catalyst</b>
+//             </Span>
+//             <Span>
+//               project -&lt; target -&lt; mac <br />
+//               signing & capabilities -&lt; apple ID
+//             </Span>
+//             <Span>
+//               <b>Update Preview</b>
+//             </Span>
+//             <Span>Command + Option + P</Span>
+//             <Span>
+//               <b>Network Handling</b>
+//             </Span>
+//             <Span>
+//               @ObservedObject and @Published can be used along with
+//               NetworkManager
+//             </Span>
+//             <Span>
+//               <b>Custom Fonts</b>
+//             </Span>
+//             <Span>
+//               At info.plist , update Fons provided by the application key (for
+//               e.g. Pacifico-Regular.ttf)
+//             </Span>
+//             <Span>ContentView.swift</Span>
+//             <Span>Example 1:</Span>
+//             <pre>
+//               {`
+// import SwiftUI
+// struct ContentView: View {
+//     var body: some View {
+//         ZStack {
+//             Color(.systemTeal)
+//                 .edgesIgnoringSafeArea(.all)
+//             VStack {
+//                 Text("I Am Rich")
+//                     .font(.system(size: 40))
+//                     .fontWeight(.bold)
+//                     .foregroundColor(Color.white)
+//                 Image("diamond")
+//                     .resizable()
+//                     .aspectRatio(contentMode: .fit)
+//                     .frame(width: 200, height: 200, alignment: .center)
+//             }
+//         }
+//     }
+// }
+// struct ContentView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         ContentView().previewDevice(PreviewDevice(rawValue:"iPhone SE"))
+//     }
+// }
+// `}
+//             </pre>
+//             <Span>Example 2:</Span>
+//             <pre>{`
+// import SwiftUI
+// struct ContentView: View { 
+//     @State var leftDiceNumber = 1
+//     @State var rightDiceNumber = 1
+//     var body: some View {
+//         ZStack {
+//             Image("background")
+//                 .resizable()
+//                 .edgesIgnoringSafeArea(.all)
+//             VStack {
+//                 Image("diceeLogo")
+//                 Spacer()
+//                 HStack {
+//                     DiceView(n: leftDiceNumber)
+//                     DiceView(n: rightDiceNumber)
+//                 }
+//                 .padding(.horizontal)
+//                 Spacer()
+//                 Button(action: {
+//                     self.leftDiceNumber = Int.random(in: 1...6)
+//                     self.rightDiceNumber = Int.random(in: 1...6)
+//                 }) {
+//                     Text("Roll")
+//                         .font(.system(size: 50))
+//                         .fontWeight(.heavy)
+//                         .foregroundColor(.white)
+//                         .padding(.horizontal)
+//                 }
+//                 .background(Color.red)
+//             }
+//         }
+//     }
+// }
+// struct DiceView: View {
+//     let n: Int   
+//     var body: some View {
+//         Image("dice\(n)")
+//             .resizable()
+//             .aspectRatio(1, contentMode: .fit)
+//             .padding()
+//     }
+// }
+// struct ContentView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         ContentView()
+//     }
+// }            
+//             `}</pre>
+//             <Span>Example 3:</Span>
+//             <Span>Models:</Span>
+//             <Span>
+//               <b>NetworkManager.swift</b>
+//             </Span>
+//             <pre>{`import Foundation
+// class NetworkManager: ObservableObject {
+//     @Published var posts = [Post]()
+//     func fetchData() {
+//         if let url = URL(string: "https://hn.algolia.com/api/v1/search?tags=front_page") {
+//             let session = URLSession(configuration: .default)
+//             let task = session.dataTask(with: url) { (data, response, error) in
+//                 if error == nil {
+//                     let decoder = JSONDecoder()
+//                     if let safeData = data {
+//                         do {
+//                             let results = try decoder.decode(Results.self, from: safeData)
+//                             DispatchQueue.main.async {
+//                                 self.posts = results.hits
+//                             }
+//                         } catch {
+//                             print(error)
+//                         }
+//                     }
+//                 }
+//             }
+//             task.resume()
+//         }
+//     }
+// }`}</pre>
+//             <Span>
+//               <b>PostData.swift</b>
+//             </Span>
+//             <pre>{`import Foundation
+// struct Results: Decodable {
+//     let hits: [Post]
+// }
+// struct Post: Decodable, Identifiable {
+//     var id: String {
+//         return objectID
+//     }
+//     let objectID: String
+//     let points: Int
+//     let title: String
+//     let url: String?
+// }`}</pre>
+//             <Span>Models:</Span>
+//             <Span>ContentView.swift</Span>
+//             <pre>
+//               {`
+// import SwiftUI
+// struct ContentView: View {
+//     @ObservedObject var networkManager = NetworkManager()
+//     var body: some View {
+//         NavigationView {
+//             List(networkManager.posts) { post in
+//                 NavigationLink(destination: DetailView(url: post.url)) {
+//                     HStack {
+//                         Text(String(post.points))
+//                         Text(post.title)
+//                     }
+//                 }
+//             }
+//             .navigationBarTitle("H4X0R NEWS")
+//         }
+//         .onAppear {
+//             self.networkManager.fetchData()
+//         }
+//     }
+// }
+// struct ContentView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         ContentView()
+//     }
+// }              
+// //
+// //let posts = [
+// //    Post(id: "1", title: "Hello"),
+// //    Post(id: "2", title: "Bonjour"),
+// //    Post(id: "3", title: "Hola")
+// //]
+//               `}
+//             </pre>
+//             <Span>DetailView.swift</Span>
+//             <pre>{`
+// import SwiftUI
+// struct DetailView: View {
+//     let url: String?   
+//     var body: some View {
+//         WebView(urlString: url)
+//     }
+// }
+// struct DetailView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         DetailView(url: "https://www.google.com")
+//     }
+// }
 
-              `}</pre>
-            <Span>WebView View.swift</Span>
-            <pre>{`
-import Foundation
-import WebKit
-import SwiftUI
-struct WebView: UIViewRepresentable {
-    let urlString: String?
-    func makeUIView(context: Context) -> WKWebView {
-        return WKWebView()
-    }
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-        if let safeString = urlString {
-            if let url = URL(string: safeString) {
-                let request = URLRequest(url: url)
-                uiView.load(request)
-            }
-        }
-    }
-}            
-            `}</pre>
-            <Span>UITableView</Span>
-            <Span>
-              numberOfRowsInSelection <br />
-              cellForRowAt
-              <br />
-              didSelectRowAt
-              <br />
-              deselectRow
-              <br />
-              dequeueReusableCell
-              <br />
-              cellForRow
-            </Span>
-            <Span>Reload TableView Data</Span>
-            <Span>
-              self.tableView.reloadData()
-              <br />
-              App Launched -&gt; App Visible -&gt; App Receeds Into Background
-              -&gt; Resources Reclaimed
-            </Span>
-            <Span>Various Ways Of Storing Data</Span>
-            <Span>
-              UserDefaults -&gt; small piece of data <br />
-              Codable -&gt; plist <br />
-              KeyChain -&gt; passwords <br />
-              SQLite -&gt; large amount of data <br />
-              CoreData -&gt; object oriented database <br />
-              Realm -&gt;faster and easier to use
-            </Span>
-            <Span>CoreData Terminology</Span>
-            <Span>
-              Entity -&lt; Class -&lt; Taale
-              <br />
-              Property -&lt; Attribute -&lt; Field
-            </Span>
-            <Span>Colors : Chamelon</Span>
-            <Span>Execute code under main thread from separate thread</Span>
-            <pre>{`
-func searchBar(_ searchBar:UISearchBar,textDidChange searchText:String){
-  DispatchQueue.main.async{
-    searchBar.reassignFirstResponder()
-  }
-}
+//               `}</pre>
+//             <Span>WebView View.swift</Span>
+//             <pre>{`
+// import Foundation
+// import WebKit
+// import SwiftUI
+// struct WebView: UIViewRepresentable {
+//     let urlString: String?
+//     func makeUIView(context: Context) -> WKWebView {
+//         return WKWebView()
+//     }
+//     func updateUIView(_ uiView: WKWebView, context: Context) {
+//         if let safeString = urlString {
+//             if let url = URL(string: safeString) {
+//                 let request = URLRequest(url: url)
+//                 uiView.load(request)
+//             }
+//         }
+//     }
+// }            
+//             `}</pre>
+//             <Span>UITableView</Span>
+//             <Span>
+//               numberOfRowsInSelection <br />
+//               cellForRowAt
+//               <br />
+//               didSelectRowAt
+//               <br />
+//               deselectRow
+//               <br />
+//               dequeueReusableCell
+//               <br />
+//               cellForRow
+//             </Span>
+//             <Span>Reload TableView Data</Span>
+//             <Span>
+//               self.tableView.reloadData()
+//               <br />
+//               App Launched -&gt; App Visible -&gt; App Receeds Into Background
+//               -&gt; Resources Reclaimed
+//             </Span>
+//             <Span>Various Ways Of Storing Data</Span>
+//             <Span>
+//               UserDefaults -&gt; small piece of data <br />
+//               Codable -&gt; plist <br />
+//               KeyChain -&gt; passwords <br />
+//               SQLite -&gt; large amount of data <br />
+//               CoreData -&gt; object oriented database <br />
+//               Realm -&gt;faster and easier to use
+//             </Span>
+//             <Span>CoreData Terminology</Span>
+//             <Span>
+//               Entity -&lt; Class -&lt; Taale
+//               <br />
+//               Property -&lt; Attribute -&lt; Field
+//             </Span>
+//             <Span>Colors : Chamelon</Span>
+//             <Span>Execute code under main thread from separate thread</Span>
+//             <pre>{`
+// func searchBar(_ searchBar:UISearchBar,textDidChange searchText:String){
+//   DispatchQueue.main.async{
+//     searchBar.reassignFirstResponder()
+//   }
+// }
 
-            `}</pre>
-            <p>Packages</p>
-            <pre>
-              {`
-PropertyListEncoder
-PropertyListDecoder
-UserDefaults.standard
-NSSearchPathForDirectoriesInDomain
-NSPersistentContainer
-NSFetchRequest
-NSPredicate
-Item()
+//             `}</pre>
+//             <p>Packages</p>
+//             <pre>
+//               {`
+// PropertyListEncoder
+// PropertyListDecoder
+// UserDefaults.standard
+// NSSearchPathForDirectoriesInDomain
+// NSPersistentContainer
+// NSFetchRequest
+// NSPredicate
+// Item()
 
-  `}
-            </pre>
-            <p>Advanced Swift Operations:</p>
-            <pre>
-              {`
+//   `}
+//             </pre>
+//             <p>Advanced Swift Operations:</p>
+//             <pre>
+//               {`
 
-var b:Int {
-  get { a - 4 }
-  set { print(newValue) }
-}            
+// var b:Int {
+//   get { a - 4 }
+//   set { print(newValue) }
+// }            
 
-              `}
-            </pre>
-            <pre>
-              {`
+//               `}
+//             </pre>
+//             <pre>
+//               {`
               
-var a:Int = 10 {
-  willSet {
-    print(newValue) 
-  }
-  didSet {
-    print(newValue) 
-  }
-}                     
+// var a:Int = 10 {
+//   willSet {
+//     print(newValue) 
+//   }
+//   didSet {
+//     print(newValue) 
+//   }
+// }                     
 
-              `}
-            </pre>
-            <pre>{`
+//               `}
+//             </pre>
+//             <pre>{`
             
-            if let a = b {
-              if c == true {
+//             if let a = b {
+//               if c == true {
                   
-              }
-              x = y
-            }
+//               }
+//               x = y
+//             }
             
-            `}</pre>
-            <Span>
-              <b>Swift Access Levels</b>
-            </Span>
-            <Span>1. private</Span>
-            <Span>2. filepointer</Span>
-            <Span>3. internal</Span>
-            <Span>4. public</Span>
-            <Span>Swift Optionals</Span>
-            <Span>Guard</Span>
-            <Span>
-              guard let number = Double(x.txt) else {"{ fatalError('')}"}
-            </Span>
-            <Span>Struct live on stack whereas classes live on heap.</Span>
-            <Span>tuples</Span>
-            <Span>
-              x: ("a",3) <br />
-              x: (a:"a",b:3) <br />
-              print("\(x.a)\(x.b)")
-            </Span>
-            <Span>
-              if let n! = x?.n1, let 0 = y1?.n2 {"{ print('\\(n1) \\(n2)') }"}
-            </Span>
-            <Span>
-              TestFlight makes it easy to invite users to test your apps and App
-              Clips and collect valuable feedback before releasing your apps on
-              the App Store. You can invite up to 10,000 testers using just
-              their email address or by sharing a public link.
-            </Span>
-          </>
-        ),
-        types: {},
-      },
-      Go: {
-        title: "Go",
-        content: (
-          <>
-            <Span>
-              <b>Installation Guide:</b>
-            </Span>
-            <Span>
-              Go to golang.org and choose download option. Then at the download
-              page, select appropriate arm based verison for m1 mac.
-            </Span>
-            <Span>After installatin, setup can be deleted</Span>
-            <Span>Go to /usr/local/go</Span>
-            <Span>Execute following command:</Span>
-            <Span>export GOROOT=/usr/local/go</Span>
-            <Span>
-              export GOPATH=$HOME/Desktop/folders/projects/go-workspace
-            </Span>
-            <Span>export PATH=$GOPATH/bin:$GOROOT/bin:$PATH</Span>
-            <Span>
-              Go is very useful for multi-threading. It has lot of features that
-              are very simple.
-            </Span>
-            <Span>
-              <b>Goroutines</b>
-            </Span>
-            <Span>
-              They are light weight threads of execution managed by the go
-              runtime.
-            </Span>
-            <Span>They are just functions that can be run concurrently</Span>
-            <Span>
-              It's simple to start goroutine . That's it's used widely for
-              backend app that needs concurrency.
-            </Span>
-            <pre>
-              {`package main
+//             `}</pre>
+//             <Span>
+//               <b>Swift Access Levels</b>
+//             </Span>
+//             <Span>1. private</Span>
+//             <Span>2. filepointer</Span>
+//             <Span>3. internal</Span>
+//             <Span>4. public</Span>
+//             <Span>Swift Optionals</Span>
+//             <Span>Guard</Span>
+//             <Span>
+//               guard let number = Double(x.txt) else {"{ fatalError('')}"}
+//             </Span>
+//             <Span>Struct live on stack whereas classes live on heap.</Span>
+//             <Span>tuples</Span>
+//             <Span>
+//               x: ("a",3) <br />
+//               x: (a:"a",b:3) <br />
+//               print("\(x.a)\(x.b)")
+//             </Span>
+//             <Span>
+//               if let n! = x?.n1, let 0 = y1?.n2 {"{ print('\\(n1) \\(n2)') }"}
+//             </Span>
+//             <Span>
+//               TestFlight makes it easy to invite users to test your apps and App
+//               Clips and collect valuable feedback before releasing your apps on
+//               the App Store. You can invite up to 10,000 testers using just
+//               their email address or by sharing a public link.
+//             </Span>
+//           </>
+//         ),
+//         types: {},
+//       },
+//       Go: {
+//         title: "Go",
+//         content: (
+//           <>
+//             <Span>
+//               <b>Installation Guide:</b>
+//             </Span>
+//             <Span>
+//               Go to golang.org and choose download option. Then at the download
+//               page, select appropriate arm based verison for m1 mac.
+//             </Span>
+//             <Span>After installatin, setup can be deleted</Span>
+//             <Span>Go to /usr/local/go</Span>
+//             <Span>Execute following command:</Span>
+//             <Span>export GOROOT=/usr/local/go</Span>
+//             <Span>
+//               export GOPATH=$HOME/Desktop/folders/projects/go-workspace
+//             </Span>
+//             <Span>export PATH=$GOPATH/bin:$GOROOT/bin:$PATH</Span>
+//             <Span>
+//               Go is very useful for multi-threading. It has lot of features that
+//               are very simple.
+//             </Span>
+//             <Span>
+//               <b>Goroutines</b>
+//             </Span>
+//             <Span>
+//               They are light weight threads of execution managed by the go
+//               runtime.
+//             </Span>
+//             <Span>They are just functions that can be run concurrently</Span>
+//             <Span>
+//               It's simple to start goroutine . That's it's used widely for
+//               backend app that needs concurrency.
+//             </Span>
+//             <pre>
+//               {`package main
 
-import (
-	"fmt"
-	"time"
-)
+// import (
+// 	"fmt"
+// 	"time"
+// )
 
-func spinner(delay time.Duration) {
-	for {
-		for _, x := range \`-\|/\` {
-			fmt.Printf("\r%c", x)
-			time.Sleep(delay)
-		}
-	}
-}
+// func spinner(delay time.Duration) {
+// 	for {
+// 		for _, x := range \`-\|/\` {
+// 			fmt.Printf("\r%c", x)
+// 			time.Sleep(delay)
+// 		}
+// 	}
+// }
 
-func waitAndPrint(delay time.Duration) {
-	fmt.Println("Working")
-	time.Sleep(delay)
-	fmt.Println("Fn")
-}
+// func waitAndPrint(delay time.Duration) {
+// 	fmt.Println("Working")
+// 	time.Sleep(delay)
+// 	fmt.Println("Fn")
+// }
 
-func main() {
-	go spinner(100 * time.Millisecond)
-	waitAndPrint(10 * time.Second)
-}`}
-            </pre>
-            <Span>
-              <b>Channels</b>
-            </Span>
-            <Span>
-              Imagine we have lot of go routines, Channels are used to
-              communicate between various goroutines. Each channel is a condult
-              for values of a particular type called the channel element type.
-            </Span>
-            <pre>{`
-package main
-import (
-  "fmt"
-  "time"
-)
-func other(c chan string) {
-  time.Sleep(5 * time.Second)
-  c <- " i am a goroutine"
-}
-func main() {
-  done := make(chan string)
-  defer close(done)
-  go other(done)
-  // wait for data to come
-  data := <-done
-  fmt.Println(data)
-}            
-            `}</pre>
-            <Span>
-              <b>Mutex</b>
-            </Span>
-            <Span>
-              A Mutex is a method used as a locking mechanism to ensure that
-              only one Goroutine is accessing the critical section of code at
-              any point of time. This is done to prevent race conditions from
-              happening. Sync package contains the Mutex
-            </Span>
-            <Span>
-              In 2006, Intel released the first dual core processor. In 2007,
-              Google started creating the go programming language. They wanted
-              to advantage of multiple cores. Hence, Go is the first viable
-              language which was wriiten to take advantage of multiple cores.
-              It's statically typed, garbage compiled, to run on distributed
-              environments across multiple machines and easily take advantage of
-              that.It's built time is super fast. Google wanted fast build, fast
-              efficient compilation, efficient execution and easy programming
-              such as python but it has advantage of compiled time, GC ans
-              static type checking. People who helped in creating c, UTF-8 (
-              world's most popular encoding scheme ) and UNIX OS contributed
-              towards creation of go. Youtube is about all re-written in go.
-              2009 =&gt; open sourced and first version was released at 2012. Go
-              is really popular in China because of its large population.
-            </Span>
-            <Span>
-              Server Side : Go &gt; Node.js &gt; Python &gt; Ruby &gt; PHP
-            </Span>
-            <Span>
-              People such as Rob Pike ( UTF-8 ), Ken Thompson ( Unix OS, He
-              re-wrote the Unix kernel in C ), and Robert Griesemer ( V8 JS
-              Engine ) led the project.
-            </Span>
-            <Span>
-              Go was built to do what google does. Google is rewriting Google
-              with Go. Youtube is about all re-written in go
-            </Span>
-            <Span>Commands :</Span>
-            <Span>go mod init _____</Span>
-            <Span>go build ___.go</Span>
-            <Span>go run ___.go</Span>
-            <Span>go build github.com/saiashish9/..... ./_____</Span>
-            <Span>
-              <b>Variables:</b>
-            </Span>
-            <Span>Short Variable Declarator Operator:</Span>
-            <Span>x:= 7 fmt.Println(x)</Span>
-            <Span>fmt.Printf("%T",x)</Span>
-            <Span>Block Level Scope</Span>
-            <pre>
-              {`
-func main(){
-  x := 10
-  fmt.Println(x)
-}              
-              `}
-            </pre>
-            <Span>Package Level Scope</Span>
-            <pre>
-              {`
-package main
+// func main() {
+// 	go spinner(100 * time.Millisecond)
+// 	waitAndPrint(10 * time.Second)
+// }`}
+//             </pre>
+//             <Span>
+//               <b>Channels</b>
+//             </Span>
+//             <Span>
+//               Imagine we have lot of go routines, Channels are used to
+//               communicate between various goroutines. Each channel is a condult
+//               for values of a particular type called the channel element type.
+//             </Span>
+//             <pre>{`
+// package main
+// import (
+//   "fmt"
+//   "time"
+// )
+// func other(c chan string) {
+//   time.Sleep(5 * time.Second)
+//   c <- " i am a goroutine"
+// }
+// func main() {
+//   done := make(chan string)
+//   defer close(done)
+//   go other(done)
+//   // wait for data to come
+//   data := <-done
+//   fmt.Println(data)
+// }            
+//             `}</pre>
+//             <Span>
+//               <b>Mutex</b>
+//             </Span>
+//             <Span>
+//               A Mutex is a method used as a locking mechanism to ensure that
+//               only one Goroutine is accessing the critical section of code at
+//               any point of time. This is done to prevent race conditions from
+//               happening. Sync package contains the Mutex
+//             </Span>
+//             <Span>
+//               In 2006, Intel released the first dual core processor. In 2007,
+//               Google started creating the go programming language. They wanted
+//               to advantage of multiple cores. Hence, Go is the first viable
+//               language which was wriiten to take advantage of multiple cores.
+//               It's statically typed, garbage compiled, to run on distributed
+//               environments across multiple machines and easily take advantage of
+//               that.It's built time is super fast. Google wanted fast build, fast
+//               efficient compilation, efficient execution and easy programming
+//               such as python but it has advantage of compiled time, GC ans
+//               static type checking. People who helped in creating c, UTF-8 (
+//               world's most popular encoding scheme ) and UNIX OS contributed
+//               towards creation of go. Youtube is about all re-written in go.
+//               2009 =&gt; open sourced and first version was released at 2012. Go
+//               is really popular in China because of its large population.
+//             </Span>
+//             <Span>
+//               Server Side : Go &gt; Node.js &gt; Python &gt; Ruby &gt; PHP
+//             </Span>
+//             <Span>
+//               People such as Rob Pike ( UTF-8 ), Ken Thompson ( Unix OS, He
+//               re-wrote the Unix kernel in C ), and Robert Griesemer ( V8 JS
+//               Engine ) led the project.
+//             </Span>
+//             <Span>
+//               Go was built to do what google does. Google is rewriting Google
+//               with Go. Youtube is about all re-written in go
+//             </Span>
+//             <Span>Commands :</Span>
+//             <Span>go mod init _____</Span>
+//             <Span>go build ___.go</Span>
+//             <Span>go run ___.go</Span>
+//             <Span>go build github.com/saiashish9/..... ./_____</Span>
+//             <Span>
+//               <b>Variables:</b>
+//             </Span>
+//             <Span>Short Variable Declarator Operator:</Span>
+//             <Span>x:= 7 fmt.Println(x)</Span>
+//             <Span>fmt.Printf("%T",x)</Span>
+//             <Span>Block Level Scope</Span>
+//             <pre>
+//               {`
+// func main(){
+//   x := 10
+//   fmt.Println(x)
+// }              
+//               `}
+//             </pre>
+//             <Span>Package Level Scope</Span>
+//             <pre>
+//               {`
+// package main
 
-import "fmt"
+// import "fmt"
 
-var x = 10
+// var x = 10
 
-var y int
+// var y int
 
-func main(){
-  fmt.Println(x)
-  fmt.Println(y) // 0
-}
-              `}
-            </pre>
-            <Span>
-              <b>Composite Literal</b>
-            </Span>
-            <Span>
-              <b>Slice</b>
-            </Span>
-            <p>It is a datastructure used to hold a list of things.</p>
-            <pre>{`
-a := []int{1, 2, 3}
-fmt.Println(a, a[:2])
-            `}</pre>
-            <Span>
-              <b>Map</b>
-            </Span>
-            <pre>{`
-m := map[string]int{ "a" : 5, "b" : 7}
-            `}</pre>
-            <Span>
-              <b>Struct</b>
-            </Span>
-            <pre>
-              {`
-type ht int
-type person struct {
-  fn string
-  ln string
-}         
-func main(){
-var t ht
-t = 7
-}
-p := person{"a","b"}
-         `}
-            </pre>
-            <Span>
-              <b>Functions</b>
-            </Span>
-            <Span>{`func (receiver) identifier(parameters)`}</Span>
-            <pre>{`
-func (p person) speak(){
-  fmt.Println(p.fname,\`"1235"\`)
-}            
-p := person{"a","b"}
-p.speak()
-            `}</pre>
-            <Span>Nested Struct</Span>
-            <pre>
-              {`
-type struct secretAgent {
-  person
-  license bool
-}         
-s1:= secretAgent {
-  person {
-    "a",
-    "b"
-  },
-  true
-}
-s1.person.speak()
-              `}
-            </pre>
-            <Span>Interfaces And Polymorphism</Span>
-            <pre>{`
-type human innterface {
-  speak()
-}       
+// func main(){
+//   fmt.Println(x)
+//   fmt.Println(y) // 0
+// }
+//               `}
+//             </pre>
+//             <Span>
+//               <b>Composite Literal</b>
+//             </Span>
+//             <Span>
+//               <b>Slice</b>
+//             </Span>
+//             <p>It is a datastructure used to hold a list of things.</p>
+//             <pre>{`
+// a := []int{1, 2, 3}
+// fmt.Println(a, a[:2])
+//             `}</pre>
+//             <Span>
+//               <b>Map</b>
+//             </Span>
+//             <pre>{`
+// m := map[string]int{ "a" : 5, "b" : 7}
+//             `}</pre>
+//             <Span>
+//               <b>Struct</b>
+//             </Span>
+//             <pre>
+//               {`
+// type ht int
+// type person struct {
+//   fn string
+//   ln string
+// }         
+// func main(){
+// var t ht
+// t = 7
+// }
+// p := person{"a","b"}
+//          `}
+//             </pre>
+//             <Span>
+//               <b>Functions</b>
+//             </Span>
+//             <Span>{`func (receiver) identifier(parameters)`}</Span>
+//             <pre>{`
+// func (p person) speak(){
+//   fmt.Println(p.fname,\`"1235"\`)
+// }            
+// p := person{"a","b"}
+// p.speak()
+//             `}</pre>
+//             <Span>Nested Struct</Span>
+//             <pre>
+//               {`
+// type struct secretAgent {
+//   person
+//   license bool
+// }         
+// s1:= secretAgent {
+//   person {
+//     "a",
+//     "b"
+//   },
+//   true
+// }
+// s1.person.speak()
+//               `}
+//             </pre>
+//             <Span>Interfaces And Polymorphism</Span>
+//             <pre>{`
+// type human innterface {
+//   speak()
+// }       
 
-func saySomething(h human){
-  h.speak()
-}
+// func saySomething(h human){
+//   h.speak()
+// }
 
-saySonething(p1)
-saySonething(s1)
+// saySonething(p1)
+// saySonething(s1)
 
-            `}</pre>
-            <Span>Fundamentals</Span>
-            <pre>{`
-// i:=42 is not valid here
-var i = 42 
-// i => local level access
-// I => global level access
-func main(){
-  var i int = 42
-  var j float32 = 27.6
-  fmt.Printf("%v ,%T", j, j)
-  var q string
-  q = string(i)
-  q = strconv.Itoa(p)
-  // variable blocks
-  var (
-	  i = 32
-  )
-  var (
-    x string = "A"
-    y string = "B"
-  )
-  fmt.Println(x, y)
-  var n bool = true
-  n = 1==1
-  var i int8 = 6
-  // 6 == 6 false
-  // int(6) == 6 true
-  // int8 +128 - 127
-  // int16 -32768 - 32767
-  // int32 int64
-  // var n uint16 = 42
-  // uint32 uint64 X
-  // uint8 -> byte common
-  var i complex64 = 1 + 2i
-  i = complex(5, 6)
-  fmt.Println(i)
-  fmt.Println(real(i), imag(i))
-  s := "abcd"
-  println("abcd"[2], s[2])
-  // s[2] = "j" is not valid
-  // & | ^ &^ xnor << >>
-  rune '' int32
-  r := 'a'
-  fmt.Println(r)
-  var r rune = 'i'
-  fmt.Println(r)
-  const myConst int = 42
-  const c float32 = math.Sin(1.57) X
-  const (
-    a = iota
-    b = iota
-    c = iota
-  )
-  const (
-    a2 = iota
-    b2
-  )
-  var c2 int = a2
-  fmt.Println(a2 == c2)
-  const (
-    _ = 5
-    a
-    b
-    c
-  )
-  // 5 5 5
-  println(a, b, c)
-  const (
-    _ = iota + 5
-    a
-    b
-    c
-  )
-  println(a, b, c)
-  // 6 7 8
-  const (
-    _  = iota
-    KB = 1 << (10 * iota)
-    MB
-    GB
-    TB
-    PB
-    EB
-    ZB
-    YB
-  )
-  fileSize := 4000000000.00
-  fmt.Printf("%.2fGB", fileSize/GB)
-  const (
-    a = 1 << iota
-    b
-    c
-    e
-  )
-  1 2 4 16
-  var d byte = a | b | c
-  println(d)
-  fmt.Printf("%b\\n", d)
-  fmt.Printf("%v\\n", a&d == a)
-  fmt.Printf("%v\\n", a&e == a)
-  _ = iota // write only value
-  grades := [3]int{97, 85}
-  g := [...]int{1, 2}
-  var students [3]string
-  fmt.Println(students)
-  students[0], students[1] = "a", "b"
-  fmt.Println(students, len(students))
-  fmt.Printf("%v \\n%v \\n", grades, g)
-  var a [3][3]int = [3][3]int{
-  	[3]int{1, 0, 1},
-  	[3]int{0, 0, 1},
-  	[3]int{1, 0, 0}}
-  fmt.Println(a)
-  a := [...]int{1, 2, 3}
-  b := a
-  c := &a
-  c[1] = 5
-  b[1] = 5
-  fmt.Println(a, b, c)
-  // slice
-  a := []int{1, 2, 3}
-  fmt.Println(a, a[:2])
-  a := make([]int, 3, 1000)
-  fmt.Println(len(a), cap(a))
-  a = append(a, 1, 2)
-  b := []int{}
-  b = append(b, []int{2, 3, 4}...)
-  fmt.Println(b)
-  fmt.Println(a)
-  a := []int{1, 2, 3, 4, 5}
-  fmt.Println(a)
-  b := a[:len(a)]
-  fmt.Println(b)
-  }            
-            `}</pre>
-            <Span>Constructs</Span>
-            <pre>{`
-for i := 0; i < 10; i++ {
-	if i%2 == 0 {
-		continue
-	}
-	fmt.Println(i)
-}
-s := []int{1, 2, 3}
-fmt.Println(s)
-for k, v := range s {
-	fmt.Println(k, v)
-}
-x := map[string]int{
-	"a": 1,
-}
-for _, p := range x {
-	fmt.Println(p)
-}
-for j := 7; j <= 9; j++ {
-	fmt.Println(j)
-}
-for {
-	fmt.Println("loop")
-	break
-}           
-s := []int{1, 2, 3}
-fmt.Println(s)
-for k, v := range s {
-  fmt.Println(k, v)
-}   
-for i, j := 0; i < 5; i, j = i+1, j+1 {
-  fmt.Println(i, j)
-}
-for i := 0; i < 10; i++ {
-  if i%2 == 0 {
-    continue
-  }
-  fmt.Println(i)
-}
-s := map[string]int{
-  "a": 1,
-  "b": 2,
-}
-if c, d := s["a"]; d {
-  fmt.Println(c)
-}
-myNum := 0.123
-if math.Abs(myNum/math.Pow(math.Sqrt(myNum), 2)-1) < 0.001 {
-  fmt.Println("same")
-} else if 0 == 0 {
-  fmt.Println("diff")
-}
-switch i := 2 + 3; i {
-case 1, 2:
-  fmt.Println("one")
-case 3:
-  fmt.Println("two")
-default:
-  fmt.Println("neither one nor two")
-}
-i := 2
-switch {
-case i <= 10:
-  fmt.Println("<=0")
-  fallthrough
-case i >= 20:
-  fmt.Println(">=0")
-}
-var i interface{} = 1
-i = 2.2
-i = true
-switch i.(type) {
-case int:
-  fmt.Println("i is an int")
-case string:
-  fmt.Println("string")
-case bool:
-  fmt.Println("bool")
-case float32:
-  fmt.Println("float32")
-  fmt.Println(i)
-}
-for i := 0; i < 5; i += 2 {
-  fmt.Println(i)
-}
-// i++ X
-// i=0 , j=0 X
-for i, j := 0; i < 5; i, j = i+1, j+1 {
-  fmt.Println(i, j)
-}
-for i := 0; i < 10; i++ {
-  if i%2 == 0 {
-    continue
-  }
-  fmt.Println(i)
-}
-            `}</pre>
-            <Span>
-              <b>Functions:</b>
-            </Span>
-            <pre>{`
-package main
-import "fmt"
-func main() {
-	sayMsg("Go")
-	greeting := "Hello"
-	name := "Sai"
-	sayGreeting(&greeting, &name)
-	fmt.Println(name)
-	sum(1, 2, 3, 4)
-	g := greeter{
-		"hi", "Go",
-	}
-	g.greet()
-	fmt.Println(g.name)
-}
-type greeter struct {
-	greeting string
-	name     string
-}
+//             `}</pre>
+//             <Span>Fundamentals</Span>
+//             <pre>{`
+// // i:=42 is not valid here
+// var i = 42 
+// // i => local level access
+// // I => global level access
+// func main(){
+//   var i int = 42
+//   var j float32 = 27.6
+//   fmt.Printf("%v ,%T", j, j)
+//   var q string
+//   q = string(i)
+//   q = strconv.Itoa(p)
+//   // variable blocks
+//   var (
+// 	  i = 32
+//   )
+//   var (
+//     x string = "A"
+//     y string = "B"
+//   )
+//   fmt.Println(x, y)
+//   var n bool = true
+//   n = 1==1
+//   var i int8 = 6
+//   // 6 == 6 false
+//   // int(6) == 6 true
+//   // int8 +128 - 127
+//   // int16 -32768 - 32767
+//   // int32 int64
+//   // var n uint16 = 42
+//   // uint32 uint64 X
+//   // uint8 -> byte common
+//   var i complex64 = 1 + 2i
+//   i = complex(5, 6)
+//   fmt.Println(i)
+//   fmt.Println(real(i), imag(i))
+//   s := "abcd"
+//   println("abcd"[2], s[2])
+//   // s[2] = "j" is not valid
+//   // & | ^ &^ xnor << >>
+//   rune '' int32
+//   r := 'a'
+//   fmt.Println(r)
+//   var r rune = 'i'
+//   fmt.Println(r)
+//   const myConst int = 42
+//   const c float32 = math.Sin(1.57) X
+//   const (
+//     a = iota
+//     b = iota
+//     c = iota
+//   )
+//   const (
+//     a2 = iota
+//     b2
+//   )
+//   var c2 int = a2
+//   fmt.Println(a2 == c2)
+//   const (
+//     _ = 5
+//     a
+//     b
+//     c
+//   )
+//   // 5 5 5
+//   println(a, b, c)
+//   const (
+//     _ = iota + 5
+//     a
+//     b
+//     c
+//   )
+//   println(a, b, c)
+//   // 6 7 8
+//   const (
+//     _  = iota
+//     KB = 1 << (10 * iota)
+//     MB
+//     GB
+//     TB
+//     PB
+//     EB
+//     ZB
+//     YB
+//   )
+//   fileSize := 4000000000.00
+//   fmt.Printf("%.2fGB", fileSize/GB)
+//   const (
+//     a = 1 << iota
+//     b
+//     c
+//     e
+//   )
+//   1 2 4 16
+//   var d byte = a | b | c
+//   println(d)
+//   fmt.Printf("%b\\n", d)
+//   fmt.Printf("%v\\n", a&d == a)
+//   fmt.Printf("%v\\n", a&e == a)
+//   _ = iota // write only value
+//   grades := [3]int{97, 85}
+//   g := [...]int{1, 2}
+//   var students [3]string
+//   fmt.Println(students)
+//   students[0], students[1] = "a", "b"
+//   fmt.Println(students, len(students))
+//   fmt.Printf("%v \\n%v \\n", grades, g)
+//   var a [3][3]int = [3][3]int{
+//   	[3]int{1, 0, 1},
+//   	[3]int{0, 0, 1},
+//   	[3]int{1, 0, 0}}
+//   fmt.Println(a)
+//   a := [...]int{1, 2, 3}
+//   b := a
+//   c := &a
+//   c[1] = 5
+//   b[1] = 5
+//   fmt.Println(a, b, c)
+//   // slice
+//   a := []int{1, 2, 3}
+//   fmt.Println(a, a[:2])
+//   a := make([]int, 3, 1000)
+//   fmt.Println(len(a), cap(a))
+//   a = append(a, 1, 2)
+//   b := []int{}
+//   b = append(b, []int{2, 3, 4}...)
+//   fmt.Println(b)
+//   fmt.Println(a)
+//   a := []int{1, 2, 3, 4, 5}
+//   fmt.Println(a)
+//   b := a[:len(a)]
+//   fmt.Println(b)
+//   }            
+//             `}</pre>
+//             <Span>Constructs</Span>
+//             <pre>{`
+// for i := 0; i < 10; i++ {
+// 	if i%2 == 0 {
+// 		continue
+// 	}
+// 	fmt.Println(i)
+// }
+// s := []int{1, 2, 3}
+// fmt.Println(s)
+// for k, v := range s {
+// 	fmt.Println(k, v)
+// }
+// x := map[string]int{
+// 	"a": 1,
+// }
+// for _, p := range x {
+// 	fmt.Println(p)
+// }
+// for j := 7; j <= 9; j++ {
+// 	fmt.Println(j)
+// }
+// for {
+// 	fmt.Println("loop")
+// 	break
+// }           
+// s := []int{1, 2, 3}
+// fmt.Println(s)
+// for k, v := range s {
+//   fmt.Println(k, v)
+// }   
+// for i, j := 0; i < 5; i, j = i+1, j+1 {
+//   fmt.Println(i, j)
+// }
+// for i := 0; i < 10; i++ {
+//   if i%2 == 0 {
+//     continue
+//   }
+//   fmt.Println(i)
+// }
+// s := map[string]int{
+//   "a": 1,
+//   "b": 2,
+// }
+// if c, d := s["a"]; d {
+//   fmt.Println(c)
+// }
+// myNum := 0.123
+// if math.Abs(myNum/math.Pow(math.Sqrt(myNum), 2)-1) < 0.001 {
+//   fmt.Println("same")
+// } else if 0 == 0 {
+//   fmt.Println("diff")
+// }
+// switch i := 2 + 3; i {
+// case 1, 2:
+//   fmt.Println("one")
+// case 3:
+//   fmt.Println("two")
+// default:
+//   fmt.Println("neither one nor two")
+// }
+// i := 2
+// switch {
+// case i <= 10:
+//   fmt.Println("<=0")
+//   fallthrough
+// case i >= 20:
+//   fmt.Println(">=0")
+// }
+// var i interface{} = 1
+// i = 2.2
+// i = true
+// switch i.(type) {
+// case int:
+//   fmt.Println("i is an int")
+// case string:
+//   fmt.Println("string")
+// case bool:
+//   fmt.Println("bool")
+// case float32:
+//   fmt.Println("float32")
+//   fmt.Println(i)
+// }
+// for i := 0; i < 5; i += 2 {
+//   fmt.Println(i)
+// }
+// // i++ X
+// // i=0 , j=0 X
+// for i, j := 0; i < 5; i, j = i+1, j+1 {
+//   fmt.Println(i, j)
+// }
+// for i := 0; i < 10; i++ {
+//   if i%2 == 0 {
+//     continue
+//   }
+//   fmt.Println(i)
+// }
+//             `}</pre>
+//             <Span>
+//               <b>Functions:</b>
+//             </Span>
+//             <pre>{`
+// package main
+// import "fmt"
+// func main() {
+// 	sayMsg("Go")
+// 	greeting := "Hello"
+// 	name := "Sai"
+// 	sayGreeting(&greeting, &name)
+// 	fmt.Println(name)
+// 	sum(1, 2, 3, 4)
+// 	g := greeter{
+// 		"hi", "Go",
+// 	}
+// 	g.greet()
+// 	fmt.Println(g.name)
+// }
+// type greeter struct {
+// 	greeting string
+// 	name     string
+// }
 
-func (g *greeter) greet() {
-	fmt.Println(g)
-	g.name = ""
-}
-func sum(values ...int) {
-	fmt.Println(values)
-	result := 0
-	for _, v := range values {
-		result += v
-	}
-	fmt.Println(result)
-}
-func sayGreeting(greeting, name *string) {
-	fmt.Println(*greeting, *name)
-	*name = "Sai9"
-	fmt.Println(*name)
-}
-func sayMsg(msg string) {
-	fmt.Println(msg)
-}            
-            `}</pre>
-            <Span>
-              <b>Interfaces:</b>
-            </Span>
-            <pre>{`
-package main
-import "fmt"
-func main() {
-	var w Writer = ConsoleWriter{}
-	w.Write([]byte("Hello Go!"))
-	myInt := IntCounter(0)
-	var inc Incrementer = &myInt
-	for i := 0; i < 10; i++ {
-		fmt.Println(inc.Increment())
-	}
-}
-func (ic *IntCounter) Increment() int {
-	*ic++
-	return int(*ic)
-}
-type IntCounter int
-type Incrementer interface {
-	Increment() int
-}
-type Writer interface {
-	Write([]byte) (int, error)
-}
-type Closer interface {
-	Close() error
-}
-type WriterCloser interface {
-	Writer
-	Closer
-}
-type ConsoleWriter struct{}
-func (cw ConsoleWriter) Write(data []byte) (int, error) {
-	n, err := fmt.Println(string(data))
-	return n, err
-}            
-            `}</pre>
-            <Span>
-              <b>Tags</b>
-            </Span>
-            <pre>{`
-package main
-import (
-	"fmt"
-	"reflect"
-)
-type Animal struct {
-	Name   string \`required max:"100"\`
-	Origin string
-}
-func main() {
-	t := reflect.TypeOf(Animal{})
-	field, _ := t.FieldByName("Name")
-	fmt.Println(field.Tag)
-}
+// func (g *greeter) greet() {
+// 	fmt.Println(g)
+// 	g.name = ""
+// }
+// func sum(values ...int) {
+// 	fmt.Println(values)
+// 	result := 0
+// 	for _, v := range values {
+// 		result += v
+// 	}
+// 	fmt.Println(result)
+// }
+// func sayGreeting(greeting, name *string) {
+// 	fmt.Println(*greeting, *name)
+// 	*name = "Sai9"
+// 	fmt.Println(*name)
+// }
+// func sayMsg(msg string) {
+// 	fmt.Println(msg)
+// }            
+//             `}</pre>
+//             <Span>
+//               <b>Interfaces:</b>
+//             </Span>
+//             <pre>{`
+// package main
+// import "fmt"
+// func main() {
+// 	var w Writer = ConsoleWriter{}
+// 	w.Write([]byte("Hello Go!"))
+// 	myInt := IntCounter(0)
+// 	var inc Incrementer = &myInt
+// 	for i := 0; i < 10; i++ {
+// 		fmt.Println(inc.Increment())
+// 	}
+// }
+// func (ic *IntCounter) Increment() int {
+// 	*ic++
+// 	return int(*ic)
+// }
+// type IntCounter int
+// type Incrementer interface {
+// 	Increment() int
+// }
+// type Writer interface {
+// 	Write([]byte) (int, error)
+// }
+// type Closer interface {
+// 	Close() error
+// }
+// type WriterCloser interface {
+// 	Writer
+// 	Closer
+// }
+// type ConsoleWriter struct{}
+// func (cw ConsoleWriter) Write(data []byte) (int, error) {
+// 	n, err := fmt.Println(string(data))
+// 	return n, err
+// }            
+//             `}</pre>
+//             <Span>
+//               <b>Tags</b>
+//             </Span>
+//             <pre>{`
+// package main
+// import (
+// 	"fmt"
+// 	"reflect"
+// )
+// type Animal struct {
+// 	Name   string \`required max:"100"\`
+// 	Origin string
+// }
+// func main() {
+// 	t := reflect.TypeOf(Animal{})
+// 	field, _ := t.FieldByName("Name")
+// 	fmt.Println(field.Tag)
+// }
             
-            `}</pre>
-            <Span>
-              <b>Pointers</b>
-            </Span>
-            <pre>{`
-package main
-import "fmt"
-func main() {
-	var a int = 42
-	b := a
-	fmt.Println(a, b)
-	a = 27
-	fmt.Println(a, b)
-	var a int = 42
-	var b *int = &a
-	fmt.Println(a, b, *b)
-	a = 27
-	fmt.Println(a, *b)
-	a := [3]int{1, 2, 3}
-	b := &a[0]
-	c := &a[1] - 4
-	fmt.Println("%v %p %p\\n", a, b, c)
-	var ms *myStruct
-	ms = new(myStruct)
-	ms = myStruct{foo: 42}
-	(*ms).foo = 42
-	// compiling helping us out
-	ms.foo = 42
-	fmt.Println(ms, ms.foo, (*ms).foo)
-}
-type myStruct struct {
-	foo int
-}
-`}</pre>
-            <Span>
-              <b>Structs</b>
-            </Span>
-            <pre>{`
-package main
-import "fmt"
-type Doctor struct {
-	number     int
-	actorName  string
-	companions []string
-}
-type A struct {
-	name   string
-	origin string
-}
-type B struct {
-	A
-	Canfly bool
-}
-func main() {
-	s := map[string]int{
-		"a": 1,
-		"b": 2,
-	}
-	s["a"] = 3
-	delete(s, "a")
-	_, b := s["a"]
-	// no need to make use of _ again
-	fmt.Println(s, b)
-	a := Doctor{
-		number:    3,
-		actorName: "Sai",
-		companions: []string{
-			"a",
-			"b",
-		},
-	}
-	b := Doctor{
-		3,
-		"Sai",
-		[]string{
-			"a",
-			"b",
-		},
-	}
-	a := struct{ name string }{name: "Sai"}
-	b := &a
-	b.name = "Ashish"
-	fmt.Println(a, b)
-	// go doesn't supports traditional oop features
-	// go doesn't have inheritance
-	// fmt.Println(b.actorName)
-	b := B{}
-	b.Canfly = true
-	b.name = "Sai"
-	fmt.Println(b, b.name)
-	type A struct {
-		name   string
-		origin string
-	}
-	type B struct {
-		A
-		destination string
-	}
-	b := B{
-		A: A{"sai", "123"},
-		destination: "delhi",
-	}
-	fmt.Println(b)
-}            
-            `}</pre>
-            <Span>
-              <b>Routines</b>
-            </Span>
-            <Span>
-              A goroutine is a lightweight thread of execution used for
-              concurrency.
-            </Span>
-            <Span>Example 1</Span>
-            <pre>
-              {`
-package main
-import (
-  "fmt"
-  "time"
-)
-func f(from string) {
-  for i := 0; i < 3; i++ {
-      fmt.Println(from, ":", i)
-  }
-}
-func main() {  
-  f("direct")
-  go f("goroutine")
-  go func(msg string) {
-      fmt.Println(msg)
-  }("going")  
-  time.Sleep(time.Second)
-  fmt.Println("done")
-}
-go run goroutines.go
-direct : 0
-direct : 1
-direct : 2
-goroutine : 0
-going
-goroutine : 1
-goroutine : 2
-done  
-  `}
-            </pre>
-            <Span>Example 2</Span>
-            <pre>{`
-package main
-import (
-	"fmt"
-	"sync"
-)
-var wg = sync.WaitGroup{}
-var counter = 0
-var a = sync.RWMutex{}
-func main() {
-	// runtime.GOMAXPROCS(100)
-	for i := 0; i < 10; i++ {
-		wg.Add(2)
-		go sayHello()
-		go increment()
-	}
-	wg.Wait()
-}
-func sayHello() {
-	a.RLock()
-	fmt.Println(counter)
-	a.RUnlock()
-	wg.Done()
-}
-func increment() {
-	a.Lock()
-	counter++
-	a.Unlock()
-	wg.Done()
-}
-go run main.go
-1
-2
-2
-2
-2
-2
-2
-2
-2
-3
-w/o mutexes
-0
-2
-3
-4
-4
-5
-6
-7
-8
-10
-`}</pre>
-            <pre>
-              {`
-package main
-import (
-	"fmt"
-	"sync"
-	"time"
-)
-var wg = sync.WaitGroup{}
-func main() {
-	var msg = "hello"
-	wg.Add(1)
-	go func(msg string) {
-		fmt.Println(msg)
-		wg.Done()
-	}(msg)
-	msg = "Good Bye"
-	wg.Wait()
-	// closure's anonymous fns do have access to outer scope
-	time.Sleep(100 * time.Millisecond)
-}
-func sayHello() {
-	fmt.Println("hello")
-}  
-`}
-            </pre>
-            <Span>WaitGroups</Span>
-            <Span>
-              To wait for multiple goroutines to finish, we can use a wait
-              group.Sleep to simulate an expensive task. This WaitGroup is used
-              to wait for all the goroutines launched here to finish. Note: if a
-              WaitGroup is explicitly passed into functions, it should be done
-              by pointer.
-              <br />
-              Wrap the worker call in a closure that makes sure to tell the
-              WaitGroup that this worker is done. This way the worker itself
-              does not have to be aware of the concurrency primitives involved
-              in its execution.
-            </Span>
-            <pre>
-              {`
-package main
-import (
-	"fmt"
-	"sync"
-	"time"
-)
-func worker(id int) {
-	fmt.Printf("Worker %d starting\\n", id)
-	time.Sleep(time.Second)
-	fmt.Printf("Worker %d done\\n", id)
-}
-func main() {
-	var wg sync.WaitGroup
-	for i := 1; i <= 5; i++ {
-		wg.Add(1) // increases counter by 1 as we've 1 go routine
-		i := i
-		go func() {
-			defer wg.Done() // decreases counter by 1
-			worker(i)
-		}()
-	}
-	// Block until the WaitGroup counter goes back to 0;
-	// all the workers notified they're done.
-	wg.Wait()
-}
-o/p
-Worker 4 starting
-Worker 1 starting
-Worker 5 starting
-Worker 3 starting
-Worker 2 starting
-Worker 2 done
-Worker 5 done
-Worker 4 done
-Worker 3 done
-Worker 1 done 
+//             `}</pre>
+//             <Span>
+//               <b>Pointers</b>
+//             </Span>
+//             <pre>{`
+// package main
+// import "fmt"
+// func main() {
+// 	var a int = 42
+// 	b := a
+// 	fmt.Println(a, b)
+// 	a = 27
+// 	fmt.Println(a, b)
+// 	var a int = 42
+// 	var b *int = &a
+// 	fmt.Println(a, b, *b)
+// 	a = 27
+// 	fmt.Println(a, *b)
+// 	a := [3]int{1, 2, 3}
+// 	b := &a[0]
+// 	c := &a[1] - 4
+// 	fmt.Println("%v %p %p\\n", a, b, c)
+// 	var ms *myStruct
+// 	ms = new(myStruct)
+// 	ms = myStruct{foo: 42}
+// 	(*ms).foo = 42
+// 	// compiling helping us out
+// 	ms.foo = 42
+// 	fmt.Println(ms, ms.foo, (*ms).foo)
+// }
+// type myStruct struct {
+// 	foo int
+// }
+// `}</pre>
+//             <Span>
+//               <b>Structs</b>
+//             </Span>
+//             <pre>{`
+// package main
+// import "fmt"
+// type Doctor struct {
+// 	number     int
+// 	actorName  string
+// 	companions []string
+// }
+// type A struct {
+// 	name   string
+// 	origin string
+// }
+// type B struct {
+// 	A
+// 	Canfly bool
+// }
+// func main() {
+// 	s := map[string]int{
+// 		"a": 1,
+// 		"b": 2,
+// 	}
+// 	s["a"] = 3
+// 	delete(s, "a")
+// 	_, b := s["a"]
+// 	// no need to make use of _ again
+// 	fmt.Println(s, b)
+// 	a := Doctor{
+// 		number:    3,
+// 		actorName: "Sai",
+// 		companions: []string{
+// 			"a",
+// 			"b",
+// 		},
+// 	}
+// 	b := Doctor{
+// 		3,
+// 		"Sai",
+// 		[]string{
+// 			"a",
+// 			"b",
+// 		},
+// 	}
+// 	a := struct{ name string }{name: "Sai"}
+// 	b := &a
+// 	b.name = "Ashish"
+// 	fmt.Println(a, b)
+// 	// go doesn't supports traditional oop features
+// 	// go doesn't have inheritance
+// 	// fmt.Println(b.actorName)
+// 	b := B{}
+// 	b.Canfly = true
+// 	b.name = "Sai"
+// 	fmt.Println(b, b.name)
+// 	type A struct {
+// 		name   string
+// 		origin string
+// 	}
+// 	type B struct {
+// 		A
+// 		destination string
+// 	}
+// 	b := B{
+// 		A: A{"sai", "123"},
+// 		destination: "delhi",
+// 	}
+// 	fmt.Println(b)
+// }            
+//             `}</pre>
+//             <Span>
+//               <b>Routines</b>
+//             </Span>
+//             <Span>
+//               A goroutine is a lightweight thread of execution used for
+//               concurrency.
+//             </Span>
+//             <Span>Example 1</Span>
+//             <pre>
+//               {`
+// package main
+// import (
+//   "fmt"
+//   "time"
+// )
+// func f(from string) {
+//   for i := 0; i < 3; i++ {
+//       fmt.Println(from, ":", i)
+//   }
+// }
+// func main() {  
+//   f("direct")
+//   go f("goroutine")
+//   go func(msg string) {
+//       fmt.Println(msg)
+//   }("going")  
+//   time.Sleep(time.Second)
+//   fmt.Println("done")
+// }
+// go run goroutines.go
+// direct : 0
+// direct : 1
+// direct : 2
+// goroutine : 0
+// going
+// goroutine : 1
+// goroutine : 2
+// done  
+//   `}
+//             </pre>
+//             <Span>Example 2</Span>
+//             <pre>{`
+// package main
+// import (
+// 	"fmt"
+// 	"sync"
+// )
+// var wg = sync.WaitGroup{}
+// var counter = 0
+// var a = sync.RWMutex{}
+// func main() {
+// 	// runtime.GOMAXPROCS(100)
+// 	for i := 0; i < 10; i++ {
+// 		wg.Add(2)
+// 		go sayHello()
+// 		go increment()
+// 	}
+// 	wg.Wait()
+// }
+// func sayHello() {
+// 	a.RLock()
+// 	fmt.Println(counter)
+// 	a.RUnlock()
+// 	wg.Done()
+// }
+// func increment() {
+// 	a.Lock()
+// 	counter++
+// 	a.Unlock()
+// 	wg.Done()
+// }
+// go run main.go
+// 1
+// 2
+// 2
+// 2
+// 2
+// 2
+// 2
+// 2
+// 2
+// 3
+// w/o mutexes
+// 0
+// 2
+// 3
+// 4
+// 4
+// 5
+// 6
+// 7
+// 8
+// 10
+// `}</pre>
+//             <pre>
+//               {`
+// package main
+// import (
+// 	"fmt"
+// 	"sync"
+// 	"time"
+// )
+// var wg = sync.WaitGroup{}
+// func main() {
+// 	var msg = "hello"
+// 	wg.Add(1)
+// 	go func(msg string) {
+// 		fmt.Println(msg)
+// 		wg.Done()
+// 	}(msg)
+// 	msg = "Good Bye"
+// 	wg.Wait()
+// 	// closure's anonymous fns do have access to outer scope
+// 	time.Sleep(100 * time.Millisecond)
+// }
+// func sayHello() {
+// 	fmt.Println("hello")
+// }  
+// `}
+//             </pre>
+//             <Span>WaitGroups</Span>
+//             <Span>
+//               To wait for multiple goroutines to finish, we can use a wait
+//               group.Sleep to simulate an expensive task. This WaitGroup is used
+//               to wait for all the goroutines launched here to finish. Note: if a
+//               WaitGroup is explicitly passed into functions, it should be done
+//               by pointer.
+//               <br />
+//               Wrap the worker call in a closure that makes sure to tell the
+//               WaitGroup that this worker is done. This way the worker itself
+//               does not have to be aware of the concurrency primitives involved
+//               in its execution.
+//             </Span>
+//             <pre>
+//               {`
+// package main
+// import (
+// 	"fmt"
+// 	"sync"
+// 	"time"
+// )
+// func worker(id int) {
+// 	fmt.Printf("Worker %d starting\\n", id)
+// 	time.Sleep(time.Second)
+// 	fmt.Printf("Worker %d done\\n", id)
+// }
+// func main() {
+// 	var wg sync.WaitGroup
+// 	for i := 1; i <= 5; i++ {
+// 		wg.Add(1) // increases counter by 1 as we've 1 go routine
+// 		i := i
+// 		go func() {
+// 			defer wg.Done() // decreases counter by 1
+// 			worker(i)
+// 		}()
+// 	}
+// 	// Block until the WaitGroup counter goes back to 0;
+// 	// all the workers notified they're done.
+// 	wg.Wait()
+// }
+// o/p
+// Worker 4 starting
+// Worker 1 starting
+// Worker 5 starting
+// Worker 3 starting
+// Worker 2 starting
+// Worker 2 done
+// Worker 5 done
+// Worker 4 done
+// Worker 3 done
+// Worker 1 done 
 
-// w/o defer
-Worker 5 starting
-Worker 2 starting
-Worker 1 starting
-Worker 4 starting
-Worker 3 starting
-              `}
-            </pre>
-            <Span>Defer</Span>
-            <Span>
-              A defer statement defers the execution of a function until the
-              surrounding function returns. The deferred call's arguments are
-              evaluated immediately, but the function call is not executed until
-              the surrounding function returns. Defer is used to delay execution
-              of a statement until function exits and is useful to group "open"
-              and "close" functions together Arguments evaluated at time defer
-              is executed, not at time of called function execution
-            </Span>
-            <pre>
-              {`
-package main
-import "fmt"
-func main() {
-  fmt.Println("1")
-  defer fmt.Println("2")
-  fmt.Println("3")
-  defer fmt.Println("5")
-  // defer takes the value at the time defer is called
-  a := "5"
-  defer fmt.Println(a)
-  a = "6"
-}              
-// LIFO Stack
-// Example 2:
+// // w/o defer
+// Worker 5 starting
+// Worker 2 starting
+// Worker 1 starting
+// Worker 4 starting
+// Worker 3 starting
+//               `}
+//             </pre>
+//             <Span>Defer</Span>
+//             <Span>
+//               A defer statement defers the execution of a function until the
+//               surrounding function returns. The deferred call's arguments are
+//               evaluated immediately, but the function call is not executed until
+//               the surrounding function returns. Defer is used to delay execution
+//               of a statement until function exits and is useful to group "open"
+//               and "close" functions together Arguments evaluated at time defer
+//               is executed, not at time of called function execution
+//             </Span>
+//             <pre>
+//               {`
+// package main
+// import "fmt"
+// func main() {
+//   fmt.Println("1")
+//   defer fmt.Println("2")
+//   fmt.Println("3")
+//   defer fmt.Println("5")
+//   // defer takes the value at the time defer is called
+//   a := "5"
+//   defer fmt.Println(a)
+//   a = "6"
+// }              
+// // LIFO Stack
+// // Example 2:
 
-package main
-import "fmt"
-func main() {
-	defer fmt.Println("world")
-	fmt.Println("hello")
-}
-hello
-world
-`}
-            </pre>
-            <Span>Channel</Span>
-            <Span>
-              Channels are the pipes that connect concurrent goroutines. You can
-              send values into channels from one goroutine and receive those
-              values into another goroutine.
-            </Span>
-            <pre>{`
-package main
-import "fmt"
-func main() {
-  // Create a new channel with \`make(chan val-type)\`.
-  messages := make(chan string)
-  go func() { messages <- "ping" }()
-  msg := <-messages
-  fmt.Println(msg, messages)
-}
-            `}</pre>
-            <Span>Worker Pools</Span>
-            <Span>
-              Here’s the worker, of which we’ll run several concurrent
-              instances. These workers will receive work on the jobs channel and
-              send the corresponding results on results. We’ll sleep a second
-              per job to simulate an expensive taskHere’s the worker, of which
-              we’ll run several concurrent instances. These workers will receive
-              work on the jobs channel and send the corresponding results on
-              results. We’ll sleep a second per job to simulate an expensive
-              task.In order to use our pool of workers we need to send them work
-              and collect their results. We make 2 channels for this. Here’s the
-              worker, of which we’ll run several concurrent instances. These
-              workers will receive work on the jobs channel and send the
-              corresponding results on results. We’ll sleep a second per job to
-              simulate an expensive task
-            </Span>
-            <pre>{`
-package main
-import (
-	"fmt"
-	"time"
-)
-func worker(id int, jobs <-chan int, results chan<- int) {
-	for j := range jobs {
-		fmt.Println("worker", id, "started  job", j)
-		time.Sleep(time.Second)
-		fmt.Println("worker", id, "finished job", j)
-		results <- j * 2
-	}
-}
-func main() {
-	const numJobs = 5
-	jobs := make(chan int, numJobs)
-	results := make(chan int, numJobs)
-	for w := 1; w <= 3; w++ {
-		go worker(w, jobs, results)
-	}
-	for j := 1; j <= numJobs; j++ {
-		jobs <- j
-	}
-	close(jobs)
-	for a := 1; a <= numJobs; a++ {
-		<-results
-	}
-}
-O/P:
-worker 3 started  job 1
-worker 1 started  job 2
-worker 2 started  job 3
-worker 3 finished job 1
-worker 1 finished job 2
-worker 1 started  job 5
-worker 3 started  job 4
-worker 2 finished job 3
-worker 3 finished job 4
-worker 1 finished job 5            
-            `}</pre>
-            <Span>Atomic Counters</Span>
-            <Span>
-              The primary mechanism for managing state in Go is communication
-              over channels. We saw this for example with worker pools. There
-              are a few other options for managing state though. Here we’ll look
-              at using the sync/atomic package for atomic counters accessed by
-              multiple goroutines.
-            </Span>
-            <pre>{`
-package main
-import (
-	"fmt"
-	"sync"
-	"sync/atomic"
-)
-func main() {
-	var ops uint64
-	var wg sync.WaitGroup
-	for i := 0; i < 50; i++ {
-		wg.Add(1)
-		go func() {
-			for c := 0; c < 1000; c++ {
-				atomic.AddUint64(&ops, 1)
-			}
-			wg.Done()
-		}()
-	}
-	wg.Wait()
-	fmt.Println("ops:", ops)
-}
-ops: 50000
-`}</pre>
-            <Span>Mutexes</Span>
-            <Span>
-              In computer science, mutual exclusion is a property of concurrency
-              control, which is instituted for the purpose of preventing race
-              conditions. It is the requirement that one thread of execution
-              never enters a critical section while a concurrent thread of
-              execution is already accessing critical section, which refers to
-              an interval of time during which a thread of execution accesses a
-              shared resource, such as [Shared data objects, shared resources,
-              shared memory].
-            </Span>
-            <Span>
-              {" "}
-              For more complex state we can use a mutex to safely access data
-              across multiple goroutines. Container holds a map of counters;
-              since we want to update it concurrently from multiple goroutines,
-              we add a Mutex to synchronize access. Note that mutexes must not
-              be copied, so if this struct is passed around, it should be done
-              by pointer.Lock the mutex before accessing counters; unlock it at
-              the end of the function using a defer statement.
-            </Span>
-            <pre>
-              {`
-package main
-import (
-	"fmt"
-	"sync"
-)
-type Container struct {
-	mu       sync.Mutex
-	counters map[string]int
-}
-func (c *Container) inc(name string) {
-	c.mu.Lock()
-	defer c.mu.Unlock()
-	c.counters[name]++
-}
-func main() {
-	c := Container{
-		counters: map[string]int{"a": 0, "b": 0},
-	}
+// package main
+// import "fmt"
+// func main() {
+// 	defer fmt.Println("world")
+// 	fmt.Println("hello")
+// }
+// hello
+// world
+// `}
+//             </pre>
+//             <Span>Channel</Span>
+//             <Span>
+//               Channels are the pipes that connect concurrent goroutines. You can
+//               send values into channels from one goroutine and receive those
+//               values into another goroutine.
+//             </Span>
+//             <pre>{`
+// package main
+// import "fmt"
+// func main() {
+//   // Create a new channel with \`make(chan val-type)\`.
+//   messages := make(chan string)
+//   go func() { messages <- "ping" }()
+//   msg := <-messages
+//   fmt.Println(msg, messages)
+// }
+//             `}</pre>
+//             <Span>Worker Pools</Span>
+//             <Span>
+//               Here’s the worker, of which we’ll run several concurrent
+//               instances. These workers will receive work on the jobs channel and
+//               send the corresponding results on results. We’ll sleep a second
+//               per job to simulate an expensive taskHere’s the worker, of which
+//               we’ll run several concurrent instances. These workers will receive
+//               work on the jobs channel and send the corresponding results on
+//               results. We’ll sleep a second per job to simulate an expensive
+//               task.In order to use our pool of workers we need to send them work
+//               and collect their results. We make 2 channels for this. Here’s the
+//               worker, of which we’ll run several concurrent instances. These
+//               workers will receive work on the jobs channel and send the
+//               corresponding results on results. We’ll sleep a second per job to
+//               simulate an expensive task
+//             </Span>
+//             <pre>{`
+// package main
+// import (
+// 	"fmt"
+// 	"time"
+// )
+// func worker(id int, jobs <-chan int, results chan<- int) {
+// 	for j := range jobs {
+// 		fmt.Println("worker", id, "started  job", j)
+// 		time.Sleep(time.Second)
+// 		fmt.Println("worker", id, "finished job", j)
+// 		results <- j * 2
+// 	}
+// }
+// func main() {
+// 	const numJobs = 5
+// 	jobs := make(chan int, numJobs)
+// 	results := make(chan int, numJobs)
+// 	for w := 1; w <= 3; w++ {
+// 		go worker(w, jobs, results)
+// 	}
+// 	for j := 1; j <= numJobs; j++ {
+// 		jobs <- j
+// 	}
+// 	close(jobs)
+// 	for a := 1; a <= numJobs; a++ {
+// 		<-results
+// 	}
+// }
+// O/P:
+// worker 3 started  job 1
+// worker 1 started  job 2
+// worker 2 started  job 3
+// worker 3 finished job 1
+// worker 1 finished job 2
+// worker 1 started  job 5
+// worker 3 started  job 4
+// worker 2 finished job 3
+// worker 3 finished job 4
+// worker 1 finished job 5            
+//             `}</pre>
+//             <Span>Atomic Counters</Span>
+//             <Span>
+//               The primary mechanism for managing state in Go is communication
+//               over channels. We saw this for example with worker pools. There
+//               are a few other options for managing state though. Here we’ll look
+//               at using the sync/atomic package for atomic counters accessed by
+//               multiple goroutines.
+//             </Span>
+//             <pre>{`
+// package main
+// import (
+// 	"fmt"
+// 	"sync"
+// 	"sync/atomic"
+// )
+// func main() {
+// 	var ops uint64
+// 	var wg sync.WaitGroup
+// 	for i := 0; i < 50; i++ {
+// 		wg.Add(1)
+// 		go func() {
+// 			for c := 0; c < 1000; c++ {
+// 				atomic.AddUint64(&ops, 1)
+// 			}
+// 			wg.Done()
+// 		}()
+// 	}
+// 	wg.Wait()
+// 	fmt.Println("ops:", ops)
+// }
+// ops: 50000
+// `}</pre>
+//             <Span>Mutexes</Span>
+//             <Span>
+//               In computer science, mutual exclusion is a property of concurrency
+//               control, which is instituted for the purpose of preventing race
+//               conditions. It is the requirement that one thread of execution
+//               never enters a critical section while a concurrent thread of
+//               execution is already accessing critical section, which refers to
+//               an interval of time during which a thread of execution accesses a
+//               shared resource, such as [Shared data objects, shared resources,
+//               shared memory].
+//             </Span>
+//             <Span>
+//               {" "}
+//               For more complex state we can use a mutex to safely access data
+//               across multiple goroutines. Container holds a map of counters;
+//               since we want to update it concurrently from multiple goroutines,
+//               we add a Mutex to synchronize access. Note that mutexes must not
+//               be copied, so if this struct is passed around, it should be done
+//               by pointer.Lock the mutex before accessing counters; unlock it at
+//               the end of the function using a defer statement.
+//             </Span>
+//             <pre>
+//               {`
+// package main
+// import (
+// 	"fmt"
+// 	"sync"
+// )
+// type Container struct {
+// 	mu       sync.Mutex
+// 	counters map[string]int
+// }
+// func (c *Container) inc(name string) {
+// 	c.mu.Lock()
+// 	defer c.mu.Unlock()
+// 	c.counters[name]++
+// }
+// func main() {
+// 	c := Container{
+// 		counters: map[string]int{"a": 0, "b": 0},
+// 	}
 
-	var wg sync.WaitGroup
-	doIncrement := func(name string, n int) {
-		for i := 0; i < n; i++ {
-			c.inc(name)
-		}
-		wg.Done()
-	}
-	wg.Add(3)
-	go doIncrement("a", 10000)
-	go doIncrement("a", 10000)
-	go doIncrement("b", 10000)
-	wg.Wait()
-	fmt.Println(c.counters)
-  // O/P:
-  // map[a:20000 b:10000]
-}`}
-            </pre>
-            <Span>Closure</Span>
-            <Span>
-              Go supports anonymous functions, which can form closures.
-              Anonymous functions are useful when you want to define a function
-              inline without having to name it.This function intSeq returns
-              another function, which we define anonymously in the body of
-              intSeq. The returned function closes over the variable i to form a
-              closure.
-            </Span>
-            <pre>{`
-package main
-import "fmt"
-func intSeq() func() int {
-	i := 0
-	return func() int {
-		i++
-		return i
-	}
-}
-func main() {
-	nextInt := intSeq()
-	fmt.Println(nextInt())
-	fmt.Println(nextInt())
-	fmt.Println(nextInt())
-	newInts := intSeq()
-	fmt.Println(newInts())
-}
-O/P:
-1
-2
-3
-1            
-            `}</pre>
-            <Span>Panic</Span>
-            <Span>
-              Occurs when program cannot continue at all cannot obtain TCP port
-              for web server if nothing handles panic, program will exit. A
-              panic typically means something went unexpectedly wrong. Mostly we
-              use it to fail fast on errors that shouldn’t occur during normal
-              operation, or that we aren’t prepared to handle gracefully.
-            </Span>
-            <pre>
-              {`
-// Example 1
-err := http.ListenAndServe(":8000",nill)
-if err != nill {
-panic(err.Error())
-}
-// Example 2
-package main
-import "os"
-func main() {
-    panic("a problem")
-    _, err := os.Create("/tmp/file")
-    if err != nil {
-        panic(err)
-    }
-}
-// O/P
-go run panic.go
-panic: a problem
-goroutine 1 [running]:
-main.main()
-    /.../panic.go:12 +0x47
-...
-exit status 2
-              `}
-            </pre>
-            <Span>Recover</Span>
-            <Span>
-              Used to recover from panics Only useful in deferred functions
-              Current function will not attempt to continue , but higher
-              functions in call stack will
-            </Span>
-            <Span>
-              Go makes it possible to recover from a panic, by using the recover
-              built-in function. A recover can stop a panic from aborting the
-              program and let it continue with execution instead. An example of
-              where this can be useful: a server wouldn’t want to crash if one
-              of the client connections exhibits a critical error. Instead, the
-              server would want to close that connection and continue serving
-              other clients. In fact, this is what Go’s net/http does by default
-              for HTTP servers.
-            </Span>
-            <pre>
-              {`package main
-import "fmt"
-func mayPanic() {
-    panic("a problem")
-}
-func main() {
-    defer func() {
-        if r := recover(); r != nil {
-            fmt.Println("Recovered. Error:\\n", r)
-        }
-    }()
-    mayPanic()
-    fmt.Println("After mayPanic()")
-}
-O/P:
-Recovered. Error:
- a problem
-`}
-            </pre>
-            <Span>
-              <b>Templates:</b>
-            </Span>
-            <Span>Example 1:</Span>
-            <pre>
-              {`
-package main
-import "fmt"
-func main() {
-	name := "Sai
-	tpl := \`
-	<!DOCTYPE html>
-	<html lang="en">
-	<head>
-	<meta charset="UTF-8">
-	<title>Hello World!</title>
-	</head>
-	<body>
-	<h1>\` + name + \`</h1>
-	</body>
-	</html>
-	\`
-	fmt.Println(tpl)
-}              
-go run main.go > index.html
-              `}
-            </pre>
-            <Span>Example 2:</Span>
-            <pre>
-              {`
-package main
-import (
-	"fmt"
-	"io"
-	"log"
-	"os"
-	"strings"
-)
-func main() {
-	name := os.Args[1]
-	fmt.Println(os.Args[0])
-	fmt.Println(os.Args[1])
-	str := fmt.Sprint(\`
-	<!DOCTYPE html>
-	<html lang="en">
-	<head>
-	<meta charset="UTF-8" >
-	<title>Conatenation</title>
-	</head>
-	<body>
-	<h1>\` +
-		name +
-		\`</h1>
-	</body>
-	</html>
-	\`)
-	nf, err := os.Create("index.html")
-	if err != nil {
-		log.Fatal("error")
-	}
-	defer nf.Close()
-	io.Copy(nf, strings.NewReader(str))
-}              
-              `}
-            </pre>
-            <Span>Package Text Template ( text/template )</Span>
-            <pre>{`temp.go
-package main
-import (
-	"log"
-	"os"
-	"text/template"
-)
-var tpl *template.Template
-type a1 struct {
-	A string
-	B int
-}
-type b1 struct {
-	C []a1
-}
-func init() {
-	tpl = template.Must(template.ParseGlob("*"))
-	// templates/*.txt
-	// templates/*
-}
-func main() {
-	// every type implements the empty interface
-	err := tpl.Execute(os.Stdout, nil)
-	var data interface{}
-	data = []string{"a", "b", "c"}
-	data = map[string]string{
-		"a": "1"}
-	data = a1{A: "a", B: 1}
-	data = b1{
-		C []{data,data}
-	}
-	_ = data
-	var fm = template.FuncMap(
-		"us": strings.ToUpper,
-		"ft": firstThree
-	)
-	// err = tpl.ExecuteTemplate(os.Stdout, "a.txt", nil)
-	// err = tpl.ExecuteTemplate(os.Stdout, "tpl.gohtml", 42)
-	// err = tpl.ExecuteTemplate(os.Stdout, "tpl1.gohtml", \`test\`)
-	err = tpl.ExecuteTemplate(os.Stdout, "tpl1.gohtml", data)
-	if err != nil {
-		log.Fatalln(err)
-	}
-}
-tp1.gohtml
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-</head>
-<body>
-<h1>The meaning of life: {{.}}</h1>
-</body>
-</html>
-tp2.gohtml
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-</head>
-<body>
-{{ range .C }}
-  {{ .A }} - {{ .B }}
-{{ end }}
-</body>
-</html>
-{{/* {{$t := .}}
-<h1> {{$t}}</h1> */}}
-{{/* {{ range . }}
-   {{ . }}
-{{ end }}*/}}
-{{/* {{ range $index , $e := .  }}
-    {{ $index }} - {{ $e }}
-{{ end }}  */}}
-  {{/* {{ $x := .A }}
-  {{ $x }}
-  {{ .A }} - {{ .B }} */}}
-a.txt
-########
-a
-#######
-a.gohtml
-#########
-abcd
-########
-abc.txt
-b
-`}</pre>
-            <Span>Pipelines in templates</Span>
-            <pre>{`{{ . | fdbl | fsq | fsqrt }}`}</pre>
-            <Span>double , square, square root</Span>
-            <pre>{`
-package main
-import (
-  "log"
-  "os"
-  "text/template"
-)
-var tpl *template.Template
-func init() {
-  tpl = template.Must(template.ParseFiles("tpl.gohtml"))
-}
-func main() {
-  xs := []string{"zero", "one", "two", "three", "four", "five"}
-  err := tpl.Execute(os.Stdout, xs)
-  if err != nil {
-    log.Fatalln(err)
-  }
-}
-{{index . 2}}
-{{index . 0}}
-{{index . 1}}              
-              `}</pre>
-            <Span>Nested Template</Span>
-            <pre>{`
-index.gohtml
-<p>{{template "polarbear"}}</p>
-file 2:
-{{define "polarbear"}}
-Here is my polar bear template
-{{end}}
-              `}</pre>
-            <Span>
-              <b>Html Templates</b>
-            </Span>
-            <pre>{`
-package main
-import (
-	"html/template"
-	"log"
-	"net/http"
-)
-// html templates escapes un-safe characters avoid cross site scripting
-// \`<script>alert('hi')</script>\`
-//  in text templates, fn will be exceuted
-//  in html templates , additional characters will be added in b/w
-var tpl *template.Template
-func init() {
-	tpl = template.Must(template.ParseGlob("templates/*.gohtml"))
-}
-func main() {
-	http.HandleFunc("/", index)
-	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("public"))))
-	http.ListenAndServe(":8080", nil)
-}
-func index(res http.ResponseWriter, req *http.Request) {
-	err := tpl.ExecuteTemplate(res, "index.gohtml", nil)
-	if err != nil {
-		log.Fatalln("template didn't execute: ", err)
-	}
-}  
+// 	var wg sync.WaitGroup
+// 	doIncrement := func(name string, n int) {
+// 		for i := 0; i < n; i++ {
+// 			c.inc(name)
+// 		}
+// 		wg.Done()
+// 	}
+// 	wg.Add(3)
+// 	go doIncrement("a", 10000)
+// 	go doIncrement("a", 10000)
+// 	go doIncrement("b", 10000)
+// 	wg.Wait()
+// 	fmt.Println(c.counters)
+//   // O/P:
+//   // map[a:20000 b:10000]
+// }`}
+//             </pre>
+//             <Span>Closure</Span>
+//             <Span>
+//               Go supports anonymous functions, which can form closures.
+//               Anonymous functions are useful when you want to define a function
+//               inline without having to name it.This function intSeq returns
+//               another function, which we define anonymously in the body of
+//               intSeq. The returned function closes over the variable i to form a
+//               closure.
+//             </Span>
+//             <pre>{`
+// package main
+// import "fmt"
+// func intSeq() func() int {
+// 	i := 0
+// 	return func() int {
+// 		i++
+// 		return i
+// 	}
+// }
+// func main() {
+// 	nextInt := intSeq()
+// 	fmt.Println(nextInt())
+// 	fmt.Println(nextInt())
+// 	fmt.Println(nextInt())
+// 	newInts := intSeq()
+// 	fmt.Println(newInts())
+// }
+// O/P:
+// 1
+// 2
+// 3
+// 1            
+//             `}</pre>
+//             <Span>Panic</Span>
+//             <Span>
+//               Occurs when program cannot continue at all cannot obtain TCP port
+//               for web server if nothing handles panic, program will exit. A
+//               panic typically means something went unexpectedly wrong. Mostly we
+//               use it to fail fast on errors that shouldn’t occur during normal
+//               operation, or that we aren’t prepared to handle gracefully.
+//             </Span>
+//             <pre>
+//               {`
+// // Example 1
+// err := http.ListenAndServe(":8000",nill)
+// if err != nill {
+// panic(err.Error())
+// }
+// // Example 2
+// package main
+// import "os"
+// func main() {
+//     panic("a problem")
+//     _, err := os.Create("/tmp/file")
+//     if err != nil {
+//         panic(err)
+//     }
+// }
+// // O/P
+// go run panic.go
+// panic: a problem
+// goroutine 1 [running]:
+// main.main()
+//     /.../panic.go:12 +0x47
+// ...
+// exit status 2
+//               `}
+//             </pre>
+//             <Span>Recover</Span>
+//             <Span>
+//               Used to recover from panics Only useful in deferred functions
+//               Current function will not attempt to continue , but higher
+//               functions in call stack will
+//             </Span>
+//             <Span>
+//               Go makes it possible to recover from a panic, by using the recover
+//               built-in function. A recover can stop a panic from aborting the
+//               program and let it continue with execution instead. An example of
+//               where this can be useful: a server wouldn’t want to crash if one
+//               of the client connections exhibits a critical error. Instead, the
+//               server would want to close that connection and continue serving
+//               other clients. In fact, this is what Go’s net/http does by default
+//               for HTTP servers.
+//             </Span>
+//             <pre>
+//               {`package main
+// import "fmt"
+// func mayPanic() {
+//     panic("a problem")
+// }
+// func main() {
+//     defer func() {
+//         if r := recover(); r != nil {
+//             fmt.Println("Recovered. Error:\\n", r)
+//         }
+//     }()
+//     mayPanic()
+//     fmt.Println("After mayPanic()")
+// }
+// O/P:
+// Recovered. Error:
+//  a problem
+// `}
+//             </pre>
+//             <Span>
+//               <b>Templates:</b>
+//             </Span>
+//             <Span>Example 1:</Span>
+//             <pre>
+//               {`
+// package main
+// import "fmt"
+// func main() {
+// 	name := "Sai
+// 	tpl := \`
+// 	<!DOCTYPE html>
+// 	<html lang="en">
+// 	<head>
+// 	<meta charset="UTF-8">
+// 	<title>Hello World!</title>
+// 	</head>
+// 	<body>
+// 	<h1>\` + name + \`</h1>
+// 	</body>
+// 	</html>
+// 	\`
+// 	fmt.Println(tpl)
+// }              
+// go run main.go > index.html
+//               `}
+//             </pre>
+//             <Span>Example 2:</Span>
+//             <pre>
+//               {`
+// package main
+// import (
+// 	"fmt"
+// 	"io"
+// 	"log"
+// 	"os"
+// 	"strings"
+// )
+// func main() {
+// 	name := os.Args[1]
+// 	fmt.Println(os.Args[0])
+// 	fmt.Println(os.Args[1])
+// 	str := fmt.Sprint(\`
+// 	<!DOCTYPE html>
+// 	<html lang="en">
+// 	<head>
+// 	<meta charset="UTF-8" >
+// 	<title>Conatenation</title>
+// 	</head>
+// 	<body>
+// 	<h1>\` +
+// 		name +
+// 		\`</h1>
+// 	</body>
+// 	</html>
+// 	\`)
+// 	nf, err := os.Create("index.html")
+// 	if err != nil {
+// 		log.Fatal("error")
+// 	}
+// 	defer nf.Close()
+// 	io.Copy(nf, strings.NewReader(str))
+// }              
+//               `}
+//             </pre>
+//             <Span>Package Text Template ( text/template )</Span>
+//             <pre>{`temp.go
+// package main
+// import (
+// 	"log"
+// 	"os"
+// 	"text/template"
+// )
+// var tpl *template.Template
+// type a1 struct {
+// 	A string
+// 	B int
+// }
+// type b1 struct {
+// 	C []a1
+// }
+// func init() {
+// 	tpl = template.Must(template.ParseGlob("*"))
+// 	// templates/*.txt
+// 	// templates/*
+// }
+// func main() {
+// 	// every type implements the empty interface
+// 	err := tpl.Execute(os.Stdout, nil)
+// 	var data interface{}
+// 	data = []string{"a", "b", "c"}
+// 	data = map[string]string{
+// 		"a": "1"}
+// 	data = a1{A: "a", B: 1}
+// 	data = b1{
+// 		C []{data,data}
+// 	}
+// 	_ = data
+// 	var fm = template.FuncMap(
+// 		"us": strings.ToUpper,
+// 		"ft": firstThree
+// 	)
+// 	// err = tpl.ExecuteTemplate(os.Stdout, "a.txt", nil)
+// 	// err = tpl.ExecuteTemplate(os.Stdout, "tpl.gohtml", 42)
+// 	// err = tpl.ExecuteTemplate(os.Stdout, "tpl1.gohtml", \`test\`)
+// 	err = tpl.ExecuteTemplate(os.Stdout, "tpl1.gohtml", data)
+// 	if err != nil {
+// 		log.Fatalln(err)
+// 	}
+// }
+// tp1.gohtml
+// <!DOCTYPE html>
+// <html lang="en">
+// <head>
+//     <meta charset="UTF-8">
+//     <title>Hello World!</title>
+// </head>
+// <body>
+// <h1>The meaning of life: {{.}}</h1>
+// </body>
+// </html>
+// tp2.gohtml
+// <!DOCTYPE html>
+// <html lang="en">
+// <head>
+//     <meta charset="UTF-8">
+//     <title>Hello World!</title>
+// </head>
+// <body>
+// {{ range .C }}
+//   {{ .A }} - {{ .B }}
+// {{ end }}
+// </body>
+// </html>
+// {{/* {{$t := .}}
+// <h1> {{$t}}</h1> */}}
+// {{/* {{ range . }}
+//    {{ . }}
+// {{ end }}*/}}
+// {{/* {{ range $index , $e := .  }}
+//     {{ $index }} - {{ $e }}
+// {{ end }}  */}}
+//   {{/* {{ $x := .A }}
+//   {{ $x }}
+//   {{ .A }} - {{ .B }} */}}
+// a.txt
+// ########
+// a
+// #######
+// a.gohtml
+// #########
+// abcd
+// ########
+// abc.txt
+// b
+// `}</pre>
+//             <Span>Pipelines in templates</Span>
+//             <pre>{`{{ . | fdbl | fsq | fsqrt }}`}</pre>
+//             <Span>double , square, square root</Span>
+//             <pre>{`
+// package main
+// import (
+//   "log"
+//   "os"
+//   "text/template"
+// )
+// var tpl *template.Template
+// func init() {
+//   tpl = template.Must(template.ParseFiles("tpl.gohtml"))
+// }
+// func main() {
+//   xs := []string{"zero", "one", "two", "three", "four", "five"}
+//   err := tpl.Execute(os.Stdout, xs)
+//   if err != nil {
+//     log.Fatalln(err)
+//   }
+// }
+// {{index . 2}}
+// {{index . 0}}
+// {{index . 1}}              
+//               `}</pre>
+//             <Span>Nested Template</Span>
+//             <pre>{`
+// index.gohtml
+// <p>{{template "polarbear"}}</p>
+// file 2:
+// {{define "polarbear"}}
+// Here is my polar bear template
+// {{end}}
+//               `}</pre>
+//             <Span>
+//               <b>Html Templates</b>
+//             </Span>
+//             <pre>{`
+// package main
+// import (
+// 	"html/template"
+// 	"log"
+// 	"net/http"
+// )
+// // html templates escapes un-safe characters avoid cross site scripting
+// // \`<script>alert('hi')</script>\`
+// //  in text templates, fn will be exceuted
+// //  in html templates , additional characters will be added in b/w
+// var tpl *template.Template
+// func init() {
+// 	tpl = template.Must(template.ParseGlob("templates/*.gohtml"))
+// }
+// func main() {
+// 	http.HandleFunc("/", index)
+// 	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("public"))))
+// 	http.ListenAndServe(":8080", nil)
+// }
+// func index(res http.ResponseWriter, req *http.Request) {
+// 	err := tpl.ExecuteTemplate(res, "index.gohtml", nil)
+// 	if err != nil {
+// 		log.Fatalln("template didn't execute: ", err)
+// 	}
+// }  
 
-index.gohtml
-{{template "btf"}}
-{{template "footer"}}
-            `}</pre>
-            <Span>Refer to https://github.dev/SaiAshish9/go-templates</Span>
-            <Span>
-              <b>TCP Servers</b>
-            </Span>
-            <Span>Read from connection</Span>
-            <pre>
-              {`
-package main
-import (
-	"fmt"
-	"io"
-	"log"
-	"net"
-)
-func main() {
-	li, err := net.Listen("tcp", ":8080")
-	if err != nil {
-		log.Fatalln(err)
-	}
-	defer li.Close()
-	for {
-		conn, err := li.Accept()
-		if err != nil {
-			log.Println(err)
-			continue
-		}
-		io.WriteString(conn, "\\nHello from TCP server\\n")
-		fmt.Fprintln(conn, "How is your day?")
-		fmt.Fprintf(conn, "%v", "Well, I hope!")
-		conn.Close()
-	}
-}
-go run main.go
-telnet http 8080
-telnet is a program which works on tcp               
-              `}
-            </pre>
-            <Span>Write to connection with deadline</Span>
-            <pre>{`
-package main
-import (
-	"bufio"
-	"fmt"
-	"log"
-	"net"
-)
-func main() {
-	li, err := net.Listen("tcp", ":8080")
-	if err != nil {
-		log.Fatalln(err)
-	}
-	defer li.Close()
-	for {
-		conn, err := li.Accept()
-		if err != nil {
-			log.Println(err)
-			continue
-		}
-		go handle(conn)
-	}
-}
-func handle(conn net.Conn) {
-  err := conn.SetDeadline(time.Now().Add(10 * time.Second))
-	if err != nil {
-		log.Fatalln("CONN TIMEOUT")
-	}
-	scanner := bufio.NewScanner(conn)
-	for scanner.Scan() {
-		ln := scanner.Text()
-		fmt.Println(ln)
-    fmt.Fprintf(conn, "I heard you say: %s\\n", ln)
-	}
-	defer conn.Close()
-	fmt.Println("Code got here.")
-}            
-            `}</pre>
-            <Span>Dial</Span>
-            <pre>{`
-package main
-import (
-	"fmt"
-	"log"
-	"net"
-)
-func main() {
-	conn, err := net.Dial("tcp", "localhost:8080")
-	if err != nil {
-		log.Fatalln(err)
-	}
-	defer conn.Close()
-	fmt.Fprintln(conn, "I dialed you.")
-}
-            `}</pre>
-            <Span>TCP Server For HTTP</Span>
-            <pre>{`
-package main
-import (
-	"bufio"
-	"fmt"
-	"log"
-	"net"
-	"strings"
-)
-func main() {
-	li, err := net.Listen("tcp", ":8080")
-	if err != nil {
-		log.Fatalln(err.Error())
-	}
-	defer li.Close()
-	for {
-		conn, err := li.Accept()
-		if err != nil {
-			log.Println(err.Error())
-			continue
-		}
-		go handle(conn)
-	}
-}
-func handle(conn net.Conn) {
-	defer conn.Close()
-	request(conn)
-}
-func request(conn net.Conn) {
-	i := 0
-	scanner := bufio.NewScanner(conn)
-	for scanner.Scan() {
-		ln := scanner.Text()
-		fmt.Println(ln)
-		if i == 0 {
-			mux(conn, ln)
-		}
-		if ln == "" {
-			// headers are done
-			break
-		}
-		i++
-	}
-}
-func mux(conn net.Conn, ln string) {
-	m := strings.Fields(ln)[0] 
-	u := strings.Fields(ln)[1] 
-	fmt.Println("***METHOD", m)
-  fmt.Println("***URI", u)
-	// multiplexer
-	if m == "GET" && u == "/" {
-		index(conn)
-	}
-	if m == "GET" && u == "/about" {
-		about(conn)
-	}
-	if m == "GET" && u == "/contact" {
-		contact(conn)
-	}
-	if m == "GET" && u == "/apply" {
-		apply(conn)
-	}
-	if m == "POST" && u == "/apply" {
-		applyProcess(conn)
-	}
-}
-func index(conn net.Conn) {
-	body := \`<!DOCTYPE html><html lang="en"><head><meta charet="UTF-8"><title></title></head><body>
-	<strong>INDEX</strong><br>
-	<a href="/">index</a><br>
-	<a href="/about">about</a><br>
-	<a href="/contact">contact</a><br>
-	<a href="/apply">apply</a><br>
-	</body></html>\`
-	fmt.Fprint(conn, "HTTP/1.1 200 OK\\r\\n")
-	fmt.Fprintf(conn, "Content-Length: %d\\r\\n", len(body))
-	fmt.Fprint(conn, "Content-Type: text/html\\r\\n")
-	fmt.Fprint(conn, "\\r\\n")
-	fmt.Fprint(conn, body)
-}
-func about(conn net.Conn) {
-	body := \`<!DOCTYPE html><html lang="en"><head><meta charet="UTF-8"><title></title></head><body>
-	<strong>ABOUT</strong><br>
-	<a href="/">index</a><br>
-	<a href="/about">about</a><br>
-	<a href="/contact">contact</a><br>
-	<a href="/apply">apply</a><br>
-	</body></html>\`
-	fmt.Fprint(conn, "HTTP/1.1 200 OK\\r\\n")
-	fmt.Fprintf(conn, "Content-Length: %d\\r\\n", len(body))
-	fmt.Fprint(conn, "Content-Type: text/html\\r\\n")
-	fmt.Fprint(conn, "\\r\\n")
-	fmt.Fprint(conn, body)
-}
-func contact(conn net.Conn) {
-	body := \`<!DOCTYPE html><html lang="en"><head><meta charet="UTF-8"><title></title></head><body>
-	<strong>CONTACT</strong><br>
-	<a href="/">index</a><br>
-	<a href="/about">about</a><br>
-	<a href="/contact">contact</a><br>
-	<a href="/apply">apply</a><br>
-	</body></html>\`
-	fmt.Fprint(conn, "HTTP/1.1 200 OK\\r\\n")
-	fmt.Fprintf(conn, "Content-Length: %d\\r\\n", len(body))
-	fmt.Fprint(conn, "Content-Type: text/html\\r\\n")
-	fmt.Fprint(conn, "\\r\\n")
-	fmt.Fprint(conn, body)
-}
-func apply(conn net.Conn) {
-	body := \`<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title></title></head><body>
-	<strong>APPLY</strong><br>
-	<a href="/">index</a><br>
-	<a href="/about">about</a><br>
-	<a href="/contact">contact</a><br>
-	<a href="/apply">apply</a><br>
-	<form method="POST" action="/apply">
-	<input type="submit" value="apply">
-	</form>
-	</body></html>\`
-	fmt.Fprint(conn, "HTTP/1.1 200 OK\\r\\n")
-	fmt.Fprintf(conn, "Content-Length: %d\\r\\n", len(body))
-	fmt.Fprint(conn, "Content-Type: text/html\\r\\n")
-	fmt.Fprint(conn, "\\r\\n")
-	fmt.Fprint(conn, body)
-}
-func applyProcess(conn net.Conn) {
-	body := \`<!DOCTYPE html><html lang="en"><head><meta charet="UTF-8"><title></title></head><body>
-	<strong>APPLY PROCESS</strong><br>
-	<a href="/">index</a><br>
-	<a href="/about">about</a><br>
-	<a href="/contact">contact</a><br>
-	<a href="/apply">apply</a><br>
-	</body></html>\`
-	fmt.Fprint(conn, "HTTP/1.1 200 OK\\r\\n")
-	fmt.Fprintf(conn, "Content-Length: %d\\r\\n", len(body))
-	fmt.Fprint(conn, "Content-Type: text/html\\r\\n")
-	fmt.Fprint(conn, "\\r\\n")
-	fmt.Fprint(conn, body)
-}
-            `}</pre>
-            <Span>The Dial function connects to a server:</Span>
-            <Span>The Listen function creates servers:</Span>
-            <Span>Net Http</Span>
-            <pre>{`
-package main
-import (
-	"html/template"
-	"log"
-	"net/http"
-	"net/url"
-)
-type hotdog int
-func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
-	err := req.ParseForm()
-	if err != nil {
-		log.Fatalln(err)
-	}
-	data := struct {
-		Method        string
-		URL           *url.URL
-		Submissions   map[string][]string
-		Header        http.Header
-		Host          string
-		ContentLength int64
-	}{
-		req.Method,
-		req.URL,
-		req.Form,
-		req.Header,
-		req.Host,
-		req.ContentLength,
-	}
-	tpl.ExecuteTemplate(w, "index.gohtml", data)
-}
-var tpl *template.Template
-func init() {
-	tpl = template.Must(template.ParseFiles("index.gohtml"))
-}
-func main() {
-	var d hotdog
-	http.ListenAndServe(":8080", d)
-}
-package main
-import (
-	"fmt"
-	"net/http"
-)
-type hotdog int
-func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
-	w.Header().Set("Mcleod-Key", "this is from mcleod")
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	fmt.Fprintln(w, "<h1>Any code you want in this func</h1>")
-}
-func main() {
-	var d hotdog
-	http.ListenAndServe(":8080", d)
-}            
-            `}</pre>
-            <Span>Net Http ServerMux</Span>
-            <pre>{`
-package main
-import (
-  "io"
-  "net/http"
-)
-type hotdog int
-func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
-  switch req.URL.Path {
-  case "/dog":
-    io.WriteString(w, "doggy doggy doggy")
-  case "/cat":
-    io.WriteString(w, "kitty kitty kitty")
-  }
-}
-func main() {
-  var d hotdog
-  http.ListenAndServe(":8080", d)
-}            
-// -------------------------
-type hotdog int
-func (d hotdog) ServeHTTP(res http.ResponseWriter, req *http.Request) {
-	io.WriteString(res, "dog dog dog")
-}
-type hotcat int
-func (c hotcat) ServeHTTP(res http.ResponseWriter, req *http.Request) {
-	io.WriteString(res, "cat cat cat")
-}
-func main() {
-	var d hotdog
-	var c hotcat
-	mux := http.NewServeMux()
-	mux.Handle("/dog/", d)
-	mux.Handle("/cat", c)
-	http.ListenAndServe(":8080", mux)
-}
-// -------------------------
-type hotdog int
-func (d hotdog) ServeHTTP(res http.ResponseWriter, req *http.Request) {
-	io.WriteString(res, "dog dog dog")
-}
-type hotcat int
-func (c hotcat) ServeHTTP(res http.ResponseWriter, req *http.Request) {
-	io.WriteString(res, "cat cat cat")
-}
-func main() {
-	var d hotdog
-	var c hotcat
-	http.Handle("/dog", d)
-	http.Handle("/cat", c)
-	http.ListenAndServe(":8080", nil)
-}
-// -------------------------
-package main
-import (
-	"io"
-	"net/http"
-)
-func d(res http.ResponseWriter, req *http.Request) {
-	io.WriteString(res, "dog dog dog")
-}
-func c(res http.ResponseWriter, req *http.Request) {
-	io.WriteString(res, "cat cat cat")
-}
-func main() {
-	http.HandleFunc("/dog", d)
-	http.HandleFunc("/cat", c)
-	// http.Handle("/dog", http.HandlerFunc(d))
-	// http.Handle("/cat", http.HandlerFunc(c))
-	http.ListenAndServe(":8080", nil)
-}
-            `}</pre>
-            <Span>Third Party Server Mux:</Span>
-            <pre>{`
-package main
-import (
-	"fmt"
-	"github.com/julienschmidt/httprouter"
-	"html/template"
-	"log"
-	"net/http"
-)
-var tpl *template.Template
-func init() {
-	tpl = template.Must(template.ParseGlob("templates/*"))
-}
-func main() {
-	mux := httprouter.New()
-	mux.GET("/", index)
-	mux.GET("/about", about)
-	mux.GET("/contact", contact)
-	mux.GET("/apply", apply)
-	mux.POST("/apply", applyProcess)
-	mux.GET("/user/:name", user)
-	mux.GET("/blog/:category/:article", blogRead)
-	mux.POST("/blog/:category/:article", blogWrite)
-	http.ListenAndServe(":8080", mux)
-}
-func user(w http.ResponseWriter, req *http.Request, ps httprouter.Params) {
-	fmt.Fprintf(w, "USER, %s!\\n", ps.ByName("name"))
-}
-func blogRead(w http.ResponseWriter, req *http.Request, ps httprouter.Params) {
-	fmt.Fprintf(w, "READ CATEGORY, %s!\\n", ps.ByName("category"))
-	fmt.Fprintf(w, "READ ARTICLE, %s!\\n", ps.ByName("article"))
-}
-func blogWrite(w http.ResponseWriter, req *http.Request, ps httprouter.Params) {
-	fmt.Fprintf(w, "WRITE CATEGORY, %s!\\n", ps.ByName("category"))
-	fmt.Fprintf(w, "WRITE ARTICLE, %s!\\n", ps.ByName("article"))
-}
-func index(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-	err := tpl.ExecuteTemplate(w, "index.gohtml", nil)
-	HandleError(w, err)
-}
-func about(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-	err := tpl.ExecuteTemplate(w, "about.gohtml", nil)
-	HandleError(w, err)
-}
-func contact(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-	err := tpl.ExecuteTemplate(w, "contact.gohtml", nil)
-	HandleError(w, err)
-}
-func apply(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-	err := tpl.ExecuteTemplate(w, "apply.gohtml", nil)
-	HandleError(w, err)
-}
-func applyProcess(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-	err := tpl.ExecuteTemplate(w, "applyProcess.gohtml", nil)
-	HandleError(w, err)
-}
-func HandleError(w http.ResponseWriter, err error) {
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		log.Fatalln(err)
-	}
-}            
-            `}</pre>
-            <Span>
-              <b>Serving Files:</b>
-            </Span>
-            <pre>{`
-package main
-import (
-	"io"
-	"net/http"
-	"os"
-)
-func main() {
-	http.HandleFunc("/", dog)
-	http.HandleFunc("/toby.jpg", dogPic)
-	http.ListenAndServe(":8080", nil)
-}
-func dog(w http.ResponseWriter, req *http.Request) {
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	io.WriteString(w, \`
-	<img src="/toby.jpg">
-	\`)
-}
-func dogPic(w http.ResponseWriter, req *http.Request) {
-	f, err := os.Open("toby.jpg")
-	if err != nil {
-		http.Error(w, "file not found", 404)
-		return
-	}
-	defer f.Close()
-	// io.Copy(w, f)
-  // fi, err := f.Stat()
-	// if err != nil {
-	// 	http.Error(w, "file not found", 404)
-	// 	return
-	// }
-	// http.ServeContent(w, req, f.Name(), fi.ModTime(), f)
-}
-func main() {
-	http.HandleFunc("/", dog)
-	http.HandleFunc("/toby.jpg", dogPic)
-  http.Handle("/assets/", http.StripPrefix("/assets", http.FileServer(http.Dir("./assets"))))
-	io.WriteString(w, \`<img src="/assets/toby.jpg">\`)
-	http.ListenAndServe(":8080", nil)
-}
-func dog(w http.ResponseWriter, req *http.Request) {
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	io.WriteString(w, \`<img src="toby.jpg">\`)
-}
-func dogPic(w http.ResponseWriter, req *http.Request) {
-	http.ServeFile(w, req, "toby.jpg")
-	log.Fatal(http.ListenAndServe(":8080", http.FileServer(http.Dir("."))))
-}
-// serveFile serveContent 
-            `}</pre>
-            <Span>
-              <b>Not Found Handler:</b>
-            </Span>
-            <Span>{`
-package main
-import (
-	"fmt"
-	"net/http"
-)
-func main() {
-	http.HandleFunc("/", foo)
-	http.Handle("/favicon.ico", http.NotFoundHandler())
-	http.ListenAndServe(":8080", nil)
-}
-func foo(w http.ResponseWriter, req *http.Request) {
-	fmt.Println(req.URL.Path)
-	fmt.Fprintln(w, "go look at your terminal")
-}            
-            `}</Span>
-            <Span>
-              <b>AppEngine Deploy</b>
-            </Span>
-            <pre>{`
-index.html + .css +.img
+// index.gohtml
+// {{template "btf"}}
+// {{template "footer"}}
+//             `}</pre>
+//             <Span>Refer to https://github.dev/SaiAshish9/go-templates</Span>
+//             <Span>
+//               <b>TCP Servers</b>
+//             </Span>
+//             <Span>Read from connection</Span>
+//             <pre>
+//               {`
+// package main
+// import (
+// 	"fmt"
+// 	"io"
+// 	"log"
+// 	"net"
+// )
+// func main() {
+// 	li, err := net.Listen("tcp", ":8080")
+// 	if err != nil {
+// 		log.Fatalln(err)
+// 	}
+// 	defer li.Close()
+// 	for {
+// 		conn, err := li.Accept()
+// 		if err != nil {
+// 			log.Println(err)
+// 			continue
+// 		}
+// 		io.WriteString(conn, "\\nHello from TCP server\\n")
+// 		fmt.Fprintln(conn, "How is your day?")
+// 		fmt.Fprintf(conn, "%v", "Well, I hope!")
+// 		conn.Close()
+// 	}
+// }
+// go run main.go
+// telnet http 8080
+// telnet is a program which works on tcp               
+//               `}
+//             </pre>
+//             <Span>Write to connection with deadline</Span>
+//             <pre>{`
+// package main
+// import (
+// 	"bufio"
+// 	"fmt"
+// 	"log"
+// 	"net"
+// )
+// func main() {
+// 	li, err := net.Listen("tcp", ":8080")
+// 	if err != nil {
+// 		log.Fatalln(err)
+// 	}
+// 	defer li.Close()
+// 	for {
+// 		conn, err := li.Accept()
+// 		if err != nil {
+// 			log.Println(err)
+// 			continue
+// 		}
+// 		go handle(conn)
+// 	}
+// }
+// func handle(conn net.Conn) {
+//   err := conn.SetDeadline(time.Now().Add(10 * time.Second))
+// 	if err != nil {
+// 		log.Fatalln("CONN TIMEOUT")
+// 	}
+// 	scanner := bufio.NewScanner(conn)
+// 	for scanner.Scan() {
+// 		ln := scanner.Text()
+// 		fmt.Println(ln)
+//     fmt.Fprintf(conn, "I heard you say: %s\\n", ln)
+// 	}
+// 	defer conn.Close()
+// 	fmt.Println("Code got here.")
+// }            
+//             `}</pre>
+//             <Span>Dial</Span>
+//             <pre>{`
+// package main
+// import (
+// 	"fmt"
+// 	"log"
+// 	"net"
+// )
+// func main() {
+// 	conn, err := net.Dial("tcp", "localhost:8080")
+// 	if err != nil {
+// 		log.Fatalln(err)
+// 	}
+// 	defer conn.Close()
+// 	fmt.Fprintln(conn, "I dialed you.")
+// }
+//             `}</pre>
+//             <Span>TCP Server For HTTP</Span>
+//             <pre>{`
+// package main
+// import (
+// 	"bufio"
+// 	"fmt"
+// 	"log"
+// 	"net"
+// 	"strings"
+// )
+// func main() {
+// 	li, err := net.Listen("tcp", ":8080")
+// 	if err != nil {
+// 		log.Fatalln(err.Error())
+// 	}
+// 	defer li.Close()
+// 	for {
+// 		conn, err := li.Accept()
+// 		if err != nil {
+// 			log.Println(err.Error())
+// 			continue
+// 		}
+// 		go handle(conn)
+// 	}
+// }
+// func handle(conn net.Conn) {
+// 	defer conn.Close()
+// 	request(conn)
+// }
+// func request(conn net.Conn) {
+// 	i := 0
+// 	scanner := bufio.NewScanner(conn)
+// 	for scanner.Scan() {
+// 		ln := scanner.Text()
+// 		fmt.Println(ln)
+// 		if i == 0 {
+// 			mux(conn, ln)
+// 		}
+// 		if ln == "" {
+// 			// headers are done
+// 			break
+// 		}
+// 		i++
+// 	}
+// }
+// func mux(conn net.Conn, ln string) {
+// 	m := strings.Fields(ln)[0] 
+// 	u := strings.Fields(ln)[1] 
+// 	fmt.Println("***METHOD", m)
+//   fmt.Println("***URI", u)
+// 	// multiplexer
+// 	if m == "GET" && u == "/" {
+// 		index(conn)
+// 	}
+// 	if m == "GET" && u == "/about" {
+// 		about(conn)
+// 	}
+// 	if m == "GET" && u == "/contact" {
+// 		contact(conn)
+// 	}
+// 	if m == "GET" && u == "/apply" {
+// 		apply(conn)
+// 	}
+// 	if m == "POST" && u == "/apply" {
+// 		applyProcess(conn)
+// 	}
+// }
+// func index(conn net.Conn) {
+// 	body := \`<!DOCTYPE html><html lang="en"><head><meta charet="UTF-8"><title></title></head><body>
+// 	<strong>INDEX</strong><br>
+// 	<a href="/">index</a><br>
+// 	<a href="/about">about</a><br>
+// 	<a href="/contact">contact</a><br>
+// 	<a href="/apply">apply</a><br>
+// 	</body></html>\`
+// 	fmt.Fprint(conn, "HTTP/1.1 200 OK\\r\\n")
+// 	fmt.Fprintf(conn, "Content-Length: %d\\r\\n", len(body))
+// 	fmt.Fprint(conn, "Content-Type: text/html\\r\\n")
+// 	fmt.Fprint(conn, "\\r\\n")
+// 	fmt.Fprint(conn, body)
+// }
+// func about(conn net.Conn) {
+// 	body := \`<!DOCTYPE html><html lang="en"><head><meta charet="UTF-8"><title></title></head><body>
+// 	<strong>ABOUT</strong><br>
+// 	<a href="/">index</a><br>
+// 	<a href="/about">about</a><br>
+// 	<a href="/contact">contact</a><br>
+// 	<a href="/apply">apply</a><br>
+// 	</body></html>\`
+// 	fmt.Fprint(conn, "HTTP/1.1 200 OK\\r\\n")
+// 	fmt.Fprintf(conn, "Content-Length: %d\\r\\n", len(body))
+// 	fmt.Fprint(conn, "Content-Type: text/html\\r\\n")
+// 	fmt.Fprint(conn, "\\r\\n")
+// 	fmt.Fprint(conn, body)
+// }
+// func contact(conn net.Conn) {
+// 	body := \`<!DOCTYPE html><html lang="en"><head><meta charet="UTF-8"><title></title></head><body>
+// 	<strong>CONTACT</strong><br>
+// 	<a href="/">index</a><br>
+// 	<a href="/about">about</a><br>
+// 	<a href="/contact">contact</a><br>
+// 	<a href="/apply">apply</a><br>
+// 	</body></html>\`
+// 	fmt.Fprint(conn, "HTTP/1.1 200 OK\\r\\n")
+// 	fmt.Fprintf(conn, "Content-Length: %d\\r\\n", len(body))
+// 	fmt.Fprint(conn, "Content-Type: text/html\\r\\n")
+// 	fmt.Fprint(conn, "\\r\\n")
+// 	fmt.Fprint(conn, body)
+// }
+// func apply(conn net.Conn) {
+// 	body := \`<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title></title></head><body>
+// 	<strong>APPLY</strong><br>
+// 	<a href="/">index</a><br>
+// 	<a href="/about">about</a><br>
+// 	<a href="/contact">contact</a><br>
+// 	<a href="/apply">apply</a><br>
+// 	<form method="POST" action="/apply">
+// 	<input type="submit" value="apply">
+// 	</form>
+// 	</body></html>\`
+// 	fmt.Fprint(conn, "HTTP/1.1 200 OK\\r\\n")
+// 	fmt.Fprintf(conn, "Content-Length: %d\\r\\n", len(body))
+// 	fmt.Fprint(conn, "Content-Type: text/html\\r\\n")
+// 	fmt.Fprint(conn, "\\r\\n")
+// 	fmt.Fprint(conn, body)
+// }
+// func applyProcess(conn net.Conn) {
+// 	body := \`<!DOCTYPE html><html lang="en"><head><meta charet="UTF-8"><title></title></head><body>
+// 	<strong>APPLY PROCESS</strong><br>
+// 	<a href="/">index</a><br>
+// 	<a href="/about">about</a><br>
+// 	<a href="/contact">contact</a><br>
+// 	<a href="/apply">apply</a><br>
+// 	</body></html>\`
+// 	fmt.Fprint(conn, "HTTP/1.1 200 OK\\r\\n")
+// 	fmt.Fprintf(conn, "Content-Length: %d\\r\\n", len(body))
+// 	fmt.Fprint(conn, "Content-Type: text/html\\r\\n")
+// 	fmt.Fprint(conn, "\\r\\n")
+// 	fmt.Fprint(conn, body)
+// }
+//             `}</pre>
+//             <Span>The Dial function connects to a server:</Span>
+//             <Span>The Listen function creates servers:</Span>
+//             <Span>Net Http</Span>
+//             <pre>{`
+// package main
+// import (
+// 	"html/template"
+// 	"log"
+// 	"net/http"
+// 	"net/url"
+// )
+// type hotdog int
+// func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
+// 	err := req.ParseForm()
+// 	if err != nil {
+// 		log.Fatalln(err)
+// 	}
+// 	data := struct {
+// 		Method        string
+// 		URL           *url.URL
+// 		Submissions   map[string][]string
+// 		Header        http.Header
+// 		Host          string
+// 		ContentLength int64
+// 	}{
+// 		req.Method,
+// 		req.URL,
+// 		req.Form,
+// 		req.Header,
+// 		req.Host,
+// 		req.ContentLength,
+// 	}
+// 	tpl.ExecuteTemplate(w, "index.gohtml", data)
+// }
+// var tpl *template.Template
+// func init() {
+// 	tpl = template.Must(template.ParseFiles("index.gohtml"))
+// }
+// func main() {
+// 	var d hotdog
+// 	http.ListenAndServe(":8080", d)
+// }
+// package main
+// import (
+// 	"fmt"
+// 	"net/http"
+// )
+// type hotdog int
+// func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
+// 	w.Header().Set("Mcleod-Key", "this is from mcleod")
+// 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+// 	fmt.Fprintln(w, "<h1>Any code you want in this func</h1>")
+// }
+// func main() {
+// 	var d hotdog
+// 	http.ListenAndServe(":8080", d)
+// }            
+//             `}</pre>
+//             <Span>Net Http ServerMux</Span>
+//             <pre>{`
+// package main
+// import (
+//   "io"
+//   "net/http"
+// )
+// type hotdog int
+// func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
+//   switch req.URL.Path {
+//   case "/dog":
+//     io.WriteString(w, "doggy doggy doggy")
+//   case "/cat":
+//     io.WriteString(w, "kitty kitty kitty")
+//   }
+// }
+// func main() {
+//   var d hotdog
+//   http.ListenAndServe(":8080", d)
+// }            
+// // -------------------------
+// type hotdog int
+// func (d hotdog) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+// 	io.WriteString(res, "dog dog dog")
+// }
+// type hotcat int
+// func (c hotcat) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+// 	io.WriteString(res, "cat cat cat")
+// }
+// func main() {
+// 	var d hotdog
+// 	var c hotcat
+// 	mux := http.NewServeMux()
+// 	mux.Handle("/dog/", d)
+// 	mux.Handle("/cat", c)
+// 	http.ListenAndServe(":8080", mux)
+// }
+// // -------------------------
+// type hotdog int
+// func (d hotdog) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+// 	io.WriteString(res, "dog dog dog")
+// }
+// type hotcat int
+// func (c hotcat) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+// 	io.WriteString(res, "cat cat cat")
+// }
+// func main() {
+// 	var d hotdog
+// 	var c hotcat
+// 	http.Handle("/dog", d)
+// 	http.Handle("/cat", c)
+// 	http.ListenAndServe(":8080", nil)
+// }
+// // -------------------------
+// package main
+// import (
+// 	"io"
+// 	"net/http"
+// )
+// func d(res http.ResponseWriter, req *http.Request) {
+// 	io.WriteString(res, "dog dog dog")
+// }
+// func c(res http.ResponseWriter, req *http.Request) {
+// 	io.WriteString(res, "cat cat cat")
+// }
+// func main() {
+// 	http.HandleFunc("/dog", d)
+// 	http.HandleFunc("/cat", c)
+// 	// http.Handle("/dog", http.HandlerFunc(d))
+// 	// http.Handle("/cat", http.HandlerFunc(c))
+// 	http.ListenAndServe(":8080", nil)
+// }
+//             `}</pre>
+//             <Span>Third Party Server Mux:</Span>
+//             <pre>{`
+// package main
+// import (
+// 	"fmt"
+// 	"github.com/julienschmidt/httprouter"
+// 	"html/template"
+// 	"log"
+// 	"net/http"
+// )
+// var tpl *template.Template
+// func init() {
+// 	tpl = template.Must(template.ParseGlob("templates/*"))
+// }
+// func main() {
+// 	mux := httprouter.New()
+// 	mux.GET("/", index)
+// 	mux.GET("/about", about)
+// 	mux.GET("/contact", contact)
+// 	mux.GET("/apply", apply)
+// 	mux.POST("/apply", applyProcess)
+// 	mux.GET("/user/:name", user)
+// 	mux.GET("/blog/:category/:article", blogRead)
+// 	mux.POST("/blog/:category/:article", blogWrite)
+// 	http.ListenAndServe(":8080", mux)
+// }
+// func user(w http.ResponseWriter, req *http.Request, ps httprouter.Params) {
+// 	fmt.Fprintf(w, "USER, %s!\\n", ps.ByName("name"))
+// }
+// func blogRead(w http.ResponseWriter, req *http.Request, ps httprouter.Params) {
+// 	fmt.Fprintf(w, "READ CATEGORY, %s!\\n", ps.ByName("category"))
+// 	fmt.Fprintf(w, "READ ARTICLE, %s!\\n", ps.ByName("article"))
+// }
+// func blogWrite(w http.ResponseWriter, req *http.Request, ps httprouter.Params) {
+// 	fmt.Fprintf(w, "WRITE CATEGORY, %s!\\n", ps.ByName("category"))
+// 	fmt.Fprintf(w, "WRITE ARTICLE, %s!\\n", ps.ByName("article"))
+// }
+// func index(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+// 	err := tpl.ExecuteTemplate(w, "index.gohtml", nil)
+// 	HandleError(w, err)
+// }
+// func about(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+// 	err := tpl.ExecuteTemplate(w, "about.gohtml", nil)
+// 	HandleError(w, err)
+// }
+// func contact(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+// 	err := tpl.ExecuteTemplate(w, "contact.gohtml", nil)
+// 	HandleError(w, err)
+// }
+// func apply(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+// 	err := tpl.ExecuteTemplate(w, "apply.gohtml", nil)
+// 	HandleError(w, err)
+// }
+// func applyProcess(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+// 	err := tpl.ExecuteTemplate(w, "applyProcess.gohtml", nil)
+// 	HandleError(w, err)
+// }
+// func HandleError(w http.ResponseWriter, err error) {
+// 	if err != nil {
+// 		http.Error(w, err.Error(), http.StatusInternalServerError)
+// 		log.Fatalln(err)
+// 	}
+// }            
+//             `}</pre>
+//             <Span>
+//               <b>Serving Files:</b>
+//             </Span>
+//             <pre>{`
+// package main
+// import (
+// 	"io"
+// 	"net/http"
+// 	"os"
+// )
+// func main() {
+// 	http.HandleFunc("/", dog)
+// 	http.HandleFunc("/toby.jpg", dogPic)
+// 	http.ListenAndServe(":8080", nil)
+// }
+// func dog(w http.ResponseWriter, req *http.Request) {
+// 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+// 	io.WriteString(w, \`
+// 	<img src="/toby.jpg">
+// 	\`)
+// }
+// func dogPic(w http.ResponseWriter, req *http.Request) {
+// 	f, err := os.Open("toby.jpg")
+// 	if err != nil {
+// 		http.Error(w, "file not found", 404)
+// 		return
+// 	}
+// 	defer f.Close()
+// 	// io.Copy(w, f)
+//   // fi, err := f.Stat()
+// 	// if err != nil {
+// 	// 	http.Error(w, "file not found", 404)
+// 	// 	return
+// 	// }
+// 	// http.ServeContent(w, req, f.Name(), fi.ModTime(), f)
+// }
+// func main() {
+// 	http.HandleFunc("/", dog)
+// 	http.HandleFunc("/toby.jpg", dogPic)
+//   http.Handle("/assets/", http.StripPrefix("/assets", http.FileServer(http.Dir("./assets"))))
+// 	io.WriteString(w, \`<img src="/assets/toby.jpg">\`)
+// 	http.ListenAndServe(":8080", nil)
+// }
+// func dog(w http.ResponseWriter, req *http.Request) {
+// 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+// 	io.WriteString(w, \`<img src="toby.jpg">\`)
+// }
+// func dogPic(w http.ResponseWriter, req *http.Request) {
+// 	http.ServeFile(w, req, "toby.jpg")
+// 	log.Fatal(http.ListenAndServe(":8080", http.FileServer(http.Dir("."))))
+// }
+// // serveFile serveContent 
+//             `}</pre>
+//             <Span>
+//               <b>Not Found Handler:</b>
+//             </Span>
+//             <Span>{`
+// package main
+// import (
+// 	"fmt"
+// 	"net/http"
+// )
+// func main() {
+// 	http.HandleFunc("/", foo)
+// 	http.Handle("/favicon.ico", http.NotFoundHandler())
+// 	http.ListenAndServe(":8080", nil)
+// }
+// func foo(w http.ResponseWriter, req *http.Request) {
+// 	fmt.Println(req.URL.Path)
+// 	fmt.Fprintln(w, "go look at your terminal")
+// }            
+//             `}</Span>
+//             <Span>
+//               <b>AppEngine Deploy</b>
+//             </Span>
+//             <pre>{`
+// index.html + .css +.img
 
-app.yaml
+// app.yaml
 
-runtime: go113
+// runtime: go113
 
-handlers:
-- url: /.*
-  script: auto
-  secure: always
+// handlers:
+// - url: /.*
+//   script: auto
+//   secure: always
 
-main.go
+// main.go
 
-package main
-import "net/http"
-func main(){
-	http.Handle("/", http.FileServer(http.Dir(".")))
-	http.ListenAndServe(":8080", nil)
-}
+// package main
+// import "net/http"
+// func main(){
+// 	http.Handle("/", http.FileServer(http.Dir(".")))
+// 	http.ListenAndServe(":8080", nil)
+// }
 
-            `}</pre>
-            <Span>
-              <pre>{`
-package main
-import (
-	"fmt"
-	"net/http"
-)
-func main() {
-	http.HandleFunc("/", foo)
-	http.Handle("/favicon.ico", http.NotFoundHandler())
-	http.ListenAndServe(":8080", nil)
-}
-func foo(w http.ResponseWriter, req *http.Request) {
-	v := req.FormValue("q")
-	fmt.Fprintln(w, "Do my search: "+v)
-}              
-              `}</pre>
-            </Span>
-            <Span>
-              {`
-package main
-import (
-	"html/template"
-	"log"
-	"net/http"
-)
-var tpl *template.Template
-func init() {
-	tpl = template.Must(template.ParseGlob("templates/*"))
-}
-type person struct {
-	FirstName  string
-	LastName   string
-	Subscribed bool
-}
-func main() {
-	http.HandleFunc("/", foo)
-	http.Handle("/favicon.ico", http.NotFoundHandler())
-	http.ListenAndServe(":8080", nil)
-}
-func foo(w http.ResponseWriter, req *http.Request) {
-	f := req.FormValue("first")
-	l := req.FormValue("last")
-	s := req.FormValue("subscribe") == "on"
-	err := tpl.ExecuteTemplate(w, "index.gohtml", person{f, l, s})
-	if err != nil {
-		http.Error(w, err.Error(), 500)
-		log.Fatalln(err)
-	}
-}
+//             `}</pre>
+//             <Span>
+//               <pre>{`
+// package main
+// import (
+// 	"fmt"
+// 	"net/http"
+// )
+// func main() {
+// 	http.HandleFunc("/", foo)
+// 	http.Handle("/favicon.ico", http.NotFoundHandler())
+// 	http.ListenAndServe(":8080", nil)
+// }
+// func foo(w http.ResponseWriter, req *http.Request) {
+// 	v := req.FormValue("q")
+// 	fmt.Fprintln(w, "Do my search: "+v)
+// }              
+//               `}</pre>
+//             </Span>
+//             <Span>
+//               {`
+// package main
+// import (
+// 	"html/template"
+// 	"log"
+// 	"net/http"
+// )
+// var tpl *template.Template
+// func init() {
+// 	tpl = template.Must(template.ParseGlob("templates/*"))
+// }
+// type person struct {
+// 	FirstName  string
+// 	LastName   string
+// 	Subscribed bool
+// }
+// func main() {
+// 	http.HandleFunc("/", foo)
+// 	http.Handle("/favicon.ico", http.NotFoundHandler())
+// 	http.ListenAndServe(":8080", nil)
+// }
+// func foo(w http.ResponseWriter, req *http.Request) {
+// 	f := req.FormValue("first")
+// 	l := req.FormValue("last")
+// 	s := req.FormValue("subscribe") == "on"
+// 	err := tpl.ExecuteTemplate(w, "index.gohtml", person{f, l, s})
+// 	if err != nil {
+// 		http.Error(w, err.Error(), 500)
+// 		log.Fatalln(err)
+// 	}
+// }
 
-templates/index.gohtml
+// templates/index.gohtml
 
-index.gohtml
-{{template "header"}}
-<form method="POST">
-    <label for="firstName">First Name</label>
-    <input type="text" id="firstName" name="first">
-    <br>
-    <label for="lastName">Last Name</label>
-    <input type="text" id="lastName" name="last">
-    <br>
-    <label for="sub">Subscribe</label>
-    <input type="checkbox" id="sub" name="subscribe">
-    <br>
-    <input type="submit">
-</form>
-<br>
-<h1>First: {{.FirstName}}</h1>
-<h1>Last: {{.LastName}}</h1>
-<h1>Subscribed: {{.Subscribed}}</h1>
-{{template "footer"}}
+// index.gohtml
+// {{template "header"}}
+// <form method="POST">
+//     <label for="firstName">First Name</label>
+//     <input type="text" id="firstName" name="first">
+//     <br>
+//     <label for="lastName">Last Name</label>
+//     <input type="text" id="lastName" name="last">
+//     <br>
+//     <label for="sub">Subscribe</label>
+//     <input type="checkbox" id="sub" name="subscribe">
+//     <br>
+//     <input type="submit">
+// </form>
+// <br>
+// <h1>First: {{.FirstName}}</h1>
+// <h1>Last: {{.LastName}}</h1>
+// <h1>Subscribed: {{.Subscribed}}</h1>
+// {{template "footer"}}
 
-include-footer.gohtml
+// include-footer.gohtml
 
-{{define "header"}}
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
-{{end}}
+// {{define "header"}}
+// <!doctype html>
+// <html lang="en">
+// <head>
+//     <meta charset="UTF-8">
+//     <title>Document</title>
+// </head>
+// <body>
+// {{end}}
 
-include-header.gohtml
+// include-header.gohtml
 
-{{define "footer"}}
-<h1>copyright McLeod</h1>
-</body>
-</html>
-{{end}}
-              `}
-            </Span>
-            <Span>Form File</Span>
-            <pre>
-              {`
-package main
-import (
-	"fmt"
-	"html/template"
-	"io/ioutil"
-	"net/http"
-	"os"
-	"path/filepath"
-)
-var tpl *template.Template
-func init() {
-	tpl = template.Must(template.ParseGlob("templates/*"))
-}
-func main() {
-	http.HandleFunc("/", foo)
-	http.Handle("/favicon.ico", http.NotFoundHandler())
-	http.ListenAndServe(":8080", nil)
-}
-func foo(w http.ResponseWriter, req *http.Request) {
-	var s string
-	if req.Method == http.MethodPost {
-		f, h, err := req.FormFile("q")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		defer f.Close()
-		fmt.Println("\\nfile:", f, "\\nheader:", h, "\\nerr", err)
-		bs, err := ioutil.ReadAll(f)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		s = string(bs)
-		dst, err := os.Create(filepath.Join("./user/", h.Filename))
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		defer dst.Close()
-		_, err = dst.Write(bs)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-	}
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	tpl.ExecuteTemplate(w, "index.gohtml", s)
-}              
-              `}
-            </pre>
-            <Span>Enctype (type="text/plain")</Span>
-            <pre>{`
-	http.HandleFunc("/", foo)
-  func foo(w http.ResponseWriter, req *http.Request) {
-    bs := make([]byte, req.ContentLength)
-    req.Body.Read(bs)
-    body := string(bs)
-    err := tpl.ExecuteTemplate(w, "index.gohtml", body)
-    if err != nil {
-      http.Error(w, err.Error(), 500)
-      log.Fatalln(err)
-    }
-  }            
-            `}</pre>
-            <Span>Enctype (type="application/x-www-form-urlencoded")</Span>
-            <pre>
-              {`
-<form method="POST" enctype="application/x-www-form-urlencoded">
-<label for="firstName">First Name</label>
-<input type="text" id="firstName" name="first">
-<br>
-<label for="lastName">Last Name</label>
-<input type="text" id="lastName" name="last">
-<br>
-<label for="sub">Subscribed</label>
-<input type="checkbox" id="sub" name="subscribe">
-<br>
-<input type="submit">
-</form>
-func main() {
-	http.HandleFunc("/", foo)
-	http.Handle("/favicon.ico", http.NotFoundHandler())
-	http.ListenAndServe(":8080", nil)
-}
-func foo(w http.ResponseWriter, req *http.Request) {
-	bs := make([]byte, req.ContentLength)
-	req.Body.Read(bs)
-	body := string(bs)
-	err := tpl.ExecuteTemplate(w, "index.gohtml", body)
-	if err != nil {
-		http.Error(w, err.Error(), 500)
-		log.Fatalln(err)
-	}
-}
-`}
-            </pre>
-            <Span>Enctype (type="multipart/form-data")</Span>
-            <pre>{`
-<form method="POST" enctype="multipart/form-data">
-<label for="firstName">First Name</label>
-<input type="text" id="firstName" name="first">
-<br>
-<label for="lastName">Last Name</label>
-<input type="text" id="lastName" name="last">
-<br>
-<label for="sub">Subscribed</label>
-<input type="checkbox" id="sub" name="subscribe">
-<br>
-<input type="submit">
-</form>
-func main() {
-	http.HandleFunc("/", foo)
-	http.Handle("/favicon.ico", http.NotFoundHandler())
-	http.ListenAndServe(":8080", nil)
-}
-func foo(w http.ResponseWriter, req *http.Request) {
-	bs := make([]byte, req.ContentLength)
-	req.Body.Read(bs)
-	body := string(bs)
-	err := tpl.ExecuteTemplate(w, "index.gohtml", body)
-	if err != nil {
-		http.Error(w, err.Error(), 500)
-		log.Fatalln(err)
-	}
-}
-`}</pre>
-            <Span>
-              <b>Redirect</b>
-            </Span>
-            <pre>{`
-	http.Redirect(w, req, "/", http.StatusSeeOther)
-	http.Redirect(w, req, "/", http.StatusTemporaryRedirect)
-	http.Redirect(w, req, "/", http.StatusMovedPermanently)
-  // --------
-  <form method="POST" action="/bar">
-    <input type="text" name="fname" title="fname">
-    <input type="submit">
-  </form>
-	w.Header().Set("Location", "/")
-	w.WriteHeader(http.StatusSeeOther)
-`}</pre>
-            <Span>
-              <b>Cookies</b>
-            </Span>{" "}
-            <pre>{`
-package main
-import (
-	"fmt"
-	"net/http"
-)
-func main() {
-	http.HandleFunc("/", set)
-	http.HandleFunc("/read", read)
-	http.Handle("/favicon.ico", http.NotFoundHandler())
-	http.ListenAndServe(":8080", nil)
-}
-func set(w http.ResponseWriter, req *http.Request) {
-	http.SetCookie(w, &http.Cookie{
-		Name:  "my-cookie",
-		Value: "some value",
-		Path: "/",
-	})
-	fmt.Fprintln(w, "COOKIE WRITTEN - CHECK YOUR BROWSER")
-	fmt.Fprintln(w, "in chrome go to: dev tools / application / cookies")
-}
-func read(w http.ResponseWriter, req *http.Request) {
-	c1, err := req.Cookie("my-cookie")
-	if err != nil {
-		log.Println(err)
-	} else {
-		fmt.Fprintln(w, "YOUR COOKIE #1:", c1)
-	}
-	c2, err := req.Cookie("general")
-	if err != nil {
-		log.Println(err)
-	} else {
-		fmt.Fprintln(w, "YOUR COOKIE #2:", c2)
-	}
-	c3, err := req.Cookie("specific")
-	if err != nil {
-		log.Println(err)
-	} else {
-		fmt.Fprintln(w, "YOUR COOKIE #3:", c3)
-	}
-}
-func expire(w http.ResponseWriter, req *http.Request) {
-	c, err := req.Cookie("session")
-	if err != nil {
-		http.Redirect(w, req, "/set", http.StatusSeeOther)
-		return
-	}
-	c.MaxAge = -1 // delete cookie
-	http.SetCookie(w, c)
-	http.Redirect(w, req, "/", http.StatusSeeOther)
-}
-            `}</pre>
-            <Span>
-              <b>Sessions, UUID, Middlewares And Bycrypt</b>
-            </Span>
-            <pre>
-              {`
-main.go
+// {{define "footer"}}
+// <h1>copyright McLeod</h1>
+// </body>
+// </html>
+// {{end}}
+//               `}
+//             </Span>
+//             <Span>Form File</Span>
+//             <pre>
+//               {`
+// package main
+// import (
+// 	"fmt"
+// 	"html/template"
+// 	"io/ioutil"
+// 	"net/http"
+// 	"os"
+// 	"path/filepath"
+// )
+// var tpl *template.Template
+// func init() {
+// 	tpl = template.Must(template.ParseGlob("templates/*"))
+// }
+// func main() {
+// 	http.HandleFunc("/", foo)
+// 	http.Handle("/favicon.ico", http.NotFoundHandler())
+// 	http.ListenAndServe(":8080", nil)
+// }
+// func foo(w http.ResponseWriter, req *http.Request) {
+// 	var s string
+// 	if req.Method == http.MethodPost {
+// 		f, h, err := req.FormFile("q")
+// 		if err != nil {
+// 			http.Error(w, err.Error(), http.StatusInternalServerError)
+// 			return
+// 		}
+// 		defer f.Close()
+// 		fmt.Println("\\nfile:", f, "\\nheader:", h, "\\nerr", err)
+// 		bs, err := ioutil.ReadAll(f)
+// 		if err != nil {
+// 			http.Error(w, err.Error(), http.StatusInternalServerError)
+// 			return
+// 		}
+// 		s = string(bs)
+// 		dst, err := os.Create(filepath.Join("./user/", h.Filename))
+// 		if err != nil {
+// 			http.Error(w, err.Error(), http.StatusInternalServerError)
+// 			return
+// 		}
+// 		defer dst.Close()
+// 		_, err = dst.Write(bs)
+// 		if err != nil {
+// 			http.Error(w, err.Error(), http.StatusInternalServerError)
+// 			return
+// 		}
+// 	}
+// 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+// 	tpl.ExecuteTemplate(w, "index.gohtml", s)
+// }              
+//               `}
+//             </pre>
+//             <Span>Enctype (type="text/plain")</Span>
+//             <pre>{`
+// 	http.HandleFunc("/", foo)
+//   func foo(w http.ResponseWriter, req *http.Request) {
+//     bs := make([]byte, req.ContentLength)
+//     req.Body.Read(bs)
+//     body := string(bs)
+//     err := tpl.ExecuteTemplate(w, "index.gohtml", body)
+//     if err != nil {
+//       http.Error(w, err.Error(), 500)
+//       log.Fatalln(err)
+//     }
+//   }            
+//             `}</pre>
+//             <Span>Enctype (type="application/x-www-form-urlencoded")</Span>
+//             <pre>
+//               {`
+// <form method="POST" enctype="application/x-www-form-urlencoded">
+// <label for="firstName">First Name</label>
+// <input type="text" id="firstName" name="first">
+// <br>
+// <label for="lastName">Last Name</label>
+// <input type="text" id="lastName" name="last">
+// <br>
+// <label for="sub">Subscribed</label>
+// <input type="checkbox" id="sub" name="subscribe">
+// <br>
+// <input type="submit">
+// </form>
+// func main() {
+// 	http.HandleFunc("/", foo)
+// 	http.Handle("/favicon.ico", http.NotFoundHandler())
+// 	http.ListenAndServe(":8080", nil)
+// }
+// func foo(w http.ResponseWriter, req *http.Request) {
+// 	bs := make([]byte, req.ContentLength)
+// 	req.Body.Read(bs)
+// 	body := string(bs)
+// 	err := tpl.ExecuteTemplate(w, "index.gohtml", body)
+// 	if err != nil {
+// 		http.Error(w, err.Error(), 500)
+// 		log.Fatalln(err)
+// 	}
+// }
+// `}
+//             </pre>
+//             <Span>Enctype (type="multipart/form-data")</Span>
+//             <pre>{`
+// <form method="POST" enctype="multipart/form-data">
+// <label for="firstName">First Name</label>
+// <input type="text" id="firstName" name="first">
+// <br>
+// <label for="lastName">Last Name</label>
+// <input type="text" id="lastName" name="last">
+// <br>
+// <label for="sub">Subscribed</label>
+// <input type="checkbox" id="sub" name="subscribe">
+// <br>
+// <input type="submit">
+// </form>
+// func main() {
+// 	http.HandleFunc("/", foo)
+// 	http.Handle("/favicon.ico", http.NotFoundHandler())
+// 	http.ListenAndServe(":8080", nil)
+// }
+// func foo(w http.ResponseWriter, req *http.Request) {
+// 	bs := make([]byte, req.ContentLength)
+// 	req.Body.Read(bs)
+// 	body := string(bs)
+// 	err := tpl.ExecuteTemplate(w, "index.gohtml", body)
+// 	if err != nil {
+// 		http.Error(w, err.Error(), 500)
+// 		log.Fatalln(err)
+// 	}
+// }
+// `}</pre>
+//             <Span>
+//               <b>Redirect</b>
+//             </Span>
+//             <pre>{`
+// 	http.Redirect(w, req, "/", http.StatusSeeOther)
+// 	http.Redirect(w, req, "/", http.StatusTemporaryRedirect)
+// 	http.Redirect(w, req, "/", http.StatusMovedPermanently)
+//   // --------
+//   <form method="POST" action="/bar">
+//     <input type="text" name="fname" title="fname">
+//     <input type="submit">
+//   </form>
+// 	w.Header().Set("Location", "/")
+// 	w.WriteHeader(http.StatusSeeOther)
+// `}</pre>
+//             <Span>
+//               <b>Cookies</b>
+//             </Span>{" "}
+//             <pre>{`
+// package main
+// import (
+// 	"fmt"
+// 	"net/http"
+// )
+// func main() {
+// 	http.HandleFunc("/", set)
+// 	http.HandleFunc("/read", read)
+// 	http.Handle("/favicon.ico", http.NotFoundHandler())
+// 	http.ListenAndServe(":8080", nil)
+// }
+// func set(w http.ResponseWriter, req *http.Request) {
+// 	http.SetCookie(w, &http.Cookie{
+// 		Name:  "my-cookie",
+// 		Value: "some value",
+// 		Path: "/",
+// 	})
+// 	fmt.Fprintln(w, "COOKIE WRITTEN - CHECK YOUR BROWSER")
+// 	fmt.Fprintln(w, "in chrome go to: dev tools / application / cookies")
+// }
+// func read(w http.ResponseWriter, req *http.Request) {
+// 	c1, err := req.Cookie("my-cookie")
+// 	if err != nil {
+// 		log.Println(err)
+// 	} else {
+// 		fmt.Fprintln(w, "YOUR COOKIE #1:", c1)
+// 	}
+// 	c2, err := req.Cookie("general")
+// 	if err != nil {
+// 		log.Println(err)
+// 	} else {
+// 		fmt.Fprintln(w, "YOUR COOKIE #2:", c2)
+// 	}
+// 	c3, err := req.Cookie("specific")
+// 	if err != nil {
+// 		log.Println(err)
+// 	} else {
+// 		fmt.Fprintln(w, "YOUR COOKIE #3:", c3)
+// 	}
+// }
+// func expire(w http.ResponseWriter, req *http.Request) {
+// 	c, err := req.Cookie("session")
+// 	if err != nil {
+// 		http.Redirect(w, req, "/set", http.StatusSeeOther)
+// 		return
+// 	}
+// 	c.MaxAge = -1 // delete cookie
+// 	http.SetCookie(w, c)
+// 	http.Redirect(w, req, "/", http.StatusSeeOther)
+// }
+//             `}</pre>
+//             <Span>
+//               <b>Sessions, UUID, Middlewares And Bycrypt</b>
+//             </Span>
+//             <pre>
+//               {`
+// main.go
 
-package main
+// package main
 
-import (
-	"github.com/satori/go.uuid"
-	"golang.org/x/crypto/bcrypt"
-	"html/template"
-	"net/http"
-	"time"
-)
+// import (
+// 	"github.com/satori/go.uuid"
+// 	"golang.org/x/crypto/bcrypt"
+// 	"html/template"
+// 	"net/http"
+// 	"time"
+// )
 
-type user struct {
-	UserName string
-	Password []byte
-	First    string
-	Last     string
-	Role     string
-}
+// type user struct {
+// 	UserName string
+// 	Password []byte
+// 	First    string
+// 	Last     string
+// 	Role     string
+// }
 
-type session struct {
-	un           string
-	lastActivity time.Time
-}
+// type session struct {
+// 	un           string
+// 	lastActivity time.Time
+// }
 
-var tpl *template.Template
-var dbUsers = map[string]user{}      
-var dbSessions = map[string]session{} 
-var dbSessionsCleaned time.Time
+// var tpl *template.Template
+// var dbUsers = map[string]user{}      
+// var dbSessions = map[string]session{} 
+// var dbSessionsCleaned time.Time
 
-const sessionLength int = 30
+// const sessionLength int = 30
 
-func init() {
-	tpl = template.Must(template.ParseGlob("templates/*"))
-	dbSessionsCleaned = time.Now()
-}
+// func init() {
+// 	tpl = template.Must(template.ParseGlob("templates/*"))
+// 	dbSessionsCleaned = time.Now()
+// }
 
-func main() {
-	http.HandleFunc("/", index)
-	http.HandleFunc("/bar", bar)
-	http.HandleFunc("/signup", signup)
-	http.HandleFunc("/login", login)
-	http.HandleFunc("/logout", authorized(logout))
-	http.Handle("/favicon.ico", http.NotFoundHandler())
-	http.ListenAndServe(":8080", nil)
-}
+// func main() {
+// 	http.HandleFunc("/", index)
+// 	http.HandleFunc("/bar", bar)
+// 	http.HandleFunc("/signup", signup)
+// 	http.HandleFunc("/login", login)
+// 	http.HandleFunc("/logout", authorized(logout))
+// 	http.Handle("/favicon.ico", http.NotFoundHandler())
+// 	http.ListenAndServe(":8080", nil)
+// }
 
-func index(w http.ResponseWriter, req *http.Request) {
-	u := getUser(w, req)
-	showSessions()
-	tpl.ExecuteTemplate(w, "index.gohtml", u)
-}
+// func index(w http.ResponseWriter, req *http.Request) {
+// 	u := getUser(w, req)
+// 	showSessions()
+// 	tpl.ExecuteTemplate(w, "index.gohtml", u)
+// }
 
-func bar(w http.ResponseWriter, req *http.Request) {
-	u := getUser(w, req)
-	if !alreadyLoggedIn(w, req) {
-		http.Redirect(w, req, "/", http.StatusSeeOther)
-		return
-	}
-	if u.Role != "007" {
-		http.Error(w, "You must be 007 to enter the bar", http.StatusForbidden)
-		return
-	}
-	showSessions() // for demonstration purposes
-	tpl.ExecuteTemplate(w, "bar.gohtml", u)
-}
+// func bar(w http.ResponseWriter, req *http.Request) {
+// 	u := getUser(w, req)
+// 	if !alreadyLoggedIn(w, req) {
+// 		http.Redirect(w, req, "/", http.StatusSeeOther)
+// 		return
+// 	}
+// 	if u.Role != "007" {
+// 		http.Error(w, "You must be 007 to enter the bar", http.StatusForbidden)
+// 		return
+// 	}
+// 	showSessions() // for demonstration purposes
+// 	tpl.ExecuteTemplate(w, "bar.gohtml", u)
+// }
 
-func signup(w http.ResponseWriter, req *http.Request) {
-	if alreadyLoggedIn(w, req) {
-		http.Redirect(w, req, "/", http.StatusSeeOther)
-		return
-	}
-	var u user
-	if req.Method == http.MethodPost {
-		un := req.FormValue("username")
-		p := req.FormValue("password")
-		f := req.FormValue("firstname")
-		l := req.FormValue("lastname")
-		r := req.FormValue("role")
-		if _, ok := dbUsers[un]; ok {
-			http.Error(w, "Username already taken", http.StatusForbidden)
-			return
-		}
-		sID, _ := uuid.NewV4()
-		c := &http.Cookie{
-			Name:  "session",
-			Value: sID.String(),
-		}
-		c.MaxAge = sessionLength
-		http.SetCookie(w, c)
-		dbSessions[c.Value] = session{un, time.Now()}
-		bs, err := bcrypt.GenerateFromPassword([]byte(p), bcrypt.MinCost)
-		if err != nil {
-			http.Error(w, "Internal server error", http.StatusInternalServerError)
-			return
-		}
-		u = user{un, bs, f, l, r}
-		dbUsers[un] = u
-		http.Redirect(w, req, "/", http.StatusSeeOther)
-		return
-	}
-	showSessions() // for demonstration purposes
-	tpl.ExecuteTemplate(w, "signup.gohtml", u)
-}
+// func signup(w http.ResponseWriter, req *http.Request) {
+// 	if alreadyLoggedIn(w, req) {
+// 		http.Redirect(w, req, "/", http.StatusSeeOther)
+// 		return
+// 	}
+// 	var u user
+// 	if req.Method == http.MethodPost {
+// 		un := req.FormValue("username")
+// 		p := req.FormValue("password")
+// 		f := req.FormValue("firstname")
+// 		l := req.FormValue("lastname")
+// 		r := req.FormValue("role")
+// 		if _, ok := dbUsers[un]; ok {
+// 			http.Error(w, "Username already taken", http.StatusForbidden)
+// 			return
+// 		}
+// 		sID, _ := uuid.NewV4()
+// 		c := &http.Cookie{
+// 			Name:  "session",
+// 			Value: sID.String(),
+// 		}
+// 		c.MaxAge = sessionLength
+// 		http.SetCookie(w, c)
+// 		dbSessions[c.Value] = session{un, time.Now()}
+// 		bs, err := bcrypt.GenerateFromPassword([]byte(p), bcrypt.MinCost)
+// 		if err != nil {
+// 			http.Error(w, "Internal server error", http.StatusInternalServerError)
+// 			return
+// 		}
+// 		u = user{un, bs, f, l, r}
+// 		dbUsers[un] = u
+// 		http.Redirect(w, req, "/", http.StatusSeeOther)
+// 		return
+// 	}
+// 	showSessions() // for demonstration purposes
+// 	tpl.ExecuteTemplate(w, "signup.gohtml", u)
+// }
 
-func login(w http.ResponseWriter, req *http.Request) {
-	if alreadyLoggedIn(w, req) {
-		http.Redirect(w, req, "/", http.StatusSeeOther)
-		return
-	}
-	var u user
-	if req.Method == http.MethodPost {
-		un := req.FormValue("username")
-		p := req.FormValue("password")
-		u, ok := dbUsers[un]
-		if !ok {
-			http.Error(w, "Username and/or password do not match", http.StatusForbidden)
-			return
-		}
-		err := bcrypt.CompareHashAndPassword(u.Password, []byte(p))
-		if err != nil {
-			http.Error(w, "Username and/or password do not match", http.StatusForbidden)
-			return
-		}
-		sID, _ := uuid.NewV4()
-		c := &http.Cookie{
-			Name:  "session",
-			Value: sID.String(),
-		}
-		c.MaxAge = sessionLength
-		http.SetCookie(w, c)
-		dbSessions[c.Value] = session{un, time.Now()}
-		http.Redirect(w, req, "/", http.StatusSeeOther)
-		return
-	}
-	showSessions() 
-	tpl.ExecuteTemplate(w, "login.gohtml", u)
-}
+// func login(w http.ResponseWriter, req *http.Request) {
+// 	if alreadyLoggedIn(w, req) {
+// 		http.Redirect(w, req, "/", http.StatusSeeOther)
+// 		return
+// 	}
+// 	var u user
+// 	if req.Method == http.MethodPost {
+// 		un := req.FormValue("username")
+// 		p := req.FormValue("password")
+// 		u, ok := dbUsers[un]
+// 		if !ok {
+// 			http.Error(w, "Username and/or password do not match", http.StatusForbidden)
+// 			return
+// 		}
+// 		err := bcrypt.CompareHashAndPassword(u.Password, []byte(p))
+// 		if err != nil {
+// 			http.Error(w, "Username and/or password do not match", http.StatusForbidden)
+// 			return
+// 		}
+// 		sID, _ := uuid.NewV4()
+// 		c := &http.Cookie{
+// 			Name:  "session",
+// 			Value: sID.String(),
+// 		}
+// 		c.MaxAge = sessionLength
+// 		http.SetCookie(w, c)
+// 		dbSessions[c.Value] = session{un, time.Now()}
+// 		http.Redirect(w, req, "/", http.StatusSeeOther)
+// 		return
+// 	}
+// 	showSessions() 
+// 	tpl.ExecuteTemplate(w, "login.gohtml", u)
+// }
 
-func logout(w http.ResponseWriter, req *http.Request) {
-	c, _ := req.Cookie("session")
-	delete(dbSessions, c.Value)
-	// remove the cookie
-	c = &http.Cookie{
-		Name:   "session",
-		Value:  "",
-		MaxAge: -1,
-	}
-	http.SetCookie(w, c)
-	if time.Now().Sub(dbSessionsCleaned) > (time.Second * 30) {
-		go cleanSessions()
-	}
-	http.Redirect(w, req, "/login", http.StatusSeeOther)
-}
+// func logout(w http.ResponseWriter, req *http.Request) {
+// 	c, _ := req.Cookie("session")
+// 	delete(dbSessions, c.Value)
+// 	// remove the cookie
+// 	c = &http.Cookie{
+// 		Name:   "session",
+// 		Value:  "",
+// 		MaxAge: -1,
+// 	}
+// 	http.SetCookie(w, c)
+// 	if time.Now().Sub(dbSessionsCleaned) > (time.Second * 30) {
+// 		go cleanSessions()
+// 	}
+// 	http.Redirect(w, req, "/login", http.StatusSeeOther)
+// }
 
-func authorized(h http.HandlerFunc) http.HandlerFunc {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if !alreadyLoggedIn(w, r) {
-			http.Redirect(w, r, "/", http.StatusSeeOther)
-			return
-		}
-		h.ServeHTTP(w, r)
-	})
-}
+// func authorized(h http.HandlerFunc) http.HandlerFunc {
+// 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+// 		if !alreadyLoggedIn(w, r) {
+// 			http.Redirect(w, r, "/", http.StatusSeeOther)
+// 			return
+// 		}
+// 		h.ServeHTTP(w, r)
+// 	})
+// }
 
-session.go
+// session.go
 
-package main
+// package main
 
-import (
-	"fmt"
-	"github.com/satori/go.uuid"
-	"net/http"
-	"time"
-)
+// import (
+// 	"fmt"
+// 	"github.com/satori/go.uuid"
+// 	"net/http"
+// 	"time"
+// )
 
-func getUser(w http.ResponseWriter, req *http.Request) user {
-	c, err := req.Cookie("session")
-	if err != nil {
-		sID, _ := uuid.NewV4()
-		c = &http.Cookie{
-			Name:  "session",
-			Value: sID.String(),
-		}
+// func getUser(w http.ResponseWriter, req *http.Request) user {
+// 	c, err := req.Cookie("session")
+// 	if err != nil {
+// 		sID, _ := uuid.NewV4()
+// 		c = &http.Cookie{
+// 			Name:  "session",
+// 			Value: sID.String(),
+// 		}
 
-	}
-	c.MaxAge = sessionLength
-	http.SetCookie(w, c)
-	var u user
-	if s, ok := dbSessions[c.Value]; ok {
-		s.lastActivity = time.Now()
-		dbSessions[c.Value] = s
-		u = dbUsers[s.un]
-	}
-	return u
-}
-func alreadyLoggedIn(w http.ResponseWriter, req *http.Request) bool {
-	c, err := req.Cookie("session")
-	if err != nil {
-		return false
-	}
-	s, ok := dbSessions[c.Value]
-	if ok {
-		s.lastActivity = time.Now()
-		dbSessions[c.Value] = s
-	}
-	_, ok = dbUsers[s.un]
-	c.MaxAge = sessionLength
-	http.SetCookie(w, c)
-	return ok
-}
-func cleanSessions() {
-	fmt.Println("BEFORE CLEAN") 
-	showSessions()              
-	for k, v := range dbSessions {
-		if time.Now().Sub(v.lastActivity) > (time.Second * 30) {
-			delete(dbSessions, k)
-		}
-	}
-	dbSessionsCleaned = time.Now()
-	fmt.Println("AFTER CLEAN") 
-	showSessions()            
-}
-func showSessions() {
-	fmt.Println("********")
-	for k, v := range dbSessions {
-		fmt.Println(k, v.un)
-	}
-	fmt.Println("")
-}
-              `}
-            </pre>
-            <Span>
-              <b>Base64</b>
-            </Span>
-            <pre>
-              {`
-package main
-import (
-	"encoding/base64"
-	"fmt"
-	"log"
-)
-func main() {
-	s := "Love is but a song to sing Fear's the way we die You can make the mountains ring Or make the angels cry Though the bird is on the wing And you may not know why Come on people now Smile on your brother Everybody get together Try to love one another Right now"
-	s64 := base64.StdEncoding.EncodeToString([]byte(s))
-	fmt.Println(s64)
-	bs, err := base64.StdEncoding.DecodeString(s64)
-	if err != nil {
-		log.Fatalln("I'm giving her all she's got Captain!", err)
-	}
-	fmt.Println(string(bs))
-}
-              `}
-            </pre>
-            <Span>
-              <b>Context</b>
-            </Span>
-            <Span>
-              A Context carries deadlines, cancellation signals, and other
-              request-scoped values across API boundaries and goroutines.
-            </Span>
-            <Span>
-              A context.Context is created for each request by the net/http
-              machinery, and is available with the Context() method
-            </Span>
-            <Span>
-              Wait for a few seconds before sending a reply to the client. This
-              could simulate some work the server is doing. While working, keep
-              an eye on the context’s Done() channel for a signal that we should
-              cancel the work and return as soon as possible.
-            </Span>
-            <pre>
-              {`
-package main
-import (
-	"fmt"
-	"net/http"
-	"time"
-)
-func hello(w http.ResponseWriter, req *http.Request) {
-	ctx := req.Context()
-	fmt.Println("server: hello handler started")
-	defer fmt.Println("server: hello handler ended")
-	select {
-	case <-time.After(10 * time.Second):
-		fmt.Fprintf(w, "hello\\n")
-	case <-ctx.Done():
-		err := ctx.Err()
-		fmt.Println("server:", err)
-		internalError := http.StatusInternalServerError
-		http.Error(w, err.Error(), internalError)
-	}
-}
-func main() {
-	http.HandleFunc("/hello", hello)
-	http.ListenAndServe(":8090", nil)
-}
-server: hello handler started
-server: context canceled
-server: hello handler ended              
+// 	}
+// 	c.MaxAge = sessionLength
+// 	http.SetCookie(w, c)
+// 	var u user
+// 	if s, ok := dbSessions[c.Value]; ok {
+// 		s.lastActivity = time.Now()
+// 		dbSessions[c.Value] = s
+// 		u = dbUsers[s.un]
+// 	}
+// 	return u
+// }
+// func alreadyLoggedIn(w http.ResponseWriter, req *http.Request) bool {
+// 	c, err := req.Cookie("session")
+// 	if err != nil {
+// 		return false
+// 	}
+// 	s, ok := dbSessions[c.Value]
+// 	if ok {
+// 		s.lastActivity = time.Now()
+// 		dbSessions[c.Value] = s
+// 	}
+// 	_, ok = dbUsers[s.un]
+// 	c.MaxAge = sessionLength
+// 	http.SetCookie(w, c)
+// 	return ok
+// }
+// func cleanSessions() {
+// 	fmt.Println("BEFORE CLEAN") 
+// 	showSessions()              
+// 	for k, v := range dbSessions {
+// 		if time.Now().Sub(v.lastActivity) > (time.Second * 30) {
+// 			delete(dbSessions, k)
+// 		}
+// 	}
+// 	dbSessionsCleaned = time.Now()
+// 	fmt.Println("AFTER CLEAN") 
+// 	showSessions()            
+// }
+// func showSessions() {
+// 	fmt.Println("********")
+// 	for k, v := range dbSessions {
+// 		fmt.Println(k, v.un)
+// 	}
+// 	fmt.Println("")
+// }
+//               `}
+//             </pre>
+//             <Span>
+//               <b>Base64</b>
+//             </Span>
+//             <pre>
+//               {`
+// package main
+// import (
+// 	"encoding/base64"
+// 	"fmt"
+// 	"log"
+// )
+// func main() {
+// 	s := "Love is but a song to sing Fear's the way we die You can make the mountains ring Or make the angels cry Though the bird is on the wing And you may not know why Come on people now Smile on your brother Everybody get together Try to love one another Right now"
+// 	s64 := base64.StdEncoding.EncodeToString([]byte(s))
+// 	fmt.Println(s64)
+// 	bs, err := base64.StdEncoding.DecodeString(s64)
+// 	if err != nil {
+// 		log.Fatalln("I'm giving her all she's got Captain!", err)
+// 	}
+// 	fmt.Println(string(bs))
+// }
+//               `}
+//             </pre>
+//             <Span>
+//               <b>Context</b>
+//             </Span>
+//             <Span>
+//               A Context carries deadlines, cancellation signals, and other
+//               request-scoped values across API boundaries and goroutines.
+//             </Span>
+//             <Span>
+//               A context.Context is created for each request by the net/http
+//               machinery, and is available with the Context() method
+//             </Span>
+//             <Span>
+//               Wait for a few seconds before sending a reply to the client. This
+//               could simulate some work the server is doing. While working, keep
+//               an eye on the context’s Done() channel for a signal that we should
+//               cancel the work and return as soon as possible.
+//             </Span>
+//             <pre>
+//               {`
+// package main
+// import (
+// 	"fmt"
+// 	"net/http"
+// 	"time"
+// )
+// func hello(w http.ResponseWriter, req *http.Request) {
+// 	ctx := req.Context()
+// 	fmt.Println("server: hello handler started")
+// 	defer fmt.Println("server: hello handler ended")
+// 	select {
+// 	case <-time.After(10 * time.Second):
+// 		fmt.Fprintf(w, "hello\\n")
+// 	case <-ctx.Done():
+// 		err := ctx.Err()
+// 		fmt.Println("server:", err)
+// 		internalError := http.StatusInternalServerError
+// 		http.Error(w, err.Error(), internalError)
+// 	}
+// }
+// func main() {
+// 	http.HandleFunc("/hello", hello)
+// 	http.ListenAndServe(":8090", nil)
+// }
+// server: hello handler started
+// server: context canceled
+// server: hello handler ended              
 
-package main
-import (
-	"context"
-	"fmt"
-	"log"
-	"net/http"
-)
-func main() {
-	http.HandleFunc("/", foo)
-	http.HandleFunc("/bar", bar)
-	http.Handle("/favicon.ico", http.NotFoundHandler())
-	http.ListenAndServe(":8080", nil)
-}
-func foo(w http.ResponseWriter, req *http.Request) {
-	ctx := req.Context()
-	ctx = context.WithValue(ctx, "userID", 777)
-	ctx = context.WithValue(ctx, "fname", "Bond")
-	results := dbAccess(ctx)
-	fmt.Fprintln(w, results)
-}
-func dbAccess(ctx context.Context) int {
-	uid := ctx.Value("userID").(int)
-	return uid
-}
-func bar(w http.ResponseWriter, req *http.Request) {
-	ctx := req.Context()
-	log.Println(ctx)
-	fmt.Fprintln(w, ctx)
-}
-`}
-            </pre>
-            <Span>HTTPS</Span>
-            <pre>{`
-package main
-import (
-	"crypto/tls"
-	"fmt"
-	"log"
-	"net/http"
-	"rsc.io/letsencrypt"
-)
-func main() {
-	http.HandleFunc("/", foo)
-	var m letsencrypt.Manager
-	if err := m.CacheFile("letsencrypt.cache"); err != nil {
-		log.Fatalln(err)
-	}
-	go http.ListenAndServe(":8080", http.HandlerFunc(letsencrypt.RedirectHTTP))
-	srv := &http.Server{
-		Addr: ":10443",
-		TLSConfig: &tls.Config{
-			GetCertificate: m.GetCertificate,
-		},
-	}
-	log.Fatalln(srv.ListenAndServeTLS("", ""))
-}
-func foo(res http.ResponseWriter, req *http.Request) {
-	fmt.Fprintln(res, "Hello TLS")
-}
-`}</pre>
-            <Span>JSON</Span>
-            <pre>
-              {`
-import (
-	"encoding/json"
-	"log"
-	"net/http"
-)
-type person struct {
-	Fname string
-	Lname string
-	Items []string
-}
-w.Header().Set("Content-Type", "application/json")
-p1 := person{
-  Fname: "James",
-  Lname: "Bond",
-  Items: []string{"Suit", "Gun", "Wry sense of humor"},
-}
-j, err := json.Marshal(p1)
-if err != nil {
-  log.Println(err)
-}
-w.Write(j)
-w.Header().Set("Content-Type", "application/json")
-p1 := person{
-  Fname: "James",
-  Lname: "Bond",
-  Items: []string{"Suit", "Gun", "Wry sense of humor"},
-}
-err := json.NewEncoder(w).Encode(p1)
-if err != nil {
-  log.Println(err)
-}
+// package main
+// import (
+// 	"context"
+// 	"fmt"
+// 	"log"
+// 	"net/http"
+// )
+// func main() {
+// 	http.HandleFunc("/", foo)
+// 	http.HandleFunc("/bar", bar)
+// 	http.Handle("/favicon.ico", http.NotFoundHandler())
+// 	http.ListenAndServe(":8080", nil)
+// }
+// func foo(w http.ResponseWriter, req *http.Request) {
+// 	ctx := req.Context()
+// 	ctx = context.WithValue(ctx, "userID", 777)
+// 	ctx = context.WithValue(ctx, "fname", "Bond")
+// 	results := dbAccess(ctx)
+// 	fmt.Fprintln(w, results)
+// }
+// func dbAccess(ctx context.Context) int {
+// 	uid := ctx.Value("userID").(int)
+// 	return uid
+// }
+// func bar(w http.ResponseWriter, req *http.Request) {
+// 	ctx := req.Context()
+// 	log.Println(ctx)
+// 	fmt.Fprintln(w, ctx)
+// }
+// `}
+//             </pre>
+//             <Span>HTTPS</Span>
+//             <pre>{`
+// package main
+// import (
+// 	"crypto/tls"
+// 	"fmt"
+// 	"log"
+// 	"net/http"
+// 	"rsc.io/letsencrypt"
+// )
+// func main() {
+// 	http.HandleFunc("/", foo)
+// 	var m letsencrypt.Manager
+// 	if err := m.CacheFile("letsencrypt.cache"); err != nil {
+// 		log.Fatalln(err)
+// 	}
+// 	go http.ListenAndServe(":8080", http.HandlerFunc(letsencrypt.RedirectHTTP))
+// 	srv := &http.Server{
+// 		Addr: ":10443",
+// 		TLSConfig: &tls.Config{
+// 			GetCertificate: m.GetCertificate,
+// 		},
+// 	}
+// 	log.Fatalln(srv.ListenAndServeTLS("", ""))
+// }
+// func foo(res http.ResponseWriter, req *http.Request) {
+// 	fmt.Fprintln(res, "Hello TLS")
+// }
+// `}</pre>
+//             <Span>JSON</Span>
+//             <pre>
+//               {`
+// import (
+// 	"encoding/json"
+// 	"log"
+// 	"net/http"
+// )
+// type person struct {
+// 	Fname string
+// 	Lname string
+// 	Items []string
+// }
+// w.Header().Set("Content-Type", "application/json")
+// p1 := person{
+//   Fname: "James",
+//   Lname: "Bond",
+//   Items: []string{"Suit", "Gun", "Wry sense of humor"},
+// }
+// j, err := json.Marshal(p1)
+// if err != nil {
+//   log.Println(err)
+// }
+// w.Write(j)
+// w.Header().Set("Content-Type", "application/json")
+// p1 := person{
+//   Fname: "James",
+//   Lname: "Bond",
+//   Items: []string{"Suit", "Gun", "Wry sense of humor"},
+// }
+// err := json.NewEncoder(w).Encode(p1)
+// if err != nil {
+//   log.Println(err)
+// }
 
-package main
-import (
-	"encoding/json"
-	"fmt"
-	"log"
-)
-type thumbnail struct {
-	URL           string
-	Height, Width int
-}
-type img struct {
-	Width, Height int
-	Title         string
-	Thumbnail     thumbnail
-	Animated      bool
-	IDs           []int
-}
-func main() {
-	var data img
-	rcvd := \`{"Width":800,"Height":600,"Title":"View from 15th Floor","Thumbnail":{"Url":"http://www.example.com/image/481989943","Height":125,"Width":100},"Animated":false,"IDs":[116,943,234,38793]}\`
-	err := json.Unmarshal([]byte(rcvd), &data)
-	if err != nil {
-		log.Fatalln("error unmarshalling", err)
-	}
-	fmt.Println(data)
-	for i, v := range data.IDs {
-		fmt.Println(i, v)
-	}
-	fmt.Println(data.Thumbnail.URL)
-}
+// package main
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"log"
+// )
+// type thumbnail struct {
+// 	URL           string
+// 	Height, Width int
+// }
+// type img struct {
+// 	Width, Height int
+// 	Title         string
+// 	Thumbnail     thumbnail
+// 	Animated      bool
+// 	IDs           []int
+// }
+// func main() {
+// 	var data img
+// 	rcvd := \`{"Width":800,"Height":600,"Title":"View from 15th Floor","Thumbnail":{"Url":"http://www.example.com/image/481989943","Height":125,"Width":100},"Animated":false,"IDs":[116,943,234,38793]}\`
+// 	err := json.Unmarshal([]byte(rcvd), &data)
+// 	if err != nil {
+// 		log.Fatalln("error unmarshalling", err)
+// 	}
+// 	fmt.Println(data)
+// 	for i, v := range data.IDs {
+// 		fmt.Println(i, v)
+// 	}
+// 	fmt.Println(data.Thumbnail.URL)
+// }
 
-package main
-import (
-	"encoding/json"
-	"fmt"
-	"log"
-)
-type city struct {
-	Bali       string  \`json:"Postal"\`
-	Kauai      float64 \`json:"Latitude"\`
-	Maui       float64 \`json:"Longitude"\`
-	Java       string  \`json:"Address"\`
-	NewZealand string  \`json:"City"\`
-	Skye       string  \`json:"State"\`
-	Oahu       string  \`json:"Zip"\`
-	Hawaii     string  \`json:"Country"\`
-}
-type cities []city
-func main() {
-	var data cities
-	rcvd := \`[{"Postal":"zip","Latitude":37.7668,"Longitude":-122.3959,"Address":"","City":"SAN FRANCISCO","State":"CA","Zip":"94107","Country":"US"},{"Postal":"zip","Latitude":37.371991,"Longitude":-122.02602,"Address":"","City":"SUNNYVALE","State":"CA","Zip":"94085","Country":"US"}]\`
-	err := json.Unmarshal([]byte(rcvd), &data)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	fmt.Println(data)
-	fmt.Println(data[1].Kauai)
-}
-rcvd := \`"Todd"\`
-rcvd := nil
-err := json.Unmarshal([]byte(rcvd), &data)
-              `}
-            </pre>
-            <Span>MongoDB</Span>
-            <pre>{`
-main.go
-package main
-import (
-	"github.com/julienschmidt/httprouter"
-	"gopkg.in/mgo.v2"
-	"net/http"
-	"github.com/GoesToEleven/golang-web-dev/042_mongodb/05_mongodb/05_update-user-controllers-delete/controllers"
-)
-func main() {
-	r := httprouter.New()
-	uc := controllers.NewUserController(getSession())
-	r.GET("/user/:id", uc.GetUser)
-	r.POST("/user", uc.CreateUser)
-	r.DELETE("/user/:id", uc.DeleteUser)
-	http.ListenAndServe("localhost:8080", r)
-}
-func getSession() *mgo.Session {
-	s, err := mgo.Dial("mongodb://localhost")
-	if err != nil {
-		panic(err)
-	}
-	return s
-}
-models/user.go
+// package main
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"log"
+// )
+// type city struct {
+// 	Bali       string  \`json:"Postal"\`
+// 	Kauai      float64 \`json:"Latitude"\`
+// 	Maui       float64 \`json:"Longitude"\`
+// 	Java       string  \`json:"Address"\`
+// 	NewZealand string  \`json:"City"\`
+// 	Skye       string  \`json:"State"\`
+// 	Oahu       string  \`json:"Zip"\`
+// 	Hawaii     string  \`json:"Country"\`
+// }
+// type cities []city
+// func main() {
+// 	var data cities
+// 	rcvd := \`[{"Postal":"zip","Latitude":37.7668,"Longitude":-122.3959,"Address":"","City":"SAN FRANCISCO","State":"CA","Zip":"94107","Country":"US"},{"Postal":"zip","Latitude":37.371991,"Longitude":-122.02602,"Address":"","City":"SUNNYVALE","State":"CA","Zip":"94085","Country":"US"}]\`
+// 	err := json.Unmarshal([]byte(rcvd), &data)
+// 	if err != nil {
+// 		log.Fatalln(err)
+// 	}
+// 	fmt.Println(data)
+// 	fmt.Println(data[1].Kauai)
+// }
+// rcvd := \`"Todd"\`
+// rcvd := nil
+// err := json.Unmarshal([]byte(rcvd), &data)
+//               `}
+//             </pre>
+//             <Span>MongoDB</Span>
+//             <pre>{`
+// main.go
+// package main
+// import (
+// 	"github.com/julienschmidt/httprouter"
+// 	"gopkg.in/mgo.v2"
+// 	"net/http"
+// 	"github.com/GoesToEleven/golang-web-dev/042_mongodb/05_mongodb/05_update-user-controllers-delete/controllers"
+// )
+// func main() {
+// 	r := httprouter.New()
+// 	uc := controllers.NewUserController(getSession())
+// 	r.GET("/user/:id", uc.GetUser)
+// 	r.POST("/user", uc.CreateUser)
+// 	r.DELETE("/user/:id", uc.DeleteUser)
+// 	http.ListenAndServe("localhost:8080", r)
+// }
+// func getSession() *mgo.Session {
+// 	s, err := mgo.Dial("mongodb://localhost")
+// 	if err != nil {
+// 		panic(err)
+// 	}
+// 	return s
+// }
+// models/user.go
 
-package models
-import "gopkg.in/mgo.v2/bson"
-type User struct {
-	Id     bson.ObjectId \`json:"id" bson:"_id"\`
-	Name   string        \`json:"name" bson:"name"\`
-	Gender string        \`json:"gender" bson:"gender"\`
-	Age    int           \`json:"age" bson:"age"\`
-}
+// package models
+// import "gopkg.in/mgo.v2/bson"
+// type User struct {
+// 	Id     bson.ObjectId \`json:"id" bson:"_id"\`
+// 	Name   string        \`json:"name" bson:"name"\`
+// 	Gender string        \`json:"gender" bson:"gender"\`
+// 	Age    int           \`json:"age" bson:"age"\`
+// }
 
-controllers/user.go
+// controllers/user.go
 
-package controllers
+// package controllers
 
-import (
-	"encoding/json"
-	"fmt"
-	"github.com/GoesToEleven/golang-web-dev/042_mongodb/05_mongodb/05_update-user-controllers-delete/models"
-	"github.com/julienschmidt/httprouter"
-	"gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
-	"net/http"
-)
-type UserController struct {
-	session *mgo.Session
-}
-func NewUserController(s *mgo.Session) *UserController {
-	return &UserController{s}
-}
-func (uc UserController) GetUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-	id := p.ByName("id")
-	if !bson.IsObjectIdHex(id) {
-		w.WriteHeader(http.StatusNotFound) // 404
-		return
-	}
-	oid := bson.ObjectIdHex(id)
-	u := models.User{}
-	if err := uc.session.DB("go-web-dev-db").C("users").FindId(oid).One(&u); err != nil {
-		w.WriteHeader(404)
-		return
-	}
-	uj, err := json.Marshal(u)
-	if err != nil {
-		fmt.Println(err)
-	}
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK) // 200
-	fmt.Fprintf(w, "%s\\n", uj)
-}
-func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	u := models.User{}
-	json.NewDecoder(r.Body).Decode(&u)
-	u.Id = bson.NewObjectId()
-	uc.session.DB("go-web-dev-db").C("users").Insert(u)
-	uj, err := json.Marshal(u)
-	if err != nil {
-		fmt.Println(err)
-	}
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated) // 201
-	fmt.Fprintf(w, "%s\\n", uj)
-}
-func (uc UserController) DeleteUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-	id := p.ByName("id")
-	if !bson.IsObjectIdHex(id) {
-		w.WriteHeader(404)
-		return
-	}
-	oid := bson.ObjectIdHex(id)
-	if err := uc.session.DB("go-web-dev-db").C("users").RemoveId(oid); err != nil {
-		w.WriteHeader(404)
-		return
-	}
-	w.WriteHeader(http.StatusOK) // 200
-	fmt.Fprint(w, "Deleted user", oid, "\\n")
-}
-`}</pre>
-            <Span>
-              <b>Code Organisation</b>
-            </Span>
-            <pre>
-              {`
-package main
-import (
-	"database/sql"
-	"fmt"
-	_ "github.com/lib/pq"
-	"html/template"
-	"net/http"
-	"strconv"
-)
-var db *sql.DB
-var tpl *template.Template
-func init() {
-	var err error
-	db, err = sql.Open("postgres", "postgres://bond:password@localhost/bookstore?sslmode=disable")
-	if err != nil {
-		panic(err)
-	}
-	if err = db.Ping(); err != nil {
-		panic(err)
-	}
-	fmt.Println("You connected to your database.")
-	tpl = template.Must(template.ParseGlob("templates/*.gohtml"))
-}
-type Book struct {
-	Isbn   string
-	Title  string
-	Author string
-	Price  float32
-}
-func main() {
-	http.HandleFunc("/", index)
-	http.HandleFunc("/books", booksIndex)
-	http.HandleFunc("/books/show", booksShow)
-	http.HandleFunc("/books/create", booksCreateForm)
-	http.HandleFunc("/books/create/process", booksCreateProcess)
-	http.HandleFunc("/books/update", booksUpdateForm)
-	http.HandleFunc("/books/update/process", booksUpdateProcess)
-	http.HandleFunc("/books/delete/process", booksDeleteProcess)
-	http.ListenAndServe(":8080", nil)
-}
-func index(w http.ResponseWriter, r *http.Request) {
-	http.Redirect(w, r, "/books", http.StatusSeeOther)
-}
-func booksIndex(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "GET" {
-		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
-		return
-	}
-	rows, err := db.Query("SELECT * FROM books")
-	if err != nil {
-		http.Error(w, http.StatusText(500), 500)
-		return
-	}
-	defer rows.Close()
-	bks := make([]Book, 0)
-	for rows.Next() {
-		bk := Book{}
-		err := rows.Scan(&bk.Isbn, &bk.Title, &bk.Author, &bk.Price) // order matters
-		if err != nil {
-			http.Error(w, http.StatusText(500), 500)
-			return
-		}
-		bks = append(bks, bk)
-	}
-	if err = rows.Err(); err != nil {
-		http.Error(w, http.StatusText(500), 500)
-		return
-	}
-	tpl.ExecuteTemplate(w, "books.gohtml", bks)
-}
-func booksShow(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "GET" {
-		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
-		return
-	}
-	isbn := r.FormValue("isbn")
-	if isbn == "" {
-		http.Error(w, http.StatusText(400), http.StatusBadRequest)
-		return
-	}
-	row := db.QueryRow("SELECT * FROM books WHERE isbn = $1", isbn)
-	bk := Book{}
-	err := row.Scan(&bk.Isbn, &bk.Title, &bk.Author, &bk.Price)
-	switch {
-	case err == sql.ErrNoRows:
-		http.NotFound(w, r)
-		return
-	case err != nil:
-		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
-		return
-	}
-	tpl.ExecuteTemplate(w, "show.gohtml", bk)
-}
-func booksCreateForm(w http.ResponseWriter, r *http.Request) {
-	tpl.ExecuteTemplate(w, "create.gohtml", nil)
-}
-func booksCreateProcess(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "POST" {
-		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
-		return
-	}
-	bk := Book{}
-	bk.Isbn = r.FormValue("isbn")
-	bk.Title = r.FormValue("title")
-	bk.Author = r.FormValue("author")
-	p := r.FormValue("price")
-	if bk.Isbn == "" || bk.Title == "" || bk.Author == "" || p == "" {
-		http.Error(w, http.StatusText(400), http.StatusBadRequest)
-		return
-	}
-	f64, err := strconv.ParseFloat(p, 32)
-	if err != nil {
-		http.Error(w, http.StatusText(406)+"Please hit back and enter a number for the price", http.StatusNotAcceptable)
-		return
-	}
-	bk.Price = float32(f64)
-	_, err = db.Exec("INSERT INTO books (isbn, title, author, price) VALUES ($1, $2, $3, $4)", bk.Isbn, bk.Title, bk.Author, bk.Price)
-	if err != nil {
-		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
-		return
-	}
-	tpl.ExecuteTemplate(w, "created.gohtml", bk)
-}
-func booksUpdateForm(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "GET" {
-		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
-		return
-	}
-	isbn := r.FormValue("isbn")
-	if isbn == "" {
-		http.Error(w, http.StatusText(400), http.StatusBadRequest)
-		return
-	}
-	row := db.QueryRow("SELECT * FROM books WHERE isbn = $1", isbn)
-	bk := Book{}
-	err := row.Scan(&bk.Isbn, &bk.Title, &bk.Author, &bk.Price)
-	switch {
-	case err == sql.ErrNoRows:
-		http.NotFound(w, r)
-		return
-	case err != nil:
-		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
-		return
-	}
-	tpl.ExecuteTemplate(w, "update.gohtml", bk)
-}
-func booksUpdateProcess(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "POST" {
-		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
-		return
-	}
-	bk := Book{}
-	bk.Isbn = r.FormValue("isbn")
-	bk.Title = r.FormValue("title")
-	bk.Author = r.FormValue("author")
-	p := r.FormValue("price")
-	if bk.Isbn == "" || bk.Title == "" || bk.Author == "" || p == "" {
-		http.Error(w, http.StatusText(400), http.StatusBadRequest)
-		return
-	}
-	f64, err := strconv.ParseFloat(p, 32)
-	if err != nil {
-		http.Error(w, http.StatusText(406)+"Please hit back and enter a number for the price", http.StatusNotAcceptable)
-		return
-	}
-	bk.Price = float32(f64)
-	_, err = db.Exec("UPDATE books SET isbn = $1, title=$2, author=$3, price=$4 WHERE isbn=$1;", bk.Isbn, bk.Title, bk.Author, bk.Price)
-	if err != nil {
-		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
-		return
-	}
-	tpl.ExecuteTemplate(w, "updated.gohtml", bk)
-}
-func booksDeleteProcess(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "GET" {
-		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
-		return
-	}
-	isbn := r.FormValue("isbn")
-	if isbn == "" {
-		http.Error(w, http.StatusText(400), http.StatusBadRequest)
-		return
-	}
-	_, err := db.Exec("DELETE FROM books WHERE isbn=$1;", isbn)
-	if err != nil {
-		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
-		return
-	}
-	http.Redirect(w, r, "/books", http.StatusSeeOther)
-}
-Organise the above code in various sub packages
-  `}
-            </pre>
-            <Span>
-              <b>Google Cloud</b>
-            </Span>
-            <pre>{`
-app.yaml
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"github.com/GoesToEleven/golang-web-dev/042_mongodb/05_mongodb/05_update-user-controllers-delete/models"
+// 	"github.com/julienschmidt/httprouter"
+// 	"gopkg.in/mgo.v2"
+// 	"gopkg.in/mgo.v2/bson"
+// 	"net/http"
+// )
+// type UserController struct {
+// 	session *mgo.Session
+// }
+// func NewUserController(s *mgo.Session) *UserController {
+// 	return &UserController{s}
+// }
+// func (uc UserController) GetUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+// 	id := p.ByName("id")
+// 	if !bson.IsObjectIdHex(id) {
+// 		w.WriteHeader(http.StatusNotFound) // 404
+// 		return
+// 	}
+// 	oid := bson.ObjectIdHex(id)
+// 	u := models.User{}
+// 	if err := uc.session.DB("go-web-dev-db").C("users").FindId(oid).One(&u); err != nil {
+// 		w.WriteHeader(404)
+// 		return
+// 	}
+// 	uj, err := json.Marshal(u)
+// 	if err != nil {
+// 		fmt.Println(err)
+// 	}
+// 	w.Header().Set("Content-Type", "application/json")
+// 	w.WriteHeader(http.StatusOK) // 200
+// 	fmt.Fprintf(w, "%s\\n", uj)
+// }
+// func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+// 	u := models.User{}
+// 	json.NewDecoder(r.Body).Decode(&u)
+// 	u.Id = bson.NewObjectId()
+// 	uc.session.DB("go-web-dev-db").C("users").Insert(u)
+// 	uj, err := json.Marshal(u)
+// 	if err != nil {
+// 		fmt.Println(err)
+// 	}
+// 	w.Header().Set("Content-Type", "application/json")
+// 	w.WriteHeader(http.StatusCreated) // 201
+// 	fmt.Fprintf(w, "%s\\n", uj)
+// }
+// func (uc UserController) DeleteUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+// 	id := p.ByName("id")
+// 	if !bson.IsObjectIdHex(id) {
+// 		w.WriteHeader(404)
+// 		return
+// 	}
+// 	oid := bson.ObjectIdHex(id)
+// 	if err := uc.session.DB("go-web-dev-db").C("users").RemoveId(oid); err != nil {
+// 		w.WriteHeader(404)
+// 		return
+// 	}
+// 	w.WriteHeader(http.StatusOK) // 200
+// 	fmt.Fprint(w, "Deleted user", oid, "\\n")
+// }
+// `}</pre>
+//             <Span>
+//               <b>Code Organisation</b>
+//             </Span>
+//             <pre>
+//               {`
+// package main
+// import (
+// 	"database/sql"
+// 	"fmt"
+// 	_ "github.com/lib/pq"
+// 	"html/template"
+// 	"net/http"
+// 	"strconv"
+// )
+// var db *sql.DB
+// var tpl *template.Template
+// func init() {
+// 	var err error
+// 	db, err = sql.Open("postgres", "postgres://bond:password@localhost/bookstore?sslmode=disable")
+// 	if err != nil {
+// 		panic(err)
+// 	}
+// 	if err = db.Ping(); err != nil {
+// 		panic(err)
+// 	}
+// 	fmt.Println("You connected to your database.")
+// 	tpl = template.Must(template.ParseGlob("templates/*.gohtml"))
+// }
+// type Book struct {
+// 	Isbn   string
+// 	Title  string
+// 	Author string
+// 	Price  float32
+// }
+// func main() {
+// 	http.HandleFunc("/", index)
+// 	http.HandleFunc("/books", booksIndex)
+// 	http.HandleFunc("/books/show", booksShow)
+// 	http.HandleFunc("/books/create", booksCreateForm)
+// 	http.HandleFunc("/books/create/process", booksCreateProcess)
+// 	http.HandleFunc("/books/update", booksUpdateForm)
+// 	http.HandleFunc("/books/update/process", booksUpdateProcess)
+// 	http.HandleFunc("/books/delete/process", booksDeleteProcess)
+// 	http.ListenAndServe(":8080", nil)
+// }
+// func index(w http.ResponseWriter, r *http.Request) {
+// 	http.Redirect(w, r, "/books", http.StatusSeeOther)
+// }
+// func booksIndex(w http.ResponseWriter, r *http.Request) {
+// 	if r.Method != "GET" {
+// 		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
+// 		return
+// 	}
+// 	rows, err := db.Query("SELECT * FROM books")
+// 	if err != nil {
+// 		http.Error(w, http.StatusText(500), 500)
+// 		return
+// 	}
+// 	defer rows.Close()
+// 	bks := make([]Book, 0)
+// 	for rows.Next() {
+// 		bk := Book{}
+// 		err := rows.Scan(&bk.Isbn, &bk.Title, &bk.Author, &bk.Price) // order matters
+// 		if err != nil {
+// 			http.Error(w, http.StatusText(500), 500)
+// 			return
+// 		}
+// 		bks = append(bks, bk)
+// 	}
+// 	if err = rows.Err(); err != nil {
+// 		http.Error(w, http.StatusText(500), 500)
+// 		return
+// 	}
+// 	tpl.ExecuteTemplate(w, "books.gohtml", bks)
+// }
+// func booksShow(w http.ResponseWriter, r *http.Request) {
+// 	if r.Method != "GET" {
+// 		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
+// 		return
+// 	}
+// 	isbn := r.FormValue("isbn")
+// 	if isbn == "" {
+// 		http.Error(w, http.StatusText(400), http.StatusBadRequest)
+// 		return
+// 	}
+// 	row := db.QueryRow("SELECT * FROM books WHERE isbn = $1", isbn)
+// 	bk := Book{}
+// 	err := row.Scan(&bk.Isbn, &bk.Title, &bk.Author, &bk.Price)
+// 	switch {
+// 	case err == sql.ErrNoRows:
+// 		http.NotFound(w, r)
+// 		return
+// 	case err != nil:
+// 		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
+// 		return
+// 	}
+// 	tpl.ExecuteTemplate(w, "show.gohtml", bk)
+// }
+// func booksCreateForm(w http.ResponseWriter, r *http.Request) {
+// 	tpl.ExecuteTemplate(w, "create.gohtml", nil)
+// }
+// func booksCreateProcess(w http.ResponseWriter, r *http.Request) {
+// 	if r.Method != "POST" {
+// 		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
+// 		return
+// 	}
+// 	bk := Book{}
+// 	bk.Isbn = r.FormValue("isbn")
+// 	bk.Title = r.FormValue("title")
+// 	bk.Author = r.FormValue("author")
+// 	p := r.FormValue("price")
+// 	if bk.Isbn == "" || bk.Title == "" || bk.Author == "" || p == "" {
+// 		http.Error(w, http.StatusText(400), http.StatusBadRequest)
+// 		return
+// 	}
+// 	f64, err := strconv.ParseFloat(p, 32)
+// 	if err != nil {
+// 		http.Error(w, http.StatusText(406)+"Please hit back and enter a number for the price", http.StatusNotAcceptable)
+// 		return
+// 	}
+// 	bk.Price = float32(f64)
+// 	_, err = db.Exec("INSERT INTO books (isbn, title, author, price) VALUES ($1, $2, $3, $4)", bk.Isbn, bk.Title, bk.Author, bk.Price)
+// 	if err != nil {
+// 		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
+// 		return
+// 	}
+// 	tpl.ExecuteTemplate(w, "created.gohtml", bk)
+// }
+// func booksUpdateForm(w http.ResponseWriter, r *http.Request) {
+// 	if r.Method != "GET" {
+// 		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
+// 		return
+// 	}
+// 	isbn := r.FormValue("isbn")
+// 	if isbn == "" {
+// 		http.Error(w, http.StatusText(400), http.StatusBadRequest)
+// 		return
+// 	}
+// 	row := db.QueryRow("SELECT * FROM books WHERE isbn = $1", isbn)
+// 	bk := Book{}
+// 	err := row.Scan(&bk.Isbn, &bk.Title, &bk.Author, &bk.Price)
+// 	switch {
+// 	case err == sql.ErrNoRows:
+// 		http.NotFound(w, r)
+// 		return
+// 	case err != nil:
+// 		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
+// 		return
+// 	}
+// 	tpl.ExecuteTemplate(w, "update.gohtml", bk)
+// }
+// func booksUpdateProcess(w http.ResponseWriter, r *http.Request) {
+// 	if r.Method != "POST" {
+// 		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
+// 		return
+// 	}
+// 	bk := Book{}
+// 	bk.Isbn = r.FormValue("isbn")
+// 	bk.Title = r.FormValue("title")
+// 	bk.Author = r.FormValue("author")
+// 	p := r.FormValue("price")
+// 	if bk.Isbn == "" || bk.Title == "" || bk.Author == "" || p == "" {
+// 		http.Error(w, http.StatusText(400), http.StatusBadRequest)
+// 		return
+// 	}
+// 	f64, err := strconv.ParseFloat(p, 32)
+// 	if err != nil {
+// 		http.Error(w, http.StatusText(406)+"Please hit back and enter a number for the price", http.StatusNotAcceptable)
+// 		return
+// 	}
+// 	bk.Price = float32(f64)
+// 	_, err = db.Exec("UPDATE books SET isbn = $1, title=$2, author=$3, price=$4 WHERE isbn=$1;", bk.Isbn, bk.Title, bk.Author, bk.Price)
+// 	if err != nil {
+// 		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
+// 		return
+// 	}
+// 	tpl.ExecuteTemplate(w, "updated.gohtml", bk)
+// }
+// func booksDeleteProcess(w http.ResponseWriter, r *http.Request) {
+// 	if r.Method != "GET" {
+// 		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
+// 		return
+// 	}
+// 	isbn := r.FormValue("isbn")
+// 	if isbn == "" {
+// 		http.Error(w, http.StatusText(400), http.StatusBadRequest)
+// 		return
+// 	}
+// 	_, err := db.Exec("DELETE FROM books WHERE isbn=$1;", isbn)
+// 	if err != nil {
+// 		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
+// 		return
+// 	}
+// 	http.Redirect(w, r, "/books", http.StatusSeeOther)
+// }
+// Organise the above code in various sub packages
+//   `}
+//             </pre>
+//             <Span>
+//               <b>Google Cloud</b>
+//             </Span>
+//             <pre>{`
+// app.yaml
 
-application: astute-curve-100822
-version: 1
-runtime: go
-api_version: go1
+// application: astute-curve-100822
+// version: 1
+// runtime: go
+// api_version: go1
 
-handlers:
-- url: /admin/.*
-  script: _go_app
-  login: admin
-- url: /.*
-  script: _go_app
-  login: required            
+// handlers:
+// - url: /admin/.*
+//   script: _go_app
+//   login: admin
+// - url: /.*
+//   script: _go_app
+//   login: required            
  
-main.go
-package main
-import (
-	"fmt"
-	"net/http"
-	"google.golang.org/appengine"
-	"google.golang.org/appengine/user"
-)
-func init() {
-	http.HandleFunc("/", index)
-	http.HandleFunc("/admin/", admin)
-}
-func index(w http.ResponseWriter, r *http.Request) {
-	ctx := appengine.NewContext(r)
-	u := user.Current(ctx)
-	url, err := user.LogoutURL(ctx, "/")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	w.Header().Set("Content-Type", "text/html; charset=UTF-8")
-	fmt.Fprintf(w, \`Welcome, %s! (<a href="%s">sign out</a>)\`, u, url)
-}
-func admin(w http.ResponseWriter, r *http.Request) {
-	ctx := appengine.NewContext(r)
-	u := user.Current(ctx)
-	url, _ := user.LogoutURL(ctx, "/")
-	w.Header().Set("Content-Type", "text/html; charset=UTF-8")
-	fmt.Fprintf(w, \`Welcome ADMIN, %s! (<a href="%s">sign out</a>)\`, u, url)
-}
- `}</pre>
-            <Span>Memcache</Span>
-            <pre>{`
-app.yaml
-application: learning-1130
-version: 1
-runtime: go
-api_version: go1
-handlers:
-- url: /.*
-  script: _go_app
+// main.go
+// package main
+// import (
+// 	"fmt"
+// 	"net/http"
+// 	"google.golang.org/appengine"
+// 	"google.golang.org/appengine/user"
+// )
+// func init() {
+// 	http.HandleFunc("/", index)
+// 	http.HandleFunc("/admin/", admin)
+// }
+// func index(w http.ResponseWriter, r *http.Request) {
+// 	ctx := appengine.NewContext(r)
+// 	u := user.Current(ctx)
+// 	url, err := user.LogoutURL(ctx, "/")
+// 	if err != nil {
+// 		http.Error(w, err.Error(), http.StatusInternalServerError)
+// 		return
+// 	}
+// 	w.Header().Set("Content-Type", "text/html; charset=UTF-8")
+// 	fmt.Fprintf(w, \`Welcome, %s! (<a href="%s">sign out</a>)\`, u, url)
+// }
+// func admin(w http.ResponseWriter, r *http.Request) {
+// 	ctx := appengine.NewContext(r)
+// 	u := user.Current(ctx)
+// 	url, _ := user.LogoutURL(ctx, "/")
+// 	w.Header().Set("Content-Type", "text/html; charset=UTF-8")
+// 	fmt.Fprintf(w, \`Welcome ADMIN, %s! (<a href="%s">sign out</a>)\`, u, url)
+// }
+//  `}</pre>
+//             <Span>Memcache</Span>
+//             <pre>{`
+// app.yaml
+// application: learning-1130
+// version: 1
+// runtime: go
+// api_version: go1
+// handlers:
+// - url: /.*
+//   script: _go_app
 
-main.go
-package main
-import (
-  "fmt"
-  "net/http"
-  "google.golang.org/appengine"
-  "google.golang.org/appengine/memcache"
-  "time"
-) 
-func init() {
-  http.HandleFunc("/", index)
-} 
-func index(w http.ResponseWriter, r *http.Request) {
-  ctx := appengine.NewContext(r)
-  item1 := memcache.Item{
-    Key:        "foo",
-    Value:      []byte("bar"),
-    Expiration: 10 * time.Second,
-  }
-  memcache.Set(ctx, &item1)
-  item, err := memcache.Get(ctx, "foo")
-  if err != nil {
-    http.Error(w, err.Error(), http.StatusInternalServerError)
-    return
-  }
-  fmt.Fprintln(w, string(item.Value))
-} 
- `}</pre>
-            <Span>
-              <b>Datastore</b>
-            </Span>
-            <pre>{`
- package evolved
+// main.go
+// package main
+// import (
+//   "fmt"
+//   "net/http"
+//   "google.golang.org/appengine"
+//   "google.golang.org/appengine/memcache"
+//   "time"
+// ) 
+// func init() {
+//   http.HandleFunc("/", index)
+// } 
+// func index(w http.ResponseWriter, r *http.Request) {
+//   ctx := appengine.NewContext(r)
+//   item1 := memcache.Item{
+//     Key:        "foo",
+//     Value:      []byte("bar"),
+//     Expiration: 10 * time.Second,
+//   }
+//   memcache.Set(ctx, &item1)
+//   item, err := memcache.Get(ctx, "foo")
+//   if err != nil {
+//     http.Error(w, err.Error(), http.StatusInternalServerError)
+//     return
+//   }
+//   fmt.Fprintln(w, string(item.Value))
+// } 
+//  `}</pre>
+//             <Span>
+//               <b>Datastore</b>
+//             </Span>
+//             <pre>{`
+//  package evolved
 
- import (
-   "fmt"
-   "net/http"
+//  import (
+//    "fmt"
+//    "net/http"
  
-   "google.golang.org/appengine"
-   "google.golang.org/appengine/datastore"
- )
+//    "google.golang.org/appengine"
+//    "google.golang.org/appengine/datastore"
+//  )
  
- func init() {
-   http.HandleFunc("/", index)
-   http.HandleFunc("/tools", showTools)
- }
+//  func init() {
+//    http.HandleFunc("/", index)
+//    http.HandleFunc("/tools", showTools)
+//  }
  
- type Tool struct {
-   Name        string
-   Description string
- }
+//  type Tool struct {
+//    Name        string
+//    Description string
+//  }
 
- func index(res http.ResponseWriter, req *http.Request) {
-   if req.URL.Path == "/favicon.ico" {
-     http.NotFound(res, req)
-   }
-   res.Header().Set("Content-Type", "text/html")
-   if req.Method == "POST" {
-     putTool(res, req)
-   }
-   fmt.Fprintln(res, \`
-       <form method="POST" action="/">
-         <h1>Tool</h1>
-         <input type="text" name="name"><br>
-         <h1>Description</h1>
-         <textarea name="descrip"></textarea>
-         <input type="submit">
-       </form>\`)
- }
+//  func index(res http.ResponseWriter, req *http.Request) {
+//    if req.URL.Path == "/favicon.ico" {
+//      http.NotFound(res, req)
+//    }
+//    res.Header().Set("Content-Type", "text/html")
+//    if req.Method == "POST" {
+//      putTool(res, req)
+//    }
+//    fmt.Fprintln(res, \`
+//        <form method="POST" action="/">
+//          <h1>Tool</h1>
+//          <input type="text" name="name"><br>
+//          <h1>Description</h1>
+//          <textarea name="descrip"></textarea>
+//          <input type="submit">
+//        </form>\`)
+//  }
  
- func putTool(res http.ResponseWriter, req *http.Request) {
-   name := req.FormValue("name")
-   descrip := req.FormValue("descrip")
-   ctx := appengine.NewContext(req)
-   parentKey := datastore.NewKey(ctx, "House", "Garage", 0, nil)
-   key := datastore.NewKey(ctx, "Tools", name, 0, parentKey)
-   entity := &Tool{
-     Name:        name,
-     Description: descrip,
-   }
-   _, err := datastore.Put(ctx, key, entity)
-   if err != nil {
-     http.Error(res, err.Error(), 500)
-     return
-   }
- }
+//  func putTool(res http.ResponseWriter, req *http.Request) {
+//    name := req.FormValue("name")
+//    descrip := req.FormValue("descrip")
+//    ctx := appengine.NewContext(req)
+//    parentKey := datastore.NewKey(ctx, "House", "Garage", 0, nil)
+//    key := datastore.NewKey(ctx, "Tools", name, 0, parentKey)
+//    entity := &Tool{
+//      Name:        name,
+//      Description: descrip,
+//    }
+//    _, err := datastore.Put(ctx, key, entity)
+//    if err != nil {
+//      http.Error(res, err.Error(), 500)
+//      return
+//    }
+//  }
  
- func showTools(res http.ResponseWriter, req *http.Request) {
-   html := ""
-   ctx := appengine.NewContext(req)
-   parentKey := datastore.NewKey(ctx, "House", "Garage", 0, nil)
-   q := datastore.NewQuery("Tools").Ancestor(parentKey)
-   iterator := q.Run(ctx)
-   for {
-     var entity Tool
-     _, err := iterator.Next(&entity)
-     if err == datastore.Done {
-       break
-     } else if err != nil {
-       http.Error(res, err.Error(), 500)
-       return
-     }
-     html += \`
-       <dt>\` + entity.Name + \`</dt>
-       <dd>\` + entity.Description + \`</dd>
-     \`
-   }
-   res.Header().Set("Content-Type", "text/html")
-   fmt.Fprintln(res, \`<dl>\`+html+\`</dl>\`)
- }
+//  func showTools(res http.ResponseWriter, req *http.Request) {
+//    html := ""
+//    ctx := appengine.NewContext(req)
+//    parentKey := datastore.NewKey(ctx, "House", "Garage", 0, nil)
+//    q := datastore.NewQuery("Tools").Ancestor(parentKey)
+//    iterator := q.Run(ctx)
+//    for {
+//      var entity Tool
+//      _, err := iterator.Next(&entity)
+//      if err == datastore.Done {
+//        break
+//      } else if err != nil {
+//        http.Error(res, err.Error(), 500)
+//        return
+//      }
+//      html += \`
+//        <dt>\` + entity.Name + \`</dt>
+//        <dd>\` + entity.Description + \`</dd>
+//      \`
+//    }
+//    res.Header().Set("Content-Type", "text/html")
+//    fmt.Fprintln(res, \`<dl>\`+html+\`</dl>\`)
+//  }
  
- `}</pre>
-            <Span>
-              Cloud Storage: https://github.dev/saiashish9/golang-web-dev
-            </Span>
-            <Span>
-              <b>WebRTC</b>
-            </Span>
-            <Span>https://webrtc.org</Span>
-            <Span>
-              An open framework for a wen that enables Real Time Communication
-              in the browser.
-            </Span>
-            <Span>Web Sockets</Span>
-            <Span>
-              The WebSocket API is an advanced technology that makes it possible
-              to open a two-way interactive communication session between the
-              user's browser and a server. With this API, you can send messages
-              to a server and receive event-driven responses without having to
-              poll the server for a reply.
-            </Span>
-            <Span>
-              Unlike HTTP, where you have to constantly request updates, with
-              websockets, updates are sent immediately when they are available.
-              WebSockets keeps a single, persistent connection open while
-              eliminating latency problems that arise with HTTP
-              request/response-based methods.
-            </Span>
-            <Span>
-              WebRTC ( Web Real Time Communication ) is a technology which
-              enables web applications and sites to capture and optionaaly
-              stream audio/ or video as well as to exchange arbitrary data b/w
-              browsers w/o requiring an intermediary. We need js for webrtc at
-              any browser.
-            </Span>
-            <Span>
-              It makes use of peer to peer n/w to communicate and share this
-              data. Earlier there was a central point to communicate and share
-              this data.
-            </Span>
-            <Span>
-              WebSockets are meant to enable bidirectional communication between
-              a browser and a web server and WebRTC is meant to offer real time
-              communication between browsers (predominantly voice and video
-              communications).
-            </Span>
-            <Span>
-              WebRTC apps need a service via which they can exchange network and
-              media metadata, a process known as signaling. However, once
-              signaling has taken place, video/audio/data is streamed directly
-              between clients, avoiding the performance cost of streaming via an
-              intermediary server. They're built on top of http.
-              <br />
-              WebSocket on the other hand is designed for bi-directional
-              communication between client and server. It is possible to stream
-              audio and video over WebSocket (see here for example), but the
-              technology and APIs are not inherently designed for efficient,
-              robust streaming in the way that WebRTC is.
-            </Span>
-            <Span>WebRTC Connection Cycle</Span>
-            <Img left src={WebRTCImg} large />
-            <Img left src={WebRTCImg1} />
-            <Span>
-              Local description is used to describe itself, remote description
-              is used to describe the device on other end of the connection.
-            </Span>
-            <Span>
-              We can establish connection between two devices via a intermediate
-              called as signalling server.
-            </Span>
-            <Span>SDP and Signalling</Span>
-            <Span>
-              The process of signalling can be done w/o any medium. Heck we can
-              even tweet the offer
-            </Span>
-            <Span>
-              But in serious terms, we usually use a websocket server beacuse of
-              its duplex communication capabilities.
-            </Span>
-            <Span>
-              We can use regular HTTP, but we'll have to use long polling
-            </Span>
-            <Span>
-              github.com/gorilla/websocket can use used to establish connection
-              in ho
-            </Span>
-            <Span>Session Description Protocol</Span>
-            <Span>
-              The configuration of endpoint on a webRTC cction is called a
-              session description.It is expressed using the SDp
-            </Span>
-            <Span>
-              The description includes information about the kind of media being
-              sent, its format, the transfer protocol being used the enpoint's
-              IP address and port and other information needed to describe a
-              media transfer enpoint
-            </Span>
-            <Span>Offers and ansers are special descriptions.</Span>
-            <Span>
-              Each peers keeps two descriptions on hand, the local descripton,
-              describing itslef and the remote description describing the other
-              end of the call
-            </Span>
-            <Span>
-              NAT, STUN ( Session Traversal Utilities for NAT(N/W Address
-              Translation) ) & TURN Servers, ICE ( Interactive Connective
-              Establishment ) Candidates
-            </Span>
-            <Img left src={WebRTCImg3} />
-            <Span>System Design</Span>
-            <Img left src={WebRTCImg2} />
-            <Span>
-              <b>Configuration Steps:</b>
-            </Span>
-            <Span>1. Go to golang.org</Span>
-            <Span>2. Download arm based version for m1 mac</Span>
-            <Span>3. Execute following statements:</Span>
-            <Span>
-              export GOROOT=/usr/local/go <br />
-              export GOPATH=$HOME/Desktop/folders/projects/go-workspace
-              <br />
-              export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-            </Span>
-            <Span>
-              5. Afterwards go to golang workspace (i.e.,
-              $HOME/Desktop/folders/projects/go-workspace)
-            </Span>
-            <Span>6. Execute Following Commands:</Span>
-            <Span>
-              mkdir video-chat <br /> cd video-chat <br /> go mod init
-              video-chat-app
-            </Span>
-            <Span>
-              7. Place server directory and main.go except client directory
-            </Span>
-            <Span>
-              8. Then , excute go build main.go and then go run main.go
-            </Span>
-            <Span>
-              9. execute yarn create react-app client at root level. Make use of
-              existing files and execute yarn start.
-            </Span>
-            <Span>10. Open localhost:3000 and click at the button</Span>
-            <Span>
-              11. Copy and paste the link in a new tab. We'll be able to
-              establish video chat
-            </Span>
-            <Img left src={WebRTCImg4} large />
-            <Img left src={GoImg} large />
-            <Img left src={WebRTCImg5} large />
-            <Img left src={WebRTCImg6} large />
-          </>
-        ),
-        types: {},
-      },
-      React: {
-        title: "React",
-        content: (
-          <>
-            <Span>Protected Route</Span>
-            <pre>{`
-      const A = ({ a : Component ,...rest }) => {
-        const { state } = useStore()
-        return (
-            <Route
-            render={
-              props => !state.isAdmin ? <Redirect to="/login /> : <Component {...props} />
-            }
-            {...rest}
-            />
-        )
-      }                    
-            `}</pre>
-            <Span>Suspense</Span>
-            <pre>
-              {`
-<Suspense fallback={}></Suspense>              
-              `}
-            </pre>
-            <Span>lazy</Span>
-            <pre>{`
-            lazy(()=>k)
-            `}</pre>
-            <Span>PropTypes</Span>
-            <pre>
-              {`
-import PropTypes from "prop-types"
+//  `}</pre>
+//             <Span>
+//               Cloud Storage: https://github.dev/saiashish9/golang-web-dev
+//             </Span>
+//             <Span>
+//               <b>WebRTC</b>
+//             </Span>
+//             <Span>https://webrtc.org</Span>
+//             <Span>
+//               An open framework for a wen that enables Real Time Communication
+//               in the browser.
+//             </Span>
+//             <Span>Web Sockets</Span>
+//             <Span>
+//               The WebSocket API is an advanced technology that makes it possible
+//               to open a two-way interactive communication session between the
+//               user's browser and a server. With this API, you can send messages
+//               to a server and receive event-driven responses without having to
+//               poll the server for a reply.
+//             </Span>
+//             <Span>
+//               Unlike HTTP, where you have to constantly request updates, with
+//               websockets, updates are sent immediately when they are available.
+//               WebSockets keeps a single, persistent connection open while
+//               eliminating latency problems that arise with HTTP
+//               request/response-based methods.
+//             </Span>
+//             <Span>
+//               WebRTC ( Web Real Time Communication ) is a technology which
+//               enables web applications and sites to capture and optionaaly
+//               stream audio/ or video as well as to exchange arbitrary data b/w
+//               browsers w/o requiring an intermediary. We need js for webrtc at
+//               any browser.
+//             </Span>
+//             <Span>
+//               It makes use of peer to peer n/w to communicate and share this
+//               data. Earlier there was a central point to communicate and share
+//               this data.
+//             </Span>
+//             <Span>
+//               WebSockets are meant to enable bidirectional communication between
+//               a browser and a web server and WebRTC is meant to offer real time
+//               communication between browsers (predominantly voice and video
+//               communications).
+//             </Span>
+//             <Span>
+//               WebRTC apps need a service via which they can exchange network and
+//               media metadata, a process known as signaling. However, once
+//               signaling has taken place, video/audio/data is streamed directly
+//               between clients, avoiding the performance cost of streaming via an
+//               intermediary server. They're built on top of http.
+//               <br />
+//               WebSocket on the other hand is designed for bi-directional
+//               communication between client and server. It is possible to stream
+//               audio and video over WebSocket (see here for example), but the
+//               technology and APIs are not inherently designed for efficient,
+//               robust streaming in the way that WebRTC is.
+//             </Span>
+//             <Span>WebRTC Connection Cycle</Span>
+//             <Img left src={WebRTCImg} large />
+//             <Img left src={WebRTCImg1} />
+//             <Span>
+//               Local description is used to describe itself, remote description
+//               is used to describe the device on other end of the connection.
+//             </Span>
+//             <Span>
+//               We can establish connection between two devices via a intermediate
+//               called as signalling server.
+//             </Span>
+//             <Span>SDP and Signalling</Span>
+//             <Span>
+//               The process of signalling can be done w/o any medium. Heck we can
+//               even tweet the offer
+//             </Span>
+//             <Span>
+//               But in serious terms, we usually use a websocket server beacuse of
+//               its duplex communication capabilities.
+//             </Span>
+//             <Span>
+//               We can use regular HTTP, but we'll have to use long polling
+//             </Span>
+//             <Span>
+//               github.com/gorilla/websocket can use used to establish connection
+//               in ho
+//             </Span>
+//             <Span>Session Description Protocol</Span>
+//             <Span>
+//               The configuration of endpoint on a webRTC cction is called a
+//               session description.It is expressed using the SDp
+//             </Span>
+//             <Span>
+//               The description includes information about the kind of media being
+//               sent, its format, the transfer protocol being used the enpoint's
+//               IP address and port and other information needed to describe a
+//               media transfer enpoint
+//             </Span>
+//             <Span>Offers and ansers are special descriptions.</Span>
+//             <Span>
+//               Each peers keeps two descriptions on hand, the local descripton,
+//               describing itslef and the remote description describing the other
+//               end of the call
+//             </Span>
+//             <Span>
+//               NAT, STUN ( Session Traversal Utilities for NAT(N/W Address
+//               Translation) ) & TURN Servers, ICE ( Interactive Connective
+//               Establishment ) Candidates
+//             </Span>
+//             <Img left src={WebRTCImg3} />
+//             <Span>System Design</Span>
+//             <Img left src={WebRTCImg2} />
+//             <Span>
+//               <b>Configuration Steps:</b>
+//             </Span>
+//             <Span>1. Go to golang.org</Span>
+//             <Span>2. Download arm based version for m1 mac</Span>
+//             <Span>3. Execute following statements:</Span>
+//             <Span>
+//               export GOROOT=/usr/local/go <br />
+//               export GOPATH=$HOME/Desktop/folders/projects/go-workspace
+//               <br />
+//               export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+//             </Span>
+//             <Span>
+//               5. Afterwards go to golang workspace (i.e.,
+//               $HOME/Desktop/folders/projects/go-workspace)
+//             </Span>
+//             <Span>6. Execute Following Commands:</Span>
+//             <Span>
+//               mkdir video-chat <br /> cd video-chat <br /> go mod init
+//               video-chat-app
+//             </Span>
+//             <Span>
+//               7. Place server directory and main.go except client directory
+//             </Span>
+//             <Span>
+//               8. Then , excute go build main.go and then go run main.go
+//             </Span>
+//             <Span>
+//               9. execute yarn create react-app client at root level. Make use of
+//               existing files and execute yarn start.
+//             </Span>
+//             <Span>10. Open localhost:3000 and click at the button</Span>
+//             <Span>
+//               11. Copy and paste the link in a new tab. We'll be able to
+//               establish video chat
+//             </Span>
+//             <Img left src={WebRTCImg4} large />
+//             <Img left src={GoImg} large />
+//             <Img left src={WebRTCImg5} large />
+//             <Img left src={WebRTCImg6} large />
+//           </>
+//         ),
+//         types: {},
+//       },
+//       React: {
+//         title: "React",
+//         content: (
+//           <>
+//             <Span>Protected Route</Span>
+//             <pre>{`
+//       const A = ({ a : Component ,...rest }) => {
+//         const { state } = useStore()
+//         return (
+//             <Route
+//             render={
+//               props => !state.isAdmin ? <Redirect to="/login /> : <Component {...props} />
+//             }
+//             {...rest}
+//             />
+//         )
+//       }                    
+//             `}</pre>
+//             <Span>Suspense</Span>
+//             <pre>
+//               {`
+// <Suspense fallback={}></Suspense>              
+//               `}
+//             </pre>
+//             <Span>lazy</Span>
+//             <pre>{`
+//             lazy(()=>k)
+//             `}</pre>
+//             <Span>PropTypes</Span>
+//             <pre>
+//               {`
+// import PropTypes from "prop-types"
 
-static PropTypes = {
-  onDelete : Proptypes.func.isRequired
-}
+// static PropTypes = {
+//   onDelete : Proptypes.func.isRequired
+// }
 
-static defaultProps = { onClose(){} }
-              `}
-            </pre>
-            <Span>
-              Redux, React-Redux, Redux-Thunk, Redux-Logger, Reselect,
-              Redux-Saga, Redux-Persist, Redux-Devtools-Extension
-            </Span>
-            <pre>
-              {`
-import { createStore, combineReducers, applyMiddleware } from "redux"
-import { Provider } from "react-redux"
-import { createLogger } from "redux-logger"
-import { createSelector } from "reselect
-import thunk from "redux-thunk"
-import { PersistGate } from "redux-persist/integration/react
-import { PersistStore, persistReducer } from "redux-persist"
-import storage from "redux-persist/integration/react"
-logger = createLogger()
-reducers = combineReducers({
-  reducerA
-})
-reducerA = (state=initialState, action = {}) {
-  switch(action.type){
-      case : 
-  }
-} 
-mapStateToProps
-mapDispatchToProps
-connect(mapStateToProps,mapDispatchToProps)
-              `}
-            </pre>
-            <br />
-            <pre>
-              {`
-import { composeWithDevTools } from "redux-devtools-extension"
-composeWithDevTools(applyMiddleware(...middlewares))
-import { compose } from "redux" 
-(window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose)(applyMiddleware(...middlewares))
-              `}
-            </pre>
-            <Span>bind() menthod</Span>
-            <pre>
-              {`
-class A extends Component {
-constructor(props){
-  super(props)
-  this.state = {}
-  this.onSave = this.onSave.bind(this)
-}
-}              
+// static defaultProps = { onClose(){} }
+//               `}
+//             </pre>
+//             <Span>
+//               Redux, React-Redux, Redux-Thunk, Redux-Logger, Reselect,
+//               Redux-Saga, Redux-Persist, Redux-Devtools-Extension
+//             </Span>
+//             <pre>
+//               {`
+// import { createStore, combineReducers, applyMiddleware } from "redux"
+// import { Provider } from "react-redux"
+// import { createLogger } from "redux-logger"
+// import { createSelector } from "reselect
+// import thunk from "redux-thunk"
+// import { PersistGate } from "redux-persist/integration/react
+// import { PersistStore, persistReducer } from "redux-persist"
+// import storage from "redux-persist/integration/react"
+// logger = createLogger()
+// reducers = combineReducers({
+//   reducerA
+// })
+// reducerA = (state=initialState, action = {}) {
+//   switch(action.type){
+//       case : 
+//   }
+// } 
+// mapStateToProps
+// mapDispatchToProps
+// connect(mapStateToProps,mapDispatchToProps)
+//               `}
+//             </pre>
+//             <br />
+//             <pre>
+//               {`
+// import { composeWithDevTools } from "redux-devtools-extension"
+// composeWithDevTools(applyMiddleware(...middlewares))
+// import { compose } from "redux" 
+// (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose)(applyMiddleware(...middlewares))
+//               `}
+//             </pre>
+//             <Span>bind() menthod</Span>
+//             <pre>
+//               {`
+// class A extends Component {
+// constructor(props){
+//   super(props)
+//   this.state = {}
+//   this.onSave = this.onSave.bind(this)
+// }
+// }              
 
-this.A = this.A.bind(this)
-this.A.bind(this)
-this.A.bind(this,id)
-              `}
-            </pre>
-            <Span>
-              useContext , createContext, useSelector, useDispatch, useMemo,
-              useCallback , useRef, createRef,
-            </Span>
-            <Span>Counter</Span>
-            <pre>
-              {`
-import React, { useState, useCallback } from 'react'
+// this.A = this.A.bind(this)
+// this.A.bind(this)
+// this.A.bind(this,id)
+//               `}
+//             </pre>
+//             <Span>
+//               useContext , createContext, useSelector, useDispatch, useMemo,
+//               useCallback , useRef, createRef,
+//             </Span>
+//             <Span>Counter</Span>
+//             <pre>
+//               {`
+// import React, { useState, useCallback } from 'react'
 
-const Counter = () => {
-  const [count, setCount] = useState(0)
-  const [otherCounter, setOtherCounter] = useState(0)
+// const Counter = () => {
+//   const [count, setCount] = useState(0)
+//   const [otherCounter, setOtherCounter] = useState(0)
 
-  const increment = () => {
-    setCount(count + 1)
-  }
-  const decrement = () => {
-    setCount(count - 1)
-  }
-  const incrementOtherCounter = () => {
-    setOtherCounter(otherCounter + 1)
-  }
+//   const increment = () => {
+//     setCount(count + 1)
+//   }
+//   const decrement = () => {
+//     setCount(count - 1)
+//   }
+//   const incrementOtherCounter = () => {
+//     setOtherCounter(otherCounter + 1)
+//   }
 
-  return (
-    <>
-      Count: {count}
-      <button onClick={increment}>+</button>
-      <button onClick={decrement}>-</button>
-      <button onClick={incrementOtherCounter}>incrementOtherCounter</button>
-    </>
-  )
-}
+//   return (
+//     <>
+//       Count: {count}
+//       <button onClick={increment}>+</button>
+//       <button onClick={decrement}>-</button>
+//       <button onClick={incrementOtherCounter}>incrementOtherCounter</button>
+//     </>
+//   )
+// }
 
-ReactDOM.render(<Counter />, document.getElementById('app'))
-The problem here is that any time the counter is updated, all the 3 functions are re-created again.
+// ReactDOM.render(<Counter />, document.getElementById('app'))
+// The problem here is that any time the counter is updated, all the 3 functions are re-created again.
 
-You can visualize this by instantiating a Set data structure, and 
-adding each function to it. Why Set? because it only stores unique elements, which in our case means different (uniquely instantiated) functions.              
+// You can visualize this by instantiating a Set data structure, and 
+// adding each function to it. Why Set? because it only stores unique elements, which in our case means different (uniquely instantiated) functions.              
 
-const { useState, useCallback } = React
-const functionsCounter = new Set()
+// const { useState, useCallback } = React
+// const functionsCounter = new Set()
 
-const Counter = () => {
-  const [count, setCount] = useState(0)
-  const [otherCounter, setOtherCounter] = useState(0)
+// const Counter = () => {
+//   const [count, setCount] = useState(0)
+//   const [otherCounter, setOtherCounter] = useState(0)
   
-  const increment = useCallback(() => {
-    setCount(count + 1)
-  }, [count])
-  const decrement = useCallback(() => {
-    setCount(count - 1)
-  }, [count])
-  const incrementOtherCounter = useCallback(() => {
-    setOtherCounter(otherCounter + 1)
-  }, [otherCounter])
+//   const increment = useCallback(() => {
+//     setCount(count + 1)
+//   }, [count])
+//   const decrement = useCallback(() => {
+//     setCount(count - 1)
+//   }, [count])
+//   const incrementOtherCounter = useCallback(() => {
+//     setOtherCounter(otherCounter + 1)
+//   }, [otherCounter])
 
-  /*
-  const increment = (() => {
-    setCount(count + 1)
-  })
-  const decrement = (() => {
-    setCount(count - 1)
-  })
-  const incrementOtherCounter = (() => {
-    setOtherCounter(otherCounter + 1)
-  })
-  */
+//   /*
+//   const increment = (() => {
+//     setCount(count + 1)
+//   })
+//   const decrement = (() => {
+//     setCount(count - 1)
+//   })
+//   const incrementOtherCounter = (() => {
+//     setOtherCounter(otherCounter + 1)
+//   })
+//   */
 
-  functionsCounter.add(increment)
-  functionsCounter.add(decrement)
-  functionsCounter.add(incrementOtherCounter)
+//   functionsCounter.add(increment)
+//   functionsCounter.add(decrement)
+//   functionsCounter.add(incrementOtherCounter)
 
-  console.log(functionsCounter.size)
+//   console.log(functionsCounter.size)
   
-  return (
-    <>
-      Count: {count}
-      <button onClick={increment}>+</button>
-      <button onClick={decrement}>-</button>
-      <button onClick={incrementOtherCounter}>incrementOtherCounter</button>
-    </>
-  )
-}
+//   return (
+//     <>
+//       Count: {count}
+//       <button onClick={increment}>+</button>
+//       <button onClick={decrement}>-</button>
+//       <button onClick={incrementOtherCounter}>incrementOtherCounter</button>
+//     </>
+//   )
+// }
+// ReactDOM.render(<Counter />, document.getElementById('app'))
+// `}
+//             </pre>
+//             <Span>Countdown Timer</Span>
+//             <pre>
+//               {`
+// function Countdown({ seconds }) {
+//   const [timeLeft, setTimeLeft] = useState(seconds);
 
-ReactDOM.render(<Counter />, document.getElementById('app'))
-`}
-            </pre>
-            <Span>Countdown Timer</Span>
-            <pre>
-              {`
-function Countdown({ seconds }) {
-  const [timeLeft, setTimeLeft] = useState(seconds);
+//   useEffect(() => {
+//     const intervalId = setInterval(() => {
+//       setTimeLeft((t) => t - 1);
+//     }, 1000);
+//     return () => clearInterval(intervalId);
+//   }, []);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setTimeLeft((t) => t - 1);
-    }, 1000);
-    return () => clearInterval(intervalId);
-  }, []);
+//   return <div>{timeLeft}s</div>;
+// }              
+//               `}
+//             </pre>
+//             <pre>
+//               {`
+// import React, {useReducer, createContext} from 'react';
+// export default (reducer, actions, initialState) => {
+//   const Context = createContext();
+//   const Provider = ({children}) => {
+//     const [state, dispatch] = useReducer(reducer, initialState);              
+//     const boundActions = {};
+//     for (let key in actions) {
+//       boundActions[key] = actions[key](dispatch);
+//     }
+//     return (
+//       <Context.Provider value={{state, ...boundActions}}>
+//         {children}
+//       </Context.Provider>
+//     );
+//   };
+//   return {Context, Provider};
+// };
+//               `}
+//             </pre>
+//             <pre>
+//               {`
+// import axios from "axios";
+// const instance = axios.create({
+//   baseURL: "https://sheet.best/api/sheets/",
+// });
+// instance.interceptors.request.use(
+//   async (config) => {
+//       config.headers['Content-Type'] = 'application/json';
+//       return config;
+//   },
+//   (err) => {
+//     return Promise.reject(err);
+//   }
+// );
+// export default instance;              
+//               `}
+//             </pre>
+//             <pre>
+//               {`
+// export const { Context, Provider } = createDataContext(
+//   reducer,
+//   {
+//     fetchTexts,
+//   },
+//   {
+//     texts: null,
+//   }
+// );              
 
-  return <div>{timeLeft}s</div>;
-}              
-              `}
-            </pre>
-            <pre>
-              {`
-import React, {useReducer, createContext} from 'react';
-export default (reducer, actions, initialState) => {
-  const Context = createContext();
-  const Provider = ({children}) => {
-    const [state, dispatch] = useReducer(reducer, initialState);              
-    const boundActions = {};
-    for (let key in actions) {
-      boundActions[key] = actions[key](dispatch);
-    }
-    return (
-      <Context.Provider value={{state, ...boundActions}}>
-        {children}
-      </Context.Provider>
-    );
-  };
-  return {Context, Provider};
-};
-              `}
-            </pre>
-            <pre>
-              {`
-import axios from "axios";
-const instance = axios.create({
-  baseURL: "https://sheet.best/api/sheets/",
-});
-instance.interceptors.request.use(
-  async (config) => {
-      config.headers['Content-Type'] = 'application/json';
-      return config;
-  },
-  (err) => {
-    return Promise.reject(err);
-  }
-);
-export default instance;              
-              `}
-            </pre>
-            <pre>
-              {`
-export const { Context, Provider } = createDataContext(
-  reducer,
-  {
-    fetchTexts,
-  },
-  {
-    texts: null,
-  }
-);              
-
-import Cookie from "js-cookie"
-const generatePDF = (dispatch) => async ({ child, file, type }) => {
-  try {
-    const email = Cookie.get("email");
-    console.log(url);
-    await firebase.storage().ref().child(child).put(file, "application/pdf");
-    const url = await firebase
-      .storage()
-      .ref(type)
-      .getDownloadURL();
-    let obj = {};
-    obj[type] = url;
-    await db.collection("dev-users").doc(email).update(obj);
-  } catch (e) {
-    throw new Error(e);
-  }
-};
-              `}
-            </pre>
-            <Span>
-              Sagas enable numerous approaches to tackling parallel execution,
-              task concurrency, task racing, task cancellation, and more. Keep
-              total control over the flow of your code.
-            </Span>
-            <Span>
-              Babel is a JavaScript transpiler, meaning it converts a newer
-              version of ECMAScript, such as ES9, to a standard version (ES5).
-            </Span>
-            <Span>
-              ECMAScript is a Standard for scripting languages such as
-              JavaScript, JScript, etc. It is a trademark scripting language
-              specification. JavaScript is a language based on ECMAScript. A
-              standard for scripting languages like JavaScript, JScript is
-              ECMAScript.
-            </Span>
-            <Span>
-              Ecma International (formally European Computer Manufacturers
-              Association) is a non-profit organization that develops standards
-              in computer hardware, communications, and programming languages
-            </Span>
-            <Span>
-              Webpack is a module bundler. Its main purpose is to bundle
-              JavaScript files for usage in a browser, yet it is also capable of
-              transforming, bundling, or packaging just about any resource or
-              asset.
-            </Span>
-            <Span>
-              A polyfill is a piece of code (usually JavaScript on the Web) used
-              to provide modern functionality on older browsers that do not
-              natively support it.
-            </Span>
-            <Span>
-              The Document Object Model (DOM) is a programming interface for web
-              documents. It represents the page so that programs can change the
-              document structure, style, and content. The DOM represents the
-              document as nodes and objects; that way, programming languages can
-              interact with the page
-            </Span>
-            <Span>
-              Debouncing in JavaScript is a practice used to improve browser
-              performance. There might be some functionality in a web page which
-              requires time-consuming computations. If such a method is invoked
-              frequently, it might greatly affect the performance of the
-              browser, as JavaScript is a single threaded language.26-Jul-2021
-            </Span>
-          </>
-        ),
-      },
-      ReactNative: {
-        title: "React Native",
-        content: (
-          <>
-            <Span>
-              expo install react-native-gesture-handler react-native-reanimated
-              react-native-screens react-native-safe-area-context
-              @react-native-community/masked-view @react-navigation/native
-              @react-navigation/stack @react-navigation/native
-              @react-navigation/bottom-tabs
-            </Span>
-            <Span>
-              CreateAppContainer <br />
-              CreateStackNavigator <br />
-              CreateDrawerNavigator <br />
-              CreateBottomTabNavigator <br />
-              CreateMaterialTopBarNavigator <br />
-            </Span>
-            <Span>Animated</Span>
-            <Span>Animated.(Spring,Delay,Timing,Value,ValueXY)</Span>
-            <Span>Pan Responder</Span>
-            <Span>Flatlist</Span>
-            <Span>
-              data <br />
-              renderItem <br />
-              horizontal
-              <br />
-              keyExtractor <br />
-              showsHorizontalIndicator
-            </Span>
-            <Span>react-native-config.js</Span>
-            <Span>
-              react-native-splashscreen <br />
-              react-native-bootsplash <br />
-              react-native-elements <br />
-              latlng-to-zip <br />
-              react-native-contacts <br />
-              react-native-get-location <br />
-              react-native-image-picker <br />
-              react-native-sound <br />
-              react-native-video <br />
-              react-native-youtube <br />
-              react-native-device-info <br />
-              react-native-countup <br />
-              react-native-svg <br />
-              react-native-linear-gradient <br />
-              @react-native-community/google-signin <br />
-              @react-native-community/async-storage <br />
-              react-native-debugger <br />
-              @react-native-community/datetimepicker
-              <br /> ngrok http 3000 <br />
-              json-server -w db.json <br />
-              nodemon src/index.json
-              <br />
-              react-native-modalize
-            </Span>
-          </>
-        ),
-      },
-      Regex: {
-        title: "Regex",
-        content: (
-          <>
-            <Span>
-              A regular expression (sometimes called a rational expression) is a
-              sequence of characters that define a search pattern, mainly for
-              use in pattern matching with strings, or string matching, i.e.
-              “find and replace”-like operations.
-            </Span>
-            <Span>
-              Regular expressions are a generalized way to match patterns with
-              sequences of characters. It is used in every programming language
-              like C++, Java and Python.
-            </Span>
-            <Span>
-              What is a regular expression and what makes it so important? Regex
-              are used in Google analytics in URL matching in supporting search
-              and replace in most popular editors like Sublime, Notepad++,
-              Brackets, Google Docs and Microsoft word.
-            </Span>
-            <Span>
-              Example : Regular expression for an email address :
-              <pre>
-                {`
-              ^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{(2, 5)})$                
-                `}
-              </pre>
-            </Span>
-            <Span>
-              The above regular expression can be used for checking if a given
-              set of characters is an email address or not.
-            </Span>
-            <Span>How to write regular expression?</Span>
-            <Span>Repeaters : * , + and {} :</Span>
-            <Span>
-              These symbols act as repeaters and tell the computer that the
-              preceding character is to be used for more than just one time.
-            </Span>
-            <Span>1. The asterisk symbol ( * ):</Span>
-            <Span>
-              It tells the computer to match the preceding character (or set of
-              characters) for 0 or more times (upto infinite).
-            </Span>
-            <pre>
-              {`
-              Example : The regular expression ab*c will give ac, abc, abbc, 
-              abbbc….ans so on 
-              `}
-            </pre>
-            <Span>2. The Plus symbol ( + ):</Span>
-            <Span>
-              It tells the computer to repeat the preceding character (or set of
-              characters) for atleast one or more times(upto infinite).
-            </Span>
-            <pre>
-              {`
-              Example : The regular expression ab+c will give abc, abbc,
-              abbc, … and so on.
-              `}
-            </pre>
-            <Span>3. The curly braces {"{…}"}</Span>
-            <Span>
-              It tells the computer to repeat the preceding character (or set of
-              characters) for as many times as the value inside this bracket.
-            </Span>
-            <pre>
-              {`
-              Example : {2} means that the preceding character is to be repeated 2 
-              times, {min,} means the preceding character is matches min or  more 
-              times. {min,max} means that the preceding character is repeated at
-              least min & at most max times.
-              `}
-            </pre>
-            <Span>4. Wildcard – ( . )</Span>
-            <Span>
-              The dot symbol can take place of any other symbol, that is why it
-              is called the wildcard character.
-            </Span>
-            <pre>
-              {`
-              Example : 
-              The Regular expression .* will tell the computer that any character
-              can be used any number of times.
-              `}
-            </pre>
-            <Span>5. Optional character – ( ? )</Span>
-            <Span>
-              This symbol tells the computer that the preceding character may or
-              may not be present in the string to be matched.
-            </Span>
-            <pre>
-              {`
-                Example:
-                We may write the format for document file as – “docx?”
-                The ‘?’ tells the computer that x may or may not be 
-                present in the name of file format. 
-                `}
-            </pre>
-            <Span>6. The caret ( ^ ) symbol:</Span>
-            <Span>
-              Setting position for match :tells the computer that the match must
-              start at the beginning of the string or line.
-            </Span>
-            <pre>
-              {`
-              Example : ^\d{3} will match with patterns like "901" in "901-333-".
-              `}
-            </pre>
-            <Span>7. The dollar ( $ ) symbol</Span>
-            <Span>
-              It tells the computer that the match must occur at the end of the
-              string or before \n at the end of the line or string.
-            </Span>
-            <pre>{`
-            Example : -\d{3}$  will match with patterns like "-333" in "-901-333".
-            `}</pre>
-            <Span>8. Character Classes</Span>
-            <Span>
-              A character class matches any one of a set of characters. It is
-              used to match the most basic element of a language like a letter,
-              a digit, space, a symbol etc.
-            </Span>
-            <Span>
-              /s : matches any whitespace characters such as space and tab{" "}
-              <br />
-              /S : matches any non-whitespace characters <br />
-              /d : matches any digit character <br />
-              /D : matches any non-digit characters <br />
-              /w : matches any word character (basically alpha-numeric) <br />
-              /W : matches any non-word character <br />
-              /b : matches any word boundary (this would include spaces, dashes,
-              commas, semi-colons, etc)
-            </Span>
-            <Span>9. {"[set_of_characters]"}</Span>
-            <Span>
-              Matches any single character in set_of_characters. By default, the
-              match is case-sensitive.
-            </Span>
-            <pre>
-              {`
-Example : [abc] will match characters a,b and c in any string.              
-              `}
-            </pre>
-            <Span>10. {"[^set_of_characters]"}</Span>
-            <pre>
-              {`
-Negation: Matches any single character that is not in set_of_characters. By default, the match is case sensitive.              
-              `}
-            </pre>
-            <Span>11. {"[first-last]"}</Span>
-            <Span>
-              Character range: Matches any single character in the range from
-              first to last.
-            </Span>
-            <pre>
-              {`
-              Example : [a-zA-z] will match any character from a to z or A to Z.
-              `}
-            </pre>
-            <Span>12. The Escape Symbol : \</Span>
-            <Span>
-              If you want to match for the actual ‘+’, ‘.’ etc characters, add a
-              backslash( \ ) before that character. This will tell the computer
-              to treat the following character as a search character and
-              consider it for matching pattern.
-            </Span>
-            <pre>
-              {`
-              Example : \d+[\+-x\*]\d+ will match patterns like "2+2"
-              and "3*9" in "(2+2) * 3*9".
-              `}
-            </pre>
-            <Span>13. Grouping Characters ( )</Span>
-            <Span>
-              A set of different symbols of a regular expression can be grouped
-              together to act as a single unit and behave as a block, for this,
-              you need to wrap the regular expression in the parenthesis( ).
-            </Span>
-            <pre>
-              {`
-              Example : ([A-Z]\w+) contains two different elements of the regular 
-              expression combined together. This expression will match any pattern 
-              containing uppercase letter followed by any character.
-              `}
-            </pre>
-            <Span>14. Vertical Bar ( | )</Span>
-            <Span>
-              Matches any one element separated by the vertical bar (|)
-              character.
-            </Span>
-            <pre>{`
-            Example :  th(e|is|at) will match words - the, this and that.
-            `}</pre>
-            <Span>15. \number ( Backrefernce ) :</Span>
-            <Span>
-              Backreference: allows a previously matched
-              sub-expression(expression captured or enclosed within circular
-              brackets ) to be identified subsequently in the same regular
-              expression. \n means that group enclosed within the n-th bracket
-              will be repeated at current position.
-            </Span>
-            <pre>
-              {`
-              Example : ([a-z])\\1 will match “ee” in Geek because the character 
-              at second position is same as character at position 1 of the match.
-              `}
-            </pre>
-            <Span>16. Comment : (?# comment) </Span>
-            <Span>
-              Inline comment: The comment ends at the first closing parenthesis.
-            </Span>
-            <pre>{`Example : \\bA(?#This is an inline comment)\\w+\\b`}</pre>
-            <Span># [to end of line]</Span>
-            <Span>
-              X-mode comment. The comment starts at an unescaped # and continues
-              to the end of the line.
-            </Span>
-            <pre>{`Example :  (?x)\\bA\\w+\\b#Matches words starting with A`}</pre>
-          </>
-        ),
-      },
-      MySQL: {
-        title: "MYSQL",
-        content: <></>,
-      },
-    },
-    content: (
-      <>
-        <Img style={{ borderRadius: "0.4rem" }} src={NotesImg} />
-      </>
-    ),
-  },
+// import Cookie from "js-cookie"
+// const generatePDF = (dispatch) => async ({ child, file, type }) => {
+//   try {
+//     const email = Cookie.get("email");
+//     console.log(url);
+//     await firebase.storage().ref().child(child).put(file, "application/pdf");
+//     const url = await firebase
+//       .storage()
+//       .ref(type)
+//       .getDownloadURL();
+//     let obj = {};
+//     obj[type] = url;
+//     await db.collection("dev-users").doc(email).update(obj);
+//   } catch (e) {
+//     throw new Error(e);
+//   }
+// };
+//               `}
+//             </pre>
+//             <Span>
+//               Sagas enable numerous approaches to tackling parallel execution,
+//               task concurrency, task racing, task cancellation, and more. Keep
+//               total control over the flow of your code.
+//             </Span>
+//             <Span>
+//               Babel is a JavaScript transpiler, meaning it converts a newer
+//               version of ECMAScript, such as ES9, to a standard version (ES5).
+//             </Span>
+//             <Span>
+//               ECMAScript is a Standard for scripting languages such as
+//               JavaScript, JScript, etc. It is a trademark scripting language
+//               specification. JavaScript is a language based on ECMAScript. A
+//               standard for scripting languages like JavaScript, JScript is
+//               ECMAScript.
+//             </Span>
+//             <Span>
+//               Ecma International (formally European Computer Manufacturers
+//               Association) is a non-profit organization that develops standards
+//               in computer hardware, communications, and programming languages
+//             </Span>
+//             <Span>
+//               Webpack is a module bundler. Its main purpose is to bundle
+//               JavaScript files for usage in a browser, yet it is also capable of
+//               transforming, bundling, or packaging just about any resource or
+//               asset.
+//             </Span>
+//             <Span>
+//               A polyfill is a piece of code (usually JavaScript on the Web) used
+//               to provide modern functionality on older browsers that do not
+//               natively support it.
+//             </Span>
+//             <Span>
+//               The Document Object Model (DOM) is a programming interface for web
+//               documents. It represents the page so that programs can change the
+//               document structure, style, and content. The DOM represents the
+//               document as nodes and objects; that way, programming languages can
+//               interact with the page
+//             </Span>
+//             <Span>
+//               Debouncing in JavaScript is a practice used to improve browser
+//               performance. There might be some functionality in a web page which
+//               requires time-consuming computations. If such a method is invoked
+//               frequently, it might greatly affect the performance of the
+//               browser, as JavaScript is a single threaded language.26-Jul-2021
+//             </Span>
+//           </>
+//         ),
+//       },
+//       ReactNative: {
+//         title: "React Native",
+//         content: (
+//           <>
+//             <Span>
+//               expo install react-native-gesture-handler react-native-reanimated
+//               react-native-screens react-native-safe-area-context
+//               @react-native-community/masked-view @react-navigation/native
+//               @react-navigation/stack @react-navigation/native
+//               @react-navigation/bottom-tabs
+//             </Span>
+//             <Span>
+//               CreateAppContainer <br />
+//               CreateStackNavigator <br />
+//               CreateDrawerNavigator <br />
+//               CreateBottomTabNavigator <br />
+//               CreateMaterialTopBarNavigator <br />
+//             </Span>
+//             <Span>Animated</Span>
+//             <Span>Animated.(Spring,Delay,Timing,Value,ValueXY)</Span>
+//             <Span>Pan Responder</Span>
+//             <Span>Flatlist</Span>
+//             <Span>
+//               data <br />
+//               renderItem <br />
+//               horizontal
+//               <br />
+//               keyExtractor <br />
+//               showsHorizontalIndicator
+//             </Span>
+//             <Span>react-native-config.js</Span>
+//             <Span>
+//               react-native-splashscreen <br />
+//               react-native-bootsplash <br />
+//               react-native-elements <br />
+//               latlng-to-zip <br />
+//               react-native-contacts <br />
+//               react-native-get-location <br />
+//               react-native-image-picker <br />
+//               react-native-sound <br />
+//               react-native-video <br />
+//               react-native-youtube <br />
+//               react-native-device-info <br />
+//               react-native-countup <br />
+//               react-native-svg <br />
+//               react-native-linear-gradient <br />
+//               @react-native-community/google-signin <br />
+//               @react-native-community/async-storage <br />
+//               react-native-debugger <br />
+//               @react-native-community/datetimepicker
+//               <br /> ngrok http 3000 <br />
+//               json-server -w db.json <br />
+//               nodemon src/index.json
+//               <br />
+//               react-native-modalize
+//             </Span>
+//           </>
+//         ),
+//       },
+//       Regex: {
+//         title: "Regex",
+//         content: (
+//           <>
+//             <Span>
+//               A regular expression (sometimes called a rational expression) is a
+//               sequence of characters that define a search pattern, mainly for
+//               use in pattern matching with strings, or string matching, i.e.
+//               “find and replace”-like operations.
+//             </Span>
+//             <Span>
+//               Regular expressions are a generalized way to match patterns with
+//               sequences of characters. It is used in every programming language
+//               like C++, Java and Python.
+//             </Span>
+//             <Span>
+//               What is a regular expression and what makes it so important? Regex
+//               are used in Google analytics in URL matching in supporting search
+//               and replace in most popular editors like Sublime, Notepad++,
+//               Brackets, Google Docs and Microsoft word.
+//             </Span>
+//             <Span>
+//               Example : Regular expression for an email address :
+//               <pre>
+//                 {`
+//               ^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{(2, 5)})$                
+//                 `}
+//               </pre>
+//             </Span>
+//             <Span>
+//               The above regular expression can be used for checking if a given
+//               set of characters is an email address or not.
+//             </Span>
+//             <Span>How to write regular expression?</Span>
+//             <Span>Repeaters : * , + and {} :</Span>
+//             <Span>
+//               These symbols act as repeaters and tell the computer that the
+//               preceding character is to be used for more than just one time.
+//             </Span>
+//             <Span>1. The asterisk symbol ( * ):</Span>
+//             <Span>
+//               It tells the computer to match the preceding character (or set of
+//               characters) for 0 or more times (upto infinite).
+//             </Span>
+//             <pre>
+//               {`
+//               Example : The regular expression ab*c will give ac, abc, abbc, 
+//               abbbc….ans so on 
+//               `}
+//             </pre>
+//             <Span>2. The Plus symbol ( + ):</Span>
+//             <Span>
+//               It tells the computer to repeat the preceding character (or set of
+//               characters) for atleast one or more times(upto infinite).
+//             </Span>
+//             <pre>
+//               {`
+//               Example : The regular expression ab+c will give abc, abbc,
+//               abbc, … and so on.
+//               `}
+//             </pre>
+//             <Span>3. The curly braces {"{…}"}</Span>
+//             <Span>
+//               It tells the computer to repeat the preceding character (or set of
+//               characters) for as many times as the value inside this bracket.
+//             </Span>
+//             <pre>
+//               {`
+//               Example : {2} means that the preceding character is to be repeated 2 
+//               times, {min,} means the preceding character is matches min or  more 
+//               times. {min,max} means that the preceding character is repeated at
+//               least min & at most max times.
+//               `}
+//             </pre>
+//             <Span>4. Wildcard – ( . )</Span>
+//             <Span>
+//               The dot symbol can take place of any other symbol, that is why it
+//               is called the wildcard character.
+//             </Span>
+//             <pre>
+//               {`
+//               Example : 
+//               The Regular expression .* will tell the computer that any character
+//               can be used any number of times.
+//               `}
+//             </pre>
+//             <Span>5. Optional character – ( ? )</Span>
+//             <Span>
+//               This symbol tells the computer that the preceding character may or
+//               may not be present in the string to be matched.
+//             </Span>
+//             <pre>
+//               {`
+//                 Example:
+//                 We may write the format for document file as – “docx?”
+//                 The ‘?’ tells the computer that x may or may not be 
+//                 present in the name of file format. 
+//                 `}
+//             </pre>
+//             <Span>6. The caret ( ^ ) symbol:</Span>
+//             <Span>
+//               Setting position for match :tells the computer that the match must
+//               start at the beginning of the string or line.
+//             </Span>
+//             <pre>
+//               {`
+//               Example : ^\d{3} will match with patterns like "901" in "901-333-".
+//               `}
+//             </pre>
+//             <Span>7. The dollar ( $ ) symbol</Span>
+//             <Span>
+//               It tells the computer that the match must occur at the end of the
+//               string or before \n at the end of the line or string.
+//             </Span>
+//             <pre>{`
+//             Example : -\d{3}$  will match with patterns like "-333" in "-901-333".
+//             `}</pre>
+//             <Span>8. Character Classes</Span>
+//             <Span>
+//               A character class matches any one of a set of characters. It is
+//               used to match the most basic element of a language like a letter,
+//               a digit, space, a symbol etc.
+//             </Span>
+//             <Span>
+//               /s : matches any whitespace characters such as space and tab{" "}
+//               <br />
+//               /S : matches any non-whitespace characters <br />
+//               /d : matches any digit character <br />
+//               /D : matches any non-digit characters <br />
+//               /w : matches any word character (basically alpha-numeric) <br />
+//               /W : matches any non-word character <br />
+//               /b : matches any word boundary (this would include spaces, dashes,
+//               commas, semi-colons, etc)
+//             </Span>
+//             <Span>9. {"[set_of_characters]"}</Span>
+//             <Span>
+//               Matches any single character in set_of_characters. By default, the
+//               match is case-sensitive.
+//             </Span>
+//             <pre>
+//               {`
+// Example : [abc] will match characters a,b and c in any string.              
+//               `}
+//             </pre>
+//             <Span>10. {"[^set_of_characters]"}</Span>
+//             <pre>
+//               {`
+// Negation: Matches any single character that is not in set_of_characters. By default, the match is case sensitive.              
+//               `}
+//             </pre>
+//             <Span>11. {"[first-last]"}</Span>
+//             <Span>
+//               Character range: Matches any single character in the range from
+//               first to last.
+//             </Span>
+//             <pre>
+//               {`
+//               Example : [a-zA-z] will match any character from a to z or A to Z.
+//               `}
+//             </pre>
+//             <Span>12. The Escape Symbol : \</Span>
+//             <Span>
+//               If you want to match for the actual ‘+’, ‘.’ etc characters, add a
+//               backslash( \ ) before that character. This will tell the computer
+//               to treat the following character as a search character and
+//               consider it for matching pattern.
+//             </Span>
+//             <pre>
+//               {`
+//               Example : \d+[\+-x\*]\d+ will match patterns like "2+2"
+//               and "3*9" in "(2+2) * 3*9".
+//               `}
+//             </pre>
+//             <Span>13. Grouping Characters ( )</Span>
+//             <Span>
+//               A set of different symbols of a regular expression can be grouped
+//               together to act as a single unit and behave as a block, for this,
+//               you need to wrap the regular expression in the parenthesis( ).
+//             </Span>
+//             <pre>
+//               {`
+//               Example : ([A-Z]\w+) contains two different elements of the regular 
+//               expression combined together. This expression will match any pattern 
+//               containing uppercase letter followed by any character.
+//               `}
+//             </pre>
+//             <Span>14. Vertical Bar ( | )</Span>
+//             <Span>
+//               Matches any one element separated by the vertical bar (|)
+//               character.
+//             </Span>
+//             <pre>{`
+//             Example :  th(e|is|at) will match words - the, this and that.
+//             `}</pre>
+//             <Span>15. \number ( Backrefernce ) :</Span>
+//             <Span>
+//               Backreference: allows a previously matched
+//               sub-expression(expression captured or enclosed within circular
+//               brackets ) to be identified subsequently in the same regular
+//               expression. \n means that group enclosed within the n-th bracket
+//               will be repeated at current position.
+//             </Span>
+//             <pre>
+//               {`
+//               Example : ([a-z])\\1 will match “ee” in Geek because the character 
+//               at second position is same as character at position 1 of the match.
+//               `}
+//             </pre>
+//             <Span>16. Comment : (?# comment) </Span>
+//             <Span>
+//               Inline comment: The comment ends at the first closing parenthesis.
+//             </Span>
+//             <pre>{`Example : \\bA(?#This is an inline comment)\\w+\\b`}</pre>
+//             <Span># [to end of line]</Span>
+//             <Span>
+//               X-mode comment. The comment starts at an unescaped # and continues
+//               to the end of the line.
+//             </Span>
+//             <pre>{`Example :  (?x)\\bA\\w+\\b#Matches words starting with A`}</pre>
+//           </>
+//         ),
+//       },
+//       MySQL: {
+//         title: "MYSQL",
+//         content: <></>,
+//       },
+//     },
+//     content: (
+//       <>
+//         <Img style={{ borderRadius: "0.4rem" }} src={NotesImg} />
+//       </>
+//     ),
+//   },
 };
 
 // https://cheonhyangzhang.gitbooks.io/leetcode-solutions/content/56-merge-intervals.html

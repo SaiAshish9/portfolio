@@ -30,13 +30,13 @@ const data = [
   //   download: true,
   //   downloadableLink: "https://drive.google.com/file/d/1L98zTiG-66aEHfk8BUocVWwRMWwaj3gO/view",
   // },
-  {
-    title: <I18n t="resume" />,
-    subTitle: "🚀",
-    img: ResumeImg,
-    download: true,
-    downloadableLink: "https://drive.google.com/file/d/15HtqPTjjafafS4HgeCOhVMO1TeMKgN95/view?usp=sharing",
-  },
+  // {
+  //   title: <I18n t="resume" />,
+  //   subTitle: "🚀",
+  //   img: ResumeImg,
+  //   download: true,
+  //   downloadableLink: "https://drive.google.com/file/d/15HtqPTjjafafS4HgeCOhVMO1TeMKgN95/view?usp=sharing",
+  // },
   {
     title: <I18n t="bTech" />,
     subTitle: <I18n t="cgpa" />,
