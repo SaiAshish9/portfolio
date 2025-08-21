@@ -15,6 +15,7 @@ import ResumeImg from "assets/home/resume1.png";
 import AcademicsImg from "assets/home/academics.png";
 import GithubImg from "assets/home/github.png";
 import NightCodingSetupImg from "assets/home/nightCodingSetup.jpeg";
+import CollegeImg from "assets/home/college.jpeg";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 

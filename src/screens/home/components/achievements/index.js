@@ -14,7 +14,6 @@ import {
 import DoritosImg from "assets/home/hackathonprize.jpg";
 import MSITImg from "assets/home/award.png";
 import VSITImg from "assets/home/vsit.jpeg";
-import CollegeImg from "assets/home/college.jpeg";
 import IEMISImg from "assets/home/iemis.jpeg";
 import BvpImg from "assets/home/bvp_pic.jpeg";
 import Class8AwardImg from "assets/home/school.jpeg";
