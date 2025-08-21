@@ -25,6 +25,7 @@ import {
   AiFillLinkedin,
   AiFillGithub,
 } from "react-icons/ai";
+import { FaTwitter } from "react-icons/fa";
 
 import { SiGmail } from "react-icons/si";
 
@@ -64,7 +65,7 @@ const Intro = () => {
       icon: <AiFillMediumSquare size={ICON_SIZE + 5} />,
     },
     {
-      label: "https://www.youtube.com/channel/UCRrkV11YNkirkWEQSBTEtvg",
+      label: "https://www.youtube.com/channel/saiashish9",
       icon: <AiFillYoutube size={ICON_SIZE + 5} />,
     },
     {
@@ -73,7 +74,7 @@ const Intro = () => {
     },
     {
       label: "https://x.com/saiashish09/",
-      icon: <AiFillTwitter size={ICON_SIZE + 5} />,
+      icon: <FaTwitter size={ICON_SIZE + 3} />,
     },
   ];
 
