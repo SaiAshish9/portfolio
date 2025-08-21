@@ -265,13 +265,13 @@ export const translations = [
   },
   {
     text: "introDesc3",
-    en: "Computer Science BTECH 2022 Graduate At MSIT , GGSIPU",
+    en: "Computer Science BTECH 2022 Graduate At MSIT, GGSIPU",
     pt: "Graduação em Ciência da Computação BTECH 2022 na MSIT, GGSIPU",
     hi: "कंप्यूटर विज्ञान BTECH 2022 MSIT, GGSIPU में स्नातक",
     te: "MSIT, GGSIPUలో కంప్యూటర్ సైన్స్ BTECH 2022 గ్రాడ్యుయేట్",
     de: "Informatik BTECH 2022 Absolvent am MSIT, GGSIPU",
     zh: "計算機科學 BTECH 2022 畢業生在 MSIT，GGSIPU",
-    fr: "Diplômé en informatique BTECH 2022 au MSIT , GGSIPU",
+    fr: "Diplômé en informatique BTECH 2022 au MSIT, GGSIPU",
     ru: "Информатика Выпускник BTECH 2022 в MSIT, GGSIPU",
   },
   {
