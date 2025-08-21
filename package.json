@@ -87,6 +87,9 @@
       "last 1 safari version"
     ]
   },
+  "resolutions": {
+    "strip-ansi": "6.0.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.14.8",
     "@babel/eslint-parser": "^7.14.7",

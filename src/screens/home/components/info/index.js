@@ -119,7 +119,7 @@ const mSettings = {
 const sSettings = {
   ...settings,
   slidesToShow: 2,
-  nextArrow: <NextArrow curr={6} />,
+  nextArrow: <NextArrow curr={1} />,
 };
 
 const Info = () => {
