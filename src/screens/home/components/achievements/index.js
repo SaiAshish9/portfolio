@@ -91,12 +91,12 @@ const data = [
       "https://res.cloudinary.com/saiashish/image/upload/v1627665900/bvp2_xewa4f.jpg",
     ],
   },
-  {
-    title: <I18n t="amazonSDE2" />,
-    subTitle: <I18n t="amazonSDE2Desc" />,
-    img: AmazonImg3,
-    images: [AmazonImg1, AmazonImg2, AmazonImg3],
-  },
+  // {
+  //   title: <I18n t="amazonSDE2" />,
+  //   subTitle: <I18n t="amazonSDE2Desc" />,
+  //   img: AmazonImg3,
+  //   images: [AmazonImg1, AmazonImg2, AmazonImg3],
+  // },
   {
     title: <I18n t="netskope" />,
     subTitle: <I18n t="netskopeDesc" />,
@@ -147,12 +147,11 @@ const data = [
     subTitle: <I18n t="topper" />,
     img: Class8AwardImg,
   },
-
-  {
-    title: <I18n t="tier1" />,
-    subTitle: <I18n t="tier1Desc" />,
-    img: Tier1Img,
-  },
+  // {
+  //   title: <I18n t="tier1" />,
+  //   subTitle: <I18n t="tier1Desc" />,
+  //   img: Tier1Img,
+  // },
 ];
 
 const NextArrow = (props) => {

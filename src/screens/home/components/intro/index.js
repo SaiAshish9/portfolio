@@ -95,9 +95,6 @@ const Intro = () => {
       <InfoContainer className="animate__animated animate__pulse">
         {DATA.map((i, k) => (
           <InfoItem
-            style={{
-              left: k == 6 ? "0.4rem" : "0px",
-            }}
             key={k}
           >
             <InfoImg>{i.icon}</InfoImg>

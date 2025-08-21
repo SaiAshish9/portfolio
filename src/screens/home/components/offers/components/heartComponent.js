@@ -1,5 +1,6 @@
 import React from "react";
-import GoogleImg from "assets/home/google.png";
+import KrishnaImg from "assets/abc.png";
+
 // import HeartImg from "assets/home/heart.svg";
 import shuffle from "shuffle-array";
 
@@ -96,7 +97,7 @@ const HeartComponent = () => {
       //   )
       // }
     >
-      <HeartSubImage alt="img" src={GoogleImg} />
+      <HeartSubImage alt="img" src={KrishnaImg} />
       {theme !== Theme.fire &&
         styles.map((i, k) => (
           <AiFillHeart
