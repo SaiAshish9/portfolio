@@ -11,13 +11,9 @@ import {
 
 import Card from "common/card";
 
-import CoverLetterImg from "assets/home/cover-letter.png";
-import ResumeImg from "assets/home/resume.png";
+import ResumeImg from "assets/home/resume1.png";
 import AcademicsImg from "assets/home/academics.png";
 import GithubImg from "assets/home/github.png";
-import LinkedInImg from "assets/home/linkedIn.png";
-import MediumImg from "assets/home/medium.png";
-import YoutubeImg from "assets/home/youtube.png";
 import NightCodingSetupImg from "assets/home/nightCodingSetup.jpeg";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
