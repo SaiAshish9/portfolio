@@ -119,10 +119,12 @@ export const Img = styled.img`
 export const Label = styled.p`
   text-align: center;
   margin-top: 1.5rem;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   padding: 0px;
   line-height: 0px;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-weight: ${FontWeight.regular};
   @media only screen and (max-width: ${BREAKPOINTS.md}) {
     font-size: 0.6rem;
@@ -136,7 +138,7 @@ export const Label = styled.p`
 export const Title = styled.p`
   text-align: center;
   margin-top: 0.1rem;
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   padding: 0rem 0.4rem;
   font-weight: ${FontWeight.light};
   opacity: 0.8;

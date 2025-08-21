@@ -12,9 +12,9 @@ const Header = () => {
       <SmallLabel>
         <I18n t="dsaTarget" />
       </SmallLabel>
-      <SmallLabel>
+      {/* <SmallLabel>
         <I18n t="wip" />
-      </SmallLabel>
+      </SmallLabel> */}
     </Container>
   );
 };

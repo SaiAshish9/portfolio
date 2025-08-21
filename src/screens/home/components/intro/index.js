@@ -68,8 +68,12 @@ const Intro = () => {
       icon: <AiFillYoutube size={ICON_SIZE + 5} />,
     },
     {
-      label: "https://www.instagram.com/saiashish99/",
+      label: "https://www.instagram.com/techie008/",
       icon: <AiFillInstagram size={ICON_SIZE + 5} />,
+    },
+    {
+      label: "https://x.com/saiashish09/",
+      icon: <AiFillTwitter size={ICON_SIZE + 5} />,
     },
   ];
 

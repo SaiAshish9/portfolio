@@ -6,7 +6,6 @@ import {
   PlayerContainer,
   Label,
   Content,
-  PlayPauseBtn,
   Span,
 } from "./styles";
 
@@ -19,12 +18,9 @@ import {
   AiFillGithub,
   AiOutlineLink,
   AiOutlineWhatsApp,
-  AiOutlineCreditCard
 } from "react-icons/ai";
 
 import { FaUserShield } from "react-icons/fa";
-
-import { BsPlayFill } from "react-icons/bs";
 
 import { SiMicrosoftteams, SiRazorpay } from "react-icons/si";
 
@@ -135,14 +131,10 @@ const Projects = () => {
                 width="90%"
                 loop
                 muted
-                url={links[0].url}
+                controls
+                src={links?.[0]?.url}
                 playing={playing}
               />
-              {!playing && (
-                <PlayPauseBtn>
-                  <BsPlayFill />
-                </PlayPauseBtn>
-              )}
             </PlayerContainer>
             <Label onClick={() => onLableClick(links[0].link)}>
               <AiOutlineLink /> <Span>{links[0].label}</Span>
@@ -153,7 +145,7 @@ const Projects = () => {
           <TabPane tab={i.tab} key={i.key}>
             <Content>
               <PlayerContainer>
-                <ReactPlayer height="16rem" width="90%" url={i.url} />
+                <ReactPlayer height="16rem" width="90%" src={i.url} />
               </PlayerContainer>
               <Label addMarginTop={1} onClick={() => onLableClick(i.link)}>
                 <AiOutlineLink /> <Span>{i.label}</Span>

@@ -46,7 +46,7 @@ const data = [
     label: <I18n t="tekion" />,
     position: <I18n t="backend" />,
     link: "https://www.tekion.com",
-    exp: 1,
+    exp: 18,
     id: 0,
   },
   {
