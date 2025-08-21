@@ -34,7 +34,7 @@ const App = () => {
         isScrolled(null);
       }
     }, 300);
-    () => {
+    return () => {
       window.removeEventListener("scroll");
       clearInterval(checkHeader);
     };
