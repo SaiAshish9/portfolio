@@ -56,13 +56,10 @@ export const MediumImgContainer = styled.div`
 export const SmallImgContainer = styled.div`
   ${Styles.RAC};
   margin: 0.9rem auto 0;
-  padding: 0 3rem;
   @media only screen and (min-width: ${BREAKPOINTS.sm}) {
     display: none;
-    padding: 0px 2.7rem;
   }
   @media only screen and (max-width: ${BREAKPOINTS.xs}) {
-    padding: 0px 2.7rem;
     margin: 0.9rem 0.4rem 0;
   }
 `;

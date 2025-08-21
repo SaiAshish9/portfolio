@@ -22,7 +22,7 @@ export const MContainer = styled.div`
 
 export const Row = styled.div`
   ${Styles.RBC}
-  width: 70vw;
+  width: 50vw;
   margin: 0rem auto 1rem;
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     width: 80vw;
