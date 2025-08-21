@@ -183,7 +183,7 @@ const mSettings = {
 const sSettings = {
   ...settings,
   slidesToShow: 2,
-  nextArrow: <NextArrow curr={12} />,
+  nextArrow: <NextArrow curr={10} />,
 };
 
 const Achievements = () => {
