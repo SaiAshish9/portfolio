@@ -77,6 +77,16 @@ const data = [
     subTitle: "😎",
     img: NightCodingSetupImg,
   },
+  {
+    title: <I18n t="class11" />,
+    subTitle: <I18n t="topper" />,
+    img: CollegeImg,
+  },
+  {
+    title: <I18n t="class12" />,
+    subTitle: <I18n t="awardWinner" />,
+    img: "https://res.cloudinary.com/saiashish/image/upload/v1636813139/class_12th_dz9j9q.jpg",
+  },
 ];
 
 const NextArrow = (props) => {
