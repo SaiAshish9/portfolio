@@ -117,7 +117,7 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 1,
   swipeToSlide: true,
-  nextArrow: <NextArrow curr={6} />,
+  nextArrow: <NextArrow curr={1} />,
   prevArrow: <PrevArrow />,
 };
 

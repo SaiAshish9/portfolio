@@ -170,14 +170,14 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 1,
   swipeToSlide: true,
-  nextArrow: <NextArrow curr={10} />,
+  nextArrow: <NextArrow curr={8} />,
   prevArrow: <PrevArrow />,
 };
 
 const mSettings = {
   ...settings,
   slidesToShow: 3,
-  nextArrow: <NextArrow curr={6} />,
+  nextArrow: <NextArrow curr={9} />,
 };
 
 const sSettings = {
