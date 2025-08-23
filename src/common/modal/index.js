@@ -52,7 +52,12 @@ const Overlay = ({ data: selectedData, visible, setVisible, label, site }) => {
   const [data, setData] = useState(selectedData);
 
   return (
-    <StyledModal visible={visible} footer={null} closable={false}>
+    <StyledModal
+      visible={visible}
+      footer={null}
+      closable={false}
+      onCancel={() => setVisible(false)}
+    >
       <CloseIcon
         onClick={() => {
           setVisible(false);
@@ -84,10 +89,7 @@ const Overlay = ({ data: selectedData, visible, setVisible, label, site }) => {
       {data?.download && (
         <Row
           onClick={() => {
-            const win = window.open(
-              data?.downloadableLink,
-              "_blank"
-            );
+            const win = window.open(data?.downloadableLink, "_blank");
             win.focus();
           }}
           style={{ cursor: "pointer" }}
