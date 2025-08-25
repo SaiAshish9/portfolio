@@ -154,13 +154,26 @@ const InitialStep = () => {
           <Button
             hover={0}
             onClick={() => {
-              if (selectedOption === 5) {
-                const win = window.open("https://leetcodev2.vercel.app/", "_blank");
-                win.focus();
-              } else {
-                if (selectedOption === key) {
+              if (selectedOption === key) {
+                if (key == 5) {
+                  const win = window.open(
+                    "https://leetcodev2.vercel.app/",
+                    "_blank"
+                  );
+                  win.focus();
+                } else {
                   setSelectedOption(-1);
                   history.push(location.pathname);
+                }
+              } else {
+                if (key == 5) {
+                  setSelectedOption(key);
+                  history.push("?category=" + key);
+                  const win = window.open(
+                    "https://leetcodev2.vercel.app/",
+                    "_blank"
+                  );
+                  win.focus();
                 } else {
                   setSelectedOption(key);
                   history.push("?category=" + key);
