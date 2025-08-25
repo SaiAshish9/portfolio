@@ -26,8 +26,10 @@ import AmazonImg3 from "assets/home/amazon3.jpeg";
 
 import MLSA1 from "assets/home/microsoft1.jpeg";
 import MLSA2 from "assets/home/microsoft2.jpeg";
+import MLSeminarImg from "assets/ml_seminar.jpeg";
 
 import BuildableImg from "assets/offer.jpeg";
+import BatchImg from "assets/batch.jpeg";
 
 import Tier1Img from "assets/home/tier1.png";
 import IncImg from "assets/home/100xvc.png";
@@ -41,6 +43,11 @@ import I18n from "common/I18n";
 import Overlay from "common/modal";
 
 const data = [
+  {
+    title: <I18n t="batch" />,
+    subTitle: "🚀",
+    img: BatchImg,
+  },
   {
     title: <I18n t="girlscript" />,
     subTitle: <I18n t="winner" />,
@@ -136,6 +143,11 @@ const data = [
     subTitle: <I18n t="topper" />,
     img: Class8AwardImg,
   },
+  {
+    title: <I18n t="ml_seminar" />,
+    subTitle: <I18n t="event_pic" />,
+    img: MLSeminarImg,
+  }, 
   // {
   //   title: <I18n t="tier1" />,
   //   subTitle: <I18n t="tier1Desc" />,
@@ -170,20 +182,20 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 1,
   swipeToSlide: true,
-  nextArrow: <NextArrow curr={8} />,
+  nextArrow: <NextArrow curr={10} />,
   prevArrow: <PrevArrow />,
 };
 
 const mSettings = {
   ...settings,
   slidesToShow: 3,
-  nextArrow: <NextArrow curr={9} />,
+  nextArrow: <NextArrow curr={11} />,
 };
 
 const sSettings = {
   ...settings,
   slidesToShow: 2,
-  nextArrow: <NextArrow curr={10} />,
+  nextArrow: <NextArrow curr={12} />,
 };
 
 const Achievements = () => {

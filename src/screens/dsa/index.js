@@ -154,12 +154,17 @@ const InitialStep = () => {
           <Button
             hover={0}
             onClick={() => {
-              if (selectedOption === key) {
-                setSelectedOption(-1);
-                history.push(location.pathname);
+              if (selectedOption === 5) {
+                const win = window.open("https://leetcodev2.vercel.app/", "_blank");
+                win.focus();
               } else {
-                setSelectedOption(key);
-                history.push("?category=" + key);
+                if (selectedOption === key) {
+                  setSelectedOption(-1);
+                  history.push(location.pathname);
+                } else {
+                  setSelectedOption(key);
+                  history.push("?category=" + key);
+                }
               }
               setSelectedLanguage(-1);
             }}
@@ -190,25 +195,27 @@ const InitialStep = () => {
         </BtnContainer>
       )}
 
-      {selectedOption > -1 && parseInt(params.category) != 3 && (
-        <BtnContainer>
-          {["Hindi", "English"].map((i, key) => (
-            <Button
-              hover={0}
-              onClick={() =>
-                selectedLanguage === key
-                  ? setSelectedLanguage(-1)
-                  : setSelectedLanguage(key)
-              }
-              active={+(selectedLanguage === key)}
-              key={key}
-            >
-              <AiOutlineAudio style={{ marginRight: "0.2rem" }} />
-              {i}
-            </Button>
-          ))}
-        </BtnContainer>
-      )}
+      {selectedOption > -1 &&
+        parseInt(params.category) != 3 &&
+        parseInt(params.category) != 5 && (
+          <BtnContainer>
+            {["Hindi", "English"].map((i, key) => (
+              <Button
+                hover={0}
+                onClick={() =>
+                  selectedLanguage === key
+                    ? setSelectedLanguage(-1)
+                    : setSelectedLanguage(key)
+                }
+                active={+(selectedLanguage === key)}
+                key={key}
+              >
+                <AiOutlineAudio style={{ marginRight: "0.2rem" }} />
+                {i}
+              </Button>
+            ))}
+          </BtnContainer>
+        )}
 
       {selectedOption > -1 &&
         parseInt(params.category) === 3 &&
@@ -241,7 +248,7 @@ const DSA = () => {
       <Content>
         <Header />
         {!params?.subCategory && <InitialStep />}
-        {params.subCategory && params.category && (
+        {/* {params.subCategory && params.category && (
           <DescCont
             data={
               Object.values(entries[parseInt(params.category)][1].types)[
@@ -249,7 +256,7 @@ const DSA = () => {
               ]
             }
           />
-        )}
+        )} */}
       </Content>
     </Container>
   );

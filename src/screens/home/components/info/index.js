@@ -11,11 +11,16 @@ import {
 
 import Card from "common/card";
 
-import ResumeImg from "assets/home/resume1.png";
+import ResumeImg from "assets/resume_latest.png";
 import AcademicsImg from "assets/home/academics.png";
-import GithubImg from "assets/home/github.png";
+import GithubImg from "assets/github.png";
 import NightCodingSetupImg from "assets/home/nightCodingSetup.jpeg";
 import CollegeImg from "assets/home/college.jpeg";
+import ParentsImg from "assets/parents.jpeg";
+import AndhraImg from "assets/andhra.jpeg";
+import IPUCETImg from "assets/ipu_cet.jpeg";
+import Class11thImg from "assets/11th.jpeg";
+import CricketImg from "assets/cricket.jpeg";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
@@ -39,10 +44,38 @@ const data = [
   //   downloadableLink: "https://drive.google.com/file/d/15HtqPTjjafafS4HgeCOhVMO1TeMKgN95/view?usp=sharing",
   // },
   {
+    title: <I18n t="parents" />,
+    subTitle: <>❤️</>,
+    img: ParentsImg,
+  },
+  // https://media.licdn.com/dms/image/v2/D5622AQFbPp3ToZ9sIw/feedshare-shrink_2048_1536/B56ZQOQaKSH0Ao-/0/1735405974630?e=1758758400&v=beta&t=nma099hHG8a72sNiJTEwMNOmwCJ86w6BHbHi0a637jg
+  {
+    title: <I18n t="fitness" />,
+    subTitle: <I18n t="healthy_mind" />,
+    img: "https://media.licdn.com/dms/image/v2/D5622AQFbPp3ToZ9sIw/feedshare-shrink_2048_1536/B56ZQOQaKSH0Ao-/0/1735405974630?e=1758758400&v=beta&t=nma099hHG8a72sNiJTEwMNOmwCJ86w6BHbHi0a637jg",
+  },
+  {
     title: <I18n t="bTech" />,
     subTitle: <I18n t="cgpa" />,
     img: AcademicsImg,
     link: "https://ipuranklist.com/student/09315002718",
+  },
+  {
+    title: <I18n t="resume" />,
+    subTitle: <>🚀</>,
+    img: ResumeImg,
+    link: "https://drive.google.com/file/d/1zs8to52Trgo85URqHfW0riARVO-pcd_P/view",
+  },
+  {
+    title: <I18n t="resume" />,
+    subTitle: <>🚀</>,
+    img: ResumeImg,
+    link: "https://drive.google.com/file/d/1zs8to52Trgo85URqHfW0riARVO-pcd_P/view",
+  },
+  {
+    title: <I18n t="ipu_cet_rank" />,
+    subTitle: <>1890/40636</>,
+    img: IPUCETImg,
   },
   {
     title: <I18n t="github" />,
@@ -86,7 +119,22 @@ const data = [
   {
     title: <I18n t="class12" />,
     subTitle: <I18n t="awardWinner" />,
-    img: "https://res.cloudinary.com/saiashish/image/upload/v1636813139/class_12th_dz9j9q.jpg",
+    img: AndhraImg,
+  },
+  {
+    title: <I18n t="class11th" />,
+    subTitle: <I18n t="10on10" />,
+    img: Class11thImg,
+  },
+  {
+    title: <I18n t="class9th" />,
+    subTitle: <I18n t="memories" />,
+    img: "https://media.licdn.com/dms/image/v2/D562DAQE3ioV52kfSiA/profile-treasury-image-shrink_800_800/B56ZjbyJwIG0AY-/0/1756034015479?e=1756717200&v=beta&t=uv6GG_RJGZqL0T7OY60nS8Q1ddWJN-WBbzXIr9EMHzE",
+  },
+  {
+    title: <I18n t="cricket" />,
+    subTitle: "🏏",
+    img: CricketImg,
   },
 ];
 
@@ -117,20 +165,20 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 1,
   swipeToSlide: true,
-  nextArrow: <NextArrow curr={1} />,
+  nextArrow: <NextArrow curr={9} />,
   prevArrow: <PrevArrow />,
 };
 
 const mSettings = {
   ...settings,
   slidesToShow: 3,
-  nextArrow: <NextArrow curr={2} />,
+  nextArrow: <NextArrow curr={10} />,
 };
 
 const sSettings = {
   ...settings,
   slidesToShow: 2,
-  nextArrow: <NextArrow curr={3} />,
+  nextArrow: <NextArrow curr={11} />,
 };
 
 const Info = () => {
@@ -142,7 +190,7 @@ const Info = () => {
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
     setSelectedInfo(k);
-    if (k < 2 || k === data.length - 1) {
+    if ([0, 2, 4, 5, 6, 7, 8].includes(k)) {
       setVisible(true);
     } else {
       const win = window.open(data[k].link, "_blank");
