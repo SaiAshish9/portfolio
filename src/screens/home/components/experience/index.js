@@ -58,7 +58,7 @@ const data = [
     label: <I18n t="videoverse" />,
     position: <I18n t="fullstack" />,
     link: "https://www.vverse.ai",
-    exp: 18,
+    exp: 6,
     id: 1,
   },
   {
@@ -66,7 +66,7 @@ const data = [
     label: <I18n t="magnifi" />,
     position: <I18n t="fullstack" />,
     link: "https://magnifi.ai/",
-    exp: 18,
+    exp: 6,
     id: 2,
   },
   {
