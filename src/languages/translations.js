@@ -1210,6 +1210,39 @@ export const translations = [
     ru: "Razorpay",
   },
   {
+    text: "anugoonj",
+    en: "Anugoonj University Event",
+    pt: "Evento Universitário Anugoonj",
+    hi: "अनुगूंज विश्वविद्यालय कार्यक्रम",
+    te: "అనుగుంజ్ విశ్వవిద్యాలయ కార్యక్రమం",
+    de: "Anugoonj Universitätsveranstaltung",
+    zh: "Anugoonj 大学校园活动",
+    fr: "Événement universitaire Anugoonj",
+    ru: "Университетское мероприятие Anugoonj"
+  },
+  {
+    text: "uni_event",
+    en: "University Event",
+    pt: "Evento Universitário",
+    hi: "विश्वविद्यालय कार्यक्रम",
+    te: "విశ్వవిద్యాలయ కార్యక్రమం",
+    de: "Universitätsveranstaltung",
+    zh: "大学活动",
+    fr: "Événement universitaire",
+    ru: "Университетское мероприятие"
+  },
+  {
+    text: "farewell",
+    en: "Farewell Event",
+    pt: "Evento de Despedida",
+    hi: "विदाई समारोह",
+    te: "వీడ్కోలు కార్యక్రమం",
+    de: "Abschiedsveranstaltung",
+    zh: "告别活动",
+    fr: "Événement d'adieu",
+    ru: "Прощальное мероприятие"
+  },  
+  {
     text: "msTeamsChallenge",
     en: "MS Teams Challenge'22",
     pt: "MS Teams Challenge'22",

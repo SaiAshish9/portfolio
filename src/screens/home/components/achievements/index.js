@@ -30,6 +30,8 @@ import MLSeminarImg from "assets/ml_seminar.jpeg";
 
 import BuildableImg from "assets/offer.jpeg";
 import BatchImg from "assets/batch.jpeg";
+import AnugoonjImg from "assets/anugoonj.png";
+import FarwellImg from "assets/farewell.jpeg";
 
 import Tier1Img from "assets/home/tier1.png";
 import IncImg from "assets/home/100xvc.png";
@@ -80,6 +82,16 @@ const data = [
       "https://res.cloudinary.com/saiashish/image/upload/v1627665639/hackMSIT1_ahyfje.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1627665639/hackMSIT3_u3wkli.jpg",
     ],
+  },
+  {
+    title: <I18n t="anugoonj" />,
+    subTitle: <I18n t="uni_event" />,
+    img: AnugoonjImg,
+  },
+  {
+    title: <I18n t="farewell" />,
+    subTitle: "🚀",
+    img: FarwellImg,
   },
   {
     title: <I18n t="msTeamsChallenge" />,
@@ -182,20 +194,20 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 1,
   swipeToSlide: true,
-  nextArrow: <NextArrow curr={10} />,
+  nextArrow: <NextArrow curr={12} />,
   prevArrow: <PrevArrow />,
 };
 
 const mSettings = {
   ...settings,
   slidesToShow: 3,
-  nextArrow: <NextArrow curr={11} />,
+  nextArrow: <NextArrow curr={13} />,
 };
 
 const sSettings = {
   ...settings,
   slidesToShow: 2,
-  nextArrow: <NextArrow curr={12} />,
+  nextArrow: <NextArrow curr={14} />,
 };
 
 const Achievements = () => {
