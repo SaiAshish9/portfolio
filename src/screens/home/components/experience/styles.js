@@ -90,7 +90,7 @@ export const Content = styled.div`
   @media only screen and (max-width: ${BREAKPOINTS.lg}) {
     width: 50%;
     ${({ id }) =>
-      id < 12 &&
+      id < 16 &&
       css`
         margin-bottom: 1rem;
       `};
@@ -98,7 +98,7 @@ export const Content = styled.div`
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {
     width: 50%;
     ${({ id }) =>
-      id < 14 &&
+      id < 18 &&
       css`
         margin-bottom: 1rem;
       `};
