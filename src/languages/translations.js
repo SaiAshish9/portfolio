@@ -1287,6 +1287,72 @@ export const translations = [
     ru: "Бэкенд-инженер",
   },
   {
+    text: "videoverse",
+    en: "Videoverse",
+    pt: "Videoverse",
+    hi: "Videoverse",
+    te: "Videoverse",
+    de: "Videoverse",
+    zh: "Videoverse",
+    fr: "Videoverse",
+    ru: "Videoverse"
+  },
+  {
+    text: "magnifi",
+    en: "Magnifi",
+    pt: "Magnifi",
+    hi: "Magnifi",
+    te: "Magnifi",
+    de: "Magnifi",
+    zh: "Magnifi",
+    fr: "Magnifi",
+    ru: "Magnifi"
+  },  
+  {
+    text: "sigiq",
+    en: "SigIQ.ai",
+    pt: "SigIQ.ai",
+    hi: "SigIQ.ai",
+    te: "SigIQ.ai",
+    de: "SigIQ.ai",
+    zh: "SigIQ.ai",
+    fr: "SigIQ.ai",
+    ru: "SigIQ.ai"
+  },  
+  {
+    text: "padhai",
+    en: "PadhAi.ai",
+    pt: "PadhAi.ai",
+    hi: "PadhAi.ai",
+    te: "PadhAi.ai",
+    de: "PadhAi.ai",
+    zh: "PadhAi.ai",
+    fr: "PadhAi.ai",
+    ru: "PadhAi.ai"
+  },
+  {
+    text: "applicationDev",
+    en: "Application Developer",
+    pt: "Desenvolvedor de Aplicações",
+    hi: "एप्लीकेशन डेवलपर",
+    te: "అప్లికేషన్ డెవలపర్",
+    de: "Anwendungsentwickler",
+    zh: "应用开发工程师",
+    fr: "Développeur d'applications",
+    ru: "Разработчик приложений"
+  },  
+  {
+    text: "fullstack",
+    en: "Full Stack Engineer",
+    pt: "Engenheiro Full Stack",
+    hi: "फुल स्टैक इंजीनियर",
+    te: "ఫుల్ స్టాక్ ఇంజనీర్",
+    de: "Full-Stack-Ingenieur",
+    zh: "全栈工程师",
+    fr: "Ingénieur Full Stack",
+    ru: "Фулстек-инженер"
+  },
+  {
     text: "rgsoc",
     en: "RGSOC",
     pt: "RGSOC",

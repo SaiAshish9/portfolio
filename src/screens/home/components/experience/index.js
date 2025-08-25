@@ -33,6 +33,8 @@ import SwiftRoboticsImg from "assets/swiftRobotics.jpeg";
 import SwiftShopsImg from "assets/swiftShops.png";
 import FeelAtHomeImg from "assets/feelAtHome.png";
 import TekionImg from "assets/tekion-green.jpeg";
+import VideoVerseImg from "assets/vverse.jpg";
+import MagnifiImg from "assets/magnifi.jpeg";
 import RGSOCImg from "assets/rgsoc.jpeg";
 import MsftDevChallengeImg from "assets/msftdevchallenge.jpeg";
 
@@ -50,19 +52,51 @@ const data = [
     id: 0,
   },
   {
+    img: VideoVerseImg,
+    label: <I18n t="videoverse" />,
+    position: <I18n t="fullstack" />,
+    link: "https://www.vverse.ai",
+    exp: 18,
+    id: 1,
+  },
+  {
+    img: MagnifiImg,
+    label: <I18n t="magnifi" />,
+    position: <I18n t="fullstack" />,
+    link: "https://magnifi.ai/",
+    exp: 18,
+    id: 2,
+  },
+  {
+    img: TekionImg,
+    label: <I18n t="sigiq" />,
+    position: <I18n t="backend" />,
+    link: "https://sigiq.ai",
+    exp: 2,
+    id: 3,
+  },
+  {
+    img: TekionImg,
+    label: <I18n t="padhai" />,
+    position: <I18n t="backend" />,
+    link: "https://padhai.ai/",
+    exp: 2,
+    id: 4,
+  },
+  {
     img: LambdaTestImg,
     label: <I18n t="lambda-test" />,
     position: <I18n t="sde-intern" />,
     link: "https://www.lambdatest.com/xcuitest-app-testing",
     exp: 5,
-    id: 1,
+    id: 5,
   },
   {
     img: PayTMImg,
     label: <I18n t="paytm" />,
     position: <I18n t="sde-intern" />,
     exp: 3,
-    id: 2,
+    id: 6,
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1633857822/WhatsApp_Image_2021-10-10_at_14.53.29_jlnfcb.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1633857709/WhatsApp_Image_2021-10-10_at_14.48.57_1_meqy86.jpg",
@@ -83,7 +117,7 @@ const data = [
     position: <I18n t="applicationDevIntern" />,
     exp: 16,
     yr: true,
-    id: 3,
+    id: 7,
     link: "https://dev.velvet.video",
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1627712155/Screenshot_from_2021-07-31_11-45-29_vz8jyd.png",
@@ -107,7 +141,7 @@ const data = [
     label: <I18n t="uvrobots" />,
     position: <I18n t="applicationDevIntern" />,
     exp: 5,
-    id: 4,
+    id: 8,
     link: "https://uvrobots.io",
   },
   {
@@ -115,7 +149,7 @@ const data = [
     label: <I18n t="inuvest" />,
     position: <I18n t="fullStackPyIntern" />,
     exp: 5,
-    id: 5,
+    id: 9,
     link: "https://inuvest.tech",
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1627679809/inuvest2_yqyqv0.png",
@@ -165,7 +199,7 @@ const data = [
     label: <I18n t="searchVaccines" />,
     position: <I18n t="applicationDevIntern" />,
     exp: 2,
-    id: 6,
+    id: 10,
     searchVaccinesImg: true,
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1639765449/Screenshot_from_2021-03-10_23-36-29_f4zst4.png",
@@ -228,7 +262,7 @@ const data = [
     label: <I18n t="appTown" />,
     position: <I18n t="reactIntern" />,
     exp: 8,
-    id: 7,
+    id: 11,
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1627675715/appTown1_r5y84v.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1627675715/appTown2_wd65xx.png",
@@ -282,7 +316,7 @@ const data = [
     label: <I18n t="pracify" />,
     position: <I18n t="mernIntern" />,
     exp: 3,
-    id: 8,
+    id: 12,
     link: "https://pracify.com",
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1627678325/pracify1_amuf2g.png",
@@ -314,7 +348,7 @@ const data = [
     label: <I18n t="nex2Me" />,
     position: <I18n t="javaIntern" />,
     exp: 1,
-    id: 9,
+    id: 13,
     link: "https://www.linkedin.com/company/nex2me-introtuce/",
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1639780030/Screenshot_from_2021-12-18_03-52-59_rlzlpm.png",
@@ -359,7 +393,7 @@ const data = [
     label: <I18n t="care-medico" />,
     position: <I18n t="sde-intern" />,
     exp: 1,
-    id: 10,
+    id: 14,
     images: [CMImg1, CMImg2, CMImg3, CMImg4, CMImg5, CMImg6, CMImg7, CMImg8],
   },
   {
@@ -368,7 +402,7 @@ const data = [
     position: <I18n t="sde-intern" />,
     link: "https://www.swiftrobotics.ai/",
     exp: 3,
-    id: 11,
+    id: 15,
   },
   {
     img: SwiftShopsImg,
@@ -376,7 +410,7 @@ const data = [
     position: <I18n t="sde-intern" />,
     link: "https://swiftshops.co.uk/",
     exp: 3,
-    id: 12,
+    id: 16,
   },
   // {
   //   img: FeelAtHomeImg,
@@ -392,7 +426,7 @@ const data = [
     position: <I18n t="mentor" />,
     link: "https://railsgirlssummerofcode.org/",
     exp: 1,
-    id: 13,
+    id: 17,
   },
   {
     img: FeelAtHomeImg,
@@ -400,7 +434,7 @@ const data = [
     position: <I18n t="contributor" />,
     link: "https://devfolio.co/projects/feel-at-home-1",
     exp: 1,
-    id: 14,
+    id: 18,
   },
   {
     img: MsftDevChallengeImg,
@@ -408,7 +442,7 @@ const data = [
     position: <I18n t="contributor" />,
     link: "https://devpost.com/software/teams-by-sai",
     exp: 1,
-    id: 15,
+    id: 19,
   },
 ];
 

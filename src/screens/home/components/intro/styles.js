@@ -35,7 +35,6 @@ export const AvatarImg = styled.img`
 `;
 
 export const Label = styled.p`
-  // font-weight: ${FontWeight.semiBold};
   margin-bottom: 0.5rem;
   font-size: 1rem;
   @media only screen and (max-width: ${BREAKPOINTS.sm}) {

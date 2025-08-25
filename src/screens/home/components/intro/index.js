@@ -65,7 +65,7 @@ const Intro = () => {
       icon: <AiFillMediumSquare size={ICON_SIZE + 5} />,
     },
     {
-      label: "https://www.youtube.com/channel/saiashish9",
+      label: "https://www.youtube.com/@saiashish9",
       icon: <AiFillYoutube size={ICON_SIZE + 5} />,
     },
     {
@@ -115,7 +115,7 @@ const Intro = () => {
                 rel="noopener noreferrer"
                 style={{
                   position: "relative",
-                  left: k == 6 ? "0.28rem" : "0px",
+                  left: k == 6 ? "0px" : "0px",
                 }}
               >
                 {i.label}
