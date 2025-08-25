@@ -67,12 +67,6 @@ const data = [
     link: "https://drive.google.com/file/d/1zs8to52Trgo85URqHfW0riARVO-pcd_P/view",
   },
   {
-    title: <I18n t="resume" />,
-    subTitle: <>🚀</>,
-    img: ResumeImg,
-    link: "https://drive.google.com/file/d/1zs8to52Trgo85URqHfW0riARVO-pcd_P/view",
-  },
-  {
     title: <I18n t="ipu_cet_rank" />,
     subTitle: <>1890/40636</>,
     img: IPUCETImg,
@@ -165,20 +159,20 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 1,
   swipeToSlide: true,
-  nextArrow: <NextArrow curr={9} />,
+  nextArrow: <NextArrow curr={8} />,
   prevArrow: <PrevArrow />,
 };
 
 const mSettings = {
   ...settings,
   slidesToShow: 3,
-  nextArrow: <NextArrow curr={10} />,
+  nextArrow: <NextArrow curr={9} />,
 };
 
 const sSettings = {
   ...settings,
   slidesToShow: 2,
-  nextArrow: <NextArrow curr={11} />,
+  nextArrow: <NextArrow curr={10} />,
 };
 
 const Info = () => {
@@ -190,7 +184,7 @@ const Info = () => {
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
     setSelectedInfo(k);
-    if ([0, 2, 4, 5, 6, 7, 8].includes(k)) {
+    if ([0, 1, 4, 6, 7, 8, 9, 10, 11].includes(k)) {
       setVisible(true);
     } else {
       const win = window.open(data[k].link, "_blank");
