@@ -572,8 +572,29 @@ const Experience = () => {
           ))}
         </MParent>
         <MParent>
-          {data.slice(12).map((i, k) => (
+          {data.slice(12, 16).map((i, k) => (
             <Content key={k + 12} id={12 + k} onClick={() => handleClick(i.id)}>
+              <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
+              <Label>{i.label}</Label>
+              <Title>{i.position}</Title>
+              <Title>
+                {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
+                {i.exp > 1 ? (
+                  i.yr ? (
+                    <I18n t="year" />
+                  ) : (
+                    <I18n t="month's" />
+                  )
+                ) : (
+                  <I18n t="month" />
+                )}
+              </Title>
+            </Content>
+          ))}
+        </MParent>
+        <MParent>
+          {data.slice(16).map((i, k) => (
+            <Content key={k + 16} id={16 + k} onClick={() => handleClick(i.id)}>
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
