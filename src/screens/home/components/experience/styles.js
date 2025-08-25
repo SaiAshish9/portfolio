@@ -81,7 +81,7 @@ export const SParent = styled.div`
 export const Content = styled.div`
   cursor: pointer;
   ${({ id }) =>
-    id < 8 &&
+    id < 10 &&
     css`
       margin-bottom: 2.4rem;
     `};

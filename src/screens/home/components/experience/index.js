@@ -37,6 +37,8 @@ import VideoVerseImg from "assets/vverse.jpg";
 import MagnifiImg from "assets/magnifi.jpeg";
 import RGSOCImg from "assets/rgsoc.jpeg";
 import MsftDevChallengeImg from "assets/msftdevchallenge.jpeg";
+import SigIQImg from "assets/sigiq.jpeg";
+import PadhAIImg from "assets/padhai.png";
 
 import I18n from "common/I18n";
 
@@ -68,17 +70,17 @@ const data = [
     id: 2,
   },
   {
-    img: TekionImg,
+    img: SigIQImg,
     label: <I18n t="sigiq" />,
-    position: <I18n t="backend" />,
+    position: <I18n t="applicationDev" />,
     link: "https://sigiq.ai",
     exp: 2,
     id: 3,
   },
   {
-    img: TekionImg,
+    img: PadhAIImg,
     label: <I18n t="padhai" />,
-    position: <I18n t="backend" />,
+    position: <I18n t="applicationDev" />,
     link: "https://padhai.ai/",
     exp: 2,
     id: 4,
@@ -87,7 +89,7 @@ const data = [
     img: LambdaTestImg,
     label: <I18n t="lambda-test" />,
     position: <I18n t="sde-intern" />,
-    link: "https://www.lambdatest.com/xcuitest-app-testing",
+    link: "https://www.lambdatest.com/support/docs/getting-started-with-xcuitest/",
     exp: 5,
     id: 5,
   },
@@ -385,7 +387,7 @@ const data = [
       "https://res.cloudinary.com/saiashish/image/upload/v1639772622/Screenshot_from_2021-03-06_17-48-23_knyjri.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639774022/Screenshot_from_2021-03-19_14-58-55_hul2uf.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1639780030/Screenshot_from_2021-12-18_03-52-51_jmhdjn.png",
-      "https://res.cloudinary.com/saiashish/image/upload/v1639780030/Screenshot_from_2021-12-18_03-53-08_eexmt5.png"
+      "https://res.cloudinary.com/saiashish/image/upload/v1639780030/Screenshot_from_2021-12-18_03-53-08_eexmt5.png",
     ],
   },
   {
@@ -408,18 +410,10 @@ const data = [
     img: SwiftShopsImg,
     label: <I18n t="swiftShops" />,
     position: <I18n t="sde-intern" />,
-    link: "https://swiftshops.co.uk/",
+    link: "https://www.linkedin.com/company/swiftrobots/posts/?feedView=all",
     exp: 3,
     id: 16,
   },
-  // {
-  //   img: FeelAtHomeImg,
-  //   label: <I18n t="lambda-test" />,
-  //   position: <I18n t="sde-intern" />,
-  //   link: "https://www.lambdatest.com/xcuitest-app-testing",
-  //   exp: 3,
-  //   id: 11,
-  // },
   {
     img: RGSOCImg,
     label: <I18n t="rgsoc" />,
@@ -451,7 +445,16 @@ const Experience = () => {
   const [selectedExp, setSelectedExp] = useState(0);
 
   function handleClick(k) {
-    if (k === 0 || k == 1 || k === 4 || k > 10) {
+    if (
+      k === 0 ||
+      k == 1 ||
+      k == 2 ||
+      k == 3 ||
+      k === 4 ||
+      k == 5 ||
+      k == 8 ||
+      k > 14
+    ) {
       const win = window.open(data[k]["link"], "_blank");
       win.focus();
     } else {
@@ -464,7 +467,7 @@ const Experience = () => {
     <div data-aos="zoom-in">
       <Container>
         <Parent>
-          {data.slice(0, 8).map((i, k) => (
+          {data.slice(0, 10).map((i, k) => (
             <Content key={k} id={k} onClick={() => handleClick(i.id)}>
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
@@ -485,12 +488,8 @@ const Experience = () => {
           ))}
         </Parent>
         <Parent>
-          {data.slice(8).map((i, k) => (
-            <Content
-              key={k + 8}
-              id={8 + k}
-              onClick={() => handleClick(i.id)}
-            >
+          {data.slice(10).map((i, k) => (
+            <Content key={k + 10} id={10 + k} onClick={() => handleClick(i.id)}>
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
@@ -532,11 +531,7 @@ const Experience = () => {
         </MParent>
         <MParent>
           {data.slice(4, 8).map((i, k) => (
-            <Content
-              key={k + 4}
-              id={4 + k}
-              onClick={() => handleClick(i.id)}
-            >
+            <Content key={k + 4} id={4 + k} onClick={() => handleClick(i.id)}>
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
@@ -557,11 +552,7 @@ const Experience = () => {
         </MParent>
         <MParent>
           {data.slice(8, 12).map((i, k) => (
-            <Content
-              key={k + 8}
-              id={8 + k}
-              onClick={() => handleClick(i.id)}
-            >
+            <Content key={k + 8} id={8 + k} onClick={() => handleClick(i.id)}>
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
@@ -582,11 +573,7 @@ const Experience = () => {
         </MParent>
         <MParent>
           {data.slice(12).map((i, k) => (
-            <Content
-              key={k + 12}
-              id={12 + k}
-              onClick={() => handleClick(i.id)}
-            >
+            <Content key={k + 12} id={12 + k} onClick={() => handleClick(i.id)}>
               <Img svImg={+i.searchVaccinesImg} src={i.img} alt="img" />
               <Label>{i.label}</Label>
               <Title>{i.position}</Title>
