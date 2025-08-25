@@ -96,7 +96,14 @@ export const StyledMenuItem = styled(Menu.Item)`
     css`
       color: #fff;
     `}
-  :hover {
+`;
+
+export const StyledMenu = styled(Menu)`
+  background: ${({ theme: { current } }) =>
+    current === Theme.dark ? veryDarkGray : white};
+  max-height: 50vh;
+  overflow-y: scroll;
+  .ant-dropdown-menu-item:hover {
     background: ${({ theme: { current } }) =>
       current === Theme.dark
         ? darkGrey
@@ -121,13 +128,6 @@ export const StyledMenuItem = styled(Menu.Item)`
         color: #fff;
       `}
   }
-`;
-
-export const StyledMenu = styled(Menu)`
-  background: ${({ theme: { current } }) =>
-    current === Theme.dark ? veryDarkGray : white};
-  max-height: 50vh;
-  overflow-y: scroll;
 `;
 
 export const MenuAvatar = styled.img`
