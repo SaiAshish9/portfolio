@@ -53,6 +53,10 @@ const Intro = () => {
       icon: <AiFillGithub size={ICON_SIZE + 5} />,
     },
     {
+      label: "https://leetcodev2.vercel.app/",
+      icon: <SiLeetcode size={ICON_SIZE + 5} />,
+    },
+    {
       label: "saiashish7777@gmail.com",
       icon: <SiGmail size={ICON_SIZE - 1} />,
     },
@@ -75,10 +79,6 @@ const Intro = () => {
     {
       label: "https://x.com/saiashish09/",
       icon: <FaTwitter size={ICON_SIZE + 3} />,
-    },
-    {
-      label: "https://leetcodev2.vercel.app/",
-      icon: <SiLeetcode size={ICON_SIZE + 5} />,
     }
   ];
 
