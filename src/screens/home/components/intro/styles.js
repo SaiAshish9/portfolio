@@ -4,7 +4,7 @@ import { Styles, FontWeight, BREAKPOINTS } from "constants/index";
 
 export const Container = styled.div`
   ${Styles.RBC}
-  padding:10.5rem 24rem 6rem;
+  padding: 9.5rem 24rem 6rem;
   @media only screen and (max-width: ${BREAKPOINTS.xxl}) {
     padding: 4.6rem 13.5rem 2rem;
   }

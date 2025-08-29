@@ -27,7 +27,7 @@ import {
 } from "react-icons/ai";
 import { FaTwitter } from "react-icons/fa";
 
-import { SiGmail } from "react-icons/si";
+import { SiGmail, SiLeetcode } from "react-icons/si";
 
 import I18n from "common/I18n";
 
@@ -76,6 +76,10 @@ const Intro = () => {
       label: "https://x.com/saiashish09/",
       icon: <FaTwitter size={ICON_SIZE + 3} />,
     },
+    {
+      label: "https://leetcodev2.vercel.app/",
+      icon: <SiLeetcode size={ICON_SIZE + 5} />,
+    }
   ];
 
   return (
