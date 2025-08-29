@@ -109,9 +109,9 @@ const Intro = () => {
                 href={
                   (k === 0
                     ? "tel:"
-                    : k === 3
-                    ? "mailto:"
                     : k === 4
+                    ? "mailto:"
+                    : k === 5
                     ? "https://www.google.com/maps/place/New+Delhi,+Delhi/@28.5272803,77.0688992,11z"
                     : "") + (k !== 4 ? i.label : "")
                 }
