@@ -27,7 +27,7 @@ import {
 } from "react-icons/ai";
 import { FaTwitter } from "react-icons/fa";
 
-import { SiGmail, SiLeetcode } from "react-icons/si";
+import { SiGmail, SiLeetcode, SiCodeforces } from "react-icons/si";
 
 import I18n from "common/I18n";
 
