@@ -65,8 +65,30 @@ const useInterval = (callback, delay) => {
 };
 
 let colors = {
-  light: ["#eb4031", "#4085f5", "#fbbd00", "#30a952"],
-  dark: ["#eb4031", "#4085f5", "#fbbd00", "#30a952"],
+  light: [
+    // "#eb4031",
+    // "#4085f5",
+    // "#fbbd00",
+    // "#30a952",
+    //
+    "#F25022",
+    "#7FBA00",
+    "#00A4EF",
+    "#FFB900",
+    "#737373",
+  ],
+  dark: [
+    // "#eb4031",
+    // "#4085f5",
+    // "#fbbd00",
+    // "#30a952",
+    //
+    "#F25022",
+    "#7FBA00",
+    "#00A4EF",
+    "#FFB900",
+    "#737373",
+  ],
   love: ["#eb4031", "#FF75A0", "#eb4031", "#eb4031"],
   highContrast: ["yellow", "yellow", "yellow", "white"],
   fire: ["#FF7600", "#FF7600", "orange", "#FF7600", "orange"],
