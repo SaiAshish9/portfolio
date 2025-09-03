@@ -157,7 +157,7 @@ const InitialStep = () => {
               if (selectedOption === key) {
                 if (key == 5) {
                   const win = window.open(
-                    "https://leetcodev2.vercel.app/",
+                    "https://leetcodev2.vercel.app/revision_sheet",
                     "_blank"
                   );
                   win.focus();
@@ -170,7 +170,7 @@ const InitialStep = () => {
                   setSelectedOption(key);
                   history.push("?category=" + key);
                   const win = window.open(
-                    "https://leetcodev2.vercel.app/",
+                    "https://leetcodev2.vercel.app/revision_sheet",
                     "_blank"
                   );
                   win.focus();

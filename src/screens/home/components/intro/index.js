@@ -53,7 +53,7 @@ const Intro = () => {
       icon: <AiFillGithub size={ICON_SIZE + 5} />,
     },
     {
-      label: "https://leetcodev2.vercel.app/",
+      label: "https://leetcodev2.vercel.app/revision_sheet",
       icon: <SiLeetcode size={ICON_SIZE + 5} />,
     },
     {
