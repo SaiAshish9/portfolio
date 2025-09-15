@@ -16,7 +16,7 @@ import {
   SearchParentContainer,
 } from "./styles";
 
-import { Header, DescCont } from "./components";
+import { DescCont, Header } from "./components";
 
 import { DATA } from "./data";
 
@@ -150,46 +150,49 @@ const InitialStep = () => {
   return (
     <div>
       <BtnContainer>
-        {entries.map((entry, key) => (
-          <Button
-            hover={0}
-            onClick={() => {
-              if (selectedOption === key) {
-                if (key == 5) {
-                  const win = window.open(
-                    "https://leetcodev2.vercel.app/revision_sheet",
-                    "_blank"
-                  );
-                  win.focus();
+        {entries.map((entry, k) => {
+          let key = +k;
+          return (
+            <Button
+              hover={0}
+              onClick={() => {
+                if (selectedOption === key) {
+                  if (key == 5) {
+                    const win = window.open(
+                      "https://leetcodev2.vercel.app/revision_sheet",
+                      "_blank"
+                    );
+                    win.focus();
+                  } else {
+                    setSelectedOption(-1);
+                    history.push(location.pathname);
+                  }
                 } else {
-                  setSelectedOption(-1);
-                  history.push(location.pathname);
+                  if (key == 5) {
+                    setSelectedOption(key);
+                    history.push("?category=" + key);
+                    const win = window.open(
+                      "https://leetcodev2.vercel.app/revision_sheet",
+                      "_blank"
+                    );
+                    win.focus();
+                  } else {
+                    setSelectedOption(key);
+                    history.push("?category=" + key);
+                  }
                 }
-              } else {
-                if (key == 5) {
-                  setSelectedOption(key);
-                  history.push("?category=" + key);
-                  const win = window.open(
-                    "https://leetcodev2.vercel.app/revision_sheet",
-                    "_blank"
-                  );
-                  win.focus();
-                } else {
-                  setSelectedOption(key);
-                  history.push("?category=" + key);
-                }
-              }
-              setSelectedLanguage(-1);
-            }}
-            active={+(selectedOption === key)}
-            key={key}
-          >
-            {entry[1]["title"]}
-          </Button>
-        ))}
+                setSelectedLanguage(-1);
+              }}
+              active={+(selectedOption === key)}
+              key={key}
+            >
+              {entry[1]["title"]}
+            </Button>
+          );
+        })}
       </BtnContainer>
 
-      {selectedOption > -1 && parseInt(params.category) != 3 && (
+      {selectedOption > -1 && parseInt(params.category) != 2 && (
         <BtnContainer id="cont">
           {Object.entries(entries[selectedOption][1].types)
             .map((x) => x[1].title)
@@ -209,7 +212,7 @@ const InitialStep = () => {
       )}
 
       {selectedOption > -1 &&
-        parseInt(params.category) != 3 &&
+        parseInt(params.category) != 2 &&
         parseInt(params.category) != 5 && (
           <BtnContainer>
             {["Hindi", "English"].map((i, key) => (
@@ -231,7 +234,7 @@ const InitialStep = () => {
         )}
 
       {selectedOption > -1 &&
-        parseInt(params.category) === 3 &&
+        parseInt(params.category) === 2 &&
         !params.subCategory && (
           <LeetCodeQuestions
             entries={entries}
@@ -261,7 +264,7 @@ const DSA = () => {
       <Content>
         <Header />
         {!params?.subCategory && <InitialStep />}
-        {/* {params.subCategory && params.category && (
+        {params.subCategory && params.category && (
           <DescCont
             data={
               Object.values(entries[parseInt(params.category)][1].types)[
@@ -269,7 +272,7 @@ const DSA = () => {
               ]
             }
           />
-        )} */}
+        )}
       </Content>
     </Container>
   );
