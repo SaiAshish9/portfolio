@@ -57,6 +57,10 @@ const Intro = () => {
       icon: <SiLeetcode size={ICON_SIZE + 5} />,
     },
     {
+      label: "https://github.com/SaiAshish9/CodeForces",
+      icon: <SiCodeforces size={ICON_SIZE + 3} />,
+    },
+    {
       label: "saiashish7777@gmail.com",
       icon: <SiGmail size={ICON_SIZE - 1} />,
     },
@@ -109,11 +113,11 @@ const Intro = () => {
                 href={
                   (k === 0
                     ? "tel:"
-                    : k === 4
-                    ? "mailto:"
                     : k === 5
+                    ? "mailto:"
+                    : k === 6
                     ? "https://www.google.com/maps/place/New+Delhi,+Delhi/@28.5272803,77.0688992,11z"
-                    : "") + (k !== 4 ? i.label : "")
+                    : "") + (k !== 5 ? i.label : "")
                 }
                 target="_blank"
                 rel="noopener noreferrer"
