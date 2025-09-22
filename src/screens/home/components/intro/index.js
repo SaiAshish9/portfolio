@@ -52,7 +52,7 @@ const Intro = () => {
       icon: <AiFillGithub size={ICON_SIZE + 5} />,
     },
     {
-      label: "",
+      label: <I18n t="leetcodev2" />,
       icon: <SiLeetcode size={ICON_SIZE + 5} />,
     },
     {
