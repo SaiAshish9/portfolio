@@ -308,6 +308,17 @@ export const translations = [
     "ru": "ЛитКод"
   },  
   {
+    "text": "codeforces",
+    "en": "Codeforces",
+    "pt": "Codeforces",
+    "hi": "कोडफोर्सेस",
+    "te": "కోడ్‌ఫోర్సెస్",
+    "de": "Codeforces",
+    "zh": "Codeforces（代码力量）",
+    "fr": "Codeforces",
+    "ru": "Кодфорсес"
+  },  
+  {
     text: "coverLetter",
     en: "Cover Letter",
     pt: "Carta de apresentação",
