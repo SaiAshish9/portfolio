@@ -298,14 +298,14 @@ export const translations = [
   },  
   {
     "text": "leetcodev2",
-    "en": "LeetCode",
-    "pt": "LeetCode",
-    "hi": "लीटकोड",
-    "te": "లీట్‌కోడ్",
-    "de": "LeetCode",
-    "zh": "力扣",
-    "fr": "LeetCode",
-    "ru": "ЛитКод"
+    "en": "LeetCodeV2",
+    "pt": "LeetCodeV2",
+    "hi": "लीटकोडV2",
+    "te": "లీట్‌కోడ్V2",
+    "de": "LeetCodeV2",
+    "zh": "力扣V2",
+    "fr": "LeetCodeV2",
+    "ru": "ЛитКодV2"
   },  
   {
     "text": "codeforces",
