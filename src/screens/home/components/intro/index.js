@@ -52,7 +52,7 @@ const Intro = () => {
       icon: <AiFillGithub size={ICON_SIZE + 5} />,
     },
     {
-      label: "https://leetcodev2.vercel.app/revision_sheet",
+      label: "",
       icon: <SiLeetcode size={ICON_SIZE + 5} />,
     },
     {
@@ -114,6 +114,8 @@ const Intro = () => {
                 href={
                   (k === 0
                     ? "tel:"
+                    : k == 3
+                    ? "https://leetcodev2.vercel.app/revision_sheet"
                     : k == 4
                     ? "https://github.com/SaiAshish9/CodeForces"
                     : k == 5

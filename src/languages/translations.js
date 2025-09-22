@@ -297,15 +297,15 @@ export const translations = [
     "ru": "АтКодер"
   },  
   {
-    "text": "codeforces",
-    "en": "Codeforces",
-    "pt": "Codeforces",
-    "hi": "कोडफोर्सेस",
-    "te": "కోడ్‌ఫోర్సెస్",
-    "de": "Codeforces",
-    "zh": "Codeforces（代码力量）",
-    "fr": "Codeforces",
-    "ru": "Кодфорсес"
+    "text": "leetcodev2",
+    "en": "LeetCode",
+    "pt": "LeetCode",
+    "hi": "लीटकोड",
+    "te": "లీట్‌కోడ్",
+    "de": "LeetCode",
+    "zh": "力扣",
+    "fr": "LeetCode",
+    "ru": "ЛитКод"
   },  
   {
     text: "coverLetter",
