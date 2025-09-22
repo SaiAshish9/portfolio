@@ -286,6 +286,17 @@ export const translations = [
     ru: "Нью-Дели, Индия",
   },
   {
+    "text": "atcoder",
+    "en": "AtCoder",
+    "pt": "AtCoder",
+    "hi": "एटकोडर",
+    "te": "అట్‌కోడర్",
+    "de": "AtCoder",
+    "zh": "AtCoder（艾特考德）",
+    "fr": "AtCoder",
+    "ru": "АтКодер"
+  },  
+  {
     text: "coverLetter",
     en: "Cover Letter",
     pt: "Carta de apresentação",

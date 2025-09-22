@@ -25,7 +25,7 @@ import {
   AiFillLinkedin,
   AiFillGithub,
 } from "react-icons/ai";
-import { FaTwitter } from "react-icons/fa";
+import { FaTwitter, FaCodeBranch } from "react-icons/fa";
 
 import { SiGmail, SiLeetcode, SiCodeforces } from "react-icons/si";
 
@@ -34,9 +34,8 @@ import I18n from "common/I18n";
 const Intro = () => {
   const ICON_SIZE = 16;
 
-  //  phone no. , linked in , github , email , location , medium ,
+  // phone no. , linked in , github , email , location , medium ,
   // youtube , instagram , leetcode
-
   // https://www.remove.bg/upload
 
   const DATA = [
@@ -61,6 +60,10 @@ const Intro = () => {
       icon: <SiCodeforces size={ICON_SIZE + 3} />,
     },
     {
+      label: <I18n t="atcoder" />,
+      icon: <FaCodeBranch size={ICON_SIZE + 3} />,
+    },
+    {
       label: "saiashish7777@gmail.com",
       icon: <SiGmail size={ICON_SIZE - 1} />,
     },
@@ -83,7 +86,7 @@ const Intro = () => {
     {
       label: "https://x.com/saiashish09/",
       icon: <FaTwitter size={ICON_SIZE + 3} />,
-    }
+    },
   ];
 
   return (
@@ -102,9 +105,7 @@ const Intro = () => {
       </ImgContainer>
       <InfoContainer className="animate__animated animate__pulse">
         {DATA.map((i, k) => (
-          <InfoItem
-            key={k}
-          >
+          <InfoItem key={k}>
             <InfoImg>{i.icon}</InfoImg>
             {i.text ? (
               <InfoLabel>{i.label}</InfoLabel>
@@ -113,11 +114,13 @@ const Intro = () => {
                 href={
                   (k === 0
                     ? "tel:"
-                    : k === 5
-                    ? "mailto:"
+                    : k == 5
+                    ? "https://github.com/SaiAshish9/AtCoder"
                     : k === 6
+                    ? "mailto:"
+                    : k === 7
                     ? "https://www.google.com/maps/place/New+Delhi,+Delhi/@28.5272803,77.0688992,11z"
-                    : "") + (k !== 5 ? i.label : "")
+                    : "") + (k !== 6 && k !== 5 ? i.label : "")
                 }
                 target="_blank"
                 rel="noopener noreferrer"
