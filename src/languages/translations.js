@@ -295,6 +295,17 @@ export const translations = [
     "zh": "AtCoder（艾特考德）",
     "fr": "AtCoder",
     "ru": "АтКодер"
+  },
+  {
+    "text": "topcoder",
+    "en": "TopCoder",
+    "pt": "TopCoder",
+    "hi": "टॉपकोडर",
+    "te": "టాప్‌కోడర్",
+    "de": "TopCoder",
+    "zh": "TopCoder（顶级程序员）",
+    "fr": "TopCoder",
+    "ru": "ТопКодер"
   },  
   {
     "text": "leetcodev2",

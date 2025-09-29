@@ -27,7 +27,8 @@ import {
 } from "react-icons/ai";
 import { FaTwitter, FaCodeBranch } from "react-icons/fa";
 
-import { SiGmail, SiLeetcode, SiCodeforces } from "react-icons/si";
+import { SiGmail, SiLeetcode, SiCodeforces, SiTopcoder } from "react-icons/si";
+import { SiTopcoder } from "react-icons/si";
 
 import I18n from "common/I18n";
 
@@ -62,6 +63,10 @@ const Intro = () => {
     {
       label: <I18n t="atcoder" />,
       icon: <FaCodeBranch size={ICON_SIZE + 3} />,
+    },
+    {
+      label: <I18n t="topcoder" />,
+      icon: <SiTopcoder size={ICON_SIZE + 3} />,
     },
     {
       label: "saiashish7777@gmail.com",
