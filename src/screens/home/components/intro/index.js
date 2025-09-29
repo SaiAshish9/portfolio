@@ -28,7 +28,6 @@ import {
 import { FaTwitter, FaCodeBranch } from "react-icons/fa";
 
 import { SiGmail, SiLeetcode, SiCodeforces, SiTopcoder } from "react-icons/si";
-import { SiTopcoder } from "react-icons/si";
 
 import I18n from "common/I18n";
 
