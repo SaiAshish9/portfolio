@@ -124,18 +124,21 @@ const Intro = () => {
                     ? "https://github.com/SaiAshish9/CodeForces"
                     : k == 5
                     ? "https://github.com/SaiAshish9/AtCoder"
-                    : k === 6
-                    ? "mailto:"
+                    : k == 6
+                    ? "https://github.com/SaiAshish9/TopCoder"
                     : k === 7
+                    ? "mailto:"
+                    : k === 8
                     ? "https://www.google.com/maps/place/New+Delhi,+Delhi/@28.5272803,77.0688992,11z"
                     : "") +
-                  (k !== 3 && k !== 6 && k !== 5 && k !== 4 ? i.label : "")
+                  (k !== 3 && k !== 7 && k !== 5 && k !== 6 && k !== 4
+                    ? i.label
+                    : "")
                 }
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
                   position: "relative",
-                  left: k == 6 ? "0px" : "0px",
                 }}
               >
                 {i.label}
