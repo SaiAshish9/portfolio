@@ -38,6 +38,7 @@ import MindTickleImg from "assets/home/mindtickle.png";
 import HotstarImg from "assets/home/hotstar.jpeg";
 import InstahyreImg from "assets/home/instahyre.png";
 import GoogleImg from "assets/home/google.png";
+import MicrosoftImg from "assets/microsoft.png";
 import ExpediaGroupImg from "assets/home/expedia_group.jpeg";
 import AptyImg from "assets/home/apty.png";
 import JioImg from "assets/jio.png";
@@ -61,12 +62,20 @@ const images = [
     link: "https://www.google.com/",
   },
   {
-    img: TekionImg,
-    link: "https://www.tekion.com/",
+    img: MicrosoftImg,
+    link: "https://www.microsoft.com/",
+  },
+  {
+    img: AmazonImage,
+    link: "https://www.amazon.com/",
   },
   {
     img: UberImg,
     link: "https://www.uber.com/in/en/",
+  },
+  {
+    img: TekionImg,
+    link: "https://www.tekion.com/",
   },
   {
     img: CREDImage,
@@ -99,10 +108,6 @@ const images = [
   {
     img: GrowwImage,
     link: "https://groww.in/",
-  },
-  {
-    img: AmazonImage,
-    link: "https://www.amazon.com/",
   },
   {
     img: IntuitImg,
@@ -149,10 +154,10 @@ const images = [
     img: VoyceImg,
     link: "https://voyce.com",
   },
-  {
-    img: TcsImage,
-    link: "https://www.tcs.com/",
-  },
+  // {
+  //   img: TcsImage,
+  //   link: "https://www.tcs.com/",
+  // },
   {
     img: UnluImage,
     link: "https://unlu.io/",
