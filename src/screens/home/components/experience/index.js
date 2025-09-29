@@ -32,7 +32,7 @@ import CMImg8 from "assets/home/cm8.jpeg";
 import SwiftRoboticsImg from "assets/swiftRobotics.jpeg";
 import SwiftShopsImg from "assets/swiftShops.png";
 import FeelAtHomeImg from "assets/feelAtHome.png";
-import TekionImg from "assets/tekion-green.jpeg";
+import TekionImg from "assets/tekion.jpeg";
 import VideoVerseImg from "assets/vverse.jpg";
 import MagnifiImg from "assets/magnifi.jpeg";
 import RGSOCImg from "assets/rgsoc.jpeg";

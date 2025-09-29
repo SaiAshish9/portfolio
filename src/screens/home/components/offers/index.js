@@ -44,7 +44,7 @@ import ExpediaGroupImg from "assets/home/expedia_group.jpeg";
 import AptyImg from "assets/home/apty.png";
 import JioImg from "assets/jio.png";
 import QualcommImg from "assets/qualcomm.jpeg";
-import MasterCardImg from "assets/mastercard.jpeg";
+import DishImg from "assets/dishtv.png";
 import TekionImg from "assets/tekion.jpeg";
 import IxigoImg from "assets/ixigo.png";
 import DunzoImg from "assets/dunzo.png";
@@ -53,6 +53,11 @@ import GrabImg from "assets/grab.jpeg";
 import VoyceImg from "assets/voyce.png";
 import FoxImage from "assets/fox.png";
 import ChristyMedia from "assets/cm.jpeg";
+import LaunchDarklyImg from "assets/launch_darkly.png";
+import MasterCardImg from "assets/mastercard.jpeg";
+import CricbuzzImg from "assets/cricbuzz.png";
+import AgodaImg from "assets/agoda.jpeg";
+import AutodeskImg from "assets/autodesk.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -76,7 +81,7 @@ const images = [
     img: UberImg,
     link: "https://www.uber.com/in/en/",
   },
-  { 
+  {
     img: PayPalImage,
     link: "https://www.paypal.com/in/home",
   },
@@ -84,9 +89,13 @@ const images = [
     img: FoxImage,
     link: "https://www.foxcorporation.com/",
   },
+  // {
+  //   img: TekionImg,
+  //   link: "https://www.tekion.com/",
+  // },
   {
-    img: TekionImg,
-    link: "https://www.tekion.com/",
+    img: DishImg,
+    link: "https://www.dish.com/",
   },
   // {
   //   img: CREDImage,
@@ -97,9 +106,13 @@ const images = [
     link: "https://christy-media.com/",
   },
   {
-    img: LambdaTestImg,
-    link: "https://www.lambdatest.com/",
+    img: LaunchDarklyImg,
+    link: "https://launchdarkly.com/",
   },
+  // {
+  //   img: LambdaTestImg,
+  //   link: "https://www.lambdatest.com/",
+  // },
   // {
   //   img: RazorpayImage,
   //   link: "https://razorpay.com/",
@@ -137,9 +150,13 @@ const images = [
   //   img: PromoImg,
   //   link: "https://www.promo.com/",
   // },
+  // {
+  //   img: DunzoImg,
+  //   link: "https://dunzo.com",
+  // },
   {
-    img: DunzoImg,
-    link: "https://dunzo.com",
+    img: CricbuzzImg,
+    link:"https://www.cricbuzz.com/"
   },
   // {
   //   img: WildsterImg,
@@ -226,17 +243,25 @@ const images = [
   //   link: "https://probo.in",
   // },
   {
-    img: JioImg,
-    link: "https://jio.com",
+    img: AutodeskImg,
+    link: "https://www.autodesk.com/",
   },
+  // {
+  //   img: JioImg,
+  //   link: "https://jio.com",
+  // },
   {
     img: MindTickleImg,
     link: "http://mindtickle.com/",
   },
   {
-    img: MindbowserImg,
-    link: "https://mindbowser.com",
-  },
+    img: AgodaImg,
+    link: "https://www.agoda.com/",
+  }
+  // {
+  //   img: MindbowserImg,
+  //   link: "https://mindbowser.com",
+  // },
 ];
 
 const OffersComponent = () => {
