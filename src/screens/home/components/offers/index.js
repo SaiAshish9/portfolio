@@ -38,6 +38,7 @@ import MindTickleImg from "assets/home/mindtickle.png";
 import HotstarImg from "assets/home/hotstar.jpeg";
 import InstahyreImg from "assets/home/instahyre.png";
 import GoogleImg from "assets/home/google.png";
+import PayPalImage from "assets/paypal.jpg";
 import MicrosoftImg from "assets/microsoft.png";
 import ExpediaGroupImg from "assets/home/expedia_group.jpeg";
 import AptyImg from "assets/home/apty.png";
@@ -73,6 +74,10 @@ const images = [
     img: UberImg,
     link: "https://www.uber.com/in/en/",
   },
+  { 
+    img: PayPalImage,
+    link: "https://www.paypal.com/in/home",
+  },
   {
     img: TekionImg,
     link: "https://www.tekion.com/",
@@ -89,10 +94,10 @@ const images = [
     img: RazorpayImage,
     link: "https://razorpay.com/",
   },
-  {
-    img: PaytmImage,
-    link: "https://paytm.com/",
-  },
+  // {
+  //   img: PaytmImage,
+  //   link: "https://paytm.com/",
+  // },
   {
     img: HotstarImg,
     link: "https://hotstar.com",
