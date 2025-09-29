@@ -21,6 +21,7 @@ import CyclingImg from "assets/cycling.jpeg";
 import AndhraImg from "assets/andhra.jpeg";
 import IPUCETImg from "assets/ipu_cet.jpeg";
 import Class11thImg from "assets/11th.jpeg";
+import Class9thImg from "assets/class9th.jpeg";
 import CricketImg from "assets/cricket.jpeg";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
@@ -125,7 +126,7 @@ const data = [
   {
     title: <I18n t="class9th" />,
     subTitle: <I18n t="memories" />,
-    img: "https://media.licdn.com/dms/image/v2/D562DAQE3ioV52kfSiA/profile-treasury-image-shrink_800_800/B56ZjbyJwIG0AY-/0/1756034015479?e=1756717200&v=beta&t=uv6GG_RJGZqL0T7OY60nS8Q1ddWJN-WBbzXIr9EMHzE",
+    img: Class9thImg,
   },
   {
     title: <I18n t="cricket" />,
