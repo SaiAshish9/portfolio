@@ -17,6 +17,7 @@ import GithubImg from "assets/github.png";
 import NightCodingSetupImg from "assets/home/nightCodingSetup.jpeg";
 import CollegeImg from "assets/home/college.jpeg";
 import ParentsImg from "assets/parents.jpeg";
+import CyclingImg from "assets/cycling.jpeg";
 import AndhraImg from "assets/andhra.jpeg";
 import IPUCETImg from "assets/ipu_cet.jpeg";
 import Class11thImg from "assets/11th.jpeg";
@@ -52,7 +53,8 @@ const data = [
   {
     title: <I18n t="fitness" />,
     subTitle: <I18n t="healthy_mind" />,
-    img: "https://media.licdn.com/dms/image/v2/D5622AQFbPp3ToZ9sIw/feedshare-shrink_2048_1536/B56ZQOQaKSH0Ao-/0/1735405974630?e=1758758400&v=beta&t=nma099hHG8a72sNiJTEwMNOmwCJ86w6BHbHi0a637jg",
+    // img: "https://media.licdn.com/dms/image/v2/D5622AQFbPp3ToZ9sIw/feedshare-shrink_2048_1536/B56ZQOQaKSH0Ao-/0/1735405974630?e=1758758400&v=beta&t=nma099hHG8a72sNiJTEwMNOmwCJ86w6BHbHi0a637jg",
+    img: CyclingImg,
   },
   {
     title: <I18n t="bTech" />,
