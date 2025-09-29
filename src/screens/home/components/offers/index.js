@@ -51,6 +51,8 @@ import DunzoImg from "assets/dunzo.png";
 import NaviImg from "assets/navi.png";
 import GrabImg from "assets/grab.jpeg";
 import VoyceImg from "assets/voyce.png";
+import FoxImage from "assets/fox.png";
+import ChristyMedia from "assets/cm.jpeg";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -79,21 +81,29 @@ const images = [
     link: "https://www.paypal.com/in/home",
   },
   {
+    img: FoxImage,
+    link: "https://www.foxcorporation.com/",
+  },
+  {
     img: TekionImg,
     link: "https://www.tekion.com/",
   },
+  // {
+  //   img: CREDImage,
+  //   link: "https://cred.club/",
+  // },
   {
-    img: CREDImage,
-    link: "https://cred.club/",
+    img: ChristyMedia,
+    link: "https://christy-media.com/",
   },
   {
     img: LambdaTestImg,
     link: "https://www.lambdatest.com/",
   },
-  {
-    img: RazorpayImage,
-    link: "https://razorpay.com/",
-  },
+  // {
+  //   img: RazorpayImage,
+  //   link: "https://razorpay.com/",
+  // },
   // {
   //   img: PaytmImage,
   //   link: "https://paytm.com/",
