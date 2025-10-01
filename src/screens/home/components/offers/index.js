@@ -110,6 +110,10 @@ const images = [
     img: LaunchDarklyImg,
     link: "https://launchdarkly.com/",
   },
+  {
+    img: UVImg,
+    link: "https://www.uniquevision.co.jp/",
+  },
   // {
   //   img: LambdaTestImg,
   //   link: "https://www.lambdatest.com/",
@@ -138,10 +142,7 @@ const images = [
   //   img: GrowwImage,
   //   link: "https://groww.in/",
   // },
-  {
-    img: UVImg,
-    link: "https://www.uniquevision.co.jp/",
-  },
+
   {
     img: IntuitImg,
     link: "https://intuit.com",
@@ -161,7 +162,7 @@ const images = [
   // },
   {
     img: CricbuzzImg,
-    link:"https://www.cricbuzz.com/"
+    link: "https://www.cricbuzz.com/",
   },
   // {
   //   img: WildsterImg,
@@ -262,7 +263,7 @@ const images = [
   {
     img: AgodaImg,
     link: "https://www.agoda.com/",
-  }
+  },
   // {
   //   img: MindbowserImg,
   //   link: "https://mindbowser.com",
