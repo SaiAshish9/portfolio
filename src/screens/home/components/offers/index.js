@@ -58,6 +58,7 @@ import MasterCardImg from "assets/mastercard.jpeg";
 import CricbuzzImg from "assets/cricbuzz.png";
 import AgodaImg from "assets/agoda.jpeg";
 import AutodeskImg from "assets/autodesk.png";
+import UVImg from "assets/uv.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -133,9 +134,13 @@ const images = [
     img: VmwareImage,
     link: "https://www.vmware.com/in.html",
   },
+  // {
+  //   img: GrowwImage,
+  //   link: "https://groww.in/",
+  // },
   {
-    img: GrowwImage,
-    link: "https://groww.in/",
+    img: UVImg,
+    link: "https://www.uniquevision.co.jp/",
   },
   {
     img: IntuitImg,
