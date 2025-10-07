@@ -61,6 +61,7 @@ import AutodeskImg from "assets/autodesk.png";
 import UVImg from "assets/uv.png";
 import CoupangImg from "assets/c.png";
 import TessellImg from "assets/t.jpeg";
+import HackerRankImg from "assets/h.jpg";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -198,9 +199,13 @@ const images = [
   //   img: TcsImage,
   //   link: "https://www.tcs.com/",
   // },
+  // {
+  //   img: UnluImage,
+  //   link: "https://unlu.io/",
+  // },
   {
-    img: UnluImage,
-    link: "https://unlu.io/",
+     img: HackerRankImg,
+     link: "https://www.hackerrank.com/",
   },
   // {
   //   img: OpenHouseImage,
