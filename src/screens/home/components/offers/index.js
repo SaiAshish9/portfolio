@@ -61,7 +61,7 @@ import AutodeskImg from "assets/autodesk.png";
 import UVImg from "assets/uv.png";
 import CoupangImg from "assets/c.png";
 import TessellImg from "assets/t.jpeg";
-import HackerRankImg from "assets/h.jpg";
+import HackerRankImg from "assets/h.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
