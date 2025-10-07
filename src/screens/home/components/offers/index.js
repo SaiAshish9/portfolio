@@ -59,6 +59,8 @@ import CricbuzzImg from "assets/cricbuzz.png";
 import AgodaImg from "assets/agoda.jpeg";
 import AutodeskImg from "assets/autodesk.png";
 import UVImg from "assets/uv.png";
+import CoupangImg from "assets/c.png";
+import TessellImg from "assets/t.jpeg";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -209,9 +211,13 @@ const images = [
     link: "https://www.ixigo.com/",
   },
   {
-    img: TuringImage,
-    link: "https://turing.com/",
+    img: TessellImg,
+    link: "https://www.tessell.com/",
   },
+  // {
+  //   img: TuringImage,
+  //   link: "https://turing.com/",
+  // },
   {
     img: NetSkopeImg,
     link: "https://netskope.com",
@@ -229,9 +235,13 @@ const images = [
     link: "https://www.instahyre.com/",
   },
   {
-    img: MasterCardImg,
-    link: "https://www.mastercard.com/",
+    img: CoupangImg,
+    link: "https://www.coupang.com/",
   },
+  // {
+  //   img: MasterCardImg,
+  //   link: "https://www.mastercard.com/",
+  // },
   // {
   //   img: MoonshotImg,
   //   link: "https://moonshotjr.com",
