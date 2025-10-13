@@ -62,6 +62,7 @@ import UVImg from "assets/uv.png";
 import CoupangImg from "assets/c.png";
 import TessellImg from "assets/t.jpeg";
 import HackerRankImg from "assets/h.png";
+import GartnerImg from "assets/gartner.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -231,9 +232,13 @@ const images = [
   //   img: ZeeveImg,
   //   link: "https://zeeve.io",
   // },
+  // {
+  //   img: QualcommImg,
+  //   link: "https://qualcomm.com/",
+  // },
   {
-    img: QualcommImg,
-    link: "https://qualcomm.com/",
+    img: GartnerImg,
+    link: "https://www.gartner.com/en/",
   },
   {
     img: InstahyreImg,
