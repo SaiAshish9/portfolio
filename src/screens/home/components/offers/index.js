@@ -46,7 +46,7 @@ import JioImg from "assets/jio.png";
 import QualcommImg from "assets/qualcomm.jpeg";
 import DishImg from "assets/dishtv.png";
 import TekionImg from "assets/tekion.jpeg";
-import IxigoImg from "assets/ixigo.png";
+import AmexImg from "assets/amex.png";
 import DunzoImg from "assets/dunzo.png";
 import NaviImg from "assets/navi.png";
 import GrabImg from "assets/grab.jpeg";
@@ -212,8 +212,8 @@ const images = [
   //   link: "https://openhouse.study/",
   // },
   {
-    img: IxigoImg,
-    link: "https://www.ixigo.com/",
+    img: AmexImg,
+    link: "https://www.amexglobalbusinesstravel.com/au/",
   },
   {
     img: TessellImg,
