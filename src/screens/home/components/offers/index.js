@@ -203,6 +203,10 @@ const images = [
     img: VoyceImg,
     link: "https://voyce.com",
   },
+  {
+    img: NielsenImg,
+    link: "https://nielsen.com",
+  },
   // {
   //   img: TcsImage,
   //   link: "https://www.tcs.com/",
