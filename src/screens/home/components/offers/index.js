@@ -64,6 +64,7 @@ import TessellImg from "assets/t.jpeg";
 import HackerRankImg from "assets/h.png";
 import GartnerImg from "assets/gartner.png";
 import TargetImg from "assets/target.png";
+import MythikImg from "assets/mythik.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -194,8 +195,8 @@ const images = [
   //   link: "https://grab.com",
   // },
   {
-     img: TargetImg,
-     link: "https://www.target.com/",
+    img: TargetImg,
+    link: "https://www.target.com/",
   },
   {
     img: VoyceImg,
@@ -210,8 +211,8 @@ const images = [
   //   link: "https://unlu.io/",
   // },
   {
-     img: HackerRankImg,
-     link: "https://www.hackerrank.com/",
+    img: HackerRankImg,
+    link: "https://www.hackerrank.com/",
   },
   // {
   //   img: OpenHouseImage,
@@ -281,9 +282,13 @@ const images = [
   //   img: JioImg,
   //   link: "https://jio.com",
   // },
+  // {
+  //   img: MindTickleImg,
+  //   link: "http://mindtickle.com/",
+  // },
   {
-    img: MindTickleImg,
-    link: "http://mindtickle.com/",
+    img: MythikImg,
+    link: "https://www.instagram.com/mythikentertainment/reels/",
   },
   {
     img: AgodaImg,
