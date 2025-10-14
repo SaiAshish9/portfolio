@@ -65,6 +65,7 @@ import HackerRankImg from "assets/h.png";
 import GartnerImg from "assets/gartner.png";
 import TargetImg from "assets/target.png";
 import MythikImg from "assets/mythik.png";
+import NielsenImg from "assets/nielsen.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
