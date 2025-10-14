@@ -199,10 +199,10 @@ const images = [
     img: TargetImg,
     link: "https://www.target.com/",
   },
-  {
-    img: VoyceImg,
-    link: "https://voyce.com",
-  },
+  // {
+  //   img: VoyceImg,
+  //   link: "https://voyce.com",
+  // },
   {
     img: NielsenImg,
     link: "https://nielsen.com",
