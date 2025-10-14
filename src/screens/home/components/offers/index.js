@@ -63,6 +63,7 @@ import CoupangImg from "assets/c.png";
 import TessellImg from "assets/t.jpeg";
 import HackerRankImg from "assets/h.png";
 import GartnerImg from "assets/gartner.png";
+import TargetImg from "assets/target.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -188,9 +189,13 @@ const images = [
     img: NaviImg,
     link: "https://navi.com/",
   },
+  // {
+  //   img: GrabImg,
+  //   link: "https://grab.com",
+  // },
   {
-    img: GrabImg,
-    link: "https://grab.com",
+     img: TargetImg,
+     link: "https://www.target.com/",
   },
   {
     img: VoyceImg,
