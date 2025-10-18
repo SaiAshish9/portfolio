@@ -125,7 +125,7 @@ const Intro = () => {
                     : k == 5
                     ? "https://github.com/SaiAshish9/AtCoder"
                     : k == 6
-                    ? "https://github.com/SaiAshish9/TopCoder"
+                    ? "https://profiles.topcoder.com/saiashish9"
                     : k === 7
                     ? "mailto:"
                     : k === 8
