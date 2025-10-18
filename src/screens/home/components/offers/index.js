@@ -66,6 +66,7 @@ import GartnerImg from "assets/gartner.png";
 import TargetImg from "assets/target.png";
 import MythikImg from "assets/mythik.png";
 import NielsenImg from "assets/nielsen.png";
+import CambImg from "assets/camb.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -267,9 +268,13 @@ const images = [
   //   img: MoonshotImg,
   //   link: "https://moonshotjr.com",
   // },
+  // {
+  //   img: AvisoImg,
+  //   link: "https://aviso.com",
+  // },
   {
-    img: AvisoImg,
-    link: "https://aviso.com",
+    img: CambImg,
+    link: "https://camb.ai",
   },
   {
     img: VerizonImg,
