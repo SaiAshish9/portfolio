@@ -67,6 +67,7 @@ import TargetImg from "assets/target.png";
 import MythikImg from "assets/mythik.png";
 import NielsenImg from "assets/nielsen.png";
 import CambImg from "assets/camb.png";
+import GSImg from "assets/gs.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -252,9 +253,13 @@ const images = [
     img: GartnerImg,
     link: "https://www.gartner.com/en/",
   },
+  // {
+  //   img: InstahyreImg,
+  //   link: "https://www.instahyre.com/",
+  // },
   {
-    img: InstahyreImg,
-    link: "https://www.instahyre.com/",
+    img: GSImg,
+    link: "https://www.goldmansachs.com/",
   },
   {
     img: CoupangImg,
