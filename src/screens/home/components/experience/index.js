@@ -51,6 +51,7 @@ const data = [
     position: <I18n t="backend" />,
     link: "https://www.tekion.com",
     exp: 18,
+    yr: true,
     id: 0,
   },
   {
@@ -117,7 +118,7 @@ const data = [
     img: VelvetImg,
     label: <I18n t="velvet" />,
     position: <I18n t="applicationDevIntern" />,
-    exp: 16,
+    exp: 18,
     yr: true,
     id: 7,
     link: "https://dev.velvet.video",
@@ -403,7 +404,8 @@ const data = [
     label: <I18n t="swiftRobotics" />,
     position: <I18n t="sde-intern" />,
     link: "https://www.swiftrobotics.ai/",
-    exp: 3,
+    exp: 18,
+    yr: true,
     id: 15,
   },
   {
@@ -476,7 +478,11 @@ const Experience = () => {
                 {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
                 {i.exp > 1 ? (
                   i.yr ? (
-                    <I18n t="year" />
+                    i.exp > 12 ? (
+                      <I18n t="years" />
+                    ) : (
+                      i.yr && <I18n t="year" />
+                    )
                   ) : (
                     <I18n t="month's" />
                   )
