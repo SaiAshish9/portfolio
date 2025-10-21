@@ -68,6 +68,7 @@ import MythikImg from "assets/mythik.png";
 import NielsenImg from "assets/nielsen.png";
 import CambImg from "assets/camb.png";
 import GSImg from "assets/gs.png";
+import NutanixImg from "assets/nutanix.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -282,9 +283,13 @@ const images = [
     link: "https://camb.ai",
   },
   {
-    img: VerizonImg,
-    link: "https://verizon.com",
+    img: NutanixImg,
+    link: "https://www.nutanix.com/",
   },
+  // {
+  //   img: VerizonImg,
+  //   link: "https://verizon.com",
+  // },
   // {
   //   img: ProboImg,
   //   link: "https://probo.in",
