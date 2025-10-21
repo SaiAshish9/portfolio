@@ -476,16 +476,12 @@ const Experience = () => {
               <Title>{i.position}</Title>
               <Title>
                 {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
-                {i.exp > 1 ? (
-                  i.yr ? (
-                    i.exp > 12 ? (
-                      <I18n t="years" />
-                    ) : (
-                      i.yr && <I18n t="year" />
-                    )
-                  ) : (
-                    <I18n t="month's" />
-                  )
+                {i.yr && i.exp > 12 ? (
+                  <I18n t="years" />
+                ) : i.yr ? (
+                  <I18n t="year" />
+                ) : i.exp > 1 ? (
+                  <I18n t="month's" />
                 ) : (
                   <I18n t="month" />
                 )}
@@ -501,12 +497,12 @@ const Experience = () => {
               <Title>{i.position}</Title>
               <Title>
                 {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
-                {i.exp > 1 ? (
-                  i.yr ? (
-                    <I18n t="year" />
-                  ) : (
-                    <I18n t="month's" />
-                  )
+                {i.yr && i.exp > 12 ? (
+                  <I18n t="years" />
+                ) : i.yr ? (
+                  <I18n t="year" />
+                ) : i.exp > 1 ? (
+                  <I18n t="month's" />
                 ) : (
                   <I18n t="month" />
                 )}
@@ -522,12 +518,12 @@ const Experience = () => {
               <Title>{i.position}</Title>
               <Title>
                 {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
-                {i.exp > 1 ? (
-                  i.yr ? (
-                    <I18n t="year" />
-                  ) : (
-                    <I18n t="month's" />
-                  )
+                {i.yr && i.exp > 12 ? (
+                  <I18n t="years" />
+                ) : i.yr ? (
+                  <I18n t="year" />
+                ) : i.exp > 1 ? (
+                  <I18n t="month's" />
                 ) : (
                   <I18n t="month" />
                 )}
@@ -543,12 +539,12 @@ const Experience = () => {
               <Title>{i.position}</Title>
               <Title>
                 {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
-                {i.exp > 1 ? (
-                  i.yr ? (
-                    <I18n t="year" />
-                  ) : (
-                    <I18n t="month's" />
-                  )
+                {i.yr && i.exp > 12 ? (
+                  <I18n t="years" />
+                ) : i.yr ? (
+                  <I18n t="year" />
+                ) : i.exp > 1 ? (
+                  <I18n t="month's" />
                 ) : (
                   <I18n t="month" />
                 )}
@@ -564,12 +560,12 @@ const Experience = () => {
               <Title>{i.position}</Title>
               <Title>
                 {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
-                {i.exp > 1 ? (
-                  i.yr ? (
-                    <I18n t="year" />
-                  ) : (
-                    <I18n t="month's" />
-                  )
+                {i.yr && i.exp > 12 ? (
+                  <I18n t="years" />
+                ) : i.yr ? (
+                  <I18n t="year" />
+                ) : i.exp > 1 ? (
+                  <I18n t="month's" />
                 ) : (
                   <I18n t="month" />
                 )}
@@ -585,12 +581,12 @@ const Experience = () => {
               <Title>{i.position}</Title>
               <Title>
                 {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
-                {i.exp > 1 ? (
-                  i.yr ? (
-                    <I18n t="year" />
-                  ) : (
-                    <I18n t="month's" />
-                  )
+                {i.yr && i.exp > 12 ? (
+                  <I18n t="years" />
+                ) : i.yr ? (
+                  <I18n t="year" />
+                ) : i.exp > 1 ? (
+                  <I18n t="month's" />
                 ) : (
                   <I18n t="month" />
                 )}
@@ -606,12 +602,12 @@ const Experience = () => {
               <Title>{i.position}</Title>
               <Title>
                 {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
-                {i.exp > 1 ? (
-                  i.yr ? (
-                    <I18n t="year" />
-                  ) : (
-                    <I18n t="month's" />
-                  )
+                {i.yr && i.exp > 12 ? (
+                  <I18n t="years" />
+                ) : i.yr ? (
+                  <I18n t="year" />
+                ) : i.exp > 1 ? (
+                  <I18n t="month's" />
                 ) : (
                   <I18n t="month" />
                 )}
@@ -627,12 +623,12 @@ const Experience = () => {
               <Title>{i.position}</Title>
               <Title>
                 {i.exp > 11 ? parseFloat(i.exp / 12).toFixed(1) : i.exp}{" "}
-                {i.exp > 1 ? (
-                  i.yr ? (
-                    <I18n t="year" />
-                  ) : (
-                    <I18n t="month's" />
-                  )
+                {i.yr && i.exp > 12 ? (
+                  <I18n t="years" />
+                ) : i.yr ? (
+                  <I18n t="year" />
+                ) : i.exp > 1 ? (
+                  <I18n t="month's" />
                 ) : (
                   <I18n t="month" />
                 )}

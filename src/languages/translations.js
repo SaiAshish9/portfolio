@@ -1232,6 +1232,17 @@ export const translations = [
     ru: "год",
   },
   {
+    text: "years",
+    en: "year's",
+    pt: "ano",
+    hi: "वर्ष",
+    te: "సంవత్సరం",
+    de: "Jahr",
+    zh: "年",
+    fr: "an",
+    ru: "год",
+  },
+  {
     text: "whatsappBusiness",
     en: "Whatsapp Business Clone",
     pt: "WhatsApp Business Clone",
