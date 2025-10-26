@@ -190,10 +190,10 @@ const images = [
   //   img: GrofersImg,
   //   link: "https://www.grofers.com/",
   // },
-  {
-    img: NaviImg,
-    link: "https://navi.com/",
-  },
+  // {
+  //   img: NaviImg,
+  //   link: "https://navi.com/",
+  // },
   // {
   //   img: GrabImg,
   //   link: "https://grab.com",
@@ -286,10 +286,10 @@ const images = [
     img: NutanixImg,
     link: "https://www.nutanix.com/",
   },
-  // {
-  //   img: VerizonImg,
-  //   link: "https://verizon.com",
-  // },
+  {
+    img: VerizonImg,
+    link: "https://verizon.com",
+  },
   // {
   //   img: ProboImg,
   //   link: "https://probo.in",
