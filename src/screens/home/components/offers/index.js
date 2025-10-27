@@ -69,6 +69,7 @@ import NielsenImg from "assets/nielsen.png";
 import CambImg from "assets/camb.png";
 import GSImg from "assets/gs.png";
 import NutanixImg from "assets/nutanix.png";
+import WalmartImg from "assets/walmart.png"
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -158,10 +159,13 @@ const images = [
     link: "https://intuit.com",
   },
   {
-    img: ExpediaGroupImg,
-    link: "https://www.expediagroup.com/home/default.aspx",
+    img: WalmartImg,
+    link: "http://walmart.com/"
   },
-
+  // {
+  //   img: ExpediaGroupImg,
+  //   link: "https://www.expediagroup.com/home/default.aspx",
+  // },
   // {
   //   img: PromoImg,
   //   link: "https://www.promo.com/",
