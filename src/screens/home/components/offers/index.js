@@ -69,7 +69,8 @@ import NielsenImg from "assets/nielsen.png";
 import CambImg from "assets/camb.png";
 import GSImg from "assets/gs.png";
 import NutanixImg from "assets/nutanix.png";
-import WalmartImg from "assets/walmart.png"
+import WalmartImg from "assets/walmart.png";
+import CohesityImg from "assets/cohesity.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -160,7 +161,7 @@ const images = [
   },
   {
     img: WalmartImg,
-    link: "http://walmart.com/"
+    link: "http://walmart.com/",
   },
   // {
   //   img: ExpediaGroupImg,
@@ -290,9 +291,13 @@ const images = [
     img: NutanixImg,
     link: "https://www.nutanix.com/",
   },
+  // {
+  //   img: VerizonImg,
+  //   link: "https://verizon.com",
+  // },
   {
-    img: VerizonImg,
-    link: "https://verizon.com",
+    img: CohesityImg,
+    link: "https://cohesity.com",
   },
   // {
   //   img: ProboImg,
