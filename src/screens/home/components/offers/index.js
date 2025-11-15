@@ -71,6 +71,7 @@ import GSImg from "assets/gs.png";
 import NutanixImg from "assets/nutanix.png";
 import WalmartImg from "assets/walmart.png";
 import CohesityImg from "assets/cohesity.png";
+import NetAppImg from "assets/netapp.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -142,9 +143,13 @@ const images = [
     img: HotstarImg,
     link: "https://hotstar.com",
   },
+  // {
+  //   img: BrowserStackImage,
+  //   link: "https://www.browserstack.com/",
+  // },
   {
-    img: BrowserStackImage,
-    link: "https://www.browserstack.com/",
+    img: NetAppImg,
+    link: "https://www.netapp.com/",
   },
   {
     img: VmwareImage,
