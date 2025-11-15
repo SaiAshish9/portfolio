@@ -75,7 +75,7 @@ const data = [
     label: <I18n t="sigiq" />,
     position: <I18n t="applicationDev" />,
     link: "https://sigiq.ai",
-    exp: 2,
+    exp: 6,
     id: 3,
   },
   {
@@ -83,7 +83,7 @@ const data = [
     label: <I18n t="padhai" />,
     position: <I18n t="applicationDev" />,
     link: "https://padhai.ai/",
-    exp: 2,
+    exp: 6,
     id: 4,
   },
   {
