@@ -201,7 +201,7 @@ const data = [
     img: SearchVaccinesImg,
     label: <I18n t="searchVaccines" />,
     position: <I18n t="applicationDevIntern" />,
-    exp: 2,
+    exp: 3,
     id: 10,
     searchVaccinesImg: true,
     images: [
@@ -350,7 +350,7 @@ const data = [
     img: Nex2MeImg,
     label: <I18n t="nex2Me" />,
     position: <I18n t="javaIntern" />,
-    exp: 1,
+    exp: 3,
     id: 13,
     link: "https://www.linkedin.com/company/nex2me-introtuce/",
     images: [
@@ -395,7 +395,7 @@ const data = [
     img: CareMedicoImg,
     label: <I18n t="care-medico" />,
     position: <I18n t="sde-intern" />,
-    exp: 1,
+    exp: 3,
     id: 14,
     images: [CMImg1, CMImg2, CMImg3, CMImg4, CMImg5, CMImg6, CMImg7, CMImg8],
   },
