@@ -57,7 +57,8 @@ const data = [
   },
   {
     img: UniImg,
-    position: <I18n t="fullstack" />,
+    label: <I18n t="uniblox" />,
+    position: <I18n t="fullstackai" />,
     link: "https://www.uniblox.io/",
     exp: 6,
     id: 1,

@@ -253,16 +253,16 @@ export const translations = [
     ru: "Полный стек веб, нативный / кроссплатформенный",
   },
   {
-    "text": "introDesc2",
-    "en": "mobile app engineer",
-    "pt": "desenvolvedor de aplicativos móveis",
-    "hi": "मोबाइल ऐप इंजीनियर",
-    "te": "మొబైల్ యాప్ ఇంజనీర్",
-    "de": "Mobile-App-Entwickler",
-    "zh": "移动应用工程师",
-    "fr": "ingénieur en applications mobiles",
-    "ru": "инженер по мобильным приложениям"
-  },  
+    text: "introDesc2",
+    en: "mobile app engineer",
+    pt: "desenvolvedor de aplicativos móveis",
+    hi: "मोबाइल ऐप इंजीनियर",
+    te: "మొబైల్ యాప్ ఇంజనీర్",
+    de: "Mobile-App-Entwickler",
+    zh: "移动应用工程师",
+    fr: "ingénieur en applications mobiles",
+    ru: "инженер по мобильным приложениям",
+  },
   {
     text: "introDesc3",
     en: "Computer Science BTECH 2022 Graduate At MSIT, GGSIPU",
@@ -286,49 +286,49 @@ export const translations = [
     ru: "Нью-Дели, Индия",
   },
   {
-    "text": "atcoder",
-    "en": "AtCoder",
-    "pt": "AtCoder",
-    "hi": "एटकोडर",
-    "te": "అట్‌కోడర్",
-    "de": "AtCoder",
-    "zh": "AtCoder（艾特考德）",
-    "fr": "AtCoder",
-    "ru": "АтКодер"
+    text: "atcoder",
+    en: "AtCoder",
+    pt: "AtCoder",
+    hi: "एटकोडर",
+    te: "అట్‌కోడర్",
+    de: "AtCoder",
+    zh: "AtCoder（艾特考德）",
+    fr: "AtCoder",
+    ru: "АтКодер",
   },
   {
-    "text": "topcoder",
-    "en": "TopCoder",
-    "pt": "TopCoder",
-    "hi": "टॉपकोडर",
-    "te": "టాప్‌కోడర్",
-    "de": "TopCoder",
-    "zh": "TopCoder（顶级程序员）",
-    "fr": "TopCoder",
-    "ru": "ТопКодер"
-  },  
+    text: "topcoder",
+    en: "TopCoder",
+    pt: "TopCoder",
+    hi: "टॉपकोडर",
+    te: "టాప్‌కోడర్",
+    de: "TopCoder",
+    zh: "TopCoder（顶级程序员）",
+    fr: "TopCoder",
+    ru: "ТопКодер",
+  },
   {
-    "text": "leetcodev2",
-    "en": "LeetCodeV2",
-    "pt": "LeetCodeV2",
-    "hi": "लीटकोडV2",
-    "te": "లీట్‌కోడ్V2",
-    "de": "LeetCodeV2",
-    "zh": "力扣V2",
-    "fr": "LeetCodeV2",
-    "ru": "ЛитКодV2"
-  },  
+    text: "leetcodev2",
+    en: "LeetCodeV2",
+    pt: "LeetCodeV2",
+    hi: "लीटकोडV2",
+    te: "లీట్‌కోడ్V2",
+    de: "LeetCodeV2",
+    zh: "力扣V2",
+    fr: "LeetCodeV2",
+    ru: "ЛитКодV2",
+  },
   {
-    "text": "codeforces",
-    "en": "Codeforces",
-    "pt": "Codeforces",
-    "hi": "कोडफोर्सेस",
-    "te": "కోడ్‌ఫోర్సెస్",
-    "de": "Codeforces",
-    "zh": "Codeforces（代码力量）",
-    "fr": "Codeforces",
-    "ru": "Кодфорсес"
-  },  
+    text: "codeforces",
+    en: "Codeforces",
+    pt: "Codeforces",
+    hi: "कोडफोर्सेस",
+    te: "కోడ్‌ఫోర్సెస్",
+    de: "Codeforces",
+    zh: "Codeforces（代码力量）",
+    fr: "Codeforces",
+    ru: "Кодфорсес",
+  },
   {
     text: "coverLetter",
     en: "Cover Letter",
@@ -360,7 +360,7 @@ export const translations = [
     de: "Eltern",
     zh: "父母",
     fr: "Parents",
-    ru: "Родители"
+    ru: "Родители",
   },
   {
     text: "ipu_cet_rank",
@@ -371,7 +371,7 @@ export const translations = [
     de: "IPU-CET-Rang",
     zh: "IPU CET 排名",
     fr: "Classement IPU CET",
-    ru: "Рейтинг IPU CET"
+    ru: "Рейтинг IPU CET",
   },
   {
     text: "class11th",
@@ -382,7 +382,7 @@ export const translations = [
     de: "Abschiedsfeier der 11. Klasse",
     zh: "11年级告别会",
     fr: "Adieu de la classe de 11e",
-    ru: "Прощание в 11-м классе"
+    ru: "Прощание в 11-м классе",
   },
   {
     text: "cricket",
@@ -393,8 +393,8 @@ export const translations = [
     de: "Kricket",
     zh: "板球",
     fr: "Cricket",
-    ru: "Крикет"
-  },  
+    ru: "Крикет",
+  },
   {
     text: "10on10",
     en: "Mr. 10 on 10",
@@ -404,8 +404,8 @@ export const translations = [
     de: "Herr 10 von 10",
     zh: "满分先生",
     fr: "M. 10 sur 10",
-    ru: "Мистер 10 из 10"
-  },  
+    ru: "Мистер 10 из 10",
+  },
   {
     text: "ml_seminar",
     en: "Machine Learning Seminar",
@@ -415,40 +415,40 @@ export const translations = [
     de: "Maschinelles Lernen Seminar",
     zh: "机器学习研讨会",
     fr: "Séminaire sur l'apprentissage automatique",
-    ru: "Семинар по машинному обучению"
+    ru: "Семинар по машинному обучению",
   },
   {
-    "text": "batch",
-    "en": "Batch Mates",
-    "pt": "Colegas de Turma",
-    "hi": "सहपाठी",
-    "te": "తరగతి స్నేహితులు",
-    "de": "Kommilitonen",
-    "zh": "同学们",
-    "fr": "Camarades de promotion",
-    "ru": "Одногруппники"
+    text: "batch",
+    en: "Batch Mates",
+    pt: "Colegas de Turma",
+    hi: "सहपाठी",
+    te: "తరగతి స్నేహితులు",
+    de: "Kommilitonen",
+    zh: "同学们",
+    fr: "Camarades de promotion",
+    ru: "Одногруппники",
   },
   {
-    "text": "fitness",
-    "en": "Fitness",
-    "pt": "Aptidão Física",
-    "hi": "फिटनेस",
-    "te": "ఫిట్‌నెస్",
-    "de": "Fitness",
-    "zh": "健身",
-    "fr": "Fitness",
-    "ru": "Фитнес"
+    text: "fitness",
+    en: "Fitness",
+    pt: "Aptidão Física",
+    hi: "फिटनेस",
+    te: "ఫిట్‌నెస్",
+    de: "Fitness",
+    zh: "健身",
+    fr: "Fitness",
+    ru: "Фитнес",
   },
   {
-    "text": "healthy_mind",
-    "en": "Cycling & Swimming",
-    "pt": "Ciclismo e Natação",
-    "hi": "साइक्लिंग और तैराकी",
-    "te": "సైక్లింగ్ & ఈత",
-    "de": "Radfahren & Schwimmen",
-    "zh": "骑行和游泳",
-    "fr": "Cyclisme et Natation",
-    "ru": "Велоспорт и Плавание"
+    text: "healthy_mind",
+    en: "Cycling & Swimming",
+    pt: "Ciclismo e Natação",
+    hi: "साइक्लिंग और तैराकी",
+    te: "సైక్లింగ్ & ఈత",
+    de: "Radfahren & Schwimmen",
+    zh: "骑行和游泳",
+    fr: "Cyclisme et Natation",
+    ru: "Велоспорт и Плавание",
   },
   {
     text: "event_pic",
@@ -459,8 +459,8 @@ export const translations = [
     de: "Veranstaltungsbild",
     zh: "活动照片",
     fr: "Photo de l'événement",
-    ru: "Фотография мероприятия"
-  },  
+    ru: "Фотография мероприятия",
+  },
   {
     text: "bTech",
     en: "BTech Performance",
@@ -847,15 +847,15 @@ export const translations = [
     ru: "Воспоминания ✨",
   },
   {
-    "text": "class9th",
-    "en": "Class 9th",
-    "pt": "9ª Série",
-    "hi": "कक्षा 9वीं",
-    "te": "9వ తరగతి",
-    "de": "9. Klasse",
-    "zh": "九年级",
-    "fr": "Classe de 3ème",
-    "ru": "9-й класс"
+    text: "class9th",
+    en: "Class 9th",
+    pt: "9ª Série",
+    hi: "कक्षा 9वीं",
+    te: "9వ తరగతి",
+    de: "9. Klasse",
+    zh: "九年级",
+    fr: "Classe de 3ème",
+    ru: "9-й класс",
   },
   {
     text: "month's",
@@ -921,8 +921,8 @@ export const translations = [
     de: "Angular + Django Praktikant",
     zh: "Angular + Django 实习生",
     fr: "Stagiaire Angular + Django",
-    ru: "Стажёр Angular + Django"
-  },  
+    ru: "Стажёр Angular + Django",
+  },
   {
     text: "applicationDevIntern",
     en: "Application Development Intern",
@@ -1273,7 +1273,7 @@ export const translations = [
     de: "Anugoonj Universitätsveranstaltung",
     zh: "Anugoonj 大学校园活动",
     fr: "Événement universitaire Anugoonj",
-    ru: "Университетское мероприятие Anugoonj"
+    ru: "Университетское мероприятие Anugoonj",
   },
   {
     text: "uni_event",
@@ -1284,7 +1284,7 @@ export const translations = [
     de: "Universitätsveranstaltung",
     zh: "大学活动",
     fr: "Événement universitaire",
-    ru: "Университетское мероприятие"
+    ru: "Университетское мероприятие",
   },
   {
     text: "farewell",
@@ -1295,8 +1295,8 @@ export const translations = [
     de: "Abschiedsveranstaltung",
     zh: "告别活动",
     fr: "Événement d'adieu",
-    ru: "Прощальное мероприятие"
-  },  
+    ru: "Прощальное мероприятие",
+  },
   {
     text: "msTeamsChallenge",
     en: "MS Teams Challenge'22",
@@ -1383,7 +1383,7 @@ export const translations = [
     de: "Videoverse",
     zh: "Videoverse",
     fr: "Videoverse",
-    ru: "Videoverse"
+    ru: "Videoverse",
   },
   {
     text: "magnifi",
@@ -1394,8 +1394,8 @@ export const translations = [
     de: "Magnifi",
     zh: "Magnifi",
     fr: "Magnifi",
-    ru: "Magnifi"
-  },  
+    ru: "Magnifi",
+  },
   {
     text: "sigiq",
     en: "SigIQ.ai",
@@ -1405,8 +1405,8 @@ export const translations = [
     de: "SigIQ.ai",
     zh: "SigIQ.ai",
     fr: "SigIQ.ai",
-    ru: "SigIQ.ai"
-  },  
+    ru: "SigIQ.ai",
+  },
   {
     text: "padhai",
     en: "PadhAi.ai",
@@ -1416,7 +1416,7 @@ export const translations = [
     de: "PadhAi.ai",
     zh: "PadhAi.ai",
     fr: "PadhAi.ai",
-    ru: "PadhAi.ai"
+    ru: "PadhAi.ai",
   },
   {
     text: "applicationDev",
@@ -1427,8 +1427,8 @@ export const translations = [
     de: "Anwendungsentwickler",
     zh: "应用开发工程师",
     fr: "Développeur d'applications",
-    ru: "Разработчик приложений"
-  },  
+    ru: "Разработчик приложений",
+  },
   {
     text: "fullstack",
     en: "Full Stack Engineer",
@@ -1438,7 +1438,18 @@ export const translations = [
     de: "Full-Stack-Ingenieur",
     zh: "全栈工程师",
     fr: "Ingénieur Full Stack",
-    ru: "Фулстек-инженер"
+    ru: "Фулстек-инженер",
+  },
+  {
+    text: "fullstackai",
+    en: "Full Stack AI Engineer",
+    pt: "Engenheiro Full Stack de IA",
+    hi: "फुल स्टैक एआई इंजीनियर",
+    te: "ఫుల్ స్టాక్ ఏఐ ఇంజనీర్",
+    de: "Full-Stack-AI-Ingenieur",
+    zh: "全栈人工智能工程师",
+    fr: "Ingénieur Full Stack IA",
+    ru: "Фулстек-AI инженер",
   },
   {
     text: "rgsoc",
