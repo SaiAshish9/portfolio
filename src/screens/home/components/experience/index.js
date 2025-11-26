@@ -39,6 +39,7 @@ import RGSOCImg from "assets/rgsoc.jpeg";
 import MsftDevChallengeImg from "assets/msftdevchallenge.jpeg";
 import SigIQImg from "assets/sigiq.jpeg";
 import PadhAIImg from "assets/padhai.png";
+import UniImg from "assets/uni.jpeg";
 
 import I18n from "common/I18n";
 
@@ -55,12 +56,19 @@ const data = [
     id: 0,
   },
   {
+    img: UniImg,
+    position: <I18n t="fullstack" />,
+    link: "https://www.uniblox.io/",
+    exp: 6,
+    id: 1,
+  },
+  {
     img: VideoVerseImg,
     label: <I18n t="videoverse" />,
     position: <I18n t="fullstack" />,
     link: "https://www.vverse.ai",
     exp: 6,
-    id: 1,
+    id: 2,
   },
   {
     img: MagnifiImg,
@@ -68,7 +76,7 @@ const data = [
     position: <I18n t="fullstack" />,
     link: "https://magnifi.ai/",
     exp: 6,
-    id: 2,
+    id: 3,
   },
   {
     img: SigIQImg,
@@ -76,7 +84,7 @@ const data = [
     position: <I18n t="applicationDev" />,
     link: "https://sigiq.ai",
     exp: 6,
-    id: 3,
+    id: 4,
   },
   {
     img: PadhAIImg,
@@ -84,7 +92,7 @@ const data = [
     position: <I18n t="applicationDev" />,
     link: "https://padhai.ai/",
     exp: 6,
-    id: 4,
+    id: 5,
   },
   {
     img: LambdaTestImg,
@@ -92,14 +100,14 @@ const data = [
     position: <I18n t="sde-intern" />,
     link: "https://www.lambdatest.com/support/docs/getting-started-with-xcuitest/",
     exp: 5,
-    id: 5,
+    id: 6,
   },
   {
     img: PayTMImg,
     label: <I18n t="paytm" />,
     position: <I18n t="sde-intern" />,
     exp: 3,
-    id: 6,
+    id: 7,
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1633857822/WhatsApp_Image_2021-10-10_at_14.53.29_jlnfcb.jpg",
       "https://res.cloudinary.com/saiashish/image/upload/v1633857709/WhatsApp_Image_2021-10-10_at_14.48.57_1_meqy86.jpg",
@@ -120,7 +128,7 @@ const data = [
     position: <I18n t="applicationDevIntern" />,
     exp: 18,
     yr: true,
-    id: 7,
+    id: 8,
     link: "https://dev.velvet.video",
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1627712155/Screenshot_from_2021-07-31_11-45-29_vz8jyd.png",
@@ -144,7 +152,7 @@ const data = [
     label: <I18n t="uvrobots" />,
     position: <I18n t="applicationDevIntern" />,
     exp: 5,
-    id: 8,
+    id: 9,
     link: "https://uvrobots.io",
   },
   {
@@ -152,7 +160,7 @@ const data = [
     label: <I18n t="inuvest" />,
     position: <I18n t="fullStackPyIntern" />,
     exp: 5,
-    id: 9,
+    id: 10,
     link: "https://inuvest.tech",
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1627679809/inuvest2_yqyqv0.png",
@@ -202,7 +210,7 @@ const data = [
     label: <I18n t="searchVaccines" />,
     position: <I18n t="applicationDevIntern" />,
     exp: 3,
-    id: 10,
+    id: 11,
     searchVaccinesImg: true,
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1639765449/Screenshot_from_2021-03-10_23-36-29_f4zst4.png",
@@ -265,7 +273,7 @@ const data = [
     label: <I18n t="appTown" />,
     position: <I18n t="reactIntern" />,
     exp: 8,
-    id: 11,
+    id: 12,
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1627675715/appTown1_r5y84v.png",
       "https://res.cloudinary.com/saiashish/image/upload/v1627675715/appTown2_wd65xx.png",
@@ -319,7 +327,7 @@ const data = [
     label: <I18n t="pracify" />,
     position: <I18n t="mernIntern" />,
     exp: 3,
-    id: 12,
+    id: 13,
     link: "https://pracify.com",
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1627678325/pracify1_amuf2g.png",
@@ -351,7 +359,7 @@ const data = [
     label: <I18n t="nex2Me" />,
     position: <I18n t="javaIntern" />,
     exp: 3,
-    id: 13,
+    id: 14,
     link: "https://www.linkedin.com/company/nex2me-introtuce/",
     images: [
       "https://res.cloudinary.com/saiashish/image/upload/v1639780030/Screenshot_from_2021-12-18_03-52-59_rlzlpm.png",
@@ -396,7 +404,7 @@ const data = [
     label: <I18n t="care-medico" />,
     position: <I18n t="sde-intern" />,
     exp: 3,
-    id: 14,
+    id: 15,
     images: [CMImg1, CMImg2, CMImg3, CMImg4, CMImg5, CMImg6, CMImg7, CMImg8],
   },
   {
@@ -406,7 +414,7 @@ const data = [
     link: "https://www.swiftrobotics.ai/",
     exp: 18,
     yr: true,
-    id: 15,
+    id: 16,
   },
   {
     img: SwiftShopsImg,
@@ -414,7 +422,7 @@ const data = [
     position: <I18n t="sde-intern" />,
     link: "https://www.linkedin.com/company/swiftrobots/posts/?feedView=all",
     exp: 3,
-    id: 16,
+    id: 17,
   },
   {
     img: RGSOCImg,
@@ -422,16 +430,16 @@ const data = [
     position: <I18n t="mentor" />,
     link: "https://railsgirlssummerofcode.org/",
     exp: 1,
-    id: 17,
-  },
-  {
-    img: FeelAtHomeImg,
-    label: <I18n t="feelAtHome" />,
-    position: <I18n t="contributor" />,
-    link: "https://devfolio.co/projects/feel-at-home-1",
-    exp: 1,
     id: 18,
   },
+  // {
+  //   img: FeelAtHomeImg,
+  //   label: <I18n t="feelAtHome" />,
+  //   position: <I18n t="contributor" />,
+  //   link: "https://devfolio.co/projects/feel-at-home-1",
+  //   exp: 1,
+  //   id: 18,
+  // },
   {
     img: MsftDevChallengeImg,
     label: <I18n t="teamsDevC" />,
@@ -454,8 +462,9 @@ const Experience = () => {
       k == 3 ||
       k === 4 ||
       k == 5 ||
-      k == 8 ||
-      k > 14
+      k == 6 ||
+      k == 9 ||
+      k > 15
     ) {
       const win = window.open(data[k]["link"], "_blank");
       win.focus();
