@@ -60,7 +60,7 @@ const data = [
     label: <I18n t="uniblox" />,
     position: <I18n t="fullstackai" />,
     link: "https://www.uniblox.io/",
-    exp: 6,
+    exp: 12,
     id: 1,
   },
   {
