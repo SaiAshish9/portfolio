@@ -1364,6 +1364,17 @@ export const translations = [
     ru: "Текион Корп",
   },
   {
+    text: "uniblox",
+    en: "Uniblox",
+    pt: "Uniblox",
+    hi: "यूनिब्लॉक्स",
+    te: "యూనిబ్లాక్స్",
+    de: "Uniblox",
+    zh: "Uniblox",
+    fr: "Uniblox",
+    ru: "Униблокс",
+  },
+  {
     text: "backend",
     en: "Backend Engineer",
     pt: "Engenheiro de back-end",
