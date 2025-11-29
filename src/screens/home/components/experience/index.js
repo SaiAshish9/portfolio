@@ -62,6 +62,7 @@ const data = [
     link: "https://www.uniblox.io/",
     exp: 12,
     id: 1,
+    yr: true,
   },
   {
     img: VideoVerseImg,
