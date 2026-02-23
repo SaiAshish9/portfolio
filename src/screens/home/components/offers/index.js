@@ -72,6 +72,7 @@ import NutanixImg from "assets/nutanix.png";
 import WalmartImg from "assets/walmart.png";
 import CohesityImg from "assets/cohesity.png";
 import NetAppImg from "assets/netapp.png";
+import CpImg from "assets/cp.png";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -273,7 +274,7 @@ const images = [
     link: "https://www.goldmansachs.com/",
   },
   {
-    img: CoupangImg,
+    img: CpImg,
     link: "https://www.coupang.com/",
   },
   // {
