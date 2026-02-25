@@ -73,6 +73,9 @@ import WalmartImg from "assets/walmart.png";
 import CohesityImg from "assets/cohesity.png";
 import NetAppImg from "assets/netapp.png";
 import CpImg from "assets/cp.png";
+import BespokeImg from "assets/bespoke.png";
+import AndelaImg from "assets/andela.png";
+import RedImg from "assets/red.jpg";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -329,6 +332,22 @@ const images = [
     img: AgodaImg,
     link: "https://www.agoda.com/",
   },
+  {
+    img: BespokeImg,
+    link: "https://www.bespokelabs.ai/",
+  },
+  {
+    img: AndelaImg,
+    link: "https://www.andela.com/",
+  },
+  {
+    img: RedImg,
+    link: "https://www.redglobal.com/",
+  },
+  {
+    img: AgodaImg,
+    link: "https://www.agoda.com/",
+  },
   // {
   //   img: MindbowserImg,
   //   link: "https://mindbowser.com",
@@ -346,7 +365,7 @@ const OffersComponent = () => {
         <I18n t="messages" />
       </Label>
       <ImgContainer>
-        {images.slice(0, 16).map((i, k) => (
+        {images.slice(0, 18).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -356,7 +375,7 @@ const OffersComponent = () => {
         ))}
       </ImgContainer>
       <ImgContainer>
-        {images.slice(16).map((i, k) => (
+        {images.slice(18).map((i, k) => (
           <Img
             key={k}
             alt="img"
