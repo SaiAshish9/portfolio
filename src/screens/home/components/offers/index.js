@@ -76,6 +76,7 @@ import CpImg from "assets/cp.png";
 import BespokeImg from "assets/bespoke.png";
 import AndelaImg from "assets/andela.png";
 import RedImg from "assets/red.jpg";
+import ExlImg from "assets/exl.jpg";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -352,6 +353,10 @@ const images = [
   //   img: MindbowserImg,
   //   link: "https://mindbowser.com",
   // },
+  {
+    img: ExlImg,
+    link: "https://www.exlservice.com/",
+  }
 ];
 
 const OffersComponent = () => {
