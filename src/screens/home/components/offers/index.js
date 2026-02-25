@@ -345,10 +345,10 @@ const images = [
     img: RedImg,
     link: "https://www.redglobal.com/",
   },
-  {
-    img: AgodaImg,
-    link: "https://www.agoda.com/",
-  },
+  // {
+  //   img: AgodaImg,
+  //   link: "https://www.agoda.com/",
+  // },
   // {
   //   img: MindbowserImg,
   //   link: "https://mindbowser.com",
@@ -390,7 +390,7 @@ const OffersComponent = () => {
         ))}
       </ImgContainer>
       <MediumImgContainer>
-        {images.slice(0, 8).map((i, k) => (
+        {images.slice(0, 9).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -400,7 +400,7 @@ const OffersComponent = () => {
         ))}
       </MediumImgContainer>
       <MediumImgContainer>
-        {images.slice(8, 16).map((i, k) => (
+        {images.slice(9, 18).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -410,7 +410,7 @@ const OffersComponent = () => {
         ))}
       </MediumImgContainer>
       <MediumImgContainer>
-        {images.slice(16, 24).map((i, k) => (
+        {images.slice(18, 27).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -420,7 +420,7 @@ const OffersComponent = () => {
         ))}
       </MediumImgContainer>
       <MediumImgContainer>
-        {images.slice(24).map((i, k) => (
+        {images.slice(27).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -430,7 +430,7 @@ const OffersComponent = () => {
         ))}
       </MediumImgContainer>
       <SmallImgContainer>
-        {images.slice(0, 8).map((i, k) => (
+        {images.slice(0, 9).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -440,7 +440,7 @@ const OffersComponent = () => {
         ))}
       </SmallImgContainer>
       <SmallImgContainer>
-        {images.slice(8, 16).map((i, k) => (
+        {images.slice(9, 18).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -450,7 +450,7 @@ const OffersComponent = () => {
         ))}
       </SmallImgContainer>
       <SmallImgContainer>
-        {images.slice(16, 24).map((i, k) => (
+        {images.slice(18, 27).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -470,7 +470,7 @@ const OffersComponent = () => {
         ))}
       </SmallImgContainer> */}
       <SmallImgContainer>
-        {images.slice(24).map((i, k) => (
+        {images.slice(27).map((i, k) => (
           <Img
             key={k}
             alt="img"
