@@ -60,7 +60,6 @@ export const SmallImgContainer = styled.div`
     display: none;
   }
   @media only screen and (max-width: ${BREAKPOINTS.xs}) {
-    margin: 0.9rem 0.4rem 0;
   }
 `;
 
