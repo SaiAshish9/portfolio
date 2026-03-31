@@ -60,6 +60,7 @@ export const SmallImgContainer = styled.div`
     display: none;
   }
   @media only screen and (max-width: ${BREAKPOINTS.xs}) {
+    margin-left: 0.2rem;
   }
 `;
 
@@ -83,14 +84,14 @@ export const Img = styled.img`
     margin: 0 0.2rem;
   }
   @media only screen and (max-width: ${BREAKPOINTS.xs}) {
-    height: 2.4rem;
-    width: 2.4rem;
-    margin: 0 0.2rem;
+    height: 1.8rem;
+    width: 1.8rem;
+    margin: 0 0.4rem;
   }
   @media only screen and (max-width: 400px) {
-    height: 2.1rem;
-    width: 2.1rem;
-    margin: 0 0.2rem;
+    height: 1.8rem;
+    width: 1.8rem;
+    margin: 0 0.4rem;
   }
   @media only screen and (max-width: 350px) {
     height: 1.8rem;

@@ -77,6 +77,8 @@ import BespokeImg from "assets/bespoke.png";
 import AndelaImg from "assets/andela.png";
 import RedImg from "assets/red.jpg";
 import ExlImg from "assets/exl.jpg";
+import QuillbotImg from "assets/quillbot.png";
+import HeizenImg from "assets/heizen.jpeg";
 
 function handleClick(link) {
   const win = window.open(link, "_blank");
@@ -121,12 +123,20 @@ const images = [
   //   link: "https://cred.club/",
   // },
   {
+    img: HeizenImg,
+    link: "https://www.heizen.work/",
+  },
+  {
     img: ChristyMedia,
     link: "https://christy-media.com/",
   },
   {
     img: LaunchDarklyImg,
     link: "https://launchdarkly.com/",
+  },
+  {
+    img: QuillbotImg,
+    link: "https://quillbot.com/",
   },
   {
     img: UVImg,
@@ -148,10 +158,10 @@ const images = [
     img: HotstarImg,
     link: "https://hotstar.com",
   },
-  // {
-  //   img: BrowserStackImage,
-  //   link: "https://www.browserstack.com/",
-  // },
+  {
+    img: BrowserStackImage,
+    link: "https://www.browserstack.com/",
+  },
   {
     img: NetAppImg,
     link: "https://www.netapp.com/",
@@ -321,10 +331,10 @@ const images = [
   //   img: JioImg,
   //   link: "https://jio.com",
   // },
-  // {
-  //   img: MindTickleImg,
-  //   link: "http://mindtickle.com/",
-  // },
+  {
+    img: MindTickleImg,
+    link: "http://mindtickle.com/",
+  },
   {
     img: MythikImg,
     link: "https://www.instagram.com/mythikentertainment/reels/",
@@ -356,7 +366,7 @@ const images = [
   {
     img: ExlImg,
     link: "https://www.exlservice.com/",
-  }
+  },
 ];
 
 const OffersComponent = () => {
@@ -370,7 +380,7 @@ const OffersComponent = () => {
         <I18n t="messages" />
       </Label>
       <ImgContainer>
-        {images.slice(0, 18).map((i, k) => (
+        {images.slice(0, 20).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -380,7 +390,7 @@ const OffersComponent = () => {
         ))}
       </ImgContainer>
       <ImgContainer>
-        {images.slice(18).map((i, k) => (
+        {images.slice(20).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -390,7 +400,7 @@ const OffersComponent = () => {
         ))}
       </ImgContainer>
       <MediumImgContainer>
-        {images.slice(0, 9).map((i, k) => (
+        {images.slice(0, 10).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -400,7 +410,7 @@ const OffersComponent = () => {
         ))}
       </MediumImgContainer>
       <MediumImgContainer>
-        {images.slice(9, 18).map((i, k) => (
+        {images.slice(10, 20).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -410,7 +420,7 @@ const OffersComponent = () => {
         ))}
       </MediumImgContainer>
       <MediumImgContainer>
-        {images.slice(18, 27).map((i, k) => (
+        {images.slice(20, 30).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -420,7 +430,7 @@ const OffersComponent = () => {
         ))}
       </MediumImgContainer>
       <MediumImgContainer>
-        {images.slice(27).map((i, k) => (
+        {images.slice(30).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -430,7 +440,7 @@ const OffersComponent = () => {
         ))}
       </MediumImgContainer>
       <SmallImgContainer>
-        {images.slice(0, 9).map((i, k) => (
+        {images.slice(0, 10).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -440,7 +450,7 @@ const OffersComponent = () => {
         ))}
       </SmallImgContainer>
       <SmallImgContainer>
-        {images.slice(9, 18).map((i, k) => (
+        {images.slice(10, 20).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -450,7 +460,7 @@ const OffersComponent = () => {
         ))}
       </SmallImgContainer>
       <SmallImgContainer>
-        {images.slice(18, 27).map((i, k) => (
+        {images.slice(20, 30).map((i, k) => (
           <Img
             key={k}
             alt="img"
@@ -470,7 +480,7 @@ const OffersComponent = () => {
         ))}
       </SmallImgContainer> */}
       <SmallImgContainer>
-        {images.slice(27).map((i, k) => (
+        {images.slice(30).map((i, k) => (
           <Img
             key={k}
             alt="img"
